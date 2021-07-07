@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -709,8 +710,8 @@ type CreateDBClusterRequest struct {
 	ResourceOwnerAccount                   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount                           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId                               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ZoneId                                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Engine                                 *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	DBType                                 *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	DBVersion                              *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	DBNodeClass                            *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
@@ -735,6 +736,7 @@ type CreateDBClusterRequest struct {
 	LowerCaseTableNames                    *string `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	DBMinorVersion                         *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	ParameterGroupId                       *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 }
 
 func (s CreateDBClusterRequest) String() string {
@@ -765,13 +767,13 @@ func (s *CreateDBClusterRequest) SetOwnerAccount(v string) *CreateDBClusterReque
 	return s
 }
 
-func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
-	s.ZoneId = &v
+func (s *CreateDBClusterRequest) SetRegionId(v string) *CreateDBClusterRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *CreateDBClusterRequest) SetEngine(v string) *CreateDBClusterRequest {
-	s.Engine = &v
+func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -892,6 +894,11 @@ func (s *CreateDBClusterRequest) SetBackupRetentionPolicyOnClusterDeletion(v str
 
 func (s *CreateDBClusterRequest) SetDBMinorVersion(v string) *CreateDBClusterRequest {
 	s.DBMinorVersion = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetParameterGroupId(v string) *CreateDBClusterRequest {
+	s.ParameterGroupId = &v
 	return s
 }
 
@@ -1487,6 +1494,217 @@ func (s *CreateDBNodesResponse) SetHeaders(v map[string]*string) *CreateDBNodesR
 }
 
 func (s *CreateDBNodesResponse) SetBody(v *CreateDBNodesResponseBody) *CreateDBNodesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGlobalDatabaseNetworkRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GDNDescription       *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
+}
+
+func (s CreateGlobalDatabaseNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDatabaseNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *CreateGlobalDatabaseNetworkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetResourceOwnerAccount(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetResourceOwnerId(v int64) *CreateGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetDBClusterId(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetGDNDescription(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.GDNDescription = &v
+	return s
+}
+
+type CreateGlobalDatabaseNetworkResponseBody struct {
+	GDNId     *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGlobalDatabaseNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDatabaseNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDatabaseNetworkResponseBody) SetGDNId(v string) *CreateGlobalDatabaseNetworkResponseBody {
+	s.GDNId = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkResponseBody) SetRequestId(v string) *CreateGlobalDatabaseNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGlobalDatabaseNetworkResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGlobalDatabaseNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGlobalDatabaseNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDatabaseNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDatabaseNetworkResponse) SetHeaders(v map[string]*string) *CreateGlobalDatabaseNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkResponse) SetBody(v *CreateGlobalDatabaseNetworkResponseBody) *CreateGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type CreateParameterGroupRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	ParameterGroupName   *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	ParameterGroupDesc   *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s CreateParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupRequest) SetOwnerId(v int64) *CreateParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceOwnerAccount(v string) *CreateParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceOwnerId(v int64) *CreateParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetOwnerAccount(v string) *CreateParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetRegionId(v string) *CreateParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetDBType(v string) *CreateParameterGroupRequest {
+	s.DBType = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetDBVersion(v string) *CreateParameterGroupRequest {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameterGroupName(v string) *CreateParameterGroupRequest {
+	s.ParameterGroupName = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameterGroupDesc(v string) *CreateParameterGroupRequest {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameters(v string) *CreateParameterGroupRequest {
+	s.Parameters = &v
+	return s
+}
+
+type CreateParameterGroupResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupResponseBody) SetRequestId(v string) *CreateParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateParameterGroupResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupResponse) SetHeaders(v map[string]*string) *CreateParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateParameterGroupResponse) SetBody(v *CreateParameterGroupResponseBody) *CreateParameterGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2211,6 +2429,181 @@ func (s *DeleteDBNodesResponse) SetBody(v *DeleteDBNodesResponseBody) *DeleteDBN
 	return s
 }
 
+type DeleteGlobalDatabaseNetworkRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+}
+
+func (s DeleteGlobalDatabaseNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDatabaseNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *DeleteGlobalDatabaseNetworkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *DeleteGlobalDatabaseNetworkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetResourceOwnerAccount(v string) *DeleteGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetResourceOwnerId(v int64) *DeleteGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *DeleteGlobalDatabaseNetworkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkRequest) SetGDNId(v string) *DeleteGlobalDatabaseNetworkRequest {
+	s.GDNId = &v
+	return s
+}
+
+type DeleteGlobalDatabaseNetworkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGlobalDatabaseNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDatabaseNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDatabaseNetworkResponseBody) SetRequestId(v string) *DeleteGlobalDatabaseNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGlobalDatabaseNetworkResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGlobalDatabaseNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGlobalDatabaseNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDatabaseNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDatabaseNetworkResponse) SetHeaders(v map[string]*string) *DeleteGlobalDatabaseNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGlobalDatabaseNetworkResponse) SetBody(v *DeleteGlobalDatabaseNetworkResponseBody) *DeleteGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteParameterGroupRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+}
+
+func (s DeleteParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupRequest) SetOwnerId(v int64) *DeleteParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceOwnerAccount(v string) *DeleteParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceOwnerId(v int64) *DeleteParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetOwnerAccount(v string) *DeleteParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetRegionId(v string) *DeleteParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetParameterGroupId(v string) *DeleteParameterGroupRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+type DeleteParameterGroupResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupResponseBody) SetRequestId(v string) *DeleteParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteParameterGroupResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupResponse) SetHeaders(v map[string]*string) *DeleteParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBody) *DeleteParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAccountsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2851,6 +3244,7 @@ type DescribeBackupPolicyResponseBody struct {
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	PreferredNextBackupTime                *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
 	DataLevel2BackupRetentionPeriod        *string `json:"DataLevel2BackupRetentionPeriod,omitempty" xml:"DataLevel2BackupRetentionPeriod,omitempty"`
+	BackupFrequency                        *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -2893,6 +3287,11 @@ func (s *DescribeBackupPolicyResponseBody) SetPreferredNextBackupTime(v string) 
 
 func (s *DescribeBackupPolicyResponseBody) SetDataLevel2BackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
 	s.DataLevel2BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupFrequency(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupFrequency = &v
 	return s
 }
 
@@ -3171,7 +3570,6 @@ type DescribeBackupTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	BackupJobId          *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	BackupMode           *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
@@ -3202,11 +3600,6 @@ func (s *DescribeBackupTasksRequest) SetResourceOwnerId(v int64) *DescribeBackup
 
 func (s *DescribeBackupTasksRequest) SetOwnerAccount(v string) *DescribeBackupTasksRequest {
 	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeBackupTasksRequest) SetRegionId(v string) *DescribeBackupTasksRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3934,6 +4327,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	SQLSize                   *int64                                           `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
 	RegionId                  *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ExpireTime                *string                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	SubCategory               *string                                          `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
 func (s DescribeDBClusterAttributeResponseBody) String() string {
@@ -4086,6 +4480,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetRegionId(v string) *Describe
 
 func (s *DescribeDBClusterAttributeResponseBody) SetExpireTime(v string) *DescribeDBClusterAttributeResponseBody {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSubCategory(v string) *DescribeDBClusterAttributeResponseBody {
+	s.SubCategory = &v
 	return s
 }
 
@@ -5270,15 +5669,10 @@ func (s *DescribeDBClusterParametersResponse) SetBody(v *DescribeDBClusterParame
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Metric               *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceRequest) String() string {
@@ -5289,26 +5683,6 @@ func (s DescribeDBClusterPerformanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBClusterPerformanceRequest) SetOwnerId(v int64) *DescribeDBClusterPerformanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDBClusterPerformanceRequest) SetResourceOwnerAccount(v string) *DescribeDBClusterPerformanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeDBClusterPerformanceRequest) SetResourceOwnerId(v int64) *DescribeDBClusterPerformanceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeDBClusterPerformanceRequest) SetOwnerAccount(v string) *DescribeDBClusterPerformanceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
 func (s *DescribeDBClusterPerformanceRequest) SetDBClusterId(v string) *DescribeDBClusterPerformanceRequest {
 	s.DBClusterId = &v
 	return s
@@ -5316,11 +5690,6 @@ func (s *DescribeDBClusterPerformanceRequest) SetDBClusterId(v string) *Describe
 
 func (s *DescribeDBClusterPerformanceRequest) SetKey(v string) *DescribeDBClusterPerformanceRequest {
 	s.Key = &v
-	return s
-}
-
-func (s *DescribeDBClusterPerformanceRequest) SetMetric(v string) *DescribeDBClusterPerformanceRequest {
-	s.Metric = &v
 	return s
 }
 
@@ -5978,8 +6347,9 @@ func (s *DescribeDBClusterSSLRequest) SetDBClusterId(v string) *DescribeDBCluste
 }
 
 type DescribeDBClusterSSLResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Items     []*DescribeDBClusterSSLResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SSLAutoRotate *string                                  `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
+	Items         []*DescribeDBClusterSSLResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClusterSSLResponseBody) String() string {
@@ -5992,6 +6362,11 @@ func (s DescribeDBClusterSSLResponseBody) GoString() string {
 
 func (s *DescribeDBClusterSSLResponseBody) SetRequestId(v string) *DescribeDBClusterSSLResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSSLResponseBody) SetSSLAutoRotate(v string) *DescribeDBClusterSSLResponseBody {
+	s.SSLAutoRotate = &v
 	return s
 }
 
@@ -6389,10 +6764,11 @@ func (s *DescribeDBClusterTDERequest) SetDBClusterId(v string) *DescribeDBCluste
 }
 
 type DescribeDBClusterTDEResponseBody struct {
-	TDEStatus     *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBClusterId   *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	TDEStatus        *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EncryptionKey    *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptNewTables *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
 }
 
 func (s DescribeDBClusterTDEResponseBody) String() string {
@@ -6420,6 +6796,11 @@ func (s *DescribeDBClusterTDEResponseBody) SetDBClusterId(v string) *DescribeDBC
 
 func (s *DescribeDBClusterTDEResponseBody) SetEncryptionKey(v string) *DescribeDBClusterTDEResponseBody {
 	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterTDEResponseBody) SetEncryptNewTables(v string) *DescribeDBClusterTDEResponseBody {
+	s.EncryptNewTables = &v
 	return s
 }
 
@@ -6488,13 +6869,17 @@ func (s *DescribeDBClusterVersionRequest) SetDBClusterId(v string) *DescribeDBCl
 }
 
 type DescribeDBClusterVersionResponseBody struct {
-	IsLatestVersion   *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	DBVersion         *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	DBRevisionVersion *string `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBVersionStatus   *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
-	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBMinorVersion    *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	IsLatestVersion      *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DBRevisionVersion    *string `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBVersionStatus      *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBMinorVersion       *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	ProxyVersionStatus   *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
+	ProxyLatestVersion   *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
+	DBLatestVersion      *string `json:"DBLatestVersion,omitempty" xml:"DBLatestVersion,omitempty"`
 }
 
 func (s DescribeDBClusterVersionResponseBody) String() string {
@@ -6537,6 +6922,26 @@ func (s *DescribeDBClusterVersionResponseBody) SetDBClusterId(v string) *Describ
 
 func (s *DescribeDBClusterVersionResponseBody) SetDBMinorVersion(v string) *DescribeDBClusterVersionResponseBody {
 	s.DBMinorVersion = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBody) SetProxyRevisionVersion(v string) *DescribeDBClusterVersionResponseBody {
+	s.ProxyRevisionVersion = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBody) SetProxyVersionStatus(v string) *DescribeDBClusterVersionResponseBody {
+	s.ProxyVersionStatus = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBody) SetProxyLatestVersion(v string) *DescribeDBClusterVersionResponseBody {
+	s.ProxyLatestVersion = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBody) SetDBLatestVersion(v string) *DescribeDBClusterVersionResponseBody {
+	s.DBLatestVersion = &v
 	return s
 }
 
@@ -6855,16 +7260,11 @@ func (s *DescribeDBLinksResponse) SetBody(v *DescribeDBLinksResponseBody) *Descr
 }
 
 type DescribeDBNodePerformanceRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBNodeId             *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Metric               *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBNodeId    *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceRequest) String() string {
@@ -6875,26 +7275,6 @@ func (s DescribeDBNodePerformanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBNodePerformanceRequest) SetOwnerId(v int64) *DescribeDBNodePerformanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDBNodePerformanceRequest) SetResourceOwnerAccount(v string) *DescribeDBNodePerformanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeDBNodePerformanceRequest) SetResourceOwnerId(v int64) *DescribeDBNodePerformanceRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeDBNodePerformanceRequest) SetOwnerAccount(v string) *DescribeDBNodePerformanceRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
 func (s *DescribeDBNodePerformanceRequest) SetDBNodeId(v string) *DescribeDBNodePerformanceRequest {
 	s.DBNodeId = &v
 	return s
@@ -6902,11 +7282,6 @@ func (s *DescribeDBNodePerformanceRequest) SetDBNodeId(v string) *DescribeDBNode
 
 func (s *DescribeDBNodePerformanceRequest) SetKey(v string) *DescribeDBNodePerformanceRequest {
 	s.Key = &v
-	return s
-}
-
-func (s *DescribeDBNodePerformanceRequest) SetMetric(v string) *DescribeDBNodePerformanceRequest {
-	s.Metric = &v
 	return s
 }
 
@@ -7336,6 +7711,259 @@ func (s *DescribeDetachedBackupsResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribeDetachedBackupsResponse) SetBody(v *DescribeDetachedBackupsResponseBody) *DescribeDetachedBackupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworkRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+}
+
+func (s DescribeGlobalDatabaseNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *DescribeGlobalDatabaseNetworkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *DescribeGlobalDatabaseNetworkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetResourceOwnerAccount(v string) *DescribeGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetResourceOwnerId(v int64) *DescribeGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *DescribeGlobalDatabaseNetworkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkRequest) SetGDNId(v string) *DescribeGlobalDatabaseNetworkRequest {
+	s.GDNId = &v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworkResponseBody struct {
+	GDNStatus      *string                                                 `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	Connections    []*DescribeGlobalDatabaseNetworkResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
+	DBVersion      *string                                                 `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GDNId          *string                                                 `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	CreateTime     *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBType         *string                                                 `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	GDNDescription *string                                                 `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
+	DBClusters     []*DescribeGlobalDatabaseNetworkResponseBodyDBClusters  `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGDNStatus(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.GDNStatus = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetConnections(v []*DescribeGlobalDatabaseNetworkResponseBodyConnections) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.Connections = v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetDBVersion(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetRequestId(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGDNId(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.GDNId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetCreateTime(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetDBType(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGDNDescription(v string) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.GDNDescription = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetDBClusters(v []*DescribeGlobalDatabaseNetworkResponseBodyDBClusters) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.DBClusters = v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworkResponseBodyConnections struct {
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyConnections) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetConnectionString(v string) *DescribeGlobalDatabaseNetworkResponseBodyConnections {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetNetType(v string) *DescribeGlobalDatabaseNetworkResponseBodyConnections {
+	s.NetType = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetPort(v string) *DescribeGlobalDatabaseNetworkResponseBodyConnections {
+	s.Port = &v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
+	ReplicaLag           *string `json:"ReplicaLag,omitempty" xml:"ReplicaLag,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired              *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	DBNodeClass          *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterStatus      *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	StorageUsed          *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyDBClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyDBClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetReplicaLag(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.ReplicaLag = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetExpireTime(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetExpired(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.Expired = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBNodeClass(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBNodeClass = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetPayType(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBType(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetRegionId(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBVersion(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBClusterId(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBClusterStatus(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBClusterStatus = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetStorageUsed(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.StorageUsed = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetDBClusterDescription(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.DBClusterDescription = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetRole(v string) *DescribeGlobalDatabaseNetworkResponseBodyDBClusters {
+	s.Role = &v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworkResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeGlobalDatabaseNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGlobalDatabaseNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponse) SetHeaders(v map[string]*string) *DescribeGlobalDatabaseNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponse) SetBody(v *DescribeGlobalDatabaseNetworkResponseBody) *DescribeGlobalDatabaseNetworkResponse {
 	s.Body = v
 	return s
 }
@@ -7796,6 +8424,546 @@ func (s *DescribeMetaListResponse) SetBody(v *DescribeMetaListResponseBody) *Des
 	return s
 }
 
+type DescribeParameterGroupRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+}
+
+func (s DescribeParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupRequest) SetOwnerId(v int64) *DescribeParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetOwnerAccount(v string) *DescribeParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetRegionId(v string) *DescribeParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetParameterGroupId(v string) *DescribeParameterGroupRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBody struct {
+	// Id of the request
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParameterGroup []*DescribeParameterGroupResponseBodyParameterGroup `json:"ParameterGroup,omitempty" xml:"ParameterGroup,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribeParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBody) SetParameterGroup(v []*DescribeParameterGroupResponseBodyParameterGroup) *DescribeParameterGroupResponseBody {
+	s.ParameterGroup = v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyParameterGroup struct {
+	DBType             *string                                                            `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion          *string                                                            `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	ParameterGroupName *string                                                            `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	ForceRestart       *string                                                            `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ParameterGroupType *string                                                            `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	ParameterCounts    *int32                                                             `json:"ParameterCounts,omitempty" xml:"ParameterCounts,omitempty"`
+	ParameterGroupDesc *string                                                            `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	CreateTime         *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ParameterDetail    []*DescribeParameterGroupResponseBodyParameterGroupParameterDetail `json:"ParameterDetail,omitempty" xml:"ParameterDetail,omitempty" type:"Repeated"`
+	ParameterGroupId   *string                                                            `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetDBType(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetDBVersion(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupName(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupName = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetForceRestart(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ForceRestart = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupType(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterCounts(v int32) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterCounts = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupDesc(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetCreateTime(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterDetail(v []*DescribeParameterGroupResponseBodyParameterGroupParameterDetail) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterDetail = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupId(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupId = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyParameterGroupParameterDetail struct {
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+	ParamName  *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroupParameterDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroupParameterDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroupParameterDetail) SetParamValue(v string) *DescribeParameterGroupResponseBodyParameterGroupParameterDetail {
+	s.ParamValue = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroupParameterDetail) SetParamName(v string) *DescribeParameterGroupResponseBodyParameterGroupParameterDetail {
+	s.ParamName = &v
+	return s
+}
+
+type DescribeParameterGroupResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponse) SetBody(v *DescribeParameterGroupResponseBody) *DescribeParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterGroupsRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+}
+
+func (s DescribeParameterGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsRequest) SetOwnerId(v int64) *DescribeParameterGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetOwnerAccount(v string) *DescribeParameterGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetRegionId(v string) *DescribeParameterGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetDBType(v string) *DescribeParameterGroupsRequest {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetDBVersion(v string) *DescribeParameterGroupsRequest {
+	s.DBVersion = &v
+	return s
+}
+
+type DescribeParameterGroupsResponseBody struct {
+	// Id of the request
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParameterGroups []*DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponseBody) SetRequestId(v string) *DescribeParameterGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBody) SetParameterGroups(v []*DescribeParameterGroupsResponseBodyParameterGroups) *DescribeParameterGroupsResponseBody {
+	s.ParameterGroups = v
+	return s
+}
+
+type DescribeParameterGroupsResponseBodyParameterGroups struct {
+	DBType             *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion          *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	ForceRestart       *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
+	ParameterCounts    *int64  `json:"ParameterCounts,omitempty" xml:"ParameterCounts,omitempty"`
+	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ParameterGroupId   *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+}
+
+func (s DescribeParameterGroupsResponseBodyParameterGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponseBodyParameterGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetDBType(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetDBVersion(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupName(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupName = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetForceRestart(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ForceRestart = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupType(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterCounts(v int64) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterCounts = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupDesc(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetCreateTime(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupId(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupId = &v
+	return s
+}
+
+type DescribeParameterGroupsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeParameterGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeParameterGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponse) SetBody(v *DescribeParameterGroupsResponseBody) *DescribeParameterGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterTemplatesRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DBType               *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeParameterTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterTemplatesRequest) SetOwnerId(v int64) *DescribeParameterTemplatesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetResourceOwnerAccount(v string) *DescribeParameterTemplatesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetResourceOwnerId(v int64) *DescribeParameterTemplatesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetOwnerAccount(v string) *DescribeParameterTemplatesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetDBType(v string) *DescribeParameterTemplatesRequest {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetDBVersion(v string) *DescribeParameterTemplatesRequest {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetRegionId(v string) *DescribeParameterTemplatesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeParameterTemplatesResponseBody struct {
+	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	DBVersion      *string                                           `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBType         *string                                           `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	Engine         *string                                           `json:"Engine,omitempty" xml:"Engine,omitempty"`
+}
+
+func (s DescribeParameterTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetParameterCount(v string) *DescribeParameterTemplatesResponseBody {
+	s.ParameterCount = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetDBVersion(v string) *DescribeParameterTemplatesResponseBody {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetParameters(v *DescribeParameterTemplatesResponseBodyParameters) *DescribeParameterTemplatesResponseBody {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetRequestId(v string) *DescribeParameterTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetDBType(v string) *DescribeParameterTemplatesResponseBody {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBody) SetEngine(v string) *DescribeParameterTemplatesResponseBody {
+	s.Engine = &v
+	return s
+}
+
+type DescribeParameterTemplatesResponseBodyParameters struct {
+	TemplateRecord []*DescribeParameterTemplatesResponseBodyParametersTemplateRecord `json:"TemplateRecord,omitempty" xml:"TemplateRecord,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterTemplatesResponseBodyParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterTemplatesResponseBodyParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParameters) SetTemplateRecord(v []*DescribeParameterTemplatesResponseBodyParametersTemplateRecord) *DescribeParameterTemplatesResponseBodyParameters {
+	s.TemplateRecord = v
+	return s
+}
+
+type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ForceModify          *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	ForceRestart         *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+}
+
+func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetCheckingCode(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.CheckingCode = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetParameterName(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetParameterValue(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetForceModify(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.ForceModify = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetForceRestart(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.ForceRestart = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyParametersTemplateRecord) SetParameterDescription(v string) *DescribeParameterTemplatesResponseBodyParametersTemplateRecord {
+	s.ParameterDescription = &v
+	return s
+}
+
+type DescribeParameterTemplatesResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeParameterTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeParameterTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterTemplatesResponse) SetHeaders(v map[string]*string) *DescribeParameterTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponse) SetBody(v *DescribeParameterTemplatesResponseBody) *DescribeParameterTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePendingMaintenanceActionRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8148,6 +9316,93 @@ func (s *DescribePendingMaintenanceActionsResponse) SetBody(v *DescribePendingMa
 	return s
 }
 
+type DescribePolarSQLCollectorPolicyRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DescribePolarSQLCollectorPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolarSQLCollectorPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarSQLCollectorPolicyRequest) SetOwnerId(v int64) *DescribePolarSQLCollectorPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyRequest) SetResourceOwnerAccount(v string) *DescribePolarSQLCollectorPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyRequest) SetResourceOwnerId(v int64) *DescribePolarSQLCollectorPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyRequest) SetOwnerAccount(v string) *DescribePolarSQLCollectorPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyRequest) SetDBClusterId(v string) *DescribePolarSQLCollectorPolicyRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DescribePolarSQLCollectorPolicyResponseBody struct {
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
+}
+
+func (s DescribePolarSQLCollectorPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolarSQLCollectorPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarSQLCollectorPolicyResponseBody) SetRequestId(v string) *DescribePolarSQLCollectorPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyResponseBody) SetSQLCollectorStatus(v string) *DescribePolarSQLCollectorPolicyResponseBody {
+	s.SQLCollectorStatus = &v
+	return s
+}
+
+type DescribePolarSQLCollectorPolicyResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribePolarSQLCollectorPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolarSQLCollectorPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolarSQLCollectorPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarSQLCollectorPolicyResponse) SetHeaders(v map[string]*string) *DescribePolarSQLCollectorPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolarSQLCollectorPolicyResponse) SetBody(v *DescribePolarSQLCollectorPolicyResponseBody) *DescribePolarSQLCollectorPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -8381,9 +9636,10 @@ func (s *DescribeScheduleTasksRequest) SetTaskAction(v string) *DescribeSchedule
 }
 
 type DescribeScheduleTasksResponseBody struct {
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Data    *DescribeScheduleTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *DescribeScheduleTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeScheduleTasksResponseBody) String() string {
@@ -8406,6 +9662,11 @@ func (s *DescribeScheduleTasksResponseBody) SetData(v *DescribeScheduleTasksResp
 
 func (s *DescribeScheduleTasksResponseBody) SetSuccess(v bool) *DescribeScheduleTasksResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksResponseBody) SetRequestId(v string) *DescribeScheduleTasksResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8445,15 +9706,17 @@ func (s *DescribeScheduleTasksResponseBodyData) SetPageSize(v int32) *DescribeSc
 }
 
 type DescribeScheduleTasksResponseBodyDataTimerInfos struct {
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Action           *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	PlannedEndTime   *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	PlannedTime      *string `json:"PlannedTime,omitempty" xml:"PlannedTime,omitempty"`
-	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Action               *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	PlannedEndTime       *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedTime          *string `json:"PlannedTime,omitempty" xml:"PlannedTime,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	DbClusterStatus      *string `json:"DbClusterStatus,omitempty" xml:"DbClusterStatus,omitempty"`
+	DbClusterDescription *string `json:"DbClusterDescription,omitempty" xml:"DbClusterDescription,omitempty"`
 }
 
 func (s DescribeScheduleTasksResponseBodyDataTimerInfos) String() string {
@@ -8506,6 +9769,16 @@ func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetTaskId(v string) *D
 
 func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetOrderId(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
 	s.OrderId = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetDbClusterStatus(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
+	s.DbClusterStatus = &v
+	return s
+}
+
+func (s *DescribeScheduleTasksResponseBodyDataTimerInfos) SetDbClusterDescription(v string) *DescribeScheduleTasksResponseBodyDataTimerInfos {
+	s.DbClusterDescription = &v
 	return s
 }
 
@@ -8769,1166 +10042,6 @@ func (s *DescribeSlowLogRecordsResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsResponseBody) *DescribeSlowLogRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLExplorerPolicyRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeSQLExplorerPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerPolicyRequest) SetOwnerId(v int64) *DescribeSQLExplorerPolicyRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyRequest) SetResourceOwnerAccount(v string) *DescribeSQLExplorerPolicyRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyRequest) SetResourceOwnerId(v int64) *DescribeSQLExplorerPolicyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyRequest) SetOwnerAccount(v string) *DescribeSQLExplorerPolicyRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyRequest) SetDBInstanceId(v string) *DescribeSQLExplorerPolicyRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeSQLExplorerPolicyResponseBody struct {
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
-}
-
-func (s DescribeSQLExplorerPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerPolicyResponseBody) SetRequestId(v string) *DescribeSQLExplorerPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyResponseBody) SetSQLCollectorStatus(v string) *DescribeSQLExplorerPolicyResponseBody {
-	s.SQLCollectorStatus = &v
-	return s
-}
-
-type DescribeSQLExplorerPolicyResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLExplorerPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLExplorerPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerPolicyResponse) SetHeaders(v map[string]*string) *DescribeSQLExplorerPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLExplorerPolicyResponse) SetBody(v *DescribeSQLExplorerPolicyResponseBody) *DescribeSQLExplorerPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLExplorerRetentionRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeSQLExplorerRetentionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerRetentionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetSecurityToken(v string) *DescribeSQLExplorerRetentionRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetOwnerId(v int64) *DescribeSQLExplorerRetentionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetResourceOwnerAccount(v string) *DescribeSQLExplorerRetentionRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetResourceOwnerId(v int64) *DescribeSQLExplorerRetentionRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetOwnerAccount(v string) *DescribeSQLExplorerRetentionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetRegionId(v string) *DescribeSQLExplorerRetentionRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionRequest) SetDBInstanceId(v string) *DescribeSQLExplorerRetentionRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeSQLExplorerRetentionResponseBody struct {
-	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceID   *int32  `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-}
-
-func (s DescribeSQLExplorerRetentionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerRetentionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerRetentionResponseBody) SetConfigValue(v string) *DescribeSQLExplorerRetentionResponseBody {
-	s.ConfigValue = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionResponseBody) SetRequestId(v string) *DescribeSQLExplorerRetentionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionResponseBody) SetDBInstanceID(v int32) *DescribeSQLExplorerRetentionResponseBody {
-	s.DBInstanceID = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionResponseBody) SetDBInstanceName(v string) *DescribeSQLExplorerRetentionResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-type DescribeSQLExplorerRetentionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLExplorerRetentionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLExplorerRetentionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerRetentionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerRetentionResponse) SetHeaders(v map[string]*string) *DescribeSQLExplorerRetentionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLExplorerRetentionResponse) SetBody(v *DescribeSQLExplorerRetentionResponseBody) *DescribeSQLExplorerRetentionResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLExplorerVersionRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeSQLExplorerVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetSecurityToken(v string) *DescribeSQLExplorerVersionRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetOwnerId(v int64) *DescribeSQLExplorerVersionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetResourceOwnerAccount(v string) *DescribeSQLExplorerVersionRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetResourceOwnerId(v int64) *DescribeSQLExplorerVersionRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetOwnerAccount(v string) *DescribeSQLExplorerVersionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionRequest) SetDBInstanceId(v string) *DescribeSQLExplorerVersionRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeSQLExplorerVersionResponseBody struct {
-	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBInstanceID   *int32  `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-}
-
-func (s DescribeSQLExplorerVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerVersionResponseBody) SetConfigValue(v string) *DescribeSQLExplorerVersionResponseBody {
-	s.ConfigValue = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionResponseBody) SetRequestId(v string) *DescribeSQLExplorerVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionResponseBody) SetDBInstanceID(v int32) *DescribeSQLExplorerVersionResponseBody {
-	s.DBInstanceID = &v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionResponseBody) SetDBInstanceName(v string) *DescribeSQLExplorerVersionResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-type DescribeSQLExplorerVersionResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLExplorerVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLExplorerVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLExplorerVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLExplorerVersionResponse) SetHeaders(v map[string]*string) *DescribeSQLExplorerVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLExplorerVersionResponse) SetBody(v *DescribeSQLExplorerVersionResponseBody) *DescribeSQLExplorerVersionResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogRecordsRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxRecordsPerPage    *int32  `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	PageNumbers          *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	QueryKeyword         *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
-	HostAddress          *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	SortKey              *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortMethod           *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	MinConsume           *int64  `json:"MinConsume,omitempty" xml:"MinConsume,omitempty"`
-	MaxConsume           *int64  `json:"MaxConsume,omitempty" xml:"MaxConsume,omitempty"`
-	MinScanRows          *int64  `json:"MinScanRows,omitempty" xml:"MinScanRows,omitempty"`
-	MaxScanRows          *int64  `json:"MaxScanRows,omitempty" xml:"MaxScanRows,omitempty"`
-	State                *string `json:"State,omitempty" xml:"State,omitempty"`
-	SqlType              *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ThreadID             *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	PagingID             *string `json:"PagingID,omitempty" xml:"PagingID,omitempty"`
-	LogicalOperator      *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
-	ChildDBInstanceIDs   *string `json:"ChildDBInstanceIDs,omitempty" xml:"ChildDBInstanceIDs,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetSecurityToken(v string) *DescribeSQLLogRecordsRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetOwnerId(v int64) *DescribeSQLLogRecordsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetResourceOwnerAccount(v string) *DescribeSQLLogRecordsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetResourceOwnerId(v int64) *DescribeSQLLogRecordsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetOwnerAccount(v string) *DescribeSQLLogRecordsRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetDBInstanceId(v string) *DescribeSQLLogRecordsRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetStartTime(v string) *DescribeSQLLogRecordsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetEndTime(v string) *DescribeSQLLogRecordsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetMaxRecordsPerPage(v int32) *DescribeSQLLogRecordsRequest {
-	s.MaxRecordsPerPage = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetPageNumbers(v int32) *DescribeSQLLogRecordsRequest {
-	s.PageNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetQueryKeyword(v string) *DescribeSQLLogRecordsRequest {
-	s.QueryKeyword = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetHostAddress(v string) *DescribeSQLLogRecordsRequest {
-	s.HostAddress = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetDBName(v string) *DescribeSQLLogRecordsRequest {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetTableName(v string) *DescribeSQLLogRecordsRequest {
-	s.TableName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetSortKey(v string) *DescribeSQLLogRecordsRequest {
-	s.SortKey = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetSortMethod(v string) *DescribeSQLLogRecordsRequest {
-	s.SortMethod = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetMinConsume(v int64) *DescribeSQLLogRecordsRequest {
-	s.MinConsume = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetMaxConsume(v int64) *DescribeSQLLogRecordsRequest {
-	s.MaxConsume = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetMinScanRows(v int64) *DescribeSQLLogRecordsRequest {
-	s.MinScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetMaxScanRows(v int64) *DescribeSQLLogRecordsRequest {
-	s.MaxScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetState(v string) *DescribeSQLLogRecordsRequest {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetSqlType(v string) *DescribeSQLLogRecordsRequest {
-	s.SqlType = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetAccountName(v string) *DescribeSQLLogRecordsRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetThreadID(v string) *DescribeSQLLogRecordsRequest {
-	s.ThreadID = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetPagingID(v string) *DescribeSQLLogRecordsRequest {
-	s.PagingID = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetLogicalOperator(v string) *DescribeSQLLogRecordsRequest {
-	s.LogicalOperator = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetChildDBInstanceIDs(v string) *DescribeSQLLogRecordsRequest {
-	s.ChildDBInstanceIDs = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsRequest) SetJobId(v string) *DescribeSQLLogRecordsRequest {
-	s.JobId = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBody struct {
-	ItemsNumbers      *int32                                  `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	EndTime           *string                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId         *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime         *string                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	MaxRecordsPerPage *int32                                  `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	DBInstanceID      *string                                 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	TotalRecords      *int32                                  `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
-	Items             *DescribeSQLLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumbers       *int32                                  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	Finish            *string                                 `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	JobId             *string                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	DBInstanceName    *string                                 `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	PagingID          *string                                 `json:"PagingID,omitempty" xml:"PagingID,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetItemsNumbers(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.ItemsNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetEndTime(v string) *DescribeSQLLogRecordsResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetRequestId(v string) *DescribeSQLLogRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetStartTime(v string) *DescribeSQLLogRecordsResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetMaxRecordsPerPage(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.MaxRecordsPerPage = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetDBInstanceID(v string) *DescribeSQLLogRecordsResponseBody {
-	s.DBInstanceID = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetTotalRecords(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.TotalRecords = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetItems(v *DescribeSQLLogRecordsResponseBodyItems) *DescribeSQLLogRecordsResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetPageNumbers(v int32) *DescribeSQLLogRecordsResponseBody {
-	s.PageNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetFinish(v string) *DescribeSQLLogRecordsResponseBody {
-	s.Finish = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetJobId(v string) *DescribeSQLLogRecordsResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetDBInstanceName(v string) *DescribeSQLLogRecordsResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBody) SetPagingID(v string) *DescribeSQLLogRecordsResponseBody {
-	s.PagingID = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBodyItems struct {
-	SQLLogRecord []*DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord `json:"SQLLogRecord,omitempty" xml:"SQLLogRecord,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItems) SetSQLLogRecord(v []*DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) *DescribeSQLLogRecordsResponseBodyItems {
-	s.SQLLogRecord = v
-	return s
-}
-
-type DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord struct {
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	SQLText     *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	UpdateRows  *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-	ThreadID    *int32  `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	OriginTime  *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	InsName     *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	ScanRows    *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	Consume     *int64  `json:"Consume,omitempty" xml:"Consume,omitempty"`
-	DBName      *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Vip         *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	SqlType     *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetHostAddress(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.HostAddress = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetSQLText(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetUpdateRows(v int64) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.UpdateRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetState(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetThreadID(v int32) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.ThreadID = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetOriginTime(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.OriginTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetInsName(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.InsName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetScanRows(v int64) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.ScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetConsume(v int64) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.Consume = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetDBName(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetExecuteTime(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.ExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetVip(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.Vip = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetAccountName(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord) SetSqlType(v string) *DescribeSQLLogRecordsResponseBodyItemsSQLLogRecord {
-	s.SqlType = &v
-	return s
-}
-
-type DescribeSQLLogRecordsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLLogRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeSQLLogRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogRecordsResponse) SetBody(v *DescribeSQLLogRecordsResponseBody) *DescribeSQLLogRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogTemplatesRequest struct {
-	SecurityToken        *string  `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBInstanceId         *string  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxRecordsPerPage    *int32   `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	PageNumbers          *int32   `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	MinAvgConsume        *float32 `json:"MinAvgConsume,omitempty" xml:"MinAvgConsume,omitempty"`
-	MaxAvgConsume        *float32 `json:"MaxAvgConsume,omitempty" xml:"MaxAvgConsume,omitempty"`
-	MinAvgScanRows       *float32 `json:"MinAvgScanRows,omitempty" xml:"MinAvgScanRows,omitempty"`
-	MaxAvgScanRows       *float32 `json:"MaxAvgScanRows,omitempty" xml:"MaxAvgScanRows,omitempty"`
-	PagingId             *string  `json:"PagingId,omitempty" xml:"PagingId,omitempty"`
-	SortKey              *string  `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortMethod           *string  `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	SqlType              *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	JobId                *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ChildDBInstanceIDs   *string  `json:"ChildDBInstanceIDs,omitempty" xml:"ChildDBInstanceIDs,omitempty"`
-}
-
-func (s DescribeSQLLogTemplatesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogTemplatesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetSecurityToken(v string) *DescribeSQLLogTemplatesRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetOwnerId(v int64) *DescribeSQLLogTemplatesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetResourceOwnerAccount(v string) *DescribeSQLLogTemplatesRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetResourceOwnerId(v int64) *DescribeSQLLogTemplatesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetOwnerAccount(v string) *DescribeSQLLogTemplatesRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetDBInstanceId(v string) *DescribeSQLLogTemplatesRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetStartTime(v string) *DescribeSQLLogTemplatesRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetEndTime(v string) *DescribeSQLLogTemplatesRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetMaxRecordsPerPage(v int32) *DescribeSQLLogTemplatesRequest {
-	s.MaxRecordsPerPage = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetPageNumbers(v int32) *DescribeSQLLogTemplatesRequest {
-	s.PageNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetMinAvgConsume(v float32) *DescribeSQLLogTemplatesRequest {
-	s.MinAvgConsume = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetMaxAvgConsume(v float32) *DescribeSQLLogTemplatesRequest {
-	s.MaxAvgConsume = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetMinAvgScanRows(v float32) *DescribeSQLLogTemplatesRequest {
-	s.MinAvgScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetMaxAvgScanRows(v float32) *DescribeSQLLogTemplatesRequest {
-	s.MaxAvgScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetPagingId(v string) *DescribeSQLLogTemplatesRequest {
-	s.PagingId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetSortKey(v string) *DescribeSQLLogTemplatesRequest {
-	s.SortKey = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetSortMethod(v string) *DescribeSQLLogTemplatesRequest {
-	s.SortMethod = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetSqlType(v string) *DescribeSQLLogTemplatesRequest {
-	s.SqlType = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetJobId(v string) *DescribeSQLLogTemplatesRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesRequest) SetChildDBInstanceIDs(v string) *DescribeSQLLogTemplatesRequest {
-	s.ChildDBInstanceIDs = &v
-	return s
-}
-
-type DescribeSQLLogTemplatesResponseBody struct {
-	ItemsNumbers      *int32                                    `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	EndTime           *string                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime         *string                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	MaxRecordsPerPage *int32                                    `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	DBInstanceID      *int32                                    `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	TotalRecords      *int32                                    `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
-	Items             *DescribeSQLLogTemplatesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumbers       *int32                                    `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	Finish            *string                                   `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	JobId             *string                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	DBInstanceName    *string                                   `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	PagingID          *string                                   `json:"PagingID,omitempty" xml:"PagingID,omitempty"`
-}
-
-func (s DescribeSQLLogTemplatesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogTemplatesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetItemsNumbers(v int32) *DescribeSQLLogTemplatesResponseBody {
-	s.ItemsNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetEndTime(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetRequestId(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetStartTime(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetMaxRecordsPerPage(v int32) *DescribeSQLLogTemplatesResponseBody {
-	s.MaxRecordsPerPage = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetDBInstanceID(v int32) *DescribeSQLLogTemplatesResponseBody {
-	s.DBInstanceID = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetTotalRecords(v int32) *DescribeSQLLogTemplatesResponseBody {
-	s.TotalRecords = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetItems(v *DescribeSQLLogTemplatesResponseBodyItems) *DescribeSQLLogTemplatesResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetPageNumbers(v int32) *DescribeSQLLogTemplatesResponseBody {
-	s.PageNumbers = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetFinish(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.Finish = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetJobId(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetDBInstanceName(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBody) SetPagingID(v string) *DescribeSQLLogTemplatesResponseBody {
-	s.PagingID = &v
-	return s
-}
-
-type DescribeSQLLogTemplatesResponseBodyItems struct {
-	Template []*DescribeSQLLogTemplatesResponseBodyItemsTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSQLLogTemplatesResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogTemplatesResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItems) SetTemplate(v []*DescribeSQLLogTemplatesResponseBodyItemsTemplate) *DescribeSQLLogTemplatesResponseBodyItems {
-	s.Template = v
-	return s
-}
-
-type DescribeSQLLogTemplatesResponseBodyItemsTemplate struct {
-	TotalConsume    *int64   `json:"TotalConsume,omitempty" xml:"TotalConsume,omitempty"`
-	AvgUpdateRows   *float32 `json:"AvgUpdateRows,omitempty" xml:"AvgUpdateRows,omitempty"`
-	TotalScanRows   *int64   `json:"TotalScanRows,omitempty" xml:"TotalScanRows,omitempty"`
-	Template        *string  `json:"Template,omitempty" xml:"Template,omitempty"`
-	TemplateHash    *string  `json:"TemplateHash,omitempty" xml:"TemplateHash,omitempty"`
-	ItemID          *int32   `json:"ItemID,omitempty" xml:"ItemID,omitempty"`
-	TotalUpdateRows *int64   `json:"TotalUpdateRows,omitempty" xml:"TotalUpdateRows,omitempty"`
-	TotalCounts     *int64   `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
-	AvgScanRows     *float32 `json:"AvgScanRows,omitempty" xml:"AvgScanRows,omitempty"`
-	SqlType         *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	AvgConsume      *float32 `json:"AvgConsume,omitempty" xml:"AvgConsume,omitempty"`
-}
-
-func (s DescribeSQLLogTemplatesResponseBodyItemsTemplate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogTemplatesResponseBodyItemsTemplate) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTotalConsume(v int64) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.TotalConsume = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetAvgUpdateRows(v float32) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.AvgUpdateRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTotalScanRows(v int64) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.TotalScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTemplate(v string) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.Template = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTemplateHash(v string) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.TemplateHash = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetItemID(v int32) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.ItemID = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTotalUpdateRows(v int64) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.TotalUpdateRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetTotalCounts(v int64) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.TotalCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetAvgScanRows(v float32) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.AvgScanRows = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetSqlType(v string) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.SqlType = &v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponseBodyItemsTemplate) SetAvgConsume(v float32) *DescribeSQLLogTemplatesResponseBodyItemsTemplate {
-	s.AvgConsume = &v
-	return s
-}
-
-type DescribeSQLLogTemplatesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLLogTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogTemplatesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogTemplatesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogTemplatesResponse) SetHeaders(v map[string]*string) *DescribeSQLLogTemplatesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogTemplatesResponse) SetBody(v *DescribeSQLLogTemplatesResponseBody) *DescribeSQLLogTemplatesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSqlLogTrialStatusRequest struct {
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-}
-
-func (s DescribeSqlLogTrialStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSqlLogTrialStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetSecurityToken(v string) *DescribeSqlLogTrialStatusRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetOwnerId(v int64) *DescribeSqlLogTrialStatusRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetResourceOwnerAccount(v string) *DescribeSqlLogTrialStatusRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetResourceOwnerId(v int64) *DescribeSqlLogTrialStatusRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetOwnerAccount(v string) *DescribeSqlLogTrialStatusRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusRequest) SetDBInstanceId(v string) *DescribeSqlLogTrialStatusRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-type DescribeSqlLogTrialStatusResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EverTrialed    *string `json:"EverTrialed,omitempty" xml:"EverTrialed,omitempty"`
-	OpenTrial      *string `json:"OpenTrial,omitempty" xml:"OpenTrial,omitempty"`
-	RemainDays     *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	UsedDays       *string `json:"UsedDays,omitempty" xml:"UsedDays,omitempty"`
-}
-
-func (s DescribeSqlLogTrialStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSqlLogTrialStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetRequestId(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetEverTrialed(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.EverTrialed = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetOpenTrial(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.OpenTrial = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetRemainDays(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.RemainDays = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetDBInstanceName(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponseBody) SetUsedDays(v string) *DescribeSqlLogTrialStatusResponseBody {
-	s.UsedDays = &v
-	return s
-}
-
-type DescribeSqlLogTrialStatusResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSqlLogTrialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSqlLogTrialStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSqlLogTrialStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSqlLogTrialStatusResponse) SetHeaders(v map[string]*string) *DescribeSqlLogTrialStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSqlLogTrialStatusResponse) SetBody(v *DescribeSqlLogTrialStatusResponseBody) *DescribeSqlLogTrialStatusResponse {
 	s.Body = v
 	return s
 }
@@ -10893,10 +11006,10 @@ type ModifyBackupPolicyRequest struct {
 	DBClusterId                            *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	PreferredBackupTime                    *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	PreferredBackupPeriod                  *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	BackupRetentionPeriod                  *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	DataLevel1BackupRetentionPeriod        *string `json:"DataLevel1BackupRetentionPeriod,omitempty" xml:"DataLevel1BackupRetentionPeriod,omitempty"`
 	DataLevel2BackupRetentionPeriod        *string `json:"DataLevel2BackupRetentionPeriod,omitempty" xml:"DataLevel2BackupRetentionPeriod,omitempty"`
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
+	BackupFrequency                        *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -10942,11 +11055,6 @@ func (s *ModifyBackupPolicyRequest) SetPreferredBackupPeriod(v string) *ModifyBa
 	return s
 }
 
-func (s *ModifyBackupPolicyRequest) SetBackupRetentionPeriod(v string) *ModifyBackupPolicyRequest {
-	s.BackupRetentionPeriod = &v
-	return s
-}
-
 func (s *ModifyBackupPolicyRequest) SetDataLevel1BackupRetentionPeriod(v string) *ModifyBackupPolicyRequest {
 	s.DataLevel1BackupRetentionPeriod = &v
 	return s
@@ -10959,6 +11067,11 @@ func (s *ModifyBackupPolicyRequest) SetDataLevel2BackupRetentionPeriod(v string)
 
 func (s *ModifyBackupPolicyRequest) SetBackupRetentionPolicyOnClusterDeletion(v string) *ModifyBackupPolicyRequest {
 	s.BackupRetentionPolicyOnClusterDeletion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupFrequency(v string) *ModifyBackupPolicyRequest {
+	s.BackupFrequency = &v
 	return s
 }
 
@@ -11695,8 +11808,10 @@ type ModifyDBClusterParametersRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	EffectiveTime        *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// Parameters与ParamGroupId二选一必传
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Parameters与ParamGroupId二选一必传
+	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 }
 
 func (s ModifyDBClusterParametersRequest) String() string {
@@ -11737,8 +11852,8 @@ func (s *ModifyDBClusterParametersRequest) SetParameters(v string) *ModifyDBClus
 	return s
 }
 
-func (s *ModifyDBClusterParametersRequest) SetEffectiveTime(v string) *ModifyDBClusterParametersRequest {
-	s.EffectiveTime = &v
+func (s *ModifyDBClusterParametersRequest) SetParameterGroupId(v string) *ModifyDBClusterParametersRequest {
+	s.ParameterGroupId = &v
 	return s
 }
 
@@ -11902,6 +12017,7 @@ type ModifyDBClusterSSLRequest struct {
 	SSLEnabled           *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	DBEndpointId         *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	SSLAutoRotate        *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
 }
 
 func (s ModifyDBClusterSSLRequest) String() string {
@@ -11949,6 +12065,11 @@ func (s *ModifyDBClusterSSLRequest) SetDBEndpointId(v string) *ModifyDBClusterSS
 
 func (s *ModifyDBClusterSSLRequest) SetNetType(v string) *ModifyDBClusterSSLRequest {
 	s.NetType = &v
+	return s
+}
+
+func (s *ModifyDBClusterSSLRequest) SetSSLAutoRotate(v string) *ModifyDBClusterSSLRequest {
+	s.SSLAutoRotate = &v
 	return s
 }
 
@@ -12001,6 +12122,7 @@ type ModifyDBClusterTDERequest struct {
 	TDEStatus            *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 	RoleArn              *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptNewTables     *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
 }
 
 func (s ModifyDBClusterTDERequest) String() string {
@@ -12048,6 +12170,11 @@ func (s *ModifyDBClusterTDERequest) SetRoleArn(v string) *ModifyDBClusterTDERequ
 
 func (s *ModifyDBClusterTDERequest) SetEncryptionKey(v string) *ModifyDBClusterTDERequest {
 	s.EncryptionKey = &v
+	return s
+}
+
+func (s *ModifyDBClusterTDERequest) SetEncryptNewTables(v string) *ModifyDBClusterTDERequest {
+	s.EncryptNewTables = &v
 	return s
 }
 
@@ -12424,6 +12551,99 @@ func (s *ModifyDBNodeClassResponse) SetBody(v *ModifyDBNodeClassResponseBody) *M
 	return s
 }
 
+type ModifyGlobalDatabaseNetworkRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	GDNDescription       *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
+}
+
+func (s ModifyGlobalDatabaseNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalDatabaseNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetOwnerId(v int64) *ModifyGlobalDatabaseNetworkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetResourceOwnerAccount(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetResourceOwnerId(v int64) *ModifyGlobalDatabaseNetworkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetOwnerAccount(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetGDNId(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.GDNId = &v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkRequest) SetGDNDescription(v string) *ModifyGlobalDatabaseNetworkRequest {
+	s.GDNDescription = &v
+	return s
+}
+
+type ModifyGlobalDatabaseNetworkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyGlobalDatabaseNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalDatabaseNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalDatabaseNetworkResponseBody) SetRequestId(v string) *ModifyGlobalDatabaseNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyGlobalDatabaseNetworkResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyGlobalDatabaseNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyGlobalDatabaseNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGlobalDatabaseNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGlobalDatabaseNetworkResponse) SetHeaders(v map[string]*string) *ModifyGlobalDatabaseNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGlobalDatabaseNetworkResponse) SetBody(v *ModifyGlobalDatabaseNetworkResponseBody) *ModifyGlobalDatabaseNetworkResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyLogBackupPolicyRequest struct {
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -12612,6 +12832,99 @@ func (s *ModifyPendingMaintenanceActionResponse) SetHeaders(v map[string]*string
 }
 
 func (s *ModifyPendingMaintenanceActionResponse) SetBody(v *ModifyPendingMaintenanceActionResponseBody) *ModifyPendingMaintenanceActionResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveDBClusterFromGDNRequest struct {
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+}
+
+func (s RemoveDBClusterFromGDNRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDBClusterFromGDNRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetSecurityToken(v string) *RemoveDBClusterFromGDNRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetOwnerId(v int64) *RemoveDBClusterFromGDNRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetResourceOwnerAccount(v string) *RemoveDBClusterFromGDNRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetResourceOwnerId(v int64) *RemoveDBClusterFromGDNRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetOwnerAccount(v string) *RemoveDBClusterFromGDNRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetDBClusterId(v string) *RemoveDBClusterFromGDNRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetGDNId(v string) *RemoveDBClusterFromGDNRequest {
+	s.GDNId = &v
+	return s
+}
+
+type RemoveDBClusterFromGDNResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveDBClusterFromGDNResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDBClusterFromGDNResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDBClusterFromGDNResponseBody) SetRequestId(v string) *RemoveDBClusterFromGDNResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveDBClusterFromGDNResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveDBClusterFromGDNResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveDBClusterFromGDNResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDBClusterFromGDNResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDBClusterFromGDNResponse) SetHeaders(v map[string]*string) *RemoveDBClusterFromGDNResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNResponse) SetBody(v *RemoveDBClusterFromGDNResponseBody) *RemoveDBClusterFromGDNResponse {
 	s.Body = v
 	return s
 }
@@ -13110,6 +13423,148 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type TransformDBClusterPayTypeRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UsedTime             *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s TransformDBClusterPayTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformDBClusterPayTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetOwnerId(v int64) *TransformDBClusterPayTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetResourceOwnerAccount(v string) *TransformDBClusterPayTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetResourceOwnerId(v int64) *TransformDBClusterPayTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetOwnerAccount(v string) *TransformDBClusterPayTypeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetDBClusterId(v string) *TransformDBClusterPayTypeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetPayType(v string) *TransformDBClusterPayTypeRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetRegionId(v string) *TransformDBClusterPayTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetUsedTime(v string) *TransformDBClusterPayTypeRequest {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetPeriod(v string) *TransformDBClusterPayTypeRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetResourceGroupId(v string) *TransformDBClusterPayTypeRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeRequest) SetClientToken(v string) *TransformDBClusterPayTypeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type TransformDBClusterPayTypeResponseBody struct {
+	// Id of the request
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s TransformDBClusterPayTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformDBClusterPayTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransformDBClusterPayTypeResponseBody) SetRequestId(v string) *TransformDBClusterPayTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeResponseBody) SetChargeType(v string) *TransformDBClusterPayTypeResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeResponseBody) SetDBClusterId(v string) *TransformDBClusterPayTypeResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeResponseBody) SetExpiredTime(v string) *TransformDBClusterPayTypeResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeResponseBody) SetOrderId(v string) *TransformDBClusterPayTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+type TransformDBClusterPayTypeResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TransformDBClusterPayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransformDBClusterPayTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformDBClusterPayTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransformDBClusterPayTypeResponse) SetHeaders(v map[string]*string) *TransformDBClusterPayTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransformDBClusterPayTypeResponse) SetBody(v *TransformDBClusterPayTypeResponseBody) *TransformDBClusterPayTypeResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourcesRequest struct {
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -13323,6 +13778,7 @@ type UpgradeDBClusterVersionRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	PlannedEndTime       *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	FromTimeService      *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
+	UpgradeType          *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
 func (s UpgradeDBClusterVersionRequest) String() string {
@@ -13370,6 +13826,11 @@ func (s *UpgradeDBClusterVersionRequest) SetPlannedEndTime(v string) *UpgradeDBC
 
 func (s *UpgradeDBClusterVersionRequest) SetFromTimeService(v bool) *UpgradeDBClusterVersionRequest {
 	s.FromTimeService = &v
+	return s
+}
+
+func (s *UpgradeDBClusterVersionRequest) SetUpgradeType(v string) *UpgradeDBClusterVersionRequest {
+	s.UpgradeType = &v
 	return s
 }
 
@@ -13844,6 +14305,62 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalDatabaseNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateGlobalDatabaseNetwork"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGlobalDatabaseNetwork(request *CreateGlobalDatabaseNetworkRequest) (_result *CreateGlobalDatabaseNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGlobalDatabaseNetworkResponse{}
+	_body, _err := client.CreateGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGroupRequest, runtime *util.RuntimeOptions) (_result *CreateParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateParameterGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateParameterGroup"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest) (_result *CreateParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateParameterGroupResponse{}
+	_body, _err := client.CreateParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14061,6 +14578,62 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBNodesResponse{}
 	_body, _err := client.DeleteDBNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGlobalDatabaseNetworkWithOptions(request *DeleteGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalDatabaseNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteGlobalDatabaseNetwork"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGlobalDatabaseNetwork(request *DeleteGlobalDatabaseNetworkRequest) (_result *DeleteGlobalDatabaseNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DeleteGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteParameterGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteParameterGroup"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest) (_result *DeleteParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteParameterGroupResponse{}
+	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14796,6 +15369,34 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 	return _result, _err
 }
 
+func (client *Client) DescribeGlobalDatabaseNetworkWithOptions(request *DescribeGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDatabaseNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeGlobalDatabaseNetwork"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGlobalDatabaseNetwork(request *DescribeGlobalDatabaseNetworkRequest) (_result *DescribeGlobalDatabaseNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DescribeGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeGlobalDatabaseNetworksWithOptions(request *DescribeGlobalDatabaseNetworksRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDatabaseNetworksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14880,6 +15481,90 @@ func (client *Client) DescribeMetaList(request *DescribeMetaListRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeParameterGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeParameterGroup"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterGroup(request *DescribeParameterGroupRequest) (_result *DescribeParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupResponse{}
+	_body, _err := client.DescribeParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParameterGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeParameterGroups"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRequest) (_result *DescribeParameterGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.DescribeParameterGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribeParameterTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeParameterTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeParameterTemplates"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterTemplates(request *DescribeParameterTemplatesRequest) (_result *DescribeParameterTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterTemplatesResponse{}
+	_body, _err := client.DescribeParameterTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribePendingMaintenanceActionWithOptions(request *DescribePendingMaintenanceActionRequest, runtime *util.RuntimeOptions) (_result *DescribePendingMaintenanceActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14929,6 +15614,35 @@ func (client *Client) DescribePendingMaintenanceActions(request *DescribePending
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePendingMaintenanceActionsResponse{}
 	_body, _err := client.DescribePendingMaintenanceActionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolarSQLCollectorPolicyWithOptions(request *DescribePolarSQLCollectorPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribePolarSQLCollectorPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribePolarSQLCollectorPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribePolarSQLCollectorPolicy"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolarSQLCollectorPolicy(request *DescribePolarSQLCollectorPolicyRequest) (_result *DescribePolarSQLCollectorPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolarSQLCollectorPolicyResponse{}
+	_body, _err := client.DescribePolarSQLCollectorPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15013,174 +15727,6 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlowLogRecordsResponse{}
 	_body, _err := client.DescribeSlowLogRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerPolicyWithOptions(request *DescribeSQLExplorerPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLExplorerPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSQLExplorerPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSQLExplorerPolicy"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerPolicy(request *DescribeSQLExplorerPolicyRequest) (_result *DescribeSQLExplorerPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLExplorerPolicyResponse{}
-	_body, _err := client.DescribeSQLExplorerPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerRetentionWithOptions(request *DescribeSQLExplorerRetentionRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLExplorerRetentionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSQLExplorerRetentionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSQLExplorerRetention"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerRetention(request *DescribeSQLExplorerRetentionRequest) (_result *DescribeSQLExplorerRetentionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLExplorerRetentionResponse{}
-	_body, _err := client.DescribeSQLExplorerRetentionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerVersionWithOptions(request *DescribeSQLExplorerVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLExplorerVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSQLExplorerVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSQLExplorerVersion"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLExplorerVersion(request *DescribeSQLExplorerVersionRequest) (_result *DescribeSQLExplorerVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLExplorerVersionResponse{}
-	_body, _err := client.DescribeSQLExplorerVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogRecordsWithOptions(request *DescribeSQLLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSQLLogRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSQLLogRecords"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogRecords(request *DescribeSQLLogRecordsRequest) (_result *DescribeSQLLogRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogRecordsResponse{}
-	_body, _err := client.DescribeSQLLogRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogTemplatesWithOptions(request *DescribeSQLLogTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogTemplatesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSQLLogTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSQLLogTemplates"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogTemplates(request *DescribeSQLLogTemplatesRequest) (_result *DescribeSQLLogTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogTemplatesResponse{}
-	_body, _err := client.DescribeSQLLogTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSqlLogTrialStatusWithOptions(request *DescribeSqlLogTrialStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogTrialStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSqlLogTrialStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSqlLogTrialStatus"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSqlLogTrialStatus(request *DescribeSqlLogTrialStatusRequest) (_result *DescribeSqlLogTrialStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSqlLogTrialStatusResponse{}
-	_body, _err := client.DescribeSqlLogTrialStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15804,6 +16350,34 @@ func (client *Client) ModifyDBNodeClass(request *ModifyDBNodeClassRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalDatabaseNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyGlobalDatabaseNetworkResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyGlobalDatabaseNetwork"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyGlobalDatabaseNetwork(request *ModifyGlobalDatabaseNetworkRequest) (_result *ModifyGlobalDatabaseNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGlobalDatabaseNetworkResponse{}
+	_body, _err := client.ModifyGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyLogBackupPolicyWithOptions(request *ModifyLogBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyLogBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15853,6 +16427,34 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
 	_body, _err := client.ModifyPendingMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveDBClusterFromGDNWithOptions(request *RemoveDBClusterFromGDNRequest, runtime *util.RuntimeOptions) (_result *RemoveDBClusterFromGDNResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RemoveDBClusterFromGDNResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RemoveDBClusterFromGDN"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveDBClusterFromGDN(request *RemoveDBClusterFromGDNRequest) (_result *RemoveDBClusterFromGDNResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveDBClusterFromGDNResponse{}
+	_body, _err := client.RemoveDBClusterFromGDNWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15993,6 +16595,34 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBClusterPayTypeRequest, runtime *util.RuntimeOptions) (_result *TransformDBClusterPayTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &TransformDBClusterPayTypeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("TransformDBClusterPayType"), tea.String("2017-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransformDBClusterPayType(request *TransformDBClusterPayTypeRequest) (_result *TransformDBClusterPayTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransformDBClusterPayTypeResponse{}
+	_body, _err := client.TransformDBClusterPayTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

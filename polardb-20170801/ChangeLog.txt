@@ -1,3 +1,6 @@
+2021-07-07 Version: v2.0.2
+- Generated golang 2017-08-01 for polardb.
+
 2021-02-16 Version: v2.0.1
 - AMP Version Change.
 
