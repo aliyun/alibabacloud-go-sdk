@@ -9371,6 +9371,76 @@ func (s *CreateDispatchRuleResponse) SetBody(v *CreateDispatchRuleResponseBody) 
 	return s
 }
 
+type GetPrometheusRemoteActionTokenRequest struct {
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s GetPrometheusRemoteActionTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPrometheusRemoteActionTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPrometheusRemoteActionTokenRequest) SetRegionId(v string) *GetPrometheusRemoteActionTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetPrometheusRemoteActionTokenRequest) SetClusterId(v string) *GetPrometheusRemoteActionTokenRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type GetPrometheusRemoteActionTokenResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s GetPrometheusRemoteActionTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPrometheusRemoteActionTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPrometheusRemoteActionTokenResponseBody) SetRequestId(v string) *GetPrometheusRemoteActionTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPrometheusRemoteActionTokenResponseBody) SetData(v string) *GetPrometheusRemoteActionTokenResponseBody {
+	s.Data = &v
+	return s
+}
+
+type GetPrometheusRemoteActionTokenResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPrometheusRemoteActionTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPrometheusRemoteActionTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPrometheusRemoteActionTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPrometheusRemoteActionTokenResponse) SetHeaders(v map[string]*string) *GetPrometheusRemoteActionTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPrometheusRemoteActionTokenResponse) SetBody(v *GetPrometheusRemoteActionTokenResponseBody) *GetPrometheusRemoteActionTokenResponse {
+	s.Body = v
+	return s
+}
+
 type ListPrometheusAlertTemplatesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13920,6 +13990,34 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDispatchRuleResponse{}
 	_body, _err := client.CreateDispatchRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPrometheusRemoteActionTokenWithOptions(request *GetPrometheusRemoteActionTokenRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusRemoteActionTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPrometheusRemoteActionTokenResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPrometheusRemoteActionToken"), tea.String("2021-05-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPrometheusRemoteActionToken(request *GetPrometheusRemoteActionTokenRequest) (_result *GetPrometheusRemoteActionTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPrometheusRemoteActionTokenResponse{}
+	_body, _err := client.GetPrometheusRemoteActionTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
