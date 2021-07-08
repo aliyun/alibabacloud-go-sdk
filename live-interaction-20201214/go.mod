@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/live-interaction-20201214
+module github.com/alibabacloud-go/live-interaction-20201214/v2
 
 go 1.15
 
