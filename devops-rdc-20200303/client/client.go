@@ -7,2129 +7,53 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type BatchInsertMembersRequest struct {
-	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Members *string `json:"Members,omitempty" xml:"Members,omitempty"`
-	RealPk  *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
-}
-
-func (s BatchInsertMembersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchInsertMembersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchInsertMembersRequest) SetOrgId(v string) *BatchInsertMembersRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *BatchInsertMembersRequest) SetMembers(v string) *BatchInsertMembersRequest {
-	s.Members = &v
-	return s
-}
-
-func (s *BatchInsertMembersRequest) SetRealPk(v string) *BatchInsertMembersRequest {
-	s.RealPk = &v
-	return s
-}
-
-type BatchInsertMembersResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s BatchInsertMembersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchInsertMembersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchInsertMembersResponseBody) SetErrorMessage(v string) *BatchInsertMembersResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BatchInsertMembersResponseBody) SetRequestId(v string) *BatchInsertMembersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchInsertMembersResponseBody) SetObject(v bool) *BatchInsertMembersResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *BatchInsertMembersResponseBody) SetSuccess(v bool) *BatchInsertMembersResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *BatchInsertMembersResponseBody) SetErrorCode(v string) *BatchInsertMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type BatchInsertMembersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchInsertMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchInsertMembersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchInsertMembersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchInsertMembersResponse) SetHeaders(v map[string]*string) *BatchInsertMembersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchInsertMembersResponse) SetBody(v *BatchInsertMembersResponseBody) *BatchInsertMembersResponse {
-	s.Body = v
-	return s
-}
-
-type CancelPipelineRequest struct {
-	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s CancelPipelineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelPipelineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelPipelineRequest) SetOrgId(v string) *CancelPipelineRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CancelPipelineRequest) SetPipelineId(v int64) *CancelPipelineRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *CancelPipelineRequest) SetFlowInstanceId(v int64) *CancelPipelineRequest {
-	s.FlowInstanceId = &v
-	return s
-}
-
-func (s *CancelPipelineRequest) SetUserPk(v string) *CancelPipelineRequest {
-	s.UserPk = &v
-	return s
-}
-
-type CancelPipelineResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CancelPipelineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelPipelineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelPipelineResponseBody) SetRequestId(v string) *CancelPipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CancelPipelineResponseBody) SetErrorMessage(v string) *CancelPipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CancelPipelineResponseBody) SetObject(v bool) *CancelPipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CancelPipelineResponseBody) SetErrorCode(v string) *CancelPipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CancelPipelineResponseBody) SetSuccess(v bool) *CancelPipelineResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CancelPipelineResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelPipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CancelPipelineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelPipelineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelPipelineResponse) SetHeaders(v map[string]*string) *CancelPipelineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelPipelineResponse) SetBody(v *CancelPipelineResponseBody) *CancelPipelineResponse {
-	s.Body = v
-	return s
-}
-
-type CheckAliyunAccountExistsRequest struct {
-	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s CheckAliyunAccountExistsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckAliyunAccountExistsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckAliyunAccountExistsRequest) SetUserPk(v string) *CheckAliyunAccountExistsRequest {
-	s.UserPk = &v
-	return s
-}
-
-type CheckAliyunAccountExistsResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CheckAliyunAccountExistsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckAliyunAccountExistsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckAliyunAccountExistsResponseBody) SetErrorMsg(v string) *CheckAliyunAccountExistsResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *CheckAliyunAccountExistsResponseBody) SetRequestId(v string) *CheckAliyunAccountExistsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CheckAliyunAccountExistsResponseBody) SetObject(v bool) *CheckAliyunAccountExistsResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CheckAliyunAccountExistsResponseBody) SetSuccessful(v bool) *CheckAliyunAccountExistsResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *CheckAliyunAccountExistsResponseBody) SetErrorCode(v string) *CheckAliyunAccountExistsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CheckAliyunAccountExistsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckAliyunAccountExistsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckAliyunAccountExistsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckAliyunAccountExistsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckAliyunAccountExistsResponse) SetHeaders(v map[string]*string) *CheckAliyunAccountExistsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckAliyunAccountExistsResponse) SetBody(v *CheckAliyunAccountExistsResponseBody) *CheckAliyunAccountExistsResponse {
-	s.Body = v
-	return s
-}
-
-type CreateCommonGroupRequest struct {
-	OrgId        *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SmartGroupId *string `json:"SmartGroupId,omitempty" xml:"SmartGroupId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateCommonGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCommonGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCommonGroupRequest) SetOrgId(v string) *CreateCommonGroupRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreateCommonGroupRequest) SetProjectId(v string) *CreateCommonGroupRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateCommonGroupRequest) SetDescription(v string) *CreateCommonGroupRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateCommonGroupRequest) SetSmartGroupId(v string) *CreateCommonGroupRequest {
-	s.SmartGroupId = &v
-	return s
-}
-
-func (s *CreateCommonGroupRequest) SetName(v string) *CreateCommonGroupRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateCommonGroupResponseBody struct {
-	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *CreateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s CreateCommonGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCommonGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCommonGroupResponseBody) SetErrorMsg(v string) *CreateCommonGroupResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *CreateCommonGroupResponseBody) SetRequestId(v string) *CreateCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateCommonGroupResponseBody) SetSuccessful(v bool) *CreateCommonGroupResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *CreateCommonGroupResponseBody) SetErrorCode(v string) *CreateCommonGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateCommonGroupResponseBody) SetObject(v *CreateCommonGroupResponseBodyObject) *CreateCommonGroupResponseBody {
-	s.Object = v
-	return s
-}
-
-type CreateCommonGroupResponseBodyObject struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateCommonGroupResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCommonGroupResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCommonGroupResponseBodyObject) SetId(v string) *CreateCommonGroupResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type CreateCommonGroupResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCommonGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCommonGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCommonGroupResponse) SetHeaders(v map[string]*string) *CreateCommonGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCommonGroupResponse) SetBody(v *CreateCommonGroupResponseBody) *CreateCommonGroupResponse {
-	s.Body = v
-	return s
-}
-
-type CreateCredentialRequest struct {
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s CreateCredentialRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCredentialRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCredentialRequest) SetOrgId(v string) *CreateCredentialRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreateCredentialRequest) SetName(v string) *CreateCredentialRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateCredentialRequest) SetUserName(v string) *CreateCredentialRequest {
-	s.UserName = &v
-	return s
-}
-
-func (s *CreateCredentialRequest) SetPassword(v string) *CreateCredentialRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateCredentialRequest) SetType(v string) *CreateCredentialRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateCredentialRequest) SetUserPk(v string) *CreateCredentialRequest {
-	s.UserPk = &v
-	return s
-}
-
-type CreateCredentialResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CreateCredentialResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCredentialResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCredentialResponseBody) SetErrorMessage(v string) *CreateCredentialResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateCredentialResponseBody) SetRequestId(v string) *CreateCredentialResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateCredentialResponseBody) SetObject(v int64) *CreateCredentialResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateCredentialResponseBody) SetSuccess(v bool) *CreateCredentialResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateCredentialResponseBody) SetErrorCode(v string) *CreateCredentialResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CreateCredentialResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCredentialResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCredentialResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCredentialResponse) SetHeaders(v map[string]*string) *CreateCredentialResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCredentialResponse) SetBody(v *CreateCredentialResponseBody) *CreateCredentialResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDevopsOrganizationRequest struct {
-	OrgName            *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	Source             *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	RealPk             *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
-	DesiredMemberCount *int32  `json:"DesiredMemberCount,omitempty" xml:"DesiredMemberCount,omitempty"`
-}
-
-func (s CreateDevopsOrganizationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsOrganizationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsOrganizationRequest) SetOrgName(v string) *CreateDevopsOrganizationRequest {
-	s.OrgName = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationRequest) SetSource(v string) *CreateDevopsOrganizationRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationRequest) SetRealPk(v string) *CreateDevopsOrganizationRequest {
-	s.RealPk = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationRequest) SetDesiredMemberCount(v int32) *CreateDevopsOrganizationRequest {
-	s.DesiredMemberCount = &v
-	return s
-}
-
-type CreateDevopsOrganizationResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CreateDevopsOrganizationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsOrganizationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetErrorMessage(v string) *CreateDevopsOrganizationResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetRequestId(v string) *CreateDevopsOrganizationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetObject(v string) *CreateDevopsOrganizationResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetSuccess(v bool) *CreateDevopsOrganizationResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponseBody) SetErrorCode(v string) *CreateDevopsOrganizationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CreateDevopsOrganizationResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevopsOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDevopsOrganizationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsOrganizationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsOrganizationResponse) SetHeaders(v map[string]*string) *CreateDevopsOrganizationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDevopsOrganizationResponse) SetBody(v *CreateDevopsOrganizationResponseBody) *CreateDevopsOrganizationResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDevopsProjectRequest struct {
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-}
-
-func (s CreateDevopsProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectRequest) SetOrgId(v string) *CreateDevopsProjectRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectRequest) SetName(v string) *CreateDevopsProjectRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateDevopsProjectRequest) SetDescription(v string) *CreateDevopsProjectRequest {
-	s.Description = &v
-	return s
-}
-
-type CreateDevopsProjectResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CreateDevopsProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectResponseBody) SetErrorMessage(v string) *CreateDevopsProjectResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateDevopsProjectResponseBody) SetRequestId(v string) *CreateDevopsProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectResponseBody) SetObject(v string) *CreateDevopsProjectResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateDevopsProjectResponseBody) SetSuccess(v bool) *CreateDevopsProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateDevopsProjectResponseBody) SetErrorCode(v string) *CreateDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CreateDevopsProjectResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDevopsProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDevopsProjectResponse) SetBody(v *CreateDevopsProjectResponseBody) *CreateDevopsProjectResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDevopsProjectSprintRequest struct {
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ExecutorId  *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	DueDate     *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-}
-
-func (s CreateDevopsProjectSprintRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectSprintRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetOrgId(v string) *CreateDevopsProjectSprintRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetName(v string) *CreateDevopsProjectSprintRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetDescription(v string) *CreateDevopsProjectSprintRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetProjectId(v string) *CreateDevopsProjectSprintRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetExecutorId(v string) *CreateDevopsProjectSprintRequest {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetStartDate(v string) *CreateDevopsProjectSprintRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintRequest) SetDueDate(v string) *CreateDevopsProjectSprintRequest {
-	s.DueDate = &v
-	return s
-}
-
-type CreateDevopsProjectSprintResponseBody struct {
-	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *CreateDevopsProjectSprintResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s CreateDevopsProjectSprintResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectSprintResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *CreateDevopsProjectSprintResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBody) SetRequestId(v string) *CreateDevopsProjectSprintResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *CreateDevopsProjectSprintResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBody) SetErrorCode(v string) *CreateDevopsProjectSprintResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBody) SetObject(v *CreateDevopsProjectSprintResponseBodyObject) *CreateDevopsProjectSprintResponseBody {
-	s.Object = v
-	return s
-}
-
-type CreateDevopsProjectSprintResponseBodyObject struct {
-	Status       *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProjectId    *string                                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartDate    *string                                              `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	CreatorId    *string                                              `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Executor     *string                                              `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	Description  *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Accomplished *string                                              `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
-	IsDeleted    *bool                                                `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	Updated      *string                                              `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	DueDate      *string                                              `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Created      *string                                              `json:"Created,omitempty" xml:"Created,omitempty"`
-	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id           *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	PlanToDo     *CreateDevopsProjectSprintResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
-}
-
-func (s CreateDevopsProjectSprintResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectSprintResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetStatus(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetProjectId(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetCreatorId(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetExecutor(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Executor = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetDescription(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetAccomplished(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Accomplished = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetIsDeleted(v bool) *CreateDevopsProjectSprintResponseBodyObject {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetUpdated(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetDueDate(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.DueDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetCreated(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetName(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetId(v string) *CreateDevopsProjectSprintResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObject) SetPlanToDo(v *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) *CreateDevopsProjectSprintResponseBodyObject {
-	s.PlanToDo = v
-	return s
-}
-
-type CreateDevopsProjectSprintResponseBodyObjectPlanToDo struct {
-	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
-	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
-	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
-}
-
-func (s CreateDevopsProjectSprintResponseBodyObjectPlanToDo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectSprintResponseBodyObjectPlanToDo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetTasks(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
-	s.Tasks = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
-	s.WorkTimes = &v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
-	s.StoryPoints = &v
-	return s
-}
-
-type CreateDevopsProjectSprintResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDevopsProjectSprintResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectSprintResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectSprintResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDevopsProjectSprintResponse) SetBody(v *CreateDevopsProjectSprintResponseBody) *CreateDevopsProjectSprintResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDevopsProjectTaskRequest struct {
-	OrgId                 *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ExecutorId            *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	DueDate               *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	ScenarioFieldConfigId *string `json:"ScenarioFieldConfigId,omitempty" xml:"ScenarioFieldConfigId,omitempty"`
-	TaskFlowStatusId      *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
-	Note                  *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	Priority              *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Visible               *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
-	ParentTaskId          *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	SprintId              *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	TaskListId            *string `json:"TaskListId,omitempty" xml:"TaskListId,omitempty"`
-}
-
-func (s CreateDevopsProjectTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetOrgId(v string) *CreateDevopsProjectTaskRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetContent(v string) *CreateDevopsProjectTaskRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetProjectId(v string) *CreateDevopsProjectTaskRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetExecutorId(v string) *CreateDevopsProjectTaskRequest {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetStartDate(v string) *CreateDevopsProjectTaskRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetDueDate(v string) *CreateDevopsProjectTaskRequest {
-	s.DueDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetScenarioFieldConfigId(v string) *CreateDevopsProjectTaskRequest {
-	s.ScenarioFieldConfigId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetTaskFlowStatusId(v string) *CreateDevopsProjectTaskRequest {
-	s.TaskFlowStatusId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetNote(v string) *CreateDevopsProjectTaskRequest {
-	s.Note = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetPriority(v int32) *CreateDevopsProjectTaskRequest {
-	s.Priority = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetVisible(v string) *CreateDevopsProjectTaskRequest {
-	s.Visible = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetParentTaskId(v string) *CreateDevopsProjectTaskRequest {
-	s.ParentTaskId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetSprintId(v string) *CreateDevopsProjectTaskRequest {
-	s.SprintId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskRequest) SetTaskListId(v string) *CreateDevopsProjectTaskRequest {
-	s.TaskListId = &v
-	return s
-}
-
-type CreateDevopsProjectTaskResponseBody struct {
-	ErrorMsg   *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *CreateDevopsProjectTaskResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s CreateDevopsProjectTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *CreateDevopsProjectTaskResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBody) SetRequestId(v string) *CreateDevopsProjectTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *CreateDevopsProjectTaskResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBody) SetErrorCode(v string) *CreateDevopsProjectTaskResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBody) SetObject(v *CreateDevopsProjectTaskResponseBodyObject) *CreateDevopsProjectTaskResponseBody {
-	s.Object = v
-	return s
-}
-
-type CreateDevopsProjectTaskResponseBodyObject struct {
-	ExecutorId            *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Priority              *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ScenarioFieldConfigId *string `json:"ScenarioFieldConfigId,omitempty" xml:"ScenarioFieldConfigId,omitempty"`
-	AncestorIds           *string `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty"`
-	TaskType              *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TasklistId            *string `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
-	TaskflowstatusId      *string `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
-	Note                  *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	Updated               *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	UniqueId              *int32  `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
-	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Rating                *int32  `json:"Rating,omitempty" xml:"Rating,omitempty"`
-	Pos                   *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
-	StoryPoint            *string `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
-	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	CreatorId             *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Source                *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Visible               *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
-	IsDone                *bool   `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
-	SprintId              *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	DueDate               *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Created               *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateDevopsProjectTaskResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectTaskResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetExecutorId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetProjectId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetPriority(v int32) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Priority = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetScenarioFieldConfigId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.ScenarioFieldConfigId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetAncestorIds(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.AncestorIds = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetTaskType(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.TaskType = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetTasklistId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.TasklistId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetTaskflowstatusId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.TaskflowstatusId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetNote(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Note = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetUpdated(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetUniqueId(v int32) *CreateDevopsProjectTaskResponseBodyObject {
-	s.UniqueId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetContent(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetRating(v int32) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Rating = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetPos(v int32) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Pos = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetStoryPoint(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.StoryPoint = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetCreatorId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetSource(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Source = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetOrganizationId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.OrganizationId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetVisible(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Visible = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetIsDone(v bool) *CreateDevopsProjectTaskResponseBodyObject {
-	s.IsDone = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetSprintId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.SprintId = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetDueDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.DueDate = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetCreated(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponseBodyObject) SetId(v string) *CreateDevopsProjectTaskResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type CreateDevopsProjectTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDevopsProjectTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDevopsProjectTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDevopsProjectTaskResponse) SetBody(v *CreateDevopsProjectTaskResponseBody) *CreateDevopsProjectTaskResponse {
-	s.Body = v
-	return s
-}
-
-type CreatePipelineRequest struct {
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Pipeline *string `json:"Pipeline,omitempty" xml:"Pipeline,omitempty"`
-	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s CreatePipelineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequest) SetOrgId(v string) *CreatePipelineRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *CreatePipelineRequest) SetPipeline(v string) *CreatePipelineRequest {
-	s.Pipeline = &v
-	return s
-}
-
-func (s *CreatePipelineRequest) SetUserPk(v string) *CreatePipelineRequest {
-	s.UserPk = &v
-	return s
-}
-
-type CreatePipelineResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CreatePipelineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetObject(v int64) *CreatePipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CreatePipelineResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreatePipelineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreatePipelineResponse {
-	s.Body = v
-	return s
-}
-
-type CreateServiceConnectionRequest struct {
-	ServiceConnectionType *string `json:"ServiceConnectionType,omitempty" xml:"ServiceConnectionType,omitempty"`
-	UserPk                *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	OrgId                 *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-}
-
-func (s CreateServiceConnectionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceConnectionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceConnectionRequest) SetServiceConnectionType(v string) *CreateServiceConnectionRequest {
-	s.ServiceConnectionType = &v
-	return s
-}
-
-func (s *CreateServiceConnectionRequest) SetUserPk(v string) *CreateServiceConnectionRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *CreateServiceConnectionRequest) SetOrgId(v string) *CreateServiceConnectionRequest {
-	s.OrgId = &v
-	return s
-}
-
-type CreateServiceConnectionResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s CreateServiceConnectionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceConnectionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceConnectionResponseBody) SetErrorMessage(v string) *CreateServiceConnectionResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateServiceConnectionResponseBody) SetRequestId(v string) *CreateServiceConnectionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateServiceConnectionResponseBody) SetObject(v int64) *CreateServiceConnectionResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateServiceConnectionResponseBody) SetSuccess(v bool) *CreateServiceConnectionResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateServiceConnectionResponseBody) SetErrorCode(v string) *CreateServiceConnectionResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type CreateServiceConnectionResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateServiceConnectionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceConnectionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceConnectionResponse) SetHeaders(v map[string]*string) *CreateServiceConnectionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateServiceConnectionResponse) SetBody(v *CreateServiceConnectionResponseBody) *CreateServiceConnectionResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteCommonGroupRequest struct {
-	OrgId         *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	CommonGroupId *string `json:"CommonGroupId,omitempty" xml:"CommonGroupId,omitempty"`
-}
-
-func (s DeleteCommonGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCommonGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCommonGroupRequest) SetOrgId(v string) *DeleteCommonGroupRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteCommonGroupRequest) SetProjectId(v string) *DeleteCommonGroupRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *DeleteCommonGroupRequest) SetCommonGroupId(v string) *DeleteCommonGroupRequest {
-	s.CommonGroupId = &v
-	return s
-}
-
-type DeleteCommonGroupResponseBody struct {
-	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *DeleteCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s DeleteCommonGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCommonGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCommonGroupResponseBody) SetErrorMsg(v string) *DeleteCommonGroupResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DeleteCommonGroupResponseBody) SetRequestId(v string) *DeleteCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteCommonGroupResponseBody) SetSuccessful(v bool) *DeleteCommonGroupResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *DeleteCommonGroupResponseBody) SetErrorCode(v string) *DeleteCommonGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteCommonGroupResponseBody) SetObject(v *DeleteCommonGroupResponseBodyObject) *DeleteCommonGroupResponseBody {
-	s.Object = v
-	return s
-}
-
-type DeleteCommonGroupResponseBodyObject struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DeleteCommonGroupResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCommonGroupResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCommonGroupResponseBodyObject) SetId(v string) *DeleteCommonGroupResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type DeleteCommonGroupResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteCommonGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCommonGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCommonGroupResponse) SetHeaders(v map[string]*string) *DeleteCommonGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteCommonGroupResponse) SetBody(v *DeleteCommonGroupResponseBody) *DeleteCommonGroupResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsOrganizationRequest struct {
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-}
-
-func (s DeleteDevopsOrganizationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationRequest) SetOrgId(v string) *DeleteDevopsOrganizationRequest {
-	s.OrgId = &v
-	return s
-}
-
-type DeleteDevopsOrganizationResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsOrganizationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationResponseBody) SetObject(v string) *DeleteDevopsOrganizationResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsOrganizationResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsOrganizationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationResponse) SetHeaders(v map[string]*string) *DeleteDevopsOrganizationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationResponse) SetBody(v *DeleteDevopsOrganizationResponseBody) *DeleteDevopsOrganizationResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsOrganizationMembersRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
-}
-
-func (s DeleteDevopsOrganizationMembersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationMembersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationMembersRequest) SetOrgId(v string) *DeleteDevopsOrganizationMembersRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersRequest) SetUserId(v string) *DeleteDevopsOrganizationMembersRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersRequest) SetRealPk(v string) *DeleteDevopsOrganizationMembersRequest {
-	s.RealPk = &v
-	return s
-}
-
-type DeleteDevopsOrganizationMembersResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsOrganizationMembersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationMembersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationMembersResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationMembersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetObject(v bool) *DeleteDevopsOrganizationMembersResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationMembersResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsOrganizationMembersResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsOrganizationMembersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsOrganizationMembersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsOrganizationMembersResponse) SetHeaders(v map[string]*string) *DeleteDevopsOrganizationMembersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsOrganizationMembersResponse) SetBody(v *DeleteDevopsOrganizationMembersResponseBody) *DeleteDevopsOrganizationMembersResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsProjectRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s DeleteDevopsProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectRequest) SetOrgId(v string) *DeleteDevopsProjectRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectRequest) SetProjectId(v string) *DeleteDevopsProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type DeleteDevopsProjectResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetRequestId(v string) *DeleteDevopsProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetErrorMessage(v string) *DeleteDevopsProjectResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetObject(v string) *DeleteDevopsProjectResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetSuccess(v bool) *DeleteDevopsProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponseBody) SetErrorCode(v string) *DeleteDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsProjectResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsProjectResponse) SetBody(v *DeleteDevopsProjectResponseBody) *DeleteDevopsProjectResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsProjectMembersRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	UserIds   *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
-}
-
-func (s DeleteDevopsProjectMembersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectMembersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectMembersRequest) SetOrgId(v string) *DeleteDevopsProjectMembersRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersRequest) SetProjectId(v string) *DeleteDevopsProjectMembersRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersRequest) SetUserIds(v string) *DeleteDevopsProjectMembersRequest {
-	s.UserIds = &v
-	return s
-}
-
-type DeleteDevopsProjectMembersResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsProjectMembersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectMembersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectMembersResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersResponseBody) SetRequestId(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersResponseBody) SetObject(v bool) *DeleteDevopsProjectMembersResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectMembersResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersResponseBody) SetErrorCode(v string) *DeleteDevopsProjectMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsProjectMembersResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsProjectMembersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectMembersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectMembersResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectMembersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsProjectMembersResponse) SetBody(v *DeleteDevopsProjectMembersResponseBody) *DeleteDevopsProjectMembersResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsProjectSprintRequest struct {
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	SprintId *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-}
-
-func (s DeleteDevopsProjectSprintRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectSprintRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectSprintRequest) SetOrgId(v string) *DeleteDevopsProjectSprintRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintRequest) SetSprintId(v string) *DeleteDevopsProjectSprintRequest {
-	s.SprintId = &v
-	return s
-}
-
-type DeleteDevopsProjectSprintResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsProjectSprintResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectSprintResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectSprintResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintResponseBody) SetRequestId(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintResponseBody) SetObject(v bool) *DeleteDevopsProjectSprintResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectSprintResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintResponseBody) SetErrorCode(v string) *DeleteDevopsProjectSprintResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsProjectSprintResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsProjectSprintResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectSprintResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectSprintResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsProjectSprintResponse) SetBody(v *DeleteDevopsProjectSprintResponseBody) *DeleteDevopsProjectSprintResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDevopsProjectTaskRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DeleteDevopsProjectTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectTaskRequest) SetOrgId(v string) *DeleteDevopsProjectTaskRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskRequest) SetTaskId(v string) *DeleteDevopsProjectTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DeleteDevopsProjectTaskResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteDevopsProjectTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectTaskResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskResponseBody) SetRequestId(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskResponseBody) SetObject(v bool) *DeleteDevopsProjectTaskResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectTaskResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskResponseBody) SetErrorCode(v string) *DeleteDevopsProjectTaskResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteDevopsProjectTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDevopsProjectTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDevopsProjectTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDevopsProjectTaskResponse) SetBody(v *DeleteDevopsProjectTaskResponseBody) *DeleteDevopsProjectTaskResponse {
-	s.Body = v
-	return s
-}
-
-type DeletePipelineMemberRequest struct {
+type InsertPipelineMemberRequest struct {
 	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
-func (s DeletePipelineMemberRequest) String() string {
+func (s InsertPipelineMemberRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeletePipelineMemberRequest) GoString() string {
+func (s InsertPipelineMemberRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeletePipelineMemberRequest) SetOrgId(v string) *DeletePipelineMemberRequest {
+func (s *InsertPipelineMemberRequest) SetOrgId(v string) *InsertPipelineMemberRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *DeletePipelineMemberRequest) SetPipelineId(v int64) *DeletePipelineMemberRequest {
+func (s *InsertPipelineMemberRequest) SetPipelineId(v int64) *InsertPipelineMemberRequest {
 	s.PipelineId = &v
 	return s
 }
 
-func (s *DeletePipelineMemberRequest) SetUserPk(v string) *DeletePipelineMemberRequest {
+func (s *InsertPipelineMemberRequest) SetUserPk(v string) *InsertPipelineMemberRequest {
 	s.UserPk = &v
 	return s
 }
 
-func (s *DeletePipelineMemberRequest) SetUserId(v string) *DeletePipelineMemberRequest {
+func (s *InsertPipelineMemberRequest) SetUserId(v string) *InsertPipelineMemberRequest {
 	s.UserId = &v
 	return s
 }
 
-type DeletePipelineMemberResponseBody struct {
+func (s *InsertPipelineMemberRequest) SetRoleName(v string) *InsertPipelineMemberRequest {
+	s.RoleName = &v
+	return s
+}
+
+type InsertPipelineMemberResponseBody struct {
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
@@ -2137,563 +61,174 @@ type DeletePipelineMemberResponseBody struct {
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
-func (s DeletePipelineMemberResponseBody) String() string {
+func (s InsertPipelineMemberResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeletePipelineMemberResponseBody) GoString() string {
+func (s InsertPipelineMemberResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeletePipelineMemberResponseBody) SetRequestId(v string) *DeletePipelineMemberResponseBody {
+func (s *InsertPipelineMemberResponseBody) SetRequestId(v string) *InsertPipelineMemberResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DeletePipelineMemberResponseBody) SetErrorMessage(v string) *DeletePipelineMemberResponseBody {
+func (s *InsertPipelineMemberResponseBody) SetErrorMessage(v string) *InsertPipelineMemberResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
-func (s *DeletePipelineMemberResponseBody) SetObject(v bool) *DeletePipelineMemberResponseBody {
+func (s *InsertPipelineMemberResponseBody) SetObject(v bool) *InsertPipelineMemberResponseBody {
 	s.Object = &v
 	return s
 }
 
-func (s *DeletePipelineMemberResponseBody) SetErrorCode(v string) *DeletePipelineMemberResponseBody {
+func (s *InsertPipelineMemberResponseBody) SetErrorCode(v string) *InsertPipelineMemberResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *DeletePipelineMemberResponseBody) SetSuccess(v bool) *DeletePipelineMemberResponseBody {
+func (s *InsertPipelineMemberResponseBody) SetSuccess(v bool) *InsertPipelineMemberResponseBody {
 	s.Success = &v
 	return s
 }
 
-type DeletePipelineMemberResponse struct {
+type InsertPipelineMemberResponse struct {
 	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeletePipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body    *InsertPipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DeletePipelineMemberResponse) String() string {
+func (s InsertPipelineMemberResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeletePipelineMemberResponse) GoString() string {
+func (s InsertPipelineMemberResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeletePipelineMemberResponse) SetHeaders(v map[string]*string) *DeletePipelineMemberResponse {
+func (s *InsertPipelineMemberResponse) SetHeaders(v map[string]*string) *InsertPipelineMemberResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeletePipelineMemberResponse) SetBody(v *DeletePipelineMemberResponseBody) *DeletePipelineMemberResponse {
+func (s *InsertPipelineMemberResponse) SetBody(v *InsertPipelineMemberResponseBody) *InsertPipelineMemberResponse {
 	s.Body = v
 	return s
 }
 
-type ExecutePipelineRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s ExecutePipelineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecutePipelineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecutePipelineRequest) SetOrgId(v string) *ExecutePipelineRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ExecutePipelineRequest) SetPipelineId(v int64) *ExecutePipelineRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *ExecutePipelineRequest) SetParameters(v string) *ExecutePipelineRequest {
-	s.Parameters = &v
-	return s
-}
-
-func (s *ExecutePipelineRequest) SetUserPk(v string) *ExecutePipelineRequest {
-	s.UserPk = &v
-	return s
-}
-
-type ExecutePipelineResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s ExecutePipelineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecutePipelineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExecutePipelineResponseBody) SetRequestId(v string) *ExecutePipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExecutePipelineResponseBody) SetErrorMessage(v string) *ExecutePipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ExecutePipelineResponseBody) SetObject(v int64) *ExecutePipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *ExecutePipelineResponseBody) SetSuccess(v bool) *ExecutePipelineResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ExecutePipelineResponseBody) SetErrorCode(v string) *ExecutePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type ExecutePipelineResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecutePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExecutePipelineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecutePipelineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExecutePipelineResponse) SetHeaders(v map[string]*string) *ExecutePipelineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExecutePipelineResponse) SetBody(v *ExecutePipelineResponseBody) *ExecutePipelineResponse {
-	s.Body = v
-	return s
-}
-
-type GetDevopsOrganizationMembersRequest struct {
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-}
-
-func (s GetDevopsOrganizationMembersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsOrganizationMembersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsOrganizationMembersRequest) SetOrgId(v string) *GetDevopsOrganizationMembersRequest {
-	s.OrgId = &v
-	return s
-}
-
-type GetDevopsOrganizationMembersResponseBody struct {
-	ErrorMsg   *string                                           `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                             `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*GetDevopsOrganizationMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s GetDevopsOrganizationMembersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsOrganizationMembersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsOrganizationMembersResponseBody) SetErrorMsg(v string) *GetDevopsOrganizationMembersResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBody) SetRequestId(v string) *GetDevopsOrganizationMembersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBody) SetSuccessful(v bool) *GetDevopsOrganizationMembersResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *GetDevopsOrganizationMembersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBody) SetObject(v []*GetDevopsOrganizationMembersResponseBodyObject) *GetDevopsOrganizationMembersResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetDevopsOrganizationMembersResponseBodyObject struct {
-	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	MemberId  *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	Role      *int32  `json:"Role,omitempty" xml:"Role,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-}
-
-func (s GetDevopsOrganizationMembersResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsOrganizationMembersResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetEmail(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.Email = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetAvatarUrl(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.AvatarUrl = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetUserId(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.UserId = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetMemberId(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.MemberId = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetRole(v int32) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.Role = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetName(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponseBodyObject) SetPhone(v string) *GetDevopsOrganizationMembersResponseBodyObject {
-	s.Phone = &v
-	return s
-}
-
-type GetDevopsOrganizationMembersResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDevopsOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDevopsOrganizationMembersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsOrganizationMembersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsOrganizationMembersResponse) SetHeaders(v map[string]*string) *GetDevopsOrganizationMembersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDevopsOrganizationMembersResponse) SetBody(v *GetDevopsOrganizationMembersResponseBody) *GetDevopsOrganizationMembersResponse {
-	s.Body = v
-	return s
-}
-
-type GetDevopsProjectInfoRequest struct {
+type ListDevopsProjectTaskFlowRequest struct {
 	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
-func (s GetDevopsProjectInfoRequest) String() string {
+func (s ListDevopsProjectTaskFlowRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectInfoRequest) GoString() string {
+func (s ListDevopsProjectTaskFlowRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectInfoRequest) SetOrgId(v string) *GetDevopsProjectInfoRequest {
+func (s *ListDevopsProjectTaskFlowRequest) SetOrgId(v string) *ListDevopsProjectTaskFlowRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoRequest) SetProjectId(v string) *GetDevopsProjectInfoRequest {
+func (s *ListDevopsProjectTaskFlowRequest) SetProjectId(v string) *ListDevopsProjectTaskFlowRequest {
 	s.ProjectId = &v
 	return s
 }
 
-type GetDevopsProjectInfoResponseBody struct {
-	ErrorMsg   *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *GetDevopsProjectInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+type ListDevopsProjectTaskFlowResponseBody struct {
+	ErrorMsg   *string                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                          `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectTaskFlowResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
-func (s GetDevopsProjectInfoResponseBody) String() string {
+func (s ListDevopsProjectTaskFlowResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectInfoResponseBody) GoString() string {
+func (s ListDevopsProjectTaskFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectInfoResponseBody {
+func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetRequestId(v string) *GetDevopsProjectInfoResponseBody {
+func (s *ListDevopsProjectTaskFlowResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectInfoResponseBody {
+func (s *ListDevopsProjectTaskFlowResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowResponseBody {
 	s.Successful = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectInfoResponseBody {
+func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskFlowResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBody) SetObject(v *GetDevopsProjectInfoResponseBodyObject) *GetDevopsProjectInfoResponseBody {
+func (s *ListDevopsProjectTaskFlowResponseBody) SetObject(v []*ListDevopsProjectTaskFlowResponseBodyObject) *ListDevopsProjectTaskFlowResponseBody {
 	s.Object = v
 	return s
 }
 
-type GetDevopsProjectInfoResponseBodyObject struct {
-	SortMethod          *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	UniqueIdPrefix      *string `json:"UniqueIdPrefix,omitempty" xml:"UniqueIdPrefix,omitempty"`
-	NormalType          *string `json:"NormalType,omitempty" xml:"NormalType,omitempty"`
-	ModifierId          *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	IsTemplate          *bool   `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DefaultRoleId       *string `json:"DefaultRoleId,omitempty" xml:"DefaultRoleId,omitempty"`
-	RootCollectionId    *string `json:"RootCollectionId,omitempty" xml:"RootCollectionId,omitempty"`
-	IsDeleted           *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	Updated             *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	IsArchived          *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
-	EndDate             *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Logo                *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
-	StartDate           *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Pinyin              *string `json:"Pinyin,omitempty" xml:"Pinyin,omitempty"`
-	CreatorId           *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	SourceId            *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	DefaultCollectionId *string `json:"DefaultCollectionId,omitempty" xml:"DefaultCollectionId,omitempty"`
-	IsSuspended         *bool   `json:"IsSuspended,omitempty" xml:"IsSuspended,omitempty"`
-	OrganizationId      *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Visibility          *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	Py                  *string `json:"Py,omitempty" xml:"Py,omitempty"`
-	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	NextTaskUniqueId    *int32  `json:"NextTaskUniqueId,omitempty" xml:"NextTaskUniqueId,omitempty"`
-	Customfields        *string `json:"Customfields,omitempty" xml:"Customfields,omitempty"`
-	Created             *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+type ListDevopsProjectTaskFlowResponseBodyObject struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
-func (s GetDevopsProjectInfoResponseBodyObject) String() string {
+func (s ListDevopsProjectTaskFlowResponseBodyObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectInfoResponseBodyObject) GoString() string {
+func (s ListDevopsProjectTaskFlowResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetSortMethod(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.SortMethod = &v
+func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetType(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
+	s.Type = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetUniqueIdPrefix(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.UniqueIdPrefix = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetNormalType(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.NormalType = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetModifierId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.ModifierId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetSourceType(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.SourceType = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetIsTemplate(v bool) *GetDevopsProjectInfoResponseBodyObject {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetDescription(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultRoleId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.DefaultRoleId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetRootCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.RootCollectionId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectInfoResponseBodyObject {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetName(v string) *GetDevopsProjectInfoResponseBodyObject {
+func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetName(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
 	s.Name = &v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponseBodyObject) SetIsArchived(v bool) *GetDevopsProjectInfoResponseBodyObject {
-	s.IsArchived = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetEndDate(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.EndDate = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetLogo(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Logo = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetPinyin(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Pinyin = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetSourceId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.SourceId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.DefaultCollectionId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetIsSuspended(v bool) *GetDevopsProjectInfoResponseBodyObject {
-	s.IsSuspended = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.OrganizationId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetVisibility(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Visibility = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetPy(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Py = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetCategory(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Category = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetNextTaskUniqueId(v int32) *GetDevopsProjectInfoResponseBodyObject {
-	s.NextTaskUniqueId = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetCustomfields(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Customfields = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectInfoResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *GetDevopsProjectInfoResponseBodyObject) SetId(v string) *GetDevopsProjectInfoResponseBodyObject {
+func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetId(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
 	s.Id = &v
 	return s
 }
 
-type GetDevopsProjectInfoResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDevopsProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ListDevopsProjectTaskFlowResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetDevopsProjectInfoResponse) String() string {
+func (s ListDevopsProjectTaskFlowResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectInfoResponse) GoString() string {
+func (s ListDevopsProjectTaskFlowResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectInfoResponse {
+func (s *ListDevopsProjectTaskFlowResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskFlowResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetDevopsProjectInfoResponse) SetBody(v *GetDevopsProjectInfoResponseBody) *GetDevopsProjectInfoResponse {
+func (s *ListDevopsProjectTaskFlowResponse) SetBody(v *ListDevopsProjectTaskFlowResponseBody) *ListDevopsProjectTaskFlowResponse {
 	s.Body = v
 	return s
 }
@@ -2862,459 +397,575 @@ func (s *GetDevopsProjectMembersResponse) SetBody(v *GetDevopsProjectMembersResp
 	return s
 }
 
-type GetDevopsProjectSprintInfoRequest struct {
+type AddCodeupSourceToPipelineRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// 流水线ID
+	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// Codeup的代码库路径，比如 group1/repo1
+	CodePath *string `json:"CodePath,omitempty" xml:"CodePath,omitempty"`
+	// 代码库分支
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+}
+
+func (s AddCodeupSourceToPipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCodeupSourceToPipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCodeupSourceToPipelineRequest) SetOrgId(v string) *AddCodeupSourceToPipelineRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *AddCodeupSourceToPipelineRequest) SetPipelineId(v int64) *AddCodeupSourceToPipelineRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *AddCodeupSourceToPipelineRequest) SetCodePath(v string) *AddCodeupSourceToPipelineRequest {
+	s.CodePath = &v
+	return s
+}
+
+func (s *AddCodeupSourceToPipelineRequest) SetCodeBranch(v string) *AddCodeupSourceToPipelineRequest {
+	s.CodeBranch = &v
+	return s
+}
+
+type AddCodeupSourceToPipelineResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 流水线ID
+	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+}
+
+func (s AddCodeupSourceToPipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCodeupSourceToPipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCodeupSourceToPipelineResponseBody) SetRequestId(v string) *AddCodeupSourceToPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCodeupSourceToPipelineResponseBody) SetPipelineId(v int64) *AddCodeupSourceToPipelineResponseBody {
+	s.PipelineId = &v
+	return s
+}
+
+type AddCodeupSourceToPipelineResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddCodeupSourceToPipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddCodeupSourceToPipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCodeupSourceToPipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCodeupSourceToPipelineResponse) SetHeaders(v map[string]*string) *AddCodeupSourceToPipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCodeupSourceToPipelineResponse) SetBody(v *AddCodeupSourceToPipelineResponseBody) *AddCodeupSourceToPipelineResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDevopsProjectSprintRequest struct {
 	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	SprintId *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
 }
 
-func (s GetDevopsProjectSprintInfoRequest) String() string {
+func (s DeleteDevopsProjectSprintRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectSprintInfoRequest) GoString() string {
+func (s DeleteDevopsProjectSprintRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectSprintInfoRequest) SetOrgId(v string) *GetDevopsProjectSprintInfoRequest {
+func (s *DeleteDevopsProjectSprintRequest) SetOrgId(v string) *DeleteDevopsProjectSprintRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoRequest) SetSprintId(v string) *GetDevopsProjectSprintInfoRequest {
+func (s *DeleteDevopsProjectSprintRequest) SetSprintId(v string) *DeleteDevopsProjectSprintRequest {
 	s.SprintId = &v
 	return s
 }
 
-type GetDevopsProjectSprintInfoResponseBody struct {
-	ErrorMsg   *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *GetDevopsProjectSprintInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+type DeleteDevopsProjectSprintResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s GetDevopsProjectSprintInfoResponseBody) String() string {
+func (s DeleteDevopsProjectSprintResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectSprintInfoResponseBody) GoString() string {
+func (s DeleteDevopsProjectSprintResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectSprintInfoResponseBody {
+func (s *DeleteDevopsProjectSprintResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectSprintResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetRequestId(v string) *GetDevopsProjectSprintInfoResponseBody {
+func (s *DeleteDevopsProjectSprintResponseBody) SetRequestId(v string) *DeleteDevopsProjectSprintResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectSprintInfoResponseBody {
+func (s *DeleteDevopsProjectSprintResponseBody) SetObject(v bool) *DeleteDevopsProjectSprintResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectSprintResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectSprintResponseBody {
 	s.Successful = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectSprintInfoResponseBody {
+func (s *DeleteDevopsProjectSprintResponseBody) SetErrorCode(v string) *DeleteDevopsProjectSprintResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBody) SetObject(v *GetDevopsProjectSprintInfoResponseBodyObject) *GetDevopsProjectSprintInfoResponseBody {
-	s.Object = v
-	return s
+type DeleteDevopsProjectSprintResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetDevopsProjectSprintInfoResponseBodyObject struct {
-	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Accomplished *string                                               `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
-	ProjectId    *string                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	IsDeleted    *bool                                                 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	StartDate    *string                                               `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Updated      *string                                               `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	CreatorId    *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DueDate      *string                                               `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Created      *string                                               `json:"Created,omitempty" xml:"Created,omitempty"`
-	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	PlanToDo     *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
-}
-
-func (s GetDevopsProjectSprintInfoResponseBodyObject) String() string {
+func (s DeleteDevopsProjectSprintResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectSprintInfoResponseBodyObject) GoString() string {
+func (s DeleteDevopsProjectSprintResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStatus(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.Status = &v
+func (s *DeleteDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectSprintResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetAccomplished(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.Accomplished = &v
+func (s *DeleteDevopsProjectSprintResponse) SetBody(v *DeleteDevopsProjectSprintResponseBody) *DeleteDevopsProjectSprintResponse {
+	s.Body = v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+type DeleteCommonGroupRequest struct {
+	OrgId         *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	CommonGroupId *string `json:"CommonGroupId,omitempty" xml:"CommonGroupId,omitempty"`
+}
+
+func (s DeleteCommonGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCommonGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCommonGroupRequest) SetOrgId(v string) *DeleteCommonGroupRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DeleteCommonGroupRequest) SetProjectId(v string) *DeleteCommonGroupRequest {
 	s.ProjectId = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.IsDeleted = &v
+func (s *DeleteCommonGroupRequest) SetCommonGroupId(v string) *DeleteCommonGroupRequest {
+	s.CommonGroupId = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.StartDate = &v
+type DeleteCommonGroupResponseBody struct {
+	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *DeleteCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s DeleteCommonGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCommonGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCommonGroupResponseBody) SetErrorMsg(v string) *DeleteCommonGroupResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.Updated = &v
+func (s *DeleteCommonGroupResponseBody) SetRequestId(v string) *DeleteCommonGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.CreatorId = &v
+func (s *DeleteCommonGroupResponseBody) SetSuccessful(v bool) *DeleteCommonGroupResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetDueDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.DueDate = &v
+func (s *DeleteCommonGroupResponseBody) SetErrorCode(v string) *DeleteCommonGroupResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetName(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+func (s *DeleteCommonGroupResponseBody) SetObject(v *DeleteCommonGroupResponseBodyObject) *DeleteCommonGroupResponseBody {
+	s.Object = v
+	return s
+}
+
+type DeleteCommonGroupResponseBodyObject struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteCommonGroupResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCommonGroupResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCommonGroupResponseBodyObject) SetId(v string) *DeleteCommonGroupResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type DeleteCommonGroupResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCommonGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCommonGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCommonGroupResponse) SetHeaders(v map[string]*string) *DeleteCommonGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCommonGroupResponse) SetBody(v *DeleteCommonGroupResponseBody) *DeleteCommonGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectCustomFieldsRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListProjectCustomFieldsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectCustomFieldsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectCustomFieldsRequest) SetOrgId(v string) *ListProjectCustomFieldsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsRequest) SetProjectId(v string) *ListProjectCustomFieldsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListProjectCustomFieldsResponseBody struct {
+	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListProjectCustomFieldsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectCustomFieldsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectCustomFieldsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetErrorMsg(v string) *ListProjectCustomFieldsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetRequestId(v string) *ListProjectCustomFieldsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetSuccessful(v bool) *ListProjectCustomFieldsResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetErrorCode(v string) *ListProjectCustomFieldsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBody) SetObject(v []*ListProjectCustomFieldsResponseBodyObject) *ListProjectCustomFieldsResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListProjectCustomFieldsResponseBodyObject struct {
+	Type          *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	CustomFieldId *string                                            `json:"CustomFieldId,omitempty" xml:"CustomFieldId,omitempty"`
+	Subtype       *string                                            `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
+	Name          *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values        []*ListProjectCustomFieldsResponseBodyObjectValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectCustomFieldsResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectCustomFieldsResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObject) SetType(v string) *ListProjectCustomFieldsResponseBodyObject {
+	s.Type = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObject) SetCustomFieldId(v string) *ListProjectCustomFieldsResponseBodyObject {
+	s.CustomFieldId = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObject) SetSubtype(v string) *ListProjectCustomFieldsResponseBodyObject {
+	s.Subtype = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObject) SetName(v string) *ListProjectCustomFieldsResponseBodyObject {
 	s.Name = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.Created = &v
+func (s *ListProjectCustomFieldsResponseBodyObject) SetValues(v []*ListProjectCustomFieldsResponseBodyObjectValues) *ListProjectCustomFieldsResponseBodyObject {
+	s.Values = v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+type ListProjectCustomFieldsResponseBodyObjectValues struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListProjectCustomFieldsResponseBodyObjectValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectCustomFieldsResponseBodyObjectValues) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObjectValues) SetValue(v string) *ListProjectCustomFieldsResponseBodyObjectValues {
+	s.Value = &v
+	return s
+}
+
+func (s *ListProjectCustomFieldsResponseBodyObjectValues) SetId(v string) *ListProjectCustomFieldsResponseBodyObjectValues {
 	s.Id = &v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetPlanToDo(v *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) *GetDevopsProjectSprintInfoResponseBodyObject {
-	s.PlanToDo = v
-	return s
+type ListProjectCustomFieldsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectCustomFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo struct {
-	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
-	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
-	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
-}
-
-func (s GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) String() string {
+func (s ListProjectCustomFieldsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) GoString() string {
+func (s ListProjectCustomFieldsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetTasks(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
-	s.Tasks = &v
-	return s
-}
-
-func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
-	s.WorkTimes = &v
-	return s
-}
-
-func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
-	s.StoryPoints = &v
-	return s
-}
-
-type GetDevopsProjectSprintInfoResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDevopsProjectSprintInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDevopsProjectSprintInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsProjectSprintInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsProjectSprintInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectSprintInfoResponse {
+func (s *ListProjectCustomFieldsResponse) SetHeaders(v map[string]*string) *ListProjectCustomFieldsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetDevopsProjectSprintInfoResponse) SetBody(v *GetDevopsProjectSprintInfoResponseBody) *GetDevopsProjectSprintInfoResponse {
+func (s *ListProjectCustomFieldsResponse) SetBody(v *ListProjectCustomFieldsResponseBody) *ListProjectCustomFieldsResponse {
 	s.Body = v
 	return s
 }
 
-type GetDevopsProjectTaskInfoRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+type InsertDevopsUserRequest struct {
+	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Phone    *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
 }
 
-func (s GetDevopsProjectTaskInfoRequest) String() string {
+func (s InsertDevopsUserRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectTaskInfoRequest) GoString() string {
+func (s InsertDevopsUserRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectTaskInfoRequest) SetOrgId(v string) *GetDevopsProjectTaskInfoRequest {
-	s.OrgId = &v
+func (s *InsertDevopsUserRequest) SetUserPk(v string) *InsertDevopsUserRequest {
+	s.UserPk = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoRequest) SetTaskId(v string) *GetDevopsProjectTaskInfoRequest {
-	s.TaskId = &v
+func (s *InsertDevopsUserRequest) SetUserName(v string) *InsertDevopsUserRequest {
+	s.UserName = &v
 	return s
 }
 
-type GetDevopsProjectTaskInfoResponseBody struct {
-	ErrorMsg   *string                                     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                       `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *GetDevopsProjectTaskInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+func (s *InsertDevopsUserRequest) SetPhone(v string) *InsertDevopsUserRequest {
+	s.Phone = &v
+	return s
 }
 
-func (s GetDevopsProjectTaskInfoResponseBody) String() string {
+func (s *InsertDevopsUserRequest) SetEmail(v string) *InsertDevopsUserRequest {
+	s.Email = &v
+	return s
+}
+
+type InsertDevopsUserResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s InsertDevopsUserResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectTaskInfoResponseBody) GoString() string {
+func (s InsertDevopsUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectTaskInfoResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBody) SetRequestId(v string) *GetDevopsProjectTaskInfoResponseBody {
+func (s *InsertDevopsUserResponseBody) SetRequestId(v string) *InsertDevopsUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectTaskInfoResponseBody {
-	s.Successful = &v
+func (s *InsertDevopsUserResponseBody) SetErrorMessage(v string) *InsertDevopsUserResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectTaskInfoResponseBody {
+func (s *InsertDevopsUserResponseBody) SetObject(v string) *InsertDevopsUserResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *InsertDevopsUserResponseBody) SetSuccess(v bool) *InsertDevopsUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsertDevopsUserResponseBody) SetErrorCode(v string) *InsertDevopsUserResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBody) SetObject(v *GetDevopsProjectTaskInfoResponseBodyObject) *GetDevopsProjectTaskInfoResponseBody {
-	s.Object = v
-	return s
+type InsertDevopsUserResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InsertDevopsUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetDevopsProjectTaskInfoResponseBodyObject struct {
-	ExecutorId       *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	ProjectId        *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartDate        *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	StoryPoint       *string   `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
-	Priority         *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	IsTopInProject   *bool     `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
-	CreatorId        *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	OrganizationId   *string   `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	TaskType         *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Visible          *string   `json:"Visible,omitempty" xml:"Visible,omitempty"`
-	TasklistId       *string   `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
-	IsDone           *bool     `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
-	IsDeleted        *bool     `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	TaskflowstatusId *string   `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
-	Note             *string   `json:"Note,omitempty" xml:"Note,omitempty"`
-	SprintId         *string   `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	Updated          *string   `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	DueDate          *string   `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Created          *string   `json:"Created,omitempty" xml:"Created,omitempty"`
-	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id               *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	InvolveMembers   []*string `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
-}
-
-func (s GetDevopsProjectTaskInfoResponseBodyObject) String() string {
+func (s InsertDevopsUserResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDevopsProjectTaskInfoResponseBodyObject) GoString() string {
+func (s InsertDevopsUserResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetExecutorId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.StartDate = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStoryPoint(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.StoryPoint = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetPriority(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsTopInProject(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.IsTopInProject = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.OrganizationId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTaskType(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.TaskType = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetVisible(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Visible = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTasklistId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.TasklistId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsDone(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.IsDone = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTaskflowstatusId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.TaskflowstatusId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetNote(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Note = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetSprintId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.SprintId = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetDueDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.DueDate = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetContent(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Content = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetInvolveMembers(v []*string) *GetDevopsProjectTaskInfoResponseBodyObject {
-	s.InvolveMembers = v
-	return s
-}
-
-type GetDevopsProjectTaskInfoResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDevopsProjectTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDevopsProjectTaskInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDevopsProjectTaskInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDevopsProjectTaskInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectTaskInfoResponse {
+func (s *InsertDevopsUserResponse) SetHeaders(v map[string]*string) *InsertDevopsUserResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetDevopsProjectTaskInfoResponse) SetBody(v *GetDevopsProjectTaskInfoResponseBody) *GetDevopsProjectTaskInfoResponse {
+func (s *InsertDevopsUserResponse) SetBody(v *InsertDevopsUserResponseBody) *InsertDevopsUserResponse {
 	s.Body = v
 	return s
 }
 
-type GetLastWorkspaceRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+type UpdateDevopsProjectRequest struct {
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
-func (s GetLastWorkspaceRequest) String() string {
+func (s UpdateDevopsProjectRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetLastWorkspaceRequest) GoString() string {
+func (s UpdateDevopsProjectRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetLastWorkspaceRequest) SetOrgId(v string) *GetLastWorkspaceRequest {
+func (s *UpdateDevopsProjectRequest) SetOrgId(v string) *UpdateDevopsProjectRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *GetLastWorkspaceRequest) SetRealPk(v string) *GetLastWorkspaceRequest {
-	s.RealPk = &v
+func (s *UpdateDevopsProjectRequest) SetName(v string) *UpdateDevopsProjectRequest {
+	s.Name = &v
 	return s
 }
 
-type GetLastWorkspaceResponseBody struct {
+func (s *UpdateDevopsProjectRequest) SetDescription(v string) *UpdateDevopsProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectRequest) SetProjectId(v string) *UpdateDevopsProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type UpdateDevopsProjectResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
@@ -3322,476 +973,139 @@ type GetLastWorkspaceResponseBody struct {
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s GetLastWorkspaceResponseBody) String() string {
+func (s UpdateDevopsProjectResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetLastWorkspaceResponseBody) GoString() string {
+func (s UpdateDevopsProjectResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetLastWorkspaceResponseBody) SetErrorMessage(v string) *GetLastWorkspaceResponseBody {
+func (s *UpdateDevopsProjectResponseBody) SetErrorMessage(v string) *UpdateDevopsProjectResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetLastWorkspaceResponseBody) SetRequestId(v string) *GetLastWorkspaceResponseBody {
+func (s *UpdateDevopsProjectResponseBody) SetRequestId(v string) *UpdateDevopsProjectResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetLastWorkspaceResponseBody) SetObject(v string) *GetLastWorkspaceResponseBody {
+func (s *UpdateDevopsProjectResponseBody) SetObject(v string) *UpdateDevopsProjectResponseBody {
 	s.Object = &v
 	return s
 }
 
-func (s *GetLastWorkspaceResponseBody) SetSuccess(v bool) *GetLastWorkspaceResponseBody {
+func (s *UpdateDevopsProjectResponseBody) SetSuccess(v bool) *UpdateDevopsProjectResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *GetLastWorkspaceResponseBody) SetErrorCode(v string) *GetLastWorkspaceResponseBody {
+func (s *UpdateDevopsProjectResponseBody) SetErrorCode(v string) *UpdateDevopsProjectResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-type GetLastWorkspaceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLastWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type UpdateDevopsProjectResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetLastWorkspaceResponse) String() string {
+func (s UpdateDevopsProjectResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetLastWorkspaceResponse) GoString() string {
+func (s UpdateDevopsProjectResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetLastWorkspaceResponse) SetHeaders(v map[string]*string) *GetLastWorkspaceResponse {
+func (s *UpdateDevopsProjectResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetLastWorkspaceResponse) SetBody(v *GetLastWorkspaceResponseBody) *GetLastWorkspaceResponse {
+func (s *UpdateDevopsProjectResponse) SetBody(v *UpdateDevopsProjectResponseBody) *UpdateDevopsProjectResponse {
 	s.Body = v
 	return s
 }
 
-type GetPipelineInstanceBuildNumberStatusRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	BuildNum   *int64  `json:"BuildNum,omitempty" xml:"BuildNum,omitempty"`
+type CheckAliyunAccountExistsRequest struct {
+	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
 }
 
-func (s GetPipelineInstanceBuildNumberStatusRequest) String() string {
+func (s CheckAliyunAccountExistsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceBuildNumberStatusRequest) GoString() string {
+func (s CheckAliyunAccountExistsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusRequest) SetOrgId(v string) *GetPipelineInstanceBuildNumberStatusRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceBuildNumberStatusRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusRequest) SetUserPk(v string) *GetPipelineInstanceBuildNumberStatusRequest {
+func (s *CheckAliyunAccountExistsRequest) SetUserPk(v string) *CheckAliyunAccountExistsRequest {
 	s.UserPk = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusRequest) SetBuildNum(v int64) *GetPipelineInstanceBuildNumberStatusRequest {
-	s.BuildNum = &v
-	return s
+type CheckAliyunAccountExistsResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-type GetPipelineInstanceBuildNumberStatusResponseBody struct {
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       *GetPipelineInstanceBuildNumberStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBody) String() string {
+func (s CheckAliyunAccountExistsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceBuildNumberStatusResponseBody) GoString() string {
+func (s CheckAliyunAccountExistsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+func (s *CheckAliyunAccountExistsResponseBody) SetErrorMsg(v string) *CheckAliyunAccountExistsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CheckAliyunAccountExistsResponseBody) SetRequestId(v string) *CheckAliyunAccountExistsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.ErrorMessage = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetObject(v bool) *CheckAliyunAccountExistsResponseBody {
+	s.Object = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.Success = &v
+func (s *CheckAliyunAccountExistsResponseBody) SetSuccessful(v bool) *CheckAliyunAccountExistsResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+func (s *CheckAliyunAccountExistsResponseBody) SetErrorCode(v string) *CheckAliyunAccountExistsResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetObject(v *GetPipelineInstanceBuildNumberStatusResponseBodyObject) *GetPipelineInstanceBuildNumberStatusResponseBody {
-	s.Object = v
-	return s
+type CheckAliyunAccountExistsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckAliyunAccountExistsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetPipelineInstanceBuildNumberStatusResponseBodyObject struct {
-	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Groups []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObject) String() string {
+func (s CheckAliyunAccountExistsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObject) GoString() string {
+func (s CheckAliyunAccountExistsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObject) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObject {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObject) SetGroups(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) *GetPipelineInstanceBuildNumberStatusResponseBodyObject {
-	s.Groups = v
-	return s
-}
-
-type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups struct {
-	Status *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Stages []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
-	s.Stages = v
-	return s
-}
-
-type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages struct {
-	Status     *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Sign       *string                                                                         `json:"Sign,omitempty" xml:"Sign,omitempty"`
-	Components []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
-	s.Sign = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
-	s.Components = v
-	return s
-}
-
-type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
-	return s
-}
-
-type GetPipelineInstanceBuildNumberStatusResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineInstanceBuildNumberStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceBuildNumberStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceBuildNumberStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceBuildNumberStatusResponse {
+func (s *CheckAliyunAccountExistsResponse) SetHeaders(v map[string]*string) *CheckAliyunAccountExistsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetPipelineInstanceBuildNumberStatusResponse) SetBody(v *GetPipelineInstanceBuildNumberStatusResponseBody) *GetPipelineInstanceBuildNumberStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusRequest struct {
-	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-}
-
-func (s GetPipelineInstanceGroupStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusRequest) SetOrgId(v string) *GetPipelineInstanceGroupStatusRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceGroupStatusRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusRequest) SetUserPk(v string) *GetPipelineInstanceGroupStatusRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusRequest) SetFlowInstanceId(v int64) *GetPipelineInstanceGroupStatusRequest {
-	s.FlowInstanceId = &v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponseBody struct {
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       *GetPipelineInstanceGroupStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceGroupStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceGroupStatusResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceGroupStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceGroupStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBody) SetObject(v *GetPipelineInstanceGroupStatusResponseBodyObject) *GetPipelineInstanceGroupStatusResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponseBodyObject struct {
-	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Groups []*GetPipelineInstanceGroupStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObject) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObject {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObject) SetGroups(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroups) *GetPipelineInstanceGroupStatusResponseBodyObject {
-	s.Groups = v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponseBodyObjectGroups struct {
-	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Stages []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroups) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
-	s.Stages = v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages struct {
-	Status     *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Sign       *string                                                                   `json:"Sign,omitempty" xml:"Sign,omitempty"`
-	Components []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
-	s.Sign = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
-	s.Components = v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
-	return s
-}
-
-type GetPipelineInstanceGroupStatusResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineInstanceGroupStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipelineInstanceGroupStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstanceGroupStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstanceGroupStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceGroupStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPipelineInstanceGroupStatusResponse) SetBody(v *GetPipelineInstanceGroupStatusResponseBody) *GetPipelineInstanceGroupStatusResponse {
+func (s *CheckAliyunAccountExistsResponse) SetBody(v *CheckAliyunAccountExistsResponseBody) *CheckAliyunAccountExistsResponse {
 	s.Body = v
 	return s
 }
@@ -3948,1395 +1262,489 @@ func (s *GetPipelineInstanceInfoResponse) SetBody(v *GetPipelineInstanceInfoResp
 	return s
 }
 
-type GetPipelineInstanceStatusRequest struct {
-	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+type BatchInsertMembersRequest struct {
+	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Members *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	RealPk  *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
 }
 
-func (s GetPipelineInstanceStatusRequest) String() string {
+func (s BatchInsertMembersRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceStatusRequest) GoString() string {
+func (s BatchInsertMembersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceStatusRequest) SetOrgId(v string) *GetPipelineInstanceStatusRequest {
+func (s *BatchInsertMembersRequest) SetOrgId(v string) *BatchInsertMembersRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceStatusRequest {
-	s.PipelineId = &v
+func (s *BatchInsertMembersRequest) SetMembers(v string) *BatchInsertMembersRequest {
+	s.Members = &v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusRequest) SetFlowInstanceId(v int64) *GetPipelineInstanceStatusRequest {
-	s.FlowInstanceId = &v
+func (s *BatchInsertMembersRequest) SetRealPk(v string) *BatchInsertMembersRequest {
+	s.RealPk = &v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusRequest) SetUserPk(v string) *GetPipelineInstanceStatusRequest {
-	s.UserPk = &v
-	return s
-}
-
-type GetPipelineInstanceStatusResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type BatchInsertMembersResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s GetPipelineInstanceStatusResponseBody) String() string {
+func (s BatchInsertMembersResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceStatusResponseBody) GoString() string {
+func (s BatchInsertMembersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipelineInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceStatusResponseBody {
+func (s *BatchInsertMembersResponseBody) SetErrorMessage(v string) *BatchInsertMembersResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusResponseBody) SetObject(v string) *GetPipelineInstanceStatusResponseBody {
+func (s *BatchInsertMembersResponseBody) SetRequestId(v string) *BatchInsertMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchInsertMembersResponseBody) SetObject(v bool) *BatchInsertMembersResponseBody {
 	s.Object = &v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipelineInstanceStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceStatusResponseBody {
+func (s *BatchInsertMembersResponseBody) SetSuccess(v bool) *BatchInsertMembersResponseBody {
 	s.Success = &v
 	return s
 }
 
-type GetPipelineInstanceStatusResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *BatchInsertMembersResponseBody) SetErrorCode(v string) *BatchInsertMembersResponseBody {
+	s.ErrorCode = &v
+	return s
 }
 
-func (s GetPipelineInstanceStatusResponse) String() string {
+type BatchInsertMembersResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchInsertMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchInsertMembersResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstanceStatusResponse) GoString() string {
+func (s BatchInsertMembersResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstanceStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceStatusResponse {
+func (s *BatchInsertMembersResponse) SetHeaders(v map[string]*string) *BatchInsertMembersResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetPipelineInstanceStatusResponse) SetBody(v *GetPipelineInstanceStatusResponseBody) *GetPipelineInstanceStatusResponse {
+func (s *BatchInsertMembersResponse) SetBody(v *BatchInsertMembersResponseBody) *BatchInsertMembersResponse {
 	s.Body = v
 	return s
 }
 
-type GetPipelineInstHistoryRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageStart  *int64  `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+type ListServiceConnectionsRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ScType *string `json:"ScType,omitempty" xml:"ScType,omitempty"`
+	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
 }
 
-func (s GetPipelineInstHistoryRequest) String() string {
+func (s ListServiceConnectionsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryRequest) GoString() string {
+func (s ListServiceConnectionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryRequest) SetOrgId(v string) *GetPipelineInstHistoryRequest {
+func (s *ListServiceConnectionsRequest) SetOrgId(v string) *ListServiceConnectionsRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryRequest) SetPipelineId(v int64) *GetPipelineInstHistoryRequest {
-	s.PipelineId = &v
+func (s *ListServiceConnectionsRequest) SetScType(v string) *ListServiceConnectionsRequest {
+	s.ScType = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryRequest) SetUserPk(v string) *GetPipelineInstHistoryRequest {
+func (s *ListServiceConnectionsRequest) SetUserPk(v string) *ListServiceConnectionsRequest {
 	s.UserPk = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryRequest) SetStartTime(v string) *GetPipelineInstHistoryRequest {
-	s.StartTime = &v
-	return s
+type ListServiceConnectionsResponseBody struct {
+	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
 }
 
-func (s *GetPipelineInstHistoryRequest) SetEndTime(v string) *GetPipelineInstHistoryRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryRequest) SetPageStart(v int64) *GetPipelineInstHistoryRequest {
-	s.PageStart = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryRequest) SetPageSize(v int64) *GetPipelineInstHistoryRequest {
-	s.PageSize = &v
-	return s
-}
-
-type GetPipelineInstHistoryResponseBody struct {
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Data         *GetPipelineInstHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s GetPipelineInstHistoryResponseBody) String() string {
+func (s ListServiceConnectionsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBody) GoString() string {
+func (s ListServiceConnectionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetRequestId(v string) *GetPipelineInstHistoryResponseBody {
+func (s *ListServiceConnectionsResponseBody) SetRequestId(v string) *ListServiceConnectionsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetErrorMessage(v string) *GetPipelineInstHistoryResponseBody {
+func (s *ListServiceConnectionsResponseBody) SetErrorMessage(v string) *ListServiceConnectionsResponseBody {
 	s.ErrorMessage = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetSuccess(v bool) *GetPipelineInstHistoryResponseBody {
+func (s *ListServiceConnectionsResponseBody) SetSuccess(v bool) *ListServiceConnectionsResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetErrorCode(v string) *GetPipelineInstHistoryResponseBody {
+func (s *ListServiceConnectionsResponseBody) SetErrorCode(v string) *ListServiceConnectionsResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBody) SetData(v *GetPipelineInstHistoryResponseBodyData) *GetPipelineInstHistoryResponseBody {
-	s.Data = v
+func (s *ListServiceConnectionsResponseBody) SetObject(v []map[string]interface{}) *ListServiceConnectionsResponseBody {
+	s.Object = v
 	return s
 }
 
-type GetPipelineInstHistoryResponseBodyData struct {
-	Total    *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
-	DataList []*GetPipelineInstHistoryResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+type ListServiceConnectionsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListServiceConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetPipelineInstHistoryResponseBodyData) String() string {
+func (s ListServiceConnectionsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBodyData) GoString() string {
+func (s ListServiceConnectionsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyData) SetTotal(v int32) *GetPipelineInstHistoryResponseBodyData {
-	s.Total = &v
+func (s *ListServiceConnectionsResponse) SetHeaders(v map[string]*string) *ListServiceConnectionsResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyData) SetDataList(v []*GetPipelineInstHistoryResponseBodyDataDataList) *GetPipelineInstHistoryResponseBodyData {
-	s.DataList = v
+func (s *ListServiceConnectionsResponse) SetBody(v *ListServiceConnectionsResponseBody) *ListServiceConnectionsResponse {
+	s.Body = v
 	return s
 }
 
-type GetPipelineInstHistoryResponseBodyDataDataList struct {
-	Status           *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreateTime       *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	StatusName       *string                                                     `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	TriggerMode      *int32                                                      `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
-	PipelineConfigId *int32                                                      `json:"PipelineConfigId,omitempty" xml:"PipelineConfigId,omitempty"`
-	Deletion         *string                                                     `json:"Deletion,omitempty" xml:"Deletion,omitempty"`
-	Creator          *string                                                     `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	InstNumber       *int32                                                      `json:"InstNumber,omitempty" xml:"InstNumber,omitempty"`
-	Modifier         *string                                                     `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	Packages         *string                                                     `json:"Packages,omitempty" xml:"Packages,omitempty"`
-	FlowInstId       *int32                                                      `json:"FlowInstId,omitempty" xml:"FlowInstId,omitempty"`
-	PipelineId       *int32                                                      `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	Id               *int32                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime       *int64                                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	FlowInstance     *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance `json:"FlowInstance,omitempty" xml:"FlowInstance,omitempty" type:"Struct"`
+type GetUserNameRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataList) String() string {
+func (s GetUserNameRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataList) GoString() string {
+func (s GetUserNameRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Status = &v
+func (s *GetUserNameRequest) SetOrgId(v string) *GetUserNameRequest {
+	s.OrgId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.CreateTime = &v
+func (s *GetUserNameRequest) SetUserId(v string) *GetUserNameRequest {
+	s.UserId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetStatusName(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.StatusName = &v
-	return s
+type GetUserNameResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetTriggerMode(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.TriggerMode = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPipelineConfigId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.PipelineConfigId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetDeletion(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Deletion = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Creator = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetInstNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.InstNumber = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Modifier = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPackages(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Packages = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.FlowInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.Id = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstance(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) *GetPipelineInstHistoryResponseBodyDataDataList {
-	s.FlowInstance = v
-	return s
-}
-
-type GetPipelineInstHistoryResponseBodyDataDataListFlowInstance struct {
-	Status           *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Stages           map[string]interface{}                                              `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	CreateTime       *int64                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	StatusName       *string                                                             `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	RunningStatus    *string                                                             `json:"RunningStatus,omitempty" xml:"RunningStatus,omitempty"`
-	Creator          *string                                                             `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	StageTopo        *string                                                             `json:"StageTopo,omitempty" xml:"StageTopo,omitempty"`
-	Modifier         *string                                                             `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	AutoDrivenStatus *bool                                                               `json:"AutoDrivenStatus,omitempty" xml:"AutoDrivenStatus,omitempty"`
-	ResultStatus     *string                                                             `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
-	Id               *int32                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	SystemCode       *string                                                             `json:"SystemCode,omitempty" xml:"SystemCode,omitempty"`
-	ModifyTime       *int64                                                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	SystemId         *string                                                             `json:"SystemId,omitempty" xml:"SystemId,omitempty"`
-	Groups           []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Result           *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) String() string {
+func (s GetUserNameResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) GoString() string {
+func (s GetUserNameResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Status = &v
+func (s *GetUserNameResponseBody) SetErrorMsg(v string) *GetUserNameResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStages(v map[string]interface{}) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Stages = v
+func (s *GetUserNameResponseBody) SetRequestId(v string) *GetUserNameResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.CreateTime = &v
+func (s *GetUserNameResponseBody) SetObject(v string) *GetUserNameResponseBody {
+	s.Object = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStatusName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.StatusName = &v
+func (s *GetUserNameResponseBody) SetSuccessful(v bool) *GetUserNameResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetRunningStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.RunningStatus = &v
+func (s *GetUserNameResponseBody) SetErrorCode(v string) *GetUserNameResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Creator = &v
+type GetUserNameResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserNameResponse) SetHeaders(v map[string]*string) *GetUserNameResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStageTopo(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.StageTopo = &v
+func (s *GetUserNameResponse) SetBody(v *GetUserNameResponseBody) *GetUserNameResponse {
+	s.Body = v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Modifier = &v
+type InsertProjectMembersRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Members   *string `json:"Members,omitempty" xml:"Members,omitempty"`
+}
+
+func (s InsertProjectMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertProjectMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertProjectMembersRequest) SetOrgId(v string) *InsertProjectMembersRequest {
+	s.OrgId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetAutoDrivenStatus(v bool) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.AutoDrivenStatus = &v
+func (s *InsertProjectMembersRequest) SetProjectId(v string) *InsertProjectMembersRequest {
+	s.ProjectId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResultStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.ResultStatus = &v
+func (s *InsertProjectMembersRequest) SetMembers(v string) *InsertProjectMembersRequest {
+	s.Members = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Id = &v
+type InsertProjectMembersResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s InsertProjectMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertProjectMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertProjectMembersResponseBody) SetErrorMsg(v string) *InsertProjectMembersResponseBody {
+	s.ErrorMsg = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetSystemCode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.SystemCode = &v
+func (s *InsertProjectMembersResponseBody) SetRequestId(v string) *InsertProjectMembersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.ModifyTime = &v
+func (s *InsertProjectMembersResponseBody) SetObject(v bool) *InsertProjectMembersResponseBody {
+	s.Object = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetSystemId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.SystemId = &v
+func (s *InsertProjectMembersResponseBody) SetSuccessful(v bool) *InsertProjectMembersResponseBody {
+	s.Successful = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetGroups(v []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
-	s.Groups = v
+func (s *InsertProjectMembersResponseBody) SetErrorCode(v string) *InsertProjectMembersResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResult(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+type InsertProjectMembersResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InsertProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertProjectMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertProjectMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertProjectMembersResponse) SetHeaders(v map[string]*string) *InsertProjectMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertProjectMembersResponse) SetBody(v *InsertProjectMembersResponseBody) *InsertProjectMembersResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsProjectTaskListRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListDevopsProjectTaskListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskListRequest) SetOrgId(v string) *ListDevopsProjectTaskListRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListRequest) SetProjectId(v string) *ListDevopsProjectTaskListRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListDevopsProjectTaskListResponseBody struct {
+	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *ListDevopsProjectTaskListResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s ListDevopsProjectTaskListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskListResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetRequestId(v string) *ListDevopsProjectTaskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskListResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskListResponseBody) SetObject(v *ListDevopsProjectTaskListResponseBodyObject) *ListDevopsProjectTaskListResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListDevopsProjectTaskListResponseBodyObject struct {
+	Result []*ListDevopsProjectTaskListResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListDevopsProjectTaskListResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskListResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskListResponseBodyObject) SetResult(v []*ListDevopsProjectTaskListResponseBodyObjectResult) *ListDevopsProjectTaskListResponseBodyObject {
 	s.Result = v
 	return s
 }
 
-type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeleteStatus *string `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
-	IdExtent     *int32  `json:"IdExtent,omitempty" xml:"IdExtent,omitempty"`
-	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Modifier     *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	ResultStatus *string `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
-	FlowInstId   *int32  `json:"FlowInstId,omitempty" xml:"FlowInstId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime   *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+type ListDevopsProjectTaskListResponseBodyObjectResult struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) String() string {
+func (s ListDevopsProjectTaskListResponseBodyObjectResult) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) GoString() string {
+func (s ListDevopsProjectTaskListResponseBodyObjectResult) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetDeleteStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.DeleteStatus = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetIdExtent(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.IdExtent = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.Creator = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetEndTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetStartTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.Modifier = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetResultStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.ResultStatus = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetFlowInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.FlowInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+func (s *ListDevopsProjectTaskListResponseBodyObjectResult) SetId(v string) *ListDevopsProjectTaskListResponseBodyObjectResult {
 	s.Id = &v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
-	s.ModifyTime = &v
-	return s
+type ListDevopsProjectTaskListResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult struct {
-	EnginePipelineNumber *int32  `json:"EnginePipelineNumber,omitempty" xml:"EnginePipelineNumber,omitempty"`
-	MixFlowInstId        *string `json:"MixFlowInstId,omitempty" xml:"MixFlowInstId,omitempty"`
-	EnginePipelineName   *string `json:"EnginePipelineName,omitempty" xml:"EnginePipelineName,omitempty"`
-	EnginePipelineId     *int32  `json:"EnginePipelineId,omitempty" xml:"EnginePipelineId,omitempty"`
-	EnginePipelineInstId *int32  `json:"EnginePipelineInstId,omitempty" xml:"EnginePipelineInstId,omitempty"`
-	TimeStamp            *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TriggerMode          *string `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
-	Sources              *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	Caches               *string `json:"Caches,omitempty" xml:"Caches,omitempty"`
-	DateTime             *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-}
-
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) String() string {
+func (s ListDevopsProjectTaskListResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) GoString() string {
+func (s ListDevopsProjectTaskListResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineNumber = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetMixFlowInstId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.MixFlowInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineName = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.EnginePipelineInstId = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTimeStamp(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTriggerMode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.TriggerMode = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetSources(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.Sources = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetCaches(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.Caches = &v
-	return s
-}
-
-func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetDateTime(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
-	s.DateTime = &v
-	return s
-}
-
-type GetPipelineInstHistoryResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineInstHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipelineInstHistoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineInstHistoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineInstHistoryResponse) SetHeaders(v map[string]*string) *GetPipelineInstHistoryResponse {
+func (s *ListDevopsProjectTaskListResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskListResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetPipelineInstHistoryResponse) SetBody(v *GetPipelineInstHistoryResponseBody) *GetPipelineInstHistoryResponse {
-	s.Body = v
-	return s
-}
-
-type GetPipelineLogRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetPipelineLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineLogRequest) SetOrgId(v string) *GetPipelineLogRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetPipelineLogRequest) SetPipelineId(v int64) *GetPipelineLogRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipelineLogRequest) SetUserPk(v string) *GetPipelineLogRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *GetPipelineLogRequest) SetJobId(v int64) *GetPipelineLogRequest {
-	s.JobId = &v
-	return s
-}
-
-type GetPipelineLogResponseBody struct {
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       []*GetPipelineLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineLogResponseBody) SetRequestId(v string) *GetPipelineLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBody) SetErrorMessage(v string) *GetPipelineLogResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBody) SetSuccess(v bool) *GetPipelineLogResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBody) SetErrorCode(v string) *GetPipelineLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBody) SetObject(v []*GetPipelineLogResponseBodyObject) *GetPipelineLogResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetPipelineLogResponseBodyObject struct {
-	ActionName        *string                                              `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	StartTime         *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	JobId             *int64                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	BuildProcessNodes []*GetPipelineLogResponseBodyObjectBuildProcessNodes `json:"BuildProcessNodes,omitempty" xml:"BuildProcessNodes,omitempty" type:"Repeated"`
-}
-
-func (s GetPipelineLogResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineLogResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineLogResponseBodyObject) SetActionName(v string) *GetPipelineLogResponseBodyObject {
-	s.ActionName = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBodyObject) SetStartTime(v string) *GetPipelineLogResponseBodyObject {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBodyObject) SetJobId(v int64) *GetPipelineLogResponseBodyObject {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBodyObject) SetBuildProcessNodes(v []*GetPipelineLogResponseBodyObjectBuildProcessNodes) *GetPipelineLogResponseBodyObject {
-	s.BuildProcessNodes = v
-	return s
-}
-
-type GetPipelineLogResponseBodyObjectBuildProcessNodes struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	NodeIndex *int32  `json:"NodeIndex,omitempty" xml:"NodeIndex,omitempty"`
-	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-}
-
-func (s GetPipelineLogResponseBodyObjectBuildProcessNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineLogResponseBodyObjectBuildProcessNodes) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetStatus(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeIndex(v int32) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
-	s.NodeIndex = &v
-	return s
-}
-
-func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeName(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
-	s.NodeName = &v
-	return s
-}
-
-type GetPipelineLogResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipelineLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineLogResponse) SetHeaders(v map[string]*string) *GetPipelineLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPipelineLogResponse) SetBody(v *GetPipelineLogResponseBody) *GetPipelineLogResponse {
-	s.Body = v
-	return s
-}
-
-type GetPipelineStepLogRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StepIndex  *string `json:"StepIndex,omitempty" xml:"StepIndex,omitempty"`
-	Offset     *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit      *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-}
-
-func (s GetPipelineStepLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineStepLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineStepLogRequest) SetOrgId(v string) *GetPipelineStepLogRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetPipelineId(v int64) *GetPipelineStepLogRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetUserPk(v string) *GetPipelineStepLogRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetJobId(v int64) *GetPipelineStepLogRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetStepIndex(v string) *GetPipelineStepLogRequest {
-	s.StepIndex = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetOffset(v int64) *GetPipelineStepLogRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *GetPipelineStepLogRequest) SetLimit(v int64) *GetPipelineStepLogRequest {
-	s.Limit = &v
-	return s
-}
-
-type GetPipelineStepLogResponseBody struct {
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       *GetPipelineStepLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s GetPipelineStepLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineStepLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineStepLogResponseBody) SetRequestId(v string) *GetPipelineStepLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBody) SetErrorMessage(v string) *GetPipelineStepLogResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBody) SetSuccess(v bool) *GetPipelineStepLogResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBody) SetErrorCode(v string) *GetPipelineStepLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBody) SetObject(v *GetPipelineStepLogResponseBodyObject) *GetPipelineStepLogResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetPipelineStepLogResponseBodyObject struct {
-	Last *int32  `json:"Last,omitempty" xml:"Last,omitempty"`
-	More *bool   `json:"More,omitempty" xml:"More,omitempty"`
-	Logs *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
-}
-
-func (s GetPipelineStepLogResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineStepLogResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineStepLogResponseBodyObject) SetLast(v int32) *GetPipelineStepLogResponseBodyObject {
-	s.Last = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBodyObject) SetMore(v bool) *GetPipelineStepLogResponseBodyObject {
-	s.More = &v
-	return s
-}
-
-func (s *GetPipelineStepLogResponseBodyObject) SetLogs(v string) *GetPipelineStepLogResponseBodyObject {
-	s.Logs = &v
-	return s
-}
-
-type GetPipelineStepLogResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipelineStepLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipelineStepLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipelineStepLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipelineStepLogResponse) SetHeaders(v map[string]*string) *GetPipelineStepLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPipelineStepLogResponse) SetBody(v *GetPipelineStepLogResponseBody) *GetPipelineStepLogResponse {
-	s.Body = v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s GetPipleineLatestInstanceStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusRequest) SetOrgId(v string) *GetPipleineLatestInstanceStatusRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusRequest) SetPipelineId(v int64) *GetPipleineLatestInstanceStatusRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusRequest) SetUserPk(v string) *GetPipleineLatestInstanceStatusRequest {
-	s.UserPk = &v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponseBody struct {
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       *GetPipleineLatestInstanceStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetRequestId(v string) *GetPipleineLatestInstanceStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipleineLatestInstanceStatusResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetSuccess(v bool) *GetPipleineLatestInstanceStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorCode(v string) *GetPipleineLatestInstanceStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBody) SetObject(v *GetPipleineLatestInstanceStatusResponseBodyObject) *GetPipleineLatestInstanceStatusResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponseBodyObject struct {
-	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Groups []*GetPipleineLatestInstanceStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObject) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObject {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObject) SetGroups(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroups) *GetPipleineLatestInstanceStatusResponseBodyObject {
-	s.Groups = v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponseBodyObjectGroups struct {
-	Status *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Stages []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroups) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStages(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
-	s.Stages = v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages struct {
-	Status     *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Sign       *string                                                                    `json:"Sign,omitempty" xml:"Sign,omitempty"`
-	Components []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
-	s.Sign = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
-	s.Components = v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
-	s.JobId = &v
-	return s
-}
-
-type GetPipleineLatestInstanceStatusResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPipleineLatestInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPipleineLatestInstanceStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPipleineLatestInstanceStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPipleineLatestInstanceStatusResponse) SetHeaders(v map[string]*string) *GetPipleineLatestInstanceStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPipleineLatestInstanceStatusResponse) SetBody(v *GetPipleineLatestInstanceStatusResponseBody) *GetPipleineLatestInstanceStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetProjectOptionRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
-}
-
-func (s GetProjectOptionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectOptionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectOptionRequest) SetOrgId(v string) *GetProjectOptionRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetProjectOptionRequest) SetProjectId(v string) *GetProjectOptionRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetProjectOptionRequest) SetType(v string) *GetProjectOptionRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *GetProjectOptionRequest) SetQuery(v string) *GetProjectOptionRequest {
-	s.Query = &v
-	return s
-}
-
-type GetProjectOptionResponseBody struct {
-	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*GetProjectOptionResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s GetProjectOptionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectOptionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectOptionResponseBody) SetErrorMsg(v string) *GetProjectOptionResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBody) SetRequestId(v string) *GetProjectOptionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBody) SetSuccessful(v bool) *GetProjectOptionResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBody) SetErrorCode(v string) *GetProjectOptionResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBody) SetObject(v []*GetProjectOptionResponseBodyObject) *GetProjectOptionResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetProjectOptionResponseBodyObject struct {
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
-	Kind      *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-}
-
-func (s GetProjectOptionResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectOptionResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectOptionResponseBodyObject) SetValue(v string) *GetProjectOptionResponseBodyObject {
-	s.Value = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBodyObject) SetName(v string) *GetProjectOptionResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBodyObject) SetScopeName(v string) *GetProjectOptionResponseBodyObject {
-	s.ScopeName = &v
-	return s
-}
-
-func (s *GetProjectOptionResponseBodyObject) SetKind(v string) *GetProjectOptionResponseBodyObject {
-	s.Kind = &v
-	return s
-}
-
-type GetProjectOptionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProjectOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProjectOptionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectOptionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectOptionResponse) SetHeaders(v map[string]*string) *GetProjectOptionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectOptionResponse) SetBody(v *GetProjectOptionResponseBody) *GetProjectOptionResponse {
-	s.Body = v
-	return s
-}
-
-type GetTaskDetailActivityRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetTaskDetailActivityRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailActivityRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailActivityRequest) SetOrgId(v string) *GetTaskDetailActivityRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityRequest) SetProjectId(v string) *GetTaskDetailActivityRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityRequest) SetTaskId(v string) *GetTaskDetailActivityRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetTaskDetailActivityResponseBody struct {
-	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ErrorMsg       *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful     *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object         []*GetTaskDetailActivityResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskDetailActivityResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailActivityResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetHttpStatusCode(v int32) *GetTaskDetailActivityResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetErrorMsg(v string) *GetTaskDetailActivityResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetRequestId(v string) *GetTaskDetailActivityResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetSuccessful(v bool) *GetTaskDetailActivityResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetErrorCode(v string) *GetTaskDetailActivityResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBody) SetObject(v []*GetTaskDetailActivityResponseBodyObject) *GetTaskDetailActivityResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetTaskDetailActivityResponseBodyObject struct {
-	Updated *string                `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	Action  *string                `json:"Action,omitempty" xml:"Action,omitempty"`
-	Title   *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	Created *string                `json:"Created,omitempty" xml:"Created,omitempty"`
-	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s GetTaskDetailActivityResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailActivityResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailActivityResponseBodyObject) SetUpdated(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBodyObject) SetAction(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Action = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBodyObject) SetTitle(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Title = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBodyObject) SetCreated(v string) *GetTaskDetailActivityResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponseBodyObject) SetContent(v map[string]interface{}) *GetTaskDetailActivityResponseBodyObject {
-	s.Content = v
-	return s
-}
-
-type GetTaskDetailActivityResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskDetailActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTaskDetailActivityResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskDetailActivityResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskDetailActivityResponse) SetHeaders(v map[string]*string) *GetTaskDetailActivityResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTaskDetailActivityResponse) SetBody(v *GetTaskDetailActivityResponseBody) *GetTaskDetailActivityResponse {
+func (s *ListDevopsProjectTaskListResponse) SetBody(v *ListDevopsProjectTaskListResponseBody) *ListDevopsProjectTaskListResponse {
 	s.Body = v
 	return s
 }
@@ -6217,6 +2625,5270 @@ func (s *GetTaskDetailBaseResponse) SetBody(v *GetTaskDetailBaseResponseBody) *G
 	return s
 }
 
+type DeleteDevopsProjectMembersRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	UserIds   *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s DeleteDevopsProjectMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectMembersRequest) SetOrgId(v string) *DeleteDevopsProjectMembersRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersRequest) SetProjectId(v string) *DeleteDevopsProjectMembersRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersRequest) SetUserIds(v string) *DeleteDevopsProjectMembersRequest {
+	s.UserIds = &v
+	return s
+}
+
+type DeleteDevopsProjectMembersResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteDevopsProjectMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectMembersResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersResponseBody) SetRequestId(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersResponseBody) SetObject(v bool) *DeleteDevopsProjectMembersResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectMembersResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersResponseBody) SetErrorCode(v string) *DeleteDevopsProjectMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteDevopsProjectMembersResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsProjectMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectMembersResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsProjectMembersResponse) SetBody(v *DeleteDevopsProjectMembersResponseBody) *DeleteDevopsProjectMembersResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDevopsProjectSprintRequest struct {
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExecutorId  *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	DueDate     *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+}
+
+func (s CreateDevopsProjectSprintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectSprintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetOrgId(v string) *CreateDevopsProjectSprintRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetName(v string) *CreateDevopsProjectSprintRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetDescription(v string) *CreateDevopsProjectSprintRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetProjectId(v string) *CreateDevopsProjectSprintRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetExecutorId(v string) *CreateDevopsProjectSprintRequest {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetStartDate(v string) *CreateDevopsProjectSprintRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintRequest) SetDueDate(v string) *CreateDevopsProjectSprintRequest {
+	s.DueDate = &v
+	return s
+}
+
+type CreateDevopsProjectSprintResponseBody struct {
+	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateDevopsProjectSprintResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s CreateDevopsProjectSprintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectSprintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *CreateDevopsProjectSprintResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetRequestId(v string) *CreateDevopsProjectSprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *CreateDevopsProjectSprintResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetErrorCode(v string) *CreateDevopsProjectSprintResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBody) SetObject(v *CreateDevopsProjectSprintResponseBodyObject) *CreateDevopsProjectSprintResponseBody {
+	s.Object = v
+	return s
+}
+
+type CreateDevopsProjectSprintResponseBodyObject struct {
+	Status       *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	ProjectId    *string                                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StartDate    *string                                              `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	CreatorId    *string                                              `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Executor     *string                                              `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	Description  *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Accomplished *string                                              `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	IsDeleted    *bool                                                `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	Updated      *string                                              `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	DueDate      *string                                              `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	Created      *string                                              `json:"Created,omitempty" xml:"Created,omitempty"`
+	Name         *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *CreateDevopsProjectSprintResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
+}
+
+func (s CreateDevopsProjectSprintResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectSprintResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetStatus(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetProjectId(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetCreatorId(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetExecutor(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Executor = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetDescription(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetAccomplished(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Accomplished = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetIsDeleted(v bool) *CreateDevopsProjectSprintResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetUpdated(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetDueDate(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.DueDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetCreated(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetName(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetId(v string) *CreateDevopsProjectSprintResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObject) SetPlanToDo(v *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) *CreateDevopsProjectSprintResponseBodyObject {
+	s.PlanToDo = v
+	return s
+}
+
+type CreateDevopsProjectSprintResponseBodyObjectPlanToDo struct {
+	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
+	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
+}
+
+func (s CreateDevopsProjectSprintResponseBodyObjectPlanToDo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectSprintResponseBodyObjectPlanToDo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetTasks(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
+	s.Tasks = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
+	s.WorkTimes = &v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *CreateDevopsProjectSprintResponseBodyObjectPlanToDo {
+	s.StoryPoints = &v
+	return s
+}
+
+type CreateDevopsProjectSprintResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDevopsProjectSprintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectSprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectSprintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDevopsProjectSprintResponse) SetBody(v *CreateDevopsProjectSprintResponseBody) *CreateDevopsProjectSprintResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDevopsProjectSprintRequest struct {
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExecutorId  *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	DueDate     *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	SprintId    *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+}
+
+func (s UpdateDevopsProjectSprintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectSprintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetOrgId(v string) *UpdateDevopsProjectSprintRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetName(v string) *UpdateDevopsProjectSprintRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetDescription(v string) *UpdateDevopsProjectSprintRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetProjectId(v string) *UpdateDevopsProjectSprintRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetExecutorId(v string) *UpdateDevopsProjectSprintRequest {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetStartDate(v string) *UpdateDevopsProjectSprintRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetDueDate(v string) *UpdateDevopsProjectSprintRequest {
+	s.DueDate = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintRequest) SetSprintId(v string) *UpdateDevopsProjectSprintRequest {
+	s.SprintId = &v
+	return s
+}
+
+type UpdateDevopsProjectSprintResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s UpdateDevopsProjectSprintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectSprintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintResponseBody) SetRequestId(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintResponseBody) SetObject(v bool) *UpdateDevopsProjectSprintResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectSprintResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintResponseBody) SetErrorCode(v string) *UpdateDevopsProjectSprintResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type UpdateDevopsProjectSprintResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDevopsProjectSprintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectSprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectSprintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDevopsProjectSprintResponse) SetBody(v *UpdateDevopsProjectSprintResponseBody) *UpdateDevopsProjectSprintResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDevopsOrganizationRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationRequest) SetOrgId(v string) *DeleteDevopsOrganizationRequest {
+	s.OrgId = &v
+	return s
+}
+
+type DeleteDevopsOrganizationResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetObject(v string) *DeleteDevopsOrganizationResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteDevopsOrganizationResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsOrganizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationResponse) SetHeaders(v map[string]*string) *DeleteDevopsOrganizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationResponse) SetBody(v *DeleteDevopsOrganizationResponseBody) *DeleteDevopsOrganizationResponse {
+	s.Body = v
+	return s
+}
+
+type CancelPipelineRequest struct {
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
+	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s CancelPipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelPipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelPipelineRequest) SetOrgId(v string) *CancelPipelineRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CancelPipelineRequest) SetPipelineId(v int64) *CancelPipelineRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *CancelPipelineRequest) SetFlowInstanceId(v int64) *CancelPipelineRequest {
+	s.FlowInstanceId = &v
+	return s
+}
+
+func (s *CancelPipelineRequest) SetUserPk(v string) *CancelPipelineRequest {
+	s.UserPk = &v
+	return s
+}
+
+type CancelPipelineResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelPipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelPipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelPipelineResponseBody) SetRequestId(v string) *CancelPipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelPipelineResponseBody) SetErrorMessage(v string) *CancelPipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CancelPipelineResponseBody) SetObject(v bool) *CancelPipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CancelPipelineResponseBody) SetErrorCode(v string) *CancelPipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CancelPipelineResponseBody) SetSuccess(v bool) *CancelPipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelPipelineResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelPipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelPipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelPipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelPipelineResponse) SetHeaders(v map[string]*string) *CancelPipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelPipelineResponse) SetBody(v *CancelPipelineResponseBody) *CancelPipelineResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsProjectTaskFlowStatusRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	TaskFlowId *string `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
+}
+
+func (s ListDevopsProjectTaskFlowStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskFlowStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskFlowStatusRequest) SetOrgId(v string) *ListDevopsProjectTaskFlowStatusRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusRequest) SetTaskFlowId(v string) *ListDevopsProjectTaskFlowStatusRequest {
+	s.TaskFlowId = &v
+	return s
+}
+
+type ListDevopsProjectTaskFlowStatusResponseBody struct {
+	ErrorMsg   *string                                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsProjectTaskFlowStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetObject(v []*ListDevopsProjectTaskFlowStatusResponseBodyObject) *ListDevopsProjectTaskFlowStatusResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListDevopsProjectTaskFlowStatusResponseBodyObject struct {
+	TaskflowId      *string `json:"TaskflowId,omitempty" xml:"TaskflowId,omitempty"`
+	Kind            *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Pos             *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	IsDeleted       *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	Updated         *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	CreatorId       *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Created         *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	RejectStatusIds *string `json:"RejectStatusIds,omitempty" xml:"RejectStatusIds,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetTaskflowId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.TaskflowId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetKind(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Kind = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetPos(v int32) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Pos = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetIsDeleted(v bool) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetUpdated(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetName(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetCreated(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetRejectStatusIds(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.RejectStatusIds = &v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type ListDevopsProjectTaskFlowStatusResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectTaskFlowStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectTaskFlowStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskFlowStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDevopsProjectTaskFlowStatusResponse) SetBody(v *ListDevopsProjectTaskFlowStatusResponseBody) *ListDevopsProjectTaskFlowStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserOrganizationRequest struct {
+	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+}
+
+func (s ListUserOrganizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserOrganizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserOrganizationRequest) SetRealPk(v string) *ListUserOrganizationRequest {
+	s.RealPk = &v
+	return s
+}
+
+type ListUserOrganizationResponseBody struct {
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []*ListUserOrganizationResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListUserOrganizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserOrganizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserOrganizationResponseBody) SetErrorMessage(v string) *ListUserOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBody) SetRequestId(v string) *ListUserOrganizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBody) SetSuccess(v bool) *ListUserOrganizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBody) SetErrorCode(v string) *ListUserOrganizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBody) SetObject(v []*ListUserOrganizationResponseBodyObject) *ListUserOrganizationResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListUserOrganizationResponseBodyObject struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListUserOrganizationResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserOrganizationResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserOrganizationResponseBodyObject) SetName(v string) *ListUserOrganizationResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUserOrganizationResponseBodyObject) SetId(v string) *ListUserOrganizationResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type ListUserOrganizationResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserOrganizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserOrganizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserOrganizationResponse) SetHeaders(v map[string]*string) *ListUserOrganizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserOrganizationResponse) SetBody(v *ListUserOrganizationResponseBody) *ListUserOrganizationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePipelineEnvVarsRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// 流水线id
+	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// 需要修改的环境变量和默认值，json形式
+	EnvVars *string `json:"EnvVars,omitempty" xml:"EnvVars,omitempty"`
+}
+
+func (s UpdatePipelineEnvVarsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineEnvVarsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineEnvVarsRequest) SetOrgId(v string) *UpdatePipelineEnvVarsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdatePipelineEnvVarsRequest) SetPipelineId(v int64) *UpdatePipelineEnvVarsRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *UpdatePipelineEnvVarsRequest) SetEnvVars(v string) *UpdatePipelineEnvVarsRequest {
+	s.EnvVars = &v
+	return s
+}
+
+type UpdatePipelineEnvVarsResponseBody struct {
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+}
+
+func (s UpdatePipelineEnvVarsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineEnvVarsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineEnvVarsResponseBody) SetRequestId(v string) *UpdatePipelineEnvVarsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePipelineEnvVarsResponseBody) SetPipelineId(v int64) *UpdatePipelineEnvVarsResponseBody {
+	s.PipelineId = &v
+	return s
+}
+
+type UpdatePipelineEnvVarsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdatePipelineEnvVarsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePipelineEnvVarsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineEnvVarsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineEnvVarsResponse) SetHeaders(v map[string]*string) *UpdatePipelineEnvVarsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePipelineEnvVarsResponse) SetBody(v *UpdatePipelineEnvVarsResponseBody) *UpdatePipelineEnvVarsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDevopsProjectRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteDevopsProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectRequest) SetOrgId(v string) *DeleteDevopsProjectRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectRequest) SetProjectId(v string) *DeleteDevopsProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteDevopsProjectResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteDevopsProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetRequestId(v string) *DeleteDevopsProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetErrorMessage(v string) *DeleteDevopsProjectResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetObject(v string) *DeleteDevopsProjectResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetSuccess(v bool) *DeleteDevopsProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponseBody) SetErrorCode(v string) *DeleteDevopsProjectResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteDevopsProjectResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsProjectResponse) SetBody(v *DeleteDevopsProjectResponseBody) *DeleteDevopsProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineInstanceStatusRequest struct {
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
+	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s GetPipelineInstanceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceStatusRequest) SetOrgId(v string) *GetPipelineInstanceStatusRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceStatusRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusRequest) SetFlowInstanceId(v int64) *GetPipelineInstanceStatusRequest {
+	s.FlowInstanceId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusRequest) SetUserPk(v string) *GetPipelineInstanceStatusRequest {
+	s.UserPk = &v
+	return s
+}
+
+type GetPipelineInstanceStatusResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPipelineInstanceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusResponseBody) SetObject(v string) *GetPipelineInstanceStatusResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPipelineInstanceStatusResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineInstanceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineInstanceStatusResponse) SetBody(v *GetPipelineInstanceStatusResponseBody) *GetPipelineInstanceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineLogRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetPipelineLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineLogRequest) SetOrgId(v string) *GetPipelineLogRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineLogRequest) SetPipelineId(v int64) *GetPipelineLogRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineLogRequest) SetUserPk(v string) *GetPipelineLogRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *GetPipelineLogRequest) SetJobId(v int64) *GetPipelineLogRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetPipelineLogResponseBody struct {
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []*GetPipelineLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineLogResponseBody) SetRequestId(v string) *GetPipelineLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBody) SetErrorMessage(v string) *GetPipelineLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBody) SetSuccess(v bool) *GetPipelineLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBody) SetErrorCode(v string) *GetPipelineLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBody) SetObject(v []*GetPipelineLogResponseBodyObject) *GetPipelineLogResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetPipelineLogResponseBodyObject struct {
+	ActionName        *string                                              `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	StartTime         *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	JobId             *int64                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	BuildProcessNodes []*GetPipelineLogResponseBodyObjectBuildProcessNodes `json:"BuildProcessNodes,omitempty" xml:"BuildProcessNodes,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineLogResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineLogResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineLogResponseBodyObject) SetActionName(v string) *GetPipelineLogResponseBodyObject {
+	s.ActionName = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBodyObject) SetStartTime(v string) *GetPipelineLogResponseBodyObject {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBodyObject) SetJobId(v int64) *GetPipelineLogResponseBodyObject {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBodyObject) SetBuildProcessNodes(v []*GetPipelineLogResponseBodyObjectBuildProcessNodes) *GetPipelineLogResponseBodyObject {
+	s.BuildProcessNodes = v
+	return s
+}
+
+type GetPipelineLogResponseBodyObjectBuildProcessNodes struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NodeIndex *int32  `json:"NodeIndex,omitempty" xml:"NodeIndex,omitempty"`
+	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+}
+
+func (s GetPipelineLogResponseBodyObjectBuildProcessNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineLogResponseBodyObjectBuildProcessNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetStatus(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeIndex(v int32) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
+	s.NodeIndex = &v
+	return s
+}
+
+func (s *GetPipelineLogResponseBodyObjectBuildProcessNodes) SetNodeName(v string) *GetPipelineLogResponseBodyObjectBuildProcessNodes {
+	s.NodeName = &v
+	return s
+}
+
+type GetPipelineLogResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineLogResponse) SetHeaders(v map[string]*string) *GetPipelineLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineLogResponse) SetBody(v *GetPipelineLogResponseBody) *GetPipelineLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserByAliyunUidRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s GetUserByAliyunUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserByAliyunUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserByAliyunUidRequest) SetOrgId(v string) *GetUserByAliyunUidRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidRequest) SetUserPk(v string) *GetUserByAliyunUidRequest {
+	s.UserPk = &v
+	return s
+}
+
+type GetUserByAliyunUidResponseBody struct {
+	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetUserByAliyunUidResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetUserByAliyunUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserByAliyunUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetErrorMsg(v string) *GetUserByAliyunUidResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetRequestId(v string) *GetUserByAliyunUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetSuccessful(v bool) *GetUserByAliyunUidResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetErrorCode(v string) *GetUserByAliyunUidResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBody) SetObject(v *GetUserByAliyunUidResponseBodyObject) *GetUserByAliyunUidResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetUserByAliyunUidResponseBodyObject struct {
+	AliyunPk  *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+}
+
+func (s GetUserByAliyunUidResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserByAliyunUidResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetAliyunPk(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetEmail(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.Email = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetAvatarUrl(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetName(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetId(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponseBodyObject) SetPhone(v string) *GetUserByAliyunUidResponseBodyObject {
+	s.Phone = &v
+	return s
+}
+
+type GetUserByAliyunUidResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserByAliyunUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserByAliyunUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserByAliyunUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserByAliyunUidResponse) SetHeaders(v map[string]*string) *GetUserByAliyunUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserByAliyunUidResponse) SetBody(v *GetUserByAliyunUidResponseBody) *GetUserByAliyunUidResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePipelineMemberRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s UpdatePipelineMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineMemberRequest) SetOrgId(v string) *UpdatePipelineMemberRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberRequest) SetPipelineId(v int64) *UpdatePipelineMemberRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberRequest) SetUserPk(v string) *UpdatePipelineMemberRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberRequest) SetUserId(v string) *UpdatePipelineMemberRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberRequest) SetRoleName(v string) *UpdatePipelineMemberRequest {
+	s.RoleName = &v
+	return s
+}
+
+type UpdatePipelineMemberResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdatePipelineMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineMemberResponseBody) SetRequestId(v string) *UpdatePipelineMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberResponseBody) SetErrorMessage(v string) *UpdatePipelineMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberResponseBody) SetObject(v bool) *UpdatePipelineMemberResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberResponseBody) SetErrorCode(v string) *UpdatePipelineMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePipelineMemberResponseBody) SetSuccess(v bool) *UpdatePipelineMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePipelineMemberResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdatePipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePipelineMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineMemberResponse) SetHeaders(v map[string]*string) *UpdatePipelineMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePipelineMemberResponse) SetBody(v *UpdatePipelineMemberResponseBody) *UpdatePipelineMemberResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsProjectsRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	SelectBy  *string `json:"SelectBy,omitempty" xml:"SelectBy,omitempty"`
+}
+
+func (s ListDevopsProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsRequest) SetOrgId(v string) *ListDevopsProjectsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetPageSize(v int32) *ListDevopsProjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetOrderBy(v string) *ListDevopsProjectsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetPageToken(v string) *ListDevopsProjectsRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *ListDevopsProjectsRequest) SetSelectBy(v string) *ListDevopsProjectsRequest {
+	s.SelectBy = &v
+	return s
+}
+
+type ListDevopsProjectsResponseBody struct {
+	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *ListDevopsProjectsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s ListDevopsProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBody) SetErrorMsg(v string) *ListDevopsProjectsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetRequestId(v string) *ListDevopsProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetSuccessful(v bool) *ListDevopsProjectsResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetErrorCode(v string) *ListDevopsProjectsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBody) SetObject(v *ListDevopsProjectsResponseBodyObject) *ListDevopsProjectsResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListDevopsProjectsResponseBodyObject struct {
+	NextPageToken *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	Result        []*ListDevopsProjectsResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListDevopsProjectsResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBodyObject) SetNextPageToken(v string) *ListDevopsProjectsResponseBodyObject {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObject) SetResult(v []*ListDevopsProjectsResponseBodyObjectResult) *ListDevopsProjectsResponseBodyObject {
+	s.Result = v
+	return s
+}
+
+type ListDevopsProjectsResponseBodyObjectResult struct {
+	Logo           *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	IsStar         *bool   `json:"IsStar,omitempty" xml:"IsStar,omitempty"`
+	CreatorId      *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	MembersCount   *int32  `json:"MembersCount,omitempty" xml:"MembersCount,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Visibility     *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	IsTemplate     *bool   `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Updated        *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	Created        *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	IsArchived     *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsPublic       *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	TasksCount     *int32  `json:"TasksCount,omitempty" xml:"TasksCount,omitempty"`
+	RoleId         *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListDevopsProjectsResponseBodyObjectResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponseBodyObjectResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetLogo(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Logo = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsStar(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsStar = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreatorId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetMembersCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
+	s.MembersCount = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetOrganizationId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetVisibility(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Visibility = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsTemplate(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsTemplate = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetDescription(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetUpdated(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Updated = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreated(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Created = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsArchived(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsArchived = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetName(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsPublic(v bool) *ListDevopsProjectsResponseBodyObjectResult {
+	s.IsPublic = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetTasksCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
+	s.TasksCount = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetRoleId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListDevopsProjectsResponseBodyObjectResult) SetId(v string) *ListDevopsProjectsResponseBodyObjectResult {
+	s.Id = &v
+	return s
+}
+
+type ListDevopsProjectsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDevopsProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectsResponse) SetHeaders(v map[string]*string) *ListDevopsProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDevopsProjectsResponse) SetBody(v *ListDevopsProjectsResponseBody) *ListDevopsProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDevopsProjectTaskRequest struct {
+	OrgId                 *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExecutorId            *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	DueDate               *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	ScenarioFieldConfigId *string `json:"ScenarioFieldConfigId,omitempty" xml:"ScenarioFieldConfigId,omitempty"`
+	TaskFlowStatusId      *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
+	Note                  *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	Priority              *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Visible               *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	ParentTaskId          *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	SprintId              *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+	TaskListId            *string `json:"TaskListId,omitempty" xml:"TaskListId,omitempty"`
+}
+
+func (s CreateDevopsProjectTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetOrgId(v string) *CreateDevopsProjectTaskRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetContent(v string) *CreateDevopsProjectTaskRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetProjectId(v string) *CreateDevopsProjectTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetExecutorId(v string) *CreateDevopsProjectTaskRequest {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetStartDate(v string) *CreateDevopsProjectTaskRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetDueDate(v string) *CreateDevopsProjectTaskRequest {
+	s.DueDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetScenarioFieldConfigId(v string) *CreateDevopsProjectTaskRequest {
+	s.ScenarioFieldConfigId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetTaskFlowStatusId(v string) *CreateDevopsProjectTaskRequest {
+	s.TaskFlowStatusId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetNote(v string) *CreateDevopsProjectTaskRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetPriority(v int32) *CreateDevopsProjectTaskRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetVisible(v string) *CreateDevopsProjectTaskRequest {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetParentTaskId(v string) *CreateDevopsProjectTaskRequest {
+	s.ParentTaskId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetSprintId(v string) *CreateDevopsProjectTaskRequest {
+	s.SprintId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskRequest) SetTaskListId(v string) *CreateDevopsProjectTaskRequest {
+	s.TaskListId = &v
+	return s
+}
+
+type CreateDevopsProjectTaskResponseBody struct {
+	ErrorMsg   *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateDevopsProjectTaskResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s CreateDevopsProjectTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *CreateDevopsProjectTaskResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetRequestId(v string) *CreateDevopsProjectTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *CreateDevopsProjectTaskResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetErrorCode(v string) *CreateDevopsProjectTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBody) SetObject(v *CreateDevopsProjectTaskResponseBodyObject) *CreateDevopsProjectTaskResponseBody {
+	s.Object = v
+	return s
+}
+
+type CreateDevopsProjectTaskResponseBodyObject struct {
+	ExecutorId            *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Priority              *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ScenarioFieldConfigId *string `json:"ScenarioFieldConfigId,omitempty" xml:"ScenarioFieldConfigId,omitempty"`
+	AncestorIds           *string `json:"AncestorIds,omitempty" xml:"AncestorIds,omitempty"`
+	TaskType              *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TasklistId            *string `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
+	TaskflowstatusId      *string `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
+	Note                  *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	Updated               *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	UniqueId              *int32  `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Rating                *int32  `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	Pos                   *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	StoryPoint            *string `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	StartDate             *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	CreatorId             *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Source                *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Visible               *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	IsDone                *bool   `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
+	SprintId              *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+	DueDate               *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	Created               *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateDevopsProjectTaskResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectTaskResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetExecutorId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetProjectId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetPriority(v int32) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetScenarioFieldConfigId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.ScenarioFieldConfigId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetAncestorIds(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.AncestorIds = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetTaskType(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetTasklistId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.TasklistId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetTaskflowstatusId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.TaskflowstatusId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetNote(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Note = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetUpdated(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetUniqueId(v int32) *CreateDevopsProjectTaskResponseBodyObject {
+	s.UniqueId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetContent(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetRating(v int32) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Rating = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetPos(v int32) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Pos = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetStoryPoint(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.StoryPoint = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetStartDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetCreatorId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetSource(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetOrganizationId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetVisible(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetIsDone(v bool) *CreateDevopsProjectTaskResponseBodyObject {
+	s.IsDone = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetSprintId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.SprintId = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetDueDate(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.DueDate = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetCreated(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponseBodyObject) SetId(v string) *CreateDevopsProjectTaskResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type CreateDevopsProjectTaskResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDevopsProjectTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDevopsProjectTaskResponse) SetBody(v *CreateDevopsProjectTaskResponseBody) *CreateDevopsProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	BuildNum   *int64  `json:"BuildNum,omitempty" xml:"BuildNum,omitempty"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusRequest) SetOrgId(v string) *GetPipelineInstanceBuildNumberStatusRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceBuildNumberStatusRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusRequest) SetUserPk(v string) *GetPipelineInstanceBuildNumberStatusRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusRequest) SetBuildNum(v int64) *GetPipelineInstanceBuildNumberStatusRequest {
+	s.BuildNum = &v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponseBody struct {
+	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineInstanceBuildNumberStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBody) SetObject(v *GetPipelineInstanceBuildNumberStatusResponseBodyObject) *GetPipelineInstanceBuildNumberStatusResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponseBodyObject struct {
+	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Groups []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObject) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObject) SetGroups(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) *GetPipelineInstanceBuildNumberStatusResponseBodyObject {
+	s.Groups = v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups struct {
+	Status *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroups {
+	s.Stages = v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages struct {
+	Status     *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sign       *string                                                                         `json:"Sign,omitempty" xml:"Sign,omitempty"`
+	Components []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
+	s.Sign = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStages {
+	s.Components = v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipelineInstanceBuildNumberStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
+	return s
+}
+
+type GetPipelineInstanceBuildNumberStatusResponse struct {
+	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineInstanceBuildNumberStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceBuildNumberStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceBuildNumberStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineInstanceBuildNumberStatusResponse) SetBody(v *GetPipelineInstanceBuildNumberStatusResponseBody) *GetPipelineInstanceBuildNumberStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsProjectSprintsRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+}
+
+func (s ListDevopsProjectSprintsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectSprintsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectSprintsRequest) SetOrgId(v string) *ListDevopsProjectSprintsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsRequest) SetProjectId(v string) *ListDevopsProjectSprintsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsRequest) SetPageSize(v int64) *ListDevopsProjectSprintsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsRequest) SetPageToken(v string) *ListDevopsProjectSprintsRequest {
+	s.PageToken = &v
+	return s
+}
+
+type ListDevopsProjectSprintsResponseBody struct {
+	ErrorMsg      *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful    *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode     *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object        []*ListDevopsProjectSprintsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+	NextPageToken *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+}
+
+func (s ListDevopsProjectSprintsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectSprintsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetErrorMsg(v string) *ListDevopsProjectSprintsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetRequestId(v string) *ListDevopsProjectSprintsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetSuccessful(v bool) *ListDevopsProjectSprintsResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetErrorCode(v string) *ListDevopsProjectSprintsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetObject(v []*ListDevopsProjectSprintsResponseBodyObject) *ListDevopsProjectSprintsResponseBody {
+	s.Object = v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBody) SetNextPageToken(v string) *ListDevopsProjectSprintsResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+type ListDevopsProjectSprintsResponseBodyObject struct {
+	Status       *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Accomplished *string                                             `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	ProjectId    *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	IsDeleted    *bool                                               `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	StartDate    *string                                             `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Updated      *string                                             `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	CreatorId    *string                                             `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DueDate      *string                                             `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	Name         *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Created      *string                                             `json:"Created,omitempty" xml:"Created,omitempty"`
+	Id           *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *ListDevopsProjectSprintsResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
+}
+
+func (s ListDevopsProjectSprintsResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectSprintsResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetStatus(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetAccomplished(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Accomplished = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetProjectId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetIsDeleted(v bool) *ListDevopsProjectSprintsResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetStartDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetUpdated(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetDueDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.DueDate = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetName(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreated(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObject) SetPlanToDo(v *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) *ListDevopsProjectSprintsResponseBodyObject {
+	s.PlanToDo = v
+	return s
+}
+
+type ListDevopsProjectSprintsResponseBodyObjectPlanToDo struct {
+	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
+	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
+}
+
+func (s ListDevopsProjectSprintsResponseBodyObjectPlanToDo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectSprintsResponseBodyObjectPlanToDo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetTasks(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
+	s.Tasks = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
+	s.WorkTimes = &v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
+	s.StoryPoints = &v
+	return s
+}
+
+type ListDevopsProjectSprintsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsProjectSprintsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDevopsProjectSprintsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsProjectSprintsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsProjectSprintsResponse) SetHeaders(v map[string]*string) *ListDevopsProjectSprintsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDevopsProjectSprintsResponse) SetBody(v *ListDevopsProjectSprintsResponseBody) *ListDevopsProjectSprintsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDevopsProjectInfoRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetDevopsProjectInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectInfoRequest) SetOrgId(v string) *GetDevopsProjectInfoRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoRequest) SetProjectId(v string) *GetDevopsProjectInfoRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetDevopsProjectInfoResponseBody struct {
+	ErrorMsg   *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetDevopsProjectInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetRequestId(v string) *GetDevopsProjectInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectInfoResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBody) SetObject(v *GetDevopsProjectInfoResponseBodyObject) *GetDevopsProjectInfoResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetDevopsProjectInfoResponseBodyObject struct {
+	SortMethod          *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
+	UniqueIdPrefix      *string `json:"UniqueIdPrefix,omitempty" xml:"UniqueIdPrefix,omitempty"`
+	NormalType          *string `json:"NormalType,omitempty" xml:"NormalType,omitempty"`
+	ModifierId          *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	IsTemplate          *bool   `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DefaultRoleId       *string `json:"DefaultRoleId,omitempty" xml:"DefaultRoleId,omitempty"`
+	RootCollectionId    *string `json:"RootCollectionId,omitempty" xml:"RootCollectionId,omitempty"`
+	IsDeleted           *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	Updated             *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsArchived          *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
+	EndDate             *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Logo                *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	StartDate           *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Pinyin              *string `json:"Pinyin,omitempty" xml:"Pinyin,omitempty"`
+	CreatorId           *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	SourceId            *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	DefaultCollectionId *string `json:"DefaultCollectionId,omitempty" xml:"DefaultCollectionId,omitempty"`
+	IsSuspended         *bool   `json:"IsSuspended,omitempty" xml:"IsSuspended,omitempty"`
+	OrganizationId      *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Visibility          *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Py                  *string `json:"Py,omitempty" xml:"Py,omitempty"`
+	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	NextTaskUniqueId    *int32  `json:"NextTaskUniqueId,omitempty" xml:"NextTaskUniqueId,omitempty"`
+	Customfields        *string `json:"Customfields,omitempty" xml:"Customfields,omitempty"`
+	Created             *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDevopsProjectInfoResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectInfoResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetSortMethod(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.SortMethod = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetUniqueIdPrefix(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.UniqueIdPrefix = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetNormalType(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.NormalType = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetModifierId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetSourceType(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetIsTemplate(v bool) *GetDevopsProjectInfoResponseBodyObject {
+	s.IsTemplate = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetDescription(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultRoleId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.DefaultRoleId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetRootCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.RootCollectionId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectInfoResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetName(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetIsArchived(v bool) *GetDevopsProjectInfoResponseBodyObject {
+	s.IsArchived = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetEndDate(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetLogo(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Logo = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetPinyin(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Pinyin = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetSourceId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetDefaultCollectionId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.DefaultCollectionId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetIsSuspended(v bool) *GetDevopsProjectInfoResponseBodyObject {
+	s.IsSuspended = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetVisibility(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Visibility = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetPy(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Py = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetCategory(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Category = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetNextTaskUniqueId(v int32) *GetDevopsProjectInfoResponseBodyObject {
+	s.NextTaskUniqueId = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetCustomfields(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Customfields = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponseBodyObject) SetId(v string) *GetDevopsProjectInfoResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type GetDevopsProjectInfoResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDevopsProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDevopsProjectInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDevopsProjectInfoResponse) SetBody(v *GetDevopsProjectInfoResponseBody) *GetDevopsProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePipelineMemberRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DeletePipelineMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineMemberRequest) SetOrgId(v string) *DeletePipelineMemberRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DeletePipelineMemberRequest) SetPipelineId(v int64) *DeletePipelineMemberRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *DeletePipelineMemberRequest) SetUserPk(v string) *DeletePipelineMemberRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *DeletePipelineMemberRequest) SetUserId(v string) *DeletePipelineMemberRequest {
+	s.UserId = &v
+	return s
+}
+
+type DeletePipelineMemberResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeletePipelineMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineMemberResponseBody) SetRequestId(v string) *DeletePipelineMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePipelineMemberResponseBody) SetErrorMessage(v string) *DeletePipelineMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeletePipelineMemberResponseBody) SetObject(v bool) *DeletePipelineMemberResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeletePipelineMemberResponseBody) SetErrorCode(v string) *DeletePipelineMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeletePipelineMemberResponseBody) SetSuccess(v bool) *DeletePipelineMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePipelineMemberResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeletePipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePipelineMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePipelineMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePipelineMemberResponse) SetHeaders(v map[string]*string) *DeletePipelineMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePipelineMemberResponse) SetBody(v *DeletePipelineMemberResponseBody) *DeletePipelineMemberResponse {
+	s.Body = v
+	return s
+}
+
+type GetDevopsProjectSprintInfoRequest struct {
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	SprintId *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+}
+
+func (s GetDevopsProjectSprintInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectSprintInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectSprintInfoRequest) SetOrgId(v string) *GetDevopsProjectSprintInfoRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoRequest) SetSprintId(v string) *GetDevopsProjectSprintInfoRequest {
+	s.SprintId = &v
+	return s
+}
+
+type GetDevopsProjectSprintInfoResponseBody struct {
+	ErrorMsg   *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectSprintInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetDevopsProjectSprintInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectSprintInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectSprintInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetRequestId(v string) *GetDevopsProjectSprintInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectSprintInfoResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectSprintInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBody) SetObject(v *GetDevopsProjectSprintInfoResponseBodyObject) *GetDevopsProjectSprintInfoResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetDevopsProjectSprintInfoResponseBodyObject struct {
+	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Accomplished *string                                               `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
+	ProjectId    *string                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	IsDeleted    *bool                                                 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	StartDate    *string                                               `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Updated      *string                                               `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	CreatorId    *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DueDate      *string                                               `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Created      *string                                               `json:"Created,omitempty" xml:"Created,omitempty"`
+	Id           *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	PlanToDo     *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
+}
+
+func (s GetDevopsProjectSprintInfoResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectSprintInfoResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStatus(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetAccomplished(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Accomplished = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetDueDate(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.DueDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetName(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetId(v string) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObject) SetPlanToDo(v *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) *GetDevopsProjectSprintInfoResponseBodyObject {
+	s.PlanToDo = v
+	return s
+}
+
+type GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo struct {
+	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
+	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
+}
+
+func (s GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetTasks(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
+	s.Tasks = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
+	s.WorkTimes = &v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *GetDevopsProjectSprintInfoResponseBodyObjectPlanToDo {
+	s.StoryPoints = &v
+	return s
+}
+
+type GetDevopsProjectSprintInfoResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDevopsProjectSprintInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDevopsProjectSprintInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectSprintInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectSprintInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectSprintInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDevopsProjectSprintInfoResponse) SetBody(v *GetDevopsProjectSprintInfoResponseBody) *GetDevopsProjectSprintInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDevopsOrganizationMembersRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationMembersRequest) SetOrgId(v string) *DeleteDevopsOrganizationMembersRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersRequest) SetUserId(v string) *DeleteDevopsOrganizationMembersRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersRequest) SetRealPk(v string) *DeleteDevopsOrganizationMembersRequest {
+	s.RealPk = &v
+	return s
+}
+
+type DeleteDevopsOrganizationMembersResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteDevopsOrganizationMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorMessage(v string) *DeleteDevopsOrganizationMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetRequestId(v string) *DeleteDevopsOrganizationMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetObject(v bool) *DeleteDevopsOrganizationMembersResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetSuccess(v bool) *DeleteDevopsOrganizationMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *DeleteDevopsOrganizationMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteDevopsOrganizationMembersResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsOrganizationMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsOrganizationMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsOrganizationMembersResponse) SetHeaders(v map[string]*string) *DeleteDevopsOrganizationMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsOrganizationMembersResponse) SetBody(v *DeleteDevopsOrganizationMembersResponseBody) *DeleteDevopsOrganizationMembersResponse {
+	s.Body = v
+	return s
+}
+
+type GetLastWorkspaceRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+}
+
+func (s GetLastWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceRequest) SetOrgId(v string) *GetLastWorkspaceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetLastWorkspaceRequest) SetRealPk(v string) *GetLastWorkspaceRequest {
+	s.RealPk = &v
+	return s
+}
+
+type GetLastWorkspaceResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s GetLastWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorMessage(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetRequestId(v string) *GetLastWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetObject(v string) *GetLastWorkspaceResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetSuccess(v bool) *GetLastWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetLastWorkspaceResponseBody) SetErrorCode(v string) *GetLastWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type GetLastWorkspaceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLastWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLastWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastWorkspaceResponse) SetHeaders(v map[string]*string) *GetLastWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLastWorkspaceResponse) SetBody(v *GetLastWorkspaceResponseBody) *GetLastWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCredentialRequest struct {
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s CreateCredentialRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCredentialRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCredentialRequest) SetOrgId(v string) *CreateCredentialRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetName(v string) *CreateCredentialRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetUserName(v string) *CreateCredentialRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetPassword(v string) *CreateCredentialRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetType(v string) *CreateCredentialRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetUserPk(v string) *CreateCredentialRequest {
+	s.UserPk = &v
+	return s
+}
+
+type CreateCredentialResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s CreateCredentialResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCredentialResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCredentialResponseBody) SetErrorMessage(v string) *CreateCredentialResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateCredentialResponseBody) SetRequestId(v string) *CreateCredentialResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCredentialResponseBody) SetObject(v int64) *CreateCredentialResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateCredentialResponseBody) SetSuccess(v bool) *CreateCredentialResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateCredentialResponseBody) SetErrorCode(v string) *CreateCredentialResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type CreateCredentialResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCredentialResponse) SetHeaders(v map[string]*string) *CreateCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCredentialResponse) SetBody(v *CreateCredentialResponseBody) *CreateCredentialResponse {
+	s.Body = v
+	return s
+}
+
+type ListCredentialsRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s ListCredentialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCredentialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCredentialsRequest) SetOrgId(v string) *ListCredentialsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListCredentialsRequest) SetUserPk(v string) *ListCredentialsRequest {
+	s.UserPk = &v
+	return s
+}
+
+type ListCredentialsResponseBody struct {
+	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCredentialsResponseBody) SetRequestId(v string) *ListCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBody) SetErrorMessage(v string) *ListCredentialsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBody) SetSuccess(v bool) *ListCredentialsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBody) SetErrorCode(v string) *ListCredentialsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBody) SetObject(v []map[string]interface{}) *ListCredentialsResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListCredentialsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCredentialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCredentialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCredentialsResponse) SetHeaders(v map[string]*string) *ListCredentialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCredentialsResponse) SetBody(v *ListCredentialsResponseBody) *ListCredentialsResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePipelineRequest struct {
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Pipeline *string `json:"Pipeline,omitempty" xml:"Pipeline,omitempty"`
+	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s CreatePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineRequest) SetOrgId(v string) *CreatePipelineRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetPipeline(v string) *CreatePipelineRequest {
+	s.Pipeline = &v
+	return s
+}
+
+func (s *CreatePipelineRequest) SetUserPk(v string) *CreatePipelineRequest {
+	s.UserPk = &v
+	return s
+}
+
+type CreatePipelineResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s CreatePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetObject(v int64) *CreatePipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type CreatePipelineResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreatePipelineResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelinesRequest struct {
+	OrgId            *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineName     *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
+	Creators         *string `json:"Creators,omitempty" xml:"Creators,omitempty"`
+	Operators        *string `json:"Operators,omitempty" xml:"Operators,omitempty"`
+	ResultStatusList *string `json:"ResultStatusList,omitempty" xml:"ResultStatusList,omitempty"`
+	CreateStartTime  *string `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	CreateEndTime    *string `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
+	ExecuteStartTime *string `json:"ExecuteStartTime,omitempty" xml:"ExecuteStartTime,omitempty"`
+	ExecuteEndTime   *string `json:"ExecuteEndTime,omitempty" xml:"ExecuteEndTime,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageStart        *int32  `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
+	UserPk           *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s ListPipelinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesRequest) SetOrgId(v string) *ListPipelinesRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetPipelineName(v string) *ListPipelinesRequest {
+	s.PipelineName = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetCreators(v string) *ListPipelinesRequest {
+	s.Creators = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetOperators(v string) *ListPipelinesRequest {
+	s.Operators = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetResultStatusList(v string) *ListPipelinesRequest {
+	s.ResultStatusList = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetCreateStartTime(v string) *ListPipelinesRequest {
+	s.CreateStartTime = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetCreateEndTime(v string) *ListPipelinesRequest {
+	s.CreateEndTime = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetExecuteStartTime(v string) *ListPipelinesRequest {
+	s.ExecuteStartTime = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetExecuteEndTime(v string) *ListPipelinesRequest {
+	s.ExecuteEndTime = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetPageSize(v int32) *ListPipelinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetPageStart(v int32) *ListPipelinesRequest {
+	s.PageStart = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetUserPk(v string) *ListPipelinesRequest {
+	s.UserPk = &v
+	return s
+}
+
+type ListPipelinesResponseBody struct {
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListPipelinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponseBody) SetRequestId(v string) *ListPipelinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBody) SetErrorMessage(v string) *ListPipelinesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBody) SetObject(v map[string]interface{}) *ListPipelinesResponseBody {
+	s.Object = v
+	return s
+}
+
+func (s *ListPipelinesResponseBody) SetErrorCode(v string) *ListPipelinesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBody) SetSuccess(v bool) *ListPipelinesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListPipelinesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPipelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPipelinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponse) SetHeaders(v map[string]*string) *ListPipelinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipelinesResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePipelineFromTemplateRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// 流水线模板的ID，可通过GetPipelineTemplates获取到该信息
+	PipelineTemplateId *int64 `json:"PipelineTemplateId,omitempty" xml:"PipelineTemplateId,omitempty"`
+	// 流水线名称
+	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
+}
+
+func (s CreatePipelineFromTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineFromTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineFromTemplateRequest) SetOrgId(v string) *CreatePipelineFromTemplateRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreatePipelineFromTemplateRequest) SetPipelineTemplateId(v int64) *CreatePipelineFromTemplateRequest {
+	s.PipelineTemplateId = &v
+	return s
+}
+
+func (s *CreatePipelineFromTemplateRequest) SetPipelineName(v string) *CreatePipelineFromTemplateRequest {
+	s.PipelineName = &v
+	return s
+}
+
+type CreatePipelineFromTemplateResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 流水线ID
+	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+}
+
+func (s CreatePipelineFromTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineFromTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineFromTemplateResponseBody) SetRequestId(v string) *CreatePipelineFromTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePipelineFromTemplateResponseBody) SetPipelineId(v int64) *CreatePipelineFromTemplateResponseBody {
+	s.PipelineId = &v
+	return s
+}
+
+type CreatePipelineFromTemplateResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreatePipelineFromTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePipelineFromTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePipelineFromTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePipelineFromTemplateResponse) SetHeaders(v map[string]*string) *CreatePipelineFromTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePipelineFromTemplateResponse) SetBody(v *CreatePipelineFromTemplateResponseBody) *CreatePipelineFromTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ListSmartGroupRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListSmartGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartGroupRequest) SetOrgId(v string) *ListSmartGroupRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListSmartGroupRequest) SetProjectId(v string) *ListSmartGroupRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListSmartGroupResponseBody struct {
+	ErrorMsg   *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                               `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListSmartGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListSmartGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartGroupResponseBody) SetErrorMsg(v string) *ListSmartGroupResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBody) SetRequestId(v string) *ListSmartGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBody) SetSuccessful(v bool) *ListSmartGroupResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBody) SetErrorCode(v string) *ListSmartGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBody) SetObject(v []*ListSmartGroupResponseBodyObject) *ListSmartGroupResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListSmartGroupResponseBodyObject struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListSmartGroupResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartGroupResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartGroupResponseBodyObject) SetType(v string) *ListSmartGroupResponseBodyObject {
+	s.Type = &v
+	return s
+}
+
+func (s *ListSmartGroupResponseBodyObject) SetId(v string) *ListSmartGroupResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type ListSmartGroupResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSmartGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSmartGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartGroupResponse) SetHeaders(v map[string]*string) *ListSmartGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSmartGroupResponse) SetBody(v *ListSmartGroupResponseBody) *ListSmartGroupResponse {
+	s.Body = v
+	return s
+}
+
+type TransferPipelineOwnerRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	NewOwnerId *string `json:"NewOwnerId,omitempty" xml:"NewOwnerId,omitempty"`
+}
+
+func (s TransferPipelineOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPipelineOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPipelineOwnerRequest) SetOrgId(v string) *TransferPipelineOwnerRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerRequest) SetPipelineId(v int64) *TransferPipelineOwnerRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerRequest) SetUserPk(v string) *TransferPipelineOwnerRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerRequest) SetNewOwnerId(v string) *TransferPipelineOwnerRequest {
+	s.NewOwnerId = &v
+	return s
+}
+
+type TransferPipelineOwnerResponseBody struct {
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
+	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TransferPipelineOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPipelineOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPipelineOwnerResponseBody) SetRequestId(v string) *TransferPipelineOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerResponseBody) SetErrorMessage(v string) *TransferPipelineOwnerResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerResponseBody) SetObject(v map[string]interface{}) *TransferPipelineOwnerResponseBody {
+	s.Object = v
+	return s
+}
+
+func (s *TransferPipelineOwnerResponseBody) SetErrorCode(v string) *TransferPipelineOwnerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TransferPipelineOwnerResponseBody) SetSuccess(v bool) *TransferPipelineOwnerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TransferPipelineOwnerResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TransferPipelineOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransferPipelineOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferPipelineOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferPipelineOwnerResponse) SetHeaders(v map[string]*string) *TransferPipelineOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferPipelineOwnerResponse) SetBody(v *TransferPipelineOwnerResponseBody) *TransferPipelineOwnerResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCommonGroupRequest struct {
+	OrgId        *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SmartGroupId *string `json:"SmartGroupId,omitempty" xml:"SmartGroupId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateCommonGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommonGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommonGroupRequest) SetOrgId(v string) *CreateCommonGroupRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreateCommonGroupRequest) SetProjectId(v string) *CreateCommonGroupRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateCommonGroupRequest) SetDescription(v string) *CreateCommonGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCommonGroupRequest) SetSmartGroupId(v string) *CreateCommonGroupRequest {
+	s.SmartGroupId = &v
+	return s
+}
+
+func (s *CreateCommonGroupRequest) SetName(v string) *CreateCommonGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateCommonGroupResponseBody struct {
+	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *CreateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s CreateCommonGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommonGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommonGroupResponseBody) SetErrorMsg(v string) *CreateCommonGroupResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateCommonGroupResponseBody) SetRequestId(v string) *CreateCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCommonGroupResponseBody) SetSuccessful(v bool) *CreateCommonGroupResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *CreateCommonGroupResponseBody) SetErrorCode(v string) *CreateCommonGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateCommonGroupResponseBody) SetObject(v *CreateCommonGroupResponseBodyObject) *CreateCommonGroupResponseBody {
+	s.Object = v
+	return s
+}
+
+type CreateCommonGroupResponseBodyObject struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateCommonGroupResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommonGroupResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommonGroupResponseBodyObject) SetId(v string) *CreateCommonGroupResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type CreateCommonGroupResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCommonGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommonGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommonGroupResponse) SetHeaders(v map[string]*string) *CreateCommonGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCommonGroupResponse) SetBody(v *CreateCommonGroupResponseBody) *CreateCommonGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDevopsOrganizationRequest struct {
+	OrgName            *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	Source             *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	RealPk             *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
+	DesiredMemberCount *int32  `json:"DesiredMemberCount,omitempty" xml:"DesiredMemberCount,omitempty"`
+}
+
+func (s CreateDevopsOrganizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsOrganizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsOrganizationRequest) SetOrgName(v string) *CreateDevopsOrganizationRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationRequest) SetSource(v string) *CreateDevopsOrganizationRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationRequest) SetRealPk(v string) *CreateDevopsOrganizationRequest {
+	s.RealPk = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationRequest) SetDesiredMemberCount(v int32) *CreateDevopsOrganizationRequest {
+	s.DesiredMemberCount = &v
+	return s
+}
+
+type CreateDevopsOrganizationResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s CreateDevopsOrganizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsOrganizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetErrorMessage(v string) *CreateDevopsOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetRequestId(v string) *CreateDevopsOrganizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetObject(v string) *CreateDevopsOrganizationResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetSuccess(v bool) *CreateDevopsOrganizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponseBody) SetErrorCode(v string) *CreateDevopsOrganizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type CreateDevopsOrganizationResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDevopsOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDevopsOrganizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsOrganizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsOrganizationResponse) SetHeaders(v map[string]*string) *CreateDevopsOrganizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDevopsOrganizationResponse) SetBody(v *CreateDevopsOrganizationResponseBody) *CreateDevopsOrganizationResponse {
+	s.Body = v
+	return s
+}
+
+type ListDevopsScenarioFieldConfigRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListDevopsScenarioFieldConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsScenarioFieldConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsScenarioFieldConfigRequest) SetOrgId(v string) *ListDevopsScenarioFieldConfigRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigRequest) SetProjectId(v string) *ListDevopsScenarioFieldConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListDevopsScenarioFieldConfigResponseBody struct {
+	ErrorMsg   *string                                            `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                              `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*ListDevopsScenarioFieldConfigResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s ListDevopsScenarioFieldConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsScenarioFieldConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorMsg(v string) *ListDevopsScenarioFieldConfigResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetRequestId(v string) *ListDevopsScenarioFieldConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetSuccessful(v bool) *ListDevopsScenarioFieldConfigResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorCode(v string) *ListDevopsScenarioFieldConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBody) SetObject(v []*ListDevopsScenarioFieldConfigResponseBodyObject) *ListDevopsScenarioFieldConfigResponseBody {
+	s.Object = v
+	return s
+}
+
+type ListDevopsScenarioFieldConfigResponseBodyObject struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListDevopsScenarioFieldConfigResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsScenarioFieldConfigResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetType(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetName(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetId(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type ListDevopsScenarioFieldConfigResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDevopsScenarioFieldConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDevopsScenarioFieldConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDevopsScenarioFieldConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDevopsScenarioFieldConfigResponse) SetHeaders(v map[string]*string) *ListDevopsScenarioFieldConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDevopsScenarioFieldConfigResponse) SetBody(v *ListDevopsScenarioFieldConfigResponseBody) *ListDevopsScenarioFieldConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelineTemplatesRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// 本次读取的最大数据记录数量
+	PageStart *int32 `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
+	// 本次读取的最大数据记录数量
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+}
+
+func (s ListPipelineTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesRequest) SetOrgId(v string) *ListPipelineTemplatesRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesRequest) SetPageStart(v int32) *ListPipelineTemplatesRequest {
+	s.PageStart = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesRequest) SetPageNum(v int32) *ListPipelineTemplatesRequest {
+	s.PageNum = &v
+	return s
+}
+
+type ListPipelineTemplatesResponseBody struct {
+	// Id of the request
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListPipelineTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListPipelineTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesResponseBody) SetRequestId(v string) *ListPipelineTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponseBody) SetData(v *ListPipelineTemplatesResponseBodyData) *ListPipelineTemplatesResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListPipelineTemplatesResponseBodyData struct {
+	Total    *float32                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	DataList []*ListPipelineTemplatesResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+}
+
+func (s ListPipelineTemplatesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesResponseBodyData) SetTotal(v float32) *ListPipelineTemplatesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponseBodyData) SetDataList(v []*ListPipelineTemplatesResponseBodyDataDataList) *ListPipelineTemplatesResponseBodyData {
+	s.DataList = v
+	return s
+}
+
+type ListPipelineTemplatesResponseBodyDataDataList struct {
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ListPipelineTemplatesResponseBodyDataDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesResponseBodyDataDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesResponseBodyDataDataList) SetTemplateName(v string) *ListPipelineTemplatesResponseBodyDataDataList {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponseBodyDataDataList) SetId(v int64) *ListPipelineTemplatesResponseBodyDataDataList {
+	s.Id = &v
+	return s
+}
+
+type ListPipelineTemplatesResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPipelineTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPipelineTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineTemplatesResponse) SetHeaders(v map[string]*string) *ListPipelineTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineTemplatesResponse) SetBody(v *ListPipelineTemplatesResponseBody) *ListPipelineTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDevopsProjectTaskRequest struct {
+	OrgId                  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Content                *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ProjectId              *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExecutorId             *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	StartDate              *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	DueDate                *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	ScenarioFiieldConfigId *string `json:"ScenarioFiieldConfigId,omitempty" xml:"ScenarioFiieldConfigId,omitempty"`
+	TaskFlowStatusId       *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
+	Note                   *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Visible                *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	ParentTaskId           *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	SprintId               *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpdateDevopsProjectTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetOrgId(v string) *UpdateDevopsProjectTaskRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetContent(v string) *UpdateDevopsProjectTaskRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetProjectId(v string) *UpdateDevopsProjectTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetExecutorId(v string) *UpdateDevopsProjectTaskRequest {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetStartDate(v string) *UpdateDevopsProjectTaskRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetDueDate(v string) *UpdateDevopsProjectTaskRequest {
+	s.DueDate = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetScenarioFiieldConfigId(v string) *UpdateDevopsProjectTaskRequest {
+	s.ScenarioFiieldConfigId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetTaskFlowStatusId(v string) *UpdateDevopsProjectTaskRequest {
+	s.TaskFlowStatusId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetNote(v string) *UpdateDevopsProjectTaskRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetPriority(v int32) *UpdateDevopsProjectTaskRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetVisible(v string) *UpdateDevopsProjectTaskRequest {
+	s.Visible = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetParentTaskId(v string) *UpdateDevopsProjectTaskRequest {
+	s.ParentTaskId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetSprintId(v string) *UpdateDevopsProjectTaskRequest {
+	s.SprintId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskRequest) SetTaskId(v string) *UpdateDevopsProjectTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateDevopsProjectTaskResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s UpdateDevopsProjectTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskResponseBody) SetRequestId(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskResponseBody) SetObject(v bool) *UpdateDevopsProjectTaskResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectTaskResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskResponseBody) SetErrorCode(v string) *UpdateDevopsProjectTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type UpdateDevopsProjectTaskResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDevopsProjectTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevopsProjectTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDevopsProjectTaskResponse) SetBody(v *UpdateDevopsProjectTaskResponseBody) *UpdateDevopsProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetDevopsProjectTaskInfoRequest struct {
+	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetDevopsProjectTaskInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectTaskInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectTaskInfoRequest) SetOrgId(v string) *GetDevopsProjectTaskInfoRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoRequest) SetTaskId(v string) *GetDevopsProjectTaskInfoRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetDevopsProjectTaskInfoResponseBody struct {
+	ErrorMsg   *string                                     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                       `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *GetDevopsProjectTaskInfoResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetDevopsProjectTaskInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectTaskInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorMsg(v string) *GetDevopsProjectTaskInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetRequestId(v string) *GetDevopsProjectTaskInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetSuccessful(v bool) *GetDevopsProjectTaskInfoResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetErrorCode(v string) *GetDevopsProjectTaskInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBody) SetObject(v *GetDevopsProjectTaskInfoResponseBodyObject) *GetDevopsProjectTaskInfoResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetDevopsProjectTaskInfoResponseBodyObject struct {
+	ExecutorId       *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ProjectId        *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StartDate        *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StoryPoint       *string   `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	Priority         *string   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	IsTopInProject   *bool     `json:"IsTopInProject,omitempty" xml:"IsTopInProject,omitempty"`
+	CreatorId        *string   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	OrganizationId   *string   `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	TaskType         *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Visible          *string   `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	TasklistId       *string   `json:"TasklistId,omitempty" xml:"TasklistId,omitempty"`
+	IsDone           *bool     `json:"IsDone,omitempty" xml:"IsDone,omitempty"`
+	IsDeleted        *bool     `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	TaskflowstatusId *string   `json:"TaskflowstatusId,omitempty" xml:"TaskflowstatusId,omitempty"`
+	Note             *string   `json:"Note,omitempty" xml:"Note,omitempty"`
+	SprintId         *string   `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+	Updated          *string   `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	DueDate          *string   `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	Created          *string   `json:"Created,omitempty" xml:"Created,omitempty"`
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Id               *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvolveMembers   []*string `json:"InvolveMembers,omitempty" xml:"InvolveMembers,omitempty" type:"Repeated"`
+}
+
+func (s GetDevopsProjectTaskInfoResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectTaskInfoResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetExecutorId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetProjectId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStartDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetStoryPoint(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.StoryPoint = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetPriority(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsTopInProject(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.IsTopInProject = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetCreatorId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetOrganizationId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTaskType(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetVisible(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Visible = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTasklistId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.TasklistId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsDone(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.IsDone = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetIsDeleted(v bool) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetTaskflowstatusId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.TaskflowstatusId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetNote(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Note = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetSprintId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.SprintId = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetUpdated(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetDueDate(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.DueDate = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetCreated(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetContent(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Content = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetId(v string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponseBodyObject) SetInvolveMembers(v []*string) *GetDevopsProjectTaskInfoResponseBodyObject {
+	s.InvolveMembers = v
+	return s
+}
+
+type GetDevopsProjectTaskInfoResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDevopsProjectTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDevopsProjectTaskInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsProjectTaskInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsProjectTaskInfoResponse) SetHeaders(v map[string]*string) *GetDevopsProjectTaskInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDevopsProjectTaskInfoResponse) SetBody(v *GetDevopsProjectTaskInfoResponseBody) *GetDevopsProjectTaskInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusRequest struct {
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId     *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk         *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	FlowInstanceId *int64  `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
+}
+
+func (s GetPipelineInstanceGroupStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusRequest) SetOrgId(v string) *GetPipelineInstanceGroupStatusRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusRequest) SetPipelineId(v int64) *GetPipelineInstanceGroupStatusRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusRequest) SetUserPk(v string) *GetPipelineInstanceGroupStatusRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusRequest) SetFlowInstanceId(v int64) *GetPipelineInstanceGroupStatusRequest {
+	s.FlowInstanceId = &v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponseBody struct {
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineInstanceGroupStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetRequestId(v string) *GetPipelineInstanceGroupStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorMessage(v string) *GetPipelineInstanceGroupStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetSuccess(v bool) *GetPipelineInstanceGroupStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetErrorCode(v string) *GetPipelineInstanceGroupStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBody) SetObject(v *GetPipelineInstanceGroupStatusResponseBodyObject) *GetPipelineInstanceGroupStatusResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponseBodyObject struct {
+	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Groups []*GetPipelineInstanceGroupStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObject) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObject) SetGroups(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroups) *GetPipelineInstanceGroupStatusResponseBodyObject {
+	s.Groups = v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponseBodyObjectGroups struct {
+	Status *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroups) SetStages(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) *GetPipelineInstanceGroupStatusResponseBodyObjectGroups {
+	s.Stages = v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages struct {
+	Status     *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sign       *string                                                                   `json:"Sign,omitempty" xml:"Sign,omitempty"`
+	Components []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
+	s.Sign = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStages {
+	s.Components = v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v string) *GetPipelineInstanceGroupStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
+	return s
+}
+
+type GetPipelineInstanceGroupStatusResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineInstanceGroupStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineInstanceGroupStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstanceGroupStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstanceGroupStatusResponse) SetHeaders(v map[string]*string) *GetPipelineInstanceGroupStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineInstanceGroupStatusResponse) SetBody(v *GetPipelineInstanceGroupStatusResponseBody) *GetPipelineInstanceGroupStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskDetailRequest struct {
+	OrgId             *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ExecutorId        *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	DueDate           *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
+	TaskFlowStatusId  *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
+	Note              *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	Priority          *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SprintId          *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	WorkTimes         *int64  `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
+	CustomFieldId     *string `json:"CustomFieldId,omitempty" xml:"CustomFieldId,omitempty"`
+	CustomFieldValues *string `json:"CustomFieldValues,omitempty" xml:"CustomFieldValues,omitempty"`
+	StoryPoint        *string `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
+	TagIds            *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+	DelInvolvers      *string `json:"DelInvolvers,omitempty" xml:"DelInvolvers,omitempty"`
+	AddInvolvers      *string `json:"AddInvolvers,omitempty" xml:"AddInvolvers,omitempty"`
+}
+
+func (s UpdateTaskDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskDetailRequest) SetOrgId(v string) *UpdateTaskDetailRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetContent(v string) *UpdateTaskDetailRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetProjectId(v string) *UpdateTaskDetailRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetExecutorId(v string) *UpdateTaskDetailRequest {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetStartDate(v string) *UpdateTaskDetailRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetDueDate(v string) *UpdateTaskDetailRequest {
+	s.DueDate = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetTaskFlowStatusId(v string) *UpdateTaskDetailRequest {
+	s.TaskFlowStatusId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetNote(v string) *UpdateTaskDetailRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetPriority(v int64) *UpdateTaskDetailRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetSprintId(v string) *UpdateTaskDetailRequest {
+	s.SprintId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetTaskId(v string) *UpdateTaskDetailRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetWorkTimes(v int64) *UpdateTaskDetailRequest {
+	s.WorkTimes = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetCustomFieldId(v string) *UpdateTaskDetailRequest {
+	s.CustomFieldId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetCustomFieldValues(v string) *UpdateTaskDetailRequest {
+	s.CustomFieldValues = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetStoryPoint(v string) *UpdateTaskDetailRequest {
+	s.StoryPoint = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetTagIds(v string) *UpdateTaskDetailRequest {
+	s.TagIds = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetDelInvolvers(v string) *UpdateTaskDetailRequest {
+	s.DelInvolvers = &v
+	return s
+}
+
+func (s *UpdateTaskDetailRequest) SetAddInvolvers(v string) *UpdateTaskDetailRequest {
+	s.AddInvolvers = &v
+	return s
+}
+
+type UpdateTaskDetailResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s UpdateTaskDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskDetailResponseBody) SetErrorMsg(v string) *UpdateTaskDetailResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateTaskDetailResponseBody) SetRequestId(v string) *UpdateTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskDetailResponseBody) SetObject(v bool) *UpdateTaskDetailResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *UpdateTaskDetailResponseBody) SetSuccessful(v bool) *UpdateTaskDetailResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *UpdateTaskDetailResponseBody) SetErrorCode(v string) *UpdateTaskDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type UpdateTaskDetailResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskDetailResponse) SetHeaders(v map[string]*string) *UpdateTaskDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskDetailResponse) SetBody(v *UpdateTaskDetailResponseBody) *UpdateTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetTaskListFilterRequest struct {
 	OrgId                 *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -6440,7 +8112,6 @@ type GetTaskListFilterResponseBodyObjectResult struct {
 	ObjectType            *string                                                  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	Progress              *int32                                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	UntilDate             *string                                                  `json:"UntilDate,omitempty" xml:"UntilDate,omitempty"`
-	Pos                   *int32                                                   `json:"Pos,omitempty" xml:"Pos,omitempty"`
 	StoryPoint            *string                                                  `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
 	ObjectlinksCount      *int32                                                   `json:"ObjectlinksCount,omitempty" xml:"ObjectlinksCount,omitempty"`
 	StartDate             *string                                                  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
@@ -6588,11 +8259,6 @@ func (s *GetTaskListFilterResponseBodyObjectResult) SetProgress(v int32) *GetTas
 
 func (s *GetTaskListFilterResponseBodyObjectResult) SetUntilDate(v string) *GetTaskListFilterResponseBodyObjectResult {
 	s.UntilDate = &v
-	return s
-}
-
-func (s *GetTaskListFilterResponseBodyObjectResult) SetPos(v int32) *GetTaskListFilterResponseBodyObjectResult {
-	s.Pos = &v
 	return s
 }
 
@@ -7102,520 +8768,264 @@ func (s *GetTaskListFilterResponse) SetBody(v *GetTaskListFilterResponseBody) *G
 	return s
 }
 
-type GetUserByAliyunUidRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s GetUserByAliyunUidRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserByAliyunUidRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserByAliyunUidRequest) SetOrgId(v string) *GetUserByAliyunUidRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidRequest) SetUserPk(v string) *GetUserByAliyunUidRequest {
-	s.UserPk = &v
-	return s
-}
-
-type GetUserByAliyunUidResponseBody struct {
-	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *GetUserByAliyunUidResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s GetUserByAliyunUidResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserByAliyunUidResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserByAliyunUidResponseBody) SetErrorMsg(v string) *GetUserByAliyunUidResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBody) SetRequestId(v string) *GetUserByAliyunUidResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBody) SetSuccessful(v bool) *GetUserByAliyunUidResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBody) SetErrorCode(v string) *GetUserByAliyunUidResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBody) SetObject(v *GetUserByAliyunUidResponseBodyObject) *GetUserByAliyunUidResponseBody {
-	s.Object = v
-	return s
-}
-
-type GetUserByAliyunUidResponseBodyObject struct {
-	AliyunPk  *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-}
-
-func (s GetUserByAliyunUidResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserByAliyunUidResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetAliyunPk(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.AliyunPk = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetEmail(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.Email = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetAvatarUrl(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.AvatarUrl = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetName(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetId(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponseBodyObject) SetPhone(v string) *GetUserByAliyunUidResponseBodyObject {
-	s.Phone = &v
-	return s
-}
-
-type GetUserByAliyunUidResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserByAliyunUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserByAliyunUidResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserByAliyunUidResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserByAliyunUidResponse) SetHeaders(v map[string]*string) *GetUserByAliyunUidResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserByAliyunUidResponse) SetBody(v *GetUserByAliyunUidResponseBody) *GetUserByAliyunUidResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserNameRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetUserNameRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNameRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNameRequest) SetOrgId(v string) *GetUserNameRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *GetUserNameRequest) SetUserId(v string) *GetUserNameRequest {
-	s.UserId = &v
-	return s
-}
-
-type GetUserNameResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s GetUserNameResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNameResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNameResponseBody) SetErrorMsg(v string) *GetUserNameResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *GetUserNameResponseBody) SetRequestId(v string) *GetUserNameResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserNameResponseBody) SetObject(v string) *GetUserNameResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *GetUserNameResponseBody) SetSuccessful(v bool) *GetUserNameResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *GetUserNameResponseBody) SetErrorCode(v string) *GetUserNameResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type GetUserNameResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserNameResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNameResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNameResponse) SetHeaders(v map[string]*string) *GetUserNameResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserNameResponse) SetBody(v *GetUserNameResponseBody) *GetUserNameResponse {
-	s.Body = v
-	return s
-}
-
-type InsertDevopsUserRequest struct {
-	UserPk   *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	Phone    *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-}
-
-func (s InsertDevopsUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertDevopsUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InsertDevopsUserRequest) SetUserPk(v string) *InsertDevopsUserRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *InsertDevopsUserRequest) SetUserName(v string) *InsertDevopsUserRequest {
-	s.UserName = &v
-	return s
-}
-
-func (s *InsertDevopsUserRequest) SetPhone(v string) *InsertDevopsUserRequest {
-	s.Phone = &v
-	return s
-}
-
-func (s *InsertDevopsUserRequest) SetEmail(v string) *InsertDevopsUserRequest {
-	s.Email = &v
-	return s
-}
-
-type InsertDevopsUserResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s InsertDevopsUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertDevopsUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InsertDevopsUserResponseBody) SetRequestId(v string) *InsertDevopsUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InsertDevopsUserResponseBody) SetErrorMessage(v string) *InsertDevopsUserResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *InsertDevopsUserResponseBody) SetObject(v string) *InsertDevopsUserResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *InsertDevopsUserResponseBody) SetSuccess(v bool) *InsertDevopsUserResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *InsertDevopsUserResponseBody) SetErrorCode(v string) *InsertDevopsUserResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type InsertDevopsUserResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InsertDevopsUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InsertDevopsUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertDevopsUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InsertDevopsUserResponse) SetHeaders(v map[string]*string) *InsertDevopsUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InsertDevopsUserResponse) SetBody(v *InsertDevopsUserResponseBody) *InsertDevopsUserResponse {
-	s.Body = v
-	return s
-}
-
-type InsertPipelineMemberRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-}
-
-func (s InsertPipelineMemberRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertPipelineMemberRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InsertPipelineMemberRequest) SetOrgId(v string) *InsertPipelineMemberRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *InsertPipelineMemberRequest) SetPipelineId(v int64) *InsertPipelineMemberRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *InsertPipelineMemberRequest) SetUserPk(v string) *InsertPipelineMemberRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *InsertPipelineMemberRequest) SetUserId(v string) *InsertPipelineMemberRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *InsertPipelineMemberRequest) SetRoleName(v string) *InsertPipelineMemberRequest {
-	s.RoleName = &v
-	return s
-}
-
-type InsertPipelineMemberResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s InsertPipelineMemberResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertPipelineMemberResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InsertPipelineMemberResponseBody) SetRequestId(v string) *InsertPipelineMemberResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InsertPipelineMemberResponseBody) SetErrorMessage(v string) *InsertPipelineMemberResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *InsertPipelineMemberResponseBody) SetObject(v bool) *InsertPipelineMemberResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *InsertPipelineMemberResponseBody) SetErrorCode(v string) *InsertPipelineMemberResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *InsertPipelineMemberResponseBody) SetSuccess(v bool) *InsertPipelineMemberResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InsertPipelineMemberResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InsertPipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InsertPipelineMemberResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InsertPipelineMemberResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InsertPipelineMemberResponse) SetHeaders(v map[string]*string) *InsertPipelineMemberResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InsertPipelineMemberResponse) SetBody(v *InsertPipelineMemberResponseBody) *InsertPipelineMemberResponse {
-	s.Body = v
-	return s
-}
-
-type InsertProjectMembersRequest struct {
+type GetProjectOptionRequest struct {
 	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Members   *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
-func (s InsertProjectMembersRequest) String() string {
+func (s GetProjectOptionRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InsertProjectMembersRequest) GoString() string {
+func (s GetProjectOptionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *InsertProjectMembersRequest) SetOrgId(v string) *InsertProjectMembersRequest {
+func (s *GetProjectOptionRequest) SetOrgId(v string) *GetProjectOptionRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *InsertProjectMembersRequest) SetProjectId(v string) *InsertProjectMembersRequest {
+func (s *GetProjectOptionRequest) SetProjectId(v string) *GetProjectOptionRequest {
 	s.ProjectId = &v
 	return s
 }
 
-func (s *InsertProjectMembersRequest) SetMembers(v string) *InsertProjectMembersRequest {
-	s.Members = &v
+func (s *GetProjectOptionRequest) SetType(v string) *GetProjectOptionRequest {
+	s.Type = &v
 	return s
 }
 
-type InsertProjectMembersResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+func (s *GetProjectOptionRequest) SetQuery(v string) *GetProjectOptionRequest {
+	s.Query = &v
+	return s
 }
 
-func (s InsertProjectMembersResponseBody) String() string {
+type GetProjectOptionResponseBody struct {
+	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*GetProjectOptionResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s GetProjectOptionResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InsertProjectMembersResponseBody) GoString() string {
+func (s GetProjectOptionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InsertProjectMembersResponseBody) SetErrorMsg(v string) *InsertProjectMembersResponseBody {
+func (s *GetProjectOptionResponseBody) SetErrorMsg(v string) *GetProjectOptionResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetRequestId(v string) *InsertProjectMembersResponseBody {
+func (s *GetProjectOptionResponseBody) SetRequestId(v string) *GetProjectOptionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetObject(v bool) *InsertProjectMembersResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *InsertProjectMembersResponseBody) SetSuccessful(v bool) *InsertProjectMembersResponseBody {
+func (s *GetProjectOptionResponseBody) SetSuccessful(v bool) *GetProjectOptionResponseBody {
 	s.Successful = &v
 	return s
 }
 
-func (s *InsertProjectMembersResponseBody) SetErrorCode(v string) *InsertProjectMembersResponseBody {
+func (s *GetProjectOptionResponseBody) SetErrorCode(v string) *GetProjectOptionResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-type InsertProjectMembersResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InsertProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *GetProjectOptionResponseBody) SetObject(v []*GetProjectOptionResponseBodyObject) *GetProjectOptionResponseBody {
+	s.Object = v
+	return s
 }
 
-func (s InsertProjectMembersResponse) String() string {
+type GetProjectOptionResponseBodyObject struct {
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScopeName *string `json:"ScopeName,omitempty" xml:"ScopeName,omitempty"`
+	Kind      *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+}
+
+func (s GetProjectOptionResponseBodyObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InsertProjectMembersResponse) GoString() string {
+func (s GetProjectOptionResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *InsertProjectMembersResponse) SetHeaders(v map[string]*string) *InsertProjectMembersResponse {
+func (s *GetProjectOptionResponseBodyObject) SetValue(v string) *GetProjectOptionResponseBodyObject {
+	s.Value = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBodyObject) SetName(v string) *GetProjectOptionResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBodyObject) SetScopeName(v string) *GetProjectOptionResponseBodyObject {
+	s.ScopeName = &v
+	return s
+}
+
+func (s *GetProjectOptionResponseBodyObject) SetKind(v string) *GetProjectOptionResponseBodyObject {
+	s.Kind = &v
+	return s
+}
+
+type GetProjectOptionResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProjectOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProjectOptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectOptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectOptionResponse) SetHeaders(v map[string]*string) *GetProjectOptionResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *InsertProjectMembersResponse) SetBody(v *InsertProjectMembersResponseBody) *InsertProjectMembersResponse {
+func (s *GetProjectOptionResponse) SetBody(v *GetProjectOptionResponseBody) *GetProjectOptionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCommonGroupRequest struct {
+	OrgId         *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SmartGroupId  *string `json:"SmartGroupId,omitempty" xml:"SmartGroupId,omitempty"`
+	CommonGroupId *string `json:"CommonGroupId,omitempty" xml:"CommonGroupId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateCommonGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCommonGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCommonGroupRequest) SetOrgId(v string) *UpdateCommonGroupRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupRequest) SetProjectId(v string) *UpdateCommonGroupRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupRequest) SetDescription(v string) *UpdateCommonGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateCommonGroupRequest) SetSmartGroupId(v string) *UpdateCommonGroupRequest {
+	s.SmartGroupId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupRequest) SetCommonGroupId(v string) *UpdateCommonGroupRequest {
+	s.CommonGroupId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupRequest) SetName(v string) *UpdateCommonGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateCommonGroupResponseBody struct {
+	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     *UpdateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s UpdateCommonGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCommonGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCommonGroupResponseBody) SetErrorMsg(v string) *UpdateCommonGroupResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateCommonGroupResponseBody) SetRequestId(v string) *UpdateCommonGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCommonGroupResponseBody) SetSuccessful(v bool) *UpdateCommonGroupResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *UpdateCommonGroupResponseBody) SetErrorCode(v string) *UpdateCommonGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateCommonGroupResponseBody) SetObject(v *UpdateCommonGroupResponseBodyObject) *UpdateCommonGroupResponseBody {
+	s.Object = v
+	return s
+}
+
+type UpdateCommonGroupResponseBodyObject struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateCommonGroupResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCommonGroupResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCommonGroupResponseBodyObject) SetId(v string) *UpdateCommonGroupResponseBodyObject {
+	s.Id = &v
+	return s
+}
+
+type UpdateCommonGroupResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCommonGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCommonGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCommonGroupResponse) SetHeaders(v map[string]*string) *UpdateCommonGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCommonGroupResponse) SetBody(v *UpdateCommonGroupResponseBody) *UpdateCommonGroupResponse {
 	s.Body = v
 	return s
 }
@@ -7784,918 +9194,1505 @@ func (s *ListCommonGroupResponse) SetBody(v *ListCommonGroupResponseBody) *ListC
 	return s
 }
 
-type ListCredentialsRequest struct {
+type DeleteDevopsProjectTaskRequest struct {
 	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
-func (s ListCredentialsRequest) String() string {
+func (s DeleteDevopsProjectTaskRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCredentialsRequest) GoString() string {
+func (s DeleteDevopsProjectTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListCredentialsRequest) SetOrgId(v string) *ListCredentialsRequest {
+func (s *DeleteDevopsProjectTaskRequest) SetOrgId(v string) *DeleteDevopsProjectTaskRequest {
 	s.OrgId = &v
 	return s
 }
 
-func (s *ListCredentialsRequest) SetUserPk(v string) *ListCredentialsRequest {
-	s.UserPk = &v
+func (s *DeleteDevopsProjectTaskRequest) SetTaskId(v string) *DeleteDevopsProjectTaskRequest {
+	s.TaskId = &v
 	return s
 }
 
-type ListCredentialsResponseBody struct {
-	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+type DeleteDevopsProjectTaskResponseBody struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
+	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s ListCredentialsResponseBody) String() string {
+func (s DeleteDevopsProjectTaskResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCredentialsResponseBody) GoString() string {
+func (s DeleteDevopsProjectTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCredentialsResponseBody) SetRequestId(v string) *ListCredentialsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListCredentialsResponseBody) SetErrorMessage(v string) *ListCredentialsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListCredentialsResponseBody) SetSuccess(v bool) *ListCredentialsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListCredentialsResponseBody) SetErrorCode(v string) *ListCredentialsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListCredentialsResponseBody) SetObject(v []map[string]interface{}) *ListCredentialsResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListCredentialsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCredentialsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCredentialsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListCredentialsResponse) SetHeaders(v map[string]*string) *ListCredentialsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListCredentialsResponse) SetBody(v *ListCredentialsResponseBody) *ListCredentialsResponse {
-	s.Body = v
-	return s
-}
-
-type ListDevopsProjectsRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageToken *string `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
-	SelectBy  *string `json:"SelectBy,omitempty" xml:"SelectBy,omitempty"`
-}
-
-func (s ListDevopsProjectsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectsRequest) SetOrgId(v string) *ListDevopsProjectsRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListDevopsProjectsRequest) SetPageSize(v int32) *ListDevopsProjectsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDevopsProjectsRequest) SetOrderBy(v string) *ListDevopsProjectsRequest {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *ListDevopsProjectsRequest) SetPageToken(v string) *ListDevopsProjectsRequest {
-	s.PageToken = &v
-	return s
-}
-
-func (s *ListDevopsProjectsRequest) SetSelectBy(v string) *ListDevopsProjectsRequest {
-	s.SelectBy = &v
-	return s
-}
-
-type ListDevopsProjectsResponseBody struct {
-	ErrorMsg   *string                               `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                 `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *ListDevopsProjectsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s ListDevopsProjectsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectsResponseBody) SetErrorMsg(v string) *ListDevopsProjectsResponseBody {
+func (s *DeleteDevopsProjectTaskResponseBody) SetErrorMsg(v string) *DeleteDevopsProjectTaskResponseBody {
 	s.ErrorMsg = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBody) SetRequestId(v string) *ListDevopsProjectsResponseBody {
+func (s *DeleteDevopsProjectTaskResponseBody) SetRequestId(v string) *DeleteDevopsProjectTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBody) SetSuccessful(v bool) *ListDevopsProjectsResponseBody {
+func (s *DeleteDevopsProjectTaskResponseBody) SetObject(v bool) *DeleteDevopsProjectTaskResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *DeleteDevopsProjectTaskResponseBody) SetSuccessful(v bool) *DeleteDevopsProjectTaskResponseBody {
 	s.Successful = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBody) SetErrorCode(v string) *ListDevopsProjectsResponseBody {
+func (s *DeleteDevopsProjectTaskResponseBody) SetErrorCode(v string) *DeleteDevopsProjectTaskResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBody) SetObject(v *ListDevopsProjectsResponseBodyObject) *ListDevopsProjectsResponseBody {
+type DeleteDevopsProjectTaskResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDevopsProjectTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDevopsProjectTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *DeleteDevopsProjectTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDevopsProjectTaskResponse) SetBody(v *DeleteDevopsProjectTaskResponseBody) *DeleteDevopsProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetDevopsOrganizationMembersRequest struct {
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s GetDevopsOrganizationMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsOrganizationMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsOrganizationMembersRequest) SetOrgId(v string) *GetDevopsOrganizationMembersRequest {
+	s.OrgId = &v
+	return s
+}
+
+type GetDevopsOrganizationMembersResponseBody struct {
+	ErrorMsg   *string                                           `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful *bool                                             `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode  *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object     []*GetDevopsOrganizationMembersResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s GetDevopsOrganizationMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDevopsOrganizationMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetErrorMsg(v string) *GetDevopsOrganizationMembersResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetRequestId(v string) *GetDevopsOrganizationMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetSuccessful(v bool) *GetDevopsOrganizationMembersResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetErrorCode(v string) *GetDevopsOrganizationMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBody) SetObject(v []*GetDevopsOrganizationMembersResponseBodyObject) *GetDevopsOrganizationMembersResponseBody {
 	s.Object = v
 	return s
 }
 
-type ListDevopsProjectsResponseBodyObject struct {
-	NextPageToken *string                                       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	Result        []*ListDevopsProjectsResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+type GetDevopsOrganizationMembersResponseBodyObject struct {
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	MemberId  *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	Role      *int32  `json:"Role,omitempty" xml:"Role,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Phone     *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
-func (s ListDevopsProjectsResponseBodyObject) String() string {
+func (s GetDevopsOrganizationMembersResponseBodyObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectsResponseBodyObject) GoString() string {
+func (s GetDevopsOrganizationMembersResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectsResponseBodyObject) SetNextPageToken(v string) *ListDevopsProjectsResponseBodyObject {
-	s.NextPageToken = &v
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetEmail(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.Email = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObject) SetResult(v []*ListDevopsProjectsResponseBodyObjectResult) *ListDevopsProjectsResponseBodyObject {
-	s.Result = v
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetAvatarUrl(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.AvatarUrl = &v
 	return s
 }
 
-type ListDevopsProjectsResponseBodyObjectResult struct {
-	Logo           *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
-	IsStar         *bool   `json:"IsStar,omitempty" xml:"IsStar,omitempty"`
-	CreatorId      *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	MembersCount   *int32  `json:"MembersCount,omitempty" xml:"MembersCount,omitempty"`
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Visibility     *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	IsTemplate     *bool   `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Updated        *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	Created        *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	IsArchived     *bool   `json:"IsArchived,omitempty" xml:"IsArchived,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	IsPublic       *bool   `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
-	TasksCount     *int32  `json:"TasksCount,omitempty" xml:"TasksCount,omitempty"`
-	RoleId         *int32  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetUserId(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.UserId = &v
+	return s
 }
 
-func (s ListDevopsProjectsResponseBodyObjectResult) String() string {
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetMemberId(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.MemberId = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetRole(v int32) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.Role = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetName(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDevopsOrganizationMembersResponseBodyObject) SetPhone(v string) *GetDevopsOrganizationMembersResponseBodyObject {
+	s.Phone = &v
+	return s
+}
+
+type GetDevopsOrganizationMembersResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDevopsOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDevopsOrganizationMembersResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectsResponseBodyObjectResult) GoString() string {
+func (s GetDevopsOrganizationMembersResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetLogo(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Logo = &v
+func (s *GetDevopsOrganizationMembersResponse) SetHeaders(v map[string]*string) *GetDevopsOrganizationMembersResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsStar(v bool) *ListDevopsProjectsResponseBodyObjectResult {
-	s.IsStar = &v
+func (s *GetDevopsOrganizationMembersResponse) SetBody(v *GetDevopsOrganizationMembersResponseBody) *GetDevopsOrganizationMembersResponse {
+	s.Body = v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreatorId(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.CreatorId = &v
+type CreateDevopsProjectRequest struct {
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s CreateDevopsProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectRequest) SetOrgId(v string) *CreateDevopsProjectRequest {
+	s.OrgId = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetMembersCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
-	s.MembersCount = &v
+func (s *CreateDevopsProjectRequest) SetName(v string) *CreateDevopsProjectRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetOrganizationId(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.OrganizationId = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetVisibility(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Visibility = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsTemplate(v bool) *ListDevopsProjectsResponseBodyObjectResult {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetDescription(v string) *ListDevopsProjectsResponseBodyObjectResult {
+func (s *CreateDevopsProjectRequest) SetDescription(v string) *CreateDevopsProjectRequest {
 	s.Description = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetUpdated(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Updated = &v
-	return s
+type CreateDevopsProjectResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 }
 
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetCreated(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Created = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsArchived(v bool) *ListDevopsProjectsResponseBodyObjectResult {
-	s.IsArchived = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetName(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Name = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetIsPublic(v bool) *ListDevopsProjectsResponseBodyObjectResult {
-	s.IsPublic = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetTasksCount(v int32) *ListDevopsProjectsResponseBodyObjectResult {
-	s.TasksCount = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetRoleId(v int32) *ListDevopsProjectsResponseBodyObjectResult {
-	s.RoleId = &v
-	return s
-}
-
-func (s *ListDevopsProjectsResponseBodyObjectResult) SetId(v string) *ListDevopsProjectsResponseBodyObjectResult {
-	s.Id = &v
-	return s
-}
-
-type ListDevopsProjectsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDevopsProjectsResponse) String() string {
+func (s CreateDevopsProjectResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectsResponse) GoString() string {
+func (s CreateDevopsProjectResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectsResponse) SetHeaders(v map[string]*string) *ListDevopsProjectsResponse {
-	s.Headers = v
+func (s *CreateDevopsProjectResponseBody) SetErrorMessage(v string) *CreateDevopsProjectResponseBody {
+	s.ErrorMessage = &v
 	return s
 }
 
-func (s *ListDevopsProjectsResponse) SetBody(v *ListDevopsProjectsResponseBody) *ListDevopsProjectsResponse {
-	s.Body = v
-	return s
-}
-
-type ListDevopsProjectSprintsRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListDevopsProjectSprintsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectSprintsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectSprintsRequest) SetOrgId(v string) *ListDevopsProjectSprintsRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListDevopsProjectSprintsRequest) SetProjectId(v string) *ListDevopsProjectSprintsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListDevopsProjectSprintsResponseBody struct {
-	ErrorMsg   *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                         `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListDevopsProjectSprintsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListDevopsProjectSprintsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectSprintsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectSprintsResponseBody) SetErrorMsg(v string) *ListDevopsProjectSprintsResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListDevopsProjectSprintsResponseBody) SetRequestId(v string) *ListDevopsProjectSprintsResponseBody {
+func (s *CreateDevopsProjectResponseBody) SetRequestId(v string) *CreateDevopsProjectResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBody) SetSuccessful(v bool) *ListDevopsProjectSprintsResponseBody {
-	s.Successful = &v
+func (s *CreateDevopsProjectResponseBody) SetObject(v string) *CreateDevopsProjectResponseBody {
+	s.Object = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBody) SetErrorCode(v string) *ListDevopsProjectSprintsResponseBody {
+func (s *CreateDevopsProjectResponseBody) SetSuccess(v bool) *CreateDevopsProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDevopsProjectResponseBody) SetErrorCode(v string) *CreateDevopsProjectResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBody) SetObject(v []*ListDevopsProjectSprintsResponseBodyObject) *ListDevopsProjectSprintsResponseBody {
+type CreateDevopsProjectResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDevopsProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDevopsProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDevopsProjectResponse) SetHeaders(v map[string]*string) *CreateDevopsProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDevopsProjectResponse) SetBody(v *CreateDevopsProjectResponseBody) *CreateDevopsProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskDetailActivityRequest struct {
+	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTaskDetailActivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailActivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailActivityRequest) SetOrgId(v string) *GetTaskDetailActivityRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityRequest) SetProjectId(v string) *GetTaskDetailActivityRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityRequest) SetTaskId(v string) *GetTaskDetailActivityRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskDetailActivityResponseBody struct {
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ErrorMsg       *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Successful     *bool                                      `json:"Successful,omitempty" xml:"Successful,omitempty"`
+	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object         []*GetTaskDetailActivityResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskDetailActivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailActivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetHttpStatusCode(v int32) *GetTaskDetailActivityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetErrorMsg(v string) *GetTaskDetailActivityResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetRequestId(v string) *GetTaskDetailActivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetSuccessful(v bool) *GetTaskDetailActivityResponseBody {
+	s.Successful = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetErrorCode(v string) *GetTaskDetailActivityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBody) SetObject(v []*GetTaskDetailActivityResponseBodyObject) *GetTaskDetailActivityResponseBody {
 	s.Object = v
 	return s
 }
 
-type ListDevopsProjectSprintsResponseBodyObject struct {
-	Status       *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Accomplished *string                                             `json:"Accomplished,omitempty" xml:"Accomplished,omitempty"`
-	ProjectId    *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	IsDeleted    *bool                                               `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	StartDate    *string                                             `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Updated      *string                                             `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	CreatorId    *string                                             `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DueDate      *string                                             `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	Name         *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Created      *string                                             `json:"Created,omitempty" xml:"Created,omitempty"`
-	Id           *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	PlanToDo     *ListDevopsProjectSprintsResponseBodyObjectPlanToDo `json:"PlanToDo,omitempty" xml:"PlanToDo,omitempty" type:"Struct"`
+type GetTaskDetailActivityResponseBodyObject struct {
+	Updated *string                `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	Action  *string                `json:"Action,omitempty" xml:"Action,omitempty"`
+	Title   *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	Created *string                `json:"Created,omitempty" xml:"Created,omitempty"`
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
-func (s ListDevopsProjectSprintsResponseBodyObject) String() string {
+func (s GetTaskDetailActivityResponseBodyObject) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectSprintsResponseBodyObject) GoString() string {
+func (s GetTaskDetailActivityResponseBodyObject) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetStatus(v string) *ListDevopsProjectSprintsResponseBodyObject {
+func (s *GetTaskDetailActivityResponseBodyObject) SetUpdated(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Updated = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBodyObject) SetAction(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Action = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBodyObject) SetTitle(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBodyObject) SetCreated(v string) *GetTaskDetailActivityResponseBodyObject {
+	s.Created = &v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponseBodyObject) SetContent(v map[string]interface{}) *GetTaskDetailActivityResponseBodyObject {
+	s.Content = v
+	return s
+}
+
+type GetTaskDetailActivityResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTaskDetailActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskDetailActivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskDetailActivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskDetailActivityResponse) SetHeaders(v map[string]*string) *GetTaskDetailActivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskDetailActivityResponse) SetBody(v *GetTaskDetailActivityResponseBody) *GetTaskDetailActivityResponse {
+	s.Body = v
+	return s
+}
+
+type ExecutePipelineRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s ExecutePipelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePipelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePipelineRequest) SetOrgId(v string) *ExecutePipelineRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ExecutePipelineRequest) SetPipelineId(v int64) *ExecutePipelineRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *ExecutePipelineRequest) SetParameters(v string) *ExecutePipelineRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ExecutePipelineRequest) SetUserPk(v string) *ExecutePipelineRequest {
+	s.UserPk = &v
+	return s
+}
+
+type ExecutePipelineResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s ExecutePipelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePipelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePipelineResponseBody) SetRequestId(v string) *ExecutePipelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecutePipelineResponseBody) SetErrorMessage(v string) *ExecutePipelineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ExecutePipelineResponseBody) SetObject(v int64) *ExecutePipelineResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *ExecutePipelineResponseBody) SetSuccess(v bool) *ExecutePipelineResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecutePipelineResponseBody) SetErrorCode(v string) *ExecutePipelineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type ExecutePipelineResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExecutePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecutePipelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePipelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePipelineResponse) SetHeaders(v map[string]*string) *ExecutePipelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecutePipelineResponse) SetBody(v *ExecutePipelineResponseBody) *ExecutePipelineResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceConnectionRequest struct {
+	ServiceConnectionType *string `json:"ServiceConnectionType,omitempty" xml:"ServiceConnectionType,omitempty"`
+	UserPk                *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	OrgId                 *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s CreateServiceConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionRequest) SetServiceConnectionType(v string) *CreateServiceConnectionRequest {
+	s.ServiceConnectionType = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetUserPk(v string) *CreateServiceConnectionRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *CreateServiceConnectionRequest) SetOrgId(v string) *CreateServiceConnectionRequest {
+	s.OrgId = &v
+	return s
+}
+
+type CreateServiceConnectionResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Object       *int64  `json:"Object,omitempty" xml:"Object,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s CreateServiceConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorMessage(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetRequestId(v string) *CreateServiceConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetObject(v int64) *CreateServiceConnectionResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetSuccess(v bool) *CreateServiceConnectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateServiceConnectionResponseBody) SetErrorCode(v string) *CreateServiceConnectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type CreateServiceConnectionResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateServiceConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceConnectionResponse) SetHeaders(v map[string]*string) *CreateServiceConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceConnectionResponse) SetBody(v *CreateServiceConnectionResponseBody) *CreateServiceConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineInstHistoryRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageStart  *int64  `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetPipelineInstHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryRequest) SetOrgId(v string) *GetPipelineInstHistoryRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetPipelineId(v int64) *GetPipelineInstHistoryRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetUserPk(v string) *GetPipelineInstHistoryRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetStartTime(v string) *GetPipelineInstHistoryRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetEndTime(v string) *GetPipelineInstHistoryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetPageStart(v int64) *GetPipelineInstHistoryRequest {
+	s.PageStart = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryRequest) SetPageSize(v int64) *GetPipelineInstHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetPipelineInstHistoryResponseBody struct {
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Data         *GetPipelineInstHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineInstHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetRequestId(v string) *GetPipelineInstHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetErrorMessage(v string) *GetPipelineInstHistoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetSuccess(v bool) *GetPipelineInstHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetErrorCode(v string) *GetPipelineInstHistoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBody) SetData(v *GetPipelineInstHistoryResponseBodyData) *GetPipelineInstHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetPipelineInstHistoryResponseBodyData struct {
+	Total    *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	DataList []*GetPipelineInstHistoryResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineInstHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryResponseBodyData) SetTotal(v int32) *GetPipelineInstHistoryResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyData) SetDataList(v []*GetPipelineInstHistoryResponseBodyDataDataList) *GetPipelineInstHistoryResponseBodyData {
+	s.DataList = v
+	return s
+}
+
+type GetPipelineInstHistoryResponseBodyDataDataList struct {
+	Status           *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime       *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	StatusName       *string                                                     `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	TriggerMode      *int32                                                      `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
+	PipelineConfigId *int32                                                      `json:"PipelineConfigId,omitempty" xml:"PipelineConfigId,omitempty"`
+	Deletion         *string                                                     `json:"Deletion,omitempty" xml:"Deletion,omitempty"`
+	Creator          *string                                                     `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	InstNumber       *int32                                                      `json:"InstNumber,omitempty" xml:"InstNumber,omitempty"`
+	Modifier         *string                                                     `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	Packages         *string                                                     `json:"Packages,omitempty" xml:"Packages,omitempty"`
+	FlowInstId       *int32                                                      `json:"FlowInstId,omitempty" xml:"FlowInstId,omitempty"`
+	PipelineId       *int32                                                      `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Id               *int32                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime       *int64                                                      `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	FlowInstance     *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance `json:"FlowInstance,omitempty" xml:"FlowInstance,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
 	s.Status = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetAccomplished(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.Accomplished = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetProjectId(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.ProjectId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetStatusName(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.StatusName = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetIsDeleted(v bool) *ListDevopsProjectSprintsResponseBodyObject {
-	s.IsDeleted = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetTriggerMode(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.TriggerMode = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetStartDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.StartDate = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPipelineConfigId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.PipelineConfigId = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetUpdated(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.Updated = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetDeletion(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.Deletion = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.CreatorId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.Creator = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetDueDate(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.DueDate = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetInstNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.InstNumber = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetName(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.Name = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.Modifier = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetCreated(v string) *ListDevopsProjectSprintsResponseBodyObject {
-	s.Created = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPackages(v string) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.Packages = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetId(v string) *ListDevopsProjectSprintsResponseBodyObject {
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.FlowInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetPipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataList {
 	s.Id = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObject) SetPlanToDo(v *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) *ListDevopsProjectSprintsResponseBodyObject {
-	s.PlanToDo = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.ModifyTime = &v
 	return s
 }
 
-type ListDevopsProjectSprintsResponseBodyObjectPlanToDo struct {
-	Tasks       *int32 `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
-	WorkTimes   *int32 `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
-	StoryPoints *int32 `json:"StoryPoints,omitempty" xml:"StoryPoints,omitempty"`
+func (s *GetPipelineInstHistoryResponseBodyDataDataList) SetFlowInstance(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) *GetPipelineInstHistoryResponseBodyDataDataList {
+	s.FlowInstance = v
+	return s
 }
 
-func (s ListDevopsProjectSprintsResponseBodyObjectPlanToDo) String() string {
+type GetPipelineInstHistoryResponseBodyDataDataListFlowInstance struct {
+	Status           *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Stages           map[string]interface{}                                              `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	CreateTime       *int64                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	StatusName       *string                                                             `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	RunningStatus    *string                                                             `json:"RunningStatus,omitempty" xml:"RunningStatus,omitempty"`
+	Creator          *string                                                             `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	StageTopo        *string                                                             `json:"StageTopo,omitempty" xml:"StageTopo,omitempty"`
+	Modifier         *string                                                             `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	AutoDrivenStatus *bool                                                               `json:"AutoDrivenStatus,omitempty" xml:"AutoDrivenStatus,omitempty"`
+	ResultStatus     *string                                                             `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
+	Id               *int32                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	SystemCode       *string                                                             `json:"SystemCode,omitempty" xml:"SystemCode,omitempty"`
+	ModifyTime       *int64                                                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	SystemId         *string                                                             `json:"SystemId,omitempty" xml:"SystemId,omitempty"`
+	Groups           []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	Result           *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult   `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectSprintsResponseBodyObjectPlanToDo) GoString() string {
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetTasks(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
-	s.Tasks = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Status = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetWorkTimes(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
-	s.WorkTimes = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStages(v map[string]interface{}) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Stages = v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponseBodyObjectPlanToDo) SetStoryPoints(v int32) *ListDevopsProjectSprintsResponseBodyObjectPlanToDo {
-	s.StoryPoints = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.CreateTime = &v
 	return s
 }
 
-type ListDevopsProjectSprintsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsProjectSprintsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDevopsProjectSprintsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectSprintsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectSprintsResponse) SetHeaders(v map[string]*string) *ListDevopsProjectSprintsResponse {
-	s.Headers = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStatusName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.StatusName = &v
 	return s
 }
 
-func (s *ListDevopsProjectSprintsResponse) SetBody(v *ListDevopsProjectSprintsResponseBody) *ListDevopsProjectSprintsResponse {
-	s.Body = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetRunningStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.RunningStatus = &v
 	return s
 }
 
-type ListDevopsProjectTaskFlowRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListDevopsProjectTaskFlowRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowRequest) SetOrgId(v string) *ListDevopsProjectTaskFlowRequest {
-	s.OrgId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Creator = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowRequest) SetProjectId(v string) *ListDevopsProjectTaskFlowRequest {
-	s.ProjectId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetStageTopo(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.StageTopo = &v
 	return s
 }
 
-type ListDevopsProjectTaskFlowResponseBody struct {
-	ErrorMsg   *string                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                          `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListDevopsProjectTaskFlowResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListDevopsProjectTaskFlowResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowResponseBody {
-	s.ErrorMsg = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Modifier = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowResponseBody {
-	s.RequestId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetAutoDrivenStatus(v bool) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.AutoDrivenStatus = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowResponseBody {
-	s.Successful = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResultStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.ResultStatus = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskFlowResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowResponseBody) SetObject(v []*ListDevopsProjectTaskFlowResponseBodyObject) *ListDevopsProjectTaskFlowResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListDevopsProjectTaskFlowResponseBodyObject struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListDevopsProjectTaskFlowResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetType(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
-	s.Type = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetName(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowResponseBodyObject) SetId(v string) *ListDevopsProjectTaskFlowResponseBodyObject {
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
 	s.Id = &v
 	return s
 }
 
-type ListDevopsProjectTaskFlowResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsProjectTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDevopsProjectTaskFlowResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskFlowResponse {
-	s.Headers = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetSystemCode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.SystemCode = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowResponse) SetBody(v *ListDevopsProjectTaskFlowResponseBody) *ListDevopsProjectTaskFlowResponse {
-	s.Body = v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.ModifyTime = &v
 	return s
 }
 
-type ListDevopsProjectTaskFlowStatusRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	TaskFlowId *string `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
-}
-
-func (s ListDevopsProjectTaskFlowStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowStatusRequest) SetOrgId(v string) *ListDevopsProjectTaskFlowStatusRequest {
-	s.OrgId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetSystemId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.SystemId = &v
 	return s
 }
 
-func (s *ListDevopsProjectTaskFlowStatusRequest) SetTaskFlowId(v string) *ListDevopsProjectTaskFlowStatusRequest {
-	s.TaskFlowId = &v
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetGroups(v []*GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
+	s.Groups = v
 	return s
 }
 
-type ListDevopsProjectTaskFlowStatusResponseBody struct {
-	ErrorMsg   *string                                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListDevopsProjectTaskFlowStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetRequestId(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBody) SetObject(v []*ListDevopsProjectTaskFlowStatusResponseBodyObject) *ListDevopsProjectTaskFlowStatusResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListDevopsProjectTaskFlowStatusResponseBodyObject struct {
-	TaskflowId      *string `json:"TaskflowId,omitempty" xml:"TaskflowId,omitempty"`
-	Kind            *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Pos             *int32  `json:"Pos,omitempty" xml:"Pos,omitempty"`
-	IsDeleted       *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	Updated         *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
-	CreatorId       *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Created         *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	RejectStatusIds *string `json:"RejectStatusIds,omitempty" xml:"RejectStatusIds,omitempty"`
-	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetTaskflowId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.TaskflowId = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetKind(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Kind = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetPos(v int32) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Pos = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetIsDeleted(v bool) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetUpdated(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Updated = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetCreatorId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetName(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetCreated(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Created = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetRejectStatusIds(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.RejectStatusIds = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponseBodyObject) SetId(v string) *ListDevopsProjectTaskFlowStatusResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type ListDevopsProjectTaskFlowStatusResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsProjectTaskFlowStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskFlowStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskFlowStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDevopsProjectTaskFlowStatusResponse) SetBody(v *ListDevopsProjectTaskFlowStatusResponseBody) *ListDevopsProjectTaskFlowStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ListDevopsProjectTaskListRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListDevopsProjectTaskListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskListRequest) SetOrgId(v string) *ListDevopsProjectTaskListRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskListRequest) SetProjectId(v string) *ListDevopsProjectTaskListRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListDevopsProjectTaskListResponseBody struct {
-	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *ListDevopsProjectTaskListResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s ListDevopsProjectTaskListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskListResponseBody) SetErrorMsg(v string) *ListDevopsProjectTaskListResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskListResponseBody) SetRequestId(v string) *ListDevopsProjectTaskListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskListResponseBody) SetSuccessful(v bool) *ListDevopsProjectTaskListResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskListResponseBody) SetErrorCode(v string) *ListDevopsProjectTaskListResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDevopsProjectTaskListResponseBody) SetObject(v *ListDevopsProjectTaskListResponseBodyObject) *ListDevopsProjectTaskListResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListDevopsProjectTaskListResponseBodyObject struct {
-	Result []*ListDevopsProjectTaskListResponseBodyObjectResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-}
-
-func (s ListDevopsProjectTaskListResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsProjectTaskListResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsProjectTaskListResponseBodyObject) SetResult(v []*ListDevopsProjectTaskListResponseBodyObjectResult) *ListDevopsProjectTaskListResponseBodyObject {
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance) SetResult(v *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstance {
 	s.Result = v
 	return s
 }
 
-type ListDevopsProjectTaskListResponseBodyObjectResult struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups struct {
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeleteStatus *string `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
+	IdExtent     *int32  `json:"IdExtent,omitempty" xml:"IdExtent,omitempty"`
+	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Modifier     *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ResultStatus *string `json:"ResultStatus,omitempty" xml:"ResultStatus,omitempty"`
+	FlowInstId   *int32  `json:"FlowInstId,omitempty" xml:"FlowInstId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime   *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
-func (s ListDevopsProjectTaskListResponseBodyObjectResult) String() string {
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectTaskListResponseBodyObjectResult) GoString() string {
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTaskListResponseBodyObjectResult) SetId(v string) *ListDevopsProjectTaskListResponseBodyObjectResult {
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetCreateTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetDeleteStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.DeleteStatus = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetIdExtent(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.IdExtent = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetCreator(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetEndTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetStartTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetModifier(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetResultStatus(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.ResultStatus = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetFlowInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.FlowInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
 	s.Id = &v
 	return s
 }
 
-type ListDevopsProjectTaskListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsProjectTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups) SetModifyTime(v int64) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceGroups {
+	s.ModifyTime = &v
+	return s
 }
 
-func (s ListDevopsProjectTaskListResponse) String() string {
+type GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult struct {
+	EnginePipelineNumber *int32  `json:"EnginePipelineNumber,omitempty" xml:"EnginePipelineNumber,omitempty"`
+	MixFlowInstId        *string `json:"MixFlowInstId,omitempty" xml:"MixFlowInstId,omitempty"`
+	EnginePipelineName   *string `json:"EnginePipelineName,omitempty" xml:"EnginePipelineName,omitempty"`
+	EnginePipelineId     *int32  `json:"EnginePipelineId,omitempty" xml:"EnginePipelineId,omitempty"`
+	EnginePipelineInstId *int32  `json:"EnginePipelineInstId,omitempty" xml:"EnginePipelineInstId,omitempty"`
+	TimeStamp            *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TriggerMode          *string `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
+	Sources              *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	Caches               *string `json:"Caches,omitempty" xml:"Caches,omitempty"`
+	DateTime             *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+}
+
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDevopsProjectTaskListResponse) GoString() string {
+func (s GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListDevopsProjectTaskListResponse) SetHeaders(v map[string]*string) *ListDevopsProjectTaskListResponse {
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineNumber(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineNumber = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetMixFlowInstId(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.MixFlowInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineName(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineName = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetEnginePipelineInstId(v int32) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.EnginePipelineInstId = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTimeStamp(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetTriggerMode(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.TriggerMode = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetSources(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.Sources = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetCaches(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.Caches = &v
+	return s
+}
+
+func (s *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult) SetDateTime(v string) *GetPipelineInstHistoryResponseBodyDataDataListFlowInstanceResult {
+	s.DateTime = &v
+	return s
+}
+
+type GetPipelineInstHistoryResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineInstHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineInstHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineInstHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineInstHistoryResponse) SetHeaders(v map[string]*string) *GetPipelineInstHistoryResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListDevopsProjectTaskListResponse) SetBody(v *ListDevopsProjectTaskListResponseBody) *ListDevopsProjectTaskListResponse {
+func (s *GetPipelineInstHistoryResponse) SetBody(v *GetPipelineInstHistoryResponseBody) *GetPipelineInstHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineStepLogRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	StepIndex  *string `json:"StepIndex,omitempty" xml:"StepIndex,omitempty"`
+	Offset     *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Limit      *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+}
+
+func (s GetPipelineStepLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineStepLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineStepLogRequest) SetOrgId(v string) *GetPipelineStepLogRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetPipelineId(v int64) *GetPipelineStepLogRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetUserPk(v string) *GetPipelineStepLogRequest {
+	s.UserPk = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetJobId(v int64) *GetPipelineStepLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetStepIndex(v string) *GetPipelineStepLogRequest {
+	s.StepIndex = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetOffset(v int64) *GetPipelineStepLogRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetPipelineStepLogRequest) SetLimit(v int64) *GetPipelineStepLogRequest {
+	s.Limit = &v
+	return s
+}
+
+type GetPipelineStepLogResponseBody struct {
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipelineStepLogResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineStepLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineStepLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineStepLogResponseBody) SetRequestId(v string) *GetPipelineStepLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBody) SetErrorMessage(v string) *GetPipelineStepLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBody) SetSuccess(v bool) *GetPipelineStepLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBody) SetErrorCode(v string) *GetPipelineStepLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBody) SetObject(v *GetPipelineStepLogResponseBodyObject) *GetPipelineStepLogResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetPipelineStepLogResponseBodyObject struct {
+	Last *int32  `json:"Last,omitempty" xml:"Last,omitempty"`
+	More *bool   `json:"More,omitempty" xml:"More,omitempty"`
+	Logs *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
+}
+
+func (s GetPipelineStepLogResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineStepLogResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineStepLogResponseBodyObject) SetLast(v int32) *GetPipelineStepLogResponseBodyObject {
+	s.Last = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBodyObject) SetMore(v bool) *GetPipelineStepLogResponseBodyObject {
+	s.More = &v
+	return s
+}
+
+func (s *GetPipelineStepLogResponseBodyObject) SetLogs(v string) *GetPipelineStepLogResponseBodyObject {
+	s.Logs = &v
+	return s
+}
+
+type GetPipelineStepLogResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineStepLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineStepLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineStepLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineStepLogResponse) SetHeaders(v map[string]*string) *GetPipelineStepLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineStepLogResponse) SetBody(v *GetPipelineStepLogResponseBody) *GetPipelineStepLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusRequest struct {
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
+}
+
+func (s GetPipleineLatestInstanceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusRequest) SetOrgId(v string) *GetPipleineLatestInstanceStatusRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusRequest) SetPipelineId(v int64) *GetPipleineLatestInstanceStatusRequest {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusRequest) SetUserPk(v string) *GetPipleineLatestInstanceStatusRequest {
+	s.UserPk = &v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponseBody struct {
+	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Object       *GetPipleineLatestInstanceStatusResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetRequestId(v string) *GetPipleineLatestInstanceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorMessage(v string) *GetPipleineLatestInstanceStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetSuccess(v bool) *GetPipleineLatestInstanceStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetErrorCode(v string) *GetPipleineLatestInstanceStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBody) SetObject(v *GetPipleineLatestInstanceStatusResponseBodyObject) *GetPipleineLatestInstanceStatusResponseBody {
+	s.Object = v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponseBodyObject struct {
+	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Groups []*GetPipleineLatestInstanceStatusResponseBodyObjectGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObject) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObject {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObject) SetGroups(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroups) *GetPipleineLatestInstanceStatusResponseBodyObject {
+	s.Groups = v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponseBodyObjectGroups struct {
+	Status *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Stages []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroups) SetStages(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) *GetPipleineLatestInstanceStatusResponseBodyObjectGroups {
+	s.Stages = v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages struct {
+	Status     *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sign       *string                                                                    `json:"Sign,omitempty" xml:"Sign,omitempty"`
+	Components []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetSign(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
+	s.Sign = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages) SetComponents(v []*GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStages {
+	s.Components = v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetStatus(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetName(v string) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents) SetJobId(v int64) *GetPipleineLatestInstanceStatusResponseBodyObjectGroupsStagesComponents {
+	s.JobId = &v
+	return s
+}
+
+type GetPipleineLatestInstanceStatusResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipleineLatestInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipleineLatestInstanceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipleineLatestInstanceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipleineLatestInstanceStatusResponse) SetHeaders(v map[string]*string) *GetPipleineLatestInstanceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipleineLatestInstanceStatusResponse) SetBody(v *GetPipleineLatestInstanceStatusResponseBody) *GetPipleineLatestInstanceStatusResponse {
 	s.Body = v
 	return s
 }
@@ -8852,1623 +10849,6 @@ func (s *ListDevopsProjectTasksResponse) SetBody(v *ListDevopsProjectTasksRespon
 	return s
 }
 
-type ListDevopsScenarioFieldConfigRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListDevopsScenarioFieldConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsScenarioFieldConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsScenarioFieldConfigRequest) SetOrgId(v string) *ListDevopsScenarioFieldConfigRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigRequest) SetProjectId(v string) *ListDevopsScenarioFieldConfigRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListDevopsScenarioFieldConfigResponseBody struct {
-	ErrorMsg   *string                                            `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                              `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListDevopsScenarioFieldConfigResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListDevopsScenarioFieldConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsScenarioFieldConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorMsg(v string) *ListDevopsScenarioFieldConfigResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetRequestId(v string) *ListDevopsScenarioFieldConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetSuccessful(v bool) *ListDevopsScenarioFieldConfigResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetErrorCode(v string) *ListDevopsScenarioFieldConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBody) SetObject(v []*ListDevopsScenarioFieldConfigResponseBodyObject) *ListDevopsScenarioFieldConfigResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListDevopsScenarioFieldConfigResponseBodyObject struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListDevopsScenarioFieldConfigResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsScenarioFieldConfigResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetType(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
-	s.Type = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetName(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponseBodyObject) SetId(v string) *ListDevopsScenarioFieldConfigResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type ListDevopsScenarioFieldConfigResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDevopsScenarioFieldConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDevopsScenarioFieldConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDevopsScenarioFieldConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDevopsScenarioFieldConfigResponse) SetHeaders(v map[string]*string) *ListDevopsScenarioFieldConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDevopsScenarioFieldConfigResponse) SetBody(v *ListDevopsScenarioFieldConfigResponseBody) *ListDevopsScenarioFieldConfigResponse {
-	s.Body = v
-	return s
-}
-
-type ListPipelinesRequest struct {
-	OrgId            *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineName     *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	Creators         *string `json:"Creators,omitempty" xml:"Creators,omitempty"`
-	Operators        *string `json:"Operators,omitempty" xml:"Operators,omitempty"`
-	ResultStatusList *string `json:"ResultStatusList,omitempty" xml:"ResultStatusList,omitempty"`
-	CreateStartTime  *string `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
-	CreateEndTime    *string `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	ExecuteStartTime *string `json:"ExecuteStartTime,omitempty" xml:"ExecuteStartTime,omitempty"`
-	ExecuteEndTime   *string `json:"ExecuteEndTime,omitempty" xml:"ExecuteEndTime,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageStart        *int32  `json:"PageStart,omitempty" xml:"PageStart,omitempty"`
-	UserPk           *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s ListPipelinesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPipelinesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPipelinesRequest) SetOrgId(v string) *ListPipelinesRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetPipelineName(v string) *ListPipelinesRequest {
-	s.PipelineName = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetCreators(v string) *ListPipelinesRequest {
-	s.Creators = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetOperators(v string) *ListPipelinesRequest {
-	s.Operators = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetResultStatusList(v string) *ListPipelinesRequest {
-	s.ResultStatusList = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetCreateStartTime(v string) *ListPipelinesRequest {
-	s.CreateStartTime = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetCreateEndTime(v string) *ListPipelinesRequest {
-	s.CreateEndTime = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetExecuteStartTime(v string) *ListPipelinesRequest {
-	s.ExecuteStartTime = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetExecuteEndTime(v string) *ListPipelinesRequest {
-	s.ExecuteEndTime = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetPageSize(v int32) *ListPipelinesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetPageStart(v int32) *ListPipelinesRequest {
-	s.PageStart = &v
-	return s
-}
-
-func (s *ListPipelinesRequest) SetUserPk(v string) *ListPipelinesRequest {
-	s.UserPk = &v
-	return s
-}
-
-type ListPipelinesResponseBody struct {
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListPipelinesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPipelinesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListPipelinesResponseBody) SetRequestId(v string) *ListPipelinesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListPipelinesResponseBody) SetErrorMessage(v string) *ListPipelinesResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListPipelinesResponseBody) SetObject(v map[string]interface{}) *ListPipelinesResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *ListPipelinesResponseBody) SetErrorCode(v string) *ListPipelinesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListPipelinesResponseBody) SetSuccess(v bool) *ListPipelinesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListPipelinesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPipelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListPipelinesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPipelinesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListPipelinesResponse) SetHeaders(v map[string]*string) *ListPipelinesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipelinesResponse {
-	s.Body = v
-	return s
-}
-
-type ListProjectCustomFieldsRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListProjectCustomFieldsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectCustomFieldsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectCustomFieldsRequest) SetOrgId(v string) *ListProjectCustomFieldsRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsRequest) SetProjectId(v string) *ListProjectCustomFieldsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListProjectCustomFieldsResponseBody struct {
-	ErrorMsg   *string                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                        `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListProjectCustomFieldsResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListProjectCustomFieldsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectCustomFieldsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetErrorMsg(v string) *ListProjectCustomFieldsResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetRequestId(v string) *ListProjectCustomFieldsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetSuccessful(v bool) *ListProjectCustomFieldsResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetErrorCode(v string) *ListProjectCustomFieldsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBody) SetObject(v []*ListProjectCustomFieldsResponseBodyObject) *ListProjectCustomFieldsResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListProjectCustomFieldsResponseBodyObject struct {
-	Type          *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	CustomFieldId *string                                            `json:"CustomFieldId,omitempty" xml:"CustomFieldId,omitempty"`
-	Subtype       *string                                            `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	Name          *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Values        []*ListProjectCustomFieldsResponseBodyObjectValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s ListProjectCustomFieldsResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectCustomFieldsResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetType(v string) *ListProjectCustomFieldsResponseBodyObject {
-	s.Type = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetCustomFieldId(v string) *ListProjectCustomFieldsResponseBodyObject {
-	s.CustomFieldId = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetSubtype(v string) *ListProjectCustomFieldsResponseBodyObject {
-	s.Subtype = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetName(v string) *ListProjectCustomFieldsResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObject) SetValues(v []*ListProjectCustomFieldsResponseBodyObjectValues) *ListProjectCustomFieldsResponseBodyObject {
-	s.Values = v
-	return s
-}
-
-type ListProjectCustomFieldsResponseBodyObjectValues struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListProjectCustomFieldsResponseBodyObjectValues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectCustomFieldsResponseBodyObjectValues) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObjectValues) SetValue(v string) *ListProjectCustomFieldsResponseBodyObjectValues {
-	s.Value = &v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponseBodyObjectValues) SetId(v string) *ListProjectCustomFieldsResponseBodyObjectValues {
-	s.Id = &v
-	return s
-}
-
-type ListProjectCustomFieldsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProjectCustomFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProjectCustomFieldsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectCustomFieldsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectCustomFieldsResponse) SetHeaders(v map[string]*string) *ListProjectCustomFieldsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProjectCustomFieldsResponse) SetBody(v *ListProjectCustomFieldsResponseBody) *ListProjectCustomFieldsResponse {
-	s.Body = v
-	return s
-}
-
-type ListServiceConnectionsRequest struct {
-	OrgId  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ScType *string `json:"ScType,omitempty" xml:"ScType,omitempty"`
-	UserPk *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-}
-
-func (s ListServiceConnectionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServiceConnectionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListServiceConnectionsRequest) SetOrgId(v string) *ListServiceConnectionsRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListServiceConnectionsRequest) SetScType(v string) *ListServiceConnectionsRequest {
-	s.ScType = &v
-	return s
-}
-
-func (s *ListServiceConnectionsRequest) SetUserPk(v string) *ListServiceConnectionsRequest {
-	s.UserPk = &v
-	return s
-}
-
-type ListServiceConnectionsResponseBody struct {
-	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       []map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListServiceConnectionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServiceConnectionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListServiceConnectionsResponseBody) SetRequestId(v string) *ListServiceConnectionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListServiceConnectionsResponseBody) SetErrorMessage(v string) *ListServiceConnectionsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListServiceConnectionsResponseBody) SetSuccess(v bool) *ListServiceConnectionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListServiceConnectionsResponseBody) SetErrorCode(v string) *ListServiceConnectionsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListServiceConnectionsResponseBody) SetObject(v []map[string]interface{}) *ListServiceConnectionsResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListServiceConnectionsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListServiceConnectionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListServiceConnectionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListServiceConnectionsResponse) SetHeaders(v map[string]*string) *ListServiceConnectionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListServiceConnectionsResponse) SetBody(v *ListServiceConnectionsResponseBody) *ListServiceConnectionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListSmartGroupRequest struct {
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListSmartGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSmartGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSmartGroupRequest) SetOrgId(v string) *ListSmartGroupRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListSmartGroupRequest) SetProjectId(v string) *ListSmartGroupRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListSmartGroupResponseBody struct {
-	ErrorMsg   *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                               `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     []*ListSmartGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListSmartGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSmartGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSmartGroupResponseBody) SetErrorMsg(v string) *ListSmartGroupResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *ListSmartGroupResponseBody) SetRequestId(v string) *ListSmartGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSmartGroupResponseBody) SetSuccessful(v bool) *ListSmartGroupResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *ListSmartGroupResponseBody) SetErrorCode(v string) *ListSmartGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListSmartGroupResponseBody) SetObject(v []*ListSmartGroupResponseBodyObject) *ListSmartGroupResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListSmartGroupResponseBodyObject struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListSmartGroupResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSmartGroupResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListSmartGroupResponseBodyObject) SetType(v string) *ListSmartGroupResponseBodyObject {
-	s.Type = &v
-	return s
-}
-
-func (s *ListSmartGroupResponseBodyObject) SetId(v string) *ListSmartGroupResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type ListSmartGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSmartGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSmartGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSmartGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSmartGroupResponse) SetHeaders(v map[string]*string) *ListSmartGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSmartGroupResponse) SetBody(v *ListSmartGroupResponseBody) *ListSmartGroupResponse {
-	s.Body = v
-	return s
-}
-
-type ListUserOrganizationRequest struct {
-	RealPk *string `json:"RealPk,omitempty" xml:"RealPk,omitempty"`
-}
-
-func (s ListUserOrganizationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserOrganizationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserOrganizationRequest) SetRealPk(v string) *ListUserOrganizationRequest {
-	s.RealPk = &v
-	return s
-}
-
-type ListUserOrganizationResponseBody struct {
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object       []*ListUserOrganizationResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Repeated"`
-}
-
-func (s ListUserOrganizationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserOrganizationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserOrganizationResponseBody) SetErrorMessage(v string) *ListUserOrganizationResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBody) SetRequestId(v string) *ListUserOrganizationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBody) SetSuccess(v bool) *ListUserOrganizationResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBody) SetErrorCode(v string) *ListUserOrganizationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBody) SetObject(v []*ListUserOrganizationResponseBodyObject) *ListUserOrganizationResponseBody {
-	s.Object = v
-	return s
-}
-
-type ListUserOrganizationResponseBodyObject struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListUserOrganizationResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserOrganizationResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserOrganizationResponseBodyObject) SetName(v string) *ListUserOrganizationResponseBodyObject {
-	s.Name = &v
-	return s
-}
-
-func (s *ListUserOrganizationResponseBodyObject) SetId(v string) *ListUserOrganizationResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type ListUserOrganizationResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUserOrganizationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserOrganizationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserOrganizationResponse) SetHeaders(v map[string]*string) *ListUserOrganizationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserOrganizationResponse) SetBody(v *ListUserOrganizationResponseBody) *ListUserOrganizationResponse {
-	s.Body = v
-	return s
-}
-
-type TransferPipelineOwnerRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	NewOwnerId *string `json:"NewOwnerId,omitempty" xml:"NewOwnerId,omitempty"`
-}
-
-func (s TransferPipelineOwnerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransferPipelineOwnerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TransferPipelineOwnerRequest) SetOrgId(v string) *TransferPipelineOwnerRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerRequest) SetPipelineId(v int64) *TransferPipelineOwnerRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerRequest) SetUserPk(v string) *TransferPipelineOwnerRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerRequest) SetNewOwnerId(v string) *TransferPipelineOwnerRequest {
-	s.NewOwnerId = &v
-	return s
-}
-
-type TransferPipelineOwnerResponseBody struct {
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       map[string]interface{} `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s TransferPipelineOwnerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransferPipelineOwnerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetRequestId(v string) *TransferPipelineOwnerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetErrorMessage(v string) *TransferPipelineOwnerResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetObject(v map[string]interface{}) *TransferPipelineOwnerResponseBody {
-	s.Object = v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetErrorCode(v string) *TransferPipelineOwnerResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponseBody) SetSuccess(v bool) *TransferPipelineOwnerResponseBody {
-	s.Success = &v
-	return s
-}
-
-type TransferPipelineOwnerResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TransferPipelineOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TransferPipelineOwnerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TransferPipelineOwnerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TransferPipelineOwnerResponse) SetHeaders(v map[string]*string) *TransferPipelineOwnerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TransferPipelineOwnerResponse) SetBody(v *TransferPipelineOwnerResponseBody) *TransferPipelineOwnerResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateCommonGroupRequest struct {
-	OrgId         *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SmartGroupId  *string `json:"SmartGroupId,omitempty" xml:"SmartGroupId,omitempty"`
-	CommonGroupId *string `json:"CommonGroupId,omitempty" xml:"CommonGroupId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateCommonGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCommonGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCommonGroupRequest) SetOrgId(v string) *UpdateCommonGroupRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdateCommonGroupRequest) SetProjectId(v string) *UpdateCommonGroupRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *UpdateCommonGroupRequest) SetDescription(v string) *UpdateCommonGroupRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateCommonGroupRequest) SetSmartGroupId(v string) *UpdateCommonGroupRequest {
-	s.SmartGroupId = &v
-	return s
-}
-
-func (s *UpdateCommonGroupRequest) SetCommonGroupId(v string) *UpdateCommonGroupRequest {
-	s.CommonGroupId = &v
-	return s
-}
-
-func (s *UpdateCommonGroupRequest) SetName(v string) *UpdateCommonGroupRequest {
-	s.Name = &v
-	return s
-}
-
-type UpdateCommonGroupResponseBody struct {
-	ErrorMsg   *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Successful *bool                                `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Object     *UpdateCommonGroupResponseBodyObject `json:"Object,omitempty" xml:"Object,omitempty" type:"Struct"`
-}
-
-func (s UpdateCommonGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCommonGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCommonGroupResponseBody) SetErrorMsg(v string) *UpdateCommonGroupResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateCommonGroupResponseBody) SetRequestId(v string) *UpdateCommonGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateCommonGroupResponseBody) SetSuccessful(v bool) *UpdateCommonGroupResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *UpdateCommonGroupResponseBody) SetErrorCode(v string) *UpdateCommonGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateCommonGroupResponseBody) SetObject(v *UpdateCommonGroupResponseBodyObject) *UpdateCommonGroupResponseBody {
-	s.Object = v
-	return s
-}
-
-type UpdateCommonGroupResponseBodyObject struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s UpdateCommonGroupResponseBodyObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCommonGroupResponseBodyObject) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCommonGroupResponseBodyObject) SetId(v string) *UpdateCommonGroupResponseBodyObject {
-	s.Id = &v
-	return s
-}
-
-type UpdateCommonGroupResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateCommonGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateCommonGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCommonGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCommonGroupResponse) SetHeaders(v map[string]*string) *UpdateCommonGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateCommonGroupResponse) SetBody(v *UpdateCommonGroupResponseBody) *UpdateCommonGroupResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateDevopsProjectRequest struct {
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s UpdateDevopsProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectRequest) SetOrgId(v string) *UpdateDevopsProjectRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectRequest) SetName(v string) *UpdateDevopsProjectRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectRequest) SetDescription(v string) *UpdateDevopsProjectRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectRequest) SetProjectId(v string) *UpdateDevopsProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type UpdateDevopsProjectResponseBody struct {
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object       *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s UpdateDevopsProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetErrorMessage(v string) *UpdateDevopsProjectResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetRequestId(v string) *UpdateDevopsProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetObject(v string) *UpdateDevopsProjectResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetSuccess(v bool) *UpdateDevopsProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponseBody) SetErrorCode(v string) *UpdateDevopsProjectResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type UpdateDevopsProjectResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDevopsProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDevopsProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDevopsProjectResponse) SetBody(v *UpdateDevopsProjectResponseBody) *UpdateDevopsProjectResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateDevopsProjectSprintRequest struct {
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ExecutorId  *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	DueDate     *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	SprintId    *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-}
-
-func (s UpdateDevopsProjectSprintRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectSprintRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetOrgId(v string) *UpdateDevopsProjectSprintRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetName(v string) *UpdateDevopsProjectSprintRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetDescription(v string) *UpdateDevopsProjectSprintRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetProjectId(v string) *UpdateDevopsProjectSprintRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetExecutorId(v string) *UpdateDevopsProjectSprintRequest {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetStartDate(v string) *UpdateDevopsProjectSprintRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetDueDate(v string) *UpdateDevopsProjectSprintRequest {
-	s.DueDate = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintRequest) SetSprintId(v string) *UpdateDevopsProjectSprintRequest {
-	s.SprintId = &v
-	return s
-}
-
-type UpdateDevopsProjectSprintResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s UpdateDevopsProjectSprintResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectSprintResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectSprintResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintResponseBody) SetRequestId(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintResponseBody) SetObject(v bool) *UpdateDevopsProjectSprintResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectSprintResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintResponseBody) SetErrorCode(v string) *UpdateDevopsProjectSprintResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type UpdateDevopsProjectSprintResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDevopsProjectSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDevopsProjectSprintResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectSprintResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectSprintResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectSprintResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDevopsProjectSprintResponse) SetBody(v *UpdateDevopsProjectSprintResponseBody) *UpdateDevopsProjectSprintResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateDevopsProjectTaskRequest struct {
-	OrgId                  *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Content                *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ProjectId              *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ExecutorId             *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	StartDate              *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	DueDate                *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	ScenarioFiieldConfigId *string `json:"ScenarioFiieldConfigId,omitempty" xml:"ScenarioFiieldConfigId,omitempty"`
-	TaskFlowStatusId       *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
-	Note                   *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Visible                *string `json:"Visible,omitempty" xml:"Visible,omitempty"`
-	ParentTaskId           *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	SprintId               *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s UpdateDevopsProjectTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetOrgId(v string) *UpdateDevopsProjectTaskRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetContent(v string) *UpdateDevopsProjectTaskRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetProjectId(v string) *UpdateDevopsProjectTaskRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetExecutorId(v string) *UpdateDevopsProjectTaskRequest {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetStartDate(v string) *UpdateDevopsProjectTaskRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetDueDate(v string) *UpdateDevopsProjectTaskRequest {
-	s.DueDate = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetScenarioFiieldConfigId(v string) *UpdateDevopsProjectTaskRequest {
-	s.ScenarioFiieldConfigId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetTaskFlowStatusId(v string) *UpdateDevopsProjectTaskRequest {
-	s.TaskFlowStatusId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetNote(v string) *UpdateDevopsProjectTaskRequest {
-	s.Note = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetPriority(v int32) *UpdateDevopsProjectTaskRequest {
-	s.Priority = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetVisible(v string) *UpdateDevopsProjectTaskRequest {
-	s.Visible = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetParentTaskId(v string) *UpdateDevopsProjectTaskRequest {
-	s.ParentTaskId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetSprintId(v string) *UpdateDevopsProjectTaskRequest {
-	s.SprintId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskRequest) SetTaskId(v string) *UpdateDevopsProjectTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type UpdateDevopsProjectTaskResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s UpdateDevopsProjectTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectTaskResponseBody) SetErrorMsg(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskResponseBody) SetRequestId(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskResponseBody) SetObject(v bool) *UpdateDevopsProjectTaskResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskResponseBody) SetSuccessful(v bool) *UpdateDevopsProjectTaskResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskResponseBody) SetErrorCode(v string) *UpdateDevopsProjectTaskResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type UpdateDevopsProjectTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDevopsProjectTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDevopsProjectTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDevopsProjectTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDevopsProjectTaskResponse) SetHeaders(v map[string]*string) *UpdateDevopsProjectTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDevopsProjectTaskResponse) SetBody(v *UpdateDevopsProjectTaskResponseBody) *UpdateDevopsProjectTaskResponse {
-	s.Body = v
-	return s
-}
-
-type UpdatePipelineMemberRequest struct {
-	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	PipelineId *int64  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserPk     *string `json:"UserPk,omitempty" xml:"UserPk,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-}
-
-func (s UpdatePipelineMemberRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineMemberRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineMemberRequest) SetOrgId(v string) *UpdatePipelineMemberRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberRequest) SetPipelineId(v int64) *UpdatePipelineMemberRequest {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberRequest) SetUserPk(v string) *UpdatePipelineMemberRequest {
-	s.UserPk = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberRequest) SetUserId(v string) *UpdatePipelineMemberRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberRequest) SetRoleName(v string) *UpdatePipelineMemberRequest {
-	s.RoleName = &v
-	return s
-}
-
-type UpdatePipelineMemberResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Object       *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdatePipelineMemberResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineMemberResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetRequestId(v string) *UpdatePipelineMemberResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetErrorMessage(v string) *UpdatePipelineMemberResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetObject(v bool) *UpdatePipelineMemberResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetErrorCode(v string) *UpdatePipelineMemberResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponseBody) SetSuccess(v bool) *UpdatePipelineMemberResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdatePipelineMemberResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdatePipelineMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdatePipelineMemberResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineMemberResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineMemberResponse) SetHeaders(v map[string]*string) *UpdatePipelineMemberResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdatePipelineMemberResponse) SetBody(v *UpdatePipelineMemberResponseBody) *UpdatePipelineMemberResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateTaskDetailRequest struct {
-	OrgId             *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ExecutorId        *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	DueDate           *string `json:"DueDate,omitempty" xml:"DueDate,omitempty"`
-	TaskFlowStatusId  *string `json:"TaskFlowStatusId,omitempty" xml:"TaskFlowStatusId,omitempty"`
-	Note              *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	Priority          *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SprintId          *string `json:"SprintId,omitempty" xml:"SprintId,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	WorkTimes         *int64  `json:"WorkTimes,omitempty" xml:"WorkTimes,omitempty"`
-	CustomFieldId     *string `json:"CustomFieldId,omitempty" xml:"CustomFieldId,omitempty"`
-	CustomFieldValues *string `json:"CustomFieldValues,omitempty" xml:"CustomFieldValues,omitempty"`
-	StoryPoint        *string `json:"StoryPoint,omitempty" xml:"StoryPoint,omitempty"`
-	TagIds            *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
-	DelInvolvers      *string `json:"DelInvolvers,omitempty" xml:"DelInvolvers,omitempty"`
-	AddInvolvers      *string `json:"AddInvolvers,omitempty" xml:"AddInvolvers,omitempty"`
-}
-
-func (s UpdateTaskDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskDetailRequest) SetOrgId(v string) *UpdateTaskDetailRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetContent(v string) *UpdateTaskDetailRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetProjectId(v string) *UpdateTaskDetailRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetExecutorId(v string) *UpdateTaskDetailRequest {
-	s.ExecutorId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetStartDate(v string) *UpdateTaskDetailRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetDueDate(v string) *UpdateTaskDetailRequest {
-	s.DueDate = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetTaskFlowStatusId(v string) *UpdateTaskDetailRequest {
-	s.TaskFlowStatusId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetNote(v string) *UpdateTaskDetailRequest {
-	s.Note = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetPriority(v int64) *UpdateTaskDetailRequest {
-	s.Priority = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetSprintId(v string) *UpdateTaskDetailRequest {
-	s.SprintId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetTaskId(v string) *UpdateTaskDetailRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetWorkTimes(v int64) *UpdateTaskDetailRequest {
-	s.WorkTimes = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetCustomFieldId(v string) *UpdateTaskDetailRequest {
-	s.CustomFieldId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetCustomFieldValues(v string) *UpdateTaskDetailRequest {
-	s.CustomFieldValues = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetStoryPoint(v string) *UpdateTaskDetailRequest {
-	s.StoryPoint = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetTagIds(v string) *UpdateTaskDetailRequest {
-	s.TagIds = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetDelInvolvers(v string) *UpdateTaskDetailRequest {
-	s.DelInvolvers = &v
-	return s
-}
-
-func (s *UpdateTaskDetailRequest) SetAddInvolvers(v string) *UpdateTaskDetailRequest {
-	s.AddInvolvers = &v
-	return s
-}
-
-type UpdateTaskDetailResponseBody struct {
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Object     *bool   `json:"Object,omitempty" xml:"Object,omitempty"`
-	Successful *bool   `json:"Successful,omitempty" xml:"Successful,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s UpdateTaskDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskDetailResponseBody) SetErrorMsg(v string) *UpdateTaskDetailResponseBody {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *UpdateTaskDetailResponseBody) SetRequestId(v string) *UpdateTaskDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateTaskDetailResponseBody) SetObject(v bool) *UpdateTaskDetailResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdateTaskDetailResponseBody) SetSuccessful(v bool) *UpdateTaskDetailResponseBody {
-	s.Successful = &v
-	return s
-}
-
-func (s *UpdateTaskDetailResponseBody) SetErrorCode(v string) *UpdateTaskDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type UpdateTaskDetailResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateTaskDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskDetailResponse) SetHeaders(v map[string]*string) *UpdateTaskDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateTaskDetailResponse) SetBody(v *UpdateTaskDetailResponseBody) *UpdateTaskDetailResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -10516,7 +10896,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) BatchInsertMembersWithOptions(request *BatchInsertMembersRequest, runtime *util.RuntimeOptions) (_result *BatchInsertMembersResponse, _err error) {
+func (client *Client) InsertPipelineMemberWithOptions(request *InsertPipelineMemberRequest, runtime *util.RuntimeOptions) (_result *InsertPipelineMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10524,8 +10904,8 @@ func (client *Client) BatchInsertMembersWithOptions(request *BatchInsertMembersR
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &BatchInsertMembersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchInsertMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &InsertPipelineMemberResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InsertPipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,10 +10913,10 @@ func (client *Client) BatchInsertMembersWithOptions(request *BatchInsertMembersR
 	return _result, _err
 }
 
-func (client *Client) BatchInsertMembers(request *BatchInsertMembersRequest) (_result *BatchInsertMembersResponse, _err error) {
+func (client *Client) InsertPipelineMember(request *InsertPipelineMemberRequest) (_result *InsertPipelineMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &BatchInsertMembersResponse{}
-	_body, _err := client.BatchInsertMembersWithOptions(request, runtime)
+	_result = &InsertPipelineMemberResponse{}
+	_body, _err := client.InsertPipelineMemberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10544,7 +10924,7 @@ func (client *Client) BatchInsertMembers(request *BatchInsertMembersRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CancelPipelineWithOptions(request *CancelPipelineRequest, runtime *util.RuntimeOptions) (_result *CancelPipelineResponse, _err error) {
+func (client *Client) ListDevopsProjectTaskFlowWithOptions(request *ListDevopsProjectTaskFlowRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10552,8 +10932,8 @@ func (client *Client) CancelPipelineWithOptions(request *CancelPipelineRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &CancelPipelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelPipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ListDevopsProjectTaskFlowResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskFlow"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10561,570 +10941,10 @@ func (client *Client) CancelPipelineWithOptions(request *CancelPipelineRequest, 
 	return _result, _err
 }
 
-func (client *Client) CancelPipeline(request *CancelPipelineRequest) (_result *CancelPipelineResponse, _err error) {
+func (client *Client) ListDevopsProjectTaskFlow(request *ListDevopsProjectTaskFlowRequest) (_result *ListDevopsProjectTaskFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CancelPipelineResponse{}
-	_body, _err := client.CancelPipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CheckAliyunAccountExistsWithOptions(request *CheckAliyunAccountExistsRequest, runtime *util.RuntimeOptions) (_result *CheckAliyunAccountExistsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CheckAliyunAccountExistsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckAliyunAccountExists"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckAliyunAccountExists(request *CheckAliyunAccountExistsRequest) (_result *CheckAliyunAccountExistsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckAliyunAccountExistsResponse{}
-	_body, _err := client.CheckAliyunAccountExistsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateCommonGroupWithOptions(request *CreateCommonGroupRequest, runtime *util.RuntimeOptions) (_result *CreateCommonGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateCommonGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCommonGroup(request *CreateCommonGroupRequest) (_result *CreateCommonGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCommonGroupResponse{}
-	_body, _err := client.CreateCommonGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateCredentialWithOptions(request *CreateCredentialRequest, runtime *util.RuntimeOptions) (_result *CreateCredentialResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateCredentialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCredential"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCredential(request *CreateCredentialRequest) (_result *CreateCredentialResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCredentialResponse{}
-	_body, _err := client.CreateCredentialWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsOrganizationWithOptions(request *CreateDevopsOrganizationRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsOrganizationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDevopsOrganizationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsOrganization(request *CreateDevopsOrganizationRequest) (_result *CreateDevopsOrganizationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDevopsOrganizationResponse{}
-	_body, _err := client.CreateDevopsOrganizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProjectWithOptions(request *CreateDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDevopsProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProject(request *CreateDevopsProjectRequest) (_result *CreateDevopsProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDevopsProjectResponse{}
-	_body, _err := client.CreateDevopsProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProjectSprintWithOptions(request *CreateDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectSprintResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDevopsProjectSprintResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProjectSprint(request *CreateDevopsProjectSprintRequest) (_result *CreateDevopsProjectSprintResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDevopsProjectSprintResponse{}
-	_body, _err := client.CreateDevopsProjectSprintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProjectTaskWithOptions(request *CreateDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDevopsProjectTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDevopsProjectTask(request *CreateDevopsProjectTaskRequest) (_result *CreateDevopsProjectTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDevopsProjectTaskResponse{}
-	_body, _err := client.CreateDevopsProjectTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.CreatePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateServiceConnectionWithOptions(request *CreateServiceConnectionRequest, runtime *util.RuntimeOptions) (_result *CreateServiceConnectionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateServiceConnectionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceConnection"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateServiceConnection(request *CreateServiceConnectionRequest) (_result *CreateServiceConnectionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateServiceConnectionResponse{}
-	_body, _err := client.CreateServiceConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteCommonGroupWithOptions(request *DeleteCommonGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteCommonGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteCommonGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteCommonGroup(request *DeleteCommonGroupRequest) (_result *DeleteCommonGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteCommonGroupResponse{}
-	_body, _err := client.DeleteCommonGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsOrganizationWithOptions(request *DeleteDevopsOrganizationRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsOrganizationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsOrganizationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsOrganization(request *DeleteDevopsOrganizationRequest) (_result *DeleteDevopsOrganizationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsOrganizationResponse{}
-	_body, _err := client.DeleteDevopsOrganizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsOrganizationMembersWithOptions(request *DeleteDevopsOrganizationMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsOrganizationMembersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsOrganizationMembersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsOrganizationMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsOrganizationMembers(request *DeleteDevopsOrganizationMembersRequest) (_result *DeleteDevopsOrganizationMembersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsOrganizationMembersResponse{}
-	_body, _err := client.DeleteDevopsOrganizationMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectWithOptions(request *DeleteDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProject(request *DeleteDevopsProjectRequest) (_result *DeleteDevopsProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsProjectResponse{}
-	_body, _err := client.DeleteDevopsProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectMembersWithOptions(request *DeleteDevopsProjectMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectMembersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsProjectMembersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectMembers(request *DeleteDevopsProjectMembersRequest) (_result *DeleteDevopsProjectMembersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsProjectMembersResponse{}
-	_body, _err := client.DeleteDevopsProjectMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectSprintWithOptions(request *DeleteDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectSprintResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsProjectSprintResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectSprint(request *DeleteDevopsProjectSprintRequest) (_result *DeleteDevopsProjectSprintResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsProjectSprintResponse{}
-	_body, _err := client.DeleteDevopsProjectSprintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectTaskWithOptions(request *DeleteDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDevopsProjectTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDevopsProjectTask(request *DeleteDevopsProjectTaskRequest) (_result *DeleteDevopsProjectTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDevopsProjectTaskResponse{}
-	_body, _err := client.DeleteDevopsProjectTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeletePipelineMemberWithOptions(request *DeletePipelineMemberRequest, runtime *util.RuntimeOptions) (_result *DeletePipelineMemberResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeletePipelineMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeletePipelineMember(request *DeletePipelineMemberRequest) (_result *DeletePipelineMemberResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeletePipelineMemberResponse{}
-	_body, _err := client.DeletePipelineMemberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ExecutePipelineWithOptions(request *ExecutePipelineRequest, runtime *util.RuntimeOptions) (_result *ExecutePipelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ExecutePipelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecutePipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExecutePipeline(request *ExecutePipelineRequest) (_result *ExecutePipelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExecutePipelineResponse{}
-	_body, _err := client.ExecutePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDevopsOrganizationMembersWithOptions(request *GetDevopsOrganizationMembersRequest, runtime *util.RuntimeOptions) (_result *GetDevopsOrganizationMembersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDevopsOrganizationMembersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDevopsOrganizationMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDevopsOrganizationMembers(request *GetDevopsOrganizationMembersRequest) (_result *GetDevopsOrganizationMembersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDevopsOrganizationMembersResponse{}
-	_body, _err := client.GetDevopsOrganizationMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDevopsProjectInfoWithOptions(request *GetDevopsProjectInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDevopsProjectInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDevopsProjectInfo(request *GetDevopsProjectInfoRequest) (_result *GetDevopsProjectInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDevopsProjectInfoResponse{}
-	_body, _err := client.GetDevopsProjectInfoWithOptions(request, runtime)
+	_result = &ListDevopsProjectTaskFlowResponse{}
+	_body, _err := client.ListDevopsProjectTaskFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11160,7 +10980,7 @@ func (client *Client) GetDevopsProjectMembers(request *GetDevopsProjectMembersRe
 	return _result, _err
 }
 
-func (client *Client) GetDevopsProjectSprintInfoWithOptions(request *GetDevopsProjectSprintInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectSprintInfoResponse, _err error) {
+func (client *Client) AddCodeupSourceToPipelineWithOptions(request *AddCodeupSourceToPipelineRequest, runtime *util.RuntimeOptions) (_result *AddCodeupSourceToPipelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11168,8 +10988,8 @@ func (client *Client) GetDevopsProjectSprintInfoWithOptions(request *GetDevopsPr
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetDevopsProjectSprintInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectSprintInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &AddCodeupSourceToPipelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddCodeupSourceToPipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11177,10 +10997,10 @@ func (client *Client) GetDevopsProjectSprintInfoWithOptions(request *GetDevopsPr
 	return _result, _err
 }
 
-func (client *Client) GetDevopsProjectSprintInfo(request *GetDevopsProjectSprintInfoRequest) (_result *GetDevopsProjectSprintInfoResponse, _err error) {
+func (client *Client) AddCodeupSourceToPipeline(request *AddCodeupSourceToPipelineRequest) (_result *AddCodeupSourceToPipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetDevopsProjectSprintInfoResponse{}
-	_body, _err := client.GetDevopsProjectSprintInfoWithOptions(request, runtime)
+	_result = &AddCodeupSourceToPipelineResponse{}
+	_body, _err := client.AddCodeupSourceToPipelineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11188,7 +11008,7 @@ func (client *Client) GetDevopsProjectSprintInfo(request *GetDevopsProjectSprint
 	return _result, _err
 }
 
-func (client *Client) GetDevopsProjectTaskInfoWithOptions(request *GetDevopsProjectTaskInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectTaskInfoResponse, _err error) {
+func (client *Client) DeleteDevopsProjectSprintWithOptions(request *DeleteDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectSprintResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11196,8 +11016,8 @@ func (client *Client) GetDevopsProjectTaskInfoWithOptions(request *GetDevopsProj
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetDevopsProjectTaskInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectTaskInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DeleteDevopsProjectSprintResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11205,10 +11025,10 @@ func (client *Client) GetDevopsProjectTaskInfoWithOptions(request *GetDevopsProj
 	return _result, _err
 }
 
-func (client *Client) GetDevopsProjectTaskInfo(request *GetDevopsProjectTaskInfoRequest) (_result *GetDevopsProjectTaskInfoResponse, _err error) {
+func (client *Client) DeleteDevopsProjectSprint(request *DeleteDevopsProjectSprintRequest) (_result *DeleteDevopsProjectSprintResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetDevopsProjectTaskInfoResponse{}
-	_body, _err := client.GetDevopsProjectTaskInfoWithOptions(request, runtime)
+	_result = &DeleteDevopsProjectSprintResponse{}
+	_body, _err := client.DeleteDevopsProjectSprintWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11216,7 +11036,7 @@ func (client *Client) GetDevopsProjectTaskInfo(request *GetDevopsProjectTaskInfo
 	return _result, _err
 }
 
-func (client *Client) GetLastWorkspaceWithOptions(request *GetLastWorkspaceRequest, runtime *util.RuntimeOptions) (_result *GetLastWorkspaceResponse, _err error) {
+func (client *Client) DeleteCommonGroupWithOptions(request *DeleteCommonGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteCommonGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11224,8 +11044,8 @@ func (client *Client) GetLastWorkspaceWithOptions(request *GetLastWorkspaceReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetLastWorkspaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLastWorkspace"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DeleteCommonGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11233,10 +11053,10 @@ func (client *Client) GetLastWorkspaceWithOptions(request *GetLastWorkspaceReque
 	return _result, _err
 }
 
-func (client *Client) GetLastWorkspace(request *GetLastWorkspaceRequest) (_result *GetLastWorkspaceResponse, _err error) {
+func (client *Client) DeleteCommonGroup(request *DeleteCommonGroupRequest) (_result *DeleteCommonGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetLastWorkspaceResponse{}
-	_body, _err := client.GetLastWorkspaceWithOptions(request, runtime)
+	_result = &DeleteCommonGroupResponse{}
+	_body, _err := client.DeleteCommonGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11244,7 +11064,7 @@ func (client *Client) GetLastWorkspace(request *GetLastWorkspaceRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) GetPipelineInstanceBuildNumberStatusWithOptions(request *GetPipelineInstanceBuildNumberStatusRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstanceBuildNumberStatusResponse, _err error) {
+func (client *Client) ListProjectCustomFieldsWithOptions(request *ListProjectCustomFieldsRequest, runtime *util.RuntimeOptions) (_result *ListProjectCustomFieldsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11252,8 +11072,8 @@ func (client *Client) GetPipelineInstanceBuildNumberStatusWithOptions(request *G
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetPipelineInstanceBuildNumberStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstanceBuildNumberStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ListProjectCustomFieldsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProjectCustomFields"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11261,10 +11081,10 @@ func (client *Client) GetPipelineInstanceBuildNumberStatusWithOptions(request *G
 	return _result, _err
 }
 
-func (client *Client) GetPipelineInstanceBuildNumberStatus(request *GetPipelineInstanceBuildNumberStatusRequest) (_result *GetPipelineInstanceBuildNumberStatusResponse, _err error) {
+func (client *Client) ListProjectCustomFields(request *ListProjectCustomFieldsRequest) (_result *ListProjectCustomFieldsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetPipelineInstanceBuildNumberStatusResponse{}
-	_body, _err := client.GetPipelineInstanceBuildNumberStatusWithOptions(request, runtime)
+	_result = &ListProjectCustomFieldsResponse{}
+	_body, _err := client.ListProjectCustomFieldsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11272,7 +11092,7 @@ func (client *Client) GetPipelineInstanceBuildNumberStatus(request *GetPipelineI
 	return _result, _err
 }
 
-func (client *Client) GetPipelineInstanceGroupStatusWithOptions(request *GetPipelineInstanceGroupStatusRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstanceGroupStatusResponse, _err error) {
+func (client *Client) InsertDevopsUserWithOptions(request *InsertDevopsUserRequest, runtime *util.RuntimeOptions) (_result *InsertDevopsUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11280,8 +11100,8 @@ func (client *Client) GetPipelineInstanceGroupStatusWithOptions(request *GetPipe
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetPipelineInstanceGroupStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstanceGroupStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &InsertDevopsUserResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InsertDevopsUser"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11289,10 +11109,66 @@ func (client *Client) GetPipelineInstanceGroupStatusWithOptions(request *GetPipe
 	return _result, _err
 }
 
-func (client *Client) GetPipelineInstanceGroupStatus(request *GetPipelineInstanceGroupStatusRequest) (_result *GetPipelineInstanceGroupStatusResponse, _err error) {
+func (client *Client) InsertDevopsUser(request *InsertDevopsUserRequest) (_result *InsertDevopsUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetPipelineInstanceGroupStatusResponse{}
-	_body, _err := client.GetPipelineInstanceGroupStatusWithOptions(request, runtime)
+	_result = &InsertDevopsUserResponse{}
+	_body, _err := client.InsertDevopsUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProjectWithOptions(request *UpdateDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDevopsProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProject(request *UpdateDevopsProjectRequest) (_result *UpdateDevopsProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDevopsProjectResponse{}
+	_body, _err := client.UpdateDevopsProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckAliyunAccountExistsWithOptions(request *CheckAliyunAccountExistsRequest, runtime *util.RuntimeOptions) (_result *CheckAliyunAccountExistsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckAliyunAccountExistsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckAliyunAccountExists"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckAliyunAccountExists(request *CheckAliyunAccountExistsRequest) (_result *CheckAliyunAccountExistsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckAliyunAccountExistsResponse{}
+	_body, _err := client.CheckAliyunAccountExistsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11328,6 +11204,426 @@ func (client *Client) GetPipelineInstanceInfo(request *GetPipelineInstanceInfoRe
 	return _result, _err
 }
 
+func (client *Client) BatchInsertMembersWithOptions(request *BatchInsertMembersRequest, runtime *util.RuntimeOptions) (_result *BatchInsertMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BatchInsertMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BatchInsertMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchInsertMembers(request *BatchInsertMembersRequest) (_result *BatchInsertMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchInsertMembersResponse{}
+	_body, _err := client.BatchInsertMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceConnectionsWithOptions(request *ListServiceConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListServiceConnectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListServiceConnectionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListServiceConnections"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceConnections(request *ListServiceConnectionsRequest) (_result *ListServiceConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceConnectionsResponse{}
+	_body, _err := client.ListServiceConnectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserNameWithOptions(request *GetUserNameRequest, runtime *util.RuntimeOptions) (_result *GetUserNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetUserNameResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetUserName"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserName(request *GetUserNameRequest) (_result *GetUserNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserNameResponse{}
+	_body, _err := client.GetUserNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertProjectMembersWithOptions(request *InsertProjectMembersRequest, runtime *util.RuntimeOptions) (_result *InsertProjectMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &InsertProjectMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InsertProjectMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertProjectMembers(request *InsertProjectMembersRequest) (_result *InsertProjectMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertProjectMembersResponse{}
+	_body, _err := client.InsertProjectMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectTaskListWithOptions(request *ListDevopsProjectTaskListRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsProjectTaskListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskList"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectTaskList(request *ListDevopsProjectTaskListRequest) (_result *ListDevopsProjectTaskListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsProjectTaskListResponse{}
+	_body, _err := client.ListDevopsProjectTaskListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskDetailBaseWithOptions(request *GetTaskDetailBaseRequest, runtime *util.RuntimeOptions) (_result *GetTaskDetailBaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTaskDetailBaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTaskDetailBase"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskDetailBase(request *GetTaskDetailBaseRequest) (_result *GetTaskDetailBaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskDetailBaseResponse{}
+	_body, _err := client.GetTaskDetailBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProjectMembersWithOptions(request *DeleteDevopsProjectMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsProjectMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProjectMembers(request *DeleteDevopsProjectMembersRequest) (_result *DeleteDevopsProjectMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsProjectMembersResponse{}
+	_body, _err := client.DeleteDevopsProjectMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProjectSprintWithOptions(request *CreateDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectSprintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDevopsProjectSprintResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProjectSprint(request *CreateDevopsProjectSprintRequest) (_result *CreateDevopsProjectSprintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDevopsProjectSprintResponse{}
+	_body, _err := client.CreateDevopsProjectSprintWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProjectSprintWithOptions(request *UpdateDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectSprintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDevopsProjectSprintResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProjectSprint(request *UpdateDevopsProjectSprintRequest) (_result *UpdateDevopsProjectSprintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDevopsProjectSprintResponse{}
+	_body, _err := client.UpdateDevopsProjectSprintWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganizationWithOptions(request *DeleteDevopsOrganizationRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsOrganizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsOrganizationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganization(request *DeleteDevopsOrganizationRequest) (_result *DeleteDevopsOrganizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsOrganizationResponse{}
+	_body, _err := client.DeleteDevopsOrganizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelPipelineWithOptions(request *CancelPipelineRequest, runtime *util.RuntimeOptions) (_result *CancelPipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelPipelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelPipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelPipeline(request *CancelPipelineRequest) (_result *CancelPipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelPipelineResponse{}
+	_body, _err := client.CancelPipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectTaskFlowStatusWithOptions(request *ListDevopsProjectTaskFlowStatusRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskFlowStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsProjectTaskFlowStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskFlowStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectTaskFlowStatus(request *ListDevopsProjectTaskFlowStatusRequest) (_result *ListDevopsProjectTaskFlowStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsProjectTaskFlowStatusResponse{}
+	_body, _err := client.ListDevopsProjectTaskFlowStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserOrganizationWithOptions(request *ListUserOrganizationRequest, runtime *util.RuntimeOptions) (_result *ListUserOrganizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListUserOrganizationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListUserOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserOrganization(request *ListUserOrganizationRequest) (_result *ListUserOrganizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserOrganizationResponse{}
+	_body, _err := client.ListUserOrganizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineEnvVarsWithOptions(request *UpdatePipelineEnvVarsRequest, runtime *util.RuntimeOptions) (_result *UpdatePipelineEnvVarsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdatePipelineEnvVarsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdatePipelineEnvVars"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineEnvVars(request *UpdatePipelineEnvVarsRequest) (_result *UpdatePipelineEnvVarsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePipelineEnvVarsResponse{}
+	_body, _err := client.UpdatePipelineEnvVarsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProjectWithOptions(request *DeleteDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProject(request *DeleteDevopsProjectRequest) (_result *DeleteDevopsProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsProjectResponse{}
+	_body, _err := client.DeleteDevopsProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetPipelineInstanceStatusWithOptions(request *GetPipelineInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11356,34 +11652,6 @@ func (client *Client) GetPipelineInstanceStatus(request *GetPipelineInstanceStat
 	return _result, _err
 }
 
-func (client *Client) GetPipelineInstHistoryWithOptions(request *GetPipelineInstHistoryRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstHistoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetPipelineInstHistoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstHistory"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPipelineInstHistory(request *GetPipelineInstHistoryRequest) (_result *GetPipelineInstHistoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPipelineInstHistoryResponse{}
-	_body, _err := client.GetPipelineInstHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetPipelineLogWithOptions(request *GetPipelineLogRequest, runtime *util.RuntimeOptions) (_result *GetPipelineLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11405,6 +11673,1043 @@ func (client *Client) GetPipelineLog(request *GetPipelineLogRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPipelineLogResponse{}
 	_body, _err := client.GetPipelineLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserByAliyunUidWithOptions(request *GetUserByAliyunUidRequest, runtime *util.RuntimeOptions) (_result *GetUserByAliyunUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetUserByAliyunUidResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetUserByAliyunUid"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserByAliyunUid(request *GetUserByAliyunUidRequest) (_result *GetUserByAliyunUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserByAliyunUidResponse{}
+	_body, _err := client.GetUserByAliyunUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineMemberWithOptions(request *UpdatePipelineMemberRequest, runtime *util.RuntimeOptions) (_result *UpdatePipelineMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdatePipelineMemberResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdatePipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineMember(request *UpdatePipelineMemberRequest) (_result *UpdatePipelineMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePipelineMemberResponse{}
+	_body, _err := client.UpdatePipelineMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectsWithOptions(request *ListDevopsProjectsRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsProjectsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjects"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjects(request *ListDevopsProjectsRequest) (_result *ListDevopsProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsProjectsResponse{}
+	_body, _err := client.ListDevopsProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProjectTaskWithOptions(request *CreateDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDevopsProjectTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProjectTask(request *CreateDevopsProjectTaskRequest) (_result *CreateDevopsProjectTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDevopsProjectTaskResponse{}
+	_body, _err := client.CreateDevopsProjectTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstanceBuildNumberStatusWithOptions(request *GetPipelineInstanceBuildNumberStatusRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstanceBuildNumberStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPipelineInstanceBuildNumberStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstanceBuildNumberStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstanceBuildNumberStatus(request *GetPipelineInstanceBuildNumberStatusRequest) (_result *GetPipelineInstanceBuildNumberStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPipelineInstanceBuildNumberStatusResponse{}
+	_body, _err := client.GetPipelineInstanceBuildNumberStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectSprintsWithOptions(request *ListDevopsProjectSprintsRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectSprintsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsProjectSprintsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectSprints"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsProjectSprints(request *ListDevopsProjectSprintsRequest) (_result *ListDevopsProjectSprintsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsProjectSprintsResponse{}
+	_body, _err := client.ListDevopsProjectSprintsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectInfoWithOptions(request *GetDevopsProjectInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDevopsProjectInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectInfo(request *GetDevopsProjectInfoRequest) (_result *GetDevopsProjectInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDevopsProjectInfoResponse{}
+	_body, _err := client.GetDevopsProjectInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineMemberWithOptions(request *DeletePipelineMemberRequest, runtime *util.RuntimeOptions) (_result *DeletePipelineMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeletePipelineMemberResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeletePipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineMember(request *DeletePipelineMemberRequest) (_result *DeletePipelineMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePipelineMemberResponse{}
+	_body, _err := client.DeletePipelineMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectSprintInfoWithOptions(request *GetDevopsProjectSprintInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectSprintInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDevopsProjectSprintInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectSprintInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectSprintInfo(request *GetDevopsProjectSprintInfoRequest) (_result *GetDevopsProjectSprintInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDevopsProjectSprintInfoResponse{}
+	_body, _err := client.GetDevopsProjectSprintInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganizationMembersWithOptions(request *DeleteDevopsOrganizationMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsOrganizationMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsOrganizationMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsOrganizationMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsOrganizationMembers(request *DeleteDevopsOrganizationMembersRequest) (_result *DeleteDevopsOrganizationMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsOrganizationMembersResponse{}
+	_body, _err := client.DeleteDevopsOrganizationMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLastWorkspaceWithOptions(request *GetLastWorkspaceRequest, runtime *util.RuntimeOptions) (_result *GetLastWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLastWorkspaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLastWorkspace"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLastWorkspace(request *GetLastWorkspaceRequest) (_result *GetLastWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLastWorkspaceResponse{}
+	_body, _err := client.GetLastWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCredentialWithOptions(request *CreateCredentialRequest, runtime *util.RuntimeOptions) (_result *CreateCredentialResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateCredentialResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateCredential"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCredential(request *CreateCredentialRequest) (_result *CreateCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCredentialResponse{}
+	_body, _err := client.CreateCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest, runtime *util.RuntimeOptions) (_result *ListCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListCredentialsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListCredentials"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result *ListCredentialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCredentialsResponse{}
+	_body, _err := client.ListCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreatePipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelinesWithOptions(request *ListPipelinesRequest, runtime *util.RuntimeOptions) (_result *ListPipelinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListPipelines"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.ListPipelinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineFromTemplateWithOptions(request *CreatePipelineFromTemplateRequest, runtime *util.RuntimeOptions) (_result *CreatePipelineFromTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreatePipelineFromTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreatePipelineFromTemplate"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePipelineFromTemplate(request *CreatePipelineFromTemplateRequest) (_result *CreatePipelineFromTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePipelineFromTemplateResponse{}
+	_body, _err := client.CreatePipelineFromTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSmartGroupWithOptions(request *ListSmartGroupRequest, runtime *util.RuntimeOptions) (_result *ListSmartGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListSmartGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListSmartGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSmartGroup(request *ListSmartGroupRequest) (_result *ListSmartGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSmartGroupResponse{}
+	_body, _err := client.ListSmartGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TransferPipelineOwnerWithOptions(request *TransferPipelineOwnerRequest, runtime *util.RuntimeOptions) (_result *TransferPipelineOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &TransferPipelineOwnerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("TransferPipelineOwner"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransferPipelineOwner(request *TransferPipelineOwnerRequest) (_result *TransferPipelineOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransferPipelineOwnerResponse{}
+	_body, _err := client.TransferPipelineOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCommonGroupWithOptions(request *CreateCommonGroupRequest, runtime *util.RuntimeOptions) (_result *CreateCommonGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateCommonGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCommonGroup(request *CreateCommonGroupRequest) (_result *CreateCommonGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCommonGroupResponse{}
+	_body, _err := client.CreateCommonGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsOrganizationWithOptions(request *CreateDevopsOrganizationRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsOrganizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDevopsOrganizationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsOrganization(request *CreateDevopsOrganizationRequest) (_result *CreateDevopsOrganizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDevopsOrganizationResponse{}
+	_body, _err := client.CreateDevopsOrganizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDevopsScenarioFieldConfigWithOptions(request *ListDevopsScenarioFieldConfigRequest, runtime *util.RuntimeOptions) (_result *ListDevopsScenarioFieldConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDevopsScenarioFieldConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDevopsScenarioFieldConfig"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDevopsScenarioFieldConfig(request *ListDevopsScenarioFieldConfigRequest) (_result *ListDevopsScenarioFieldConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDevopsScenarioFieldConfigResponse{}
+	_body, _err := client.ListDevopsScenarioFieldConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelineTemplatesWithOptions(request *ListPipelineTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListPipelineTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListPipelineTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListPipelineTemplates"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelineTemplates(request *ListPipelineTemplatesRequest) (_result *ListPipelineTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPipelineTemplatesResponse{}
+	_body, _err := client.ListPipelineTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProjectTaskWithOptions(request *UpdateDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDevopsProjectTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDevopsProjectTask(request *UpdateDevopsProjectTaskRequest) (_result *UpdateDevopsProjectTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDevopsProjectTaskResponse{}
+	_body, _err := client.UpdateDevopsProjectTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectTaskInfoWithOptions(request *GetDevopsProjectTaskInfoRequest, runtime *util.RuntimeOptions) (_result *GetDevopsProjectTaskInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDevopsProjectTaskInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDevopsProjectTaskInfo"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDevopsProjectTaskInfo(request *GetDevopsProjectTaskInfoRequest) (_result *GetDevopsProjectTaskInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDevopsProjectTaskInfoResponse{}
+	_body, _err := client.GetDevopsProjectTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstanceGroupStatusWithOptions(request *GetPipelineInstanceGroupStatusRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstanceGroupStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPipelineInstanceGroupStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstanceGroupStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstanceGroupStatus(request *GetPipelineInstanceGroupStatusRequest) (_result *GetPipelineInstanceGroupStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPipelineInstanceGroupStatusResponse{}
+	_body, _err := client.GetPipelineInstanceGroupStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskDetailWithOptions(request *UpdateTaskDetailRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateTaskDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateTaskDetail"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskDetail(request *UpdateTaskDetailRequest) (_result *UpdateTaskDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskDetailResponse{}
+	_body, _err := client.UpdateTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskListFilterWithOptions(request *GetTaskListFilterRequest, runtime *util.RuntimeOptions) (_result *GetTaskListFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTaskListFilterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTaskListFilter"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskListFilter(request *GetTaskListFilterRequest) (_result *GetTaskListFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskListFilterResponse{}
+	_body, _err := client.GetTaskListFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProjectOptionWithOptions(request *GetProjectOptionRequest, runtime *util.RuntimeOptions) (_result *GetProjectOptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetProjectOptionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetProjectOption"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProjectOption(request *GetProjectOptionRequest) (_result *GetProjectOptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectOptionResponse{}
+	_body, _err := client.GetProjectOptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCommonGroupWithOptions(request *UpdateCommonGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateCommonGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateCommonGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCommonGroup(request *UpdateCommonGroupRequest) (_result *UpdateCommonGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCommonGroupResponse{}
+	_body, _err := client.UpdateCommonGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCommonGroupWithOptions(request *ListCommonGroupRequest, runtime *util.RuntimeOptions) (_result *ListCommonGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListCommonGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCommonGroup(request *ListCommonGroupRequest) (_result *ListCommonGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCommonGroupResponse{}
+	_body, _err := client.ListCommonGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProjectTaskWithOptions(request *DeleteDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDevopsProjectTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDevopsProjectTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDevopsProjectTask(request *DeleteDevopsProjectTaskRequest) (_result *DeleteDevopsProjectTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDevopsProjectTaskResponse{}
+	_body, _err := client.DeleteDevopsProjectTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDevopsOrganizationMembersWithOptions(request *GetDevopsOrganizationMembersRequest, runtime *util.RuntimeOptions) (_result *GetDevopsOrganizationMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDevopsOrganizationMembersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDevopsOrganizationMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDevopsOrganizationMembers(request *GetDevopsOrganizationMembersRequest) (_result *GetDevopsOrganizationMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDevopsOrganizationMembersResponse{}
+	_body, _err := client.GetDevopsOrganizationMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProjectWithOptions(request *CreateDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *CreateDevopsProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDevopsProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDevopsProject(request *CreateDevopsProjectRequest) (_result *CreateDevopsProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDevopsProjectResponse{}
+	_body, _err := client.CreateDevopsProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskDetailActivityWithOptions(request *GetTaskDetailActivityRequest, runtime *util.RuntimeOptions) (_result *GetTaskDetailActivityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTaskDetailActivityResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTaskDetailActivity"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskDetailActivity(request *GetTaskDetailActivityRequest) (_result *GetTaskDetailActivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskDetailActivityResponse{}
+	_body, _err := client.GetTaskDetailActivityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecutePipelineWithOptions(request *ExecutePipelineRequest, runtime *util.RuntimeOptions) (_result *ExecutePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExecutePipelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExecutePipeline"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecutePipeline(request *ExecutePipelineRequest) (_result *ExecutePipelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecutePipelineResponse{}
+	_body, _err := client.ExecutePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceConnectionWithOptions(request *CreateServiceConnectionRequest, runtime *util.RuntimeOptions) (_result *CreateServiceConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateServiceConnectionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateServiceConnection"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceConnection(request *CreateServiceConnectionRequest) (_result *CreateServiceConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceConnectionResponse{}
+	_body, _err := client.CreateServiceConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstHistoryWithOptions(request *GetPipelineInstHistoryRequest, runtime *util.RuntimeOptions) (_result *GetPipelineInstHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPipelineInstHistoryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPipelineInstHistory"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineInstHistory(request *GetPipelineInstHistoryRequest) (_result *GetPipelineInstHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPipelineInstHistoryResponse{}
+	_body, _err := client.GetPipelineInstHistoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11468,454 +12773,6 @@ func (client *Client) GetPipleineLatestInstanceStatus(request *GetPipleineLatest
 	return _result, _err
 }
 
-func (client *Client) GetProjectOptionWithOptions(request *GetProjectOptionRequest, runtime *util.RuntimeOptions) (_result *GetProjectOptionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetProjectOptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetProjectOption"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProjectOption(request *GetProjectOptionRequest) (_result *GetProjectOptionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetProjectOptionResponse{}
-	_body, _err := client.GetProjectOptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTaskDetailActivityWithOptions(request *GetTaskDetailActivityRequest, runtime *util.RuntimeOptions) (_result *GetTaskDetailActivityResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetTaskDetailActivityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTaskDetailActivity"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskDetailActivity(request *GetTaskDetailActivityRequest) (_result *GetTaskDetailActivityResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskDetailActivityResponse{}
-	_body, _err := client.GetTaskDetailActivityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTaskDetailBaseWithOptions(request *GetTaskDetailBaseRequest, runtime *util.RuntimeOptions) (_result *GetTaskDetailBaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetTaskDetailBaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTaskDetailBase"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskDetailBase(request *GetTaskDetailBaseRequest) (_result *GetTaskDetailBaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskDetailBaseResponse{}
-	_body, _err := client.GetTaskDetailBaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTaskListFilterWithOptions(request *GetTaskListFilterRequest, runtime *util.RuntimeOptions) (_result *GetTaskListFilterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetTaskListFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTaskListFilter"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskListFilter(request *GetTaskListFilterRequest) (_result *GetTaskListFilterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskListFilterResponse{}
-	_body, _err := client.GetTaskListFilterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserByAliyunUidWithOptions(request *GetUserByAliyunUidRequest, runtime *util.RuntimeOptions) (_result *GetUserByAliyunUidResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetUserByAliyunUidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserByAliyunUid"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserByAliyunUid(request *GetUserByAliyunUidRequest) (_result *GetUserByAliyunUidResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserByAliyunUidResponse{}
-	_body, _err := client.GetUserByAliyunUidWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserNameWithOptions(request *GetUserNameRequest, runtime *util.RuntimeOptions) (_result *GetUserNameResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetUserNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserName"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserName(request *GetUserNameRequest) (_result *GetUserNameResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserNameResponse{}
-	_body, _err := client.GetUserNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InsertDevopsUserWithOptions(request *InsertDevopsUserRequest, runtime *util.RuntimeOptions) (_result *InsertDevopsUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &InsertDevopsUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InsertDevopsUser"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InsertDevopsUser(request *InsertDevopsUserRequest) (_result *InsertDevopsUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertDevopsUserResponse{}
-	_body, _err := client.InsertDevopsUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InsertPipelineMemberWithOptions(request *InsertPipelineMemberRequest, runtime *util.RuntimeOptions) (_result *InsertPipelineMemberResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &InsertPipelineMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InsertPipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InsertPipelineMember(request *InsertPipelineMemberRequest) (_result *InsertPipelineMemberResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertPipelineMemberResponse{}
-	_body, _err := client.InsertPipelineMemberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InsertProjectMembersWithOptions(request *InsertProjectMembersRequest, runtime *util.RuntimeOptions) (_result *InsertProjectMembersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &InsertProjectMembersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InsertProjectMembers"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InsertProjectMembers(request *InsertProjectMembersRequest) (_result *InsertProjectMembersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InsertProjectMembersResponse{}
-	_body, _err := client.InsertProjectMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListCommonGroupWithOptions(request *ListCommonGroupRequest, runtime *util.RuntimeOptions) (_result *ListCommonGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListCommonGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCommonGroup(request *ListCommonGroupRequest) (_result *ListCommonGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCommonGroupResponse{}
-	_body, _err := client.ListCommonGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest, runtime *util.RuntimeOptions) (_result *ListCredentialsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListCredentialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCredentials"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result *ListCredentialsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCredentialsResponse{}
-	_body, _err := client.ListCredentialsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectsWithOptions(request *ListDevopsProjectsRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsProjectsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjects"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjects(request *ListDevopsProjectsRequest) (_result *ListDevopsProjectsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsProjectsResponse{}
-	_body, _err := client.ListDevopsProjectsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectSprintsWithOptions(request *ListDevopsProjectSprintsRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectSprintsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsProjectSprintsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectSprints"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectSprints(request *ListDevopsProjectSprintsRequest) (_result *ListDevopsProjectSprintsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsProjectSprintsResponse{}
-	_body, _err := client.ListDevopsProjectSprintsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskFlowWithOptions(request *ListDevopsProjectTaskFlowRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskFlowResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsProjectTaskFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskFlow"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskFlow(request *ListDevopsProjectTaskFlowRequest) (_result *ListDevopsProjectTaskFlowResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsProjectTaskFlowResponse{}
-	_body, _err := client.ListDevopsProjectTaskFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskFlowStatusWithOptions(request *ListDevopsProjectTaskFlowStatusRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskFlowStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsProjectTaskFlowStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskFlowStatus"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskFlowStatus(request *ListDevopsProjectTaskFlowStatusRequest) (_result *ListDevopsProjectTaskFlowStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsProjectTaskFlowStatusResponse{}
-	_body, _err := client.ListDevopsProjectTaskFlowStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskListWithOptions(request *ListDevopsProjectTaskListRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTaskListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsProjectTaskListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsProjectTaskList"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsProjectTaskList(request *ListDevopsProjectTaskListRequest) (_result *ListDevopsProjectTaskListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsProjectTaskListResponse{}
-	_body, _err := client.ListDevopsProjectTaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListDevopsProjectTasksWithOptions(request *ListDevopsProjectTasksRequest, runtime *util.RuntimeOptions) (_result *ListDevopsProjectTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11937,370 +12794,6 @@ func (client *Client) ListDevopsProjectTasks(request *ListDevopsProjectTasksRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDevopsProjectTasksResponse{}
 	_body, _err := client.ListDevopsProjectTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDevopsScenarioFieldConfigWithOptions(request *ListDevopsScenarioFieldConfigRequest, runtime *util.RuntimeOptions) (_result *ListDevopsScenarioFieldConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDevopsScenarioFieldConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDevopsScenarioFieldConfig"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDevopsScenarioFieldConfig(request *ListDevopsScenarioFieldConfigRequest) (_result *ListDevopsScenarioFieldConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDevopsScenarioFieldConfigResponse{}
-	_body, _err := client.ListDevopsScenarioFieldConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListPipelinesWithOptions(request *ListPipelinesRequest, runtime *util.RuntimeOptions) (_result *ListPipelinesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListPipelinesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPipelines"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListPipelinesResponse{}
-	_body, _err := client.ListPipelinesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProjectCustomFieldsWithOptions(request *ListProjectCustomFieldsRequest, runtime *util.RuntimeOptions) (_result *ListProjectCustomFieldsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListProjectCustomFieldsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListProjectCustomFields"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProjectCustomFields(request *ListProjectCustomFieldsRequest) (_result *ListProjectCustomFieldsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListProjectCustomFieldsResponse{}
-	_body, _err := client.ListProjectCustomFieldsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListServiceConnectionsWithOptions(request *ListServiceConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListServiceConnectionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListServiceConnectionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListServiceConnections"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListServiceConnections(request *ListServiceConnectionsRequest) (_result *ListServiceConnectionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListServiceConnectionsResponse{}
-	_body, _err := client.ListServiceConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListSmartGroupWithOptions(request *ListSmartGroupRequest, runtime *util.RuntimeOptions) (_result *ListSmartGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListSmartGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSmartGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListSmartGroup(request *ListSmartGroupRequest) (_result *ListSmartGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListSmartGroupResponse{}
-	_body, _err := client.ListSmartGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListUserOrganizationWithOptions(request *ListUserOrganizationRequest, runtime *util.RuntimeOptions) (_result *ListUserOrganizationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListUserOrganizationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUserOrganization"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUserOrganization(request *ListUserOrganizationRequest) (_result *ListUserOrganizationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUserOrganizationResponse{}
-	_body, _err := client.ListUserOrganizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TransferPipelineOwnerWithOptions(request *TransferPipelineOwnerRequest, runtime *util.RuntimeOptions) (_result *TransferPipelineOwnerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &TransferPipelineOwnerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TransferPipelineOwner"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TransferPipelineOwner(request *TransferPipelineOwnerRequest) (_result *TransferPipelineOwnerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TransferPipelineOwnerResponse{}
-	_body, _err := client.TransferPipelineOwnerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateCommonGroupWithOptions(request *UpdateCommonGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateCommonGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateCommonGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCommonGroup"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateCommonGroup(request *UpdateCommonGroupRequest) (_result *UpdateCommonGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateCommonGroupResponse{}
-	_body, _err := client.UpdateCommonGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProjectWithOptions(request *UpdateDevopsProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDevopsProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProject"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProject(request *UpdateDevopsProjectRequest) (_result *UpdateDevopsProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDevopsProjectResponse{}
-	_body, _err := client.UpdateDevopsProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProjectSprintWithOptions(request *UpdateDevopsProjectSprintRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectSprintResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDevopsProjectSprintResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProjectSprint"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProjectSprint(request *UpdateDevopsProjectSprintRequest) (_result *UpdateDevopsProjectSprintResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDevopsProjectSprintResponse{}
-	_body, _err := client.UpdateDevopsProjectSprintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProjectTaskWithOptions(request *UpdateDevopsProjectTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateDevopsProjectTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDevopsProjectTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDevopsProjectTask"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDevopsProjectTask(request *UpdateDevopsProjectTaskRequest) (_result *UpdateDevopsProjectTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDevopsProjectTaskResponse{}
-	_body, _err := client.UpdateDevopsProjectTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdatePipelineMemberWithOptions(request *UpdatePipelineMemberRequest, runtime *util.RuntimeOptions) (_result *UpdatePipelineMemberResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdatePipelineMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdatePipelineMember"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdatePipelineMember(request *UpdatePipelineMemberRequest) (_result *UpdatePipelineMemberResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdatePipelineMemberResponse{}
-	_body, _err := client.UpdatePipelineMemberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateTaskDetailWithOptions(request *UpdateTaskDetailRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateTaskDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTaskDetail"), tea.String("2020-03-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateTaskDetail(request *UpdateTaskDetailRequest) (_result *UpdateTaskDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateTaskDetailResponse{}
-	_body, _err := client.UpdateTaskDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
