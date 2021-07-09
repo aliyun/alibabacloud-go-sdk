@@ -265,53 +265,6 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 	return s
 }
 
-type DescribeIceProductStatusResponseBody struct {
-	// Id of the request
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ICEServiceAvaliable *bool   `json:"ICEServiceAvaliable,omitempty" xml:"ICEServiceAvaliable,omitempty"`
-}
-
-func (s DescribeIceProductStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIceProductStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIceProductStatusResponseBody) SetRequestId(v string) *DescribeIceProductStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeIceProductStatusResponseBody) SetICEServiceAvaliable(v bool) *DescribeIceProductStatusResponseBody {
-	s.ICEServiceAvaliable = &v
-	return s
-}
-
-type DescribeIceProductStatusResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeIceProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeIceProductStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIceProductStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIceProductStatusResponse) SetHeaders(v map[string]*string) *DescribeIceProductStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeIceProductStatusResponse) SetBody(v *DescribeIceProductStatusResponseBody) *DescribeIceProductStatusResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRelatedAuthorizationStatusResponseBody struct {
 	// Id of the request
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -373,6 +326,2151 @@ func (s *DescribeRelatedAuthorizationStatusResponse) SetHeaders(v map[string]*st
 }
 
 func (s *DescribeRelatedAuthorizationStatusResponse) SetBody(v *DescribeRelatedAuthorizationStatusResponseBody) *DescribeRelatedAuthorizationStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSmartJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteSmartJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartJobRequest) SetJobId(v string) *DeleteSmartJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteSmartJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteSmartJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartJobResponseBody) SetRequestId(v string) *DeleteSmartJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSmartJobResponseBody) SetState(v string) *DeleteSmartJobResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *DeleteSmartJobResponseBody) SetJobId(v string) *DeleteSmartJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type DeleteSmartJobResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSmartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSmartJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartJobResponse) SetHeaders(v map[string]*string) *DeleteSmartJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteSmartJobResponse {
+	s.Body = v
+	return s
+}
+
+type AddTemplateRequest struct {
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+}
+
+func (s AddTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTemplateRequest) SetTemplateId(v string) *AddTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetName(v string) *AddTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetType(v string) *AddTemplateRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetConfig(v string) *AddTemplateRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetCoverUrl(v string) *AddTemplateRequest {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetPreviewMedia(v string) *AddTemplateRequest {
+	s.PreviewMedia = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetStatus(v string) *AddTemplateRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetSource(v string) *AddTemplateRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *AddTemplateRequest) SetRelatedMediaids(v string) *AddTemplateRequest {
+	s.RelatedMediaids = &v
+	return s
+}
+
+type AddTemplateResponseBody struct {
+	// Id of the request
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Template  *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+}
+
+func (s AddTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTemplateResponseBody) SetRequestId(v string) *AddTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTemplateResponseBody) SetTemplate(v *AddTemplateResponseBodyTemplate) *AddTemplateResponseBody {
+	s.Template = v
+	return s
+}
+
+type AddTemplateResponseBodyTemplate struct {
+	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl       *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	PreviewMedia   *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+}
+
+func (s AddTemplateResponseBodyTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTemplateResponseBodyTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetTemplateId(v string) *AddTemplateResponseBodyTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetName(v string) *AddTemplateResponseBodyTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetType(v string) *AddTemplateResponseBodyTemplate {
+	s.Type = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetConfig(v string) *AddTemplateResponseBodyTemplate {
+	s.Config = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetCoverUrl(v string) *AddTemplateResponseBodyTemplate {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetPreviewMedia(v string) *AddTemplateResponseBodyTemplate {
+	s.PreviewMedia = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetStatus(v string) *AddTemplateResponseBodyTemplate {
+	s.Status = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetCreateSource(v string) *AddTemplateResponseBodyTemplate {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *AddTemplateResponseBodyTemplate) SetModifiedSource(v string) *AddTemplateResponseBodyTemplate {
+	s.ModifiedSource = &v
+	return s
+}
+
+type AddTemplateResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTemplateResponse) SetHeaders(v map[string]*string) *AddTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTemplateResponse) SetBody(v *AddTemplateResponseBody) *AddTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEditingProjectRequest struct {
+	// 云剪辑工程标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 云剪辑工程描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 云剪辑工程时间线，Json格式
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// 云剪辑工程封面
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 云剪辑工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s UpdateEditingProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEditingProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEditingProjectRequest) SetTitle(v string) *UpdateEditingProjectRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetDescription(v string) *UpdateEditingProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetTimeline(v string) *UpdateEditingProjectRequest {
+	s.Timeline = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetCoverURL(v string) *UpdateEditingProjectRequest {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetProjectId(v string) *UpdateEditingProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type UpdateEditingProjectResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEditingProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEditingProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEditingProjectResponseBody) SetRequestId(v string) *UpdateEditingProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEditingProjectResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEditingProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEditingProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEditingProjectResponse) SetHeaders(v map[string]*string) *UpdateEditingProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBody) *UpdateEditingProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ListMediaProducingJobsRequest struct {
+	// 查询以下状态的合成任务，支持多值，以英文逗号分隔
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListMediaProducingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsRequest) SetStatus(v string) *ListMediaProducingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListMediaProducingJobsResponseBody struct {
+	// Id of the request
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MediaProducingJobList []*ListMediaProducingJobsResponseBodyMediaProducingJobList `json:"MediaProducingJobList,omitempty" xml:"MediaProducingJobList,omitempty" type:"Repeated"`
+}
+
+func (s ListMediaProducingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetRequestId(v string) *ListMediaProducingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetMediaProducingJobList(v []*ListMediaProducingJobsResponseBodyMediaProducingJobList) *ListMediaProducingJobsResponseBody {
+	s.MediaProducingJobList = v
+	return s
+}
+
+type ListMediaProducingJobsResponseBodyMediaProducingJobList struct {
+	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	MediaId      *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL     *string  `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	ClipsParam   *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CompleteTime *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code         *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetJobId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetProjectId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaURL(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetTemplateId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetClipsParam(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ClipsParam = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetDuration(v float32) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCreateTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCompleteTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetModifiedTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetStatus(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCode(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMessage(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Message = &v
+	return s
+}
+
+type ListMediaProducingJobsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMediaProducingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMediaProducingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponse) SetHeaders(v map[string]*string) *ListMediaProducingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponse) SetBody(v *ListMediaProducingJobsResponseBody) *ListMediaProducingJobsResponse {
+	s.Body = v
+	return s
+}
+
+type GetEditingProjectMaterialsRequest struct {
+	// 云剪辑工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetEditingProjectMaterialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsRequest) SetProjectId(v string) *GetEditingProjectMaterialsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 符合要求的媒资集合
+	MediaInfos []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+}
+
+func (s GetEditingProjectMaterialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBody) SetRequestId(v string) *GetEditingProjectMaterialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBody) SetProjectId(v string) *GetEditingProjectMaterialsResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBody) SetMediaInfos(v []*GetEditingProjectMaterialsResponseBodyMediaInfos) *GetEditingProjectMaterialsResponseBody {
+	s.MediaInfos = v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
+	// 媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// BasicInfo
+	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// FileInfos
+	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) *GetEditingProjectMaterialsResponseBodyMediaInfos {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaBasicInfo(v *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) *GetEditingProjectMaterialsResponseBodyMediaInfos {
+	s.MediaBasicInfo = v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetFileInfoList(v []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) *GetEditingProjectMaterialsResponseBodyMediaInfos {
+	s.FileInfoList = v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
+	// MediaId
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 待注册的媒资在相应系统中的地址
+	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// 媒资媒体类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 标签
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 封面地址
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 用户数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 截图
+	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// 资源状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 转码状态
+	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// 媒资创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 媒资修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 媒资删除时间
+	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaId(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetInputURL(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.InputURL = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaType = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetBusinessType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSource(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetTitle(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Title = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDescription(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCategory(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaTags(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCoverURL(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetUserData(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSnapshots(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Snapshots = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetTranscodeStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.TranscodeStatus = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCreateTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetModifiedTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.DeletedTime = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+	s.SpriteImages = &v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
+	// 文件基础信息，包含时长，大小等
+	FileBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(v *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList {
+	s.FileBasicInfo = v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// 文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 文件状态
+	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// 文件大小（字节）
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// 文件oss地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// 文件存储区域
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 封装格式
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 码率
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 宽
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// 高
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileName(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileStatus = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileSize(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileUrl(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetRegion(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFormatName(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FormatName = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetDuration(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetBitrate(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetWidth(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetHeight(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Height = &v
+	return s
+}
+
+type GetEditingProjectMaterialsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEditingProjectMaterialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponse) SetHeaders(v map[string]*string) *GetEditingProjectMaterialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMaterialsResponseBody) *GetEditingProjectMaterialsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDefaultStorageLocationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 存储类型
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// oss bucket 名称
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// 路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDefaultStorageLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultStorageLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetRequestId(v string) *GetDefaultStorageLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetStorageType(v string) *GetDefaultStorageLocationResponseBody {
+	s.StorageType = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetBucket(v string) *GetDefaultStorageLocationResponseBody {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetPath(v string) *GetDefaultStorageLocationResponseBody {
+	s.Path = &v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponseBody) SetStatus(v string) *GetDefaultStorageLocationResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetDefaultStorageLocationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDefaultStorageLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultStorageLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *GetDefaultStorageLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDefaultStorageLocationResponse) SetBody(v *GetDefaultStorageLocationResponseBody) *GetDefaultStorageLocationResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaInfosRequest struct {
+	// ICE 媒资ID
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// 待注册的媒资在相应系统中的地址
+	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+}
+
+func (s DeleteMediaInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfosRequest) SetMediaIds(v string) *DeleteMediaInfosRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *DeleteMediaInfosRequest) SetInputURLs(v string) *DeleteMediaInfosRequest {
+	s.InputURLs = &v
+	return s
+}
+
+type DeleteMediaInfosResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 出现获取错误的ID或inputUr
+	IgnoredList *string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty"`
+}
+
+func (s DeleteMediaInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfosResponseBody) SetRequestId(v string) *DeleteMediaInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMediaInfosResponseBody) SetIgnoredList(v string) *DeleteMediaInfosResponseBody {
+	s.IgnoredList = &v
+	return s
+}
+
+type DeleteMediaInfosResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteMediaInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMediaInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfosResponse) SetHeaders(v map[string]*string) *DeleteMediaInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *DeleteMediaInfosResponse {
+	s.Body = v
+	return s
+}
+
+type SetEventCallbackRequest struct {
+	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
+}
+
+func (s SetEventCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventCallbackRequest) SetCallbackQueueName(v string) *SetEventCallbackRequest {
+	s.CallbackQueueName = &v
+	return s
+}
+
+type SetEventCallbackResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否设置成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetEventCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventCallbackResponseBody) SetRequestId(v string) *SetEventCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetEventCallbackResponseBody) SetSuccess(v bool) *SetEventCallbackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetEventCallbackResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetEventCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetEventCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEventCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetEventCallbackResponse) SetHeaders(v map[string]*string) *SetEventCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *SetEventCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterMediaInfoRequest struct {
+	// 媒资媒体url
+	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// 媒资媒体类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 标签,如果有多个标签用逗号隔开
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 封面图，仅视频媒资有效
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 用户自定义元数据
+	DynamicMetaDataList *string `json:"DynamicMetaDataList,omitempty" xml:"DynamicMetaDataList,omitempty"`
+	// 用户数据，最大1024字节
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 是否覆盖已有媒资
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// 客户端token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 注册媒资的配置
+	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
+}
+
+func (s RegisterMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterMediaInfoRequest) SetInputURL(v string) *RegisterMediaInfoRequest {
+	s.InputURL = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetMediaType(v string) *RegisterMediaInfoRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetBusinessType(v string) *RegisterMediaInfoRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetTitle(v string) *RegisterMediaInfoRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetDescription(v string) *RegisterMediaInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetCategory(v string) *RegisterMediaInfoRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetMediaTags(v string) *RegisterMediaInfoRequest {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetCoverURL(v string) *RegisterMediaInfoRequest {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetDynamicMetaDataList(v string) *RegisterMediaInfoRequest {
+	s.DynamicMetaDataList = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetUserData(v string) *RegisterMediaInfoRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetOverwrite(v bool) *RegisterMediaInfoRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetClientToken(v string) *RegisterMediaInfoRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetRegisterConfig(v string) *RegisterMediaInfoRequest {
+	s.RegisterConfig = &v
+	return s
+}
+
+type RegisterMediaInfoResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ICE媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RegisterMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterMediaInfoResponseBody) SetRequestId(v string) *RegisterMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterMediaInfoResponseBody) SetMediaId(v string) *RegisterMediaInfoResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+type RegisterMediaInfoResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterMediaInfoResponse) SetHeaders(v map[string]*string) *RegisterMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterMediaInfoResponse) SetBody(v *RegisterMediaInfoResponseBody) *RegisterMediaInfoResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEditingProjectRequest struct {
+	// 云剪辑工程标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 云剪辑工程描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 云剪辑工程时间线，Json格式
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// 云剪辑工程封面
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// FEExtend
+	FEExtend *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
+}
+
+func (s CreateEditingProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEditingProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEditingProjectRequest) SetTitle(v string) *CreateEditingProjectRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetDescription(v string) *CreateEditingProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetTimeline(v string) *CreateEditingProjectRequest {
+	s.Timeline = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetCoverURL(v string) *CreateEditingProjectRequest {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetFEExtend(v string) *CreateEditingProjectRequest {
+	s.FEExtend = &v
+	return s
+}
+
+type CreateEditingProjectResponseBody struct {
+	// Id of the request
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+}
+
+func (s CreateEditingProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEditingProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEditingProjectResponseBody) SetRequestId(v string) *CreateEditingProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBody) SetProject(v *CreateEditingProjectResponseBodyProject) *CreateEditingProjectResponseBody {
+	s.Project = v
+	return s
+}
+
+type CreateEditingProjectResponseBodyProject struct {
+	ProjectId      *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Title          *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Timeline       *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	CoverURL       *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Status         *int64   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName     *string  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifiedTime   *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Duration       *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CreateSource   *string  `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	ModifiedSource *string  `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	TemplateType   *string  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s CreateEditingProjectResponseBodyProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEditingProjectResponseBodyProject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetProjectId(v string) *CreateEditingProjectResponseBodyProject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetTitle(v string) *CreateEditingProjectResponseBodyProject {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetDescription(v string) *CreateEditingProjectResponseBodyProject {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetTimeline(v string) *CreateEditingProjectResponseBodyProject {
+	s.Timeline = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetCoverURL(v string) *CreateEditingProjectResponseBodyProject {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetStatus(v int64) *CreateEditingProjectResponseBodyProject {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetStatusName(v string) *CreateEditingProjectResponseBodyProject {
+	s.StatusName = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetCreateTime(v string) *CreateEditingProjectResponseBodyProject {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetModifiedTime(v string) *CreateEditingProjectResponseBodyProject {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetDuration(v float32) *CreateEditingProjectResponseBodyProject {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetCreateSource(v string) *CreateEditingProjectResponseBodyProject {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetModifiedSource(v string) *CreateEditingProjectResponseBodyProject {
+	s.ModifiedSource = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetTemplateType(v string) *CreateEditingProjectResponseBodyProject {
+	s.TemplateType = &v
+	return s
+}
+
+type CreateEditingProjectResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEditingProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEditingProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEditingProjectResponse) SetHeaders(v map[string]*string) *CreateEditingProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBody) *CreateEditingProjectResponse {
+	s.Body = v
+	return s
+}
+
+type BatchGetMediaInfosRequest struct {
+	MediaIds     *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	AdditionType *string `json:"AdditionType,omitempty" xml:"AdditionType,omitempty"`
+}
+
+func (s BatchGetMediaInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosRequest) SetMediaIds(v string) *BatchGetMediaInfosRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosRequest) SetAdditionType(v string) *BatchGetMediaInfosRequest {
+	s.AdditionType = &v
+	return s
+}
+
+type BatchGetMediaInfosResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 符合要求的媒资集合
+	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetMediaInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBody) SetMediaInfos(v []*BatchGetMediaInfosResponseBodyMediaInfos) *BatchGetMediaInfosResponseBody {
+	s.MediaInfos = v
+	return s
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfos struct {
+	// 媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// BasicInfo
+	MediaBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// FileInfos
+	FileInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfos) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaId(v string) *BatchGetMediaInfosResponseBodyMediaInfos {
+	s.MediaId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetMediaBasicInfo(v *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) *BatchGetMediaInfosResponseBodyMediaInfos {
+	s.MediaBasicInfo = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetFileInfoList(v []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) *BatchGetMediaInfosResponseBodyMediaInfos {
+	s.FileInfoList = v
+	return s
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
+	// MediaId
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 待注册的媒资在相应系统中的地址
+	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// 媒资媒体类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 标签
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 封面地址
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 用户数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 截图
+	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// 资源状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 转码状态
+	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
+	// 媒资创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 媒资修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 媒资删除时间
+	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetMediaId(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaId = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetInputURL(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.InputURL = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetMediaType(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetBusinessType(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetSource(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetTitle(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Title = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetDescription(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetCategory(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetMediaTags(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetCoverURL(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetUserData(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.UserData = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetSnapshots(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Snapshots = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetStatus(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetTranscodeStatus(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.TranscodeStatus = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetCreateTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetModifiedTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.DeletedTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.SpriteImages = &v
+	return s
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosFileInfoList struct {
+	// 文件基础信息，包含时长，大小等
+	FileBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(v *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList {
+	s.FileBasicInfo = v
+	return s
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
+	// 文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 文件状态
+	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// 文件大小（字节）
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// 文件oss地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// 文件存储区域
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 封装格式
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 码率
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 宽
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// 高
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileStatus(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileStatus = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileType(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileSize(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileSize = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileUrl(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetRegion(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFormatName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.FormatName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetDuration(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetBitrate(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetWidth(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetHeight(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
+	s.Height = &v
+	return s
+}
+
+type BatchGetMediaInfosResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchGetMediaInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchGetMediaInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponse) SetHeaders(v map[string]*string) *BatchGetMediaInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponse) SetBody(v *BatchGetMediaInfosResponseBody) *BatchGetMediaInfosResponse {
+	s.Body = v
+	return s
+}
+
+type SetDefaultStorageLocationRequest struct {
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s SetDefaultStorageLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationRequest) SetStorageType(v string) *SetDefaultStorageLocationRequest {
+	s.StorageType = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationRequest) SetBucket(v string) *SetDefaultStorageLocationRequest {
+	s.Bucket = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationRequest) SetPath(v string) *SetDefaultStorageLocationRequest {
+	s.Path = &v
+	return s
+}
+
+type SetDefaultStorageLocationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetDefaultStorageLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationResponseBody) SetRequestId(v string) *SetDefaultStorageLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetDefaultStorageLocationResponseBody) SetSuccess(v bool) *SetDefaultStorageLocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetDefaultStorageLocationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDefaultStorageLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDefaultStorageLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *SetDefaultStorageLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDefaultStorageLocationResponse) SetBody(v *SetDefaultStorageLocationResponseBody) *SetDefaultStorageLocationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaInfoRequest struct {
+	// 媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 媒资媒体类型
+	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 标签,如果有多个标签用逗号隔开
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 封面图，仅视频媒资有效
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 用户自定义元数据
+	DynamicMetaDataList *string `json:"DynamicMetaDataList,omitempty" xml:"DynamicMetaDataList,omitempty"`
+	// 用户数据，最大1024字节
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 是否以append的形式更新Tags字段
+	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
+	// 是否以append的形式更新DynamicMetaDataList字段
+	AppendDynamicMeta *bool `json:"AppendDynamicMeta,omitempty" xml:"AppendDynamicMeta,omitempty"`
+}
+
+func (s UpdateMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaInfoRequest) SetMediaId(v string) *UpdateMediaInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetInputURL(v string) *UpdateMediaInfoRequest {
+	s.InputURL = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetBusinessType(v string) *UpdateMediaInfoRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetTitle(v string) *UpdateMediaInfoRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetDescription(v string) *UpdateMediaInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetCategory(v string) *UpdateMediaInfoRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetMediaTags(v string) *UpdateMediaInfoRequest {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetCoverURL(v string) *UpdateMediaInfoRequest {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetDynamicMetaDataList(v string) *UpdateMediaInfoRequest {
+	s.DynamicMetaDataList = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetUserData(v string) *UpdateMediaInfoRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetAppendTags(v bool) *UpdateMediaInfoRequest {
+	s.AppendTags = &v
+	return s
+}
+
+func (s *UpdateMediaInfoRequest) SetAppendDynamicMeta(v bool) *UpdateMediaInfoRequest {
+	s.AppendDynamicMeta = &v
+	return s
+}
+
+type UpdateMediaInfoResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ICE媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s UpdateMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaInfoResponseBody) SetRequestId(v string) *UpdateMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMediaInfoResponseBody) SetMediaId(v string) *UpdateMediaInfoResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+type UpdateMediaInfoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaInfoResponse) SetHeaders(v map[string]*string) *UpdateMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *UpdateMediaInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaProducingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetMediaProducingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaProducingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaProducingJobRequest) SetJobId(v string) *GetMediaProducingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetMediaProducingJobResponseBody struct {
+	// Id of the request
+	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MediaProducingJob *GetMediaProducingJobResponseBodyMediaProducingJob `json:"MediaProducingJob,omitempty" xml:"MediaProducingJob,omitempty" type:"Struct"`
+}
+
+func (s GetMediaProducingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaProducingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaProducingJobResponseBody) SetRequestId(v string) *GetMediaProducingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBody) SetMediaProducingJob(v *GetMediaProducingJobResponseBodyMediaProducingJob) *GetMediaProducingJobResponseBody {
+	s.MediaProducingJob = v
+	return s
+}
+
+type GetMediaProducingJobResponseBodyMediaProducingJob struct {
+	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	MediaId      *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL     *string  `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	Timeline     *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	ClipsParam   *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CompleteTime *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code         *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s GetMediaProducingJobResponseBodyMediaProducingJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaProducingJobResponseBodyMediaProducingJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetJobId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetProjectId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMediaId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMediaURL(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTimeline(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Timeline = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTemplateId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetClipsParam(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.ClipsParam = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetDuration(v float32) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCreateTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCompleteTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetModifiedTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetStatus(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCode(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMessage(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Message = &v
+	return s
+}
+
+type GetMediaProducingJobResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMediaProducingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaProducingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaProducingJobResponse) SetHeaders(v map[string]*string) *GetMediaProducingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaProducingJobResponse) SetBody(v *GetMediaProducingJobResponseBody) *GetMediaProducingJobResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIceProductStatusResponseBody struct {
+	// Id of the request
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ICEServiceAvaliable *bool   `json:"ICEServiceAvaliable,omitempty" xml:"ICEServiceAvaliable,omitempty"`
+}
+
+func (s DescribeIceProductStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIceProductStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIceProductStatusResponseBody) SetRequestId(v string) *DescribeIceProductStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIceProductStatusResponseBody) SetICEServiceAvaliable(v bool) *DescribeIceProductStatusResponseBody {
+	s.ICEServiceAvaliable = &v
+	return s
+}
+
+type DescribeIceProductStatusResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeIceProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIceProductStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIceProductStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIceProductStatusResponse) SetHeaders(v map[string]*string) *DescribeIceProductStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIceProductStatusResponse) SetBody(v *DescribeIceProductStatusResponseBody) *DescribeIceProductStatusResponse {
 	s.Body = v
 	return s
 }
@@ -1545,8 +3643,15 @@ type GetEditingProjectResponseBodyProject struct {
 	// 云剪辑工程最新修改时间
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 云剪辑工程总时长
-	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 云剪辑工程状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 云剪辑工程创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 云剪辑工程模板类型
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// 云剪辑工程修改来源
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
 }
 
 func (s GetEditingProjectResponseBodyProject) String() string {
@@ -1602,6 +3707,21 @@ func (s *GetEditingProjectResponseBodyProject) SetStatus(v string) *GetEditingPr
 	return s
 }
 
+func (s *GetEditingProjectResponseBodyProject) SetCreateSource(v string) *GetEditingProjectResponseBodyProject {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetTemplateType(v string) *GetEditingProjectResponseBodyProject {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetModifiedSource(v string) *GetEditingProjectResponseBodyProject {
+	s.ModifiedSource = &v
+	return s
+}
+
 type GetEditingProjectResponse struct {
 	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -1625,72 +3745,194 @@ func (s *GetEditingProjectResponse) SetBody(v *GetEditingProjectResponseBody) *G
 	return s
 }
 
-type DeleteSmartJobRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+type ListSysTemplatesRequest struct {
+	// 标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次读取的最大数据记录数量
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
-func (s DeleteSmartJobRequest) String() string {
+func (s ListSysTemplatesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteSmartJobRequest) GoString() string {
+func (s ListSysTemplatesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSmartJobRequest) SetJobId(v string) *DeleteSmartJobRequest {
-	s.JobId = &v
+func (s *ListSysTemplatesRequest) SetNextToken(v string) *ListSysTemplatesRequest {
+	s.NextToken = &v
 	return s
 }
 
-type DeleteSmartJobResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+func (s *ListSysTemplatesRequest) SetMaxResults(v int32) *ListSysTemplatesRequest {
+	s.MaxResults = &v
+	return s
 }
 
-func (s DeleteSmartJobResponseBody) String() string {
+func (s *ListSysTemplatesRequest) SetType(v string) *ListSysTemplatesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListSysTemplatesResponseBody struct {
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// MaxResults本次请求所返回的最大记录条数
+	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Templates  []*ListSysTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+}
+
+func (s ListSysTemplatesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteSmartJobResponseBody) GoString() string {
+func (s ListSysTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSmartJobResponseBody) SetRequestId(v string) *DeleteSmartJobResponseBody {
+func (s *ListSysTemplatesResponseBody) SetTotalCount(v int32) *ListSysTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSysTemplatesResponseBody) SetRequestId(v string) *ListSysTemplatesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DeleteSmartJobResponseBody) SetState(v string) *DeleteSmartJobResponseBody {
-	s.State = &v
+func (s *ListSysTemplatesResponseBody) SetNextToken(v string) *ListSysTemplatesResponseBody {
+	s.NextToken = &v
 	return s
 }
 
-func (s *DeleteSmartJobResponseBody) SetJobId(v string) *DeleteSmartJobResponseBody {
-	s.JobId = &v
+func (s *ListSysTemplatesResponseBody) SetMaxResults(v int32) *ListSysTemplatesResponseBody {
+	s.MaxResults = &v
 	return s
 }
 
-type DeleteSmartJobResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSmartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ListSysTemplatesResponseBody) SetTemplates(v []*ListSysTemplatesResponseBodyTemplates) *ListSysTemplatesResponseBody {
+	s.Templates = v
+	return s
 }
 
-func (s DeleteSmartJobResponse) String() string {
+type ListSysTemplatesResponseBodyTemplates struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+}
+
+func (s ListSysTemplatesResponseBodyTemplates) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteSmartJobResponse) GoString() string {
+func (s ListSysTemplatesResponseBodyTemplates) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSmartJobResponse) SetHeaders(v map[string]*string) *DeleteSmartJobResponse {
+func (s *ListSysTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListSysTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListSysTemplatesResponseBodyTemplates) SetName(v string) *ListSysTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSysTemplatesResponseBodyTemplates) SetType(v string) *ListSysTemplatesResponseBodyTemplates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListSysTemplatesResponseBodyTemplates) SetConfig(v string) *ListSysTemplatesResponseBodyTemplates {
+	s.Config = &v
+	return s
+}
+
+type ListSysTemplatesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSysTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSysTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSysTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSysTemplatesResponse) SetHeaders(v map[string]*string) *ListSysTemplatesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteSmartJobResponse {
+func (s *ListSysTemplatesResponse) SetBody(v *ListSysTemplatesResponseBody) *ListSysTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTemplateRequest struct {
+	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
+}
+
+func (s DeleteTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateRequest) SetTemplateIds(v string) *DeleteTemplateRequest {
+	s.TemplateIds = &v
+	return s
+}
+
+type DeleteTemplateResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateResponseBody) SetRequestId(v string) *DeleteTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTemplateResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -1868,93 +4110,6 @@ func (s *DeleteEditingProjectMaterialsResponse) SetBody(v *DeleteEditingProjectM
 	return s
 }
 
-type UpdateEditingProjectRequest struct {
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程时间线，Json格式
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s UpdateEditingProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEditingProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEditingProjectRequest) SetTitle(v string) *UpdateEditingProjectRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *UpdateEditingProjectRequest) SetDescription(v string) *UpdateEditingProjectRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateEditingProjectRequest) SetTimeline(v string) *UpdateEditingProjectRequest {
-	s.Timeline = &v
-	return s
-}
-
-func (s *UpdateEditingProjectRequest) SetCoverURL(v string) *UpdateEditingProjectRequest {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *UpdateEditingProjectRequest) SetProjectId(v string) *UpdateEditingProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type UpdateEditingProjectResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateEditingProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEditingProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEditingProjectResponseBody) SetRequestId(v string) *UpdateEditingProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateEditingProjectResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateEditingProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEditingProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEditingProjectResponse) SetHeaders(v map[string]*string) *UpdateEditingProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBody) *UpdateEditingProjectResponse {
-	s.Body = v
-	return s
-}
-
 type SearchEditingProjectRequest struct {
 	// CreateTime（创建时间）的开始时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -1968,6 +4123,10 @@ type SearchEditingProjectRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 分页参数
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 模板类型
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s SearchEditingProjectRequest) String() string {
@@ -2005,6 +4164,16 @@ func (s *SearchEditingProjectRequest) SetNextToken(v string) *SearchEditingProje
 
 func (s *SearchEditingProjectRequest) SetMaxResults(v int64) *SearchEditingProjectRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *SearchEditingProjectRequest) SetCreateSource(v string) *SearchEditingProjectRequest {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *SearchEditingProjectRequest) SetTemplateType(v string) *SearchEditingProjectRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -2071,6 +4240,16 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// 云剪辑工程状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 云剪辑工程合成失败的错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 云剪辑工程合成失败的消息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 最后一次修改来源
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// 模板类型
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s SearchEditingProjectResponseBodyProjectList) String() string {
@@ -2126,6 +4305,31 @@ func (s *SearchEditingProjectResponseBodyProjectList) SetStatus(v string) *Searc
 	return s
 }
 
+func (s *SearchEditingProjectResponseBodyProjectList) SetErrorCode(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetErrorMessage(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetCreateSource(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetModifiedSource(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.ModifiedSource = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetTemplateType(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.TemplateType = &v
+	return s
+}
+
 type SearchEditingProjectResponse struct {
 	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *SearchEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -2145,6 +4349,211 @@ func (s *SearchEditingProjectResponse) SetHeaders(v map[string]*string) *SearchE
 }
 
 func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBody) *SearchEditingProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ListTemplatesRequest struct {
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	SortType     *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s ListTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesRequest) SetType(v string) *ListTemplatesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetNextToken(v string) *ListTemplatesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetStatus(v string) *ListTemplatesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetCreateSource(v string) *ListTemplatesRequest {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetKeyword(v string) *ListTemplatesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetSortType(v string) *ListTemplatesRequest {
+	s.SortType = &v
+	return s
+}
+
+type ListTemplatesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// MaxResults本次请求所返回的最大记录条数
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+}
+
+func (s ListTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponseBody) SetRequestId(v string) *ListTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetNextToken(v string) *ListTemplatesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetMaxResults(v int32) *ListTemplatesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyTemplates) *ListTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+type ListTemplatesResponseBodyTemplates struct {
+	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config             *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	PreviewMedia       *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateSource       *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	ModifiedSource     *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ModifiedTime       *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// ClipsParam
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+}
+
+func (s ListTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetName(v string) *ListTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetType(v string) *ListTemplatesResponseBodyTemplates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetConfig(v string) *ListTemplatesResponseBodyTemplates {
+	s.Config = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetPreviewMedia(v string) *ListTemplatesResponseBodyTemplates {
+	s.PreviewMedia = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetStatus(v string) *ListTemplatesResponseBodyTemplates {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetCreateSource(v string) *ListTemplatesResponseBodyTemplates {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetModifiedSource(v string) *ListTemplatesResponseBodyTemplates {
+	s.ModifiedSource = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetPreviewMediaStatus(v string) *ListTemplatesResponseBodyTemplates {
+	s.PreviewMediaStatus = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetCreationTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetModifiedTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetCoverURL(v string) *ListTemplatesResponseBodyTemplates {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetClipsParam(v string) *ListTemplatesResponseBodyTemplates {
+	s.ClipsParam = &v
+	return s
+}
+
+type ListTemplatesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponse) SetHeaders(v map[string]*string) *ListTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -3159,6 +5568,8 @@ type SubmitDelogoJobRequest struct {
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
 	// 是否强制覆盖现有OSS文件
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// 输出类型
+	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
 }
 
 func (s SubmitDelogoJobRequest) String() string {
@@ -3201,6 +5612,11 @@ func (s *SubmitDelogoJobRequest) SetInputType(v string) *SubmitDelogoJobRequest 
 
 func (s *SubmitDelogoJobRequest) SetOverwrite(v bool) *SubmitDelogoJobRequest {
 	s.Overwrite = &v
+	return s
+}
+
+func (s *SubmitDelogoJobRequest) SetOutputMediaTarget(v string) *SubmitDelogoJobRequest {
+	s.OutputMediaTarget = &v
 	return s
 }
 
@@ -3269,572 +5685,102 @@ func (s *SubmitDelogoJobResponse) SetBody(v *SubmitDelogoJobResponseBody) *Submi
 	return s
 }
 
-type ListMediaProducingJobsRequest struct {
-	// 查询以下状态的合成任务，支持多值，以英文逗号分隔
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+type UpdateTemplateRequest struct {
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 }
 
-func (s ListMediaProducingJobsRequest) String() string {
+func (s UpdateTemplateRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMediaProducingJobsRequest) GoString() string {
+func (s UpdateTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListMediaProducingJobsRequest) SetStatus(v string) *ListMediaProducingJobsRequest {
-	s.Status = &v
-	return s
-}
-
-type ListMediaProducingJobsResponseBody struct {
-	// Id of the request
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MediaProducingJobList []*ListMediaProducingJobsResponseBodyMediaProducingJobList `json:"MediaProducingJobList,omitempty" xml:"MediaProducingJobList,omitempty" type:"Repeated"`
-}
-
-func (s ListMediaProducingJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaProducingJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaProducingJobsResponseBody) SetRequestId(v string) *ListMediaProducingJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBody) SetMediaProducingJobList(v []*ListMediaProducingJobsResponseBodyMediaProducingJobList) *ListMediaProducingJobsResponseBody {
-	s.MediaProducingJobList = v
-	return s
-}
-
-type ListMediaProducingJobsResponseBodyMediaProducingJobList struct {
-	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	MediaId      *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaURL     *string  `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ClipsParam   *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CompleteTime *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Code         *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetJobId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetProjectId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.MediaId = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaURL(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.MediaURL = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetTemplateId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+func (s *UpdateTemplateRequest) SetTemplateId(v string) *UpdateTemplateRequest {
 	s.TemplateId = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetClipsParam(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.ClipsParam = &v
+func (s *UpdateTemplateRequest) SetName(v string) *UpdateTemplateRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetDuration(v float32) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.Duration = &v
+func (s *UpdateTemplateRequest) SetConfig(v string) *UpdateTemplateRequest {
+	s.Config = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCreateTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.CreateTime = &v
+func (s *UpdateTemplateRequest) SetCoverUrl(v string) *UpdateTemplateRequest {
+	s.CoverUrl = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCompleteTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.CompleteTime = &v
+func (s *UpdateTemplateRequest) SetPreviewMedia(v string) *UpdateTemplateRequest {
+	s.PreviewMedia = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetModifiedTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetStatus(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+func (s *UpdateTemplateRequest) SetStatus(v string) *UpdateTemplateRequest {
 	s.Status = &v
 	return s
 }
 
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCode(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.Code = &v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMessage(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
-	s.Message = &v
-	return s
-}
-
-type ListMediaProducingJobsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMediaProducingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMediaProducingJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaProducingJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaProducingJobsResponse) SetHeaders(v map[string]*string) *ListMediaProducingJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMediaProducingJobsResponse) SetBody(v *ListMediaProducingJobsResponseBody) *ListMediaProducingJobsResponse {
-	s.Body = v
-	return s
-}
-
-type GetEditingProjectMaterialsRequest struct {
-	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s GetEditingProjectMaterialsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsRequest) SetProjectId(v string) *GetEditingProjectMaterialsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type GetEditingProjectMaterialsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 符合要求的媒资集合
-	MediaInfos []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-}
-
-func (s GetEditingProjectMaterialsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponseBody) SetRequestId(v string) *GetEditingProjectMaterialsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBody) SetProjectId(v string) *GetEditingProjectMaterialsResponseBody {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBody) SetMediaInfos(v []*GetEditingProjectMaterialsResponseBodyMediaInfos) *GetEditingProjectMaterialsResponseBody {
-	s.MediaInfos = v
-	return s
-}
-
-type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
-	// 媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// BasicInfo
-	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// FileInfos
-	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfos) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaId(v string) *GetEditingProjectMaterialsResponseBodyMediaInfos {
-	s.MediaId = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetMediaBasicInfo(v *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) *GetEditingProjectMaterialsResponseBodyMediaInfos {
-	s.MediaBasicInfo = v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) SetFileInfoList(v []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) *GetEditingProjectMaterialsResponseBodyMediaInfos {
-	s.FileInfoList = v
-	return s
-}
-
-type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
-	// MediaId
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 内容描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 标签
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 封面地址
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 截图
-	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// 资源状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 转码状态
-	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// 媒资创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 媒资修改时间
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// 媒资删除时间
-	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// 雪碧图
-	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaId(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.MediaId = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetInputURL(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.InputURL = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.MediaType = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetBusinessType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSource(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
+func (s *UpdateTemplateRequest) SetSource(v string) *UpdateTemplateRequest {
 	s.Source = &v
 	return s
 }
 
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetTitle(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.Title = &v
+func (s *UpdateTemplateRequest) SetRelatedMediaids(v string) *UpdateTemplateRequest {
+	s.RelatedMediaids = &v
 	return s
 }
 
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDescription(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.Description = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCategory(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.Category = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetMediaTags(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.MediaTags = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCoverURL(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetUserData(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.UserData = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSnapshots(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.Snapshots = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetTranscodeStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.TranscodeStatus = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetCreateTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetModifiedTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetDeletedTime(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.DeletedTime = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo) SetSpriteImages(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo {
-	s.SpriteImages = &v
-	return s
-}
-
-type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
-	// 文件基础信息，包含时长，大小等
-	FileBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(v *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList {
-	s.FileBasicInfo = v
-	return s
-}
-
-type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// 文件名
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// 文件状态
-	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// 文件类型
-	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件大小（字节）
-	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 文件存储区域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 封装格式
-	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// 时长
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 码率
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// 宽
-	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// 高
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileName(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FileName = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileStatus(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FileStatus = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileType(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FileType = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileSize(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FileSize = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFileUrl(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetRegion(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.Region = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetFormatName(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.FormatName = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetDuration(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetBitrate(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetWidth(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.Width = &v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetHeight(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
-	s.Height = &v
-	return s
-}
-
-type GetEditingProjectMaterialsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEditingProjectMaterialsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEditingProjectMaterialsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEditingProjectMaterialsResponse) SetHeaders(v map[string]*string) *GetEditingProjectMaterialsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMaterialsResponseBody) *GetEditingProjectMaterialsResponse {
-	s.Body = v
-	return s
-}
-
-type GetDefaultStorageLocationResponseBody struct {
+type UpdateTemplateResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 存储类型
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// oss bucket 名称
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// 路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s GetDefaultStorageLocationResponseBody) String() string {
+func (s UpdateTemplateResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDefaultStorageLocationResponseBody) GoString() string {
+func (s UpdateTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDefaultStorageLocationResponseBody) SetRequestId(v string) *GetDefaultStorageLocationResponseBody {
+func (s *UpdateTemplateResponseBody) SetRequestId(v string) *UpdateTemplateResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetDefaultStorageLocationResponseBody) SetStorageType(v string) *GetDefaultStorageLocationResponseBody {
-	s.StorageType = &v
-	return s
+type UpdateTemplateResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *GetDefaultStorageLocationResponseBody) SetBucket(v string) *GetDefaultStorageLocationResponseBody {
-	s.Bucket = &v
-	return s
-}
-
-func (s *GetDefaultStorageLocationResponseBody) SetPath(v string) *GetDefaultStorageLocationResponseBody {
-	s.Path = &v
-	return s
-}
-
-func (s *GetDefaultStorageLocationResponseBody) SetStatus(v string) *GetDefaultStorageLocationResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetDefaultStorageLocationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDefaultStorageLocationResponse) String() string {
+func (s UpdateTemplateResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDefaultStorageLocationResponse) GoString() string {
+func (s UpdateTemplateResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *GetDefaultStorageLocationResponse {
+func (s *UpdateTemplateResponse) SetHeaders(v map[string]*string) *UpdateTemplateResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetDefaultStorageLocationResponse) SetBody(v *GetDefaultStorageLocationResponseBody) *GetDefaultStorageLocationResponse {
+func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3957,6 +5903,7 @@ type SubmitMediaProducingJobRequest struct {
 	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
 	UserData          *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s SubmitMediaProducingJobRequest) String() string {
@@ -4009,6 +5956,11 @@ func (s *SubmitMediaProducingJobRequest) SetUserData(v string) *SubmitMediaProdu
 
 func (s *SubmitMediaProducingJobRequest) SetClientToken(v string) *SubmitMediaProducingJobRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitMediaProducingJobRequest) SetSource(v string) *SubmitMediaProducingJobRequest {
+	s.Source = &v
 	return s
 }
 
@@ -4070,79 +6022,6 @@ func (s *SubmitMediaProducingJobResponse) SetHeaders(v map[string]*string) *Subm
 }
 
 func (s *SubmitMediaProducingJobResponse) SetBody(v *SubmitMediaProducingJobResponseBody) *SubmitMediaProducingJobResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteMediaInfosRequest struct {
-	// ICE 媒资ID
-	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
-	// 待注册的媒资在相应系统中的地址
-	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
-}
-
-func (s DeleteMediaInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfosRequest) SetMediaIds(v string) *DeleteMediaInfosRequest {
-	s.MediaIds = &v
-	return s
-}
-
-func (s *DeleteMediaInfosRequest) SetInputURLs(v string) *DeleteMediaInfosRequest {
-	s.InputURLs = &v
-	return s
-}
-
-type DeleteMediaInfosResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 出现获取错误的ID或inputUr
-	IgnoredList *string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty"`
-}
-
-func (s DeleteMediaInfosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfosResponseBody) SetRequestId(v string) *DeleteMediaInfosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteMediaInfosResponseBody) SetIgnoredList(v string) *DeleteMediaInfosResponseBody {
-	s.IgnoredList = &v
-	return s
-}
-
-type DeleteMediaInfosResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMediaInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMediaInfosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfosResponse) SetHeaders(v map[string]*string) *DeleteMediaInfosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *DeleteMediaInfosResponse {
 	s.Body = v
 	return s
 }
@@ -4333,6 +6212,8 @@ type SubmitMattingJobRequest struct {
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
 	// 是否强制覆盖现有OSS文件
 	Overwrite *string `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// 输出类型
+	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
 }
 
 func (s SubmitMattingJobRequest) String() string {
@@ -4375,6 +6256,11 @@ func (s *SubmitMattingJobRequest) SetInputType(v string) *SubmitMattingJobReques
 
 func (s *SubmitMattingJobRequest) SetOverwrite(v string) *SubmitMattingJobRequest {
 	s.Overwrite = &v
+	return s
+}
+
+func (s *SubmitMattingJobRequest) SetOutputMediaTarget(v string) *SubmitMattingJobRequest {
+	s.OutputMediaTarget = &v
 	return s
 }
 
@@ -4443,303 +6329,49 @@ func (s *SubmitMattingJobResponse) SetBody(v *SubmitMattingJobResponseBody) *Sub
 	return s
 }
 
-type RegisterMediaInfoRequest struct {
-	// 媒资媒体url
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// 媒资媒体类型
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 标签,如果有多个标签用逗号隔开
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 封面图，仅视频媒资有效
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 用户自定义元数据
-	DynamicMetaDataList *string `json:"DynamicMetaDataList,omitempty" xml:"DynamicMetaDataList,omitempty"`
-	// 用户数据，最大1024字节
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 是否覆盖已有媒资
-	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// 客户端token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 注册媒资的配置
-	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
-}
-
-func (s RegisterMediaInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterMediaInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterMediaInfoRequest) SetInputURL(v string) *RegisterMediaInfoRequest {
-	s.InputURL = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetMediaType(v string) *RegisterMediaInfoRequest {
-	s.MediaType = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetBusinessType(v string) *RegisterMediaInfoRequest {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetTitle(v string) *RegisterMediaInfoRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetDescription(v string) *RegisterMediaInfoRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetCategory(v string) *RegisterMediaInfoRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetMediaTags(v string) *RegisterMediaInfoRequest {
-	s.MediaTags = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetCoverURL(v string) *RegisterMediaInfoRequest {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetDynamicMetaDataList(v string) *RegisterMediaInfoRequest {
-	s.DynamicMetaDataList = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetUserData(v string) *RegisterMediaInfoRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetOverwrite(v bool) *RegisterMediaInfoRequest {
-	s.Overwrite = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetClientToken(v string) *RegisterMediaInfoRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *RegisterMediaInfoRequest) SetRegisterConfig(v string) *RegisterMediaInfoRequest {
-	s.RegisterConfig = &v
-	return s
-}
-
-type RegisterMediaInfoResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ICE媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s RegisterMediaInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterMediaInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterMediaInfoResponseBody) SetRequestId(v string) *RegisterMediaInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RegisterMediaInfoResponseBody) SetMediaId(v string) *RegisterMediaInfoResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-type RegisterMediaInfoResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RegisterMediaInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterMediaInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterMediaInfoResponse) SetHeaders(v map[string]*string) *RegisterMediaInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RegisterMediaInfoResponse) SetBody(v *RegisterMediaInfoResponseBody) *RegisterMediaInfoResponse {
-	s.Body = v
-	return s
-}
-
-type CreateEditingProjectRequest struct {
-	// 云剪辑工程标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 云剪辑工程描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 云剪辑工程时间线，Json格式
-	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// 云剪辑工程封面
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-}
-
-func (s CreateEditingProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEditingProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEditingProjectRequest) SetTitle(v string) *CreateEditingProjectRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *CreateEditingProjectRequest) SetDescription(v string) *CreateEditingProjectRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateEditingProjectRequest) SetTimeline(v string) *CreateEditingProjectRequest {
-	s.Timeline = &v
-	return s
-}
-
-func (s *CreateEditingProjectRequest) SetCoverURL(v string) *CreateEditingProjectRequest {
-	s.CoverURL = &v
-	return s
-}
-
-type CreateEditingProjectResponseBody struct {
+type GetEventCallbackResponseBody struct {
 	// Id of the request
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Project   *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
 }
 
-func (s CreateEditingProjectResponseBody) String() string {
+func (s GetEventCallbackResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateEditingProjectResponseBody) GoString() string {
+func (s GetEventCallbackResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEditingProjectResponseBody) SetRequestId(v string) *CreateEditingProjectResponseBody {
+func (s *GetEventCallbackResponseBody) SetRequestId(v string) *GetEventCallbackResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateEditingProjectResponseBody) SetProject(v *CreateEditingProjectResponseBodyProject) *CreateEditingProjectResponseBody {
-	s.Project = v
+func (s *GetEventCallbackResponseBody) SetCallbackQueueName(v string) *GetEventCallbackResponseBody {
+	s.CallbackQueueName = &v
 	return s
 }
 
-type CreateEditingProjectResponseBodyProject struct {
-	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Title        *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Description  *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Timeline     *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	CoverURL     *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	Status       *int64   `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+type GetEventCallbackResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetEventCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s CreateEditingProjectResponseBodyProject) String() string {
+func (s GetEventCallbackResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateEditingProjectResponseBodyProject) GoString() string {
+func (s GetEventCallbackResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEditingProjectResponseBodyProject) SetProjectId(v string) *CreateEditingProjectResponseBodyProject {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetTitle(v string) *CreateEditingProjectResponseBodyProject {
-	s.Title = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetDescription(v string) *CreateEditingProjectResponseBodyProject {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetTimeline(v string) *CreateEditingProjectResponseBodyProject {
-	s.Timeline = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetCoverURL(v string) *CreateEditingProjectResponseBodyProject {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetStatus(v int64) *CreateEditingProjectResponseBodyProject {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetCreateTime(v string) *CreateEditingProjectResponseBodyProject {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetModifiedTime(v string) *CreateEditingProjectResponseBodyProject {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *CreateEditingProjectResponseBodyProject) SetDuration(v float32) *CreateEditingProjectResponseBodyProject {
-	s.Duration = &v
-	return s
-}
-
-type CreateEditingProjectResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEditingProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEditingProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEditingProjectResponse) SetHeaders(v map[string]*string) *CreateEditingProjectResponse {
+func (s *GetEventCallbackResponse) SetHeaders(v map[string]*string) *GetEventCallbackResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBody) *CreateEditingProjectResponse {
+func (s *GetEventCallbackResponse) SetBody(v *GetEventCallbackResponseBody) *GetEventCallbackResponse {
 	s.Body = v
 	return s
 }
@@ -5226,384 +6858,6 @@ func (s *SubmitCoverJobResponse) SetBody(v *SubmitCoverJobResponseBody) *SubmitC
 	return s
 }
 
-type SetDefaultStorageLocationRequest struct {
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-}
-
-func (s SetDefaultStorageLocationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDefaultStorageLocationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDefaultStorageLocationRequest) SetStorageType(v string) *SetDefaultStorageLocationRequest {
-	s.StorageType = &v
-	return s
-}
-
-func (s *SetDefaultStorageLocationRequest) SetBucket(v string) *SetDefaultStorageLocationRequest {
-	s.Bucket = &v
-	return s
-}
-
-func (s *SetDefaultStorageLocationRequest) SetPath(v string) *SetDefaultStorageLocationRequest {
-	s.Path = &v
-	return s
-}
-
-type SetDefaultStorageLocationResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SetDefaultStorageLocationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDefaultStorageLocationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDefaultStorageLocationResponseBody) SetRequestId(v string) *SetDefaultStorageLocationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetDefaultStorageLocationResponseBody) SetSuccess(v bool) *SetDefaultStorageLocationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SetDefaultStorageLocationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetDefaultStorageLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDefaultStorageLocationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDefaultStorageLocationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDefaultStorageLocationResponse) SetHeaders(v map[string]*string) *SetDefaultStorageLocationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDefaultStorageLocationResponse) SetBody(v *SetDefaultStorageLocationResponseBody) *SetDefaultStorageLocationResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateMediaInfoRequest struct {
-	// 媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 媒资媒体类型
-	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// 媒资业务类型
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 标签,如果有多个标签用逗号隔开
-	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// 封面图，仅视频媒资有效
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// 用户自定义元数据
-	DynamicMetaDataList *string `json:"DynamicMetaDataList,omitempty" xml:"DynamicMetaDataList,omitempty"`
-	// 用户数据，最大1024字节
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 是否以append的形式更新Tags字段
-	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
-	// 是否以append的形式更新DynamicMetaDataList字段
-	AppendDynamicMeta *bool `json:"AppendDynamicMeta,omitempty" xml:"AppendDynamicMeta,omitempty"`
-}
-
-func (s UpdateMediaInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaInfoRequest) SetMediaId(v string) *UpdateMediaInfoRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetInputURL(v string) *UpdateMediaInfoRequest {
-	s.InputURL = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetBusinessType(v string) *UpdateMediaInfoRequest {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetTitle(v string) *UpdateMediaInfoRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetDescription(v string) *UpdateMediaInfoRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetCategory(v string) *UpdateMediaInfoRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetMediaTags(v string) *UpdateMediaInfoRequest {
-	s.MediaTags = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetCoverURL(v string) *UpdateMediaInfoRequest {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetDynamicMetaDataList(v string) *UpdateMediaInfoRequest {
-	s.DynamicMetaDataList = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetUserData(v string) *UpdateMediaInfoRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetAppendTags(v bool) *UpdateMediaInfoRequest {
-	s.AppendTags = &v
-	return s
-}
-
-func (s *UpdateMediaInfoRequest) SetAppendDynamicMeta(v bool) *UpdateMediaInfoRequest {
-	s.AppendDynamicMeta = &v
-	return s
-}
-
-type UpdateMediaInfoResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ICE媒资ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s UpdateMediaInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaInfoResponseBody) SetRequestId(v string) *UpdateMediaInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateMediaInfoResponseBody) SetMediaId(v string) *UpdateMediaInfoResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-type UpdateMediaInfoResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMediaInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMediaInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMediaInfoResponse) SetHeaders(v map[string]*string) *UpdateMediaInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *UpdateMediaInfoResponse {
-	s.Body = v
-	return s
-}
-
-type GetMediaProducingJobRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetMediaProducingJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaProducingJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaProducingJobRequest) SetJobId(v string) *GetMediaProducingJobRequest {
-	s.JobId = &v
-	return s
-}
-
-type GetMediaProducingJobResponseBody struct {
-	// Id of the request
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MediaProducingJob *GetMediaProducingJobResponseBodyMediaProducingJob `json:"MediaProducingJob,omitempty" xml:"MediaProducingJob,omitempty" type:"Struct"`
-}
-
-func (s GetMediaProducingJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaProducingJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaProducingJobResponseBody) SetRequestId(v string) *GetMediaProducingJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBody) SetMediaProducingJob(v *GetMediaProducingJobResponseBodyMediaProducingJob) *GetMediaProducingJobResponseBody {
-	s.MediaProducingJob = v
-	return s
-}
-
-type GetMediaProducingJobResponseBodyMediaProducingJob struct {
-	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	MediaId      *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaURL     *string  `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	Timeline     *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ClipsParam   *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CompleteTime *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Code         *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s GetMediaProducingJobResponseBodyMediaProducingJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaProducingJobResponseBodyMediaProducingJob) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetJobId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetProjectId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMediaId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.MediaId = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMediaURL(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.MediaURL = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTimeline(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.Timeline = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTemplateId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetClipsParam(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.ClipsParam = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetDuration(v float32) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCreateTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCompleteTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.CompleteTime = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetModifiedTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetStatus(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.Status = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetCode(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.Code = &v
-	return s
-}
-
-func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMessage(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
-	s.Message = &v
-	return s
-}
-
-type GetMediaProducingJobResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaProducingJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaProducingJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaProducingJobResponse) SetHeaders(v map[string]*string) *GetMediaProducingJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaProducingJobResponse) SetBody(v *GetMediaProducingJobResponseBody) *GetMediaProducingJobResponse {
-	s.Body = v
-	return s
-}
-
 type GetSmartHandleJobRequest struct {
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	WithAiResult *string `json:"WithAiResult,omitempty" xml:"WithAiResult,omitempty"`
@@ -5804,6 +7058,8 @@ type SubmitH2VJobRequest struct {
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
 	// 是否强制覆盖现有OSS文件
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// 输出类型
+	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
 }
 
 func (s SubmitH2VJobRequest) String() string {
@@ -5846,6 +7102,11 @@ func (s *SubmitH2VJobRequest) SetInputType(v string) *SubmitH2VJobRequest {
 
 func (s *SubmitH2VJobRequest) SetOverwrite(v bool) *SubmitH2VJobRequest {
 	s.Overwrite = &v
+	return s
+}
+
+func (s *SubmitH2VJobRequest) SetOutputMediaTarget(v string) *SubmitH2VJobRequest {
+	s.OutputMediaTarget = &v
 	return s
 }
 
@@ -6148,28 +7409,6 @@ func (client *Client) ListSmartJobs(request *ListSmartJobsRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) DescribeIceProductStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeIceProductStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeIceProductStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIceProductStatus"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeIceProductStatus() (_result *DescribeIceProductStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeIceProductStatusResponse{}
-	_body, _err := client.DescribeIceProductStatusWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRelatedAuthorizationStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRelatedAuthorizationStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	_result = &DescribeRelatedAuthorizationStatusResponse{}
@@ -6185,6 +7424,417 @@ func (client *Client) DescribeRelatedAuthorizationStatus() (_result *DescribeRel
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRelatedAuthorizationStatusResponse{}
 	_body, _err := client.DescribeRelatedAuthorizationStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, runtime *util.RuntimeOptions) (_result *DeleteSmartJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteSmartJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteSmartJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *DeleteSmartJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSmartJobResponse{}
+	_body, _err := client.DeleteSmartJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtime *util.RuntimeOptions) (_result *AddTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &AddTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTemplateResponse{}
+	_body, _err := client.AddTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateEditingProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateEditingProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest) (_result *UpdateEditingProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEditingProjectResponse{}
+	_body, _err := client.UpdateEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *ListMediaProducingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListMediaProducingJobsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListMediaProducingJobs"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMediaProducingJobs(request *ListMediaProducingJobsRequest) (_result *ListMediaProducingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaProducingJobsResponse{}
+	_body, _err := client.ListMediaProducingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingProjectMaterialsRequest, runtime *util.RuntimeOptions) (_result *GetEditingProjectMaterialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetEditingProjectMaterialsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetEditingProjectMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMaterialsRequest) (_result *GetEditingProjectMaterialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEditingProjectMaterialsResponse{}
+	_body, _err := client.GetEditingProjectMaterialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultStorageLocationResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetDefaultStorageLocationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDefaultStorageLocation() (_result *GetDefaultStorageLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDefaultStorageLocationResponse{}
+	_body, _err := client.GetDefaultStorageLocationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteMediaInfosResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteMediaInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_result *DeleteMediaInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaInfosResponse{}
+	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetEventCallbackWithOptions(request *SetEventCallbackRequest, runtime *util.RuntimeOptions) (_result *SetEventCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetEventCallbackResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetEventCallback"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_result *SetEventCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetEventCallbackResponse{}
+	_body, _err := client.SetEventCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoRequest, runtime *util.RuntimeOptions) (_result *RegisterMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RegisterMediaInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterMediaInfo(request *RegisterMediaInfoRequest) (_result *RegisterMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterMediaInfoResponse{}
+	_body, _err := client.RegisterMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *CreateEditingProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateEditingProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest) (_result *CreateEditingProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEditingProjectResponse{}
+	_body, _err := client.CreateEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosRequest, runtime *util.RuntimeOptions) (_result *BatchGetMediaInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BatchGetMediaInfosResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BatchGetMediaInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_result *BatchGetMediaInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchGetMediaInfosResponse{}
+	_body, _err := client.BatchGetMediaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultStorageLocationRequest, runtime *util.RuntimeOptions) (_result *SetDefaultStorageLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetDefaultStorageLocationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDefaultStorageLocation(request *SetDefaultStorageLocationRequest) (_result *SetDefaultStorageLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDefaultStorageLocationResponse{}
+	_body, _err := client.SetDefaultStorageLocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateMediaInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result *UpdateMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaInfoResponse{}
+	_body, _err := client.UpdateMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *GetMediaProducingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetMediaProducingJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMediaProducingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMediaProducingJob(request *GetMediaProducingJobRequest) (_result *GetMediaProducingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaProducingJobResponse{}
+	_body, _err := client.GetMediaProducingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIceProductStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeIceProductStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &DescribeIceProductStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeIceProductStatus"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIceProductStatus() (_result *DescribeIceProductStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIceProductStatusResponse{}
+	_body, _err := client.DescribeIceProductStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6362,16 +8012,17 @@ func (client *Client) GetEditingProject(request *GetEditingProjectRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, runtime *util.RuntimeOptions) (_result *DeleteSmartJobResponse, _err error) {
+func (client *Client) ListSysTemplatesWithOptions(request *ListSysTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListSysTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: query,
 	}
-	_result = &DeleteSmartJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSmartJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ListSysTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListSysTemplates"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6379,10 +8030,39 @@ func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, 
 	return _result, _err
 }
 
-func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *DeleteSmartJobResponse, _err error) {
+func (client *Client) ListSysTemplates(request *ListSysTemplatesRequest) (_result *ListSysTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSmartJobResponse{}
-	_body, _err := client.DeleteSmartJobWithOptions(request, runtime)
+	_result = &ListSysTemplatesResponse{}
+	_body, _err := client.ListSysTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6447,34 +8127,6 @@ func (client *Client) DeleteEditingProjectMaterials(request *DeleteEditingProjec
 	return _result, _err
 }
 
-func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateEditingProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest) (_result *UpdateEditingProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateEditingProjectResponse{}
-	_body, _err := client.UpdateEditingProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProjectRequest, runtime *util.RuntimeOptions) (_result *SearchEditingProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6496,6 +8148,34 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchEditingProjectResponse{}
 	_body, _err := client.SearchEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListTemplates"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.ListTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6615,35 +8295,7 @@ func (client *Client) SubmitDelogoJob(request *SubmitDelogoJobRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *ListMediaProducingJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListMediaProducingJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMediaProducingJobs"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListMediaProducingJobs(request *ListMediaProducingJobsRequest) (_result *ListMediaProducingJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListMediaProducingJobsResponse{}
-	_body, _err := client.ListMediaProducingJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingProjectMaterialsRequest, runtime *util.RuntimeOptions) (_result *GetEditingProjectMaterialsResponse, _err error) {
+func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -6652,8 +8304,8 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	req := &openapi.OpenApiRequest{
 		Query: query,
 	}
-	_result = &GetEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEditingProjectMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &UpdateTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6661,32 +8313,10 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	return _result, _err
 }
 
-func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMaterialsRequest) (_result *GetEditingProjectMaterialsResponse, _err error) {
+func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetEditingProjectMaterialsResponse{}
-	_body, _err := client.GetEditingProjectMaterialsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultStorageLocationResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &GetDefaultStorageLocationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDefaultStorageLocation() (_result *GetDefaultStorageLocationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDefaultStorageLocationResponse{}
-	_body, _err := client.GetDefaultStorageLocationWithOptions(runtime)
+	_result = &UpdateTemplateResponse{}
+	_body, _err := client.UpdateTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6743,34 +8373,6 @@ func (client *Client) SubmitMediaProducingJob(request *SubmitMediaProducingJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitMediaProducingJobResponse{}
 	_body, _err := client.SubmitMediaProducingJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteMediaInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMediaInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_result *DeleteMediaInfosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteMediaInfosResponse{}
-	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6862,16 +8464,10 @@ func (client *Client) SubmitMattingJob(request *SubmitMattingJobRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoRequest, runtime *util.RuntimeOptions) (_result *RegisterMediaInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RegisterMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+func (client *Client) GetEventCallbackWithOptions(runtime *util.RuntimeOptions) (_result *GetEventCallbackResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetEventCallbackResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetEventCallback"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6879,38 +8475,10 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 	return _result, _err
 }
 
-func (client *Client) RegisterMediaInfo(request *RegisterMediaInfoRequest) (_result *RegisterMediaInfoResponse, _err error) {
+func (client *Client) GetEventCallback() (_result *GetEventCallbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &RegisterMediaInfoResponse{}
-	_body, _err := client.RegisterMediaInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *CreateEditingProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest) (_result *CreateEditingProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateEditingProjectResponse{}
-	_body, _err := client.CreateEditingProjectWithOptions(request, runtime)
+	_result = &GetEventCallbackResponse{}
+	_body, _err := client.GetEventCallbackWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6967,91 +8535,6 @@ func (client *Client) SubmitCoverJob(request *SubmitCoverJobRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitCoverJobResponse{}
 	_body, _err := client.SubmitCoverJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultStorageLocationRequest, runtime *util.RuntimeOptions) (_result *SetDefaultStorageLocationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SetDefaultStorageLocationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDefaultStorageLocation(request *SetDefaultStorageLocationRequest) (_result *SetDefaultStorageLocationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDefaultStorageLocationResponse{}
-	_body, _err := client.SetDefaultStorageLocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result *UpdateMediaInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateMediaInfoResponse{}
-	_body, _err := client.UpdateMediaInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducingJobRequest, runtime *util.RuntimeOptions) (_result *GetMediaProducingJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetMediaProducingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaProducingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMediaProducingJob(request *GetMediaProducingJobRequest) (_result *GetMediaProducingJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMediaProducingJobResponse{}
-	_body, _err := client.GetMediaProducingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
