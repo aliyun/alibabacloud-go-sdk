@@ -11,9 +11,89 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddDeviceRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+}
+
+func (s AddDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceRequest) SetOwnerId(v int64) *AddDeviceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddDeviceRequest) SetGroupId(v string) *AddDeviceRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddDeviceRequest) SetProtocol(v string) *AddDeviceRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *AddDeviceRequest) SetConfig(v string) *AddDeviceRequest {
+	s.Config = &v
+	return s
+}
+
+type AddDeviceResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceResponseBody) SetId(v string) *AddDeviceResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *AddDeviceResponseBody) SetRequestId(v string) *AddDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddDeviceResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceResponse) SetHeaders(v map[string]*string) *AddDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDeviceResponse) SetBody(v *AddDeviceResponseBody) *AddDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type AddVsPullStreamInfoConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -33,11 +113,6 @@ func (s AddVsPullStreamInfoConfigRequest) GoString() string {
 
 func (s *AddVsPullStreamInfoConfigRequest) SetOwnerId(v int64) *AddVsPullStreamInfoConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *AddVsPullStreamInfoConfigRequest) SetShowLog(v string) *AddVsPullStreamInfoConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -118,7 +193,6 @@ func (s *AddVsPullStreamInfoConfigResponse) SetBody(v *AddVsPullStreamInfoConfig
 
 type BatchBindDirectoriesRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -133,11 +207,6 @@ func (s BatchBindDirectoriesRequest) GoString() string {
 
 func (s *BatchBindDirectoriesRequest) SetOwnerId(v int64) *BatchBindDirectoriesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchBindDirectoriesRequest) SetShowLog(v string) *BatchBindDirectoriesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -175,9 +244,9 @@ func (s *BatchBindDirectoriesResponseBody) SetResults(v []*BatchBindDirectoriesR
 }
 
 type BatchBindDirectoriesResponseBodyResults struct {
-	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Error       *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s BatchBindDirectoriesResponseBodyResults) String() string {
@@ -188,11 +257,6 @@ func (s BatchBindDirectoriesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *BatchBindDirectoriesResponseBodyResults) SetDeviceId(v string) *BatchBindDirectoriesResponseBodyResults {
-	s.DeviceId = &v
-	return s
-}
-
 func (s *BatchBindDirectoriesResponseBodyResults) SetError(v string) *BatchBindDirectoriesResponseBodyResults {
 	s.Error = &v
 	return s
@@ -200,6 +264,11 @@ func (s *BatchBindDirectoriesResponseBodyResults) SetError(v string) *BatchBindD
 
 func (s *BatchBindDirectoriesResponseBodyResults) SetDirectoryId(v string) *BatchBindDirectoriesResponseBodyResults {
 	s.DirectoryId = &v
+	return s
+}
+
+func (s *BatchBindDirectoriesResponseBodyResults) SetDeviceId(v string) *BatchBindDirectoriesResponseBodyResults {
+	s.DeviceId = &v
 	return s
 }
 
@@ -228,7 +297,6 @@ func (s *BatchBindDirectoriesResponse) SetBody(v *BatchBindDirectoriesResponseBo
 
 type BatchBindParentPlatformDevicesRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -243,11 +311,6 @@ func (s BatchBindParentPlatformDevicesRequest) GoString() string {
 
 func (s *BatchBindParentPlatformDevicesRequest) SetOwnerId(v int64) *BatchBindParentPlatformDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchBindParentPlatformDevicesRequest) SetShowLog(v string) *BatchBindParentPlatformDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -285,9 +348,9 @@ func (s *BatchBindParentPlatformDevicesResponseBody) SetResults(v []*BatchBindPa
 }
 
 type BatchBindParentPlatformDevicesResponseBodyResults struct {
+	Error            *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Error            *string `json:"Error,omitempty" xml:"Error,omitempty"`
 }
 
 func (s BatchBindParentPlatformDevicesResponseBodyResults) String() string {
@@ -298,6 +361,11 @@ func (s BatchBindParentPlatformDevicesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
+func (s *BatchBindParentPlatformDevicesResponseBodyResults) SetError(v string) *BatchBindParentPlatformDevicesResponseBodyResults {
+	s.Error = &v
+	return s
+}
+
 func (s *BatchBindParentPlatformDevicesResponseBodyResults) SetParentPlatformId(v string) *BatchBindParentPlatformDevicesResponseBodyResults {
 	s.ParentPlatformId = &v
 	return s
@@ -305,11 +373,6 @@ func (s *BatchBindParentPlatformDevicesResponseBodyResults) SetParentPlatformId(
 
 func (s *BatchBindParentPlatformDevicesResponseBodyResults) SetDeviceId(v string) *BatchBindParentPlatformDevicesResponseBodyResults {
 	s.DeviceId = &v
-	return s
-}
-
-func (s *BatchBindParentPlatformDevicesResponseBodyResults) SetError(v string) *BatchBindParentPlatformDevicesResponseBodyResults {
-	s.Error = &v
 	return s
 }
 
@@ -338,7 +401,6 @@ func (s *BatchBindParentPlatformDevicesResponse) SetBody(v *BatchBindParentPlatf
 
 type BatchBindPurchasedDevicesRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -354,11 +416,6 @@ func (s BatchBindPurchasedDevicesRequest) GoString() string {
 
 func (s *BatchBindPurchasedDevicesRequest) SetOwnerId(v int64) *BatchBindPurchasedDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchBindPurchasedDevicesRequest) SetShowLog(v string) *BatchBindPurchasedDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -401,10 +458,10 @@ func (s *BatchBindPurchasedDevicesResponseBody) SetResults(v []*BatchBindPurchas
 }
 
 type BatchBindPurchasedDevicesResponseBodyResults struct {
+	Error    *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Error    *string `json:"Error,omitempty" xml:"Error,omitempty"`
 }
 
 func (s BatchBindPurchasedDevicesResponseBodyResults) String() string {
@@ -413,6 +470,11 @@ func (s BatchBindPurchasedDevicesResponseBodyResults) String() string {
 
 func (s BatchBindPurchasedDevicesResponseBodyResults) GoString() string {
 	return s.String()
+}
+
+func (s *BatchBindPurchasedDevicesResponseBodyResults) SetError(v string) *BatchBindPurchasedDevicesResponseBodyResults {
+	s.Error = &v
+	return s
 }
 
 func (s *BatchBindPurchasedDevicesResponseBodyResults) SetGroupId(v string) *BatchBindPurchasedDevicesResponseBodyResults {
@@ -427,11 +489,6 @@ func (s *BatchBindPurchasedDevicesResponseBodyResults) SetDeviceId(v string) *Ba
 
 func (s *BatchBindPurchasedDevicesResponseBodyResults) SetRegion(v string) *BatchBindPurchasedDevicesResponseBodyResults {
 	s.Region = &v
-	return s
-}
-
-func (s *BatchBindPurchasedDevicesResponseBodyResults) SetError(v string) *BatchBindPurchasedDevicesResponseBodyResults {
-	s.Error = &v
 	return s
 }
 
@@ -460,7 +517,6 @@ func (s *BatchBindPurchasedDevicesResponse) SetBody(v *BatchBindPurchasedDevices
 
 type BatchBindTemplateRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -478,11 +534,6 @@ func (s BatchBindTemplateRequest) GoString() string {
 
 func (s *BatchBindTemplateRequest) SetOwnerId(v int64) *BatchBindTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchBindTemplateRequest) SetShowLog(v string) *BatchBindTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -594,7 +645,6 @@ func (s *BatchBindTemplateResponse) SetBody(v *BatchBindTemplateResponseBody) *B
 
 type BatchBindTemplatesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -613,11 +663,6 @@ func (s BatchBindTemplatesRequest) GoString() string {
 
 func (s *BatchBindTemplatesRequest) SetOwnerId(v int64) *BatchBindTemplatesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchBindTemplatesRequest) SetShowLog(v string) *BatchBindTemplatesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -734,7 +779,6 @@ func (s *BatchBindTemplatesResponse) SetBody(v *BatchBindTemplatesResponseBody) 
 
 type BatchDeleteDevicesRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -748,11 +792,6 @@ func (s BatchDeleteDevicesRequest) GoString() string {
 
 func (s *BatchDeleteDevicesRequest) SetOwnerId(v int64) *BatchDeleteDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchDeleteDevicesRequest) SetShowLog(v string) *BatchDeleteDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -832,7 +871,6 @@ func (s *BatchDeleteDevicesResponse) SetBody(v *BatchDeleteDevicesResponseBody) 
 
 type BatchDeleteVsDomainConfigsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 }
@@ -847,11 +885,6 @@ func (s BatchDeleteVsDomainConfigsRequest) GoString() string {
 
 func (s *BatchDeleteVsDomainConfigsRequest) SetOwnerId(v int64) *BatchDeleteVsDomainConfigsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchDeleteVsDomainConfigsRequest) SetShowLog(v string) *BatchDeleteVsDomainConfigsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -907,7 +940,6 @@ func (s *BatchDeleteVsDomainConfigsResponse) SetBody(v *BatchDeleteVsDomainConfi
 
 type BatchForbidVsStreamRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog             *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	LiveStreamType      *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
@@ -926,11 +958,6 @@ func (s BatchForbidVsStreamRequest) GoString() string {
 
 func (s *BatchForbidVsStreamRequest) SetOwnerId(v int64) *BatchForbidVsStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchForbidVsStreamRequest) SetShowLog(v string) *BatchForbidVsStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -965,8 +992,8 @@ func (s *BatchForbidVsStreamRequest) SetResumeTime(v string) *BatchForbidVsStrea
 }
 
 type BatchForbidVsStreamResponseBody struct {
-	ForbidResult *BatchForbidVsStreamResponseBodyForbidResult `json:"ForbidResult,omitempty" xml:"ForbidResult,omitempty" type:"Struct"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ForbidResult *BatchForbidVsStreamResponseBodyForbidResult `json:"ForbidResult,omitempty" xml:"ForbidResult,omitempty" type:"Struct"`
 }
 
 func (s BatchForbidVsStreamResponseBody) String() string {
@@ -977,13 +1004,13 @@ func (s BatchForbidVsStreamResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BatchForbidVsStreamResponseBody) SetForbidResult(v *BatchForbidVsStreamResponseBodyForbidResult) *BatchForbidVsStreamResponseBody {
-	s.ForbidResult = v
+func (s *BatchForbidVsStreamResponseBody) SetRequestId(v string) *BatchForbidVsStreamResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *BatchForbidVsStreamResponseBody) SetRequestId(v string) *BatchForbidVsStreamResponseBody {
-	s.RequestId = &v
+func (s *BatchForbidVsStreamResponseBody) SetForbidResult(v *BatchForbidVsStreamResponseBodyForbidResult) *BatchForbidVsStreamResponseBody {
+	s.ForbidResult = v
 	return s
 }
 
@@ -1006,9 +1033,9 @@ func (s *BatchForbidVsStreamResponseBodyForbidResult) SetForbidResultInfo(v []*B
 
 type BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo struct {
 	Result   *string                                                              `json:"Result,omitempty" xml:"Result,omitempty"`
-	Channels *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	Count    *int32                                                               `json:"Count,omitempty" xml:"Count,omitempty"`
 	Detail   *string                                                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Channels *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 }
 
 func (s BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) String() string {
@@ -1024,11 +1051,6 @@ func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetResult(
 	return s
 }
 
-func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetChannels(v *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels) *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo {
-	s.Channels = v
-	return s
-}
-
 func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetCount(v int32) *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo {
 	s.Count = &v
 	return s
@@ -1036,6 +1058,11 @@ func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetCount(v
 
 func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetDetail(v string) *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo {
 	s.Detail = &v
+	return s
+}
+
+func (s *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo) SetChannels(v *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfoChannels) *BatchForbidVsStreamResponseBodyForbidResultForbidResultInfo {
+	s.Channels = v
 	return s
 }
 
@@ -1081,7 +1108,6 @@ func (s *BatchForbidVsStreamResponse) SetBody(v *BatchForbidVsStreamResponseBody
 
 type BatchResumeVsStreamRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog             *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	LiveStreamType      *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
@@ -1098,11 +1124,6 @@ func (s BatchResumeVsStreamRequest) GoString() string {
 
 func (s *BatchResumeVsStreamRequest) SetOwnerId(v int64) *BatchResumeVsStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchResumeVsStreamRequest) SetShowLog(v string) *BatchResumeVsStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1168,9 +1189,9 @@ func (s *BatchResumeVsStreamResponseBodyResumeResult) SetResumeResultInfo(v []*B
 
 type BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo struct {
 	Result   *string                                                              `json:"Result,omitempty" xml:"Result,omitempty"`
-	Channels *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 	Count    *int32                                                               `json:"Count,omitempty" xml:"Count,omitempty"`
 	Detail   *string                                                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Channels *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Struct"`
 }
 
 func (s BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) String() string {
@@ -1186,11 +1207,6 @@ func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetResult(
 	return s
 }
 
-func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetChannels(v *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels) *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo {
-	s.Channels = v
-	return s
-}
-
 func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetCount(v int32) *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo {
 	s.Count = &v
 	return s
@@ -1198,6 +1214,11 @@ func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetCount(v
 
 func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetDetail(v string) *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo {
 	s.Detail = &v
+	return s
+}
+
+func (s *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo) SetChannels(v *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfoChannels) *BatchResumeVsStreamResponseBodyResumeResultResumeResultInfo {
+	s.Channels = v
 	return s
 }
 
@@ -1243,7 +1264,6 @@ func (s *BatchResumeVsStreamResponse) SetBody(v *BatchResumeVsStreamResponseBody
 
 type BatchSetVsDomainConfigsRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	Functions   *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
 }
@@ -1258,11 +1278,6 @@ func (s BatchSetVsDomainConfigsRequest) GoString() string {
 
 func (s *BatchSetVsDomainConfigsRequest) SetOwnerId(v int64) *BatchSetVsDomainConfigsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchSetVsDomainConfigsRequest) SetShowLog(v string) *BatchSetVsDomainConfigsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1318,7 +1333,6 @@ func (s *BatchSetVsDomainConfigsResponse) SetBody(v *BatchSetVsDomainConfigsResp
 
 type BatchStartDevicesRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1332,11 +1346,6 @@ func (s BatchStartDevicesRequest) GoString() string {
 
 func (s *BatchStartDevicesRequest) SetOwnerId(v int64) *BatchStartDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStartDevicesRequest) SetShowLog(v string) *BatchStartDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1369,8 +1378,8 @@ func (s *BatchStartDevicesResponseBody) SetResults(v []*BatchStartDevicesRespons
 }
 
 type BatchStartDevicesResponseBodyResults struct {
-	Streams []*BatchStartDevicesResponseBodyResultsStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 	Id      *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Streams []*BatchStartDevicesResponseBodyResultsStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 }
 
 func (s BatchStartDevicesResponseBodyResults) String() string {
@@ -1381,13 +1390,13 @@ func (s BatchStartDevicesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *BatchStartDevicesResponseBodyResults) SetStreams(v []*BatchStartDevicesResponseBodyResultsStreams) *BatchStartDevicesResponseBodyResults {
-	s.Streams = v
+func (s *BatchStartDevicesResponseBodyResults) SetId(v string) *BatchStartDevicesResponseBodyResults {
+	s.Id = &v
 	return s
 }
 
-func (s *BatchStartDevicesResponseBodyResults) SetId(v string) *BatchStartDevicesResponseBodyResults {
-	s.Id = &v
+func (s *BatchStartDevicesResponseBodyResults) SetStreams(v []*BatchStartDevicesResponseBodyResultsStreams) *BatchStartDevicesResponseBodyResults {
+	s.Streams = v
 	return s
 }
 
@@ -1445,7 +1454,6 @@ func (s *BatchStartDevicesResponse) SetBody(v *BatchStartDevicesResponseBody) *B
 
 type BatchStartStreamsRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1459,11 +1467,6 @@ func (s BatchStartStreamsRequest) GoString() string {
 
 func (s *BatchStartStreamsRequest) SetOwnerId(v int64) *BatchStartStreamsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStartStreamsRequest) SetShowLog(v string) *BatchStartStreamsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1549,7 +1552,6 @@ func (s *BatchStartStreamsResponse) SetBody(v *BatchStartStreamsResponseBody) *B
 
 type BatchStopDevicesRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -1564,11 +1566,6 @@ func (s BatchStopDevicesRequest) GoString() string {
 
 func (s *BatchStopDevicesRequest) SetOwnerId(v int64) *BatchStopDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStopDevicesRequest) SetShowLog(v string) *BatchStopDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1606,8 +1603,8 @@ func (s *BatchStopDevicesResponseBody) SetResults(v []*BatchStopDevicesResponseB
 }
 
 type BatchStopDevicesResponseBodyResults struct {
-	Streams []*BatchStopDevicesResponseBodyResultsStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 	Id      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Streams []*BatchStopDevicesResponseBodyResultsStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 }
 
 func (s BatchStopDevicesResponseBodyResults) String() string {
@@ -1618,13 +1615,13 @@ func (s BatchStopDevicesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *BatchStopDevicesResponseBodyResults) SetStreams(v []*BatchStopDevicesResponseBodyResultsStreams) *BatchStopDevicesResponseBodyResults {
-	s.Streams = v
+func (s *BatchStopDevicesResponseBodyResults) SetId(v string) *BatchStopDevicesResponseBodyResults {
+	s.Id = &v
 	return s
 }
 
-func (s *BatchStopDevicesResponseBodyResults) SetId(v string) *BatchStopDevicesResponseBodyResults {
-	s.Id = &v
+func (s *BatchStopDevicesResponseBodyResults) SetStreams(v []*BatchStopDevicesResponseBodyResultsStreams) *BatchStopDevicesResponseBodyResults {
+	s.Streams = v
 	return s
 }
 
@@ -1682,7 +1679,6 @@ func (s *BatchStopDevicesResponse) SetBody(v *BatchStopDevicesResponseBody) *Bat
 
 type BatchStopStreamsRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -1697,11 +1693,6 @@ func (s BatchStopStreamsRequest) GoString() string {
 
 func (s *BatchStopStreamsRequest) SetOwnerId(v int64) *BatchStopStreamsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStopStreamsRequest) SetShowLog(v string) *BatchStopStreamsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1792,7 +1783,6 @@ func (s *BatchStopStreamsResponse) SetBody(v *BatchStopStreamsResponseBody) *Bat
 
 type BatchUnbindDirectoriesRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -1807,11 +1797,6 @@ func (s BatchUnbindDirectoriesRequest) GoString() string {
 
 func (s *BatchUnbindDirectoriesRequest) SetOwnerId(v int64) *BatchUnbindDirectoriesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchUnbindDirectoriesRequest) SetShowLog(v string) *BatchUnbindDirectoriesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1849,9 +1834,9 @@ func (s *BatchUnbindDirectoriesResponseBody) SetResults(v []*BatchUnbindDirector
 }
 
 type BatchUnbindDirectoriesResponseBodyResults struct {
-	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Error       *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s BatchUnbindDirectoriesResponseBodyResults) String() string {
@@ -1862,11 +1847,6 @@ func (s BatchUnbindDirectoriesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *BatchUnbindDirectoriesResponseBodyResults) SetDeviceId(v string) *BatchUnbindDirectoriesResponseBodyResults {
-	s.DeviceId = &v
-	return s
-}
-
 func (s *BatchUnbindDirectoriesResponseBodyResults) SetError(v string) *BatchUnbindDirectoriesResponseBodyResults {
 	s.Error = &v
 	return s
@@ -1874,6 +1854,11 @@ func (s *BatchUnbindDirectoriesResponseBodyResults) SetError(v string) *BatchUnb
 
 func (s *BatchUnbindDirectoriesResponseBodyResults) SetDirectoryId(v string) *BatchUnbindDirectoriesResponseBodyResults {
 	s.DirectoryId = &v
+	return s
+}
+
+func (s *BatchUnbindDirectoriesResponseBodyResults) SetDeviceId(v string) *BatchUnbindDirectoriesResponseBodyResults {
+	s.DeviceId = &v
 	return s
 }
 
@@ -1902,7 +1887,6 @@ func (s *BatchUnbindDirectoriesResponse) SetBody(v *BatchUnbindDirectoriesRespon
 
 type BatchUnbindParentPlatformDevicesRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -1917,11 +1901,6 @@ func (s BatchUnbindParentPlatformDevicesRequest) GoString() string {
 
 func (s *BatchUnbindParentPlatformDevicesRequest) SetOwnerId(v int64) *BatchUnbindParentPlatformDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchUnbindParentPlatformDevicesRequest) SetShowLog(v string) *BatchUnbindParentPlatformDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -1959,9 +1938,9 @@ func (s *BatchUnbindParentPlatformDevicesResponseBody) SetResults(v []*BatchUnbi
 }
 
 type BatchUnbindParentPlatformDevicesResponseBodyResults struct {
+	Error            *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Error            *string `json:"Error,omitempty" xml:"Error,omitempty"`
 }
 
 func (s BatchUnbindParentPlatformDevicesResponseBodyResults) String() string {
@@ -1972,6 +1951,11 @@ func (s BatchUnbindParentPlatformDevicesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
+func (s *BatchUnbindParentPlatformDevicesResponseBodyResults) SetError(v string) *BatchUnbindParentPlatformDevicesResponseBodyResults {
+	s.Error = &v
+	return s
+}
+
 func (s *BatchUnbindParentPlatformDevicesResponseBodyResults) SetParentPlatformId(v string) *BatchUnbindParentPlatformDevicesResponseBodyResults {
 	s.ParentPlatformId = &v
 	return s
@@ -1979,11 +1963,6 @@ func (s *BatchUnbindParentPlatformDevicesResponseBodyResults) SetParentPlatformI
 
 func (s *BatchUnbindParentPlatformDevicesResponseBodyResults) SetDeviceId(v string) *BatchUnbindParentPlatformDevicesResponseBodyResults {
 	s.DeviceId = &v
-	return s
-}
-
-func (s *BatchUnbindParentPlatformDevicesResponseBodyResults) SetError(v string) *BatchUnbindParentPlatformDevicesResponseBodyResults {
-	s.Error = &v
 	return s
 }
 
@@ -2012,7 +1991,6 @@ func (s *BatchUnbindParentPlatformDevicesResponse) SetBody(v *BatchUnbindParentP
 
 type BatchUnbindPurchasedDevicesRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -2026,11 +2004,6 @@ func (s BatchUnbindPurchasedDevicesRequest) GoString() string {
 
 func (s *BatchUnbindPurchasedDevicesRequest) SetOwnerId(v int64) *BatchUnbindPurchasedDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchUnbindPurchasedDevicesRequest) SetShowLog(v string) *BatchUnbindPurchasedDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2063,8 +2036,8 @@ func (s *BatchUnbindPurchasedDevicesResponseBody) SetResults(v []*BatchUnbindPur
 }
 
 type BatchUnbindPurchasedDevicesResponseBodyResults struct {
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Error    *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s BatchUnbindPurchasedDevicesResponseBodyResults) String() string {
@@ -2075,13 +2048,13 @@ func (s BatchUnbindPurchasedDevicesResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *BatchUnbindPurchasedDevicesResponseBodyResults) SetDeviceId(v string) *BatchUnbindPurchasedDevicesResponseBodyResults {
-	s.DeviceId = &v
+func (s *BatchUnbindPurchasedDevicesResponseBodyResults) SetError(v string) *BatchUnbindPurchasedDevicesResponseBodyResults {
+	s.Error = &v
 	return s
 }
 
-func (s *BatchUnbindPurchasedDevicesResponseBodyResults) SetError(v string) *BatchUnbindPurchasedDevicesResponseBodyResults {
-	s.Error = &v
+func (s *BatchUnbindPurchasedDevicesResponseBodyResults) SetDeviceId(v string) *BatchUnbindPurchasedDevicesResponseBodyResults {
+	s.DeviceId = &v
 	return s
 }
 
@@ -2110,7 +2083,6 @@ func (s *BatchUnbindPurchasedDevicesResponse) SetBody(v *BatchUnbindPurchasedDev
 
 type BatchUnbindTemplateRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2127,11 +2099,6 @@ func (s BatchUnbindTemplateRequest) GoString() string {
 
 func (s *BatchUnbindTemplateRequest) SetOwnerId(v int64) *BatchUnbindTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchUnbindTemplateRequest) SetShowLog(v string) *BatchUnbindTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2238,7 +2205,6 @@ func (s *BatchUnbindTemplateResponse) SetBody(v *BatchUnbindTemplateResponseBody
 
 type BatchUnbindTemplatesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2255,11 +2221,6 @@ func (s BatchUnbindTemplatesRequest) GoString() string {
 
 func (s *BatchUnbindTemplatesRequest) SetOwnerId(v int64) *BatchUnbindTemplatesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchUnbindTemplatesRequest) SetShowLog(v string) *BatchUnbindTemplatesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2372,7 +2333,6 @@ func (s *BatchUnbindTemplatesResponse) SetBody(v *BatchUnbindTemplatesResponseBo
 
 type BindDirectoryRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -2387,11 +2347,6 @@ func (s BindDirectoryRequest) GoString() string {
 
 func (s *BindDirectoryRequest) SetOwnerId(v int64) *BindDirectoryRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BindDirectoryRequest) SetShowLog(v string) *BindDirectoryRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2447,7 +2402,6 @@ func (s *BindDirectoryResponse) SetBody(v *BindDirectoryResponseBody) *BindDirec
 
 type BindParentPlatformDeviceRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -2462,11 +2416,6 @@ func (s BindParentPlatformDeviceRequest) GoString() string {
 
 func (s *BindParentPlatformDeviceRequest) SetOwnerId(v int64) *BindParentPlatformDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BindParentPlatformDeviceRequest) SetShowLog(v string) *BindParentPlatformDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2522,7 +2471,6 @@ func (s *BindParentPlatformDeviceResponse) SetBody(v *BindParentPlatformDeviceRe
 
 type BindPurchasedDeviceRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -2538,11 +2486,6 @@ func (s BindPurchasedDeviceRequest) GoString() string {
 
 func (s *BindPurchasedDeviceRequest) SetOwnerId(v int64) *BindPurchasedDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BindPurchasedDeviceRequest) SetShowLog(v string) *BindPurchasedDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2603,7 +2546,6 @@ func (s *BindPurchasedDeviceResponse) SetBody(v *BindPurchasedDeviceResponseBody
 
 type BindTemplateRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2622,11 +2564,6 @@ func (s BindTemplateRequest) GoString() string {
 
 func (s *BindTemplateRequest) SetOwnerId(v int64) *BindTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *BindTemplateRequest) SetShowLog(v string) *BindTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2719,11 +2656,11 @@ func (s *BindTemplateResponse) SetBody(v *BindTemplateResponseBody) *BindTemplat
 }
 
 type ContinuousAdjustRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Iris    *string `json:"Iris,omitempty" xml:"Iris,omitempty"`
-	Focus   *string `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Iris        *string `json:"Iris,omitempty" xml:"Iris,omitempty"`
+	Focus       *string `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s ContinuousAdjustRequest) String() string {
@@ -2736,11 +2673,6 @@ func (s ContinuousAdjustRequest) GoString() string {
 
 func (s *ContinuousAdjustRequest) SetOwnerId(v int64) *ContinuousAdjustRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ContinuousAdjustRequest) SetShowLog(v string) *ContinuousAdjustRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2759,9 +2691,14 @@ func (s *ContinuousAdjustRequest) SetFocus(v string) *ContinuousAdjustRequest {
 	return s
 }
 
+func (s *ContinuousAdjustRequest) SetSubProtocol(v string) *ContinuousAdjustRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type ContinuousAdjustResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ContinuousAdjustResponseBody) String() string {
@@ -2772,13 +2709,13 @@ func (s ContinuousAdjustResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ContinuousAdjustResponseBody) SetRequestId(v string) *ContinuousAdjustResponseBody {
-	s.RequestId = &v
+func (s *ContinuousAdjustResponseBody) SetId(v string) *ContinuousAdjustResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ContinuousAdjustResponseBody) SetId(v string) *ContinuousAdjustResponseBody {
-	s.Id = &v
+func (s *ContinuousAdjustResponseBody) SetRequestId(v string) *ContinuousAdjustResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2806,12 +2743,12 @@ func (s *ContinuousAdjustResponse) SetBody(v *ContinuousAdjustResponseBody) *Con
 }
 
 type ContinuousMoveRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Pan     *string `json:"Pan,omitempty" xml:"Pan,omitempty"`
-	Tilt    *string `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
-	Zoom    *string `json:"Zoom,omitempty" xml:"Zoom,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Pan         *string `json:"Pan,omitempty" xml:"Pan,omitempty"`
+	Tilt        *string `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
+	Zoom        *string `json:"Zoom,omitempty" xml:"Zoom,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s ContinuousMoveRequest) String() string {
@@ -2824,11 +2761,6 @@ func (s ContinuousMoveRequest) GoString() string {
 
 func (s *ContinuousMoveRequest) SetOwnerId(v int64) *ContinuousMoveRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ContinuousMoveRequest) SetShowLog(v string) *ContinuousMoveRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -2852,9 +2784,14 @@ func (s *ContinuousMoveRequest) SetZoom(v string) *ContinuousMoveRequest {
 	return s
 }
 
+func (s *ContinuousMoveRequest) SetSubProtocol(v string) *ContinuousMoveRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type ContinuousMoveResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ContinuousMoveResponseBody) String() string {
@@ -2865,13 +2802,13 @@ func (s ContinuousMoveResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ContinuousMoveResponseBody) SetRequestId(v string) *ContinuousMoveResponseBody {
-	s.RequestId = &v
+func (s *ContinuousMoveResponseBody) SetId(v string) *ContinuousMoveResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ContinuousMoveResponseBody) SetId(v string) *ContinuousMoveResponseBody {
-	s.Id = &v
+func (s *ContinuousMoveResponseBody) SetRequestId(v string) *ContinuousMoveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2900,7 +2837,6 @@ func (s *ContinuousMoveResponse) SetBody(v *ContinuousMoveResponseBody) *Continu
 
 type CreateDeviceRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -2934,11 +2870,6 @@ func (s CreateDeviceRequest) GoString() string {
 
 func (s *CreateDeviceRequest) SetOwnerId(v int64) *CreateDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDeviceRequest) SetShowLog(v string) *CreateDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3048,8 +2979,8 @@ func (s *CreateDeviceRequest) SetParams(v string) *CreateDeviceRequest {
 }
 
 type CreateDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDeviceResponseBody) String() string {
@@ -3060,13 +2991,13 @@ func (s CreateDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDeviceResponseBody) SetRequestId(v string) *CreateDeviceResponseBody {
-	s.RequestId = &v
+func (s *CreateDeviceResponseBody) SetId(v string) *CreateDeviceResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *CreateDeviceResponseBody) SetId(v string) *CreateDeviceResponseBody {
-	s.Id = &v
+func (s *CreateDeviceResponseBody) SetRequestId(v string) *CreateDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3095,7 +3026,6 @@ func (s *CreateDeviceResponse) SetBody(v *CreateDeviceResponseBody) *CreateDevic
 
 type CreateDeviceAlarmRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ChannelId  *int32  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	ObjectType *int32  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
@@ -3116,11 +3046,6 @@ func (s CreateDeviceAlarmRequest) GoString() string {
 
 func (s *CreateDeviceAlarmRequest) SetOwnerId(v int64) *CreateDeviceAlarmRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDeviceAlarmRequest) SetShowLog(v string) *CreateDeviceAlarmRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3165,11 +3090,11 @@ func (s *CreateDeviceAlarmRequest) SetExpire(v int64) *CreateDeviceAlarmRequest 
 }
 
 type CreateDeviceAlarmResponseBody struct {
-	AlarmId    *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
-	Expire     *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AlarmDelay *int64  `json:"AlarmDelay,omitempty" xml:"AlarmDelay,omitempty"`
 	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	AlarmId    *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Expire     *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	AlarmDelay *int64  `json:"AlarmDelay,omitempty" xml:"AlarmDelay,omitempty"`
 }
 
 func (s CreateDeviceAlarmResponseBody) String() string {
@@ -3180,13 +3105,13 @@ func (s CreateDeviceAlarmResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDeviceAlarmResponseBody) SetAlarmId(v string) *CreateDeviceAlarmResponseBody {
-	s.AlarmId = &v
+func (s *CreateDeviceAlarmResponseBody) SetUrl(v string) *CreateDeviceAlarmResponseBody {
+	s.Url = &v
 	return s
 }
 
-func (s *CreateDeviceAlarmResponseBody) SetExpire(v int64) *CreateDeviceAlarmResponseBody {
-	s.Expire = &v
+func (s *CreateDeviceAlarmResponseBody) SetAlarmId(v string) *CreateDeviceAlarmResponseBody {
+	s.AlarmId = &v
 	return s
 }
 
@@ -3195,13 +3120,13 @@ func (s *CreateDeviceAlarmResponseBody) SetRequestId(v string) *CreateDeviceAlar
 	return s
 }
 
-func (s *CreateDeviceAlarmResponseBody) SetAlarmDelay(v int64) *CreateDeviceAlarmResponseBody {
-	s.AlarmDelay = &v
+func (s *CreateDeviceAlarmResponseBody) SetExpire(v int64) *CreateDeviceAlarmResponseBody {
+	s.Expire = &v
 	return s
 }
 
-func (s *CreateDeviceAlarmResponseBody) SetUrl(v string) *CreateDeviceAlarmResponseBody {
-	s.Url = &v
+func (s *CreateDeviceAlarmResponseBody) SetAlarmDelay(v int64) *CreateDeviceAlarmResponseBody {
+	s.AlarmDelay = &v
 	return s
 }
 
@@ -3228,9 +3153,95 @@ func (s *CreateDeviceAlarmResponse) SetBody(v *CreateDeviceAlarmResponseBody) *C
 	return s
 }
 
+type CreateDeviceSnapshotRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	Mode           *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	SnapshotConfig *string `json:"SnapshotConfig,omitempty" xml:"SnapshotConfig,omitempty"`
+}
+
+func (s CreateDeviceSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceSnapshotRequest) SetOwnerId(v int64) *CreateDeviceSnapshotRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDeviceSnapshotRequest) SetDeviceId(v string) *CreateDeviceSnapshotRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *CreateDeviceSnapshotRequest) SetStreamId(v string) *CreateDeviceSnapshotRequest {
+	s.StreamId = &v
+	return s
+}
+
+func (s *CreateDeviceSnapshotRequest) SetMode(v string) *CreateDeviceSnapshotRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateDeviceSnapshotRequest) SetSnapshotConfig(v string) *CreateDeviceSnapshotRequest {
+	s.SnapshotConfig = &v
+	return s
+}
+
+type CreateDeviceSnapshotResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDeviceSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceSnapshotResponseBody) SetId(v string) *CreateDeviceSnapshotResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDeviceSnapshotResponseBody) SetRequestId(v string) *CreateDeviceSnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDeviceSnapshotResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDeviceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeviceSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceSnapshotResponse) SetHeaders(v map[string]*string) *CreateDeviceSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeviceSnapshotResponse) SetBody(v *CreateDeviceSnapshotResponseBody) *CreateDeviceSnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDirectoryRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -3247,11 +3258,6 @@ func (s CreateDirectoryRequest) GoString() string {
 
 func (s *CreateDirectoryRequest) SetOwnerId(v int64) *CreateDirectoryRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDirectoryRequest) SetShowLog(v string) *CreateDirectoryRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3276,8 +3282,8 @@ func (s *CreateDirectoryRequest) SetParentId(v string) *CreateDirectoryRequest {
 }
 
 type CreateDirectoryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDirectoryResponseBody) String() string {
@@ -3288,13 +3294,13 @@ func (s CreateDirectoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDirectoryResponseBody) SetRequestId(v string) *CreateDirectoryResponseBody {
-	s.RequestId = &v
+func (s *CreateDirectoryResponseBody) SetId(v string) *CreateDirectoryResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *CreateDirectoryResponseBody) SetId(v string) *CreateDirectoryResponseBody {
-	s.Id = &v
+func (s *CreateDirectoryResponseBody) SetRequestId(v string) *CreateDirectoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3323,7 +3329,6 @@ func (s *CreateDirectoryResponse) SetBody(v *CreateDirectoryResponseBody) *Creat
 
 type CreateGroupRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	App              *string `json:"App,omitempty" xml:"App,omitempty"`
@@ -3351,11 +3356,6 @@ func (s CreateGroupRequest) GoString() string {
 
 func (s *CreateGroupRequest) SetOwnerId(v int64) *CreateGroupRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateGroupRequest) SetShowLog(v string) *CreateGroupRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3435,11 +3435,11 @@ func (s *CreateGroupRequest) SetCaptureOssPath(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
+	GbId      *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	GbIp      *string `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	GbId      *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	GbPort    *int64  `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -3448,6 +3448,11 @@ func (s CreateGroupResponseBody) String() string {
 
 func (s CreateGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGroupResponseBody) SetGbId(v string) *CreateGroupResponseBody {
+	s.GbId = &v
+	return s
 }
 
 func (s *CreateGroupResponseBody) SetGbIp(v string) *CreateGroupResponseBody {
@@ -3460,18 +3465,13 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 	return s
 }
 
-func (s *CreateGroupResponseBody) SetGbId(v string) *CreateGroupResponseBody {
-	s.GbId = &v
+func (s *CreateGroupResponseBody) SetGbPort(v int64) *CreateGroupResponseBody {
+	s.GbPort = &v
 	return s
 }
 
 func (s *CreateGroupResponseBody) SetId(v string) *CreateGroupResponseBody {
 	s.Id = &v
-	return s
-}
-
-func (s *CreateGroupResponseBody) SetGbPort(v int64) *CreateGroupResponseBody {
-	s.GbPort = &v
 	return s
 }
 
@@ -3500,7 +3500,6 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 
 type CreateParentPlatformRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
@@ -3523,11 +3522,6 @@ func (s CreateParentPlatformRequest) GoString() string {
 
 func (s *CreateParentPlatformRequest) SetOwnerId(v int64) *CreateParentPlatformRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateParentPlatformRequest) SetShowLog(v string) *CreateParentPlatformRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3582,8 +3576,8 @@ func (s *CreateParentPlatformRequest) SetAutoStart(v bool) *CreateParentPlatform
 }
 
 type CreateParentPlatformResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateParentPlatformResponseBody) String() string {
@@ -3594,13 +3588,13 @@ func (s CreateParentPlatformResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateParentPlatformResponseBody) SetRequestId(v string) *CreateParentPlatformResponseBody {
-	s.RequestId = &v
+func (s *CreateParentPlatformResponseBody) SetId(v string) *CreateParentPlatformResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *CreateParentPlatformResponseBody) SetId(v string) *CreateParentPlatformResponseBody {
-	s.Id = &v
+func (s *CreateParentPlatformResponseBody) SetRequestId(v string) *CreateParentPlatformResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3629,7 +3623,6 @@ func (s *CreateParentPlatformResponse) SetBody(v *CreateParentPlatformResponseBo
 
 type CreateStreamSnapshotRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
@@ -3647,11 +3640,6 @@ func (s *CreateStreamSnapshotRequest) SetOwnerId(v int64) *CreateStreamSnapshotR
 	return s
 }
 
-func (s *CreateStreamSnapshotRequest) SetShowLog(v string) *CreateStreamSnapshotRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *CreateStreamSnapshotRequest) SetId(v string) *CreateStreamSnapshotRequest {
 	s.Id = &v
 	return s
@@ -3663,16 +3651,16 @@ func (s *CreateStreamSnapshotRequest) SetLocation(v string) *CreateStreamSnapsho
 }
 
 type CreateStreamSnapshotResponseBody struct {
-	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	Height      *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Width       *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Height      *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
 	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s CreateStreamSnapshotResponseBody) String() string {
@@ -3683,8 +3671,8 @@ func (s CreateStreamSnapshotResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStreamSnapshotResponseBody) SetFormat(v string) *CreateStreamSnapshotResponseBody {
-	s.Format = &v
+func (s *CreateStreamSnapshotResponseBody) SetOssObject(v string) *CreateStreamSnapshotResponseBody {
+	s.OssObject = &v
 	return s
 }
 
@@ -3693,18 +3681,8 @@ func (s *CreateStreamSnapshotResponseBody) SetRequestId(v string) *CreateStreamS
 	return s
 }
 
-func (s *CreateStreamSnapshotResponseBody) SetOssEndpoint(v string) *CreateStreamSnapshotResponseBody {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *CreateStreamSnapshotResponseBody) SetOssBucket(v string) *CreateStreamSnapshotResponseBody {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *CreateStreamSnapshotResponseBody) SetOssObject(v string) *CreateStreamSnapshotResponseBody {
-	s.OssObject = &v
+func (s *CreateStreamSnapshotResponseBody) SetWidth(v int64) *CreateStreamSnapshotResponseBody {
+	s.Width = &v
 	return s
 }
 
@@ -3713,13 +3691,8 @@ func (s *CreateStreamSnapshotResponseBody) SetHeight(v int64) *CreateStreamSnaps
 	return s
 }
 
-func (s *CreateStreamSnapshotResponseBody) SetId(v string) *CreateStreamSnapshotResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateStreamSnapshotResponseBody) SetWidth(v int64) *CreateStreamSnapshotResponseBody {
-	s.Width = &v
+func (s *CreateStreamSnapshotResponseBody) SetUrl(v string) *CreateStreamSnapshotResponseBody {
+	s.Url = &v
 	return s
 }
 
@@ -3728,8 +3701,23 @@ func (s *CreateStreamSnapshotResponseBody) SetTimestamp(v int64) *CreateStreamSn
 	return s
 }
 
-func (s *CreateStreamSnapshotResponseBody) SetUrl(v string) *CreateStreamSnapshotResponseBody {
-	s.Url = &v
+func (s *CreateStreamSnapshotResponseBody) SetOssBucket(v string) *CreateStreamSnapshotResponseBody {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *CreateStreamSnapshotResponseBody) SetFormat(v string) *CreateStreamSnapshotResponseBody {
+	s.Format = &v
+	return s
+}
+
+func (s *CreateStreamSnapshotResponseBody) SetOssEndpoint(v string) *CreateStreamSnapshotResponseBody {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *CreateStreamSnapshotResponseBody) SetId(v string) *CreateStreamSnapshotResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -3758,7 +3746,6 @@ func (s *CreateStreamSnapshotResponse) SetBody(v *CreateStreamSnapshotResponseBo
 
 type CreateTemplateRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -3793,11 +3780,6 @@ func (s CreateTemplateRequest) GoString() string {
 
 func (s *CreateTemplateRequest) SetOwnerId(v int64) *CreateTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateTemplateRequest) SetShowLog(v string) *CreateTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -3912,8 +3894,8 @@ func (s *CreateTemplateRequest) SetTransConfigsJSON(v string) *CreateTemplateReq
 }
 
 type CreateTemplateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {
@@ -3924,13 +3906,13 @@ func (s CreateTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTemplateResponseBody) SetRequestId(v string) *CreateTemplateResponseBody {
-	s.RequestId = &v
+func (s *CreateTemplateResponseBody) SetId(v string) *CreateTemplateResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *CreateTemplateResponseBody) SetId(v string) *CreateTemplateResponseBody {
-	s.Id = &v
+func (s *CreateTemplateResponseBody) SetRequestId(v string) *CreateTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3957,9 +3939,71 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 	return s
 }
 
+type DeleteBucketRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s DeleteBucketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketRequest) SetOwnerId(v int64) *DeleteBucketRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteBucketRequest) SetBucketName(v string) *DeleteBucketRequest {
+	s.BucketName = &v
+	return s
+}
+
+type DeleteBucketResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBucketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketResponseBody) SetRequestId(v string) *DeleteBucketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBucketResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBucketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketResponse) SetHeaders(v map[string]*string) *DeleteBucketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBucketResponse) SetBody(v *DeleteBucketResponseBody) *DeleteBucketResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDeviceRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -3973,11 +4017,6 @@ func (s DeleteDeviceRequest) GoString() string {
 
 func (s *DeleteDeviceRequest) SetOwnerId(v int64) *DeleteDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteDeviceRequest) SetShowLog(v string) *DeleteDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4028,7 +4067,6 @@ func (s *DeleteDeviceResponse) SetBody(v *DeleteDeviceResponseBody) *DeleteDevic
 
 type DeleteDirectoryRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4042,11 +4080,6 @@ func (s DeleteDirectoryRequest) GoString() string {
 
 func (s *DeleteDirectoryRequest) SetOwnerId(v int64) *DeleteDirectoryRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteDirectoryRequest) SetShowLog(v string) *DeleteDirectoryRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4097,7 +4130,6 @@ func (s *DeleteDirectoryResponse) SetBody(v *DeleteDirectoryResponseBody) *Delet
 
 type DeleteGroupRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4111,11 +4143,6 @@ func (s DeleteGroupRequest) GoString() string {
 
 func (s *DeleteGroupRequest) SetOwnerId(v int64) *DeleteGroupRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteGroupRequest) SetShowLog(v string) *DeleteGroupRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4166,7 +4193,6 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 
 type DeleteParentPlatformRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4180,11 +4206,6 @@ func (s DeleteParentPlatformRequest) GoString() string {
 
 func (s *DeleteParentPlatformRequest) SetOwnerId(v int64) *DeleteParentPlatformRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteParentPlatformRequest) SetShowLog(v string) *DeleteParentPlatformRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4234,10 +4255,10 @@ func (s *DeleteParentPlatformResponse) SetBody(v *DeleteParentPlatformResponseBo
 }
 
 type DeletePresetRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	PresetId *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PresetId    *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s DeletePresetRequest) String() string {
@@ -4253,11 +4274,6 @@ func (s *DeletePresetRequest) SetOwnerId(v int64) *DeletePresetRequest {
 	return s
 }
 
-func (s *DeletePresetRequest) SetShowLog(v string) *DeletePresetRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DeletePresetRequest) SetId(v string) *DeletePresetRequest {
 	s.Id = &v
 	return s
@@ -4268,9 +4284,14 @@ func (s *DeletePresetRequest) SetPresetId(v string) *DeletePresetRequest {
 	return s
 }
 
+func (s *DeletePresetRequest) SetSubProtocol(v string) *DeletePresetRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type DeletePresetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeletePresetResponseBody) String() string {
@@ -4281,13 +4302,13 @@ func (s DeletePresetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeletePresetResponseBody) SetRequestId(v string) *DeletePresetResponseBody {
-	s.RequestId = &v
+func (s *DeletePresetResponseBody) SetId(v string) *DeletePresetResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *DeletePresetResponseBody) SetId(v string) *DeletePresetResponseBody {
-	s.Id = &v
+func (s *DeletePresetResponseBody) SetRequestId(v string) *DeletePresetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4316,7 +4337,6 @@ func (s *DeletePresetResponse) SetBody(v *DeletePresetResponseBody) *DeletePrese
 
 type DeleteTemplateRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4330,11 +4350,6 @@ func (s DeleteTemplateRequest) GoString() string {
 
 func (s *DeleteTemplateRequest) SetOwnerId(v int64) *DeleteTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteTemplateRequest) SetShowLog(v string) *DeleteTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4385,7 +4400,6 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 
 type DeleteVsPullStreamInfoConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -4401,11 +4415,6 @@ func (s DeleteVsPullStreamInfoConfigRequest) GoString() string {
 
 func (s *DeleteVsPullStreamInfoConfigRequest) SetOwnerId(v int64) *DeleteVsPullStreamInfoConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteVsPullStreamInfoConfigRequest) SetShowLog(v string) *DeleteVsPullStreamInfoConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4466,7 +4475,6 @@ func (s *DeleteVsPullStreamInfoConfigResponse) SetBody(v *DeleteVsPullStreamInfo
 
 type DeleteVsStreamsNotifyUrlConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -4480,11 +4488,6 @@ func (s DeleteVsStreamsNotifyUrlConfigRequest) GoString() string {
 
 func (s *DeleteVsStreamsNotifyUrlConfigRequest) SetOwnerId(v int64) *DeleteVsStreamsNotifyUrlConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteVsStreamsNotifyUrlConfigRequest) SetShowLog(v string) *DeleteVsStreamsNotifyUrlConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4535,7 +4538,6 @@ func (s *DeleteVsStreamsNotifyUrlConfigResponse) SetBody(v *DeleteVsStreamsNotif
 
 type DescribeAccountStatRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -4552,23 +4554,18 @@ func (s *DescribeAccountStatRequest) SetOwnerId(v int64) *DescribeAccountStatReq
 	return s
 }
 
-func (s *DescribeAccountStatRequest) SetShowLog(v string) *DescribeAccountStatRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeAccountStatRequest) SetId(v string) *DescribeAccountStatRequest {
 	s.Id = &v
 	return s
 }
 
 type DescribeAccountStatResponseBody struct {
-	TemplateLimit *int64  `json:"TemplateLimit,omitempty" xml:"TemplateLimit,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateNum   *int64  `json:"TemplateNum,omitempty" xml:"TemplateNum,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	GroupLimit    *int64  `json:"GroupLimit,omitempty" xml:"GroupLimit,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateLimit *int64  `json:"TemplateLimit,omitempty" xml:"TemplateLimit,omitempty"`
 	GroupNum      *int64  `json:"GroupNum,omitempty" xml:"GroupNum,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeAccountStatResponseBody) String() string {
@@ -4579,23 +4576,8 @@ func (s DescribeAccountStatResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccountStatResponseBody) SetTemplateLimit(v int64) *DescribeAccountStatResponseBody {
-	s.TemplateLimit = &v
-	return s
-}
-
-func (s *DescribeAccountStatResponseBody) SetRequestId(v string) *DescribeAccountStatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeAccountStatResponseBody) SetTemplateNum(v int64) *DescribeAccountStatResponseBody {
 	s.TemplateNum = &v
-	return s
-}
-
-func (s *DescribeAccountStatResponseBody) SetId(v string) *DescribeAccountStatResponseBody {
-	s.Id = &v
 	return s
 }
 
@@ -4604,8 +4586,23 @@ func (s *DescribeAccountStatResponseBody) SetGroupLimit(v int64) *DescribeAccoun
 	return s
 }
 
+func (s *DescribeAccountStatResponseBody) SetRequestId(v string) *DescribeAccountStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccountStatResponseBody) SetTemplateLimit(v int64) *DescribeAccountStatResponseBody {
+	s.TemplateLimit = &v
+	return s
+}
+
 func (s *DescribeAccountStatResponseBody) SetGroupNum(v int64) *DescribeAccountStatResponseBody {
 	s.GroupNum = &v
+	return s
+}
+
+func (s *DescribeAccountStatResponseBody) SetId(v string) *DescribeAccountStatResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -4634,7 +4631,6 @@ func (s *DescribeAccountStatResponse) SetBody(v *DescribeAccountStatResponseBody
 
 type DescribeDeviceRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	IncludeStats     *bool   `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
 	IncludeDirectory *bool   `json:"IncludeDirectory,omitempty" xml:"IncludeDirectory,omitempty"`
@@ -4650,11 +4646,6 @@ func (s DescribeDeviceRequest) GoString() string {
 
 func (s *DescribeDeviceRequest) SetOwnerId(v int64) *DescribeDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDeviceRequest) SetShowLog(v string) *DescribeDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -4674,37 +4665,37 @@ func (s *DescribeDeviceRequest) SetIncludeDirectory(v bool) *DescribeDeviceReque
 }
 
 type DescribeDeviceResponseBody struct {
-	AlarmMethod     *string                              `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
-	Description     *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime     *string                              `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Port            *int64                               `json:"Port,omitempty" xml:"Port,omitempty"`
-	Ip              *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	ChannelSyncTime *string                              `json:"ChannelSyncTime,omitempty" xml:"ChannelSyncTime,omitempty"`
-	Latitude        *string                              `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	Url             *string                              `json:"Url,omitempty" xml:"Url,omitempty"`
-	Name            *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	GbId            *string                              `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	Protocol        *string                              `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	AutoStart       *bool                                `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
-	Dsn             *string                              `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
-	Password        *string                              `json:"Password,omitempty" xml:"Password,omitempty"`
-	Directory       *DescribeDeviceResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	Status          *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	ParentId        *string                              `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	RequestId       *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Params          *string                              `json:"Params,omitempty" xml:"Params,omitempty"`
-	Enabled         *bool                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Vendor          *string                              `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	RegisteredTime  *string                              `json:"RegisteredTime,omitempty" xml:"RegisteredTime,omitempty"`
-	Longitude       *string                              `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	GroupId         *string                              `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PosInterval     *int64                               `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
 	Type            *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	DirectoryId     *string                              `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Username        *string                              `json:"Username,omitempty" xml:"Username,omitempty"`
+	Status          *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	AlarmMethod     *string                              `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
+	Dsn             *string                              `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
+	Port            *int64                               `json:"Port,omitempty" xml:"Port,omitempty"`
+	PosInterval     *int64                               `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
+	ParentId        *string                              `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Password        *string                              `json:"Password,omitempty" xml:"Password,omitempty"`
 	AutoPos         *bool                                `json:"AutoPos,omitempty" xml:"AutoPos,omitempty"`
-	Stats           *DescribeDeviceResponseBodyStats     `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	Params          *string                              `json:"Params,omitempty" xml:"Params,omitempty"`
+	RequestId       *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description     *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled         *bool                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Name            *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ChannelSyncTime *string                              `json:"ChannelSyncTime,omitempty" xml:"ChannelSyncTime,omitempty"`
+	CreatedTime     *string                              `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DirectoryId     *string                              `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	RegisteredTime  *string                              `json:"RegisteredTime,omitempty" xml:"RegisteredTime,omitempty"`
+	Protocol        *string                              `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Ip              *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Url             *string                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	AutoStart       *bool                                `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	Vendor          *string                              `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	GbId            *string                              `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	GroupId         *string                              `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Longitude       *string                              `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Latitude        *string                              `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
 	Id              *string                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Username        *string                              `json:"Username,omitempty" xml:"Username,omitempty"`
+	Stats           *DescribeDeviceResponseBodyStats     `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	Directory       *DescribeDeviceResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 }
 
 func (s DescribeDeviceResponseBody) String() string {
@@ -4715,78 +4706,8 @@ func (s DescribeDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceResponseBody) SetAlarmMethod(v string) *DescribeDeviceResponseBody {
-	s.AlarmMethod = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetDescription(v string) *DescribeDeviceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetCreatedTime(v string) *DescribeDeviceResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetPort(v int64) *DescribeDeviceResponseBody {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetIp(v string) *DescribeDeviceResponseBody {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetChannelSyncTime(v string) *DescribeDeviceResponseBody {
-	s.ChannelSyncTime = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetLatitude(v string) *DescribeDeviceResponseBody {
-	s.Latitude = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetUrl(v string) *DescribeDeviceResponseBody {
-	s.Url = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetName(v string) *DescribeDeviceResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetGbId(v string) *DescribeDeviceResponseBody {
-	s.GbId = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetProtocol(v string) *DescribeDeviceResponseBody {
-	s.Protocol = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetAutoStart(v bool) *DescribeDeviceResponseBody {
-	s.AutoStart = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetDsn(v string) *DescribeDeviceResponseBody {
-	s.Dsn = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetPassword(v string) *DescribeDeviceResponseBody {
-	s.Password = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetDirectory(v *DescribeDeviceResponseBodyDirectory) *DescribeDeviceResponseBody {
-	s.Directory = v
+func (s *DescribeDeviceResponseBody) SetType(v string) *DescribeDeviceResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -4795,43 +4716,18 @@ func (s *DescribeDeviceResponseBody) SetStatus(v string) *DescribeDeviceResponse
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetParentId(v string) *DescribeDeviceResponseBody {
-	s.ParentId = &v
+func (s *DescribeDeviceResponseBody) SetAlarmMethod(v string) *DescribeDeviceResponseBody {
+	s.AlarmMethod = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetRequestId(v string) *DescribeDeviceResponseBody {
-	s.RequestId = &v
+func (s *DescribeDeviceResponseBody) SetDsn(v string) *DescribeDeviceResponseBody {
+	s.Dsn = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetParams(v string) *DescribeDeviceResponseBody {
-	s.Params = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetEnabled(v bool) *DescribeDeviceResponseBody {
-	s.Enabled = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetVendor(v string) *DescribeDeviceResponseBody {
-	s.Vendor = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetRegisteredTime(v string) *DescribeDeviceResponseBody {
-	s.RegisteredTime = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetLongitude(v string) *DescribeDeviceResponseBody {
-	s.Longitude = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetGroupId(v string) *DescribeDeviceResponseBody {
-	s.GroupId = &v
+func (s *DescribeDeviceResponseBody) SetPort(v int64) *DescribeDeviceResponseBody {
+	s.Port = &v
 	return s
 }
 
@@ -4840,18 +4736,13 @@ func (s *DescribeDeviceResponseBody) SetPosInterval(v int64) *DescribeDeviceResp
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetType(v string) *DescribeDeviceResponseBody {
-	s.Type = &v
+func (s *DescribeDeviceResponseBody) SetParentId(v string) *DescribeDeviceResponseBody {
+	s.ParentId = &v
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetDirectoryId(v string) *DescribeDeviceResponseBody {
-	s.DirectoryId = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBody) SetUsername(v string) *DescribeDeviceResponseBody {
-	s.Username = &v
+func (s *DescribeDeviceResponseBody) SetPassword(v string) *DescribeDeviceResponseBody {
+	s.Password = &v
 	return s
 }
 
@@ -4860,13 +4751,154 @@ func (s *DescribeDeviceResponseBody) SetAutoPos(v bool) *DescribeDeviceResponseB
 	return s
 }
 
-func (s *DescribeDeviceResponseBody) SetStats(v *DescribeDeviceResponseBodyStats) *DescribeDeviceResponseBody {
-	s.Stats = v
+func (s *DescribeDeviceResponseBody) SetParams(v string) *DescribeDeviceResponseBody {
+	s.Params = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetRequestId(v string) *DescribeDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetDescription(v string) *DescribeDeviceResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetEnabled(v bool) *DescribeDeviceResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetName(v string) *DescribeDeviceResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetChannelSyncTime(v string) *DescribeDeviceResponseBody {
+	s.ChannelSyncTime = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetCreatedTime(v string) *DescribeDeviceResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetDirectoryId(v string) *DescribeDeviceResponseBody {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetRegisteredTime(v string) *DescribeDeviceResponseBody {
+	s.RegisteredTime = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetProtocol(v string) *DescribeDeviceResponseBody {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetIp(v string) *DescribeDeviceResponseBody {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetUrl(v string) *DescribeDeviceResponseBody {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetAutoStart(v bool) *DescribeDeviceResponseBody {
+	s.AutoStart = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetVendor(v string) *DescribeDeviceResponseBody {
+	s.Vendor = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetGbId(v string) *DescribeDeviceResponseBody {
+	s.GbId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetGroupId(v string) *DescribeDeviceResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetLongitude(v string) *DescribeDeviceResponseBody {
+	s.Longitude = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetLatitude(v string) *DescribeDeviceResponseBody {
+	s.Latitude = &v
 	return s
 }
 
 func (s *DescribeDeviceResponseBody) SetId(v string) *DescribeDeviceResponseBody {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetUsername(v string) *DescribeDeviceResponseBody {
+	s.Username = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetStats(v *DescribeDeviceResponseBodyStats) *DescribeDeviceResponseBody {
+	s.Stats = v
+	return s
+}
+
+func (s *DescribeDeviceResponseBody) SetDirectory(v *DescribeDeviceResponseBodyDirectory) *DescribeDeviceResponseBody {
+	s.Directory = v
+	return s
+}
+
+type DescribeDeviceResponseBodyStats struct {
+	FailedNum  *int64 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
+	StreamNum  *int64 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	ChannelNum *int64 `json:"ChannelNum,omitempty" xml:"ChannelNum,omitempty"`
+	OnlineNum  *int64 `json:"OnlineNum,omitempty" xml:"OnlineNum,omitempty"`
+	OfflineNum *int64 `json:"OfflineNum,omitempty" xml:"OfflineNum,omitempty"`
+}
+
+func (s DescribeDeviceResponseBodyStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeviceResponseBodyStats) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeviceResponseBodyStats) SetFailedNum(v int64) *DescribeDeviceResponseBodyStats {
+	s.FailedNum = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyStats) SetStreamNum(v int64) *DescribeDeviceResponseBodyStats {
+	s.StreamNum = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyStats) SetChannelNum(v int64) *DescribeDeviceResponseBodyStats {
+	s.ChannelNum = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyStats) SetOnlineNum(v int64) *DescribeDeviceResponseBodyStats {
+	s.OnlineNum = &v
+	return s
+}
+
+func (s *DescribeDeviceResponseBodyStats) SetOfflineNum(v int64) *DescribeDeviceResponseBodyStats {
+	s.OfflineNum = &v
 	return s
 }
 
@@ -4917,47 +4949,6 @@ func (s *DescribeDeviceResponseBodyDirectory) SetId(v string) *DescribeDeviceRes
 	return s
 }
 
-type DescribeDeviceResponseBodyStats struct {
-	FailedNum  *int64 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
-	StreamNum  *int64 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
-	OnlineNum  *int64 `json:"OnlineNum,omitempty" xml:"OnlineNum,omitempty"`
-	OfflineNum *int64 `json:"OfflineNum,omitempty" xml:"OfflineNum,omitempty"`
-	ChannelNum *int64 `json:"ChannelNum,omitempty" xml:"ChannelNum,omitempty"`
-}
-
-func (s DescribeDeviceResponseBodyStats) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeviceResponseBodyStats) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeviceResponseBodyStats) SetFailedNum(v int64) *DescribeDeviceResponseBodyStats {
-	s.FailedNum = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyStats) SetStreamNum(v int64) *DescribeDeviceResponseBodyStats {
-	s.StreamNum = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyStats) SetOnlineNum(v int64) *DescribeDeviceResponseBodyStats {
-	s.OnlineNum = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyStats) SetOfflineNum(v int64) *DescribeDeviceResponseBodyStats {
-	s.OfflineNum = &v
-	return s
-}
-
-func (s *DescribeDeviceResponseBodyStats) SetChannelNum(v int64) *DescribeDeviceResponseBodyStats {
-	s.ChannelNum = &v
-	return s
-}
-
 type DescribeDeviceResponse struct {
 	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -4983,7 +4974,6 @@ func (s *DescribeDeviceResponse) SetBody(v *DescribeDeviceResponseBody) *Describ
 
 type DescribeDeviceChannelsRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
@@ -4999,11 +4989,6 @@ func (s DescribeDeviceChannelsRequest) GoString() string {
 
 func (s *DescribeDeviceChannelsRequest) SetOwnerId(v int64) *DescribeDeviceChannelsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDeviceChannelsRequest) SetShowLog(v string) *DescribeDeviceChannelsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -5023,10 +5008,10 @@ func (s *DescribeDeviceChannelsRequest) SetPageNum(v int64) *DescribeDeviceChann
 }
 
 type DescribeDeviceChannelsResponseBody struct {
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                        `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Channels   []*DescribeDeviceChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
@@ -5037,11 +5022,6 @@ func (s DescribeDeviceChannelsResponseBody) String() string {
 
 func (s DescribeDeviceChannelsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDeviceChannelsResponseBody) SetTotalCount(v int64) *DescribeDeviceChannelsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeDeviceChannelsResponseBody) SetPageNum(v int64) *DescribeDeviceChannelsResponseBody {
@@ -5056,6 +5036,11 @@ func (s *DescribeDeviceChannelsResponseBody) SetPageSize(v int64) *DescribeDevic
 
 func (s *DescribeDeviceChannelsResponseBody) SetRequestId(v string) *DescribeDeviceChannelsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeviceChannelsResponseBody) SetTotalCount(v int64) *DescribeDeviceChannelsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5153,7 +5138,6 @@ func (s *DescribeDeviceChannelsResponse) SetBody(v *DescribeDeviceChannelsRespon
 
 type DescribeDeviceGatewayRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	Expire   *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
@@ -5169,11 +5153,6 @@ func (s DescribeDeviceGatewayRequest) GoString() string {
 
 func (s *DescribeDeviceGatewayRequest) SetOwnerId(v int64) *DescribeDeviceGatewayRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDeviceGatewayRequest) SetShowLog(v string) *DescribeDeviceGatewayRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -5193,10 +5172,10 @@ func (s *DescribeDeviceGatewayRequest) SetExpire(v int64) *DescribeDeviceGateway
 }
 
 type DescribeDeviceGatewayResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Port      *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Port      *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol  *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -5208,16 +5187,6 @@ func (s DescribeDeviceGatewayResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceGatewayResponseBody) SetRequestId(v string) *DescribeDeviceGatewayResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDeviceGatewayResponseBody) SetPort(v int64) *DescribeDeviceGatewayResponseBody {
-	s.Port = &v
-	return s
-}
-
 func (s *DescribeDeviceGatewayResponseBody) SetHost(v string) *DescribeDeviceGatewayResponseBody {
 	s.Host = &v
 	return s
@@ -5225,6 +5194,16 @@ func (s *DescribeDeviceGatewayResponseBody) SetHost(v string) *DescribeDeviceGat
 
 func (s *DescribeDeviceGatewayResponseBody) SetToken(v string) *DescribeDeviceGatewayResponseBody {
 	s.Token = &v
+	return s
+}
+
+func (s *DescribeDeviceGatewayResponseBody) SetRequestId(v string) *DescribeDeviceGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeviceGatewayResponseBody) SetPort(v int64) *DescribeDeviceGatewayResponseBody {
+	s.Port = &v
 	return s
 }
 
@@ -5258,7 +5237,6 @@ func (s *DescribeDeviceGatewayResponse) SetBody(v *DescribeDeviceGatewayResponse
 
 type DescribeDevicesRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -5286,11 +5264,6 @@ func (s DescribeDevicesRequest) GoString() string {
 
 func (s *DescribeDevicesRequest) SetOwnerId(v int64) *DescribeDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDevicesRequest) SetShowLog(v string) *DescribeDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -5370,10 +5343,10 @@ func (s *DescribeDevicesRequest) SetIncludeDirectory(v bool) *DescribeDevicesReq
 }
 
 type DescribeDevicesResponseBody struct {
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Devices    []*DescribeDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
 }
@@ -5384,11 +5357,6 @@ func (s DescribeDevicesResponseBody) String() string {
 
 func (s DescribeDevicesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDevicesResponseBody) SetTotalCount(v int64) *DescribeDevicesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeDevicesResponseBody) SetPageNum(v int64) *DescribeDevicesResponseBody {
@@ -5403,6 +5371,11 @@ func (s *DescribeDevicesResponseBody) SetPageSize(v int64) *DescribeDevicesRespo
 
 func (s *DescribeDevicesResponseBody) SetRequestId(v string) *DescribeDevicesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDevicesResponseBody) SetTotalCount(v int64) *DescribeDevicesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5430,23 +5403,23 @@ type DescribeDevicesResponseBodyDevices struct {
 	Description     *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	Enabled         *bool                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	Name            *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	DirectoryId     *string                                      `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	CreatedTime     *string                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	ChannelSyncTime *string                                      `json:"ChannelSyncTime,omitempty" xml:"ChannelSyncTime,omitempty"`
+	CreatedTime     *string                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DirectoryId     *string                                      `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	RegisteredTime  *string                                      `json:"RegisteredTime,omitempty" xml:"RegisteredTime,omitempty"`
-	Stats           *DescribeDevicesResponseBodyDevicesStats     `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
 	Protocol        *string                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Url             *string                                      `json:"Url,omitempty" xml:"Url,omitempty"`
 	Ip              *string                                      `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Vendor          *string                                      `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Url             *string                                      `json:"Url,omitempty" xml:"Url,omitempty"`
 	AutoStart       *bool                                        `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	Vendor          *string                                      `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	GbId            *string                                      `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	GroupId         *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Longitude       *string                                      `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
 	Latitude        *string                                      `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	Directory       *DescribeDevicesResponseBodyDevicesDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	Id              *string                                      `json:"Id,omitempty" xml:"Id,omitempty"`
 	Username        *string                                      `json:"Username,omitempty" xml:"Username,omitempty"`
+	Stats           *DescribeDevicesResponseBodyDevicesStats     `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	Directory       *DescribeDevicesResponseBodyDevicesDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 }
 
 func (s DescribeDevicesResponseBodyDevices) String() string {
@@ -5522,8 +5495,8 @@ func (s *DescribeDevicesResponseBodyDevices) SetName(v string) *DescribeDevicesR
 	return s
 }
 
-func (s *DescribeDevicesResponseBodyDevices) SetDirectoryId(v string) *DescribeDevicesResponseBodyDevices {
-	s.DirectoryId = &v
+func (s *DescribeDevicesResponseBodyDevices) SetChannelSyncTime(v string) *DescribeDevicesResponseBodyDevices {
+	s.ChannelSyncTime = &v
 	return s
 }
 
@@ -5532,8 +5505,8 @@ func (s *DescribeDevicesResponseBodyDevices) SetCreatedTime(v string) *DescribeD
 	return s
 }
 
-func (s *DescribeDevicesResponseBodyDevices) SetChannelSyncTime(v string) *DescribeDevicesResponseBodyDevices {
-	s.ChannelSyncTime = &v
+func (s *DescribeDevicesResponseBodyDevices) SetDirectoryId(v string) *DescribeDevicesResponseBodyDevices {
+	s.DirectoryId = &v
 	return s
 }
 
@@ -5542,18 +5515,8 @@ func (s *DescribeDevicesResponseBodyDevices) SetRegisteredTime(v string) *Descri
 	return s
 }
 
-func (s *DescribeDevicesResponseBodyDevices) SetStats(v *DescribeDevicesResponseBodyDevicesStats) *DescribeDevicesResponseBodyDevices {
-	s.Stats = v
-	return s
-}
-
 func (s *DescribeDevicesResponseBodyDevices) SetProtocol(v string) *DescribeDevicesResponseBodyDevices {
 	s.Protocol = &v
-	return s
-}
-
-func (s *DescribeDevicesResponseBodyDevices) SetUrl(v string) *DescribeDevicesResponseBodyDevices {
-	s.Url = &v
 	return s
 }
 
@@ -5562,13 +5525,18 @@ func (s *DescribeDevicesResponseBodyDevices) SetIp(v string) *DescribeDevicesRes
 	return s
 }
 
-func (s *DescribeDevicesResponseBodyDevices) SetVendor(v string) *DescribeDevicesResponseBodyDevices {
-	s.Vendor = &v
+func (s *DescribeDevicesResponseBodyDevices) SetUrl(v string) *DescribeDevicesResponseBodyDevices {
+	s.Url = &v
 	return s
 }
 
 func (s *DescribeDevicesResponseBodyDevices) SetAutoStart(v bool) *DescribeDevicesResponseBodyDevices {
 	s.AutoStart = &v
+	return s
+}
+
+func (s *DescribeDevicesResponseBodyDevices) SetVendor(v string) *DescribeDevicesResponseBodyDevices {
+	s.Vendor = &v
 	return s
 }
 
@@ -5592,11 +5560,6 @@ func (s *DescribeDevicesResponseBodyDevices) SetLatitude(v string) *DescribeDevi
 	return s
 }
 
-func (s *DescribeDevicesResponseBodyDevices) SetDirectory(v *DescribeDevicesResponseBodyDevicesDirectory) *DescribeDevicesResponseBodyDevices {
-	s.Directory = v
-	return s
-}
-
 func (s *DescribeDevicesResponseBodyDevices) SetId(v string) *DescribeDevicesResponseBodyDevices {
 	s.Id = &v
 	return s
@@ -5607,12 +5570,22 @@ func (s *DescribeDevicesResponseBodyDevices) SetUsername(v string) *DescribeDevi
 	return s
 }
 
+func (s *DescribeDevicesResponseBodyDevices) SetStats(v *DescribeDevicesResponseBodyDevicesStats) *DescribeDevicesResponseBodyDevices {
+	s.Stats = v
+	return s
+}
+
+func (s *DescribeDevicesResponseBodyDevices) SetDirectory(v *DescribeDevicesResponseBodyDevicesDirectory) *DescribeDevicesResponseBodyDevices {
+	s.Directory = v
+	return s
+}
+
 type DescribeDevicesResponseBodyDevicesStats struct {
 	FailedNum  *int64 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
 	StreamNum  *int64 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	ChannelNum *int64 `json:"ChannelNum,omitempty" xml:"ChannelNum,omitempty"`
 	OnlineNum  *int64 `json:"OnlineNum,omitempty" xml:"OnlineNum,omitempty"`
 	OfflineNum *int64 `json:"OfflineNum,omitempty" xml:"OfflineNum,omitempty"`
-	ChannelNum *int64 `json:"ChannelNum,omitempty" xml:"ChannelNum,omitempty"`
 }
 
 func (s DescribeDevicesResponseBodyDevicesStats) String() string {
@@ -5633,6 +5606,11 @@ func (s *DescribeDevicesResponseBodyDevicesStats) SetStreamNum(v int64) *Describ
 	return s
 }
 
+func (s *DescribeDevicesResponseBodyDevicesStats) SetChannelNum(v int64) *DescribeDevicesResponseBodyDevicesStats {
+	s.ChannelNum = &v
+	return s
+}
+
 func (s *DescribeDevicesResponseBodyDevicesStats) SetOnlineNum(v int64) *DescribeDevicesResponseBodyDevicesStats {
 	s.OnlineNum = &v
 	return s
@@ -5640,11 +5618,6 @@ func (s *DescribeDevicesResponseBodyDevicesStats) SetOnlineNum(v int64) *Describ
 
 func (s *DescribeDevicesResponseBodyDevicesStats) SetOfflineNum(v int64) *DescribeDevicesResponseBodyDevicesStats {
 	s.OfflineNum = &v
-	return s
-}
-
-func (s *DescribeDevicesResponseBodyDevicesStats) SetChannelNum(v int64) *DescribeDevicesResponseBodyDevicesStats {
-	s.ChannelNum = &v
 	return s
 }
 
@@ -5720,7 +5693,6 @@ func (s *DescribeDevicesResponse) SetBody(v *DescribeDevicesResponseBody) *Descr
 
 type DescribeDeviceURLRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Stream      *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
@@ -5740,11 +5712,6 @@ func (s DescribeDeviceURLRequest) GoString() string {
 
 func (s *DescribeDeviceURLRequest) SetOwnerId(v int64) *DescribeDeviceURLRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDeviceURLRequest) SetShowLog(v string) *DescribeDeviceURLRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -5784,9 +5751,9 @@ func (s *DescribeDeviceURLRequest) SetExpire(v int64) *DescribeDeviceURLRequest 
 }
 
 type DescribeDeviceURLResponseBody struct {
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeDeviceURLResponseBody) String() string {
@@ -5797,6 +5764,11 @@ func (s DescribeDeviceURLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDeviceURLResponseBody) SetUrl(v string) *DescribeDeviceURLResponseBody {
+	s.Url = &v
+	return s
+}
+
 func (s *DescribeDeviceURLResponseBody) SetRequestId(v string) *DescribeDeviceURLResponseBody {
 	s.RequestId = &v
 	return s
@@ -5804,11 +5776,6 @@ func (s *DescribeDeviceURLResponseBody) SetRequestId(v string) *DescribeDeviceUR
 
 func (s *DescribeDeviceURLResponseBody) SetExpireTime(v int64) *DescribeDeviceURLResponseBody {
 	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribeDeviceURLResponseBody) SetUrl(v string) *DescribeDeviceURLResponseBody {
-	s.Url = &v
 	return s
 }
 
@@ -5837,7 +5804,6 @@ func (s *DescribeDeviceURLResponse) SetBody(v *DescribeDeviceURLResponseBody) *D
 
 type DescribeDirectoriesRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ParentId      *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
@@ -5857,11 +5823,6 @@ func (s DescribeDirectoriesRequest) GoString() string {
 
 func (s *DescribeDirectoriesRequest) SetOwnerId(v int64) *DescribeDirectoriesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDirectoriesRequest) SetShowLog(v string) *DescribeDirectoriesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -5901,12 +5862,12 @@ func (s *DescribeDirectoriesRequest) SetNoPagination(v bool) *DescribeDirectorie
 }
 
 type DescribeDirectoriesResponseBody struct {
-	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum     *int64                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount   *int64                                        `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDirectoriesResponseBody) String() string {
@@ -5915,16 +5876,6 @@ func (s DescribeDirectoriesResponseBody) String() string {
 
 func (s DescribeDirectoriesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDirectoriesResponseBody) SetDirectories(v []*DescribeDirectoriesResponseBodyDirectories) *DescribeDirectoriesResponseBody {
-	s.Directories = v
-	return s
-}
-
-func (s *DescribeDirectoriesResponseBody) SetTotalCount(v int64) *DescribeDirectoriesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeDirectoriesResponseBody) SetPageNum(v int64) *DescribeDirectoriesResponseBody {
@@ -5942,8 +5893,18 @@ func (s *DescribeDirectoriesResponseBody) SetRequestId(v string) *DescribeDirect
 	return s
 }
 
+func (s *DescribeDirectoriesResponseBody) SetTotalCount(v int64) *DescribeDirectoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeDirectoriesResponseBody) SetPageCount(v int64) *DescribeDirectoriesResponseBody {
 	s.PageCount = &v
+	return s
+}
+
+func (s *DescribeDirectoriesResponseBody) SetDirectories(v []*DescribeDirectoriesResponseBodyDirectories) *DescribeDirectoriesResponseBody {
+	s.Directories = v
 	return s
 }
 
@@ -6019,7 +5980,6 @@ func (s *DescribeDirectoriesResponse) SetBody(v *DescribeDirectoriesResponseBody
 
 type DescribeDirectoryRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -6036,11 +5996,6 @@ func (s *DescribeDirectoryRequest) SetOwnerId(v int64) *DescribeDirectoryRequest
 	return s
 }
 
-func (s *DescribeDirectoryRequest) SetShowLog(v string) *DescribeDirectoryRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeDirectoryRequest) SetId(v string) *DescribeDirectoryRequest {
 	s.Id = &v
 	return s
@@ -6048,12 +6003,12 @@ func (s *DescribeDirectoryRequest) SetId(v string) *DescribeDirectoryRequest {
 
 type DescribeDirectoryResponseBody struct {
 	ParentId    *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeDirectoryResponseBody) String() string {
@@ -6069,23 +6024,13 @@ func (s *DescribeDirectoryResponseBody) SetParentId(v string) *DescribeDirectory
 	return s
 }
 
-func (s *DescribeDirectoryResponseBody) SetDescription(v string) *DescribeDirectoryResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDirectoryResponseBody) SetCreatedTime(v string) *DescribeDirectoryResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
 func (s *DescribeDirectoryResponseBody) SetRequestId(v string) *DescribeDirectoryResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDirectoryResponseBody) SetId(v string) *DescribeDirectoryResponseBody {
-	s.Id = &v
+func (s *DescribeDirectoryResponseBody) SetDescription(v string) *DescribeDirectoryResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -6096,6 +6041,16 @@ func (s *DescribeDirectoryResponseBody) SetGroupId(v string) *DescribeDirectoryR
 
 func (s *DescribeDirectoryResponseBody) SetName(v string) *DescribeDirectoryResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeDirectoryResponseBody) SetCreatedTime(v string) *DescribeDirectoryResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDirectoryResponseBody) SetId(v string) *DescribeDirectoryResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -6124,7 +6079,6 @@ func (s *DescribeDirectoryResponse) SetBody(v *DescribeDirectoryResponseBody) *D
 
 type DescribeGroupRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	IncludeStats *bool   `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
 }
@@ -6142,11 +6096,6 @@ func (s *DescribeGroupRequest) SetOwnerId(v int64) *DescribeGroupRequest {
 	return s
 }
 
-func (s *DescribeGroupRequest) SetShowLog(v string) *DescribeGroupRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeGroupRequest) SetId(v string) *DescribeGroupRequest {
 	s.Id = &v
 	return s
@@ -6158,33 +6107,33 @@ func (s *DescribeGroupRequest) SetIncludeStats(v bool) *DescribeGroupRequest {
 }
 
 type DescribeGroupResponseBody struct {
-	App              *string                         `json:"App,omitempty" xml:"App,omitempty"`
-	InProtocol       *string                         `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
-	Description      *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime      *string                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Name             *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	GbUdpPorts       []*string                       `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
-	CaptureInterval  *int32                          `json:"CaptureInterval,omitempty" xml:"CaptureInterval,omitempty"`
-	GbId             *string                         `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	PushDomain       *string                         `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
-	AliasId          *string                         `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
-	CaptureImage     *int32                          `json:"CaptureImage,omitempty" xml:"CaptureImage,omitempty"`
 	Status           *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	CaptureOssPath   *string                         `json:"CaptureOssPath,omitempty" xml:"CaptureOssPath,omitempty"`
-	GbIp             *string                         `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
-	RequestId        *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Enabled          *bool                           `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	LazyPull         *bool                           `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
-	OutProtocol      *string                         `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
-	GbPort           *int64                          `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
 	Callback         *string                         `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	RequestId        *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description      *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	App              *string                         `json:"App,omitempty" xml:"App,omitempty"`
+	Region           *string                         `json:"Region,omitempty" xml:"Region,omitempty"`
+	Enabled          *bool                           `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	InProtocol       *string                         `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	OutProtocol      *string                         `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
+	Name             *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	PushDomain       *string                         `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	CreatedTime      *string                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	CaptureVideo     *int32                          `json:"CaptureVideo,omitempty" xml:"CaptureVideo,omitempty"`
 	PlayDomain       *string                         `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	Stats            *DescribeGroupResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
-	Region           *string                         `json:"Region,omitempty" xml:"Region,omitempty"`
+	CaptureInterval  *int32                          `json:"CaptureInterval,omitempty" xml:"CaptureInterval,omitempty"`
+	GbPort           *int64                          `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
+	GbId             *string                         `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	GbIp             *string                         `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
+	CaptureImage     *int32                          `json:"CaptureImage,omitempty" xml:"CaptureImage,omitempty"`
+	AliasId          *string                         `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
 	CaptureOssBucket *string                         `json:"CaptureOssBucket,omitempty" xml:"CaptureOssBucket,omitempty"`
-	GbTcpPorts       []*string                       `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
+	CaptureOssPath   *string                         `json:"CaptureOssPath,omitempty" xml:"CaptureOssPath,omitempty"`
 	Id               *string                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	GbTcpPorts       []*string                       `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
+	GbUdpPorts       []*string                       `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
+	Stats            *DescribeGroupResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
 }
 
 func (s DescribeGroupResponseBody) String() string {
@@ -6195,83 +6144,8 @@ func (s DescribeGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeGroupResponseBody) SetApp(v string) *DescribeGroupResponseBody {
-	s.App = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetInProtocol(v string) *DescribeGroupResponseBody {
-	s.InProtocol = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetDescription(v string) *DescribeGroupResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetCreatedTime(v string) *DescribeGroupResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetName(v string) *DescribeGroupResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetGbUdpPorts(v []*string) *DescribeGroupResponseBody {
-	s.GbUdpPorts = v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetCaptureInterval(v int32) *DescribeGroupResponseBody {
-	s.CaptureInterval = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetGbId(v string) *DescribeGroupResponseBody {
-	s.GbId = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetPushDomain(v string) *DescribeGroupResponseBody {
-	s.PushDomain = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetAliasId(v string) *DescribeGroupResponseBody {
-	s.AliasId = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetCaptureImage(v int32) *DescribeGroupResponseBody {
-	s.CaptureImage = &v
-	return s
-}
-
 func (s *DescribeGroupResponseBody) SetStatus(v string) *DescribeGroupResponseBody {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetCaptureOssPath(v string) *DescribeGroupResponseBody {
-	s.CaptureOssPath = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetGbIp(v string) *DescribeGroupResponseBody {
-	s.GbIp = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetRequestId(v string) *DescribeGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeGroupResponseBody) SetEnabled(v bool) *DescribeGroupResponseBody {
-	s.Enabled = &v
 	return s
 }
 
@@ -6280,18 +6154,58 @@ func (s *DescribeGroupResponseBody) SetLazyPull(v bool) *DescribeGroupResponseBo
 	return s
 }
 
+func (s *DescribeGroupResponseBody) SetCallback(v string) *DescribeGroupResponseBody {
+	s.Callback = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetRequestId(v string) *DescribeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetDescription(v string) *DescribeGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetApp(v string) *DescribeGroupResponseBody {
+	s.App = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetRegion(v string) *DescribeGroupResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetEnabled(v bool) *DescribeGroupResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetInProtocol(v string) *DescribeGroupResponseBody {
+	s.InProtocol = &v
+	return s
+}
+
 func (s *DescribeGroupResponseBody) SetOutProtocol(v string) *DescribeGroupResponseBody {
 	s.OutProtocol = &v
 	return s
 }
 
-func (s *DescribeGroupResponseBody) SetGbPort(v int64) *DescribeGroupResponseBody {
-	s.GbPort = &v
+func (s *DescribeGroupResponseBody) SetName(v string) *DescribeGroupResponseBody {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeGroupResponseBody) SetCallback(v string) *DescribeGroupResponseBody {
-	s.Callback = &v
+func (s *DescribeGroupResponseBody) SetPushDomain(v string) *DescribeGroupResponseBody {
+	s.PushDomain = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetCreatedTime(v string) *DescribeGroupResponseBody {
+	s.CreatedTime = &v
 	return s
 }
 
@@ -6305,13 +6219,33 @@ func (s *DescribeGroupResponseBody) SetPlayDomain(v string) *DescribeGroupRespon
 	return s
 }
 
-func (s *DescribeGroupResponseBody) SetStats(v *DescribeGroupResponseBodyStats) *DescribeGroupResponseBody {
-	s.Stats = v
+func (s *DescribeGroupResponseBody) SetCaptureInterval(v int32) *DescribeGroupResponseBody {
+	s.CaptureInterval = &v
 	return s
 }
 
-func (s *DescribeGroupResponseBody) SetRegion(v string) *DescribeGroupResponseBody {
-	s.Region = &v
+func (s *DescribeGroupResponseBody) SetGbPort(v int64) *DescribeGroupResponseBody {
+	s.GbPort = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetGbId(v string) *DescribeGroupResponseBody {
+	s.GbId = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetGbIp(v string) *DescribeGroupResponseBody {
+	s.GbIp = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetCaptureImage(v int32) *DescribeGroupResponseBody {
+	s.CaptureImage = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetAliasId(v string) *DescribeGroupResponseBody {
+	s.AliasId = &v
 	return s
 }
 
@@ -6320,13 +6254,28 @@ func (s *DescribeGroupResponseBody) SetCaptureOssBucket(v string) *DescribeGroup
 	return s
 }
 
-func (s *DescribeGroupResponseBody) SetGbTcpPorts(v []*string) *DescribeGroupResponseBody {
-	s.GbTcpPorts = v
+func (s *DescribeGroupResponseBody) SetCaptureOssPath(v string) *DescribeGroupResponseBody {
+	s.CaptureOssPath = &v
 	return s
 }
 
 func (s *DescribeGroupResponseBody) SetId(v string) *DescribeGroupResponseBody {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetGbTcpPorts(v []*string) *DescribeGroupResponseBody {
+	s.GbTcpPorts = v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetGbUdpPorts(v []*string) *DescribeGroupResponseBody {
+	s.GbUdpPorts = v
+	return s
+}
+
+func (s *DescribeGroupResponseBody) SetStats(v *DescribeGroupResponseBodyStats) *DescribeGroupResponseBody {
+	s.Stats = v
 	return s
 }
 
@@ -6390,7 +6339,6 @@ func (s *DescribeGroupResponse) SetBody(v *DescribeGroupResponseBody) *DescribeG
 
 type DescribeGroupsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -6413,11 +6361,6 @@ func (s DescribeGroupsRequest) GoString() string {
 
 func (s *DescribeGroupsRequest) SetOwnerId(v int64) *DescribeGroupsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeGroupsRequest) SetShowLog(v string) *DescribeGroupsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -6472,10 +6415,10 @@ func (s *DescribeGroupsRequest) SetIncludeStats(v bool) *DescribeGroupsRequest {
 }
 
 type DescribeGroupsResponseBody struct {
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Groups     []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 }
@@ -6486,11 +6429,6 @@ func (s DescribeGroupsResponseBody) String() string {
 
 func (s DescribeGroupsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeGroupsResponseBody) SetTotalCount(v int64) *DescribeGroupsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeGroupsResponseBody) SetPageNum(v int64) *DescribeGroupsResponseBody {
@@ -6508,6 +6446,11 @@ func (s *DescribeGroupsResponseBody) SetRequestId(v string) *DescribeGroupsRespo
 	return s
 }
 
+func (s *DescribeGroupsResponseBody) SetTotalCount(v int64) *DescribeGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeGroupsResponseBody) SetPageCount(v int64) *DescribeGroupsResponseBody {
 	s.PageCount = &v
 	return s
@@ -6521,30 +6464,30 @@ func (s *DescribeGroupsResponseBody) SetGroups(v []*DescribeGroupsResponseBodyGr
 type DescribeGroupsResponseBodyGroups struct {
 	Status           *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	LazyPull         *bool                                  `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
-	Callback         *string                                `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	App              *string                                `json:"App,omitempty" xml:"App,omitempty"`
-	Region           *string                                `json:"Region,omitempty" xml:"Region,omitempty"`
-	Enabled          *bool                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	InProtocol       *string                                `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
-	OutProtocol      *string                                `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
-	Name             *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	PushDomain       *string                                `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
-	CreatedTime      *string                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CaptureVideo     *int32                                 `json:"CaptureVideo,omitempty" xml:"CaptureVideo,omitempty"`
-	Stats            *DescribeGroupsResponseBodyGroupsStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
 	PlayDomain       *string                                `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
 	GbPort           *int64                                 `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
 	CaptureInterval  *int32                                 `json:"CaptureInterval,omitempty" xml:"CaptureInterval,omitempty"`
-	GbTcpPorts       []*string                              `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
+	Callback         *string                                `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	GbId             *string                                `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	GbIp             *string                                `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
 	CaptureImage     *int32                                 `json:"CaptureImage,omitempty" xml:"CaptureImage,omitempty"`
+	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Region           *string                                `json:"Region,omitempty" xml:"Region,omitempty"`
+	App              *string                                `json:"App,omitempty" xml:"App,omitempty"`
 	AliasId          *string                                `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
+	Enabled          *bool                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	InProtocol       *string                                `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
 	CaptureOssPath   *string                                `json:"CaptureOssPath,omitempty" xml:"CaptureOssPath,omitempty"`
 	CaptureOssBucket *string                                `json:"CaptureOssBucket,omitempty" xml:"CaptureOssBucket,omitempty"`
-	GbUdpPorts       []*string                              `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
+	OutProtocol      *string                                `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
+	PushDomain       *string                                `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	Name             *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreatedTime      *string                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CaptureVideo     *int32                                 `json:"CaptureVideo,omitempty" xml:"CaptureVideo,omitempty"`
 	Id               *string                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	GbTcpPorts       []*string                              `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
+	GbUdpPorts       []*string                              `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
+	Stats            *DescribeGroupsResponseBodyGroupsStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
 }
 
 func (s DescribeGroupsResponseBodyGroups) String() string {
@@ -6565,66 +6508,6 @@ func (s *DescribeGroupsResponseBodyGroups) SetLazyPull(v bool) *DescribeGroupsRe
 	return s
 }
 
-func (s *DescribeGroupsResponseBodyGroups) SetCallback(v string) *DescribeGroupsResponseBodyGroups {
-	s.Callback = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetDescription(v string) *DescribeGroupsResponseBodyGroups {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetApp(v string) *DescribeGroupsResponseBodyGroups {
-	s.App = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetRegion(v string) *DescribeGroupsResponseBodyGroups {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetEnabled(v bool) *DescribeGroupsResponseBodyGroups {
-	s.Enabled = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetInProtocol(v string) *DescribeGroupsResponseBodyGroups {
-	s.InProtocol = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetOutProtocol(v string) *DescribeGroupsResponseBodyGroups {
-	s.OutProtocol = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetName(v string) *DescribeGroupsResponseBodyGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetPushDomain(v string) *DescribeGroupsResponseBodyGroups {
-	s.PushDomain = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetCreatedTime(v string) *DescribeGroupsResponseBodyGroups {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetCaptureVideo(v int32) *DescribeGroupsResponseBodyGroups {
-	s.CaptureVideo = &v
-	return s
-}
-
-func (s *DescribeGroupsResponseBodyGroups) SetStats(v *DescribeGroupsResponseBodyGroupsStats) *DescribeGroupsResponseBodyGroups {
-	s.Stats = v
-	return s
-}
-
 func (s *DescribeGroupsResponseBodyGroups) SetPlayDomain(v string) *DescribeGroupsResponseBodyGroups {
 	s.PlayDomain = &v
 	return s
@@ -6640,8 +6523,8 @@ func (s *DescribeGroupsResponseBodyGroups) SetCaptureInterval(v int32) *Describe
 	return s
 }
 
-func (s *DescribeGroupsResponseBodyGroups) SetGbTcpPorts(v []*string) *DescribeGroupsResponseBodyGroups {
-	s.GbTcpPorts = v
+func (s *DescribeGroupsResponseBodyGroups) SetCallback(v string) *DescribeGroupsResponseBodyGroups {
+	s.Callback = &v
 	return s
 }
 
@@ -6660,8 +6543,33 @@ func (s *DescribeGroupsResponseBodyGroups) SetCaptureImage(v int32) *DescribeGro
 	return s
 }
 
+func (s *DescribeGroupsResponseBodyGroups) SetDescription(v string) *DescribeGroupsResponseBodyGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetRegion(v string) *DescribeGroupsResponseBodyGroups {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetApp(v string) *DescribeGroupsResponseBodyGroups {
+	s.App = &v
+	return s
+}
+
 func (s *DescribeGroupsResponseBodyGroups) SetAliasId(v string) *DescribeGroupsResponseBodyGroups {
 	s.AliasId = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetEnabled(v bool) *DescribeGroupsResponseBodyGroups {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetInProtocol(v string) *DescribeGroupsResponseBodyGroups {
+	s.InProtocol = &v
 	return s
 }
 
@@ -6675,13 +6583,48 @@ func (s *DescribeGroupsResponseBodyGroups) SetCaptureOssBucket(v string) *Descri
 	return s
 }
 
-func (s *DescribeGroupsResponseBodyGroups) SetGbUdpPorts(v []*string) *DescribeGroupsResponseBodyGroups {
-	s.GbUdpPorts = v
+func (s *DescribeGroupsResponseBodyGroups) SetOutProtocol(v string) *DescribeGroupsResponseBodyGroups {
+	s.OutProtocol = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetPushDomain(v string) *DescribeGroupsResponseBodyGroups {
+	s.PushDomain = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetName(v string) *DescribeGroupsResponseBodyGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetCreatedTime(v string) *DescribeGroupsResponseBodyGroups {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetCaptureVideo(v int32) *DescribeGroupsResponseBodyGroups {
+	s.CaptureVideo = &v
 	return s
 }
 
 func (s *DescribeGroupsResponseBodyGroups) SetId(v string) *DescribeGroupsResponseBodyGroups {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetGbTcpPorts(v []*string) *DescribeGroupsResponseBodyGroups {
+	s.GbTcpPorts = v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetGbUdpPorts(v []*string) *DescribeGroupsResponseBodyGroups {
+	s.GbUdpPorts = v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetStats(v *DescribeGroupsResponseBodyGroupsStats) *DescribeGroupsResponseBodyGroups {
+	s.Stats = v
 	return s
 }
 
@@ -6745,7 +6688,6 @@ func (s *DescribeGroupsResponse) SetBody(v *DescribeGroupsResponseBody) *Describ
 
 type DescribeParentPlatformRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -6762,11 +6704,6 @@ func (s *DescribeParentPlatformRequest) SetOwnerId(v int64) *DescribeParentPlatf
 	return s
 }
 
-func (s *DescribeParentPlatformRequest) SetShowLog(v string) *DescribeParentPlatformRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeParentPlatformRequest) SetId(v string) *DescribeParentPlatformRequest {
 	s.Id = &v
 	return s
@@ -6774,22 +6711,22 @@ func (s *DescribeParentPlatformRequest) SetId(v string) *DescribeParentPlatformR
 
 type DescribeParentPlatformResponseBody struct {
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ClientPort     *int64  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
 	ClientGbId     *string `json:"ClientGbId,omitempty" xml:"ClientGbId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime    *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Port           *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ClientPort     *int64  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
+	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
+	AutoStart      *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
 	ClientAuth     *bool   `json:"ClientAuth,omitempty" xml:"ClientAuth,omitempty"`
+	GbId           *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ClientIp       *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	GbId           *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
+	CreatedTime    *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	AutoStart      *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
-	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
 }
 
 func (s DescribeParentPlatformResponseBody) String() string {
@@ -6805,23 +6742,18 @@ func (s *DescribeParentPlatformResponseBody) SetStatus(v string) *DescribeParent
 	return s
 }
 
+func (s *DescribeParentPlatformResponseBody) SetClientPort(v int64) *DescribeParentPlatformResponseBody {
+	s.ClientPort = &v
+	return s
+}
+
 func (s *DescribeParentPlatformResponseBody) SetClientGbId(v string) *DescribeParentPlatformResponseBody {
 	s.ClientGbId = &v
 	return s
 }
 
-func (s *DescribeParentPlatformResponseBody) SetDescription(v string) *DescribeParentPlatformResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetCreatedTime(v string) *DescribeParentPlatformResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetRequestId(v string) *DescribeParentPlatformResponseBody {
-	s.RequestId = &v
+func (s *DescribeParentPlatformResponseBody) SetProtocol(v string) *DescribeParentPlatformResponseBody {
+	s.Protocol = &v
 	return s
 }
 
@@ -6835,13 +6767,38 @@ func (s *DescribeParentPlatformResponseBody) SetPort(v int64) *DescribeParentPla
 	return s
 }
 
-func (s *DescribeParentPlatformResponseBody) SetClientPort(v int64) *DescribeParentPlatformResponseBody {
-	s.ClientPort = &v
+func (s *DescribeParentPlatformResponseBody) SetClientPassword(v string) *DescribeParentPlatformResponseBody {
+	s.ClientPassword = &v
+	return s
+}
+
+func (s *DescribeParentPlatformResponseBody) SetClientUsername(v string) *DescribeParentPlatformResponseBody {
+	s.ClientUsername = &v
+	return s
+}
+
+func (s *DescribeParentPlatformResponseBody) SetAutoStart(v bool) *DescribeParentPlatformResponseBody {
+	s.AutoStart = &v
 	return s
 }
 
 func (s *DescribeParentPlatformResponseBody) SetClientAuth(v bool) *DescribeParentPlatformResponseBody {
 	s.ClientAuth = &v
+	return s
+}
+
+func (s *DescribeParentPlatformResponseBody) SetGbId(v string) *DescribeParentPlatformResponseBody {
+	s.GbId = &v
+	return s
+}
+
+func (s *DescribeParentPlatformResponseBody) SetRequestId(v string) *DescribeParentPlatformResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParentPlatformResponseBody) SetDescription(v string) *DescribeParentPlatformResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -6855,33 +6812,13 @@ func (s *DescribeParentPlatformResponseBody) SetName(v string) *DescribeParentPl
 	return s
 }
 
-func (s *DescribeParentPlatformResponseBody) SetGbId(v string) *DescribeParentPlatformResponseBody {
-	s.GbId = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetClientPassword(v string) *DescribeParentPlatformResponseBody {
-	s.ClientPassword = &v
+func (s *DescribeParentPlatformResponseBody) SetCreatedTime(v string) *DescribeParentPlatformResponseBody {
+	s.CreatedTime = &v
 	return s
 }
 
 func (s *DescribeParentPlatformResponseBody) SetId(v string) *DescribeParentPlatformResponseBody {
 	s.Id = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetProtocol(v string) *DescribeParentPlatformResponseBody {
-	s.Protocol = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetAutoStart(v bool) *DescribeParentPlatformResponseBody {
-	s.AutoStart = &v
-	return s
-}
-
-func (s *DescribeParentPlatformResponseBody) SetClientUsername(v string) *DescribeParentPlatformResponseBody {
-	s.ClientUsername = &v
 	return s
 }
 
@@ -6910,7 +6847,6 @@ func (s *DescribeParentPlatformResponse) SetBody(v *DescribeParentPlatformRespon
 
 type DescribeParentPlatformDevicesRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
@@ -6928,11 +6864,6 @@ func (s DescribeParentPlatformDevicesRequest) GoString() string {
 
 func (s *DescribeParentPlatformDevicesRequest) SetOwnerId(v int64) *DescribeParentPlatformDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeParentPlatformDevicesRequest) SetShowLog(v string) *DescribeParentPlatformDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -6962,10 +6893,10 @@ func (s *DescribeParentPlatformDevicesRequest) SetPageNum(v int64) *DescribePare
 }
 
 type DescribeParentPlatformDevicesResponseBody struct {
-	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Devices    []*DescribeParentPlatformDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
 }
@@ -6976,11 +6907,6 @@ func (s DescribeParentPlatformDevicesResponseBody) String() string {
 
 func (s DescribeParentPlatformDevicesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeParentPlatformDevicesResponseBody) SetTotalCount(v int64) *DescribeParentPlatformDevicesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeParentPlatformDevicesResponseBody) SetPageNum(v int64) *DescribeParentPlatformDevicesResponseBody {
@@ -6995,6 +6921,11 @@ func (s *DescribeParentPlatformDevicesResponseBody) SetPageSize(v int64) *Descri
 
 func (s *DescribeParentPlatformDevicesResponseBody) SetRequestId(v string) *DescribeParentPlatformDevicesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParentPlatformDevicesResponseBody) SetTotalCount(v int64) *DescribeParentPlatformDevicesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7074,7 +7005,6 @@ func (s *DescribeParentPlatformDevicesResponse) SetBody(v *DescribeParentPlatfor
 
 type DescribeParentPlatformsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	GbId          *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
@@ -7093,11 +7023,6 @@ func (s DescribeParentPlatformsRequest) GoString() string {
 
 func (s *DescribeParentPlatformsRequest) SetOwnerId(v int64) *DescribeParentPlatformsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeParentPlatformsRequest) SetShowLog(v string) *DescribeParentPlatformsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -7132,12 +7057,12 @@ func (s *DescribeParentPlatformsRequest) SetPageNum(v int64) *DescribeParentPlat
 }
 
 type DescribeParentPlatformsResponseBody struct {
-	Platforms  []*DescribeParentPlatformsResponseBodyPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                          `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	Platforms  []*DescribeParentPlatformsResponseBodyPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 }
 
 func (s DescribeParentPlatformsResponseBody) String() string {
@@ -7146,16 +7071,6 @@ func (s DescribeParentPlatformsResponseBody) String() string {
 
 func (s DescribeParentPlatformsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeParentPlatformsResponseBody) SetPlatforms(v []*DescribeParentPlatformsResponseBodyPlatforms) *DescribeParentPlatformsResponseBody {
-	s.Platforms = v
-	return s
-}
-
-func (s *DescribeParentPlatformsResponseBody) SetTotalCount(v int64) *DescribeParentPlatformsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeParentPlatformsResponseBody) SetPageNum(v int64) *DescribeParentPlatformsResponseBody {
@@ -7173,20 +7088,30 @@ func (s *DescribeParentPlatformsResponseBody) SetRequestId(v string) *DescribePa
 	return s
 }
 
+func (s *DescribeParentPlatformsResponseBody) SetTotalCount(v int64) *DescribeParentPlatformsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeParentPlatformsResponseBody) SetPageCount(v int64) *DescribeParentPlatformsResponseBody {
 	s.PageCount = &v
+	return s
+}
+
+func (s *DescribeParentPlatformsResponseBody) SetPlatforms(v []*DescribeParentPlatformsResponseBodyPlatforms) *DescribeParentPlatformsResponseBody {
+	s.Platforms = v
 	return s
 }
 
 type DescribeParentPlatformsResponseBodyPlatforms struct {
 	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ClientPort     *int64  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
-	ClientGbId     *string `json:"ClientGbId,omitempty" xml:"ClientGbId,omitempty"`
 	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ClientGbId     *string `json:"ClientGbId,omitempty" xml:"ClientGbId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Port           *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
 	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
+	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
 	AutoStart      *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
 	ClientAuth     *bool   `json:"ClientAuth,omitempty" xml:"ClientAuth,omitempty"`
 	GbId           *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
@@ -7215,13 +7140,13 @@ func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientPort(v int64) *D
 	return s
 }
 
-func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientGbId(v string) *DescribeParentPlatformsResponseBodyPlatforms {
-	s.ClientGbId = &v
+func (s *DescribeParentPlatformsResponseBodyPlatforms) SetProtocol(v string) *DescribeParentPlatformsResponseBodyPlatforms {
+	s.Protocol = &v
 	return s
 }
 
-func (s *DescribeParentPlatformsResponseBodyPlatforms) SetProtocol(v string) *DescribeParentPlatformsResponseBodyPlatforms {
-	s.Protocol = &v
+func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientGbId(v string) *DescribeParentPlatformsResponseBodyPlatforms {
+	s.ClientGbId = &v
 	return s
 }
 
@@ -7235,13 +7160,13 @@ func (s *DescribeParentPlatformsResponseBodyPlatforms) SetPort(v int64) *Describ
 	return s
 }
 
-func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientPassword(v string) *DescribeParentPlatformsResponseBodyPlatforms {
-	s.ClientPassword = &v
+func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientUsername(v string) *DescribeParentPlatformsResponseBodyPlatforms {
+	s.ClientUsername = &v
 	return s
 }
 
-func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientUsername(v string) *DescribeParentPlatformsResponseBodyPlatforms {
-	s.ClientUsername = &v
+func (s *DescribeParentPlatformsResponseBodyPlatforms) SetClientPassword(v string) *DescribeParentPlatformsResponseBodyPlatforms {
+	s.ClientPassword = &v
 	return s
 }
 
@@ -7309,9 +7234,9 @@ func (s *DescribeParentPlatformsResponse) SetBody(v *DescribeParentPlatformsResp
 }
 
 type DescribePresetsRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s DescribePresetsRequest) String() string {
@@ -7327,20 +7252,20 @@ func (s *DescribePresetsRequest) SetOwnerId(v int64) *DescribePresetsRequest {
 	return s
 }
 
-func (s *DescribePresetsRequest) SetShowLog(v string) *DescribePresetsRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribePresetsRequest) SetId(v string) *DescribePresetsRequest {
 	s.Id = &v
 	return s
 }
 
+func (s *DescribePresetsRequest) SetSubProtocol(v string) *DescribePresetsRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type DescribePresetsResponseBody struct {
+	Id        *string                               `json:"Id,omitempty" xml:"Id,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Presets   []*DescribePresetsResponseBodyPresets `json:"Presets,omitempty" xml:"Presets,omitempty" type:"Repeated"`
-	Id        *string                               `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribePresetsResponseBody) String() string {
@@ -7351,6 +7276,11 @@ func (s DescribePresetsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePresetsResponseBody) SetId(v string) *DescribePresetsResponseBody {
+	s.Id = &v
+	return s
+}
+
 func (s *DescribePresetsResponseBody) SetRequestId(v string) *DescribePresetsResponseBody {
 	s.RequestId = &v
 	return s
@@ -7358,11 +7288,6 @@ func (s *DescribePresetsResponseBody) SetRequestId(v string) *DescribePresetsRes
 
 func (s *DescribePresetsResponseBody) SetPresets(v []*DescribePresetsResponseBodyPresets) *DescribePresetsResponseBody {
 	s.Presets = v
-	return s
-}
-
-func (s *DescribePresetsResponseBody) SetId(v string) *DescribePresetsResponseBody {
-	s.Id = &v
 	return s
 }
 
@@ -7414,7 +7339,6 @@ func (s *DescribePresetsResponse) SetBody(v *DescribePresetsResponseBody) *Descr
 
 type DescribePurchasedDeviceRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -7431,30 +7355,25 @@ func (s *DescribePurchasedDeviceRequest) SetOwnerId(v int64) *DescribePurchasedD
 	return s
 }
 
-func (s *DescribePurchasedDeviceRequest) SetShowLog(v string) *DescribePurchasedDeviceRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribePurchasedDeviceRequest) SetId(v string) *DescribePurchasedDeviceRequest {
 	s.Id = &v
 	return s
 }
 
 type DescribePurchasedDeviceResponseBody struct {
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	SubType      *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
-	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	SubType      *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s DescribePurchasedDeviceResponseBody) String() string {
@@ -7465,8 +7384,8 @@ func (s DescribePurchasedDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePurchasedDeviceResponseBody) SetGroupName(v string) *DescribePurchasedDeviceResponseBody {
-	s.GroupName = &v
+func (s *DescribePurchasedDeviceResponseBody) SetType(v string) *DescribePurchasedDeviceResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -7475,13 +7394,8 @@ func (s *DescribePurchasedDeviceResponseBody) SetSubType(v string) *DescribePurc
 	return s
 }
 
-func (s *DescribePurchasedDeviceResponseBody) SetDescription(v string) *DescribePurchasedDeviceResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribePurchasedDeviceResponseBody) SetCreatedTime(v string) *DescribePurchasedDeviceResponseBody {
-	s.CreatedTime = &v
+func (s *DescribePurchasedDeviceResponseBody) SetVendor(v string) *DescribePurchasedDeviceResponseBody {
+	s.Vendor = &v
 	return s
 }
 
@@ -7490,18 +7404,13 @@ func (s *DescribePurchasedDeviceResponseBody) SetRequestId(v string) *DescribePu
 	return s
 }
 
+func (s *DescribePurchasedDeviceResponseBody) SetDescription(v string) *DescribePurchasedDeviceResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribePurchasedDeviceResponseBody) SetRegisterCode(v string) *DescribePurchasedDeviceResponseBody {
 	s.RegisterCode = &v
-	return s
-}
-
-func (s *DescribePurchasedDeviceResponseBody) SetVendor(v string) *DescribePurchasedDeviceResponseBody {
-	s.Vendor = &v
-	return s
-}
-
-func (s *DescribePurchasedDeviceResponseBody) SetOrderId(v string) *DescribePurchasedDeviceResponseBody {
-	s.OrderId = &v
 	return s
 }
 
@@ -7510,13 +7419,8 @@ func (s *DescribePurchasedDeviceResponseBody) SetGroupId(v string) *DescribePurc
 	return s
 }
 
-func (s *DescribePurchasedDeviceResponseBody) SetName(v string) *DescribePurchasedDeviceResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribePurchasedDeviceResponseBody) SetType(v string) *DescribePurchasedDeviceResponseBody {
-	s.Type = &v
+func (s *DescribePurchasedDeviceResponseBody) SetGroupName(v string) *DescribePurchasedDeviceResponseBody {
+	s.GroupName = &v
 	return s
 }
 
@@ -7525,8 +7429,23 @@ func (s *DescribePurchasedDeviceResponseBody) SetRegion(v string) *DescribePurch
 	return s
 }
 
+func (s *DescribePurchasedDeviceResponseBody) SetName(v string) *DescribePurchasedDeviceResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePurchasedDeviceResponseBody) SetCreatedTime(v string) *DescribePurchasedDeviceResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
 func (s *DescribePurchasedDeviceResponseBody) SetId(v string) *DescribePurchasedDeviceResponseBody {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribePurchasedDeviceResponseBody) SetOrderId(v string) *DescribePurchasedDeviceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -7555,7 +7474,6 @@ func (s *DescribePurchasedDeviceResponse) SetBody(v *DescribePurchasedDeviceResp
 
 type DescribePurchasedDevicesRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -7578,11 +7496,6 @@ func (s DescribePurchasedDevicesRequest) GoString() string {
 
 func (s *DescribePurchasedDevicesRequest) SetOwnerId(v int64) *DescribePurchasedDevicesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribePurchasedDevicesRequest) SetShowLog(v string) *DescribePurchasedDevicesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -7637,10 +7550,10 @@ func (s *DescribePurchasedDevicesRequest) SetPageNum(v int64) *DescribePurchased
 }
 
 type DescribePurchasedDevicesResponseBody struct {
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                         `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Devices    []*DescribePurchasedDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
 }
@@ -7651,11 +7564,6 @@ func (s DescribePurchasedDevicesResponseBody) String() string {
 
 func (s DescribePurchasedDevicesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePurchasedDevicesResponseBody) SetTotalCount(v int64) *DescribePurchasedDevicesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribePurchasedDevicesResponseBody) SetPageNum(v int64) *DescribePurchasedDevicesResponseBody {
@@ -7673,6 +7581,11 @@ func (s *DescribePurchasedDevicesResponseBody) SetRequestId(v string) *DescribeP
 	return s
 }
 
+func (s *DescribePurchasedDevicesResponseBody) SetTotalCount(v int64) *DescribePurchasedDevicesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribePurchasedDevicesResponseBody) SetPageCount(v int64) *DescribePurchasedDevicesResponseBody {
 	s.PageCount = &v
 	return s
@@ -7687,15 +7600,15 @@ type DescribePurchasedDevicesResponseBodyDevices struct {
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	SubType      *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 	Vendor       *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s DescribePurchasedDevicesResponseBodyDevices) String() string {
@@ -7721,13 +7634,8 @@ func (s *DescribePurchasedDevicesResponseBodyDevices) SetVendor(v string) *Descr
 	return s
 }
 
-func (s *DescribePurchasedDevicesResponseBodyDevices) SetGroupName(v string) *DescribePurchasedDevicesResponseBodyDevices {
-	s.GroupName = &v
-	return s
-}
-
-func (s *DescribePurchasedDevicesResponseBodyDevices) SetGroupId(v string) *DescribePurchasedDevicesResponseBodyDevices {
-	s.GroupId = &v
+func (s *DescribePurchasedDevicesResponseBodyDevices) SetDescription(v string) *DescribePurchasedDevicesResponseBodyDevices {
+	s.Description = &v
 	return s
 }
 
@@ -7736,8 +7644,13 @@ func (s *DescribePurchasedDevicesResponseBodyDevices) SetRegisterCode(v string) 
 	return s
 }
 
-func (s *DescribePurchasedDevicesResponseBodyDevices) SetDescription(v string) *DescribePurchasedDevicesResponseBodyDevices {
-	s.Description = &v
+func (s *DescribePurchasedDevicesResponseBodyDevices) SetGroupId(v string) *DescribePurchasedDevicesResponseBodyDevices {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePurchasedDevicesResponseBodyDevices) SetGroupName(v string) *DescribePurchasedDevicesResponseBodyDevices {
+	s.GroupName = &v
 	return s
 }
 
@@ -7756,13 +7669,13 @@ func (s *DescribePurchasedDevicesResponseBodyDevices) SetCreatedTime(v string) *
 	return s
 }
 
-func (s *DescribePurchasedDevicesResponseBodyDevices) SetOrderId(v string) *DescribePurchasedDevicesResponseBodyDevices {
-	s.OrderId = &v
+func (s *DescribePurchasedDevicesResponseBodyDevices) SetId(v string) *DescribePurchasedDevicesResponseBodyDevices {
+	s.Id = &v
 	return s
 }
 
-func (s *DescribePurchasedDevicesResponseBodyDevices) SetId(v string) *DescribePurchasedDevicesResponseBodyDevices {
-	s.Id = &v
+func (s *DescribePurchasedDevicesResponseBodyDevices) SetOrderId(v string) *DescribePurchasedDevicesResponseBodyDevices {
+	s.OrderId = &v
 	return s
 }
 
@@ -7791,7 +7704,6 @@ func (s *DescribePurchasedDevicesResponse) SetBody(v *DescribePurchasedDevicesRe
 
 type DescribeRecordsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	StreamId      *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
 	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -7813,11 +7725,6 @@ func (s DescribeRecordsRequest) GoString() string {
 
 func (s *DescribeRecordsRequest) SetOwnerId(v int64) *DescribeRecordsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeRecordsRequest) SetShowLog(v string) *DescribeRecordsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -7867,12 +7774,12 @@ func (s *DescribeRecordsRequest) SetPageNum(v int64) *DescribeRecordsRequest {
 }
 
 type DescribeRecordsResponseBody struct {
-	TotalCount    *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum       *int64                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	RequestId     *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize      *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageCount     *int64                                `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	NextStartTime *string                               `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	PageSize      *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageCount     *int64                                `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Records       []*DescribeRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
@@ -7882,11 +7789,6 @@ func (s DescribeRecordsResponseBody) String() string {
 
 func (s DescribeRecordsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRecordsResponseBody) SetTotalCount(v int64) *DescribeRecordsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeRecordsResponseBody) SetPageNum(v int64) *DescribeRecordsResponseBody {
@@ -7899,18 +7801,23 @@ func (s *DescribeRecordsResponseBody) SetRequestId(v string) *DescribeRecordsRes
 	return s
 }
 
+func (s *DescribeRecordsResponseBody) SetNextStartTime(v string) *DescribeRecordsResponseBody {
+	s.NextStartTime = &v
+	return s
+}
+
 func (s *DescribeRecordsResponseBody) SetPageSize(v int64) *DescribeRecordsResponseBody {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribeRecordsResponseBody) SetPageCount(v int64) *DescribeRecordsResponseBody {
-	s.PageCount = &v
+func (s *DescribeRecordsResponseBody) SetTotalCount(v int64) *DescribeRecordsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *DescribeRecordsResponseBody) SetNextStartTime(v string) *DescribeRecordsResponseBody {
-	s.NextStartTime = &v
+func (s *DescribeRecordsResponseBody) SetPageCount(v int64) *DescribeRecordsResponseBody {
+	s.PageCount = &v
 	return s
 }
 
@@ -7926,8 +7833,8 @@ type DescribeRecordsResponseBodyRecords struct {
 	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	FileFormat  *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
 	StreamId    *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Width       *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
 	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -7973,13 +7880,13 @@ func (s *DescribeRecordsResponseBodyRecords) SetStreamId(v string) *DescribeReco
 	return s
 }
 
-func (s *DescribeRecordsResponseBodyRecords) SetEndTime(v string) *DescribeRecordsResponseBodyRecords {
-	s.EndTime = &v
+func (s *DescribeRecordsResponseBodyRecords) SetOssObject(v string) *DescribeRecordsResponseBodyRecords {
+	s.OssObject = &v
 	return s
 }
 
-func (s *DescribeRecordsResponseBodyRecords) SetOssObject(v string) *DescribeRecordsResponseBodyRecords {
-	s.OssObject = &v
+func (s *DescribeRecordsResponseBodyRecords) SetEndTime(v string) *DescribeRecordsResponseBodyRecords {
+	s.EndTime = &v
 	return s
 }
 
@@ -8033,7 +7940,6 @@ func (s *DescribeRecordsResponse) SetBody(v *DescribeRecordsResponseBody) *Descr
 
 type DescribeStreamRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -8050,11 +7956,6 @@ func (s *DescribeStreamRequest) SetOwnerId(v int64) *DescribeStreamRequest {
 	return s
 }
 
-func (s *DescribeStreamRequest) SetShowLog(v string) *DescribeStreamRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeStreamRequest) SetId(v string) *DescribeStreamRequest {
 	s.Id = &v
 	return s
@@ -8062,19 +7963,19 @@ func (s *DescribeStreamRequest) SetId(v string) *DescribeStreamRequest {
 
 type DescribeStreamResponseBody struct {
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	App         *string `json:"App,omitempty" xml:"App,omitempty"`
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PlayDomain  *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	Height      *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	PushDomain  *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Height      *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Width       *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	App         *string `json:"App,omitempty" xml:"App,omitempty"`
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PushDomain  *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeStreamResponseBody) String() string {
@@ -8090,53 +7991,8 @@ func (s *DescribeStreamResponseBody) SetStatus(v string) *DescribeStreamResponse
 	return s
 }
 
-func (s *DescribeStreamResponseBody) SetApp(v string) *DescribeStreamResponseBody {
-	s.App = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetCreatedTime(v string) *DescribeStreamResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetRequestId(v string) *DescribeStreamResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetDeviceId(v string) *DescribeStreamResponseBody {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetEnabled(v bool) *DescribeStreamResponseBody {
-	s.Enabled = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetGroupId(v string) *DescribeStreamResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetName(v string) *DescribeStreamResponseBody {
-	s.Name = &v
-	return s
-}
-
 func (s *DescribeStreamResponseBody) SetPlayDomain(v string) *DescribeStreamResponseBody {
 	s.PlayDomain = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetHeight(v int32) *DescribeStreamResponseBody {
-	s.Height = &v
-	return s
-}
-
-func (s *DescribeStreamResponseBody) SetId(v string) *DescribeStreamResponseBody {
-	s.Id = &v
 	return s
 }
 
@@ -8145,13 +8001,58 @@ func (s *DescribeStreamResponseBody) SetProtocol(v string) *DescribeStreamRespon
 	return s
 }
 
-func (s *DescribeStreamResponseBody) SetPushDomain(v string) *DescribeStreamResponseBody {
-	s.PushDomain = &v
+func (s *DescribeStreamResponseBody) SetDeviceId(v string) *DescribeStreamResponseBody {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetHeight(v int32) *DescribeStreamResponseBody {
+	s.Height = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetRequestId(v string) *DescribeStreamResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetGroupId(v string) *DescribeStreamResponseBody {
+	s.GroupId = &v
 	return s
 }
 
 func (s *DescribeStreamResponseBody) SetWidth(v int32) *DescribeStreamResponseBody {
 	s.Width = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetApp(v string) *DescribeStreamResponseBody {
+	s.App = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetEnabled(v bool) *DescribeStreamResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetName(v string) *DescribeStreamResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetPushDomain(v string) *DescribeStreamResponseBody {
+	s.PushDomain = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetCreatedTime(v string) *DescribeStreamResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeStreamResponseBody) SetId(v string) *DescribeStreamResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -8180,7 +8081,6 @@ func (s *DescribeStreamResponse) SetBody(v *DescribeStreamResponseBody) *Describ
 
 type DescribeStreamsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -8204,11 +8104,6 @@ func (s DescribeStreamsRequest) GoString() string {
 
 func (s *DescribeStreamsRequest) SetOwnerId(v int64) *DescribeStreamsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeStreamsRequest) SetShowLog(v string) *DescribeStreamsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -8268,10 +8163,10 @@ func (s *DescribeStreamsRequest) SetPageNum(v int64) *DescribeStreamsRequest {
 }
 
 type DescribeStreamsResponseBody struct {
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Streams    []*DescribeStreamsResponseBodyStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 }
@@ -8282,11 +8177,6 @@ func (s DescribeStreamsResponseBody) String() string {
 
 func (s DescribeStreamsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeStreamsResponseBody) SetTotalCount(v int64) *DescribeStreamsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeStreamsResponseBody) SetPageNum(v int64) *DescribeStreamsResponseBody {
@@ -8304,6 +8194,11 @@ func (s *DescribeStreamsResponseBody) SetRequestId(v string) *DescribeStreamsRes
 	return s
 }
 
+func (s *DescribeStreamsResponseBody) SetTotalCount(v int64) *DescribeStreamsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeStreamsResponseBody) SetPageCount(v int64) *DescribeStreamsResponseBody {
 	s.PageCount = &v
 	return s
@@ -8316,16 +8211,16 @@ func (s *DescribeStreamsResponseBody) SetStreams(v []*DescribeStreamsResponseBod
 
 type DescribeStreamsResponseBodyStreams struct {
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	PlayDomain  *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Height      *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Width       *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 	App         *string `json:"App,omitempty" xml:"App,omitempty"`
+	Width       *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	PushDomain  *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PushDomain  *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -8343,8 +8238,8 @@ func (s *DescribeStreamsResponseBodyStreams) SetStatus(v string) *DescribeStream
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetDeviceId(v string) *DescribeStreamsResponseBodyStreams {
-	s.DeviceId = &v
+func (s *DescribeStreamsResponseBodyStreams) SetPlayDomain(v string) *DescribeStreamsResponseBodyStreams {
+	s.PlayDomain = &v
 	return s
 }
 
@@ -8353,8 +8248,8 @@ func (s *DescribeStreamsResponseBodyStreams) SetProtocol(v string) *DescribeStre
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetPlayDomain(v string) *DescribeStreamsResponseBodyStreams {
-	s.PlayDomain = &v
+func (s *DescribeStreamsResponseBodyStreams) SetDeviceId(v string) *DescribeStreamsResponseBodyStreams {
+	s.DeviceId = &v
 	return s
 }
 
@@ -8368,13 +8263,13 @@ func (s *DescribeStreamsResponseBodyStreams) SetGroupId(v string) *DescribeStrea
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetWidth(v int32) *DescribeStreamsResponseBodyStreams {
-	s.Width = &v
+func (s *DescribeStreamsResponseBodyStreams) SetApp(v string) *DescribeStreamsResponseBodyStreams {
+	s.App = &v
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetApp(v string) *DescribeStreamsResponseBodyStreams {
-	s.App = &v
+func (s *DescribeStreamsResponseBodyStreams) SetWidth(v int32) *DescribeStreamsResponseBodyStreams {
+	s.Width = &v
 	return s
 }
 
@@ -8383,13 +8278,13 @@ func (s *DescribeStreamsResponseBodyStreams) SetEnabled(v bool) *DescribeStreams
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetPushDomain(v string) *DescribeStreamsResponseBodyStreams {
-	s.PushDomain = &v
+func (s *DescribeStreamsResponseBodyStreams) SetName(v string) *DescribeStreamsResponseBodyStreams {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeStreamsResponseBodyStreams) SetName(v string) *DescribeStreamsResponseBodyStreams {
-	s.Name = &v
+func (s *DescribeStreamsResponseBodyStreams) SetPushDomain(v string) *DescribeStreamsResponseBodyStreams {
+	s.PushDomain = &v
 	return s
 }
 
@@ -8428,7 +8323,6 @@ func (s *DescribeStreamsResponse) SetBody(v *DescribeStreamsResponseBody) *Descr
 
 type DescribeStreamURLRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
@@ -8452,11 +8346,6 @@ func (s DescribeStreamURLRequest) GoString() string {
 
 func (s *DescribeStreamURLRequest) SetOwnerId(v int64) *DescribeStreamURLRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeStreamURLRequest) SetShowLog(v string) *DescribeStreamURLRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -8516,9 +8405,9 @@ func (s *DescribeStreamURLRequest) SetTranscode(v string) *DescribeStreamURLRequ
 }
 
 type DescribeStreamURLResponseBody struct {
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeStreamURLResponseBody) String() string {
@@ -8529,6 +8418,11 @@ func (s DescribeStreamURLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeStreamURLResponseBody) SetUrl(v string) *DescribeStreamURLResponseBody {
+	s.Url = &v
+	return s
+}
+
 func (s *DescribeStreamURLResponseBody) SetRequestId(v string) *DescribeStreamURLResponseBody {
 	s.RequestId = &v
 	return s
@@ -8536,11 +8430,6 @@ func (s *DescribeStreamURLResponseBody) SetRequestId(v string) *DescribeStreamUR
 
 func (s *DescribeStreamURLResponseBody) SetExpireTime(v int64) *DescribeStreamURLResponseBody {
 	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribeStreamURLResponseBody) SetUrl(v string) *DescribeStreamURLResponseBody {
-	s.Url = &v
 	return s
 }
 
@@ -8569,7 +8458,6 @@ func (s *DescribeStreamURLResponse) SetBody(v *DescribeStreamURLResponseBody) *D
 
 type DescribeStreamVodListRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -8585,11 +8473,6 @@ func (s DescribeStreamVodListRequest) GoString() string {
 
 func (s *DescribeStreamVodListRequest) SetOwnerId(v int64) *DescribeStreamVodListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeStreamVodListRequest) SetShowLog(v string) *DescribeStreamVodListRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -8679,7 +8562,6 @@ func (s *DescribeStreamVodListResponse) SetBody(v *DescribeStreamVodListResponse
 
 type DescribeTemplateRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -8696,42 +8578,37 @@ func (s *DescribeTemplateRequest) SetOwnerId(v int64) *DescribeTemplateRequest {
 	return s
 }
 
-func (s *DescribeTemplateRequest) SetShowLog(v string) *DescribeTemplateRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeTemplateRequest) SetId(v string) *DescribeTemplateRequest {
 	s.Id = &v
 	return s
 }
 
 type DescribeTemplateResponseBody struct {
-	Description   *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreatedTime   *string                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	EndTime       *string                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HlsTs         *string                                     `json:"HlsTs,omitempty" xml:"HlsTs,omitempty"`
-	OssBucket     *string                                     `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	Retention     *int64                                      `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	FileFormat    *string                                     `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	Name          *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Mp4           *string                                     `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
-	JpgOnDemand   *string                                     `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
-	Flv           *string                                     `json:"Flv,omitempty" xml:"Flv,omitempty"`
-	OssFilePrefix *string                                     `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
-	Trigger       *string                                     `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
-	OssEndpoint   *string                                     `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TransConfigs  []*DescribeTemplateResponseBodyTransConfigs `json:"TransConfigs,omitempty" xml:"TransConfigs,omitempty" type:"Repeated"`
-	StartTime     *string                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type          *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-	JpgSequence   *string                                     `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
-	Callback      *string                                     `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Trigger       *string                                     `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	HlsTs         *string                                     `json:"HlsTs,omitempty" xml:"HlsTs,omitempty"`
+	Mp4           *string                                     `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
 	JpgOverwrite  *string                                     `json:"JpgOverwrite,omitempty" xml:"JpgOverwrite,omitempty"`
+	Callback      *string                                     `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description   *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	Region        *string                                     `json:"Region,omitempty" xml:"Region,omitempty"`
-	Id            *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Retention     *int64                                      `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	HlsM3u8       *string                                     `json:"HlsM3u8,omitempty" xml:"HlsM3u8,omitempty"`
+	Name          *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Flv           *string                                     `json:"Flv,omitempty" xml:"Flv,omitempty"`
+	CreatedTime   *string                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	OssEndpoint   *string                                     `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssFilePrefix *string                                     `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	JpgOnDemand   *string                                     `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
+	OssBucket     *string                                     `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	FileFormat    *string                                     `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	JpgSequence   *string                                     `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
+	EndTime       *string                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *string                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Interval      *int64                                      `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Id            *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	TransConfigs  []*DescribeTemplateResponseBodyTransConfigs `json:"TransConfigs,omitempty" xml:"TransConfigs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTemplateResponseBody) String() string {
@@ -8742,63 +8619,8 @@ func (s DescribeTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTemplateResponseBody) SetDescription(v string) *DescribeTemplateResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetCreatedTime(v string) *DescribeTemplateResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetEndTime(v string) *DescribeTemplateResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetHlsTs(v string) *DescribeTemplateResponseBody {
-	s.HlsTs = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetOssBucket(v string) *DescribeTemplateResponseBody {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetRetention(v int64) *DescribeTemplateResponseBody {
-	s.Retention = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetFileFormat(v string) *DescribeTemplateResponseBody {
-	s.FileFormat = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetName(v string) *DescribeTemplateResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetMp4(v string) *DescribeTemplateResponseBody {
-	s.Mp4 = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetJpgOnDemand(v string) *DescribeTemplateResponseBody {
-	s.JpgOnDemand = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetFlv(v string) *DescribeTemplateResponseBody {
-	s.Flv = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetOssFilePrefix(v string) *DescribeTemplateResponseBody {
-	s.OssFilePrefix = &v
+func (s *DescribeTemplateResponseBody) SetType(v string) *DescribeTemplateResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -8807,38 +8629,13 @@ func (s *DescribeTemplateResponseBody) SetTrigger(v string) *DescribeTemplateRes
 	return s
 }
 
-func (s *DescribeTemplateResponseBody) SetOssEndpoint(v string) *DescribeTemplateResponseBody {
-	s.OssEndpoint = &v
+func (s *DescribeTemplateResponseBody) SetHlsTs(v string) *DescribeTemplateResponseBody {
+	s.HlsTs = &v
 	return s
 }
 
-func (s *DescribeTemplateResponseBody) SetRequestId(v string) *DescribeTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetTransConfigs(v []*DescribeTemplateResponseBodyTransConfigs) *DescribeTemplateResponseBody {
-	s.TransConfigs = v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetStartTime(v string) *DescribeTemplateResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetType(v string) *DescribeTemplateResponseBody {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetJpgSequence(v string) *DescribeTemplateResponseBody {
-	s.JpgSequence = &v
-	return s
-}
-
-func (s *DescribeTemplateResponseBody) SetCallback(v string) *DescribeTemplateResponseBody {
-	s.Callback = &v
+func (s *DescribeTemplateResponseBody) SetMp4(v string) *DescribeTemplateResponseBody {
+	s.Mp4 = &v
 	return s
 }
 
@@ -8847,13 +8644,28 @@ func (s *DescribeTemplateResponseBody) SetJpgOverwrite(v string) *DescribeTempla
 	return s
 }
 
+func (s *DescribeTemplateResponseBody) SetCallback(v string) *DescribeTemplateResponseBody {
+	s.Callback = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetRequestId(v string) *DescribeTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetDescription(v string) *DescribeTemplateResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeTemplateResponseBody) SetRegion(v string) *DescribeTemplateResponseBody {
 	s.Region = &v
 	return s
 }
 
-func (s *DescribeTemplateResponseBody) SetId(v string) *DescribeTemplateResponseBody {
-	s.Id = &v
+func (s *DescribeTemplateResponseBody) SetRetention(v int64) *DescribeTemplateResponseBody {
+	s.Retention = &v
 	return s
 }
 
@@ -8862,8 +8674,73 @@ func (s *DescribeTemplateResponseBody) SetHlsM3u8(v string) *DescribeTemplateRes
 	return s
 }
 
+func (s *DescribeTemplateResponseBody) SetName(v string) *DescribeTemplateResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetFlv(v string) *DescribeTemplateResponseBody {
+	s.Flv = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetCreatedTime(v string) *DescribeTemplateResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetOssEndpoint(v string) *DescribeTemplateResponseBody {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetOssFilePrefix(v string) *DescribeTemplateResponseBody {
+	s.OssFilePrefix = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetJpgOnDemand(v string) *DescribeTemplateResponseBody {
+	s.JpgOnDemand = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetOssBucket(v string) *DescribeTemplateResponseBody {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetFileFormat(v string) *DescribeTemplateResponseBody {
+	s.FileFormat = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetJpgSequence(v string) *DescribeTemplateResponseBody {
+	s.JpgSequence = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetEndTime(v string) *DescribeTemplateResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetStartTime(v string) *DescribeTemplateResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeTemplateResponseBody) SetInterval(v int64) *DescribeTemplateResponseBody {
 	s.Interval = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetId(v string) *DescribeTemplateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTemplateResponseBody) SetTransConfigs(v []*DescribeTemplateResponseBodyTransConfigs) *DescribeTemplateResponseBody {
+	s.TransConfigs = v
 	return s
 }
 
@@ -8951,7 +8828,6 @@ func (s *DescribeTemplateResponse) SetBody(v *DescribeTemplateResponseBody) *Des
 
 type DescribeTemplatesRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -8971,11 +8847,6 @@ func (s DescribeTemplatesRequest) GoString() string {
 
 func (s *DescribeTemplatesRequest) SetOwnerId(v int64) *DescribeTemplatesRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeTemplatesRequest) SetShowLog(v string) *DescribeTemplatesRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -9015,10 +8886,10 @@ func (s *DescribeTemplatesRequest) SetPageNum(v int64) *DescribeTemplatesRequest
 }
 
 type DescribeTemplatesResponseBody struct {
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNum    *int64                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageCount  *int64                                    `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	Templates  []*DescribeTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
@@ -9029,11 +8900,6 @@ func (s DescribeTemplatesResponseBody) String() string {
 
 func (s DescribeTemplatesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeTemplatesResponseBody) SetTotalCount(v int64) *DescribeTemplatesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeTemplatesResponseBody) SetPageNum(v int64) *DescribeTemplatesResponseBody {
@@ -9051,6 +8917,11 @@ func (s *DescribeTemplatesResponseBody) SetRequestId(v string) *DescribeTemplate
 	return s
 }
 
+func (s *DescribeTemplatesResponseBody) SetTotalCount(v int64) *DescribeTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeTemplatesResponseBody) SetPageCount(v int64) *DescribeTemplatesResponseBody {
 	s.PageCount = &v
 	return s
@@ -9064,28 +8935,28 @@ func (s *DescribeTemplatesResponseBody) SetTemplates(v []*DescribeTemplatesRespo
 type DescribeTemplatesResponseBodyTemplates struct {
 	Type          *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
 	Trigger       *string                                               `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	OssFilePrefix *string                                               `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
 	HlsTs         *string                                               `json:"HlsTs,omitempty" xml:"HlsTs,omitempty"`
 	Mp4           *string                                               `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
+	JpgOnDemand   *string                                               `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
+	OssBucket     *string                                               `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	JpgSequence   *string                                               `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
 	JpgOverwrite  *string                                               `json:"JpgOverwrite,omitempty" xml:"JpgOverwrite,omitempty"`
+	FileFormat    *string                                               `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
 	Callback      *string                                               `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	EndTime       *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Interval      *int64                                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Description   *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	Region        *string                                               `json:"Region,omitempty" xml:"Region,omitempty"`
 	Retention     *int64                                                `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	HlsM3u8       *string                                               `json:"HlsM3u8,omitempty" xml:"HlsM3u8,omitempty"`
-	Name          *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Flv           *string                                               `json:"Flv,omitempty" xml:"Flv,omitempty"`
+	Name          *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreatedTime   *string                                               `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	OssEndpoint   *string                                               `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssFilePrefix *string                                               `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
-	TransConfigs  []*DescribeTemplatesResponseBodyTemplatesTransConfigs `json:"TransConfigs,omitempty" xml:"TransConfigs,omitempty" type:"Repeated"`
-	JpgOnDemand   *string                                               `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
-	OssBucket     *string                                               `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	JpgSequence   *string                                               `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
-	FileFormat    *string                                               `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	EndTime       *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime     *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Interval      *int64                                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Id            *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	TransConfigs  []*DescribeTemplatesResponseBodyTemplatesTransConfigs `json:"TransConfigs,omitempty" xml:"TransConfigs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTemplatesResponseBodyTemplates) String() string {
@@ -9106,6 +8977,11 @@ func (s *DescribeTemplatesResponseBodyTemplates) SetTrigger(v string) *DescribeT
 	return s
 }
 
+func (s *DescribeTemplatesResponseBodyTemplates) SetOssFilePrefix(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.OssFilePrefix = &v
+	return s
+}
+
 func (s *DescribeTemplatesResponseBodyTemplates) SetHlsTs(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.HlsTs = &v
 	return s
@@ -9116,13 +8992,48 @@ func (s *DescribeTemplatesResponseBodyTemplates) SetMp4(v string) *DescribeTempl
 	return s
 }
 
+func (s *DescribeTemplatesResponseBodyTemplates) SetJpgOnDemand(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.JpgOnDemand = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetOssBucket(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetJpgSequence(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.JpgSequence = &v
+	return s
+}
+
 func (s *DescribeTemplatesResponseBodyTemplates) SetJpgOverwrite(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.JpgOverwrite = &v
 	return s
 }
 
+func (s *DescribeTemplatesResponseBodyTemplates) SetFileFormat(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.FileFormat = &v
+	return s
+}
+
 func (s *DescribeTemplatesResponseBodyTemplates) SetCallback(v string) *DescribeTemplatesResponseBodyTemplates {
 	s.Callback = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetEndTime(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetStartTime(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyTemplates) SetInterval(v int64) *DescribeTemplatesResponseBodyTemplates {
+	s.Interval = &v
 	return s
 }
 
@@ -9146,13 +9057,13 @@ func (s *DescribeTemplatesResponseBodyTemplates) SetHlsM3u8(v string) *DescribeT
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Name = &v
+func (s *DescribeTemplatesResponseBodyTemplates) SetFlv(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Flv = &v
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetFlv(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Flv = &v
+func (s *DescribeTemplatesResponseBodyTemplates) SetName(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Name = &v
 	return s
 }
 
@@ -9166,53 +9077,13 @@ func (s *DescribeTemplatesResponseBodyTemplates) SetOssEndpoint(v string) *Descr
 	return s
 }
 
-func (s *DescribeTemplatesResponseBodyTemplates) SetOssFilePrefix(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.OssFilePrefix = &v
+func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
+	s.Id = &v
 	return s
 }
 
 func (s *DescribeTemplatesResponseBodyTemplates) SetTransConfigs(v []*DescribeTemplatesResponseBodyTemplatesTransConfigs) *DescribeTemplatesResponseBodyTemplates {
 	s.TransConfigs = v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetJpgOnDemand(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.JpgOnDemand = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetOssBucket(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetJpgSequence(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.JpgSequence = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetFileFormat(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.FileFormat = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetEndTime(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetStartTime(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetInterval(v int64) *DescribeTemplatesResponseBodyTemplates {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeTemplatesResponseBodyTemplates) SetId(v string) *DescribeTemplatesResponseBodyTemplates {
-	s.Id = &v
 	return s
 }
 
@@ -9300,7 +9171,6 @@ func (s *DescribeTemplatesResponse) SetBody(v *DescribeTemplatesResponseBody) *D
 
 type DescribeVodStreamURLRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	TxId    *string `json:"TxId,omitempty" xml:"TxId,omitempty"`
 }
@@ -9318,11 +9188,6 @@ func (s *DescribeVodStreamURLRequest) SetOwnerId(v int64) *DescribeVodStreamURLR
 	return s
 }
 
-func (s *DescribeVodStreamURLRequest) SetShowLog(v string) *DescribeVodStreamURLRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeVodStreamURLRequest) SetUrl(v string) *DescribeVodStreamURLRequest {
 	s.Url = &v
 	return s
@@ -9334,11 +9199,11 @@ func (s *DescribeVodStreamURLRequest) SetTxId(v string) *DescribeVodStreamURLReq
 }
 
 type DescribeVodStreamURLResponseBody struct {
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Port        *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 	TxId        *string `json:"TxId,omitempty" xml:"TxId,omitempty"`
-	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
-	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeVodStreamURLResponseBody) String() string {
@@ -9347,6 +9212,16 @@ func (s DescribeVodStreamURLResponseBody) String() string {
 
 func (s DescribeVodStreamURLResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVodStreamURLResponseBody) SetUrl(v string) *DescribeVodStreamURLResponseBody {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeVodStreamURLResponseBody) SetOutProtocol(v string) *DescribeVodStreamURLResponseBody {
+	s.OutProtocol = &v
+	return s
 }
 
 func (s *DescribeVodStreamURLResponseBody) SetRequestId(v string) *DescribeVodStreamURLResponseBody {
@@ -9361,16 +9236,6 @@ func (s *DescribeVodStreamURLResponseBody) SetPort(v int64) *DescribeVodStreamUR
 
 func (s *DescribeVodStreamURLResponseBody) SetTxId(v string) *DescribeVodStreamURLResponseBody {
 	s.TxId = &v
-	return s
-}
-
-func (s *DescribeVodStreamURLResponseBody) SetOutProtocol(v string) *DescribeVodStreamURLResponseBody {
-	s.OutProtocol = &v
-	return s
-}
-
-func (s *DescribeVodStreamURLResponseBody) SetUrl(v string) *DescribeVodStreamURLResponseBody {
-	s.Url = &v
 	return s
 }
 
@@ -9399,7 +9264,6 @@ func (s *DescribeVodStreamURLResponse) SetBody(v *DescribeVodStreamURLResponseBo
 
 type DescribeVsCertificateDetailRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 }
 
@@ -9416,22 +9280,17 @@ func (s *DescribeVsCertificateDetailRequest) SetOwnerId(v int64) *DescribeVsCert
 	return s
 }
 
-func (s *DescribeVsCertificateDetailRequest) SetShowLog(v string) *DescribeVsCertificateDetailRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeVsCertificateDetailRequest) SetCertName(v string) *DescribeVsCertificateDetailRequest {
 	s.CertName = &v
 	return s
 }
 
 type DescribeVsCertificateDetailResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertId    *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	CertName  *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	Cert      *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
 	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Cert      *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	CertId    *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeVsCertificateDetailResponseBody) String() string {
@@ -9442,18 +9301,13 @@ func (s DescribeVsCertificateDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVsCertificateDetailResponseBody) SetRequestId(v string) *DescribeVsCertificateDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVsCertificateDetailResponseBody) SetCertId(v int64) *DescribeVsCertificateDetailResponseBody {
-	s.CertId = &v
-	return s
-}
-
 func (s *DescribeVsCertificateDetailResponseBody) SetCertName(v string) *DescribeVsCertificateDetailResponseBody {
 	s.CertName = &v
+	return s
+}
+
+func (s *DescribeVsCertificateDetailResponseBody) SetKey(v string) *DescribeVsCertificateDetailResponseBody {
+	s.Key = &v
 	return s
 }
 
@@ -9462,8 +9316,13 @@ func (s *DescribeVsCertificateDetailResponseBody) SetCert(v string) *DescribeVsC
 	return s
 }
 
-func (s *DescribeVsCertificateDetailResponseBody) SetKey(v string) *DescribeVsCertificateDetailResponseBody {
-	s.Key = &v
+func (s *DescribeVsCertificateDetailResponseBody) SetCertId(v int64) *DescribeVsCertificateDetailResponseBody {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeVsCertificateDetailResponseBody) SetRequestId(v string) *DescribeVsCertificateDetailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9492,7 +9351,6 @@ func (s *DescribeVsCertificateDetailResponse) SetBody(v *DescribeVsCertificateDe
 
 type DescribeVsCertificateListRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -9506,11 +9364,6 @@ func (s DescribeVsCertificateListRequest) GoString() string {
 
 func (s *DescribeVsCertificateListRequest) SetOwnerId(v int64) *DescribeVsCertificateListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsCertificateListRequest) SetShowLog(v string) *DescribeVsCertificateListRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -9543,8 +9396,8 @@ func (s *DescribeVsCertificateListResponseBody) SetCertificateListModel(v *Descr
 }
 
 type DescribeVsCertificateListResponseBodyCertificateListModel struct {
-	CertList []*DescribeVsCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
 	Count    *int32                                                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	CertList []*DescribeVsCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVsCertificateListResponseBodyCertificateListModel) String() string {
@@ -9555,13 +9408,13 @@ func (s DescribeVsCertificateListResponseBodyCertificateListModel) GoString() st
 	return s.String()
 }
 
-func (s *DescribeVsCertificateListResponseBodyCertificateListModel) SetCertList(v []*DescribeVsCertificateListResponseBodyCertificateListModelCertList) *DescribeVsCertificateListResponseBodyCertificateListModel {
-	s.CertList = v
+func (s *DescribeVsCertificateListResponseBodyCertificateListModel) SetCount(v int32) *DescribeVsCertificateListResponseBodyCertificateListModel {
+	s.Count = &v
 	return s
 }
 
-func (s *DescribeVsCertificateListResponseBodyCertificateListModel) SetCount(v int32) *DescribeVsCertificateListResponseBodyCertificateListModel {
-	s.Count = &v
+func (s *DescribeVsCertificateListResponseBodyCertificateListModel) SetCertList(v []*DescribeVsCertificateListResponseBodyCertificateListModelCertList) *DescribeVsCertificateListResponseBodyCertificateListModel {
+	s.CertList = v
 	return s
 }
 
@@ -9637,7 +9490,6 @@ func (s *DescribeVsCertificateListResponse) SetBody(v *DescribeVsCertificateList
 
 type DescribeVsDomainBpsDataRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -9656,11 +9508,6 @@ func (s DescribeVsDomainBpsDataRequest) GoString() string {
 
 func (s *DescribeVsDomainBpsDataRequest) SetOwnerId(v int64) *DescribeVsDomainBpsDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainBpsDataRequest) SetShowLog(v string) *DescribeVsDomainBpsDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -9696,9 +9543,9 @@ func (s *DescribeVsDomainBpsDataRequest) SetLocationNameEn(v string) *DescribeVs
 
 type DescribeVsDomainBpsDataResponseBody struct {
 	EndTime            *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime          *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName         *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime          *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval       *string                                                `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	BpsDataPerInterval *DescribeVsDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 }
@@ -9716,6 +9563,11 @@ func (s *DescribeVsDomainBpsDataResponseBody) SetEndTime(v string) *DescribeVsDo
 	return s
 }
 
+func (s *DescribeVsDomainBpsDataResponseBody) SetStartTime(v string) *DescribeVsDomainBpsDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainBpsDataResponseBody) SetRequestId(v string) *DescribeVsDomainBpsDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -9723,11 +9575,6 @@ func (s *DescribeVsDomainBpsDataResponseBody) SetRequestId(v string) *DescribeVs
 
 func (s *DescribeVsDomainBpsDataResponseBody) SetDomainName(v string) *DescribeVsDomainBpsDataResponseBody {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVsDomainBpsDataResponseBody) SetStartTime(v string) *DescribeVsDomainBpsDataResponseBody {
-	s.StartTime = &v
 	return s
 }
 
@@ -9806,7 +9653,6 @@ func (s *DescribeVsDomainBpsDataResponse) SetBody(v *DescribeVsDomainBpsDataResp
 
 type DescribeVsDomainCertificateInfoRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -9823,19 +9669,14 @@ func (s *DescribeVsDomainCertificateInfoRequest) SetOwnerId(v int64) *DescribeVs
 	return s
 }
 
-func (s *DescribeVsDomainCertificateInfoRequest) SetShowLog(v string) *DescribeVsDomainCertificateInfoRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *DescribeVsDomainCertificateInfoRequest) SetDomainName(v string) *DescribeVsDomainCertificateInfoRequest {
 	s.DomainName = &v
 	return s
 }
 
 type DescribeVsDomainCertificateInfoResponseBody struct {
-	CertInfos *DescribeVsDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CertInfos *DescribeVsDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainCertificateInfoResponseBody) String() string {
@@ -9846,13 +9687,13 @@ func (s DescribeVsDomainCertificateInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVsDomainCertificateInfoResponseBody) SetCertInfos(v *DescribeVsDomainCertificateInfoResponseBodyCertInfos) *DescribeVsDomainCertificateInfoResponseBody {
-	s.CertInfos = v
+func (s *DescribeVsDomainCertificateInfoResponseBody) SetRequestId(v string) *DescribeVsDomainCertificateInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeVsDomainCertificateInfoResponseBody) SetRequestId(v string) *DescribeVsDomainCertificateInfoResponseBody {
-	s.RequestId = &v
+func (s *DescribeVsDomainCertificateInfoResponseBody) SetCertInfos(v *DescribeVsDomainCertificateInfoResponseBodyCertInfos) *DescribeVsDomainCertificateInfoResponseBody {
+	s.CertInfos = v
 	return s
 }
 
@@ -9969,7 +9810,6 @@ func (s *DescribeVsDomainCertificateInfoResponse) SetBody(v *DescribeVsDomainCer
 
 type DescribeVsDomainConfigsRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 }
@@ -9984,11 +9824,6 @@ func (s DescribeVsDomainConfigsRequest) GoString() string {
 
 func (s *DescribeVsDomainConfigsRequest) SetOwnerId(v int64) *DescribeVsDomainConfigsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainConfigsRequest) SetShowLog(v string) *DescribeVsDomainConfigsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10108,7 +9943,6 @@ func (s *DescribeVsDomainConfigsResponse) SetBody(v *DescribeVsDomainConfigsResp
 
 type DescribeVsDomainDetailRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -10122,11 +9956,6 @@ func (s DescribeVsDomainDetailRequest) GoString() string {
 
 func (s *DescribeVsDomainDetailRequest) SetOwnerId(v int64) *DescribeVsDomainDetailRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainDetailRequest) SetShowLog(v string) *DescribeVsDomainDetailRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10254,7 +10083,6 @@ func (s *DescribeVsDomainDetailResponse) SetBody(v *DescribeVsDomainDetailRespon
 
 type DescribeVsDomainPvDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -10270,11 +10098,6 @@ func (s DescribeVsDomainPvDataRequest) GoString() string {
 
 func (s *DescribeVsDomainPvDataRequest) SetOwnerId(v int64) *DescribeVsDomainPvDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainPvDataRequest) SetShowLog(v string) *DescribeVsDomainPvDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10295,9 +10118,9 @@ func (s *DescribeVsDomainPvDataRequest) SetEndTime(v string) *DescribeVsDomainPv
 
 type DescribeVsDomainPvDataResponseBody struct {
 	EndTime        *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime      *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName     *string                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime      *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval   *string                                           `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	PvDataInterval *DescribeVsDomainPvDataResponseBodyPvDataInterval `json:"PvDataInterval,omitempty" xml:"PvDataInterval,omitempty" type:"Struct"`
 }
@@ -10315,6 +10138,11 @@ func (s *DescribeVsDomainPvDataResponseBody) SetEndTime(v string) *DescribeVsDom
 	return s
 }
 
+func (s *DescribeVsDomainPvDataResponseBody) SetStartTime(v string) *DescribeVsDomainPvDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainPvDataResponseBody) SetRequestId(v string) *DescribeVsDomainPvDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -10322,11 +10150,6 @@ func (s *DescribeVsDomainPvDataResponseBody) SetRequestId(v string) *DescribeVsD
 
 func (s *DescribeVsDomainPvDataResponseBody) SetDomainName(v string) *DescribeVsDomainPvDataResponseBody {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVsDomainPvDataResponseBody) SetStartTime(v string) *DescribeVsDomainPvDataResponseBody {
-	s.StartTime = &v
 	return s
 }
 
@@ -10405,7 +10228,6 @@ func (s *DescribeVsDomainPvDataResponse) SetBody(v *DescribeVsDomainPvDataRespon
 
 type DescribeVsDomainPvUvDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -10421,11 +10243,6 @@ func (s DescribeVsDomainPvUvDataRequest) GoString() string {
 
 func (s *DescribeVsDomainPvUvDataRequest) SetOwnerId(v int64) *DescribeVsDomainPvUvDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainPvUvDataRequest) SetShowLog(v string) *DescribeVsDomainPvUvDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10446,9 +10263,9 @@ func (s *DescribeVsDomainPvUvDataRequest) SetEndTime(v string) *DescribeVsDomain
 
 type DescribeVsDomainPvUvDataResponseBody struct {
 	EndTime       *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName    *string                                            `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime     *string                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval  *string                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	PvUvDataInfos *DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos `json:"PvUvDataInfos,omitempty" xml:"PvUvDataInfos,omitempty" type:"Struct"`
 }
@@ -10466,6 +10283,11 @@ func (s *DescribeVsDomainPvUvDataResponseBody) SetEndTime(v string) *DescribeVsD
 	return s
 }
 
+func (s *DescribeVsDomainPvUvDataResponseBody) SetStartTime(v string) *DescribeVsDomainPvUvDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainPvUvDataResponseBody) SetRequestId(v string) *DescribeVsDomainPvUvDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -10473,11 +10295,6 @@ func (s *DescribeVsDomainPvUvDataResponseBody) SetRequestId(v string) *DescribeV
 
 func (s *DescribeVsDomainPvUvDataResponseBody) SetDomainName(v string) *DescribeVsDomainPvUvDataResponseBody {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVsDomainPvUvDataResponseBody) SetStartTime(v string) *DescribeVsDomainPvUvDataResponseBody {
-	s.StartTime = &v
 	return s
 }
 
@@ -10562,7 +10379,6 @@ func (s *DescribeVsDomainPvUvDataResponse) SetBody(v *DescribeVsDomainPvUvDataRe
 
 type DescribeVsDomainRecordDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -10578,11 +10394,6 @@ func (s DescribeVsDomainRecordDataRequest) GoString() string {
 
 func (s *DescribeVsDomainRecordDataRequest) SetOwnerId(v int64) *DescribeVsDomainRecordDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainRecordDataRequest) SetShowLog(v string) *DescribeVsDomainRecordDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10603,10 +10414,10 @@ func (s *DescribeVsDomainRecordDataRequest) SetEndTime(v string) *DescribeVsDoma
 
 type DescribeVsDomainRecordDataResponseBody struct {
 	EndTime               *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime             *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName            *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	RecordDataPerInterval *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval `json:"RecordDataPerInterval,omitempty" xml:"RecordDataPerInterval,omitempty" type:"Struct"`
-	StartTime             *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVsDomainRecordDataResponseBody) String() string {
@@ -10622,6 +10433,11 @@ func (s *DescribeVsDomainRecordDataResponseBody) SetEndTime(v string) *DescribeV
 	return s
 }
 
+func (s *DescribeVsDomainRecordDataResponseBody) SetStartTime(v string) *DescribeVsDomainRecordDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainRecordDataResponseBody) SetRequestId(v string) *DescribeVsDomainRecordDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -10634,11 +10450,6 @@ func (s *DescribeVsDomainRecordDataResponseBody) SetDomainName(v string) *Descri
 
 func (s *DescribeVsDomainRecordDataResponseBody) SetRecordDataPerInterval(v *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval) *DescribeVsDomainRecordDataResponseBody {
 	s.RecordDataPerInterval = v
-	return s
-}
-
-func (s *DescribeVsDomainRecordDataResponseBody) SetStartTime(v string) *DescribeVsDomainRecordDataResponseBody {
-	s.StartTime = &v
 	return s
 }
 
@@ -10660,8 +10471,8 @@ func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval) SetDataMod
 }
 
 type DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule struct {
-	TimeStamp   *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	RecordValue *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
+	TimeStamp   *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) String() string {
@@ -10672,13 +10483,13 @@ func (s DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) G
 	return s.String()
 }
 
-func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule {
-	s.TimeStamp = &v
+func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) SetRecordValue(v string) *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule {
+	s.RecordValue = &v
 	return s
 }
 
-func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) SetRecordValue(v string) *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule {
-	s.RecordValue = &v
+func (s *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVsDomainRecordDataResponseBodyRecordDataPerIntervalDataModule {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -10707,7 +10518,6 @@ func (s *DescribeVsDomainRecordDataResponse) SetBody(v *DescribeVsDomainRecordDa
 
 type DescribeVsDomainRegionDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -10723,11 +10533,6 @@ func (s DescribeVsDomainRegionDataRequest) GoString() string {
 
 func (s *DescribeVsDomainRegionDataRequest) SetOwnerId(v int64) *DescribeVsDomainRegionDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainRegionDataRequest) SetShowLog(v string) *DescribeVsDomainRegionDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10748,9 +10553,9 @@ func (s *DescribeVsDomainRegionDataRequest) SetEndTime(v string) *DescribeVsDoma
 
 type DescribeVsDomainRegionDataResponseBody struct {
 	EndTime      *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName   *string                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime    *string                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval *string                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	Value        *DescribeVsDomainRegionDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
@@ -10768,6 +10573,11 @@ func (s *DescribeVsDomainRegionDataResponseBody) SetEndTime(v string) *DescribeV
 	return s
 }
 
+func (s *DescribeVsDomainRegionDataResponseBody) SetStartTime(v string) *DescribeVsDomainRegionDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainRegionDataResponseBody) SetRequestId(v string) *DescribeVsDomainRegionDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -10775,11 +10585,6 @@ func (s *DescribeVsDomainRegionDataResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeVsDomainRegionDataResponseBody) SetDomainName(v string) *DescribeVsDomainRegionDataResponseBody {
 	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVsDomainRegionDataResponseBody) SetStartTime(v string) *DescribeVsDomainRegionDataResponseBody {
-	s.StartTime = &v
 	return s
 }
 
@@ -10918,7 +10723,6 @@ func (s *DescribeVsDomainRegionDataResponse) SetBody(v *DescribeVsDomainRegionDa
 
 type DescribeVsDomainReqBpsDataRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -10937,11 +10741,6 @@ func (s DescribeVsDomainReqBpsDataRequest) GoString() string {
 
 func (s *DescribeVsDomainReqBpsDataRequest) SetOwnerId(v int64) *DescribeVsDomainReqBpsDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainReqBpsDataRequest) SetShowLog(v string) *DescribeVsDomainReqBpsDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -10977,11 +10776,11 @@ func (s *DescribeVsDomainReqBpsDataRequest) SetLocationNameEn(v string) *Describ
 
 type DescribeVsDomainReqBpsDataResponseBody struct {
 	EndTime               *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime             *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName            *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ReqBpsDataPerInterval *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval `json:"ReqBpsDataPerInterval,omitempty" xml:"ReqBpsDataPerInterval,omitempty" type:"Struct"`
-	StartTime             *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval          *string                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	ReqBpsDataPerInterval *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval `json:"ReqBpsDataPerInterval,omitempty" xml:"ReqBpsDataPerInterval,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainReqBpsDataResponseBody) String() string {
@@ -10997,6 +10796,11 @@ func (s *DescribeVsDomainReqBpsDataResponseBody) SetEndTime(v string) *DescribeV
 	return s
 }
 
+func (s *DescribeVsDomainReqBpsDataResponseBody) SetStartTime(v string) *DescribeVsDomainReqBpsDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainReqBpsDataResponseBody) SetRequestId(v string) *DescribeVsDomainReqBpsDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -11007,18 +10811,13 @@ func (s *DescribeVsDomainReqBpsDataResponseBody) SetDomainName(v string) *Descri
 	return s
 }
 
-func (s *DescribeVsDomainReqBpsDataResponseBody) SetReqBpsDataPerInterval(v *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval) *DescribeVsDomainReqBpsDataResponseBody {
-	s.ReqBpsDataPerInterval = v
-	return s
-}
-
-func (s *DescribeVsDomainReqBpsDataResponseBody) SetStartTime(v string) *DescribeVsDomainReqBpsDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeVsDomainReqBpsDataResponseBody) SetDataInterval(v string) *DescribeVsDomainReqBpsDataResponseBody {
 	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVsDomainReqBpsDataResponseBody) SetReqBpsDataPerInterval(v *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval) *DescribeVsDomainReqBpsDataResponseBody {
+	s.ReqBpsDataPerInterval = v
 	return s
 }
 
@@ -11087,7 +10886,6 @@ func (s *DescribeVsDomainReqBpsDataResponse) SetBody(v *DescribeVsDomainReqBpsDa
 
 type DescribeVsDomainReqTrafficDataRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -11106,11 +10904,6 @@ func (s DescribeVsDomainReqTrafficDataRequest) GoString() string {
 
 func (s *DescribeVsDomainReqTrafficDataRequest) SetOwnerId(v int64) *DescribeVsDomainReqTrafficDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainReqTrafficDataRequest) SetShowLog(v string) *DescribeVsDomainReqTrafficDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11145,12 +10938,12 @@ func (s *DescribeVsDomainReqTrafficDataRequest) SetLocationNameEn(v string) *Des
 }
 
 type DescribeVsDomainReqTrafficDataResponseBody struct {
-	ReqTrafficDataPerInterval *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval `json:"ReqTrafficDataPerInterval,omitempty" xml:"ReqTrafficDataPerInterval,omitempty" type:"Struct"`
 	EndTime                   *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime                 *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId                 *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName                *string                                                              `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime                 *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval              *string                                                              `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	ReqTrafficDataPerInterval *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval `json:"ReqTrafficDataPerInterval,omitempty" xml:"ReqTrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainReqTrafficDataResponseBody) String() string {
@@ -11161,13 +10954,13 @@ func (s DescribeVsDomainReqTrafficDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVsDomainReqTrafficDataResponseBody) SetReqTrafficDataPerInterval(v *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval) *DescribeVsDomainReqTrafficDataResponseBody {
-	s.ReqTrafficDataPerInterval = v
+func (s *DescribeVsDomainReqTrafficDataResponseBody) SetEndTime(v string) *DescribeVsDomainReqTrafficDataResponseBody {
+	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeVsDomainReqTrafficDataResponseBody) SetEndTime(v string) *DescribeVsDomainReqTrafficDataResponseBody {
-	s.EndTime = &v
+func (s *DescribeVsDomainReqTrafficDataResponseBody) SetStartTime(v string) *DescribeVsDomainReqTrafficDataResponseBody {
+	s.StartTime = &v
 	return s
 }
 
@@ -11181,13 +10974,13 @@ func (s *DescribeVsDomainReqTrafficDataResponseBody) SetDomainName(v string) *De
 	return s
 }
 
-func (s *DescribeVsDomainReqTrafficDataResponseBody) SetStartTime(v string) *DescribeVsDomainReqTrafficDataResponseBody {
-	s.StartTime = &v
+func (s *DescribeVsDomainReqTrafficDataResponseBody) SetDataInterval(v string) *DescribeVsDomainReqTrafficDataResponseBody {
+	s.DataInterval = &v
 	return s
 }
 
-func (s *DescribeVsDomainReqTrafficDataResponseBody) SetDataInterval(v string) *DescribeVsDomainReqTrafficDataResponseBody {
-	s.DataInterval = &v
+func (s *DescribeVsDomainReqTrafficDataResponseBody) SetReqTrafficDataPerInterval(v *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval) *DescribeVsDomainReqTrafficDataResponseBody {
+	s.ReqTrafficDataPerInterval = v
 	return s
 }
 
@@ -11256,7 +11049,6 @@ func (s *DescribeVsDomainReqTrafficDataResponse) SetBody(v *DescribeVsDomainReqT
 
 type DescribeVsDomainSnapshotDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -11272,11 +11064,6 @@ func (s DescribeVsDomainSnapshotDataRequest) GoString() string {
 
 func (s *DescribeVsDomainSnapshotDataRequest) SetOwnerId(v int64) *DescribeVsDomainSnapshotDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainSnapshotDataRequest) SetShowLog(v string) *DescribeVsDomainSnapshotDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11297,10 +11084,10 @@ func (s *DescribeVsDomainSnapshotDataRequest) SetEndTime(v string) *DescribeVsDo
 
 type DescribeVsDomainSnapshotDataResponseBody struct {
 	EndTime                 *string                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId               *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotDataPerInterval *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval `json:"SnapshotDataPerInterval,omitempty" xml:"SnapshotDataPerInterval,omitempty" type:"Struct"`
-	DomainName              *string                                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime               *string                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId               *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainName              *string                                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	SnapshotDataPerInterval *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval `json:"SnapshotDataPerInterval,omitempty" xml:"SnapshotDataPerInterval,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainSnapshotDataResponseBody) String() string {
@@ -11316,13 +11103,13 @@ func (s *DescribeVsDomainSnapshotDataResponseBody) SetEndTime(v string) *Describ
 	return s
 }
 
-func (s *DescribeVsDomainSnapshotDataResponseBody) SetRequestId(v string) *DescribeVsDomainSnapshotDataResponseBody {
-	s.RequestId = &v
+func (s *DescribeVsDomainSnapshotDataResponseBody) SetStartTime(v string) *DescribeVsDomainSnapshotDataResponseBody {
+	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeVsDomainSnapshotDataResponseBody) SetSnapshotDataPerInterval(v *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) *DescribeVsDomainSnapshotDataResponseBody {
-	s.SnapshotDataPerInterval = v
+func (s *DescribeVsDomainSnapshotDataResponseBody) SetRequestId(v string) *DescribeVsDomainSnapshotDataResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11331,8 +11118,8 @@ func (s *DescribeVsDomainSnapshotDataResponseBody) SetDomainName(v string) *Desc
 	return s
 }
 
-func (s *DescribeVsDomainSnapshotDataResponseBody) SetStartTime(v string) *DescribeVsDomainSnapshotDataResponseBody {
-	s.StartTime = &v
+func (s *DescribeVsDomainSnapshotDataResponseBody) SetSnapshotDataPerInterval(v *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) *DescribeVsDomainSnapshotDataResponseBody {
+	s.SnapshotDataPerInterval = v
 	return s
 }
 
@@ -11354,8 +11141,8 @@ func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval) SetDat
 }
 
 type DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule struct {
-	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	SnapshotValue *string `json:"SnapshotValue,omitempty" xml:"SnapshotValue,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) String() string {
@@ -11366,13 +11153,13 @@ func (s DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModul
 	return s.String()
 }
 
-func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule {
-	s.TimeStamp = &v
+func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) SetSnapshotValue(v string) *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule {
+	s.SnapshotValue = &v
 	return s
 }
 
-func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) SetSnapshotValue(v string) *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule {
-	s.SnapshotValue = &v
+func (s *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerIntervalDataModule {
+	s.TimeStamp = &v
 	return s
 }
 
@@ -11401,7 +11188,6 @@ func (s *DescribeVsDomainSnapshotDataResponse) SetBody(v *DescribeVsDomainSnapsh
 
 type DescribeVsDomainTrafficDataRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -11420,11 +11206,6 @@ func (s DescribeVsDomainTrafficDataRequest) GoString() string {
 
 func (s *DescribeVsDomainTrafficDataRequest) SetOwnerId(v int64) *DescribeVsDomainTrafficDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainTrafficDataRequest) SetShowLog(v string) *DescribeVsDomainTrafficDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11460,11 +11241,11 @@ func (s *DescribeVsDomainTrafficDataRequest) SetLocationNameEn(v string) *Descri
 
 type DescribeVsDomainTrafficDataResponseBody struct {
 	EndTime                *string                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime              *string                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId              *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName             *string                                                        `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	TrafficDataPerInterval *DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
-	StartTime              *string                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval           *string                                                        `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	TrafficDataPerInterval *DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainTrafficDataResponseBody) String() string {
@@ -11480,6 +11261,11 @@ func (s *DescribeVsDomainTrafficDataResponseBody) SetEndTime(v string) *Describe
 	return s
 }
 
+func (s *DescribeVsDomainTrafficDataResponseBody) SetStartTime(v string) *DescribeVsDomainTrafficDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeVsDomainTrafficDataResponseBody) SetRequestId(v string) *DescribeVsDomainTrafficDataResponseBody {
 	s.RequestId = &v
 	return s
@@ -11490,18 +11276,13 @@ func (s *DescribeVsDomainTrafficDataResponseBody) SetDomainName(v string) *Descr
 	return s
 }
 
-func (s *DescribeVsDomainTrafficDataResponseBody) SetTrafficDataPerInterval(v *DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval) *DescribeVsDomainTrafficDataResponseBody {
-	s.TrafficDataPerInterval = v
-	return s
-}
-
-func (s *DescribeVsDomainTrafficDataResponseBody) SetStartTime(v string) *DescribeVsDomainTrafficDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeVsDomainTrafficDataResponseBody) SetDataInterval(v string) *DescribeVsDomainTrafficDataResponseBody {
 	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVsDomainTrafficDataResponseBody) SetTrafficDataPerInterval(v *DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval) *DescribeVsDomainTrafficDataResponseBody {
+	s.TrafficDataPerInterval = v
 	return s
 }
 
@@ -11570,7 +11351,6 @@ func (s *DescribeVsDomainTrafficDataResponse) SetBody(v *DescribeVsDomainTraffic
 
 type DescribeVsDomainUvDataRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -11586,11 +11366,6 @@ func (s DescribeVsDomainUvDataRequest) GoString() string {
 
 func (s *DescribeVsDomainUvDataRequest) SetOwnerId(v int64) *DescribeVsDomainUvDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsDomainUvDataRequest) SetShowLog(v string) *DescribeVsDomainUvDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11610,12 +11385,12 @@ func (s *DescribeVsDomainUvDataRequest) SetEndTime(v string) *DescribeVsDomainUv
 }
 
 type DescribeVsDomainUvDataResponseBody struct {
-	UvDataInterval *DescribeVsDomainUvDataResponseBodyUvDataInterval `json:"UvDataInterval,omitempty" xml:"UvDataInterval,omitempty" type:"Struct"`
 	EndTime        *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime      *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainName     *string                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StartTime      *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	DataInterval   *string                                           `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	UvDataInterval *DescribeVsDomainUvDataResponseBodyUvDataInterval `json:"UvDataInterval,omitempty" xml:"UvDataInterval,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsDomainUvDataResponseBody) String() string {
@@ -11626,13 +11401,13 @@ func (s DescribeVsDomainUvDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVsDomainUvDataResponseBody) SetUvDataInterval(v *DescribeVsDomainUvDataResponseBodyUvDataInterval) *DescribeVsDomainUvDataResponseBody {
-	s.UvDataInterval = v
+func (s *DescribeVsDomainUvDataResponseBody) SetEndTime(v string) *DescribeVsDomainUvDataResponseBody {
+	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeVsDomainUvDataResponseBody) SetEndTime(v string) *DescribeVsDomainUvDataResponseBody {
-	s.EndTime = &v
+func (s *DescribeVsDomainUvDataResponseBody) SetStartTime(v string) *DescribeVsDomainUvDataResponseBody {
+	s.StartTime = &v
 	return s
 }
 
@@ -11646,13 +11421,13 @@ func (s *DescribeVsDomainUvDataResponseBody) SetDomainName(v string) *DescribeVs
 	return s
 }
 
-func (s *DescribeVsDomainUvDataResponseBody) SetStartTime(v string) *DescribeVsDomainUvDataResponseBody {
-	s.StartTime = &v
+func (s *DescribeVsDomainUvDataResponseBody) SetDataInterval(v string) *DescribeVsDomainUvDataResponseBody {
+	s.DataInterval = &v
 	return s
 }
 
-func (s *DescribeVsDomainUvDataResponseBody) SetDataInterval(v string) *DescribeVsDomainUvDataResponseBody {
-	s.DataInterval = &v
+func (s *DescribeVsDomainUvDataResponseBody) SetUvDataInterval(v *DescribeVsDomainUvDataResponseBodyUvDataInterval) *DescribeVsDomainUvDataResponseBody {
+	s.UvDataInterval = v
 	return s
 }
 
@@ -11721,7 +11496,6 @@ func (s *DescribeVsDomainUvDataResponse) SetBody(v *DescribeVsDomainUvDataRespon
 
 type DescribeVsPullStreamInfoConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -11735,11 +11509,6 @@ func (s DescribeVsPullStreamInfoConfigRequest) GoString() string {
 
 func (s *DescribeVsPullStreamInfoConfigRequest) SetOwnerId(v int64) *DescribeVsPullStreamInfoConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsPullStreamInfoConfigRequest) SetShowLog(v string) *DescribeVsPullStreamInfoConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11858,9 +11627,147 @@ func (s *DescribeVsPullStreamInfoConfigResponse) SetBody(v *DescribeVsPullStream
 	return s
 }
 
+type DescribeVsStorageUsageDataRequest struct {
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Bucket    *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	SplitBy   *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
+	Interval  *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s DescribeVsStorageUsageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVsStorageUsageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetOwnerId(v int64) *DescribeVsStorageUsageDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetBucket(v string) *DescribeVsStorageUsageDataRequest {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetSplitBy(v string) *DescribeVsStorageUsageDataRequest {
+	s.SplitBy = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetInterval(v string) *DescribeVsStorageUsageDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetStartTime(v string) *DescribeVsStorageUsageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataRequest) SetEndTime(v string) *DescribeVsStorageUsageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+type DescribeVsStorageUsageDataResponseBody struct {
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageUsage *DescribeVsStorageUsageDataResponseBodyStorageUsage `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
+}
+
+func (s DescribeVsStorageUsageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVsStorageUsageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVsStorageUsageDataResponseBody) SetRequestId(v string) *DescribeVsStorageUsageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataResponseBody) SetStorageUsage(v *DescribeVsStorageUsageDataResponseBodyStorageUsage) *DescribeVsStorageUsageDataResponseBody {
+	s.StorageUsage = v
+	return s
+}
+
+type DescribeVsStorageUsageDataResponseBodyStorageUsage struct {
+	StorageUsageDataModule []*DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule `json:"StorageUsageDataModule,omitempty" xml:"StorageUsageDataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVsStorageUsageDataResponseBodyStorageUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVsStorageUsageDataResponseBodyStorageUsage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVsStorageUsageDataResponseBodyStorageUsage) SetStorageUsageDataModule(v []*DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) *DescribeVsStorageUsageDataResponseBodyStorageUsage {
+	s.StorageUsageDataModule = v
+	return s
+}
+
+type DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule struct {
+	StorageDataValue *int32  `json:"StorageDataValue,omitempty" xml:"StorageDataValue,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Bucket           *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) SetStorageDataValue(v int32) *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule {
+	s.StorageDataValue = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) SetTimeStamp(v string) *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule) SetBucket(v string) *DescribeVsStorageUsageDataResponseBodyStorageUsageStorageUsageDataModule {
+	s.Bucket = &v
+	return s
+}
+
+type DescribeVsStorageUsageDataResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVsStorageUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVsStorageUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVsStorageUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVsStorageUsageDataResponse) SetHeaders(v map[string]*string) *DescribeVsStorageUsageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVsStorageUsageDataResponse) SetBody(v *DescribeVsStorageUsageDataResponseBody) *DescribeVsStorageUsageDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVsStreamsNotifyUrlConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -11874,11 +11781,6 @@ func (s DescribeVsStreamsNotifyUrlConfigRequest) GoString() string {
 
 func (s *DescribeVsStreamsNotifyUrlConfigRequest) SetOwnerId(v int64) *DescribeVsStreamsNotifyUrlConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsStreamsNotifyUrlConfigRequest) SetShowLog(v string) *DescribeVsStreamsNotifyUrlConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -11912,9 +11814,9 @@ func (s *DescribeVsStreamsNotifyUrlConfigResponseBody) SetLiveStreamsNotifyConfi
 
 type DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig struct {
 	AuthType   *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	NotifyUrl  *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	AuthKey    *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	NotifyUrl  *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 }
 
 func (s DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) String() string {
@@ -11930,11 +11832,6 @@ func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) Se
 	return s
 }
 
-func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) SetNotifyUrl(v string) *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig {
-	s.NotifyUrl = &v
-	return s
-}
-
 func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) SetAuthKey(v string) *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig {
 	s.AuthKey = &v
 	return s
@@ -11942,6 +11839,11 @@ func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) Se
 
 func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) SetDomainName(v string) *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig {
 	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) SetNotifyUrl(v string) *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig {
+	s.NotifyUrl = &v
 	return s
 }
 
@@ -11970,7 +11872,6 @@ func (s *DescribeVsStreamsNotifyUrlConfigResponse) SetBody(v *DescribeVsStreamsN
 
 type DescribeVsStreamsOnlineListRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -11993,11 +11894,6 @@ func (s DescribeVsStreamsOnlineListRequest) GoString() string {
 
 func (s *DescribeVsStreamsOnlineListRequest) SetOwnerId(v int64) *DescribeVsStreamsOnlineListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsStreamsOnlineListRequest) SetShowLog(v string) *DescribeVsStreamsOnlineListRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -12052,11 +11948,11 @@ func (s *DescribeVsStreamsOnlineListRequest) SetOrderBy(v string) *DescribeVsStr
 }
 
 type DescribeVsStreamsOnlineListResponseBody struct {
-	TotalNum   *int32                                             `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	TotalPage  *int32                                             `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	PageNum    *int32                                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum   *int32                                             `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	OnlineInfo *DescribeVsStreamsOnlineListResponseBodyOnlineInfo `json:"OnlineInfo,omitempty" xml:"OnlineInfo,omitempty" type:"Struct"`
 }
 
@@ -12066,11 +11962,6 @@ func (s DescribeVsStreamsOnlineListResponseBody) String() string {
 
 func (s DescribeVsStreamsOnlineListResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVsStreamsOnlineListResponseBody) SetTotalNum(v int32) *DescribeVsStreamsOnlineListResponseBody {
-	s.TotalNum = &v
-	return s
 }
 
 func (s *DescribeVsStreamsOnlineListResponseBody) SetTotalPage(v int32) *DescribeVsStreamsOnlineListResponseBody {
@@ -12090,6 +11981,11 @@ func (s *DescribeVsStreamsOnlineListResponseBody) SetPageSize(v int32) *Describe
 
 func (s *DescribeVsStreamsOnlineListResponseBody) SetRequestId(v string) *DescribeVsStreamsOnlineListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVsStreamsOnlineListResponseBody) SetTotalNum(v int32) *DescribeVsStreamsOnlineListResponseBody {
+	s.TotalNum = &v
 	return s
 }
 
@@ -12205,7 +12101,6 @@ func (s *DescribeVsStreamsOnlineListResponse) SetBody(v *DescribeVsStreamsOnline
 
 type DescribeVsStreamsPublishListRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -12228,11 +12123,6 @@ func (s DescribeVsStreamsPublishListRequest) GoString() string {
 
 func (s *DescribeVsStreamsPublishListRequest) SetOwnerId(v int64) *DescribeVsStreamsPublishListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsStreamsPublishListRequest) SetShowLog(v string) *DescribeVsStreamsPublishListRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -12287,11 +12177,11 @@ func (s *DescribeVsStreamsPublishListRequest) SetOrderBy(v string) *DescribeVsSt
 }
 
 type DescribeVsStreamsPublishListResponseBody struct {
-	TotalNum    *int32                                               `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	TotalPage   *int32                                               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	PageNum     *int32                                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum    *int32                                               `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	PublishInfo *DescribeVsStreamsPublishListResponseBodyPublishInfo `json:"PublishInfo,omitempty" xml:"PublishInfo,omitempty" type:"Struct"`
 }
 
@@ -12301,11 +12191,6 @@ func (s DescribeVsStreamsPublishListResponseBody) String() string {
 
 func (s DescribeVsStreamsPublishListResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVsStreamsPublishListResponseBody) SetTotalNum(v int32) *DescribeVsStreamsPublishListResponseBody {
-	s.TotalNum = &v
-	return s
 }
 
 func (s *DescribeVsStreamsPublishListResponseBody) SetTotalPage(v int32) *DescribeVsStreamsPublishListResponseBody {
@@ -12325,6 +12210,11 @@ func (s *DescribeVsStreamsPublishListResponseBody) SetPageSize(v int32) *Describ
 
 func (s *DescribeVsStreamsPublishListResponseBody) SetRequestId(v string) *DescribeVsStreamsPublishListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVsStreamsPublishListResponseBody) SetTotalNum(v int32) *DescribeVsStreamsPublishListResponseBody {
+	s.TotalNum = &v
 	return s
 }
 
@@ -12354,12 +12244,12 @@ type DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo st
 	EdgeNodeAddr  *string `json:"EdgeNodeAddr,omitempty" xml:"EdgeNodeAddr,omitempty"`
 	PublishUrl    *string `json:"PublishUrl,omitempty" xml:"PublishUrl,omitempty"`
 	StreamName    *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	StopTime      *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	StopTime      *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	TranscodeId   *string `json:"TranscodeId,omitempty" xml:"TranscodeId,omitempty"`
 	PublishDomain *string `json:"PublishDomain,omitempty" xml:"PublishDomain,omitempty"`
-	PublishTime   *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	PublishTime   *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
 	Transcoded    *string `json:"Transcoded,omitempty" xml:"Transcoded,omitempty"`
 	ClientAddr    *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
@@ -12389,13 +12279,13 @@ func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInf
 	return s
 }
 
-func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetStopTime(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
-	s.StopTime = &v
+func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetDomainName(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
+	s.DomainName = &v
 	return s
 }
 
-func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetDomainName(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
-	s.DomainName = &v
+func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetStopTime(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
+	s.StopTime = &v
 	return s
 }
 
@@ -12409,13 +12299,13 @@ func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInf
 	return s
 }
 
-func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetPublishTime(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
-	s.PublishTime = &v
+func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetAppName(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
+	s.AppName = &v
 	return s
 }
 
-func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetAppName(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
-	s.AppName = &v
+func (s *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo) SetPublishTime(v string) *DescribeVsStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo {
+	s.PublishTime = &v
 	return s
 }
 
@@ -12464,7 +12354,6 @@ func (s *DescribeVsStreamsPublishListResponse) SetBody(v *DescribeVsStreamsPubli
 
 type DescribeVsTopDomainsByFlowRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -12480,11 +12369,6 @@ func (s DescribeVsTopDomainsByFlowRequest) GoString() string {
 
 func (s *DescribeVsTopDomainsByFlowRequest) SetOwnerId(v int64) *DescribeVsTopDomainsByFlowRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsTopDomainsByFlowRequest) SetShowLog(v string) *DescribeVsTopDomainsByFlowRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -12504,12 +12388,12 @@ func (s *DescribeVsTopDomainsByFlowRequest) SetLimit(v int64) *DescribeVsTopDoma
 }
 
 type DescribeVsTopDomainsByFlowResponseBody struct {
-	TopDomains        *DescribeVsTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
-	EndTime           *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainOnlineCount *int64                                            `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
+	EndTime           *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime         *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainCount       *int64                                            `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	TopDomains        *DescribeVsTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
 }
 
 func (s DescribeVsTopDomainsByFlowResponseBody) String() string {
@@ -12520,8 +12404,8 @@ func (s DescribeVsTopDomainsByFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVsTopDomainsByFlowResponseBody) SetTopDomains(v *DescribeVsTopDomainsByFlowResponseBodyTopDomains) *DescribeVsTopDomainsByFlowResponseBody {
-	s.TopDomains = v
+func (s *DescribeVsTopDomainsByFlowResponseBody) SetDomainOnlineCount(v int64) *DescribeVsTopDomainsByFlowResponseBody {
+	s.DomainOnlineCount = &v
 	return s
 }
 
@@ -12530,23 +12414,23 @@ func (s *DescribeVsTopDomainsByFlowResponseBody) SetEndTime(v string) *DescribeV
 	return s
 }
 
-func (s *DescribeVsTopDomainsByFlowResponseBody) SetRequestId(v string) *DescribeVsTopDomainsByFlowResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVsTopDomainsByFlowResponseBody) SetDomainOnlineCount(v int64) *DescribeVsTopDomainsByFlowResponseBody {
-	s.DomainOnlineCount = &v
-	return s
-}
-
 func (s *DescribeVsTopDomainsByFlowResponseBody) SetStartTime(v string) *DescribeVsTopDomainsByFlowResponseBody {
 	s.StartTime = &v
 	return s
 }
 
+func (s *DescribeVsTopDomainsByFlowResponseBody) SetRequestId(v string) *DescribeVsTopDomainsByFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeVsTopDomainsByFlowResponseBody) SetDomainCount(v int64) *DescribeVsTopDomainsByFlowResponseBody {
 	s.DomainCount = &v
+	return s
+}
+
+func (s *DescribeVsTopDomainsByFlowResponseBody) SetTopDomains(v *DescribeVsTopDomainsByFlowResponseBodyTopDomains) *DescribeVsTopDomainsByFlowResponseBody {
+	s.TopDomains = v
 	return s
 }
 
@@ -12645,7 +12529,6 @@ func (s *DescribeVsTopDomainsByFlowResponse) SetBody(v *DescribeVsTopDomainsByFl
 
 type DescribeVsUpPeakPublishStreamDataRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	DomainSwitch *string `json:"DomainSwitch,omitempty" xml:"DomainSwitch,omitempty"`
@@ -12662,11 +12545,6 @@ func (s DescribeVsUpPeakPublishStreamDataRequest) GoString() string {
 
 func (s *DescribeVsUpPeakPublishStreamDataRequest) SetOwnerId(v int64) *DescribeVsUpPeakPublishStreamDataRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsUpPeakPublishStreamDataRequest) SetShowLog(v string) *DescribeVsUpPeakPublishStreamDataRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -12732,9 +12610,9 @@ func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStr
 
 type DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData struct {
 	QueryTime        *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	BandWidth        *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
 	StatName         *string `json:"StatName,omitempty" xml:"StatName,omitempty"`
 	PeakTime         *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	BandWidth        *string `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
 	PublishStreamNum *int32  `json:"PublishStreamNum,omitempty" xml:"PublishStreamNum,omitempty"`
 }
 
@@ -12751,6 +12629,11 @@ func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStr
 	return s
 }
 
+func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData) SetBandWidth(v string) *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData {
+	s.BandWidth = &v
+	return s
+}
+
 func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData) SetStatName(v string) *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData {
 	s.StatName = &v
 	return s
@@ -12758,11 +12641,6 @@ func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStr
 
 func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData) SetPeakTime(v string) *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData {
 	s.PeakTime = &v
-	return s
-}
-
-func (s *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData) SetBandWidth(v string) *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatasDescribeVsUpPeakPublishStreamData {
-	s.BandWidth = &v
 	return s
 }
 
@@ -12797,7 +12675,6 @@ func (s *DescribeVsUpPeakPublishStreamDataResponse) SetBody(v *DescribeVsUpPeakP
 type DescribeVsUserResourcePackageRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog       *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 }
 
 func (s DescribeVsUserResourcePackageRequest) String() string {
@@ -12815,11 +12692,6 @@ func (s *DescribeVsUserResourcePackageRequest) SetSecurityToken(v string) *Descr
 
 func (s *DescribeVsUserResourcePackageRequest) SetOwnerId(v int64) *DescribeVsUserResourcePackageRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVsUserResourcePackageRequest) SetShowLog(v string) *DescribeVsUserResourcePackageRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -12935,7 +12807,6 @@ func (s *DescribeVsUserResourcePackageResponse) SetBody(v *DescribeVsUserResourc
 
 type ForbidVsStreamRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog             *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName          *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -12955,11 +12826,6 @@ func (s ForbidVsStreamRequest) GoString() string {
 
 func (s *ForbidVsStreamRequest) SetOwnerId(v int64) *ForbidVsStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ForbidVsStreamRequest) SetShowLog(v string) *ForbidVsStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13038,11 +12904,151 @@ func (s *ForbidVsStreamResponse) SetBody(v *ForbidVsStreamResponseBody) *ForbidV
 	return s
 }
 
+type GetBucketInfoRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s GetBucketInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoRequest) SetOwnerId(v int64) *GetBucketInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetBucketInfoRequest) SetBucketName(v string) *GetBucketInfoRequest {
+	s.BucketName = &v
+	return s
+}
+
+type GetBucketInfoResponseBody struct {
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BucketInfo *GetBucketInfoResponseBodyBucketInfo `json:"BucketInfo,omitempty" xml:"BucketInfo,omitempty" type:"Struct"`
+}
+
+func (s GetBucketInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponseBody) SetRequestId(v string) *GetBucketInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBody) SetBucketInfo(v *GetBucketInfoResponseBodyBucketInfo) *GetBucketInfoResponseBody {
+	s.BucketInfo = v
+	return s
+}
+
+type GetBucketInfoResponseBodyBucketInfo struct {
+	StorageClass       *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DispatcherType     *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Endpoint           *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	BucketAcl          *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	BucketName         *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+}
+
+func (s GetBucketInfoResponseBodyBucketInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponseBodyBucketInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetStorageClass(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetDataRedundancyType(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.DataRedundancyType = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetResourceType(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetComment(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetDispatcherType(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.DispatcherType = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetCreateTime(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetEndpoint(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetBucketAcl(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetBucketName(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.BucketName = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetModifyTime(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.ModifyTime = &v
+	return s
+}
+
+type GetBucketInfoResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBucketInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponse) SetHeaders(v map[string]*string) *GetBucketInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBucketInfoResponse) SetBody(v *GetBucketInfoResponseBody) *GetBucketInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GotoPresetRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	PresetId *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PresetId    *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s GotoPresetRequest) String() string {
@@ -13058,11 +13064,6 @@ func (s *GotoPresetRequest) SetOwnerId(v int64) *GotoPresetRequest {
 	return s
 }
 
-func (s *GotoPresetRequest) SetShowLog(v string) *GotoPresetRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *GotoPresetRequest) SetId(v string) *GotoPresetRequest {
 	s.Id = &v
 	return s
@@ -13073,9 +13074,14 @@ func (s *GotoPresetRequest) SetPresetId(v string) *GotoPresetRequest {
 	return s
 }
 
+func (s *GotoPresetRequest) SetSubProtocol(v string) *GotoPresetRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type GotoPresetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GotoPresetResponseBody) String() string {
@@ -13086,13 +13092,13 @@ func (s GotoPresetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GotoPresetResponseBody) SetRequestId(v string) *GotoPresetResponseBody {
-	s.RequestId = &v
+func (s *GotoPresetResponseBody) SetId(v string) *GotoPresetResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *GotoPresetResponseBody) SetId(v string) *GotoPresetResponseBody {
-	s.Id = &v
+func (s *GotoPresetResponseBody) SetRequestId(v string) *GotoPresetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13119,9 +13125,706 @@ func (s *GotoPresetResponse) SetBody(v *GotoPresetResponseBody) *GotoPresetRespo
 	return s
 }
 
+type ListBucketsRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Marker     *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListBucketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsRequest) SetOwnerId(v int64) *ListBucketsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetPrefix(v string) *ListBucketsRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetKeyword(v string) *ListBucketsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetMarker(v string) *ListBucketsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetPageNumber(v int32) *ListBucketsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetPageSize(v int32) *ListBucketsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListBucketsResponseBody struct {
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BucketInfos []*ListBucketsResponseBodyBucketInfos `json:"BucketInfos,omitempty" xml:"BucketInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListBucketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponseBody) SetTotalCount(v int64) *ListBucketsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListBucketsResponseBody) SetRequestId(v string) *ListBucketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBucketsResponseBody) SetBucketInfos(v []*ListBucketsResponseBodyBucketInfos) *ListBucketsResponseBody {
+	s.BucketInfos = v
+	return s
+}
+
+type ListBucketsResponseBodyBucketInfos struct {
+	StorageClass       *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DispatcherType     *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Endpoint           *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	BucketAcl          *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	BucketName         *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+}
+
+func (s ListBucketsResponseBodyBucketInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponseBodyBucketInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetStorageClass(v string) *ListBucketsResponseBodyBucketInfos {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetDataRedundancyType(v string) *ListBucketsResponseBodyBucketInfos {
+	s.DataRedundancyType = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetResourceType(v string) *ListBucketsResponseBodyBucketInfos {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetComment(v string) *ListBucketsResponseBodyBucketInfos {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetDispatcherType(v string) *ListBucketsResponseBodyBucketInfos {
+	s.DispatcherType = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetCreateTime(v string) *ListBucketsResponseBodyBucketInfos {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetEndpoint(v string) *ListBucketsResponseBodyBucketInfos {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetBucketAcl(v string) *ListBucketsResponseBodyBucketInfos {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetBucketName(v string) *ListBucketsResponseBodyBucketInfos {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetModifyTime(v string) *ListBucketsResponseBodyBucketInfos {
+	s.ModifyTime = &v
+	return s
+}
+
+type ListBucketsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListBucketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBucketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponse) SetHeaders(v map[string]*string) *ListBucketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBucketsResponse) SetBody(v *ListBucketsResponseBody) *ListBucketsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeviceChannelsRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+}
+
+func (s ListDeviceChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceChannelsRequest) SetOwnerId(v int64) *ListDeviceChannelsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDeviceChannelsRequest) SetDeviceId(v string) *ListDeviceChannelsRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListDeviceChannelsRequest) SetPageSize(v int64) *ListDeviceChannelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceChannelsRequest) SetPageNum(v int64) *ListDeviceChannelsRequest {
+	s.PageNum = &v
+	return s
+}
+
+type ListDeviceChannelsResponseBody struct {
+	PageNum    *int64                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageCount  *int64                                    `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	Channels   []*ListDeviceChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s ListDeviceChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceChannelsResponseBody) SetPageNum(v int64) *ListDeviceChannelsResponseBody {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBody) SetPageSize(v int64) *ListDeviceChannelsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBody) SetRequestId(v string) *ListDeviceChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBody) SetTotalCount(v int64) *ListDeviceChannelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBody) SetPageCount(v int64) *ListDeviceChannelsResponseBody {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBody) SetChannels(v []*ListDeviceChannelsResponseBodyChannels) *ListDeviceChannelsResponseBody {
+	s.Channels = v
+	return s
+}
+
+type ListDeviceChannelsResponseBodyChannels struct {
+	ChannelId    *int64  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+}
+
+func (s ListDeviceChannelsResponseBodyChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceChannelsResponseBodyChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceChannelsResponseBodyChannels) SetChannelId(v int64) *ListDeviceChannelsResponseBodyChannels {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBodyChannels) SetParams(v string) *ListDeviceChannelsResponseBodyChannels {
+	s.Params = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBodyChannels) SetDeviceStatus(v string) *ListDeviceChannelsResponseBodyChannels {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBodyChannels) SetName(v string) *ListDeviceChannelsResponseBodyChannels {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDeviceChannelsResponseBodyChannels) SetDeviceId(v string) *ListDeviceChannelsResponseBodyChannels {
+	s.DeviceId = &v
+	return s
+}
+
+type ListDeviceChannelsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDeviceChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeviceChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceChannelsResponse) SetHeaders(v map[string]*string) *ListDeviceChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeviceChannelsResponse) SetBody(v *ListDeviceChannelsResponseBody) *ListDeviceChannelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeviceRecordsRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	SearchCriteria *string `json:"SearchCriteria,omitempty" xml:"SearchCriteria,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+}
+
+func (s ListDeviceRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceRecordsRequest) SetOwnerId(v int64) *ListDeviceRecordsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDeviceRecordsRequest) SetDeviceId(v string) *ListDeviceRecordsRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListDeviceRecordsRequest) SetStreamId(v string) *ListDeviceRecordsRequest {
+	s.StreamId = &v
+	return s
+}
+
+func (s *ListDeviceRecordsRequest) SetSearchCriteria(v string) *ListDeviceRecordsRequest {
+	s.SearchCriteria = &v
+	return s
+}
+
+func (s *ListDeviceRecordsRequest) SetPageSize(v int64) *ListDeviceRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceRecordsRequest) SetPageNum(v int64) *ListDeviceRecordsRequest {
+	s.PageNum = &v
+	return s
+}
+
+type ListDeviceRecordsResponseBody struct {
+	PageNum    *int64                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageCount  *int64                                  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	Records    []*ListDeviceRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ListDeviceRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceRecordsResponseBody) SetPageNum(v int64) *ListDeviceRecordsResponseBody {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBody) SetPageSize(v int64) *ListDeviceRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBody) SetRequestId(v string) *ListDeviceRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBody) SetTotalCount(v int64) *ListDeviceRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBody) SetPageCount(v int64) *ListDeviceRecordsResponseBody {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBody) SetRecords(v []*ListDeviceRecordsResponseBodyRecords) *ListDeviceRecordsResponseBody {
+	s.Records = v
+	return s
+}
+
+type ListDeviceRecordsResponseBodyRecords struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	Filename   *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	FileSize   *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+}
+
+func (s ListDeviceRecordsResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceRecordsResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceRecordsResponseBodyRecords) SetEndTime(v string) *ListDeviceRecordsResponseBodyRecords {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBodyRecords) SetStartTime(v string) *ListDeviceRecordsResponseBodyRecords {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBodyRecords) SetRecordType(v string) *ListDeviceRecordsResponseBodyRecords {
+	s.RecordType = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBodyRecords) SetFilename(v string) *ListDeviceRecordsResponseBodyRecords {
+	s.Filename = &v
+	return s
+}
+
+func (s *ListDeviceRecordsResponseBodyRecords) SetFileSize(v int64) *ListDeviceRecordsResponseBodyRecords {
+	s.FileSize = &v
+	return s
+}
+
+type ListDeviceRecordsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDeviceRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeviceRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceRecordsResponse) SetHeaders(v map[string]*string) *ListDeviceRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeviceRecordsResponse) SetBody(v *ListDeviceRecordsResponseBody) *ListDeviceRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type ListObjectsRequest struct {
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName        *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Delimiter         *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	EncodingType      *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
+	Marker            *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	MaxKeys           *int32  `json:"MaxKeys,omitempty" xml:"MaxKeys,omitempty"`
+	Prefix            *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	StartAfter        *string `json:"StartAfter,omitempty" xml:"StartAfter,omitempty"`
+}
+
+func (s ListObjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsRequest) SetOwnerId(v int64) *ListObjectsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetBucketName(v string) *ListObjectsRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetDelimiter(v string) *ListObjectsRequest {
+	s.Delimiter = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetEncodingType(v string) *ListObjectsRequest {
+	s.EncodingType = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetMarker(v string) *ListObjectsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetMaxKeys(v int32) *ListObjectsRequest {
+	s.MaxKeys = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetPrefix(v string) *ListObjectsRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetContinuationToken(v string) *ListObjectsRequest {
+	s.ContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetStartAfter(v string) *ListObjectsRequest {
+	s.StartAfter = &v
+	return s
+}
+
+type ListObjectsResponseBody struct {
+	Marker                *string                            `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	MaxKeys               *int32                             `json:"MaxKeys,omitempty" xml:"MaxKeys,omitempty"`
+	Prefix                *string                            `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	ContinuationToken     *string                            `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	NextContinuationToken *string                            `json:"NextContinuationToken,omitempty" xml:"NextContinuationToken,omitempty"`
+	EncodingType          *string                            `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
+	NextMarker            *string                            `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	Delimiter             *string                            `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	RequestId             *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BucketName            *string                            `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	IsTruncated           *bool                              `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	KeyCount              *int32                             `json:"KeyCount,omitempty" xml:"KeyCount,omitempty"`
+	CommonPrefixes        []*string                          `json:"CommonPrefixes,omitempty" xml:"CommonPrefixes,omitempty" type:"Repeated"`
+	Contents              []*ListObjectsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s ListObjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponseBody) SetMarker(v string) *ListObjectsResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetMaxKeys(v int32) *ListObjectsResponseBody {
+	s.MaxKeys = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetPrefix(v string) *ListObjectsResponseBody {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetContinuationToken(v string) *ListObjectsResponseBody {
+	s.ContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetNextContinuationToken(v string) *ListObjectsResponseBody {
+	s.NextContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetEncodingType(v string) *ListObjectsResponseBody {
+	s.EncodingType = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetNextMarker(v string) *ListObjectsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetDelimiter(v string) *ListObjectsResponseBody {
+	s.Delimiter = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetRequestId(v string) *ListObjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetBucketName(v string) *ListObjectsResponseBody {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetIsTruncated(v bool) *ListObjectsResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetKeyCount(v int32) *ListObjectsResponseBody {
+	s.KeyCount = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetCommonPrefixes(v []*string) *ListObjectsResponseBody {
+	s.CommonPrefixes = v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetContents(v []*ListObjectsResponseBodyContents) *ListObjectsResponseBody {
+	s.Contents = v
+	return s
+}
+
+type ListObjectsResponseBodyContents struct {
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	ETag         *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	Size         *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListObjectsResponseBodyContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponseBodyContents) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponseBodyContents) SetStorageClass(v string) *ListObjectsResponseBodyContents {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetLastModified(v string) *ListObjectsResponseBodyContents {
+	s.LastModified = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetKey(v string) *ListObjectsResponseBodyContents {
+	s.Key = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetETag(v string) *ListObjectsResponseBodyContents {
+	s.ETag = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetSize(v int64) *ListObjectsResponseBodyContents {
+	s.Size = &v
+	return s
+}
+
+type ListObjectsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListObjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListObjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponse) SetHeaders(v map[string]*string) *ListObjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListObjectsResponse) SetBody(v *ListObjectsResponseBody) *ListObjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDeviceRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13155,11 +13858,6 @@ func (s ModifyDeviceRequest) GoString() string {
 
 func (s *ModifyDeviceRequest) SetOwnerId(v int64) *ModifyDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDeviceRequest) SetShowLog(v string) *ModifyDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13269,8 +13967,8 @@ func (s *ModifyDeviceRequest) SetParams(v string) *ModifyDeviceRequest {
 }
 
 type ModifyDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDeviceResponseBody) String() string {
@@ -13281,13 +13979,13 @@ func (s ModifyDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDeviceResponseBody) SetRequestId(v string) *ModifyDeviceResponseBody {
-	s.RequestId = &v
+func (s *ModifyDeviceResponseBody) SetId(v string) *ModifyDeviceResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ModifyDeviceResponseBody) SetId(v string) *ModifyDeviceResponseBody {
-	s.Id = &v
+func (s *ModifyDeviceResponseBody) SetRequestId(v string) *ModifyDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13316,7 +14014,6 @@ func (s *ModifyDeviceResponse) SetBody(v *ModifyDeviceResponseBody) *ModifyDevic
 
 type ModifyDeviceAlarmRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ChannelId *int32  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	AlarmId   *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
@@ -13333,11 +14030,6 @@ func (s ModifyDeviceAlarmRequest) GoString() string {
 
 func (s *ModifyDeviceAlarmRequest) SetOwnerId(v int64) *ModifyDeviceAlarmRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDeviceAlarmRequest) SetShowLog(v string) *ModifyDeviceAlarmRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13403,7 +14095,6 @@ func (s *ModifyDeviceAlarmResponse) SetBody(v *ModifyDeviceAlarmResponseBody) *M
 
 type ModifyDeviceCaptureRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Image   *int32  `json:"Image,omitempty" xml:"Image,omitempty"`
 	Video   *int32  `json:"Video,omitempty" xml:"Video,omitempty"`
@@ -13419,11 +14110,6 @@ func (s ModifyDeviceCaptureRequest) GoString() string {
 
 func (s *ModifyDeviceCaptureRequest) SetOwnerId(v int64) *ModifyDeviceCaptureRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDeviceCaptureRequest) SetShowLog(v string) *ModifyDeviceCaptureRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13484,7 +14170,6 @@ func (s *ModifyDeviceCaptureResponse) SetBody(v *ModifyDeviceCaptureResponseBody
 
 type ModifyDeviceChannelsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Dsn          *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
@@ -13501,11 +14186,6 @@ func (s ModifyDeviceChannelsRequest) GoString() string {
 
 func (s *ModifyDeviceChannelsRequest) SetOwnerId(v int64) *ModifyDeviceChannelsRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDeviceChannelsRequest) SetShowLog(v string) *ModifyDeviceChannelsRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13571,7 +14251,6 @@ func (s *ModifyDeviceChannelsResponse) SetBody(v *ModifyDeviceChannelsResponseBo
 
 type ModifyDirectoryRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13587,11 +14266,6 @@ func (s ModifyDirectoryRequest) GoString() string {
 
 func (s *ModifyDirectoryRequest) SetOwnerId(v int64) *ModifyDirectoryRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyDirectoryRequest) SetShowLog(v string) *ModifyDirectoryRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13611,8 +14285,8 @@ func (s *ModifyDirectoryRequest) SetDescription(v string) *ModifyDirectoryReques
 }
 
 type ModifyDirectoryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDirectoryResponseBody) String() string {
@@ -13623,13 +14297,13 @@ func (s ModifyDirectoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDirectoryResponseBody) SetRequestId(v string) *ModifyDirectoryResponseBody {
-	s.RequestId = &v
+func (s *ModifyDirectoryResponseBody) SetId(v string) *ModifyDirectoryResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ModifyDirectoryResponseBody) SetId(v string) *ModifyDirectoryResponseBody {
-	s.Id = &v
+func (s *ModifyDirectoryResponseBody) SetRequestId(v string) *ModifyDirectoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13658,7 +14332,6 @@ func (s *ModifyDirectoryResponse) SetBody(v *ModifyDirectoryResponseBody) *Modif
 
 type ModifyGroupRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13687,11 +14360,6 @@ func (s ModifyGroupRequest) GoString() string {
 
 func (s *ModifyGroupRequest) SetOwnerId(v int64) *ModifyGroupRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyGroupRequest) SetShowLog(v string) *ModifyGroupRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13776,8 +14444,8 @@ func (s *ModifyGroupRequest) SetCaptureOssPath(v string) *ModifyGroupRequest {
 }
 
 type ModifyGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyGroupResponseBody) String() string {
@@ -13788,13 +14456,13 @@ func (s ModifyGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyGroupResponseBody) SetRequestId(v string) *ModifyGroupResponseBody {
-	s.RequestId = &v
+func (s *ModifyGroupResponseBody) SetId(v string) *ModifyGroupResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ModifyGroupResponseBody) SetId(v string) *ModifyGroupResponseBody {
-	s.Id = &v
+func (s *ModifyGroupResponseBody) SetRequestId(v string) *ModifyGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13823,7 +14491,6 @@ func (s *ModifyGroupResponse) SetBody(v *ModifyGroupResponseBody) *ModifyGroupRe
 
 type ModifyParentPlatformRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog        *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13846,11 +14513,6 @@ func (s ModifyParentPlatformRequest) GoString() string {
 
 func (s *ModifyParentPlatformRequest) SetOwnerId(v int64) *ModifyParentPlatformRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyParentPlatformRequest) SetShowLog(v string) *ModifyParentPlatformRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -13905,8 +14567,8 @@ func (s *ModifyParentPlatformRequest) SetAutoStart(v bool) *ModifyParentPlatform
 }
 
 type ModifyParentPlatformResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyParentPlatformResponseBody) String() string {
@@ -13917,13 +14579,13 @@ func (s ModifyParentPlatformResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyParentPlatformResponseBody) SetRequestId(v string) *ModifyParentPlatformResponseBody {
-	s.RequestId = &v
+func (s *ModifyParentPlatformResponseBody) SetId(v string) *ModifyParentPlatformResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ModifyParentPlatformResponseBody) SetId(v string) *ModifyParentPlatformResponseBody {
-	s.Id = &v
+func (s *ModifyParentPlatformResponseBody) SetRequestId(v string) *ModifyParentPlatformResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13952,7 +14614,6 @@ func (s *ModifyParentPlatformResponse) SetBody(v *ModifyParentPlatformResponseBo
 
 type ModifyTemplateRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -13987,11 +14648,6 @@ func (s ModifyTemplateRequest) GoString() string {
 
 func (s *ModifyTemplateRequest) SetOwnerId(v int64) *ModifyTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyTemplateRequest) SetShowLog(v string) *ModifyTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14106,8 +14762,8 @@ func (s *ModifyTemplateRequest) SetTransConfigsJSON(v string) *ModifyTemplateReq
 }
 
 type ModifyTemplateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyTemplateResponseBody) String() string {
@@ -14118,13 +14774,13 @@ func (s ModifyTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyTemplateResponseBody) SetRequestId(v string) *ModifyTemplateResponseBody {
-	s.RequestId = &v
+func (s *ModifyTemplateResponseBody) SetId(v string) *ModifyTemplateResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *ModifyTemplateResponseBody) SetId(v string) *ModifyTemplateResponseBody {
-	s.Id = &v
+func (s *ModifyTemplateResponseBody) SetRequestId(v string) *ModifyTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14152,8 +14808,8 @@ func (s *ModifyTemplateResponse) SetBody(v *ModifyTemplateResponseBody) *ModifyT
 }
 
 type OpenVsServiceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenVsServiceResponseBody) String() string {
@@ -14164,13 +14820,13 @@ func (s OpenVsServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *OpenVsServiceResponseBody) SetRequestId(v string) *OpenVsServiceResponseBody {
-	s.RequestId = &v
+func (s *OpenVsServiceResponseBody) SetOrderId(v string) *OpenVsServiceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *OpenVsServiceResponseBody) SetOrderId(v string) *OpenVsServiceResponseBody {
-	s.OrderId = &v
+func (s *OpenVsServiceResponseBody) SetRequestId(v string) *OpenVsServiceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14197,9 +14853,194 @@ func (s *OpenVsServiceResponse) SetBody(v *OpenVsServiceResponseBody) *OpenVsSer
 	return s
 }
 
+type PrepareUploadRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	ClientIp   *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+}
+
+func (s PrepareUploadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrepareUploadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PrepareUploadRequest) SetOwnerId(v int64) *PrepareUploadRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PrepareUploadRequest) SetBucketName(v string) *PrepareUploadRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *PrepareUploadRequest) SetClientIp(v string) *PrepareUploadRequest {
+	s.ClientIp = &v
+	return s
+}
+
+type PrepareUploadResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+}
+
+func (s PrepareUploadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrepareUploadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PrepareUploadResponseBody) SetRequestId(v string) *PrepareUploadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PrepareUploadResponseBody) SetBucketName(v string) *PrepareUploadResponseBody {
+	s.BucketName = &v
+	return s
+}
+
+func (s *PrepareUploadResponseBody) SetEndpoint(v string) *PrepareUploadResponseBody {
+	s.Endpoint = &v
+	return s
+}
+
+type PrepareUploadResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PrepareUploadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PrepareUploadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrepareUploadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PrepareUploadResponse) SetHeaders(v map[string]*string) *PrepareUploadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PrepareUploadResponse) SetBody(v *PrepareUploadResponseBody) *PrepareUploadResponse {
+	s.Body = v
+	return s
+}
+
+type PutBucketRequest struct {
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName         *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Endpoint           *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DispatcherType     *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
+	BucketAcl          *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	StorageClass       *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+}
+
+func (s PutBucketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketRequest) SetOwnerId(v int64) *PutBucketRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetBucketName(v string) *PutBucketRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetEndpoint(v string) *PutBucketRequest {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetComment(v string) *PutBucketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetDispatcherType(v string) *PutBucketRequest {
+	s.DispatcherType = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetBucketAcl(v string) *PutBucketRequest {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetStorageClass(v string) *PutBucketRequest {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetResourceType(v string) *PutBucketRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetDataRedundancyType(v string) *PutBucketRequest {
+	s.DataRedundancyType = &v
+	return s
+}
+
+type PutBucketResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutBucketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketResponseBody) SetRequestId(v string) *PutBucketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PutBucketResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PutBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutBucketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketResponse) SetHeaders(v map[string]*string) *PutBucketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutBucketResponse) SetBody(v *PutBucketResponseBody) *PutBucketResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeVsStreamRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog             *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName          *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -14217,11 +15058,6 @@ func (s ResumeVsStreamRequest) GoString() string {
 
 func (s *ResumeVsStreamRequest) SetOwnerId(v int64) *ResumeVsStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ResumeVsStreamRequest) SetShowLog(v string) *ResumeVsStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14291,10 +15127,10 @@ func (s *ResumeVsStreamResponse) SetBody(v *ResumeVsStreamResponseBody) *ResumeV
 }
 
 type SetPresetRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	PresetId *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PresetId    *string `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s SetPresetRequest) String() string {
@@ -14310,11 +15146,6 @@ func (s *SetPresetRequest) SetOwnerId(v int64) *SetPresetRequest {
 	return s
 }
 
-func (s *SetPresetRequest) SetShowLog(v string) *SetPresetRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *SetPresetRequest) SetId(v string) *SetPresetRequest {
 	s.Id = &v
 	return s
@@ -14325,9 +15156,14 @@ func (s *SetPresetRequest) SetPresetId(v string) *SetPresetRequest {
 	return s
 }
 
+func (s *SetPresetRequest) SetSubProtocol(v string) *SetPresetRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type SetPresetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetPresetResponseBody) String() string {
@@ -14338,13 +15174,13 @@ func (s SetPresetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetPresetResponseBody) SetRequestId(v string) *SetPresetResponseBody {
-	s.RequestId = &v
+func (s *SetPresetResponseBody) SetId(v string) *SetPresetResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *SetPresetResponseBody) SetId(v string) *SetPresetResponseBody {
-	s.Id = &v
+func (s *SetPresetResponseBody) SetRequestId(v string) *SetPresetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14373,7 +15209,6 @@ func (s *SetPresetResponse) SetBody(v *SetPresetResponseBody) *SetPresetResponse
 
 type SetVsDomainCertificateRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
 	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
@@ -14394,11 +15229,6 @@ func (s SetVsDomainCertificateRequest) GoString() string {
 
 func (s *SetVsDomainCertificateRequest) SetOwnerId(v int64) *SetVsDomainCertificateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *SetVsDomainCertificateRequest) SetShowLog(v string) *SetVsDomainCertificateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14484,7 +15314,6 @@ func (s *SetVsDomainCertificateResponse) SetBody(v *SetVsDomainCertificateRespon
 
 type SetVsStreamsNotifyUrlConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	NotifyUrl  *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	AuthType   *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
@@ -14501,11 +15330,6 @@ func (s SetVsStreamsNotifyUrlConfigRequest) GoString() string {
 
 func (s *SetVsStreamsNotifyUrlConfigRequest) SetOwnerId(v int64) *SetVsStreamsNotifyUrlConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *SetVsStreamsNotifyUrlConfigRequest) SetShowLog(v string) *SetVsStreamsNotifyUrlConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14571,7 +15395,6 @@ func (s *SetVsStreamsNotifyUrlConfigResponse) SetBody(v *SetVsStreamsNotifyUrlCo
 
 type StartDeviceRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -14588,19 +15411,14 @@ func (s *StartDeviceRequest) SetOwnerId(v int64) *StartDeviceRequest {
 	return s
 }
 
-func (s *StartDeviceRequest) SetShowLog(v string) *StartDeviceRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *StartDeviceRequest) SetId(v string) *StartDeviceRequest {
 	s.Id = &v
 	return s
 }
 
 type StartDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartDeviceResponseBody) String() string {
@@ -14611,13 +15429,13 @@ func (s StartDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartDeviceResponseBody) SetRequestId(v string) *StartDeviceResponseBody {
-	s.RequestId = &v
+func (s *StartDeviceResponseBody) SetId(v string) *StartDeviceResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StartDeviceResponseBody) SetId(v string) *StartDeviceResponseBody {
-	s.Id = &v
+func (s *StartDeviceResponseBody) SetRequestId(v string) *StartDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14646,7 +15464,6 @@ func (s *StartDeviceResponse) SetBody(v *StartDeviceResponseBody) *StartDeviceRe
 
 type StartParentPlatformRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -14663,19 +15480,14 @@ func (s *StartParentPlatformRequest) SetOwnerId(v int64) *StartParentPlatformReq
 	return s
 }
 
-func (s *StartParentPlatformRequest) SetShowLog(v string) *StartParentPlatformRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *StartParentPlatformRequest) SetId(v string) *StartParentPlatformRequest {
 	s.Id = &v
 	return s
 }
 
 type StartParentPlatformResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartParentPlatformResponseBody) String() string {
@@ -14686,13 +15498,13 @@ func (s StartParentPlatformResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartParentPlatformResponseBody) SetRequestId(v string) *StartParentPlatformResponseBody {
-	s.RequestId = &v
+func (s *StartParentPlatformResponseBody) SetId(v string) *StartParentPlatformResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StartParentPlatformResponseBody) SetId(v string) *StartParentPlatformResponseBody {
-	s.Id = &v
+func (s *StartParentPlatformResponseBody) SetRequestId(v string) *StartParentPlatformResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14721,7 +15533,6 @@ func (s *StartParentPlatformResponse) SetBody(v *StartParentPlatformResponseBody
 
 type StartRecordStreamRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
 	App        *string `json:"App,omitempty" xml:"App,omitempty"`
@@ -14738,11 +15549,6 @@ func (s StartRecordStreamRequest) GoString() string {
 
 func (s *StartRecordStreamRequest) SetOwnerId(v int64) *StartRecordStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StartRecordStreamRequest) SetShowLog(v string) *StartRecordStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14808,7 +15614,6 @@ func (s *StartRecordStreamResponse) SetBody(v *StartRecordStreamResponseBody) *S
 
 type StartStreamRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -14824,11 +15629,6 @@ func (s StartStreamRequest) GoString() string {
 
 func (s *StartStreamRequest) SetOwnerId(v int64) *StartStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StartStreamRequest) SetShowLog(v string) *StartStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14849,8 +15649,8 @@ func (s *StartStreamRequest) SetEndTime(v int64) *StartStreamRequest {
 
 type StartStreamResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s StartStreamResponseBody) String() string {
@@ -14866,13 +15666,13 @@ func (s *StartStreamResponseBody) SetRequestId(v string) *StartStreamResponseBod
 	return s
 }
 
-func (s *StartStreamResponseBody) SetId(v string) *StartStreamResponseBody {
-	s.Id = &v
+func (s *StartStreamResponseBody) SetName(v string) *StartStreamResponseBody {
+	s.Name = &v
 	return s
 }
 
-func (s *StartStreamResponseBody) SetName(v string) *StartStreamResponseBody {
-	s.Name = &v
+func (s *StartStreamResponseBody) SetId(v string) *StartStreamResponseBody {
+	s.Id = &v
 	return s
 }
 
@@ -14901,7 +15701,6 @@ func (s *StartStreamResponse) SetBody(v *StartStreamResponseBody) *StartStreamRe
 
 type StartTransferStreamRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	Transcode *string `json:"Transcode,omitempty" xml:"Transcode,omitempty"`
@@ -14917,11 +15716,6 @@ func (s StartTransferStreamRequest) GoString() string {
 
 func (s *StartTransferStreamRequest) SetOwnerId(v int64) *StartTransferStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StartTransferStreamRequest) SetShowLog(v string) *StartTransferStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -14981,11 +15775,11 @@ func (s *StartTransferStreamResponse) SetBody(v *StartTransferStreamResponseBody
 }
 
 type StopAdjustRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Iris    *bool   `json:"Iris,omitempty" xml:"Iris,omitempty"`
-	Focus   *bool   `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Iris        *bool   `json:"Iris,omitempty" xml:"Iris,omitempty"`
+	Focus       *bool   `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s StopAdjustRequest) String() string {
@@ -14998,11 +15792,6 @@ func (s StopAdjustRequest) GoString() string {
 
 func (s *StopAdjustRequest) SetOwnerId(v int64) *StopAdjustRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StopAdjustRequest) SetShowLog(v string) *StopAdjustRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15021,9 +15810,14 @@ func (s *StopAdjustRequest) SetFocus(v bool) *StopAdjustRequest {
 	return s
 }
 
+func (s *StopAdjustRequest) SetSubProtocol(v string) *StopAdjustRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type StopAdjustResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopAdjustResponseBody) String() string {
@@ -15034,13 +15828,13 @@ func (s StopAdjustResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopAdjustResponseBody) SetRequestId(v string) *StopAdjustResponseBody {
-	s.RequestId = &v
+func (s *StopAdjustResponseBody) SetId(v string) *StopAdjustResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StopAdjustResponseBody) SetId(v string) *StopAdjustResponseBody {
-	s.Id = &v
+func (s *StopAdjustResponseBody) SetRequestId(v string) *StopAdjustResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15069,7 +15863,6 @@ func (s *StopAdjustResponse) SetBody(v *StopAdjustResponseBody) *StopAdjustRespo
 
 type StopDeviceRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -15087,11 +15880,6 @@ func (s *StopDeviceRequest) SetOwnerId(v int64) *StopDeviceRequest {
 	return s
 }
 
-func (s *StopDeviceRequest) SetShowLog(v string) *StopDeviceRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *StopDeviceRequest) SetId(v string) *StopDeviceRequest {
 	s.Id = &v
 	return s
@@ -15103,8 +15891,8 @@ func (s *StopDeviceRequest) SetStartTime(v string) *StopDeviceRequest {
 }
 
 type StopDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopDeviceResponseBody) String() string {
@@ -15115,13 +15903,13 @@ func (s StopDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopDeviceResponseBody) SetRequestId(v string) *StopDeviceResponseBody {
-	s.RequestId = &v
+func (s *StopDeviceResponseBody) SetId(v string) *StopDeviceResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StopDeviceResponseBody) SetId(v string) *StopDeviceResponseBody {
-	s.Id = &v
+func (s *StopDeviceResponseBody) SetRequestId(v string) *StopDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15149,12 +15937,12 @@ func (s *StopDeviceResponse) SetBody(v *StopDeviceResponseBody) *StopDeviceRespo
 }
 
 type StopMoveRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Pan     *bool   `json:"Pan,omitempty" xml:"Pan,omitempty"`
-	Tilt    *bool   `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
-	Zoom    *bool   `json:"Zoom,omitempty" xml:"Zoom,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Pan         *bool   `json:"Pan,omitempty" xml:"Pan,omitempty"`
+	Tilt        *bool   `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
+	Zoom        *bool   `json:"Zoom,omitempty" xml:"Zoom,omitempty"`
+	SubProtocol *string `json:"SubProtocol,omitempty" xml:"SubProtocol,omitempty"`
 }
 
 func (s StopMoveRequest) String() string {
@@ -15167,11 +15955,6 @@ func (s StopMoveRequest) GoString() string {
 
 func (s *StopMoveRequest) SetOwnerId(v int64) *StopMoveRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StopMoveRequest) SetShowLog(v string) *StopMoveRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15195,9 +15978,14 @@ func (s *StopMoveRequest) SetZoom(v bool) *StopMoveRequest {
 	return s
 }
 
+func (s *StopMoveRequest) SetSubProtocol(v string) *StopMoveRequest {
+	s.SubProtocol = &v
+	return s
+}
+
 type StopMoveResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopMoveResponseBody) String() string {
@@ -15208,13 +15996,13 @@ func (s StopMoveResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopMoveResponseBody) SetRequestId(v string) *StopMoveResponseBody {
-	s.RequestId = &v
+func (s *StopMoveResponseBody) SetId(v string) *StopMoveResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StopMoveResponseBody) SetId(v string) *StopMoveResponseBody {
-	s.Id = &v
+func (s *StopMoveResponseBody) SetRequestId(v string) *StopMoveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15243,7 +16031,6 @@ func (s *StopMoveResponse) SetBody(v *StopMoveResponseBody) *StopMoveResponse {
 
 type StopRecordStreamRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
 	App        *string `json:"App,omitempty" xml:"App,omitempty"`
@@ -15260,11 +16047,6 @@ func (s StopRecordStreamRequest) GoString() string {
 
 func (s *StopRecordStreamRequest) SetOwnerId(v int64) *StopRecordStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StopRecordStreamRequest) SetShowLog(v string) *StopRecordStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15330,7 +16112,6 @@ func (s *StopRecordStreamResponse) SetBody(v *StopRecordStreamResponseBody) *Sto
 
 type StopStreamRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -15346,11 +16127,6 @@ func (s StopStreamRequest) GoString() string {
 
 func (s *StopStreamRequest) SetOwnerId(v int64) *StopStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StopStreamRequest) SetShowLog(v string) *StopStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15370,8 +16146,8 @@ func (s *StopStreamRequest) SetStartTime(v string) *StopStreamRequest {
 }
 
 type StopStreamResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopStreamResponseBody) String() string {
@@ -15382,13 +16158,13 @@ func (s StopStreamResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StopStreamResponseBody) SetRequestId(v string) *StopStreamResponseBody {
-	s.RequestId = &v
+func (s *StopStreamResponseBody) SetId(v string) *StopStreamResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *StopStreamResponseBody) SetId(v string) *StopStreamResponseBody {
-	s.Id = &v
+func (s *StopStreamResponseBody) SetRequestId(v string) *StopStreamResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15417,7 +16193,6 @@ func (s *StopStreamResponse) SetBody(v *StopStreamResponseBody) *StopStreamRespo
 
 type StopTransferStreamRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog   *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Transcode *string `json:"Transcode,omitempty" xml:"Transcode,omitempty"`
 }
@@ -15432,11 +16207,6 @@ func (s StopTransferStreamRequest) GoString() string {
 
 func (s *StopTransferStreamRequest) SetOwnerId(v int64) *StopTransferStreamRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *StopTransferStreamRequest) SetShowLog(v string) *StopTransferStreamRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15492,7 +16262,6 @@ func (s *StopTransferStreamResponse) SetBody(v *StopTransferStreamResponseBody) 
 
 type SyncCatalogsRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -15509,19 +16278,14 @@ func (s *SyncCatalogsRequest) SetOwnerId(v int64) *SyncCatalogsRequest {
 	return s
 }
 
-func (s *SyncCatalogsRequest) SetShowLog(v string) *SyncCatalogsRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *SyncCatalogsRequest) SetId(v string) *SyncCatalogsRequest {
 	s.Id = &v
 	return s
 }
 
 type SyncCatalogsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SyncCatalogsResponseBody) String() string {
@@ -15532,13 +16296,13 @@ func (s SyncCatalogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SyncCatalogsResponseBody) SetRequestId(v string) *SyncCatalogsResponseBody {
-	s.RequestId = &v
+func (s *SyncCatalogsResponseBody) SetId(v string) *SyncCatalogsResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *SyncCatalogsResponseBody) SetId(v string) *SyncCatalogsResponseBody {
-	s.Id = &v
+func (s *SyncCatalogsResponseBody) SetRequestId(v string) *SyncCatalogsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15565,9 +16329,77 @@ func (s *SyncCatalogsResponse) SetBody(v *SyncCatalogsResponseBody) *SyncCatalog
 	return s
 }
 
+type SyncDeviceChannelsRequest struct {
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+}
+
+func (s SyncDeviceChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceChannelsRequest) SetOwnerId(v int64) *SyncDeviceChannelsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SyncDeviceChannelsRequest) SetDeviceId(v string) *SyncDeviceChannelsRequest {
+	s.DeviceId = &v
+	return s
+}
+
+type SyncDeviceChannelsResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncDeviceChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceChannelsResponseBody) SetId(v string) *SyncDeviceChannelsResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *SyncDeviceChannelsResponseBody) SetRequestId(v string) *SyncDeviceChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncDeviceChannelsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SyncDeviceChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncDeviceChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDeviceChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDeviceChannelsResponse) SetHeaders(v map[string]*string) *SyncDeviceChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDeviceChannelsResponse) SetBody(v *SyncDeviceChannelsResponseBody) *SyncDeviceChannelsResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindDirectoryRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog     *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -15582,11 +16414,6 @@ func (s UnbindDirectoryRequest) GoString() string {
 
 func (s *UnbindDirectoryRequest) SetOwnerId(v int64) *UnbindDirectoryRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UnbindDirectoryRequest) SetShowLog(v string) *UnbindDirectoryRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15642,7 +16469,6 @@ func (s *UnbindDirectoryResponse) SetBody(v *UnbindDirectoryResponseBody) *Unbin
 
 type UnbindParentPlatformDeviceRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog          *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	ParentPlatformId *string `json:"ParentPlatformId,omitempty" xml:"ParentPlatformId,omitempty"`
 	DeviceId         *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
@@ -15657,11 +16483,6 @@ func (s UnbindParentPlatformDeviceRequest) GoString() string {
 
 func (s *UnbindParentPlatformDeviceRequest) SetOwnerId(v int64) *UnbindParentPlatformDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UnbindParentPlatformDeviceRequest) SetShowLog(v string) *UnbindParentPlatformDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15717,7 +16538,6 @@ func (s *UnbindParentPlatformDeviceResponse) SetBody(v *UnbindParentPlatformDevi
 
 type UnbindPurchasedDeviceRequest struct {
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog  *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -15731,11 +16551,6 @@ func (s UnbindPurchasedDeviceRequest) GoString() string {
 
 func (s *UnbindPurchasedDeviceRequest) SetOwnerId(v int64) *UnbindPurchasedDeviceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UnbindPurchasedDeviceRequest) SetShowLog(v string) *UnbindPurchasedDeviceRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15786,7 +16601,6 @@ func (s *UnbindPurchasedDeviceResponse) SetBody(v *UnbindPurchasedDeviceResponse
 
 type UnbindTemplateRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog      *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -15803,11 +16617,6 @@ func (s UnbindTemplateRequest) GoString() string {
 
 func (s *UnbindTemplateRequest) SetOwnerId(v int64) *UnbindTemplateRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UnbindTemplateRequest) SetShowLog(v string) *UnbindTemplateRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -15832,9 +16641,9 @@ func (s *UnbindTemplateRequest) SetInstanceType(v string) *UnbindTemplateRequest
 }
 
 type UnbindTemplateResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
@@ -15847,8 +16656,8 @@ func (s UnbindTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UnbindTemplateResponseBody) SetRequestId(v string) *UnbindTemplateResponseBody {
-	s.RequestId = &v
+func (s *UnbindTemplateResponseBody) SetTemplateType(v string) *UnbindTemplateResponseBody {
+	s.TemplateType = &v
 	return s
 }
 
@@ -15857,8 +16666,8 @@ func (s *UnbindTemplateResponseBody) SetInstanceId(v string) *UnbindTemplateResp
 	return s
 }
 
-func (s *UnbindTemplateResponseBody) SetTemplateType(v string) *UnbindTemplateResponseBody {
-	s.TemplateType = &v
+func (s *UnbindTemplateResponseBody) SetRequestId(v string) *UnbindTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15897,7 +16706,6 @@ func (s *UnbindTemplateResponse) SetBody(v *UnbindTemplateResponseBody) *UnbindT
 
 type UnlockDeviceRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -15914,19 +16722,14 @@ func (s *UnlockDeviceRequest) SetOwnerId(v int64) *UnlockDeviceRequest {
 	return s
 }
 
-func (s *UnlockDeviceRequest) SetShowLog(v string) *UnlockDeviceRequest {
-	s.ShowLog = &v
-	return s
-}
-
 func (s *UnlockDeviceRequest) SetId(v string) *UnlockDeviceRequest {
 	s.Id = &v
 	return s
 }
 
 type UnlockDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnlockDeviceResponseBody) String() string {
@@ -15937,13 +16740,13 @@ func (s UnlockDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UnlockDeviceResponseBody) SetRequestId(v string) *UnlockDeviceResponseBody {
-	s.RequestId = &v
+func (s *UnlockDeviceResponseBody) SetId(v string) *UnlockDeviceResponseBody {
+	s.Id = &v
 	return s
 }
 
-func (s *UnlockDeviceResponseBody) SetId(v string) *UnlockDeviceResponseBody {
-	s.Id = &v
+func (s *UnlockDeviceResponseBody) SetRequestId(v string) *UnlockDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15970,9 +16773,77 @@ func (s *UnlockDeviceResponse) SetBody(v *UnlockDeviceResponseBody) *UnlockDevic
 	return s
 }
 
+type UpdateBucketInfoRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+}
+
+func (s UpdateBucketInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBucketInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBucketInfoRequest) SetOwnerId(v int64) *UpdateBucketInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateBucketInfoRequest) SetBucketName(v string) *UpdateBucketInfoRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *UpdateBucketInfoRequest) SetComment(v string) *UpdateBucketInfoRequest {
+	s.Comment = &v
+	return s
+}
+
+type UpdateBucketInfoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBucketInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBucketInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBucketInfoResponseBody) SetRequestId(v string) *UpdateBucketInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBucketInfoResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBucketInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBucketInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBucketInfoResponse) SetHeaders(v map[string]*string) *UpdateBucketInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBucketInfoResponse) SetBody(v *UpdateBucketInfoResponseBody) *UpdateBucketInfoResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateVsPullStreamInfoConfigRequest struct {
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShowLog    *string `json:"ShowLog,omitempty" xml:"ShowLog,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
@@ -15992,11 +16863,6 @@ func (s UpdateVsPullStreamInfoConfigRequest) GoString() string {
 
 func (s *UpdateVsPullStreamInfoConfigRequest) SetOwnerId(v int64) *UpdateVsPullStreamInfoConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateVsPullStreamInfoConfigRequest) SetShowLog(v string) *UpdateVsPullStreamInfoConfigRequest {
-	s.ShowLog = &v
 	return s
 }
 
@@ -16075,6 +16941,111 @@ func (s *UpdateVsPullStreamInfoConfigResponse) SetBody(v *UpdateVsPullStreamInfo
 	return s
 }
 
+type UploadDeviceRecordRequest struct {
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	SearchCriteria *string `json:"SearchCriteria,omitempty" xml:"SearchCriteria,omitempty"`
+	UploadType     *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
+	UploadId       *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	UploadMode     *string `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+	UploadParams   *string `json:"UploadParams,omitempty" xml:"UploadParams,omitempty"`
+}
+
+func (s UploadDeviceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceRecordRequest) SetOwnerId(v int64) *UploadDeviceRecordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetDeviceId(v string) *UploadDeviceRecordRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetStreamId(v string) *UploadDeviceRecordRequest {
+	s.StreamId = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetSearchCriteria(v string) *UploadDeviceRecordRequest {
+	s.SearchCriteria = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetUploadType(v string) *UploadDeviceRecordRequest {
+	s.UploadType = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetUploadId(v string) *UploadDeviceRecordRequest {
+	s.UploadId = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetUploadMode(v string) *UploadDeviceRecordRequest {
+	s.UploadMode = &v
+	return s
+}
+
+func (s *UploadDeviceRecordRequest) SetUploadParams(v string) *UploadDeviceRecordRequest {
+	s.UploadParams = &v
+	return s
+}
+
+type UploadDeviceRecordResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadDeviceRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceRecordResponseBody) SetId(v string) *UploadDeviceRecordResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadDeviceRecordResponseBody) SetRequestId(v string) *UploadDeviceRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadDeviceRecordResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UploadDeviceRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadDeviceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDeviceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDeviceRecordResponse) SetHeaders(v map[string]*string) *UploadDeviceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadDeviceRecordResponse) SetBody(v *UploadDeviceRecordResponseBody) *UploadDeviceRecordResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -16115,6 +17086,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDeviceWithOptions(request *AddDeviceRequest, runtime *util.RuntimeOptions) (_result *AddDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddDeviceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddDevice"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDevice(request *AddDeviceRequest) (_result *AddDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDeviceResponse{}
+	_body, _err := client.AddDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16906,6 +17905,34 @@ func (client *Client) CreateDeviceAlarm(request *CreateDeviceAlarmRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateDeviceSnapshotWithOptions(request *CreateDeviceSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDeviceSnapshotResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDeviceSnapshot"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceSnapshot(request *CreateDeviceSnapshotRequest) (_result *CreateDeviceSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeviceSnapshotResponse{}
+	_body, _err := client.CreateDeviceSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest, runtime *util.RuntimeOptions) (_result *CreateDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17039,6 +18066,34 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTemplateResponse{}
 	_body, _err := client.CreateTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBucketWithOptions(request *DeleteBucketRequest, runtime *util.RuntimeOptions) (_result *DeleteBucketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteBucketResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteBucket"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBucket(request *DeleteBucketRequest) (_result *DeleteBucketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBucketResponse{}
+	_body, _err := client.DeleteBucketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18390,6 +19445,34 @@ func (client *Client) DescribeVsPullStreamInfoConfig(request *DescribeVsPullStre
 	return _result, _err
 }
 
+func (client *Client) DescribeVsStorageUsageDataWithOptions(request *DescribeVsStorageUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVsStorageUsageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeVsStorageUsageDataResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeVsStorageUsageData"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVsStorageUsageData(request *DescribeVsStorageUsageDataRequest) (_result *DescribeVsStorageUsageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVsStorageUsageDataResponse{}
+	_body, _err := client.DescribeVsStorageUsageDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVsStreamsNotifyUrlConfigWithOptions(request *DescribeVsStreamsNotifyUrlConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeVsStreamsNotifyUrlConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18586,6 +19669,34 @@ func (client *Client) ForbidVsStream(request *ForbidVsStreamRequest) (_result *F
 	return _result, _err
 }
 
+func (client *Client) GetBucketInfoWithOptions(request *GetBucketInfoRequest, runtime *util.RuntimeOptions) (_result *GetBucketInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetBucketInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetBucketInfo"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBucketInfo(request *GetBucketInfoRequest) (_result *GetBucketInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBucketInfoResponse{}
+	_body, _err := client.GetBucketInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GotoPresetWithOptions(request *GotoPresetRequest, runtime *util.RuntimeOptions) (_result *GotoPresetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18607,6 +19718,118 @@ func (client *Client) GotoPreset(request *GotoPresetRequest) (_result *GotoPrese
 	runtime := &util.RuntimeOptions{}
 	_result = &GotoPresetResponse{}
 	_body, _err := client.GotoPresetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, runtime *util.RuntimeOptions) (_result *ListBucketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListBucketsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListBuckets"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBucketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBucketsResponse{}
+	_body, _err := client.ListBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeviceChannelsWithOptions(request *ListDeviceChannelsRequest, runtime *util.RuntimeOptions) (_result *ListDeviceChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDeviceChannelsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDeviceChannels"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeviceChannels(request *ListDeviceChannelsRequest) (_result *ListDeviceChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeviceChannelsResponse{}
+	_body, _err := client.ListDeviceChannelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeviceRecordsWithOptions(request *ListDeviceRecordsRequest, runtime *util.RuntimeOptions) (_result *ListDeviceRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDeviceRecordsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDeviceRecords"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeviceRecords(request *ListDeviceRecordsRequest) (_result *ListDeviceRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeviceRecordsResponse{}
+	_body, _err := client.ListDeviceRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListObjectsWithOptions(request *ListObjectsRequest, runtime *util.RuntimeOptions) (_result *ListObjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListObjectsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListObjects"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListObjectsResponse{}
+	_body, _err := client.ListObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18853,6 +20076,62 @@ func (client *Client) OpenVsService() (_result *OpenVsServiceResponse, _err erro
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenVsServiceResponse{}
 	_body, _err := client.OpenVsServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PrepareUploadWithOptions(request *PrepareUploadRequest, runtime *util.RuntimeOptions) (_result *PrepareUploadResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PrepareUploadResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PrepareUpload"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PrepareUpload(request *PrepareUploadRequest) (_result *PrepareUploadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PrepareUploadResponse{}
+	_body, _err := client.PrepareUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutBucketWithOptions(request *PutBucketRequest, runtime *util.RuntimeOptions) (_result *PutBucketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PutBucketResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PutBucket"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutBucket(request *PutBucketRequest) (_result *PutBucketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutBucketResponse{}
+	_body, _err := client.PutBucketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19308,6 +20587,34 @@ func (client *Client) SyncCatalogs(request *SyncCatalogsRequest) (_result *SyncC
 	return _result, _err
 }
 
+func (client *Client) SyncDeviceChannelsWithOptions(request *SyncDeviceChannelsRequest, runtime *util.RuntimeOptions) (_result *SyncDeviceChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SyncDeviceChannelsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SyncDeviceChannels"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncDeviceChannels(request *SyncDeviceChannelsRequest) (_result *SyncDeviceChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncDeviceChannelsResponse{}
+	_body, _err := client.SyncDeviceChannelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UnbindDirectoryWithOptions(request *UnbindDirectoryRequest, runtime *util.RuntimeOptions) (_result *UnbindDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19448,6 +20755,34 @@ func (client *Client) UnlockDevice(request *UnlockDeviceRequest) (_result *Unloc
 	return _result, _err
 }
 
+func (client *Client) UpdateBucketInfoWithOptions(request *UpdateBucketInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateBucketInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateBucketInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateBucketInfo"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBucketInfo(request *UpdateBucketInfoRequest) (_result *UpdateBucketInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBucketInfoResponse{}
+	_body, _err := client.UpdateBucketInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateVsPullStreamInfoConfigWithOptions(request *UpdateVsPullStreamInfoConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateVsPullStreamInfoConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19469,6 +20804,34 @@ func (client *Client) UpdateVsPullStreamInfoConfig(request *UpdateVsPullStreamIn
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVsPullStreamInfoConfigResponse{}
 	_body, _err := client.UpdateVsPullStreamInfoConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadDeviceRecordWithOptions(request *UploadDeviceRecordRequest, runtime *util.RuntimeOptions) (_result *UploadDeviceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UploadDeviceRecordResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UploadDeviceRecord"), tea.String("2018-12-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadDeviceRecord(request *UploadDeviceRecordRequest) (_result *UploadDeviceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadDeviceRecordResponse{}
+	_body, _err := client.UploadDeviceRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
