@@ -4239,6 +4239,69 @@ func (s *DescribeAddonsResponse) SetBody(v *DescribeAddonsResponseBody) *Describ
 	return s
 }
 
+type CreateAutoscalingConfigRequest struct {
+	// 静默时间，扩容出的节点，在静默时间过后，方可进入缩容判断
+	CoolDownDuration *string `json:"cool_down_duration,omitempty" xml:"cool_down_duration,omitempty"`
+	// 缩容触发时延，节点缩容时需要连续满足触发时延所设定的时间，方可进行缩容
+	UnneededDuration *string `json:"unneeded_duration,omitempty" xml:"unneeded_duration,omitempty"`
+	// 缩容阈值，节点上 Request 的资源与总资源量的比值
+	UtilizationThreshold *string `json:"utilization_threshold,omitempty" xml:"utilization_threshold,omitempty"`
+	// GPU缩容阈值，节点上 Request 的资源与总资源量的比值
+	GpuUtilizationThreshold *string `json:"gpu_utilization_threshold,omitempty" xml:"gpu_utilization_threshold,omitempty"`
+	// 弹性灵敏度，判断伸缩的间隔时间
+	ScanInterval *string `json:"scan_interval,omitempty" xml:"scan_interval,omitempty"`
+}
+
+func (s CreateAutoscalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoscalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoscalingConfigRequest) SetCoolDownDuration(v string) *CreateAutoscalingConfigRequest {
+	s.CoolDownDuration = &v
+	return s
+}
+
+func (s *CreateAutoscalingConfigRequest) SetUnneededDuration(v string) *CreateAutoscalingConfigRequest {
+	s.UnneededDuration = &v
+	return s
+}
+
+func (s *CreateAutoscalingConfigRequest) SetUtilizationThreshold(v string) *CreateAutoscalingConfigRequest {
+	s.UtilizationThreshold = &v
+	return s
+}
+
+func (s *CreateAutoscalingConfigRequest) SetGpuUtilizationThreshold(v string) *CreateAutoscalingConfigRequest {
+	s.GpuUtilizationThreshold = &v
+	return s
+}
+
+func (s *CreateAutoscalingConfigRequest) SetScanInterval(v string) *CreateAutoscalingConfigRequest {
+	s.ScanInterval = &v
+	return s
+}
+
+type CreateAutoscalingConfigResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s CreateAutoscalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAutoscalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoscalingConfigResponse) SetHeaders(v map[string]*string) *CreateAutoscalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// 集群名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -10124,6 +10187,57 @@ func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, 
 	}
 	_result = &DescribeAddonsResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/components/metadata"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAutoscalingConfig(ClusterId *string, request *CreateAutoscalingConfigRequest) (_result *CreateAutoscalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAutoscalingConfigResponse{}
+	_body, _err := client.CreateAutoscalingConfigWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAutoscalingConfigWithOptions(ClusterId *string, request *CreateAutoscalingConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAutoscalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoolDownDuration)) {
+		body["cool_down_duration"] = request.CoolDownDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnneededDuration)) {
+		body["unneeded_duration"] = request.UnneededDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UtilizationThreshold)) {
+		body["utilization_threshold"] = request.UtilizationThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuUtilizationThreshold)) {
+		body["gpu_utilization_threshold"] = request.GpuUtilizationThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanInterval)) {
+		body["scan_interval"] = request.ScanInterval
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateAutoscalingConfigResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateAutoscalingConfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/cluster/"+tea.StringValue(ClusterId)+"/autoscale/config/"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
