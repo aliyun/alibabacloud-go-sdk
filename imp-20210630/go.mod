@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/imp-20210630
+module github.com/alibabacloud-go/imp-20210630/v2
 
 go 1.15
 

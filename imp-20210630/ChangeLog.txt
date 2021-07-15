@@ -1,3 +1,6 @@
+2021-07-15 Version: v2.0.0
+- Optimize error code and error message.
+
 2021-07-08 Version: v1.0.0
 - Init pushlish.
 

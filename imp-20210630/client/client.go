@@ -83,10 +83,6 @@ type CreateLiveResponseBody struct {
 	// 请求ID。
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 错误码，请求异常时返回。
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息，请求异常时返回。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateLiveResponseBody) String() string {
@@ -104,16 +100,6 @@ func (s *CreateLiveResponseBody) SetRequestId(v string) *CreateLiveResponseBody 
 
 func (s *CreateLiveResponseBody) SetResult(v *CreateLiveResponseBodyResult) *CreateLiveResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *CreateLiveResponseBody) SetErrorCode(v string) *CreateLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateLiveResponseBody) SetErrorMessage(v string) *CreateLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -179,10 +165,6 @@ func (s *DeleteAppRequest) SetAppId(v string) *DeleteAppRequest {
 type DeleteAppResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteAppResponseBody) String() string {
@@ -195,16 +177,6 @@ func (s DeleteAppResponseBody) GoString() string {
 
 func (s *DeleteAppResponseBody) SetRequestId(v string) *DeleteAppResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteAppResponseBody) SetErrorCode(v string) *DeleteAppResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteAppResponseBody) SetErrorMessage(v string) *DeleteAppResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -286,9 +258,7 @@ func (s *UpdateRoomRequest) SetExtension(v map[string]*string) *UpdateRoomReques
 
 type UpdateRoomResponseBody struct {
 	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateRoomResponseBody) String() string {
@@ -301,16 +271,6 @@ func (s UpdateRoomResponseBody) GoString() string {
 
 func (s *UpdateRoomResponseBody) SetRequestId(v string) *UpdateRoomResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateRoomResponseBody) SetErrorCode(v string) *UpdateRoomResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateRoomResponseBody) SetErrorMessage(v string) *UpdateRoomResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -358,10 +318,6 @@ func (s *GetAppTemplateRequest) SetAppTemplateId(v string) *GetAppTemplateReques
 type GetAppTemplateResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *GetAppTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -376,16 +332,6 @@ func (s GetAppTemplateResponseBody) GoString() string {
 
 func (s *GetAppTemplateResponseBody) SetRequestId(v string) *GetAppTemplateResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetAppTemplateResponseBody) SetErrorCode(v string) *GetAppTemplateResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAppTemplateResponseBody) SetErrorMessage(v string) *GetAppTemplateResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -530,9 +476,7 @@ type GetRoomResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 查询房间信息返回结果。
-	Result       *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ErrorCode    *string                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetRoomResponseBody) String() string {
@@ -550,16 +494,6 @@ func (s *GetRoomResponseBody) SetRequestId(v string) *GetRoomResponseBody {
 
 func (s *GetRoomResponseBody) SetResult(v *GetRoomResponseBodyResult) *GetRoomResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *GetRoomResponseBody) SetErrorCode(v string) *GetRoomResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetRoomResponseBody) SetErrorMessage(v string) *GetRoomResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -784,10 +718,6 @@ func (s *CreateAppTemplateShrinkRequest) SetComponentListShrink(v string) *Creat
 type CreateAppTemplateResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *CreateAppTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -802,16 +732,6 @@ func (s CreateAppTemplateResponseBody) GoString() string {
 
 func (s *CreateAppTemplateResponseBody) SetRequestId(v string) *CreateAppTemplateResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAppTemplateResponseBody) SetErrorCode(v string) *CreateAppTemplateResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateAppTemplateResponseBody) SetErrorMessage(v string) *CreateAppTemplateResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -889,10 +809,6 @@ func (s *ListAppsRequest) SetPageSize(v int32) *ListAppsRequest {
 type ListAppsResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果体
 	Result *ListAppsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -907,16 +823,6 @@ func (s ListAppsResponseBody) GoString() string {
 
 func (s *ListAppsResponseBody) SetRequestId(v string) *ListAppsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListAppsResponseBody) SetErrorCode(v string) *ListAppsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListAppsResponseBody) SetErrorMessage(v string) *ListAppsResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1083,9 +989,7 @@ type ListRoomsResponseBody struct {
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// API请求的返回结果结构体。
-	Result       *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ErrorCode    *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListRoomsResponseBody) String() string {
@@ -1103,16 +1007,6 @@ func (s *ListRoomsResponseBody) SetRequestId(v string) *ListRoomsResponseBody {
 
 func (s *ListRoomsResponseBody) SetResult(v *ListRoomsResponseBodyResult) *ListRoomsResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *ListRoomsResponseBody) SetErrorCode(v string) *ListRoomsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListRoomsResponseBody) SetErrorMessage(v string) *ListRoomsResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1326,10 +1220,6 @@ func (s *DeleteAppTemplateRequest) SetAppTemplateId(v string) *DeleteAppTemplate
 type DeleteAppTemplateResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteAppTemplateResponseBody) String() string {
@@ -1342,16 +1232,6 @@ func (s DeleteAppTemplateResponseBody) GoString() string {
 
 func (s *DeleteAppTemplateResponseBody) SetRequestId(v string) *DeleteAppTemplateResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteAppTemplateResponseBody) SetErrorCode(v string) *DeleteAppTemplateResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteAppTemplateResponseBody) SetErrorMessage(v string) *DeleteAppTemplateResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1406,10 +1286,6 @@ func (s *ListAppTemplatesRequest) SetPageSize(v string) *ListAppTemplatesRequest
 type ListAppTemplatesResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *ListAppTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1424,16 +1300,6 @@ func (s ListAppTemplatesResponseBody) GoString() string {
 
 func (s *ListAppTemplatesResponseBody) SetRequestId(v string) *ListAppTemplatesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListAppTemplatesResponseBody) SetErrorCode(v string) *ListAppTemplatesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListAppTemplatesResponseBody) SetErrorMessage(v string) *ListAppTemplatesResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1617,10 +1483,6 @@ func (s *ListComponentsRequest) SetAppTemplateId(v string) *ListComponentsReques
 type ListComponentsResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果体
 	Result *ListComponentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1635,16 +1497,6 @@ func (s ListComponentsResponseBody) GoString() string {
 
 func (s *ListComponentsResponseBody) SetRequestId(v string) *ListComponentsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListComponentsResponseBody) SetErrorCode(v string) *ListComponentsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListComponentsResponseBody) SetErrorMessage(v string) *ListComponentsResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1822,10 +1674,6 @@ func (s *UpdateLiveRequest) SetIntroduction(v string) *UpdateLiveRequest {
 type UpdateLiveResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s UpdateLiveResponseBody) String() string {
@@ -1838,16 +1686,6 @@ func (s UpdateLiveResponseBody) GoString() string {
 
 func (s *UpdateLiveResponseBody) SetRequestId(v string) *UpdateLiveResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateLiveResponseBody) SetErrorCode(v string) *UpdateLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateLiveResponseBody) SetErrorMessage(v string) *UpdateLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -1950,10 +1788,6 @@ func (s *UpdateAppTemplateConfigShrinkRequest) SetConfigListShrink(v string) *Up
 type UpdateAppTemplateConfigResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s UpdateAppTemplateConfigResponseBody) String() string {
@@ -1966,16 +1800,6 @@ func (s UpdateAppTemplateConfigResponseBody) GoString() string {
 
 func (s *UpdateAppTemplateConfigResponseBody) SetRequestId(v string) *UpdateAppTemplateConfigResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigResponseBody) SetErrorCode(v string) *UpdateAppTemplateConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigResponseBody) SetErrorMessage(v string) *UpdateAppTemplateConfigResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2044,10 +1868,6 @@ func (s *StopLiveRequest) SetLiveId(v string) *StopLiveRequest {
 type StopLiveResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s StopLiveResponseBody) String() string {
@@ -2060,16 +1880,6 @@ func (s StopLiveResponseBody) GoString() string {
 
 func (s *StopLiveResponseBody) SetRequestId(v string) *StopLiveResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *StopLiveResponseBody) SetErrorCode(v string) *StopLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *StopLiveResponseBody) SetErrorMessage(v string) *StopLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2117,10 +1927,6 @@ func (s *GetAppRequest) SetAppId(v string) *GetAppRequest {
 type GetAppResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *GetAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -2135,16 +1941,6 @@ func (s GetAppResponseBody) GoString() string {
 
 func (s *GetAppResponseBody) SetRequestId(v string) *GetAppResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetAppResponseBody) SetErrorCode(v string) *GetAppResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAppResponseBody) SetErrorMessage(v string) *GetAppResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2257,10 +2053,6 @@ func (s *DeleteLiveRequest) SetLiveId(v string) *DeleteLiveRequest {
 type DeleteLiveResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s DeleteLiveResponseBody) String() string {
@@ -2273,16 +2065,6 @@ func (s DeleteLiveResponseBody) GoString() string {
 
 func (s *DeleteLiveResponseBody) SetRequestId(v string) *DeleteLiveResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteLiveResponseBody) SetErrorCode(v string) *DeleteLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteLiveResponseBody) SetErrorMessage(v string) *DeleteLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2362,10 +2144,6 @@ func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainListShrink(v string) *Ge
 type GetLiveDomainStatusResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *GetLiveDomainStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -2380,16 +2158,6 @@ func (s GetLiveDomainStatusResponseBody) GoString() string {
 
 func (s *GetLiveDomainStatusResponseBody) SetRequestId(v string) *GetLiveDomainStatusResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponseBody) SetErrorCode(v string) *GetLiveDomainStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponseBody) SetErrorMessage(v string) *GetLiveDomainStatusResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2514,10 +2282,6 @@ type GetAuthTokenResponseBody struct {
 	// Id of the request
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetAuthTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 错误码，请求异常时返回
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误码信息，请求异常时返回
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s GetAuthTokenResponseBody) String() string {
@@ -2535,16 +2299,6 @@ func (s *GetAuthTokenResponseBody) SetRequestId(v string) *GetAuthTokenResponseB
 
 func (s *GetAuthTokenResponseBody) SetResult(v *GetAuthTokenResponseBodyResult) *GetAuthTokenResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *GetAuthTokenResponseBody) SetErrorCode(v string) *GetAuthTokenResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAuthTokenResponseBody) SetErrorMessage(v string) *GetAuthTokenResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2631,10 +2385,6 @@ func (s *UpdateAppTemplateRequest) SetAppTemplateName(v string) *UpdateAppTempla
 type UpdateAppTemplateResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s UpdateAppTemplateResponseBody) String() string {
@@ -2647,16 +2397,6 @@ func (s UpdateAppTemplateResponseBody) GoString() string {
 
 func (s *UpdateAppTemplateResponseBody) SetRequestId(v string) *UpdateAppTemplateResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAppTemplateResponseBody) SetErrorCode(v string) *UpdateAppTemplateResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateAppTemplateResponseBody) SetErrorMessage(v string) *UpdateAppTemplateResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2686,10 +2426,6 @@ func (s *UpdateAppTemplateResponse) SetBody(v *UpdateAppTemplateResponseBody) *U
 type GetImpProductStatusResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 开通状态
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
@@ -2704,16 +2440,6 @@ func (s GetImpProductStatusResponseBody) GoString() string {
 
 func (s *GetImpProductStatusResponseBody) SetRequestId(v string) *GetImpProductStatusResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetImpProductStatusResponseBody) SetErrorCode(v string) *GetImpProductStatusResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetImpProductStatusResponseBody) SetErrorMessage(v string) *GetImpProductStatusResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2774,10 +2500,6 @@ type PublishLiveResponseBody struct {
 	// Id of the request
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *PublishLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s PublishLiveResponseBody) String() string {
@@ -2795,16 +2517,6 @@ func (s *PublishLiveResponseBody) SetRequestId(v string) *PublishLiveResponseBod
 
 func (s *PublishLiveResponseBody) SetResult(v *PublishLiveResponseBodyResult) *PublishLiveResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *PublishLiveResponseBody) SetErrorCode(v string) *PublishLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *PublishLiveResponseBody) SetErrorMessage(v string) *PublishLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -2899,10 +2611,6 @@ type GetLiveResponseBody struct {
 	// Id of the request
 	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *GetLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s GetLiveResponseBody) String() string {
@@ -2920,16 +2628,6 @@ func (s *GetLiveResponseBody) SetRequestId(v string) *GetLiveResponseBody {
 
 func (s *GetLiveResponseBody) SetResult(v *GetLiveResponseBodyResult) *GetLiveResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *GetLiveResponseBody) SetErrorCode(v string) *GetLiveResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetLiveResponseBody) SetErrorMessage(v string) *GetLiveResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -3145,9 +2843,7 @@ func (s *DeleteRoomRequest) SetRoomId(v string) *DeleteRoomRequest {
 
 type DeleteRoomResponseBody struct {
 	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteRoomResponseBody) String() string {
@@ -3160,16 +2856,6 @@ func (s DeleteRoomResponseBody) GoString() string {
 
 func (s *DeleteRoomResponseBody) SetRequestId(v string) *DeleteRoomResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRoomResponseBody) SetErrorCode(v string) *DeleteRoomResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteRoomResponseBody) SetErrorMessage(v string) *DeleteRoomResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -3224,10 +2910,6 @@ func (s *CreateAppRequest) SetAppTemplateId(v string) *CreateAppRequest {
 type CreateAppResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// 返回结果
 	Result *CreateAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -3242,16 +2924,6 @@ func (s CreateAppResponseBody) GoString() string {
 
 func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAppResponseBody) SetErrorCode(v string) *CreateAppResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateAppResponseBody) SetErrorMessage(v string) *CreateAppResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -3365,9 +3037,7 @@ type CreateRoomResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// API请求的返回结果结构体。
-	Result       *CreateRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ErrorCode    *string                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Result *CreateRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateRoomResponseBody) String() string {
@@ -3385,16 +3055,6 @@ func (s *CreateRoomResponseBody) SetRequestId(v string) *CreateRoomResponseBody 
 
 func (s *CreateRoomResponseBody) SetResult(v *CreateRoomResponseBodyResult) *CreateRoomResponseBody {
 	s.Result = v
-	return s
-}
-
-func (s *CreateRoomResponseBody) SetErrorCode(v string) *CreateRoomResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateRoomResponseBody) SetErrorMessage(v string) *CreateRoomResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
@@ -3474,10 +3134,6 @@ func (s *UpdateAppRequest) SetAppStatus(v string) *UpdateAppRequest {
 type UpdateAppResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s UpdateAppResponseBody) String() string {
@@ -3490,16 +3146,6 @@ func (s UpdateAppResponseBody) GoString() string {
 
 func (s *UpdateAppResponseBody) SetRequestId(v string) *UpdateAppResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAppResponseBody) SetErrorCode(v string) *UpdateAppResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateAppResponseBody) SetErrorMessage(v string) *UpdateAppResponseBody {
-	s.ErrorMessage = &v
 	return s
 }
 
