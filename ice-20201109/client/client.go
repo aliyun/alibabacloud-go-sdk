@@ -401,14 +401,21 @@ func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteS
 }
 
 type AddTemplateRequest struct {
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 模板名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 模板类型，取值范围：Timeline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 参见Timeline模板Config文档
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 模板封面
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 预览视频媒资id
+	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板创建来源，默认OpenAPI
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 模板相关素材，模板编辑器使用
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 }
 
@@ -418,11 +425,6 @@ func (s AddTemplateRequest) String() string {
 
 func (s AddTemplateRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddTemplateRequest) SetTemplateId(v string) *AddTemplateRequest {
-	s.TemplateId = &v
-	return s
 }
 
 func (s *AddTemplateRequest) SetName(v string) *AddTemplateRequest {
@@ -466,9 +468,10 @@ func (s *AddTemplateRequest) SetRelatedMediaids(v string) *AddTemplateRequest {
 }
 
 type AddTemplateResponseBody struct {
-	// Id of the request
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Template  *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 模板信息
+	Template *AddTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s AddTemplateResponseBody) String() string {
@@ -490,14 +493,23 @@ func (s *AddTemplateResponseBody) SetTemplate(v *AddTemplateResponseBodyTemplate
 }
 
 type AddTemplateResponseBodyTemplate struct {
-	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CoverUrl       *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	PreviewMedia   *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreateSource   *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 模板名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 模板类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 参见Timeline模板Config文档
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 模板封面
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 预览视频媒资id
+	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 模板修改来源
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
 }
 
@@ -1263,7 +1275,7 @@ type DeleteMediaInfosResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 出现获取错误的ID或inputUr
-	IgnoredList *string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty"`
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
 }
 
 func (s DeleteMediaInfosResponseBody) String() string {
@@ -1279,8 +1291,8 @@ func (s *DeleteMediaInfosResponseBody) SetRequestId(v string) *DeleteMediaInfosR
 	return s
 }
 
-func (s *DeleteMediaInfosResponseBody) SetIgnoredList(v string) *DeleteMediaInfosResponseBody {
-	s.IgnoredList = &v
+func (s *DeleteMediaInfosResponseBody) SetIgnoredList(v []*string) *DeleteMediaInfosResponseBody {
+	s.IgnoredList = v
 	return s
 }
 
@@ -1368,6 +1380,166 @@ func (s *SetEventCallbackResponse) SetHeaders(v map[string]*string) *SetEventCal
 }
 
 func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *SetEventCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type GetTemplateRequest struct {
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetTemplateResponseBody struct {
+	// Id of the request
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Template  *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+}
+
+func (s GetTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate) *GetTemplateResponseBody {
+	s.Template = v
+	return s
+}
+
+type GetTemplateResponseBodyTemplate struct {
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 模板名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 模板类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 模板配置
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 预览素材
+	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 修改来源
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// 预览素材状态
+	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 封面URL
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+}
+
+func (s GetTemplateResponseBodyTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponseBodyTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetTemplateId(v string) *GetTemplateResponseBodyTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetName(v string) *GetTemplateResponseBodyTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetType(v string) *GetTemplateResponseBodyTemplate {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetConfig(v string) *GetTemplateResponseBodyTemplate {
+	s.Config = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetPreviewMedia(v string) *GetTemplateResponseBodyTemplate {
+	s.PreviewMedia = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetStatus(v string) *GetTemplateResponseBodyTemplate {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetCreateSource(v string) *GetTemplateResponseBodyTemplate {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetModifiedSource(v string) *GetTemplateResponseBodyTemplate {
+	s.ModifiedSource = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetPreviewMediaStatus(v string) *GetTemplateResponseBodyTemplate {
+	s.PreviewMediaStatus = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetCreationTime(v string) *GetTemplateResponseBodyTemplate {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetModifiedTime(v string) *GetTemplateResponseBodyTemplate {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetCoverURL(v string) *GetTemplateResponseBodyTemplate {
+	s.CoverURL = &v
+	return s
+}
+
+type GetTemplateResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3880,6 +4052,7 @@ func (s *ListSysTemplatesResponse) SetBody(v *ListSysTemplatesResponseBody) *Lis
 }
 
 type DeleteTemplateRequest struct {
+	// 模板id，多个id用英文逗号隔开
 	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
 }
 
@@ -3897,7 +4070,7 @@ func (s *DeleteTemplateRequest) SetTemplateIds(v string) *DeleteTemplateRequest 
 }
 
 type DeleteTemplateResponseBody struct {
-	// Id of the request
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4354,12 +4527,16 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type ListTemplatesRequest struct {
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 创建来源
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	SortType     *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// 搜索关键词，可以根据模板id和title搜索
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// 排序参数，默认根据创建时间倒序
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -4372,11 +4549,6 @@ func (s ListTemplatesRequest) GoString() string {
 
 func (s *ListTemplatesRequest) SetType(v string) *ListTemplatesRequest {
 	s.Type = &v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetNextToken(v string) *ListTemplatesRequest {
-	s.NextToken = &v
 	return s
 }
 
@@ -4401,14 +4573,10 @@ func (s *ListTemplatesRequest) SetSortType(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	// Id of the request
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 本次请求条件下的数据总量。
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -4430,36 +4598,36 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 	return s
 }
 
-func (s *ListTemplatesResponseBody) SetNextToken(v string) *ListTemplatesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBody) SetMaxResults(v int32) *ListTemplatesResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
 func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyTemplates) *ListTemplatesResponseBody {
 	s.Templates = v
 	return s
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Config             *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	PreviewMedia       *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreateSource       *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	ModifiedSource     *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 模板名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 模板类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 模板配置
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 预览素材
+	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 创建来源
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 修改来源
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// 预览素材状态
 	PreviewMediaStatus *string `json:"PreviewMediaStatus,omitempty" xml:"PreviewMediaStatus,omitempty"`
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ModifiedTime       *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// ClipsParam
-	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 封面URL
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -4527,11 +4695,6 @@ func (s *ListTemplatesResponseBodyTemplates) SetModifiedTime(v string) *ListTemp
 
 func (s *ListTemplatesResponseBodyTemplates) SetCoverURL(v string) *ListTemplatesResponseBodyTemplates {
 	s.CoverURL = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetClipsParam(v string) *ListTemplatesResponseBodyTemplates {
-	s.ClipsParam = &v
 	return s
 }
 
@@ -5686,14 +5849,20 @@ func (s *SubmitDelogoJobResponse) SetBody(v *SubmitDelogoJobResponseBody) *Submi
 }
 
 type UpdateTemplateRequest struct {
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CoverUrl        *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	PreviewMedia    *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 模板名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 参见Timeline模板Config文档
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 模板封面
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 预览视频媒资id
+	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 修改来源，默认OpenAPI
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s UpdateTemplateRequest) String() string {
@@ -5739,13 +5908,8 @@ func (s *UpdateTemplateRequest) SetSource(v string) *UpdateTemplateRequest {
 	return s
 }
 
-func (s *UpdateTemplateRequest) SetRelatedMediaids(v string) *UpdateTemplateRequest {
-	s.RelatedMediaids = &v
-	return s
-}
-
 type UpdateTemplateResponseBody struct {
-	// Id of the request
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7644,6 +7808,35 @@ func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SetEventCallbackResponse{}
 	_body, _err := client.SetEventCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateResponse{}
+	_body, _err := client.GetTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
