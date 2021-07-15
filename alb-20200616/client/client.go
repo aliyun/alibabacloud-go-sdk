@@ -1169,8 +1169,9 @@ type ListServerGroupServersRequest struct {
 	// 查询数量
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// 服务器组id
-	ServerGroupId *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	ServerIds     []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	ServerGroupId *string                             `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	ServerIds     []*string                           `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	Tag           []*ListServerGroupServersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServerGroupServersRequest) String() string {
@@ -1198,6 +1199,36 @@ func (s *ListServerGroupServersRequest) SetServerGroupId(v string) *ListServerGr
 
 func (s *ListServerGroupServersRequest) SetServerIds(v []*string) *ListServerGroupServersRequest {
 	s.ServerIds = v
+	return s
+}
+
+func (s *ListServerGroupServersRequest) SetTag(v []*ListServerGroupServersRequestTag) *ListServerGroupServersRequest {
+	s.Tag = v
+	return s
+}
+
+type ListServerGroupServersRequestTag struct {
+	// 标签键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServerGroupServersRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServerGroupServersRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListServerGroupServersRequestTag) SetKey(v string) *ListServerGroupServersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServerGroupServersRequestTag) SetValue(v string) *ListServerGroupServersRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1262,6 +1293,8 @@ type ListServerGroupServersResponseBodyServers struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 权重
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// 服务器组id
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
 func (s ListServerGroupServersResponseBodyServers) String() string {
@@ -1304,6 +1337,11 @@ func (s *ListServerGroupServersResponseBodyServers) SetStatus(v string) *ListSer
 
 func (s *ListServerGroupServersResponseBodyServers) SetWeight(v int32) *ListServerGroupServersResponseBodyServers {
 	s.Weight = &v
+	return s
+}
+
+func (s *ListServerGroupServersResponseBodyServers) SetServerGroupId(v string) *ListServerGroupServersResponseBodyServers {
+	s.ServerGroupId = &v
 	return s
 }
 
@@ -1576,6 +1614,8 @@ type ListServerGroupsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// VpcId
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Tag列表
+	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServerGroupsRequest) String() string {
@@ -1613,6 +1653,36 @@ func (s *ListServerGroupsRequest) SetMaxResults(v int32) *ListServerGroupsReques
 
 func (s *ListServerGroupsRequest) SetVpcId(v string) *ListServerGroupsRequest {
 	s.VpcId = &v
+	return s
+}
+
+func (s *ListServerGroupsRequest) SetTag(v []*ListServerGroupsRequestTag) *ListServerGroupsRequest {
+	s.Tag = v
+	return s
+}
+
+type ListServerGroupsRequestTag struct {
+	// 标签键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServerGroupsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServerGroupsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListServerGroupsRequestTag) SetKey(v string) *ListServerGroupsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServerGroupsRequestTag) SetValue(v string) *ListServerGroupsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1681,6 +1751,8 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	StickySessionConfig *ListServerGroupsResponseBodyServerGroupsStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 	// 服务器组所在VpcId
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// 标签列表
+	Tags []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroups) String() string {
@@ -1733,6 +1805,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetStickySessionConfig(v *Lis
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.VpcId = &v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroups) SetTags(v []*ListServerGroupsResponseBodyServerGroupsTags) *ListServerGroupsResponseBodyServerGroups {
+	s.Tags = v
 	return s
 }
 
@@ -1867,6 +1944,31 @@ func (s *ListServerGroupsResponseBodyServerGroupsStickySessionConfig) SetStickyS
 
 func (s *ListServerGroupsResponseBodyServerGroupsStickySessionConfig) SetStickySessionType(v string) *ListServerGroupsResponseBodyServerGroupsStickySessionConfig {
 	s.StickySessionType = &v
+	return s
+}
+
+type ListServerGroupsResponseBodyServerGroupsTags struct {
+	// 标签键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServerGroupsResponseBodyServerGroupsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServerGroupsResponseBodyServerGroupsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListServerGroupsResponseBodyServerGroupsTags) SetKey(v string) *ListServerGroupsResponseBodyServerGroupsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroupsTags) SetValue(v string) *ListServerGroupsResponseBodyServerGroupsTags {
+	s.Value = &v
 	return s
 }
 
@@ -3367,6 +3469,8 @@ type ListRulesRequest struct {
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 	// 监听ID列表
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
+	// 实例ID列表
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
 }
 
 func (s ListRulesRequest) String() string {
@@ -3394,6 +3498,11 @@ func (s *ListRulesRequest) SetRuleIds(v []*string) *ListRulesRequest {
 
 func (s *ListRulesRequest) SetListenerIds(v []*string) *ListRulesRequest {
 	s.ListenerIds = v
+	return s
+}
+
+func (s *ListRulesRequest) SetLoadBalancerIds(v []*string) *ListRulesRequest {
+	s.LoadBalancerIds = v
 	return s
 }
 
@@ -5060,6 +5169,844 @@ func (s *UpdateLoadBalancerEditionResponse) SetHeaders(v map[string]*string) *Up
 }
 
 func (s *UpdateLoadBalancerEditionResponse) SetBody(v *UpdateLoadBalancerEditionResponseBody) *UpdateLoadBalancerEditionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRulesAttributeRequest struct {
+	// 幂等标识
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 转发规则列表
+	Rules []*UpdateRulesAttributeRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// 是否只预检此次请求
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequest) SetClientToken(v string) *UpdateRulesAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequest) SetRules(v []*UpdateRulesAttributeRequestRules) *UpdateRulesAttributeRequest {
+	s.Rules = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequest) SetDryRun(v bool) *UpdateRulesAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRules struct {
+	// 转发规则优先级
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// 转发规则名称
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 转发规则动作
+	RuleActions []*UpdateRulesAttributeRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	// 转发规则条件
+	RuleConditions []*UpdateRulesAttributeRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	// 转发规则ID
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRules) SetPriority(v int32) *UpdateRulesAttributeRequestRules {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRules) SetRuleName(v string) *UpdateRulesAttributeRequestRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRules) SetRuleActions(v []*UpdateRulesAttributeRequestRulesRuleActions) *UpdateRulesAttributeRequestRules {
+	s.RuleActions = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRules) SetRuleConditions(v []*UpdateRulesAttributeRequestRulesRuleConditions) *UpdateRulesAttributeRequestRules {
+	s.RuleConditions = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRules) SetRuleId(v string) *UpdateRulesAttributeRequestRules {
+	s.RuleId = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActions struct {
+	// 返回固定内容动作配置
+	FixedResponseConfig *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
+	// 转发组动作配置
+	ForwardGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
+	// 插入头部动作配置
+	InsertHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
+	// 优先级
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 重定向动作配置
+	RedirectConfig *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	// 内部重定向动作配置
+	RewriteConfig *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	// 转发规则动作类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 流量限速
+	TrafficLimitConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// 流量镜像
+	TrafficMirrorConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
+	// 去除HTTP标头
+	RemoveHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetFixedResponseConfig(v *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.FixedResponseConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetForwardGroupConfig(v *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.ForwardGroupConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetInsertHeaderConfig(v *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.InsertHeaderConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetOrder(v int32) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.Order = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetRedirectConfig(v *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.RedirectConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetRewriteConfig(v *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.RewriteConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetType(v string) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetTrafficLimitConfig(v *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.TrafficLimitConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetTrafficMirrorConfig(v *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.TrafficMirrorConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetRemoveHeaderConfig(v *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.RemoveHeaderConfig = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig struct {
+	// 内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 内容类型
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// HTTP响应码
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) SetContent(v string) *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) SetContentType(v string) *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig {
+	s.ContentType = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) SetHttpCode(v string) *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig {
+	s.HttpCode = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig struct {
+	// 转发到的目的服务器组列表
+	ServerGroupTuples []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+	// 服务器组之间会话保持
+	ServerGroupStickySession *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) SetServerGroupTuples(v []*UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) SetServerGroupStickySession(v *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig {
+	s.ServerGroupStickySession = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
+	// 服务器组标识
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) SetServerGroupId(v string) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) SetWeight(v int32) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples {
+	s.Weight = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
+	// 是否开启会话保持
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 超时时间
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetEnabled(v bool) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetTimeout(v int32) *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig struct {
+	// 是否覆盖请求中的值
+	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
+	// HTTP标头
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// HTTP标头内容
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 取值类型
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) SetCoverEnabled(v bool) *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig {
+	s.CoverEnabled = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) SetValue(v string) *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig) SetValueType(v string) *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig struct {
+	// 要跳转的主机地址
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// 跳转方式
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// 要跳转的路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 要跳转的端口
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 要跳转的协议
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// 要跳转的查询字符串
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetHost(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetHttpCode(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetPath(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetPort(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetProtocol(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetQuery(v string) *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig {
+	s.Query = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig struct {
+	// 主机名
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// 路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 查询
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) SetHost(v string) *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) SetPath(v string) *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) SetQuery(v string) *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig {
+	s.Query = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig struct {
+	// 镜像目标类型
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// 镜像至服务器组
+	MirrorGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) SetTargetType(v string) *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig struct {
+	// HTTP标头键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditions struct {
+	// Cookie条件配置
+	CookieConfig *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	// HTTP标头条件配置
+	HeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	// 主机名条件配置
+	HostConfig *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	// HTTP请求方法条件配置
+	MethodConfig *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	// 查询字符串条件配置
+	PathConfig *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	// 查询字符串条件配置
+	QueryStringConfig *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	// 返回HTTP标头
+	ResponseHeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	// 返回状态码条件
+	ResponseStatusCodeConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
+	// 条件类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 基于源IP业务流量匹配
+	SourceIpConfig *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetCookieConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.CookieConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetHeaderConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.HeaderConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetHostConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.HostConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetMethodConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.MethodConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetPathConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.PathConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetQueryStringConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.QueryStringConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetResponseHeaderConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.ResponseHeaderConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetResponseStatusCodeConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.ResponseStatusCodeConfig = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetType(v string) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditions) SetSourceIpConfig(v *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) *UpdateRulesAttributeRequestRulesRuleConditions {
+	s.SourceIpConfig = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig struct {
+	// Cookie键值对列表
+	Values []*UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) SetValues(v []*UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues struct {
+	// Cookie条件键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Cookie条件值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) SetValue(v string) *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues {
+	s.Value = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig struct {
+	// HTTP标头键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// HTTP标头值列表
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsHostConfig struct {
+	// 主机名列表
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig struct {
+	// HTTP请求方法列表
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsPathConfig struct {
+	// 路径条件列表
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig struct {
+	// 查询字符串条件键值对列表
+	Values []*UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) SetValues(v []*UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues struct {
+	// 查询字符串条件键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 查询字符串条件值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) SetValue(v string) *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues {
+	s.Value = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig struct {
+	// 返回HTTP标头键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 返回HTTP标头值
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) SetKey(v string) *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig struct {
+	// 返回状态码条件
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) SetValues(v []*string) *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRulesAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 异步任务Id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s UpdateRulesAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeResponseBody) SetRequestId(v string) *UpdateRulesAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeResponseBody) SetJobId(v string) *UpdateRulesAttributeResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type UpdateRulesAttributeResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateRulesAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRulesAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeResponse) SetHeaders(v map[string]*string) *UpdateRulesAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRulesAttributeResponse) SetBody(v *UpdateRulesAttributeResponseBody) *UpdateRulesAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -9111,6 +10058,192 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 	return s
 }
 
+type ReplaceServersInServerGroupRequest struct {
+	// 后端服务器Id
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 待添加后端服务器
+	AddedServers []*ReplaceServersInServerGroupRequestAddedServers `json:"AddedServers,omitempty" xml:"AddedServers,omitempty" type:"Repeated"`
+	// 待删除后端服务器
+	RemovedServers []*ReplaceServersInServerGroupRequestRemovedServers `json:"RemovedServers,omitempty" xml:"RemovedServers,omitempty" type:"Repeated"`
+	// 幂等Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// dryRun
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+}
+
+func (s ReplaceServersInServerGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceServersInServerGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceServersInServerGroupRequest) SetServerGroupId(v string) *ReplaceServersInServerGroupRequest {
+	s.ServerGroupId = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequest) SetAddedServers(v []*ReplaceServersInServerGroupRequestAddedServers) *ReplaceServersInServerGroupRequest {
+	s.AddedServers = v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequest) SetRemovedServers(v []*ReplaceServersInServerGroupRequestRemovedServers) *ReplaceServersInServerGroupRequest {
+	s.RemovedServers = v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequest) SetClientToken(v string) *ReplaceServersInServerGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequest) SetDryRun(v bool) *ReplaceServersInServerGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+type ReplaceServersInServerGroupRequestAddedServers struct {
+	// 描述信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 后端端口号
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 后端服务器id
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// 后端服务器ip
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// 后端服务器类型
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// 后端服务器权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ReplaceServersInServerGroupRequestAddedServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceServersInServerGroupRequestAddedServers) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetDescription(v string) *ReplaceServersInServerGroupRequestAddedServers {
+	s.Description = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetPort(v int32) *ReplaceServersInServerGroupRequestAddedServers {
+	s.Port = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetServerId(v string) *ReplaceServersInServerGroupRequestAddedServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetServerIp(v string) *ReplaceServersInServerGroupRequestAddedServers {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetServerType(v string) *ReplaceServersInServerGroupRequestAddedServers {
+	s.ServerType = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestAddedServers) SetWeight(v int32) *ReplaceServersInServerGroupRequestAddedServers {
+	s.Weight = &v
+	return s
+}
+
+type ReplaceServersInServerGroupRequestRemovedServers struct {
+	// 后端服务器id
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// 后端服务器ip
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// 后端服务器类型
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// 端口
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ReplaceServersInServerGroupRequestRemovedServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceServersInServerGroupRequestRemovedServers) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceServersInServerGroupRequestRemovedServers) SetServerId(v string) *ReplaceServersInServerGroupRequestRemovedServers {
+	s.ServerId = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestRemovedServers) SetServerIp(v string) *ReplaceServersInServerGroupRequestRemovedServers {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestRemovedServers) SetServerType(v string) *ReplaceServersInServerGroupRequestRemovedServers {
+	s.ServerType = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupRequestRemovedServers) SetPort(v int32) *ReplaceServersInServerGroupRequestRemovedServers {
+	s.Port = &v
+	return s
+}
+
+type ReplaceServersInServerGroupResponseBody struct {
+	// 异步任务id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReplaceServersInServerGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceServersInServerGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceServersInServerGroupResponseBody) SetJobId(v string) *ReplaceServersInServerGroupResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupResponseBody) SetRequestId(v string) *ReplaceServersInServerGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReplaceServersInServerGroupResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReplaceServersInServerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReplaceServersInServerGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceServersInServerGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceServersInServerGroupResponse) SetHeaders(v map[string]*string) *ReplaceServersInServerGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReplaceServersInServerGroupResponse) SetBody(v *ReplaceServersInServerGroupResponseBody) *ReplaceServersInServerGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// 语言
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
@@ -11599,6 +12732,8 @@ func (s *CreateRulesResponseBody) SetRuleIds(v []*CreateRulesResponseBodyRuleIds
 type CreateRulesResponseBodyRuleIds struct {
 	// 转发规则标识
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// 转发规则优先级
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s CreateRulesResponseBodyRuleIds) String() string {
@@ -11611,6 +12746,11 @@ func (s CreateRulesResponseBodyRuleIds) GoString() string {
 
 func (s *CreateRulesResponseBodyRuleIds) SetRuleId(v string) *CreateRulesResponseBodyRuleIds {
 	s.RuleId = &v
+	return s
+}
+
+func (s *CreateRulesResponseBodyRuleIds) SetPriority(v int32) *CreateRulesResponseBodyRuleIds {
+	s.Priority = &v
 	return s
 }
 
@@ -11800,13 +12940,8 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"eu-central-1":   tea.String("alb.eu-central-1.aliyuncs.com"),
 		"ap-south-1":     tea.String("alb.ap-south-1.aliyuncs.com"),
 		"ap-northeast-1": tea.String("alb.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-3": tea.String("alb.ap-southeast-3.aliyuncs.com"),
 		"cn-chengdu":     tea.String("alb.cn-chengdu.aliyuncs.com"),
-		"cn-huhehaote":   tea.String("alb.cn-huhehaote.aliyuncs.com"),
-		"cn-qingdao":     tea.String("alb.cn-qingdao.aliyuncs.com"),
 		"cn-wulanchabu":  tea.String("alb.cn-wulanchabu.aliyuncs.com"),
-		"eu-west-1":      tea.String("alb.eu-west-1.aliyuncs.com"),
-		"us-west-1":      tea.String("alb.us-west-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -12695,6 +13830,34 @@ func (client *Client) UpdateLoadBalancerEdition(request *UpdateLoadBalancerEditi
 	return _result, _err
 }
 
+func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateRulesAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateRulesAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateRulesAttribute"), tea.String("2020-06-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRulesAttribute(request *UpdateRulesAttributeRequest) (_result *UpdateRulesAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRulesAttributeResponse{}
+	_body, _err := client.UpdateRulesAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListListenersWithOptions(request *ListListenersRequest, runtime *util.RuntimeOptions) (_result *ListListenersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13276,6 +14439,34 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveServersFromServerGroupResponse{}
 	_body, _err := client.RemoveServersFromServerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceServersInServerGroupRequest, runtime *util.RuntimeOptions) (_result *ReplaceServersInServerGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ReplaceServersInServerGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ReplaceServersInServerGroup"), tea.String("2020-06-16"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReplaceServersInServerGroup(request *ReplaceServersInServerGroupRequest) (_result *ReplaceServersInServerGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReplaceServersInServerGroupResponse{}
+	_body, _err := client.ReplaceServersInServerGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
