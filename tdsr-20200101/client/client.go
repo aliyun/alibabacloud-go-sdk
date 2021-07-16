@@ -245,87 +245,6 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 	return s
 }
 
-type GetSceneDataRequest struct {
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-}
-
-func (s GetSceneDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneDataRequest) SetToken(v string) *GetSceneDataRequest {
-	s.Token = &v
-	return s
-}
-
-type GetSceneDataResponseBody struct {
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSceneDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneDataResponseBody) SetRequestId(v string) *GetSceneDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSceneDataResponseBody) SetObjectString(v string) *GetSceneDataResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *GetSceneDataResponseBody) SetData(v map[string]interface{}) *GetSceneDataResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetSceneDataResponseBody) SetErrMessage(v string) *GetSceneDataResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *GetSceneDataResponseBody) SetSuccess(v bool) *GetSceneDataResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSceneDataResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSceneDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSceneDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneDataResponse) SetHeaders(v map[string]*string) *GetSceneDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSceneDataResponse) SetBody(v *GetSceneDataResponseBody) *GetSceneDataResponse {
-	s.Body = v
-	return s
-}
-
 type LinkImageRequest struct {
 	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
@@ -611,93 +530,6 @@ func (s *UpdateConnDataResponse) SetHeaders(v map[string]*string) *UpdateConnDat
 }
 
 func (s *UpdateConnDataResponse) SetBody(v *UpdateConnDataResponseBody) *UpdateConnDataResponse {
-	s.Body = v
-	return s
-}
-
-type BucketIsExistRequest struct {
-	// bucket名称
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-}
-
-func (s BucketIsExistRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BucketIsExistRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BucketIsExistRequest) SetBucketName(v string) *BucketIsExistRequest {
-	s.BucketName = &v
-	return s
-}
-
-type BucketIsExistResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// bucket是否存在
-	IsExist *bool `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
-}
-
-func (s BucketIsExistResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BucketIsExistResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BucketIsExistResponseBody) SetRequestId(v string) *BucketIsExistResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BucketIsExistResponseBody) SetCode(v int64) *BucketIsExistResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BucketIsExistResponseBody) SetSuccess(v bool) *BucketIsExistResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *BucketIsExistResponseBody) SetMessage(v string) *BucketIsExistResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BucketIsExistResponseBody) SetIsExist(v bool) *BucketIsExistResponseBody {
-	s.IsExist = &v
-	return s
-}
-
-type BucketIsExistResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BucketIsExistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BucketIsExistResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BucketIsExistResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BucketIsExistResponse) SetHeaders(v map[string]*string) *BucketIsExistResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BucketIsExistResponse) SetBody(v *BucketIsExistResponseBody) *BucketIsExistResponse {
 	s.Body = v
 	return s
 }
@@ -2208,75 +2040,6 @@ func (s *SaveHotspotTagResponse) SetBody(v *SaveHotspotTagResponseBody) *SaveHot
 	return s
 }
 
-type CheckPermissionRequest struct {
-	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-}
-
-func (s CheckPermissionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckPermissionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckPermissionRequest) SetAliyunId(v string) *CheckPermissionRequest {
-	s.AliyunId = &v
-	return s
-}
-
-type CheckPermissionResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CheckPermissionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckPermissionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckPermissionResponseBody) SetRequestId(v string) *CheckPermissionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CheckPermissionResponseBody) SetErrMessage(v string) *CheckPermissionResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *CheckPermissionResponseBody) SetSuccess(v bool) *CheckPermissionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CheckPermissionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckPermissionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckPermissionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckPermissionResponse) SetHeaders(v map[string]*string) *CheckPermissionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckPermissionResponse) SetBody(v *CheckPermissionResponseBody) *CheckPermissionResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
@@ -2998,87 +2761,6 @@ func (s *AddProjectResponse) SetBody(v *AddProjectResponseBody) *AddProjectRespo
 	return s
 }
 
-type ListMainScenesRequest struct {
-	QueryName *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
-}
-
-func (s ListMainScenesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMainScenesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMainScenesRequest) SetQueryName(v string) *ListMainScenesRequest {
-	s.QueryName = &v
-	return s
-}
-
-type ListMainScenesResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListMainScenesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMainScenesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMainScenesResponseBody) SetRequestId(v string) *ListMainScenesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListMainScenesResponseBody) SetObjectString(v string) *ListMainScenesResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *ListMainScenesResponseBody) SetData(v string) *ListMainScenesResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ListMainScenesResponseBody) SetErrMessage(v string) *ListMainScenesResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *ListMainScenesResponseBody) SetSuccess(v bool) *ListMainScenesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListMainScenesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMainScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMainScenesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMainScenesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMainScenesResponse) SetHeaders(v map[string]*string) *ListMainScenesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMainScenesResponse) SetBody(v *ListMainScenesResponseBody) *ListMainScenesResponse {
-	s.Body = v
-	return s
-}
-
 type DetailSubSceneRequest struct {
 	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -3498,6 +3180,93 @@ func (s *UpdateSubSceneResponse) SetBody(v *UpdateSubSceneResponseBody) *UpdateS
 	return s
 }
 
+type GetJobRequest struct {
+	// 任务实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobRequest) SetInstanceId(v string) *GetJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetJobResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 任务运行状态
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetCode(v int64) *GetJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSuccess(v bool) *GetJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetMessage(v string) *GetJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetStatus(v int64) *GetJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetJobResponse struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProjectRequest struct {
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	BusinessId         *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
@@ -3599,340 +3368,6 @@ func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectR
 }
 
 func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
-	s.Body = v
-	return s
-}
-
-type DropBucketRequest struct {
-	// bucket数据ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DropBucketRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DropBucketRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DropBucketRequest) SetId(v string) *DropBucketRequest {
-	s.Id = &v
-	return s
-}
-
-type DropBucketResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作是否成功
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DropBucketResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DropBucketResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DropBucketResponseBody) SetRequestId(v string) *DropBucketResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DropBucketResponseBody) SetCode(v int64) *DropBucketResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DropBucketResponseBody) SetSuccess(v bool) *DropBucketResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DropBucketResponseBody) SetMessage(v string) *DropBucketResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DropBucketResponseBody) SetStatus(v bool) *DropBucketResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DropBucketResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DropBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DropBucketResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DropBucketResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DropBucketResponse) SetHeaders(v map[string]*string) *DropBucketResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DropBucketResponse) SetBody(v *DropBucketResponseBody) *DropBucketResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserBucketConfigResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Config  *GetUserBucketConfigResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-}
-
-func (s GetUserBucketConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserBucketConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserBucketConfigResponseBody) SetRequestId(v string) *GetUserBucketConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBody) SetCode(v int64) *GetUserBucketConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBody) SetSuccess(v bool) *GetUserBucketConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBody) SetMessage(v string) *GetUserBucketConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBody) SetConfig(v *GetUserBucketConfigResponseBodyConfig) *GetUserBucketConfigResponseBody {
-	s.Config = v
-	return s
-}
-
-type GetUserBucketConfigResponseBodyConfig struct {
-	Input  *GetUserBucketConfigResponseBodyConfigInput  `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	Output *GetUserBucketConfigResponseBodyConfigOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-}
-
-func (s GetUserBucketConfigResponseBodyConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserBucketConfigResponseBodyConfig) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserBucketConfigResponseBodyConfig) SetInput(v *GetUserBucketConfigResponseBodyConfigInput) *GetUserBucketConfigResponseBodyConfig {
-	s.Input = v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBodyConfig) SetOutput(v *GetUserBucketConfigResponseBodyConfigOutput) *GetUserBucketConfigResponseBodyConfig {
-	s.Output = v
-	return s
-}
-
-type GetUserBucketConfigResponseBodyConfigInput struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// bucket名称（3-63位字符）
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// oss地域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-}
-
-func (s GetUserBucketConfigResponseBodyConfigInput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserBucketConfigResponseBodyConfigInput) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigInput) SetId(v string) *GetUserBucketConfigResponseBodyConfigInput {
-	s.Id = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigInput) SetBucketName(v string) *GetUserBucketConfigResponseBodyConfigInput {
-	s.BucketName = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigInput) SetLocation(v string) *GetUserBucketConfigResponseBodyConfigInput {
-	s.Location = &v
-	return s
-}
-
-type GetUserBucketConfigResponseBodyConfigOutput struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// bucket名称（3-63位字符）
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// oss地域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-}
-
-func (s GetUserBucketConfigResponseBodyConfigOutput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserBucketConfigResponseBodyConfigOutput) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigOutput) SetId(v string) *GetUserBucketConfigResponseBodyConfigOutput {
-	s.Id = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigOutput) SetBucketName(v string) *GetUserBucketConfigResponseBodyConfigOutput {
-	s.BucketName = &v
-	return s
-}
-
-func (s *GetUserBucketConfigResponseBodyConfigOutput) SetLocation(v string) *GetUserBucketConfigResponseBodyConfigOutput {
-	s.Location = &v
-	return s
-}
-
-type GetUserBucketConfigResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserBucketConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserBucketConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserBucketConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserBucketConfigResponse) SetHeaders(v map[string]*string) *GetUserBucketConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserBucketConfigResponse) SetBody(v *GetUserBucketConfigResponseBody) *GetUserBucketConfigResponse {
-	s.Body = v
-	return s
-}
-
-type AddBucketRequest struct {
-	// bucket名称
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// 输入或输出类型（1，2）
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AddBucketRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBucketRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddBucketRequest) SetBucketName(v string) *AddBucketRequest {
-	s.BucketName = &v
-	return s
-}
-
-func (s *AddBucketRequest) SetType(v int64) *AddBucketRequest {
-	s.Type = &v
-	return s
-}
-
-type AddBucketResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 是否成功
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s AddBucketResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBucketResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddBucketResponseBody) SetRequestId(v string) *AddBucketResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddBucketResponseBody) SetCode(v int64) *AddBucketResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddBucketResponseBody) SetSuccess(v bool) *AddBucketResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *AddBucketResponseBody) SetMessage(v string) *AddBucketResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddBucketResponseBody) SetStatus(v bool) *AddBucketResponseBody {
-	s.Status = &v
-	return s
-}
-
-type AddBucketResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddBucketResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddBucketResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddBucketResponse) SetHeaders(v map[string]*string) *AddBucketResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddBucketResponse) SetBody(v *AddBucketResponseBody) *AddBucketResponse {
 	s.Body = v
 	return s
 }
@@ -4089,219 +3524,6 @@ func (s *GetWindowConfigResponse) SetHeaders(v map[string]*string) *GetWindowCon
 }
 
 func (s *GetWindowConfigResponse) SetBody(v *GetWindowConfigResponseBody) *GetWindowConfigResponse {
-	s.Body = v
-	return s
-}
-
-type StatisQueryByTypeRequest struct {
-	// 开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s StatisQueryByTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByTypeRequest) SetStartTime(v int64) *StatisQueryByTypeRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *StatisQueryByTypeRequest) SetEndTime(v int64) *StatisQueryByTypeRequest {
-	s.EndTime = &v
-	return s
-}
-
-type StatisQueryByTypeResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回集合
-	List []*StatisQueryByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-}
-
-func (s StatisQueryByTypeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByTypeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByTypeResponseBody) SetRequestId(v string) *StatisQueryByTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StatisQueryByTypeResponseBody) SetCode(v int64) *StatisQueryByTypeResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StatisQueryByTypeResponseBody) SetSuccess(v bool) *StatisQueryByTypeResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *StatisQueryByTypeResponseBody) SetMessage(v string) *StatisQueryByTypeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StatisQueryByTypeResponseBody) SetList(v []*StatisQueryByTypeResponseBodyList) *StatisQueryByTypeResponseBody {
-	s.List = v
-	return s
-}
-
-type StatisQueryByTypeResponseBodyList struct {
-	// 0：默认类型(增加type字段时默认值) 1：3D模型 2：全景图片3：全景视频
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 当前日期主场景数量
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s StatisQueryByTypeResponseBodyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByTypeResponseBodyList) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByTypeResponseBodyList) SetType(v int32) *StatisQueryByTypeResponseBodyList {
-	s.Type = &v
-	return s
-}
-
-func (s *StatisQueryByTypeResponseBodyList) SetCount(v int32) *StatisQueryByTypeResponseBodyList {
-	s.Count = &v
-	return s
-}
-
-type StatisQueryByTypeResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StatisQueryByTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StatisQueryByTypeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByTypeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByTypeResponse) SetHeaders(v map[string]*string) *StatisQueryByTypeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StatisQueryByTypeResponse) SetBody(v *StatisQueryByTypeResponseBody) *StatisQueryByTypeResponse {
-	s.Body = v
-	return s
-}
-
-type StatisExportSceneInfoRequest struct {
-	// 开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s StatisExportSceneInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisExportSceneInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StatisExportSceneInfoRequest) SetStartTime(v int64) *StatisExportSceneInfoRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *StatisExportSceneInfoRequest) SetEndTime(v int64) *StatisExportSceneInfoRequest {
-	s.EndTime = &v
-	return s
-}
-
-type StatisExportSceneInfoResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// excel下载地址
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s StatisExportSceneInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisExportSceneInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StatisExportSceneInfoResponseBody) SetRequestId(v string) *StatisExportSceneInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StatisExportSceneInfoResponseBody) SetCode(v int64) *StatisExportSceneInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StatisExportSceneInfoResponseBody) SetSuccess(v bool) *StatisExportSceneInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *StatisExportSceneInfoResponseBody) SetMessage(v string) *StatisExportSceneInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StatisExportSceneInfoResponseBody) SetUrl(v string) *StatisExportSceneInfoResponseBody {
-	s.Url = &v
-	return s
-}
-
-type StatisExportSceneInfoResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StatisExportSceneInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StatisExportSceneInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisExportSceneInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StatisExportSceneInfoResponse) SetHeaders(v map[string]*string) *StatisExportSceneInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StatisExportSceneInfoResponse) SetBody(v *StatisExportSceneInfoResponseBody) *StatisExportSceneInfoResponse {
 	s.Body = v
 	return s
 }
@@ -4599,93 +3821,6 @@ func (s *TempPreviewResponse) SetHeaders(v map[string]*string) *TempPreviewRespo
 }
 
 func (s *TempPreviewResponse) SetBody(v *TempPreviewResponseBody) *TempPreviewResponse {
-	s.Body = v
-	return s
-}
-
-type PublishSceneRequest struct {
-	// 场景ID
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-}
-
-func (s PublishSceneRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSceneRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSceneRequest) SetSceneId(v string) *PublishSceneRequest {
-	s.SceneId = &v
-	return s
-}
-
-type PublishSceneResponseBody struct {
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 预览链接
-	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-}
-
-func (s PublishSceneResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSceneResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSceneResponseBody) SetRequestId(v string) *PublishSceneResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PublishSceneResponseBody) SetCode(v int64) *PublishSceneResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PublishSceneResponseBody) SetSuccess(v bool) *PublishSceneResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *PublishSceneResponseBody) SetMessage(v string) *PublishSceneResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PublishSceneResponseBody) SetPreviewUrl(v string) *PublishSceneResponseBody {
-	s.PreviewUrl = &v
-	return s
-}
-
-type PublishSceneResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PublishSceneResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSceneResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSceneResponse) SetHeaders(v map[string]*string) *PublishSceneResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishSceneResponse) SetBody(v *PublishSceneResponseBody) *PublishSceneResponse {
 	s.Body = v
 	return s
 }
@@ -4997,93 +4132,6 @@ func (s *DropSubSceneResponse) SetBody(v *DropSubSceneResponseBody) *DropSubScen
 	return s
 }
 
-type IsEnableOssRequest struct {
-	// 是否启用
-	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-}
-
-func (s IsEnableOssRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IsEnableOssRequest) GoString() string {
-	return s.String()
-}
-
-func (s *IsEnableOssRequest) SetIsEnable(v bool) *IsEnableOssRequest {
-	s.IsEnable = &v
-	return s
-}
-
-type IsEnableOssResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 操作是否成功
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s IsEnableOssResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IsEnableOssResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *IsEnableOssResponseBody) SetRequestId(v string) *IsEnableOssResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *IsEnableOssResponseBody) SetCode(v int64) *IsEnableOssResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *IsEnableOssResponseBody) SetSuccess(v bool) *IsEnableOssResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *IsEnableOssResponseBody) SetMessage(v string) *IsEnableOssResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *IsEnableOssResponseBody) SetStatus(v bool) *IsEnableOssResponseBody {
-	s.Status = &v
-	return s
-}
-
-type IsEnableOssResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IsEnableOssResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s IsEnableOssResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IsEnableOssResponse) GoString() string {
-	return s.String()
-}
-
-func (s *IsEnableOssResponse) SetHeaders(v map[string]*string) *IsEnableOssResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *IsEnableOssResponse) SetBody(v *IsEnableOssResponseBody) *IsEnableOssResponse {
-	s.Body = v
-	return s
-}
-
 type GetHotspotTagRequest struct {
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
 	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
@@ -5253,75 +4301,6 @@ func (s *DropProjectResponse) SetHeaders(v map[string]*string) *DropProjectRespo
 }
 
 func (s *DropProjectResponse) SetBody(v *DropProjectResponseBody) *DropProjectResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserOssStatusResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 是否启用oss
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetUserOssStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserOssStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserOssStatusResponseBody) SetRequestId(v string) *GetUserOssStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserOssStatusResponseBody) SetCode(v int64) *GetUserOssStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetUserOssStatusResponseBody) SetSuccess(v bool) *GetUserOssStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetUserOssStatusResponseBody) SetMessage(v string) *GetUserOssStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetUserOssStatusResponseBody) SetStatus(v bool) *GetUserOssStatusResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetUserOssStatusResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserOssStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserOssStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserOssStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserOssStatusResponse) SetHeaders(v map[string]*string) *GetUserOssStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserOssStatusResponse) SetBody(v *GetUserOssStatusResponseBody) *GetUserOssStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5602,223 +4581,6 @@ func (s *GetOriginLayoutDataResponse) SetBody(v *GetOriginLayoutDataResponseBody
 	return s
 }
 
-type StatisListSceneInfoRequest struct {
-	// 开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 页码
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 一页显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s StatisListSceneInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisListSceneInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StatisListSceneInfoRequest) SetStartTime(v int64) *StatisListSceneInfoRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *StatisListSceneInfoRequest) SetEndTime(v int64) *StatisListSceneInfoRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *StatisListSceneInfoRequest) SetPageNum(v int32) *StatisListSceneInfoRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *StatisListSceneInfoRequest) SetPageSize(v int32) *StatisListSceneInfoRequest {
-	s.PageSize = &v
-	return s
-}
-
-type StatisListSceneInfoResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回集合
-	List []*StatisListSceneInfoResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 页码
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 一页显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 总页数
-	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-}
-
-func (s StatisListSceneInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisListSceneInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StatisListSceneInfoResponseBody) SetRequestId(v string) *StatisListSceneInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetCode(v int64) *StatisListSceneInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetSuccess(v bool) *StatisListSceneInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetMessage(v string) *StatisListSceneInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetList(v []*StatisListSceneInfoResponseBodyList) *StatisListSceneInfoResponseBody {
-	s.List = v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetPageNum(v int32) *StatisListSceneInfoResponseBody {
-	s.PageNum = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetPageSize(v int32) *StatisListSceneInfoResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetTotalCount(v int32) *StatisListSceneInfoResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBody) SetTotalPages(v int32) *StatisListSceneInfoResponseBody {
-	s.TotalPages = &v
-	return s
-}
-
-type StatisListSceneInfoResponseBodyList struct {
-	// 0：默认类型(增加type字段时默认值) 1：3D模型 2：全景图片3：全景视频
-	SceneType *int32 `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
-	// 发布时间到秒
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// 主场景名称
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 资源数量
-	ResCount *int32 `json:"ResCount,omitempty" xml:"ResCount,omitempty"`
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 计费量
-	MeasureCount *int32 `json:"MeasureCount,omitempty" xml:"MeasureCount,omitempty"`
-	// statustinyin是否已发布 0:未发布 1：已发布
-	PublishStatus *int64 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// 主场景创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 主场景id
-	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 项目Id
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s StatisListSceneInfoResponseBodyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisListSceneInfoResponseBodyList) GoString() string {
-	return s.String()
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetSceneType(v int32) *StatisListSceneInfoResponseBodyList {
-	s.SceneType = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetPublishTime(v string) *StatisListSceneInfoResponseBodyList {
-	s.PublishTime = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetSceneName(v string) *StatisListSceneInfoResponseBodyList {
-	s.SceneName = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetResCount(v int32) *StatisListSceneInfoResponseBodyList {
-	s.ResCount = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetProjectName(v string) *StatisListSceneInfoResponseBodyList {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetMeasureCount(v int32) *StatisListSceneInfoResponseBodyList {
-	s.MeasureCount = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetPublishStatus(v int64) *StatisListSceneInfoResponseBodyList {
-	s.PublishStatus = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetCreateTime(v string) *StatisListSceneInfoResponseBodyList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetSceneId(v int64) *StatisListSceneInfoResponseBodyList {
-	s.SceneId = &v
-	return s
-}
-
-func (s *StatisListSceneInfoResponseBodyList) SetProjectId(v int64) *StatisListSceneInfoResponseBodyList {
-	s.ProjectId = &v
-	return s
-}
-
-type StatisListSceneInfoResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StatisListSceneInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StatisListSceneInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisListSceneInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StatisListSceneInfoResponse) SetHeaders(v map[string]*string) *StatisListSceneInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StatisListSceneInfoResponse) SetBody(v *StatisListSceneInfoResponseBody) *StatisListSceneInfoResponse {
-	s.Body = v
-	return s
-}
-
 type ScenePublishRequest struct {
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -5902,93 +4664,6 @@ func (s *ScenePublishResponse) SetHeaders(v map[string]*string) *ScenePublishRes
 }
 
 func (s *ScenePublishResponse) SetBody(v *ScenePublishResponseBody) *ScenePublishResponse {
-	s.Body = v
-	return s
-}
-
-type SaveFileRequest struct {
-	ParamFile    *string `json:"ParamFile,omitempty" xml:"ParamFile,omitempty"`
-	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
-}
-
-func (s SaveFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SaveFileRequest) SetParamFile(v string) *SaveFileRequest {
-	s.ParamFile = &v
-	return s
-}
-
-func (s *SaveFileRequest) SetSubSceneUuid(v string) *SaveFileRequest {
-	s.SubSceneUuid = &v
-	return s
-}
-
-type SaveFileResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SaveFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SaveFileResponseBody) SetRequestId(v string) *SaveFileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SaveFileResponseBody) SetObjectString(v string) *SaveFileResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *SaveFileResponseBody) SetData(v string) *SaveFileResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SaveFileResponseBody) SetErrMessage(v string) *SaveFileResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *SaveFileResponseBody) SetSuccess(v bool) *SaveFileResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SaveFileResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SaveFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SaveFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SaveFileResponse) SetHeaders(v map[string]*string) *SaveFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SaveFileResponse) SetBody(v *SaveFileResponseBody) *SaveFileResponse {
 	s.Body = v
 	return s
 }
@@ -6170,300 +4845,6 @@ func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectR
 }
 
 func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdateProjectResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateBucketRequest struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// bucket名称
-	NewBucketName *string `json:"NewBucketName,omitempty" xml:"NewBucketName,omitempty"`
-}
-
-func (s UpdateBucketRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateBucketRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateBucketRequest) SetId(v string) *UpdateBucketRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateBucketRequest) SetNewBucketName(v string) *UpdateBucketRequest {
-	s.NewBucketName = &v
-	return s
-}
-
-type UpdateBucketResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 是否更新成功
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s UpdateBucketResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateBucketResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateBucketResponseBody) SetRequestId(v string) *UpdateBucketResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateBucketResponseBody) SetCode(v int64) *UpdateBucketResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateBucketResponseBody) SetSuccess(v bool) *UpdateBucketResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *UpdateBucketResponseBody) SetMessage(v string) *UpdateBucketResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateBucketResponseBody) SetStatus(v bool) *UpdateBucketResponseBody {
-	s.Status = &v
-	return s
-}
-
-type UpdateBucketResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateBucketResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateBucketResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateBucketResponse) SetHeaders(v map[string]*string) *UpdateBucketResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateBucketResponse) SetBody(v *UpdateBucketResponseBody) *UpdateBucketResponse {
-	s.Body = v
-	return s
-}
-
-type StatisQueryByDayRequest struct {
-	// 开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s StatisQueryByDayRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByDayRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByDayRequest) SetStartTime(v int64) *StatisQueryByDayRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *StatisQueryByDayRequest) SetEndTime(v int64) *StatisQueryByDayRequest {
-	s.EndTime = &v
-	return s
-}
-
-type StatisQueryByDayResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回集合
-	List []*StatisQueryByDayResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-}
-
-func (s StatisQueryByDayResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByDayResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByDayResponseBody) SetRequestId(v string) *StatisQueryByDayResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBody) SetCode(v int64) *StatisQueryByDayResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBody) SetSuccess(v bool) *StatisQueryByDayResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBody) SetMessage(v string) *StatisQueryByDayResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBody) SetList(v []*StatisQueryByDayResponseBodyList) *StatisQueryByDayResponseBody {
-	s.List = v
-	return s
-}
-
-type StatisQueryByDayResponseBodyList struct {
-	// 是否已发布 0:未发布 1：已发布
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 当前类型数量
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// 日期格式yyyy-MM-dd
-	Day *string `json:"Day,omitempty" xml:"Day,omitempty"`
-}
-
-func (s StatisQueryByDayResponseBodyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByDayResponseBodyList) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByDayResponseBodyList) SetStatus(v int32) *StatisQueryByDayResponseBodyList {
-	s.Status = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBodyList) SetCount(v int32) *StatisQueryByDayResponseBodyList {
-	s.Count = &v
-	return s
-}
-
-func (s *StatisQueryByDayResponseBodyList) SetDay(v string) *StatisQueryByDayResponseBodyList {
-	s.Day = &v
-	return s
-}
-
-type StatisQueryByDayResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StatisQueryByDayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StatisQueryByDayResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StatisQueryByDayResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StatisQueryByDayResponse) SetHeaders(v map[string]*string) *StatisQueryByDayResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StatisQueryByDayResponse) SetBody(v *StatisQueryByDayResponseBody) *StatisQueryByDayResponse {
-	s.Body = v
-	return s
-}
-
-type GetSceneListRequest struct {
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-}
-
-func (s GetSceneListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneListRequest) SetAccountId(v string) *GetSceneListRequest {
-	s.AccountId = &v
-	return s
-}
-
-type GetSceneListResponseBody struct {
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data       map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success    *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSceneListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneListResponseBody) SetRequestId(v string) *GetSceneListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSceneListResponseBody) SetData(v map[string]interface{}) *GetSceneListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetSceneListResponseBody) SetErrMessage(v string) *GetSceneListResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *GetSceneListResponseBody) SetSuccess(v bool) *GetSceneListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSceneListResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSceneListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSceneListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSceneListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSceneListResponse) SetHeaders(v map[string]*string) *GetSceneListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSceneListResponse) SetBody(v *GetSceneListResponseBody) *GetSceneListResponse {
 	s.Body = v
 	return s
 }
@@ -7090,34 +5471,6 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetSceneDataWithOptions(request *GetSceneDataRequest, runtime *util.RuntimeOptions) (_result *GetSceneDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetSceneDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSceneData"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSceneData(request *GetSceneDataRequest) (_result *GetSceneDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSceneDataResponse{}
-	_body, _err := client.GetSceneDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) LinkImageWithOptions(request *LinkImageRequest, runtime *util.RuntimeOptions) (_result *LinkImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7195,34 +5548,6 @@ func (client *Client) UpdateConnData(request *UpdateConnDataRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConnDataResponse{}
 	_body, _err := client.UpdateConnDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BucketIsExistWithOptions(request *BucketIsExistRequest, runtime *util.RuntimeOptions) (_result *BucketIsExistResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &BucketIsExistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BucketIsExist"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BucketIsExist(request *BucketIsExistRequest) (_result *BucketIsExistResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BucketIsExistResponse{}
-	_body, _err := client.BucketIsExistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7622,34 +5947,6 @@ func (client *Client) SaveHotspotTag(request *SaveHotspotTagRequest) (_result *S
 	return _result, _err
 }
 
-func (client *Client) CheckPermissionWithOptions(request *CheckPermissionRequest, runtime *util.RuntimeOptions) (_result *CheckPermissionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CheckPermissionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckPermission"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckPermission(request *CheckPermissionRequest) (_result *CheckPermissionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckPermissionResponse{}
-	_body, _err := client.CheckPermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7846,34 +6143,6 @@ func (client *Client) AddProject(request *AddProjectRequest) (_result *AddProjec
 	return _result, _err
 }
 
-func (client *Client) ListMainScenesWithOptions(request *ListMainScenesRequest, runtime *util.RuntimeOptions) (_result *ListMainScenesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListMainScenesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMainScenes"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListMainScenes(request *ListMainScenesRequest) (_result *ListMainScenesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListMainScenesResponse{}
-	_body, _err := client.ListMainScenesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetailSubSceneWithOptions(request *DetailSubSceneRequest, runtime *util.RuntimeOptions) (_result *DetailSubSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7958,6 +6227,34 @@ func (client *Client) UpdateSubScene(request *UpdateSubSceneRequest) (_result *U
 	return _result, _err
 }
 
+func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetJob"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobResponse{}
+	_body, _err := client.GetJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7979,84 +6276,6 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.CreateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DropBucketWithOptions(request *DropBucketRequest, runtime *util.RuntimeOptions) (_result *DropBucketResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DropBucketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DropBucket"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DropBucket(request *DropBucketRequest) (_result *DropBucketResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DropBucketResponse{}
-	_body, _err := client.DropBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserBucketConfigWithOptions(runtime *util.RuntimeOptions) (_result *GetUserBucketConfigResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &GetUserBucketConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserBucketConfig"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserBucketConfig() (_result *GetUserBucketConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserBucketConfigResponse{}
-	_body, _err := client.GetUserBucketConfigWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddBucketWithOptions(request *AddBucketRequest, runtime *util.RuntimeOptions) (_result *AddBucketResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AddBucketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddBucket"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddBucket(request *AddBucketRequest) (_result *AddBucketResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddBucketResponse{}
-	_body, _err := client.AddBucketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8113,62 +6332,6 @@ func (client *Client) GetWindowConfig(request *GetWindowConfigRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWindowConfigResponse{}
 	_body, _err := client.GetWindowConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StatisQueryByTypeWithOptions(request *StatisQueryByTypeRequest, runtime *util.RuntimeOptions) (_result *StatisQueryByTypeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StatisQueryByTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StatisQueryByType"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StatisQueryByType(request *StatisQueryByTypeRequest) (_result *StatisQueryByTypeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StatisQueryByTypeResponse{}
-	_body, _err := client.StatisQueryByTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StatisExportSceneInfoWithOptions(request *StatisExportSceneInfoRequest, runtime *util.RuntimeOptions) (_result *StatisExportSceneInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StatisExportSceneInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StatisExportSceneInfo"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StatisExportSceneInfo(request *StatisExportSceneInfoRequest) (_result *StatisExportSceneInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StatisExportSceneInfoResponse{}
-	_body, _err := client.StatisExportSceneInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8260,34 +6423,6 @@ func (client *Client) TempPreview(request *TempPreviewRequest) (_result *TempPre
 	return _result, _err
 }
 
-func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runtime *util.RuntimeOptions) (_result *PublishSceneResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &PublishSceneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishScene"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PublishScene(request *PublishSceneRequest) (_result *PublishSceneResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PublishSceneResponse{}
-	_body, _err := client.PublishSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, runtime *util.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8372,34 +6507,6 @@ func (client *Client) DropSubScene(request *DropSubSceneRequest) (_result *DropS
 	return _result, _err
 }
 
-func (client *Client) IsEnableOssWithOptions(request *IsEnableOssRequest, runtime *util.RuntimeOptions) (_result *IsEnableOssResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &IsEnableOssResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("IsEnableOss"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) IsEnableOss(request *IsEnableOssRequest) (_result *IsEnableOssResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &IsEnableOssResponse{}
-	_body, _err := client.IsEnableOssWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetHotspotTagWithOptions(request *GetHotspotTagRequest, runtime *util.RuntimeOptions) (_result *GetHotspotTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8449,28 +6556,6 @@ func (client *Client) DropProject(request *DropProjectRequest) (_result *DropPro
 	runtime := &util.RuntimeOptions{}
 	_result = &DropProjectResponse{}
 	_body, _err := client.DropProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserOssStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetUserOssStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &GetUserOssStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserOssStatus"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserOssStatus() (_result *GetUserOssStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserOssStatusResponse{}
-	_body, _err := client.GetUserOssStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8534,34 +6619,6 @@ func (client *Client) GetOriginLayoutData(request *GetOriginLayoutDataRequest) (
 	return _result, _err
 }
 
-func (client *Client) StatisListSceneInfoWithOptions(request *StatisListSceneInfoRequest, runtime *util.RuntimeOptions) (_result *StatisListSceneInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StatisListSceneInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StatisListSceneInfo"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StatisListSceneInfo(request *StatisListSceneInfoRequest) (_result *StatisListSceneInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StatisListSceneInfoResponse{}
-	_body, _err := client.StatisListSceneInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runtime *util.RuntimeOptions) (_result *ScenePublishResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8583,34 +6640,6 @@ func (client *Client) ScenePublish(request *ScenePublishRequest) (_result *Scene
 	runtime := &util.RuntimeOptions{}
 	_result = &ScenePublishResponse{}
 	_body, _err := client.ScenePublishWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SaveFileWithOptions(request *SaveFileRequest, runtime *util.RuntimeOptions) (_result *SaveFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SaveFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveFile"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SaveFile(request *SaveFileRequest) (_result *SaveFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SaveFileResponse{}
-	_body, _err := client.SaveFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8667,90 +6696,6 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateProjectResponse{}
 	_body, _err := client.UpdateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateBucketWithOptions(request *UpdateBucketRequest, runtime *util.RuntimeOptions) (_result *UpdateBucketResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateBucketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateBucket"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateBucket(request *UpdateBucketRequest) (_result *UpdateBucketResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateBucketResponse{}
-	_body, _err := client.UpdateBucketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StatisQueryByDayWithOptions(request *StatisQueryByDayRequest, runtime *util.RuntimeOptions) (_result *StatisQueryByDayResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StatisQueryByDayResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StatisQueryByDay"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StatisQueryByDay(request *StatisQueryByDayRequest) (_result *StatisQueryByDayResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StatisQueryByDayResponse{}
-	_body, _err := client.StatisQueryByDayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSceneListWithOptions(request *GetSceneListRequest, runtime *util.RuntimeOptions) (_result *GetSceneListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetSceneListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSceneList"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSceneList(request *GetSceneListRequest) (_result *GetSceneListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSceneListResponse{}
-	_body, _err := client.GetSceneListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
