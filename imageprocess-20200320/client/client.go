@@ -2572,11 +2572,12 @@ func (s *ScreenChestCTResponseBody) SetData(v *ScreenChestCTResponseBodyData) *S
 }
 
 type ScreenChestCTResponseBodyData struct {
-	LungNodule        *ScreenChestCTResponseBodyDataLungNodule        `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
-	CACS              *ScreenChestCTResponseBodyDataCACS              `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
-	Covid             *ScreenChestCTResponseBodyDataCovid             `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
-	DetectRibFracture *ScreenChestCTResponseBodyDataDetectRibFracture `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
-	ErrorMessage      *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
+	CACS               *ScreenChestCTResponseBodyDataCACS               `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
+	Covid              *ScreenChestCTResponseBodyDataCovid              `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
+	DetectRibFracture  *ScreenChestCTResponseBodyDataDetectRibFracture  `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
+	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	AnalyzeChestVessel *ScreenChestCTResponseBodyDataAnalyzeChestVessel `json:"AnalyzeChestVessel,omitempty" xml:"AnalyzeChestVessel,omitempty" type:"Struct"`
 }
 
 func (s ScreenChestCTResponseBodyData) String() string {
@@ -2609,6 +2610,11 @@ func (s *ScreenChestCTResponseBodyData) SetDetectRibFracture(v *ScreenChestCTRes
 
 func (s *ScreenChestCTResponseBodyData) SetErrorMessage(v string) *ScreenChestCTResponseBodyData {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetAnalyzeChestVessel(v *ScreenChestCTResponseBodyDataAnalyzeChestVessel) *ScreenChestCTResponseBodyData {
+	s.AnalyzeChestVessel = v
 	return s
 }
 
@@ -2914,6 +2920,135 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureLo
 
 func (s *ScreenChestCTResponseBodyDataDetectRibFractureDetections) SetFractureSegment(v int64) *ScreenChestCTResponseBodyDataDetectRibFractureDetections {
 	s.FractureSegment = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataAnalyzeChestVessel struct {
+	AortaInfo     *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo     `json:"AortaInfo,omitempty" xml:"AortaInfo,omitempty" type:"Struct"`
+	PulmonaryInfo *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo `json:"PulmonaryInfo,omitempty" xml:"PulmonaryInfo,omitempty" type:"Struct"`
+	ResultURL     *string                                                       `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVessel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVessel) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetAortaInfo(v *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) *ScreenChestCTResponseBodyDataAnalyzeChestVessel {
+	s.AortaInfo = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetPulmonaryInfo(v *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) *ScreenChestCTResponseBodyDataAnalyzeChestVessel {
+	s.PulmonaryInfo = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetResultURL(v string) *ScreenChestCTResponseBodyDataAnalyzeChestVessel {
+	s.ResultURL = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo struct {
+	MaxAreaIndex *int64       `json:"MaxAreaIndex,omitempty" xml:"MaxAreaIndex,omitempty"`
+	MaxArea      *float32     `json:"MaxArea,omitempty" xml:"MaxArea,omitempty"`
+	MaxDiameter  *float32     `json:"MaxDiameter,omitempty" xml:"MaxDiameter,omitempty"`
+	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxAreaIndex(v int64) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.MaxAreaIndex = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxArea(v float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.MaxArea = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxDiameter(v float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.MaxDiameter = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetLabelValue(v int64) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetCoordinates(v [][]*float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.Coordinates = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetArea(v []*float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo {
+	s.Area = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo struct {
+	MaxAreaIndex     *int64       `json:"MaxAreaIndex,omitempty" xml:"MaxAreaIndex,omitempty"`
+	MaxArea          *float32     `json:"MaxArea,omitempty" xml:"MaxArea,omitempty"`
+	MaxDiameter      *float32     `json:"MaxDiameter,omitempty" xml:"MaxDiameter,omitempty"`
+	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
+	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
+	NearestAortaArea *float32     `json:"NearestAortaArea,omitempty" xml:"NearestAortaArea,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetMaxAreaIndex(v int64) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.MaxAreaIndex = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetMaxArea(v float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.MaxArea = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetMaxDiameter(v float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.MaxDiameter = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetLabelValue(v int64) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.LabelValue = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetCoordinates(v [][]*float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.Coordinates = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetArea(v []*float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.Area = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetNearestAortaArea(v float32) *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo {
+	s.NearestAortaArea = &v
 	return s
 }
 
