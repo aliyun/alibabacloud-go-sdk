@@ -3733,7 +3733,7 @@ func (s *GetSceneBuildTaskStatusResponse) SetBody(v *GetSceneBuildTaskStatusResp
 
 type TempPreviewRequest struct {
 	// 场景ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s TempPreviewRequest) String() string {
@@ -3744,8 +3744,8 @@ func (s TempPreviewRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TempPreviewRequest) SetId(v string) *TempPreviewRequest {
-	s.Id = &v
+func (s *TempPreviewRequest) SetSceneId(v string) *TempPreviewRequest {
+	s.SceneId = &v
 	return s
 }
 
