@@ -2423,6 +2423,114 @@ func (s *OpenAckServiceResponse) SetBody(v *OpenAckServiceResponseBody) *OpenAck
 	return s
 }
 
+type CreateTriggerRequest struct {
+	// 集群ID。
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 项目名称。
+	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器行为
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 触发器类型。默认deployment。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTriggerRequest) SetClusterId(v string) *CreateTriggerRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateTriggerRequest) SetProjectId(v string) *CreateTriggerRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateTriggerRequest) SetAction(v string) *CreateTriggerRequest {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateTriggerRequest) SetType(v string) *CreateTriggerRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateTriggerResponseBody struct {
+	// 触发器ID。
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 集群ID。
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 触发器项目名称。
+	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器类型。默认值为 deployment 。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 触发器行为。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s CreateTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTriggerResponseBody) SetId(v string) *CreateTriggerResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetClusterId(v string) *CreateTriggerResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetProjectId(v string) *CreateTriggerResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetType(v string) *CreateTriggerResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetAction(v string) *CreateTriggerResponseBody {
+	s.Action = &v
+	return s
+}
+
+type CreateTriggerResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTriggerResponse) SetHeaders(v map[string]*string) *CreateTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTriggerResponse {
+	s.Body = v
+	return s
+}
+
 type ScaleClusterNodePoolRequest struct {
 	// 扩容节点数量
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
@@ -3151,6 +3259,128 @@ func (s *DescribeClusterNodePoolDetailResponse) SetHeaders(v map[string]*string)
 
 func (s *DescribeClusterNodePoolDetailResponse) SetBody(v *DescribeClusterNodePoolDetailResponseBody) *DescribeClusterNodePoolDetailResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeTriggerRequest struct {
+	// 应用所属命名空间。
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// 应用类型。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 应用名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 触发器行为。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s DescribeTriggerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTriggerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTriggerRequest) SetNamespace(v string) *DescribeTriggerRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeTriggerRequest) SetType(v string) *DescribeTriggerRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeTriggerRequest) SetName(v string) *DescribeTriggerRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeTriggerRequest) SetAction(v string) *DescribeTriggerRequest {
+	s.Action = &v
+	return s
+}
+
+type DescribeTriggerResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    []*DescribeTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s DescribeTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTriggerResponse) SetHeaders(v map[string]*string) *DescribeTriggerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTriggerResponse) SetBody(v []*DescribeTriggerResponseBody) *DescribeTriggerResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTriggerResponseBody struct {
+	// 触发器ID。
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 触发器名称。
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 集群ID
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 触发器项目名称
+	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// 触发器类型。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 触发器行为
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// Token
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s DescribeTriggerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTriggerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTriggerResponseBody) SetId(v string) *DescribeTriggerResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetName(v string) *DescribeTriggerResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetClusterId(v string) *DescribeTriggerResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetProjectId(v string) *DescribeTriggerResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetType(v string) *DescribeTriggerResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetAction(v string) *DescribeTriggerResponseBody {
+	s.Action = &v
+	return s
+}
+
+func (s *DescribeTriggerResponseBody) SetToken(v string) *DescribeTriggerResponseBody {
+	s.Token = &v
 	return s
 }
 
@@ -4368,6 +4598,10 @@ type CreateClusterRequest struct {
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// 操作系统平台类型
 	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
+	// 等保安全加固
+	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
+	// CIS安全加固
+	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// CPU策略
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// Proxy代理模式，ipvs|iptables
@@ -4414,6 +4648,8 @@ type CreateClusterRequest struct {
 	WorkerSystemDiskSize *int64 `json:"worker_system_disk_size,omitempty" xml:"worker_system_disk_size,omitempty"`
 	// 集群Worker节点系统盘快照备份策略
 	WorkerSystemDiskSnapshotPolicyId *string `json:"worker_system_disk_snapshot_policy_id,omitempty" xml:"worker_system_disk_snapshot_policy_id,omitempty"`
+	// 集群Worker节点磁盘性能，只对ESSD类型磁盘生效
+	WorkerSystemDiskPerformanceLevel *string `json:"worker_system_disk_performance_level,omitempty" xml:"worker_system_disk_performance_level,omitempty"`
 	// 集群Worker节点数据盘配置
 	WorkerDataDisks []*DataDisk `json:"worker_data_disks,omitempty" xml:"worker_data_disks,omitempty" type:"Repeated"`
 	// 集群Worker节点付费类型
@@ -4440,6 +4676,14 @@ type CreateClusterRequest struct {
 	ZoneId *string `json:"zone_id,omitempty" xml:"zone_id,omitempty"`
 	// 面向场景时的集群类型。  Default：非边缘场景集群。 Edge：边缘场景集群。
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// ASK 集群开启日志服务
+	LoggingType *string `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
+	// 控制平面日志
+	ControlplaneLogTtl *string `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
+	// 使用已有log project时，需要指定log project
+	ControlplaneLogProject *string `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
+	// 需要采集日志的组件
+	ControlplaneLogComponents []*string `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
 	// 集群删除保护
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// 失败回滚
@@ -4621,6 +4865,16 @@ func (s *CreateClusterRequest) SetOsType(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetSocEnabled(v bool) *CreateClusterRequest {
+	s.SocEnabled = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetCisEnabled(v bool) *CreateClusterRequest {
+	s.CisEnabled = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetCpuPolicy(v string) *CreateClusterRequest {
 	s.CpuPolicy = &v
 	return s
@@ -4736,6 +4990,11 @@ func (s *CreateClusterRequest) SetWorkerSystemDiskSnapshotPolicyId(v string) *Cr
 	return s
 }
 
+func (s *CreateClusterRequest) SetWorkerSystemDiskPerformanceLevel(v string) *CreateClusterRequest {
+	s.WorkerSystemDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetWorkerDataDisks(v []*DataDisk) *CreateClusterRequest {
 	s.WorkerDataDisks = v
 	return s
@@ -4798,6 +5057,26 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetProfile(v string) *CreateClusterRequest {
 	s.Profile = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetLoggingType(v string) *CreateClusterRequest {
+	s.LoggingType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetControlplaneLogTtl(v string) *CreateClusterRequest {
+	s.ControlplaneLogTtl = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetControlplaneLogProject(v string) *CreateClusterRequest {
+	s.ControlplaneLogProject = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetControlplaneLogComponents(v []*string) *CreateClusterRequest {
+	s.ControlplaneLogComponents = v
 	return s
 }
 
@@ -6046,6 +6325,23 @@ func (s *DescribeExternalAgentResponse) SetBody(v *DescribeExternalAgentResponse
 	return s
 }
 
+type DeleteTriggerResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteTriggerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTriggerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerResponse {
+	s.Headers = v
+	return s
+}
+
 type UnInstallClusterAddonsRequest struct {
 	// 卸载组件列表。
 	Addons []*UnInstallClusterAddonsRequestAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
@@ -7025,8 +7321,27 @@ func (s *DescribeUserQuotaResponse) SetBody(v *DescribeUserQuotaResponseBody) *D
 	return s
 }
 
+type DeleteClusterNodepoolResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+}
+
+func (s DeleteClusterNodepoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterNodepoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterNodepoolResponseBody) SetRequestId(v string) *DeleteClusterNodepoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeleteClusterNodepoolResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteClusterNodepoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteClusterNodepoolResponse) String() string {
@@ -7039,6 +7354,11 @@ func (s DeleteClusterNodepoolResponse) GoString() string {
 
 func (s *DeleteClusterNodepoolResponse) SetHeaders(v map[string]*string) *DeleteClusterNodepoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterNodepoolResponse) SetBody(v *DeleteClusterNodepoolResponseBody) *DeleteClusterNodepoolResponse {
+	s.Body = v
 	return s
 }
 
@@ -9067,8 +9387,41 @@ func (s *DeleteClusterNodesRequest) SetNodes(v []*string) *DeleteClusterNodesReq
 	return s
 }
 
+type DeleteClusterNodesResponseBody struct {
+	// 集群ID
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// 任务ID
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s DeleteClusterNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterNodesResponseBody) SetClusterId(v string) *DeleteClusterNodesResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteClusterNodesResponseBody) SetRequestId(v string) *DeleteClusterNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClusterNodesResponseBody) SetTaskId(v string) *DeleteClusterNodesResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type DeleteClusterNodesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteClusterNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteClusterNodesResponse) String() string {
@@ -9081,6 +9434,11 @@ func (s DeleteClusterNodesResponse) GoString() string {
 
 func (s *DeleteClusterNodesResponse) SetHeaders(v map[string]*string) *DeleteClusterNodesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterNodesResponse) SetBody(v *DeleteClusterNodesResponseBody) *DeleteClusterNodesResponse {
+	s.Body = v
 	return s
 }
 
@@ -9865,6 +10223,53 @@ func (client *Client) OpenAckServiceWithOptions(request *OpenAckServiceRequest, 
 	return _result, _err
 }
 
+func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTriggerResponse{}
+	_body, _err := client.CreateTriggerWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTriggerWithOptions(clusterId *string, request *CreateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["project_id"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		body["action"] = request.Action
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateTriggerResponse{}
+	_body, _err := client.DoROARequest(tea.String("CreateTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/triggers"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ScaleClusterNodePool(ClusterId *string, NodepoolId *string, request *ScaleClusterNodePoolRequest) (_result *ScaleClusterNodePoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9918,6 +10323,53 @@ func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string
 	}
 	_result = &DescribeClusterNodePoolDetailResponse{}
 	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePoolDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrigger(clusterId *string, request *DescribeTriggerRequest) (_result *DescribeTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeTriggerResponse{}
+	_body, _err := client.DescribeTriggerWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTriggerWithOptions(clusterId *string, request *DescribeTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeTriggerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DescribeTriggerResponse{}
+	_body, _err := client.DoROARequest(tea.String("DescribeTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/[cluster_id]/triggers"), tea.String("array"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10395,6 +10847,14 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["os_type"] = request.OsType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SocEnabled)) {
+		body["soc_enabled"] = request.SocEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CisEnabled)) {
+		body["cis_enabled"] = request.CisEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CpuPolicy)) {
 		body["cpu_policy"] = request.CpuPolicy
 	}
@@ -10487,6 +10947,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["worker_system_disk_snapshot_policy_id"] = request.WorkerSystemDiskSnapshotPolicyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkerSystemDiskPerformanceLevel)) {
+		body["worker_system_disk_performance_level"] = request.WorkerSystemDiskPerformanceLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkerDataDisks)) {
 		body["worker_data_disks"] = request.WorkerDataDisks
 	}
@@ -10537,6 +11001,22 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
 		body["profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoggingType)) {
+		body["logging_type"] = request.LoggingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlplaneLogTtl)) {
+		body["controlplane_log_ttl"] = request.ControlplaneLogTtl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlplaneLogProject)) {
+		body["controlplane_log_project"] = request.ControlplaneLogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlplaneLogComponents)) {
+		body["controlplane_log_components"] = request.ControlplaneLogComponents
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
@@ -11114,6 +11594,31 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 	return _result, _err
 }
 
+func (client *Client) DeleteTrigger(clusterId *string, Id *string) (_result *DeleteTriggerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTriggerResponse{}
+	_body, _err := client.DeleteTriggerWithOptions(clusterId, Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTriggerWithOptions(clusterId *string, Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &DeleteTriggerResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/[cluster_id]/triggers/[Id]"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UnInstallClusterAddons(ClusterId *string, request *UnInstallClusterAddonsRequest) (_result *UnInstallClusterAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11524,7 +12029,7 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 		Headers: headers,
 	}
 	_result = &DeleteClusterNodepoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12191,7 +12696,7 @@ func (client *Client) DeleteClusterNodesWithOptions(ClusterId *string, request *
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &DeleteClusterNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("none"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
