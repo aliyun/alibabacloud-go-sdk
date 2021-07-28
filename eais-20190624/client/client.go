@@ -42,8 +42,8 @@ func (s *AttachEaiRequest) SetClientInstanceId(v string) *AttachEaiRequest {
 
 type AttachEaiResponseBody struct {
 	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
+	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 }
 
 func (s AttachEaiResponseBody) String() string {
@@ -59,13 +59,13 @@ func (s *AttachEaiResponseBody) SetRequestId(v string) *AttachEaiResponseBody {
 	return s
 }
 
-func (s *AttachEaiResponseBody) SetClientInstanceId(v string) *AttachEaiResponseBody {
-	s.ClientInstanceId = &v
+func (s *AttachEaiResponseBody) SetElasticAcceleratedInstanceId(v string) *AttachEaiResponseBody {
+	s.ElasticAcceleratedInstanceId = &v
 	return s
 }
 
-func (s *AttachEaiResponseBody) SetElasticAcceleratedInstanceId(v string) *AttachEaiResponseBody {
-	s.ElasticAcceleratedInstanceId = &v
+func (s *AttachEaiResponseBody) SetClientInstanceId(v string) *AttachEaiResponseBody {
+	s.ClientInstanceId = &v
 	return s
 }
 
@@ -140,8 +140,8 @@ func (s *CreateEaiRequest) SetVSwitchId(v string) *CreateEaiRequest {
 }
 
 type CreateEaiResponseBody struct {
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEaiResponseBody) String() string {
@@ -152,13 +152,13 @@ func (s CreateEaiResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEaiResponseBody) SetRequestId(v string) *CreateEaiResponseBody {
-	s.RequestId = &v
+func (s *CreateEaiResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiResponseBody {
+	s.ElasticAcceleratedInstanceId = &v
 	return s
 }
 
-func (s *CreateEaiResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiResponseBody {
-	s.ElasticAcceleratedInstanceId = &v
+func (s *CreateEaiResponseBody) SetRequestId(v string) *CreateEaiResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -288,8 +288,8 @@ func (s *CreateEaiAllRequest) SetInstanceName(v string) *CreateEaiAllRequest {
 
 type CreateEaiAllResponseBody struct {
 	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
+	ClientInstanceId             *string `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 }
 
 func (s CreateEaiAllResponseBody) String() string {
@@ -305,13 +305,13 @@ func (s *CreateEaiAllResponseBody) SetRequestId(v string) *CreateEaiAllResponseB
 	return s
 }
 
-func (s *CreateEaiAllResponseBody) SetClientInstanceId(v string) *CreateEaiAllResponseBody {
-	s.ClientInstanceId = &v
+func (s *CreateEaiAllResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiAllResponseBody {
+	s.ElasticAcceleratedInstanceId = &v
 	return s
 }
 
-func (s *CreateEaiAllResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiAllResponseBody {
-	s.ElasticAcceleratedInstanceId = &v
+func (s *CreateEaiAllResponseBody) SetClientInstanceId(v string) *CreateEaiAllResponseBody {
+	s.ClientInstanceId = &v
 	return s
 }
 
@@ -518,11 +518,11 @@ func (s *DescribeEaisRequest) SetInstanceType(v string) *DescribeEaisRequest {
 }
 
 type DescribeEaisResponseBody struct {
-	Instances  *DescribeEaisResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances  *DescribeEaisResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 }
 
 func (s DescribeEaisResponseBody) String() string {
@@ -533,18 +533,13 @@ func (s DescribeEaisResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEaisResponseBody) SetInstances(v *DescribeEaisResponseBodyInstances) *DescribeEaisResponseBody {
-	s.Instances = v
-	return s
-}
-
-func (s *DescribeEaisResponseBody) SetTotalCount(v int32) *DescribeEaisResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribeEaisResponseBody) SetRequestId(v string) *DescribeEaisResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBody) SetPageNumber(v int32) *DescribeEaisResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -553,8 +548,13 @@ func (s *DescribeEaisResponseBody) SetPageSize(v int32) *DescribeEaisResponseBod
 	return s
 }
 
-func (s *DescribeEaisResponseBody) SetPageNumber(v int32) *DescribeEaisResponseBody {
-	s.PageNumber = &v
+func (s *DescribeEaisResponseBody) SetTotalCount(v int32) *DescribeEaisResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBody) SetInstances(v *DescribeEaisResponseBodyInstances) *DescribeEaisResponseBody {
+	s.Instances = v
 	return s
 }
 
@@ -578,16 +578,16 @@ func (s *DescribeEaisResponseBodyInstances) SetInstance(v []*DescribeEaisRespons
 type DescribeEaisResponseBodyInstancesInstance struct {
 	Status                       *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	CreationTime                 *string                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ClientInstanceType           *string                                        `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
-	ClientInstanceId             *string                                        `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
-	Tags                         *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	InstanceType                 *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId                     *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInstanceName           *string                                        `json:"ClientInstanceName,omitempty" xml:"ClientInstanceName,omitempty"`
 	Description                  *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
 	ElasticAcceleratedInstanceId *string                                        `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
 	InstanceName                 *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ClientInstanceType           *string                                        `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
+	ClientInstanceId             *string                                        `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 	ZoneId                       *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceType                 *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId                     *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags                         *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeEaisResponseBodyInstancesInstance) String() string {
@@ -605,31 +605,6 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetStatus(v string) *Describ
 
 func (s *DescribeEaisResponseBodyInstancesInstance) SetCreationTime(v string) *DescribeEaisResponseBodyInstancesInstance {
 	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeEaisResponseBodyInstancesInstance) SetClientInstanceType(v string) *DescribeEaisResponseBodyInstancesInstance {
-	s.ClientInstanceType = &v
-	return s
-}
-
-func (s *DescribeEaisResponseBodyInstancesInstance) SetClientInstanceId(v string) *DescribeEaisResponseBodyInstancesInstance {
-	s.ClientInstanceId = &v
-	return s
-}
-
-func (s *DescribeEaisResponseBodyInstancesInstance) SetTags(v *DescribeEaisResponseBodyInstancesInstanceTags) *DescribeEaisResponseBodyInstancesInstance {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeEaisResponseBodyInstancesInstance) SetInstanceType(v string) *DescribeEaisResponseBodyInstancesInstance {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeEaisResponseBodyInstancesInstance) SetRegionId(v string) *DescribeEaisResponseBodyInstancesInstance {
-	s.RegionId = &v
 	return s
 }
 
@@ -653,8 +628,33 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetInstanceName(v string) *D
 	return s
 }
 
+func (s *DescribeEaisResponseBodyInstancesInstance) SetClientInstanceType(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.ClientInstanceType = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetClientInstanceId(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.ClientInstanceId = &v
+	return s
+}
+
 func (s *DescribeEaisResponseBodyInstancesInstance) SetZoneId(v string) *DescribeEaisResponseBodyInstancesInstance {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetInstanceType(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetRegionId(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetTags(v *DescribeEaisResponseBodyInstancesInstanceTags) *DescribeEaisResponseBodyInstancesInstance {
+	s.Tags = v
 	return s
 }
 
@@ -676,8 +676,8 @@ func (s *DescribeEaisResponseBodyInstancesInstanceTags) SetTag(v []*DescribeEais
 }
 
 type DescribeEaisResponseBodyInstancesInstanceTagsTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeEaisResponseBodyInstancesInstanceTagsTag) String() string {
@@ -688,13 +688,13 @@ func (s DescribeEaisResponseBodyInstancesInstanceTagsTag) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEaisResponseBodyInstancesInstanceTagsTag) SetTagValue(v string) *DescribeEaisResponseBodyInstancesInstanceTagsTag {
-	s.TagValue = &v
+func (s *DescribeEaisResponseBodyInstancesInstanceTagsTag) SetTagKey(v string) *DescribeEaisResponseBodyInstancesInstanceTagsTag {
+	s.TagKey = &v
 	return s
 }
 
-func (s *DescribeEaisResponseBodyInstancesInstanceTagsTag) SetTagKey(v string) *DescribeEaisResponseBodyInstancesInstanceTagsTag {
-	s.TagKey = &v
+func (s *DescribeEaisResponseBodyInstancesInstanceTagsTag) SetTagValue(v string) *DescribeEaisResponseBodyInstancesInstanceTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -762,8 +762,8 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -775,13 +775,13 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
 	return s
 }
 
