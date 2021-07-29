@@ -12925,24 +12925,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("central")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":     tea.String("alb.cn-beijing.aliyuncs.com"),
-		"cn-zhangjiakou": tea.String("alb.cn-zhangjiakou.aliyuncs.com"),
-		"cn-hangzhou":    tea.String("alb.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai":    tea.String("alb.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":    tea.String("alb.cn-shenzhen.aliyuncs.com"),
-		"cn-hongkong":    tea.String("alb.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": tea.String("alb.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2": tea.String("alb.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-5": tea.String("alb.ap-southeast-5.aliyuncs.com"),
-		"us-east-1":      tea.String("alb.us-east-1.aliyuncs.com"),
-		"eu-central-1":   tea.String("alb.eu-central-1.aliyuncs.com"),
-		"ap-south-1":     tea.String("alb.ap-south-1.aliyuncs.com"),
-		"ap-northeast-1": tea.String("alb.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":     tea.String("alb.cn-chengdu.aliyuncs.com"),
-		"cn-wulanchabu":  tea.String("alb.cn-wulanchabu.aliyuncs.com"),
-	}
+	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
