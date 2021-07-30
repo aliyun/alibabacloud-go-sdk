@@ -1987,6 +1987,128 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 	return s
 }
 
+type GetHotlineQualificationByOrderRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s GetHotlineQualificationByOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotlineQualificationByOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotlineQualificationByOrderRequest) SetOwnerId(v int64) *GetHotlineQualificationByOrderRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderRequest) SetResourceOwnerAccount(v string) *GetHotlineQualificationByOrderRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderRequest) SetResourceOwnerId(v int64) *GetHotlineQualificationByOrderRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderRequest) SetOrderId(v string) *GetHotlineQualificationByOrderRequest {
+	s.OrderId = &v
+	return s
+}
+
+type GetHotlineQualificationByOrderResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetHotlineQualificationByOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotlineQualificationByOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotlineQualificationByOrderResponseBody) SetCode(v string) *GetHotlineQualificationByOrderResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponseBody) SetMessage(v string) *GetHotlineQualificationByOrderResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponseBody) SetRequestId(v string) *GetHotlineQualificationByOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponseBody) SetData(v *GetHotlineQualificationByOrderResponseBodyData) *GetHotlineQualificationByOrderResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetHotlineQualificationByOrderResponseBodyData struct {
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s GetHotlineQualificationByOrderResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotlineQualificationByOrderResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotlineQualificationByOrderResponseBodyData) SetStatus(v string) *GetHotlineQualificationByOrderResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponseBodyData) SetQualificationId(v string) *GetHotlineQualificationByOrderResponseBodyData {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponseBodyData) SetOrderId(v string) *GetHotlineQualificationByOrderResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type GetHotlineQualificationByOrderResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetHotlineQualificationByOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotlineQualificationByOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotlineQualificationByOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotlineQualificationByOrderResponse) SetHeaders(v map[string]*string) *GetHotlineQualificationByOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotlineQualificationByOrderResponse) SetBody(v *GetHotlineQualificationByOrderResponseBody) *GetHotlineQualificationByOrderResponse {
+	s.Body = v
+	return s
+}
+
 type GetRtcTokenRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2785,6 +2907,410 @@ func (s *ListCallTaskDetailResponse) SetBody(v *ListCallTaskDetailResponseBody) 
 	return s
 }
 
+type ListHotlineTransferNumberRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+}
+
+func (s ListHotlineTransferNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferNumberRequest) SetOwnerId(v int64) *ListHotlineTransferNumberRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetResourceOwnerId(v int64) *ListHotlineTransferNumberRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetQualificationId(v string) *ListHotlineTransferNumberRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetPageNo(v int32) *ListHotlineTransferNumberRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetPageSize(v int32) *ListHotlineTransferNumberRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetHotlineNumber(v string) *ListHotlineTransferNumberRequest {
+	s.HotlineNumber = &v
+	return s
+}
+
+type ListHotlineTransferNumberResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListHotlineTransferNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferNumberResponseBody) SetCode(v string) *ListHotlineTransferNumberResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBody) SetMessage(v string) *ListHotlineTransferNumberResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBody) SetRequestId(v string) *ListHotlineTransferNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBody) SetData(v *ListHotlineTransferNumberResponseBodyData) *ListHotlineTransferNumberResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListHotlineTransferNumberResponseBodyData struct {
+	PageNo   *int32                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	Values   []*ListHotlineTransferNumberResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListHotlineTransferNumberResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferNumberResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferNumberResponseBodyData) SetPageNo(v int32) *ListHotlineTransferNumberResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyData) SetPageSize(v int32) *ListHotlineTransferNumberResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyData) SetTotal(v int64) *ListHotlineTransferNumberResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyData) SetValues(v []*ListHotlineTransferNumberResponseBodyDataValues) *ListHotlineTransferNumberResponseBodyData {
+	s.Values = v
+	return s
+}
+
+type ListHotlineTransferNumberResponseBodyDataValues struct {
+	PhoneNumber     *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	NumberOwnerName *string `json:"NumberOwnerName,omitempty" xml:"NumberOwnerName,omitempty"`
+	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	HotlineNumber   *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	IdentityCard    *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+	ResUniqueCode   *string `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
+}
+
+func (s ListHotlineTransferNumberResponseBodyDataValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferNumberResponseBodyDataValues) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetPhoneNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetNumberOwnerName(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.NumberOwnerName = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetQualificationId(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.HotlineNumber = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetIdentityCard(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.IdentityCard = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetResUniqueCode(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.ResUniqueCode = &v
+	return s
+}
+
+type ListHotlineTransferNumberResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListHotlineTransferNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotlineTransferNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferNumberResponse) SetHeaders(v map[string]*string) *ListHotlineTransferNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponse) SetBody(v *ListHotlineTransferNumberResponseBody) *ListHotlineTransferNumberResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotlineTransferRegisterFileRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+}
+
+func (s ListHotlineTransferRegisterFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferRegisterFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetOwnerId(v int64) *ListHotlineTransferRegisterFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferRegisterFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerId(v int64) *ListHotlineTransferRegisterFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetQualificationId(v string) *ListHotlineTransferRegisterFileRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetPageNo(v int32) *ListHotlineTransferRegisterFileRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetPageSize(v int32) *ListHotlineTransferRegisterFileRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileRequest {
+	s.HotlineNumber = &v
+	return s
+}
+
+type ListHotlineTransferRegisterFileResponseBody struct {
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s ListHotlineTransferRegisterFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferRegisterFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBody) SetCode(v string) *ListHotlineTransferRegisterFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBody) SetMessage(v string) *ListHotlineTransferRegisterFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBody) SetRequestId(v string) *ListHotlineTransferRegisterFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBody) SetData(v *ListHotlineTransferRegisterFileResponseBodyData) *ListHotlineTransferRegisterFileResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListHotlineTransferRegisterFileResponseBodyData struct {
+	PageNo   *int32                                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+	Values   []*ListHotlineTransferRegisterFileResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListHotlineTransferRegisterFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferRegisterFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyData) SetPageNo(v int32) *ListHotlineTransferRegisterFileResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyData) SetPageSize(v int32) *ListHotlineTransferRegisterFileResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyData) SetTotal(v int64) *ListHotlineTransferRegisterFileResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyData) SetValues(v []*ListHotlineTransferRegisterFileResponseBodyDataValues) *ListHotlineTransferRegisterFileResponseBodyData {
+	s.Values = v
+	return s
+}
+
+type ListHotlineTransferRegisterFileResponseBodyDataValues struct {
+	MngOpMail         *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
+	MngOpName         *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
+	CorpName          *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	Agree             *string `json:"Agree,omitempty" xml:"Agree,omitempty"`
+	MngOpMobile       *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
+	MngOpIdentityCard *string `json:"MngOpIdentityCard,omitempty" xml:"MngOpIdentityCard,omitempty"`
+	HotlineNumber     *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	QualificationId   *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResUniqueCode     *int64  `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
+}
+
+func (s ListHotlineTransferRegisterFileResponseBodyDataValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferRegisterFileResponseBodyDataValues) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMail(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpMail = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpName(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpName = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetCorpName(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.CorpName = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetAgree(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.Agree = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMobile(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpMobile = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpIdentityCard(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpIdentityCard = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.HotlineNumber = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetQualificationId(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetResUniqueCode(v int64) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.ResUniqueCode = &v
+	return s
+}
+
+type ListHotlineTransferRegisterFileResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListHotlineTransferRegisterFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHotlineTransferRegisterFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotlineTransferRegisterFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotlineTransferRegisterFileResponse) SetHeaders(v map[string]*string) *ListHotlineTransferRegisterFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransferRegisterFileResponseBody) *ListHotlineTransferRegisterFileResponse {
+	s.Body = v
+	return s
+}
+
 type ListOrderedNumbersRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3497,6 +4023,350 @@ func (s *QueryCallDetailByTaskIdResponse) SetHeaders(v map[string]*string) *Quer
 }
 
 func (s *QueryCallDetailByTaskIdResponse) SetBody(v *QueryCallDetailByTaskIdResponseBody) *QueryCallDetailByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCallInPoolTransferConfigRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s QueryCallInPoolTransferConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInPoolTransferConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInPoolTransferConfigRequest) SetOwnerId(v int64) *QueryCallInPoolTransferConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerAccount(v string) *QueryCallInPoolTransferConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerId(v int64) *QueryCallInPoolTransferConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigRequest) SetPhoneNumber(v string) *QueryCallInPoolTransferConfigRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type QueryCallInPoolTransferConfigResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s QueryCallInPoolTransferConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInPoolTransferConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBody) SetCode(v string) *QueryCallInPoolTransferConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBody) SetMessage(v string) *QueryCallInPoolTransferConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBody) SetRequestId(v string) *QueryCallInPoolTransferConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBody) SetData(v *QueryCallInPoolTransferConfigResponseBodyData) *QueryCallInPoolTransferConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+type QueryCallInPoolTransferConfigResponseBodyData struct {
+	GmtCreate       *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	CalledRouteMode *string                                                 `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
+	TransferTimeout *string                                                 `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
+	Details         []*QueryCallInPoolTransferConfigResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+}
+
+func (s QueryCallInPoolTransferConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInPoolTransferConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetGmtCreate(v int64) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetCalledRouteMode(v string) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.CalledRouteMode = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v string) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.TransferTimeout = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetDetails(v []*QueryCallInPoolTransferConfigResponseBodyDataDetails) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.Details = v
+	return s
+}
+
+type QueryCallInPoolTransferConfigResponseBodyDataDetails struct {
+	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+}
+
+func (s QueryCallInPoolTransferConfigResponseBodyDataDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInPoolTransferConfigResponseBodyDataDetails) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyDataDetails) SetCalled(v string) *QueryCallInPoolTransferConfigResponseBodyDataDetails {
+	s.Called = &v
+	return s
+}
+
+type QueryCallInPoolTransferConfigResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryCallInPoolTransferConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCallInPoolTransferConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInPoolTransferConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInPoolTransferConfigResponse) SetHeaders(v map[string]*string) *QueryCallInPoolTransferConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponse) SetBody(v *QueryCallInPoolTransferConfigResponseBody) *QueryCallInPoolTransferConfigResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCallInTransferRecordRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	CallInCaller         *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
+	QueryDate            *string `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
+	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryCallInTransferRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInTransferRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInTransferRecordRequest) SetOwnerId(v int64) *QueryCallInTransferRecordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetResourceOwnerAccount(v string) *QueryCallInTransferRecordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetResourceOwnerId(v int64) *QueryCallInTransferRecordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetPhoneNumber(v string) *QueryCallInTransferRecordRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetCallInCaller(v string) *QueryCallInTransferRecordRequest {
+	s.CallInCaller = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetQueryDate(v string) *QueryCallInTransferRecordRequest {
+	s.QueryDate = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetPageNo(v int64) *QueryCallInTransferRecordRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetPageSize(v int64) *QueryCallInTransferRecordRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryCallInTransferRecordResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s QueryCallInTransferRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInTransferRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInTransferRecordResponseBody) SetCode(v string) *QueryCallInTransferRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBody) SetMessage(v string) *QueryCallInTransferRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBody) SetRequestId(v string) *QueryCallInTransferRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBody) SetData(v *QueryCallInTransferRecordResponseBodyData) *QueryCallInTransferRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+type QueryCallInTransferRecordResponseBodyData struct {
+	PageNo   *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	Values   []*QueryCallInTransferRecordResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s QueryCallInTransferRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInTransferRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInTransferRecordResponseBodyData) SetPageNo(v int64) *QueryCallInTransferRecordResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyData) SetPageSize(v int64) *QueryCallInTransferRecordResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyData) SetTotal(v int64) *QueryCallInTransferRecordResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyData) SetValues(v []*QueryCallInTransferRecordResponseBodyDataValues) *QueryCallInTransferRecordResponseBodyData {
+	s.Values = v
+	return s
+}
+
+type QueryCallInTransferRecordResponseBodyDataValues struct {
+	CallInCalled   *string `json:"CallInCalled,omitempty" xml:"CallInCalled,omitempty"`
+	TransferCalled *string `json:"TransferCalled,omitempty" xml:"TransferCalled,omitempty"`
+	RecordUrl      *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	TransferCaller *string `json:"TransferCaller,omitempty" xml:"TransferCaller,omitempty"`
+	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	CallInCaller   *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
+}
+
+func (s QueryCallInTransferRecordResponseBodyDataValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInTransferRecordResponseBodyDataValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetCallInCalled(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.CallInCalled = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCalled(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.TransferCalled = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetRecordUrl(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.RecordUrl = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.TransferCaller = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetGmtCreate(v int64) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetCallInCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.CallInCaller = &v
+	return s
+}
+
+type QueryCallInTransferRecordResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryCallInTransferRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCallInTransferRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCallInTransferRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCallInTransferRecordResponse) SetHeaders(v map[string]*string) *QueryCallInTransferRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponse) SetBody(v *QueryCallInTransferRecordResponseBody) *QueryCallInTransferRecordResponse {
 	s.Body = v
 	return s
 }
@@ -4704,6 +5574,245 @@ func (s *ReportVoipProblemsResponse) SetBody(v *ReportVoipProblemsResponseBody) 
 	return s
 }
 
+type SendVerificationRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VerifyType           *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	Target               *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s SendVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationRequest) SetOwnerId(v int64) *SendVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SendVerificationRequest) SetResourceOwnerAccount(v string) *SendVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SendVerificationRequest) SetResourceOwnerId(v int64) *SendVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SendVerificationRequest) SetVerifyType(v string) *SendVerificationRequest {
+	s.VerifyType = &v
+	return s
+}
+
+func (s *SendVerificationRequest) SetBizType(v string) *SendVerificationRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *SendVerificationRequest) SetTarget(v string) *SendVerificationRequest {
+	s.Target = &v
+	return s
+}
+
+type SendVerificationResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationResponseBody) SetCode(v string) *SendVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendVerificationResponseBody) SetMessage(v string) *SendVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendVerificationResponseBody) SetData(v bool) *SendVerificationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SendVerificationResponseBody) SetRequestId(v string) *SendVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendVerificationResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationResponse) SetHeaders(v map[string]*string) *SendVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendVerificationResponse) SetBody(v *SendVerificationResponseBody) *SendVerificationResponse {
+	s.Body = v
+	return s
+}
+
+type SetTransferCalleePoolConfigRequest struct {
+	OwnerId              *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PhoneNumber          *string                                      `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QualificationId      *string                                      `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	CalledRouteMode      *string                                      `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
+	Details              []*SetTransferCalleePoolConfigRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+}
+
+func (s SetTransferCalleePoolConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetTransferCalleePoolConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetOwnerId(v int64) *SetTransferCalleePoolConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerAccount(v string) *SetTransferCalleePoolConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerId(v int64) *SetTransferCalleePoolConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetPhoneNumber(v string) *SetTransferCalleePoolConfigRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetQualificationId(v string) *SetTransferCalleePoolConfigRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetCalledRouteMode(v string) *SetTransferCalleePoolConfigRequest {
+	s.CalledRouteMode = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetDetails(v []*SetTransferCalleePoolConfigRequestDetails) *SetTransferCalleePoolConfigRequest {
+	s.Details = v
+	return s
+}
+
+type SetTransferCalleePoolConfigRequestDetails struct {
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+}
+
+func (s SetTransferCalleePoolConfigRequestDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetTransferCalleePoolConfigRequestDetails) GoString() string {
+	return s.String()
+}
+
+func (s *SetTransferCalleePoolConfigRequestDetails) SetCaller(v string) *SetTransferCalleePoolConfigRequestDetails {
+	s.Caller = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequestDetails) SetCalled(v string) *SetTransferCalleePoolConfigRequestDetails {
+	s.Called = &v
+	return s
+}
+
+type SetTransferCalleePoolConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetTransferCalleePoolConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetTransferCalleePoolConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetTransferCalleePoolConfigResponseBody) SetCode(v string) *SetTransferCalleePoolConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigResponseBody) SetMessage(v string) *SetTransferCalleePoolConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigResponseBody) SetData(v bool) *SetTransferCalleePoolConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigResponseBody) SetRequestId(v string) *SetTransferCalleePoolConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetTransferCalleePoolConfigResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetTransferCalleePoolConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetTransferCalleePoolConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetTransferCalleePoolConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetTransferCalleePoolConfigResponse) SetHeaders(v map[string]*string) *SetTransferCalleePoolConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigResponse) SetBody(v *SetTransferCalleePoolConfigResponseBody) *SetTransferCalleePoolConfigResponse {
+	s.Body = v
+	return s
+}
+
 type SingleCallByTtsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -5627,6 +6736,182 @@ func (s *StopRobotTaskResponse) SetHeaders(v map[string]*string) *StopRobotTaskR
 }
 
 func (s *StopRobotTaskResponse) SetBody(v *StopRobotTaskResponseBody) *StopRobotTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitHotlineTransferRegisterRequest struct {
+	OwnerId                  *int64                                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount     *string                                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64                                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	QualificationId          *string                                                         `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	OperatorName             *string                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	OperatorMail             *string                                                         `json:"OperatorMail,omitempty" xml:"OperatorMail,omitempty"`
+	OperatorMailVerifyCode   *string                                                         `json:"OperatorMailVerifyCode,omitempty" xml:"OperatorMailVerifyCode,omitempty"`
+	OperatorMobile           *string                                                         `json:"OperatorMobile,omitempty" xml:"OperatorMobile,omitempty"`
+	OperatorMobileVerifyCode *string                                                         `json:"OperatorMobileVerifyCode,omitempty" xml:"OperatorMobileVerifyCode,omitempty"`
+	OperatorIdentityCard     *string                                                         `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
+	Agreement                *string                                                         `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
+	HotlineNumber            *string                                                         `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	TransferPhoneNumberInfos []*SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos `json:"TransferPhoneNumberInfos,omitempty" xml:"TransferPhoneNumberInfos,omitempty" type:"Repeated"`
+}
+
+func (s SubmitHotlineTransferRegisterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHotlineTransferRegisterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerAccount(v string) *SubmitHotlineTransferRegisterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetQualificationId(v string) *SubmitHotlineTransferRegisterRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorName(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorMail(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorMail = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorMailVerifyCode(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorMailVerifyCode = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorMobile(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorMobile = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorMobileVerifyCode(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorMobileVerifyCode = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorIdentityCard(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorIdentityCard = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetAgreement(v string) *SubmitHotlineTransferRegisterRequest {
+	s.Agreement = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetHotlineNumber(v string) *SubmitHotlineTransferRegisterRequest {
+	s.HotlineNumber = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetTransferPhoneNumberInfos(v []*SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) *SubmitHotlineTransferRegisterRequest {
+	s.TransferPhoneNumberInfos = v
+	return s
+}
+
+type SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos struct {
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumberOwnerName *string `json:"PhoneNumberOwnerName,omitempty" xml:"PhoneNumberOwnerName,omitempty"`
+	IdentityCard         *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+}
+
+func (s SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneNumber(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneNumberOwnerName(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
+	s.PhoneNumberOwnerName = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetIdentityCard(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
+	s.IdentityCard = &v
+	return s
+}
+
+type SubmitHotlineTransferRegisterResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitHotlineTransferRegisterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHotlineTransferRegisterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHotlineTransferRegisterResponseBody) SetCode(v string) *SubmitHotlineTransferRegisterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterResponseBody) SetMessage(v string) *SubmitHotlineTransferRegisterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterResponseBody) SetData(v int64) *SubmitHotlineTransferRegisterResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterResponseBody) SetRequestId(v string) *SubmitHotlineTransferRegisterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitHotlineTransferRegisterResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitHotlineTransferRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitHotlineTransferRegisterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitHotlineTransferRegisterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHotlineTransferRegisterResponse) SetHeaders(v map[string]*string) *SubmitHotlineTransferRegisterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransferRegisterResponseBody) *SubmitHotlineTransferRegisterResponse {
 	s.Body = v
 	return s
 }
@@ -6655,6 +7940,34 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotlineQualificationByOrderRequest, runtime *util.RuntimeOptions) (_result *GetHotlineQualificationByOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetHotlineQualificationByOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetHotlineQualificationByOrder"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualificationByOrderRequest) (_result *GetHotlineQualificationByOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHotlineQualificationByOrderResponse{}
+	_body, _err := client.GetHotlineQualificationByOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRtcTokenWithOptions(request *GetRtcTokenRequest, runtime *util.RuntimeOptions) (_result *GetRtcTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6795,6 +8108,62 @@ func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineTransferNumberRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListHotlineTransferNumberResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListHotlineTransferNumber"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotlineTransferNumber(request *ListHotlineTransferNumberRequest) (_result *ListHotlineTransferNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotlineTransferNumberResponse{}
+	_body, _err := client.ListHotlineTransferNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHotlineTransferRegisterFileRequest, runtime *util.RuntimeOptions) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListHotlineTransferRegisterFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListHotlineTransferRegisterFile"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransferRegisterFileRequest) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotlineTransferRegisterFileResponse{}
+	_body, _err := client.ListHotlineTransferRegisterFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListOrderedNumbersWithOptions(request *ListOrderedNumbersRequest, runtime *util.RuntimeOptions) (_result *ListOrderedNumbersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6928,6 +8297,62 @@ func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCallDetailByTaskIdResponse{}
 	_body, _err := client.QueryCallDetailByTaskIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCallInPoolTransferConfigRequest, runtime *util.RuntimeOptions) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryCallInPoolTransferConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryCallInPoolTransferConfig"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTransferConfigRequest) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCallInPoolTransferConfigResponse{}
+	_body, _err := client.QueryCallInPoolTransferConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInTransferRecordRequest, runtime *util.RuntimeOptions) (_result *QueryCallInTransferRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryCallInTransferRecordResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryCallInTransferRecord"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferRecordRequest) (_result *QueryCallInTransferRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCallInTransferRecordResponse{}
+	_body, _err := client.QueryCallInTransferRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7243,6 +8668,62 @@ func (client *Client) ReportVoipProblems(request *ReportVoipProblemsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) SendVerificationWithOptions(request *SendVerificationRequest, runtime *util.RuntimeOptions) (_result *SendVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendVerificationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendVerification"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendVerification(request *SendVerificationRequest) (_result *SendVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendVerificationResponse{}
+	_body, _err := client.SendVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransferCalleePoolConfigRequest, runtime *util.RuntimeOptions) (_result *SetTransferCalleePoolConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SetTransferCalleePoolConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SetTransferCalleePoolConfig"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePoolConfigRequest) (_result *SetTransferCalleePoolConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetTransferCalleePoolConfigResponse{}
+	_body, _err := client.SetTransferCalleePoolConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest, runtime *util.RuntimeOptions) (_result *SingleCallByTtsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7432,6 +8913,34 @@ func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *Sto
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRobotTaskResponse{}
 	_body, _err := client.StopRobotTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHotlineTransferRegisterRequest, runtime *util.RuntimeOptions) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitHotlineTransferRegisterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitHotlineTransferRegister"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransferRegisterRequest) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitHotlineTransferRegisterResponse{}
+	_body, _err := client.SubmitHotlineTransferRegisterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
