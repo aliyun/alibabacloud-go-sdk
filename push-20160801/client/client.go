@@ -287,6 +287,133 @@ func (s *CancelPushResponse) SetBody(v *CancelPushResponseBody) *CancelPushRespo
 	return s
 }
 
+type CheckCertificateRequest struct {
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+}
+
+func (s CheckCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateRequest) SetAppKey(v int64) *CheckCertificateRequest {
+	s.AppKey = &v
+	return s
+}
+
+type CheckCertificateResponseBody struct {
+	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Android             *bool                                            `json:"Android,omitempty" xml:"Android,omitempty"`
+	IOS                 *bool                                            `json:"IOS,omitempty" xml:"IOS,omitempty"`
+	ProductionCertInfo  *CheckCertificateResponseBodyProductionCertInfo  `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
+	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
+}
+
+func (s CheckCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateResponseBody) SetRequestId(v string) *CheckCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBody) SetAndroid(v bool) *CheckCertificateResponseBody {
+	s.Android = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBody) SetIOS(v bool) *CheckCertificateResponseBody {
+	s.IOS = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBody) SetProductionCertInfo(v *CheckCertificateResponseBodyProductionCertInfo) *CheckCertificateResponseBody {
+	s.ProductionCertInfo = v
+	return s
+}
+
+func (s *CheckCertificateResponseBody) SetDevelopmentCertInfo(v *CheckCertificateResponseBodyDevelopmentCertInfo) *CheckCertificateResponseBody {
+	s.DevelopmentCertInfo = v
+	return s
+}
+
+type CheckCertificateResponseBodyProductionCertInfo struct {
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+}
+
+func (s CheckCertificateResponseBodyProductionCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateResponseBodyProductionCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateResponseBodyProductionCertInfo) SetStatus(v string) *CheckCertificateResponseBodyProductionCertInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBodyProductionCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyProductionCertInfo {
+	s.ExipreTime = &v
+	return s
+}
+
+type CheckCertificateResponseBodyDevelopmentCertInfo struct {
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+}
+
+func (s CheckCertificateResponseBodyDevelopmentCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateResponseBodyDevelopmentCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetStatus(v string) *CheckCertificateResponseBodyDevelopmentCertInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyDevelopmentCertInfo {
+	s.ExipreTime = &v
+	return s
+}
+
+type CheckCertificateResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateResponse) SetHeaders(v map[string]*string) *CheckCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckCertificateResponse) SetBody(v *CheckCertificateResponseBody) *CheckCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type CheckDeviceRequest struct {
 	AppKey   *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -311,8 +438,8 @@ func (s *CheckDeviceRequest) SetDeviceId(v string) *CheckDeviceRequest {
 }
 
 type CheckDeviceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Available *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckDeviceResponseBody) String() string {
@@ -323,13 +450,13 @@ func (s CheckDeviceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckDeviceResponseBody) SetRequestId(v string) *CheckDeviceResponseBody {
-	s.RequestId = &v
+func (s *CheckDeviceResponseBody) SetAvailable(v bool) *CheckDeviceResponseBody {
+	s.Available = &v
 	return s
 }
 
-func (s *CheckDeviceResponseBody) SetAvailable(v bool) *CheckDeviceResponseBody {
-	s.Available = &v
+func (s *CheckDeviceResponseBody) SetRequestId(v string) *CheckDeviceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -489,8 +616,8 @@ func (s *CompleteContinuouslyPushRequest) SetMessageId(v string) *CompleteContin
 }
 
 type CompleteContinuouslyPushResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CompleteContinuouslyPushResponseBody) String() string {
@@ -501,13 +628,13 @@ func (s CompleteContinuouslyPushResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CompleteContinuouslyPushResponseBody) SetRequestId(v string) *CompleteContinuouslyPushResponseBody {
-	s.RequestId = &v
+func (s *CompleteContinuouslyPushResponseBody) SetMessageId(v string) *CompleteContinuouslyPushResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *CompleteContinuouslyPushResponseBody) SetMessageId(v string) *CompleteContinuouslyPushResponseBody {
-	s.MessageId = &v
+func (s *CompleteContinuouslyPushResponseBody) SetRequestId(v string) *CompleteContinuouslyPushResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -570,8 +697,8 @@ func (s *ContinuouslyPushRequest) SetTargetValue(v string) *ContinuouslyPushRequ
 }
 
 type ContinuouslyPushResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ContinuouslyPushResponseBody) String() string {
@@ -582,13 +709,13 @@ func (s ContinuouslyPushResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ContinuouslyPushResponseBody) SetRequestId(v string) *ContinuouslyPushResponseBody {
-	s.RequestId = &v
+func (s *ContinuouslyPushResponseBody) SetMessageId(v string) *ContinuouslyPushResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *ContinuouslyPushResponseBody) SetMessageId(v string) *ContinuouslyPushResponseBody {
-	s.MessageId = &v
+func (s *ContinuouslyPushResponseBody) SetRequestId(v string) *ContinuouslyPushResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -719,8 +846,8 @@ func (s *ListTagsRequest) SetAppKey(v int64) *ListTagsRequest {
 }
 
 type ListTagsResponseBody struct {
-	TagInfos  *ListTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagInfos  *ListTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 }
 
 func (s ListTagsResponseBody) String() string {
@@ -731,13 +858,13 @@ func (s ListTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagsResponseBody) SetTagInfos(v *ListTagsResponseBodyTagInfos) *ListTagsResponseBody {
-	s.TagInfos = v
+func (s *ListTagsResponseBody) SetRequestId(v string) *ListTagsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListTagsResponseBody) SetRequestId(v string) *ListTagsResponseBody {
-	s.RequestId = &v
+func (s *ListTagsResponseBody) SetTagInfos(v *ListTagsResponseBodyTagInfos) *ListTagsResponseBody {
+	s.TagInfos = v
 	return s
 }
 
@@ -823,11 +950,12 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 
 type MassPushRequestPushTask struct {
 	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
 	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
 	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
 	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
+	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
 	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
 	IOSApnsEnv                       *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
@@ -839,14 +967,16 @@ type MassPushRequestPushTask struct {
 	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
 	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
 	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
 	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
 	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
 	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
 	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
 	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
 	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
 	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
 	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
@@ -856,12 +986,13 @@ type MassPushRequestPushTask struct {
 	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
 	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
 	TargetValue                      *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
 	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
 	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
 	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
 	Title                            *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
 	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
@@ -880,13 +1011,18 @@ func (s *MassPushRequestPushTask) SetJobKey(v string) *MassPushRequestPushTask {
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetIOSSilentNotification(v bool) *MassPushRequestPushTask {
+	s.IOSSilentNotification = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetIOSNotificationCollapseId(v string) *MassPushRequestPushTask {
 	s.IOSNotificationCollapseId = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSSilentNotification(v bool) *MassPushRequestPushTask {
-	s.IOSSilentNotification = &v
+func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
+	s.AndroidRenderStyle = &v
 	return s
 }
 
@@ -895,13 +1031,13 @@ func (s *MassPushRequestPushTask) SetStoreOffline(v bool) *MassPushRequestPushTa
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
-	s.IOSNotificationCategory = &v
+func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushTask {
+	s.IOSSubtitle = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushTask {
-	s.IOSSubtitle = &v
+func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
+	s.IOSNotificationCategory = &v
 	return s
 }
 
@@ -960,6 +1096,11 @@ func (s *MassPushRequestPushTask) SetAndroidNotifyType(v string) *MassPushReques
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetAndroidBigBody(v string) *MassPushRequestPushTask {
+	s.AndroidBigBody = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetIOSMutableContent(v bool) *MassPushRequestPushTask {
 	s.IOSMutableContent = &v
 	return s
@@ -972,6 +1113,11 @@ func (s *MassPushRequestPushTask) SetTarget(v string) *MassPushRequestPushTask {
 
 func (s *MassPushRequestPushTask) SetAndroidOpenUrl(v string) *MassPushRequestPushTask {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidBigTitle(v string) *MassPushRequestPushTask {
+	s.AndroidBigTitle = &v
 	return s
 }
 
@@ -990,13 +1136,13 @@ func (s *MassPushRequestPushTask) SetAndroidNotificationVivoChannel(v string) *M
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestPushTask {
-	s.AndroidOpenType = &v
+func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
+	s.DeviceType = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
-	s.DeviceType = &v
+func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestPushTask {
+	s.AndroidOpenType = &v
 	return s
 }
 
@@ -1045,6 +1191,11 @@ func (s *MassPushRequestPushTask) SetAndroidNotificationBarPriority(v int32) *Ma
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetAndroidXiaomiBigPictureUrl(v string) *MassPushRequestPushTask {
+	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetTargetValue(v string) *MassPushRequestPushTask {
 	s.TargetValue = &v
 	return s
@@ -1065,13 +1216,13 @@ func (s *MassPushRequestPushTask) SetPushType(v string) *MassPushRequestPushTask
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSBadge(v int32) *MassPushRequestPushTask {
-	s.IOSBadge = &v
+func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
+	s.SendSpeed = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
-	s.SendSpeed = &v
+func (s *MassPushRequestPushTask) SetIOSBadge(v int32) *MassPushRequestPushTask {
+	s.IOSBadge = &v
 	return s
 }
 
@@ -1203,6 +1354,10 @@ type PushRequest struct {
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
 	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
 	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
 }
 
 func (s PushRequest) String() string {
@@ -1458,9 +1613,29 @@ func (s *PushRequest) SetIOSNotificationCollapseId(v string) *PushRequest {
 	return s
 }
 
+func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
+	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigTitle(v string) *PushRequest {
+	s.AndroidBigTitle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigBody(v string) *PushRequest {
+	s.AndroidBigBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
+	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
 type PushResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushResponseBody) String() string {
@@ -1471,13 +1646,13 @@ func (s PushResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PushResponseBody) SetRequestId(v string) *PushResponseBody {
-	s.RequestId = &v
+func (s *PushResponseBody) SetMessageId(v string) *PushResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *PushResponseBody) SetMessageId(v string) *PushResponseBody {
-	s.MessageId = &v
+func (s *PushResponseBody) SetRequestId(v string) *PushResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1552,8 +1727,8 @@ func (s *PushMessageToAndroidRequest) SetJobKey(v string) *PushMessageToAndroidR
 }
 
 type PushMessageToAndroidResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushMessageToAndroidResponseBody) String() string {
@@ -1564,13 +1739,13 @@ func (s PushMessageToAndroidResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PushMessageToAndroidResponseBody) SetRequestId(v string) *PushMessageToAndroidResponseBody {
-	s.RequestId = &v
+func (s *PushMessageToAndroidResponseBody) SetMessageId(v string) *PushMessageToAndroidResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *PushMessageToAndroidResponseBody) SetMessageId(v string) *PushMessageToAndroidResponseBody {
-	s.MessageId = &v
+func (s *PushMessageToAndroidResponseBody) SetRequestId(v string) *PushMessageToAndroidResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1645,8 +1820,8 @@ func (s *PushMessageToiOSRequest) SetJobKey(v string) *PushMessageToiOSRequest {
 }
 
 type PushMessageToiOSResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushMessageToiOSResponseBody) String() string {
@@ -1657,13 +1832,13 @@ func (s PushMessageToiOSResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PushMessageToiOSResponseBody) SetRequestId(v string) *PushMessageToiOSResponseBody {
-	s.RequestId = &v
+func (s *PushMessageToiOSResponseBody) SetMessageId(v string) *PushMessageToiOSResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *PushMessageToiOSResponseBody) SetMessageId(v string) *PushMessageToiOSResponseBody {
-	s.MessageId = &v
+func (s *PushMessageToiOSResponseBody) SetRequestId(v string) *PushMessageToiOSResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1744,8 +1919,8 @@ func (s *PushNoticeToAndroidRequest) SetExtParameters(v string) *PushNoticeToAnd
 }
 
 type PushNoticeToAndroidResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushNoticeToAndroidResponseBody) String() string {
@@ -1756,13 +1931,13 @@ func (s PushNoticeToAndroidResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PushNoticeToAndroidResponseBody) SetRequestId(v string) *PushNoticeToAndroidResponseBody {
-	s.RequestId = &v
+func (s *PushNoticeToAndroidResponseBody) SetMessageId(v string) *PushNoticeToAndroidResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *PushNoticeToAndroidResponseBody) SetMessageId(v string) *PushNoticeToAndroidResponseBody {
-	s.MessageId = &v
+func (s *PushNoticeToAndroidResponseBody) SetRequestId(v string) *PushNoticeToAndroidResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1849,8 +2024,8 @@ func (s *PushNoticeToiOSRequest) SetExtParameters(v string) *PushNoticeToiOSRequ
 }
 
 type PushNoticeToiOSResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushNoticeToiOSResponseBody) String() string {
@@ -1861,13 +2036,13 @@ func (s PushNoticeToiOSResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PushNoticeToiOSResponseBody) SetRequestId(v string) *PushNoticeToiOSResponseBody {
-	s.RequestId = &v
+func (s *PushNoticeToiOSResponseBody) SetMessageId(v string) *PushNoticeToiOSResponseBody {
+	s.MessageId = &v
 	return s
 }
 
-func (s *PushNoticeToiOSResponseBody) SetMessageId(v string) *PushNoticeToiOSResponseBody {
-	s.MessageId = &v
+func (s *PushNoticeToiOSResponseBody) SetRequestId(v string) *PushNoticeToiOSResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2027,8 +2202,8 @@ func (s *QueryDeviceCountRequest) SetTargetValue(v string) *QueryDeviceCountRequ
 }
 
 type QueryDeviceCountResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeviceCount *int64  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDeviceCountResponseBody) String() string {
@@ -2039,13 +2214,13 @@ func (s QueryDeviceCountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDeviceCountResponseBody) SetRequestId(v string) *QueryDeviceCountResponseBody {
-	s.RequestId = &v
+func (s *QueryDeviceCountResponseBody) SetDeviceCount(v int64) *QueryDeviceCountResponseBody {
+	s.DeviceCount = &v
 	return s
 }
 
-func (s *QueryDeviceCountResponseBody) SetDeviceCount(v int64) *QueryDeviceCountResponseBody {
-	s.DeviceCount = &v
+func (s *QueryDeviceCountResponseBody) SetRequestId(v string) *QueryDeviceCountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2236,8 +2411,8 @@ func (s *QueryDevicesByAccountRequest) SetAccount(v string) *QueryDevicesByAccou
 }
 
 type QueryDevicesByAccountResponseBody struct {
-	DeviceIds *QueryDevicesByAccountResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceIds *QueryDevicesByAccountResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
 }
 
 func (s QueryDevicesByAccountResponseBody) String() string {
@@ -2248,13 +2423,13 @@ func (s QueryDevicesByAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAccountResponseBody) SetDeviceIds(v *QueryDevicesByAccountResponseBodyDeviceIds) *QueryDevicesByAccountResponseBody {
-	s.DeviceIds = v
+func (s *QueryDevicesByAccountResponseBody) SetRequestId(v string) *QueryDevicesByAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *QueryDevicesByAccountResponseBody) SetRequestId(v string) *QueryDevicesByAccountResponseBody {
-	s.RequestId = &v
+func (s *QueryDevicesByAccountResponseBody) SetDeviceIds(v *QueryDevicesByAccountResponseBodyDeviceIds) *QueryDevicesByAccountResponseBody {
+	s.DeviceIds = v
 	return s
 }
 
@@ -2322,8 +2497,8 @@ func (s *QueryDevicesByAliasRequest) SetAlias(v string) *QueryDevicesByAliasRequ
 }
 
 type QueryDevicesByAliasResponseBody struct {
-	DeviceIds *QueryDevicesByAliasResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceIds *QueryDevicesByAliasResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
 }
 
 func (s QueryDevicesByAliasResponseBody) String() string {
@@ -2334,13 +2509,13 @@ func (s QueryDevicesByAliasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAliasResponseBody) SetDeviceIds(v *QueryDevicesByAliasResponseBodyDeviceIds) *QueryDevicesByAliasResponseBody {
-	s.DeviceIds = v
+func (s *QueryDevicesByAliasResponseBody) SetRequestId(v string) *QueryDevicesByAliasResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *QueryDevicesByAliasResponseBody) SetRequestId(v string) *QueryDevicesByAliasResponseBody {
-	s.RequestId = &v
+func (s *QueryDevicesByAliasResponseBody) SetDeviceIds(v *QueryDevicesByAliasResponseBodyDeviceIds) *QueryDevicesByAliasResponseBody {
+	s.DeviceIds = v
 	return s
 }
 
@@ -2589,12 +2764,12 @@ func (s *QueryPushRecordsRequest) SetPage(v int32) *QueryPushRecordsRequest {
 }
 
 type QueryPushRecordsResponseBody struct {
-	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
 	NextToken *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
 	Page      *int32                                 `json:"Page,omitempty" xml:"Page,omitempty"`
+	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
 }
 
 func (s QueryPushRecordsResponseBody) String() string {
@@ -2603,11 +2778,6 @@ func (s QueryPushRecordsResponseBody) String() string {
 
 func (s QueryPushRecordsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *QueryPushRecordsResponseBody) SetPushInfos(v *QueryPushRecordsResponseBodyPushInfos) *QueryPushRecordsResponseBody {
-	s.PushInfos = v
-	return s
 }
 
 func (s *QueryPushRecordsResponseBody) SetNextToken(v string) *QueryPushRecordsResponseBody {
@@ -2632,6 +2802,11 @@ func (s *QueryPushRecordsResponseBody) SetTotal(v int32) *QueryPushRecordsRespon
 
 func (s *QueryPushRecordsResponseBody) SetPage(v int32) *QueryPushRecordsResponseBody {
 	s.Page = &v
+	return s
+}
+
+func (s *QueryPushRecordsResponseBody) SetPushInfos(v *QueryPushRecordsResponseBodyPushInfos) *QueryPushRecordsResponseBody {
+	s.PushInfos = v
 	return s
 }
 
@@ -3114,8 +3289,8 @@ func (s *QueryTagsRequest) SetKeyType(v string) *QueryTagsRequest {
 }
 
 type QueryTagsResponseBody struct {
-	TagInfos  *QueryTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagInfos  *QueryTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 }
 
 func (s QueryTagsResponseBody) String() string {
@@ -3126,13 +3301,13 @@ func (s QueryTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTagsResponseBody) SetTagInfos(v *QueryTagsResponseBodyTagInfos) *QueryTagsResponseBody {
-	s.TagInfos = v
+func (s *QueryTagsResponseBody) SetRequestId(v string) *QueryTagsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *QueryTagsResponseBody) SetRequestId(v string) *QueryTagsResponseBody {
-	s.RequestId = &v
+func (s *QueryTagsResponseBody) SetTagInfos(v *QueryTagsResponseBodyTagInfos) *QueryTagsResponseBody {
+	s.TagInfos = v
 	return s
 }
 
@@ -3798,6 +3973,34 @@ func (client *Client) CancelPush(request *CancelPushRequest) (_result *CancelPus
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPushResponse{}
 	_body, _err := client.CancelPushWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckCertificateWithOptions(request *CheckCertificateRequest, runtime *util.RuntimeOptions) (_result *CheckCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CheckCertificateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CheckCertificate"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_result *CheckCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckCertificateResponse{}
+	_body, _err := client.CheckCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
