@@ -7718,11 +7718,11 @@ func (s *DestroyRoomRequest) SetRequest(v *DestroyRoomRequestRequest) *DestroyRo
 }
 
 type DestroyRoomRequestRequest struct {
-	// 应用appKey
+	// 应用的appKey。
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 房间id
+	// 房间ID，由调用CreateRoom时返回。
 	RoomId *string `json:"roomId,omitempty" xml:"roomId,omitempty"`
-	// 操作人id
+	// 操作人ID。
 	OpenId *string `json:"openId,omitempty" xml:"openId,omitempty"`
 }
 
@@ -7750,13 +7750,13 @@ func (s *DestroyRoomRequestRequest) SetOpenId(v string) *DestroyRoomRequestReque
 }
 
 type DestroyRoomResponseBody struct {
-	// 错误码
+	// 错误码。
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息
-	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 错误信息。
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否销毁成功
-	Result          *bool `json:"result,omitempty" xml:"result,omitempty"`
+	// 请求是否成功。
 	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
 }
 
@@ -7780,11 +7780,6 @@ func (s *DestroyRoomResponseBody) SetErrorMsg(v string) *DestroyRoomResponseBody
 
 func (s *DestroyRoomResponseBody) SetRequestId(v string) *DestroyRoomResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DestroyRoomResponseBody) SetResult(v bool) *DestroyRoomResponseBody {
-	s.Result = &v
 	return s
 }
 
