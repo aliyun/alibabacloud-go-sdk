@@ -12,117 +12,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type DeleteNacosServiceRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s DeleteNacosServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosServiceRequest) SetInstanceId(v string) *DeleteNacosServiceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteNacosServiceRequest) SetServiceName(v string) *DeleteNacosServiceRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *DeleteNacosServiceRequest) SetGroupName(v string) *DeleteNacosServiceRequest {
-	s.GroupName = &v
-	return s
-}
-
-func (s *DeleteNacosServiceRequest) SetNamespaceId(v string) *DeleteNacosServiceRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-type DeleteNacosServiceResponseBody struct {
-	// http状态码
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 响应信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 响应码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 成功标志
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 删除服务的结果
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s DeleteNacosServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosServiceResponseBody) SetHttpStatusCode(v int32) *DeleteNacosServiceResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteNacosServiceResponseBody) SetRequestId(v string) *DeleteNacosServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteNacosServiceResponseBody) SetMessage(v string) *DeleteNacosServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteNacosServiceResponseBody) SetCode(v int32) *DeleteNacosServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteNacosServiceResponseBody) SetSuccess(v bool) *DeleteNacosServiceResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteNacosServiceResponseBody) SetData(v string) *DeleteNacosServiceResponseBody {
-	s.Data = &v
-	return s
-}
-
-type DeleteNacosServiceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteNacosServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteNacosServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosServiceResponse) SetHeaders(v map[string]*string) *DeleteNacosServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteNacosServiceResponse) SetBody(v *DeleteNacosServiceResponseBody) *DeleteNacosServiceResponse {
-	s.Body = v
-	return s
-}
-
 type ListAlarmHistoriesRequest struct {
 	RequestPars  *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
@@ -307,6 +196,193 @@ func (s *ListAlarmHistoriesResponse) SetHeaders(v map[string]*string) *ListAlarm
 }
 
 func (s *ListAlarmHistoriesResponse) SetBody(v *ListAlarmHistoriesResponseBody) *ListAlarmHistoriesResponse {
+	s.Body = v
+	return s
+}
+
+type GetGovernanceKubernetesClusterListRequest struct {
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterListRequest) SetClusterName(v string) *GetGovernanceKubernetesClusterListRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListRequest) SetClusterId(v string) *GetGovernanceKubernetesClusterListRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListRequest) SetPageNumber(v int32) *GetGovernanceKubernetesClusterListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListRequest) SetPageSize(v int32) *GetGovernanceKubernetesClusterListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterListResponseBody struct {
+	HttpStatusCode *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *GetGovernanceKubernetesClusterListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetHttpStatusCode(v int32) *GetGovernanceKubernetesClusterListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetMessage(v string) *GetGovernanceKubernetesClusterListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetRequestId(v string) *GetGovernanceKubernetesClusterListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetData(v *GetGovernanceKubernetesClusterListResponseBodyData) *GetGovernanceKubernetesClusterListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetCode(v int32) *GetGovernanceKubernetesClusterListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBody) SetSuccess(v bool) *GetGovernanceKubernetesClusterListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterListResponseBodyData struct {
+	Result     []*GetGovernanceKubernetesClusterListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                                      `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	PageNumber *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetResult(v []*GetGovernanceKubernetesClusterListResponseBodyDataResult) *GetGovernanceKubernetesClusterListResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetTotalSize(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetPageNumber(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetPageSize(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterListResponseBodyDataResult struct {
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	K8sVersion     *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
+	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
+	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterListResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetClusterName(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetClusterId(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetRegion(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.Region = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetK8sVersion(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.K8sVersion = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetNamespaceInfos(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.NamespaceInfos = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetPilotStartTime(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
+	s.PilotStartTime = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterListResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGovernanceKubernetesClusterListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGovernanceKubernetesClusterListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterListResponse) SetHeaders(v map[string]*string) *GetGovernanceKubernetesClusterListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterListResponse) SetBody(v *GetGovernanceKubernetesClusterListResponseBody) *GetGovernanceKubernetesClusterListResponse {
 	s.Body = v
 	return s
 }
@@ -703,9 +779,6 @@ func (s *ListClusterVersionsResponse) SetBody(v *ListClusterVersionsResponseBody
 }
 
 type ListEngineNamespacesRequest struct {
-	PageNum    *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -715,21 +788,6 @@ func (s ListEngineNamespacesRequest) String() string {
 
 func (s ListEngineNamespacesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListEngineNamespacesRequest) SetPageNum(v int32) *ListEngineNamespacesRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEngineNamespacesRequest) SetPageSize(v int32) *ListEngineNamespacesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEngineNamespacesRequest) SetClusterId(v string) *ListEngineNamespacesRequest {
-	s.ClusterId = &v
-	return s
 }
 
 func (s *ListEngineNamespacesRequest) SetInstanceId(v string) *ListEngineNamespacesRequest {
@@ -878,6 +936,194 @@ func (s *ListEngineNamespacesResponse) SetBody(v *ListEngineNamespacesResponseBo
 	return s
 }
 
+type CreateApplicationRequest struct {
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+}
+
+func (s CreateApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequest) SetAppName(v string) *CreateApplicationRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetRegion(v string) *CreateApplicationRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSource(v string) *CreateApplicationRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetLanguage(v string) *CreateApplicationRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetExtraInfo(v string) *CreateApplicationRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+type CreateApplicationResponseBody struct {
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *CreateApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *string                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+}
+
+func (s CreateApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationResponseBody) SetMessage(v string) *CreateApplicationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBody) SetRequestId(v string) *CreateApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBody) SetData(v *CreateApplicationResponseBodyData) *CreateApplicationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateApplicationResponseBody) SetCode(v int32) *CreateApplicationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBody) SetSuccess(v string) *CreateApplicationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBody) SetHttpStatusCode(v int32) *CreateApplicationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+type CreateApplicationResponseBodyData struct {
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateApplicationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationResponseBodyData) SetStatus(v int32) *CreateApplicationResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetExtraInfo(v string) *CreateApplicationResponseBodyData {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetAppName(v string) *CreateApplicationResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetUpdateTime(v int64) *CreateApplicationResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetLicenseKey(v string) *CreateApplicationResponseBodyData {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetCreateTime(v int64) *CreateApplicationResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetAppId(v string) *CreateApplicationResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetUserId(v string) *CreateApplicationResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetSource(v string) *CreateApplicationResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetLanguage(v string) *CreateApplicationResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyData) SetRegionId(v string) *CreateApplicationResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+type CreateApplicationResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationResponse) SetHeaders(v map[string]*string) *CreateApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *CreateApplicationResponse {
+	s.Body = v
+	return s
+}
+
 type GetOverviewRequest struct {
 	Period *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -973,7 +1219,6 @@ func (s *GetOverviewResponse) SetBody(v *GetOverviewResponseBody) *GetOverviewRe
 
 type QueryMonitorRequest struct {
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
 	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -991,11 +1236,6 @@ func (s QueryMonitorRequest) GoString() string {
 
 func (s *QueryMonitorRequest) SetRequestPars(v string) *QueryMonitorRequest {
 	s.RequestPars = &v
-	return s
-}
-
-func (s *QueryMonitorRequest) SetClusterId(v string) *QueryMonitorRequest {
-	s.ClusterId = &v
 	return s
 }
 
@@ -1088,598 +1328,12 @@ func (s *QueryMonitorResponse) SetBody(v *QueryMonitorResponseBody) *QueryMonito
 	return s
 }
 
-type ListAnsServiceClustersRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-}
-
-func (s ListAnsServiceClustersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAnsServiceClustersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListAnsServiceClustersRequest) SetRequestPars(v string) *ListAnsServiceClustersRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetPageNum(v int32) *ListAnsServiceClustersRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetPageSize(v int32) *ListAnsServiceClustersRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetClusterId(v string) *ListAnsServiceClustersRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetServiceName(v string) *ListAnsServiceClustersRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetGroupName(v string) *ListAnsServiceClustersRequest {
-	s.GroupName = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetNamespaceId(v string) *ListAnsServiceClustersRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetClusterName(v string) *ListAnsServiceClustersRequest {
-	s.ClusterName = &v
-	return s
-}
-
-type ListAnsServiceClustersResponseBody struct {
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListAnsServiceClustersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListAnsServiceClustersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAnsServiceClustersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListAnsServiceClustersResponseBody) SetMessage(v string) *ListAnsServiceClustersResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBody) SetRequestId(v string) *ListAnsServiceClustersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBody) SetData(v *ListAnsServiceClustersResponseBodyData) *ListAnsServiceClustersResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBody) SetErrorCode(v string) *ListAnsServiceClustersResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBody) SetSuccess(v bool) *ListAnsServiceClustersResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListAnsServiceClustersResponseBodyData struct {
-	ProtectThreshold *float32                                          `json:"ProtectThreshold,omitempty" xml:"ProtectThreshold,omitempty"`
-	GroupName        *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Clusters         []*ListAnsServiceClustersResponseBodyDataClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	Name             *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	SelectorType     *string                                           `json:"SelectorType,omitempty" xml:"SelectorType,omitempty"`
-	Metadata         map[string]interface{}                            `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-}
-
-func (s ListAnsServiceClustersResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAnsServiceClustersResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetProtectThreshold(v float32) *ListAnsServiceClustersResponseBodyData {
-	s.ProtectThreshold = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetGroupName(v string) *ListAnsServiceClustersResponseBodyData {
-	s.GroupName = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetClusters(v []*ListAnsServiceClustersResponseBodyDataClusters) *ListAnsServiceClustersResponseBodyData {
-	s.Clusters = v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetName(v string) *ListAnsServiceClustersResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetSelectorType(v string) *ListAnsServiceClustersResponseBodyData {
-	s.SelectorType = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyData) SetMetadata(v map[string]interface{}) *ListAnsServiceClustersResponseBodyData {
-	s.Metadata = v
-	return s
-}
-
-type ListAnsServiceClustersResponseBodyDataClusters struct {
-	DefaultCheckPort  *int32                 `json:"DefaultCheckPort,omitempty" xml:"DefaultCheckPort,omitempty"`
-	HealthCheckerType *string                `json:"HealthCheckerType,omitempty" xml:"HealthCheckerType,omitempty"`
-	UseIPPort4Check   *bool                  `json:"UseIPPort4Check,omitempty" xml:"UseIPPort4Check,omitempty"`
-	ServiceName       *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	DefaultPort       *int32                 `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
-	Metadata          map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-}
-
-func (s ListAnsServiceClustersResponseBodyDataClusters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAnsServiceClustersResponseBodyDataClusters) GoString() string {
-	return s.String()
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetDefaultCheckPort(v int32) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.DefaultCheckPort = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetHealthCheckerType(v string) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.HealthCheckerType = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetUseIPPort4Check(v bool) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.UseIPPort4Check = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetServiceName(v string) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetName(v string) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.Name = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetDefaultPort(v int32) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.DefaultPort = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponseBodyDataClusters) SetMetadata(v map[string]interface{}) *ListAnsServiceClustersResponseBodyDataClusters {
-	s.Metadata = v
-	return s
-}
-
-type ListAnsServiceClustersResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAnsServiceClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListAnsServiceClustersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAnsServiceClustersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListAnsServiceClustersResponse) SetHeaders(v map[string]*string) *ListAnsServiceClustersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListAnsServiceClustersResponse) SetBody(v *ListAnsServiceClustersResponseBody) *ListAnsServiceClustersResponse {
-	s.Body = v
-	return s
-}
-
-type GetNacosConfigRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s GetNacosConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNacosConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetNacosConfigRequest) SetInstanceId(v string) *GetNacosConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetNacosConfigRequest) SetDataId(v string) *GetNacosConfigRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *GetNacosConfigRequest) SetGroup(v string) *GetNacosConfigRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *GetNacosConfigRequest) SetNamespaceId(v string) *GetNacosConfigRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-type GetNacosConfigResponseBody struct {
-	Message       *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Configuration *GetNacosConfigResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
-	ErrorCode     *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success       *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetNacosConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNacosConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetNacosConfigResponseBody) SetMessage(v string) *GetNacosConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBody) SetRequestId(v string) *GetNacosConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBody) SetConfiguration(v *GetNacosConfigResponseBodyConfiguration) *GetNacosConfigResponseBody {
-	s.Configuration = v
-	return s
-}
-
-func (s *GetNacosConfigResponseBody) SetErrorCode(v string) *GetNacosConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBody) SetSuccess(v bool) *GetNacosConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetNacosConfigResponseBodyConfiguration struct {
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Tags    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Md5     *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-}
-
-func (s GetNacosConfigResponseBodyConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNacosConfigResponseBodyConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetType(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Type = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetAppName(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.AppName = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetTags(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Tags = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetMd5(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Md5 = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetDataId(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.DataId = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetContent(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Content = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetGroup(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Group = &v
-	return s
-}
-
-func (s *GetNacosConfigResponseBodyConfiguration) SetDesc(v string) *GetNacosConfigResponseBodyConfiguration {
-	s.Desc = &v
-	return s
-}
-
-type GetNacosConfigResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetNacosConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNacosConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetNacosConfigResponse) SetHeaders(v map[string]*string) *GetNacosConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetNacosConfigResponse) SetBody(v *GetNacosConfigResponseBody) *GetNacosConfigResponse {
-	s.Body = v
-	return s
-}
-
-type CloneNacosConfigRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OriginNamespaceId *string `json:"OriginNamespaceId,omitempty" xml:"OriginNamespaceId,omitempty"`
-	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" xml:"TargetNamespaceId,omitempty"`
-	Policy            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Ids               *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-}
-
-func (s CloneNacosConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigRequest) SetInstanceId(v string) *CloneNacosConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CloneNacosConfigRequest) SetOriginNamespaceId(v string) *CloneNacosConfigRequest {
-	s.OriginNamespaceId = &v
-	return s
-}
-
-func (s *CloneNacosConfigRequest) SetTargetNamespaceId(v string) *CloneNacosConfigRequest {
-	s.TargetNamespaceId = &v
-	return s
-}
-
-func (s *CloneNacosConfigRequest) SetPolicy(v string) *CloneNacosConfigRequest {
-	s.Policy = &v
-	return s
-}
-
-func (s *CloneNacosConfigRequest) SetIds(v string) *CloneNacosConfigRequest {
-	s.Ids = &v
-	return s
-}
-
-type CloneNacosConfigResponseBody struct {
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           *CloneNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DynamicMessage *string                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	Code           *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CloneNacosConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigResponseBody) SetRequestId(v string) *CloneNacosConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetMessage(v string) *CloneNacosConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetHttpStatusCode(v int32) *CloneNacosConfigResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetData(v *CloneNacosConfigResponseBodyData) *CloneNacosConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetErrorCode(v string) *CloneNacosConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetDynamicMessage(v string) *CloneNacosConfigResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetCode(v int32) *CloneNacosConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBody) SetSuccess(v bool) *CloneNacosConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CloneNacosConfigResponseBodyData struct {
-	SuccCount *int32                                      `json:"SuccCount,omitempty" xml:"SuccCount,omitempty"`
-	FailData  []*CloneNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
-	SkipCount *int32                                      `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
-	SkipData  []*CloneNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
-}
-
-func (s CloneNacosConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigResponseBodyData) SetSuccCount(v int32) *CloneNacosConfigResponseBodyData {
-	s.SuccCount = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBodyData) SetFailData(v []*CloneNacosConfigResponseBodyDataFailData) *CloneNacosConfigResponseBodyData {
-	s.FailData = v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBodyData) SetSkipCount(v int32) *CloneNacosConfigResponseBodyData {
-	s.SkipCount = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBodyData) SetSkipData(v []*CloneNacosConfigResponseBodyDataSkipData) *CloneNacosConfigResponseBodyData {
-	s.SkipData = v
-	return s
-}
-
-type CloneNacosConfigResponseBodyDataFailData struct {
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s CloneNacosConfigResponseBodyDataFailData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigResponseBodyDataFailData) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigResponseBodyDataFailData) SetDataId(v string) *CloneNacosConfigResponseBodyDataFailData {
-	s.DataId = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBodyDataFailData) SetGroup(v string) *CloneNacosConfigResponseBodyDataFailData {
-	s.Group = &v
-	return s
-}
-
-type CloneNacosConfigResponseBodyDataSkipData struct {
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s CloneNacosConfigResponseBodyDataSkipData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigResponseBodyDataSkipData) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigResponseBodyDataSkipData) SetDataId(v string) *CloneNacosConfigResponseBodyDataSkipData {
-	s.DataId = &v
-	return s
-}
-
-func (s *CloneNacosConfigResponseBodyDataSkipData) SetGroup(v string) *CloneNacosConfigResponseBodyDataSkipData {
-	s.Group = &v
-	return s
-}
-
-type CloneNacosConfigResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CloneNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CloneNacosConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloneNacosConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CloneNacosConfigResponse) SetHeaders(v map[string]*string) *CloneNacosConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CloneNacosConfigResponse) SetBody(v *CloneNacosConfigResponseBody) *CloneNacosConfigResponse {
-	s.Body = v
-	return s
-}
-
 type ScalingClusterRequest struct {
 	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	MemoryCapacity       *int64  `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s ScalingClusterRequest) String() string {
@@ -1712,11 +1366,6 @@ func (s *ScalingClusterRequest) SetClusterSpecification(v string) *ScalingCluste
 
 func (s *ScalingClusterRequest) SetInstanceId(v string) *ScalingClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetClusterId(v string) *ScalingClusterRequest {
-	s.ClusterId = &v
 	return s
 }
 
@@ -1968,206 +1617,6 @@ func (s *ListAnsServicesResponse) SetHeaders(v map[string]*string) *ListAnsServi
 }
 
 func (s *ListAnsServicesResponse) SetBody(v *ListAnsServicesResponseBody) *ListAnsServicesResponse {
-	s.Body = v
-	return s
-}
-
-type CreateAlarmRuleRequest struct {
-	InstanceId      *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AlarmAliasName  *string                `json:"AlarmAliasName,omitempty" xml:"AlarmAliasName,omitempty"`
-	AlertWay        map[string]interface{} `json:"AlertWay,omitempty" xml:"AlertWay,omitempty"`
-	ContactGroupIds map[string]interface{} `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
-	AlarmItem       *string                `json:"AlarmItem,omitempty" xml:"AlarmItem,omitempty"`
-	Operator        *string                `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Aggregates      *string                `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
-	NValue          *int32                 `json:"NValue,omitempty" xml:"NValue,omitempty"`
-	Value           *float32               `json:"Value,omitempty" xml:"Value,omitempty"`
-	ClusterId       *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s CreateAlarmRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAlarmRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAlarmRuleRequest) SetInstanceId(v string) *CreateAlarmRuleRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetAlarmAliasName(v string) *CreateAlarmRuleRequest {
-	s.AlarmAliasName = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetAlertWay(v map[string]interface{}) *CreateAlarmRuleRequest {
-	s.AlertWay = v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetContactGroupIds(v map[string]interface{}) *CreateAlarmRuleRequest {
-	s.ContactGroupIds = v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetAlarmItem(v string) *CreateAlarmRuleRequest {
-	s.AlarmItem = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetOperator(v string) *CreateAlarmRuleRequest {
-	s.Operator = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetAggregates(v string) *CreateAlarmRuleRequest {
-	s.Aggregates = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetNValue(v int32) *CreateAlarmRuleRequest {
-	s.NValue = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetValue(v float32) *CreateAlarmRuleRequest {
-	s.Value = &v
-	return s
-}
-
-func (s *CreateAlarmRuleRequest) SetClusterId(v string) *CreateAlarmRuleRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type CreateAlarmRuleShrinkRequest struct {
-	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AlarmAliasName        *string  `json:"AlarmAliasName,omitempty" xml:"AlarmAliasName,omitempty"`
-	AlertWayShrink        *string  `json:"AlertWay,omitempty" xml:"AlertWay,omitempty"`
-	ContactGroupIdsShrink *string  `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
-	AlarmItem             *string  `json:"AlarmItem,omitempty" xml:"AlarmItem,omitempty"`
-	Operator              *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Aggregates            *string  `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
-	NValue                *int32   `json:"NValue,omitempty" xml:"NValue,omitempty"`
-	Value                 *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	ClusterId             *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s CreateAlarmRuleShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAlarmRuleShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetInstanceId(v string) *CreateAlarmRuleShrinkRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetAlarmAliasName(v string) *CreateAlarmRuleShrinkRequest {
-	s.AlarmAliasName = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetAlertWayShrink(v string) *CreateAlarmRuleShrinkRequest {
-	s.AlertWayShrink = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetContactGroupIdsShrink(v string) *CreateAlarmRuleShrinkRequest {
-	s.ContactGroupIdsShrink = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetAlarmItem(v string) *CreateAlarmRuleShrinkRequest {
-	s.AlarmItem = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetOperator(v string) *CreateAlarmRuleShrinkRequest {
-	s.Operator = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetAggregates(v string) *CreateAlarmRuleShrinkRequest {
-	s.Aggregates = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetNValue(v int32) *CreateAlarmRuleShrinkRequest {
-	s.NValue = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetValue(v float32) *CreateAlarmRuleShrinkRequest {
-	s.Value = &v
-	return s
-}
-
-func (s *CreateAlarmRuleShrinkRequest) SetClusterId(v string) *CreateAlarmRuleShrinkRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type CreateAlarmRuleResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateAlarmRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAlarmRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAlarmRuleResponseBody) SetMessage(v string) *CreateAlarmRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateAlarmRuleResponseBody) SetRequestId(v string) *CreateAlarmRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAlarmRuleResponseBody) SetErrorCode(v string) *CreateAlarmRuleResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateAlarmRuleResponseBody) SetSuccess(v bool) *CreateAlarmRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateAlarmRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAlarmRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAlarmRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAlarmRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAlarmRuleResponse) SetHeaders(v map[string]*string) *CreateAlarmRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAlarmRuleResponse) SetBody(v *CreateAlarmRuleResponseBody) *CreateAlarmRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2667,158 +2116,6 @@ func (s *ExportNacosConfigResponse) SetBody(v *ExportNacosConfigResponseBody) *E
 	return s
 }
 
-type ListListenersByIpRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s ListListenersByIpRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListListenersByIpRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListListenersByIpRequest) SetRequestPars(v string) *ListListenersByIpRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *ListListenersByIpRequest) SetInstanceId(v string) *ListListenersByIpRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListListenersByIpRequest) SetIp(v string) *ListListenersByIpRequest {
-	s.Ip = &v
-	return s
-}
-
-func (s *ListListenersByIpRequest) SetNamespaceId(v string) *ListListenersByIpRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-type ListListenersByIpResponseBody struct {
-	HttpCode   *string                                   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Listeners  []*ListListenersByIpResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ErrorCode  *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListListenersByIpResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListListenersByIpResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListListenersByIpResponseBody) SetHttpCode(v string) *ListListenersByIpResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetTotalCount(v int32) *ListListenersByIpResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetListeners(v []*ListListenersByIpResponseBodyListeners) *ListListenersByIpResponseBody {
-	s.Listeners = v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetRequestId(v string) *ListListenersByIpResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetMessage(v string) *ListListenersByIpResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetPageSize(v int32) *ListListenersByIpResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetPageNumber(v int32) *ListListenersByIpResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetErrorCode(v string) *ListListenersByIpResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBody) SetSuccess(v bool) *ListListenersByIpResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListListenersByIpResponseBodyListeners struct {
-	Md5    *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s ListListenersByIpResponseBodyListeners) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListListenersByIpResponseBodyListeners) GoString() string {
-	return s.String()
-}
-
-func (s *ListListenersByIpResponseBodyListeners) SetMd5(v string) *ListListenersByIpResponseBodyListeners {
-	s.Md5 = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBodyListeners) SetDataId(v string) *ListListenersByIpResponseBodyListeners {
-	s.DataId = &v
-	return s
-}
-
-func (s *ListListenersByIpResponseBodyListeners) SetGroup(v string) *ListListenersByIpResponseBodyListeners {
-	s.Group = &v
-	return s
-}
-
-type ListListenersByIpResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListListenersByIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListListenersByIpResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListListenersByIpResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListListenersByIpResponse) SetHeaders(v map[string]*string) *ListListenersByIpResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListListenersByIpResponse) SetBody(v *ListListenersByIpResponseBody) *ListListenersByIpResponse {
-	s.Body = v
-	return s
-}
-
 type ListNacosHistoryConfigsRequest struct {
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
@@ -3009,230 +2306,6 @@ func (s *ListNacosHistoryConfigsResponse) SetHeaders(v map[string]*string) *List
 }
 
 func (s *ListNacosHistoryConfigsResponse) SetBody(v *ListNacosHistoryConfigsResponseBody) *ListNacosHistoryConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type ListEurekaInstancesRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-}
-
-func (s ListEurekaInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaInstancesRequest) SetRequestPars(v string) *ListEurekaInstancesRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *ListEurekaInstancesRequest) SetPageNum(v int32) *ListEurekaInstancesRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEurekaInstancesRequest) SetPageSize(v int32) *ListEurekaInstancesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEurekaInstancesRequest) SetClusterId(v string) *ListEurekaInstancesRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListEurekaInstancesRequest) SetServiceName(v string) *ListEurekaInstancesRequest {
-	s.ServiceName = &v
-	return s
-}
-
-type ListEurekaInstancesResponseBody struct {
-	HttpCode   *string                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Data       []*ListEurekaInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode  *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListEurekaInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaInstancesResponseBody) SetHttpCode(v string) *ListEurekaInstancesResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetTotalCount(v int32) *ListEurekaInstancesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetRequestId(v string) *ListEurekaInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetMessage(v string) *ListEurekaInstancesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetPageSize(v int32) *ListEurekaInstancesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetPageNumber(v int32) *ListEurekaInstancesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetData(v []*ListEurekaInstancesResponseBodyData) *ListEurekaInstancesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetErrorCode(v string) *ListEurekaInstancesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBody) SetSuccess(v bool) *ListEurekaInstancesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListEurekaInstancesResponseBodyData struct {
-	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	LastDirtyTimestamp    *int64                 `json:"LastDirtyTimestamp,omitempty" xml:"LastDirtyTimestamp,omitempty"`
-	IpAddr                *string                `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	HomePageUrl           *string                `json:"HomePageUrl,omitempty" xml:"HomePageUrl,omitempty"`
-	HostName              *string                `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InstanceId            *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Port                  *int32                 `json:"Port,omitempty" xml:"Port,omitempty"`
-	SecurePort            *int32                 `json:"SecurePort,omitempty" xml:"SecurePort,omitempty"`
-	App                   *string                `json:"App,omitempty" xml:"App,omitempty"`
-	DurationInSecs        *int32                 `json:"DurationInSecs,omitempty" xml:"DurationInSecs,omitempty"`
-	LastUpdatedTimestamp  *int64                 `json:"LastUpdatedTimestamp,omitempty" xml:"LastUpdatedTimestamp,omitempty"`
-	RenewalIntervalInSecs *int32                 `json:"RenewalIntervalInSecs,omitempty" xml:"RenewalIntervalInSecs,omitempty"`
-	VipAddress            *string                `json:"VipAddress,omitempty" xml:"VipAddress,omitempty"`
-	Metadata              map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-}
-
-func (s ListEurekaInstancesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaInstancesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetStatus(v string) *ListEurekaInstancesResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetLastDirtyTimestamp(v int64) *ListEurekaInstancesResponseBodyData {
-	s.LastDirtyTimestamp = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetIpAddr(v string) *ListEurekaInstancesResponseBodyData {
-	s.IpAddr = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetHomePageUrl(v string) *ListEurekaInstancesResponseBodyData {
-	s.HomePageUrl = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetHostName(v string) *ListEurekaInstancesResponseBodyData {
-	s.HostName = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetInstanceId(v string) *ListEurekaInstancesResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetPort(v int32) *ListEurekaInstancesResponseBodyData {
-	s.Port = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetSecurePort(v int32) *ListEurekaInstancesResponseBodyData {
-	s.SecurePort = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetApp(v string) *ListEurekaInstancesResponseBodyData {
-	s.App = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetDurationInSecs(v int32) *ListEurekaInstancesResponseBodyData {
-	s.DurationInSecs = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetLastUpdatedTimestamp(v int64) *ListEurekaInstancesResponseBodyData {
-	s.LastUpdatedTimestamp = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetRenewalIntervalInSecs(v int32) *ListEurekaInstancesResponseBodyData {
-	s.RenewalIntervalInSecs = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetVipAddress(v string) *ListEurekaInstancesResponseBodyData {
-	s.VipAddress = &v
-	return s
-}
-
-func (s *ListEurekaInstancesResponseBodyData) SetMetadata(v map[string]interface{}) *ListEurekaInstancesResponseBodyData {
-	s.Metadata = v
-	return s
-}
-
-type ListEurekaInstancesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEurekaInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEurekaInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaInstancesResponse) SetHeaders(v map[string]*string) *ListEurekaInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEurekaInstancesResponse) SetBody(v *ListEurekaInstancesResponseBody) *ListEurekaInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -3619,11 +2692,4265 @@ func (s *ListListenersByConfigResponse) SetBody(v *ListListenersByConfigResponse
 	return s
 }
 
+type GetGovernanceKubernetesClusterRequest struct {
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterRequest) SetRegionId(v string) *GetGovernanceKubernetesClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterRequest) SetClusterId(v string) *GetGovernanceKubernetesClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterResponseBody struct {
+	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *GetGovernanceKubernetesClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetHttpStatusCode(v int32) *GetGovernanceKubernetesClusterResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetMessage(v string) *GetGovernanceKubernetesClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetRequestId(v string) *GetGovernanceKubernetesClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetData(v *GetGovernanceKubernetesClusterResponseBodyData) *GetGovernanceKubernetesClusterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetCode(v int32) *GetGovernanceKubernetesClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBody) SetSuccess(v bool) *GetGovernanceKubernetesClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterResponseBodyData struct {
+	ClusterId      *string                                                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string                                                     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Region         *string                                                     `json:"Region,omitempty" xml:"Region,omitempty"`
+	K8sVersion     *string                                                     `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
+	NamespaceInfos *string                                                     `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
+	PilotStartTime *string                                                     `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
+	UpdateTime     *string                                                     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Namespaces     []*GetGovernanceKubernetesClusterResponseBodyDataNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+}
+
+func (s GetGovernanceKubernetesClusterResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetClusterId(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetClusterName(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetRegion(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetK8sVersion(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.K8sVersion = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetNamespaceInfos(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.NamespaceInfos = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetPilotStartTime(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.PilotStartTime = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetUpdateTime(v string) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyData) SetNamespaces(v []*GetGovernanceKubernetesClusterResponseBodyDataNamespaces) *GetGovernanceKubernetesClusterResponseBodyData {
+	s.Namespaces = v
+	return s
+}
+
+type GetGovernanceKubernetesClusterResponseBodyDataNamespaces struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s GetGovernanceKubernetesClusterResponseBodyDataNamespaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterResponseBodyDataNamespaces) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyDataNamespaces) SetName(v string) *GetGovernanceKubernetesClusterResponseBodyDataNamespaces {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponseBodyDataNamespaces) SetTags(v string) *GetGovernanceKubernetesClusterResponseBodyDataNamespaces {
+	s.Tags = &v
+	return s
+}
+
+type GetGovernanceKubernetesClusterResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGovernanceKubernetesClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGovernanceKubernetesClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceKubernetesClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceKubernetesClusterResponse) SetHeaders(v map[string]*string) *GetGovernanceKubernetesClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGovernanceKubernetesClusterResponse) SetBody(v *GetGovernanceKubernetesClusterResponseBody) *GetGovernanceKubernetesClusterResponse {
+	s.Body = v
+	return s
+}
+
+type QueryGatewayTypeResponseBody struct {
+	// Id of the request
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code           *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s QueryGatewayTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGatewayTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGatewayTypeResponseBody) SetRequestId(v string) *QueryGatewayTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGatewayTypeResponseBody) SetHttpStatusCode(v int32) *QueryGatewayTypeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryGatewayTypeResponseBody) SetMessage(v string) *QueryGatewayTypeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGatewayTypeResponseBody) SetCode(v int32) *QueryGatewayTypeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGatewayTypeResponseBody) SetSuccess(v bool) *QueryGatewayTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryGatewayTypeResponseBody) SetData(v []*string) *QueryGatewayTypeResponseBody {
+	s.Data = v
+	return s
+}
+
+type QueryGatewayTypeResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryGatewayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGatewayTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGatewayTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGatewayTypeResponse) SetHeaders(v map[string]*string) *QueryGatewayTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGatewayTypeResponse) SetBody(v *QueryGatewayTypeResponseBody) *QueryGatewayTypeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryClusterSpecificationResponseBody struct {
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Data           []*QueryClusterSpecificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code           *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryClusterSpecificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterSpecificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetRequestId(v string) *QueryClusterSpecificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetMessage(v string) *QueryClusterSpecificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetHttpStatusCode(v int32) *QueryClusterSpecificationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetData(v []*QueryClusterSpecificationResponseBodyData) *QueryClusterSpecificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetErrorCode(v string) *QueryClusterSpecificationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetCode(v int32) *QueryClusterSpecificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBody) SetSuccess(v bool) *QueryClusterSpecificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryClusterSpecificationResponseBodyData struct {
+	ClusterSpecificationName *string `json:"ClusterSpecificationName,omitempty" xml:"ClusterSpecificationName,omitempty"`
+	DiskCapacity             *string `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	MemoryCapacity           *string `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
+	InstanceCount            *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	MaxTps                   *string `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	MaxCon                   *string `json:"MaxCon,omitempty" xml:"MaxCon,omitempty"`
+	CpuCapacity              *string `json:"CpuCapacity,omitempty" xml:"CpuCapacity,omitempty"`
+}
+
+func (s QueryClusterSpecificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterSpecificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetClusterSpecificationName(v string) *QueryClusterSpecificationResponseBodyData {
+	s.ClusterSpecificationName = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetDiskCapacity(v string) *QueryClusterSpecificationResponseBodyData {
+	s.DiskCapacity = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetMemoryCapacity(v string) *QueryClusterSpecificationResponseBodyData {
+	s.MemoryCapacity = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetInstanceCount(v string) *QueryClusterSpecificationResponseBodyData {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetMaxTps(v string) *QueryClusterSpecificationResponseBodyData {
+	s.MaxTps = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetMaxCon(v string) *QueryClusterSpecificationResponseBodyData {
+	s.MaxCon = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponseBodyData) SetCpuCapacity(v string) *QueryClusterSpecificationResponseBodyData {
+	s.CpuCapacity = &v
+	return s
+}
+
+type QueryClusterSpecificationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryClusterSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryClusterSpecificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterSpecificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterSpecificationResponse) SetHeaders(v map[string]*string) *QueryClusterSpecificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryClusterSpecificationResponse) SetBody(v *QueryClusterSpecificationResponseBody) *QueryClusterSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyGovernanceKubernetesClusterRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
+}
+
+func (s ModifyGovernanceKubernetesClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGovernanceKubernetesClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGovernanceKubernetesClusterRequest) SetRegionId(v string) *ModifyGovernanceKubernetesClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterRequest) SetClusterId(v string) *ModifyGovernanceKubernetesClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterRequest) SetNamespaceInfos(v string) *ModifyGovernanceKubernetesClusterRequest {
+	s.NamespaceInfos = &v
+	return s
+}
+
+type ModifyGovernanceKubernetesClusterResponseBody struct {
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyGovernanceKubernetesClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGovernanceKubernetesClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetHttpStatusCode(v int32) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetMessage(v string) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetRequestId(v string) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetData(v bool) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetCode(v int32) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponseBody) SetSuccess(v bool) *ModifyGovernanceKubernetesClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyGovernanceKubernetesClusterResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyGovernanceKubernetesClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyGovernanceKubernetesClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGovernanceKubernetesClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponse) SetHeaders(v map[string]*string) *ModifyGovernanceKubernetesClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGovernanceKubernetesClusterResponse) SetBody(v *ModifyGovernanceKubernetesClusterResponseBody) *ModifyGovernanceKubernetesClusterResponse {
+	s.Body = v
+	return s
+}
+
+type ImportNacosConfigRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s ImportNacosConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigRequest) SetInstanceId(v string) *ImportNacosConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ImportNacosConfigRequest) SetNamespaceId(v string) *ImportNacosConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ImportNacosConfigRequest) SetPolicy(v string) *ImportNacosConfigRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *ImportNacosConfigRequest) SetFileUrl(v string) *ImportNacosConfigRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type ImportNacosConfigResponseBody struct {
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Data           *ImportNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DynamicMessage *string                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	Code           *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportNacosConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigResponseBody) SetRequestId(v string) *ImportNacosConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetMessage(v string) *ImportNacosConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetHttpStatusCode(v int32) *ImportNacosConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetData(v *ImportNacosConfigResponseBodyData) *ImportNacosConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetErrorCode(v string) *ImportNacosConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetDynamicMessage(v string) *ImportNacosConfigResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetCode(v int32) *ImportNacosConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBody) SetSuccess(v bool) *ImportNacosConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportNacosConfigResponseBodyData struct {
+	SuccCount *int32                                       `json:"SuccCount,omitempty" xml:"SuccCount,omitempty"`
+	FailData  []*ImportNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
+	SkipCount *int32                                       `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
+	SkipData  []*ImportNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
+}
+
+func (s ImportNacosConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigResponseBodyData) SetSuccCount(v int32) *ImportNacosConfigResponseBodyData {
+	s.SuccCount = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyData) SetFailData(v []*ImportNacosConfigResponseBodyDataFailData) *ImportNacosConfigResponseBodyData {
+	s.FailData = v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyData) SetSkipCount(v int32) *ImportNacosConfigResponseBodyData {
+	s.SkipCount = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyData) SetSkipData(v []*ImportNacosConfigResponseBodyDataSkipData) *ImportNacosConfigResponseBodyData {
+	s.SkipData = v
+	return s
+}
+
+type ImportNacosConfigResponseBodyDataFailData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s ImportNacosConfigResponseBodyDataFailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigResponseBodyDataFailData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigResponseBodyDataFailData) SetDataId(v string) *ImportNacosConfigResponseBodyDataFailData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyDataFailData) SetGroup(v string) *ImportNacosConfigResponseBodyDataFailData {
+	s.Group = &v
+	return s
+}
+
+type ImportNacosConfigResponseBodyDataSkipData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s ImportNacosConfigResponseBodyDataSkipData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigResponseBodyDataSkipData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigResponseBodyDataSkipData) SetDataId(v string) *ImportNacosConfigResponseBodyDataSkipData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyDataSkipData) SetGroup(v string) *ImportNacosConfigResponseBodyDataSkipData {
+	s.Group = &v
+	return s
+}
+
+type ImportNacosConfigResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImportNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportNacosConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNacosConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNacosConfigResponse) SetHeaders(v map[string]*string) *ImportNacosConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportNacosConfigResponse) SetBody(v *ImportNacosConfigResponseBody) *ImportNacosConfigResponse {
+	s.Body = v
+	return s
+}
+
+type CreateZnodeRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s CreateZnodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateZnodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateZnodeRequest) SetClusterId(v string) *CreateZnodeRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateZnodeRequest) SetPath(v string) *CreateZnodeRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateZnodeRequest) SetData(v string) *CreateZnodeRequest {
+	s.Data = &v
+	return s
+}
+
+type CreateZnodeResponseBody struct {
+	HttpCode  *string                      `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *CreateZnodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateZnodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateZnodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateZnodeResponseBody) SetHttpCode(v string) *CreateZnodeResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBody) SetMessage(v string) *CreateZnodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBody) SetRequestId(v string) *CreateZnodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBody) SetData(v *CreateZnodeResponseBodyData) *CreateZnodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateZnodeResponseBody) SetErrorCode(v string) *CreateZnodeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBody) SetSuccess(v bool) *CreateZnodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateZnodeResponseBodyData struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Dir  *bool   `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateZnodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateZnodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateZnodeResponseBodyData) SetData(v string) *CreateZnodeResponseBodyData {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBodyData) SetPath(v string) *CreateZnodeResponseBodyData {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBodyData) SetDir(v bool) *CreateZnodeResponseBodyData {
+	s.Dir = &v
+	return s
+}
+
+func (s *CreateZnodeResponseBodyData) SetName(v string) *CreateZnodeResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type CreateZnodeResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateZnodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateZnodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateZnodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateZnodeResponse) SetHeaders(v map[string]*string) *CreateZnodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateZnodeResponse) SetBody(v *CreateZnodeResponseBody) *CreateZnodeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryClusterDiskSpecificationRequest struct {
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+}
+
+func (s QueryClusterDiskSpecificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDiskSpecificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDiskSpecificationRequest) SetClusterType(v string) *QueryClusterDiskSpecificationRequest {
+	s.ClusterType = &v
+	return s
+}
+
+type QueryClusterDiskSpecificationResponseBody struct {
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Data           *QueryClusterDiskSpecificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DynamicMessage *string                                        `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	Code           *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryClusterDiskSpecificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDiskSpecificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetRequestId(v string) *QueryClusterDiskSpecificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetMessage(v string) *QueryClusterDiskSpecificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetHttpStatusCode(v int32) *QueryClusterDiskSpecificationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetData(v *QueryClusterDiskSpecificationResponseBodyData) *QueryClusterDiskSpecificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetErrorCode(v string) *QueryClusterDiskSpecificationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetDynamicMessage(v string) *QueryClusterDiskSpecificationResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetCode(v int32) *QueryClusterDiskSpecificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBody) SetSuccess(v bool) *QueryClusterDiskSpecificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryClusterDiskSpecificationResponseBodyData struct {
+	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
+	Max  *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min  *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
+}
+
+func (s QueryClusterDiskSpecificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDiskSpecificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDiskSpecificationResponseBodyData) SetStep(v int32) *QueryClusterDiskSpecificationResponseBodyData {
+	s.Step = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBodyData) SetMax(v int32) *QueryClusterDiskSpecificationResponseBodyData {
+	s.Max = &v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponseBodyData) SetMin(v int32) *QueryClusterDiskSpecificationResponseBodyData {
+	s.Min = &v
+	return s
+}
+
+type QueryClusterDiskSpecificationResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryClusterDiskSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryClusterDiskSpecificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDiskSpecificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDiskSpecificationResponse) SetHeaders(v map[string]*string) *QueryClusterDiskSpecificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryClusterDiskSpecificationResponse) SetBody(v *QueryClusterDiskSpecificationResponseBody) *QueryClusterDiskSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type ListNacosConfigsRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListNacosConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacosConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacosConfigsRequest) SetRequestPars(v string) *ListNacosConfigsRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetPageNum(v int32) *ListNacosConfigsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetPageSize(v int32) *ListNacosConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetInstanceId(v string) *ListNacosConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetRegionId(v string) *ListNacosConfigsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetDataId(v string) *ListNacosConfigsRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetGroup(v string) *ListNacosConfigsRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetAppName(v string) *ListNacosConfigsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetTags(v string) *ListNacosConfigsRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListNacosConfigsRequest) SetNamespaceId(v string) *ListNacosConfigsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListNacosConfigsResponseBody struct {
+	HttpCode       *string                                       `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber     *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ErrorCode      *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Configurations []*ListNacosConfigsResponseBodyConfigurations `json:"Configurations,omitempty" xml:"Configurations,omitempty" type:"Repeated"`
+	Code           *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListNacosConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacosConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacosConfigsResponseBody) SetHttpCode(v string) *ListNacosConfigsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetTotalCount(v int32) *ListNacosConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetRequestId(v string) *ListNacosConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetMessage(v string) *ListNacosConfigsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetPageSize(v int32) *ListNacosConfigsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetPageNumber(v int32) *ListNacosConfigsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetErrorCode(v string) *ListNacosConfigsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetConfigurations(v []*ListNacosConfigsResponseBodyConfigurations) *ListNacosConfigsResponseBody {
+	s.Configurations = v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetCode(v int32) *ListNacosConfigsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBody) SetSuccess(v bool) *ListNacosConfigsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListNacosConfigsResponseBodyConfigurations struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s ListNacosConfigsResponseBodyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacosConfigsResponseBodyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) SetAppName(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) SetDataId(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) SetId(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.Id = &v
+	return s
+}
+
+func (s *ListNacosConfigsResponseBodyConfigurations) SetGroup(v string) *ListNacosConfigsResponseBodyConfigurations {
+	s.Group = &v
+	return s
+}
+
+type ListNacosConfigsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListNacosConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNacosConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacosConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacosConfigsResponse) SetHeaders(v map[string]*string) *ListNacosConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNacosConfigsResponse) SetBody(v *ListNacosConfigsResponseBody) *ListNacosConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryConfigRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s QueryConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigRequest) SetRequestPars(v string) *QueryConfigRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *QueryConfigRequest) SetClusterId(v string) *QueryConfigRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QueryConfigRequest) SetConfigType(v string) *QueryConfigRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *QueryConfigRequest) SetInstanceId(v string) *QueryConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type QueryConfigResponseBody struct {
+	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *QueryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+}
+
+func (s QueryConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigResponseBody) SetMessage(v string) *QueryConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryConfigResponseBody) SetRequestId(v string) *QueryConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryConfigResponseBody) SetData(v *QueryConfigResponseBodyData) *QueryConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryConfigResponseBody) SetSuccess(v bool) *QueryConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryConfigResponseBody) SetCode(v int32) *QueryConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryConfigResponseBody) SetHttpStatusCode(v int32) *QueryConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+type QueryConfigResponseBodyData struct {
+	MaxClientCnxns           *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
+	ConfigAuthSupported      *bool   `json:"ConfigAuthSupported,omitempty" xml:"ConfigAuthSupported,omitempty"`
+	InitLimit                *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
+	MCPEnabled               *bool   `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
+	OpenSuperAcl             *bool   `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
+	RestartFlag              *bool   `json:"RestartFlag,omitempty" xml:"RestartFlag,omitempty"`
+	JvmFlagsCustom           *string `json:"JvmFlagsCustom,omitempty" xml:"JvmFlagsCustom,omitempty"`
+	AutopurgePurgeInterval   *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
+	AutopurgeSnapRetainCount *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
+	SyncLimit                *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
+	ConfigAuthEnabled        *bool   `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
+	ClusterName              *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	MCPSupported             *bool   `json:"MCPSupported,omitempty" xml:"MCPSupported,omitempty"`
+	JuteMaxbuffer            *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
+	TickTime                 *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
+	PassWord                 *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	UserName                 *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ConfigSecretSupported    *bool   `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
+	ConfigSecretEnabled      *bool   `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
+}
+
+func (s QueryConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigResponseBodyData) SetMaxClientCnxns(v string) *QueryConfigResponseBodyData {
+	s.MaxClientCnxns = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConfigAuthSupported(v bool) *QueryConfigResponseBodyData {
+	s.ConfigAuthSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetInitLimit(v string) *QueryConfigResponseBodyData {
+	s.InitLimit = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetMCPEnabled(v bool) *QueryConfigResponseBodyData {
+	s.MCPEnabled = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetOpenSuperAcl(v bool) *QueryConfigResponseBodyData {
+	s.OpenSuperAcl = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetRestartFlag(v bool) *QueryConfigResponseBodyData {
+	s.RestartFlag = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetJvmFlagsCustom(v string) *QueryConfigResponseBodyData {
+	s.JvmFlagsCustom = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetAutopurgePurgeInterval(v string) *QueryConfigResponseBodyData {
+	s.AutopurgePurgeInterval = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetAutopurgeSnapRetainCount(v string) *QueryConfigResponseBodyData {
+	s.AutopurgeSnapRetainCount = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetSyncLimit(v string) *QueryConfigResponseBodyData {
+	s.SyncLimit = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConfigAuthEnabled(v bool) *QueryConfigResponseBodyData {
+	s.ConfigAuthEnabled = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetClusterName(v string) *QueryConfigResponseBodyData {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetMCPSupported(v bool) *QueryConfigResponseBodyData {
+	s.MCPSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetJuteMaxbuffer(v string) *QueryConfigResponseBodyData {
+	s.JuteMaxbuffer = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetTickTime(v string) *QueryConfigResponseBodyData {
+	s.TickTime = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetPassWord(v string) *QueryConfigResponseBodyData {
+	s.PassWord = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetUserName(v string) *QueryConfigResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConfigSecretSupported(v bool) *QueryConfigResponseBodyData {
+	s.ConfigSecretSupported = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetConfigSecretEnabled(v bool) *QueryConfigResponseBodyData {
+	s.ConfigSecretEnabled = &v
+	return s
+}
+
+type QueryConfigResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConfigResponse) SetHeaders(v map[string]*string) *QueryConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryConfigResponse) SetBody(v *QueryConfigResponseBody) *QueryConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ListClusterTypesRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListClusterTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypesRequest) SetRegionId(v string) *ListClusterTypesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListClusterTypesResponseBody struct {
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Data           []*ListClusterTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DynamicMessage *string                             `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListClusterTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypesResponseBody) SetRequestId(v string) *ListClusterTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetMessage(v string) *ListClusterTypesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetHttpStatusCode(v int32) *ListClusterTypesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetData(v []*ListClusterTypesResponseBodyData) *ListClusterTypesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetErrorCode(v string) *ListClusterTypesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetDynamicMessage(v string) *ListClusterTypesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetCode(v int32) *ListClusterTypesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListClusterTypesResponseBody) SetSuccess(v bool) *ListClusterTypesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListClusterTypesResponseBodyData struct {
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+}
+
+func (s ListClusterTypesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypesResponseBodyData) SetShowName(v string) *ListClusterTypesResponseBodyData {
+	s.ShowName = &v
+	return s
+}
+
+type ListClusterTypesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListClusterTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClusterTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterTypesResponse) SetHeaders(v map[string]*string) *ListClusterTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClusterTypesResponse) SetBody(v *ListClusterTypesResponseBody) *ListClusterTypesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNacosConfigsRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ids         *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteNacosConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosConfigsRequest) SetInstanceId(v string) *DeleteNacosConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsRequest) SetIds(v string) *DeleteNacosConfigsRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsRequest) SetNamespaceId(v string) *DeleteNacosConfigsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteNacosConfigsResponseBody struct {
+	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteNacosConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetHttpCode(v string) *DeleteNacosConfigsResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetRequestId(v string) *DeleteNacosConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetMessage(v string) *DeleteNacosConfigsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetErrorCode(v string) *DeleteNacosConfigsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetCode(v int32) *DeleteNacosConfigsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponseBody) SetSuccess(v bool) *DeleteNacosConfigsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteNacosConfigsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteNacosConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNacosConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosConfigsResponse) SetHeaders(v map[string]*string) *DeleteNacosConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNacosConfigsResponse) SetBody(v *DeleteNacosConfigsResponseBody) *DeleteNacosConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateNacosConfigRequest struct {
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DataId           *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group            *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Desc             *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	BetaIps          *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+}
+
+func (s UpdateNacosConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosConfigRequest) SetInstanceId(v string) *UpdateNacosConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetDataId(v string) *UpdateNacosConfigRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetGroup(v string) *UpdateNacosConfigRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetAppName(v string) *UpdateNacosConfigRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetTags(v string) *UpdateNacosConfigRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetDesc(v string) *UpdateNacosConfigRequest {
+	s.Desc = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetType(v string) *UpdateNacosConfigRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetContent(v string) *UpdateNacosConfigRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetNamespaceId(v string) *UpdateNacosConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetMd5(v string) *UpdateNacosConfigRequest {
+	s.Md5 = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetBetaIps(v string) *UpdateNacosConfigRequest {
+	s.BetaIps = &v
+	return s
+}
+
+func (s *UpdateNacosConfigRequest) SetEncryptedDataKey(v string) *UpdateNacosConfigRequest {
+	s.EncryptedDataKey = &v
+	return s
+}
+
+type UpdateNacosConfigResponseBody struct {
+	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateNacosConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosConfigResponseBody) SetHttpCode(v string) *UpdateNacosConfigResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateNacosConfigResponseBody) SetMessage(v string) *UpdateNacosConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateNacosConfigResponseBody) SetRequestId(v string) *UpdateNacosConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateNacosConfigResponseBody) SetErrorCode(v string) *UpdateNacosConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateNacosConfigResponseBody) SetSuccess(v bool) *UpdateNacosConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateNacosConfigResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateNacosConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacosConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacosConfigResponse) SetHeaders(v map[string]*string) *UpdateNacosConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNacosConfigResponse) SetBody(v *UpdateNacosConfigResponseBody) *UpdateNacosConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetMseFeatureSwitchResponseBody struct {
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	ErrorCode *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMseFeatureSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMseFeatureSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMseFeatureSwitchResponseBody) SetMessage(v string) *GetMseFeatureSwitchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMseFeatureSwitchResponseBody) SetRequestId(v string) *GetMseFeatureSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMseFeatureSwitchResponseBody) SetResult(v map[string]interface{}) *GetMseFeatureSwitchResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetMseFeatureSwitchResponseBody) SetErrorCode(v string) *GetMseFeatureSwitchResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMseFeatureSwitchResponseBody) SetSuccess(v bool) *GetMseFeatureSwitchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMseFeatureSwitchResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMseFeatureSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMseFeatureSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMseFeatureSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMseFeatureSwitchResponse) SetHeaders(v map[string]*string) *GetMseFeatureSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMseFeatureSwitchResponse) SetBody(v *GetMseFeatureSwitchResponseBody) *GetMseFeatureSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateClusterRequest struct {
+	RequestPars      *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterRequest) SetRequestPars(v string) *UpdateClusterRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *UpdateClusterRequest) SetClusterAliasName(v string) *UpdateClusterRequest {
+	s.ClusterAliasName = &v
+	return s
+}
+
+func (s *UpdateClusterRequest) SetInstanceId(v string) *UpdateClusterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateClusterResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterResponseBody) SetMessage(v string) *UpdateClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateClusterResponseBody) SetRequestId(v string) *UpdateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateClusterResponseBody) SetErrorCode(v string) *UpdateClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateClusterResponseBody) SetSuccess(v bool) *UpdateClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateClusterResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterResponse) SetHeaders(v map[string]*string) *UpdateClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClusterResponse) SetBody(v *UpdateClusterResponseBody) *UpdateClusterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateClusterRequest struct {
+	PubNetworkFlow          *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
+	PubSlbSpecification     *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
+	DiskType                *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	NetType                 *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	InstanceCount           *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	ClusterSpecification    *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
+	ClusterVersion          *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Region                  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
+	ConnectionType          *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	DiskCapacity            *int32  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+}
+
+func (s CreateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequest) SetPubNetworkFlow(v string) *CreateClusterRequest {
+	s.PubNetworkFlow = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetPubSlbSpecification(v string) *CreateClusterRequest {
+	s.PubSlbSpecification = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetDiskType(v string) *CreateClusterRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetNetType(v string) *CreateClusterRequest {
+	s.NetType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetInstanceCount(v int32) *CreateClusterRequest {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClusterSpecification(v string) *CreateClusterRequest {
+	s.ClusterSpecification = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClusterVersion(v string) *CreateClusterRequest {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRegion(v string) *CreateClusterRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetPrivateSlbSpecification(v string) *CreateClusterRequest {
+	s.PrivateSlbSpecification = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetConnectionType(v string) *CreateClusterRequest {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRequestPars(v string) *CreateClusterRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetDiskCapacity(v int32) *CreateClusterRequest {
+	s.DiskCapacity = &v
+	return s
+}
+
+type CreateClusterResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetMessage(v string) *CreateClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetInstanceId(v string) *CreateClusterResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetErrorCode(v string) *CreateClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetOrderId(v string) *CreateClusterResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetSuccess(v bool) *CreateClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateClusterResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClusterResponse {
+	s.Body = v
+	return s
+}
+
+type ListEurekaServicesRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEurekaServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaServicesRequest) SetRequestPars(v string) *ListEurekaServicesRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListEurekaServicesRequest) SetPageNum(v int32) *ListEurekaServicesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEurekaServicesRequest) SetPageSize(v int32) *ListEurekaServicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEurekaServicesRequest) SetClusterId(v string) *ListEurekaServicesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListEurekaServicesRequest) SetRegionId(v string) *ListEurekaServicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEurekaServicesResponseBody struct {
+	HttpCode   *string                               `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Data       []*ListEurekaServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success    *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEurekaServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaServicesResponseBody) SetHttpCode(v string) *ListEurekaServicesResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetTotalCount(v int32) *ListEurekaServicesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetRequestId(v string) *ListEurekaServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetMessage(v string) *ListEurekaServicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetPageSize(v int32) *ListEurekaServicesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetPageNumber(v int32) *ListEurekaServicesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetData(v []*ListEurekaServicesResponseBodyData) *ListEurekaServicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetErrorCode(v string) *ListEurekaServicesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBody) SetSuccess(v bool) *ListEurekaServicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEurekaServicesResponseBodyData struct {
+	InstancesId []*string `json:"InstancesId,omitempty" xml:"InstancesId,omitempty" type:"Repeated"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpStatus    *string   `json:"UpStatus,omitempty" xml:"UpStatus,omitempty"`
+}
+
+func (s ListEurekaServicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaServicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaServicesResponseBodyData) SetInstancesId(v []*string) *ListEurekaServicesResponseBodyData {
+	s.InstancesId = v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBodyData) SetName(v string) *ListEurekaServicesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEurekaServicesResponseBodyData) SetUpStatus(v string) *ListEurekaServicesResponseBodyData {
+	s.UpStatus = &v
+	return s
+}
+
+type ListEurekaServicesResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEurekaServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEurekaServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaServicesResponse) SetHeaders(v map[string]*string) *ListEurekaServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEurekaServicesResponse) SetBody(v *ListEurekaServicesResponseBody) *ListEurekaServicesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteClusterRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterRequest) SetInstanceId(v string) *DeleteClusterRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteClusterResponseBody struct {
+	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterResponseBody) SetHttpCode(v string) *DeleteClusterResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteClusterResponseBody) SetMessage(v string) *DeleteClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClusterResponseBody) SetErrorCode(v string) *DeleteClusterResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteClusterResponseBody) SetSuccess(v bool) *DeleteClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteClusterResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
+	s.Body = v
+	return s
+}
+
+type GetEngineNamepaceRequest struct {
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s GetEngineNamepaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineNamepaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineNamepaceRequest) SetId(v string) *GetEngineNamepaceRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetEngineNamepaceRequest) SetInstanceId(v string) *GetEngineNamepaceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEngineNamepaceRequest) SetClusterId(v string) *GetEngineNamepaceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type GetEngineNamepaceResponseBody struct {
+	HttpCode          *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Quota             *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ConfigCount       *string `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
+	NamespaceShowName *string `json:"NamespaceShowName,omitempty" xml:"NamespaceShowName,omitempty"`
+	ErrorCode         *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	NamespaceDesc     *string `json:"NamespaceDesc,omitempty" xml:"NamespaceDesc,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetEngineNamepaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineNamepaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineNamepaceResponseBody) SetHttpCode(v string) *GetEngineNamepaceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetType(v string) *GetEngineNamepaceResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetQuota(v string) *GetEngineNamepaceResponseBody {
+	s.Quota = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetRequestId(v string) *GetEngineNamepaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetMessage(v string) *GetEngineNamepaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetConfigCount(v string) *GetEngineNamepaceResponseBody {
+	s.ConfigCount = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetNamespaceShowName(v string) *GetEngineNamepaceResponseBody {
+	s.NamespaceShowName = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetErrorCode(v string) *GetEngineNamepaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetSuccess(v bool) *GetEngineNamepaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetNamespaceDesc(v string) *GetEngineNamepaceResponseBody {
+	s.NamespaceDesc = &v
+	return s
+}
+
+func (s *GetEngineNamepaceResponseBody) SetNamespace(v string) *GetEngineNamepaceResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+type GetEngineNamepaceResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetEngineNamepaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEngineNamepaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineNamepaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineNamepaceResponse) SetHeaders(v map[string]*string) *GetEngineNamepaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEngineNamepaceResponse) SetBody(v *GetEngineNamepaceResponseBody) *GetEngineNamepaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateZnodeRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s UpdateZnodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateZnodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateZnodeRequest) SetRequestPars(v string) *UpdateZnodeRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *UpdateZnodeRequest) SetClusterId(v string) *UpdateZnodeRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateZnodeRequest) SetPath(v string) *UpdateZnodeRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateZnodeRequest) SetData(v string) *UpdateZnodeRequest {
+	s.Data = &v
+	return s
+}
+
+type UpdateZnodeResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateZnodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateZnodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateZnodeResponseBody) SetMessage(v string) *UpdateZnodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateZnodeResponseBody) SetRequestId(v string) *UpdateZnodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateZnodeResponseBody) SetErrorCode(v string) *UpdateZnodeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateZnodeResponseBody) SetSuccess(v bool) *UpdateZnodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateZnodeResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateZnodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateZnodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateZnodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateZnodeResponse) SetHeaders(v map[string]*string) *UpdateZnodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateZnodeResponse) SetBody(v *UpdateZnodeResponseBody) *UpdateZnodeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryClusterDetailRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s QueryClusterDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDetailRequest) SetInstanceId(v string) *QueryClusterDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryClusterDetailRequest) SetOrderId(v string) *QueryClusterDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+type QueryClusterDetailResponseBody struct {
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryClusterDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryClusterDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDetailResponseBody) SetMessage(v string) *QueryClusterDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBody) SetRequestId(v string) *QueryClusterDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBody) SetData(v *QueryClusterDetailResponseBodyData) *QueryClusterDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBody) SetErrorCode(v string) *QueryClusterDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBody) SetSuccess(v bool) *QueryClusterDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryClusterDetailResponseBodyData struct {
+	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreateTime           *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IntranetAddress      *string                                             `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
+	DiskType             *string                                             `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	PubNetworkFlow       *string                                             `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
+	DiskCapacity         *int64                                              `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	MemoryCapacity       *int64                                              `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
+	ClusterAliasName     *string                                             `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
+	InstanceCount        *int32                                              `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	IntranetPort         *string                                             `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	InstanceModels       []*QueryClusterDetailResponseBodyDataInstanceModels `json:"InstanceModels,omitempty" xml:"InstanceModels,omitempty" type:"Repeated"`
+	IntranetDomain       *string                                             `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	InternetDomain       *string                                             `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	PayInfo              *string                                             `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
+	InternetAddress      *string                                             `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
+	InstanceId           *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AclEntryList         *string                                             `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
+	HealthStatus         *string                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InitCostTime         *int64                                              `json:"InitCostTime,omitempty" xml:"InitCostTime,omitempty"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclId                *string                                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	Cpu                  *int32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	ClusterType          *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterName          *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	InitStatus           *string                                             `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
+	InternetPort         *string                                             `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	AppVersion           *string                                             `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	NetType              *string                                             `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	ClusterVersion       *string                                             `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	ClusterSpecification *string                                             `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
+	VSwitchId            *string                                             `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ConnectionType       *string                                             `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	MseVersion           *string                                             `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	ChargeType           *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+}
+
+func (s QueryClusterDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetVpcId(v string) *QueryClusterDetailResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetCreateTime(v string) *QueryClusterDetailResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetIntranetAddress(v string) *QueryClusterDetailResponseBodyData {
+	s.IntranetAddress = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetDiskType(v string) *QueryClusterDetailResponseBodyData {
+	s.DiskType = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetPubNetworkFlow(v string) *QueryClusterDetailResponseBodyData {
+	s.PubNetworkFlow = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetDiskCapacity(v int64) *QueryClusterDetailResponseBodyData {
+	s.DiskCapacity = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetMemoryCapacity(v int64) *QueryClusterDetailResponseBodyData {
+	s.MemoryCapacity = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetClusterAliasName(v string) *QueryClusterDetailResponseBodyData {
+	s.ClusterAliasName = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInstanceCount(v int32) *QueryClusterDetailResponseBodyData {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetIntranetPort(v string) *QueryClusterDetailResponseBodyData {
+	s.IntranetPort = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInstanceModels(v []*QueryClusterDetailResponseBodyDataInstanceModels) *QueryClusterDetailResponseBodyData {
+	s.InstanceModels = v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetIntranetDomain(v string) *QueryClusterDetailResponseBodyData {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInternetDomain(v string) *QueryClusterDetailResponseBodyData {
+	s.InternetDomain = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetPayInfo(v string) *QueryClusterDetailResponseBodyData {
+	s.PayInfo = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInternetAddress(v string) *QueryClusterDetailResponseBodyData {
+	s.InternetAddress = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInstanceId(v string) *QueryClusterDetailResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetAclEntryList(v string) *QueryClusterDetailResponseBodyData {
+	s.AclEntryList = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetHealthStatus(v string) *QueryClusterDetailResponseBodyData {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInitCostTime(v int64) *QueryClusterDetailResponseBodyData {
+	s.InitCostTime = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetRegionId(v string) *QueryClusterDetailResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetAclId(v string) *QueryClusterDetailResponseBodyData {
+	s.AclId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetCpu(v int32) *QueryClusterDetailResponseBodyData {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetClusterType(v string) *QueryClusterDetailResponseBodyData {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetClusterName(v string) *QueryClusterDetailResponseBodyData {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInitStatus(v string) *QueryClusterDetailResponseBodyData {
+	s.InitStatus = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetInternetPort(v string) *QueryClusterDetailResponseBodyData {
+	s.InternetPort = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetAppVersion(v string) *QueryClusterDetailResponseBodyData {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetNetType(v string) *QueryClusterDetailResponseBodyData {
+	s.NetType = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetClusterVersion(v string) *QueryClusterDetailResponseBodyData {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetClusterSpecification(v string) *QueryClusterDetailResponseBodyData {
+	s.ClusterSpecification = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetVSwitchId(v string) *QueryClusterDetailResponseBodyData {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetConnectionType(v string) *QueryClusterDetailResponseBodyData {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetMseVersion(v string) *QueryClusterDetailResponseBodyData {
+	s.MseVersion = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetChargeType(v string) *QueryClusterDetailResponseBodyData {
+	s.ChargeType = &v
+	return s
+}
+
+type QueryClusterDetailResponseBodyDataInstanceModels struct {
+	PodName         *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
+	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	HealthStatus    *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+}
+
+func (s QueryClusterDetailResponseBodyDataInstanceModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDetailResponseBodyDataInstanceModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetPodName(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.PodName = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetSingleTunnelVip(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.SingleTunnelVip = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetInternetIp(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetIp(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.Ip = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetRole(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.Role = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetHealthStatus(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.HealthStatus = &v
+	return s
+}
+
+type QueryClusterDetailResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryClusterDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryClusterDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClusterDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClusterDetailResponse) SetHeaders(v map[string]*string) *QueryClusterDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryClusterDetailResponse) SetBody(v *QueryClusterDetailResponseBody) *QueryClusterDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNacosServiceRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteNacosServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosServiceRequest) SetInstanceId(v string) *DeleteNacosServiceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteNacosServiceRequest) SetServiceName(v string) *DeleteNacosServiceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DeleteNacosServiceRequest) SetGroupName(v string) *DeleteNacosServiceRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DeleteNacosServiceRequest) SetNamespaceId(v string) *DeleteNacosServiceRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteNacosServiceResponseBody struct {
+	// http状态码
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 响应信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 响应码
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 成功标志
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 删除服务的结果
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+}
+
+func (s DeleteNacosServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosServiceResponseBody) SetHttpStatusCode(v int32) *DeleteNacosServiceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteNacosServiceResponseBody) SetRequestId(v string) *DeleteNacosServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteNacosServiceResponseBody) SetMessage(v string) *DeleteNacosServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNacosServiceResponseBody) SetCode(v int32) *DeleteNacosServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteNacosServiceResponseBody) SetSuccess(v bool) *DeleteNacosServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteNacosServiceResponseBody) SetData(v string) *DeleteNacosServiceResponseBody {
+	s.Data = &v
+	return s
+}
+
+type DeleteNacosServiceResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteNacosServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNacosServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosServiceResponse) SetHeaders(v map[string]*string) *DeleteNacosServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNacosServiceResponse) SetBody(v *DeleteNacosServiceResponseBody) *DeleteNacosServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ListAnsServiceClustersRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+}
+
+func (s ListAnsServiceClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnsServiceClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnsServiceClustersRequest) SetRequestPars(v string) *ListAnsServiceClustersRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetPageNum(v int32) *ListAnsServiceClustersRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetPageSize(v int32) *ListAnsServiceClustersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetClusterId(v string) *ListAnsServiceClustersRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetServiceName(v string) *ListAnsServiceClustersRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetGroupName(v string) *ListAnsServiceClustersRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetNamespaceId(v string) *ListAnsServiceClustersRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersRequest) SetClusterName(v string) *ListAnsServiceClustersRequest {
+	s.ClusterName = &v
+	return s
+}
+
+type ListAnsServiceClustersResponseBody struct {
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListAnsServiceClustersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAnsServiceClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnsServiceClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnsServiceClustersResponseBody) SetMessage(v string) *ListAnsServiceClustersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBody) SetRequestId(v string) *ListAnsServiceClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBody) SetData(v *ListAnsServiceClustersResponseBodyData) *ListAnsServiceClustersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBody) SetErrorCode(v string) *ListAnsServiceClustersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBody) SetSuccess(v bool) *ListAnsServiceClustersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAnsServiceClustersResponseBodyData struct {
+	ProtectThreshold *float32                                          `json:"ProtectThreshold,omitempty" xml:"ProtectThreshold,omitempty"`
+	GroupName        *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Clusters         []*ListAnsServiceClustersResponseBodyDataClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	Name             *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	SelectorType     *string                                           `json:"SelectorType,omitempty" xml:"SelectorType,omitempty"`
+	Metadata         map[string]interface{}                            `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+}
+
+func (s ListAnsServiceClustersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnsServiceClustersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetProtectThreshold(v float32) *ListAnsServiceClustersResponseBodyData {
+	s.ProtectThreshold = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetGroupName(v string) *ListAnsServiceClustersResponseBodyData {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetClusters(v []*ListAnsServiceClustersResponseBodyDataClusters) *ListAnsServiceClustersResponseBodyData {
+	s.Clusters = v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetName(v string) *ListAnsServiceClustersResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetSelectorType(v string) *ListAnsServiceClustersResponseBodyData {
+	s.SelectorType = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyData) SetMetadata(v map[string]interface{}) *ListAnsServiceClustersResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+type ListAnsServiceClustersResponseBodyDataClusters struct {
+	DefaultCheckPort  *int32                 `json:"DefaultCheckPort,omitempty" xml:"DefaultCheckPort,omitempty"`
+	HealthCheckerType *string                `json:"HealthCheckerType,omitempty" xml:"HealthCheckerType,omitempty"`
+	UseIPPort4Check   *bool                  `json:"UseIPPort4Check,omitempty" xml:"UseIPPort4Check,omitempty"`
+	ServiceName       *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	DefaultPort       *int32                 `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
+	Metadata          map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+}
+
+func (s ListAnsServiceClustersResponseBodyDataClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnsServiceClustersResponseBodyDataClusters) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetDefaultCheckPort(v int32) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.DefaultCheckPort = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetHealthCheckerType(v string) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.HealthCheckerType = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetUseIPPort4Check(v bool) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.UseIPPort4Check = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetServiceName(v string) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetName(v string) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetDefaultPort(v int32) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.DefaultPort = &v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponseBodyDataClusters) SetMetadata(v map[string]interface{}) *ListAnsServiceClustersResponseBodyDataClusters {
+	s.Metadata = v
+	return s
+}
+
+type ListAnsServiceClustersResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAnsServiceClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAnsServiceClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnsServiceClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnsServiceClustersResponse) SetHeaders(v map[string]*string) *ListAnsServiceClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnsServiceClustersResponse) SetBody(v *ListAnsServiceClustersResponseBody) *ListAnsServiceClustersResponse {
+	s.Body = v
+	return s
+}
+
+type GetNacosConfigRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Beta        *bool   `json:"Beta,omitempty" xml:"Beta,omitempty"`
+}
+
+func (s GetNacosConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNacosConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNacosConfigRequest) SetInstanceId(v string) *GetNacosConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetNacosConfigRequest) SetDataId(v string) *GetNacosConfigRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *GetNacosConfigRequest) SetGroup(v string) *GetNacosConfigRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *GetNacosConfigRequest) SetNamespaceId(v string) *GetNacosConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetNacosConfigRequest) SetBeta(v bool) *GetNacosConfigRequest {
+	s.Beta = &v
+	return s
+}
+
+type GetNacosConfigResponseBody struct {
+	Message       *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Configuration *GetNacosConfigResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
+	ErrorCode     *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success       *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetNacosConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNacosConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNacosConfigResponseBody) SetMessage(v string) *GetNacosConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBody) SetRequestId(v string) *GetNacosConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBody) SetConfiguration(v *GetNacosConfigResponseBodyConfiguration) *GetNacosConfigResponseBody {
+	s.Configuration = v
+	return s
+}
+
+func (s *GetNacosConfigResponseBody) SetErrorCode(v string) *GetNacosConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBody) SetSuccess(v bool) *GetNacosConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetNacosConfigResponseBodyConfiguration struct {
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	DataId           *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Group            *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Desc             *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+	BetaIps          *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+}
+
+func (s GetNacosConfigResponseBodyConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNacosConfigResponseBodyConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetType(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Type = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetAppName(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetTags(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetMd5(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Md5 = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetDataId(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.DataId = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetContent(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Content = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetGroup(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Group = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetDesc(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetEncryptedDataKey(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.EncryptedDataKey = &v
+	return s
+}
+
+func (s *GetNacosConfigResponseBodyConfiguration) SetBetaIps(v string) *GetNacosConfigResponseBodyConfiguration {
+	s.BetaIps = &v
+	return s
+}
+
+type GetNacosConfigResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNacosConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNacosConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNacosConfigResponse) SetHeaders(v map[string]*string) *GetNacosConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNacosConfigResponse) SetBody(v *GetNacosConfigResponseBody) *GetNacosConfigResponse {
+	s.Body = v
+	return s
+}
+
+type CloneNacosConfigRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OriginNamespaceId *string `json:"OriginNamespaceId,omitempty" xml:"OriginNamespaceId,omitempty"`
+	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" xml:"TargetNamespaceId,omitempty"`
+	Policy            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Ids               *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s CloneNacosConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigRequest) SetInstanceId(v string) *CloneNacosConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CloneNacosConfigRequest) SetOriginNamespaceId(v string) *CloneNacosConfigRequest {
+	s.OriginNamespaceId = &v
+	return s
+}
+
+func (s *CloneNacosConfigRequest) SetTargetNamespaceId(v string) *CloneNacosConfigRequest {
+	s.TargetNamespaceId = &v
+	return s
+}
+
+func (s *CloneNacosConfigRequest) SetPolicy(v string) *CloneNacosConfigRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *CloneNacosConfigRequest) SetIds(v string) *CloneNacosConfigRequest {
+	s.Ids = &v
+	return s
+}
+
+type CloneNacosConfigResponseBody struct {
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Data           *CloneNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DynamicMessage *string                           `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	Code           *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CloneNacosConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigResponseBody) SetRequestId(v string) *CloneNacosConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetMessage(v string) *CloneNacosConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetHttpStatusCode(v int32) *CloneNacosConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetData(v *CloneNacosConfigResponseBodyData) *CloneNacosConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetErrorCode(v string) *CloneNacosConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetDynamicMessage(v string) *CloneNacosConfigResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetCode(v int32) *CloneNacosConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBody) SetSuccess(v bool) *CloneNacosConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CloneNacosConfigResponseBodyData struct {
+	SuccCount *int32                                      `json:"SuccCount,omitempty" xml:"SuccCount,omitempty"`
+	FailData  []*CloneNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
+	SkipCount *int32                                      `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
+	SkipData  []*CloneNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
+}
+
+func (s CloneNacosConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigResponseBodyData) SetSuccCount(v int32) *CloneNacosConfigResponseBodyData {
+	s.SuccCount = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyData) SetFailData(v []*CloneNacosConfigResponseBodyDataFailData) *CloneNacosConfigResponseBodyData {
+	s.FailData = v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyData) SetSkipCount(v int32) *CloneNacosConfigResponseBodyData {
+	s.SkipCount = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyData) SetSkipData(v []*CloneNacosConfigResponseBodyDataSkipData) *CloneNacosConfigResponseBodyData {
+	s.SkipData = v
+	return s
+}
+
+type CloneNacosConfigResponseBodyDataFailData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s CloneNacosConfigResponseBodyDataFailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigResponseBodyDataFailData) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigResponseBodyDataFailData) SetDataId(v string) *CloneNacosConfigResponseBodyDataFailData {
+	s.DataId = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyDataFailData) SetGroup(v string) *CloneNacosConfigResponseBodyDataFailData {
+	s.Group = &v
+	return s
+}
+
+type CloneNacosConfigResponseBodyDataSkipData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s CloneNacosConfigResponseBodyDataSkipData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigResponseBodyDataSkipData) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigResponseBodyDataSkipData) SetDataId(v string) *CloneNacosConfigResponseBodyDataSkipData {
+	s.DataId = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyDataSkipData) SetGroup(v string) *CloneNacosConfigResponseBodyDataSkipData {
+	s.Group = &v
+	return s
+}
+
+type CloneNacosConfigResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CloneNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloneNacosConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneNacosConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneNacosConfigResponse) SetHeaders(v map[string]*string) *CloneNacosConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneNacosConfigResponse) SetBody(v *CloneNacosConfigResponseBody) *CloneNacosConfigResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAlarmRuleRequest struct {
+	InstanceId      *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AlarmAliasName  *string                `json:"AlarmAliasName,omitempty" xml:"AlarmAliasName,omitempty"`
+	AlertWay        map[string]interface{} `json:"AlertWay,omitempty" xml:"AlertWay,omitempty"`
+	ContactGroupIds map[string]interface{} `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
+	AlarmItem       *string                `json:"AlarmItem,omitempty" xml:"AlarmItem,omitempty"`
+	Operator        *string                `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Aggregates      *string                `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
+	NValue          *int32                 `json:"NValue,omitempty" xml:"NValue,omitempty"`
+	Value           *float32               `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAlarmRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlarmRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlarmRuleRequest) SetInstanceId(v string) *CreateAlarmRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetAlarmAliasName(v string) *CreateAlarmRuleRequest {
+	s.AlarmAliasName = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetAlertWay(v map[string]interface{}) *CreateAlarmRuleRequest {
+	s.AlertWay = v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetContactGroupIds(v map[string]interface{}) *CreateAlarmRuleRequest {
+	s.ContactGroupIds = v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetAlarmItem(v string) *CreateAlarmRuleRequest {
+	s.AlarmItem = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetOperator(v string) *CreateAlarmRuleRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetAggregates(v string) *CreateAlarmRuleRequest {
+	s.Aggregates = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetNValue(v int32) *CreateAlarmRuleRequest {
+	s.NValue = &v
+	return s
+}
+
+func (s *CreateAlarmRuleRequest) SetValue(v float32) *CreateAlarmRuleRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateAlarmRuleShrinkRequest struct {
+	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AlarmAliasName        *string  `json:"AlarmAliasName,omitempty" xml:"AlarmAliasName,omitempty"`
+	AlertWayShrink        *string  `json:"AlertWay,omitempty" xml:"AlertWay,omitempty"`
+	ContactGroupIdsShrink *string  `json:"ContactGroupIds,omitempty" xml:"ContactGroupIds,omitempty"`
+	AlarmItem             *string  `json:"AlarmItem,omitempty" xml:"AlarmItem,omitempty"`
+	Operator              *string  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Aggregates            *string  `json:"Aggregates,omitempty" xml:"Aggregates,omitempty"`
+	NValue                *int32   `json:"NValue,omitempty" xml:"NValue,omitempty"`
+	Value                 *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAlarmRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlarmRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetInstanceId(v string) *CreateAlarmRuleShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetAlarmAliasName(v string) *CreateAlarmRuleShrinkRequest {
+	s.AlarmAliasName = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetAlertWayShrink(v string) *CreateAlarmRuleShrinkRequest {
+	s.AlertWayShrink = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetContactGroupIdsShrink(v string) *CreateAlarmRuleShrinkRequest {
+	s.ContactGroupIdsShrink = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetAlarmItem(v string) *CreateAlarmRuleShrinkRequest {
+	s.AlarmItem = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetOperator(v string) *CreateAlarmRuleShrinkRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetAggregates(v string) *CreateAlarmRuleShrinkRequest {
+	s.Aggregates = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetNValue(v int32) *CreateAlarmRuleShrinkRequest {
+	s.NValue = &v
+	return s
+}
+
+func (s *CreateAlarmRuleShrinkRequest) SetValue(v float32) *CreateAlarmRuleShrinkRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateAlarmRuleResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAlarmRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlarmRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlarmRuleResponseBody) SetMessage(v string) *CreateAlarmRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAlarmRuleResponseBody) SetRequestId(v string) *CreateAlarmRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAlarmRuleResponseBody) SetErrorCode(v string) *CreateAlarmRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateAlarmRuleResponseBody) SetSuccess(v bool) *CreateAlarmRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAlarmRuleResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateAlarmRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAlarmRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlarmRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlarmRuleResponse) SetHeaders(v map[string]*string) *CreateAlarmRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAlarmRuleResponse) SetBody(v *CreateAlarmRuleResponseBody) *CreateAlarmRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ListListenersByIpRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListListenersByIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByIpRequest) SetRequestPars(v string) *ListListenersByIpRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListListenersByIpRequest) SetInstanceId(v string) *ListListenersByIpRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListListenersByIpRequest) SetIp(v string) *ListListenersByIpRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListListenersByIpRequest) SetNamespaceId(v string) *ListListenersByIpRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListListenersByIpResponseBody struct {
+	HttpCode   *string                                   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Listeners  []*ListListenersByIpResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ErrorCode  *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListListenersByIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByIpResponseBody) SetHttpCode(v string) *ListListenersByIpResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetTotalCount(v int32) *ListListenersByIpResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetListeners(v []*ListListenersByIpResponseBodyListeners) *ListListenersByIpResponseBody {
+	s.Listeners = v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetRequestId(v string) *ListListenersByIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetMessage(v string) *ListListenersByIpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetPageSize(v int32) *ListListenersByIpResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetPageNumber(v int32) *ListListenersByIpResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetErrorCode(v string) *ListListenersByIpResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBody) SetSuccess(v bool) *ListListenersByIpResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListListenersByIpResponseBodyListeners struct {
+	Md5    *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+}
+
+func (s ListListenersByIpResponseBodyListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByIpResponseBodyListeners) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByIpResponseBodyListeners) SetMd5(v string) *ListListenersByIpResponseBodyListeners {
+	s.Md5 = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBodyListeners) SetDataId(v string) *ListListenersByIpResponseBodyListeners {
+	s.DataId = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBodyListeners) SetGroup(v string) *ListListenersByIpResponseBodyListeners {
+	s.Group = &v
+	return s
+}
+
+type ListListenersByIpResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListListenersByIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListListenersByIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersByIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersByIpResponse) SetHeaders(v map[string]*string) *ListListenersByIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListListenersByIpResponse) SetBody(v *ListListenersByIpResponseBody) *ListListenersByIpResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGovernanceKubernetesClusterRequest struct {
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	K8sVersion     *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
+	PilotStartTime *int64  `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
+	NameSpaceInfos *string `json:"NameSpaceInfos,omitempty" xml:"NameSpaceInfos,omitempty"`
+}
+
+func (s CreateGovernanceKubernetesClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGovernanceKubernetesClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetClusterName(v string) *CreateGovernanceKubernetesClusterRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetClusterId(v string) *CreateGovernanceKubernetesClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetRegionId(v string) *CreateGovernanceKubernetesClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetK8sVersion(v string) *CreateGovernanceKubernetesClusterRequest {
+	s.K8sVersion = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetPilotStartTime(v int64) *CreateGovernanceKubernetesClusterRequest {
+	s.PilotStartTime = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterRequest) SetNameSpaceInfos(v string) *CreateGovernanceKubernetesClusterRequest {
+	s.NameSpaceInfos = &v
+	return s
+}
+
+type CreateGovernanceKubernetesClusterResponseBody struct {
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+}
+
+func (s CreateGovernanceKubernetesClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGovernanceKubernetesClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetMessage(v string) *CreateGovernanceKubernetesClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetRequestId(v string) *CreateGovernanceKubernetesClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetData(v int64) *CreateGovernanceKubernetesClusterResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetCode(v int32) *CreateGovernanceKubernetesClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetSuccess(v string) *CreateGovernanceKubernetesClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponseBody) SetHttpStatusCode(v int32) *CreateGovernanceKubernetesClusterResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+type CreateGovernanceKubernetesClusterResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGovernanceKubernetesClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGovernanceKubernetesClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGovernanceKubernetesClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGovernanceKubernetesClusterResponse) SetHeaders(v map[string]*string) *CreateGovernanceKubernetesClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGovernanceKubernetesClusterResponse) SetBody(v *CreateGovernanceKubernetesClusterResponseBody) *CreateGovernanceKubernetesClusterResponse {
+	s.Body = v
+	return s
+}
+
+type ListEurekaInstancesRequest struct {
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s ListEurekaInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaInstancesRequest) SetRequestPars(v string) *ListEurekaInstancesRequest {
+	s.RequestPars = &v
+	return s
+}
+
+func (s *ListEurekaInstancesRequest) SetPageNum(v int32) *ListEurekaInstancesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEurekaInstancesRequest) SetPageSize(v int32) *ListEurekaInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEurekaInstancesRequest) SetClusterId(v string) *ListEurekaInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListEurekaInstancesRequest) SetServiceName(v string) *ListEurekaInstancesRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type ListEurekaInstancesResponseBody struct {
+	HttpCode   *string                                `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Data       []*ListEurekaInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode  *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEurekaInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaInstancesResponseBody) SetHttpCode(v string) *ListEurekaInstancesResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetTotalCount(v int32) *ListEurekaInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetRequestId(v string) *ListEurekaInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetMessage(v string) *ListEurekaInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetPageSize(v int32) *ListEurekaInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetPageNumber(v int32) *ListEurekaInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetData(v []*ListEurekaInstancesResponseBodyData) *ListEurekaInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetErrorCode(v string) *ListEurekaInstancesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBody) SetSuccess(v bool) *ListEurekaInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEurekaInstancesResponseBodyData struct {
+	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	LastDirtyTimestamp    *int64                 `json:"LastDirtyTimestamp,omitempty" xml:"LastDirtyTimestamp,omitempty"`
+	IpAddr                *string                `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	HomePageUrl           *string                `json:"HomePageUrl,omitempty" xml:"HomePageUrl,omitempty"`
+	HostName              *string                `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId            *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port                  *int32                 `json:"Port,omitempty" xml:"Port,omitempty"`
+	SecurePort            *int32                 `json:"SecurePort,omitempty" xml:"SecurePort,omitempty"`
+	App                   *string                `json:"App,omitempty" xml:"App,omitempty"`
+	DurationInSecs        *int32                 `json:"DurationInSecs,omitempty" xml:"DurationInSecs,omitempty"`
+	LastUpdatedTimestamp  *int64                 `json:"LastUpdatedTimestamp,omitempty" xml:"LastUpdatedTimestamp,omitempty"`
+	RenewalIntervalInSecs *int32                 `json:"RenewalIntervalInSecs,omitempty" xml:"RenewalIntervalInSecs,omitempty"`
+	VipAddress            *string                `json:"VipAddress,omitempty" xml:"VipAddress,omitempty"`
+	Metadata              map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+}
+
+func (s ListEurekaInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetStatus(v string) *ListEurekaInstancesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetLastDirtyTimestamp(v int64) *ListEurekaInstancesResponseBodyData {
+	s.LastDirtyTimestamp = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetIpAddr(v string) *ListEurekaInstancesResponseBodyData {
+	s.IpAddr = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetHomePageUrl(v string) *ListEurekaInstancesResponseBodyData {
+	s.HomePageUrl = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetHostName(v string) *ListEurekaInstancesResponseBodyData {
+	s.HostName = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetInstanceId(v string) *ListEurekaInstancesResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetPort(v int32) *ListEurekaInstancesResponseBodyData {
+	s.Port = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetSecurePort(v int32) *ListEurekaInstancesResponseBodyData {
+	s.SecurePort = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetApp(v string) *ListEurekaInstancesResponseBodyData {
+	s.App = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetDurationInSecs(v int32) *ListEurekaInstancesResponseBodyData {
+	s.DurationInSecs = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetLastUpdatedTimestamp(v int64) *ListEurekaInstancesResponseBodyData {
+	s.LastUpdatedTimestamp = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetRenewalIntervalInSecs(v int32) *ListEurekaInstancesResponseBodyData {
+	s.RenewalIntervalInSecs = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetVipAddress(v string) *ListEurekaInstancesResponseBodyData {
+	s.VipAddress = &v
+	return s
+}
+
+func (s *ListEurekaInstancesResponseBodyData) SetMetadata(v map[string]interface{}) *ListEurekaInstancesResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+type ListEurekaInstancesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEurekaInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEurekaInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEurekaInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEurekaInstancesResponse) SetHeaders(v map[string]*string) *ListEurekaInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEurekaInstancesResponse) SetBody(v *ListEurekaInstancesResponseBody) *ListEurekaInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNacosConfigRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Beta        *bool   `json:"Beta,omitempty" xml:"Beta,omitempty"`
 }
 
 func (s DeleteNacosConfigRequest) String() string {
@@ -3651,6 +6978,11 @@ func (s *DeleteNacosConfigRequest) SetGroup(v string) *DeleteNacosConfigRequest 
 
 func (s *DeleteNacosConfigRequest) SetNamespaceId(v string) *DeleteNacosConfigRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *DeleteNacosConfigRequest) SetBeta(v bool) *DeleteNacosConfigRequest {
+	s.Beta = &v
 	return s
 }
 
@@ -4386,333 +7718,6 @@ func (s *UpdateNacosInstanceResponse) SetBody(v *UpdateNacosInstanceResponseBody
 	return s
 }
 
-type QueryClusterSpecificationResponseBody struct {
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           []*QueryClusterSpecificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Code           *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryClusterSpecificationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterSpecificationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetRequestId(v string) *QueryClusterSpecificationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetMessage(v string) *QueryClusterSpecificationResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetHttpStatusCode(v int32) *QueryClusterSpecificationResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetData(v []*QueryClusterSpecificationResponseBodyData) *QueryClusterSpecificationResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetErrorCode(v string) *QueryClusterSpecificationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetCode(v int32) *QueryClusterSpecificationResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBody) SetSuccess(v bool) *QueryClusterSpecificationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryClusterSpecificationResponseBodyData struct {
-	ClusterSpecificationName *string `json:"ClusterSpecificationName,omitempty" xml:"ClusterSpecificationName,omitempty"`
-	DiskCapacity             *string `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	MemoryCapacity           *string `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
-	InstanceCount            *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	MaxTps                   *string `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
-	MaxCon                   *string `json:"MaxCon,omitempty" xml:"MaxCon,omitempty"`
-	CpuCapacity              *string `json:"CpuCapacity,omitempty" xml:"CpuCapacity,omitempty"`
-}
-
-func (s QueryClusterSpecificationResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterSpecificationResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetClusterSpecificationName(v string) *QueryClusterSpecificationResponseBodyData {
-	s.ClusterSpecificationName = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetDiskCapacity(v string) *QueryClusterSpecificationResponseBodyData {
-	s.DiskCapacity = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetMemoryCapacity(v string) *QueryClusterSpecificationResponseBodyData {
-	s.MemoryCapacity = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetInstanceCount(v string) *QueryClusterSpecificationResponseBodyData {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetMaxTps(v string) *QueryClusterSpecificationResponseBodyData {
-	s.MaxTps = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetMaxCon(v string) *QueryClusterSpecificationResponseBodyData {
-	s.MaxCon = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetCpuCapacity(v string) *QueryClusterSpecificationResponseBodyData {
-	s.CpuCapacity = &v
-	return s
-}
-
-type QueryClusterSpecificationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryClusterSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryClusterSpecificationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterSpecificationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterSpecificationResponse) SetHeaders(v map[string]*string) *QueryClusterSpecificationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponse) SetBody(v *QueryClusterSpecificationResponseBody) *QueryClusterSpecificationResponse {
-	s.Body = v
-	return s
-}
-
-type ImportNacosConfigRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-}
-
-func (s ImportNacosConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigRequest) SetInstanceId(v string) *ImportNacosConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ImportNacosConfigRequest) SetNamespaceId(v string) *ImportNacosConfigRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *ImportNacosConfigRequest) SetPolicy(v string) *ImportNacosConfigRequest {
-	s.Policy = &v
-	return s
-}
-
-func (s *ImportNacosConfigRequest) SetFileUrl(v string) *ImportNacosConfigRequest {
-	s.FileUrl = &v
-	return s
-}
-
-type ImportNacosConfigResponseBody struct {
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           *ImportNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DynamicMessage *string                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	Code           *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ImportNacosConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigResponseBody) SetRequestId(v string) *ImportNacosConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetMessage(v string) *ImportNacosConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetHttpStatusCode(v int32) *ImportNacosConfigResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetData(v *ImportNacosConfigResponseBodyData) *ImportNacosConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetErrorCode(v string) *ImportNacosConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetDynamicMessage(v string) *ImportNacosConfigResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetCode(v int32) *ImportNacosConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBody) SetSuccess(v bool) *ImportNacosConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ImportNacosConfigResponseBodyData struct {
-	SuccCount *int32                                       `json:"SuccCount,omitempty" xml:"SuccCount,omitempty"`
-	FailData  []*ImportNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
-	SkipCount *int32                                       `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
-	SkipData  []*ImportNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
-}
-
-func (s ImportNacosConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigResponseBodyData) SetSuccCount(v int32) *ImportNacosConfigResponseBodyData {
-	s.SuccCount = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBodyData) SetFailData(v []*ImportNacosConfigResponseBodyDataFailData) *ImportNacosConfigResponseBodyData {
-	s.FailData = v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBodyData) SetSkipCount(v int32) *ImportNacosConfigResponseBodyData {
-	s.SkipCount = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBodyData) SetSkipData(v []*ImportNacosConfigResponseBodyDataSkipData) *ImportNacosConfigResponseBodyData {
-	s.SkipData = v
-	return s
-}
-
-type ImportNacosConfigResponseBodyDataFailData struct {
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s ImportNacosConfigResponseBodyDataFailData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigResponseBodyDataFailData) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigResponseBodyDataFailData) SetDataId(v string) *ImportNacosConfigResponseBodyDataFailData {
-	s.DataId = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBodyDataFailData) SetGroup(v string) *ImportNacosConfigResponseBodyDataFailData {
-	s.Group = &v
-	return s
-}
-
-type ImportNacosConfigResponseBodyDataSkipData struct {
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s ImportNacosConfigResponseBodyDataSkipData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigResponseBodyDataSkipData) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigResponseBodyDataSkipData) SetDataId(v string) *ImportNacosConfigResponseBodyDataSkipData {
-	s.DataId = &v
-	return s
-}
-
-func (s *ImportNacosConfigResponseBodyDataSkipData) SetGroup(v string) *ImportNacosConfigResponseBodyDataSkipData {
-	s.Group = &v
-	return s
-}
-
-type ImportNacosConfigResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportNacosConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportNacosConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportNacosConfigResponse) SetHeaders(v map[string]*string) *ImportNacosConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportNacosConfigResponse) SetBody(v *ImportNacosConfigResponseBody) *ImportNacosConfigResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAlarmRuleRequest struct {
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	AlarmRuleId *string `json:"AlarmRuleId,omitempty" xml:"AlarmRuleId,omitempty"`
@@ -4796,140 +7801,6 @@ func (s *DeleteAlarmRuleResponse) SetHeaders(v map[string]*string) *DeleteAlarmR
 }
 
 func (s *DeleteAlarmRuleResponse) SetBody(v *DeleteAlarmRuleResponseBody) *DeleteAlarmRuleResponse {
-	s.Body = v
-	return s
-}
-
-type CreateZnodeRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s CreateZnodeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateZnodeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateZnodeRequest) SetClusterId(v string) *CreateZnodeRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateZnodeRequest) SetPath(v string) *CreateZnodeRequest {
-	s.Path = &v
-	return s
-}
-
-func (s *CreateZnodeRequest) SetData(v string) *CreateZnodeRequest {
-	s.Data = &v
-	return s
-}
-
-type CreateZnodeResponseBody struct {
-	HttpCode  *string                      `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *CreateZnodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateZnodeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateZnodeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateZnodeResponseBody) SetHttpCode(v string) *CreateZnodeResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBody) SetMessage(v string) *CreateZnodeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBody) SetRequestId(v string) *CreateZnodeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBody) SetData(v *CreateZnodeResponseBodyData) *CreateZnodeResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateZnodeResponseBody) SetErrorCode(v string) *CreateZnodeResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBody) SetSuccess(v bool) *CreateZnodeResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateZnodeResponseBodyData struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Dir  *bool   `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateZnodeResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateZnodeResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateZnodeResponseBodyData) SetData(v string) *CreateZnodeResponseBodyData {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBodyData) SetPath(v string) *CreateZnodeResponseBodyData {
-	s.Path = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBodyData) SetDir(v bool) *CreateZnodeResponseBodyData {
-	s.Dir = &v
-	return s
-}
-
-func (s *CreateZnodeResponseBodyData) SetName(v string) *CreateZnodeResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-type CreateZnodeResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateZnodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateZnodeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateZnodeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateZnodeResponse) SetHeaders(v map[string]*string) *CreateZnodeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateZnodeResponse) SetBody(v *CreateZnodeResponseBody) *CreateZnodeResponse {
 	s.Body = v
 	return s
 }
@@ -5058,334 +7929,6 @@ func (s *GetImportFileUrlResponse) SetHeaders(v map[string]*string) *GetImportFi
 }
 
 func (s *GetImportFileUrlResponse) SetBody(v *GetImportFileUrlResponseBody) *GetImportFileUrlResponse {
-	s.Body = v
-	return s
-}
-
-type QueryClusterDiskSpecificationRequest struct {
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-}
-
-func (s QueryClusterDiskSpecificationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDiskSpecificationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDiskSpecificationRequest) SetClusterType(v string) *QueryClusterDiskSpecificationRequest {
-	s.ClusterType = &v
-	return s
-}
-
-type QueryClusterDiskSpecificationResponseBody struct {
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           *QueryClusterDiskSpecificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DynamicMessage *string                                        `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	Code           *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryClusterDiskSpecificationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDiskSpecificationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetRequestId(v string) *QueryClusterDiskSpecificationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetMessage(v string) *QueryClusterDiskSpecificationResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetHttpStatusCode(v int32) *QueryClusterDiskSpecificationResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetData(v *QueryClusterDiskSpecificationResponseBodyData) *QueryClusterDiskSpecificationResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetErrorCode(v string) *QueryClusterDiskSpecificationResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetDynamicMessage(v string) *QueryClusterDiskSpecificationResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetCode(v int32) *QueryClusterDiskSpecificationResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBody) SetSuccess(v bool) *QueryClusterDiskSpecificationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryClusterDiskSpecificationResponseBodyData struct {
-	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
-	Max  *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min  *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-}
-
-func (s QueryClusterDiskSpecificationResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDiskSpecificationResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDiskSpecificationResponseBodyData) SetStep(v int32) *QueryClusterDiskSpecificationResponseBodyData {
-	s.Step = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBodyData) SetMax(v int32) *QueryClusterDiskSpecificationResponseBodyData {
-	s.Max = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponseBodyData) SetMin(v int32) *QueryClusterDiskSpecificationResponseBodyData {
-	s.Min = &v
-	return s
-}
-
-type QueryClusterDiskSpecificationResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryClusterDiskSpecificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryClusterDiskSpecificationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDiskSpecificationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDiskSpecificationResponse) SetHeaders(v map[string]*string) *QueryClusterDiskSpecificationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationResponse) SetBody(v *QueryClusterDiskSpecificationResponseBody) *QueryClusterDiskSpecificationResponse {
-	s.Body = v
-	return s
-}
-
-type ListNacosConfigsRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s ListNacosConfigsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNacosConfigsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListNacosConfigsRequest) SetRequestPars(v string) *ListNacosConfigsRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetPageNum(v int32) *ListNacosConfigsRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetPageSize(v int32) *ListNacosConfigsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetInstanceId(v string) *ListNacosConfigsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetRegionId(v string) *ListNacosConfigsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetDataId(v string) *ListNacosConfigsRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetGroup(v string) *ListNacosConfigsRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetAppName(v string) *ListNacosConfigsRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetTags(v string) *ListNacosConfigsRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetNamespaceId(v string) *ListNacosConfigsRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-type ListNacosConfigsResponseBody struct {
-	HttpCode       *string                                       `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber     *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ErrorCode      *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Configurations []*ListNacosConfigsResponseBodyConfigurations `json:"Configurations,omitempty" xml:"Configurations,omitempty" type:"Repeated"`
-	Code           *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListNacosConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNacosConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListNacosConfigsResponseBody) SetHttpCode(v string) *ListNacosConfigsResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetTotalCount(v int32) *ListNacosConfigsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetRequestId(v string) *ListNacosConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetMessage(v string) *ListNacosConfigsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetPageSize(v int32) *ListNacosConfigsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetPageNumber(v int32) *ListNacosConfigsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetErrorCode(v string) *ListNacosConfigsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetConfigurations(v []*ListNacosConfigsResponseBodyConfigurations) *ListNacosConfigsResponseBody {
-	s.Configurations = v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetCode(v int32) *ListNacosConfigsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBody) SetSuccess(v bool) *ListNacosConfigsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListNacosConfigsResponseBodyConfigurations struct {
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
-}
-
-func (s ListNacosConfigsResponseBodyConfigurations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNacosConfigsResponseBodyConfigurations) GoString() string {
-	return s.String()
-}
-
-func (s *ListNacosConfigsResponseBodyConfigurations) SetAppName(v string) *ListNacosConfigsResponseBodyConfigurations {
-	s.AppName = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBodyConfigurations) SetDataId(v string) *ListNacosConfigsResponseBodyConfigurations {
-	s.DataId = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBodyConfigurations) SetId(v string) *ListNacosConfigsResponseBodyConfigurations {
-	s.Id = &v
-	return s
-}
-
-func (s *ListNacosConfigsResponseBodyConfigurations) SetGroup(v string) *ListNacosConfigsResponseBodyConfigurations {
-	s.Group = &v
-	return s
-}
-
-type ListNacosConfigsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNacosConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNacosConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNacosConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListNacosConfigsResponse) SetHeaders(v map[string]*string) *ListNacosConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListNacosConfigsResponse) SetBody(v *ListNacosConfigsResponseBody) *ListNacosConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -5724,6 +8267,7 @@ type UpdateConfigRequest struct {
 	ConfigAuthEnabled        *bool   `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
 	MCPEnabled               *bool   `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
 	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ConfigSecretEnabled      *bool   `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
 }
 
 func (s UpdateConfigRequest) String() string {
@@ -5814,11 +8358,17 @@ func (s *UpdateConfigRequest) SetInstanceId(v string) *UpdateConfigRequest {
 	return s
 }
 
+func (s *UpdateConfigRequest) SetConfigSecretEnabled(v bool) *UpdateConfigRequest {
+	s.ConfigSecretEnabled = &v
+	return s
+}
+
 type UpdateConfigResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 }
 
 func (s UpdateConfigResponseBody) String() string {
@@ -5839,13 +8389,18 @@ func (s *UpdateConfigResponseBody) SetRequestId(v string) *UpdateConfigResponseB
 	return s
 }
 
-func (s *UpdateConfigResponseBody) SetErrorCode(v string) *UpdateConfigResponseBody {
-	s.ErrorCode = &v
+func (s *UpdateConfigResponseBody) SetSuccess(v bool) *UpdateConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *UpdateConfigResponseBody) SetSuccess(v bool) *UpdateConfigResponseBody {
-	s.Success = &v
+func (s *UpdateConfigResponseBody) SetCode(v int32) *UpdateConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateConfigResponseBody) SetHttpStatusCode(v int32) *UpdateConfigResponseBody {
+	s.HttpStatusCode = &v
 	return s
 }
 
@@ -5955,12 +8510,13 @@ func (s *GetNacosHistoryConfigResponseBody) SetSuccess(v bool) *GetNacosHistoryC
 }
 
 type GetNacosHistoryConfigResponseBodyConfiguration struct {
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Md5     *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	OpType  *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	DataId           *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Group            *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	OpType           *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
 }
 
 func (s GetNacosHistoryConfigResponseBodyConfiguration) String() string {
@@ -6001,6 +8557,11 @@ func (s *GetNacosHistoryConfigResponseBodyConfiguration) SetOpType(v string) *Ge
 	return s
 }
 
+func (s *GetNacosHistoryConfigResponseBodyConfiguration) SetEncryptedDataKey(v string) *GetNacosHistoryConfigResponseBodyConfiguration {
+	s.EncryptedDataKey = &v
+	return s
+}
+
 type GetNacosHistoryConfigResponse struct {
 	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetNacosHistoryConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -6027,7 +8588,6 @@ func (s *GetNacosHistoryConfigResponse) SetBody(v *GetNacosHistoryConfigResponse
 type UpdateAclRequest struct {
 	AclEntryList *string `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s UpdateAclRequest) String() string {
@@ -6045,11 +8605,6 @@ func (s *UpdateAclRequest) SetAclEntryList(v string) *UpdateAclRequest {
 
 func (s *UpdateAclRequest) SetInstanceId(v string) *UpdateAclRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateAclRequest) SetClusterId(v string) *UpdateAclRequest {
-	s.ClusterId = &v
 	return s
 }
 
@@ -6111,570 +8666,120 @@ func (s *UpdateAclResponse) SetBody(v *UpdateAclResponseBody) *UpdateAclResponse
 	return s
 }
 
-type QueryConfigRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConfigType  *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+type QuerySlbSpecResponseBody struct {
+	// Id of the request
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code           *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           []*QuerySlbSpecResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
-func (s QueryConfigRequest) String() string {
+func (s QuerySlbSpecResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryConfigRequest) GoString() string {
+func (s QuerySlbSpecResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryConfigRequest) SetRequestPars(v string) *QueryConfigRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *QueryConfigRequest) SetClusterId(v string) *QueryConfigRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *QueryConfigRequest) SetConfigType(v string) *QueryConfigRequest {
-	s.ConfigType = &v
-	return s
-}
-
-func (s *QueryConfigRequest) SetInstanceId(v string) *QueryConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type QueryConfigResponseBody struct {
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *QueryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *string                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryConfigResponseBody) SetMessage(v string) *QueryConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryConfigResponseBody) SetRequestId(v string) *QueryConfigResponseBody {
+func (s *QuerySlbSpecResponseBody) SetRequestId(v string) *QuerySlbSpecResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryConfigResponseBody) SetData(v *QueryConfigResponseBodyData) *QueryConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryConfigResponseBody) SetErrorCode(v string) *QueryConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryConfigResponseBody) SetSuccess(v string) *QueryConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryConfigResponseBodyData struct {
-	MaxClientCnxns           *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
-	ConfigAuthSupported      *bool   `json:"ConfigAuthSupported,omitempty" xml:"ConfigAuthSupported,omitempty"`
-	InitLimit                *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
-	MCPEnabled               *bool   `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
-	OpenSuperAcl             *bool   `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
-	RestartFlag              *bool   `json:"RestartFlag,omitempty" xml:"RestartFlag,omitempty"`
-	JvmFlagsCustom           *string `json:"JvmFlagsCustom,omitempty" xml:"JvmFlagsCustom,omitempty"`
-	AutopurgePurgeInterval   *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
-	AutopurgeSnapRetainCount *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
-	SyncLimit                *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
-	ConfigAuthEnabled        *bool   `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
-	ClusterName              *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	MCPSupported             *bool   `json:"MCPSupported,omitempty" xml:"MCPSupported,omitempty"`
-	JuteMaxbuffer            *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
-	TickTime                 *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
-	PassWord                 *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	UserName                 *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s QueryConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryConfigResponseBodyData) SetMaxClientCnxns(v string) *QueryConfigResponseBodyData {
-	s.MaxClientCnxns = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetConfigAuthSupported(v bool) *QueryConfigResponseBodyData {
-	s.ConfigAuthSupported = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetInitLimit(v string) *QueryConfigResponseBodyData {
-	s.InitLimit = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetMCPEnabled(v bool) *QueryConfigResponseBodyData {
-	s.MCPEnabled = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetOpenSuperAcl(v bool) *QueryConfigResponseBodyData {
-	s.OpenSuperAcl = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetRestartFlag(v bool) *QueryConfigResponseBodyData {
-	s.RestartFlag = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetJvmFlagsCustom(v string) *QueryConfigResponseBodyData {
-	s.JvmFlagsCustom = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetAutopurgePurgeInterval(v string) *QueryConfigResponseBodyData {
-	s.AutopurgePurgeInterval = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetAutopurgeSnapRetainCount(v string) *QueryConfigResponseBodyData {
-	s.AutopurgeSnapRetainCount = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetSyncLimit(v string) *QueryConfigResponseBodyData {
-	s.SyncLimit = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetConfigAuthEnabled(v bool) *QueryConfigResponseBodyData {
-	s.ConfigAuthEnabled = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetClusterName(v string) *QueryConfigResponseBodyData {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetMCPSupported(v bool) *QueryConfigResponseBodyData {
-	s.MCPSupported = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetJuteMaxbuffer(v string) *QueryConfigResponseBodyData {
-	s.JuteMaxbuffer = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetTickTime(v string) *QueryConfigResponseBodyData {
-	s.TickTime = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetPassWord(v string) *QueryConfigResponseBodyData {
-	s.PassWord = &v
-	return s
-}
-
-func (s *QueryConfigResponseBodyData) SetUserName(v string) *QueryConfigResponseBodyData {
-	s.UserName = &v
-	return s
-}
-
-type QueryConfigResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryConfigResponse) SetHeaders(v map[string]*string) *QueryConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryConfigResponse) SetBody(v *QueryConfigResponseBody) *QueryConfigResponse {
-	s.Body = v
-	return s
-}
-
-type ListClusterTypesRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListClusterTypesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterTypesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterTypesRequest) SetRegionId(v string) *ListClusterTypesRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListClusterTypesResponseBody struct {
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           []*ListClusterTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DynamicMessage *string                             `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListClusterTypesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterTypesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterTypesResponseBody) SetRequestId(v string) *ListClusterTypesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListClusterTypesResponseBody) SetMessage(v string) *ListClusterTypesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListClusterTypesResponseBody) SetHttpStatusCode(v int32) *ListClusterTypesResponseBody {
+func (s *QuerySlbSpecResponseBody) SetHttpStatusCode(v int32) *QuerySlbSpecResponseBody {
 	s.HttpStatusCode = &v
 	return s
 }
 
-func (s *ListClusterTypesResponseBody) SetData(v []*ListClusterTypesResponseBodyData) *ListClusterTypesResponseBody {
+func (s *QuerySlbSpecResponseBody) SetMessage(v string) *QuerySlbSpecResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBody) SetCode(v int32) *QuerySlbSpecResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBody) SetSuccess(v bool) *QuerySlbSpecResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBody) SetData(v []*QuerySlbSpecResponseBodyData) *QuerySlbSpecResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *ListClusterTypesResponseBody) SetErrorCode(v string) *ListClusterTypesResponseBody {
-	s.ErrorCode = &v
-	return s
+type QuerySlbSpecResponseBodyData struct {
+	Id                     *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Spec                   *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxConnection          *string `json:"MaxConnection,omitempty" xml:"MaxConnection,omitempty"`
+	NewConnectionPerSecond *string `json:"NewConnectionPerSecond,omitempty" xml:"NewConnectionPerSecond,omitempty"`
+	Qps                    *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
 }
 
-func (s *ListClusterTypesResponseBody) SetDynamicMessage(v string) *ListClusterTypesResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListClusterTypesResponseBody) SetCode(v int32) *ListClusterTypesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListClusterTypesResponseBody) SetSuccess(v bool) *ListClusterTypesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListClusterTypesResponseBodyData struct {
-	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-}
-
-func (s ListClusterTypesResponseBodyData) String() string {
+func (s QuerySlbSpecResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListClusterTypesResponseBodyData) GoString() string {
+func (s QuerySlbSpecResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListClusterTypesResponseBodyData) SetShowName(v string) *ListClusterTypesResponseBodyData {
-	s.ShowName = &v
+func (s *QuerySlbSpecResponseBodyData) SetId(v int32) *QuerySlbSpecResponseBodyData {
+	s.Id = &v
 	return s
 }
 
-type ListClusterTypesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListClusterTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *QuerySlbSpecResponseBodyData) SetSpec(v string) *QuerySlbSpecResponseBodyData {
+	s.Spec = &v
+	return s
 }
 
-func (s ListClusterTypesResponse) String() string {
+func (s *QuerySlbSpecResponseBodyData) SetName(v string) *QuerySlbSpecResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBodyData) SetMaxConnection(v string) *QuerySlbSpecResponseBodyData {
+	s.MaxConnection = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBodyData) SetNewConnectionPerSecond(v string) *QuerySlbSpecResponseBodyData {
+	s.NewConnectionPerSecond = &v
+	return s
+}
+
+func (s *QuerySlbSpecResponseBodyData) SetQps(v string) *QuerySlbSpecResponseBodyData {
+	s.Qps = &v
+	return s
+}
+
+type QuerySlbSpecResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySlbSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySlbSpecResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListClusterTypesResponse) GoString() string {
+func (s QuerySlbSpecResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListClusterTypesResponse) SetHeaders(v map[string]*string) *ListClusterTypesResponse {
+func (s *QuerySlbSpecResponse) SetHeaders(v map[string]*string) *QuerySlbSpecResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListClusterTypesResponse) SetBody(v *ListClusterTypesResponseBody) *ListClusterTypesResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteNacosConfigsRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ids         *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-}
-
-func (s DeleteNacosConfigsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosConfigsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosConfigsRequest) SetInstanceId(v string) *DeleteNacosConfigsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsRequest) SetIds(v string) *DeleteNacosConfigsRequest {
-	s.Ids = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsRequest) SetNamespaceId(v string) *DeleteNacosConfigsRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-type DeleteNacosConfigsResponseBody struct {
-	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteNacosConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetHttpCode(v string) *DeleteNacosConfigsResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetRequestId(v string) *DeleteNacosConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetMessage(v string) *DeleteNacosConfigsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetErrorCode(v string) *DeleteNacosConfigsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetCode(v int32) *DeleteNacosConfigsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponseBody) SetSuccess(v bool) *DeleteNacosConfigsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteNacosConfigsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteNacosConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteNacosConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteNacosConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteNacosConfigsResponse) SetHeaders(v map[string]*string) *DeleteNacosConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteNacosConfigsResponse) SetBody(v *DeleteNacosConfigsResponseBody) *DeleteNacosConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateNacosConfigRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	BetaIps     *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
-}
-
-func (s UpdateNacosConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNacosConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNacosConfigRequest) SetInstanceId(v string) *UpdateNacosConfigRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetDataId(v string) *UpdateNacosConfigRequest {
-	s.DataId = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetGroup(v string) *UpdateNacosConfigRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetAppName(v string) *UpdateNacosConfigRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetTags(v string) *UpdateNacosConfigRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetDesc(v string) *UpdateNacosConfigRequest {
-	s.Desc = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetType(v string) *UpdateNacosConfigRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetContent(v string) *UpdateNacosConfigRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetNamespaceId(v string) *UpdateNacosConfigRequest {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetMd5(v string) *UpdateNacosConfigRequest {
-	s.Md5 = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetBetaIps(v string) *UpdateNacosConfigRequest {
-	s.BetaIps = &v
-	return s
-}
-
-type UpdateNacosConfigResponseBody struct {
-	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateNacosConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNacosConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNacosConfigResponseBody) SetHttpCode(v string) *UpdateNacosConfigResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *UpdateNacosConfigResponseBody) SetMessage(v string) *UpdateNacosConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateNacosConfigResponseBody) SetRequestId(v string) *UpdateNacosConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateNacosConfigResponseBody) SetErrorCode(v string) *UpdateNacosConfigResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateNacosConfigResponseBody) SetSuccess(v bool) *UpdateNacosConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateNacosConfigResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateNacosConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateNacosConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNacosConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNacosConfigResponse) SetHeaders(v map[string]*string) *UpdateNacosConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateNacosConfigResponse) SetBody(v *UpdateNacosConfigResponseBody) *UpdateNacosConfigResponse {
+func (s *QuerySlbSpecResponse) SetBody(v *QuerySlbSpecResponseBody) *QuerySlbSpecResponse {
 	s.Body = v
 	return s
 }
@@ -6776,6 +8881,7 @@ type CreateNacosConfigRequest struct {
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	BetaIps     *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
 }
 
 func (s CreateNacosConfigRequest) String() string {
@@ -6828,6 +8934,11 @@ func (s *CreateNacosConfigRequest) SetContent(v string) *CreateNacosConfigReques
 
 func (s *CreateNacosConfigRequest) SetNamespaceId(v string) *CreateNacosConfigRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateNacosConfigRequest) SetBetaIps(v string) *CreateNacosConfigRequest {
+	s.BetaIps = &v
 	return s
 }
 
@@ -6897,270 +9008,6 @@ func (s *CreateNacosConfigResponse) SetHeaders(v map[string]*string) *CreateNaco
 }
 
 func (s *CreateNacosConfigResponse) SetBody(v *CreateNacosConfigResponseBody) *CreateNacosConfigResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateClusterRequest struct {
-	RequestPars      *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s UpdateClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterRequest) SetRequestPars(v string) *UpdateClusterRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetClusterAliasName(v string) *UpdateClusterRequest {
-	s.ClusterAliasName = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetInstanceId(v string) *UpdateClusterRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetClusterId(v string) *UpdateClusterRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type UpdateClusterResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterResponseBody) SetMessage(v string) *UpdateClusterResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateClusterResponseBody) SetRequestId(v string) *UpdateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateClusterResponseBody) SetErrorCode(v string) *UpdateClusterResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateClusterResponseBody) SetSuccess(v bool) *UpdateClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterResponse) SetHeaders(v map[string]*string) *UpdateClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateClusterResponse) SetBody(v *UpdateClusterResponseBody) *UpdateClusterResponse {
-	s.Body = v
-	return s
-}
-
-type CreateClusterRequest struct {
-	PubNetworkFlow          *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
-	PubSlbSpecification     *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
-	DiskType                *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	NetType                 *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	InstanceCount           *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	ClusterSpecification    *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	ClusterVersion          *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Region                  *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	ConnectionType          *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	DiskCapacity            *int32  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-}
-
-func (s CreateClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequest) SetPubNetworkFlow(v string) *CreateClusterRequest {
-	s.PubNetworkFlow = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetPubSlbSpecification(v string) *CreateClusterRequest {
-	s.PubSlbSpecification = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDiskType(v string) *CreateClusterRequest {
-	s.DiskType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetNetType(v string) *CreateClusterRequest {
-	s.NetType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetInstanceCount(v int32) *CreateClusterRequest {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetClusterSpecification(v string) *CreateClusterRequest {
-	s.ClusterSpecification = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetClusterVersion(v string) *CreateClusterRequest {
-	s.ClusterVersion = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRegion(v string) *CreateClusterRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetPrivateSlbSpecification(v string) *CreateClusterRequest {
-	s.PrivateSlbSpecification = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetConnectionType(v string) *CreateClusterRequest {
-	s.ConnectionType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetRequestPars(v string) *CreateClusterRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDiskCapacity(v int32) *CreateClusterRequest {
-	s.DiskCapacity = &v
-	return s
-}
-
-type CreateClusterResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetMessage(v string) *CreateClusterResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetInstanceId(v string) *CreateClusterResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetErrorCode(v string) *CreateClusterResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetOrderId(v string) *CreateClusterResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetSuccess(v bool) *CreateClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClusterResponse {
 	s.Body = v
 	return s
 }
@@ -7254,380 +9101,6 @@ func (s *UpgradeClusterResponse) SetHeaders(v map[string]*string) *UpgradeCluste
 }
 
 func (s *UpgradeClusterResponse) SetBody(v *UpgradeClusterResponseBody) *UpgradeClusterResponse {
-	s.Body = v
-	return s
-}
-
-type ListEurekaServicesRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListEurekaServicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaServicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaServicesRequest) SetRequestPars(v string) *ListEurekaServicesRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *ListEurekaServicesRequest) SetPageNum(v int32) *ListEurekaServicesRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListEurekaServicesRequest) SetPageSize(v int32) *ListEurekaServicesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEurekaServicesRequest) SetClusterId(v string) *ListEurekaServicesRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListEurekaServicesRequest) SetRegionId(v string) *ListEurekaServicesRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListEurekaServicesResponseBody struct {
-	HttpCode   *string                               `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Data       []*ListEurekaServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode  *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success    *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListEurekaServicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaServicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaServicesResponseBody) SetHttpCode(v string) *ListEurekaServicesResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetTotalCount(v int32) *ListEurekaServicesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetRequestId(v string) *ListEurekaServicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetMessage(v string) *ListEurekaServicesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetPageSize(v int32) *ListEurekaServicesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetPageNumber(v int32) *ListEurekaServicesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetData(v []*ListEurekaServicesResponseBodyData) *ListEurekaServicesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetErrorCode(v string) *ListEurekaServicesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBody) SetSuccess(v bool) *ListEurekaServicesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListEurekaServicesResponseBodyData struct {
-	InstancesId []*string `json:"InstancesId,omitempty" xml:"InstancesId,omitempty" type:"Repeated"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	UpStatus    *string   `json:"UpStatus,omitempty" xml:"UpStatus,omitempty"`
-}
-
-func (s ListEurekaServicesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaServicesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaServicesResponseBodyData) SetInstancesId(v []*string) *ListEurekaServicesResponseBodyData {
-	s.InstancesId = v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBodyData) SetName(v string) *ListEurekaServicesResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *ListEurekaServicesResponseBodyData) SetUpStatus(v string) *ListEurekaServicesResponseBodyData {
-	s.UpStatus = &v
-	return s
-}
-
-type ListEurekaServicesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEurekaServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEurekaServicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEurekaServicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEurekaServicesResponse) SetHeaders(v map[string]*string) *ListEurekaServicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEurekaServicesResponse) SetBody(v *ListEurekaServicesResponseBody) *ListEurekaServicesResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteClusterRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s DeleteClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterRequest) SetInstanceId(v string) *DeleteClusterRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type DeleteClusterResponseBody struct {
-	HttpCode  *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterResponseBody) SetHttpCode(v string) *DeleteClusterResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *DeleteClusterResponseBody) SetMessage(v string) *DeleteClusterResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteClusterResponseBody) SetErrorCode(v string) *DeleteClusterResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteClusterResponseBody) SetSuccess(v bool) *DeleteClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
-	s.Body = v
-	return s
-}
-
-type GetEngineNamepaceRequest struct {
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s GetEngineNamepaceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEngineNamepaceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEngineNamepaceRequest) SetId(v string) *GetEngineNamepaceRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetEngineNamepaceRequest) SetInstanceId(v string) *GetEngineNamepaceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetEngineNamepaceRequest) SetClusterId(v string) *GetEngineNamepaceRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type GetEngineNamepaceResponseBody struct {
-	HttpCode          *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Quota             *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ConfigCount       *string `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
-	NamespaceShowName *string `json:"NamespaceShowName,omitempty" xml:"NamespaceShowName,omitempty"`
-	ErrorCode         *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	NamespaceDesc     *string `json:"NamespaceDesc,omitempty" xml:"NamespaceDesc,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-}
-
-func (s GetEngineNamepaceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEngineNamepaceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEngineNamepaceResponseBody) SetHttpCode(v string) *GetEngineNamepaceResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetType(v string) *GetEngineNamepaceResponseBody {
-	s.Type = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetQuota(v string) *GetEngineNamepaceResponseBody {
-	s.Quota = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetRequestId(v string) *GetEngineNamepaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetMessage(v string) *GetEngineNamepaceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetConfigCount(v string) *GetEngineNamepaceResponseBody {
-	s.ConfigCount = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetNamespaceShowName(v string) *GetEngineNamepaceResponseBody {
-	s.NamespaceShowName = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetErrorCode(v string) *GetEngineNamepaceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetSuccess(v bool) *GetEngineNamepaceResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetNamespaceDesc(v string) *GetEngineNamepaceResponseBody {
-	s.NamespaceDesc = &v
-	return s
-}
-
-func (s *GetEngineNamepaceResponseBody) SetNamespace(v string) *GetEngineNamepaceResponseBody {
-	s.Namespace = &v
-	return s
-}
-
-type GetEngineNamepaceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEngineNamepaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEngineNamepaceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEngineNamepaceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEngineNamepaceResponse) SetHeaders(v map[string]*string) *GetEngineNamepaceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEngineNamepaceResponse) SetBody(v *GetEngineNamepaceResponseBody) *GetEngineNamepaceResponse {
 	s.Body = v
 	return s
 }
@@ -8047,7 +9520,6 @@ func (s *ListAlarmItemsResponse) SetBody(v *ListAlarmItemsResponseBody) *ListAla
 type RetryClusterRequest struct {
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s RetryClusterRequest) String() string {
@@ -8065,11 +9537,6 @@ func (s *RetryClusterRequest) SetRequestPars(v string) *RetryClusterRequest {
 
 func (s *RetryClusterRequest) SetInstanceId(v string) *RetryClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *RetryClusterRequest) SetClusterId(v string) *RetryClusterRequest {
-	s.ClusterId = &v
 	return s
 }
 
@@ -8127,99 +9594,6 @@ func (s *RetryClusterResponse) SetHeaders(v map[string]*string) *RetryClusterRes
 }
 
 func (s *RetryClusterResponse) SetBody(v *RetryClusterResponseBody) *RetryClusterResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateZnodeRequest struct {
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s UpdateZnodeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateZnodeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateZnodeRequest) SetRequestPars(v string) *UpdateZnodeRequest {
-	s.RequestPars = &v
-	return s
-}
-
-func (s *UpdateZnodeRequest) SetClusterId(v string) *UpdateZnodeRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *UpdateZnodeRequest) SetPath(v string) *UpdateZnodeRequest {
-	s.Path = &v
-	return s
-}
-
-func (s *UpdateZnodeRequest) SetData(v string) *UpdateZnodeRequest {
-	s.Data = &v
-	return s
-}
-
-type UpdateZnodeResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateZnodeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateZnodeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateZnodeResponseBody) SetMessage(v string) *UpdateZnodeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateZnodeResponseBody) SetRequestId(v string) *UpdateZnodeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateZnodeResponseBody) SetErrorCode(v string) *UpdateZnodeResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateZnodeResponseBody) SetSuccess(v bool) *UpdateZnodeResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateZnodeResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateZnodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateZnodeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateZnodeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateZnodeResponse) SetHeaders(v map[string]*string) *UpdateZnodeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateZnodeResponse) SetBody(v *UpdateZnodeResponseBody) *UpdateZnodeResponse {
 	s.Body = v
 	return s
 }
@@ -8364,319 +9738,6 @@ func (s *ListAlarmContactGroupsResponse) SetBody(v *ListAlarmContactGroupsRespon
 	return s
 }
 
-type QueryClusterDetailRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s QueryClusterDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDetailRequest) SetInstanceId(v string) *QueryClusterDetailRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryClusterDetailRequest) SetOrderId(v string) *QueryClusterDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *QueryClusterDetailRequest) SetClusterId(v string) *QueryClusterDetailRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type QueryClusterDetailResponseBody struct {
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *QueryClusterDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryClusterDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDetailResponseBody) SetMessage(v string) *QueryClusterDetailResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBody) SetRequestId(v string) *QueryClusterDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBody) SetData(v *QueryClusterDetailResponseBodyData) *QueryClusterDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBody) SetErrorCode(v string) *QueryClusterDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBody) SetSuccess(v bool) *QueryClusterDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryClusterDetailResponseBodyData struct {
-	VpcId            *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	CreateTime       *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IntranetAddress  *string                                             `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	DiskType         *string                                             `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	PubNetworkFlow   *string                                             `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
-	DiskCapacity     *int64                                              `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	MemoryCapacity   *int64                                              `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
-	ClusterAliasName *string                                             `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	InstanceCount    *int32                                              `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	IntranetPort     *string                                             `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
-	InstanceModels   []*QueryClusterDetailResponseBodyDataInstanceModels `json:"InstanceModels,omitempty" xml:"InstanceModels,omitempty" type:"Repeated"`
-	IntranetDomain   *string                                             `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	InternetDomain   *string                                             `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	PayInfo          *string                                             `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
-	InternetAddress  *string                                             `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	InstanceId       *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AclEntryList     *string                                             `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
-	HealthStatus     *string                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	InitCostTime     *int64                                              `json:"InitCostTime,omitempty" xml:"InitCostTime,omitempty"`
-	RegionId         *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AclId            *string                                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	Cpu              *int32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	ClusterType      *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ClusterName      *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	InitStatus       *string                                             `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
-	InternetPort     *string                                             `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
-	AppVersion       *string                                             `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-}
-
-func (s QueryClusterDetailResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDetailResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetVpcId(v string) *QueryClusterDetailResponseBodyData {
-	s.VpcId = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetCreateTime(v string) *QueryClusterDetailResponseBodyData {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetIntranetAddress(v string) *QueryClusterDetailResponseBodyData {
-	s.IntranetAddress = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetDiskType(v string) *QueryClusterDetailResponseBodyData {
-	s.DiskType = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetPubNetworkFlow(v string) *QueryClusterDetailResponseBodyData {
-	s.PubNetworkFlow = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetDiskCapacity(v int64) *QueryClusterDetailResponseBodyData {
-	s.DiskCapacity = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetMemoryCapacity(v int64) *QueryClusterDetailResponseBodyData {
-	s.MemoryCapacity = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetClusterAliasName(v string) *QueryClusterDetailResponseBodyData {
-	s.ClusterAliasName = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInstanceCount(v int32) *QueryClusterDetailResponseBodyData {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetIntranetPort(v string) *QueryClusterDetailResponseBodyData {
-	s.IntranetPort = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInstanceModels(v []*QueryClusterDetailResponseBodyDataInstanceModels) *QueryClusterDetailResponseBodyData {
-	s.InstanceModels = v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetIntranetDomain(v string) *QueryClusterDetailResponseBodyData {
-	s.IntranetDomain = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInternetDomain(v string) *QueryClusterDetailResponseBodyData {
-	s.InternetDomain = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetPayInfo(v string) *QueryClusterDetailResponseBodyData {
-	s.PayInfo = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInternetAddress(v string) *QueryClusterDetailResponseBodyData {
-	s.InternetAddress = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInstanceId(v string) *QueryClusterDetailResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetAclEntryList(v string) *QueryClusterDetailResponseBodyData {
-	s.AclEntryList = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetHealthStatus(v string) *QueryClusterDetailResponseBodyData {
-	s.HealthStatus = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInitCostTime(v int64) *QueryClusterDetailResponseBodyData {
-	s.InitCostTime = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetRegionId(v string) *QueryClusterDetailResponseBodyData {
-	s.RegionId = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetAclId(v string) *QueryClusterDetailResponseBodyData {
-	s.AclId = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetCpu(v int32) *QueryClusterDetailResponseBodyData {
-	s.Cpu = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetClusterType(v string) *QueryClusterDetailResponseBodyData {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetClusterName(v string) *QueryClusterDetailResponseBodyData {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInitStatus(v string) *QueryClusterDetailResponseBodyData {
-	s.InitStatus = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetInternetPort(v string) *QueryClusterDetailResponseBodyData {
-	s.InternetPort = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyData) SetAppVersion(v string) *QueryClusterDetailResponseBodyData {
-	s.AppVersion = &v
-	return s
-}
-
-type QueryClusterDetailResponseBodyDataInstanceModels struct {
-	PodName         *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	HealthStatus    *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-}
-
-func (s QueryClusterDetailResponseBodyDataInstanceModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDetailResponseBodyDataInstanceModels) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetPodName(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.PodName = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetSingleTunnelVip(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.SingleTunnelVip = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetInternetIp(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetIp(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.Ip = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetRole(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.Role = &v
-	return s
-}
-
-func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetHealthStatus(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
-	s.HealthStatus = &v
-	return s
-}
-
-type QueryClusterDetailResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryClusterDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryClusterDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryClusterDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryClusterDetailResponse) SetHeaders(v map[string]*string) *QueryClusterDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryClusterDetailResponse) SetBody(v *QueryClusterDetailResponseBody) *QueryClusterDetailResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -8693,6 +9754,12 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-chengdu":            tea.String("mse.cn-chegndu.aliyuncs.com"),
+		"ap-northeast-1":        tea.String("mse. ap-northeast-1.aliyuncs.com"),
+		"cn-shanghai-finance-1": tea.String("msefinance-share.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shenzhen-finance-1": tea.String("msefinance-share.cn-shenzhen-finance-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -8724,34 +9791,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) DeleteNacosServiceWithOptions(request *DeleteNacosServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteNacosServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteNacosService"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteNacosService(request *DeleteNacosServiceRequest) (_result *DeleteNacosServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteNacosServiceResponse{}
-	_body, _err := client.DeleteNacosServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListAlarmHistoriesWithOptions(request *ListAlarmHistoriesRequest, runtime *util.RuntimeOptions) (_result *ListAlarmHistoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8774,6 +9813,34 @@ func (client *Client) ListAlarmHistories(request *ListAlarmHistoriesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAlarmHistoriesResponse{}
 	_body, _err := client.ListAlarmHistoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGovernanceKubernetesClusterListWithOptions(request *GetGovernanceKubernetesClusterListRequest, runtime *util.RuntimeOptions) (_result *GetGovernanceKubernetesClusterListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetGovernanceKubernetesClusterListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetGovernanceKubernetesClusterList"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGovernanceKubernetesClusterList(request *GetGovernanceKubernetesClusterListRequest) (_result *GetGovernanceKubernetesClusterListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGovernanceKubernetesClusterListResponse{}
+	_body, _err := client.GetGovernanceKubernetesClusterListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8888,6 +9955,34 @@ func (client *Client) ListEngineNamespaces(request *ListEngineNamespacesRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateApplication"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CreateApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtime *util.RuntimeOptions) (_result *GetOverviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8945,91 +10040,6 @@ func (client *Client) QueryMonitor(request *QueryMonitorRequest) (_result *Query
 	return _result, _err
 }
 
-func (client *Client) ListAnsServiceClustersWithOptions(request *ListAnsServiceClustersRequest, runtime *util.RuntimeOptions) (_result *ListAnsServiceClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListAnsServiceClustersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAnsServiceClusters"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListAnsServiceClusters(request *ListAnsServiceClustersRequest) (_result *ListAnsServiceClustersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListAnsServiceClustersResponse{}
-	_body, _err := client.ListAnsServiceClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetNacosConfigWithOptions(request *GetNacosConfigRequest, runtime *util.RuntimeOptions) (_result *GetNacosConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetNacosConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetNacosConfig(request *GetNacosConfigRequest) (_result *GetNacosConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetNacosConfigResponse{}
-	_body, _err := client.GetNacosConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigRequest, runtime *util.RuntimeOptions) (_result *CloneNacosConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CloneNacosConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CloneNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CloneNacosConfig(request *CloneNacosConfigRequest) (_result *CloneNacosConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CloneNacosConfigResponse{}
-	_body, _err := client.CloneNacosConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ScalingClusterWithOptions(request *ScalingClusterRequest, runtime *util.RuntimeOptions) (_result *ScalingClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9080,44 +10090,6 @@ func (client *Client) ListAnsServices(request *ListAnsServicesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAnsServicesResponse{}
 	_body, _err := client.ListAnsServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateAlarmRuleWithOptions(tmpReq *CreateAlarmRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAlarmRuleResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateAlarmRuleShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.AlertWay)) {
-		request.AlertWayShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertWay, tea.String("AlertWay"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.ContactGroupIds)) {
-		request.ContactGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactGroupIds, tea.String("ContactGroupIds"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateAlarmRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAlarmRule"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAlarmRule(request *CreateAlarmRuleRequest) (_result *CreateAlarmRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAlarmRuleResponse{}
-	_body, _err := client.CreateAlarmRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9238,34 +10210,6 @@ func (client *Client) ExportNacosConfig(request *ExportNacosConfigRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListListenersByIpWithOptions(request *ListListenersByIpRequest, runtime *util.RuntimeOptions) (_result *ListListenersByIpResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListListenersByIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListListenersByIp"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListListenersByIp(request *ListListenersByIpRequest) (_result *ListListenersByIpResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListListenersByIpResponse{}
-	_body, _err := client.ListListenersByIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListNacosHistoryConfigsWithOptions(request *ListNacosHistoryConfigsRequest, runtime *util.RuntimeOptions) (_result *ListNacosHistoryConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9287,35 +10231,6 @@ func (client *Client) ListNacosHistoryConfigs(request *ListNacosHistoryConfigsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNacosHistoryConfigsResponse{}
 	_body, _err := client.ListNacosHistoryConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEurekaInstancesWithOptions(request *ListEurekaInstancesRequest, runtime *util.RuntimeOptions) (_result *ListEurekaInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListEurekaInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListEurekaInstances"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEurekaInstances(request *ListEurekaInstancesRequest) (_result *ListEurekaInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListEurekaInstancesResponse{}
-	_body, _err := client.ListEurekaInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9372,6 +10287,786 @@ func (client *Client) ListListenersByConfig(request *ListListenersByConfigReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListListenersByConfigResponse{}
 	_body, _err := client.ListListenersByConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGovernanceKubernetesClusterWithOptions(request *GetGovernanceKubernetesClusterRequest, runtime *util.RuntimeOptions) (_result *GetGovernanceKubernetesClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetGovernanceKubernetesClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetGovernanceKubernetesCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGovernanceKubernetesCluster(request *GetGovernanceKubernetesClusterRequest) (_result *GetGovernanceKubernetesClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGovernanceKubernetesClusterResponse{}
+	_body, _err := client.GetGovernanceKubernetesClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryGatewayTypeWithOptions(runtime *util.RuntimeOptions) (_result *QueryGatewayTypeResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &QueryGatewayTypeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryGatewayType"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGatewayType() (_result *QueryGatewayTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGatewayTypeResponse{}
+	_body, _err := client.QueryGatewayTypeWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryClusterSpecificationWithOptions(runtime *util.RuntimeOptions) (_result *QueryClusterSpecificationResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &QueryClusterSpecificationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryClusterSpecification"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryClusterSpecification() (_result *QueryClusterSpecificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryClusterSpecificationResponse{}
+	_body, _err := client.QueryClusterSpecificationWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyGovernanceKubernetesClusterWithOptions(request *ModifyGovernanceKubernetesClusterRequest, runtime *util.RuntimeOptions) (_result *ModifyGovernanceKubernetesClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyGovernanceKubernetesClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyGovernanceKubernetesCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyGovernanceKubernetesCluster(request *ModifyGovernanceKubernetesClusterRequest) (_result *ModifyGovernanceKubernetesClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGovernanceKubernetesClusterResponse{}
+	_body, _err := client.ModifyGovernanceKubernetesClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportNacosConfigWithOptions(request *ImportNacosConfigRequest, runtime *util.RuntimeOptions) (_result *ImportNacosConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ImportNacosConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ImportNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportNacosConfig(request *ImportNacosConfigRequest) (_result *ImportNacosConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportNacosConfigResponse{}
+	_body, _err := client.ImportNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateZnodeWithOptions(request *CreateZnodeRequest, runtime *util.RuntimeOptions) (_result *CreateZnodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateZnodeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateZnode"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateZnode(request *CreateZnodeRequest) (_result *CreateZnodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateZnodeResponse{}
+	_body, _err := client.CreateZnodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryClusterDiskSpecificationWithOptions(request *QueryClusterDiskSpecificationRequest, runtime *util.RuntimeOptions) (_result *QueryClusterDiskSpecificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryClusterDiskSpecificationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryClusterDiskSpecification"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryClusterDiskSpecification(request *QueryClusterDiskSpecificationRequest) (_result *QueryClusterDiskSpecificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryClusterDiskSpecificationResponse{}
+	_body, _err := client.QueryClusterDiskSpecificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNacosConfigsWithOptions(request *ListNacosConfigsRequest, runtime *util.RuntimeOptions) (_result *ListNacosConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListNacosConfigsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListNacosConfigs"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNacosConfigs(request *ListNacosConfigsRequest) (_result *ListNacosConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNacosConfigsResponse{}
+	_body, _err := client.ListNacosConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryConfigWithOptions(request *QueryConfigRequest, runtime *util.RuntimeOptions) (_result *QueryConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &QueryConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryConfig(request *QueryConfigRequest) (_result *QueryConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryConfigResponse{}
+	_body, _err := client.QueryConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesRequest, runtime *util.RuntimeOptions) (_result *ListClusterTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListClusterTypesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListClusterTypes"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClusterTypes(request *ListClusterTypesRequest) (_result *ListClusterTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClusterTypesResponse{}
+	_body, _err := client.ListClusterTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNacosConfigsWithOptions(request *DeleteNacosConfigsRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteNacosConfigsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteNacosConfigs"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNacosConfigs(request *DeleteNacosConfigsRequest) (_result *DeleteNacosConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNacosConfigsResponse{}
+	_body, _err := client.DeleteNacosConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateNacosConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateNacosConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateNacosConfig(request *UpdateNacosConfigRequest) (_result *UpdateNacosConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNacosConfigResponse{}
+	_body, _err := client.UpdateNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMseFeatureSwitchWithOptions(runtime *util.RuntimeOptions) (_result *GetMseFeatureSwitchResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetMseFeatureSwitchResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMseFeatureSwitch"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMseFeatureSwitch() (_result *GetMseFeatureSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMseFeatureSwitchResponse{}
+	_body, _err := client.GetMseFeatureSwitchWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *UpdateClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClusterResponse{}
+	_body, _err := client.UpdateClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CreateClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEurekaServicesWithOptions(request *ListEurekaServicesRequest, runtime *util.RuntimeOptions) (_result *ListEurekaServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListEurekaServicesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListEurekaServices"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEurekaServices(request *ListEurekaServicesRequest) (_result *ListEurekaServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEurekaServicesResponse{}
+	_body, _err := client.ListEurekaServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.DeleteClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEngineNamepaceWithOptions(request *GetEngineNamepaceRequest, runtime *util.RuntimeOptions) (_result *GetEngineNamepaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetEngineNamepaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetEngineNamepace"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEngineNamepace(request *GetEngineNamepaceRequest) (_result *GetEngineNamepaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEngineNamepaceResponse{}
+	_body, _err := client.GetEngineNamepaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateZnodeWithOptions(request *UpdateZnodeRequest, runtime *util.RuntimeOptions) (_result *UpdateZnodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateZnodeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateZnode"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateZnode(request *UpdateZnodeRequest) (_result *UpdateZnodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateZnodeResponse{}
+	_body, _err := client.UpdateZnodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryClusterDetailWithOptions(request *QueryClusterDetailRequest, runtime *util.RuntimeOptions) (_result *QueryClusterDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryClusterDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryClusterDetail"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryClusterDetail(request *QueryClusterDetailRequest) (_result *QueryClusterDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryClusterDetailResponse{}
+	_body, _err := client.QueryClusterDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNacosServiceWithOptions(request *DeleteNacosServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteNacosServiceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteNacosService"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNacosService(request *DeleteNacosServiceRequest) (_result *DeleteNacosServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNacosServiceResponse{}
+	_body, _err := client.DeleteNacosServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAnsServiceClustersWithOptions(request *ListAnsServiceClustersRequest, runtime *util.RuntimeOptions) (_result *ListAnsServiceClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListAnsServiceClustersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListAnsServiceClusters"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAnsServiceClusters(request *ListAnsServiceClustersRequest) (_result *ListAnsServiceClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAnsServiceClustersResponse{}
+	_body, _err := client.ListAnsServiceClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetNacosConfigWithOptions(request *GetNacosConfigRequest, runtime *util.RuntimeOptions) (_result *GetNacosConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetNacosConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNacosConfig(request *GetNacosConfigRequest) (_result *GetNacosConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetNacosConfigResponse{}
+	_body, _err := client.GetNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigRequest, runtime *util.RuntimeOptions) (_result *CloneNacosConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CloneNacosConfigResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CloneNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloneNacosConfig(request *CloneNacosConfigRequest) (_result *CloneNacosConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloneNacosConfigResponse{}
+	_body, _err := client.CloneNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAlarmRuleWithOptions(tmpReq *CreateAlarmRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAlarmRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAlarmRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertWay)) {
+		request.AlertWayShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertWay, tea.String("AlertWay"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContactGroupIds)) {
+		request.ContactGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactGroupIds, tea.String("ContactGroupIds"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateAlarmRuleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateAlarmRule"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAlarmRule(request *CreateAlarmRuleRequest) (_result *CreateAlarmRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAlarmRuleResponse{}
+	_body, _err := client.CreateAlarmRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListListenersByIpWithOptions(request *ListListenersByIpRequest, runtime *util.RuntimeOptions) (_result *ListListenersByIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListListenersByIpResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListListenersByIp"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListListenersByIp(request *ListListenersByIpRequest) (_result *ListListenersByIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListListenersByIpResponse{}
+	_body, _err := client.ListListenersByIpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGovernanceKubernetesClusterWithOptions(request *CreateGovernanceKubernetesClusterRequest, runtime *util.RuntimeOptions) (_result *CreateGovernanceKubernetesClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateGovernanceKubernetesClusterResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateGovernanceKubernetesCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGovernanceKubernetesCluster(request *CreateGovernanceKubernetesClusterRequest) (_result *CreateGovernanceKubernetesClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGovernanceKubernetesClusterResponse{}
+	_body, _err := client.CreateGovernanceKubernetesClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEurekaInstancesWithOptions(request *ListEurekaInstancesRequest, runtime *util.RuntimeOptions) (_result *ListEurekaInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListEurekaInstancesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListEurekaInstances"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEurekaInstances(request *ListEurekaInstancesRequest) (_result *ListEurekaInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEurekaInstancesResponse{}
+	_body, _err := client.ListEurekaInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9521,56 +11216,6 @@ func (client *Client) UpdateNacosInstance(request *UpdateNacosInstanceRequest) (
 	return _result, _err
 }
 
-func (client *Client) QueryClusterSpecificationWithOptions(runtime *util.RuntimeOptions) (_result *QueryClusterSpecificationResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &QueryClusterSpecificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryClusterSpecification"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryClusterSpecification() (_result *QueryClusterSpecificationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryClusterSpecificationResponse{}
-	_body, _err := client.QueryClusterSpecificationWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ImportNacosConfigWithOptions(request *ImportNacosConfigRequest, runtime *util.RuntimeOptions) (_result *ImportNacosConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ImportNacosConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImportNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportNacosConfig(request *ImportNacosConfigRequest) (_result *ImportNacosConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportNacosConfigResponse{}
-	_body, _err := client.ImportNacosConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteAlarmRuleWithOptions(request *DeleteAlarmRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAlarmRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9599,34 +11244,6 @@ func (client *Client) DeleteAlarmRule(request *DeleteAlarmRuleRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateZnodeWithOptions(request *CreateZnodeRequest, runtime *util.RuntimeOptions) (_result *CreateZnodeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateZnodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateZnode"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateZnode(request *CreateZnodeRequest) (_result *CreateZnodeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateZnodeResponse{}
-	_body, _err := client.CreateZnodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetImportFileUrlWithOptions(request *GetImportFileUrlRequest, runtime *util.RuntimeOptions) (_result *GetImportFileUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9648,62 +11265,6 @@ func (client *Client) GetImportFileUrl(request *GetImportFileUrlRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImportFileUrlResponse{}
 	_body, _err := client.GetImportFileUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryClusterDiskSpecificationWithOptions(request *QueryClusterDiskSpecificationRequest, runtime *util.RuntimeOptions) (_result *QueryClusterDiskSpecificationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryClusterDiskSpecificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryClusterDiskSpecification"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryClusterDiskSpecification(request *QueryClusterDiskSpecificationRequest) (_result *QueryClusterDiskSpecificationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryClusterDiskSpecificationResponse{}
-	_body, _err := client.QueryClusterDiskSpecificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNacosConfigsWithOptions(request *ListNacosConfigsRequest, runtime *util.RuntimeOptions) (_result *ListNacosConfigsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListNacosConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListNacosConfigs"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNacosConfigs(request *ListNacosConfigsRequest) (_result *ListNacosConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListNacosConfigsResponse{}
-	_body, _err := client.ListNacosConfigsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9846,17 +11407,10 @@ func (client *Client) UpdateAcl(request *UpdateAclRequest) (_result *UpdateAclRe
 	return _result, _err
 }
 
-func (client *Client) QueryConfigWithOptions(request *QueryConfigRequest, runtime *util.RuntimeOptions) (_result *QueryConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &QueryConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+func (client *Client) QuerySlbSpecWithOptions(runtime *util.RuntimeOptions) (_result *QuerySlbSpecResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &QuerySlbSpecResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QuerySlbSpec"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9864,94 +11418,10 @@ func (client *Client) QueryConfigWithOptions(request *QueryConfigRequest, runtim
 	return _result, _err
 }
 
-func (client *Client) QueryConfig(request *QueryConfigRequest) (_result *QueryConfigResponse, _err error) {
+func (client *Client) QuerySlbSpec() (_result *QuerySlbSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &QueryConfigResponse{}
-	_body, _err := client.QueryConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesRequest, runtime *util.RuntimeOptions) (_result *ListClusterTypesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListClusterTypesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListClusterTypes"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListClusterTypes(request *ListClusterTypesRequest) (_result *ListClusterTypesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListClusterTypesResponse{}
-	_body, _err := client.ListClusterTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteNacosConfigsWithOptions(request *DeleteNacosConfigsRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosConfigsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteNacosConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteNacosConfigs"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteNacosConfigs(request *DeleteNacosConfigsRequest) (_result *DeleteNacosConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteNacosConfigsResponse{}
-	_body, _err := client.DeleteNacosConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateNacosConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateNacosConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateNacosConfig"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateNacosConfig(request *UpdateNacosConfigRequest) (_result *UpdateNacosConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateNacosConfigResponse{}
-	_body, _err := client.UpdateNacosConfigWithOptions(request, runtime)
+	_result = &QuerySlbSpecResponse{}
+	_body, _err := client.QuerySlbSpecWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10015,62 +11485,6 @@ func (client *Client) CreateNacosConfig(request *CreateNacosConfigRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *UpdateClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateClusterResponse{}
-	_body, _err := client.UpdateClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateClusterResponse{}
-	_body, _err := client.CreateClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpgradeClusterWithOptions(request *UpgradeClusterRequest, runtime *util.RuntimeOptions) (_result *UpgradeClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10092,91 +11506,6 @@ func (client *Client) UpgradeCluster(request *UpgradeClusterRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeClusterResponse{}
 	_body, _err := client.UpgradeClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEurekaServicesWithOptions(request *ListEurekaServicesRequest, runtime *util.RuntimeOptions) (_result *ListEurekaServicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListEurekaServicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListEurekaServices"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEurekaServices(request *ListEurekaServicesRequest) (_result *ListEurekaServicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListEurekaServicesResponse{}
-	_body, _err := client.ListEurekaServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCluster"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.DeleteClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEngineNamepaceWithOptions(request *GetEngineNamepaceRequest, runtime *util.RuntimeOptions) (_result *GetEngineNamepaceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetEngineNamepaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEngineNamepace"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEngineNamepace(request *GetEngineNamepaceRequest) (_result *GetEngineNamepaceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEngineNamepaceResponse{}
-	_body, _err := client.GetEngineNamepaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10270,34 +11599,6 @@ func (client *Client) RetryCluster(request *RetryClusterRequest) (_result *Retry
 	return _result, _err
 }
 
-func (client *Client) UpdateZnodeWithOptions(request *UpdateZnodeRequest, runtime *util.RuntimeOptions) (_result *UpdateZnodeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateZnodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateZnode"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateZnode(request *UpdateZnodeRequest) (_result *UpdateZnodeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateZnodeResponse{}
-	_body, _err := client.UpdateZnodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListAlarmContactGroupsWithOptions(request *ListAlarmContactGroupsRequest, runtime *util.RuntimeOptions) (_result *ListAlarmContactGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10320,34 +11621,6 @@ func (client *Client) ListAlarmContactGroups(request *ListAlarmContactGroupsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAlarmContactGroupsResponse{}
 	_body, _err := client.ListAlarmContactGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryClusterDetailWithOptions(request *QueryClusterDetailRequest, runtime *util.RuntimeOptions) (_result *QueryClusterDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryClusterDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryClusterDetail"), tea.String("2019-05-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryClusterDetail(request *QueryClusterDetailRequest) (_result *QueryClusterDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryClusterDetailResponse{}
-	_body, _err := client.QueryClusterDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
