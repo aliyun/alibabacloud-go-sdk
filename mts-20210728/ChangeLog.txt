@@ -1,3 +1,7 @@
+2021-08-02 Version: v1.0.0
+- Init v1 for Test.
+
+
 2021-07-30 Version: v1.16.3
 - Init v1 for Test.
 

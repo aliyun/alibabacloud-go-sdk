@@ -73,8 +73,14 @@ func (s *QueryTraceMuRequest) SetPageSize(v int64) *QueryTraceMuRequest {
 }
 
 type QueryTraceMuResponseBody struct {
-	// 响应数据结构
-	QueryTraceM3u8JobResponse *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse `json:"QueryTraceM3u8JobResponse,omitempty" xml:"QueryTraceM3u8JobResponse,omitempty" type:"Struct"`
+	// 返回数据结构
+	Data []*QueryTraceMuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryTraceMuResponseBody) String() string {
@@ -85,51 +91,27 @@ func (s QueryTraceMuResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTraceMuResponseBody) SetQueryTraceM3u8JobResponse(v *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) *QueryTraceMuResponseBody {
-	s.QueryTraceM3u8JobResponse = v
-	return s
-}
-
-type QueryTraceMuResponseBodyQueryTraceM3u8JobResponse struct {
-	// 返回数据结构
-	Data []*QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) SetData(v []*QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse {
+func (s *QueryTraceMuResponseBody) SetData(v []*QueryTraceMuResponseBodyData) *QueryTraceMuResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) SetMessage(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse {
+func (s *QueryTraceMuResponseBody) SetMessage(v string) *QueryTraceMuResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) SetRequestId(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse {
+func (s *QueryTraceMuResponseBody) SetRequestId(v string) *QueryTraceMuResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse) SetStatusCode(v int64) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponse {
+func (s *QueryTraceMuResponseBody) SetStatusCode(v int64) *QueryTraceMuResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData struct {
+type QueryTraceMuResponseBodyData struct {
 	// 创建时间
 	GmtCreate *int64 `json:"Gmt_create,omitempty" xml:"Gmt_create,omitempty"`
 	// 最后修改时间
@@ -152,60 +134,60 @@ type QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData struct {
 	UserId *int64 `json:"User_id,omitempty" xml:"User_id,omitempty"`
 }
 
-func (s QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) String() string {
+func (s QueryTraceMuResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) GoString() string {
+func (s QueryTraceMuResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetGmtCreate(v int64) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetGmtCreate(v int64) *QueryTraceMuResponseBodyData {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetGmtModified(v int64) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetGmtModified(v int64) *QueryTraceMuResponseBodyData {
 	s.GmtModified = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetJobId(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetJobId(v string) *QueryTraceMuResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetMediaId(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetMediaId(v string) *QueryTraceMuResponseBodyData {
 	s.MediaId = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetOutput(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetOutput(v string) *QueryTraceMuResponseBodyData {
 	s.Output = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetStatus(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetStatus(v string) *QueryTraceMuResponseBodyData {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetTrace(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetTrace(v string) *QueryTraceMuResponseBodyData {
 	s.Trace = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetTraceId(v int64) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetTraceId(v int64) *QueryTraceMuResponseBodyData {
 	s.TraceId = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetUserData(v string) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetUserData(v string) *QueryTraceMuResponseBodyData {
 	s.UserData = &v
 	return s
 }
 
-func (s *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData) SetUserId(v int64) *QueryTraceMuResponseBodyQueryTraceM3u8JobResponseData {
+func (s *QueryTraceMuResponseBodyData) SetUserId(v int64) *QueryTraceMuResponseBodyData {
 	s.UserId = &v
 	return s
 }
@@ -273,7 +255,14 @@ func (s *SubmitImageCopyrightRequest) SetOutput(v string) *SubmitImageCopyrightR
 }
 
 type SubmitImageCopyrightResponseBody struct {
-	SubmitImageCopyrightResponse *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse `json:"SubmitImageCopyrightResponse,omitempty" xml:"SubmitImageCopyrightResponse,omitempty" type:"Struct"`
+	// 返回数据
+	Data *SubmitImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitImageCopyrightResponseBody) String() string {
@@ -284,64 +273,40 @@ func (s SubmitImageCopyrightResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitImageCopyrightResponseBody) SetSubmitImageCopyrightResponse(v *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) *SubmitImageCopyrightResponseBody {
-	s.SubmitImageCopyrightResponse = v
-	return s
-}
-
-type SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse struct {
-	// 返回数据
-	Data *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) SetData(v *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData) *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse {
+func (s *SubmitImageCopyrightResponseBody) SetData(v *SubmitImageCopyrightResponseBodyData) *SubmitImageCopyrightResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) SetMessage(v string) *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse {
+func (s *SubmitImageCopyrightResponseBody) SetMessage(v string) *SubmitImageCopyrightResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) SetRequestId(v string) *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse {
+func (s *SubmitImageCopyrightResponseBody) SetRequestId(v string) *SubmitImageCopyrightResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse) SetStatusCode(v int64) *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponse {
+func (s *SubmitImageCopyrightResponseBody) SetStatusCode(v int64) *SubmitImageCopyrightResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData struct {
+type SubmitImageCopyrightResponseBodyData struct {
 	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
-func (s SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData) String() string {
+func (s SubmitImageCopyrightResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData) GoString() string {
+func (s SubmitImageCopyrightResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData) SetJobId(v string) *SubmitImageCopyrightResponseBodySubmitImageCopyrightResponseData {
+func (s *SubmitImageCopyrightResponseBodyData) SetJobId(v string) *SubmitImageCopyrightResponseBodyData {
 	s.JobId = &v
 	return s
 }
@@ -416,7 +381,14 @@ func (s *QueryImageCopyrightRequest) SetPageSize(v int64) *QueryImageCopyrightRe
 }
 
 type QueryImageCopyrightResponseBody struct {
-	QueryImageCopyrightResponse *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse `json:"QueryImageCopyrightResponse,omitempty" xml:"QueryImageCopyrightResponse,omitempty" type:"Struct"`
+	// 返回数据
+	Data []*QueryImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryImageCopyrightResponseBody) String() string {
@@ -427,51 +399,27 @@ func (s QueryImageCopyrightResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryImageCopyrightResponseBody) SetQueryImageCopyrightResponse(v *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) *QueryImageCopyrightResponseBody {
-	s.QueryImageCopyrightResponse = v
-	return s
-}
-
-type QueryImageCopyrightResponseBodyQueryImageCopyrightResponse struct {
-	// 返回数据
-	Data []*QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) SetData(v []*QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse {
+func (s *QueryImageCopyrightResponseBody) SetData(v []*QueryImageCopyrightResponseBodyData) *QueryImageCopyrightResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) SetMessage(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse {
+func (s *QueryImageCopyrightResponseBody) SetMessage(v string) *QueryImageCopyrightResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) SetRequestId(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse {
+func (s *QueryImageCopyrightResponseBody) SetRequestId(v string) *QueryImageCopyrightResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse) SetStatusCode(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponse {
+func (s *QueryImageCopyrightResponseBody) SetStatusCode(v int64) *QueryImageCopyrightResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData struct {
+type QueryImageCopyrightResponseBodyData struct {
 	// 创建时间
 	GmtCreate *int64 `json:"Gmt_create,omitempty" xml:"Gmt_create,omitempty"`
 	// 最后修改时间
@@ -496,65 +444,65 @@ type QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData struct {
 	UserId *int64 `json:"User_id,omitempty" xml:"User_id,omitempty"`
 }
 
-func (s QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) String() string {
+func (s QueryImageCopyrightResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) GoString() string {
+func (s QueryImageCopyrightResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetGmtCreate(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetGmtCreate(v int64) *QueryImageCopyrightResponseBodyData {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetGmtModified(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetGmtModified(v int64) *QueryImageCopyrightResponseBodyData {
 	s.GmtModified = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetInput(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetInput(v string) *QueryImageCopyrightResponseBodyData {
 	s.Input = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetJobId(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetJobId(v string) *QueryImageCopyrightResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetLevel(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetLevel(v int64) *QueryImageCopyrightResponseBodyData {
 	s.Level = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetMessage(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetMessage(v string) *QueryImageCopyrightResponseBodyData {
 	s.Message = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetMessageId(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetMessageId(v int64) *QueryImageCopyrightResponseBodyData {
 	s.MessageId = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetOutput(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetOutput(v string) *QueryImageCopyrightResponseBodyData {
 	s.Output = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetStatus(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetStatus(v string) *QueryImageCopyrightResponseBodyData {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetUserData(v string) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetUserData(v string) *QueryImageCopyrightResponseBodyData {
 	s.UserData = &v
 	return s
 }
 
-func (s *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData) SetUserId(v int64) *QueryImageCopyrightResponseBodyQueryImageCopyrightResponseData {
+func (s *QueryImageCopyrightResponseBodyData) SetUserId(v int64) *QueryImageCopyrightResponseBodyData {
 	s.UserId = &v
 	return s
 }
@@ -816,8 +764,14 @@ func (s *SubmitTracemuRequest) SetTrace(v string) *SubmitTracemuRequest {
 }
 
 type SubmitTracemuResponseBody struct {
-	// 响应结构
-	SubmitTraceM3u8Response *SubmitTracemuResponseBodySubmitTraceM3u8Response `json:"SubmitTraceM3u8Response,omitempty" xml:"SubmitTraceM3u8Response,omitempty" type:"Struct"`
+	// 返回数据
+	Data *SubmitTracemuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitTracemuResponseBody) String() string {
@@ -828,64 +782,40 @@ func (s SubmitTracemuResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitTracemuResponseBody) SetSubmitTraceM3u8Response(v *SubmitTracemuResponseBodySubmitTraceM3u8Response) *SubmitTracemuResponseBody {
-	s.SubmitTraceM3u8Response = v
-	return s
-}
-
-type SubmitTracemuResponseBodySubmitTraceM3u8Response struct {
-	// 返回数据
-	Data *SubmitTracemuResponseBodySubmitTraceM3u8ResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s SubmitTracemuResponseBodySubmitTraceM3u8Response) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTracemuResponseBodySubmitTraceM3u8Response) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTracemuResponseBodySubmitTraceM3u8Response) SetData(v *SubmitTracemuResponseBodySubmitTraceM3u8ResponseData) *SubmitTracemuResponseBodySubmitTraceM3u8Response {
+func (s *SubmitTracemuResponseBody) SetData(v *SubmitTracemuResponseBodyData) *SubmitTracemuResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *SubmitTracemuResponseBodySubmitTraceM3u8Response) SetMessage(v string) *SubmitTracemuResponseBodySubmitTraceM3u8Response {
+func (s *SubmitTracemuResponseBody) SetMessage(v string) *SubmitTracemuResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *SubmitTracemuResponseBodySubmitTraceM3u8Response) SetRequestId(v string) *SubmitTracemuResponseBodySubmitTraceM3u8Response {
+func (s *SubmitTracemuResponseBody) SetRequestId(v string) *SubmitTracemuResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitTracemuResponseBodySubmitTraceM3u8Response) SetStatusCode(v int64) *SubmitTracemuResponseBodySubmitTraceM3u8Response {
+func (s *SubmitTracemuResponseBody) SetStatusCode(v int64) *SubmitTracemuResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type SubmitTracemuResponseBodySubmitTraceM3u8ResponseData struct {
+type SubmitTracemuResponseBodyData struct {
 	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
-func (s SubmitTracemuResponseBodySubmitTraceM3u8ResponseData) String() string {
+func (s SubmitTracemuResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SubmitTracemuResponseBodySubmitTraceM3u8ResponseData) GoString() string {
+func (s SubmitTracemuResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitTracemuResponseBodySubmitTraceM3u8ResponseData) SetJobId(v string) *SubmitTracemuResponseBodySubmitTraceM3u8ResponseData {
+func (s *SubmitTracemuResponseBodyData) SetJobId(v string) *SubmitTracemuResponseBodyData {
 	s.JobId = &v
 	return s
 }
@@ -939,7 +869,14 @@ func (s *QueryTraceAbRequest) SetMediaId(v string) *QueryTraceAbRequest {
 }
 
 type QueryTraceAbResponseBody struct {
-	QueryTraceAbResponse *QueryTraceAbResponseBodyQueryTraceAbResponse `json:"QueryTraceAbResponse,omitempty" xml:"QueryTraceAbResponse,omitempty" type:"Struct"`
+	// 返回结构
+	Data []*QueryTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryTraceAbResponseBody) String() string {
@@ -950,51 +887,27 @@ func (s QueryTraceAbResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTraceAbResponseBody) SetQueryTraceAbResponse(v *QueryTraceAbResponseBodyQueryTraceAbResponse) *QueryTraceAbResponseBody {
-	s.QueryTraceAbResponse = v
-	return s
-}
-
-type QueryTraceAbResponseBodyQueryTraceAbResponse struct {
-	// 返回结构
-	Data []*QueryTraceAbResponseBodyQueryTraceAbResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s QueryTraceAbResponseBodyQueryTraceAbResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryTraceAbResponseBodyQueryTraceAbResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponse) SetData(v []*QueryTraceAbResponseBodyQueryTraceAbResponseData) *QueryTraceAbResponseBodyQueryTraceAbResponse {
+func (s *QueryTraceAbResponseBody) SetData(v []*QueryTraceAbResponseBodyData) *QueryTraceAbResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponse) SetMessage(v string) *QueryTraceAbResponseBodyQueryTraceAbResponse {
+func (s *QueryTraceAbResponseBody) SetMessage(v string) *QueryTraceAbResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponse) SetRequestId(v string) *QueryTraceAbResponseBodyQueryTraceAbResponse {
+func (s *QueryTraceAbResponseBody) SetRequestId(v string) *QueryTraceAbResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponse) SetStatusCode(v int64) *QueryTraceAbResponseBodyQueryTraceAbResponse {
+func (s *QueryTraceAbResponseBody) SetStatusCode(v int64) *QueryTraceAbResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type QueryTraceAbResponseBodyQueryTraceAbResponseData struct {
+type QueryTraceAbResponseBodyData struct {
 	// 任务结果回调
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	// 创建时间
@@ -1019,65 +932,65 @@ type QueryTraceAbResponseBodyQueryTraceAbResponseData struct {
 	UserId *int64 `json:"User_id,omitempty" xml:"User_id,omitempty"`
 }
 
-func (s QueryTraceAbResponseBodyQueryTraceAbResponseData) String() string {
+func (s QueryTraceAbResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryTraceAbResponseBodyQueryTraceAbResponseData) GoString() string {
+func (s QueryTraceAbResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetCallback(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetCallback(v string) *QueryTraceAbResponseBodyData {
 	s.Callback = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetGmtCreate(v int64) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetGmtCreate(v int64) *QueryTraceAbResponseBodyData {
 	s.GmtCreate = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetGmtModified(v int64) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetGmtModified(v int64) *QueryTraceAbResponseBodyData {
 	s.GmtModified = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetInput(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetInput(v string) *QueryTraceAbResponseBodyData {
 	s.Input = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetJobId(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetJobId(v string) *QueryTraceAbResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetLevel(v int64) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetLevel(v int64) *QueryTraceAbResponseBodyData {
 	s.Level = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetMediaId(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetMediaId(v string) *QueryTraceAbResponseBodyData {
 	s.MediaId = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetOutput(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetOutput(v string) *QueryTraceAbResponseBodyData {
 	s.Output = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetStatus(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetStatus(v string) *QueryTraceAbResponseBodyData {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetUserData(v string) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetUserData(v string) *QueryTraceAbResponseBodyData {
 	s.UserData = &v
 	return s
 }
 
-func (s *QueryTraceAbResponseBodyQueryTraceAbResponseData) SetUserId(v int64) *QueryTraceAbResponseBodyQueryTraceAbResponseData {
+func (s *QueryTraceAbResponseBodyData) SetUserId(v int64) *QueryTraceAbResponseBodyData {
 	s.UserId = &v
 	return s
 }
@@ -1152,7 +1065,14 @@ func (s *SubmitTraceAbRequest) SetUserData(v string) *SubmitTraceAbRequest {
 }
 
 type SubmitTraceAbResponseBody struct {
-	SubmitTraceAbResponse *SubmitTraceAbResponseBodySubmitTraceAbResponse `json:"SubmitTraceAbResponse,omitempty" xml:"SubmitTraceAbResponse,omitempty" type:"Struct"`
+	// 返回数据
+	Data *SubmitTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 返回信息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitTraceAbResponseBody) String() string {
@@ -1163,71 +1083,47 @@ func (s SubmitTraceAbResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitTraceAbResponseBody) SetSubmitTraceAbResponse(v *SubmitTraceAbResponseBodySubmitTraceAbResponse) *SubmitTraceAbResponseBody {
-	s.SubmitTraceAbResponse = v
-	return s
-}
-
-type SubmitTraceAbResponseBodySubmitTraceAbResponse struct {
-	// 返回数据
-	Data *SubmitTraceAbResponseBodySubmitTraceAbResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s SubmitTraceAbResponseBodySubmitTraceAbResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTraceAbResponseBodySubmitTraceAbResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponse) SetData(v *SubmitTraceAbResponseBodySubmitTraceAbResponseData) *SubmitTraceAbResponseBodySubmitTraceAbResponse {
+func (s *SubmitTraceAbResponseBody) SetData(v *SubmitTraceAbResponseBodyData) *SubmitTraceAbResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponse) SetMessage(v string) *SubmitTraceAbResponseBodySubmitTraceAbResponse {
+func (s *SubmitTraceAbResponseBody) SetMessage(v string) *SubmitTraceAbResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponse) SetRequestId(v string) *SubmitTraceAbResponseBodySubmitTraceAbResponse {
+func (s *SubmitTraceAbResponseBody) SetRequestId(v string) *SubmitTraceAbResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponse) SetStatusCode(v int64) *SubmitTraceAbResponseBodySubmitTraceAbResponse {
+func (s *SubmitTraceAbResponseBody) SetStatusCode(v int64) *SubmitTraceAbResponseBody {
 	s.StatusCode = &v
 	return s
 }
 
-type SubmitTraceAbResponseBodySubmitTraceAbResponseData struct {
+type SubmitTraceAbResponseBodyData struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// 媒体id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
-func (s SubmitTraceAbResponseBodySubmitTraceAbResponseData) String() string {
+func (s SubmitTraceAbResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SubmitTraceAbResponseBodySubmitTraceAbResponseData) GoString() string {
+func (s SubmitTraceAbResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponseData) SetJobId(v string) *SubmitTraceAbResponseBodySubmitTraceAbResponseData {
+func (s *SubmitTraceAbResponseBodyData) SetJobId(v string) *SubmitTraceAbResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
-func (s *SubmitTraceAbResponseBodySubmitTraceAbResponseData) SetMediaId(v string) *SubmitTraceAbResponseBodySubmitTraceAbResponseData {
+func (s *SubmitTraceAbResponseBodyData) SetMediaId(v string) *SubmitTraceAbResponseBodyData {
 	s.MediaId = &v
 	return s
 }
@@ -1690,7 +1586,7 @@ func (client *Client) QueryCopyrightWithOptions(request *QueryCopyrightRequest, 
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &QueryCopyrightResponse{}
-	_body, _err := client.DoROARequest(tea.String("QueryCopyright"), tea.String("2021-07-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/queryCopyright"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("QueryCopyright"), tea.String("2021-07-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/queryCopyrightJob"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
