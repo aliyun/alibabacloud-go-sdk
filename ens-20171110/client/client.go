@@ -351,59 +351,6 @@ func (s *SecurityGroupRule) SetPriority(v int32) *SecurityGroupRule {
 	return s
 }
 
-type EIP struct {
-	// ENS节点ID
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// EIP的带宽峰值
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// EIP的计费方式，取值： PrePaid：包年包月。 PostPaid（默认值）：按量计费。 当InstanceChargeType取值为PostPaid时，InternetChargeType不能为PayByBandwidth
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// EIP的计量方式，取值： PayByBandwidth（默认值）：按带宽计费。 取值：95BandwidthByMonth：月95。
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// EIP实例名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 运营商信息
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-}
-
-func (s EIP) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EIP) GoString() string {
-	return s.String()
-}
-
-func (s *EIP) SetEnsRegionId(v string) *EIP {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *EIP) SetBandwidth(v int64) *EIP {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *EIP) SetInstanceChargeType(v string) *EIP {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *EIP) SetInternetChargeType(v string) *EIP {
-	s.InternetChargeType = &v
-	return s
-}
-
-func (s *EIP) SetName(v string) *EIP {
-	s.Name = &v
-	return s
-}
-
-func (s *EIP) SetIsp(v string) *EIP {
-	s.Isp = &v
-	return s
-}
-
 type UdpConfig struct {
 	// 调度算法。取值：  wrr（默认值）：权重值越高的后端服务器，被轮询到的次数（概率）也越高。 wlc：除了根据每台后端服务器设定的权重值来进行轮询，同时还考虑后端服务器的实际负载（即连接数）。当权重值相同时，当前连接数越小的后端服务器被轮询到的次数（概率）也越高。 rr：按照访问顺序依次将外部请求依序分发到后端服务器。 sch：基于源IP地址的一致性hash，相同的源地址会调度到相同的后端服务器。
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
@@ -924,64 +871,6 @@ func (s *RestartDeviceInstanceResponse) SetHeaders(v map[string]*string) *Restar
 }
 
 func (s *RestartDeviceInstanceResponse) SetBody(v *RestartDeviceInstanceResponseBody) *RestartDeviceInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteEnsLoadBalancerInnerRequest struct {
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-}
-
-func (s DeleteEnsLoadBalancerInnerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnsLoadBalancerInnerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnsLoadBalancerInnerRequest) SetLoadBalancerId(v string) *DeleteEnsLoadBalancerInnerRequest {
-	s.LoadBalancerId = &v
-	return s
-}
-
-type DeleteEnsLoadBalancerInnerResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteEnsLoadBalancerInnerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnsLoadBalancerInnerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnsLoadBalancerInnerResponseBody) SetRequestId(v string) *DeleteEnsLoadBalancerInnerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteEnsLoadBalancerInnerResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEnsLoadBalancerInnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteEnsLoadBalancerInnerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEnsLoadBalancerInnerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEnsLoadBalancerInnerResponse) SetHeaders(v map[string]*string) *DeleteEnsLoadBalancerInnerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEnsLoadBalancerInnerResponse) SetBody(v *DeleteEnsLoadBalancerInnerResponseBody) *DeleteEnsLoadBalancerInnerResponse {
 	s.Body = v
 	return s
 }
@@ -3481,8 +3370,11 @@ type RescaleDeviceServiceRequest struct {
 	RescaleType      *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
 	RescaleLevel     *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
 	Timeout          *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
+	ResourceSpec     *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	IpType           *int32  `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s RescaleDeviceServiceRequest) String() string {
@@ -3508,8 +3400,8 @@ func (s *RescaleDeviceServiceRequest) SetTimeout(v int64) *RescaleDeviceServiceR
 	return s
 }
 
-func (s *RescaleDeviceServiceRequest) SetAppId(v string) *RescaleDeviceServiceRequest {
-	s.AppId = &v
+func (s *RescaleDeviceServiceRequest) SetServiceId(v string) *RescaleDeviceServiceRequest {
+	s.ServiceId = &v
 	return s
 }
 
@@ -3518,9 +3410,25 @@ func (s *RescaleDeviceServiceRequest) SetResourceSelector(v string) *RescaleDevi
 	return s
 }
 
+func (s *RescaleDeviceServiceRequest) SetResourceSpec(v string) *RescaleDeviceServiceRequest {
+	s.ResourceSpec = &v
+	return s
+}
+
+func (s *RescaleDeviceServiceRequest) SetIpType(v int32) *RescaleDeviceServiceRequest {
+	s.IpType = &v
+	return s
+}
+
+func (s *RescaleDeviceServiceRequest) SetAppId(v string) *RescaleDeviceServiceRequest {
+	s.AppId = &v
+	return s
+}
+
 type RescaleDeviceServiceResponseBody struct {
 	// Id of the request
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DeviceIds           []*string                                              `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
 	ResourceDetailInfos []*RescaleDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 }
 
@@ -3534,6 +3442,11 @@ func (s RescaleDeviceServiceResponseBody) GoString() string {
 
 func (s *RescaleDeviceServiceResponseBody) SetRequestId(v string) *RescaleDeviceServiceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RescaleDeviceServiceResponseBody) SetDeviceIds(v []*string) *RescaleDeviceServiceResponseBody {
+	s.DeviceIds = v
 	return s
 }
 
@@ -4638,6 +4551,102 @@ func (s *CreateLoadBalancerHTTPSListenerResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerHTTPSListenerResponseBody) *CreateLoadBalancerHTTPSListenerResponse {
+	s.Body = v
+	return s
+}
+
+type AddDeviceInternetPortRequest struct {
+	// 实例ID
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	NatType      *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+}
+
+func (s AddDeviceInternetPortRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceInternetPortRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceInternetPortRequest) SetInstanceId(v string) *AddDeviceInternetPortRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortRequest) SetInternalIp(v string) *AddDeviceInternetPortRequest {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortRequest) SetRegionId(v string) *AddDeviceInternetPortRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortRequest) SetInternalPort(v string) *AddDeviceInternetPortRequest {
+	s.InternalPort = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortRequest) SetNatType(v string) *AddDeviceInternetPortRequest {
+	s.NatType = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortRequest) SetISP(v string) *AddDeviceInternetPortRequest {
+	s.ISP = &v
+	return s
+}
+
+type AddDeviceInternetPortResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// RuleId
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s AddDeviceInternetPortResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceInternetPortResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceInternetPortResponseBody) SetRequestId(v string) *AddDeviceInternetPortResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDeviceInternetPortResponseBody) SetRuleId(v string) *AddDeviceInternetPortResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+type AddDeviceInternetPortResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDeviceInternetPortResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDeviceInternetPortResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDeviceInternetPortResponse) SetHeaders(v map[string]*string) *AddDeviceInternetPortResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDeviceInternetPortResponse) SetBody(v *AddDeviceInternetPortResponseBody) *AddDeviceInternetPortResponse {
 	s.Body = v
 	return s
 }
@@ -9980,119 +9989,82 @@ func (s *MigrateVmResponse) SetBody(v *MigrateVmResponseBody) *MigrateVmResponse
 	return s
 }
 
-type CreateLoadBalancerRequest struct {
-	// ENS节点ID。
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// 负载均衡实例的名称。
-	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// 负载均衡实例的名称。
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// 付费类型。PostPaid（目前只支持此种）：按量付费
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// 要创建的ELB实例的网络ID
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// 专有网络实例的所属的交换机ID。
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+type DeleteDeviceInternetPortRequest struct {
+	// InstanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// RuleId
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// NatType
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
 }
 
-func (s CreateLoadBalancerRequest) String() string {
+func (s DeleteDeviceInternetPortRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateLoadBalancerRequest) GoString() string {
+func (s DeleteDeviceInternetPortRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoadBalancerRequest) SetEnsRegionId(v string) *CreateLoadBalancerRequest {
-	s.EnsRegionId = &v
+func (s *DeleteDeviceInternetPortRequest) SetInstanceId(v string) *DeleteDeviceInternetPortRequest {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetLoadBalancerSpec(v string) *CreateLoadBalancerRequest {
-	s.LoadBalancerSpec = &v
+func (s *DeleteDeviceInternetPortRequest) SetRuleId(v string) *DeleteDeviceInternetPortRequest {
+	s.RuleId = &v
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetLoadBalancerName(v string) *CreateLoadBalancerRequest {
-	s.LoadBalancerName = &v
+func (s *DeleteDeviceInternetPortRequest) SetNatType(v string) *DeleteDeviceInternetPortRequest {
+	s.NatType = &v
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetPayType(v string) *CreateLoadBalancerRequest {
-	s.PayType = &v
-	return s
+type DeleteDeviceInternetPortResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// RuleId
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
-func (s *CreateLoadBalancerRequest) SetNetworkId(v string) *CreateLoadBalancerRequest {
-	s.NetworkId = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequest) SetVSwitchId(v string) *CreateLoadBalancerRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-type CreateLoadBalancerResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	NetworkId        *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-}
-
-func (s CreateLoadBalancerResponseBody) String() string {
+func (s DeleteDeviceInternetPortResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateLoadBalancerResponseBody) GoString() string {
+func (s DeleteDeviceInternetPortResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoadBalancerResponseBody) SetRequestId(v string) *CreateLoadBalancerResponseBody {
+func (s *DeleteDeviceInternetPortResponseBody) SetRequestId(v string) *DeleteDeviceInternetPortResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateLoadBalancerResponseBody) SetLoadBalancerId(v string) *CreateLoadBalancerResponseBody {
-	s.LoadBalancerId = &v
+func (s *DeleteDeviceInternetPortResponseBody) SetRuleId(v string) *DeleteDeviceInternetPortResponseBody {
+	s.RuleId = &v
 	return s
 }
 
-func (s *CreateLoadBalancerResponseBody) SetVSwitchId(v string) *CreateLoadBalancerResponseBody {
-	s.VSwitchId = &v
-	return s
+type DeleteDeviceInternetPortResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *CreateLoadBalancerResponseBody) SetLoadBalancerName(v string) *CreateLoadBalancerResponseBody {
-	s.LoadBalancerName = &v
-	return s
-}
-
-func (s *CreateLoadBalancerResponseBody) SetNetworkId(v string) *CreateLoadBalancerResponseBody {
-	s.NetworkId = &v
-	return s
-}
-
-type CreateLoadBalancerResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateLoadBalancerResponse) String() string {
+func (s DeleteDeviceInternetPortResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateLoadBalancerResponse) GoString() string {
+func (s DeleteDeviceInternetPortResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoadBalancerResponse) SetHeaders(v map[string]*string) *CreateLoadBalancerResponse {
+func (s *DeleteDeviceInternetPortResponse) SetHeaders(v map[string]*string) *DeleteDeviceInternetPortResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) *CreateLoadBalancerResponse {
+func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortResponseBody) *DeleteDeviceInternetPortResponse {
 	s.Body = v
 	return s
 }
@@ -10632,65 +10604,6 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetHeaders(v map[str
 }
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetBody(v *DescribeLoadBalancerHTTPListenerAttributeResponseBody) *DescribeLoadBalancerHTTPListenerAttributeResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteLoadBalancerRequest struct {
-	// 负载均衡实例的ID。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-}
-
-func (s DeleteLoadBalancerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLoadBalancerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalancerRequest {
-	s.LoadBalancerId = &v
-	return s
-}
-
-type DeleteLoadBalancerResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteLoadBalancerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLoadBalancerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLoadBalancerResponseBody) SetRequestId(v string) *DeleteLoadBalancerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteLoadBalancerResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteLoadBalancerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteLoadBalancerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLoadBalancerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLoadBalancerResponse) SetHeaders(v map[string]*string) *DeleteLoadBalancerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) *DeleteLoadBalancerResponse {
 	s.Body = v
 	return s
 }
@@ -14516,6 +14429,137 @@ func (s *DescribeDataDistResultResponse) SetBody(v *DescribeDataDistResultRespon
 	return s
 }
 
+type GetDeviceInternetPortRequest struct {
+	// A short description of struct
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NatType    *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetDeviceInternetPortRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceInternetPortRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceInternetPortRequest) SetInstanceId(v string) *GetDeviceInternetPortRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortRequest) SetNatType(v string) *GetDeviceInternetPortRequest {
+	s.NatType = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortRequest) SetRuleId(v string) *GetDeviceInternetPortRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetDeviceInternetPortResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// InstanceId
+	InstanceId  *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkInfo []*GetDeviceInternetPortResponseBodyNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Repeated"`
+}
+
+func (s GetDeviceInternetPortResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceInternetPortResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceInternetPortResponseBody) SetRequestId(v string) *GetDeviceInternetPortResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBody) SetInstanceId(v string) *GetDeviceInternetPortResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBody) SetNetworkInfo(v []*GetDeviceInternetPortResponseBodyNetworkInfo) *GetDeviceInternetPortResponseBody {
+	s.NetworkInfo = v
+	return s
+}
+
+type GetDeviceInternetPortResponseBodyNetworkInfo struct {
+	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDeviceInternetPortResponseBodyNetworkInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceInternetPortResponseBodyNetworkInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetInternalIp(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetInternalPort(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.InternalPort = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetExternalIp(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.ExternalIp = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetExternalPort(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.ExternalPort = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetISP(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.ISP = &v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetStatus(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
+	s.Status = &v
+	return s
+}
+
+type GetDeviceInternetPortResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeviceInternetPortResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeviceInternetPortResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeviceInternetPortResponse) SetHeaders(v map[string]*string) *GetDeviceInternetPortResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeviceInternetPortResponse) SetBody(v *GetDeviceInternetPortResponseBody) *GetDeviceInternetPortResponse {
+	s.Body = v
+	return s
+}
+
 type ReleasePostPaidInstanceRequest struct {
 	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -16500,9 +16544,11 @@ func (s *DescribeSecurityGroupAttributeResponse) SetBody(v *DescribeSecurityGrou
 }
 
 type DescribeDeviceServiceRequest struct {
-	// APP ID
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Service ID
+	ServiceId  *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s DescribeDeviceServiceRequest) String() string {
@@ -16513,13 +16559,23 @@ func (s DescribeDeviceServiceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDeviceServiceRequest) SetAppId(v string) *DescribeDeviceServiceRequest {
-	s.AppId = &v
+func (s *DescribeDeviceServiceRequest) SetServiceId(v string) *DescribeDeviceServiceRequest {
+	s.ServiceId = &v
 	return s
 }
 
 func (s *DescribeDeviceServiceRequest) SetInstanceId(v string) *DescribeDeviceServiceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceRequest) SetRegionId(v string) *DescribeDeviceServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceRequest) SetAppId(v string) *DescribeDeviceServiceRequest {
+	s.AppId = &v
 	return s
 }
 
@@ -18864,34 +18920,6 @@ func (client *Client) RestartDeviceInstance(request *RestartDeviceInstanceReques
 	return _result, _err
 }
 
-func (client *Client) DeleteEnsLoadBalancerInnerWithOptions(request *DeleteEnsLoadBalancerInnerRequest, runtime *util.RuntimeOptions) (_result *DeleteEnsLoadBalancerInnerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteEnsLoadBalancerInnerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEnsLoadBalancerInner"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteEnsLoadBalancerInner(request *DeleteEnsLoadBalancerInnerRequest) (_result *DeleteEnsLoadBalancerInnerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteEnsLoadBalancerInnerResponse{}
-	_body, _err := client.DeleteEnsLoadBalancerInnerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ReleasePrePaidInstanceWithOptions(request *ReleasePrePaidInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleasePrePaidInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19764,6 +19792,35 @@ func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalance
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerHTTPSListenerResponse{}
 	_body, _err := client.CreateLoadBalancerHTTPSListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDeviceInternetPortWithOptions(request *AddDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *AddDeviceInternetPortResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &AddDeviceInternetPortResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddDeviceInternetPort"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDeviceInternetPort(request *AddDeviceInternetPortRequest) (_result *AddDeviceInternetPortResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDeviceInternetPortResponse{}
+	_body, _err := client.AddDeviceInternetPortWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20961,16 +21018,17 @@ func (client *Client) MigrateVm(request *MigrateVmRequest) (_result *MigrateVmRe
 	return _result, _err
 }
 
-func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
+func (client *Client) DeleteDeviceInternetPortWithOptions(request *DeleteDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceInternetPortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: query,
 	}
-	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLoadBalancer"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DeleteDeviceInternetPortResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDeviceInternetPort"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20978,10 +21036,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 	return _result, _err
 }
 
-func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_result *CreateLoadBalancerResponse, _err error) {
+func (client *Client) DeleteDeviceInternetPort(request *DeleteDeviceInternetPortRequest) (_result *DeleteDeviceInternetPortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.CreateLoadBalancerWithOptions(request, runtime)
+	_result = &DeleteDeviceInternetPortResponse{}
+	_body, _err := client.DeleteDeviceInternetPortWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21122,34 +21180,6 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *Describ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
 	_body, _err := client.DescribeLoadBalancerHTTPListenerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *DeleteLoadBalancerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteLoadBalancerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLoadBalancer"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_result *DeleteLoadBalancerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteLoadBalancerResponse{}
-	_body, _err := client.DeleteLoadBalancerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21991,6 +22021,35 @@ func (client *Client) DescribeDataDistResult(request *DescribeDataDistResultRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataDistResultResponse{}
 	_body, _err := client.DescribeDataDistResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDeviceInternetPortWithOptions(request *GetDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *GetDeviceInternetPortResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetDeviceInternetPortResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDeviceInternetPort"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDeviceInternetPort(request *GetDeviceInternetPortRequest) (_result *GetDeviceInternetPortResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeviceInternetPortResponse{}
+	_body, _err := client.GetDeviceInternetPortWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
