@@ -9754,11 +9754,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":        tea.String("mse. ap-northeast-1.aliyuncs.com"),
-		"cn-shanghai-finance-1": tea.String("msefinance-share.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shenzhen-finance-1": tea.String("msefinance-share.cn-shenzhen-finance-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
