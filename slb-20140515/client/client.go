@@ -1115,6 +1115,7 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -1219,6 +1220,11 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetCookie(v string) *CreateLoadB
 
 func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheck(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.HealthCheck = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.HealthCheckMethod = &v
 	return s
 }
 
@@ -1388,6 +1394,7 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -1494,6 +1501,11 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetCookie(v string) *CreateLoad
 
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheck(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.HealthCheck = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetHealthCheckMethod(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.HealthCheckMethod = &v
 	return s
 }
 
@@ -3622,8 +3634,8 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	AclId            *string                                                         `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AddressIPVersion *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AclEntrys        *DescribeAccessControlListAttributeResponseBodyAclEntrys        `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
 	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
 }
@@ -3651,13 +3663,13 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *DescribeAccessControlListAttributeResponseBody {
-	s.AclName = &v
+func (s *DescribeAccessControlListAttributeResponseBody) SetResourceGroupId(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeAccessControlListAttributeResponseBody) SetResourceGroupId(v string) *DescribeAccessControlListAttributeResponseBody {
-	s.ResourceGroupId = &v
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.AclName = &v
 	return s
 }
 
@@ -5438,6 +5450,7 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	XForwardedFor_proto    *string                                                     `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
 	XForwardedFor_SLBIP    *string                                                     `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
 	StickySession          *string                                                     `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	HealthCheckMethod      *string                                                     `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	HealthCheck            *string                                                     `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 	Rules                  *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
@@ -5615,6 +5628,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStickySession
 	return s
 }
 
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.HealthCheckMethod = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetHealthCheck(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.HealthCheck = &v
 	return s
@@ -5777,6 +5795,7 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	StickySessionType                    *string                                                                 `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	Scheduler                            *string                                                                 `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	XForwardedFor_proto                  *string                                                                 `json:"XForwardedFor_proto,omitempty" xml:"XForwardedFor_proto,omitempty"`
+	HealthCheckMethod                    *string                                                                 `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	TLSCipherPolicy                      *string                                                                 `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
 	Status                               *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 	VServerGroupId                       *string                                                                 `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
@@ -5896,6 +5915,11 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetScheduler(v 
 
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.XForwardedFor_proto = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetHealthCheckMethod(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.HealthCheckMethod = &v
 	return s
 }
 
@@ -8085,8 +8109,8 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Set
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
-	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	MasterSlaveServerGroupId   *string                                                                                                    `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
 }
 
@@ -8098,13 +8122,13 @@ func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaster
 	return s.String()
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
-	s.MasterSlaveServerGroupName = &v
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
+	s.MasterSlaveServerGroupId = &v
 	return s
 }
 
-func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupId(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
-	s.MasterSlaveServerGroupId = &v
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetMasterSlaveServerGroupName(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
+	s.MasterSlaveServerGroupName = &v
 	return s
 }
 
@@ -8380,27 +8404,27 @@ func (s *DescribeRuleAttributeRequest) SetRuleId(v string) *DescribeRuleAttribut
 }
 
 type DescribeRuleAttributeResponseBody struct {
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	VServerGroupId         *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ListenerPort           *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	Url                    *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleId                 *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	ListenerSync           *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ListenerPort           *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Url                    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ListenerSync           *string `json:"ListenerSync,omitempty" xml:"ListenerSync,omitempty"`
+	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	StickySession          *string `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 }
@@ -8413,18 +8437,8 @@ func (s DescribeRuleAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckHttpCode = &v
-	return s
-}
-
 func (s *DescribeRuleAttributeResponseBody) SetVServerGroupId(v string) *DescribeRuleAttributeResponseBody {
 	s.VServerGroupId = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetDomain(v string) *DescribeRuleAttributeResponseBody {
-	s.Domain = &v
 	return s
 }
 
@@ -8438,48 +8452,8 @@ func (s *DescribeRuleAttributeResponseBody) SetLoadBalancerId(v string) *Describ
 	return s
 }
 
-func (s *DescribeRuleAttributeResponseBody) SetListenerPort(v string) *DescribeRuleAttributeResponseBody {
-	s.ListenerPort = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckInterval = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetUrl(v string) *DescribeRuleAttributeResponseBody {
-	s.Url = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckURI(v string) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckURI = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetStickySessionType(v string) *DescribeRuleAttributeResponseBody {
-	s.StickySessionType = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetRuleName(v string) *DescribeRuleAttributeResponseBody {
-	s.RuleName = &v
-	return s
-}
-
 func (s *DescribeRuleAttributeResponseBody) SetRuleId(v string) *DescribeRuleAttributeResponseBody {
 	s.RuleId = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeRuleAttributeResponseBody {
-	s.HealthCheckConnectPort = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetScheduler(v string) *DescribeRuleAttributeResponseBody {
-	s.Scheduler = &v
 	return s
 }
 
@@ -8488,18 +8462,13 @@ func (s *DescribeRuleAttributeResponseBody) SetRequestId(v string) *DescribeRule
 	return s
 }
 
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
 func (s *DescribeRuleAttributeResponseBody) SetHealthCheckTimeout(v int32) *DescribeRuleAttributeResponseBody {
 	s.HealthCheckTimeout = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetListenerSync(v string) *DescribeRuleAttributeResponseBody {
-	s.ListenerSync = &v
-	return s
-}
-
-func (s *DescribeRuleAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeRuleAttributeResponseBody {
-	s.HealthyThreshold = &v
 	return s
 }
 
@@ -8515,6 +8484,61 @@ func (s *DescribeRuleAttributeResponseBody) SetHealthCheckDomain(v string) *Desc
 
 func (s *DescribeRuleAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeRuleAttributeResponseBody {
 	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckHttpCode(v string) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetDomain(v string) *DescribeRuleAttributeResponseBody {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetListenerPort(v string) *DescribeRuleAttributeResponseBody {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetUrl(v string) *DescribeRuleAttributeResponseBody {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckInterval(v int32) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetHealthCheckURI(v string) *DescribeRuleAttributeResponseBody {
+	s.HealthCheckURI = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetRuleName(v string) *DescribeRuleAttributeResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetStickySessionType(v string) *DescribeRuleAttributeResponseBody {
+	s.StickySessionType = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetScheduler(v string) *DescribeRuleAttributeResponseBody {
+	s.Scheduler = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetListenerSync(v string) *DescribeRuleAttributeResponseBody {
+	s.ListenerSync = &v
+	return s
+}
+
+func (s *DescribeRuleAttributeResponseBody) SetHealthyThreshold(v int32) *DescribeRuleAttributeResponseBody {
+	s.HealthyThreshold = &v
 	return s
 }
 
@@ -11998,6 +12022,7 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -12096,6 +12121,11 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetCookie(v string) *SetLo
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheck(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.HealthCheck = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.HealthCheckMethod = &v
 	return s
 }
 
@@ -12259,6 +12289,7 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -12361,6 +12392,11 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetCookie(v string) *SetL
 
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheck(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.HealthCheck = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetHealthCheckMethod(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.HealthCheckMethod = &v
 	return s
 }
 
