@@ -175,11 +175,12 @@ func (s *GeneralRecognitionResponse) SetBody(v *GeneralRecognitionResponseBody) 
 }
 
 type ImageDuplicationRequest struct {
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PicUrlList   *string `json:"PicUrlList,omitempty" xml:"PicUrlList,omitempty"`
-	PicNumList   *string `json:"PicNumList,omitempty" xml:"PicNumList,omitempty"`
-	ImageHeight  *int64  `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageWidth   *int64  `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicUrlList     *string `json:"PicUrlList,omitempty" xml:"PicUrlList,omitempty"`
+	PicNumList     *string `json:"PicNumList,omitempty" xml:"PicNumList,omitempty"`
+	ImageHeight    *int64  `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	ImageWidth     *int64  `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	OutputImageNum *int64  `json:"OutputImageNum,omitempty" xml:"OutputImageNum,omitempty"`
 }
 
 func (s ImageDuplicationRequest) String() string {
@@ -212,6 +213,11 @@ func (s *ImageDuplicationRequest) SetImageHeight(v int64) *ImageDuplicationReque
 
 func (s *ImageDuplicationRequest) SetImageWidth(v int64) *ImageDuplicationRequest {
 	s.ImageWidth = &v
+	return s
+}
+
+func (s *ImageDuplicationRequest) SetOutputImageNum(v int64) *ImageDuplicationRequest {
+	s.OutputImageNum = &v
 	return s
 }
 
