@@ -12,6 +12,72 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type VerifyDomainOwnerRequest struct {
+	// 直播域名
+	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
+}
+
+func (s VerifyDomainOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDomainOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDomainOwnerRequest) SetLiveDomainName(v string) *VerifyDomainOwnerRequest {
+	s.LiveDomainName = &v
+	return s
+}
+
+type VerifyDomainOwnerResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s VerifyDomainOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDomainOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDomainOwnerResponseBody) SetRequestId(v string) *VerifyDomainOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyDomainOwnerResponseBody) SetResult(v bool) *VerifyDomainOwnerResponseBody {
+	s.Result = &v
+	return s
+}
+
+type VerifyDomainOwnerResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *VerifyDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyDomainOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyDomainOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyDomainOwnerResponse) SetHeaders(v map[string]*string) *VerifyDomainOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyDomainOwnerResponse) SetBody(v *VerifyDomainOwnerResponseBody) *VerifyDomainOwnerResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLiveRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -2239,6 +2305,293 @@ func (s *GetLiveDomainStatusResponse) SetBody(v *GetLiveDomainStatusResponseBody
 	return s
 }
 
+type SendCustomMessageToAllRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 消息体内容。
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+}
+
+func (s SendCustomMessageToAllRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllRequest) SetAppId(v string) *SendCustomMessageToAllRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllRequest) SetRoomId(v string) *SendCustomMessageToAllRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllRequest) SetBody(v string) *SendCustomMessageToAllRequest {
+	s.Body = &v
+	return s
+}
+
+type SendCustomMessageToAllResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API请求的返回结果结构体。
+	Result *SendCustomMessageToAllResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendCustomMessageToAllResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponseBody) SetRequestId(v string) *SendCustomMessageToAllResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllResponseBody) SetResult(v *SendCustomMessageToAllResponseBodyResult) *SendCustomMessageToAllResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendCustomMessageToAllResponseBodyResult struct {
+	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s SendCustomMessageToAllResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponseBodyResult) SetMessageId(v string) *SendCustomMessageToAllResponseBodyResult {
+	s.MessageId = &v
+	return s
+}
+
+type SendCustomMessageToAllResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendCustomMessageToAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCustomMessageToAllResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponse) SetHeaders(v map[string]*string) *SendCustomMessageToAllResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCustomMessageToAllResponse) SetBody(v *SendCustomMessageToAllResponseBody) *SendCustomMessageToAllResponse {
+	s.Body = v
+	return s
+}
+
+type GetDomainOwnerVerifyContentRequest struct {
+	// 直播域名
+	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
+}
+
+func (s GetDomainOwnerVerifyContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentRequest) SetLiveDomainName(v string) *GetDomainOwnerVerifyContentRequest {
+	s.LiveDomainName = &v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *GetDomainOwnerVerifyContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetDomainOwnerVerifyContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBody) SetRequestId(v string) *GetDomainOwnerVerifyContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBody) SetResult(v *GetDomainOwnerVerifyContentResponseBodyResult) *GetDomainOwnerVerifyContentResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponseBodyResult struct {
+	// 域名归属校验内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s GetDomainOwnerVerifyContentResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBodyResult) SetContent(v string) *GetDomainOwnerVerifyContentResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDomainOwnerVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDomainOwnerVerifyContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponse) SetHeaders(v map[string]*string) *GetDomainOwnerVerifyContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDomainOwnerVerifyContentResponse) SetBody(v *GetDomainOwnerVerifyContentResponseBody) *GetDomainOwnerVerifyContentResponse {
+	s.Body = v
+	return s
+}
+
+type SendCustomMessageToUsersRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 消息体内容。
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// 消息指定的接收人ID列表。
+	ReceiverList []*string `json:"ReceiverList,omitempty" xml:"ReceiverList,omitempty" type:"Repeated"`
+}
+
+func (s SendCustomMessageToUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToUsersRequest) SetAppId(v string) *SendCustomMessageToUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendCustomMessageToUsersRequest) SetRoomId(v string) *SendCustomMessageToUsersRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SendCustomMessageToUsersRequest) SetBody(v string) *SendCustomMessageToUsersRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *SendCustomMessageToUsersRequest) SetReceiverList(v []*string) *SendCustomMessageToUsersRequest {
+	s.ReceiverList = v
+	return s
+}
+
+type SendCustomMessageToUsersResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API请求的返回结果结构体。
+	Result *SendCustomMessageToUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendCustomMessageToUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToUsersResponseBody) SetRequestId(v string) *SendCustomMessageToUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCustomMessageToUsersResponseBody) SetResult(v *SendCustomMessageToUsersResponseBodyResult) *SendCustomMessageToUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendCustomMessageToUsersResponseBodyResult struct {
+	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s SendCustomMessageToUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToUsersResponseBodyResult) SetMessageId(v string) *SendCustomMessageToUsersResponseBodyResult {
+	s.MessageId = &v
+	return s
+}
+
+type SendCustomMessageToUsersResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendCustomMessageToUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCustomMessageToUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToUsersResponse) SetHeaders(v map[string]*string) *SendCustomMessageToUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCustomMessageToUsersResponse) SetBody(v *SendCustomMessageToUsersResponseBody) *SendCustomMessageToUsersResponse {
+	s.Body = v
+	return s
+}
+
 type GetAuthTokenRequest struct {
 	// 用户的应用ID，在控制台创建应用时生成
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3219,6 +3572,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyDomainOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &VerifyDomainOwnerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("VerifyDomainOwner"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyDomainOwner(request *VerifyDomainOwnerRequest) (_result *VerifyDomainOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyDomainOwnerResponse{}
+	_body, _err := client.VerifyDomainOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateLiveWithOptions(request *CreateLiveRequest, runtime *util.RuntimeOptions) (_result *CreateLiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3706,6 +4087,90 @@ func (client *Client) GetLiveDomainStatus(request *GetLiveDomainStatusRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLiveDomainStatusResponse{}
 	_body, _err := client.GetLiveDomainStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToAllWithOptions(request *SendCustomMessageToAllRequest, runtime *util.RuntimeOptions) (_result *SendCustomMessageToAllResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendCustomMessageToAllResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToAll"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToAll(request *SendCustomMessageToAllRequest) (_result *SendCustomMessageToAllResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCustomMessageToAllResponse{}
+	_body, _err := client.SendCustomMessageToAllWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDomainOwnerVerifyContentWithOptions(request *GetDomainOwnerVerifyContentRequest, runtime *util.RuntimeOptions) (_result *GetDomainOwnerVerifyContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDomainOwnerVerifyContentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDomainOwnerVerifyContent"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDomainOwnerVerifyContent(request *GetDomainOwnerVerifyContentRequest) (_result *GetDomainOwnerVerifyContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDomainOwnerVerifyContentResponse{}
+	_body, _err := client.GetDomainOwnerVerifyContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToUsersWithOptions(request *SendCustomMessageToUsersRequest, runtime *util.RuntimeOptions) (_result *SendCustomMessageToUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendCustomMessageToUsersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToUsers(request *SendCustomMessageToUsersRequest) (_result *SendCustomMessageToUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCustomMessageToUsersResponse{}
+	_body, _err := client.SendCustomMessageToUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
