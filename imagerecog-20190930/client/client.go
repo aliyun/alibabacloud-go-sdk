@@ -1192,8 +1192,7 @@ func (s *RecognizeImageStyleResponse) SetBody(v *RecognizeImageStyleResponseBody
 }
 
 type TaggingAdImageRequest struct {
-	ImageType *int32  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s TaggingAdImageRequest) String() string {
@@ -1204,11 +1203,6 @@ func (s TaggingAdImageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TaggingAdImageRequest) SetImageType(v int32) *TaggingAdImageRequest {
-	s.ImageType = &v
-	return s
-}
-
 func (s *TaggingAdImageRequest) SetImageURL(v string) *TaggingAdImageRequest {
 	s.ImageURL = &v
 	return s
@@ -1216,7 +1210,6 @@ func (s *TaggingAdImageRequest) SetImageURL(v string) *TaggingAdImageRequest {
 
 type TaggingAdImageAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	ImageType      *int32    `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s TaggingAdImageAdvanceRequest) String() string {
@@ -1229,11 +1222,6 @@ func (s TaggingAdImageAdvanceRequest) GoString() string {
 
 func (s *TaggingAdImageAdvanceRequest) SetImageURLObject(v io.Reader) *TaggingAdImageAdvanceRequest {
 	s.ImageURLObject = v
-	return s
-}
-
-func (s *TaggingAdImageAdvanceRequest) SetImageType(v int32) *TaggingAdImageAdvanceRequest {
-	s.ImageType = &v
 	return s
 }
 
