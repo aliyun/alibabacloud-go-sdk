@@ -1250,7 +1250,7 @@ func (s *TaggingAdImageResponseBody) SetData(v *TaggingAdImageResponseBodyData) 
 }
 
 type TaggingAdImageResponseBodyData struct {
-	Tags []*TaggingAdImageResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TagInfo map[string]interface{} `json:"TagInfo,omitempty" xml:"TagInfo,omitempty"`
 }
 
 func (s TaggingAdImageResponseBodyData) String() string {
@@ -1261,31 +1261,8 @@ func (s TaggingAdImageResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *TaggingAdImageResponseBodyData) SetTags(v []*TaggingAdImageResponseBodyDataTags) *TaggingAdImageResponseBodyData {
-	s.Tags = v
-	return s
-}
-
-type TaggingAdImageResponseBodyDataTags struct {
-	Value      *string  `json:"Value,omitempty" xml:"Value,omitempty"`
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-}
-
-func (s TaggingAdImageResponseBodyDataTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TaggingAdImageResponseBodyDataTags) GoString() string {
-	return s.String()
-}
-
-func (s *TaggingAdImageResponseBodyDataTags) SetValue(v string) *TaggingAdImageResponseBodyDataTags {
-	s.Value = &v
-	return s
-}
-
-func (s *TaggingAdImageResponseBodyDataTags) SetConfidence(v float32) *TaggingAdImageResponseBodyDataTags {
-	s.Confidence = &v
+func (s *TaggingAdImageResponseBodyData) SetTagInfo(v map[string]interface{}) *TaggingAdImageResponseBodyData {
+	s.TagInfo = v
 	return s
 }
 
