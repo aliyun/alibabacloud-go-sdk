@@ -4581,6 +4581,152 @@ func (s *GetOriginLayoutDataResponse) SetBody(v *GetOriginLayoutDataResponseBody
 	return s
 }
 
+type GetHotspotSceneDataRequest struct {
+	// 预览token
+	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	// 0 未发布， 1 已发布
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 自定义oss域名（可为cdn域名）
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 是否开启自用资源访问
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s GetHotspotSceneDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotspotSceneDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotspotSceneDataRequest) SetPreviewToken(v string) *GetHotspotSceneDataRequest {
+	s.PreviewToken = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataRequest) SetType(v int64) *GetHotspotSceneDataRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataRequest) SetDomain(v string) *GetHotspotSceneDataRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataRequest) SetEnabled(v bool) *GetHotspotSceneDataRequest {
+	s.Enabled = &v
+	return s
+}
+
+type GetHotspotSceneDataResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data    *GetHotspotSceneDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetHotspotSceneDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotspotSceneDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotspotSceneDataResponseBody) SetRequestId(v string) *GetHotspotSceneDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBody) SetCode(v int64) *GetHotspotSceneDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBody) SetSuccess(v bool) *GetHotspotSceneDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBody) SetMessage(v string) *GetHotspotSceneDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBody) SetData(v *GetHotspotSceneDataResponseBodyData) *GetHotspotSceneDataResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetHotspotSceneDataResponseBodyData struct {
+	// 3D模型：MODEL_3D 全景图片：PIC 全景视频：VIDEO
+	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	// 预览token
+	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	// html转译后的预览数据，包含图片、子场景ID等信息
+	PreviewData *string `json:"PreviewData,omitempty" xml:"PreviewData,omitempty"`
+	// 模型token（sgm token）
+	ModelToken *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
+}
+
+func (s GetHotspotSceneDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotspotSceneDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotspotSceneDataResponseBodyData) SetSceneType(v string) *GetHotspotSceneDataResponseBodyData {
+	s.SceneType = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBodyData) SetPreviewToken(v string) *GetHotspotSceneDataResponseBodyData {
+	s.PreviewToken = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBodyData) SetPreviewData(v string) *GetHotspotSceneDataResponseBodyData {
+	s.PreviewData = &v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponseBodyData) SetModelToken(v string) *GetHotspotSceneDataResponseBodyData {
+	s.ModelToken = &v
+	return s
+}
+
+type GetHotspotSceneDataResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetHotspotSceneDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetHotspotSceneDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotspotSceneDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotspotSceneDataResponse) SetHeaders(v map[string]*string) *GetHotspotSceneDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotspotSceneDataResponse) SetBody(v *GetHotspotSceneDataResponseBody) *GetHotspotSceneDataResponse {
+	s.Body = v
+	return s
+}
+
 type ScenePublishRequest struct {
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -5180,6 +5326,145 @@ func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse 
 }
 
 func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetScenePreviewInfoRequest struct {
+	// 模型token
+	ModelToken *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
+	// 自定义oss域名（可为cdn域名）
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 是否开启自用资源访问
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s GetScenePreviewInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewInfoRequest) SetModelToken(v string) *GetScenePreviewInfoRequest {
+	s.ModelToken = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoRequest) SetDomain(v string) *GetScenePreviewInfoRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoRequest) SetEnabled(v bool) *GetScenePreviewInfoRequest {
+	s.Enabled = &v
+	return s
+}
+
+type GetScenePreviewInfoResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data    *GetScenePreviewInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GetScenePreviewInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewInfoResponseBody) SetRequestId(v string) *GetScenePreviewInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBody) SetCode(v int64) *GetScenePreviewInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBody) SetSuccess(v bool) *GetScenePreviewInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBody) SetMessage(v string) *GetScenePreviewInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBody) SetData(v *GetScenePreviewInfoResponseBodyData) *GetScenePreviewInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+type GetScenePreviewInfoResponseBodyData struct {
+	// html转译后的预览数据
+	PanoList *string `json:"PanoList,omitempty" xml:"PanoList,omitempty"`
+	// 模型地址
+	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	// 模型的贴图路径
+	TextureModelPath *string `json:"TextureModelPath,omitempty" xml:"TextureModelPath,omitempty"`
+	// 漫游后预览图片路径
+	TexturePanoPath *string `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
+}
+
+func (s GetScenePreviewInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewInfoResponseBodyData) SetPanoList(v string) *GetScenePreviewInfoResponseBodyData {
+	s.PanoList = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBodyData) SetModelPath(v string) *GetScenePreviewInfoResponseBodyData {
+	s.ModelPath = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBodyData) SetTextureModelPath(v string) *GetScenePreviewInfoResponseBodyData {
+	s.TextureModelPath = &v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponseBodyData) SetTexturePanoPath(v string) *GetScenePreviewInfoResponseBodyData {
+	s.TexturePanoPath = &v
+	return s
+}
+
+type GetScenePreviewInfoResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetScenePreviewInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetScenePreviewInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewInfoResponse) SetHeaders(v map[string]*string) *GetScenePreviewInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScenePreviewInfoResponse) SetBody(v *GetScenePreviewInfoResponseBody) *GetScenePreviewInfoResponse {
 	s.Body = v
 	return s
 }
@@ -6619,6 +6904,34 @@ func (client *Client) GetOriginLayoutData(request *GetOriginLayoutDataRequest) (
 	return _result, _err
 }
 
+func (client *Client) GetHotspotSceneDataWithOptions(request *GetHotspotSceneDataRequest, runtime *util.RuntimeOptions) (_result *GetHotspotSceneDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetHotspotSceneDataResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetHotspotSceneData"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetHotspotSceneData(request *GetHotspotSceneDataRequest) (_result *GetHotspotSceneDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHotspotSceneDataResponse{}
+	_body, _err := client.GetHotspotSceneDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runtime *util.RuntimeOptions) (_result *ScenePublishResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6780,6 +7093,34 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyResponse{}
 	_body, _err := client.GetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInfoRequest, runtime *util.RuntimeOptions) (_result *GetScenePreviewInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetScenePreviewInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetScenePreviewInfo"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewInfo(request *GetScenePreviewInfoRequest) (_result *GetScenePreviewInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetScenePreviewInfoResponse{}
+	_body, _err := client.GetScenePreviewInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
