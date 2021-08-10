@@ -1321,6 +1321,7 @@ func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *Del
 
 type SetEventCallbackRequest struct {
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
+	EventTypeList     *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
 }
 
 func (s SetEventCallbackRequest) String() string {
@@ -1333,6 +1334,11 @@ func (s SetEventCallbackRequest) GoString() string {
 
 func (s *SetEventCallbackRequest) SetCallbackQueueName(v string) *SetEventCallbackRequest {
 	s.CallbackQueueName = &v
+	return s
+}
+
+func (s *SetEventCallbackRequest) SetEventTypeList(v string) *SetEventCallbackRequest {
+	s.EventTypeList = &v
 	return s
 }
 
@@ -1451,6 +1457,8 @@ type GetTemplateResponseBodyTemplate struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 封面URL
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 提交合成任务的ClipsParam参数
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 }
 
 func (s GetTemplateResponseBodyTemplate) String() string {
@@ -1518,6 +1526,11 @@ func (s *GetTemplateResponseBodyTemplate) SetModifiedTime(v string) *GetTemplate
 
 func (s *GetTemplateResponseBodyTemplate) SetCoverURL(v string) *GetTemplateResponseBodyTemplate {
 	s.CoverURL = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTemplate) SetClipsParam(v string) *GetTemplateResponseBodyTemplate {
+	s.ClipsParam = &v
 	return s
 }
 
@@ -4628,6 +4641,8 @@ type ListTemplatesResponseBodyTemplates struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// 封面URL
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// ClipsParam
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -4695,6 +4710,11 @@ func (s *ListTemplatesResponseBodyTemplates) SetModifiedTime(v string) *ListTemp
 
 func (s *ListTemplatesResponseBodyTemplates) SetCoverURL(v string) *ListTemplatesResponseBodyTemplates {
 	s.CoverURL = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetClipsParam(v string) *ListTemplatesResponseBodyTemplates {
+	s.ClipsParam = &v
 	return s
 }
 
@@ -6497,6 +6517,7 @@ type GetEventCallbackResponseBody struct {
 	// Id of the request
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
+	EventTypeList     *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
 }
 
 func (s GetEventCallbackResponseBody) String() string {
@@ -6514,6 +6535,11 @@ func (s *GetEventCallbackResponseBody) SetRequestId(v string) *GetEventCallbackR
 
 func (s *GetEventCallbackResponseBody) SetCallbackQueueName(v string) *GetEventCallbackResponseBody {
 	s.CallbackQueueName = &v
+	return s
+}
+
+func (s *GetEventCallbackResponseBody) SetEventTypeList(v string) *GetEventCallbackResponseBody {
+	s.EventTypeList = &v
 	return s
 }
 
