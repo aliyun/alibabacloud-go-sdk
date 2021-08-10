@@ -1,3 +1,6 @@
+2021-08-10 Version: v2.2.0
+- Supported GetRoomLives.
+
 2021-08-05 Version: v2.1.0
 - Supported SendCustomMessageToAll.
 - Supported SendCustomMessageToUsers.
