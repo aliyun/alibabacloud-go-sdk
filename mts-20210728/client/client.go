@@ -1162,6 +1162,10 @@ type SubmitCopyrightJobRequest struct {
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
 	// 水印信息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 水印起始时间(单位是秒)，不填写默认为0
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 水印结束时间(单位是秒)，不填默认为60000
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// 输出的视频，oss三元组
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	// 用户自定义数据
@@ -1198,6 +1202,16 @@ func (s *SubmitCopyrightJobRequest) SetLevel(v int64) *SubmitCopyrightJobRequest
 
 func (s *SubmitCopyrightJobRequest) SetMessage(v string) *SubmitCopyrightJobRequest {
 	s.Message = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetStartTime(v int64) *SubmitCopyrightJobRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetTotalTime(v int64) *SubmitCopyrightJobRequest {
+	s.TotalTime = &v
 	return s
 }
 
@@ -1763,6 +1777,14 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 
 	if !tea.BoolValue(util.IsUnset(request.Message)) {
 		body["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalTime)) {
+		body["TotalTime"] = request.TotalTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Output)) {
