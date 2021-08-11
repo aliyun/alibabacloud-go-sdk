@@ -1123,6 +1123,217 @@ func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
 	return s
 }
 
+type SendCommentRequest struct {
+	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播间唯一标识，在调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 弹幕发送者的用户ID，最大长度不超过32个字节。
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 发送的文本内容。最大的长度不超过256个字节。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 扩展字段，服务端仅做透传。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s SendCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentRequest) SetAppId(v string) *SendCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendCommentRequest) SetRoomId(v string) *SendCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SendCommentRequest) SetSenderId(v string) *SendCommentRequest {
+	s.SenderId = &v
+	return s
+}
+
+func (s *SendCommentRequest) SetContent(v string) *SendCommentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendCommentRequest) SetExtension(v map[string]*string) *SendCommentRequest {
+	s.Extension = v
+	return s
+}
+
+type SendCommentShrinkRequest struct {
+	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播间唯一标识，在调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 弹幕发送者的用户ID，最大长度不超过32个字节。
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 发送的文本内容。最大的长度不超过256个字节。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 扩展字段，服务端仅做透传。
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s SendCommentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentShrinkRequest) SetAppId(v string) *SendCommentShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetRoomId(v string) *SendCommentShrinkRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetSenderId(v string) *SendCommentShrinkRequest {
+	s.SenderId = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetContent(v string) *SendCommentShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetExtensionShrink(v string) *SendCommentShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+type SendCommentResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 调用发送直播间弹幕的返回结果。
+	Result *SendCommentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentResponseBody) SetRequestId(v string) *SendCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCommentResponseBody) SetResult(v *SendCommentResponseBodyResult) *SendCommentResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendCommentResponseBodyResult struct {
+	// 返回的弹幕数据模型。
+	CommentVO *SendCommentResponseBodyResultCommentVO `json:"CommentVO,omitempty" xml:"CommentVO,omitempty" type:"Struct"`
+}
+
+func (s SendCommentResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentResponseBodyResult) SetCommentVO(v *SendCommentResponseBodyResultCommentVO) *SendCommentResponseBodyResult {
+	s.CommentVO = v
+	return s
+}
+
+type SendCommentResponseBodyResultCommentVO struct {
+	// 弹幕的唯一ID。
+	CommentId *string `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
+	// 弹幕的发送者ID标识。
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 弹幕发送者的昵称。
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	// 弹幕的创建时间，Unix时间戳，单位：毫秒。
+	CreateAt *int64 `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
+	// 弹幕的内容。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 扩展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s SendCommentResponseBodyResultCommentVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentResponseBodyResultCommentVO) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetCommentId(v string) *SendCommentResponseBodyResultCommentVO {
+	s.CommentId = &v
+	return s
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetSenderId(v string) *SendCommentResponseBodyResultCommentVO {
+	s.SenderId = &v
+	return s
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetSenderNick(v string) *SendCommentResponseBodyResultCommentVO {
+	s.SenderNick = &v
+	return s
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetCreateAt(v int64) *SendCommentResponseBodyResultCommentVO {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetContent(v string) *SendCommentResponseBodyResultCommentVO {
+	s.Content = &v
+	return s
+}
+
+func (s *SendCommentResponseBodyResultCommentVO) SetExtension(v map[string]*string) *SendCommentResponseBodyResultCommentVO {
+	s.Extension = v
+	return s
+}
+
+type SendCommentResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCommentResponse) SetHeaders(v map[string]*string) *SendCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCommentResponse) SetBody(v *SendCommentResponseBody) *SendCommentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppTemplateRequest struct {
 	// 应用模板名称
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
@@ -1361,6 +1572,100 @@ func (s *GetConferenceResponse) SetHeaders(v map[string]*string) *GetConferenceR
 }
 
 func (s *GetConferenceResponse) SetBody(v *GetConferenceResponseBody) *GetConferenceResponse {
+	s.Body = v
+	return s
+}
+
+type BanCommentRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 用户在房间内的唯一标识
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 被禁言的用户在房间内的唯一标识
+	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
+	// 禁言时长（秒）
+	BanCommentTime *int64 `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
+}
+
+func (s BanCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentRequest) SetAppId(v string) *BanCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetRoomId(v string) *BanCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetUserId(v string) *BanCommentRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetBanCommentUser(v string) *BanCommentRequest {
+	s.BanCommentUser = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetBanCommentTime(v int64) *BanCommentRequest {
+	s.BanCommentTime = &v
+	return s
+}
+
+type BanCommentResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 操作是否成功
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s BanCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentResponseBody) SetRequestId(v string) *BanCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BanCommentResponseBody) SetResult(v bool) *BanCommentResponseBody {
+	s.Result = &v
+	return s
+}
+
+type BanCommentResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BanCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BanCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentResponse) SetHeaders(v map[string]*string) *BanCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BanCommentResponse) SetBody(v *BanCommentResponseBody) *BanCommentResponse {
 	s.Body = v
 	return s
 }
@@ -1679,6 +1984,86 @@ func (s *AddMemberResponse) SetHeaders(v map[string]*string) *AddMemberResponse 
 }
 
 func (s *AddMemberResponse) SetBody(v *AddMemberResponseBody) *AddMemberResponse {
+	s.Body = v
+	return s
+}
+
+type CancelBanAllCommentRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 用户在房间内的唯一标识
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CancelBanAllCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanAllCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanAllCommentRequest) SetAppId(v string) *CancelBanAllCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CancelBanAllCommentRequest) SetRoomId(v string) *CancelBanAllCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *CancelBanAllCommentRequest) SetUserId(v string) *CancelBanAllCommentRequest {
+	s.UserId = &v
+	return s
+}
+
+type CancelBanAllCommentResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 操作成功标识
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CancelBanAllCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanAllCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanAllCommentResponseBody) SetRequestId(v string) *CancelBanAllCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelBanAllCommentResponseBody) SetResult(v bool) *CancelBanAllCommentResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CancelBanAllCommentResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelBanAllCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelBanAllCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanAllCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanAllCommentResponse) SetHeaders(v map[string]*string) *CancelBanAllCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelBanAllCommentResponse) SetBody(v *CancelBanAllCommentResponseBody) *CancelBanAllCommentResponse {
 	s.Body = v
 	return s
 }
@@ -2128,6 +2513,93 @@ func (s *ListConferenceUsersResponse) SetHeaders(v map[string]*string) *ListConf
 }
 
 func (s *ListConferenceUsersResponse) SetBody(v *ListConferenceUsersResponseBody) *ListConferenceUsersResponse {
+	s.Body = v
+	return s
+}
+
+type CancelBanCommentRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 用户在房间内的唯一标识
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 取消禁言的用户唯一标识
+	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
+}
+
+func (s CancelBanCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanCommentRequest) SetAppId(v string) *CancelBanCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CancelBanCommentRequest) SetRoomId(v string) *CancelBanCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *CancelBanCommentRequest) SetUserId(v string) *CancelBanCommentRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *CancelBanCommentRequest) SetBanCommentUser(v string) *CancelBanCommentRequest {
+	s.BanCommentUser = &v
+	return s
+}
+
+type CancelBanCommentResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 操作成功标识
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CancelBanCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanCommentResponseBody) SetRequestId(v string) *CancelBanCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelBanCommentResponseBody) SetResult(v bool) *CancelBanCommentResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CancelBanCommentResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelBanCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelBanCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBanCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBanCommentResponse) SetHeaders(v map[string]*string) *CancelBanCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelBanCommentResponse) SetBody(v *CancelBanCommentResponseBody) *CancelBanCommentResponse {
 	s.Body = v
 	return s
 }
@@ -3709,6 +4181,86 @@ func (s *SendCustomMessageToUsersResponse) SetBody(v *SendCustomMessageToUsersRe
 	return s
 }
 
+type BanAllCommentRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 用户在房间内的唯一标识
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s BanAllCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanAllCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BanAllCommentRequest) SetAppId(v string) *BanAllCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BanAllCommentRequest) SetRoomId(v string) *BanAllCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *BanAllCommentRequest) SetUserId(v string) *BanAllCommentRequest {
+	s.UserId = &v
+	return s
+}
+
+type BanAllCommentResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 操作成功标识
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s BanAllCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanAllCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BanAllCommentResponseBody) SetRequestId(v string) *BanAllCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BanAllCommentResponseBody) SetResult(v bool) *BanAllCommentResponseBody {
+	s.Result = &v
+	return s
+}
+
+type BanAllCommentResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BanAllCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BanAllCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanAllCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BanAllCommentResponse) SetHeaders(v map[string]*string) *BanAllCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BanAllCommentResponse) SetBody(v *BanAllCommentResponseBody) *BanAllCommentResponse {
+	s.Body = v
+	return s
+}
+
 type GetAuthTokenRequest struct {
 	// 用户的应用ID，在控制台创建应用时生成
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -5147,6 +5699,40 @@ func (client *Client) GetRoom(request *GetRoomRequest) (_result *GetRoomResponse
 	return _result, _err
 }
 
+func (client *Client) SendCommentWithOptions(tmpReq *SendCommentRequest, runtime *util.RuntimeOptions) (_result *SendCommentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendCommentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendComment(request *SendCommentRequest) (_result *SendCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCommentResponse{}
+	_body, _err := client.SendCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAppTemplateWithOptions(tmpReq *CreateAppTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5202,6 +5788,34 @@ func (client *Client) GetConference(request *GetConferenceRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConferenceResponse{}
 	_body, _err := client.GetConferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BanCommentWithOptions(request *BanCommentRequest, runtime *util.RuntimeOptions) (_result *BanCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BanCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BanComment(request *BanCommentRequest) (_result *BanCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BanCommentResponse{}
+	_body, _err := client.BanCommentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5293,6 +5907,34 @@ func (client *Client) AddMember(request *AddMemberRequest) (_result *AddMemberRe
 	return _result, _err
 }
 
+func (client *Client) CancelBanAllCommentWithOptions(request *CancelBanAllCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanAllCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelBanAllCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelBanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelBanAllComment(request *CancelBanAllCommentRequest) (_result *CancelBanAllCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelBanAllCommentResponse{}
+	_body, _err := client.CancelBanAllCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListRoomsWithOptions(request *ListRoomsRequest, runtime *util.RuntimeOptions) (_result *ListRoomsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5370,6 +6012,34 @@ func (client *Client) ListConferenceUsers(request *ListConferenceUsersRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConferenceUsersResponse{}
 	_body, _err := client.ListConferenceUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelBanCommentWithOptions(request *CancelBanCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelBanCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelBanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelBanComment(request *CancelBanCommentRequest) (_result *CancelBanCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelBanCommentResponse{}
+	_body, _err := client.CancelBanCommentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5802,6 +6472,34 @@ func (client *Client) SendCustomMessageToUsers(request *SendCustomMessageToUsers
 	runtime := &util.RuntimeOptions{}
 	_result = &SendCustomMessageToUsersResponse{}
 	_body, _err := client.SendCustomMessageToUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BanAllCommentWithOptions(request *BanAllCommentRequest, runtime *util.RuntimeOptions) (_result *BanAllCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BanAllCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BanAllComment(request *BanAllCommentRequest) (_result *BanAllCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BanAllCommentResponse{}
+	_body, _err := client.BanAllCommentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
