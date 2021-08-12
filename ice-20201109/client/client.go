@@ -7126,15 +7126,15 @@ func (s *GetSmartHandleJobResponseBody) SetSmartJobInfo(v *GetSmartHandleJobResp
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfo struct {
-	Title         *string                                               `json:"Title,omitempty" xml:"Title,omitempty"`
-	Description   *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	UserId        *string                                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	EditingConfig *string                                               `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *GetSmartHandleJobResponseBodySmartJobInfoInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
-	OutputConfig  *string                                               `json:"outputConfig,omitempty" xml:"outputConfig,omitempty"`
-	CreateTime    *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifiedTime  *string                                               `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	JobType       *string                                               `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Title         *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description   *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	UserId        *string                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	EditingConfig *string                                                `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	InputConfig   *GetSmartHandleJobResponseBodySmartJobInfoInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	OutputConfig  *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	CreateTime    *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifiedTime  *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	JobType       *string                                                `json:"JobType,omitempty" xml:"JobType,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodySmartJobInfo) String() string {
@@ -7170,8 +7170,8 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetInputConfig(v *GetSmartHa
 	return s
 }
 
-func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetOutputConfig(v string) *GetSmartHandleJobResponseBodySmartJobInfo {
-	s.OutputConfig = &v
+func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetOutputConfig(v *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig) *GetSmartHandleJobResponseBodySmartJobInfo {
+	s.OutputConfig = v
 	return s
 }
 
@@ -7210,6 +7210,29 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetInputFile(v st
 
 func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetJobParameters(v string) *GetSmartHandleJobResponseBodySmartJobInfoInputConfig {
 	s.JobParameters = &v
+	return s
+}
+
+type GetSmartHandleJobResponseBodySmartJobInfoOutputConfig struct {
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+}
+
+func (s GetSmartHandleJobResponseBodySmartJobInfoOutputConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartHandleJobResponseBodySmartJobInfoOutputConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig) SetBucket(v string) *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig) SetObject(v string) *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig {
+	s.Object = &v
 	return s
 }
 
