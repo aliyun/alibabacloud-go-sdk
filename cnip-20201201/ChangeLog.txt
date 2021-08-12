@@ -1,3 +1,6 @@
+2021-08-12 Version: v1.0.0-alpha
+- Fix GetEnvironment JSON issue.
+
 2021-08-11 Version: v1.13.7
 - Fix GetEnvironment JSON issue.
 
