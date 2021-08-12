@@ -2030,6 +2030,112 @@ func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatab
 	return s
 }
 
+type CreateProxyAccessRequest struct {
+	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	IndepAccount  *string `json:"IndepAccount,omitempty" xml:"IndepAccount,omitempty"`
+	IndepPassword *string `json:"IndepPassword,omitempty" xml:"IndepPassword,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateProxyAccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyAccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyAccessRequest) SetUserId(v int64) *CreateProxyAccessRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateProxyAccessRequest) SetProxyId(v int64) *CreateProxyAccessRequest {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *CreateProxyAccessRequest) SetIndepAccount(v string) *CreateProxyAccessRequest {
+	s.IndepAccount = &v
+	return s
+}
+
+func (s *CreateProxyAccessRequest) SetIndepPassword(v string) *CreateProxyAccessRequest {
+	s.IndepPassword = &v
+	return s
+}
+
+func (s *CreateProxyAccessRequest) SetTid(v int64) *CreateProxyAccessRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateProxyAccessResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+}
+
+func (s CreateProxyAccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyAccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyAccessResponseBody) SetRequestId(v string) *CreateProxyAccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProxyAccessResponseBody) SetSuccess(v bool) *CreateProxyAccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateProxyAccessResponseBody) SetErrorMessage(v string) *CreateProxyAccessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProxyAccessResponseBody) SetErrorCode(v string) *CreateProxyAccessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProxyAccessResponseBody) SetProxyAccessId(v int64) *CreateProxyAccessResponseBody {
+	s.ProxyAccessId = &v
+	return s
+}
+
+type CreateProxyAccessResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProxyAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProxyAccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyAccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyAccessResponse) SetHeaders(v map[string]*string) *CreateProxyAccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProxyAccessResponse) SetBody(v *CreateProxyAccessResponseBody) *CreateProxyAccessResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserPermissionsRequest struct {
 	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
@@ -2570,6 +2676,154 @@ func (s *ListWorkFlowTemplatesResponse) SetHeaders(v map[string]*string) *ListWo
 }
 
 func (s *ListWorkFlowTemplatesResponse) SetBody(v *ListWorkFlowTemplatesResponseBody) *ListWorkFlowTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type GetProxyRequest struct {
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProxyId    *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetProxyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyRequest) SetInstanceId(v int64) *GetProxyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetProxyRequest) SetProxyId(v int64) *GetProxyRequest {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *GetProxyRequest) SetTid(v int64) *GetProxyRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetProxyResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
+	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
+	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
+	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+}
+
+func (s GetProxyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyResponseBody) SetRequestId(v string) *GetProxyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetSuccess(v bool) *GetProxyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetErrorMessage(v string) *GetProxyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetErrorCode(v string) *GetProxyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetProxyId(v int64) *GetProxyResponseBody {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetCreatorId(v int64) *GetProxyResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetCreatorName(v string) *GetProxyResponseBody {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetInstanceId(v int64) *GetProxyResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPrivateEnable(v bool) *GetProxyResponseBody {
+	s.PrivateEnable = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPrivateHost(v string) *GetProxyResponseBody {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPublicEnable(v bool) *GetProxyResponseBody {
+	s.PublicEnable = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPublicHost(v string) *GetProxyResponseBody {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetMysqlPort(v int32) *GetProxyResponseBody {
+	s.MysqlPort = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetHttpsPort(v int32) *GetProxyResponseBody {
+	s.HttpsPort = &v
+	return s
+}
+
+type GetProxyResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProxyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyResponse) SetHeaders(v map[string]*string) *GetProxyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
 	s.Body = v
 	return s
 }
@@ -3709,6 +3963,106 @@ func (s *GetStructSyncJobDetailResponse) SetHeaders(v map[string]*string) *GetSt
 }
 
 func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailResponseBody) *GetStructSyncJobDetailResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProxyRequest struct {
+	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateProxyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyRequest) SetInstanceId(v int64) *CreateProxyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateProxyRequest) SetUsername(v string) *CreateProxyRequest {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateProxyRequest) SetPassword(v string) *CreateProxyRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateProxyRequest) SetTid(v int64) *CreateProxyRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateProxyResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyId      *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+}
+
+func (s CreateProxyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyResponseBody) SetRequestId(v string) *CreateProxyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProxyResponseBody) SetSuccess(v bool) *CreateProxyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateProxyResponseBody) SetErrorMessage(v string) *CreateProxyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateProxyResponseBody) SetErrorCode(v string) *CreateProxyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProxyResponseBody) SetProxyId(v int64) *CreateProxyResponseBody {
+	s.ProxyId = &v
+	return s
+}
+
+type CreateProxyResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProxyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProxyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProxyResponse) SetHeaders(v map[string]*string) *CreateProxyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProxyResponse) SetBody(v *CreateProxyResponseBody) *CreateProxyResponse {
 	s.Body = v
 	return s
 }
@@ -8770,6 +9124,165 @@ func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderRe
 	return s
 }
 
+type ListProxyAccessesRequest struct {
+	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListProxyAccessesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxyAccessesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxyAccessesRequest) SetProxyId(v int64) *ListProxyAccessesRequest {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *ListProxyAccessesRequest) SetTid(v int64) *ListProxyAccessesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListProxyAccessesResponseBody struct {
+	// Id of the request
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage    *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode       *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyAccessList []*ListProxyAccessesResponseBodyProxyAccessList `json:"ProxyAccessList,omitempty" xml:"ProxyAccessList,omitempty" type:"Repeated"`
+}
+
+func (s ListProxyAccessesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxyAccessesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxyAccessesResponseBody) SetRequestId(v string) *ListProxyAccessesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBody) SetSuccess(v bool) *ListProxyAccessesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBody) SetErrorMessage(v string) *ListProxyAccessesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBody) SetErrorCode(v string) *ListProxyAccessesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBody) SetProxyAccessList(v []*ListProxyAccessesResponseBodyProxyAccessList) *ListProxyAccessesResponseBody {
+	s.ProxyAccessList = v
+	return s
+}
+
+type ListProxyAccessesResponseBodyProxyAccessList struct {
+	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	AccessId      *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	OriginInfo    *string `json:"OriginInfo,omitempty" xml:"OriginInfo,omitempty"`
+	IndepAccount  *string `json:"IndepAccount,omitempty" xml:"IndepAccount,omitempty"`
+	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserUid       *string `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListProxyAccessesResponseBodyProxyAccessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxyAccessesResponseBodyProxyAccessList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetProxyAccessId(v int64) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.ProxyAccessId = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetGmtCreate(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetAccessId(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.AccessId = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetOriginInfo(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.OriginInfo = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetIndepAccount(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.IndepAccount = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetUserId(v int64) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetUserUid(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.UserUid = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetUserName(v string) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetProxyId(v int64) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *ListProxyAccessesResponseBodyProxyAccessList) SetInstanceId(v int64) *ListProxyAccessesResponseBodyProxyAccessList {
+	s.InstanceId = &v
+	return s
+}
+
+type ListProxyAccessesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProxyAccessesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProxyAccessesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxyAccessesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxyAccessesResponse) SetHeaders(v map[string]*string) *ListProxyAccessesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProxyAccessesResponse) SetBody(v *ListProxyAccessesResponseBody) *ListProxyAccessesResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePublishGroupTaskRequest struct {
 	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -9123,6 +9636,94 @@ func (s *GetDatabaseResponse) SetHeaders(v map[string]*string) *GetDatabaseRespo
 }
 
 func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type InspectProxyAccessSecretRequest struct {
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s InspectProxyAccessSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InspectProxyAccessSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InspectProxyAccessSecretRequest) SetProxyAccessId(v int64) *InspectProxyAccessSecretRequest {
+	s.ProxyAccessId = &v
+	return s
+}
+
+func (s *InspectProxyAccessSecretRequest) SetTid(v int64) *InspectProxyAccessSecretRequest {
+	s.Tid = &v
+	return s
+}
+
+type InspectProxyAccessSecretResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	AccessSecret *string `json:"AccessSecret,omitempty" xml:"AccessSecret,omitempty"`
+}
+
+func (s InspectProxyAccessSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InspectProxyAccessSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InspectProxyAccessSecretResponseBody) SetRequestId(v string) *InspectProxyAccessSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InspectProxyAccessSecretResponseBody) SetSuccess(v bool) *InspectProxyAccessSecretResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InspectProxyAccessSecretResponseBody) SetErrorMessage(v string) *InspectProxyAccessSecretResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *InspectProxyAccessSecretResponseBody) SetErrorCode(v string) *InspectProxyAccessSecretResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *InspectProxyAccessSecretResponseBody) SetAccessSecret(v string) *InspectProxyAccessSecretResponseBody {
+	s.AccessSecret = &v
+	return s
+}
+
+type InspectProxyAccessSecretResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InspectProxyAccessSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InspectProxyAccessSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InspectProxyAccessSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InspectProxyAccessSecretResponse) SetHeaders(v map[string]*string) *InspectProxyAccessSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InspectProxyAccessSecretResponse) SetBody(v *InspectProxyAccessSecretResponseBody) *InspectProxyAccessSecretResponse {
 	s.Body = v
 	return s
 }
@@ -10467,6 +11068,88 @@ func (s *ApproveOrderResponse) SetBody(v *ApproveOrderResponseBody) *ApproveOrde
 	return s
 }
 
+type DeleteProxyAccessRequest struct {
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteProxyAccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessRequest) SetProxyAccessId(v int64) *DeleteProxyAccessRequest {
+	s.ProxyAccessId = &v
+	return s
+}
+
+func (s *DeleteProxyAccessRequest) SetTid(v int64) *DeleteProxyAccessRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteProxyAccessResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteProxyAccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessResponseBody) SetRequestId(v string) *DeleteProxyAccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetSuccess(v bool) *DeleteProxyAccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetErrorMessage(v string) *DeleteProxyAccessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetErrorCode(v string) *DeleteProxyAccessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteProxyAccessResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProxyAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProxyAccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessResponse) SetHeaders(v map[string]*string) *DeleteProxyAccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *DeleteProxyAccessResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataCorrectTaskDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -10686,6 +11369,88 @@ func (s *CreateUploadFileJobResponse) SetHeaders(v map[string]*string) *CreateUp
 }
 
 func (s *CreateUploadFileJobResponse) SetBody(v *CreateUploadFileJobResponseBody) *CreateUploadFileJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProxyRequest struct {
+	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteProxyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyRequest) SetProxyId(v int64) *DeleteProxyRequest {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *DeleteProxyRequest) SetTid(v int64) *DeleteProxyRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteProxyResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteProxyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyResponseBody) SetRequestId(v string) *DeleteProxyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProxyResponseBody) SetSuccess(v bool) *DeleteProxyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteProxyResponseBody) SetErrorMessage(v string) *DeleteProxyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteProxyResponseBody) SetErrorCode(v string) *DeleteProxyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteProxyResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProxyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyResponse) SetHeaders(v map[string]*string) *DeleteProxyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProxyResponse) SetBody(v *DeleteProxyResponseBody) *DeleteProxyResponse {
 	s.Body = v
 	return s
 }
@@ -14369,6 +15134,159 @@ func (s *ListWorkFlowNodesResponse) SetBody(v *ListWorkFlowNodesResponseBody) *L
 	return s
 }
 
+type ListProxiesRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListProxiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesRequest) SetTid(v int64) *ListProxiesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListProxiesResponseBody struct {
+	// Id of the request
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyList    []*ListProxiesResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
+}
+
+func (s ListProxiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponseBody) SetRequestId(v string) *ListProxiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetSuccess(v bool) *ListProxiesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetErrorMessage(v string) *ListProxiesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetErrorCode(v string) *ListProxiesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetProxyList(v []*ListProxiesResponseBodyProxyList) *ListProxiesResponseBody {
+	s.ProxyList = v
+	return s
+}
+
+type ListProxiesResponseBodyProxyList struct {
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
+	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
+	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
+	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+}
+
+func (s ListProxiesResponseBodyProxyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponseBodyProxyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetProxyId(v int64) *ListProxiesResponseBodyProxyList {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetCreatorId(v int64) *ListProxiesResponseBodyProxyList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetCreatorName(v string) *ListProxiesResponseBodyProxyList {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetInstanceId(v int64) *ListProxiesResponseBodyProxyList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPrivateEnable(v bool) *ListProxiesResponseBodyProxyList {
+	s.PrivateEnable = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPrivateHost(v string) *ListProxiesResponseBodyProxyList {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPublicEnable(v bool) *ListProxiesResponseBodyProxyList {
+	s.PublicEnable = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPublicHost(v string) *ListProxiesResponseBodyProxyList {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetMysqlPort(v int32) *ListProxiesResponseBodyProxyList {
+	s.MysqlPort = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetHttpsPort(v int32) *ListProxiesResponseBodyProxyList {
+	s.HttpsPort = &v
+	return s
+}
+
+type ListProxiesResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProxiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProxiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponse) SetHeaders(v map[string]*string) *ListProxiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProxiesResponse) SetBody(v *ListProxiesResponseBody) *ListProxiesResponse {
+	s.Body = v
+	return s
+}
+
 type GetStructSyncOrderDetailRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -15995,6 +16913,34 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) CreateProxyAccessWithOptions(request *CreateProxyAccessRequest, runtime *util.RuntimeOptions) (_result *CreateProxyAccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateProxyAccessResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateProxyAccess"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProxyAccess(request *CreateProxyAccessRequest) (_result *CreateProxyAccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProxyAccessResponse{}
+	_body, _err := client.CreateProxyAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListUserPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16044,6 +16990,34 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkFlowTemplatesResponse{}
 	_body, _err := client.ListWorkFlowTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *util.RuntimeOptions) (_result *GetProxyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetProxyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetProxy"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProxy(request *GetProxyRequest) (_result *GetProxyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProxyResponse{}
+	_body, _err := client.GetProxyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16184,6 +17158,34 @@ func (client *Client) GetStructSyncJobDetail(request *GetStructSyncJobDetailRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStructSyncJobDetailResponse{}
 	_body, _err := client.GetStructSyncJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProxyWithOptions(request *CreateProxyRequest, runtime *util.RuntimeOptions) (_result *CreateProxyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateProxyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateProxy"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProxy(request *CreateProxyRequest) (_result *CreateProxyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProxyResponse{}
+	_body, _err := client.CreateProxyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16969,6 +17971,34 @@ func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrder
 	return _result, _err
 }
 
+func (client *Client) ListProxyAccessesWithOptions(request *ListProxyAccessesRequest, runtime *util.RuntimeOptions) (_result *ListProxyAccessesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListProxyAccessesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProxyAccesses"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProxyAccesses(request *ListProxyAccessesRequest) (_result *ListProxyAccessesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProxyAccessesResponse{}
+	_body, _err := client.ListProxyAccessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreatePublishGroupTaskWithOptions(request *CreatePublishGroupTaskRequest, runtime *util.RuntimeOptions) (_result *CreatePublishGroupTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17018,6 +18048,34 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDatabaseResponse{}
 	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InspectProxyAccessSecretWithOptions(request *InspectProxyAccessSecretRequest, runtime *util.RuntimeOptions) (_result *InspectProxyAccessSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &InspectProxyAccessSecretResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("InspectProxyAccessSecret"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecretRequest) (_result *InspectProxyAccessSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InspectProxyAccessSecretResponse{}
+	_body, _err := client.InspectProxyAccessSecretWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17249,6 +18307,34 @@ func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *Appro
 	return _result, _err
 }
 
+func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessRequest, runtime *util.RuntimeOptions) (_result *DeleteProxyAccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteProxyAccessResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteProxyAccess"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_result *DeleteProxyAccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProxyAccessResponse{}
+	_body, _err := client.DeleteProxyAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrectTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17298,6 +18384,34 @@ func (client *Client) CreateUploadFileJob(request *CreateUploadFileJobRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUploadFileJobResponse{}
 	_body, _err := client.CreateUploadFileJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProxyWithOptions(request *DeleteProxyRequest, runtime *util.RuntimeOptions) (_result *DeleteProxyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteProxyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteProxy"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProxy(request *DeleteProxyRequest) (_result *DeleteProxyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProxyResponse{}
+	_body, _err := client.DeleteProxyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17944,6 +19058,34 @@ func (client *Client) ListWorkFlowNodes(request *ListWorkFlowNodesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkFlowNodesResponse{}
 	_body, _err := client.ListWorkFlowNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProxiesWithOptions(request *ListProxiesRequest, runtime *util.RuntimeOptions) (_result *ListProxiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListProxiesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProxies"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProxies(request *ListProxiesRequest) (_result *ListProxiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProxiesResponse{}
+	_body, _err := client.ListProxiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
