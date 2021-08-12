@@ -60,6 +60,8 @@ type GetSnapshotInfoResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 快照是否为加密快照
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// 快照格式。"FORMAT_VHD", "FORMAT_RAW", "FORMAT_INVALID"
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 }
 
 func (s GetSnapshotInfoResponseBody) String() string {
@@ -102,6 +104,11 @@ func (s *GetSnapshotInfoResponseBody) SetCreateTime(v int64) *GetSnapshotInfoRes
 
 func (s *GetSnapshotInfoResponseBody) SetEncrypted(v bool) *GetSnapshotInfoResponseBody {
 	s.Encrypted = &v
+	return s
+}
+
+func (s *GetSnapshotInfoResponseBody) SetFormat(v string) *GetSnapshotInfoResponseBody {
+	s.Format = &v
 	return s
 }
 
@@ -241,7 +248,7 @@ type ListSnapshotBlocksResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 快照有效数据块信息列表，不包含空数据块
 	Blocks []*ListSnapshotBlocksResponseBodyBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
-	// BlockToken 过期时间戳
+	// BlockToken 过期 UTC 时间戳, 单位微秒
 	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// 快照大小，单位 GB，最小 1GB
 	VolumeSize *int64 `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
@@ -402,7 +409,7 @@ type ListChangedBlocksResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 两个快照差异的数据块列表
 	ChangedBlocks []*ListChangedBlocksResponseBodyChangedBlocks `json:"ChangedBlocks,omitempty" xml:"ChangedBlocks,omitempty" type:"Repeated"`
-	// 差异数据块 token 过期时间戳
+	// 差异数据块 token 过期 UTC 时间戳， 单位微秒
 	ExpiryTime *int64 `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// 第二个快照大小，单位 GB，最小 1GB
 	VolumeSize *int64 `json:"VolumeSize,omitempty" xml:"VolumeSize,omitempty"`
