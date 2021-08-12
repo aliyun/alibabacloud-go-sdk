@@ -12,6 +12,134 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AttachAlbServerGroupsRequest struct {
+	OwnerId              *int64                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScalingGroupId       *string                                       `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceAttach          *bool                                         `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
+	AlbServerGroup       []*AttachAlbServerGroupsRequestAlbServerGroup `json:"AlbServerGroup,omitempty" xml:"AlbServerGroup,omitempty" type:"Repeated"`
+}
+
+func (s AttachAlbServerGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachAlbServerGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachAlbServerGroupsRequest) SetOwnerId(v int64) *AttachAlbServerGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetResourceOwnerAccount(v string) *AttachAlbServerGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetRegionId(v string) *AttachAlbServerGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetScalingGroupId(v string) *AttachAlbServerGroupsRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetClientToken(v string) *AttachAlbServerGroupsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetForceAttach(v bool) *AttachAlbServerGroupsRequest {
+	s.ForceAttach = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequest) SetAlbServerGroup(v []*AttachAlbServerGroupsRequestAlbServerGroup) *AttachAlbServerGroupsRequest {
+	s.AlbServerGroup = v
+	return s
+}
+
+type AttachAlbServerGroupsRequestAlbServerGroup struct {
+	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s AttachAlbServerGroupsRequestAlbServerGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachAlbServerGroupsRequestAlbServerGroup) GoString() string {
+	return s.String()
+}
+
+func (s *AttachAlbServerGroupsRequestAlbServerGroup) SetAlbServerGroupId(v string) *AttachAlbServerGroupsRequestAlbServerGroup {
+	s.AlbServerGroupId = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequestAlbServerGroup) SetWeight(v int32) *AttachAlbServerGroupsRequestAlbServerGroup {
+	s.Weight = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsRequestAlbServerGroup) SetPort(v int32) *AttachAlbServerGroupsRequestAlbServerGroup {
+	s.Port = &v
+	return s
+}
+
+type AttachAlbServerGroupsResponseBody struct {
+	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachAlbServerGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachAlbServerGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachAlbServerGroupsResponseBody) SetScalingActivityId(v string) *AttachAlbServerGroupsResponseBody {
+	s.ScalingActivityId = &v
+	return s
+}
+
+func (s *AttachAlbServerGroupsResponseBody) SetRequestId(v string) *AttachAlbServerGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachAlbServerGroupsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AttachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachAlbServerGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachAlbServerGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachAlbServerGroupsResponse) SetHeaders(v map[string]*string) *AttachAlbServerGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachAlbServerGroupsResponse) SetBody(v *AttachAlbServerGroupsResponseBody) *AttachAlbServerGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type AttachDBInstancesRequest struct {
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -159,8 +287,8 @@ func (s *AttachInstancesRequest) SetLoadBalancerWeight(v []*int) *AttachInstance
 }
 
 type AttachInstancesResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachInstancesResponseBody) String() string {
@@ -171,13 +299,13 @@ func (s AttachInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AttachInstancesResponseBody) SetRequestId(v string) *AttachInstancesResponseBody {
-	s.RequestId = &v
+func (s *AttachInstancesResponseBody) SetScalingActivityId(v string) *AttachInstancesResponseBody {
+	s.ScalingActivityId = &v
 	return s
 }
 
-func (s *AttachInstancesResponseBody) SetScalingActivityId(v string) *AttachInstancesResponseBody {
-	s.ScalingActivityId = &v
+func (s *AttachInstancesResponseBody) SetRequestId(v string) *AttachInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -210,6 +338,7 @@ type AttachLoadBalancersRequest struct {
 	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	ForceAttach          *bool     `json:"ForceAttach,omitempty" xml:"ForceAttach,omitempty"`
 	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Async                *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 	LoadBalancer         []*string `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Repeated"`
 }
 
@@ -246,13 +375,19 @@ func (s *AttachLoadBalancersRequest) SetClientToken(v string) *AttachLoadBalance
 	return s
 }
 
+func (s *AttachLoadBalancersRequest) SetAsync(v bool) *AttachLoadBalancersRequest {
+	s.Async = &v
+	return s
+}
+
 func (s *AttachLoadBalancersRequest) SetLoadBalancer(v []*string) *AttachLoadBalancersRequest {
 	s.LoadBalancer = v
 	return s
 }
 
 type AttachLoadBalancersResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachLoadBalancersResponseBody) String() string {
@@ -261,6 +396,11 @@ func (s AttachLoadBalancersResponseBody) String() string {
 
 func (s AttachLoadBalancersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AttachLoadBalancersResponseBody) SetScalingActivityId(v string) *AttachLoadBalancersResponseBody {
+	s.ScalingActivityId = &v
+	return s
 }
 
 func (s *AttachLoadBalancersResponseBody) SetRequestId(v string) *AttachLoadBalancersResponseBody {
@@ -666,8 +806,8 @@ func (s *CreateAlarmRequestDimension) SetDimensionValue(v string) *CreateAlarmRe
 }
 
 type CreateAlarmResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAlarmResponseBody) String() string {
@@ -678,13 +818,13 @@ func (s CreateAlarmResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAlarmResponseBody) SetRequestId(v string) *CreateAlarmResponseBody {
-	s.RequestId = &v
+func (s *CreateAlarmResponseBody) SetAlarmTaskId(v string) *CreateAlarmResponseBody {
+	s.AlarmTaskId = &v
 	return s
 }
 
-func (s *CreateAlarmResponseBody) SetAlarmTaskId(v string) *CreateAlarmResponseBody {
-	s.AlarmTaskId = &v
+func (s *CreateAlarmResponseBody) SetRequestId(v string) *CreateAlarmResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -958,6 +1098,8 @@ type CreateScalingConfigurationRequest struct {
 	DataDisk                    []*CreateScalingConfigurationRequestDataDisk             `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	SpotPriceLimit              []*CreateScalingConfigurationRequestSpotPriceLimit       `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty" type:"Repeated"`
 	SecurityGroupIds            []*string                                                `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InstancePatternInfo         []*CreateScalingConfigurationRequestInstancePatternInfo  `json:"InstancePatternInfo,omitempty" xml:"InstancePatternInfo,omitempty" type:"Repeated"`
+	SystemDiskCategory          []*string                                                `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty" type:"Repeated"`
 }
 
 func (s CreateScalingConfigurationRequest) String() string {
@@ -1208,6 +1350,16 @@ func (s *CreateScalingConfigurationRequest) SetSecurityGroupIds(v []*string) *Cr
 	return s
 }
 
+func (s *CreateScalingConfigurationRequest) SetInstancePatternInfo(v []*CreateScalingConfigurationRequestInstancePatternInfo) *CreateScalingConfigurationRequest {
+	s.InstancePatternInfo = v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetSystemDiskCategory(v []*string) *CreateScalingConfigurationRequest {
+	s.SystemDiskCategory = v
+	return s
+}
+
 type CreateScalingConfigurationRequestSystemDisk struct {
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -1302,17 +1454,18 @@ func (s *CreateScalingConfigurationRequestInstanceTypeOverride) SetWeightedCapac
 }
 
 type CreateScalingConfigurationRequestDataDisk struct {
-	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Device               *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskName             *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	DeleteWithInstance   *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted            *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Categorys            []*string `json:"Categorys,omitempty" xml:"Categorys,omitempty" type:"Repeated"`
+	PerformanceLevel     *string   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	AutoSnapshotPolicyId *string   `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	Encrypted            *string   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Size                 *int32    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Device               *string   `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskName             *string   `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Category             *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance   *bool     `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	KMSKeyId             *string   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 }
 
 func (s CreateScalingConfigurationRequestDataDisk) String() string {
@@ -1323,8 +1476,23 @@ func (s CreateScalingConfigurationRequestDataDisk) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScalingConfigurationRequestDataDisk) SetCategorys(v []*string) *CreateScalingConfigurationRequestDataDisk {
+	s.Categorys = v
+	return s
+}
+
 func (s *CreateScalingConfigurationRequestDataDisk) SetPerformanceLevel(v string) *CreateScalingConfigurationRequestDataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestDataDisk) SetAutoSnapshotPolicyId(v string) *CreateScalingConfigurationRequestDataDisk {
+	s.AutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestDataDisk) SetEncrypted(v string) *CreateScalingConfigurationRequestDataDisk {
+	s.Encrypted = &v
 	return s
 }
 
@@ -1353,18 +1521,8 @@ func (s *CreateScalingConfigurationRequestDataDisk) SetDiskName(v string) *Creat
 	return s
 }
 
-func (s *CreateScalingConfigurationRequestDataDisk) SetAutoSnapshotPolicyId(v string) *CreateScalingConfigurationRequestDataDisk {
-	s.AutoSnapshotPolicyId = &v
-	return s
-}
-
 func (s *CreateScalingConfigurationRequestDataDisk) SetCategory(v string) *CreateScalingConfigurationRequestDataDisk {
 	s.Category = &v
-	return s
-}
-
-func (s *CreateScalingConfigurationRequestDataDisk) SetKMSKeyId(v string) *CreateScalingConfigurationRequestDataDisk {
-	s.KMSKeyId = &v
 	return s
 }
 
@@ -1373,8 +1531,8 @@ func (s *CreateScalingConfigurationRequestDataDisk) SetDeleteWithInstance(v bool
 	return s
 }
 
-func (s *CreateScalingConfigurationRequestDataDisk) SetEncrypted(v string) *CreateScalingConfigurationRequestDataDisk {
-	s.Encrypted = &v
+func (s *CreateScalingConfigurationRequestDataDisk) SetKMSKeyId(v string) *CreateScalingConfigurationRequestDataDisk {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -1398,6 +1556,41 @@ func (s *CreateScalingConfigurationRequestSpotPriceLimit) SetPriceLimit(v float3
 
 func (s *CreateScalingConfigurationRequestSpotPriceLimit) SetInstanceType(v string) *CreateScalingConfigurationRequestSpotPriceLimit {
 	s.InstanceType = &v
+	return s
+}
+
+type CreateScalingConfigurationRequestInstancePatternInfo struct {
+	Cores               *int32   `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	InstanceFamilyLevel *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s CreateScalingConfigurationRequestInstancePatternInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationRequestInstancePatternInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationRequestInstancePatternInfo) SetCores(v int32) *CreateScalingConfigurationRequestInstancePatternInfo {
+	s.Cores = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestInstancePatternInfo) SetInstanceFamilyLevel(v string) *CreateScalingConfigurationRequestInstancePatternInfo {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestInstancePatternInfo) SetMaxPrice(v float32) *CreateScalingConfigurationRequestInstancePatternInfo {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestInstancePatternInfo) SetMemory(v float32) *CreateScalingConfigurationRequestInstancePatternInfo {
+	s.Memory = &v
 	return s
 }
 
@@ -1450,6 +1643,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	DataDisk                    []*CreateScalingConfigurationShrinkRequestDataDisk             `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	SpotPriceLimit              []*CreateScalingConfigurationShrinkRequestSpotPriceLimit       `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty" type:"Repeated"`
 	SecurityGroupIds            []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InstancePatternInfo         []*CreateScalingConfigurationShrinkRequestInstancePatternInfo  `json:"InstancePatternInfo,omitempty" xml:"InstancePatternInfo,omitempty" type:"Repeated"`
+	SystemDiskCategory          []*string                                                      `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty" type:"Repeated"`
 }
 
 func (s CreateScalingConfigurationShrinkRequest) String() string {
@@ -1700,6 +1895,16 @@ func (s *CreateScalingConfigurationShrinkRequest) SetSecurityGroupIds(v []*strin
 	return s
 }
 
+func (s *CreateScalingConfigurationShrinkRequest) SetInstancePatternInfo(v []*CreateScalingConfigurationShrinkRequestInstancePatternInfo) *CreateScalingConfigurationShrinkRequest {
+	s.InstancePatternInfo = v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetSystemDiskCategory(v []*string) *CreateScalingConfigurationShrinkRequest {
+	s.SystemDiskCategory = v
+	return s
+}
+
 type CreateScalingConfigurationShrinkRequestSystemDisk struct {
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -1794,17 +1999,18 @@ func (s *CreateScalingConfigurationShrinkRequestInstanceTypeOverride) SetWeighte
 }
 
 type CreateScalingConfigurationShrinkRequestDataDisk struct {
-	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Device               *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskName             *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	DeleteWithInstance   *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted            *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Categorys            []*string `json:"Categorys,omitempty" xml:"Categorys,omitempty" type:"Repeated"`
+	PerformanceLevel     *string   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	AutoSnapshotPolicyId *string   `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	Encrypted            *string   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Size                 *int32    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Device               *string   `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskName             *string   `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Category             *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance   *bool     `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	KMSKeyId             *string   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 }
 
 func (s CreateScalingConfigurationShrinkRequestDataDisk) String() string {
@@ -1815,8 +2021,23 @@ func (s CreateScalingConfigurationShrinkRequestDataDisk) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetCategorys(v []*string) *CreateScalingConfigurationShrinkRequestDataDisk {
+	s.Categorys = v
+	return s
+}
+
 func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetPerformanceLevel(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetAutoSnapshotPolicyId(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
+	s.AutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetEncrypted(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
+	s.Encrypted = &v
 	return s
 }
 
@@ -1845,18 +2066,8 @@ func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetDiskName(v string) 
 	return s
 }
 
-func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetAutoSnapshotPolicyId(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
-	s.AutoSnapshotPolicyId = &v
-	return s
-}
-
 func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetCategory(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
 	s.Category = &v
-	return s
-}
-
-func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetKMSKeyId(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
-	s.KMSKeyId = &v
 	return s
 }
 
@@ -1865,8 +2076,8 @@ func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetDeleteWithInstance(
 	return s
 }
 
-func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetEncrypted(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
-	s.Encrypted = &v
+func (s *CreateScalingConfigurationShrinkRequestDataDisk) SetKMSKeyId(v string) *CreateScalingConfigurationShrinkRequestDataDisk {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -1893,9 +2104,44 @@ func (s *CreateScalingConfigurationShrinkRequestSpotPriceLimit) SetInstanceType(
 	return s
 }
 
+type CreateScalingConfigurationShrinkRequestInstancePatternInfo struct {
+	Cores               *int32   `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	InstanceFamilyLevel *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s CreateScalingConfigurationShrinkRequestInstancePatternInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationShrinkRequestInstancePatternInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationShrinkRequestInstancePatternInfo) SetCores(v int32) *CreateScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.Cores = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestInstancePatternInfo) SetInstanceFamilyLevel(v string) *CreateScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestInstancePatternInfo) SetMaxPrice(v float32) *CreateScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestInstancePatternInfo) SetMemory(v float32) *CreateScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.Memory = &v
+	return s
+}
+
 type CreateScalingConfigurationResponseBody struct {
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateScalingConfigurationResponseBody) String() string {
@@ -1906,13 +2152,13 @@ func (s CreateScalingConfigurationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateScalingConfigurationResponseBody) SetRequestId(v string) *CreateScalingConfigurationResponseBody {
-	s.RequestId = &v
+func (s *CreateScalingConfigurationResponseBody) SetScalingConfigurationId(v string) *CreateScalingConfigurationResponseBody {
+	s.ScalingConfigurationId = &v
 	return s
 }
 
-func (s *CreateScalingConfigurationResponseBody) SetScalingConfigurationId(v string) *CreateScalingConfigurationResponseBody {
-	s.ScalingConfigurationId = &v
+func (s *CreateScalingConfigurationResponseBody) SetRequestId(v string) *CreateScalingConfigurationResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1966,12 +2212,12 @@ type CreateScalingGroupRequest struct {
 	SpotInstancePools                   *int32                                             `json:"SpotInstancePools,omitempty" xml:"SpotInstancePools,omitempty"`
 	DesiredCapacity                     *int32                                             `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
 	GroupDeletionProtection             *bool                                              `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
-	ScaleOutAmountCheck                 *bool                                              `json:"ScaleOutAmountCheck,omitempty" xml:"ScaleOutAmountCheck,omitempty"`
 	VSwitchIds                          []*string                                          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	LifecycleHook                       []*CreateScalingGroupRequestLifecycleHook          `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty" type:"Repeated"`
 	VServerGroup                        []*CreateScalingGroupRequestVServerGroup           `json:"VServerGroup,omitempty" xml:"VServerGroup,omitempty" type:"Repeated"`
 	Tag                                 []*CreateScalingGroupRequestTag                    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	LaunchTemplateOverride              []*CreateScalingGroupRequestLaunchTemplateOverride `json:"LaunchTemplateOverride,omitempty" xml:"LaunchTemplateOverride,omitempty" type:"Repeated"`
+	AlbServerGroup                      []*CreateScalingGroupRequestAlbServerGroup         `json:"AlbServerGroup,omitempty" xml:"AlbServerGroup,omitempty" type:"Repeated"`
 }
 
 func (s CreateScalingGroupRequest) String() string {
@@ -2112,11 +2358,6 @@ func (s *CreateScalingGroupRequest) SetGroupDeletionProtection(v bool) *CreateSc
 	return s
 }
 
-func (s *CreateScalingGroupRequest) SetScaleOutAmountCheck(v bool) *CreateScalingGroupRequest {
-	s.ScaleOutAmountCheck = &v
-	return s
-}
-
 func (s *CreateScalingGroupRequest) SetVSwitchIds(v []*string) *CreateScalingGroupRequest {
 	s.VSwitchIds = v
 	return s
@@ -2139,6 +2380,11 @@ func (s *CreateScalingGroupRequest) SetTag(v []*CreateScalingGroupRequestTag) *C
 
 func (s *CreateScalingGroupRequest) SetLaunchTemplateOverride(v []*CreateScalingGroupRequestLaunchTemplateOverride) *CreateScalingGroupRequest {
 	s.LaunchTemplateOverride = v
+	return s
+}
+
+func (s *CreateScalingGroupRequest) SetAlbServerGroup(v []*CreateScalingGroupRequestAlbServerGroup) *CreateScalingGroupRequest {
+	s.AlbServerGroup = v
 	return s
 }
 
@@ -2284,6 +2530,35 @@ func (s *CreateScalingGroupRequestLaunchTemplateOverride) SetInstanceType(v stri
 
 func (s *CreateScalingGroupRequestLaunchTemplateOverride) SetWeightedCapacity(v int32) *CreateScalingGroupRequestLaunchTemplateOverride {
 	s.WeightedCapacity = &v
+	return s
+}
+
+type CreateScalingGroupRequestAlbServerGroup struct {
+	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
+	Weight           *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s CreateScalingGroupRequestAlbServerGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingGroupRequestAlbServerGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingGroupRequestAlbServerGroup) SetAlbServerGroupId(v string) *CreateScalingGroupRequestAlbServerGroup {
+	s.AlbServerGroupId = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestAlbServerGroup) SetWeight(v int32) *CreateScalingGroupRequestAlbServerGroup {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestAlbServerGroup) SetPort(v int32) *CreateScalingGroupRequestAlbServerGroup {
+	s.Port = &v
 	return s
 }
 
@@ -2671,8 +2946,8 @@ func (s *CreateScheduledTaskRequest) SetScalingGroupId(v string) *CreateSchedule
 }
 
 type CreateScheduledTaskResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateScheduledTaskResponseBody) String() string {
@@ -2683,13 +2958,13 @@ func (s CreateScheduledTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateScheduledTaskResponseBody) SetRequestId(v string) *CreateScheduledTaskResponseBody {
-	s.RequestId = &v
+func (s *CreateScheduledTaskResponseBody) SetScheduledTaskId(v string) *CreateScheduledTaskResponseBody {
+	s.ScheduledTaskId = &v
 	return s
 }
 
-func (s *CreateScheduledTaskResponseBody) SetScheduledTaskId(v string) *CreateScheduledTaskResponseBody {
-	s.ScheduledTaskId = &v
+func (s *CreateScheduledTaskResponseBody) SetRequestId(v string) *CreateScheduledTaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2827,8 +3102,8 @@ func (s *DeleteAlarmRequest) SetAlarmTaskId(v string) *DeleteAlarmRequest {
 }
 
 type DeleteAlarmResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAlarmResponseBody) String() string {
@@ -2839,13 +3114,13 @@ func (s DeleteAlarmResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAlarmResponseBody) SetRequestId(v string) *DeleteAlarmResponseBody {
-	s.RequestId = &v
+func (s *DeleteAlarmResponseBody) SetAlarmTaskId(v string) *DeleteAlarmResponseBody {
+	s.AlarmTaskId = &v
 	return s
 }
 
-func (s *DeleteAlarmResponseBody) SetAlarmTaskId(v string) *DeleteAlarmResponseBody {
-	s.AlarmTaskId = &v
+func (s *DeleteAlarmResponseBody) SetRequestId(v string) *DeleteAlarmResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3418,10 +3693,10 @@ func (s *DescribeAlarmsRequest) SetPageNumber(v int32) *DescribeAlarmsRequest {
 }
 
 type DescribeAlarmsResponseBody struct {
-	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AlarmList  *DescribeAlarmsResponseBodyAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Struct"`
 }
 
@@ -3431,11 +3706,6 @@ func (s DescribeAlarmsResponseBody) String() string {
 
 func (s DescribeAlarmsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAlarmsResponseBody) SetTotalCount(v int32) *DescribeAlarmsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeAlarmsResponseBody) SetPageSize(v int32) *DescribeAlarmsResponseBody {
@@ -3450,6 +3720,11 @@ func (s *DescribeAlarmsResponseBody) SetRequestId(v string) *DescribeAlarmsRespo
 
 func (s *DescribeAlarmsResponseBody) SetPageNumber(v int32) *DescribeAlarmsResponseBody {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAlarmsResponseBody) SetTotalCount(v int32) *DescribeAlarmsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3480,18 +3755,18 @@ type DescribeAlarmsResponseBodyAlarmListAlarm struct {
 	MetricName         *string                                               `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	EvaluationCount    *int32                                                `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
 	State              *string                                               `json:"State,omitempty" xml:"State,omitempty"`
-	AlarmActions       *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Struct"`
-	ScalingGroupId     *string                                               `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	Period             *int32                                                `json:"Period,omitempty" xml:"Period,omitempty"`
+	ScalingGroupId     *string                                               `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	ComparisonOperator *string                                               `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	Effective          *string                                               `json:"Effective,omitempty" xml:"Effective,omitempty"`
 	Description        *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	Dimensions         *DescribeAlarmsResponseBodyAlarmListAlarmDimensions   `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Struct"`
 	MetricType         *string                                               `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	Name               *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Threshold          *float32                                              `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Enable             *bool                                                 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	Statistics         *string                                               `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Dimensions         *DescribeAlarmsResponseBodyAlarmListAlarmDimensions   `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Struct"`
+	AlarmActions       *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Struct"`
 }
 
 func (s DescribeAlarmsResponseBodyAlarmListAlarm) String() string {
@@ -3522,18 +3797,13 @@ func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetState(v string) *DescribeA
 	return s
 }
 
-func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetAlarmActions(v *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) *DescribeAlarmsResponseBodyAlarmListAlarm {
-	s.AlarmActions = v
+func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetPeriod(v int32) *DescribeAlarmsResponseBodyAlarmListAlarm {
+	s.Period = &v
 	return s
 }
 
 func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetScalingGroupId(v string) *DescribeAlarmsResponseBodyAlarmListAlarm {
 	s.ScalingGroupId = &v
-	return s
-}
-
-func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetPeriod(v int32) *DescribeAlarmsResponseBodyAlarmListAlarm {
-	s.Period = &v
 	return s
 }
 
@@ -3549,11 +3819,6 @@ func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetEffective(v string) *Descr
 
 func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetDescription(v string) *DescribeAlarmsResponseBodyAlarmListAlarm {
 	s.Description = &v
-	return s
-}
-
-func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetDimensions(v *DescribeAlarmsResponseBodyAlarmListAlarmDimensions) *DescribeAlarmsResponseBodyAlarmListAlarm {
-	s.Dimensions = v
 	return s
 }
 
@@ -3582,20 +3847,13 @@ func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetStatistics(v string) *Desc
 	return s
 }
 
-type DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions struct {
-	AlarmAction []*string `json:"AlarmAction,omitempty" xml:"AlarmAction,omitempty" type:"Repeated"`
+func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetDimensions(v *DescribeAlarmsResponseBodyAlarmListAlarmDimensions) *DescribeAlarmsResponseBodyAlarmListAlarm {
+	s.Dimensions = v
+	return s
 }
 
-func (s DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) SetAlarmAction(v []*string) *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions {
-	s.AlarmAction = v
+func (s *DescribeAlarmsResponseBodyAlarmListAlarm) SetAlarmActions(v *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) *DescribeAlarmsResponseBodyAlarmListAlarm {
+	s.AlarmActions = v
 	return s
 }
 
@@ -3636,6 +3894,23 @@ func (s *DescribeAlarmsResponseBodyAlarmListAlarmDimensionsDimension) SetDimensi
 
 func (s *DescribeAlarmsResponseBodyAlarmListAlarmDimensionsDimension) SetDimensionValue(v string) *DescribeAlarmsResponseBodyAlarmListAlarmDimensionsDimension {
 	s.DimensionValue = &v
+	return s
+}
+
+type DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions struct {
+	AlarmAction []*string `json:"AlarmAction,omitempty" xml:"AlarmAction,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions) SetAlarmAction(v []*string) *DescribeAlarmsResponseBodyAlarmListAlarmAlarmActions {
+	s.AlarmAction = v
 	return s
 }
 
@@ -3710,9 +3985,9 @@ func (s *DescribeLifecycleActionsRequest) SetMaxResults(v int32) *DescribeLifecy
 }
 
 type DescribeLifecycleActionsResponseBody struct {
-	TotalCount       *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	NextToken        *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	MaxResults       *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	LifecycleActions *DescribeLifecycleActionsResponseBodyLifecycleActions `json:"LifecycleActions,omitempty" xml:"LifecycleActions,omitempty" type:"Struct"`
 }
@@ -3725,11 +4000,6 @@ func (s DescribeLifecycleActionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLifecycleActionsResponseBody) SetTotalCount(v int32) *DescribeLifecycleActionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribeLifecycleActionsResponseBody) SetNextToken(v string) *DescribeLifecycleActionsResponseBody {
 	s.NextToken = &v
 	return s
@@ -3737,6 +4007,11 @@ func (s *DescribeLifecycleActionsResponseBody) SetNextToken(v string) *DescribeL
 
 func (s *DescribeLifecycleActionsResponseBody) SetRequestId(v string) *DescribeLifecycleActionsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLifecycleActionsResponseBody) SetTotalCount(v int32) *DescribeLifecycleActionsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3769,10 +4044,10 @@ func (s *DescribeLifecycleActionsResponseBodyLifecycleActions) SetLifecycleActio
 
 type DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction struct {
 	LifecycleHookId       *string                                                                         `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
-	InstanceIds           *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	LifecycleActionToken  *string                                                                         `json:"LifecycleActionToken,omitempty" xml:"LifecycleActionToken,omitempty"`
 	LifecycleActionStatus *string                                                                         `json:"LifecycleActionStatus,omitempty" xml:"LifecycleActionStatus,omitempty"`
 	LifecycleActionResult *string                                                                         `json:"LifecycleActionResult,omitempty" xml:"LifecycleActionResult,omitempty"`
+	InstanceIds           *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) String() string {
@@ -3788,11 +4063,6 @@ func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) Se
 	return s
 }
 
-func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) SetInstanceIds(v *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds) *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction {
-	s.InstanceIds = v
-	return s
-}
-
 func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) SetLifecycleActionToken(v string) *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction {
 	s.LifecycleActionToken = &v
 	return s
@@ -3805,6 +4075,11 @@ func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) Se
 
 func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) SetLifecycleActionResult(v string) *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction {
 	s.LifecycleActionResult = &v
+	return s
+}
+
+func (s *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction) SetInstanceIds(v *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleActionInstanceIds) *DescribeLifecycleActionsResponseBodyLifecycleActionsLifecycleAction {
+	s.InstanceIds = v
 	return s
 }
 
@@ -3908,10 +4183,10 @@ func (s *DescribeLifecycleHooksRequest) SetLifecycleHookId(v []*string) *Describ
 }
 
 type DescribeLifecycleHooksResponseBody struct {
-	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	LifecycleHooks *DescribeLifecycleHooksResponseBodyLifecycleHooks `json:"LifecycleHooks,omitempty" xml:"LifecycleHooks,omitempty" type:"Struct"`
 }
 
@@ -3923,13 +4198,13 @@ func (s DescribeLifecycleHooksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLifecycleHooksResponseBody) SetTotalCount(v int32) *DescribeLifecycleHooksResponseBody {
-	s.TotalCount = &v
+func (s *DescribeLifecycleHooksResponseBody) SetRequestId(v string) *DescribeLifecycleHooksResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeLifecycleHooksResponseBody) SetRequestId(v string) *DescribeLifecycleHooksResponseBody {
-	s.RequestId = &v
+func (s *DescribeLifecycleHooksResponseBody) SetPageNumber(v int32) *DescribeLifecycleHooksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -3938,8 +4213,8 @@ func (s *DescribeLifecycleHooksResponseBody) SetPageSize(v int32) *DescribeLifec
 	return s
 }
 
-func (s *DescribeLifecycleHooksResponseBody) SetPageNumber(v int32) *DescribeLifecycleHooksResponseBody {
-	s.PageNumber = &v
+func (s *DescribeLifecycleHooksResponseBody) SetTotalCount(v int32) *DescribeLifecycleHooksResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4071,18 +4346,20 @@ func (s *DescribeLimitationRequest) SetResourceOwnerAccount(v string) *DescribeL
 }
 
 type DescribeLimitationResponseBody struct {
-	MaxNumberOfLifecycleHooks             *int32 `json:"MaxNumberOfLifecycleHooks,omitempty" xml:"MaxNumberOfLifecycleHooks,omitempty"`
-	MaxNumberOfScalingRules               *int32 `json:"MaxNumberOfScalingRules,omitempty" xml:"MaxNumberOfScalingRules,omitempty"`
-	MaxNumberOfScalingInstances           *int32 `json:"MaxNumberOfScalingInstances,omitempty" xml:"MaxNumberOfScalingInstances,omitempty"`
-	MaxNumberOfScheduledTasks             *int32 `json:"MaxNumberOfScheduledTasks,omitempty" xml:"MaxNumberOfScheduledTasks,omitempty"`
-	MaxNumberOfVServerGroups              *int32 `json:"MaxNumberOfVServerGroups,omitempty" xml:"MaxNumberOfVServerGroups,omitempty"`
-	MaxNumberOfLoadBalancers              *int32 `json:"MaxNumberOfLoadBalancers,omitempty" xml:"MaxNumberOfLoadBalancers,omitempty"`
-	MaxNumberOfMinSize                    *int32 `json:"MaxNumberOfMinSize,omitempty" xml:"MaxNumberOfMinSize,omitempty"`
-	MaxNumberOfScalingGroups              *int32 `json:"MaxNumberOfScalingGroups,omitempty" xml:"MaxNumberOfScalingGroups,omitempty"`
-	MaxNumberOfNotificationConfigurations *int32 `json:"MaxNumberOfNotificationConfigurations,omitempty" xml:"MaxNumberOfNotificationConfigurations,omitempty"`
-	MaxNumberOfMaxSize                    *int32 `json:"MaxNumberOfMaxSize,omitempty" xml:"MaxNumberOfMaxSize,omitempty"`
-	MaxNumberOfDBInstances                *int32 `json:"MaxNumberOfDBInstances,omitempty" xml:"MaxNumberOfDBInstances,omitempty"`
-	MaxNumberOfScalingConfigurations      *int32 `json:"MaxNumberOfScalingConfigurations,omitempty" xml:"MaxNumberOfScalingConfigurations,omitempty"`
+	MaxNumberOfScheduledTasks             *int32  `json:"MaxNumberOfScheduledTasks,omitempty" xml:"MaxNumberOfScheduledTasks,omitempty"`
+	MaxNumberOfLoadBalancers              *int32  `json:"MaxNumberOfLoadBalancers,omitempty" xml:"MaxNumberOfLoadBalancers,omitempty"`
+	MaxNumberOfMaxSize                    *int32  `json:"MaxNumberOfMaxSize,omitempty" xml:"MaxNumberOfMaxSize,omitempty"`
+	MaxNumberOfAlbServerGroup             *int32  `json:"MaxNumberOfAlbServerGroup,omitempty" xml:"MaxNumberOfAlbServerGroup,omitempty"`
+	MaxNumberOfDBInstances                *int32  `json:"MaxNumberOfDBInstances,omitempty" xml:"MaxNumberOfDBInstances,omitempty"`
+	MaxNumberOfScalingConfigurations      *int32  `json:"MaxNumberOfScalingConfigurations,omitempty" xml:"MaxNumberOfScalingConfigurations,omitempty"`
+	MaxNumberOfMinSize                    *int32  `json:"MaxNumberOfMinSize,omitempty" xml:"MaxNumberOfMinSize,omitempty"`
+	MaxNumberOfLifecycleHooks             *int32  `json:"MaxNumberOfLifecycleHooks,omitempty" xml:"MaxNumberOfLifecycleHooks,omitempty"`
+	MaxNumberOfScalingInstances           *int32  `json:"MaxNumberOfScalingInstances,omitempty" xml:"MaxNumberOfScalingInstances,omitempty"`
+	MaxNumberOfScalingGroups              *int32  `json:"MaxNumberOfScalingGroups,omitempty" xml:"MaxNumberOfScalingGroups,omitempty"`
+	RequestId                             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MaxNumberOfNotificationConfigurations *int32  `json:"MaxNumberOfNotificationConfigurations,omitempty" xml:"MaxNumberOfNotificationConfigurations,omitempty"`
+	MaxNumberOfVServerGroups              *int32  `json:"MaxNumberOfVServerGroups,omitempty" xml:"MaxNumberOfVServerGroups,omitempty"`
+	MaxNumberOfScalingRules               *int32  `json:"MaxNumberOfScalingRules,omitempty" xml:"MaxNumberOfScalingRules,omitempty"`
 }
 
 func (s DescribeLimitationResponseBody) String() string {
@@ -4093,28 +4370,8 @@ func (s DescribeLimitationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfLifecycleHooks(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfLifecycleHooks = &v
-	return s
-}
-
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingRules(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfScalingRules = &v
-	return s
-}
-
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingInstances(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfScalingInstances = &v
-	return s
-}
-
 func (s *DescribeLimitationResponseBody) SetMaxNumberOfScheduledTasks(v int32) *DescribeLimitationResponseBody {
 	s.MaxNumberOfScheduledTasks = &v
-	return s
-}
-
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfVServerGroups(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfVServerGroups = &v
 	return s
 }
 
@@ -4123,23 +4380,13 @@ func (s *DescribeLimitationResponseBody) SetMaxNumberOfLoadBalancers(v int32) *D
 	return s
 }
 
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfMinSize(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfMinSize = &v
-	return s
-}
-
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingGroups(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfScalingGroups = &v
-	return s
-}
-
-func (s *DescribeLimitationResponseBody) SetMaxNumberOfNotificationConfigurations(v int32) *DescribeLimitationResponseBody {
-	s.MaxNumberOfNotificationConfigurations = &v
-	return s
-}
-
 func (s *DescribeLimitationResponseBody) SetMaxNumberOfMaxSize(v int32) *DescribeLimitationResponseBody {
 	s.MaxNumberOfMaxSize = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfAlbServerGroup(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfAlbServerGroup = &v
 	return s
 }
 
@@ -4150,6 +4397,46 @@ func (s *DescribeLimitationResponseBody) SetMaxNumberOfDBInstances(v int32) *Des
 
 func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingConfigurations(v int32) *DescribeLimitationResponseBody {
 	s.MaxNumberOfScalingConfigurations = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfMinSize(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfMinSize = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfLifecycleHooks(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfLifecycleHooks = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingInstances(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfScalingInstances = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingGroups(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfScalingGroups = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetRequestId(v string) *DescribeLimitationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfNotificationConfigurations(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfNotificationConfigurations = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfVServerGroups(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfVServerGroups = &v
+	return s
+}
+
+func (s *DescribeLimitationResponseBody) SetMaxNumberOfScalingRules(v int32) *DescribeLimitationResponseBody {
+	s.MaxNumberOfScalingRules = &v
 	return s
 }
 
@@ -4247,8 +4534,8 @@ func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfiguration
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel struct {
 	NotificationArn   *string                                                                                                                       `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	NotificationTypes *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Struct"`
 	ScalingGroupId    *string                                                                                                                       `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	NotificationTypes *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel) String() string {
@@ -4264,13 +4551,13 @@ func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfiguration
 	return s
 }
 
-func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel) SetNotificationTypes(v *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel {
-	s.NotificationTypes = v
+func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel) SetScalingGroupId(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel {
+	s.ScalingGroupId = &v
 	return s
 }
 
-func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel) SetScalingGroupId(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel {
-	s.ScalingGroupId = &v
+func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel) SetNotificationTypes(v *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModelNotificationTypes) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModelsNotificationConfigurationModel {
+	s.NotificationTypes = v
 	return s
 }
 
@@ -4476,10 +4763,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName          *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	VpcUnavailable     *bool   `json:"VpcUnavailable,omitempty" xml:"VpcUnavailable,omitempty"`
 	ClassicUnavailable *bool   `json:"ClassicUnavailable,omitempty" xml:"ClassicUnavailable,omitempty"`
 	RegionEndpoint     *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName          *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	VpcUnavailable     *bool   `json:"VpcUnavailable,omitempty" xml:"VpcUnavailable,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4491,16 +4778,6 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.LocalName = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetVpcUnavailable(v bool) *DescribeRegionsResponseBodyRegionsRegion {
-	s.VpcUnavailable = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBodyRegionsRegion) SetClassicUnavailable(v bool) *DescribeRegionsResponseBodyRegionsRegion {
 	s.ClassicUnavailable = &v
 	return s
@@ -4508,6 +4785,16 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetClassicUnavailable(v bool)
 
 func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.RegionEndpoint = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetVpcUnavailable(v bool) *DescribeRegionsResponseBodyRegionsRegion {
+	s.VpcUnavailable = &v
 	return s
 }
 
@@ -4540,7 +4827,6 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeScalingActivitiesRequest struct {
-	ScalingActivityId    []*string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty" type:"Repeated"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4550,6 +4836,7 @@ type DescribeScalingActivitiesRequest struct {
 	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	StatusCode           *string   `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ScalingActivityId    []*string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScalingActivitiesRequest) String() string {
@@ -4558,11 +4845,6 @@ func (s DescribeScalingActivitiesRequest) String() string {
 
 func (s DescribeScalingActivitiesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScalingActivitiesRequest) SetScalingActivityId(v []*string) *DescribeScalingActivitiesRequest {
-	s.ScalingActivityId = v
-	return s
 }
 
 func (s *DescribeScalingActivitiesRequest) SetOwnerId(v int64) *DescribeScalingActivitiesRequest {
@@ -4610,11 +4892,16 @@ func (s *DescribeScalingActivitiesRequest) SetOwnerAccount(v string) *DescribeSc
 	return s
 }
 
+func (s *DescribeScalingActivitiesRequest) SetScalingActivityId(v []*string) *DescribeScalingActivitiesRequest {
+	s.ScalingActivityId = v
+	return s
+}
+
 type DescribeScalingActivitiesResponseBody struct {
-	TotalCount        *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize          *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber        *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount        *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ScalingActivities *DescribeScalingActivitiesResponseBodyScalingActivities `json:"ScalingActivities,omitempty" xml:"ScalingActivities,omitempty" type:"Struct"`
 }
 
@@ -4626,13 +4913,13 @@ func (s DescribeScalingActivitiesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeScalingActivitiesResponseBody) SetTotalCount(v int32) *DescribeScalingActivitiesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeScalingActivitiesResponseBody) SetRequestId(v string) *DescribeScalingActivitiesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBody) SetRequestId(v string) *DescribeScalingActivitiesResponseBody {
-	s.RequestId = &v
+func (s *DescribeScalingActivitiesResponseBody) SetPageNumber(v int32) *DescribeScalingActivitiesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4641,8 +4928,8 @@ func (s *DescribeScalingActivitiesResponseBody) SetPageSize(v int32) *DescribeSc
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBody) SetPageNumber(v int32) *DescribeScalingActivitiesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeScalingActivitiesResponseBody) SetTotalCount(v int32) *DescribeScalingActivitiesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4670,11 +4957,11 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetScalingActiv
 
 type DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity struct {
 	Progress              *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	AttachedCapacity      *string `json:"AttachedCapacity,omitempty" xml:"AttachedCapacity,omitempty"`
 	ScalingInstanceNumber *int32  `json:"ScalingInstanceNumber,omitempty" xml:"ScalingInstanceNumber,omitempty"`
+	AttachedCapacity      *string `json:"AttachedCapacity,omitempty" xml:"AttachedCapacity,omitempty"`
 	TotalCapacity         *string `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	AutoCreatedCapacity   *string `json:"AutoCreatedCapacity,omitempty" xml:"AutoCreatedCapacity,omitempty"`
 	ScalingGroupId        *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	AutoCreatedCapacity   *string `json:"AutoCreatedCapacity,omitempty" xml:"AutoCreatedCapacity,omitempty"`
 	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -4697,13 +4984,13 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) 
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetAttachedCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
-	s.AttachedCapacity = &v
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetScalingInstanceNumber(v int32) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
+	s.ScalingInstanceNumber = &v
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetScalingInstanceNumber(v int32) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
-	s.ScalingInstanceNumber = &v
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetAttachedCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
+	s.AttachedCapacity = &v
 	return s
 }
 
@@ -4712,13 +4999,13 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) 
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetAutoCreatedCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
-	s.AutoCreatedCapacity = &v
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetScalingGroupId(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
+	s.ScalingGroupId = &v
 	return s
 }
 
-func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetScalingGroupId(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
-	s.ScalingGroupId = &v
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity) SetAutoCreatedCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivitiesScalingActivity {
+	s.AutoCreatedCapacity = &v
 	return s
 }
 
@@ -4862,8 +5149,6 @@ func (s *DescribeScalingActivityDetailResponse) SetBody(v *DescribeScalingActivi
 }
 
 type DescribeScalingConfigurationsRequest struct {
-	ScalingConfigurationId   []*string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty" type:"Repeated"`
-	ScalingConfigurationName []*string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty" type:"Repeated"`
 	OwnerId                  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount     *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId          *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4872,6 +5157,8 @@ type DescribeScalingConfigurationsRequest struct {
 	PageSize                 *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ScalingGroupId           *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	OwnerAccount             *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ScalingConfigurationId   []*string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty" type:"Repeated"`
+	ScalingConfigurationName []*string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScalingConfigurationsRequest) String() string {
@@ -4880,16 +5167,6 @@ func (s DescribeScalingConfigurationsRequest) String() string {
 
 func (s DescribeScalingConfigurationsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsRequest) SetScalingConfigurationId(v []*string) *DescribeScalingConfigurationsRequest {
-	s.ScalingConfigurationId = v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsRequest) SetScalingConfigurationName(v []*string) *DescribeScalingConfigurationsRequest {
-	s.ScalingConfigurationName = v
-	return s
 }
 
 func (s *DescribeScalingConfigurationsRequest) SetOwnerId(v int64) *DescribeScalingConfigurationsRequest {
@@ -4932,11 +5209,21 @@ func (s *DescribeScalingConfigurationsRequest) SetOwnerAccount(v string) *Descri
 	return s
 }
 
+func (s *DescribeScalingConfigurationsRequest) SetScalingConfigurationId(v []*string) *DescribeScalingConfigurationsRequest {
+	s.ScalingConfigurationId = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsRequest) SetScalingConfigurationName(v []*string) *DescribeScalingConfigurationsRequest {
+	s.ScalingConfigurationName = v
+	return s
+}
+
 type DescribeScalingConfigurationsResponseBody struct {
-	TotalCount            *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize              *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber            *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount            *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ScalingConfigurations *DescribeScalingConfigurationsResponseBodyScalingConfigurations `json:"ScalingConfigurations,omitempty" xml:"ScalingConfigurations,omitempty" type:"Struct"`
 }
 
@@ -4948,13 +5235,13 @@ func (s DescribeScalingConfigurationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeScalingConfigurationsResponseBody) SetTotalCount(v int32) *DescribeScalingConfigurationsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeScalingConfigurationsResponseBody) SetRequestId(v string) *DescribeScalingConfigurationsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBody) SetRequestId(v string) *DescribeScalingConfigurationsResponseBody {
-	s.RequestId = &v
+func (s *DescribeScalingConfigurationsResponseBody) SetPageNumber(v int32) *DescribeScalingConfigurationsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4963,8 +5250,8 @@ func (s *DescribeScalingConfigurationsResponseBody) SetPageSize(v int32) *Descri
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBody) SetPageNumber(v int32) *DescribeScalingConfigurationsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeScalingConfigurationsResponseBody) SetTotalCount(v int32) *DescribeScalingConfigurationsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4991,58 +5278,60 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetScal
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration struct {
-	PrivatePoolOptions             *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" require:"true" type:"Struct"`
-	CreationTime                   *string                                                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ScalingConfigurationName       *string                                                                                               `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	Tags                           *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	DataDisks                      *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks          `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	SystemDiskAutoSnapshotPolicyId *string                                                                                               `json:"SystemDiskAutoSnapshotPolicyId,omitempty" xml:"SystemDiskAutoSnapshotPolicyId,omitempty"`
-	SpotStrategy                   *string                                                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	Affinity                       *string                                                                                               `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	SpotDuration                   *int32                                                                                                `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	InstanceName                   *string                                                                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	UserData                       *string                                                                                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	SpotPriceLimit                 *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit     `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty" type:"Struct"`
-	ImageId                        *string                                                                                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LoadBalancerWeight             *int32                                                                                                `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
-	HostName                       *string                                                                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	SystemDiskName                 *string                                                                                               `json:"SystemDiskName,omitempty" xml:"SystemDiskName,omitempty"`
-	InstanceType                   *string                                                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SystemDiskPerformanceLevel     *string                                                                                               `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	ImageName                      *string                                                                                               `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InternetChargeType             *string                                                                                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	ZoneId                         *string                                                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ScalingConfigurationId         *string                                                                                               `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
-	CreditSpecification            *string                                                                                               `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	SpotInterruptionBehavior       *string                                                                                               `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	DeploymentSetId                *string                                                                                               `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	SystemDiskDescription          *string                                                                                               `json:"SystemDiskDescription,omitempty" xml:"SystemDiskDescription,omitempty"`
-	KeyPairName                    *string                                                                                               `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	SecurityGroupId                *string                                                                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	ScalingGroupId                 *string                                                                                               `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	Tenancy                        *string                                                                                               `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
-	SystemDiskSize                 *int32                                                                                                `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Ipv6AddressCount               *int32                                                                                                `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	LifecycleState                 *string                                                                                               `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	SecurityEnhancementStrategy    *string                                                                                               `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	DedicatedHostId                *string                                                                                               `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	InstanceGeneration             *string                                                                                               `json:"InstanceGeneration,omitempty" xml:"InstanceGeneration,omitempty"`
-	HpcClusterId                   *string                                                                                               `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	PasswordInherit                *bool                                                                                                 `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	Memory                         *int32                                                                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ImageFamily                    *string                                                                                               `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	SystemDiskCategory             *string                                                                                               `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	WeightedCapacities             *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities `json:"WeightedCapacities,omitempty" xml:"WeightedCapacities,omitempty" type:"Struct"`
-	InternetMaxBandwidthOut        *int32                                                                                                `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	InternetMaxBandwidthIn         *int32                                                                                                `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	InstanceDescription            *string                                                                                               `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	SecurityGroupIds               *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	IoOptimized                    *string                                                                                               `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	RamRoleName                    *string                                                                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	Cpu                            *int32                                                                                                `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	ResourceGroupId                *string                                                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SchedulerOptions               *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions   `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
-	InstanceTypes                  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes      `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
+	PrivatePoolOptions             *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationPrivatePoolOptions   `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" require:"true" type:"Struct"`
+	DeploymentSetId                *string                                                                                                 `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	CreationTime                   *string                                                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ScalingConfigurationName       *string                                                                                                 `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
+	SystemDiskDescription          *string                                                                                                 `json:"SystemDiskDescription,omitempty" xml:"SystemDiskDescription,omitempty"`
+	KeyPairName                    *string                                                                                                 `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	SecurityGroupId                *string                                                                                                 `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SystemDiskAutoSnapshotPolicyId *string                                                                                                 `json:"SystemDiskAutoSnapshotPolicyId,omitempty" xml:"SystemDiskAutoSnapshotPolicyId,omitempty"`
+	SpotStrategy                   *string                                                                                                 `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	ScalingGroupId                 *string                                                                                                 `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Affinity                       *string                                                                                                 `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
+	Tenancy                        *string                                                                                                 `json:"Tenancy,omitempty" xml:"Tenancy,omitempty"`
+	SystemDiskSize                 *int32                                                                                                  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Ipv6AddressCount               *int32                                                                                                  `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	SpotDuration                   *int32                                                                                                  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	LifecycleState                 *string                                                                                                 `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	InstanceName                   *string                                                                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	SecurityEnhancementStrategy    *string                                                                                                 `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	UserData                       *string                                                                                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DedicatedHostId                *string                                                                                                 `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	InstanceGeneration             *string                                                                                                 `json:"InstanceGeneration,omitempty" xml:"InstanceGeneration,omitempty"`
+	HpcClusterId                   *string                                                                                                 `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	PasswordInherit                *bool                                                                                                   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	Memory                         *int32                                                                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ImageId                        *string                                                                                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageFamily                    *string                                                                                                 `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
+	LoadBalancerWeight             *int32                                                                                                  `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
+	SystemDiskCategory             *string                                                                                                 `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	HostName                       *string                                                                                                 `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	SystemDiskName                 *string                                                                                                 `json:"SystemDiskName,omitempty" xml:"SystemDiskName,omitempty"`
+	InternetMaxBandwidthOut        *int32                                                                                                  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	InternetMaxBandwidthIn         *int32                                                                                                  `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InstanceType                   *string                                                                                                 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceDescription            *string                                                                                                 `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	IoOptimized                    *string                                                                                                 `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	RamRoleName                    *string                                                                                                 `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SystemDiskPerformanceLevel     *string                                                                                                 `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	Cpu                            *int32                                                                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	ResourceGroupId                *string                                                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZoneId                         *string                                                                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InternetChargeType             *string                                                                                                 `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	ImageName                      *string                                                                                                 `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ScalingConfigurationId         *string                                                                                                 `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+	CreditSpecification            *string                                                                                                 `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
+	SpotInterruptionBehavior       *string                                                                                                 `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
+	DataDisks                      *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks            `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	Tags                           *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags                 `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SpotPriceLimit                 *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit       `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty" type:"Struct"`
+	InstancePatternInfos           *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Struct"`
+	SystemDiskCategories           *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Struct"`
+	WeightedCapacities             *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities   `json:"WeightedCapacities,omitempty" xml:"WeightedCapacities,omitempty" type:"Struct"`
+	InstanceTypes                  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes        `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
+	SecurityGroupIds               *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds     `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SchedulerOptions               *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions     `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) String() string {
@@ -5058,6 +5347,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetDeploymentSetId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.DeploymentSetId = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetCreationTime(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.CreationTime = &v
 	return s
@@ -5065,116 +5359,6 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetScalingConfigurationName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.ScalingConfigurationName = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetTags(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetDataDisks(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.DataDisks = v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskAutoSnapshotPolicyId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SystemDiskAutoSnapshotPolicyId = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotStrategy(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SpotStrategy = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetAffinity(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.Affinity = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotDuration(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SpotDuration = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetUserData(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.UserData = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotPriceLimit(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SpotPriceLimit = v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetImageId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.ImageId = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetLoadBalancerWeight(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.LoadBalancerWeight = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetHostName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.HostName = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SystemDiskName = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskPerformanceLevel(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SystemDiskPerformanceLevel = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetImageName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.ImageName = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInternetChargeType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.InternetChargeType = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetZoneId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetScalingConfigurationId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.ScalingConfigurationId = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetCreditSpecification(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.CreditSpecification = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotInterruptionBehavior(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SpotInterruptionBehavior = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetDeploymentSetId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.DeploymentSetId = &v
 	return s
 }
 
@@ -5193,8 +5377,23 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskAutoSnapshotPolicyId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SystemDiskAutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotStrategy(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SpotStrategy = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetScalingGroupId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetAffinity(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.Affinity = &v
 	return s
 }
 
@@ -5213,13 +5412,28 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotDuration(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SpotDuration = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetLifecycleState(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.LifecycleState = &v
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSecurityEnhancementStrategy(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetUserData(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.UserData = &v
 	return s
 }
 
@@ -5248,8 +5462,18 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetImageId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.ImageId = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetImageFamily(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.ImageFamily = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetLoadBalancerWeight(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.LoadBalancerWeight = &v
 	return s
 }
 
@@ -5258,8 +5482,13 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetWeightedCapacities(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.WeightedCapacities = v
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetHostName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SystemDiskName = &v
 	return s
 }
 
@@ -5273,13 +5502,13 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceDescription(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.InstanceDescription = &v
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.InstanceType = &v
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSecurityGroupIds(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SecurityGroupIds = v
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceDescription(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.InstanceDescription = &v
 	return s
 }
 
@@ -5293,6 +5522,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskPerformanceLevel(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetCpu(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.Cpu = &v
 	return s
@@ -5303,13 +5537,78 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSchedulerOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
-	s.SchedulerOptions = v
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetZoneId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInternetChargeType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetImageName(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetScalingConfigurationId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetCreditSpecification(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.CreditSpecification = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotInterruptionBehavior(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SpotInterruptionBehavior = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetDataDisks(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.DataDisks = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetTags(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSpotPriceLimit(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SpotPriceLimit = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstancePatternInfos(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.InstancePatternInfos = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSystemDiskCategories(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SystemDiskCategories = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetWeightedCapacities(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.WeightedCapacities = v
 	return s
 }
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetInstanceTypes(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
 	s.InstanceTypes = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSecurityGroupIds(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSecurityGroupIds) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration) SetSchedulerOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfiguration {
+	s.SchedulerOptions = v
 	return s
 }
 
@@ -5336,46 +5635,6 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
-type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags struct {
-	Tag []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) SetTag(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags {
-	s.Tag = v
-	return s
-}
-
-type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) SetKey(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) SetValue(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag {
-	s.Value = &v
-	return s
-}
-
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisks struct {
 	DataDisk []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 }
@@ -5394,17 +5653,18 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk struct {
-	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Device               *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	DiskName             *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	DeleteWithInstance   *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted            *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel     *string                                                                                                        `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Description          *string                                                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string                                                                                                        `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Device               *string                                                                                                        `json:"Device,omitempty" xml:"Device,omitempty"`
+	Size                 *int32                                                                                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	DiskName             *string                                                                                                        `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	AutoSnapshotPolicyId *string                                                                                                        `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	Category             *string                                                                                                        `json:"Category,omitempty" xml:"Category,omitempty"`
+	KMSKeyId             *string                                                                                                        `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	DeleteWithInstance   *bool                                                                                                          `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted            *string                                                                                                        `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Categories           *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk) String() string {
@@ -5470,6 +5730,68 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 	return s
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk) SetCategories(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDisk {
+	s.Categories = v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories struct {
+	Category []*string `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories) SetCategory(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationDataDisksDataDiskCategories {
+	s.Category = v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags struct {
+	Tag []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags) SetTag(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) SetKey(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag) SetValue(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationTagsTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimit struct {
 	SpotPriceModel []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel `json:"SpotPriceModel,omitempty" xml:"SpotPriceModel,omitempty" type:"Repeated"`
 }
@@ -5488,8 +5810,8 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCo
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel struct {
-	PriceLimit   *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	InstanceType *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PriceLimit   *float32 `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 }
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel) String() string {
@@ -5500,13 +5822,82 @@ func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCon
 	return s.String()
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel) SetPriceLimit(v float32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel {
 	s.PriceLimit = &v
 	return s
 }
 
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSpotPriceLimitSpotPriceModel {
-	s.InstanceType = &v
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos struct {
+	InstancePatternInfo []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo `json:"InstancePatternInfo,omitempty" xml:"InstancePatternInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos) SetInstancePatternInfo(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfos {
+	s.InstancePatternInfo = v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo struct {
+	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	Cores               *int32   `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	InstanceFamilyLevel *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) SetMaxPrice(v float32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) SetCores(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo {
+	s.Cores = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) SetMemory(v float32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo) SetInstanceFamilyLevel(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstancePatternInfosInstancePatternInfo {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories struct {
+	SystemDiskCategory []*string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories) SetSystemDiskCategory(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSystemDiskCategories {
+	s.SystemDiskCategory = v
 	return s
 }
 
@@ -5524,6 +5915,23 @@ func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCon
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities) SetWeightedCapacity(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationWeightedCapacities {
 	s.WeightedCapacity = v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes struct {
+	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) SetInstanceType(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes {
+	s.InstanceType = v
 	return s
 }
 
@@ -5558,23 +5966,6 @@ func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingCon
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions) SetManagedPrivateSpaceId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationSchedulerOptions {
 	s.ManagedPrivateSpaceId = &v
-	return s
-}
-
-type DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes struct {
-	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes) SetInstanceType(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScalingConfigurationInstanceTypes {
-	s.InstanceType = v
 	return s
 }
 
@@ -5614,6 +6005,7 @@ type DescribeScalingInstancesRequest struct {
 	PageNumber             *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize               *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ScalingActivityId      *string   `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 	InstanceId             []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 }
 
@@ -5685,18 +6077,23 @@ func (s *DescribeScalingInstancesRequest) SetOwnerAccount(v string) *DescribeSca
 	return s
 }
 
+func (s *DescribeScalingInstancesRequest) SetScalingActivityId(v string) *DescribeScalingInstancesRequest {
+	s.ScalingActivityId = &v
+	return s
+}
+
 func (s *DescribeScalingInstancesRequest) SetInstanceId(v []*string) *DescribeScalingInstancesRequest {
 	s.InstanceId = v
 	return s
 }
 
 type DescribeScalingInstancesResponseBody struct {
-	TotalCount       *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize         *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber       *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ScalingInstances *DescribeScalingInstancesResponseBodyScalingInstances `json:"ScalingInstances,omitempty" xml:"ScalingInstances,omitempty" type:"Struct"`
 	TotalSpotCount   *int32                                                `json:"TotalSpotCount,omitempty" xml:"TotalSpotCount,omitempty"`
+	TotalCount       *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ScalingInstances *DescribeScalingInstancesResponseBodyScalingInstances `json:"ScalingInstances,omitempty" xml:"ScalingInstances,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingInstancesResponseBody) String() string {
@@ -5705,11 +6102,6 @@ func (s DescribeScalingInstancesResponseBody) String() string {
 
 func (s DescribeScalingInstancesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScalingInstancesResponseBody) SetTotalCount(v int32) *DescribeScalingInstancesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeScalingInstancesResponseBody) SetRequestId(v string) *DescribeScalingInstancesResponseBody {
@@ -5727,13 +6119,18 @@ func (s *DescribeScalingInstancesResponseBody) SetPageNumber(v int32) *DescribeS
 	return s
 }
 
-func (s *DescribeScalingInstancesResponseBody) SetScalingInstances(v *DescribeScalingInstancesResponseBodyScalingInstances) *DescribeScalingInstancesResponseBody {
-	s.ScalingInstances = v
+func (s *DescribeScalingInstancesResponseBody) SetTotalSpotCount(v int32) *DescribeScalingInstancesResponseBody {
+	s.TotalSpotCount = &v
 	return s
 }
 
-func (s *DescribeScalingInstancesResponseBody) SetTotalSpotCount(v int32) *DescribeScalingInstancesResponseBody {
-	s.TotalSpotCount = &v
+func (s *DescribeScalingInstancesResponseBody) SetTotalCount(v int32) *DescribeScalingInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeScalingInstancesResponseBody) SetScalingInstances(v *DescribeScalingInstancesResponseBodyScalingInstances) *DescribeScalingInstancesResponseBody {
+	s.ScalingInstances = v
 	return s
 }
 
@@ -5759,17 +6156,19 @@ type DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance struct 
 	LoadBalancerWeight     *int32  `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	LaunchTemplateId       *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SpotStrategy           *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	LaunchTemplateVersion  *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	HealthStatus           *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	SpotStrategy           *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	WarmupState            *string `json:"WarmupState,omitempty" xml:"WarmupState,omitempty"`
 	LifecycleState         *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
 	CreationType           *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
+	ZoneId                 *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
 	Entrusted              *bool   `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
 	WeightedCapacity       *int32  `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
 	CreatedTime            *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	ScalingActivityId      *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
 func (s DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) String() string {
@@ -5800,6 +6199,11 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) Se
 	return s
 }
 
+func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetSpotStrategy(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
+	s.SpotStrategy = &v
+	return s
+}
+
 func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetLaunchTemplateVersion(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
 	s.LaunchTemplateVersion = &v
 	return s
@@ -5807,11 +6211,6 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) Se
 
 func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetHealthStatus(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
 	s.HealthStatus = &v
-	return s
-}
-
-func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetSpotStrategy(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
-	s.SpotStrategy = &v
 	return s
 }
 
@@ -5835,6 +6234,11 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) Se
 	return s
 }
 
+func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetZoneId(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
+	s.ZoneId = &v
+	return s
+}
+
 func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetScalingConfigurationId(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
 	s.ScalingConfigurationId = &v
 	return s
@@ -5852,6 +6256,11 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) Se
 
 func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetCreatedTime(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance) SetScalingActivityId(v string) *DescribeScalingInstancesResponseBodyScalingInstancesScalingInstance {
+	s.ScalingActivityId = &v
 	return s
 }
 
@@ -5879,9 +6288,6 @@ func (s *DescribeScalingInstancesResponse) SetBody(v *DescribeScalingInstancesRe
 }
 
 type DescribeScalingRulesRequest struct {
-	ScalingRuleId        []*string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty" type:"Repeated"`
-	ScalingRuleName      []*string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty" type:"Repeated"`
-	ScalingRuleAri       []*string `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty" type:"Repeated"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5892,6 +6298,9 @@ type DescribeScalingRulesRequest struct {
 	ScalingRuleType      *string   `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 	ShowAlarmRules       *bool     `json:"ShowAlarmRules,omitempty" xml:"ShowAlarmRules,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	ScalingRuleId        []*string `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty" type:"Repeated"`
+	ScalingRuleName      []*string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty" type:"Repeated"`
+	ScalingRuleAri       []*string `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScalingRulesRequest) String() string {
@@ -5900,21 +6309,6 @@ func (s DescribeScalingRulesRequest) String() string {
 
 func (s DescribeScalingRulesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScalingRulesRequest) SetScalingRuleId(v []*string) *DescribeScalingRulesRequest {
-	s.ScalingRuleId = v
-	return s
-}
-
-func (s *DescribeScalingRulesRequest) SetScalingRuleName(v []*string) *DescribeScalingRulesRequest {
-	s.ScalingRuleName = v
-	return s
-}
-
-func (s *DescribeScalingRulesRequest) SetScalingRuleAri(v []*string) *DescribeScalingRulesRequest {
-	s.ScalingRuleAri = v
-	return s
 }
 
 func (s *DescribeScalingRulesRequest) SetOwnerId(v int64) *DescribeScalingRulesRequest {
@@ -5967,12 +6361,27 @@ func (s *DescribeScalingRulesRequest) SetOwnerAccount(v string) *DescribeScaling
 	return s
 }
 
+func (s *DescribeScalingRulesRequest) SetScalingRuleId(v []*string) *DescribeScalingRulesRequest {
+	s.ScalingRuleId = v
+	return s
+}
+
+func (s *DescribeScalingRulesRequest) SetScalingRuleName(v []*string) *DescribeScalingRulesRequest {
+	s.ScalingRuleName = v
+	return s
+}
+
+func (s *DescribeScalingRulesRequest) SetScalingRuleAri(v []*string) *DescribeScalingRulesRequest {
+	s.ScalingRuleAri = v
+	return s
+}
+
 type DescribeScalingRulesResponseBody struct {
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ScalingRules *DescribeScalingRulesResponseBodyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Struct"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 }
 
 func (s DescribeScalingRulesResponseBody) String() string {
@@ -5983,18 +6392,13 @@ func (s DescribeScalingRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeScalingRulesResponseBody) SetTotalCount(v int32) *DescribeScalingRulesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBody) SetScalingRules(v *DescribeScalingRulesResponseBodyScalingRules) *DescribeScalingRulesResponseBody {
-	s.ScalingRules = v
-	return s
-}
-
 func (s *DescribeScalingRulesResponseBody) SetRequestId(v string) *DescribeScalingRulesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBody) SetPageNumber(v int32) *DescribeScalingRulesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6003,8 +6407,13 @@ func (s *DescribeScalingRulesResponseBody) SetPageSize(v int32) *DescribeScaling
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBody) SetPageNumber(v int32) *DescribeScalingRulesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeScalingRulesResponseBody) SetTotalCount(v int32) *DescribeScalingRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBody) SetScalingRules(v *DescribeScalingRulesResponseBodyScalingRules) *DescribeScalingRulesResponseBody {
+	s.ScalingRules = v
 	return s
 }
 
@@ -6027,29 +6436,29 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetScalingRule(v []*Descr
 
 type DescribeScalingRulesResponseBodyScalingRulesScalingRule struct {
 	MetricName               *string                                                                 `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	AdjustmentType           *string                                                                 `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
 	InitialMaxSize           *int32                                                                  `json:"InitialMaxSize,omitempty" xml:"InitialMaxSize,omitempty"`
-	Alarms                   *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms          `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Struct"`
+	EstimatedInstanceWarmup  *int32                                                                  `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
 	ScaleOutEvaluationCount  *int32                                                                  `json:"ScaleOutEvaluationCount,omitempty" xml:"ScaleOutEvaluationCount,omitempty"`
 	PredictiveScalingMode    *string                                                                 `json:"PredictiveScalingMode,omitempty" xml:"PredictiveScalingMode,omitempty"`
-	MinSize                  *int32                                                                  `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	MinAdjustmentMagnitude   *int32                                                                  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
+	ScalingRuleAri           *string                                                                 `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty"`
 	PredictiveTaskBufferTime *int32                                                                  `json:"PredictiveTaskBufferTime,omitempty" xml:"PredictiveTaskBufferTime,omitempty"`
+	MinSize                  *int32                                                                  `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
 	ScalingGroupId           *string                                                                 `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	PredictiveValueBehavior  *string                                                                 `json:"PredictiveValueBehavior,omitempty" xml:"PredictiveValueBehavior,omitempty"`
+	TargetValue              *float32                                                                `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Cooldown                 *int32                                                                  `json:"Cooldown,omitempty" xml:"Cooldown,omitempty"`
-	ScalingRuleType          *string                                                                 `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	MaxSize                  *int32                                                                  `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
 	PredictiveValueBuffer    *int32                                                                  `json:"PredictiveValueBuffer,omitempty" xml:"PredictiveValueBuffer,omitempty"`
+	ScalingRuleType          *string                                                                 `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	AdjustmentValue          *int32                                                                  `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	ScaleInEvaluationCount   *int32                                                                  `json:"ScaleInEvaluationCount,omitempty" xml:"ScaleInEvaluationCount,omitempty"`
 	DisableScaleIn           *bool                                                                   `json:"DisableScaleIn,omitempty" xml:"DisableScaleIn,omitempty"`
 	ScalingRuleName          *string                                                                 `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	AdjustmentType           *string                                                                 `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	EstimatedInstanceWarmup  *int32                                                                  `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
-	MinAdjustmentMagnitude   *int32                                                                  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	ScalingRuleAri           *string                                                                 `json:"ScalingRuleAri,omitempty" xml:"ScalingRuleAri,omitempty"`
-	StepAdjustments          *DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments `json:"StepAdjustments,omitempty" xml:"StepAdjustments,omitempty" type:"Struct"`
-	TargetValue              *float32                                                                `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	MaxSize                  *int32                                                                  `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	AdjustmentValue          *int32                                                                  `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	ScalingRuleId            *string                                                                 `json:"ScalingRuleId,omitempty" xml:"ScalingRuleId,omitempty"`
+	Alarms                   *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms          `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Struct"`
+	StepAdjustments          *DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments `json:"StepAdjustments,omitempty" xml:"StepAdjustments,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingRulesResponseBodyScalingRulesScalingRule) String() string {
@@ -6065,13 +6474,18 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMetricName(
 	return s
 }
 
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAdjustmentType(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.AdjustmentType = &v
+	return s
+}
+
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetInitialMaxSize(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
 	s.InitialMaxSize = &v
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAlarms(v *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.Alarms = v
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetEstimatedInstanceWarmup(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.EstimatedInstanceWarmup = &v
 	return s
 }
 
@@ -6085,13 +6499,23 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetPredictiveS
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMinSize(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.MinSize = &v
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMinAdjustmentMagnitude(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.MinAdjustmentMagnitude = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRuleAri(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.ScalingRuleAri = &v
 	return s
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetPredictiveTaskBufferTime(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
 	s.PredictiveTaskBufferTime = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMinSize(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.MinSize = &v
 	return s
 }
 
@@ -6105,8 +6529,23 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetPredictiveV
 	return s
 }
 
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetTargetValue(v float32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.TargetValue = &v
+	return s
+}
+
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetCooldown(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
 	s.Cooldown = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMaxSize(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetPredictiveValueBuffer(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.PredictiveValueBuffer = &v
 	return s
 }
 
@@ -6115,8 +6554,8 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRule
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetPredictiveValueBuffer(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.PredictiveValueBuffer = &v
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAdjustmentValue(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.AdjustmentValue = &v
 	return s
 }
 
@@ -6135,48 +6574,18 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRule
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAdjustmentType(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.AdjustmentType = &v
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRuleId(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.ScalingRuleId = &v
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetEstimatedInstanceWarmup(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.EstimatedInstanceWarmup = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMinAdjustmentMagnitude(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.MinAdjustmentMagnitude = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRuleAri(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.ScalingRuleAri = &v
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAlarms(v *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarms) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
+	s.Alarms = v
 	return s
 }
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetStepAdjustments(v *DescribeScalingRulesResponseBodyScalingRulesScalingRuleStepAdjustments) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
 	s.StepAdjustments = v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetTargetValue(v float32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.TargetValue = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetMaxSize(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.MaxSize = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetAdjustmentValue(v int32) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.AdjustmentValue = &v
-	return s
-}
-
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRule) SetScalingRuleId(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRule {
-	s.ScalingRuleId = &v
 	return s
 }
 
@@ -6203,10 +6612,10 @@ type DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm struct {
 	MetricName         *string                                                                       `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	EvaluationCount    *int32                                                                        `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
 	AlarmTaskName      *string                                                                       `json:"AlarmTaskName,omitempty" xml:"AlarmTaskName,omitempty"`
-	Dimensions         *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Struct"`
 	MetricType         *string                                                                       `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	Threshold          *float32                                                                      `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Statistics         *string                                                                       `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Dimensions         *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Struct"`
 }
 
 func (s DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) String() string {
@@ -6242,11 +6651,6 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) Set
 	return s
 }
 
-func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) SetDimensions(v *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions) *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm {
-	s.Dimensions = v
-	return s
-}
-
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) SetMetricType(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm {
 	s.MetricType = &v
 	return s
@@ -6259,6 +6663,11 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) Set
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) SetStatistics(v string) *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm {
 	s.Statistics = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm) SetDimensions(v *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarmDimensions) *DescribeScalingRulesResponseBodyScalingRulesScalingRuleAlarmsAlarm {
+	s.Dimensions = v
 	return s
 }
 
@@ -6372,9 +6781,6 @@ func (s *DescribeScalingRulesResponse) SetBody(v *DescribeScalingRulesResponseBo
 }
 
 type DescribeScheduledTasksRequest struct {
-	ScheduledAction      []*string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty" type:"Repeated"`
-	ScheduledTaskId      []*string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty" type:"Repeated"`
-	ScheduledTaskName    []*string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty" type:"Repeated"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6383,6 +6789,9 @@ type DescribeScheduledTasksRequest struct {
 	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScheduledAction      []*string `json:"ScheduledAction,omitempty" xml:"ScheduledAction,omitempty" type:"Repeated"`
+	ScheduledTaskId      []*string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty" type:"Repeated"`
+	ScheduledTaskName    []*string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty" type:"Repeated"`
 }
 
 func (s DescribeScheduledTasksRequest) String() string {
@@ -6391,21 +6800,6 @@ func (s DescribeScheduledTasksRequest) String() string {
 
 func (s DescribeScheduledTasksRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeScheduledTasksRequest) SetScheduledAction(v []*string) *DescribeScheduledTasksRequest {
-	s.ScheduledAction = v
-	return s
-}
-
-func (s *DescribeScheduledTasksRequest) SetScheduledTaskId(v []*string) *DescribeScheduledTasksRequest {
-	s.ScheduledTaskId = v
-	return s
-}
-
-func (s *DescribeScheduledTasksRequest) SetScheduledTaskName(v []*string) *DescribeScheduledTasksRequest {
-	s.ScheduledTaskName = v
-	return s
 }
 
 func (s *DescribeScheduledTasksRequest) SetOwnerId(v int64) *DescribeScheduledTasksRequest {
@@ -6448,11 +6842,26 @@ func (s *DescribeScheduledTasksRequest) SetScalingGroupId(v string) *DescribeSch
 	return s
 }
 
+func (s *DescribeScheduledTasksRequest) SetScheduledAction(v []*string) *DescribeScheduledTasksRequest {
+	s.ScheduledAction = v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetScheduledTaskId(v []*string) *DescribeScheduledTasksRequest {
+	s.ScheduledTaskId = v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetScheduledTaskName(v []*string) *DescribeScheduledTasksRequest {
+	s.ScheduledTaskName = v
+	return s
+}
+
 type DescribeScheduledTasksResponseBody struct {
-	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ScheduledTasks *DescribeScheduledTasksResponseBodyScheduledTasks `json:"ScheduledTasks,omitempty" xml:"ScheduledTasks,omitempty" type:"Struct"`
 }
 
@@ -6464,13 +6873,13 @@ func (s DescribeScheduledTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeScheduledTasksResponseBody) SetTotalCount(v int32) *DescribeScheduledTasksResponseBody {
-	s.TotalCount = &v
+func (s *DescribeScheduledTasksResponseBody) SetRequestId(v string) *DescribeScheduledTasksResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBody) SetRequestId(v string) *DescribeScheduledTasksResponseBody {
-	s.RequestId = &v
+func (s *DescribeScheduledTasksResponseBody) SetPageNumber(v int32) *DescribeScheduledTasksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6479,8 +6888,8 @@ func (s *DescribeScheduledTasksResponseBody) SetPageSize(v int32) *DescribeSched
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBody) SetPageNumber(v int32) *DescribeScheduledTasksResponseBody {
-	s.PageNumber = &v
+func (s *DescribeScheduledTasksResponseBody) SetTotalCount(v int32) *DescribeScheduledTasksResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6509,12 +6918,12 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasks) SetScheduledTask(v []
 type DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask struct {
 	TaskEnabled          *bool   `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
 	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	MaxValue             *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
 	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	MaxValue             *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
 	ScheduledTaskName    *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
 	RecurrenceEndTime    *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	ScheduledTaskId      *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
 	DesiredCapacity      *int32  `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	ScheduledTaskId      *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
 	MinValue             *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
 	ScalingGroupId       *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
@@ -6541,13 +6950,13 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetRecur
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetMaxValue(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
-	s.MaxValue = &v
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetRecurrenceType(v string) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
+	s.RecurrenceType = &v
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetRecurrenceType(v string) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
-	s.RecurrenceType = &v
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetMaxValue(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
+	s.MaxValue = &v
 	return s
 }
 
@@ -6561,13 +6970,13 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetRecur
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetScheduledTaskId(v string) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
-	s.ScheduledTaskId = &v
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetDesiredCapacity(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
+	s.DesiredCapacity = &v
 	return s
 }
 
-func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetDesiredCapacity(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
-	s.DesiredCapacity = &v
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask) SetScheduledTaskId(v string) *DescribeScheduledTasksResponseBodyScheduledTasksScheduledTask {
+	s.ScheduledTaskId = &v
 	return s
 }
 
@@ -6620,6 +7029,128 @@ func (s *DescribeScheduledTasksResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeScheduledTasksResponse) SetBody(v *DescribeScheduledTasksResponseBody) *DescribeScheduledTasksResponse {
+	s.Body = v
+	return s
+}
+
+type DetachAlbServerGroupsRequest struct {
+	OwnerId              *int64                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScalingGroupId       *string                                       `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ForceDetach          *bool                                         `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
+	AlbServerGroup       []*DetachAlbServerGroupsRequestAlbServerGroup `json:"AlbServerGroup,omitempty" xml:"AlbServerGroup,omitempty" type:"Repeated"`
+}
+
+func (s DetachAlbServerGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachAlbServerGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachAlbServerGroupsRequest) SetOwnerId(v int64) *DetachAlbServerGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetResourceOwnerAccount(v string) *DetachAlbServerGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetRegionId(v string) *DetachAlbServerGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetScalingGroupId(v string) *DetachAlbServerGroupsRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetClientToken(v string) *DetachAlbServerGroupsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetForceDetach(v bool) *DetachAlbServerGroupsRequest {
+	s.ForceDetach = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequest) SetAlbServerGroup(v []*DetachAlbServerGroupsRequestAlbServerGroup) *DetachAlbServerGroupsRequest {
+	s.AlbServerGroup = v
+	return s
+}
+
+type DetachAlbServerGroupsRequestAlbServerGroup struct {
+	AlbServerGroupId *string `json:"AlbServerGroupId,omitempty" xml:"AlbServerGroupId,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DetachAlbServerGroupsRequestAlbServerGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachAlbServerGroupsRequestAlbServerGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DetachAlbServerGroupsRequestAlbServerGroup) SetAlbServerGroupId(v string) *DetachAlbServerGroupsRequestAlbServerGroup {
+	s.AlbServerGroupId = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsRequestAlbServerGroup) SetPort(v int32) *DetachAlbServerGroupsRequestAlbServerGroup {
+	s.Port = &v
+	return s
+}
+
+type DetachAlbServerGroupsResponseBody struct {
+	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachAlbServerGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachAlbServerGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachAlbServerGroupsResponseBody) SetScalingActivityId(v string) *DetachAlbServerGroupsResponseBody {
+	s.ScalingActivityId = &v
+	return s
+}
+
+func (s *DetachAlbServerGroupsResponseBody) SetRequestId(v string) *DetachAlbServerGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachAlbServerGroupsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetachAlbServerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachAlbServerGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachAlbServerGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachAlbServerGroupsResponse) SetHeaders(v map[string]*string) *DetachAlbServerGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachAlbServerGroupsResponse) SetBody(v *DetachAlbServerGroupsResponseBody) *DetachAlbServerGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -6771,8 +7302,8 @@ func (s *DetachInstancesRequest) SetInstanceId(v []*string) *DetachInstancesRequ
 }
 
 type DetachInstancesResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetachInstancesResponseBody) String() string {
@@ -6783,13 +7314,13 @@ func (s DetachInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DetachInstancesResponseBody) SetRequestId(v string) *DetachInstancesResponseBody {
-	s.RequestId = &v
+func (s *DetachInstancesResponseBody) SetScalingActivityId(v string) *DetachInstancesResponseBody {
+	s.ScalingActivityId = &v
 	return s
 }
 
-func (s *DetachInstancesResponseBody) SetScalingActivityId(v string) *DetachInstancesResponseBody {
-	s.ScalingActivityId = &v
+func (s *DetachInstancesResponseBody) SetRequestId(v string) *DetachInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6822,6 +7353,7 @@ type DetachLoadBalancersRequest struct {
 	ScalingGroupId       *string   `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	ForceDetach          *bool     `json:"ForceDetach,omitempty" xml:"ForceDetach,omitempty"`
 	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Async                *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 	LoadBalancer         []*string `json:"LoadBalancer,omitempty" xml:"LoadBalancer,omitempty" type:"Repeated"`
 }
 
@@ -6858,13 +7390,19 @@ func (s *DetachLoadBalancersRequest) SetClientToken(v string) *DetachLoadBalance
 	return s
 }
 
+func (s *DetachLoadBalancersRequest) SetAsync(v bool) *DetachLoadBalancersRequest {
+	s.Async = &v
+	return s
+}
+
 func (s *DetachLoadBalancersRequest) SetLoadBalancer(v []*string) *DetachLoadBalancersRequest {
 	s.LoadBalancer = v
 	return s
 }
 
 type DetachLoadBalancersResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetachLoadBalancersResponseBody) String() string {
@@ -6873,6 +7411,11 @@ func (s DetachLoadBalancersResponseBody) String() string {
 
 func (s DetachLoadBalancersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DetachLoadBalancersResponseBody) SetScalingActivityId(v string) *DetachLoadBalancersResponseBody {
+	s.ScalingActivityId = &v
+	return s
 }
 
 func (s *DetachLoadBalancersResponseBody) SetRequestId(v string) *DetachLoadBalancersResponseBody {
@@ -7554,8 +8097,8 @@ func (s *ExecuteScalingRuleRequest) SetOwnerAccount(v string) *ExecuteScalingRul
 }
 
 type ExecuteScalingRuleResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExecuteScalingRuleResponseBody) String() string {
@@ -7566,13 +8109,13 @@ func (s ExecuteScalingRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteScalingRuleResponseBody) SetRequestId(v string) *ExecuteScalingRuleResponseBody {
-	s.RequestId = &v
+func (s *ExecuteScalingRuleResponseBody) SetScalingActivityId(v string) *ExecuteScalingRuleResponseBody {
+	s.ScalingActivityId = &v
 	return s
 }
 
-func (s *ExecuteScalingRuleResponseBody) SetScalingActivityId(v string) *ExecuteScalingRuleResponseBody {
-	s.ScalingActivityId = &v
+func (s *ExecuteScalingRuleResponseBody) SetRequestId(v string) *ExecuteScalingRuleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7925,8 +8468,8 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -7939,13 +8482,13 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -8247,8 +8790,8 @@ func (s *ModifyAlarmRequestDimension) SetDimensionValue(v string) *ModifyAlarmRe
 }
 
 type ModifyAlarmResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyAlarmResponseBody) String() string {
@@ -8259,13 +8802,13 @@ func (s ModifyAlarmResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyAlarmResponseBody) SetRequestId(v string) *ModifyAlarmResponseBody {
-	s.RequestId = &v
+func (s *ModifyAlarmResponseBody) SetAlarmTaskId(v string) *ModifyAlarmResponseBody {
+	s.AlarmTaskId = &v
 	return s
 }
 
-func (s *ModifyAlarmResponseBody) SetAlarmTaskId(v string) *ModifyAlarmResponseBody {
-	s.AlarmTaskId = &v
+func (s *ModifyAlarmResponseBody) SetRequestId(v string) *ModifyAlarmResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8535,6 +9078,8 @@ type ModifyScalingConfigurationRequest struct {
 	InstanceTypes            []*string                                                `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	InstanceTypeOverride     []*ModifyScalingConfigurationRequestInstanceTypeOverride `json:"InstanceTypeOverride,omitempty" xml:"InstanceTypeOverride,omitempty" type:"Repeated"`
 	SecurityGroupIds         []*string                                                `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InstancePatternInfo      []*ModifyScalingConfigurationRequestInstancePatternInfo  `json:"InstancePatternInfo,omitempty" xml:"InstancePatternInfo,omitempty" type:"Repeated"`
+	SystemDiskCategory       []*string                                                `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty" type:"Repeated"`
 }
 
 func (s ModifyScalingConfigurationRequest) String() string {
@@ -8765,6 +9310,16 @@ func (s *ModifyScalingConfigurationRequest) SetSecurityGroupIds(v []*string) *Mo
 	return s
 }
 
+func (s *ModifyScalingConfigurationRequest) SetInstancePatternInfo(v []*ModifyScalingConfigurationRequestInstancePatternInfo) *ModifyScalingConfigurationRequest {
+	s.InstancePatternInfo = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetSystemDiskCategory(v []*string) *ModifyScalingConfigurationRequest {
+	s.SystemDiskCategory = v
+	return s
+}
+
 type ModifyScalingConfigurationRequestSystemDisk struct {
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -8836,17 +9391,18 @@ func (s *ModifyScalingConfigurationRequestPrivatePoolOptions) SetId(v string) *M
 }
 
 type ModifyScalingConfigurationRequestDataDisk struct {
-	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Device               *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskName             *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	DeleteWithInstance   *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted            *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Categorys            []*string `json:"Categorys,omitempty" xml:"Categorys,omitempty" type:"Repeated"`
+	PerformanceLevel     *string   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	AutoSnapshotPolicyId *string   `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	Encrypted            *string   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Size                 *int32    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Device               *string   `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskName             *string   `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Category             *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance   *bool     `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	KMSKeyId             *string   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 }
 
 func (s ModifyScalingConfigurationRequestDataDisk) String() string {
@@ -8857,8 +9413,23 @@ func (s ModifyScalingConfigurationRequestDataDisk) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyScalingConfigurationRequestDataDisk) SetCategorys(v []*string) *ModifyScalingConfigurationRequestDataDisk {
+	s.Categorys = v
+	return s
+}
+
 func (s *ModifyScalingConfigurationRequestDataDisk) SetPerformanceLevel(v string) *ModifyScalingConfigurationRequestDataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestDataDisk) SetAutoSnapshotPolicyId(v string) *ModifyScalingConfigurationRequestDataDisk {
+	s.AutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestDataDisk) SetEncrypted(v string) *ModifyScalingConfigurationRequestDataDisk {
+	s.Encrypted = &v
 	return s
 }
 
@@ -8887,18 +9458,8 @@ func (s *ModifyScalingConfigurationRequestDataDisk) SetDiskName(v string) *Modif
 	return s
 }
 
-func (s *ModifyScalingConfigurationRequestDataDisk) SetAutoSnapshotPolicyId(v string) *ModifyScalingConfigurationRequestDataDisk {
-	s.AutoSnapshotPolicyId = &v
-	return s
-}
-
 func (s *ModifyScalingConfigurationRequestDataDisk) SetCategory(v string) *ModifyScalingConfigurationRequestDataDisk {
 	s.Category = &v
-	return s
-}
-
-func (s *ModifyScalingConfigurationRequestDataDisk) SetKMSKeyId(v string) *ModifyScalingConfigurationRequestDataDisk {
-	s.KMSKeyId = &v
 	return s
 }
 
@@ -8907,8 +9468,8 @@ func (s *ModifyScalingConfigurationRequestDataDisk) SetDeleteWithInstance(v bool
 	return s
 }
 
-func (s *ModifyScalingConfigurationRequestDataDisk) SetEncrypted(v string) *ModifyScalingConfigurationRequestDataDisk {
-	s.Encrypted = &v
+func (s *ModifyScalingConfigurationRequestDataDisk) SetKMSKeyId(v string) *ModifyScalingConfigurationRequestDataDisk {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -8958,6 +9519,41 @@ func (s *ModifyScalingConfigurationRequestInstanceTypeOverride) SetWeightedCapac
 	return s
 }
 
+type ModifyScalingConfigurationRequestInstancePatternInfo struct {
+	Cores               *int32   `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	InstanceFamilyLevel *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ModifyScalingConfigurationRequestInstancePatternInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationRequestInstancePatternInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationRequestInstancePatternInfo) SetCores(v int32) *ModifyScalingConfigurationRequestInstancePatternInfo {
+	s.Cores = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstancePatternInfo) SetInstanceFamilyLevel(v string) *ModifyScalingConfigurationRequestInstancePatternInfo {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstancePatternInfo) SetMaxPrice(v float32) *ModifyScalingConfigurationRequestInstancePatternInfo {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestInstancePatternInfo) SetMemory(v float32) *ModifyScalingConfigurationRequestInstancePatternInfo {
+	s.Memory = &v
+	return s
+}
+
 type ModifyScalingConfigurationShrinkRequest struct {
 	SystemDisk               *ModifyScalingConfigurationShrinkRequestSystemDisk             `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	PrivatePoolOptions       *ModifyScalingConfigurationShrinkRequestPrivatePoolOptions     `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
@@ -9003,6 +9599,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	InstanceTypes            []*string                                                      `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	InstanceTypeOverride     []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverride `json:"InstanceTypeOverride,omitempty" xml:"InstanceTypeOverride,omitempty" type:"Repeated"`
 	SecurityGroupIds         []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InstancePatternInfo      []*ModifyScalingConfigurationShrinkRequestInstancePatternInfo  `json:"InstancePatternInfo,omitempty" xml:"InstancePatternInfo,omitempty" type:"Repeated"`
+	SystemDiskCategory       []*string                                                      `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty" type:"Repeated"`
 }
 
 func (s ModifyScalingConfigurationShrinkRequest) String() string {
@@ -9233,6 +9831,16 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetSecurityGroupIds(v []*strin
 	return s
 }
 
+func (s *ModifyScalingConfigurationShrinkRequest) SetInstancePatternInfo(v []*ModifyScalingConfigurationShrinkRequestInstancePatternInfo) *ModifyScalingConfigurationShrinkRequest {
+	s.InstancePatternInfo = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetSystemDiskCategory(v []*string) *ModifyScalingConfigurationShrinkRequest {
+	s.SystemDiskCategory = v
+	return s
+}
+
 type ModifyScalingConfigurationShrinkRequestSystemDisk struct {
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -9304,17 +9912,18 @@ func (s *ModifyScalingConfigurationShrinkRequestPrivatePoolOptions) SetId(v stri
 }
 
 type ModifyScalingConfigurationShrinkRequestDataDisk struct {
-	PerformanceLevel     *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SnapshotId           *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Size                 *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Device               *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskName             *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	DeleteWithInstance   *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted            *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Categorys            []*string `json:"Categorys,omitempty" xml:"Categorys,omitempty" type:"Repeated"`
+	PerformanceLevel     *string   `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	AutoSnapshotPolicyId *string   `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	Encrypted            *string   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SnapshotId           *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Size                 *int32    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Device               *string   `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskName             *string   `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Category             *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance   *bool     `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	KMSKeyId             *string   `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 }
 
 func (s ModifyScalingConfigurationShrinkRequestDataDisk) String() string {
@@ -9325,8 +9934,23 @@ func (s ModifyScalingConfigurationShrinkRequestDataDisk) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetCategorys(v []*string) *ModifyScalingConfigurationShrinkRequestDataDisk {
+	s.Categorys = v
+	return s
+}
+
 func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetPerformanceLevel(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetAutoSnapshotPolicyId(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
+	s.AutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetEncrypted(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
+	s.Encrypted = &v
 	return s
 }
 
@@ -9355,18 +9979,8 @@ func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetDiskName(v string) 
 	return s
 }
 
-func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetAutoSnapshotPolicyId(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
-	s.AutoSnapshotPolicyId = &v
-	return s
-}
-
 func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetCategory(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
 	s.Category = &v
-	return s
-}
-
-func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetKMSKeyId(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
-	s.KMSKeyId = &v
 	return s
 }
 
@@ -9375,8 +9989,8 @@ func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetDeleteWithInstance(
 	return s
 }
 
-func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetEncrypted(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
-	s.Encrypted = &v
+func (s *ModifyScalingConfigurationShrinkRequestDataDisk) SetKMSKeyId(v string) *ModifyScalingConfigurationShrinkRequestDataDisk {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -9423,6 +10037,41 @@ func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeOverride) SetInstanc
 
 func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeOverride) SetWeightedCapacity(v int32) *ModifyScalingConfigurationShrinkRequestInstanceTypeOverride {
 	s.WeightedCapacity = &v
+	return s
+}
+
+type ModifyScalingConfigurationShrinkRequestInstancePatternInfo struct {
+	Cores               *int32   `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	InstanceFamilyLevel *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ModifyScalingConfigurationShrinkRequestInstancePatternInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationShrinkRequestInstancePatternInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfo) SetCores(v int32) *ModifyScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.Cores = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfo) SetInstanceFamilyLevel(v string) *ModifyScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.InstanceFamilyLevel = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfo) SetMaxPrice(v float32) *ModifyScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.MaxPrice = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestInstancePatternInfo) SetMemory(v float32) *ModifyScalingConfigurationShrinkRequestInstancePatternInfo {
+	s.Memory = &v
 	return s
 }
 
@@ -9488,7 +10137,7 @@ type ModifyScalingGroupRequest struct {
 	SpotInstancePools                   *int32                                             `json:"SpotInstancePools,omitempty" xml:"SpotInstancePools,omitempty"`
 	DesiredCapacity                     *int32                                             `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
 	GroupDeletionProtection             *bool                                              `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
-	ScaleOutAmountCheck                 *bool                                              `json:"ScaleOutAmountCheck,omitempty" xml:"ScaleOutAmountCheck,omitempty"`
+	MultiAZPolicy                       *string                                            `json:"MultiAZPolicy,omitempty" xml:"MultiAZPolicy,omitempty"`
 	VSwitchIds                          []*string                                          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	LaunchTemplateOverride              []*ModifyScalingGroupRequestLaunchTemplateOverride `json:"LaunchTemplateOverride,omitempty" xml:"LaunchTemplateOverride,omitempty" type:"Repeated"`
 }
@@ -9606,8 +10255,8 @@ func (s *ModifyScalingGroupRequest) SetGroupDeletionProtection(v bool) *ModifySc
 	return s
 }
 
-func (s *ModifyScalingGroupRequest) SetScaleOutAmountCheck(v bool) *ModifyScalingGroupRequest {
-	s.ScaleOutAmountCheck = &v
+func (s *ModifyScalingGroupRequest) SetMultiAZPolicy(v string) *ModifyScalingGroupRequest {
+	s.MultiAZPolicy = &v
 	return s
 }
 
@@ -10097,8 +10746,8 @@ func (s *RebalanceInstancesRequest) SetOwnerAccount(v string) *RebalanceInstance
 }
 
 type RebalanceInstancesResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RebalanceInstancesResponseBody) String() string {
@@ -10109,13 +10758,13 @@ func (s RebalanceInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RebalanceInstancesResponseBody) SetRequestId(v string) *RebalanceInstancesResponseBody {
-	s.RequestId = &v
+func (s *RebalanceInstancesResponseBody) SetScalingActivityId(v string) *RebalanceInstancesResponseBody {
+	s.ScalingActivityId = &v
 	return s
 }
 
-func (s *RebalanceInstancesResponseBody) SetScalingActivityId(v string) *RebalanceInstancesResponseBody {
-	s.ScalingActivityId = &v
+func (s *RebalanceInstancesResponseBody) SetRequestId(v string) *RebalanceInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10289,8 +10938,8 @@ func (s *RemoveInstancesRequest) SetInstanceId(v []*string) *RemoveInstancesRequ
 }
 
 type RemoveInstancesResponseBody struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveInstancesResponseBody) String() string {
@@ -10301,13 +10950,13 @@ func (s RemoveInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveInstancesResponseBody) SetRequestId(v string) *RemoveInstancesResponseBody {
-	s.RequestId = &v
+func (s *RemoveInstancesResponseBody) SetScalingActivityId(v string) *RemoveInstancesResponseBody {
+	s.ScalingActivityId = &v
 	return s
 }
 
-func (s *RemoveInstancesResponseBody) SetScalingActivityId(v string) *RemoveInstancesResponseBody {
-	s.ScalingActivityId = &v
+func (s *RemoveInstancesResponseBody) SetRequestId(v string) *RemoveInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10411,6 +11060,105 @@ func (s *ResumeProcessesResponse) SetHeaders(v map[string]*string) *ResumeProces
 }
 
 func (s *ResumeProcessesResponse) SetBody(v *ResumeProcessesResponseBody) *ResumeProcessesResponse {
+	s.Body = v
+	return s
+}
+
+type ScaleWithAdjustmentRequest struct {
+	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	AdjustmentType         *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
+	AdjustmentValue        *int32  `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	MinAdjustmentMagnitude *int32  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+}
+
+func (s ScaleWithAdjustmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentRequest) SetScalingGroupId(v string) *ScaleWithAdjustmentRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetAdjustmentType(v string) *ScaleWithAdjustmentRequest {
+	s.AdjustmentType = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetAdjustmentValue(v int32) *ScaleWithAdjustmentRequest {
+	s.AdjustmentValue = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetMinAdjustmentMagnitude(v int32) *ScaleWithAdjustmentRequest {
+	s.MinAdjustmentMagnitude = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetClientToken(v string) *ScaleWithAdjustmentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetOwnerId(v int64) *ScaleWithAdjustmentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetResourceOwnerAccount(v string) *ScaleWithAdjustmentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+type ScaleWithAdjustmentResponseBody struct {
+	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScaleWithAdjustmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentResponseBody) SetScalingActivityId(v string) *ScaleWithAdjustmentResponseBody {
+	s.ScalingActivityId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentResponseBody) SetRequestId(v string) *ScaleWithAdjustmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScaleWithAdjustmentResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ScaleWithAdjustmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScaleWithAdjustmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentResponse) SetHeaders(v map[string]*string) *ScaleWithAdjustmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentResponse) SetBody(v *ScaleWithAdjustmentResponseBody) *ScaleWithAdjustmentResponse {
 	s.Body = v
 	return s
 }
@@ -11142,6 +11890,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachAlbServerGroupsWithOptions(request *AttachAlbServerGroupsRequest, runtime *util.RuntimeOptions) (_result *AttachAlbServerGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AttachAlbServerGroupsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AttachAlbServerGroups"), tea.String("2014-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachAlbServerGroups(request *AttachAlbServerGroupsRequest) (_result *AttachAlbServerGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachAlbServerGroupsResponse{}
+	_body, _err := client.AttachAlbServerGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12079,6 +12855,34 @@ func (client *Client) DescribeScheduledTasks(request *DescribeScheduledTasksRequ
 	return _result, _err
 }
 
+func (client *Client) DetachAlbServerGroupsWithOptions(request *DetachAlbServerGroupsRequest, runtime *util.RuntimeOptions) (_result *DetachAlbServerGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetachAlbServerGroupsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetachAlbServerGroups"), tea.String("2014-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachAlbServerGroups(request *DetachAlbServerGroupsRequest) (_result *DetachAlbServerGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachAlbServerGroupsResponse{}
+	_body, _err := client.DetachAlbServerGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetachDBInstancesWithOptions(request *DetachDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DetachDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12778,6 +13582,34 @@ func (client *Client) ResumeProcesses(request *ResumeProcessesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeProcessesResponse{}
 	_body, _err := client.ResumeProcessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScaleWithAdjustmentWithOptions(request *ScaleWithAdjustmentRequest, runtime *util.RuntimeOptions) (_result *ScaleWithAdjustmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ScaleWithAdjustmentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ScaleWithAdjustment"), tea.String("2014-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScaleWithAdjustment(request *ScaleWithAdjustmentRequest) (_result *ScaleWithAdjustmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScaleWithAdjustmentResponse{}
+	_body, _err := client.ScaleWithAdjustmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
