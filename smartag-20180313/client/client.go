@@ -4894,105 +4894,6 @@ func (s *DeleteQosResponse) SetBody(v *DeleteQosResponseBody) *DeleteQosResponse
 	return s
 }
 
-type AddSagCidrRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Cidr                 *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	SmartAGId            *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	EnableBackup         *bool   `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
-}
-
-func (s AddSagCidrRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSagCidrRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddSagCidrRequest) SetOwnerAccount(v string) *AddSagCidrRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetOwnerId(v int64) *AddSagCidrRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetResourceOwnerAccount(v string) *AddSagCidrRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetResourceOwnerId(v int64) *AddSagCidrRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetRegionId(v string) *AddSagCidrRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetCidr(v string) *AddSagCidrRequest {
-	s.Cidr = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetSmartAGId(v string) *AddSagCidrRequest {
-	s.SmartAGId = &v
-	return s
-}
-
-func (s *AddSagCidrRequest) SetEnableBackup(v bool) *AddSagCidrRequest {
-	s.EnableBackup = &v
-	return s
-}
-
-type AddSagCidrResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddSagCidrResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSagCidrResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddSagCidrResponseBody) SetRequestId(v string) *AddSagCidrResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddSagCidrResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddSagCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddSagCidrResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSagCidrResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddSagCidrResponse) SetHeaders(v map[string]*string) *AddSagCidrResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddSagCidrResponse) SetBody(v *AddSagCidrResponseBody) *AddSagCidrResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteSagStaticRouteRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5861,6 +5762,7 @@ type DescribeSAGDeviceInfoResponseBody struct {
 	VpnState                    *string `json:"VpnState,omitempty" xml:"VpnState,omitempty"`
 	StartupTime                 *string `json:"StartupTime,omitempty" xml:"StartupTime,omitempty"`
 	LastConnectedControllerTime *string `json:"LastConnectedControllerTime,omitempty" xml:"LastConnectedControllerTime,omitempty"`
+	ResettableStatus            *string `json:"ResettableStatus,omitempty" xml:"ResettableStatus,omitempty"`
 }
 
 func (s DescribeSAGDeviceInfoResponseBody) String() string {
@@ -5913,6 +5815,11 @@ func (s *DescribeSAGDeviceInfoResponseBody) SetStartupTime(v string) *DescribeSA
 
 func (s *DescribeSAGDeviceInfoResponseBody) SetLastConnectedControllerTime(v string) *DescribeSAGDeviceInfoResponseBody {
 	s.LastConnectedControllerTime = &v
+	return s
+}
+
+func (s *DescribeSAGDeviceInfoResponseBody) SetResettableStatus(v string) *DescribeSAGDeviceInfoResponseBody {
+	s.ResettableStatus = &v
 	return s
 }
 
@@ -7606,99 +7513,6 @@ func (s *AddDnatEntryResponse) SetHeaders(v map[string]*string) *AddDnatEntryRes
 }
 
 func (s *AddDnatEntryResponse) SetBody(v *AddDnatEntryResponseBody) *AddDnatEntryResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteSagCidrRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Cidr                 *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	SmartAGId            *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-}
-
-func (s DeleteSagCidrRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSagCidrRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSagCidrRequest) SetOwnerAccount(v string) *DeleteSagCidrRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetOwnerId(v int64) *DeleteSagCidrRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetResourceOwnerAccount(v string) *DeleteSagCidrRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetResourceOwnerId(v int64) *DeleteSagCidrRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetRegionId(v string) *DeleteSagCidrRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetCidr(v string) *DeleteSagCidrRequest {
-	s.Cidr = &v
-	return s
-}
-
-func (s *DeleteSagCidrRequest) SetSmartAGId(v string) *DeleteSagCidrRequest {
-	s.SmartAGId = &v
-	return s
-}
-
-type DeleteSagCidrResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteSagCidrResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSagCidrResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSagCidrResponseBody) SetRequestId(v string) *DeleteSagCidrResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteSagCidrResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSagCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteSagCidrResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSagCidrResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSagCidrResponse) SetHeaders(v map[string]*string) *DeleteSagCidrResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSagCidrResponse) SetBody(v *DeleteSagCidrResponseBody) *DeleteSagCidrResponse {
 	s.Body = v
 	return s
 }
@@ -25526,34 +25340,6 @@ func (client *Client) DeleteQos(request *DeleteQosRequest) (_result *DeleteQosRe
 	return _result, _err
 }
 
-func (client *Client) AddSagCidrWithOptions(request *AddSagCidrRequest, runtime *util.RuntimeOptions) (_result *AddSagCidrResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AddSagCidrResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddSagCidr"), tea.String("2018-03-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddSagCidr(request *AddSagCidrRequest) (_result *AddSagCidrResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddSagCidrResponse{}
-	_body, _err := client.AddSagCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteSagStaticRouteWithOptions(request *DeleteSagStaticRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteSagStaticRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26051,34 +25837,6 @@ func (client *Client) AddDnatEntry(request *AddDnatEntryRequest) (_result *AddDn
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDnatEntryResponse{}
 	_body, _err := client.AddDnatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteSagCidrWithOptions(request *DeleteSagCidrRequest, runtime *util.RuntimeOptions) (_result *DeleteSagCidrResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteSagCidrResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSagCidr"), tea.String("2018-03-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteSagCidr(request *DeleteSagCidrRequest) (_result *DeleteSagCidrResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSagCidrResponse{}
-	_body, _err := client.DeleteSagCidrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
