@@ -1,3 +1,6 @@
+2021-08-13 Version: v1.0.1
+- Prepare for OCR publish.
+
 2021-08-03 Version: v1.0.0
 - Publish SDK for OCR.
 

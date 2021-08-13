@@ -2630,82 +2630,6 @@ func (s *RecognizeRussianResponse) SetBody(v *RecognizeRussianResponseBody) *Rec
 	return s
 }
 
-type RecognizeHouseCertificationRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s RecognizeHouseCertificationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeHouseCertificationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeHouseCertificationRequest) SetUrl(v string) *RecognizeHouseCertificationRequest {
-	s.Url = &v
-	return s
-}
-
-type RecognizeHouseCertificationResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s RecognizeHouseCertificationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeHouseCertificationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeHouseCertificationResponseBody) SetRequestId(v string) *RecognizeHouseCertificationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RecognizeHouseCertificationResponseBody) SetData(v string) *RecognizeHouseCertificationResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RecognizeHouseCertificationResponseBody) SetCode(v string) *RecognizeHouseCertificationResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RecognizeHouseCertificationResponseBody) SetMessage(v string) *RecognizeHouseCertificationResponseBody {
-	s.Message = &v
-	return s
-}
-
-type RecognizeHouseCertificationResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeHouseCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeHouseCertificationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeHouseCertificationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeHouseCertificationResponse) SetHeaders(v map[string]*string) *RecognizeHouseCertificationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeHouseCertificationResponse) SetBody(v *RecognizeHouseCertificationResponseBody) *RecognizeHouseCertificationResponse {
-	s.Body = v
-	return s
-}
-
 type RecognizeBasicRequest struct {
 	// 图片链接（长度不超 1014，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -2943,8 +2867,6 @@ type RecognizeEduPaperCutRequest struct {
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// 年级学科
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 是否输出原图坐标信息(如果图片被做过旋转，图片校正等处理)
-	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
 }
 
 func (s RecognizeEduPaperCutRequest) String() string {
@@ -2972,11 +2894,6 @@ func (s *RecognizeEduPaperCutRequest) SetImageType(v string) *RecognizeEduPaperC
 
 func (s *RecognizeEduPaperCutRequest) SetSubject(v string) *RecognizeEduPaperCutRequest {
 	s.Subject = &v
-	return s
-}
-
-func (s *RecognizeEduPaperCutRequest) SetOutputOricoord(v bool) *RecognizeEduPaperCutRequest {
-	s.OutputOricoord = &v
 	return s
 }
 
@@ -4958,35 +4875,6 @@ func (client *Client) RecognizeRussian(request *RecognizeRussianRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeRussianResponse{}
 	_body, _err := client.RecognizeRussianWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeHouseCertificationWithOptions(request *RecognizeHouseCertificationRequest, runtime *util.RuntimeOptions) (_result *RecognizeHouseCertificationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &RecognizeHouseCertificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeHouseCertification"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeHouseCertification(request *RecognizeHouseCertificationRequest) (_result *RecognizeHouseCertificationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeHouseCertificationResponse{}
-	_body, _err := client.RecognizeHouseCertificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
