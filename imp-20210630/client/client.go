@@ -472,6 +472,8 @@ type ListRoomLivesRequest struct {
 	QueryTimestamp *int64 `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
 	// 拉取直播数量。
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
+	RoomIdList []*string `json:"RoomIdList,omitempty" xml:"RoomIdList,omitempty" type:"Repeated"`
 }
 
 func (s ListRoomLivesRequest) String() string {
@@ -504,6 +506,64 @@ func (s *ListRoomLivesRequest) SetQueryTimestamp(v int64) *ListRoomLivesRequest 
 
 func (s *ListRoomLivesRequest) SetSize(v int32) *ListRoomLivesRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ListRoomLivesRequest) SetRoomIdList(v []*string) *ListRoomLivesRequest {
+	s.RoomIdList = v
+	return s
+}
+
+type ListRoomLivesShrinkRequest struct {
+	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID，最大长度36个字符。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 直播状态筛选条件，0-直播 1-下播，不传则返回全部状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 拉取在这个时间戳之前创建的直播，单位毫秒，不传则默认拉取最新创建的。
+	QueryTimestamp *int64 `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
+	// 拉取直播数量。
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
+	RoomIdListShrink *string `json:"RoomIdList,omitempty" xml:"RoomIdList,omitempty"`
+}
+
+func (s ListRoomLivesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomLivesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomLivesShrinkRequest) SetAppId(v string) *ListRoomLivesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetRoomId(v string) *ListRoomLivesShrinkRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetStatus(v int32) *ListRoomLivesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetQueryTimestamp(v int64) *ListRoomLivesShrinkRequest {
+	s.QueryTimestamp = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetSize(v int32) *ListRoomLivesShrinkRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetRoomIdListShrink(v string) *ListRoomLivesShrinkRequest {
+	s.RoomIdListShrink = &v
 	return s
 }
 
@@ -1337,6 +1397,8 @@ func (s *SendCommentResponse) SetBody(v *SendCommentResponseBody) *SendCommentRe
 type CreateAppTemplateRequest struct {
 	// 应用模板名称
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
+	// 应用模板场景，电商business，课堂classroom
+	Sence *string `json:"Sence,omitempty" xml:"Sence,omitempty"`
 	// 组件列表
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 }
@@ -1354,6 +1416,11 @@ func (s *CreateAppTemplateRequest) SetAppTemplateName(v string) *CreateAppTempla
 	return s
 }
 
+func (s *CreateAppTemplateRequest) SetSence(v string) *CreateAppTemplateRequest {
+	s.Sence = &v
+	return s
+}
+
 func (s *CreateAppTemplateRequest) SetComponentList(v []*string) *CreateAppTemplateRequest {
 	s.ComponentList = v
 	return s
@@ -1362,6 +1429,8 @@ func (s *CreateAppTemplateRequest) SetComponentList(v []*string) *CreateAppTempl
 type CreateAppTemplateShrinkRequest struct {
 	// 应用模板名称
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
+	// 应用模板场景，电商business，课堂classroom
+	Sence *string `json:"Sence,omitempty" xml:"Sence,omitempty"`
 	// 组件列表
 	ComponentListShrink *string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty"`
 }
@@ -1376,6 +1445,11 @@ func (s CreateAppTemplateShrinkRequest) GoString() string {
 
 func (s *CreateAppTemplateShrinkRequest) SetAppTemplateName(v string) *CreateAppTemplateShrinkRequest {
 	s.AppTemplateName = &v
+	return s
+}
+
+func (s *CreateAppTemplateShrinkRequest) SetSence(v string) *CreateAppTemplateShrinkRequest {
+	s.Sence = &v
 	return s
 }
 
@@ -2852,10 +2926,12 @@ func (s *ListComponentsResponseBody) SetResult(v *ListComponentsResponseBodyResu
 }
 
 type ListComponentsResponseBodyResult struct {
-	// 组件信息
-	ComponentCategory []*ListComponentsResponseBodyResultComponentCategory `json:"ComponentCategory,omitempty" xml:"ComponentCategory,omitempty" type:"Repeated"`
 	// 配置信息
 	ConfigGroup []*ListComponentsResponseBodyResultConfigGroup `json:"ConfigGroup,omitempty" xml:"ConfigGroup,omitempty" type:"Repeated"`
+	// 场景列表
+	SceneList []*ListComponentsResponseBodyResultSceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Repeated"`
+	// 组件信息
+	ComponentCategory []*ListComponentsResponseBodyResultComponentCategory `json:"ComponentCategory,omitempty" xml:"ComponentCategory,omitempty" type:"Repeated"`
 }
 
 func (s ListComponentsResponseBodyResult) String() string {
@@ -2866,13 +2942,129 @@ func (s ListComponentsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *ListComponentsResponseBodyResult) SetConfigGroup(v []*ListComponentsResponseBodyResultConfigGroup) *ListComponentsResponseBodyResult {
+	s.ConfigGroup = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResult) SetSceneList(v []*ListComponentsResponseBodyResultSceneList) *ListComponentsResponseBodyResult {
+	s.SceneList = v
+	return s
+}
+
 func (s *ListComponentsResponseBodyResult) SetComponentCategory(v []*ListComponentsResponseBodyResultComponentCategory) *ListComponentsResponseBodyResult {
 	s.ComponentCategory = v
 	return s
 }
 
-func (s *ListComponentsResponseBodyResult) SetConfigGroup(v []*ListComponentsResponseBodyResultConfigGroup) *ListComponentsResponseBodyResult {
-	s.ConfigGroup = v
+type ListComponentsResponseBodyResultConfigGroup struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+}
+
+func (s ListComponentsResponseBodyResultConfigGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyResultConfigGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyResultConfigGroup) SetKey(v string) *ListComponentsResponseBodyResultConfigGroup {
+	s.Key = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultConfigGroup) SetValue(v string) *ListComponentsResponseBodyResultConfigGroup {
+	s.Value = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultConfigGroup) SetCategory(v string) *ListComponentsResponseBodyResultConfigGroup {
+	s.Category = &v
+	return s
+}
+
+type ListComponentsResponseBodyResultSceneList struct {
+	// 场景类别
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// 组件信息
+	ComponentCategory []*ListComponentsResponseBodyResultSceneListComponentCategory `json:"ComponentCategory,omitempty" xml:"ComponentCategory,omitempty" type:"Repeated"`
+}
+
+func (s ListComponentsResponseBodyResultSceneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyResultSceneList) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyResultSceneList) SetScene(v string) *ListComponentsResponseBodyResultSceneList {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultSceneList) SetComponentCategory(v []*ListComponentsResponseBodyResultSceneListComponentCategory) *ListComponentsResponseBodyResultSceneList {
+	s.ComponentCategory = v
+	return s
+}
+
+type ListComponentsResponseBodyResultSceneListComponentCategory struct {
+	// 组件类别
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 类别下的组件列表
+	List []*ListComponentsResponseBodyResultSceneListComponentCategoryList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+}
+
+func (s ListComponentsResponseBodyResultSceneListComponentCategory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyResultSceneListComponentCategory) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyResultSceneListComponentCategory) SetType(v string) *ListComponentsResponseBodyResultSceneListComponentCategory {
+	s.Type = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultSceneListComponentCategory) SetList(v []*ListComponentsResponseBodyResultSceneListComponentCategoryList) *ListComponentsResponseBodyResultSceneListComponentCategory {
+	s.List = v
+	return s
+}
+
+type ListComponentsResponseBodyResultSceneListComponentCategoryList struct {
+	// 组件类型
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// 组件名称
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 是否使用
+	InUse *string `json:"InUse,omitempty" xml:"InUse,omitempty"`
+}
+
+func (s ListComponentsResponseBodyResultSceneListComponentCategoryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyResultSceneListComponentCategoryList) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyResultSceneListComponentCategoryList) SetComponentType(v string) *ListComponentsResponseBodyResultSceneListComponentCategoryList {
+	s.ComponentType = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultSceneListComponentCategoryList) SetComponentName(v string) *ListComponentsResponseBodyResultSceneListComponentCategoryList {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyResultSceneListComponentCategoryList) SetInUse(v string) *ListComponentsResponseBodyResultSceneListComponentCategoryList {
+	s.InUse = &v
 	return s
 }
 
@@ -2930,35 +3122,6 @@ func (s *ListComponentsResponseBodyResultComponentCategoryList) SetComponentName
 
 func (s *ListComponentsResponseBodyResultComponentCategoryList) SetInUse(v string) *ListComponentsResponseBodyResultComponentCategoryList {
 	s.InUse = &v
-	return s
-}
-
-type ListComponentsResponseBodyResultConfigGroup struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-}
-
-func (s ListComponentsResponseBodyResultConfigGroup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListComponentsResponseBodyResultConfigGroup) GoString() string {
-	return s.String()
-}
-
-func (s *ListComponentsResponseBodyResultConfigGroup) SetKey(v string) *ListComponentsResponseBodyResultConfigGroup {
-	s.Key = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyResultConfigGroup) SetValue(v string) *ListComponentsResponseBodyResultConfigGroup {
-	s.Value = &v
-	return s
-}
-
-func (s *ListComponentsResponseBodyResultConfigGroup) SetCategory(v string) *ListComponentsResponseBodyResultConfigGroup {
-	s.Category = &v
 	return s
 }
 
@@ -3678,6 +3841,8 @@ type GetLiveDomainStatusRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播域名列表
 	LiveDomainList []*string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty" type:"Repeated"`
+	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
+	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
 }
 
 func (s GetLiveDomainStatusRequest) String() string {
@@ -3698,11 +3863,18 @@ func (s *GetLiveDomainStatusRequest) SetLiveDomainList(v []*string) *GetLiveDoma
 	return s
 }
 
+func (s *GetLiveDomainStatusRequest) SetLiveDomainType(v string) *GetLiveDomainStatusRequest {
+	s.LiveDomainType = &v
+	return s
+}
+
 type GetLiveDomainStatusShrinkRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播域名列表
 	LiveDomainListShrink *string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty"`
+	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
+	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
 }
 
 func (s GetLiveDomainStatusShrinkRequest) String() string {
@@ -3720,6 +3892,11 @@ func (s *GetLiveDomainStatusShrinkRequest) SetAppId(v string) *GetLiveDomainStat
 
 func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainListShrink(v string) *GetLiveDomainStatusShrinkRequest {
 	s.LiveDomainListShrink = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainType(v string) *GetLiveDomainStatusShrinkRequest {
+	s.LiveDomainType = &v
 	return s
 }
 
@@ -5587,11 +5764,17 @@ func (client *Client) ListApplyLinkMicUsers(request *ListApplyLinkMicUsersReques
 	return _result, _err
 }
 
-func (client *Client) ListRoomLivesWithOptions(request *ListRoomLivesRequest, runtime *util.RuntimeOptions) (_result *ListRoomLivesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListRoomLivesWithOptions(tmpReq *ListRoomLivesRequest, runtime *util.RuntimeOptions) (_result *ListRoomLivesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListRoomLivesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoomIdList)) {
+		request.RoomIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomIdList, tea.String("RoomIdList"), tea.String("json"))
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
