@@ -4863,6 +4863,10 @@ type GetLiveResponseBodyResult struct {
 	CodeLevel *int32 `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
 	// 多分辨率多协议播放信息
 	PlayUrlInfoList []*GetLiveResponseBodyResultPlayUrlInfoList `json:"PlayUrlInfoList,omitempty" xml:"PlayUrlInfoList,omitempty" type:"Repeated"`
+	// 封面图片
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 用户自定义数据存储
+	UserDefineField *string `json:"UserDefineField,omitempty" xml:"UserDefineField,omitempty"`
 }
 
 func (s GetLiveResponseBodyResult) String() string {
@@ -4950,6 +4954,16 @@ func (s *GetLiveResponseBodyResult) SetCodeLevel(v int32) *GetLiveResponseBodyRe
 
 func (s *GetLiveResponseBodyResult) SetPlayUrlInfoList(v []*GetLiveResponseBodyResultPlayUrlInfoList) *GetLiveResponseBodyResult {
 	s.PlayUrlInfoList = v
+	return s
+}
+
+func (s *GetLiveResponseBodyResult) SetCoverUrl(v string) *GetLiveResponseBodyResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetLiveResponseBodyResult) SetUserDefineField(v string) *GetLiveResponseBodyResult {
+	s.UserDefineField = &v
 	return s
 }
 
