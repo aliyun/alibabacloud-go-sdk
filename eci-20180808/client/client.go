@@ -11,6 +11,1013 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateImageCacheRequest struct {
+	OwnerId                 *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount    *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount            *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId                *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId                  *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SecurityGroupId         *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId               *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ImageCacheName          *string                                           `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	EipInstanceId           *string                                           `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
+	ResourceGroupId         *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ClientToken             *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ImageCacheSize          *int32                                            `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
+	RetentionDays           *int32                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	AutoMatchImageCache     *bool                                             `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
+	ImageRegistryCredential []*CreateImageCacheRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
+	Image                   []*string                                         `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
+	Tag                     []*CreateImageCacheRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Flash                   *bool                                             `json:"Flash,omitempty" xml:"Flash,omitempty"`
+	AcrRegistryInfo         []*CreateImageCacheRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+}
+
+func (s CreateImageCacheRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheRequest) SetOwnerId(v int64) *CreateImageCacheRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetResourceOwnerAccount(v string) *CreateImageCacheRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetResourceOwnerId(v int64) *CreateImageCacheRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetOwnerAccount(v string) *CreateImageCacheRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetRegionId(v string) *CreateImageCacheRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetZoneId(v string) *CreateImageCacheRequest {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetSecurityGroupId(v string) *CreateImageCacheRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetVSwitchId(v string) *CreateImageCacheRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetImageCacheName(v string) *CreateImageCacheRequest {
+	s.ImageCacheName = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetEipInstanceId(v string) *CreateImageCacheRequest {
+	s.EipInstanceId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetResourceGroupId(v string) *CreateImageCacheRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetClientToken(v string) *CreateImageCacheRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetImageCacheSize(v int32) *CreateImageCacheRequest {
+	s.ImageCacheSize = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetRetentionDays(v int32) *CreateImageCacheRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetAutoMatchImageCache(v bool) *CreateImageCacheRequest {
+	s.AutoMatchImageCache = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetImageRegistryCredential(v []*CreateImageCacheRequestImageRegistryCredential) *CreateImageCacheRequest {
+	s.ImageRegistryCredential = v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetImage(v []*string) *CreateImageCacheRequest {
+	s.Image = v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetTag(v []*CreateImageCacheRequestTag) *CreateImageCacheRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetFlash(v bool) *CreateImageCacheRequest {
+	s.Flash = &v
+	return s
+}
+
+func (s *CreateImageCacheRequest) SetAcrRegistryInfo(v []*CreateImageCacheRequestAcrRegistryInfo) *CreateImageCacheRequest {
+	s.AcrRegistryInfo = v
+	return s
+}
+
+type CreateImageCacheRequestImageRegistryCredential struct {
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateImageCacheRequestImageRegistryCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheRequestImageRegistryCredential) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheRequestImageRegistryCredential) SetPassword(v string) *CreateImageCacheRequestImageRegistryCredential {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateImageCacheRequestImageRegistryCredential) SetServer(v string) *CreateImageCacheRequestImageRegistryCredential {
+	s.Server = &v
+	return s
+}
+
+func (s *CreateImageCacheRequestImageRegistryCredential) SetUserName(v string) *CreateImageCacheRequestImageRegistryCredential {
+	s.UserName = &v
+	return s
+}
+
+type CreateImageCacheRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateImageCacheRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheRequestTag) SetKey(v string) *CreateImageCacheRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateImageCacheRequestTag) SetValue(v string) *CreateImageCacheRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateImageCacheRequestAcrRegistryInfo struct {
+	Domain       []*string `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Repeated"`
+	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateImageCacheRequestAcrRegistryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheRequestAcrRegistryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheRequestAcrRegistryInfo) SetDomain(v []*string) *CreateImageCacheRequestAcrRegistryInfo {
+	s.Domain = v
+	return s
+}
+
+func (s *CreateImageCacheRequestAcrRegistryInfo) SetInstanceName(v string) *CreateImageCacheRequestAcrRegistryInfo {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateImageCacheRequestAcrRegistryInfo) SetInstanceId(v string) *CreateImageCacheRequestAcrRegistryInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateImageCacheRequestAcrRegistryInfo) SetRegionId(v string) *CreateImageCacheRequestAcrRegistryInfo {
+	s.RegionId = &v
+	return s
+}
+
+type CreateImageCacheResponseBody struct {
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ImageCacheId     *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+}
+
+func (s CreateImageCacheResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheResponseBody) SetRequestId(v string) *CreateImageCacheResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateImageCacheResponseBody) SetImageCacheId(v string) *CreateImageCacheResponseBody {
+	s.ImageCacheId = &v
+	return s
+}
+
+func (s *CreateImageCacheResponseBody) SetContainerGroupId(v string) *CreateImageCacheResponseBody {
+	s.ContainerGroupId = &v
+	return s
+}
+
+type CreateImageCacheResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateImageCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateImageCacheResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageCacheResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageCacheResponse) SetHeaders(v map[string]*string) *CreateImageCacheResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageCacheResponse) SetBody(v *CreateImageCacheResponseBody) *CreateImageCacheResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeContainerLogRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tail                 *int32  `json:"Tail,omitempty" xml:"Tail,omitempty"`
+	LastTime             *bool   `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	SinceSeconds         *int32  `json:"SinceSeconds,omitempty" xml:"SinceSeconds,omitempty"`
+	LimitBytes           *int64  `json:"LimitBytes,omitempty" xml:"LimitBytes,omitempty"`
+	Timestamps           *bool   `json:"Timestamps,omitempty" xml:"Timestamps,omitempty"`
+}
+
+func (s DescribeContainerLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerLogRequest) SetOwnerId(v int64) *DescribeContainerLogRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetResourceOwnerAccount(v string) *DescribeContainerLogRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetResourceOwnerId(v int64) *DescribeContainerLogRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetOwnerAccount(v string) *DescribeContainerLogRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetRegionId(v string) *DescribeContainerLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetContainerGroupId(v string) *DescribeContainerLogRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetContainerName(v string) *DescribeContainerLogRequest {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetStartTime(v string) *DescribeContainerLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetTail(v int32) *DescribeContainerLogRequest {
+	s.Tail = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetLastTime(v bool) *DescribeContainerLogRequest {
+	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetSinceSeconds(v int32) *DescribeContainerLogRequest {
+	s.SinceSeconds = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetLimitBytes(v int64) *DescribeContainerLogRequest {
+	s.LimitBytes = &v
+	return s
+}
+
+func (s *DescribeContainerLogRequest) SetTimestamps(v bool) *DescribeContainerLogRequest {
+	s.Timestamps = &v
+	return s
+}
+
+type DescribeContainerLogResponseBody struct {
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s DescribeContainerLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerLogResponseBody) SetRequestId(v string) *DescribeContainerLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeContainerLogResponseBody) SetContainerName(v string) *DescribeContainerLogResponseBody {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *DescribeContainerLogResponseBody) SetContent(v string) *DescribeContainerLogResponseBody {
+	s.Content = &v
+	return s
+}
+
+type DescribeContainerLogResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeContainerLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeContainerLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerLogResponse) SetHeaders(v map[string]*string) *DescribeContainerLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeContainerLogResponse) SetBody(v *DescribeContainerLogResponseBody) *DescribeContainerLogResponse {
+	s.Body = v
+	return s
+}
+
+type RestartContainerGroupRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s RestartContainerGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartContainerGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartContainerGroupRequest) SetOwnerId(v int64) *RestartContainerGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetResourceOwnerAccount(v string) *RestartContainerGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetResourceOwnerId(v int64) *RestartContainerGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetOwnerAccount(v string) *RestartContainerGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetRegionId(v string) *RestartContainerGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetContainerGroupId(v string) *RestartContainerGroupRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *RestartContainerGroupRequest) SetClientToken(v string) *RestartContainerGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type RestartContainerGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartContainerGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartContainerGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartContainerGroupResponseBody) SetRequestId(v string) *RestartContainerGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartContainerGroupResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RestartContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartContainerGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartContainerGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartContainerGroupResponse) SetHeaders(v map[string]*string) *RestartContainerGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartContainerGroupResponse) SetBody(v *RestartContainerGroupResponseBody) *RestartContainerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeImageCachesRequest struct {
+	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ImageCacheId         *string                          `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	ImageCacheName       *string                          `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+	SnapshotId           *string                          `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Image                *string                          `json:"Image,omitempty" xml:"Image,omitempty"`
+	ResourceGroupId      *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                  []*DescribeImageCachesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageCachesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesRequest) SetOwnerId(v int64) *DescribeImageCachesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetResourceOwnerAccount(v string) *DescribeImageCachesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetResourceOwnerId(v int64) *DescribeImageCachesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetOwnerAccount(v string) *DescribeImageCachesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetRegionId(v string) *DescribeImageCachesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetImageCacheId(v string) *DescribeImageCachesRequest {
+	s.ImageCacheId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetImageCacheName(v string) *DescribeImageCachesRequest {
+	s.ImageCacheName = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetSnapshotId(v string) *DescribeImageCachesRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetImage(v string) *DescribeImageCachesRequest {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetResourceGroupId(v string) *DescribeImageCachesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequest) SetTag(v []*DescribeImageCachesRequestTag) *DescribeImageCachesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeImageCachesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeImageCachesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesRequestTag) SetKey(v string) *DescribeImageCachesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeImageCachesRequestTag) SetValue(v string) *DescribeImageCachesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeImageCachesResponseBody struct {
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ImageCaches []*DescribeImageCachesResponseBodyImageCaches `json:"ImageCaches,omitempty" xml:"ImageCaches,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageCachesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesResponseBody) SetRequestId(v string) *DescribeImageCachesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBody) SetImageCaches(v []*DescribeImageCachesResponseBodyImageCaches) *DescribeImageCachesResponseBody {
+	s.ImageCaches = v
+	return s
+}
+
+type DescribeImageCachesResponseBodyImageCaches struct {
+	Images           []*string                                           `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	CreationTime     *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Status           *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Progress         *string                                             `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ExpireDateTime   *string                                             `json:"ExpireDateTime,omitempty" xml:"ExpireDateTime,omitempty"`
+	LastMatchedTime  *string                                             `json:"LastMatchedTime,omitempty" xml:"LastMatchedTime,omitempty"`
+	ContainerGroupId *string                                             `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	Tags             []*DescribeImageCachesResponseBodyImageCachesTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Events           []*DescribeImageCachesResponseBodyImageCachesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	ImageCacheId     *string                                             `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
+	RegionId         *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotId       *string                                             `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	FlashSnapshotId  *string                                             `json:"FlashSnapshotId,omitempty" xml:"FlashSnapshotId,omitempty"`
+	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ImageCacheSize   *int32                                              `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
+	ImageCacheName   *string                                             `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
+}
+
+func (s DescribeImageCachesResponseBodyImageCaches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesResponseBodyImageCaches) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetImages(v []*string) *DescribeImageCachesResponseBodyImageCaches {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetCreationTime(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetStatus(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetProgress(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetExpireDateTime(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.ExpireDateTime = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetLastMatchedTime(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.LastMatchedTime = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetContainerGroupId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetTags(v []*DescribeImageCachesResponseBodyImageCachesTags) *DescribeImageCachesResponseBodyImageCaches {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetEvents(v []*DescribeImageCachesResponseBodyImageCachesEvents) *DescribeImageCachesResponseBodyImageCaches {
+	s.Events = v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.ImageCacheId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetRegionId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetSnapshotId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetFlashSnapshotId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.FlashSnapshotId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetResourceGroupId(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheSize(v int32) *DescribeImageCachesResponseBodyImageCaches {
+	s.ImageCacheSize = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheName(v string) *DescribeImageCachesResponseBodyImageCaches {
+	s.ImageCacheName = &v
+	return s
+}
+
+type DescribeImageCachesResponseBodyImageCachesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeImageCachesResponseBodyImageCachesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesResponseBodyImageCachesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesTags) SetKey(v string) *DescribeImageCachesResponseBodyImageCachesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesTags) SetValue(v string) *DescribeImageCachesResponseBodyImageCachesTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeImageCachesResponseBodyImageCachesEvents struct {
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
+}
+
+func (s DescribeImageCachesResponseBodyImageCachesEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesResponseBodyImageCachesEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetType(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetLastTimestamp(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.LastTimestamp = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetMessage(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetName(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetCount(v int32) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetFirstTimestamp(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
+	s.FirstTimestamp = &v
+	return s
+}
+
+type DescribeImageCachesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeImageCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageCachesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageCachesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageCachesResponse) SetHeaders(v map[string]*string) *DescribeImageCachesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageCachesResponse) SetBody(v *DescribeImageCachesResponseBody) *DescribeImageCachesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteContainerGroupRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DeleteContainerGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContainerGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContainerGroupRequest) SetOwnerId(v int64) *DeleteContainerGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetResourceOwnerAccount(v string) *DeleteContainerGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetResourceOwnerId(v int64) *DeleteContainerGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetOwnerAccount(v string) *DeleteContainerGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetRegionId(v string) *DeleteContainerGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetContainerGroupId(v string) *DeleteContainerGroupRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *DeleteContainerGroupRequest) SetClientToken(v string) *DeleteContainerGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DeleteContainerGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteContainerGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContainerGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContainerGroupResponseBody) SetRequestId(v string) *DeleteContainerGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteContainerGroupResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteContainerGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteContainerGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteContainerGroupResponse) SetHeaders(v map[string]*string) *DeleteContainerGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteContainerGroupResponse) SetBody(v *DeleteContainerGroupResponseBody) *DeleteContainerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListUsageRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageRequest) SetOwnerId(v int64) *ListUsageRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListUsageRequest) SetResourceOwnerAccount(v string) *ListUsageRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListUsageRequest) SetResourceOwnerId(v int64) *ListUsageRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListUsageRequest) SetOwnerAccount(v string) *ListUsageRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListUsageRequest) SetRegionId(v string) *ListUsageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListUsageResponseBody struct {
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+}
+
+func (s ListUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageResponseBody) SetRequestId(v string) *ListUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUsageResponseBody) SetAttributes(v map[string]interface{}) *ListUsageResponseBody {
+	s.Attributes = v
+	return s
+}
+
+type ListUsageResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageResponse) SetHeaders(v map[string]*string) *ListUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsageResponse) SetBody(v *ListUsageResponseBody) *ListUsageResponse {
+	s.Body = v
+	return s
+}
+
 type CreateContainerGroupRequest struct {
 	DnsConfig                     *CreateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
 	SecurityContext               *CreateContainerGroupRequestSecurityContext           `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
@@ -67,6 +1074,7 @@ type CreateContainerGroupRequest struct {
 	Arn                           []*CreateContainerGroupRequestArn                     `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	NtpServer                     []*string                                             `json:"NtpServer,omitempty" xml:"NtpServer,omitempty" type:"Repeated"`
 	AcrRegistryInfo               []*CreateContainerGroupRequestAcrRegistryInfo         `json:"AcrRegistryInfo,omitempty" xml:"AcrRegistryInfo,omitempty" type:"Repeated"`
+	SpotDuration                  *int64                                                `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 }
 
 func (s CreateContainerGroupRequest) String() string {
@@ -349,6 +1357,11 @@ func (s *CreateContainerGroupRequest) SetNtpServer(v []*string) *CreateContainer
 
 func (s *CreateContainerGroupRequest) SetAcrRegistryInfo(v []*CreateContainerGroupRequestAcrRegistryInfo) *CreateContainerGroupRequest {
 	s.AcrRegistryInfo = v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetSpotDuration(v int64) *CreateContainerGroupRequest {
+	s.SpotDuration = &v
 	return s
 }
 
@@ -1797,322 +2810,6 @@ func (s *CreateContainerGroupResponse) SetBody(v *CreateContainerGroupResponseBo
 	return s
 }
 
-type CreateImageCacheRequest struct {
-	OwnerId                 *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount    *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount            *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId                *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId                  *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	SecurityGroupId         *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId               *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ImageCacheName          *string                                           `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
-	EipInstanceId           *string                                           `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	ResourceGroupId         *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ClientToken             *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ImageCacheSize          *int32                                            `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
-	RetentionDays           *int32                                            `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	AutoMatchImageCache     *bool                                             `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	ImageRegistryCredential []*CreateImageCacheRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
-	Image                   []*string                                         `json:"Image,omitempty" xml:"Image,omitempty" type:"Repeated"`
-	Tag                     []*CreateImageCacheRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s CreateImageCacheRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageCacheRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageCacheRequest) SetOwnerId(v int64) *CreateImageCacheRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetResourceOwnerAccount(v string) *CreateImageCacheRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetResourceOwnerId(v int64) *CreateImageCacheRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetOwnerAccount(v string) *CreateImageCacheRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetRegionId(v string) *CreateImageCacheRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetZoneId(v string) *CreateImageCacheRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetSecurityGroupId(v string) *CreateImageCacheRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetVSwitchId(v string) *CreateImageCacheRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetImageCacheName(v string) *CreateImageCacheRequest {
-	s.ImageCacheName = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetEipInstanceId(v string) *CreateImageCacheRequest {
-	s.EipInstanceId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetResourceGroupId(v string) *CreateImageCacheRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetClientToken(v string) *CreateImageCacheRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetImageCacheSize(v int32) *CreateImageCacheRequest {
-	s.ImageCacheSize = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetRetentionDays(v int32) *CreateImageCacheRequest {
-	s.RetentionDays = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetAutoMatchImageCache(v bool) *CreateImageCacheRequest {
-	s.AutoMatchImageCache = &v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetImageRegistryCredential(v []*CreateImageCacheRequestImageRegistryCredential) *CreateImageCacheRequest {
-	s.ImageRegistryCredential = v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetImage(v []*string) *CreateImageCacheRequest {
-	s.Image = v
-	return s
-}
-
-func (s *CreateImageCacheRequest) SetTag(v []*CreateImageCacheRequestTag) *CreateImageCacheRequest {
-	s.Tag = v
-	return s
-}
-
-type CreateImageCacheRequestImageRegistryCredential struct {
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s CreateImageCacheRequestImageRegistryCredential) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageCacheRequestImageRegistryCredential) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageCacheRequestImageRegistryCredential) SetPassword(v string) *CreateImageCacheRequestImageRegistryCredential {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateImageCacheRequestImageRegistryCredential) SetServer(v string) *CreateImageCacheRequestImageRegistryCredential {
-	s.Server = &v
-	return s
-}
-
-func (s *CreateImageCacheRequestImageRegistryCredential) SetUserName(v string) *CreateImageCacheRequestImageRegistryCredential {
-	s.UserName = &v
-	return s
-}
-
-type CreateImageCacheRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateImageCacheRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageCacheRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageCacheRequestTag) SetKey(v string) *CreateImageCacheRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateImageCacheRequestTag) SetValue(v string) *CreateImageCacheRequestTag {
-	s.Value = &v
-	return s
-}
-
-type CreateImageCacheResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ImageCacheId     *string `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	ContainerGroupId *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-}
-
-func (s CreateImageCacheResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageCacheResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageCacheResponseBody) SetRequestId(v string) *CreateImageCacheResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateImageCacheResponseBody) SetImageCacheId(v string) *CreateImageCacheResponseBody {
-	s.ImageCacheId = &v
-	return s
-}
-
-func (s *CreateImageCacheResponseBody) SetContainerGroupId(v string) *CreateImageCacheResponseBody {
-	s.ContainerGroupId = &v
-	return s
-}
-
-type CreateImageCacheResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateImageCacheResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageCacheResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageCacheResponse) SetHeaders(v map[string]*string) *CreateImageCacheResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateImageCacheResponse) SetBody(v *CreateImageCacheResponseBody) *CreateImageCacheResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteContainerGroupRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s DeleteContainerGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteContainerGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteContainerGroupRequest) SetOwnerId(v int64) *DeleteContainerGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetResourceOwnerAccount(v string) *DeleteContainerGroupRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetResourceOwnerId(v int64) *DeleteContainerGroupRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetOwnerAccount(v string) *DeleteContainerGroupRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetRegionId(v string) *DeleteContainerGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetContainerGroupId(v string) *DeleteContainerGroupRequest {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *DeleteContainerGroupRequest) SetClientToken(v string) *DeleteContainerGroupRequest {
-	s.ClientToken = &v
-	return s
-}
-
-type DeleteContainerGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteContainerGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteContainerGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteContainerGroupResponseBody) SetRequestId(v string) *DeleteContainerGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteContainerGroupResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteContainerGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteContainerGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteContainerGroupResponse) SetHeaders(v map[string]*string) *DeleteContainerGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteContainerGroupResponse) SetBody(v *DeleteContainerGroupResponseBody) *DeleteContainerGroupResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteImageCacheRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2557,6 +3254,7 @@ type DescribeContainerGroupMetricResponseBodyRecordsFilesystem struct {
 	Available *int64  `json:"Available,omitempty" xml:"Available,omitempty"`
 	FsName    *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
 	Usage     *int64  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	Category  *string `json:"Category,omitempty" xml:"Category,omitempty"`
 }
 
 func (s DescribeContainerGroupMetricResponseBodyRecordsFilesystem) String() string {
@@ -2584,6 +3282,11 @@ func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetFsName(v 
 
 func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetUsage(v int64) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
 	s.Usage = &v
+	return s
+}
+
+func (s *DescribeContainerGroupMetricResponseBodyRecordsFilesystem) SetCategory(v string) *DescribeContainerGroupMetricResponseBodyRecordsFilesystem {
+	s.Category = &v
 	return s
 }
 
@@ -2711,6 +3414,1571 @@ func (s *DescribeContainerGroupMetricResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *DescribeContainerGroupMetricResponse) SetBody(v *DescribeContainerGroupMetricResponseBody) *DescribeContainerGroupMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRegionsRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetResourceOwnerAccount(v string) *DescribeRegionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponseBody struct {
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegions struct {
+	Zones          []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RecommendZones []*string `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Repeated"`
+	RegionEndpoint *string   `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetZones(v []*string) *DescribeRegionsResponseBodyRegions {
+	s.Zones = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRecommendZones(v []*string) *DescribeRegionsResponseBodyRegions {
+	s.RecommendZones = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionEndpoint = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateContainerGroupRequest struct {
+	DnsConfig               *UpdateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	OwnerId                 *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount    *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount            *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId                *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ContainerGroupId        *string                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	RestartPolicy           *string                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	ClientToken             *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Cpu                     *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Memory                  *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ResourceGroupId         *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                     []*UpdateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Volume                  []*UpdateContainerGroupRequestVolume                  `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
+	Container               []*UpdateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
+	InitContainer           []*UpdateContainerGroupRequestInitContainer           `json:"InitContainer,omitempty" xml:"InitContainer,omitempty" type:"Repeated"`
+	ImageRegistryCredential []*UpdateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequest) SetDnsConfig(v *UpdateContainerGroupRequestDnsConfig) *UpdateContainerGroupRequest {
+	s.DnsConfig = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetOwnerId(v int64) *UpdateContainerGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetResourceOwnerAccount(v string) *UpdateContainerGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetResourceOwnerId(v int64) *UpdateContainerGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetOwnerAccount(v string) *UpdateContainerGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetRegionId(v string) *UpdateContainerGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetContainerGroupId(v string) *UpdateContainerGroupRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetRestartPolicy(v string) *UpdateContainerGroupRequest {
+	s.RestartPolicy = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetClientToken(v string) *UpdateContainerGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetCpu(v float32) *UpdateContainerGroupRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetMemory(v float32) *UpdateContainerGroupRequest {
+	s.Memory = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetResourceGroupId(v string) *UpdateContainerGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetTag(v []*UpdateContainerGroupRequestTag) *UpdateContainerGroupRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetVolume(v []*UpdateContainerGroupRequestVolume) *UpdateContainerGroupRequest {
+	s.Volume = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetContainer(v []*UpdateContainerGroupRequestContainer) *UpdateContainerGroupRequest {
+	s.Container = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetInitContainer(v []*UpdateContainerGroupRequestInitContainer) *UpdateContainerGroupRequest {
+	s.InitContainer = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequest) SetImageRegistryCredential(v []*UpdateContainerGroupRequestImageRegistryCredential) *UpdateContainerGroupRequest {
+	s.ImageRegistryCredential = v
+	return s
+}
+
+type UpdateContainerGroupRequestDnsConfig struct {
+	NameServer []*string                                     `json:"NameServer,omitempty" xml:"NameServer,omitempty" type:"Repeated"`
+	Search     []*string                                     `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
+	Option     []*UpdateContainerGroupRequestDnsConfigOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestDnsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestDnsConfig) SetNameServer(v []*string) *UpdateContainerGroupRequestDnsConfig {
+	s.NameServer = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestDnsConfig) SetSearch(v []*string) *UpdateContainerGroupRequestDnsConfig {
+	s.Search = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestDnsConfig) SetOption(v []*UpdateContainerGroupRequestDnsConfigOption) *UpdateContainerGroupRequestDnsConfig {
+	s.Option = v
+	return s
+}
+
+type UpdateContainerGroupRequestDnsConfigOption struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestDnsConfigOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestDnsConfigOption) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestDnsConfigOption) SetValue(v string) *UpdateContainerGroupRequestDnsConfigOption {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestDnsConfigOption) SetName(v string) *UpdateContainerGroupRequestDnsConfigOption {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestTag) SetKey(v string) *UpdateContainerGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestTag) SetValue(v string) *UpdateContainerGroupRequestTag {
+	s.Value = &v
+	return s
+}
+
+type UpdateContainerGroupRequestVolume struct {
+	NFSVolume        *UpdateContainerGroupRequestVolumeNFSVolume        `json:"NFSVolume,omitempty" xml:"NFSVolume,omitempty" require:"true" type:"Struct"`
+	ConfigFileVolume *UpdateContainerGroupRequestVolumeConfigFileVolume `json:"ConfigFileVolume,omitempty" xml:"ConfigFileVolume,omitempty" require:"true" type:"Struct"`
+	EmptyDirVolume   *UpdateContainerGroupRequestVolumeEmptyDirVolume   `json:"EmptyDirVolume,omitempty" xml:"EmptyDirVolume,omitempty" require:"true" type:"Struct"`
+	Type             *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestVolume) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestVolume) SetNFSVolume(v *UpdateContainerGroupRequestVolumeNFSVolume) *UpdateContainerGroupRequestVolume {
+	s.NFSVolume = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolume) SetConfigFileVolume(v *UpdateContainerGroupRequestVolumeConfigFileVolume) *UpdateContainerGroupRequestVolume {
+	s.ConfigFileVolume = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolume) SetEmptyDirVolume(v *UpdateContainerGroupRequestVolumeEmptyDirVolume) *UpdateContainerGroupRequestVolume {
+	s.EmptyDirVolume = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolume) SetType(v string) *UpdateContainerGroupRequestVolume {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolume) SetName(v string) *UpdateContainerGroupRequestVolume {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestVolumeNFSVolume struct {
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	ReadOnly *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestVolumeNFSVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestVolumeNFSVolume) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetPath(v string) *UpdateContainerGroupRequestVolumeNFSVolume {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetServer(v string) *UpdateContainerGroupRequestVolumeNFSVolume {
+	s.Server = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetReadOnly(v bool) *UpdateContainerGroupRequestVolumeNFSVolume {
+	s.ReadOnly = &v
+	return s
+}
+
+type UpdateContainerGroupRequestVolumeConfigFileVolume struct {
+	ConfigFileToPath []*UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath `json:"ConfigFileToPath,omitempty" xml:"ConfigFileToPath,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestVolumeConfigFileVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestVolumeConfigFileVolume) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestVolumeConfigFileVolume) SetConfigFileToPath(v []*UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) *UpdateContainerGroupRequestVolumeConfigFileVolume {
+	s.ConfigFileToPath = v
+	return s
+}
+
+type UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath struct {
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) SetPath(v string) *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) SetContent(v string) *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath {
+	s.Content = &v
+	return s
+}
+
+type UpdateContainerGroupRequestVolumeEmptyDirVolume struct {
+	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestVolumeEmptyDirVolume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestVolumeEmptyDirVolume) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestVolumeEmptyDirVolume) SetMedium(v string) *UpdateContainerGroupRequestVolumeEmptyDirVolume {
+	s.Medium = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainer struct {
+	ReadinessProbe                              *UpdateContainerGroupRequestContainerReadinessProbe                                `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
+	SecurityContext                             *UpdateContainerGroupRequestContainerSecurityContext                               `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	LivenessProbe                               *UpdateContainerGroupRequestContainerLivenessProbe                                 `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
+	EnvironmentVar                              []*UpdateContainerGroupRequestContainerEnvironmentVar                              `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	Tty                                         *bool                                                                              `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	WorkingDir                                  *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	Arg                                         []*string                                                                          `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	Stdin                                       *bool                                                                              `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	VolumeMount                                 []*UpdateContainerGroupRequestContainerVolumeMount                                 `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	ImagePullPolicy                             *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	StdinOnce                                   *bool                                                                              `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	LifecyclePreStopHandlerTcpSocketPort        *int32                                                                             `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetScheme      *string                                                                            `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	Command                                     []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerHttpGetHost        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	LifecyclePostStartHandlerTcpSocketPort      *int32                                                                             `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	LifecyclePostStartHandlerHttpGetPath        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	LifecyclePostStartHandlerExec               []*string                                                                          `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetPath          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	Port                                        []*UpdateContainerGroupRequestContainerPort                                        `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	LifecyclePreStopHandlerHttpGetScheme        *string                                                                            `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	LifecyclePostStartHandlerHttpGetHttpHeaders []*UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders `json:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" xml:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerTcpSocketHost      *string                                                                            `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	Gpu                                         *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	LifecyclePreStopHandlerExec                 []*string                                                                          `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
+	Memory                                      *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name                                        *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	LifecyclePreStopHandlerHttpGetHost          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	LifecyclePreStopHandlerTcpSocketHost        *string                                                                            `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	Image                                       *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
+	LifecyclePreStopHandlerHttpGetPort          *int32                                                                             `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	LifecyclePreStopHandlerHttpGetHttpHeader    []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader    `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
+	Cpu                                         *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	LifecyclePostStartHandlerHttpGetPort        *int32                                                                             `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainer) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetReadinessProbe(v *UpdateContainerGroupRequestContainerReadinessProbe) *UpdateContainerGroupRequestContainer {
+	s.ReadinessProbe = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetSecurityContext(v *UpdateContainerGroupRequestContainerSecurityContext) *UpdateContainerGroupRequestContainer {
+	s.SecurityContext = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLivenessProbe(v *UpdateContainerGroupRequestContainerLivenessProbe) *UpdateContainerGroupRequestContainer {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetEnvironmentVar(v []*UpdateContainerGroupRequestContainerEnvironmentVar) *UpdateContainerGroupRequestContainer {
+	s.EnvironmentVar = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetTty(v bool) *UpdateContainerGroupRequestContainer {
+	s.Tty = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetWorkingDir(v string) *UpdateContainerGroupRequestContainer {
+	s.WorkingDir = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetArg(v []*string) *UpdateContainerGroupRequestContainer {
+	s.Arg = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetStdin(v bool) *UpdateContainerGroupRequestContainer {
+	s.Stdin = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetVolumeMount(v []*UpdateContainerGroupRequestContainerVolumeMount) *UpdateContainerGroupRequestContainer {
+	s.VolumeMount = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetImagePullPolicy(v string) *UpdateContainerGroupRequestContainer {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetStdinOnce(v bool) *UpdateContainerGroupRequestContainer {
+	s.StdinOnce = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetScheme(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetCommand(v []*string) *UpdateContainerGroupRequestContainer {
+	s.Command = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetHost(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerTcpSocketPort = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetPath(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerExec(v []*string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerExec = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetPath(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerHttpGetPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetPort(v []*UpdateContainerGroupRequestContainerPort) *UpdateContainerGroupRequestContainer {
+	s.Port = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetScheme(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerHttpGetScheme = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetHttpHeaders(v []*UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerHttpGetHttpHeaders = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerTcpSocketHost(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetGpu(v int32) *UpdateContainerGroupRequestContainer {
+	s.Gpu = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerExec(v []*string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerExec = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetMemory(v float32) *UpdateContainerGroupRequestContainer {
+	s.Memory = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetName(v string) *UpdateContainerGroupRequestContainer {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetHost(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerHttpGetHost = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerTcpSocketHost(v string) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerTcpSocketHost = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetImage(v string) *UpdateContainerGroupRequestContainer {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetPort(v int32) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerHttpGetPort = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetHttpHeader(v []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePreStopHandlerHttpGetHttpHeader = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetCpu(v float32) *UpdateContainerGroupRequestContainer {
+	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetPort(v int32) *UpdateContainerGroupRequestContainer {
+	s.LifecyclePostStartHandlerHttpGetPort = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerReadinessProbe struct {
+	TimeoutSeconds      *int32                                                       `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	SuccessThreshold    *int32                                                       `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	TcpSocket           *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" require:"true" type:"Struct"`
+	HttpGet             *UpdateContainerGroupRequestContainerReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" require:"true" type:"Struct"`
+	PeriodSeconds       *int32                                                       `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	InitialDelaySeconds *int32                                                       `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	Exec                *UpdateContainerGroupRequestContainerReadinessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" require:"true" type:"Struct"`
+	FailureThreshold    *int32                                                       `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbe) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetTimeoutSeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetSuccessThreshold(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetTcpSocket(v *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.TcpSocket = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetHttpGet(v *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.HttpGet = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetPeriodSeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetInitialDelaySeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetExec(v *UpdateContainerGroupRequestContainerReadinessProbeExec) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.Exec = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetFailureThreshold(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
+	s.FailureThreshold = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerReadinessProbeTcpSocket struct {
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) SetPort(v int32) *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket {
+	s.Port = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerReadinessProbeHttpGet struct {
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeHttpGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeHttpGet) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetScheme(v string) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
+	s.Scheme = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetPath(v string) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetPort(v int32) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
+	s.Port = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerReadinessProbeExec struct {
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeExec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerReadinessProbeExec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerReadinessProbeExec) SetCommand(v []*string) *UpdateContainerGroupRequestContainerReadinessProbeExec {
+	s.Command = v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerSecurityContext struct {
+	Capability             *UpdateContainerGroupRequestContainerSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" require:"true" type:"Struct"`
+	ReadOnlyRootFilesystem *bool                                                          `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	RunAsUser              *int64                                                         `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerSecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerSecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerSecurityContext) SetCapability(v *UpdateContainerGroupRequestContainerSecurityContextCapability) *UpdateContainerGroupRequestContainerSecurityContext {
+	s.Capability = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerSecurityContext) SetReadOnlyRootFilesystem(v bool) *UpdateContainerGroupRequestContainerSecurityContext {
+	s.ReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerSecurityContext) SetRunAsUser(v int64) *UpdateContainerGroupRequestContainerSecurityContext {
+	s.RunAsUser = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerSecurityContextCapability struct {
+	Add []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestContainerSecurityContextCapability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerSecurityContextCapability) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerSecurityContextCapability) SetAdd(v []*string) *UpdateContainerGroupRequestContainerSecurityContextCapability {
+	s.Add = v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLivenessProbe struct {
+	PeriodSeconds       *int32                                                      `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	TcpSocket           *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" require:"true" type:"Struct"`
+	InitialDelaySeconds *int32                                                      `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	SuccessThreshold    *int32                                                      `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	Exec                *UpdateContainerGroupRequestContainerLivenessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" require:"true" type:"Struct"`
+	HttpGet             *UpdateContainerGroupRequestContainerLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" require:"true" type:"Struct"`
+	FailureThreshold    *int32                                                      `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	TimeoutSeconds      *int32                                                      `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbe) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetPeriodSeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetTcpSocket(v *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.TcpSocket = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetInitialDelaySeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetSuccessThreshold(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetExec(v *UpdateContainerGroupRequestContainerLivenessProbeExec) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.Exec = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetHttpGet(v *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.HttpGet = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetFailureThreshold(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetTimeoutSeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLivenessProbeTcpSocket struct {
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) SetPort(v int32) *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket {
+	s.Port = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLivenessProbeExec struct {
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeExec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeExec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbeExec) SetCommand(v []*string) *UpdateContainerGroupRequestContainerLivenessProbeExec {
+	s.Command = v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLivenessProbeHttpGet struct {
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeHttpGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLivenessProbeHttpGet) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetScheme(v string) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
+	s.Scheme = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetPort(v int32) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetPath(v string) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
+	s.Path = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerEnvironmentVar struct {
+	FieldRef *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
+	Key      *string                                                     `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value    *string                                                     `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerEnvironmentVar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerEnvironmentVar) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetFieldRef(v *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) *UpdateContainerGroupRequestContainerEnvironmentVar {
+	s.FieldRef = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetKey(v string) *UpdateContainerGroupRequestContainerEnvironmentVar {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetValue(v string) *UpdateContainerGroupRequestContainerEnvironmentVar {
+	s.Value = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerEnvironmentVarFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPath(v string) *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef {
+	s.FieldPath = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerVolumeMount struct {
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerVolumeMount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerVolumeMount) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.MountPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetReadOnly(v bool) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetSubPath(v string) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.SubPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerVolumeMount) SetName(v string) *UpdateContainerGroupRequestContainerVolumeMount {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerPort struct {
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerPort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerPort) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerPort) SetProtocol(v string) *UpdateContainerGroupRequestContainerPort {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerPort) SetPort(v int32) *UpdateContainerGroupRequestContainerPort {
+	s.Port = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) SetValue(v string) *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) SetName(v string) *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) SetValue(v string) *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) SetName(v string) *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainer struct {
+	SecurityContext *UpdateContainerGroupRequestInitContainerSecurityContext  `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
+	Image           *string                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
+	VolumeMount     []*UpdateContainerGroupRequestInitContainerVolumeMount    `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	Port            []*UpdateContainerGroupRequestInitContainerPort           `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
+	EnvironmentVar  []*UpdateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	ImagePullPolicy *string                                                   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	StdinOnce       *bool                                                     `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	Cpu             *float32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Tty             *bool                                                     `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	WorkingDir      *string                                                   `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	Command         []*string                                                 `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Arg             []*string                                                 `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
+	Gpu             *int32                                                    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Memory          *float32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Stdin           *bool                                                     `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	Name            *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainer) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetSecurityContext(v *UpdateContainerGroupRequestInitContainerSecurityContext) *UpdateContainerGroupRequestInitContainer {
+	s.SecurityContext = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetImage(v string) *UpdateContainerGroupRequestInitContainer {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetVolumeMount(v []*UpdateContainerGroupRequestInitContainerVolumeMount) *UpdateContainerGroupRequestInitContainer {
+	s.VolumeMount = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetPort(v []*UpdateContainerGroupRequestInitContainerPort) *UpdateContainerGroupRequestInitContainer {
+	s.Port = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetEnvironmentVar(v []*UpdateContainerGroupRequestInitContainerEnvironmentVar) *UpdateContainerGroupRequestInitContainer {
+	s.EnvironmentVar = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetImagePullPolicy(v string) *UpdateContainerGroupRequestInitContainer {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetStdinOnce(v bool) *UpdateContainerGroupRequestInitContainer {
+	s.StdinOnce = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetCpu(v float32) *UpdateContainerGroupRequestInitContainer {
+	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetTty(v bool) *UpdateContainerGroupRequestInitContainer {
+	s.Tty = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetWorkingDir(v string) *UpdateContainerGroupRequestInitContainer {
+	s.WorkingDir = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetCommand(v []*string) *UpdateContainerGroupRequestInitContainer {
+	s.Command = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetArg(v []*string) *UpdateContainerGroupRequestInitContainer {
+	s.Arg = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetGpu(v int32) *UpdateContainerGroupRequestInitContainer {
+	s.Gpu = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetMemory(v float32) *UpdateContainerGroupRequestInitContainer {
+	s.Memory = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetStdin(v bool) *UpdateContainerGroupRequestInitContainer {
+	s.Stdin = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainer) SetName(v string) *UpdateContainerGroupRequestInitContainer {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerSecurityContext struct {
+	Capability             *UpdateContainerGroupRequestInitContainerSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" require:"true" type:"Struct"`
+	ReadOnlyRootFilesystem *bool                                                              `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	RunAsUser              *int64                                                             `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerSecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerSecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetCapability(v *UpdateContainerGroupRequestInitContainerSecurityContextCapability) *UpdateContainerGroupRequestInitContainerSecurityContext {
+	s.Capability = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetReadOnlyRootFilesystem(v bool) *UpdateContainerGroupRequestInitContainerSecurityContext {
+	s.ReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetRunAsUser(v int64) *UpdateContainerGroupRequestInitContainerSecurityContext {
+	s.RunAsUser = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerSecurityContextCapability struct {
+	Add []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerSecurityContextCapability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerSecurityContextCapability) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerSecurityContextCapability) SetAdd(v []*string) *UpdateContainerGroupRequestInitContainerSecurityContextCapability {
+	s.Add = v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerVolumeMount struct {
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerVolumeMount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerVolumeMount) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.MountPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetReadOnly(v bool) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetSubPath(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.SubPath = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetName(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
+	s.Name = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerPort struct {
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerPort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerPort) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerPort) SetProtocol(v string) *UpdateContainerGroupRequestInitContainerPort {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerPort) SetPort(v int32) *UpdateContainerGroupRequestInitContainerPort {
+	s.Port = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerEnvironmentVar struct {
+	FieldRef *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
+	Key      *string                                                         `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value    *string                                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerEnvironmentVar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerEnvironmentVar) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetFieldRef(v *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
+	s.FieldRef = v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetKey(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetValue(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
+	s.Value = &v
+	return s
+}
+
+type UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) SetFieldPath(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef {
+	s.FieldPath = &v
+	return s
+}
+
+type UpdateContainerGroupRequestImageRegistryCredential struct {
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s UpdateContainerGroupRequestImageRegistryCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupRequestImageRegistryCredential) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupRequestImageRegistryCredential) SetPassword(v string) *UpdateContainerGroupRequestImageRegistryCredential {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestImageRegistryCredential) SetServer(v string) *UpdateContainerGroupRequestImageRegistryCredential {
+	s.Server = &v
+	return s
+}
+
+func (s *UpdateContainerGroupRequestImageRegistryCredential) SetUserName(v string) *UpdateContainerGroupRequestImageRegistryCredential {
+	s.UserName = &v
+	return s
+}
+
+type UpdateContainerGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateContainerGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupResponseBody) SetRequestId(v string) *UpdateContainerGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateContainerGroupResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateContainerGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContainerGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContainerGroupResponse) SetHeaders(v map[string]*string) *UpdateContainerGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateContainerGroupResponse) SetBody(v *UpdateContainerGroupResponseBody) *UpdateContainerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ExecContainerCommandRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	TTY                  *bool   `json:"TTY,omitempty" xml:"TTY,omitempty"`
+	Stdin                *bool   `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	Sync                 *bool   `json:"Sync,omitempty" xml:"Sync,omitempty"`
+}
+
+func (s ExecContainerCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecContainerCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecContainerCommandRequest) SetOwnerId(v int64) *ExecContainerCommandRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetResourceOwnerAccount(v string) *ExecContainerCommandRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetResourceOwnerId(v int64) *ExecContainerCommandRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetOwnerAccount(v string) *ExecContainerCommandRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetRegionId(v string) *ExecContainerCommandRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetContainerGroupId(v string) *ExecContainerCommandRequest {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetContainerName(v string) *ExecContainerCommandRequest {
+	s.ContainerName = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetCommand(v string) *ExecContainerCommandRequest {
+	s.Command = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetTTY(v bool) *ExecContainerCommandRequest {
+	s.TTY = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetStdin(v bool) *ExecContainerCommandRequest {
+	s.Stdin = &v
+	return s
+}
+
+func (s *ExecContainerCommandRequest) SetSync(v bool) *ExecContainerCommandRequest {
+	s.Sync = &v
+	return s
+}
+
+type ExecContainerCommandResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WebSocketUri *string `json:"WebSocketUri,omitempty" xml:"WebSocketUri,omitempty"`
+	HttpUrl      *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
+	SyncResponse *string `json:"SyncResponse,omitempty" xml:"SyncResponse,omitempty"`
+}
+
+func (s ExecContainerCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecContainerCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecContainerCommandResponseBody) SetRequestId(v string) *ExecContainerCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecContainerCommandResponseBody) SetWebSocketUri(v string) *ExecContainerCommandResponseBody {
+	s.WebSocketUri = &v
+	return s
+}
+
+func (s *ExecContainerCommandResponseBody) SetHttpUrl(v string) *ExecContainerCommandResponseBody {
+	s.HttpUrl = &v
+	return s
+}
+
+func (s *ExecContainerCommandResponseBody) SetSyncResponse(v string) *ExecContainerCommandResponseBody {
+	s.SyncResponse = &v
+	return s
+}
+
+type ExecContainerCommandResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExecContainerCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecContainerCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecContainerCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecContainerCommandResponse) SetHeaders(v map[string]*string) *ExecContainerCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecContainerCommandResponse) SetBody(v *ExecContainerCommandResponseBody) *ExecContainerCommandResponse {
 	s.Body = v
 	return s
 }
@@ -3100,2212 +5368,6 @@ func (s *DescribeContainerGroupPriceResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DescribeContainerGroupPriceResponse) SetBody(v *DescribeContainerGroupPriceResponseBody) *DescribeContainerGroupPriceResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeContainerGroupsRequest struct {
-	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId               *string                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	VSwitchId            *string                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	NextToken            *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Limit                *int32                               `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	ContainerGroupIds    *string                              `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
-	ContainerGroupName   *string                              `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	Status               *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	WithEvent            *bool                                `json:"WithEvent,omitempty" xml:"WithEvent,omitempty"`
-	Tag                  []*DescribeContainerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsRequest) SetOwnerId(v int64) *DescribeContainerGroupsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetResourceOwnerAccount(v string) *DescribeContainerGroupsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetResourceOwnerId(v int64) *DescribeContainerGroupsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetOwnerAccount(v string) *DescribeContainerGroupsRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetRegionId(v string) *DescribeContainerGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetZoneId(v string) *DescribeContainerGroupsRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetVSwitchId(v string) *DescribeContainerGroupsRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetNextToken(v string) *DescribeContainerGroupsRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetLimit(v int32) *DescribeContainerGroupsRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetContainerGroupIds(v string) *DescribeContainerGroupsRequest {
-	s.ContainerGroupIds = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetContainerGroupName(v string) *DescribeContainerGroupsRequest {
-	s.ContainerGroupName = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetStatus(v string) *DescribeContainerGroupsRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetResourceGroupId(v string) *DescribeContainerGroupsRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetWithEvent(v bool) *DescribeContainerGroupsRequest {
-	s.WithEvent = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequest) SetTag(v []*DescribeContainerGroupsRequestTag) *DescribeContainerGroupsRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeContainerGroupsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeContainerGroupsRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsRequestTag) SetKey(v string) *DescribeContainerGroupsRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsRequestTag) SetValue(v string) *DescribeContainerGroupsRequestTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBody struct {
-	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken       *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ContainerGroups []*DescribeContainerGroupsResponseBodyContainerGroups `json:"ContainerGroups,omitempty" xml:"ContainerGroups,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBody) SetTotalCount(v int32) *DescribeContainerGroupsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBody) SetNextToken(v string) *DescribeContainerGroupsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBody) SetRequestId(v string) *DescribeContainerGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBody) SetContainerGroups(v []*DescribeContainerGroupsResponseBodyContainerGroups) *DescribeContainerGroupsResponseBody {
-	s.ContainerGroups = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroups struct {
-	Status                *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	CreationTime          *string                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	VpcId                 *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	InternetIp            *string                                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	TenantSecurityGroupId *string                                                               `json:"TenantSecurityGroupId,omitempty" xml:"TenantSecurityGroupId,omitempty"`
-	SecurityGroupId       *string                                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	HostAliases           []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases      `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	Tags                  []*DescribeContainerGroupsResponseBodyContainerGroupsTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Events                []*DescribeContainerGroupsResponseBodyContainerGroupsEvents           `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	SucceededTime         *string                                                               `json:"SucceededTime,omitempty" xml:"SucceededTime,omitempty"`
-	SpotStrategy          *string                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	EphemeralStorage      *int32                                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	TenantEniInstanceId   *string                                                               `json:"TenantEniInstanceId,omitempty" xml:"TenantEniInstanceId,omitempty"`
-	Discount              *int32                                                                `json:"Discount,omitempty" xml:"Discount,omitempty"`
-	RestartPolicy         *string                                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	Memory                *float32                                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	TenantVSwitchId       *string                                                               `json:"TenantVSwitchId,omitempty" xml:"TenantVSwitchId,omitempty"`
-	Containers            []*DescribeContainerGroupsResponseBodyContainerGroupsContainers       `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	EniInstanceId         *string                                                               `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	InitContainers        []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	ContainerGroupId      *string                                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	TenantEniIp           *string                                                               `json:"TenantEniIp,omitempty" xml:"TenantEniIp,omitempty"`
-	InstanceType          *string                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IntranetIp            *string                                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Ipv6Address           *string                                                               `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	RegionId              *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DnsConfig             *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig          `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
-	Volumes               []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
-	RamRoleName           *string                                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	VSwitchId             *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Cpu                   *float32                                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	ExpiredTime           *string                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	ResourceGroupId       *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ZoneId                *string                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ContainerGroupName    *string                                                               `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	EciSecurityContext    *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext `json:"EciSecurityContext,omitempty" xml:"EciSecurityContext,omitempty" type:"Struct"`
-	FailedTime            *string                                                               `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroups) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetCreationTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVpcId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInternetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantSecurityGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.TenantSecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSecurityGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetHostAliases(v []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.HostAliases = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTags(v []*DescribeContainerGroupsResponseBodyContainerGroupsTags) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEvents(v []*DescribeContainerGroupsResponseBodyContainerGroupsEvents) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Events = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSucceededTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.SucceededTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSpotStrategy(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.SpotStrategy = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEphemeralStorage(v int32) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.EphemeralStorage = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantEniInstanceId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.TenantEniInstanceId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetDiscount(v int32) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Discount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRestartPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.RestartPolicy = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Memory = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantVSwitchId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.TenantVSwitchId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainers(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainers) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Containers = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEniInstanceId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.EniInstanceId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInitContainers(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.InitContainers = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainerGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantEniIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.TenantEniIp = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInstanceType(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIntranetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIpv6Address(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Ipv6Address = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRegionId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetDnsConfig(v *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.DnsConfig = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVolumes(v []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Volumes = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRamRoleName(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.RamRoleName = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVSwitchId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.Cpu = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetExpiredTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetResourceGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetZoneId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainerGroupName(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.ContainerGroupName = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEciSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.EciSecurityContext = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetFailedTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
-	s.FailedTime = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsHostAliases struct {
-	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) SetHostnames(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases {
-	s.Hostnames = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) SetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases {
-	s.Ip = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsTags) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsTags {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsTags) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsTags {
-	s.Value = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsEvents struct {
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEvents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEvents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetLastTimestamp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.LastTimestamp = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.Reason = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetFirstTimestamp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
-	s.FirstTimestamp = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainers struct {
-	LivenessProbe   *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe     `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" type:"Struct"`
-	Commands        []*string                                                                      `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	Args            []*string                                                                      `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Image           *string                                                                        `json:"Image,omitempty" xml:"Image,omitempty"`
-	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	RestartCount    *int32                                                                         `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	ImagePullPolicy *string                                                                        `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	StdinOnce       *bool                                                                          `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	Cpu             *float32                                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
-	Tty             *bool                                                                          `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	WorkingDir      *string                                                                        `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
-	Ready           *bool                                                                          `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	Gpu             *int32                                                                         `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	Memory          *float32                                                                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Stdin           *bool                                                                          `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	Name            *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	ReadinessProbe  *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe    `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainers) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetLivenessProbe(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.LivenessProbe = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCommands(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Commands = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetVolumeMounts(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.VolumeMounts = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetArgs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Args = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetImage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Image = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetPorts(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Ports = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetRestartCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.RestartCount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetImagePullPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.ImagePullPolicy = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetStdinOnce(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.StdinOnce = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Cpu = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetPreviousState(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.PreviousState = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetTty(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Tty = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetWorkingDir(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.WorkingDir = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCurrentState(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.CurrentState = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetReady(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Ready = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetGpu(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Gpu = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.SecurityContext = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Memory = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetStdin(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Stdin = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetEnvironmentVars(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.EnvironmentVars = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetReadinessProbe(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
-	s.ReadinessProbe = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe struct {
-	SuccessThreshold    *int32                                                                              `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	InitialDelaySeconds *int32                                                                              `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	FailureThreshold    *int32                                                                              `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	TimeoutSeconds      *int32                                                                              `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	Execs               []*string                                                                           `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	PeriodSeconds       *int32                                                                              `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetSuccessThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.SuccessThreshold = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetInitialDelaySeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.InitialDelaySeconds = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetFailureThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.FailureThreshold = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetTimeoutSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.TimeoutSeconds = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetTcpSocket(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.TcpSocket = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetExecs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.Execs = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetHttpGet(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.HttpGet = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetPeriodSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
-	s.PeriodSeconds = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket struct {
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) SetHost(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket {
-	s.Host = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet struct {
-	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetScheme(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
-	s.Scheme = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts struct {
-	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
-	s.MountPropagation = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
-	s.MountPath = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
-	s.ReadOnly = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
-	s.Name = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) SetProtocol(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts {
-	s.Protocol = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState struct {
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.DetailStatus = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.Signal = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.ExitCode = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
-	s.Reason = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState struct {
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.DetailStatus = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.Signal = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.ExitCode = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
-	s.Reason = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext struct {
-	ReadOnlyRootFilesystem *bool                                                                                  `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                                 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
-	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetReadOnlyRootFilesystem(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
-	s.ReadOnlyRootFilesystem = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetRunAsUser(v int64) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
-	s.RunAsUser = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetCapability(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
-	s.Capability = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability struct {
-	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) SetAdds(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability {
-	s.Adds = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars struct {
-	Key       *string                                                                               `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value     *string                                                                               `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
-	s.Value = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetValueFrom(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
-	s.ValueFrom = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom struct {
-	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) SetFieldRef(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom {
-	s.FieldRef = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef struct {
-	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) SetFieldPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef {
-	s.FieldPath = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe struct {
-	SuccessThreshold    *int32                                                                               `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	InitialDelaySeconds *int32                                                                               `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	FailureThreshold    *int32                                                                               `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	TimeoutSeconds      *int32                                                                               `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
-	Execs               []*string                                                                            `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
-	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
-	PeriodSeconds       *int32                                                                               `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetSuccessThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.SuccessThreshold = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetInitialDelaySeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.InitialDelaySeconds = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetFailureThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.FailureThreshold = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetTimeoutSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.TimeoutSeconds = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetTcpSocket(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.TcpSocket = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetExecs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.Execs = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetHttpGet(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.HttpGet = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetPeriodSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
-	s.PeriodSeconds = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket struct {
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) SetHost(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket {
-	s.Host = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet struct {
-	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetScheme(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
-	s.Scheme = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainers struct {
-	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	Args            []*string                                                                          `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Image           *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
-	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	RestartCount    *int32                                                                             `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	ImagePullPolicy *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
-	WorkingDir      *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	Cpu             *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
-	Command         []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Ready           *bool                                                                              `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	Gpu             *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
-	Memory          *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetVolumeMounts(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.VolumeMounts = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetArgs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Args = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetImage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Image = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetPorts(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Ports = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetRestartCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.RestartCount = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetImagePullPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.ImagePullPolicy = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetPreviousState(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.PreviousState = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetWorkingDir(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.WorkingDir = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Cpu = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCurrentState(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.CurrentState = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCommand(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Command = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetReady(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Ready = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetGpu(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Gpu = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.SecurityContext = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Memory = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetEnvironmentVars(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
-	s.EnvironmentVars = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts struct {
-	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
-	s.MountPropagation = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
-	s.MountPath = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
-	s.ReadOnly = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
-	s.Name = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) SetProtocol(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts {
-	s.Protocol = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts {
-	s.Port = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState struct {
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.DetailStatus = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.Signal = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.ExitCode = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
-	s.Reason = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState struct {
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
-	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.DetailStatus = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.Signal = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.ExitCode = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
-	s.Reason = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext struct {
-	ReadOnlyRootFilesystem *bool                                                                                      `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                                                     `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
-	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetReadOnlyRootFilesystem(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
-	s.ReadOnlyRootFilesystem = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetRunAsUser(v int64) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
-	s.RunAsUser = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetCapability(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
-	s.Capability = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability struct {
-	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) SetAdds(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability {
-	s.Adds = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars struct {
-	Key       *string                                                                                   `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value     *string                                                                                   `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
-	s.Value = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetValueFrom(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
-	s.ValueFrom = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom struct {
-	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) SetFieldRef(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom {
-	s.FieldRef = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef struct {
-	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) SetFieldPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef {
-	s.FieldPath = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig struct {
-	Searches    []*string                                                             `json:"Searches,omitempty" xml:"Searches,omitempty" type:"Repeated"`
-	Options     []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	NameServers []*string                                                             `json:"NameServers,omitempty" xml:"NameServers,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetSearches(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
-	s.Searches = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetOptions(v []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
-	s.Options = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetNameServers(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
-	s.NameServers = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions {
-	s.Value = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions {
-	s.Name = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsVolumes struct {
-	Type                              *string                                                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	DiskVolumeDiskId                  *string                                                                                       `json:"DiskVolumeDiskId,omitempty" xml:"DiskVolumeDiskId,omitempty"`
-	NFSVolumeReadOnly                 *bool                                                                                         `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
-	ConfigFileVolumeConfigFileToPaths []*DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths `json:"ConfigFileVolumeConfigFileToPaths,omitempty" xml:"ConfigFileVolumeConfigFileToPaths,omitempty" type:"Repeated"`
-	FlexVolumeFsType                  *string                                                                                       `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
-	FlexVolumeDriver                  *string                                                                                       `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
-	DiskVolumeFsType                  *string                                                                                       `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
-	FlexVolumeOptions                 *string                                                                                       `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
-	NFSVolumeServer                   *string                                                                                       `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
-	NFSVolumePath                     *string                                                                                       `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
-	Name                              *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetDiskVolumeDiskId(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.DiskVolumeDiskId = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumeReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.NFSVolumeReadOnly = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetConfigFileVolumeConfigFileToPaths(v []*DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.ConfigFileVolumeConfigFileToPaths = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeFsType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.FlexVolumeFsType = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeDriver(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.FlexVolumeDriver = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetDiskVolumeFsType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.DiskVolumeFsType = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeOptions(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.FlexVolumeOptions = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumeServer(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.NFSVolumeServer = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumePath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.NFSVolumePath = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
-	s.Name = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths struct {
-	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) SetContent(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths {
-	s.Content = &v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext struct {
-	Sysctls []*DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls `json:"Sysctls,omitempty" xml:"Sysctls,omitempty" type:"Repeated"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) SetSysctls(v []*DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext {
-	s.Sysctls = v
-	return s
-}
-
-type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls {
-	s.Value = &v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls {
-	s.Name = &v
-	return s
-}
-
-type DescribeContainerGroupsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeContainerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeContainerGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerGroupsResponse) SetHeaders(v map[string]*string) *DescribeContainerGroupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeContainerGroupsResponse) SetBody(v *DescribeContainerGroupsResponseBody) *DescribeContainerGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeContainerLogRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tail                 *int32  `json:"Tail,omitempty" xml:"Tail,omitempty"`
-	LastTime             *bool   `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	SinceSeconds         *int32  `json:"SinceSeconds,omitempty" xml:"SinceSeconds,omitempty"`
-	LimitBytes           *int64  `json:"LimitBytes,omitempty" xml:"LimitBytes,omitempty"`
-	Timestamps           *bool   `json:"Timestamps,omitempty" xml:"Timestamps,omitempty"`
-}
-
-func (s DescribeContainerLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerLogRequest) SetOwnerId(v int64) *DescribeContainerLogRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetResourceOwnerAccount(v string) *DescribeContainerLogRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetResourceOwnerId(v int64) *DescribeContainerLogRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetOwnerAccount(v string) *DescribeContainerLogRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetRegionId(v string) *DescribeContainerLogRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetContainerGroupId(v string) *DescribeContainerLogRequest {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetContainerName(v string) *DescribeContainerLogRequest {
-	s.ContainerName = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetStartTime(v string) *DescribeContainerLogRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetTail(v int32) *DescribeContainerLogRequest {
-	s.Tail = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetLastTime(v bool) *DescribeContainerLogRequest {
-	s.LastTime = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetSinceSeconds(v int32) *DescribeContainerLogRequest {
-	s.SinceSeconds = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetLimitBytes(v int64) *DescribeContainerLogRequest {
-	s.LimitBytes = &v
-	return s
-}
-
-func (s *DescribeContainerLogRequest) SetTimestamps(v bool) *DescribeContainerLogRequest {
-	s.Timestamps = &v
-	return s
-}
-
-type DescribeContainerLogResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s DescribeContainerLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerLogResponseBody) SetRequestId(v string) *DescribeContainerLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeContainerLogResponseBody) SetContainerName(v string) *DescribeContainerLogResponseBody {
-	s.ContainerName = &v
-	return s
-}
-
-func (s *DescribeContainerLogResponseBody) SetContent(v string) *DescribeContainerLogResponseBody {
-	s.Content = &v
-	return s
-}
-
-type DescribeContainerLogResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeContainerLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeContainerLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerLogResponse) SetHeaders(v map[string]*string) *DescribeContainerLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeContainerLogResponse) SetBody(v *DescribeContainerLogResponseBody) *DescribeContainerLogResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeImageCachesRequest struct {
-	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ImageCacheId         *string                          `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	ImageCacheName       *string                          `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
-	SnapshotId           *string                          `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Image                *string                          `json:"Image,omitempty" xml:"Image,omitempty"`
-	ResourceGroupId      *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                  []*DescribeImageCachesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeImageCachesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesRequest) SetOwnerId(v int64) *DescribeImageCachesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetResourceOwnerAccount(v string) *DescribeImageCachesRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetResourceOwnerId(v int64) *DescribeImageCachesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetOwnerAccount(v string) *DescribeImageCachesRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetRegionId(v string) *DescribeImageCachesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetImageCacheId(v string) *DescribeImageCachesRequest {
-	s.ImageCacheId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetImageCacheName(v string) *DescribeImageCachesRequest {
-	s.ImageCacheName = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetSnapshotId(v string) *DescribeImageCachesRequest {
-	s.SnapshotId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetImage(v string) *DescribeImageCachesRequest {
-	s.Image = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetResourceGroupId(v string) *DescribeImageCachesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequest) SetTag(v []*DescribeImageCachesRequestTag) *DescribeImageCachesRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeImageCachesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeImageCachesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesRequestTag) SetKey(v string) *DescribeImageCachesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeImageCachesRequestTag) SetValue(v string) *DescribeImageCachesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeImageCachesResponseBody struct {
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ImageCaches []*DescribeImageCachesResponseBodyImageCaches `json:"ImageCaches,omitempty" xml:"ImageCaches,omitempty" type:"Repeated"`
-}
-
-func (s DescribeImageCachesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesResponseBody) SetRequestId(v string) *DescribeImageCachesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBody) SetImageCaches(v []*DescribeImageCachesResponseBodyImageCaches) *DescribeImageCachesResponseBody {
-	s.ImageCaches = v
-	return s
-}
-
-type DescribeImageCachesResponseBodyImageCaches struct {
-	Images           []*string                                           `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	CreationTime     *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Status           *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Progress         *string                                             `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ExpireDateTime   *string                                             `json:"ExpireDateTime,omitempty" xml:"ExpireDateTime,omitempty"`
-	ContainerGroupId *string                                             `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	Tags             []*DescribeImageCachesResponseBodyImageCachesTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Events           []*DescribeImageCachesResponseBodyImageCachesEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	ImageCacheId     *string                                             `json:"ImageCacheId,omitempty" xml:"ImageCacheId,omitempty"`
-	RegionId         *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SnapshotId       *string                                             `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ImageCacheSize   *int32                                              `json:"ImageCacheSize,omitempty" xml:"ImageCacheSize,omitempty"`
-	ImageCacheName   *string                                             `json:"ImageCacheName,omitempty" xml:"ImageCacheName,omitempty"`
-}
-
-func (s DescribeImageCachesResponseBodyImageCaches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesResponseBodyImageCaches) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetImages(v []*string) *DescribeImageCachesResponseBodyImageCaches {
-	s.Images = v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetCreationTime(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetStatus(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetProgress(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetExpireDateTime(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.ExpireDateTime = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetContainerGroupId(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetTags(v []*DescribeImageCachesResponseBodyImageCachesTags) *DescribeImageCachesResponseBodyImageCaches {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetEvents(v []*DescribeImageCachesResponseBodyImageCachesEvents) *DescribeImageCachesResponseBodyImageCaches {
-	s.Events = v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheId(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.ImageCacheId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetRegionId(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetSnapshotId(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.SnapshotId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetResourceGroupId(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheSize(v int32) *DescribeImageCachesResponseBodyImageCaches {
-	s.ImageCacheSize = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCaches) SetImageCacheName(v string) *DescribeImageCachesResponseBodyImageCaches {
-	s.ImageCacheName = &v
-	return s
-}
-
-type DescribeImageCachesResponseBodyImageCachesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeImageCachesResponseBodyImageCachesTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesResponseBodyImageCachesTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesTags) SetKey(v string) *DescribeImageCachesResponseBodyImageCachesTags {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesTags) SetValue(v string) *DescribeImageCachesResponseBodyImageCachesTags {
-	s.Value = &v
-	return s
-}
-
-type DescribeImageCachesResponseBodyImageCachesEvents struct {
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
-}
-
-func (s DescribeImageCachesResponseBodyImageCachesEvents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesResponseBodyImageCachesEvents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetType(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetLastTimestamp(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.LastTimestamp = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetMessage(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetName(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetCount(v int32) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeImageCachesResponseBodyImageCachesEvents) SetFirstTimestamp(v string) *DescribeImageCachesResponseBodyImageCachesEvents {
-	s.FirstTimestamp = &v
-	return s
-}
-
-type DescribeImageCachesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeImageCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeImageCachesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageCachesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageCachesResponse) SetHeaders(v map[string]*string) *DescribeImageCachesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeImageCachesResponse) SetBody(v *DescribeImageCachesResponseBody) *DescribeImageCachesResponse {
 	s.Body = v
 	return s
 }
@@ -7265,1735 +7327,1756 @@ func (s *DescribeMultiContainerGroupMetricResponse) SetBody(v *DescribeMultiCont
 	return s
 }
 
-type DescribeRegionsRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+type DescribeContainerGroupsRequest struct {
+	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OwnerAccount         *string                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId               *string                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VSwitchId            *string                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	NextToken            *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Limit                *int32                               `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	ContainerGroupIds    *string                              `json:"ContainerGroupIds,omitempty" xml:"ContainerGroupIds,omitempty"`
+	ContainerGroupName   *string                              `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	Status               *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	ResourceGroupId      *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	WithEvent            *bool                                `json:"WithEvent,omitempty" xml:"WithEvent,omitempty"`
+	Tag                  []*DescribeContainerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
-func (s DescribeRegionsRequest) String() string {
+func (s DescribeContainerGroupsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRegionsRequest) GoString() string {
+func (s DescribeContainerGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
+func (s *DescribeContainerGroupsRequest) SetOwnerId(v int64) *DescribeContainerGroupsRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *DescribeRegionsRequest) SetResourceOwnerAccount(v string) *DescribeRegionsRequest {
+func (s *DescribeContainerGroupsRequest) SetResourceOwnerAccount(v string) *DescribeContainerGroupsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsRequest {
+func (s *DescribeContainerGroupsRequest) SetResourceOwnerId(v int64) *DescribeContainerGroupsRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
-func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsRequest {
+func (s *DescribeContainerGroupsRequest) SetOwnerAccount(v string) *DescribeContainerGroupsRequest {
 	s.OwnerAccount = &v
 	return s
 }
 
-func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+func (s *DescribeContainerGroupsRequest) SetRegionId(v string) *DescribeContainerGroupsRequest {
 	s.RegionId = &v
 	return s
 }
 
-type DescribeRegionsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRegionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeContainerGroupsRequest) SetZoneId(v string) *DescribeContainerGroupsRequest {
+	s.ZoneId = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeContainerGroupsRequest) SetVSwitchId(v string) *DescribeContainerGroupsRequest {
+	s.VSwitchId = &v
 	return s
 }
 
-type DescribeRegionsResponseBodyRegions struct {
-	Zones          []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
-	RecommendZones []*string `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Repeated"`
-	RegionEndpoint *string   `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRegionsResponseBodyRegions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponseBodyRegions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponseBodyRegions) SetZones(v []*string) *DescribeRegionsResponseBodyRegions {
-	s.Zones = v
+func (s *DescribeContainerGroupsRequest) SetNextToken(v string) *DescribeContainerGroupsRequest {
+	s.NextToken = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRecommendZones(v []*string) *DescribeRegionsResponseBodyRegions {
-	s.RecommendZones = v
+func (s *DescribeContainerGroupsRequest) SetLimit(v int32) *DescribeContainerGroupsRequest {
+	s.Limit = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionEndpoint = &v
+func (s *DescribeContainerGroupsRequest) SetContainerGroupIds(v string) *DescribeContainerGroupsRequest {
+	s.ContainerGroupIds = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionId = &v
+func (s *DescribeContainerGroupsRequest) SetContainerGroupName(v string) *DescribeContainerGroupsRequest {
+	s.ContainerGroupName = &v
 	return s
 }
 
-type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
-	s.Headers = v
+func (s *DescribeContainerGroupsRequest) SetStatus(v string) *DescribeContainerGroupsRequest {
+	s.Status = &v
 	return s
 }
 
-func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
-	s.Body = v
-	return s
-}
-
-type ExecContainerCommandRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ContainerName        *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	TTY                  *bool   `json:"TTY,omitempty" xml:"TTY,omitempty"`
-	Stdin                *bool   `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-}
-
-func (s ExecContainerCommandRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecContainerCommandRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecContainerCommandRequest) SetOwnerId(v int64) *ExecContainerCommandRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetResourceOwnerAccount(v string) *ExecContainerCommandRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetResourceOwnerId(v int64) *ExecContainerCommandRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetOwnerAccount(v string) *ExecContainerCommandRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetRegionId(v string) *ExecContainerCommandRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetContainerGroupId(v string) *ExecContainerCommandRequest {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetContainerName(v string) *ExecContainerCommandRequest {
-	s.ContainerName = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetCommand(v string) *ExecContainerCommandRequest {
-	s.Command = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetTTY(v bool) *ExecContainerCommandRequest {
-	s.TTY = &v
-	return s
-}
-
-func (s *ExecContainerCommandRequest) SetStdin(v bool) *ExecContainerCommandRequest {
-	s.Stdin = &v
-	return s
-}
-
-type ExecContainerCommandResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WebSocketUri *string `json:"WebSocketUri,omitempty" xml:"WebSocketUri,omitempty"`
-	HttpUrl      *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
-}
-
-func (s ExecContainerCommandResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecContainerCommandResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExecContainerCommandResponseBody) SetRequestId(v string) *ExecContainerCommandResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExecContainerCommandResponseBody) SetWebSocketUri(v string) *ExecContainerCommandResponseBody {
-	s.WebSocketUri = &v
-	return s
-}
-
-func (s *ExecContainerCommandResponseBody) SetHttpUrl(v string) *ExecContainerCommandResponseBody {
-	s.HttpUrl = &v
-	return s
-}
-
-type ExecContainerCommandResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecContainerCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExecContainerCommandResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecContainerCommandResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExecContainerCommandResponse) SetHeaders(v map[string]*string) *ExecContainerCommandResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExecContainerCommandResponse) SetBody(v *ExecContainerCommandResponseBody) *ExecContainerCommandResponse {
-	s.Body = v
-	return s
-}
-
-type ListUsageRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageRequest) SetOwnerId(v int64) *ListUsageRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListUsageRequest) SetResourceOwnerAccount(v string) *ListUsageRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListUsageRequest) SetResourceOwnerId(v int64) *ListUsageRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListUsageRequest) SetOwnerAccount(v string) *ListUsageRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ListUsageRequest) SetRegionId(v string) *ListUsageRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListUsageResponseBody struct {
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-}
-
-func (s ListUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageResponseBody) SetRequestId(v string) *ListUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUsageResponseBody) SetAttributes(v map[string]interface{}) *ListUsageResponseBody {
-	s.Attributes = v
-	return s
-}
-
-type ListUsageResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageResponse) SetHeaders(v map[string]*string) *ListUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUsageResponse) SetBody(v *ListUsageResponseBody) *ListUsageResponse {
-	s.Body = v
-	return s
-}
-
-type RestartContainerGroupRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ContainerGroupId     *string `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s RestartContainerGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartContainerGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RestartContainerGroupRequest) SetOwnerId(v int64) *RestartContainerGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetResourceOwnerAccount(v string) *RestartContainerGroupRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetResourceOwnerId(v int64) *RestartContainerGroupRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetOwnerAccount(v string) *RestartContainerGroupRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetRegionId(v string) *RestartContainerGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetContainerGroupId(v string) *RestartContainerGroupRequest {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *RestartContainerGroupRequest) SetClientToken(v string) *RestartContainerGroupRequest {
-	s.ClientToken = &v
-	return s
-}
-
-type RestartContainerGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RestartContainerGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartContainerGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RestartContainerGroupResponseBody) SetRequestId(v string) *RestartContainerGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RestartContainerGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RestartContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RestartContainerGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartContainerGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RestartContainerGroupResponse) SetHeaders(v map[string]*string) *RestartContainerGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RestartContainerGroupResponse) SetBody(v *RestartContainerGroupResponseBody) *RestartContainerGroupResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateContainerGroupRequest struct {
-	DnsConfig               *UpdateContainerGroupRequestDnsConfig                 `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
-	OwnerId                 *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount    *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64                                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	OwnerAccount            *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	RegionId                *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ContainerGroupId        *string                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
-	RestartPolicy           *string                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	ClientToken             *string                                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Cpu                     *float32                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Memory                  *float32                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ResourceGroupId         *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                     []*UpdateContainerGroupRequestTag                     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Volume                  []*UpdateContainerGroupRequestVolume                  `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Repeated"`
-	Container               []*UpdateContainerGroupRequestContainer               `json:"Container,omitempty" xml:"Container,omitempty" type:"Repeated"`
-	InitContainer           []*UpdateContainerGroupRequestInitContainer           `json:"InitContainer,omitempty" xml:"InitContainer,omitempty" type:"Repeated"`
-	ImageRegistryCredential []*UpdateContainerGroupRequestImageRegistryCredential `json:"ImageRegistryCredential,omitempty" xml:"ImageRegistryCredential,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequest) SetDnsConfig(v *UpdateContainerGroupRequestDnsConfig) *UpdateContainerGroupRequest {
-	s.DnsConfig = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetOwnerId(v int64) *UpdateContainerGroupRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetResourceOwnerAccount(v string) *UpdateContainerGroupRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetResourceOwnerId(v int64) *UpdateContainerGroupRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetOwnerAccount(v string) *UpdateContainerGroupRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetRegionId(v string) *UpdateContainerGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetContainerGroupId(v string) *UpdateContainerGroupRequest {
-	s.ContainerGroupId = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetRestartPolicy(v string) *UpdateContainerGroupRequest {
-	s.RestartPolicy = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetClientToken(v string) *UpdateContainerGroupRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetCpu(v float32) *UpdateContainerGroupRequest {
-	s.Cpu = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetMemory(v float32) *UpdateContainerGroupRequest {
-	s.Memory = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetResourceGroupId(v string) *UpdateContainerGroupRequest {
+func (s *DescribeContainerGroupsRequest) SetResourceGroupId(v string) *DescribeContainerGroupsRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *UpdateContainerGroupRequest) SetTag(v []*UpdateContainerGroupRequestTag) *UpdateContainerGroupRequest {
+func (s *DescribeContainerGroupsRequest) SetWithEvent(v bool) *DescribeContainerGroupsRequest {
+	s.WithEvent = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsRequest) SetTag(v []*DescribeContainerGroupsRequestTag) *DescribeContainerGroupsRequest {
 	s.Tag = v
 	return s
 }
 
-func (s *UpdateContainerGroupRequest) SetVolume(v []*UpdateContainerGroupRequestVolume) *UpdateContainerGroupRequest {
-	s.Volume = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetContainer(v []*UpdateContainerGroupRequestContainer) *UpdateContainerGroupRequest {
-	s.Container = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetInitContainer(v []*UpdateContainerGroupRequestInitContainer) *UpdateContainerGroupRequest {
-	s.InitContainer = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequest) SetImageRegistryCredential(v []*UpdateContainerGroupRequestImageRegistryCredential) *UpdateContainerGroupRequest {
-	s.ImageRegistryCredential = v
-	return s
-}
-
-type UpdateContainerGroupRequestDnsConfig struct {
-	NameServer []*string                                     `json:"NameServer,omitempty" xml:"NameServer,omitempty" type:"Repeated"`
-	Search     []*string                                     `json:"Search,omitempty" xml:"Search,omitempty" type:"Repeated"`
-	Option     []*UpdateContainerGroupRequestDnsConfigOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestDnsConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestDnsConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestDnsConfig) SetNameServer(v []*string) *UpdateContainerGroupRequestDnsConfig {
-	s.NameServer = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestDnsConfig) SetSearch(v []*string) *UpdateContainerGroupRequestDnsConfig {
-	s.Search = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestDnsConfig) SetOption(v []*UpdateContainerGroupRequestDnsConfigOption) *UpdateContainerGroupRequestDnsConfig {
-	s.Option = v
-	return s
-}
-
-type UpdateContainerGroupRequestDnsConfigOption struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestDnsConfigOption) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestDnsConfigOption) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestDnsConfigOption) SetValue(v string) *UpdateContainerGroupRequestDnsConfigOption {
-	s.Value = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestDnsConfigOption) SetName(v string) *UpdateContainerGroupRequestDnsConfigOption {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestTag struct {
+type DescribeContainerGroupsRequestTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s UpdateContainerGroupRequestTag) String() string {
+func (s DescribeContainerGroupsRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateContainerGroupRequestTag) GoString() string {
+func (s DescribeContainerGroupsRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateContainerGroupRequestTag) SetKey(v string) *UpdateContainerGroupRequestTag {
+func (s *DescribeContainerGroupsRequestTag) SetKey(v string) *DescribeContainerGroupsRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *UpdateContainerGroupRequestTag) SetValue(v string) *UpdateContainerGroupRequestTag {
+func (s *DescribeContainerGroupsRequestTag) SetValue(v string) *DescribeContainerGroupsRequestTag {
 	s.Value = &v
 	return s
 }
 
-type UpdateContainerGroupRequestVolume struct {
-	NFSVolume        *UpdateContainerGroupRequestVolumeNFSVolume        `json:"NFSVolume,omitempty" xml:"NFSVolume,omitempty" require:"true" type:"Struct"`
-	ConfigFileVolume *UpdateContainerGroupRequestVolumeConfigFileVolume `json:"ConfigFileVolume,omitempty" xml:"ConfigFileVolume,omitempty" require:"true" type:"Struct"`
-	EmptyDirVolume   *UpdateContainerGroupRequestVolumeEmptyDirVolume   `json:"EmptyDirVolume,omitempty" xml:"EmptyDirVolume,omitempty" require:"true" type:"Struct"`
-	Type             *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+type DescribeContainerGroupsResponseBody struct {
+	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken       *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ContainerGroups []*DescribeContainerGroupsResponseBodyContainerGroups `json:"ContainerGroups,omitempty" xml:"ContainerGroups,omitempty" type:"Repeated"`
 }
 
-func (s UpdateContainerGroupRequestVolume) String() string {
+func (s DescribeContainerGroupsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateContainerGroupRequestVolume) GoString() string {
+func (s DescribeContainerGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateContainerGroupRequestVolume) SetNFSVolume(v *UpdateContainerGroupRequestVolumeNFSVolume) *UpdateContainerGroupRequestVolume {
-	s.NFSVolume = v
+func (s *DescribeContainerGroupsResponseBody) SetTotalCount(v int32) *DescribeContainerGroupsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *UpdateContainerGroupRequestVolume) SetConfigFileVolume(v *UpdateContainerGroupRequestVolumeConfigFileVolume) *UpdateContainerGroupRequestVolume {
-	s.ConfigFileVolume = v
+func (s *DescribeContainerGroupsResponseBody) SetNextToken(v string) *DescribeContainerGroupsResponseBody {
+	s.NextToken = &v
 	return s
 }
 
-func (s *UpdateContainerGroupRequestVolume) SetEmptyDirVolume(v *UpdateContainerGroupRequestVolumeEmptyDirVolume) *UpdateContainerGroupRequestVolume {
-	s.EmptyDirVolume = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestVolume) SetType(v string) *UpdateContainerGroupRequestVolume {
-	s.Type = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestVolume) SetName(v string) *UpdateContainerGroupRequestVolume {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestVolumeNFSVolume struct {
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	ReadOnly *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestVolumeNFSVolume) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestVolumeNFSVolume) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetPath(v string) *UpdateContainerGroupRequestVolumeNFSVolume {
-	s.Path = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetServer(v string) *UpdateContainerGroupRequestVolumeNFSVolume {
-	s.Server = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestVolumeNFSVolume) SetReadOnly(v bool) *UpdateContainerGroupRequestVolumeNFSVolume {
-	s.ReadOnly = &v
-	return s
-}
-
-type UpdateContainerGroupRequestVolumeConfigFileVolume struct {
-	ConfigFileToPath []*UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath `json:"ConfigFileToPath,omitempty" xml:"ConfigFileToPath,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestVolumeConfigFileVolume) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestVolumeConfigFileVolume) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestVolumeConfigFileVolume) SetConfigFileToPath(v []*UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) *UpdateContainerGroupRequestVolumeConfigFileVolume {
-	s.ConfigFileToPath = v
-	return s
-}
-
-type UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath struct {
-	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) SetPath(v string) *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath {
-	s.Path = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath) SetContent(v string) *UpdateContainerGroupRequestVolumeConfigFileVolumeConfigFileToPath {
-	s.Content = &v
-	return s
-}
-
-type UpdateContainerGroupRequestVolumeEmptyDirVolume struct {
-	Medium *string `json:"Medium,omitempty" xml:"Medium,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestVolumeEmptyDirVolume) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestVolumeEmptyDirVolume) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestVolumeEmptyDirVolume) SetMedium(v string) *UpdateContainerGroupRequestVolumeEmptyDirVolume {
-	s.Medium = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainer struct {
-	ReadinessProbe                              *UpdateContainerGroupRequestContainerReadinessProbe                                `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" require:"true" type:"Struct"`
-	SecurityContext                             *UpdateContainerGroupRequestContainerSecurityContext                               `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	LivenessProbe                               *UpdateContainerGroupRequestContainerLivenessProbe                                 `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" require:"true" type:"Struct"`
-	EnvironmentVar                              []*UpdateContainerGroupRequestContainerEnvironmentVar                              `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	Tty                                         *bool                                                                              `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	WorkingDir                                  *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	Arg                                         []*string                                                                          `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Stdin                                       *bool                                                                              `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	VolumeMount                                 []*UpdateContainerGroupRequestContainerVolumeMount                                 `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	ImagePullPolicy                             *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	StdinOnce                                   *bool                                                                              `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	LifecyclePreStopHandlerTcpSocketPort        *int32                                                                             `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
-	LifecyclePostStartHandlerHttpGetScheme      *string                                                                            `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
-	Command                                     []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	LifecyclePostStartHandlerHttpGetHost        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
-	LifecyclePostStartHandlerTcpSocketPort      *int32                                                                             `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	LifecyclePostStartHandlerHttpGetPath        *string                                                                            `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
-	LifecyclePostStartHandlerExec               []*string                                                                          `json:"LifecyclePostStartHandlerExec,omitempty" xml:"LifecyclePostStartHandlerExec,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetPath          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
-	Port                                        []*UpdateContainerGroupRequestContainerPort                                        `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	LifecyclePreStopHandlerHttpGetScheme        *string                                                                            `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
-	LifecyclePostStartHandlerHttpGetHttpHeaders []*UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders `json:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" xml:"LifecyclePostStartHandlerHttpGetHttpHeaders,omitempty" type:"Repeated"`
-	LifecyclePostStartHandlerTcpSocketHost      *string                                                                            `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
-	Gpu                                         *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	LifecyclePreStopHandlerExec                 []*string                                                                          `json:"LifecyclePreStopHandlerExec,omitempty" xml:"LifecyclePreStopHandlerExec,omitempty" type:"Repeated"`
-	Memory                                      *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Name                                        *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	LifecyclePreStopHandlerHttpGetHost          *string                                                                            `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
-	LifecyclePreStopHandlerTcpSocketHost        *string                                                                            `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
-	Image                                       *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
-	LifecyclePreStopHandlerHttpGetPort          *int32                                                                             `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
-	LifecyclePreStopHandlerHttpGetHttpHeader    []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader    `json:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" xml:"LifecyclePreStopHandlerHttpGetHttpHeader,omitempty" type:"Repeated"`
-	Cpu                                         *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	LifecyclePostStartHandlerHttpGetPort        *int32                                                                             `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainer) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetReadinessProbe(v *UpdateContainerGroupRequestContainerReadinessProbe) *UpdateContainerGroupRequestContainer {
-	s.ReadinessProbe = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetSecurityContext(v *UpdateContainerGroupRequestContainerSecurityContext) *UpdateContainerGroupRequestContainer {
-	s.SecurityContext = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLivenessProbe(v *UpdateContainerGroupRequestContainerLivenessProbe) *UpdateContainerGroupRequestContainer {
-	s.LivenessProbe = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetEnvironmentVar(v []*UpdateContainerGroupRequestContainerEnvironmentVar) *UpdateContainerGroupRequestContainer {
-	s.EnvironmentVar = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetTty(v bool) *UpdateContainerGroupRequestContainer {
-	s.Tty = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetWorkingDir(v string) *UpdateContainerGroupRequestContainer {
-	s.WorkingDir = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetArg(v []*string) *UpdateContainerGroupRequestContainer {
-	s.Arg = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetStdin(v bool) *UpdateContainerGroupRequestContainer {
-	s.Stdin = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetVolumeMount(v []*UpdateContainerGroupRequestContainerVolumeMount) *UpdateContainerGroupRequestContainer {
-	s.VolumeMount = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetImagePullPolicy(v string) *UpdateContainerGroupRequestContainer {
-	s.ImagePullPolicy = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetStdinOnce(v bool) *UpdateContainerGroupRequestContainer {
-	s.StdinOnce = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerTcpSocketPort(v int32) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerTcpSocketPort = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetScheme(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerHttpGetScheme = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetCommand(v []*string) *UpdateContainerGroupRequestContainer {
-	s.Command = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetHost(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerHttpGetHost = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerTcpSocketPort(v int32) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerTcpSocketPort = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetPath(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerHttpGetPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerExec(v []*string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerExec = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetPath(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerHttpGetPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetPort(v []*UpdateContainerGroupRequestContainerPort) *UpdateContainerGroupRequestContainer {
-	s.Port = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetScheme(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerHttpGetScheme = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetHttpHeaders(v []*UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerHttpGetHttpHeaders = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerTcpSocketHost(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerTcpSocketHost = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetGpu(v int32) *UpdateContainerGroupRequestContainer {
-	s.Gpu = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerExec(v []*string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerExec = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetMemory(v float32) *UpdateContainerGroupRequestContainer {
-	s.Memory = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetName(v string) *UpdateContainerGroupRequestContainer {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetHost(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerHttpGetHost = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerTcpSocketHost(v string) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerTcpSocketHost = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetImage(v string) *UpdateContainerGroupRequestContainer {
-	s.Image = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetPort(v int32) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerHttpGetPort = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePreStopHandlerHttpGetHttpHeader(v []*UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePreStopHandlerHttpGetHttpHeader = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetCpu(v float32) *UpdateContainerGroupRequestContainer {
-	s.Cpu = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainer) SetLifecyclePostStartHandlerHttpGetPort(v int32) *UpdateContainerGroupRequestContainer {
-	s.LifecyclePostStartHandlerHttpGetPort = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerReadinessProbe struct {
-	TimeoutSeconds      *int32                                                       `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	SuccessThreshold    *int32                                                       `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	TcpSocket           *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" require:"true" type:"Struct"`
-	HttpGet             *UpdateContainerGroupRequestContainerReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" require:"true" type:"Struct"`
-	PeriodSeconds       *int32                                                       `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	InitialDelaySeconds *int32                                                       `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	Exec                *UpdateContainerGroupRequestContainerReadinessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" require:"true" type:"Struct"`
-	FailureThreshold    *int32                                                       `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbe) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbe) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetTimeoutSeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.TimeoutSeconds = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetSuccessThreshold(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.SuccessThreshold = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetTcpSocket(v *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.TcpSocket = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetHttpGet(v *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.HttpGet = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetPeriodSeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.PeriodSeconds = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetInitialDelaySeconds(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.InitialDelaySeconds = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetExec(v *UpdateContainerGroupRequestContainerReadinessProbeExec) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.Exec = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbe) SetFailureThreshold(v int32) *UpdateContainerGroupRequestContainerReadinessProbe {
-	s.FailureThreshold = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerReadinessProbeTcpSocket struct {
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket) SetPort(v int32) *UpdateContainerGroupRequestContainerReadinessProbeTcpSocket {
-	s.Port = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerReadinessProbeHttpGet struct {
-	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeHttpGet) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeHttpGet) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetScheme(v string) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
-	s.Scheme = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetPath(v string) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
-	s.Path = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbeHttpGet) SetPort(v int32) *UpdateContainerGroupRequestContainerReadinessProbeHttpGet {
-	s.Port = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerReadinessProbeExec struct {
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeExec) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerReadinessProbeExec) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerReadinessProbeExec) SetCommand(v []*string) *UpdateContainerGroupRequestContainerReadinessProbeExec {
-	s.Command = v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerSecurityContext struct {
-	Capability             *UpdateContainerGroupRequestContainerSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" require:"true" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                          `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                         `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerSecurityContext) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerSecurityContext) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerSecurityContext) SetCapability(v *UpdateContainerGroupRequestContainerSecurityContextCapability) *UpdateContainerGroupRequestContainerSecurityContext {
-	s.Capability = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerSecurityContext) SetReadOnlyRootFilesystem(v bool) *UpdateContainerGroupRequestContainerSecurityContext {
-	s.ReadOnlyRootFilesystem = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerSecurityContext) SetRunAsUser(v int64) *UpdateContainerGroupRequestContainerSecurityContext {
-	s.RunAsUser = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerSecurityContextCapability struct {
-	Add []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestContainerSecurityContextCapability) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerSecurityContextCapability) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerSecurityContextCapability) SetAdd(v []*string) *UpdateContainerGroupRequestContainerSecurityContextCapability {
-	s.Add = v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLivenessProbe struct {
-	PeriodSeconds       *int32                                                      `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	TcpSocket           *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" require:"true" type:"Struct"`
-	InitialDelaySeconds *int32                                                      `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	SuccessThreshold    *int32                                                      `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	Exec                *UpdateContainerGroupRequestContainerLivenessProbeExec      `json:"Exec,omitempty" xml:"Exec,omitempty" require:"true" type:"Struct"`
-	HttpGet             *UpdateContainerGroupRequestContainerLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" require:"true" type:"Struct"`
-	FailureThreshold    *int32                                                      `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	TimeoutSeconds      *int32                                                      `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbe) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbe) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetPeriodSeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.PeriodSeconds = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetTcpSocket(v *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.TcpSocket = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetInitialDelaySeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.InitialDelaySeconds = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetSuccessThreshold(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.SuccessThreshold = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetExec(v *UpdateContainerGroupRequestContainerLivenessProbeExec) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.Exec = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetHttpGet(v *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.HttpGet = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetFailureThreshold(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.FailureThreshold = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbe) SetTimeoutSeconds(v int32) *UpdateContainerGroupRequestContainerLivenessProbe {
-	s.TimeoutSeconds = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLivenessProbeTcpSocket struct {
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket) SetPort(v int32) *UpdateContainerGroupRequestContainerLivenessProbeTcpSocket {
-	s.Port = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLivenessProbeExec struct {
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeExec) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeExec) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbeExec) SetCommand(v []*string) *UpdateContainerGroupRequestContainerLivenessProbeExec {
-	s.Command = v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLivenessProbeHttpGet struct {
-	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeHttpGet) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLivenessProbeHttpGet) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetScheme(v string) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
-	s.Scheme = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetPort(v int32) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
-	s.Port = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLivenessProbeHttpGet) SetPath(v string) *UpdateContainerGroupRequestContainerLivenessProbeHttpGet {
-	s.Path = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerEnvironmentVar struct {
-	FieldRef *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                     `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                     `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerEnvironmentVar) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerEnvironmentVar) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetFieldRef(v *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) *UpdateContainerGroupRequestContainerEnvironmentVar {
-	s.FieldRef = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetKey(v string) *UpdateContainerGroupRequestContainerEnvironmentVar {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerEnvironmentVar) SetValue(v string) *UpdateContainerGroupRequestContainerEnvironmentVar {
-	s.Value = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerEnvironmentVarFieldRef struct {
-	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef) SetFieldPath(v string) *UpdateContainerGroupRequestContainerEnvironmentVarFieldRef {
-	s.FieldPath = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerVolumeMount struct {
-	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerVolumeMount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerVolumeMount) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestContainerVolumeMount {
-	s.MountPropagation = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestContainerVolumeMount {
-	s.MountPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerVolumeMount) SetReadOnly(v bool) *UpdateContainerGroupRequestContainerVolumeMount {
-	s.ReadOnly = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerVolumeMount) SetSubPath(v string) *UpdateContainerGroupRequestContainerVolumeMount {
-	s.SubPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerVolumeMount) SetName(v string) *UpdateContainerGroupRequestContainerVolumeMount {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerPort struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerPort) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerPort) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerPort) SetProtocol(v string) *UpdateContainerGroupRequestContainerPort {
-	s.Protocol = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerPort) SetPort(v int32) *UpdateContainerGroupRequestContainerPort {
-	s.Port = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) SetValue(v string) *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders {
-	s.Value = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders) SetName(v string) *UpdateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHeaders {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) SetValue(v string) *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader {
-	s.Value = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader) SetName(v string) *UpdateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHeader {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainer struct {
-	SecurityContext *UpdateContainerGroupRequestInitContainerSecurityContext  `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" require:"true" type:"Struct"`
-	Image           *string                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
-	VolumeMount     []*UpdateContainerGroupRequestInitContainerVolumeMount    `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
-	Port            []*UpdateContainerGroupRequestInitContainerPort           `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-	EnvironmentVar  []*UpdateContainerGroupRequestInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
-	ImagePullPolicy *string                                                   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	StdinOnce       *bool                                                     `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	Cpu             *float32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Tty             *bool                                                     `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	WorkingDir      *string                                                   `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
-	Command         []*string                                                 `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Arg             []*string                                                 `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
-	Gpu             *int32                                                    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Memory          *float32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Stdin           *bool                                                     `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	Name            *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainer) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetSecurityContext(v *UpdateContainerGroupRequestInitContainerSecurityContext) *UpdateContainerGroupRequestInitContainer {
-	s.SecurityContext = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetImage(v string) *UpdateContainerGroupRequestInitContainer {
-	s.Image = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetVolumeMount(v []*UpdateContainerGroupRequestInitContainerVolumeMount) *UpdateContainerGroupRequestInitContainer {
-	s.VolumeMount = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetPort(v []*UpdateContainerGroupRequestInitContainerPort) *UpdateContainerGroupRequestInitContainer {
-	s.Port = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetEnvironmentVar(v []*UpdateContainerGroupRequestInitContainerEnvironmentVar) *UpdateContainerGroupRequestInitContainer {
-	s.EnvironmentVar = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetImagePullPolicy(v string) *UpdateContainerGroupRequestInitContainer {
-	s.ImagePullPolicy = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetStdinOnce(v bool) *UpdateContainerGroupRequestInitContainer {
-	s.StdinOnce = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetCpu(v float32) *UpdateContainerGroupRequestInitContainer {
-	s.Cpu = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetTty(v bool) *UpdateContainerGroupRequestInitContainer {
-	s.Tty = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetWorkingDir(v string) *UpdateContainerGroupRequestInitContainer {
-	s.WorkingDir = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetCommand(v []*string) *UpdateContainerGroupRequestInitContainer {
-	s.Command = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetArg(v []*string) *UpdateContainerGroupRequestInitContainer {
-	s.Arg = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetGpu(v int32) *UpdateContainerGroupRequestInitContainer {
-	s.Gpu = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetMemory(v float32) *UpdateContainerGroupRequestInitContainer {
-	s.Memory = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetStdin(v bool) *UpdateContainerGroupRequestInitContainer {
-	s.Stdin = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainer) SetName(v string) *UpdateContainerGroupRequestInitContainer {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerSecurityContext struct {
-	Capability             *UpdateContainerGroupRequestInitContainerSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" require:"true" type:"Struct"`
-	ReadOnlyRootFilesystem *bool                                                              `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
-	RunAsUser              *int64                                                             `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerSecurityContext) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerSecurityContext) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetCapability(v *UpdateContainerGroupRequestInitContainerSecurityContextCapability) *UpdateContainerGroupRequestInitContainerSecurityContext {
-	s.Capability = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetReadOnlyRootFilesystem(v bool) *UpdateContainerGroupRequestInitContainerSecurityContext {
-	s.ReadOnlyRootFilesystem = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerSecurityContext) SetRunAsUser(v int64) *UpdateContainerGroupRequestInitContainerSecurityContext {
-	s.RunAsUser = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerSecurityContextCapability struct {
-	Add []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerSecurityContextCapability) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerSecurityContextCapability) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerSecurityContextCapability) SetAdd(v []*string) *UpdateContainerGroupRequestInitContainerSecurityContextCapability {
-	s.Add = v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerVolumeMount struct {
-	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	SubPath          *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerVolumeMount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerVolumeMount) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPropagation(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
-	s.MountPropagation = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetMountPath(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
-	s.MountPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetReadOnly(v bool) *UpdateContainerGroupRequestInitContainerVolumeMount {
-	s.ReadOnly = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetSubPath(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
-	s.SubPath = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerVolumeMount) SetName(v string) *UpdateContainerGroupRequestInitContainerVolumeMount {
-	s.Name = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerPort struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerPort) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerPort) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerPort) SetProtocol(v string) *UpdateContainerGroupRequestInitContainerPort {
-	s.Protocol = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerPort) SetPort(v int32) *UpdateContainerGroupRequestInitContainerPort {
-	s.Port = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerEnvironmentVar struct {
-	FieldRef *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" require:"true" type:"Struct"`
-	Key      *string                                                         `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value    *string                                                         `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerEnvironmentVar) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerEnvironmentVar) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetFieldRef(v *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
-	s.FieldRef = v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetKey(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestInitContainerEnvironmentVar) SetValue(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVar {
-	s.Value = &v
-	return s
-}
-
-type UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef struct {
-	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef) SetFieldPath(v string) *UpdateContainerGroupRequestInitContainerEnvironmentVarFieldRef {
-	s.FieldPath = &v
-	return s
-}
-
-type UpdateContainerGroupRequestImageRegistryCredential struct {
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s UpdateContainerGroupRequestImageRegistryCredential) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupRequestImageRegistryCredential) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupRequestImageRegistryCredential) SetPassword(v string) *UpdateContainerGroupRequestImageRegistryCredential {
-	s.Password = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestImageRegistryCredential) SetServer(v string) *UpdateContainerGroupRequestImageRegistryCredential {
-	s.Server = &v
-	return s
-}
-
-func (s *UpdateContainerGroupRequestImageRegistryCredential) SetUserName(v string) *UpdateContainerGroupRequestImageRegistryCredential {
-	s.UserName = &v
-	return s
-}
-
-type UpdateContainerGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateContainerGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContainerGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContainerGroupResponseBody) SetRequestId(v string) *UpdateContainerGroupResponseBody {
+func (s *DescribeContainerGroupsResponseBody) SetRequestId(v string) *DescribeContainerGroupsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type UpdateContainerGroupResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateContainerGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *DescribeContainerGroupsResponseBody) SetContainerGroups(v []*DescribeContainerGroupsResponseBodyContainerGroups) *DescribeContainerGroupsResponseBody {
+	s.ContainerGroups = v
+	return s
 }
 
-func (s UpdateContainerGroupResponse) String() string {
+type DescribeContainerGroupsResponseBodyContainerGroups struct {
+	Status                *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime          *string                                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	VpcId                 *string                                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	InternetIp            *string                                                               `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	TenantSecurityGroupId *string                                                               `json:"TenantSecurityGroupId,omitempty" xml:"TenantSecurityGroupId,omitempty"`
+	SecurityGroupId       *string                                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	HostAliases           []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases      `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	Tags                  []*DescribeContainerGroupsResponseBodyContainerGroupsTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Events                []*DescribeContainerGroupsResponseBodyContainerGroupsEvents           `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	SucceededTime         *string                                                               `json:"SucceededTime,omitempty" xml:"SucceededTime,omitempty"`
+	SpotStrategy          *string                                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	EphemeralStorage      *int32                                                                `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	TenantEniInstanceId   *string                                                               `json:"TenantEniInstanceId,omitempty" xml:"TenantEniInstanceId,omitempty"`
+	Discount              *int32                                                                `json:"Discount,omitempty" xml:"Discount,omitempty"`
+	RestartPolicy         *string                                                               `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	Memory                *float32                                                              `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	TenantVSwitchId       *string                                                               `json:"TenantVSwitchId,omitempty" xml:"TenantVSwitchId,omitempty"`
+	Containers            []*DescribeContainerGroupsResponseBodyContainerGroupsContainers       `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	EniInstanceId         *string                                                               `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	InitContainers        []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	ContainerGroupId      *string                                                               `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	TenantEniIp           *string                                                               `json:"TenantEniIp,omitempty" xml:"TenantEniIp,omitempty"`
+	InstanceType          *string                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IntranetIp            *string                                                               `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ipv6Address           *string                                                               `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	RegionId              *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DnsConfig             *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig          `json:"DnsConfig,omitempty" xml:"DnsConfig,omitempty" type:"Struct"`
+	Volumes               []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes          `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
+	RamRoleName           *string                                                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	VSwitchId             *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Cpu                   *float32                                                              `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	ExpiredTime           *string                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ResourceGroupId       *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZoneId                *string                                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ContainerGroupName    *string                                                               `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
+	EciSecurityContext    *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext `json:"EciSecurityContext,omitempty" xml:"EciSecurityContext,omitempty" type:"Struct"`
+	FailedTime            *string                                                               `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroups) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateContainerGroupResponse) GoString() string {
+func (s DescribeContainerGroupsResponseBodyContainerGroups) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateContainerGroupResponse) SetHeaders(v map[string]*string) *UpdateContainerGroupResponse {
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetCreationTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVpcId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInternetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantSecurityGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.TenantSecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSecurityGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetHostAliases(v []*DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.HostAliases = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTags(v []*DescribeContainerGroupsResponseBodyContainerGroupsTags) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEvents(v []*DescribeContainerGroupsResponseBodyContainerGroupsEvents) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Events = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSucceededTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.SucceededTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetSpotStrategy(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEphemeralStorage(v int32) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantEniInstanceId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.TenantEniInstanceId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetDiscount(v int32) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Discount = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRestartPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.RestartPolicy = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantVSwitchId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.TenantVSwitchId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainers(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainers) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Containers = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEniInstanceId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.EniInstanceId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInitContainers(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.InitContainers = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainerGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetTenantEniIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.TenantEniIp = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetInstanceType(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIntranetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetIpv6Address(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Ipv6Address = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRegionId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetDnsConfig(v *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.DnsConfig = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVolumes(v []*DescribeContainerGroupsResponseBodyContainerGroupsVolumes) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Volumes = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetRamRoleName(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetVSwitchId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetExpiredTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetResourceGroupId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetZoneId(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetContainerGroupName(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.ContainerGroupName = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetEciSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.EciSecurityContext = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroups) SetFailedTime(v string) *DescribeContainerGroupsResponseBodyContainerGroups {
+	s.FailedTime = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsHostAliases struct {
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) SetHostnames(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases {
+	s.Hostnames = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases) SetIp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsHostAliases {
+	s.Ip = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsTags) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsTags) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsEvents struct {
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	LastTimestamp  *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	FirstTimestamp *string `json:"FirstTimestamp,omitempty" xml:"FirstTimestamp,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetLastTimestamp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.LastTimestamp = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEvents) SetFirstTimestamp(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEvents {
+	s.FirstTimestamp = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainers struct {
+	LivenessProbe   *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe     `json:"LivenessProbe,omitempty" xml:"LivenessProbe,omitempty" type:"Struct"`
+	Commands        []*string                                                                      `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	Args            []*string                                                                      `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Image           *string                                                                        `json:"Image,omitempty" xml:"Image,omitempty"`
+	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	RestartCount    *int32                                                                         `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	ImagePullPolicy *string                                                                        `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	StdinOnce       *bool                                                                          `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
+	Cpu             *float32                                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
+	Tty             *bool                                                                          `json:"Tty,omitempty" xml:"Tty,omitempty"`
+	WorkingDir      *string                                                                        `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	Ready           *bool                                                                          `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	Gpu             *int32                                                                         `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
+	Memory          *float32                                                                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Stdin           *bool                                                                          `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
+	Name            *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	ReadinessProbe  *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe    `json:"ReadinessProbe,omitempty" xml:"ReadinessProbe,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetLivenessProbe(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.LivenessProbe = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCommands(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Commands = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetVolumeMounts(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.VolumeMounts = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetArgs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Args = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetImage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetPorts(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Ports = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetRestartCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.RestartCount = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetImagePullPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetStdinOnce(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.StdinOnce = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetPreviousState(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.PreviousState = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetTty(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Tty = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetWorkingDir(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.WorkingDir = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetCurrentState(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.CurrentState = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetReady(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Ready = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetGpu(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Gpu = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.SecurityContext = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetStdin(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Stdin = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetEnvironmentVars(v []*DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainers) SetReadinessProbe(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) *DescribeContainerGroupsResponseBodyContainerGroupsContainers {
+	s.ReadinessProbe = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe struct {
+	SuccessThreshold    *int32                                                                              `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	InitialDelaySeconds *int32                                                                              `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	FailureThreshold    *int32                                                                              `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	TimeoutSeconds      *int32                                                                              `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	Execs               []*string                                                                           `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	PeriodSeconds       *int32                                                                              `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetSuccessThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetInitialDelaySeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetFailureThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetTimeoutSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetTcpSocket(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.TcpSocket = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetExecs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.Execs = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetHttpGet(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.HttpGet = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe) SetPeriodSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) SetHost(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeTcpSocket {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet struct {
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetScheme(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbeHttpGet {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts struct {
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts {
+	s.Name = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts struct {
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) SetProtocol(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPorts {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState struct {
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.DetailStatus = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.Signal = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState {
+	s.Reason = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState struct {
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.DetailStatus = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.Signal = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState {
+	s.Reason = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext struct {
+	ReadOnlyRootFilesystem *bool                                                                                  `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	RunAsUser              *int64                                                                                 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetReadOnlyRootFilesystem(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
+	s.ReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetRunAsUser(v int64) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
+	s.RunAsUser = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext) SetCapability(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContext {
+	s.Capability = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability struct {
+	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability) SetAdds(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContextCapability {
+	s.Adds = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars struct {
+	Key       *string                                                                               `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string                                                                               `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars) SetValueFrom(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVars {
+	s.ValueFrom = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom struct {
+	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom) SetFieldRef(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFrom {
+	s.FieldRef = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef) SetFieldPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVarsValueFromFieldRef {
+	s.FieldPath = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe struct {
+	SuccessThreshold    *int32                                                                               `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	InitialDelaySeconds *int32                                                                               `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	FailureThreshold    *int32                                                                               `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	TimeoutSeconds      *int32                                                                               `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	TcpSocket           *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty" type:"Struct"`
+	Execs               []*string                                                                            `json:"Execs,omitempty" xml:"Execs,omitempty" type:"Repeated"`
+	HttpGet             *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty" type:"Struct"`
+	PeriodSeconds       *int32                                                                               `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetSuccessThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.SuccessThreshold = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetInitialDelaySeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetFailureThreshold(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetTimeoutSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetTcpSocket(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.TcpSocket = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetExecs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.Execs = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetHttpGet(v *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.HttpGet = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe) SetPeriodSeconds(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) SetHost(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeTcpSocket {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet struct {
+	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Path   *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetScheme(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbeHttpGet {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainers struct {
+	VolumeMounts    []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts    `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
+	Args            []*string                                                                          `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Image           *string                                                                            `json:"Image,omitempty" xml:"Image,omitempty"`
+	Ports           []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts           `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	RestartCount    *int32                                                                             `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	ImagePullPolicy *string                                                                            `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	PreviousState   *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState     `json:"PreviousState,omitempty" xml:"PreviousState,omitempty" type:"Struct"`
+	WorkingDir      *string                                                                            `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	Cpu             *float32                                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CurrentState    *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState      `json:"CurrentState,omitempty" xml:"CurrentState,omitempty" type:"Struct"`
+	Command         []*string                                                                          `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Ready           *bool                                                                              `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	Gpu             *int32                                                                             `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	SecurityContext *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext   `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
+	Memory          *float32                                                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	EnvironmentVars []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetVolumeMounts(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.VolumeMounts = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetArgs(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Args = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetImage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetPorts(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Ports = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetRestartCount(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.RestartCount = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetImagePullPolicy(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.ImagePullPolicy = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetPreviousState(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.PreviousState = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetWorkingDir(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.WorkingDir = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCpu(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCurrentState(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.CurrentState = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetCommand(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Command = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetReady(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Ready = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetGpu(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Gpu = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetSecurityContext(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.SecurityContext = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetMemory(v float32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers) SetEnvironmentVars(v []*DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainers {
+	s.EnvironmentVars = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts struct {
+	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
+	MountPath        *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly         *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPropagation(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
+	s.MountPropagation = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetMountPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMounts {
+	s.Name = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts struct {
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) SetProtocol(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts) SetPort(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPorts {
+	s.Port = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState struct {
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.DetailStatus = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.Signal = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousState {
+	s.Reason = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState struct {
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	DetailStatus *string `json:"DetailStatus,omitempty" xml:"DetailStatus,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Signal       *int32  `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	ExitCode     *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetStartTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetFinishTime(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetDetailStatus(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.DetailStatus = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetState(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetMessage(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetSignal(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.Signal = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetExitCode(v int32) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState) SetReason(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentState {
+	s.Reason = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext struct {
+	ReadOnlyRootFilesystem *bool                                                                                      `json:"ReadOnlyRootFilesystem,omitempty" xml:"ReadOnlyRootFilesystem,omitempty"`
+	RunAsUser              *int64                                                                                     `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	Capability             *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability `json:"Capability,omitempty" xml:"Capability,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetReadOnlyRootFilesystem(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
+	s.ReadOnlyRootFilesystem = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetRunAsUser(v int64) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
+	s.RunAsUser = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext) SetCapability(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContext {
+	s.Capability = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability struct {
+	Adds []*string `json:"Adds,omitempty" xml:"Adds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability) SetAdds(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityContextCapability {
+	s.Adds = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars struct {
+	Key       *string                                                                                   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string                                                                                   `json:"Value,omitempty" xml:"Value,omitempty"`
+	ValueFrom *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetKey(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars) SetValueFrom(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVars {
+	s.ValueFrom = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom struct {
+	FieldRef *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef `json:"FieldRef,omitempty" xml:"FieldRef,omitempty" type:"Struct"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom) SetFieldRef(v *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFrom {
+	s.FieldRef = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef) SetFieldPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmentVarsValueFromFieldRef {
+	s.FieldPath = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig struct {
+	Searches    []*string                                                             `json:"Searches,omitempty" xml:"Searches,omitempty" type:"Repeated"`
+	Options     []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	NameServers []*string                                                             `json:"NameServers,omitempty" xml:"NameServers,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetSearches(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
+	s.Searches = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetOptions(v []*DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
+	s.Options = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig) SetNameServers(v []*string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig {
+	s.NameServers = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsDnsConfigOptions {
+	s.Name = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsVolumes struct {
+	Type                              *string                                                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	DiskVolumeDiskId                  *string                                                                                       `json:"DiskVolumeDiskId,omitempty" xml:"DiskVolumeDiskId,omitempty"`
+	NFSVolumeReadOnly                 *bool                                                                                         `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
+	ConfigFileVolumeConfigFileToPaths []*DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths `json:"ConfigFileVolumeConfigFileToPaths,omitempty" xml:"ConfigFileVolumeConfigFileToPaths,omitempty" type:"Repeated"`
+	FlexVolumeFsType                  *string                                                                                       `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
+	FlexVolumeDriver                  *string                                                                                       `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
+	DiskVolumeFsType                  *string                                                                                       `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
+	FlexVolumeOptions                 *string                                                                                       `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
+	NFSVolumeServer                   *string                                                                                       `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
+	NFSVolumePath                     *string                                                                                       `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
+	Name                              *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetDiskVolumeDiskId(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.DiskVolumeDiskId = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumeReadOnly(v bool) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.NFSVolumeReadOnly = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetConfigFileVolumeConfigFileToPaths(v []*DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.ConfigFileVolumeConfigFileToPaths = v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeFsType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.FlexVolumeFsType = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeDriver(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.FlexVolumeDriver = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetDiskVolumeFsType(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.DiskVolumeFsType = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetFlexVolumeOptions(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.FlexVolumeOptions = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumeServer(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.NFSVolumeServer = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetNFSVolumePath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.NFSVolumePath = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumes) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumes {
+	s.Name = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths struct {
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) SetPath(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths) SetContent(v string) *DescribeContainerGroupsResponseBodyContainerGroupsVolumesConfigFileVolumeConfigFileToPaths {
+	s.Content = &v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext struct {
+	Sysctls []*DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls `json:"Sysctls,omitempty" xml:"Sysctls,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext) SetSysctls(v []*DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContext {
+	s.Sysctls = v
+	return s
+}
+
+type DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) SetValue(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls) SetName(v string) *DescribeContainerGroupsResponseBodyContainerGroupsEciSecurityContextSysctls {
+	s.Name = &v
+	return s
+}
+
+type DescribeContainerGroupsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeContainerGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeContainerGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerGroupsResponse) SetHeaders(v map[string]*string) *DescribeContainerGroupsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UpdateContainerGroupResponse) SetBody(v *UpdateContainerGroupResponseBody) *UpdateContainerGroupResponse {
+func (s *DescribeContainerGroupsResponse) SetBody(v *DescribeContainerGroupsResponseBody) *DescribeContainerGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -9045,34 +9128,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateContainerGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateContainerGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateContainerGroup(request *CreateContainerGroupRequest) (_result *CreateContainerGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateContainerGroupResponse{}
-	_body, _err := client.CreateContainerGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateImageCacheWithOptions(request *CreateImageCacheRequest, runtime *util.RuntimeOptions) (_result *CreateImageCacheResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9101,6 +9156,90 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeContainerLogWithOptions(request *DescribeContainerLogRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeContainerLogResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerLog"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (_result *DescribeContainerLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeContainerLogResponse{}
+	_body, _err := client.DescribeContainerLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestartContainerGroupWithOptions(request *RestartContainerGroupRequest, runtime *util.RuntimeOptions) (_result *RestartContainerGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RestartContainerGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RestartContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartContainerGroup(request *RestartContainerGroupRequest) (_result *RestartContainerGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartContainerGroupResponse{}
+	_body, _err := client.RestartContainerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeImageCachesWithOptions(request *DescribeImageCachesRequest, runtime *util.RuntimeOptions) (_result *DescribeImageCachesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeImageCachesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeImageCaches"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageCaches(request *DescribeImageCachesRequest) (_result *DescribeImageCachesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageCachesResponse{}
+	_body, _err := client.DescribeImageCachesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteContainerGroupWithOptions(request *DeleteContainerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteContainerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9122,6 +9261,62 @@ func (client *Client) DeleteContainerGroup(request *DeleteContainerGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteContainerGroupResponse{}
 	_body, _err := client.DeleteContainerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *util.RuntimeOptions) (_result *ListUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListUsageResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListUsage"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUsage(request *ListUsageRequest) (_result *ListUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsageResponse{}
+	_body, _err := client.ListUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateContainerGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateContainerGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateContainerGroup(request *CreateContainerGroupRequest) (_result *CreateContainerGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateContainerGroupResponse{}
+	_body, _err := client.CreateContainerGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9185,146 +9380,6 @@ func (client *Client) DescribeContainerGroupMetric(request *DescribeContainerGro
 	return _result, _err
 }
 
-func (client *Client) DescribeContainerGroupPriceWithOptions(request *DescribeContainerGroupPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupPriceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeContainerGroupPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerGroupPrice"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeContainerGroupPrice(request *DescribeContainerGroupPriceRequest) (_result *DescribeContainerGroupPriceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeContainerGroupPriceResponse{}
-	_body, _err := client.DescribeContainerGroupPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeContainerGroupsWithOptions(request *DescribeContainerGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeContainerGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerGroups"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeContainerGroups(request *DescribeContainerGroupsRequest) (_result *DescribeContainerGroupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeContainerGroupsResponse{}
-	_body, _err := client.DescribeContainerGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeContainerLogWithOptions(request *DescribeContainerLogRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeContainerLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerLog"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (_result *DescribeContainerLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeContainerLogResponse{}
-	_body, _err := client.DescribeContainerLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeImageCachesWithOptions(request *DescribeImageCachesRequest, runtime *util.RuntimeOptions) (_result *DescribeImageCachesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeImageCachesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageCaches"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeImageCaches(request *DescribeImageCachesRequest) (_result *DescribeImageCachesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeImageCachesResponse{}
-	_body, _err := client.DescribeImageCachesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMultiContainerGroupMetricWithOptions(request *DescribeMultiContainerGroupMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeMultiContainerGroupMetricResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeMultiContainerGroupMetric"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMultiContainerGroupMetric(request *DescribeMultiContainerGroupMetricRequest) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMultiContainerGroupMetricResponse{}
-	_body, _err := client.DescribeMultiContainerGroupMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9346,6 +9401,34 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateContainerGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateContainerGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateContainerGroup(request *UpdateContainerGroupRequest) (_result *UpdateContainerGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateContainerGroupResponse{}
+	_body, _err := client.UpdateContainerGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9381,7 +9464,7 @@ func (client *Client) ExecContainerCommand(request *ExecContainerCommandRequest)
 	return _result, _err
 }
 
-func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *util.RuntimeOptions) (_result *ListUsageResponse, _err error) {
+func (client *Client) DescribeContainerGroupPriceWithOptions(request *DescribeContainerGroupPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9389,8 +9472,8 @@ func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &ListUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsage"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeContainerGroupPriceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerGroupPrice"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9398,10 +9481,10 @@ func (client *Client) ListUsageWithOptions(request *ListUsageRequest, runtime *u
 	return _result, _err
 }
 
-func (client *Client) ListUsage(request *ListUsageRequest) (_result *ListUsageResponse, _err error) {
+func (client *Client) DescribeContainerGroupPrice(request *DescribeContainerGroupPriceRequest) (_result *DescribeContainerGroupPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListUsageResponse{}
-	_body, _err := client.ListUsageWithOptions(request, runtime)
+	_result = &DescribeContainerGroupPriceResponse{}
+	_body, _err := client.DescribeContainerGroupPriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9409,7 +9492,7 @@ func (client *Client) ListUsage(request *ListUsageRequest) (_result *ListUsageRe
 	return _result, _err
 }
 
-func (client *Client) RestartContainerGroupWithOptions(request *RestartContainerGroupRequest, runtime *util.RuntimeOptions) (_result *RestartContainerGroupResponse, _err error) {
+func (client *Client) DescribeMultiContainerGroupMetricWithOptions(request *DescribeMultiContainerGroupMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9417,8 +9500,8 @@ func (client *Client) RestartContainerGroupWithOptions(request *RestartContainer
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &RestartContainerGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RestartContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeMultiContainerGroupMetricResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeMultiContainerGroupMetric"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9426,10 +9509,10 @@ func (client *Client) RestartContainerGroupWithOptions(request *RestartContainer
 	return _result, _err
 }
 
-func (client *Client) RestartContainerGroup(request *RestartContainerGroupRequest) (_result *RestartContainerGroupResponse, _err error) {
+func (client *Client) DescribeMultiContainerGroupMetric(request *DescribeMultiContainerGroupMetricRequest) (_result *DescribeMultiContainerGroupMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &RestartContainerGroupResponse{}
-	_body, _err := client.RestartContainerGroupWithOptions(request, runtime)
+	_result = &DescribeMultiContainerGroupMetricResponse{}
+	_body, _err := client.DescribeMultiContainerGroupMetricWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9437,7 +9520,7 @@ func (client *Client) RestartContainerGroup(request *RestartContainerGroupReques
 	return _result, _err
 }
 
-func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateContainerGroupResponse, _err error) {
+func (client *Client) DescribeContainerGroupsWithOptions(request *DescribeContainerGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9445,8 +9528,8 @@ func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGr
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &UpdateContainerGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateContainerGroup"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &DescribeContainerGroupsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerGroups"), tea.String("2018-08-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9454,10 +9537,10 @@ func (client *Client) UpdateContainerGroupWithOptions(request *UpdateContainerGr
 	return _result, _err
 }
 
-func (client *Client) UpdateContainerGroup(request *UpdateContainerGroupRequest) (_result *UpdateContainerGroupResponse, _err error) {
+func (client *Client) DescribeContainerGroups(request *DescribeContainerGroupsRequest) (_result *DescribeContainerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UpdateContainerGroupResponse{}
-	_body, _err := client.UpdateContainerGroupWithOptions(request, runtime)
+	_result = &DescribeContainerGroupsResponse{}
+	_body, _err := client.DescribeContainerGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
