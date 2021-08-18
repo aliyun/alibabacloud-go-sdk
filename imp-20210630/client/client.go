@@ -774,6 +774,59 @@ func (s *UpdateRoomRequest) SetExtension(v map[string]*string) *UpdateRoomReques
 	return s
 }
 
+type UpdateRoomShrinkRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 房间标题，支持中英文，最大长度32位。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 房间公告，支持中英文，最大长度256位。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 房主用户id，仅支持英文和数字，最大长度36位。
+	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	// 拓展字段，按需传递，需要额外记录的房间属性。
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s UpdateRoomShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRoomShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRoomShrinkRequest) SetAppId(v string) *UpdateRoomShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetRoomId(v string) *UpdateRoomShrinkRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetTitle(v string) *UpdateRoomShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetNotice(v string) *UpdateRoomShrinkRequest {
+	s.Notice = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetRoomOwnerId(v string) *UpdateRoomShrinkRequest {
+	s.RoomOwnerId = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetExtensionShrink(v string) *UpdateRoomShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
 type UpdateRoomResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5812,11 +5865,17 @@ func (client *Client) ListRoomLives(request *ListRoomLivesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) UpdateRoomWithOptions(request *UpdateRoomRequest, runtime *util.RuntimeOptions) (_result *UpdateRoomResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateRoomWithOptions(tmpReq *UpdateRoomRequest, runtime *util.RuntimeOptions) (_result *UpdateRoomResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateRoomShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
