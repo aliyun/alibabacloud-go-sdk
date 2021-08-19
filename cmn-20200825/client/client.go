@@ -9910,6 +9910,8 @@ type CreateDeviceRequest struct {
 	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
 	// 登录密码
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
 	// SNMP 版本号
 	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
 	// SNMP Community
@@ -10006,6 +10008,11 @@ func (s *CreateDeviceRequest) SetLoginUsername(v string) *CreateDeviceRequest {
 
 func (s *CreateDeviceRequest) SetLoginPassword(v string) *CreateDeviceRequest {
 	s.LoginPassword = &v
+	return s
+}
+
+func (s *CreateDeviceRequest) SetEnablePassword(v string) *CreateDeviceRequest {
+	s.EnablePassword = &v
 	return s
 }
 
@@ -11601,6 +11608,8 @@ type GetAlarmStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 端口集ID
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s GetAlarmStatusRequest) String() string {
@@ -11643,6 +11652,11 @@ func (s *GetAlarmStatusRequest) SetInstanceId(v string) *GetAlarmStatusRequest {
 
 func (s *GetAlarmStatusRequest) SetPortCollectionId(v string) *GetAlarmStatusRequest {
 	s.PortCollectionId = &v
+	return s
+}
+
+func (s *GetAlarmStatusRequest) SetAppId(v string) *GetAlarmStatusRequest {
+	s.AppId = &v
 	return s
 }
 
@@ -11711,6 +11725,12 @@ type GetAlarmStatusResponseBodyAlarmStatus struct {
 	// 端口集ID
 	PortCollectionId *string                                              `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
 	PortCollection   *GetAlarmStatusResponseBodyAlarmStatusPortCollection `json:"PortCollection,omitempty" xml:"PortCollection,omitempty" type:"Struct"`
+	// 采集探针IP
+	AgentIp *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用
+	ResourceApp *GetAlarmStatusResponseBodyAlarmStatusResourceApp `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatus) String() string {
@@ -11818,6 +11838,21 @@ func (s *GetAlarmStatusResponseBodyAlarmStatus) SetPortCollectionId(v string) *G
 
 func (s *GetAlarmStatusResponseBodyAlarmStatus) SetPortCollection(v *GetAlarmStatusResponseBodyAlarmStatusPortCollection) *GetAlarmStatusResponseBodyAlarmStatus {
 	s.PortCollection = v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatus) SetAgentIp(v string) *GetAlarmStatusResponseBodyAlarmStatus {
+	s.AgentIp = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatus) SetAppId(v string) *GetAlarmStatusResponseBodyAlarmStatus {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatus) SetResourceApp(v *GetAlarmStatusResponseBodyAlarmStatusResourceApp) *GetAlarmStatusResponseBodyAlarmStatus {
+	s.ResourceApp = v
 	return s
 }
 
@@ -12074,6 +12109,8 @@ type GetAlarmStatusResponseBodyAlarmStatusDedicatedLine struct {
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// IP
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// 对端IP
+	DedicatedLineGateway *string `json:"DedicatedLineGateway,omitempty" xml:"DedicatedLineGateway,omitempty"`
 }
 
 func (s GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) String() string {
@@ -12111,6 +12148,11 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) SetBandwidth(v stri
 
 func (s *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) SetIp(v string) *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine {
 	s.Ip = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine) SetDedicatedLineGateway(v string) *GetAlarmStatusResponseBodyAlarmStatusDedicatedLine {
+	s.DedicatedLineGateway = &v
 	return s
 }
 
@@ -12213,6 +12255,52 @@ func (s *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevi
 }
 
 func (s *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevice) SetSecurityDomain(v string) *GetAlarmStatusResponseBodyAlarmStatusPortCollectionPortListResourceDevice {
+	s.SecurityDomain = &v
+	return s
+}
+
+type GetAlarmStatusResponseBodyAlarmStatusResourceApp struct {
+	// 监控域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 端口
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 资源类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 所属探针
+	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+}
+
+func (s GetAlarmStatusResponseBodyAlarmStatusResourceApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmStatusResponseBodyAlarmStatusResourceApp) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetDomain(v string) *GetAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetAppId(v string) *GetAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetPort(v string) *GetAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Port = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetType(v string) *GetAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAlarmStatusResponseBodyAlarmStatusResourceApp) SetSecurityDomain(v string) *GetAlarmStatusResponseBodyAlarmStatusResourceApp {
 	s.SecurityDomain = &v
 	return s
 }
@@ -13250,6 +13338,8 @@ type ListDevicesResponseBodyDevices struct {
 	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
 	// 登录密码
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
 	// SNMP版本号
 	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
 	// SNMP Community
@@ -13357,6 +13447,11 @@ func (s *ListDevicesResponseBodyDevices) SetLoginUsername(v string) *ListDevices
 
 func (s *ListDevicesResponseBodyDevices) SetLoginPassword(v string) *ListDevicesResponseBodyDevices {
 	s.LoginPassword = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyDevices) SetEnablePassword(v string) *ListDevicesResponseBodyDevices {
+	s.EnablePassword = &v
 	return s
 }
 
@@ -14036,6 +14131,8 @@ type UpdateDevicesRequest struct {
 	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
 	// 登录密码
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
 	// SNMP 版本号
 	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
 	// SNMP Community
@@ -14056,6 +14153,16 @@ type UpdateDevicesRequest struct {
 	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 物理空间id
+	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	// 物理空间名称
+	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	// 服务状态
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// 厂商
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// 型号
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 }
 
 func (s UpdateDevicesRequest) String() string {
@@ -14083,6 +14190,11 @@ func (s *UpdateDevicesRequest) SetLoginUsername(v string) *UpdateDevicesRequest 
 
 func (s *UpdateDevicesRequest) SetLoginPassword(v string) *UpdateDevicesRequest {
 	s.LoginPassword = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetEnablePassword(v string) *UpdateDevicesRequest {
+	s.EnablePassword = &v
 	return s
 }
 
@@ -14133,6 +14245,31 @@ func (s *UpdateDevicesRequest) SetSnmpPrivacyProtocol(v string) *UpdateDevicesRe
 
 func (s *UpdateDevicesRequest) SetInstanceId(v string) *UpdateDevicesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetPhysicalSpaceId(v string) *UpdateDevicesRequest {
+	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetPhysicalSpaceName(v string) *UpdateDevicesRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetServiceStatus(v string) *UpdateDevicesRequest {
+	s.ServiceStatus = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetVendor(v string) *UpdateDevicesRequest {
+	s.Vendor = &v
+	return s
+}
+
+func (s *UpdateDevicesRequest) SetModel(v string) *UpdateDevicesRequest {
+	s.Model = &v
 	return s
 }
 
@@ -17047,6 +17184,8 @@ type EnableNotificationRequestList struct {
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
 	// 端口集ID
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s EnableNotificationRequestList) String() string {
@@ -17084,6 +17223,11 @@ func (s *EnableNotificationRequestList) SetDedicatedLineId(v string) *EnableNoti
 
 func (s *EnableNotificationRequestList) SetPortCollectionId(v string) *EnableNotificationRequestList {
 	s.PortCollectionId = &v
+	return s
+}
+
+func (s *EnableNotificationRequestList) SetAppId(v string) *EnableNotificationRequestList {
+	s.AppId = &v
 	return s
 }
 
@@ -17234,6 +17378,8 @@ type ListNotificationHistoriesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 端口集ID
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s ListNotificationHistoriesRequest) String() string {
@@ -17286,6 +17432,11 @@ func (s *ListNotificationHistoriesRequest) SetInstanceId(v string) *ListNotifica
 
 func (s *ListNotificationHistoriesRequest) SetPortCollectionId(v string) *ListNotificationHistoriesRequest {
 	s.PortCollectionId = &v
+	return s
+}
+
+func (s *ListNotificationHistoriesRequest) SetAppId(v string) *ListNotificationHistoriesRequest {
+	s.AppId = &v
 	return s
 }
 
@@ -19042,7 +19193,7 @@ type UploadScheduleDutyRequestScheduleDutyWorker struct {
 	// 值班表类型
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
 	// 值班人员姓名
-	WorkerName *string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty"`
+	WorkerName []*string `json:"WorkerName,omitempty" xml:"WorkerName,omitempty" type:"Repeated"`
 }
 
 func (s UploadScheduleDutyRequestScheduleDutyWorker) String() string {
@@ -19058,8 +19209,8 @@ func (s *UploadScheduleDutyRequestScheduleDutyWorker) SetWorkType(v string) *Upl
 	return s
 }
 
-func (s *UploadScheduleDutyRequestScheduleDutyWorker) SetWorkerName(v string) *UploadScheduleDutyRequestScheduleDutyWorker {
-	s.WorkerName = &v
+func (s *UploadScheduleDutyRequestScheduleDutyWorker) SetWorkerName(v []*string) *UploadScheduleDutyRequestScheduleDutyWorker {
+	s.WorkerName = v
 	return s
 }
 
@@ -19148,6 +19299,8 @@ type ListAlarmStatusHistoriesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 端口集ID
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s ListAlarmStatusHistoriesRequest) String() string {
@@ -19200,6 +19353,11 @@ func (s *ListAlarmStatusHistoriesRequest) SetInstanceId(v string) *ListAlarmStat
 
 func (s *ListAlarmStatusHistoriesRequest) SetPortCollectionId(v string) *ListAlarmStatusHistoriesRequest {
 	s.PortCollectionId = &v
+	return s
+}
+
+func (s *ListAlarmStatusHistoriesRequest) SetAppId(v string) *ListAlarmStatusHistoriesRequest {
+	s.AppId = &v
 	return s
 }
 
@@ -19754,6 +19912,8 @@ type ListMonitorDataRequest struct {
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s ListMonitorDataRequest) String() string {
@@ -19816,6 +19976,11 @@ func (s *ListMonitorDataRequest) SetDedicatedLineId(v string) *ListMonitorDataRe
 
 func (s *ListMonitorDataRequest) SetInstanceId(v string) *ListMonitorDataRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListMonitorDataRequest) SetAppId(v string) *ListMonitorDataRequest {
+	s.AppId = &v
 	return s
 }
 
@@ -23206,6 +23371,8 @@ type UpdateDeviceRequest struct {
 	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
 	// 登录密码
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
 	// SNMP 版本号
 	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
 	// SNMP Community
@@ -23300,6 +23467,11 @@ func (s *UpdateDeviceRequest) SetLoginUsername(v string) *UpdateDeviceRequest {
 
 func (s *UpdateDeviceRequest) SetLoginPassword(v string) *UpdateDeviceRequest {
 	s.LoginPassword = &v
+	return s
+}
+
+func (s *UpdateDeviceRequest) SetEnablePassword(v string) *UpdateDeviceRequest {
+	s.EnablePassword = &v
 	return s
 }
 
@@ -23482,6 +23654,8 @@ type GetDeviceResponseBodyDevice struct {
 	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
 	// 登录密码
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
 	// SNMP版本号
 	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
 	// SNMP Community
@@ -23589,6 +23763,11 @@ func (s *GetDeviceResponseBodyDevice) SetLoginUsername(v string) *GetDeviceRespo
 
 func (s *GetDeviceResponseBodyDevice) SetLoginPassword(v string) *GetDeviceResponseBodyDevice {
 	s.LoginPassword = &v
+	return s
+}
+
+func (s *GetDeviceResponseBodyDevice) SetEnablePassword(v string) *GetDeviceResponseBodyDevice {
+	s.EnablePassword = &v
 	return s
 }
 
@@ -24227,6 +24406,8 @@ type DisableNotificationRequestList struct {
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
 	// 端口集ID
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
 func (s DisableNotificationRequestList) String() string {
@@ -24264,6 +24445,11 @@ func (s *DisableNotificationRequestList) SetDedicatedLineId(v string) *DisableNo
 
 func (s *DisableNotificationRequestList) SetPortCollectionId(v string) *DisableNotificationRequestList {
 	s.PortCollectionId = &v
+	return s
+}
+
+func (s *DisableNotificationRequestList) SetAppId(v string) *DisableNotificationRequestList {
+	s.AppId = &v
 	return s
 }
 
@@ -24664,6 +24850,8 @@ type ListAlarmStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专线名称
 	DedicatedLineName *string `json:"DedicatedLineName,omitempty" xml:"DedicatedLineName,omitempty"`
+	// 设备所属地域
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ListAlarmStatusRequest) String() string {
@@ -24721,6 +24909,11 @@ func (s *ListAlarmStatusRequest) SetInstanceId(v string) *ListAlarmStatusRequest
 
 func (s *ListAlarmStatusRequest) SetDedicatedLineName(v string) *ListAlarmStatusRequest {
 	s.DedicatedLineName = &v
+	return s
+}
+
+func (s *ListAlarmStatusRequest) SetRegion(v string) *ListAlarmStatusRequest {
+	s.Region = &v
 	return s
 }
 
@@ -24818,6 +25011,12 @@ type ListAlarmStatusResponseBodyAlarmStatus struct {
 	PortCollectionId *string `json:"PortCollectionId,omitempty" xml:"PortCollectionId,omitempty"`
 	// 端口集
 	PortCollection *ListAlarmStatusResponseBodyAlarmStatusPortCollection `json:"PortCollection,omitempty" xml:"PortCollection,omitempty" type:"Struct"`
+	// 采集探针IP
+	AgentIp *string `json:"AgentIp,omitempty" xml:"AgentIp,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用资源
+	ResourceApp *ListAlarmStatusResponseBodyAlarmStatusResourceApp `json:"ResourceApp,omitempty" xml:"ResourceApp,omitempty" type:"Struct"`
 }
 
 func (s ListAlarmStatusResponseBodyAlarmStatus) String() string {
@@ -24925,6 +25124,21 @@ func (s *ListAlarmStatusResponseBodyAlarmStatus) SetPortCollectionId(v string) *
 
 func (s *ListAlarmStatusResponseBodyAlarmStatus) SetPortCollection(v *ListAlarmStatusResponseBodyAlarmStatusPortCollection) *ListAlarmStatusResponseBodyAlarmStatus {
 	s.PortCollection = v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatus) SetAgentIp(v string) *ListAlarmStatusResponseBodyAlarmStatus {
+	s.AgentIp = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatus) SetAppId(v string) *ListAlarmStatusResponseBodyAlarmStatus {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatus) SetResourceApp(v *ListAlarmStatusResponseBodyAlarmStatusResourceApp) *ListAlarmStatusResponseBodyAlarmStatus {
+	s.ResourceApp = v
 	return s
 }
 
@@ -25047,6 +25261,52 @@ func (s ListAlarmStatusResponseBodyAlarmStatusPortCollection) GoString() string 
 
 func (s *ListAlarmStatusResponseBodyAlarmStatusPortCollection) SetPortCollectionName(v string) *ListAlarmStatusResponseBodyAlarmStatusPortCollection {
 	s.PortCollectionName = &v
+	return s
+}
+
+type ListAlarmStatusResponseBodyAlarmStatusResourceApp struct {
+	// 监控域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 端口
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 资源类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 所属探针
+	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+}
+
+func (s ListAlarmStatusResponseBodyAlarmStatusResourceApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlarmStatusResponseBodyAlarmStatusResourceApp) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetDomain(v string) *ListAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetAppId(v string) *ListAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetPort(v string) *ListAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Port = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetType(v string) *ListAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAlarmStatusResponseBodyAlarmStatusResourceApp) SetSecurityDomain(v string) *ListAlarmStatusResponseBodyAlarmStatusResourceApp {
+	s.SecurityDomain = &v
 	return s
 }
 
