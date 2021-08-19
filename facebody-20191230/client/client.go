@@ -2638,11 +2638,8 @@ func (s *GenRealPersonVerificationTokenRequest) SetMetaInfo(v string) *GenRealPe
 }
 
 type GenRealPersonVerificationTokenResponseBody struct {
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GenRealPersonVerificationTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GenRealPersonVerificationTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GenRealPersonVerificationTokenResponseBody) String() string {
@@ -2660,21 +2657,6 @@ func (s *GenRealPersonVerificationTokenResponseBody) SetRequestId(v string) *Gen
 
 func (s *GenRealPersonVerificationTokenResponseBody) SetData(v *GenRealPersonVerificationTokenResponseBodyData) *GenRealPersonVerificationTokenResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GenRealPersonVerificationTokenResponseBody) SetErrorMessage(v string) *GenRealPersonVerificationTokenResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GenRealPersonVerificationTokenResponseBody) SetCode(v string) *GenRealPersonVerificationTokenResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GenRealPersonVerificationTokenResponseBody) SetSuccess(v bool) *GenRealPersonVerificationTokenResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3443,11 +3425,8 @@ func (s *GetRealPersonVerificationResultRequest) SetMaterialHash(v string) *GetR
 }
 
 type GetRealPersonVerificationResultResponseBody struct {
-	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetRealPersonVerificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetRealPersonVerificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetRealPersonVerificationResultResponseBody) String() string {
@@ -3465,21 +3444,6 @@ func (s *GetRealPersonVerificationResultResponseBody) SetRequestId(v string) *Ge
 
 func (s *GetRealPersonVerificationResultResponseBody) SetData(v *GetRealPersonVerificationResultResponseBodyData) *GetRealPersonVerificationResultResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetRealPersonVerificationResultResponseBody) SetErrorMessage(v string) *GetRealPersonVerificationResultResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetRealPersonVerificationResultResponseBody) SetCode(v string) *GetRealPersonVerificationResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRealPersonVerificationResultResponseBody) SetSuccess(v bool) *GetRealPersonVerificationResultResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -5982,6 +5946,649 @@ func (s *DetectPedestrianIntrusionResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DetectPedestrianIntrusionResponse) SetBody(v *DetectPedestrianIntrusionResponseBody) *DetectPedestrianIntrusionResponse {
+	s.Body = v
+	return s
+}
+
+type BeautifyBodyRequest struct {
+	ImageURL            *string                         `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OriginalWidth       *int64                          `json:"OriginalWidth,omitempty" xml:"OriginalWidth,omitempty"`
+	OriginalHeight      *int64                          `json:"OriginalHeight,omitempty" xml:"OriginalHeight,omitempty"`
+	Custom              *int64                          `json:"Custom,omitempty" xml:"Custom,omitempty"`
+	MaleLiquifyDegree   *float32                        `json:"MaleLiquifyDegree,omitempty" xml:"MaleLiquifyDegree,omitempty"`
+	FemaleLiquifyDegree *float32                        `json:"FemaleLiquifyDegree,omitempty" xml:"FemaleLiquifyDegree,omitempty"`
+	LengthenDegree      *float32                        `json:"LengthenDegree,omitempty" xml:"LengthenDegree,omitempty"`
+	AgeRange            *BeautifyBodyRequestAgeRange    `json:"AgeRange,omitempty" xml:"AgeRange,omitempty" type:"Struct"`
+	BodyBoxes           []*BeautifyBodyRequestBodyBoxes `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty" type:"Repeated"`
+	FaceList            []*BeautifyBodyRequestFaceList  `json:"FaceList,omitempty" xml:"FaceList,omitempty" type:"Repeated"`
+	PoseList            []*BeautifyBodyRequestPoseList  `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+}
+
+func (s BeautifyBodyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequest) SetImageURL(v string) *BeautifyBodyRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetOriginalWidth(v int64) *BeautifyBodyRequest {
+	s.OriginalWidth = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetOriginalHeight(v int64) *BeautifyBodyRequest {
+	s.OriginalHeight = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetCustom(v int64) *BeautifyBodyRequest {
+	s.Custom = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetMaleLiquifyDegree(v float32) *BeautifyBodyRequest {
+	s.MaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetFemaleLiquifyDegree(v float32) *BeautifyBodyRequest {
+	s.FemaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetLengthenDegree(v float32) *BeautifyBodyRequest {
+	s.LengthenDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetAgeRange(v *BeautifyBodyRequestAgeRange) *BeautifyBodyRequest {
+	s.AgeRange = v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetBodyBoxes(v []*BeautifyBodyRequestBodyBoxes) *BeautifyBodyRequest {
+	s.BodyBoxes = v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetFaceList(v []*BeautifyBodyRequestFaceList) *BeautifyBodyRequest {
+	s.FaceList = v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetPoseList(v []*BeautifyBodyRequestPoseList) *BeautifyBodyRequest {
+	s.PoseList = v
+	return s
+}
+
+type BeautifyBodyRequestAgeRange struct {
+	AgeMinimum *int64 `json:"AgeMinimum,omitempty" xml:"AgeMinimum,omitempty"`
+	AgeMax     *int64 `json:"AgeMax,omitempty" xml:"AgeMax,omitempty"`
+}
+
+func (s BeautifyBodyRequestAgeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestAgeRange) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestAgeRange) SetAgeMinimum(v int64) *BeautifyBodyRequestAgeRange {
+	s.AgeMinimum = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestAgeRange) SetAgeMax(v int64) *BeautifyBodyRequestAgeRange {
+	s.AgeMax = &v
+	return s
+}
+
+type BeautifyBodyRequestBodyBoxes struct {
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s BeautifyBodyRequestBodyBoxes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestBodyBoxes) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestBodyBoxes) SetX(v float32) *BeautifyBodyRequestBodyBoxes {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestBodyBoxes) SetY(v float32) *BeautifyBodyRequestBodyBoxes {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestBodyBoxes) SetWidth(v float32) *BeautifyBodyRequestBodyBoxes {
+	s.Width = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestBodyBoxes) SetHeight(v float32) *BeautifyBodyRequestBodyBoxes {
+	s.Height = &v
+	return s
+}
+
+type BeautifyBodyRequestFaceList struct {
+	FaceBox *BeautifyBodyRequestFaceListFaceBox `json:"FaceBox,omitempty" xml:"FaceBox,omitempty" type:"Struct"`
+	Age     *int64                              `json:"Age,omitempty" xml:"Age,omitempty"`
+	Gender  *int64                              `json:"Gender,omitempty" xml:"Gender,omitempty"`
+}
+
+func (s BeautifyBodyRequestFaceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestFaceList) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestFaceList) SetFaceBox(v *BeautifyBodyRequestFaceListFaceBox) *BeautifyBodyRequestFaceList {
+	s.FaceBox = v
+	return s
+}
+
+func (s *BeautifyBodyRequestFaceList) SetAge(v int64) *BeautifyBodyRequestFaceList {
+	s.Age = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestFaceList) SetGender(v int64) *BeautifyBodyRequestFaceList {
+	s.Gender = &v
+	return s
+}
+
+type BeautifyBodyRequestFaceListFaceBox struct {
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s BeautifyBodyRequestFaceListFaceBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestFaceListFaceBox) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestFaceListFaceBox) SetX(v float32) *BeautifyBodyRequestFaceListFaceBox {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestFaceListFaceBox) SetY(v float32) *BeautifyBodyRequestFaceListFaceBox {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestFaceListFaceBox) SetWidth(v float32) *BeautifyBodyRequestFaceListFaceBox {
+	s.Width = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestFaceListFaceBox) SetHeight(v float32) *BeautifyBodyRequestFaceListFaceBox {
+	s.Height = &v
+	return s
+}
+
+type BeautifyBodyRequestPoseList struct {
+	Pose []*BeautifyBodyRequestPoseListPose `json:"Pose,omitempty" xml:"Pose,omitempty" type:"Repeated"`
+}
+
+func (s BeautifyBodyRequestPoseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestPoseList) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestPoseList) SetPose(v []*BeautifyBodyRequestPoseListPose) *BeautifyBodyRequestPoseList {
+	s.Pose = v
+	return s
+}
+
+type BeautifyBodyRequestPoseListPose struct {
+	X     *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	Y     *int64   `json:"Y,omitempty" xml:"Y,omitempty"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s BeautifyBodyRequestPoseListPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyRequestPoseListPose) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyRequestPoseListPose) SetX(v int64) *BeautifyBodyRequestPoseListPose {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestPoseListPose) SetY(v int64) *BeautifyBodyRequestPoseListPose {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyRequestPoseListPose) SetScore(v float32) *BeautifyBodyRequestPoseListPose {
+	s.Score = &v
+	return s
+}
+
+type BeautifyBodyAdvanceRequest struct {
+	ImageURLObject      io.Reader                              `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	OriginalWidth       *int64                                 `json:"OriginalWidth,omitempty" xml:"OriginalWidth,omitempty"`
+	OriginalHeight      *int64                                 `json:"OriginalHeight,omitempty" xml:"OriginalHeight,omitempty"`
+	Custom              *int64                                 `json:"Custom,omitempty" xml:"Custom,omitempty"`
+	MaleLiquifyDegree   *float32                               `json:"MaleLiquifyDegree,omitempty" xml:"MaleLiquifyDegree,omitempty"`
+	FemaleLiquifyDegree *float32                               `json:"FemaleLiquifyDegree,omitempty" xml:"FemaleLiquifyDegree,omitempty"`
+	LengthenDegree      *float32                               `json:"LengthenDegree,omitempty" xml:"LengthenDegree,omitempty"`
+	AgeRange            *BeautifyBodyAdvanceRequestAgeRange    `json:"AgeRange,omitempty" xml:"AgeRange,omitempty" type:"Struct"`
+	BodyBoxes           []*BeautifyBodyAdvanceRequestBodyBoxes `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty" type:"Repeated"`
+	FaceList            []*BeautifyBodyAdvanceRequestFaceList  `json:"FaceList,omitempty" xml:"FaceList,omitempty" type:"Repeated"`
+	PoseList            []*BeautifyBodyAdvanceRequestPoseList  `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+}
+
+func (s BeautifyBodyAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetImageURLObject(v io.Reader) *BeautifyBodyAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetOriginalWidth(v int64) *BeautifyBodyAdvanceRequest {
+	s.OriginalWidth = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetOriginalHeight(v int64) *BeautifyBodyAdvanceRequest {
+	s.OriginalHeight = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetCustom(v int64) *BeautifyBodyAdvanceRequest {
+	s.Custom = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetMaleLiquifyDegree(v float32) *BeautifyBodyAdvanceRequest {
+	s.MaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetFemaleLiquifyDegree(v float32) *BeautifyBodyAdvanceRequest {
+	s.FemaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetLengthenDegree(v float32) *BeautifyBodyAdvanceRequest {
+	s.LengthenDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetAgeRange(v *BeautifyBodyAdvanceRequestAgeRange) *BeautifyBodyAdvanceRequest {
+	s.AgeRange = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetBodyBoxes(v []*BeautifyBodyAdvanceRequestBodyBoxes) *BeautifyBodyAdvanceRequest {
+	s.BodyBoxes = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetFaceList(v []*BeautifyBodyAdvanceRequestFaceList) *BeautifyBodyAdvanceRequest {
+	s.FaceList = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetPoseList(v []*BeautifyBodyAdvanceRequestPoseList) *BeautifyBodyAdvanceRequest {
+	s.PoseList = v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestAgeRange struct {
+	AgeMinimum *int64 `json:"AgeMinimum,omitempty" xml:"AgeMinimum,omitempty"`
+	AgeMax     *int64 `json:"AgeMax,omitempty" xml:"AgeMax,omitempty"`
+}
+
+func (s BeautifyBodyAdvanceRequestAgeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestAgeRange) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestAgeRange) SetAgeMinimum(v int64) *BeautifyBodyAdvanceRequestAgeRange {
+	s.AgeMinimum = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestAgeRange) SetAgeMax(v int64) *BeautifyBodyAdvanceRequestAgeRange {
+	s.AgeMax = &v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestBodyBoxes struct {
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s BeautifyBodyAdvanceRequestBodyBoxes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestBodyBoxes) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestBodyBoxes) SetX(v float32) *BeautifyBodyAdvanceRequestBodyBoxes {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestBodyBoxes) SetY(v float32) *BeautifyBodyAdvanceRequestBodyBoxes {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestBodyBoxes) SetWidth(v float32) *BeautifyBodyAdvanceRequestBodyBoxes {
+	s.Width = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestBodyBoxes) SetHeight(v float32) *BeautifyBodyAdvanceRequestBodyBoxes {
+	s.Height = &v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestFaceList struct {
+	FaceBox *BeautifyBodyAdvanceRequestFaceListFaceBox `json:"FaceBox,omitempty" xml:"FaceBox,omitempty" type:"Struct"`
+	Age     *int64                                     `json:"Age,omitempty" xml:"Age,omitempty"`
+	Gender  *int64                                     `json:"Gender,omitempty" xml:"Gender,omitempty"`
+}
+
+func (s BeautifyBodyAdvanceRequestFaceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestFaceList) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceList) SetFaceBox(v *BeautifyBodyAdvanceRequestFaceListFaceBox) *BeautifyBodyAdvanceRequestFaceList {
+	s.FaceBox = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceList) SetAge(v int64) *BeautifyBodyAdvanceRequestFaceList {
+	s.Age = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceList) SetGender(v int64) *BeautifyBodyAdvanceRequestFaceList {
+	s.Gender = &v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestFaceListFaceBox struct {
+	X      *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Width  *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s BeautifyBodyAdvanceRequestFaceListFaceBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestFaceListFaceBox) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceListFaceBox) SetX(v float32) *BeautifyBodyAdvanceRequestFaceListFaceBox {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceListFaceBox) SetY(v float32) *BeautifyBodyAdvanceRequestFaceListFaceBox {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceListFaceBox) SetWidth(v float32) *BeautifyBodyAdvanceRequestFaceListFaceBox {
+	s.Width = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestFaceListFaceBox) SetHeight(v float32) *BeautifyBodyAdvanceRequestFaceListFaceBox {
+	s.Height = &v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestPoseList struct {
+	Pose []*BeautifyBodyAdvanceRequestPoseListPose `json:"Pose,omitempty" xml:"Pose,omitempty" type:"Repeated"`
+}
+
+func (s BeautifyBodyAdvanceRequestPoseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestPoseList) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestPoseList) SetPose(v []*BeautifyBodyAdvanceRequestPoseListPose) *BeautifyBodyAdvanceRequestPoseList {
+	s.Pose = v
+	return s
+}
+
+type BeautifyBodyAdvanceRequestPoseListPose struct {
+	X     *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	Y     *int64   `json:"Y,omitempty" xml:"Y,omitempty"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s BeautifyBodyAdvanceRequestPoseListPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyAdvanceRequestPoseListPose) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyAdvanceRequestPoseListPose) SetX(v int64) *BeautifyBodyAdvanceRequestPoseListPose {
+	s.X = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestPoseListPose) SetY(v int64) *BeautifyBodyAdvanceRequestPoseListPose {
+	s.Y = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequestPoseListPose) SetScore(v float32) *BeautifyBodyAdvanceRequestPoseListPose {
+	s.Score = &v
+	return s
+}
+
+type BeautifyBodyShrinkRequest struct {
+	ImageURL            *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OriginalWidth       *int64   `json:"OriginalWidth,omitempty" xml:"OriginalWidth,omitempty"`
+	OriginalHeight      *int64   `json:"OriginalHeight,omitempty" xml:"OriginalHeight,omitempty"`
+	Custom              *int64   `json:"Custom,omitempty" xml:"Custom,omitempty"`
+	MaleLiquifyDegree   *float32 `json:"MaleLiquifyDegree,omitempty" xml:"MaleLiquifyDegree,omitempty"`
+	FemaleLiquifyDegree *float32 `json:"FemaleLiquifyDegree,omitempty" xml:"FemaleLiquifyDegree,omitempty"`
+	LengthenDegree      *float32 `json:"LengthenDegree,omitempty" xml:"LengthenDegree,omitempty"`
+	AgeRangeShrink      *string  `json:"AgeRange,omitempty" xml:"AgeRange,omitempty"`
+	BodyBoxesShrink     *string  `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty"`
+	FaceListShrink      *string  `json:"FaceList,omitempty" xml:"FaceList,omitempty"`
+	PoseListShrink      *string  `json:"PoseList,omitempty" xml:"PoseList,omitempty"`
+}
+
+func (s BeautifyBodyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyShrinkRequest) SetImageURL(v string) *BeautifyBodyShrinkRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetOriginalWidth(v int64) *BeautifyBodyShrinkRequest {
+	s.OriginalWidth = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetOriginalHeight(v int64) *BeautifyBodyShrinkRequest {
+	s.OriginalHeight = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetCustom(v int64) *BeautifyBodyShrinkRequest {
+	s.Custom = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetMaleLiquifyDegree(v float32) *BeautifyBodyShrinkRequest {
+	s.MaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetFemaleLiquifyDegree(v float32) *BeautifyBodyShrinkRequest {
+	s.FemaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetLengthenDegree(v float32) *BeautifyBodyShrinkRequest {
+	s.LengthenDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetAgeRangeShrink(v string) *BeautifyBodyShrinkRequest {
+	s.AgeRangeShrink = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetBodyBoxesShrink(v string) *BeautifyBodyShrinkRequest {
+	s.BodyBoxesShrink = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetFaceListShrink(v string) *BeautifyBodyShrinkRequest {
+	s.FaceListShrink = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetPoseListShrink(v string) *BeautifyBodyShrinkRequest {
+	s.PoseListShrink = &v
+	return s
+}
+
+type BeautifyBodyResponseBody struct {
+	// Id of the request
+	Data      *BeautifyBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BeautifyBodyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyResponseBody) SetData(v *BeautifyBodyResponseBodyData) *BeautifyBodyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BeautifyBodyResponseBody) SetRequestId(v string) *BeautifyBodyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BeautifyBodyResponseBodyData struct {
+	XFlowURL *string `json:"XFlowURL,omitempty" xml:"XFlowURL,omitempty"`
+	YFlowURL *string `json:"YFlowURL,omitempty" xml:"YFlowURL,omitempty"`
+	Action   *string `json:"Action,omitempty" xml:"Action,omitempty"`
+}
+
+func (s BeautifyBodyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyResponseBodyData) SetXFlowURL(v string) *BeautifyBodyResponseBodyData {
+	s.XFlowURL = &v
+	return s
+}
+
+func (s *BeautifyBodyResponseBodyData) SetYFlowURL(v string) *BeautifyBodyResponseBodyData {
+	s.YFlowURL = &v
+	return s
+}
+
+func (s *BeautifyBodyResponseBodyData) SetAction(v string) *BeautifyBodyResponseBodyData {
+	s.Action = &v
+	return s
+}
+
+type BeautifyBodyResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BeautifyBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BeautifyBodyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeautifyBodyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BeautifyBodyResponse) SetHeaders(v map[string]*string) *BeautifyBodyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BeautifyBodyResponse) SetBody(v *BeautifyBodyResponseBody) *BeautifyBodyResponse {
 	s.Body = v
 	return s
 }
@@ -9015,15 +9622,26 @@ func (client *Client) ExtractPedestrianFeatureAttrAdvance(request *ExtractPedest
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9138,15 +9756,26 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9261,15 +9890,26 @@ func (client *Client) DetectVideoLivingFaceAdvance(request *DetectVideoLivingFac
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9384,15 +10024,26 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9535,15 +10186,26 @@ func (client *Client) DetectIPCPedestrianAdvance(request *DetectIPCPedestrianAdv
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9714,15 +10376,26 @@ func (client *Client) PedestrianDetectAttributeAdvance(request *PedestrianDetect
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9837,15 +10510,26 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -9960,15 +10644,26 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10083,15 +10778,26 @@ func (client *Client) GenerateHumanAnimeStyleAdvance(request *GenerateHumanAnime
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10235,15 +10941,26 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10358,15 +11075,26 @@ func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10559,15 +11287,26 @@ func (client *Client) DetectChefCapAdvance(request *DetectChefCapAdvanceRequest,
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10710,15 +11449,26 @@ func (client *Client) DetectCelebrityAdvance(request *DetectCelebrityAdvanceRequ
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -10917,15 +11667,26 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11040,15 +11801,26 @@ func (client *Client) MergeImageFaceAdvance(request *MergeImageFaceAdvanceReques
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11163,15 +11935,26 @@ func (client *Client) ExtractFingerPrintAdvance(request *ExtractFingerPrintAdvan
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11314,15 +12097,26 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11465,15 +12259,26 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11616,15 +12421,26 @@ func (client *Client) BlurFaceAdvance(request *BlurFaceAdvanceRequest, runtime *
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11739,15 +12555,26 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -11890,15 +12717,26 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12013,15 +12851,26 @@ func (client *Client) GenerateHumanSketchStyleAdvance(request *GenerateHumanSket
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12170,15 +13019,26 @@ func (client *Client) DetectPedestrianIntrusionAdvance(request *DetectPedestrian
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12253,6 +13113,158 @@ func (client *Client) DetectPedestrianIntrusionAdvance(request *DetectPedestrian
 	return _result, _err
 }
 
+func (client *Client) BeautifyBodyWithOptions(tmpReq *BeautifyBodyRequest, runtime *util.RuntimeOptions) (_result *BeautifyBodyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BeautifyBodyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AgeRange))) {
+		request.AgeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AgeRange), tea.String("AgeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.BodyBoxes)) {
+		request.BodyBoxesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BodyBoxes, tea.String("BodyBoxes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FaceList)) {
+		request.FaceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FaceList, tea.String("FaceList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PoseList)) {
+		request.PoseListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PoseList, tea.String("PoseList"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BeautifyBodyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BeautifyBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BeautifyBody(request *BeautifyBodyRequest) (_result *BeautifyBodyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BeautifyBodyResponse{}
+	_body, _err := client.BeautifyBodyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BeautifyBodyAdvance(request *BeautifyBodyAdvanceRequest, runtime *util.RuntimeOptions) (_result *BeautifyBodyResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	beautifyBodyReq := &BeautifyBodyRequest{}
+	openapiutil.Convert(request, beautifyBodyReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		beautifyBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	beautifyBodyResp, _err := client.BeautifyBodyWithOptions(beautifyBodyReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = beautifyBodyResp
+	return _result, _err
+}
+
 func (client *Client) HandPostureWithOptions(request *HandPostureRequest, runtime *util.RuntimeOptions) (_result *HandPostureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12293,15 +13305,26 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12416,15 +13439,26 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12568,15 +13602,26 @@ func (client *Client) RecognizeHandGestureAdvance(request *RecognizeHandGestureA
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -12957,15 +14002,26 @@ func (client *Client) AddFaceImageTemplateAdvance(request *AddFaceImageTemplateA
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -13080,15 +14136,26 @@ func (client *Client) CountCrowdAdvance(request *CountCrowdAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -13259,15 +14326,26 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -13382,15 +14460,26 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
@@ -13505,15 +14594,26 @@ func (client *Client) MonitorExaminationAdvance(request *MonitorExaminationAdvan
 		return _result, _err
 	}
 
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
 	authConfig := &rpc.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
 		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
