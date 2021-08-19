@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/nbftestpop-20210802_16102392/v2
+module github.com/alibabacloud-go/nbftestpop-20210802_16102392/v6
 
 go 1.15
 
