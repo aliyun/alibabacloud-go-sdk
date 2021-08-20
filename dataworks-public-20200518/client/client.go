@@ -14,6 +14,2251 @@ import (
 	"io"
 )
 
+type ListProjectIdsRequest struct {
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty" require:"true"`
+}
+
+func (s ListProjectIdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectIdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectIdsRequest) SetUserId(v string) *ListProjectIdsRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListProjectIdsResponse struct {
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListProjectIdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectIdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectIdsResponse) SetRequestId(v string) *ListProjectIdsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectIdsResponse) SetProjectIds(v []*int64) *ListProjectIdsResponse {
+	s.ProjectIds = v
+	return s
+}
+
+type TerminateDISyncInstanceRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s TerminateDISyncInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateDISyncInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateDISyncInstanceRequest) SetProjectId(v int64) *TerminateDISyncInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TerminateDISyncInstanceRequest) SetTaskType(v string) *TerminateDISyncInstanceRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *TerminateDISyncInstanceRequest) SetFileId(v int64) *TerminateDISyncInstanceRequest {
+	s.FileId = &v
+	return s
+}
+
+type TerminateDISyncInstanceResponse struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *TerminateDISyncInstanceResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s TerminateDISyncInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateDISyncInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateDISyncInstanceResponse) SetRequestId(v string) *TerminateDISyncInstanceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TerminateDISyncInstanceResponse) SetSuccess(v bool) *TerminateDISyncInstanceResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *TerminateDISyncInstanceResponse) SetData(v *TerminateDISyncInstanceResponseData) *TerminateDISyncInstanceResponse {
+	s.Data = v
+	return s
+}
+
+type TerminateDISyncInstanceResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s TerminateDISyncInstanceResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateDISyncInstanceResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateDISyncInstanceResponseData) SetStatus(v string) *TerminateDISyncInstanceResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *TerminateDISyncInstanceResponseData) SetMessage(v string) *TerminateDISyncInstanceResponseData {
+	s.Message = &v
+	return s
+}
+
+type DeleteDISyncTaskRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s DeleteDISyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDISyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDISyncTaskRequest) SetProjectId(v int64) *DeleteDISyncTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteDISyncTaskRequest) SetTaskType(v string) *DeleteDISyncTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DeleteDISyncTaskRequest) SetFileId(v int64) *DeleteDISyncTaskRequest {
+	s.FileId = &v
+	return s
+}
+
+type DeleteDISyncTaskResponse struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *DeleteDISyncTaskResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DeleteDISyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDISyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDISyncTaskResponse) SetRequestId(v string) *DeleteDISyncTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDISyncTaskResponse) SetSuccess(v bool) *DeleteDISyncTaskResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDISyncTaskResponse) SetData(v *DeleteDISyncTaskResponseData) *DeleteDISyncTaskResponse {
+	s.Data = v
+	return s
+}
+
+type DeleteDISyncTaskResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s DeleteDISyncTaskResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDISyncTaskResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDISyncTaskResponseData) SetStatus(v string) *DeleteDISyncTaskResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteDISyncTaskResponseData) SetMessage(v string) *DeleteDISyncTaskResponseData {
+	s.Message = &v
+	return s
+}
+
+type DeployDISyncTaskRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s DeployDISyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDISyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDISyncTaskRequest) SetProjectId(v int64) *DeployDISyncTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeployDISyncTaskRequest) SetTaskType(v string) *DeployDISyncTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DeployDISyncTaskRequest) SetFileId(v int64) *DeployDISyncTaskRequest {
+	s.FileId = &v
+	return s
+}
+
+type DeployDISyncTaskResponse struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *DeployDISyncTaskResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s DeployDISyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDISyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDISyncTaskResponse) SetRequestId(v string) *DeployDISyncTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeployDISyncTaskResponse) SetSuccess(v bool) *DeployDISyncTaskResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *DeployDISyncTaskResponse) SetData(v *DeployDISyncTaskResponseData) *DeployDISyncTaskResponse {
+	s.Data = v
+	return s
+}
+
+type DeployDISyncTaskResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s DeployDISyncTaskResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployDISyncTaskResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DeployDISyncTaskResponseData) SetStatus(v string) *DeployDISyncTaskResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *DeployDISyncTaskResponseData) SetMessage(v string) *DeployDISyncTaskResponseData {
+	s.Message = &v
+	return s
+}
+
+type StartDISyncInstanceRequest struct {
+	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId     *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+	StartParam *string `json:"StartParam,omitempty" xml:"StartParam,omitempty"`
+}
+
+func (s StartDISyncInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDISyncInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDISyncInstanceRequest) SetProjectId(v int64) *StartDISyncInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *StartDISyncInstanceRequest) SetTaskType(v string) *StartDISyncInstanceRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *StartDISyncInstanceRequest) SetFileId(v int64) *StartDISyncInstanceRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *StartDISyncInstanceRequest) SetStartParam(v string) *StartDISyncInstanceRequest {
+	s.StartParam = &v
+	return s
+}
+
+type StartDISyncInstanceResponse struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *StartDISyncInstanceResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s StartDISyncInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDISyncInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartDISyncInstanceResponse) SetRequestId(v string) *StartDISyncInstanceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartDISyncInstanceResponse) SetSuccess(v bool) *StartDISyncInstanceResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *StartDISyncInstanceResponse) SetData(v *StartDISyncInstanceResponseData) *StartDISyncInstanceResponse {
+	s.Data = v
+	return s
+}
+
+type StartDISyncInstanceResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s StartDISyncInstanceResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDISyncInstanceResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *StartDISyncInstanceResponseData) SetStatus(v string) *StartDISyncInstanceResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *StartDISyncInstanceResponseData) SetMessage(v string) *StartDISyncInstanceResponseData {
+	s.Message = &v
+	return s
+}
+
+type GetDISyncInstanceInfoRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s GetDISyncInstanceInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncInstanceInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoRequest) SetProjectId(v int64) *GetDISyncInstanceInfoRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoRequest) SetTaskType(v string) *GetDISyncInstanceInfoRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoRequest) SetFileId(v int64) *GetDISyncInstanceInfoRequest {
+	s.FileId = &v
+	return s
+}
+
+type GetDISyncInstanceInfoResponse struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *GetDISyncInstanceInfoResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetDISyncInstanceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncInstanceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoResponse) SetRequestId(v string) *GetDISyncInstanceInfoResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponse) SetSuccess(v bool) *GetDISyncInstanceInfoResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponse) SetData(v *GetDISyncInstanceInfoResponseData) *GetDISyncInstanceInfoResponse {
+	s.Data = v
+	return s
+}
+
+type GetDISyncInstanceInfoResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s GetDISyncInstanceInfoResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncInstanceInfoResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoResponseData) SetStatus(v string) *GetDISyncInstanceInfoResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseData) SetName(v string) *GetDISyncInstanceInfoResponseData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseData) SetMessage(v string) *GetDISyncInstanceInfoResponseData {
+	s.Message = &v
+	return s
+}
+
+type StopDISyncInstanceRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s StopDISyncInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDISyncInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopDISyncInstanceRequest) SetProjectId(v int64) *StopDISyncInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *StopDISyncInstanceRequest) SetTaskType(v string) *StopDISyncInstanceRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *StopDISyncInstanceRequest) SetFileId(v int64) *StopDISyncInstanceRequest {
+	s.FileId = &v
+	return s
+}
+
+type StopDISyncInstanceResponse struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *StopDISyncInstanceResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s StopDISyncInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDISyncInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopDISyncInstanceResponse) SetRequestId(v string) *StopDISyncInstanceResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopDISyncInstanceResponse) SetSuccess(v bool) *StopDISyncInstanceResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *StopDISyncInstanceResponse) SetData(v *StopDISyncInstanceResponseData) *StopDISyncInstanceResponse {
+	s.Data = v
+	return s
+}
+
+type StopDISyncInstanceResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s StopDISyncInstanceResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDISyncInstanceResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *StopDISyncInstanceResponseData) SetStatus(v string) *StopDISyncInstanceResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *StopDISyncInstanceResponseData) SetMessage(v string) *StopDISyncInstanceResponseData {
+	s.Message = &v
+	return s
+}
+
+type GetDISyncTaskRequest struct {
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s GetDISyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskRequest) SetProjectId(v int64) *GetDISyncTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDISyncTaskRequest) SetTaskType(v string) *GetDISyncTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetDISyncTaskRequest) SetFileId(v int64) *GetDISyncTaskRequest {
+	s.FileId = &v
+	return s
+}
+
+type GetDISyncTaskResponse struct {
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *GetDISyncTaskResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetDISyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskResponse) SetRequestId(v string) *GetDISyncTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponse) SetSuccess(v bool) *GetDISyncTaskResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponse) SetData(v *GetDISyncTaskResponseData) *GetDISyncTaskResponse {
+	s.Data = v
+	return s
+}
+
+type GetDISyncTaskResponseData struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty" require:"true"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s GetDISyncTaskResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskResponseData) SetCode(v string) *GetDISyncTaskResponseData {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseData) SetStatus(v string) *GetDISyncTaskResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseData) SetMessage(v string) *GetDISyncTaskResponseData {
+	s.Message = &v
+	return s
+}
+
+type CheckMetaTableTaskRequest struct {
+}
+
+func (s CheckMetaTableTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMetaTableTaskRequest) GoString() string {
+	return s.String()
+}
+
+type CheckMetaTableTaskResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+}
+
+func (s CheckMetaTableTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMetaTableTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMetaTableTaskResponse) SetRequestId(v string) *CheckMetaTableTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckMetaTableTaskResponse) SetData(v bool) *CheckMetaTableTaskResponse {
+	s.Data = &v
+	return s
+}
+
+type CheckEngineMetaPartitionRequest struct {
+	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty" require:"true"`
+	Partition      *string `json:"Partition,omitempty" xml:"Partition,omitempty" require:"true"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty" require:"true"`
+}
+
+func (s CheckEngineMetaPartitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckEngineMetaPartitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckEngineMetaPartitionRequest) SetTableGuid(v string) *CheckEngineMetaPartitionRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *CheckEngineMetaPartitionRequest) SetPartition(v string) *CheckEngineMetaPartitionRequest {
+	s.Partition = &v
+	return s
+}
+
+func (s *CheckEngineMetaPartitionRequest) SetDataSourceType(v string) *CheckEngineMetaPartitionRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+type CheckEngineMetaPartitionResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+}
+
+func (s CheckEngineMetaPartitionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckEngineMetaPartitionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckEngineMetaPartitionResponse) SetRequestId(v string) *CheckEngineMetaPartitionResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckEngineMetaPartitionResponse) SetData(v bool) *CheckEngineMetaPartitionResponse {
+	s.Data = &v
+	return s
+}
+
+type CheckEngineMetaTableRequest struct {
+	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty" require:"true"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty" require:"true"`
+}
+
+func (s CheckEngineMetaTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckEngineMetaTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckEngineMetaTableRequest) SetTableGuid(v string) *CheckEngineMetaTableRequest {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *CheckEngineMetaTableRequest) SetDataSourceType(v string) *CheckEngineMetaTableRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+type CheckEngineMetaTableResponse struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty" require:"true"`
+}
+
+func (s CheckEngineMetaTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckEngineMetaTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckEngineMetaTableResponse) SetRequestId(v string) *CheckEngineMetaTableResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckEngineMetaTableResponse) SetData(v bool) *CheckEngineMetaTableResponse {
+	s.Data = &v
+	return s
+}
+
+type ImportDataSourcesRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DataSources *string `json:"DataSources,omitempty" xml:"DataSources,omitempty" require:"true"`
+}
+
+func (s ImportDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDataSourcesRequest) SetProjectId(v int64) *ImportDataSourcesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ImportDataSourcesRequest) SetDataSources(v string) *ImportDataSourcesRequest {
+	s.DataSources = &v
+	return s
+}
+
+type ImportDataSourcesResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *ImportDataSourcesResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ImportDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDataSourcesResponse) SetRequestId(v string) *ImportDataSourcesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportDataSourcesResponse) SetSuccess(v bool) *ImportDataSourcesResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ImportDataSourcesResponse) SetData(v *ImportDataSourcesResponseData) *ImportDataSourcesResponse {
+	s.Data = v
+	return s
+}
+
+type ImportDataSourcesResponseData struct {
+	Status  *bool   `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s ImportDataSourcesResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDataSourcesResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDataSourcesResponseData) SetStatus(v bool) *ImportDataSourcesResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *ImportDataSourcesResponseData) SetMessage(v string) *ImportDataSourcesResponseData {
+	s.Message = &v
+	return s
+}
+
+type ExportDataSourcesRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	SubType        *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	EnvType        *int    `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	PageSize       *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber     *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+}
+
+func (s ExportDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataSourcesRequest) SetProjectId(v int64) *ExportDataSourcesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetName(v string) *ExportDataSourcesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetDataSourceType(v string) *ExportDataSourcesRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetSubType(v string) *ExportDataSourcesRequest {
+	s.SubType = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetEnvType(v int) *ExportDataSourcesRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetPageSize(v int) *ExportDataSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ExportDataSourcesRequest) SetPageNumber(v int) *ExportDataSourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+type ExportDataSourcesResponse struct {
+	HttpStatusCode *int                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty" require:"true"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data           *ExportDataSourcesResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ExportDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataSourcesResponse) SetHttpStatusCode(v int) *ExportDataSourcesResponse {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponse) SetSuccess(v bool) *ExportDataSourcesResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponse) SetRequestId(v string) *ExportDataSourcesResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponse) SetData(v *ExportDataSourcesResponseData) *ExportDataSourcesResponse {
+	s.Data = v
+	return s
+}
+
+type ExportDataSourcesResponseData struct {
+	PageNumber  *int                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize    *int                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	TotalCount  *int                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	DataSources []*ExportDataSourcesResponseDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ExportDataSourcesResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataSourcesResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataSourcesResponseData) SetPageNumber(v int) *ExportDataSourcesResponseData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseData) SetPageSize(v int) *ExportDataSourcesResponseData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseData) SetTotalCount(v int) *ExportDataSourcesResponseData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseData) SetDataSources(v []*ExportDataSourcesResponseDataDataSources) *ExportDataSourcesResponseData {
+	s.DataSources = v
+	return s
+}
+
+type ExportDataSourcesResponseDataDataSources struct {
+	Shared              *bool   `json:"Shared,omitempty" xml:"Shared,omitempty" require:"true"`
+	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty" require:"true"`
+	ConnectStatus       *int    `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty" require:"true"`
+	BindingCalcEngineId *int    `json:"BindingCalcEngineId,omitempty" xml:"BindingCalcEngineId,omitempty" require:"true"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	DataSourceType      *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty" require:"true"`
+	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty" require:"true"`
+	DefaultEngine       *bool   `json:"DefaultEngine,omitempty" xml:"DefaultEngine,omitempty" require:"true"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty" require:"true"`
+	Sequence            *int    `json:"Sequence,omitempty" xml:"Sequence,omitempty" require:"true"`
+	EnvType             *int    `json:"EnvType,omitempty" xml:"EnvType,omitempty" require:"true"`
+	TenantId            *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty" require:"true"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	SubType             *string `json:"SubType,omitempty" xml:"SubType,omitempty" require:"true"`
+	Id                  *int    `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	ProjectId           *int    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Status              *int    `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Content             *string `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
+}
+
+func (s ExportDataSourcesResponseDataDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataSourcesResponseDataDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetShared(v bool) *ExportDataSourcesResponseDataDataSources {
+	s.Shared = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetGmtModified(v string) *ExportDataSourcesResponseDataDataSources {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetConnectStatus(v int) *ExportDataSourcesResponseDataDataSources {
+	s.ConnectStatus = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetBindingCalcEngineId(v int) *ExportDataSourcesResponseDataDataSources {
+	s.BindingCalcEngineId = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetDescription(v string) *ExportDataSourcesResponseDataDataSources {
+	s.Description = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetDataSourceType(v string) *ExportDataSourcesResponseDataDataSources {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetGmtCreate(v string) *ExportDataSourcesResponseDataDataSources {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetDefaultEngine(v bool) *ExportDataSourcesResponseDataDataSources {
+	s.DefaultEngine = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetOperator(v string) *ExportDataSourcesResponseDataDataSources {
+	s.Operator = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetSequence(v int) *ExportDataSourcesResponseDataDataSources {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetEnvType(v int) *ExportDataSourcesResponseDataDataSources {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetTenantId(v int64) *ExportDataSourcesResponseDataDataSources {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetName(v string) *ExportDataSourcesResponseDataDataSources {
+	s.Name = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetSubType(v string) *ExportDataSourcesResponseDataDataSources {
+	s.SubType = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetId(v int) *ExportDataSourcesResponseDataDataSources {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetProjectId(v int) *ExportDataSourcesResponseDataDataSources {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetStatus(v int) *ExportDataSourcesResponseDataDataSources {
+	s.Status = &v
+	return s
+}
+
+func (s *ExportDataSourcesResponseDataDataSources) SetContent(v string) *ExportDataSourcesResponseDataDataSources {
+	s.Content = &v
+	return s
+}
+
+type GetDataSourceMetaRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
+	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+}
+
+func (s GetDataSourceMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceMetaRequest) SetProjectId(v int64) *GetDataSourceMetaRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataSourceMetaRequest) SetDatasourceName(v string) *GetDataSourceMetaRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *GetDataSourceMetaRequest) SetPageNumber(v int64) *GetDataSourceMetaRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetDataSourceMetaRequest) SetPageSize(v int64) *GetDataSourceMetaRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDataSourceMetaRequest) SetEnvType(v string) *GetDataSourceMetaRequest {
+	s.EnvType = &v
+	return s
+}
+
+type GetDataSourceMetaResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *GetDataSourceMetaResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetDataSourceMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceMetaResponse) SetRequestId(v string) *GetDataSourceMetaResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataSourceMetaResponse) SetSuccess(v bool) *GetDataSourceMetaResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataSourceMetaResponse) SetData(v *GetDataSourceMetaResponseData) *GetDataSourceMetaResponse {
+	s.Data = v
+	return s
+}
+
+type GetDataSourceMetaResponseData struct {
+	Meta    *string `json:"Meta,omitempty" xml:"Meta,omitempty" require:"true"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s GetDataSourceMetaResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceMetaResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceMetaResponseData) SetMeta(v string) *GetDataSourceMetaResponseData {
+	s.Meta = &v
+	return s
+}
+
+func (s *GetDataSourceMetaResponseData) SetStatus(v string) *GetDataSourceMetaResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDataSourceMetaResponseData) SetMessage(v string) *GetDataSourceMetaResponseData {
+	s.Message = &v
+	return s
+}
+
+type SetDataSourceShareRequest struct {
+	ProjectId          *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DatasourceName     *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
+	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ProjectPermissions *string `json:"ProjectPermissions,omitempty" xml:"ProjectPermissions,omitempty"`
+	UserPermissions    *string `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty"`
+}
+
+func (s SetDataSourceShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDataSourceShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDataSourceShareRequest) SetProjectId(v int64) *SetDataSourceShareRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SetDataSourceShareRequest) SetDatasourceName(v string) *SetDataSourceShareRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *SetDataSourceShareRequest) SetEnvType(v string) *SetDataSourceShareRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SetDataSourceShareRequest) SetProjectPermissions(v string) *SetDataSourceShareRequest {
+	s.ProjectPermissions = &v
+	return s
+}
+
+func (s *SetDataSourceShareRequest) SetUserPermissions(v string) *SetDataSourceShareRequest {
+	s.UserPermissions = &v
+	return s
+}
+
+type SetDataSourceShareResponse struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *SetDataSourceShareResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s SetDataSourceShareResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDataSourceShareResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDataSourceShareResponse) SetRequestId(v string) *SetDataSourceShareResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetDataSourceShareResponse) SetSuccess(v bool) *SetDataSourceShareResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *SetDataSourceShareResponse) SetData(v *SetDataSourceShareResponseData) *SetDataSourceShareResponse {
+	s.Data = v
+	return s
+}
+
+type SetDataSourceShareResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s SetDataSourceShareResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDataSourceShareResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SetDataSourceShareResponseData) SetStatus(v string) *SetDataSourceShareResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *SetDataSourceShareResponseData) SetMessage(v string) *SetDataSourceShareResponseData {
+	s.Message = &v
+	return s
+}
+
+type ListDIProjectConfigRequest struct {
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" require:"true"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ListDIProjectConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIProjectConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIProjectConfigRequest) SetProjectId(v int64) *ListDIProjectConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDIProjectConfigRequest) SetDestinationType(v string) *ListDIProjectConfigRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListDIProjectConfigRequest) SetSourceType(v string) *ListDIProjectConfigRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ListDIProjectConfigResponse struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *ListDIProjectConfigResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ListDIProjectConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIProjectConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIProjectConfigResponse) SetRequestId(v string) *ListDIProjectConfigResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDIProjectConfigResponse) SetSuccess(v bool) *ListDIProjectConfigResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDIProjectConfigResponse) SetData(v *ListDIProjectConfigResponseData) *ListDIProjectConfigResponse {
+	s.Data = v
+	return s
+}
+
+type ListDIProjectConfigResponseData struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty" require:"true"`
+}
+
+func (s ListDIProjectConfigResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDIProjectConfigResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDIProjectConfigResponseData) SetConfig(v string) *ListDIProjectConfigResponseData {
+	s.Config = &v
+	return s
+}
+
+type ExportConnectionsRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	SubType        *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	EnvType        *int    `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	PageSize       *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber     *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+}
+
+func (s ExportConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportConnectionsRequest) SetProjectId(v int64) *ExportConnectionsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetName(v string) *ExportConnectionsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetDataSourceType(v string) *ExportConnectionsRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetSubType(v string) *ExportConnectionsRequest {
+	s.SubType = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetEnvType(v int) *ExportConnectionsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetPageSize(v int) *ExportConnectionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ExportConnectionsRequest) SetPageNumber(v int) *ExportConnectionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+type ExportConnectionsResponse struct {
+	HttpStatusCode *int                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty" require:"true"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Data           *ExportConnectionsResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ExportConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportConnectionsResponse) SetHttpStatusCode(v int) *ExportConnectionsResponse {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportConnectionsResponse) SetSuccess(v bool) *ExportConnectionsResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExportConnectionsResponse) SetRequestId(v string) *ExportConnectionsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportConnectionsResponse) SetData(v *ExportConnectionsResponseData) *ExportConnectionsResponse {
+	s.Data = v
+	return s
+}
+
+type ExportConnectionsResponseData struct {
+	PageNumber  *int                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
+	PageSize    *int                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
+	TotalCount  *int                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+	DataSources []*ExportConnectionsResponseDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ExportConnectionsResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportConnectionsResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportConnectionsResponseData) SetPageNumber(v int) *ExportConnectionsResponseData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseData) SetPageSize(v int) *ExportConnectionsResponseData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseData) SetTotalCount(v int) *ExportConnectionsResponseData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseData) SetDataSources(v []*ExportConnectionsResponseDataDataSources) *ExportConnectionsResponseData {
+	s.DataSources = v
+	return s
+}
+
+type ExportConnectionsResponseDataDataSources struct {
+	Shared              *bool   `json:"Shared,omitempty" xml:"Shared,omitempty" require:"true"`
+	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty" require:"true"`
+	ConnectStatus       *int    `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty" require:"true"`
+	BindingCalcEngineId *int    `json:"BindingCalcEngineId,omitempty" xml:"BindingCalcEngineId,omitempty" require:"true"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
+	DataSourceType      *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty" require:"true"`
+	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty" require:"true"`
+	DefaultEngine       *bool   `json:"DefaultEngine,omitempty" xml:"DefaultEngine,omitempty" require:"true"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty" require:"true"`
+	Sequence            *int    `json:"Sequence,omitempty" xml:"Sequence,omitempty" require:"true"`
+	EnvType             *int    `json:"EnvType,omitempty" xml:"EnvType,omitempty" require:"true"`
+	TenantId            *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty" require:"true"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
+	SubType             *string `json:"SubType,omitempty" xml:"SubType,omitempty" require:"true"`
+	Id                  *int    `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
+	ProjectId           *int    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Status              *int    `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Content             *string `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
+}
+
+func (s ExportConnectionsResponseDataDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportConnectionsResponseDataDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetShared(v bool) *ExportConnectionsResponseDataDataSources {
+	s.Shared = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetGmtModified(v string) *ExportConnectionsResponseDataDataSources {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetConnectStatus(v int) *ExportConnectionsResponseDataDataSources {
+	s.ConnectStatus = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetBindingCalcEngineId(v int) *ExportConnectionsResponseDataDataSources {
+	s.BindingCalcEngineId = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetDescription(v string) *ExportConnectionsResponseDataDataSources {
+	s.Description = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetDataSourceType(v string) *ExportConnectionsResponseDataDataSources {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetGmtCreate(v string) *ExportConnectionsResponseDataDataSources {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetDefaultEngine(v bool) *ExportConnectionsResponseDataDataSources {
+	s.DefaultEngine = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetOperator(v string) *ExportConnectionsResponseDataDataSources {
+	s.Operator = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetSequence(v int) *ExportConnectionsResponseDataDataSources {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetEnvType(v int) *ExportConnectionsResponseDataDataSources {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetTenantId(v int64) *ExportConnectionsResponseDataDataSources {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetName(v string) *ExportConnectionsResponseDataDataSources {
+	s.Name = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetSubType(v string) *ExportConnectionsResponseDataDataSources {
+	s.SubType = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetId(v int) *ExportConnectionsResponseDataDataSources {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetProjectId(v int) *ExportConnectionsResponseDataDataSources {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetStatus(v int) *ExportConnectionsResponseDataDataSources {
+	s.Status = &v
+	return s
+}
+
+func (s *ExportConnectionsResponseDataDataSources) SetContent(v string) *ExportConnectionsResponseDataDataSources {
+	s.Content = &v
+	return s
+}
+
+type ListRefDISyncTasksRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	RefType        *string `json:"RefType,omitempty" xml:"RefType,omitempty" require:"true"`
+	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListRefDISyncTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRefDISyncTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRefDISyncTasksRequest) SetProjectId(v int64) *ListRefDISyncTasksRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksRequest) SetDatasourceName(v string) *ListRefDISyncTasksRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksRequest) SetTaskType(v string) *ListRefDISyncTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksRequest) SetRefType(v string) *ListRefDISyncTasksRequest {
+	s.RefType = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksRequest) SetPageNumber(v int64) *ListRefDISyncTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksRequest) SetPageSize(v int64) *ListRefDISyncTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListRefDISyncTasksResponse struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *ListRefDISyncTasksResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ListRefDISyncTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRefDISyncTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRefDISyncTasksResponse) SetRequestId(v string) *ListRefDISyncTasksResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponse) SetSuccess(v bool) *ListRefDISyncTasksResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponse) SetData(v *ListRefDISyncTasksResponseData) *ListRefDISyncTasksResponse {
+	s.Data = v
+	return s
+}
+
+type ListRefDISyncTasksResponseData struct {
+	DISyncTasks []*ListRefDISyncTasksResponseDataDISyncTasks `json:"DISyncTasks,omitempty" xml:"DISyncTasks,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListRefDISyncTasksResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRefDISyncTasksResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRefDISyncTasksResponseData) SetDISyncTasks(v []*ListRefDISyncTasksResponseDataDISyncTasks) *ListRefDISyncTasksResponseData {
+	s.DISyncTasks = v
+	return s
+}
+
+type ListRefDISyncTasksResponseDataDISyncTasks struct {
+	NodeName                *string `json:"NodeName,omitempty" xml:"NodeName,omitempty" require:"true"`
+	NodeId                  *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty" require:"true"`
+	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	DiDestinationDatasource *string `json:"DiDestinationDatasource,omitempty" xml:"DiDestinationDatasource,omitempty" require:"true"`
+	DiSourceDatasource      *string `json:"DiSourceDatasource,omitempty" xml:"DiSourceDatasource,omitempty" require:"true"`
+}
+
+func (s ListRefDISyncTasksResponseDataDISyncTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRefDISyncTasksResponseDataDISyncTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListRefDISyncTasksResponseDataDISyncTasks) SetNodeName(v string) *ListRefDISyncTasksResponseDataDISyncTasks {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponseDataDISyncTasks) SetNodeId(v int64) *ListRefDISyncTasksResponseDataDISyncTasks {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponseDataDISyncTasks) SetTaskType(v string) *ListRefDISyncTasksResponseDataDISyncTasks {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponseDataDISyncTasks) SetDiDestinationDatasource(v string) *ListRefDISyncTasksResponseDataDISyncTasks {
+	s.DiDestinationDatasource = &v
+	return s
+}
+
+func (s *ListRefDISyncTasksResponseDataDISyncTasks) SetDiSourceDatasource(v string) *ListRefDISyncTasksResponseDataDISyncTasks {
+	s.DiSourceDatasource = &v
+	return s
+}
+
+type SetConnectionShareRequest struct {
+	ProjectId          *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DatasourceName     *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
+	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ProjectPermissions *string `json:"ProjectPermissions,omitempty" xml:"ProjectPermissions,omitempty"`
+	UserPermissions    *string `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty"`
+}
+
+func (s SetConnectionShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConnectionShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetConnectionShareRequest) SetProjectId(v int64) *SetConnectionShareRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SetConnectionShareRequest) SetDatasourceName(v string) *SetConnectionShareRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *SetConnectionShareRequest) SetEnvType(v string) *SetConnectionShareRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SetConnectionShareRequest) SetProjectPermissions(v string) *SetConnectionShareRequest {
+	s.ProjectPermissions = &v
+	return s
+}
+
+func (s *SetConnectionShareRequest) SetUserPermissions(v string) *SetConnectionShareRequest {
+	s.UserPermissions = &v
+	return s
+}
+
+type SetConnectionShareResponse struct {
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *SetConnectionShareResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s SetConnectionShareResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConnectionShareResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetConnectionShareResponse) SetRequestId(v string) *SetConnectionShareResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetConnectionShareResponse) SetSuccess(v bool) *SetConnectionShareResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *SetConnectionShareResponse) SetData(v *SetConnectionShareResponseData) *SetConnectionShareResponse {
+	s.Data = v
+	return s
+}
+
+type SetConnectionShareResponseData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+}
+
+func (s SetConnectionShareResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetConnectionShareResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *SetConnectionShareResponseData) SetStatus(v string) *SetConnectionShareResponseData {
+	s.Status = &v
+	return s
+}
+
+type ImportConnectionsRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	Connections *string `json:"Connections,omitempty" xml:"Connections,omitempty" require:"true"`
+}
+
+func (s ImportConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportConnectionsRequest) SetProjectId(v int64) *ImportConnectionsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ImportConnectionsRequest) SetConnections(v string) *ImportConnectionsRequest {
+	s.Connections = &v
+	return s
+}
+
+type ImportConnectionsResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *ImportConnectionsResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s ImportConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportConnectionsResponse) SetRequestId(v string) *ImportConnectionsResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportConnectionsResponse) SetSuccess(v bool) *ImportConnectionsResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ImportConnectionsResponse) SetData(v *ImportConnectionsResponseData) *ImportConnectionsResponse {
+	s.Data = v
+	return s
+}
+
+type ImportConnectionsResponseData struct {
+	Status  *bool   `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s ImportConnectionsResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportConnectionsResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportConnectionsResponseData) SetStatus(v bool) *ImportConnectionsResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *ImportConnectionsResponseData) SetMessage(v string) *ImportConnectionsResponseData {
+	s.Message = &v
+	return s
+}
+
+type GetConnectionMetaRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
+	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+}
+
+func (s GetConnectionMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionMetaRequest) SetProjectId(v int64) *GetConnectionMetaRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetConnectionMetaRequest) SetDatasourceName(v string) *GetConnectionMetaRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *GetConnectionMetaRequest) SetPageNumber(v int64) *GetConnectionMetaRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetConnectionMetaRequest) SetPageSize(v int64) *GetConnectionMetaRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetConnectionMetaRequest) SetEnvType(v string) *GetConnectionMetaRequest {
+	s.EnvType = &v
+	return s
+}
+
+type GetConnectionMetaResponse struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *GetConnectionMetaResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetConnectionMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionMetaResponse) SetRequestId(v string) *GetConnectionMetaResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConnectionMetaResponse) SetSuccess(v bool) *GetConnectionMetaResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *GetConnectionMetaResponse) SetData(v *GetConnectionMetaResponseData) *GetConnectionMetaResponse {
+	s.Data = v
+	return s
+}
+
+type GetConnectionMetaResponseData struct {
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty" require:"true"`
+}
+
+func (s GetConnectionMetaResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionMetaResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionMetaResponseData) SetMeta(v string) *GetConnectionMetaResponseData {
+	s.Meta = &v
+	return s
+}
+
+type UpdateDIProjectConfigRequest struct {
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" require:"true"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	ProjectConfig   *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty" require:"true"`
+}
+
+func (s UpdateDIProjectConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIProjectConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIProjectConfigRequest) SetProjectId(v int64) *UpdateDIProjectConfigRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDIProjectConfigRequest) SetDestinationType(v string) *UpdateDIProjectConfigRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *UpdateDIProjectConfigRequest) SetSourceType(v string) *UpdateDIProjectConfigRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateDIProjectConfigRequest) SetProjectConfig(v string) *UpdateDIProjectConfigRequest {
+	s.ProjectConfig = &v
+	return s
+}
+
+type UpdateDIProjectConfigResponse struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *UpdateDIProjectConfigResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s UpdateDIProjectConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIProjectConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIProjectConfigResponse) SetRequestId(v string) *UpdateDIProjectConfigResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDIProjectConfigResponse) SetSuccess(v bool) *UpdateDIProjectConfigResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateDIProjectConfigResponse) SetData(v *UpdateDIProjectConfigResponseData) *UpdateDIProjectConfigResponse {
+	s.Data = v
+	return s
+}
+
+type UpdateDIProjectConfigResponseData struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+}
+
+func (s UpdateDIProjectConfigResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDIProjectConfigResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDIProjectConfigResponseData) SetStatus(v string) *UpdateDIProjectConfigResponseData {
+	s.Status = &v
+	return s
+}
+
+type CreateDISyncTaskRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty" require:"true"`
+	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty" require:"true"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty" require:"true"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateDISyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDISyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDISyncTaskRequest) SetProjectId(v int64) *CreateDISyncTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDISyncTaskRequest) SetTaskType(v string) *CreateDISyncTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateDISyncTaskRequest) SetTaskContent(v string) *CreateDISyncTaskRequest {
+	s.TaskContent = &v
+	return s
+}
+
+func (s *CreateDISyncTaskRequest) SetTaskParam(v string) *CreateDISyncTaskRequest {
+	s.TaskParam = &v
+	return s
+}
+
+func (s *CreateDISyncTaskRequest) SetTaskName(v string) *CreateDISyncTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateDISyncTaskRequest) SetClientToken(v string) *CreateDISyncTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateDISyncTaskResponse struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *CreateDISyncTaskResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s CreateDISyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDISyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDISyncTaskResponse) SetRequestId(v string) *CreateDISyncTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDISyncTaskResponse) SetSuccess(v bool) *CreateDISyncTaskResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDISyncTaskResponse) SetData(v *CreateDISyncTaskResponseData) *CreateDISyncTaskResponse {
+	s.Data = v
+	return s
+}
+
+type CreateDISyncTaskResponseData struct {
+	FileId  *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s CreateDISyncTaskResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDISyncTaskResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDISyncTaskResponseData) SetFileId(v int64) *CreateDISyncTaskResponseData {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateDISyncTaskResponseData) SetStatus(v string) *CreateDISyncTaskResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDISyncTaskResponseData) SetMessage(v string) *CreateDISyncTaskResponseData {
+	s.Message = &v
+	return s
+}
+
+type UpdateDISyncTaskRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
+	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
+	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	FileId      *int64  `json:"FileId,omitempty" xml:"FileId,omitempty" require:"true"`
+}
+
+func (s UpdateDISyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDISyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDISyncTaskRequest) SetProjectId(v int64) *UpdateDISyncTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskRequest) SetTaskType(v string) *UpdateDISyncTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskRequest) SetTaskContent(v string) *UpdateDISyncTaskRequest {
+	s.TaskContent = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskRequest) SetTaskParam(v string) *UpdateDISyncTaskRequest {
+	s.TaskParam = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskRequest) SetFileId(v int64) *UpdateDISyncTaskRequest {
+	s.FileId = &v
+	return s
+}
+
+type UpdateDISyncTaskResponse struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
+	Data      *UpdateDISyncTaskResponseData `json:"Data,omitempty" xml:"Data,omitempty" require:"true" type:"Struct"`
+}
+
+func (s UpdateDISyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDISyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDISyncTaskResponse) SetRequestId(v string) *UpdateDISyncTaskResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskResponse) SetSuccess(v bool) *UpdateDISyncTaskResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskResponse) SetData(v *UpdateDISyncTaskResponseData) *UpdateDISyncTaskResponse {
+	s.Data = v
+	return s
+}
+
+type UpdateDISyncTaskResponseData struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty" require:"true"`
+}
+
+func (s UpdateDISyncTaskResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDISyncTaskResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDISyncTaskResponseData) SetStatus(v string) *UpdateDISyncTaskResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateDISyncTaskResponseData) SetMessage(v string) *UpdateDISyncTaskResponseData {
+	s.Message = &v
+	return s
+}
+
 type TestNetworkConnectionRequest struct {
 	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty" require:"true"`
@@ -207,7 +2452,6 @@ func (s *UpdateNodeOwnerResponse) SetSuccess(v bool) *UpdateNodeOwnerResponse {
 
 type QueryPublicModelEngineRequest struct {
 	Text      *string `json:"Text,omitempty" xml:"Text,omitempty" require:"true"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty" require:"true"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
 }
 
@@ -221,11 +2465,6 @@ func (s QueryPublicModelEngineRequest) GoString() string {
 
 func (s *QueryPublicModelEngineRequest) SetText(v string) *QueryPublicModelEngineRequest {
 	s.Text = &v
-	return s
-}
-
-func (s *QueryPublicModelEngineRequest) SetTenantId(v string) *QueryPublicModelEngineRequest {
-	s.TenantId = &v
 	return s
 }
 
@@ -2303,6 +4542,7 @@ type ListDataSourcesResponseDataDataSources struct {
 	Id                  *int    `json:"Id,omitempty" xml:"Id,omitempty" require:"true"`
 	ProjectId           *int    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
 	Status              *int    `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
+	Content             *string `json:"Content,omitempty" xml:"Content,omitempty" require:"true"`
 }
 
 func (s ListDataSourcesResponseDataDataSources) String() string {
@@ -2395,6 +4635,11 @@ func (s *ListDataSourcesResponseDataDataSources) SetProjectId(v int) *ListDataSo
 
 func (s *ListDataSourcesResponseDataDataSources) SetStatus(v int) *ListDataSourcesResponseDataDataSources {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDataSourcesResponseDataDataSources) SetContent(v string) *ListDataSourcesResponseDataDataSources {
+	s.Content = &v
 	return s
 }
 
@@ -3012,8 +5257,7 @@ func (s *TopTenErrorTimesInstanceResponseInstanceErrorRankErrorRank) SetProgramT
 }
 
 type TopTenElapsedTimeInstanceRequest struct {
-	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
-	BusinessDate *string `json:"BusinessDate,omitempty" xml:"BusinessDate,omitempty" require:"true"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" require:"true"`
 }
 
 func (s TopTenElapsedTimeInstanceRequest) String() string {
@@ -3026,11 +5270,6 @@ func (s TopTenElapsedTimeInstanceRequest) GoString() string {
 
 func (s *TopTenElapsedTimeInstanceRequest) SetProjectId(v int64) *TopTenElapsedTimeInstanceRequest {
 	s.ProjectId = &v
-	return s
-}
-
-func (s *TopTenElapsedTimeInstanceRequest) SetBusinessDate(v string) *TopTenElapsedTimeInstanceRequest {
-	s.BusinessDate = &v
 	return s
 }
 
@@ -3849,13 +6088,13 @@ type RunCycleDagNodesRequest struct {
 	StartBizDate   *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty" require:"true"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
 	RootNodeId     *int64  `json:"RootNodeId,omitempty" xml:"RootNodeId,omitempty" require:"true"`
-	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty" require:"true"`
 	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
 	BizBeginTime   *string `json:"BizBeginTime,omitempty" xml:"BizBeginTime,omitempty"`
 	BizEndTime     *string `json:"BizEndTime,omitempty" xml:"BizEndTime,omitempty"`
 	Parallelism    *bool   `json:"Parallelism,omitempty" xml:"Parallelism,omitempty" require:"true"`
 	EndBizDate     *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty" require:"true"`
 	NodeParams     *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
+	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty" require:"true"`
 }
 
 func (s RunCycleDagNodesRequest) String() string {
@@ -3886,11 +6125,6 @@ func (s *RunCycleDagNodesRequest) SetRootNodeId(v int64) *RunCycleDagNodesReques
 	return s
 }
 
-func (s *RunCycleDagNodesRequest) SetIncludeNodeIds(v string) *RunCycleDagNodesRequest {
-	s.IncludeNodeIds = &v
-	return s
-}
-
 func (s *RunCycleDagNodesRequest) SetExcludeNodeIds(v string) *RunCycleDagNodesRequest {
 	s.ExcludeNodeIds = &v
 	return s
@@ -3918,6 +6152,11 @@ func (s *RunCycleDagNodesRequest) SetEndBizDate(v string) *RunCycleDagNodesReque
 
 func (s *RunCycleDagNodesRequest) SetNodeParams(v string) *RunCycleDagNodesRequest {
 	s.NodeParams = &v
+	return s
+}
+
+func (s *RunCycleDagNodesRequest) SetIncludeNodeIds(v string) *RunCycleDagNodesRequest {
+	s.IncludeNodeIds = &v
 	return s
 }
 
@@ -3975,6 +6214,9 @@ type RunManualDagNodesRequest struct {
 	BizDate        *string `json:"BizDate,omitempty" xml:"BizDate,omitempty" require:"true"`
 	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
 	DagParameters  *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
+	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
+	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s RunManualDagNodesRequest) String() string {
@@ -4012,6 +6254,21 @@ func (s *RunManualDagNodesRequest) SetNodeParameters(v string) *RunManualDagNode
 
 func (s *RunManualDagNodesRequest) SetDagParameters(v string) *RunManualDagNodesRequest {
 	s.DagParameters = &v
+	return s
+}
+
+func (s *RunManualDagNodesRequest) SetIncludeNodeIds(v string) *RunManualDagNodesRequest {
+	s.IncludeNodeIds = &v
+	return s
+}
+
+func (s *RunManualDagNodesRequest) SetExcludeNodeIds(v string) *RunManualDagNodesRequest {
+	s.ExcludeNodeIds = &v
+	return s
+}
+
+func (s *RunManualDagNodesRequest) SetProjectId(v int64) *RunManualDagNodesRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -5693,6 +7950,8 @@ type CreateManualDagRequest struct {
 	BizDate        *string `json:"BizDate,omitempty" xml:"BizDate,omitempty" require:"true"`
 	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
 	DagParameters  *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
+	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
+	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
 }
 
 func (s CreateManualDagRequest) String() string {
@@ -5730,6 +7989,16 @@ func (s *CreateManualDagRequest) SetNodeParameters(v string) *CreateManualDagReq
 
 func (s *CreateManualDagRequest) SetDagParameters(v string) *CreateManualDagRequest {
 	s.DagParameters = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetIncludeNodeIds(v string) *CreateManualDagRequest {
+	s.IncludeNodeIds = &v
+	return s
+}
+
+func (s *CreateManualDagRequest) SetExcludeNodeIds(v string) *CreateManualDagRequest {
+	s.ExcludeNodeIds = &v
 	return s
 }
 
@@ -13546,6 +15815,7 @@ type GetMetaTableBasicInfoResponseData struct {
 	ViewCount        *int64  `json:"ViewCount,omitempty" xml:"ViewCount,omitempty" require:"true"`
 	FavoriteCount    *int64  `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty" require:"true"`
 	IsView           *bool   `json:"IsView,omitempty" xml:"IsView,omitempty" require:"true"`
+	ColumnCount      *int    `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty" require:"true"`
 }
 
 func (s GetMetaTableBasicInfoResponseData) String() string {
@@ -13678,6 +15948,11 @@ func (s *GetMetaTableBasicInfoResponseData) SetFavoriteCount(v int64) *GetMetaTa
 
 func (s *GetMetaTableBasicInfoResponseData) SetIsView(v bool) *GetMetaTableBasicInfoResponseData {
 	s.IsView = &v
+	return s
+}
+
+func (s *GetMetaTableBasicInfoResponseData) SetColumnCount(v int) *GetMetaTableBasicInfoResponseData {
+	s.ColumnCount = &v
 	return s
 }
 
@@ -16408,6 +18683,7 @@ type GetNodeResponseData struct {
 	DqcType        *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
 	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
 	RelatedFlowId  *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
+	BusinessId     *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty" require:"true"`
 }
 
 func (s GetNodeResponseData) String() string {
@@ -16505,6 +18781,11 @@ func (s *GetNodeResponseData) SetDqcDescription(v string) *GetNodeResponseData {
 
 func (s *GetNodeResponseData) SetRelatedFlowId(v int64) *GetNodeResponseData {
 	s.RelatedFlowId = &v
+	return s
+}
+
+func (s *GetNodeResponseData) SetBusinessId(v int64) *GetNodeResponseData {
+	s.BusinessId = &v
 	return s
 }
 
@@ -16668,6 +18949,7 @@ type ListNodesResponseDataNodes struct {
 	DqcType        *int    `json:"DqcType,omitempty" xml:"DqcType,omitempty" require:"true"`
 	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty" require:"true"`
 	RelatedFlowId  *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
+	BusinessId     *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty" require:"true"`
 }
 
 func (s ListNodesResponseDataNodes) String() string {
@@ -16765,6 +19047,11 @@ func (s *ListNodesResponseDataNodes) SetDqcDescription(v string) *ListNodesRespo
 
 func (s *ListNodesResponseDataNodes) SetRelatedFlowId(v int64) *ListNodesResponseDataNodes {
 	s.RelatedFlowId = &v
+	return s
+}
+
+func (s *ListNodesResponseDataNodes) SetBusinessId(v int64) *ListNodesResponseDataNodes {
+	s.BusinessId = &v
 	return s
 }
 
@@ -17320,6 +19607,7 @@ type ListFilesRequest struct {
 	UseType           *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
 	FileTypes         *string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty"`
 	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ListFilesRequest) String() string {
@@ -17372,6 +19660,11 @@ func (s *ListFilesRequest) SetFileTypes(v string) *ListFilesRequest {
 
 func (s *ListFilesRequest) SetOwner(v string) *ListFilesRequest {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNodeId(v int64) *ListFilesRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -17831,6 +20124,7 @@ type UpdateFileRequest struct {
 	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	Owner                   *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	AutoParsing             *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	SchedulerType           *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
 func (s UpdateFileRequest) String() string {
@@ -17958,6 +20252,11 @@ func (s *UpdateFileRequest) SetOwner(v string) *UpdateFileRequest {
 
 func (s *UpdateFileRequest) SetAutoParsing(v bool) *UpdateFileRequest {
 	s.AutoParsing = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetSchedulerType(v string) *UpdateFileRequest {
+	s.SchedulerType = &v
 	return s
 }
 
@@ -18720,6 +21019,7 @@ type ListInstancesResponseDataInstances struct {
 	RelatedFlowId     *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
 	TaskRerunTime     *int    `json:"TaskRerunTime,omitempty" xml:"TaskRerunTime,omitempty" require:"true"`
+	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty" require:"true"`
 }
 
 func (s ListInstancesResponseDataInstances) String() string {
@@ -18860,6 +21160,11 @@ func (s *ListInstancesResponseDataInstances) SetTaskRerunTime(v int) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseDataInstances) SetBusinessId(v int64) *ListInstancesResponseDataInstances {
+	s.BusinessId = &v
+	return s
+}
+
 type SetSuccessInstanceRequest struct {
 	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" require:"true"`
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty" require:"true"`
@@ -18955,6 +21260,7 @@ type CreateFileRequest struct {
 	ResourceGroupId         *int64  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	AutoParsing             *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	SchedulerType           *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
 func (s CreateFileRequest) String() string {
@@ -19082,6 +21388,11 @@ func (s *CreateFileRequest) SetConnectionName(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetAutoParsing(v bool) *CreateFileRequest {
 	s.AutoParsing = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetSchedulerType(v string) *CreateFileRequest {
+	s.SchedulerType = &v
 	return s
 }
 
@@ -20835,6 +23146,7 @@ type GetInstanceResponseData struct {
 	RelatedFlowId     *int64  `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty" require:"true"`
 	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty" require:"true"`
 	TaskRerunTime     *int    `json:"TaskRerunTime,omitempty" xml:"TaskRerunTime,omitempty" require:"true"`
+	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponseData) String() string {
@@ -20970,10 +23282,16 @@ func (s *GetInstanceResponseData) SetTaskRerunTime(v int) *GetInstanceResponseDa
 	return s
 }
 
+func (s *GetInstanceResponseData) SetBusinessId(v int64) *GetInstanceResponseData {
+	s.BusinessId = &v
+	return s
+}
+
 type GetFileRequest struct {
 	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	FileId            *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s GetFileRequest) String() string {
@@ -20996,6 +23314,11 @@ func (s *GetFileRequest) SetProjectIdentifier(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetFileId(v int64) *GetFileRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetNodeId(v int64) *GetFileRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -21219,6 +23542,7 @@ type GetFileResponseDataNodeConfiguration struct {
 	DependentType           *string                                           `json:"DependentType,omitempty" xml:"DependentType,omitempty" require:"true"`
 	DependentNodeIdList     *string                                           `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty" require:"true"`
 	ResourceGroupId         *int64                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty" require:"true"`
+	SchedulerType           *string                                           `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty" require:"true"`
 	InputList               []*GetFileResponseDataNodeConfigurationInputList  `json:"InputList,omitempty" xml:"InputList,omitempty" require:"true" type:"Repeated"`
 	OutputList              []*GetFileResponseDataNodeConfigurationOutputList `json:"OutputList,omitempty" xml:"OutputList,omitempty" require:"true" type:"Repeated"`
 }
@@ -21288,6 +23612,11 @@ func (s *GetFileResponseDataNodeConfiguration) SetDependentNodeIdList(v string) 
 
 func (s *GetFileResponseDataNodeConfiguration) SetResourceGroupId(v int64) *GetFileResponseDataNodeConfiguration {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetFileResponseDataNodeConfiguration) SetSchedulerType(v string) *GetFileResponseDataNodeConfiguration {
+	s.SchedulerType = &v
 	return s
 }
 
@@ -22013,6 +24342,7 @@ type DeleteFileResponse struct {
 	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
 	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
 	HttpStatusCode *int    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty" require:"true"`
+	DeploymentId   *int64  `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty" require:"true"`
 }
 
 func (s DeleteFileResponse) String() string {
@@ -22045,6 +24375,11 @@ func (s *DeleteFileResponse) SetErrorMessage(v string) *DeleteFileResponse {
 
 func (s *DeleteFileResponse) SetHttpStatusCode(v int) *DeleteFileResponse {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteFileResponse) SetDeploymentId(v int64) *DeleteFileResponse {
+	s.DeploymentId = &v
 	return s
 }
 
@@ -22339,7 +24674,7 @@ type CreateRemindRequest struct {
 	AlertInterval *int    `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
 	Detail        *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	AlertUnit     *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty" require:"true"`
-	AlertMethods  *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
+	AlertMethods  *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" require:"true"`
 	AlertTargets  *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
 	RobotUrls     *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
 }
@@ -22796,6 +25131,7 @@ type GetDeploymentResponseDataDeployment struct {
 	FromEnvironment *int    `json:"FromEnvironment,omitempty" xml:"FromEnvironment,omitempty" require:"true"`
 	ToEnvironment   *int    `json:"ToEnvironment,omitempty" xml:"ToEnvironment,omitempty" require:"true"`
 	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" require:"true"`
+	CheckingStatus  *int    `json:"CheckingStatus,omitempty" xml:"CheckingStatus,omitempty" require:"true"`
 }
 
 func (s GetDeploymentResponseDataDeployment) String() string {
@@ -22848,6 +25184,11 @@ func (s *GetDeploymentResponseDataDeployment) SetToEnvironment(v int) *GetDeploy
 
 func (s *GetDeploymentResponseDataDeployment) SetErrorMessage(v string) *GetDeploymentResponseDataDeployment {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeploymentResponseDataDeployment) SetCheckingStatus(v int) *GetDeploymentResponseDataDeployment {
+	s.CheckingStatus = &v
 	return s
 }
 
@@ -29027,6 +31368,606 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) ListProjectIds(request *ListProjectIdsRequest, runtime *util.RuntimeOptions) (_result *ListProjectIdsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListProjectIdsResponse{}
+	_body, _err := client.DoRequest(tea.String("ListProjectIds"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectIdsSimply(request *ListProjectIdsRequest) (_result *ListProjectIdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectIdsResponse{}
+	_body, _err := client.ListProjectIds(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TerminateDISyncInstance(request *TerminateDISyncInstanceRequest, runtime *util.RuntimeOptions) (_result *TerminateDISyncInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &TerminateDISyncInstanceResponse{}
+	_body, _err := client.DoRequest(tea.String("TerminateDISyncInstance"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TerminateDISyncInstanceSimply(request *TerminateDISyncInstanceRequest) (_result *TerminateDISyncInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TerminateDISyncInstanceResponse{}
+	_body, _err := client.TerminateDISyncInstance(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDISyncTask(request *DeleteDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDISyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DeleteDISyncTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("DeleteDISyncTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDISyncTaskSimply(request *DeleteDISyncTaskRequest) (_result *DeleteDISyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDISyncTaskResponse{}
+	_body, _err := client.DeleteDISyncTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeployDISyncTask(request *DeployDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *DeployDISyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &DeployDISyncTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("DeployDISyncTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeployDISyncTaskSimply(request *DeployDISyncTaskRequest) (_result *DeployDISyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployDISyncTaskResponse{}
+	_body, _err := client.DeployDISyncTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartDISyncInstance(request *StartDISyncInstanceRequest, runtime *util.RuntimeOptions) (_result *StartDISyncInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &StartDISyncInstanceResponse{}
+	_body, _err := client.DoRequest(tea.String("StartDISyncInstance"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartDISyncInstanceSimply(request *StartDISyncInstanceRequest) (_result *StartDISyncInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartDISyncInstanceResponse{}
+	_body, _err := client.StartDISyncInstance(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDISyncInstanceInfo(request *GetDISyncInstanceInfoRequest, runtime *util.RuntimeOptions) (_result *GetDISyncInstanceInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetDISyncInstanceInfoResponse{}
+	_body, _err := client.DoRequest(tea.String("GetDISyncInstanceInfo"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDISyncInstanceInfoSimply(request *GetDISyncInstanceInfoRequest) (_result *GetDISyncInstanceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDISyncInstanceInfoResponse{}
+	_body, _err := client.GetDISyncInstanceInfo(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopDISyncInstance(request *StopDISyncInstanceRequest, runtime *util.RuntimeOptions) (_result *StopDISyncInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &StopDISyncInstanceResponse{}
+	_body, _err := client.DoRequest(tea.String("StopDISyncInstance"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopDISyncInstanceSimply(request *StopDISyncInstanceRequest) (_result *StopDISyncInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopDISyncInstanceResponse{}
+	_body, _err := client.StopDISyncInstance(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDISyncTask(request *GetDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *GetDISyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetDISyncTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("GetDISyncTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDISyncTaskSimply(request *GetDISyncTaskRequest) (_result *GetDISyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDISyncTaskResponse{}
+	_body, _err := client.GetDISyncTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckMetaTableTask(request *CheckMetaTableTaskRequest, runtime *util.RuntimeOptions) (_result *CheckMetaTableTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CheckMetaTableTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("CheckMetaTableTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckMetaTableTaskSimply(request *CheckMetaTableTaskRequest) (_result *CheckMetaTableTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckMetaTableTaskResponse{}
+	_body, _err := client.CheckMetaTableTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckEngineMetaPartition(request *CheckEngineMetaPartitionRequest, runtime *util.RuntimeOptions) (_result *CheckEngineMetaPartitionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CheckEngineMetaPartitionResponse{}
+	_body, _err := client.DoRequest(tea.String("CheckEngineMetaPartition"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckEngineMetaPartitionSimply(request *CheckEngineMetaPartitionRequest) (_result *CheckEngineMetaPartitionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckEngineMetaPartitionResponse{}
+	_body, _err := client.CheckEngineMetaPartition(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckEngineMetaTable(request *CheckEngineMetaTableRequest, runtime *util.RuntimeOptions) (_result *CheckEngineMetaTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CheckEngineMetaTableResponse{}
+	_body, _err := client.DoRequest(tea.String("CheckEngineMetaTable"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckEngineMetaTableSimply(request *CheckEngineMetaTableRequest) (_result *CheckEngineMetaTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckEngineMetaTableResponse{}
+	_body, _err := client.CheckEngineMetaTable(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportDataSources(request *ImportDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ImportDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ImportDataSourcesResponse{}
+	_body, _err := client.DoRequest(tea.String("ImportDataSources"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportDataSourcesSimply(request *ImportDataSourcesRequest) (_result *ImportDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportDataSourcesResponse{}
+	_body, _err := client.ImportDataSources(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportDataSources(request *ExportDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ExportDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExportDataSourcesResponse{}
+	_body, _err := client.DoRequest(tea.String("ExportDataSources"), tea.String("HTTPS"), tea.String("GET"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), tea.ToMap(request), nil, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportDataSourcesSimply(request *ExportDataSourcesRequest) (_result *ExportDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportDataSourcesResponse{}
+	_body, _err := client.ExportDataSources(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataSourceMeta(request *GetDataSourceMetaRequest, runtime *util.RuntimeOptions) (_result *GetDataSourceMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetDataSourceMetaResponse{}
+	_body, _err := client.DoRequest(tea.String("GetDataSourceMeta"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataSourceMetaSimply(request *GetDataSourceMetaRequest) (_result *GetDataSourceMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataSourceMetaResponse{}
+	_body, _err := client.GetDataSourceMeta(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDataSourceShare(request *SetDataSourceShareRequest, runtime *util.RuntimeOptions) (_result *SetDataSourceShareResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SetDataSourceShareResponse{}
+	_body, _err := client.DoRequest(tea.String("SetDataSourceShare"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDataSourceShareSimply(request *SetDataSourceShareRequest) (_result *SetDataSourceShareResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDataSourceShareResponse{}
+	_body, _err := client.SetDataSourceShare(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest, runtime *util.RuntimeOptions) (_result *ListDIProjectConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListDIProjectConfigResponse{}
+	_body, _err := client.DoRequest(tea.String("ListDIProjectConfig"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDIProjectConfigSimply(request *ListDIProjectConfigRequest) (_result *ListDIProjectConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDIProjectConfigResponse{}
+	_body, _err := client.ListDIProjectConfig(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportConnections(request *ExportConnectionsRequest, runtime *util.RuntimeOptions) (_result *ExportConnectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExportConnectionsResponse{}
+	_body, _err := client.DoRequest(tea.String("ExportConnections"), tea.String("HTTPS"), tea.String("GET"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), tea.ToMap(request), nil, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportConnectionsSimply(request *ExportConnectionsRequest) (_result *ExportConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportConnectionsResponse{}
+	_body, _err := client.ExportConnections(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRefDISyncTasks(request *ListRefDISyncTasksRequest, runtime *util.RuntimeOptions) (_result *ListRefDISyncTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListRefDISyncTasksResponse{}
+	_body, _err := client.DoRequest(tea.String("ListRefDISyncTasks"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRefDISyncTasksSimply(request *ListRefDISyncTasksRequest) (_result *ListRefDISyncTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRefDISyncTasksResponse{}
+	_body, _err := client.ListRefDISyncTasks(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetConnectionShare(request *SetConnectionShareRequest, runtime *util.RuntimeOptions) (_result *SetConnectionShareResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SetConnectionShareResponse{}
+	_body, _err := client.DoRequest(tea.String("SetConnectionShare"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,PrivateKey,APP"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetConnectionShareSimply(request *SetConnectionShareRequest) (_result *SetConnectionShareResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetConnectionShareResponse{}
+	_body, _err := client.SetConnectionShare(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportConnections(request *ImportConnectionsRequest, runtime *util.RuntimeOptions) (_result *ImportConnectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ImportConnectionsResponse{}
+	_body, _err := client.DoRequest(tea.String("ImportConnections"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportConnectionsSimply(request *ImportConnectionsRequest) (_result *ImportConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportConnectionsResponse{}
+	_body, _err := client.ImportConnections(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetConnectionMeta(request *GetConnectionMetaRequest, runtime *util.RuntimeOptions) (_result *GetConnectionMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetConnectionMetaResponse{}
+	_body, _err := client.DoRequest(tea.String("GetConnectionMeta"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetConnectionMetaSimply(request *GetConnectionMetaRequest) (_result *GetConnectionMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetConnectionMetaResponse{}
+	_body, _err := client.GetConnectionMeta(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDIProjectConfig(request *UpdateDIProjectConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateDIProjectConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UpdateDIProjectConfigResponse{}
+	_body, _err := client.DoRequest(tea.String("UpdateDIProjectConfig"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDIProjectConfigSimply(request *UpdateDIProjectConfigRequest) (_result *UpdateDIProjectConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDIProjectConfigResponse{}
+	_body, _err := client.UpdateDIProjectConfig(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDISyncTask(request *CreateDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDISyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &CreateDISyncTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("CreateDISyncTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDISyncTaskSimply(request *CreateDISyncTaskRequest) (_result *CreateDISyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDISyncTaskResponse{}
+	_body, _err := client.CreateDISyncTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDISyncTask(request *UpdateDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateDISyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &UpdateDISyncTaskResponse{}
+	_body, _err := client.DoRequest(tea.String("UpdateDISyncTask"), tea.String("HTTPS"), tea.String("POST"), tea.String("2020-05-18"), tea.String("AK,APP,PrivateKey"), nil, tea.ToMap(request), runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDISyncTaskSimply(request *UpdateDISyncTaskRequest) (_result *UpdateDISyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDISyncTaskResponse{}
+	_body, _err := client.UpdateDISyncTask(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
 }
 
 func (client *Client) TestNetworkConnection(request *TestNetworkConnectionRequest, runtime *util.RuntimeOptions) (_result *TestNetworkConnectionResponse, _err error) {
