@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -140,10 +141,10 @@ func (s *CompareImageFacesResponseBodyFaceAFaceAttributes) SetFaceBoundary(v *Co
 }
 
 type CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) String() string {
@@ -152,6 +153,11 @@ func (s CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) String() s
 
 func (s CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) SetLeft(v int32) *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) SetTop(v int32) *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary {
@@ -166,11 +172,6 @@ func (s *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) SetWidth(
 
 func (s *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) SetHeight(v int32) *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary) SetLeft(v int32) *CompareImageFacesResponseBodyFaceAFaceAttributesFaceBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -215,10 +216,10 @@ func (s *CompareImageFacesResponseBodyFaceBFaceAttributes) SetFaceBoundary(v *Co
 }
 
 type CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) String() string {
@@ -227,6 +228,11 @@ func (s CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) String() s
 
 func (s CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetLeft(v int32) *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetTop(v int32) *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary {
@@ -241,11 +247,6 @@ func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetWidth(
 
 func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetHeight(v int32) *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetLeft(v int32) *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -497,9 +498,9 @@ func (s *CreateGrabFrameTaskRequest) SetCustomMessage(v string) *CreateGrabFrame
 }
 
 type CreateGrabFrameTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateGrabFrameTaskResponseBody) String() string {
@@ -510,8 +511,8 @@ func (s CreateGrabFrameTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateGrabFrameTaskResponseBody) SetTaskId(v string) *CreateGrabFrameTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateGrabFrameTaskResponseBody) SetTaskType(v string) *CreateGrabFrameTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -520,8 +521,8 @@ func (s *CreateGrabFrameTaskResponseBody) SetRequestId(v string) *CreateGrabFram
 	return s
 }
 
-func (s *CreateGrabFrameTaskResponseBody) SetTaskType(v string) *CreateGrabFrameTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateGrabFrameTaskResponseBody) SetTaskId(v string) *CreateGrabFrameTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -683,9 +684,9 @@ func (s *CreateImageProcessTaskRequest) SetTargetList(v string) *CreateImageProc
 }
 
 type CreateImageProcessTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateImageProcessTaskResponseBody) String() string {
@@ -696,8 +697,8 @@ func (s CreateImageProcessTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateImageProcessTaskResponseBody) SetTaskId(v string) *CreateImageProcessTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateImageProcessTaskResponseBody) SetTaskType(v string) *CreateImageProcessTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -706,8 +707,8 @@ func (s *CreateImageProcessTaskResponseBody) SetRequestId(v string) *CreateImage
 	return s
 }
 
-func (s *CreateImageProcessTaskResponseBody) SetTaskType(v string) *CreateImageProcessTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateImageProcessTaskResponseBody) SetTaskId(v string) *CreateImageProcessTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -770,9 +771,9 @@ func (s *CreateMediaComplexTaskRequest) SetNotifyEndpoint(v string) *CreateMedia
 }
 
 type CreateMediaComplexTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateMediaComplexTaskResponseBody) String() string {
@@ -783,8 +784,8 @@ func (s CreateMediaComplexTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMediaComplexTaskResponseBody) SetTaskId(v string) *CreateMediaComplexTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateMediaComplexTaskResponseBody) SetTaskType(v string) *CreateMediaComplexTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -793,8 +794,8 @@ func (s *CreateMediaComplexTaskResponseBody) SetRequestId(v string) *CreateMedia
 	return s
 }
 
-func (s *CreateMediaComplexTaskResponseBody) SetTaskType(v string) *CreateMediaComplexTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateMediaComplexTaskResponseBody) SetTaskId(v string) *CreateMediaComplexTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -828,6 +829,7 @@ type CreateMergeFaceGroupsJobRequest struct {
 	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	GroupIdFrom     *string `json:"GroupIdFrom,omitempty" xml:"GroupIdFrom,omitempty"`
 	GroupIdTo       *string `json:"GroupIdTo,omitempty" xml:"GroupIdTo,omitempty"`
+	CustomMessage   *string `json:"CustomMessage,omitempty" xml:"CustomMessage,omitempty"`
 }
 
 func (s CreateMergeFaceGroupsJobRequest) String() string {
@@ -865,6 +867,11 @@ func (s *CreateMergeFaceGroupsJobRequest) SetGroupIdFrom(v string) *CreateMergeF
 
 func (s *CreateMergeFaceGroupsJobRequest) SetGroupIdTo(v string) *CreateMergeFaceGroupsJobRequest {
 	s.GroupIdTo = &v
+	return s
+}
+
+func (s *CreateMergeFaceGroupsJobRequest) SetCustomMessage(v string) *CreateMergeFaceGroupsJobRequest {
+	s.CustomMessage = &v
 	return s
 }
 
@@ -963,6 +970,7 @@ type CreateOfficeConversionTaskRequest struct {
 	PdfVector       *bool   `json:"PdfVector,omitempty" xml:"PdfVector,omitempty"`
 	Hidecomments    *bool   `json:"Hidecomments,omitempty" xml:"Hidecomments,omitempty"`
 	DisplayDpi      *int32  `json:"DisplayDpi,omitempty" xml:"DisplayDpi,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateOfficeConversionTaskRequest) String() string {
@@ -1093,6 +1101,11 @@ func (s *CreateOfficeConversionTaskRequest) SetDisplayDpi(v int32) *CreateOffice
 	return s
 }
 
+func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeConversionTaskRequest {
+	s.UserData = &v
+	return s
+}
+
 type CreateOfficeConversionTaskResponseBody struct {
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -1193,15 +1206,15 @@ func (s *CreateSetRequest) SetSetName(v string) *CreateSetRequest {
 }
 
 type CreateSetResponseBody struct {
-	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	VideoCount  *int32  `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
-	ImageCount  *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SetName     *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
-	SetId       *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
 	VideoLength *int32  `json:"VideoLength,omitempty" xml:"VideoLength,omitempty"`
+	SetId       *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	ImageCount  *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	FaceCount   *int32  `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	SetName     *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
+	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
 func (s CreateSetResponseBody) String() string {
@@ -1212,18 +1225,8 @@ func (s CreateSetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSetResponseBody) SetModifyTime(v string) *CreateSetResponseBody {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *CreateSetResponseBody) SetVideoCount(v int32) *CreateSetResponseBody {
 	s.VideoCount = &v
-	return s
-}
-
-func (s *CreateSetResponseBody) SetImageCount(v int32) *CreateSetResponseBody {
-	s.ImageCount = &v
 	return s
 }
 
@@ -1237,8 +1240,8 @@ func (s *CreateSetResponseBody) SetCreateTime(v string) *CreateSetResponseBody {
 	return s
 }
 
-func (s *CreateSetResponseBody) SetSetName(v string) *CreateSetResponseBody {
-	s.SetName = &v
+func (s *CreateSetResponseBody) SetVideoLength(v int32) *CreateSetResponseBody {
+	s.VideoLength = &v
 	return s
 }
 
@@ -1247,13 +1250,23 @@ func (s *CreateSetResponseBody) SetSetId(v string) *CreateSetResponseBody {
 	return s
 }
 
-func (s *CreateSetResponseBody) SetVideoLength(v int32) *CreateSetResponseBody {
-	s.VideoLength = &v
+func (s *CreateSetResponseBody) SetImageCount(v int32) *CreateSetResponseBody {
+	s.ImageCount = &v
 	return s
 }
 
 func (s *CreateSetResponseBody) SetFaceCount(v int32) *CreateSetResponseBody {
 	s.FaceCount = &v
+	return s
+}
+
+func (s *CreateSetResponseBody) SetSetName(v string) *CreateSetResponseBody {
+	s.SetName = &v
+	return s
+}
+
+func (s *CreateSetResponseBody) SetModifyTime(v string) *CreateSetResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -1276,129 +1289,6 @@ func (s *CreateSetResponse) SetHeaders(v map[string]*string) *CreateSetResponse 
 }
 
 func (s *CreateSetResponse) SetBody(v *CreateSetResponseBody) *CreateSetResponse {
-	s.Body = v
-	return s
-}
-
-type CreateStreamAnalyseTaskRequest struct {
-	Project         *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	StreamUri       *string `json:"StreamUri,omitempty" xml:"StreamUri,omitempty"`
-	GrabType        *string `json:"GrabType,omitempty" xml:"GrabType,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SaveType        *bool   `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Interval        *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	TgtUri          *string `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-}
-
-func (s CreateStreamAnalyseTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamAnalyseTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetProject(v string) *CreateStreamAnalyseTaskRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetStreamUri(v string) *CreateStreamAnalyseTaskRequest {
-	s.StreamUri = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetGrabType(v string) *CreateStreamAnalyseTaskRequest {
-	s.GrabType = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetStartTime(v string) *CreateStreamAnalyseTaskRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetEndTime(v string) *CreateStreamAnalyseTaskRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetSaveType(v bool) *CreateStreamAnalyseTaskRequest {
-	s.SaveType = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetInterval(v string) *CreateStreamAnalyseTaskRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetTgtUri(v string) *CreateStreamAnalyseTaskRequest {
-	s.TgtUri = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetNotifyTopicName(v string) *CreateStreamAnalyseTaskRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskRequest) SetNotifyEndpoint(v string) *CreateStreamAnalyseTaskRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-type CreateStreamAnalyseTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s CreateStreamAnalyseTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamAnalyseTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamAnalyseTaskResponseBody) SetTaskId(v string) *CreateStreamAnalyseTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskResponseBody) SetRequestId(v string) *CreateStreamAnalyseTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskResponseBody) SetTaskType(v string) *CreateStreamAnalyseTaskResponseBody {
-	s.TaskType = &v
-	return s
-}
-
-type CreateStreamAnalyseTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateStreamAnalyseTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateStreamAnalyseTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStreamAnalyseTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStreamAnalyseTaskResponse) SetHeaders(v map[string]*string) *CreateStreamAnalyseTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStreamAnalyseTaskResponse) SetBody(v *CreateStreamAnalyseTaskResponseBody) *CreateStreamAnalyseTaskResponse {
 	s.Body = v
 	return s
 }
@@ -1457,9 +1347,9 @@ func (s *CreateVideoAbstractTaskRequest) SetAbstractLength(v int32) *CreateVideo
 }
 
 type CreateVideoAbstractTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateVideoAbstractTaskResponseBody) String() string {
@@ -1470,8 +1360,8 @@ func (s CreateVideoAbstractTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVideoAbstractTaskResponseBody) SetTaskId(v string) *CreateVideoAbstractTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateVideoAbstractTaskResponseBody) SetTaskType(v string) *CreateVideoAbstractTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -1480,8 +1370,8 @@ func (s *CreateVideoAbstractTaskResponseBody) SetRequestId(v string) *CreateVide
 	return s
 }
 
-func (s *CreateVideoAbstractTaskResponseBody) SetTaskType(v string) *CreateVideoAbstractTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateVideoAbstractTaskResponseBody) SetTaskId(v string) *CreateVideoAbstractTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -1511,11 +1401,6 @@ func (s *CreateVideoAbstractTaskResponse) SetBody(v *CreateVideoAbstractTaskResp
 type CreateVideoAnalyseTaskRequest struct {
 	Project         *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	VideoUri        *string `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-	GrabType        *string `json:"GrabType,omitempty" xml:"GrabType,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SaveType        *bool   `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Interval        *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	TgtUri          *string `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
@@ -1539,31 +1424,6 @@ func (s *CreateVideoAnalyseTaskRequest) SetVideoUri(v string) *CreateVideoAnalys
 	return s
 }
 
-func (s *CreateVideoAnalyseTaskRequest) SetGrabType(v string) *CreateVideoAnalyseTaskRequest {
-	s.GrabType = &v
-	return s
-}
-
-func (s *CreateVideoAnalyseTaskRequest) SetStartTime(v string) *CreateVideoAnalyseTaskRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateVideoAnalyseTaskRequest) SetEndTime(v string) *CreateVideoAnalyseTaskRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateVideoAnalyseTaskRequest) SetSaveType(v bool) *CreateVideoAnalyseTaskRequest {
-	s.SaveType = &v
-	return s
-}
-
-func (s *CreateVideoAnalyseTaskRequest) SetInterval(v string) *CreateVideoAnalyseTaskRequest {
-	s.Interval = &v
-	return s
-}
-
 func (s *CreateVideoAnalyseTaskRequest) SetTgtUri(v string) *CreateVideoAnalyseTaskRequest {
 	s.TgtUri = &v
 	return s
@@ -1580,9 +1440,9 @@ func (s *CreateVideoAnalyseTaskRequest) SetNotifyEndpoint(v string) *CreateVideo
 }
 
 type CreateVideoAnalyseTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateVideoAnalyseTaskResponseBody) String() string {
@@ -1593,8 +1453,8 @@ func (s CreateVideoAnalyseTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVideoAnalyseTaskResponseBody) SetTaskId(v string) *CreateVideoAnalyseTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateVideoAnalyseTaskResponseBody) SetTaskType(v string) *CreateVideoAnalyseTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -1603,8 +1463,8 @@ func (s *CreateVideoAnalyseTaskResponseBody) SetRequestId(v string) *CreateVideo
 	return s
 }
 
-func (s *CreateVideoAnalyseTaskResponseBody) SetTaskType(v string) *CreateVideoAnalyseTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateVideoAnalyseTaskResponseBody) SetTaskId(v string) *CreateVideoAnalyseTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -1639,6 +1499,7 @@ type CreateVideoCompressTaskRequest struct {
 	TargetList      *string `json:"TargetList,omitempty" xml:"TargetList,omitempty"`
 	CustomMessage   *string `json:"CustomMessage,omitempty" xml:"CustomMessage,omitempty"`
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
+	TargetSegment   *string `json:"TargetSegment,omitempty" xml:"TargetSegment,omitempty"`
 }
 
 func (s CreateVideoCompressTaskRequest) String() string {
@@ -1681,6 +1542,11 @@ func (s *CreateVideoCompressTaskRequest) SetCustomMessage(v string) *CreateVideo
 
 func (s *CreateVideoCompressTaskRequest) SetTargetContainer(v string) *CreateVideoCompressTaskRequest {
 	s.TargetContainer = &v
+	return s
+}
+
+func (s *CreateVideoCompressTaskRequest) SetTargetSegment(v string) *CreateVideoCompressTaskRequest {
+	s.TargetSegment = &v
 	return s
 }
 
@@ -1808,9 +1674,9 @@ func (s *CreateVideoProduceTaskRequest) SetTemplateName(v string) *CreateVideoPr
 }
 
 type CreateVideoProduceTaskResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateVideoProduceTaskResponseBody) String() string {
@@ -1821,8 +1687,8 @@ func (s CreateVideoProduceTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVideoProduceTaskResponseBody) SetTaskId(v string) *CreateVideoProduceTaskResponseBody {
-	s.TaskId = &v
+func (s *CreateVideoProduceTaskResponseBody) SetTaskType(v string) *CreateVideoProduceTaskResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -1831,8 +1697,8 @@ func (s *CreateVideoProduceTaskResponseBody) SetRequestId(v string) *CreateVideo
 	return s
 }
 
-func (s *CreateVideoProduceTaskResponseBody) SetTaskType(v string) *CreateVideoProduceTaskResponseBody {
-	s.TaskType = &v
+func (s *CreateVideoProduceTaskResponseBody) SetTaskId(v string) *CreateVideoProduceTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -1866,7 +1732,6 @@ type DecodeBlindWatermarkRequest struct {
 	TargetUri        *string `json:"TargetUri,omitempty" xml:"TargetUri,omitempty"`
 	ImageQuality     *int32  `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
 	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	WatermarkType    *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s DecodeBlindWatermarkRequest) String() string {
@@ -1907,15 +1772,10 @@ func (s *DecodeBlindWatermarkRequest) SetModel(v string) *DecodeBlindWatermarkRe
 	return s
 }
 
-func (s *DecodeBlindWatermarkRequest) SetWatermarkType(v string) *DecodeBlindWatermarkRequest {
-	s.WatermarkType = &v
-	return s
-}
-
 type DecodeBlindWatermarkResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	TargetUri *string `json:"TargetUri,omitempty" xml:"TargetUri,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
 func (s DecodeBlindWatermarkResponseBody) String() string {
@@ -1931,13 +1791,13 @@ func (s *DecodeBlindWatermarkResponseBody) SetRequestId(v string) *DecodeBlindWa
 	return s
 }
 
-func (s *DecodeBlindWatermarkResponseBody) SetContent(v string) *DecodeBlindWatermarkResponseBody {
-	s.Content = &v
+func (s *DecodeBlindWatermarkResponseBody) SetTargetUri(v string) *DecodeBlindWatermarkResponseBody {
+	s.TargetUri = &v
 	return s
 }
 
-func (s *DecodeBlindWatermarkResponseBody) SetTargetUri(v string) *DecodeBlindWatermarkResponseBody {
-	s.TargetUri = &v
+func (s *DecodeBlindWatermarkResponseBody) SetContent(v string) *DecodeBlindWatermarkResponseBody {
+	s.Content = &v
 	return s
 }
 
@@ -2258,8 +2118,8 @@ func (s *DeleteSetRequest) SetSetId(v string) *DeleteSetRequest {
 }
 
 type DeleteSetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SetId     *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteSetResponseBody) String() string {
@@ -2270,13 +2130,13 @@ func (s DeleteSetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSetResponseBody) SetRequestId(v string) *DeleteSetResponseBody {
-	s.RequestId = &v
+func (s *DeleteSetResponseBody) SetSetId(v string) *DeleteSetResponseBody {
+	s.SetId = &v
 	return s
 }
 
-func (s *DeleteSetResponseBody) SetSetId(v string) *DeleteSetResponseBody {
-	s.SetId = &v
+func (s *DeleteSetResponseBody) SetRequestId(v string) *DeleteSetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2500,8 +2360,8 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	ProjectTypes []*string `json:"ProjectTypes,omitempty" xml:"ProjectTypes,omitempty" type:"Repeated"`
 	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ProjectTypes []*string `json:"ProjectTypes,omitempty" xml:"ProjectTypes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -2512,13 +2372,13 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetProjectTypes(v []*string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.ProjectTypes = v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.RegionId = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetProjectTypes(v []*string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.ProjectTypes = v
 	return s
 }
 
@@ -2569,9 +2429,9 @@ func (s *DetectImageBodiesRequest) SetImageUri(v string) *DetectImageBodiesReque
 }
 
 type DetectImageBodiesResponseBody struct {
+	ImageUri  *string                                `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Bodies    []*DetectImageBodiesResponseBodyBodies `json:"Bodies,omitempty" xml:"Bodies,omitempty" type:"Repeated"`
-	ImageUri  *string                                `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 }
 
 func (s DetectImageBodiesResponseBody) String() string {
@@ -2582,6 +2442,11 @@ func (s DetectImageBodiesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DetectImageBodiesResponseBody) SetImageUri(v string) *DetectImageBodiesResponseBody {
+	s.ImageUri = &v
+	return s
+}
+
 func (s *DetectImageBodiesResponseBody) SetRequestId(v string) *DetectImageBodiesResponseBody {
 	s.RequestId = &v
 	return s
@@ -2589,11 +2454,6 @@ func (s *DetectImageBodiesResponseBody) SetRequestId(v string) *DetectImageBodie
 
 func (s *DetectImageBodiesResponseBody) SetBodies(v []*DetectImageBodiesResponseBodyBodies) *DetectImageBodiesResponseBody {
 	s.Bodies = v
-	return s
-}
-
-func (s *DetectImageBodiesResponseBody) SetImageUri(v string) *DetectImageBodiesResponseBody {
-	s.ImageUri = &v
 	return s
 }
 
@@ -2621,10 +2481,10 @@ func (s *DetectImageBodiesResponseBodyBodies) SetBodyBoundary(v *DetectImageBodi
 }
 
 type DetectImageBodiesResponseBodyBodiesBodyBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s DetectImageBodiesResponseBodyBodiesBodyBoundary) String() string {
@@ -2633,6 +2493,11 @@ func (s DetectImageBodiesResponseBodyBodiesBodyBoundary) String() string {
 
 func (s DetectImageBodiesResponseBodyBodiesBodyBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetLeft(v int32) *DetectImageBodiesResponseBodyBodiesBodyBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetTop(v int32) *DetectImageBodiesResponseBodyBodiesBodyBoundary {
@@ -2647,11 +2512,6 @@ func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetWidth(v int32) *Det
 
 func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetHeight(v int32) *DetectImageBodiesResponseBodyBodiesBodyBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetLeft(v int32) *DetectImageBodiesResponseBodyBodiesBodyBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -2681,7 +2541,6 @@ func (s *DetectImageBodiesResponse) SetBody(v *DetectImageBodiesResponseBody) *D
 type DetectImageFacesRequest struct {
 	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	RealUid  *string `json:"RealUid,omitempty" xml:"RealUid,omitempty"`
 }
 
 func (s DetectImageFacesRequest) String() string {
@@ -2702,14 +2561,9 @@ func (s *DetectImageFacesRequest) SetImageUri(v string) *DetectImageFacesRequest
 	return s
 }
 
-func (s *DetectImageFacesRequest) SetRealUid(v string) *DetectImageFacesRequest {
-	s.RealUid = &v
-	return s
-}
-
 type DetectImageFacesResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageUri  *string                              `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Faces     []*DetectImageFacesResponseBodyFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
 }
 
@@ -2721,13 +2575,13 @@ func (s DetectImageFacesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DetectImageFacesResponseBody) SetRequestId(v string) *DetectImageFacesResponseBody {
-	s.RequestId = &v
+func (s *DetectImageFacesResponseBody) SetImageUri(v string) *DetectImageFacesResponseBody {
+	s.ImageUri = &v
 	return s
 }
 
-func (s *DetectImageFacesResponseBody) SetImageUri(v string) *DetectImageFacesResponseBody {
-	s.ImageUri = &v
+func (s *DetectImageFacesResponseBody) SetRequestId(v string) *DetectImageFacesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2737,18 +2591,18 @@ func (s *DetectImageFacesResponseBody) SetFaces(v []*DetectImageFacesResponseBod
 }
 
 type DetectImageFacesResponseBodyFaces struct {
+	EmotionConfidence    *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	Attractive           *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
 	AttractiveConfidence *float32                                         `json:"AttractiveConfidence,omitempty" xml:"AttractiveConfidence,omitempty"`
 	Gender               *string                                          `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	AgeConfidence        *float32                                         `json:"AgeConfidence,omitempty" xml:"AgeConfidence,omitempty"`
 	GenderConfidence     *float32                                         `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
 	FaceId               *string                                          `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	FaceAttributes       *DetectImageFacesResponseBodyFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 	FaceQuality          *float32                                         `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
 	Emotion              *string                                          `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
 	Age                  *int32                                           `json:"Age,omitempty" xml:"Age,omitempty"`
 	FaceConfidence       *float32                                         `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	EmotionConfidence    *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	Attractive           *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	AgeConfidence        *float32                                         `json:"AgeConfidence,omitempty" xml:"AgeConfidence,omitempty"`
+	FaceAttributes       *DetectImageFacesResponseBodyFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 	EmotionDetails       *DetectImageFacesResponseBodyFacesEmotionDetails `json:"EmotionDetails,omitempty" xml:"EmotionDetails,omitempty" type:"Struct"`
 }
 
@@ -2758,6 +2612,16 @@ func (s DetectImageFacesResponseBodyFaces) String() string {
 
 func (s DetectImageFacesResponseBodyFaces) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageFacesResponseBodyFaces) SetEmotionConfidence(v float32) *DetectImageFacesResponseBodyFaces {
+	s.EmotionConfidence = &v
+	return s
+}
+
+func (s *DetectImageFacesResponseBodyFaces) SetAttractive(v float32) *DetectImageFacesResponseBodyFaces {
+	s.Attractive = &v
+	return s
 }
 
 func (s *DetectImageFacesResponseBodyFaces) SetAttractiveConfidence(v float32) *DetectImageFacesResponseBodyFaces {
@@ -2770,6 +2634,11 @@ func (s *DetectImageFacesResponseBodyFaces) SetGender(v string) *DetectImageFace
 	return s
 }
 
+func (s *DetectImageFacesResponseBodyFaces) SetAgeConfidence(v float32) *DetectImageFacesResponseBodyFaces {
+	s.AgeConfidence = &v
+	return s
+}
+
 func (s *DetectImageFacesResponseBodyFaces) SetGenderConfidence(v float32) *DetectImageFacesResponseBodyFaces {
 	s.GenderConfidence = &v
 	return s
@@ -2777,11 +2646,6 @@ func (s *DetectImageFacesResponseBodyFaces) SetGenderConfidence(v float32) *Dete
 
 func (s *DetectImageFacesResponseBodyFaces) SetFaceId(v string) *DetectImageFacesResponseBodyFaces {
 	s.FaceId = &v
-	return s
-}
-
-func (s *DetectImageFacesResponseBodyFaces) SetFaceAttributes(v *DetectImageFacesResponseBodyFacesFaceAttributes) *DetectImageFacesResponseBodyFaces {
-	s.FaceAttributes = v
 	return s
 }
 
@@ -2805,18 +2669,8 @@ func (s *DetectImageFacesResponseBodyFaces) SetFaceConfidence(v float32) *Detect
 	return s
 }
 
-func (s *DetectImageFacesResponseBodyFaces) SetEmotionConfidence(v float32) *DetectImageFacesResponseBodyFaces {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *DetectImageFacesResponseBodyFaces) SetAttractive(v float32) *DetectImageFacesResponseBodyFaces {
-	s.Attractive = &v
-	return s
-}
-
-func (s *DetectImageFacesResponseBodyFaces) SetAgeConfidence(v float32) *DetectImageFacesResponseBodyFaces {
-	s.AgeConfidence = &v
+func (s *DetectImageFacesResponseBodyFaces) SetFaceAttributes(v *DetectImageFacesResponseBodyFacesFaceAttributes) *DetectImageFacesResponseBodyFaces {
+	s.FaceAttributes = v
 	return s
 }
 
@@ -2831,9 +2685,9 @@ type DetectImageFacesResponseBodyFacesFaceAttributes struct {
 	Mask              *string                                                      `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	BeardConfidence   *float32                                                     `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
 	MaskConfidence    *float32                                                     `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
 	FaceBoundary      *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
 	HeadPose          *DetectImageFacesResponseBodyFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
-	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
 }
 
 func (s DetectImageFacesResponseBodyFacesFaceAttributes) String() string {
@@ -2869,6 +2723,11 @@ func (s *DetectImageFacesResponseBodyFacesFaceAttributes) SetMaskConfidence(v fl
 	return s
 }
 
+func (s *DetectImageFacesResponseBodyFacesFaceAttributes) SetBeard(v string) *DetectImageFacesResponseBodyFacesFaceAttributes {
+	s.Beard = &v
+	return s
+}
+
 func (s *DetectImageFacesResponseBodyFacesFaceAttributes) SetFaceBoundary(v *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) *DetectImageFacesResponseBodyFacesFaceAttributes {
 	s.FaceBoundary = v
 	return s
@@ -2879,16 +2738,11 @@ func (s *DetectImageFacesResponseBodyFacesFaceAttributes) SetHeadPose(v *DetectI
 	return s
 }
 
-func (s *DetectImageFacesResponseBodyFacesFaceAttributes) SetBeard(v string) *DetectImageFacesResponseBodyFacesFaceAttributes {
-	s.Beard = &v
-	return s
-}
-
 type DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) String() string {
@@ -2897,6 +2751,11 @@ func (s DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) String() st
 
 func (s DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) SetLeft(v int32) *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) SetTop(v int32) *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary {
@@ -2911,11 +2770,6 @@ func (s *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) SetWidth(v
 
 func (s *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) SetHeight(v int32) *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary) SetLeft(v int32) *DetectImageFacesResponseBodyFacesFaceAttributesFaceBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -3048,9 +2902,9 @@ func (s *DetectImageLogosRequest) SetImageUri(v string) *DetectImageLogosRequest
 }
 
 type DetectImageLogosResponseBody struct {
+	ImageUri  *string                              `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Logos     []*DetectImageLogosResponseBodyLogos `json:"Logos,omitempty" xml:"Logos,omitempty" type:"Repeated"`
-	ImageUri  *string                              `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 }
 
 func (s DetectImageLogosResponseBody) String() string {
@@ -3059,6 +2913,11 @@ func (s DetectImageLogosResponseBody) String() string {
 
 func (s DetectImageLogosResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageLogosResponseBody) SetImageUri(v string) *DetectImageLogosResponseBody {
+	s.ImageUri = &v
+	return s
 }
 
 func (s *DetectImageLogosResponseBody) SetRequestId(v string) *DetectImageLogosResponseBody {
@@ -3071,15 +2930,10 @@ func (s *DetectImageLogosResponseBody) SetLogos(v []*DetectImageLogosResponseBod
 	return s
 }
 
-func (s *DetectImageLogosResponseBody) SetImageUri(v string) *DetectImageLogosResponseBody {
-	s.ImageUri = &v
-	return s
-}
-
 type DetectImageLogosResponseBodyLogos struct {
 	LogoConfidence *float32                                       `json:"LogoConfidence,omitempty" xml:"LogoConfidence,omitempty"`
-	LogoBoundary   *DetectImageLogosResponseBodyLogosLogoBoundary `json:"LogoBoundary,omitempty" xml:"LogoBoundary,omitempty" type:"Struct"`
 	LogoName       *string                                        `json:"LogoName,omitempty" xml:"LogoName,omitempty"`
+	LogoBoundary   *DetectImageLogosResponseBodyLogosLogoBoundary `json:"LogoBoundary,omitempty" xml:"LogoBoundary,omitempty" type:"Struct"`
 }
 
 func (s DetectImageLogosResponseBodyLogos) String() string {
@@ -3095,21 +2949,21 @@ func (s *DetectImageLogosResponseBodyLogos) SetLogoConfidence(v float32) *Detect
 	return s
 }
 
-func (s *DetectImageLogosResponseBodyLogos) SetLogoBoundary(v *DetectImageLogosResponseBodyLogosLogoBoundary) *DetectImageLogosResponseBodyLogos {
-	s.LogoBoundary = v
-	return s
-}
-
 func (s *DetectImageLogosResponseBodyLogos) SetLogoName(v string) *DetectImageLogosResponseBodyLogos {
 	s.LogoName = &v
 	return s
 }
 
+func (s *DetectImageLogosResponseBodyLogos) SetLogoBoundary(v *DetectImageLogosResponseBodyLogosLogoBoundary) *DetectImageLogosResponseBodyLogos {
+	s.LogoBoundary = v
+	return s
+}
+
 type DetectImageLogosResponseBodyLogosLogoBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s DetectImageLogosResponseBodyLogosLogoBoundary) String() string {
@@ -3118,6 +2972,11 @@ func (s DetectImageLogosResponseBodyLogosLogoBoundary) String() string {
 
 func (s DetectImageLogosResponseBodyLogosLogoBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetLeft(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetTop(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
@@ -3132,11 +2991,6 @@ func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetWidth(v int32) *Detec
 
 func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetHeight(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetLeft(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -3187,8 +3041,8 @@ func (s *DetectImageQRCodesRequest) SetImageUri(v string) *DetectImageQRCodesReq
 }
 
 type DetectImageQRCodesResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageUri  *string                                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	QRCodes   []*DetectImageQRCodesResponseBodyQRCodes `json:"QRCodes,omitempty" xml:"QRCodes,omitempty" type:"Repeated"`
 }
 
@@ -3200,13 +3054,13 @@ func (s DetectImageQRCodesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DetectImageQRCodesResponseBody) SetRequestId(v string) *DetectImageQRCodesResponseBody {
-	s.RequestId = &v
+func (s *DetectImageQRCodesResponseBody) SetImageUri(v string) *DetectImageQRCodesResponseBody {
+	s.ImageUri = &v
 	return s
 }
 
-func (s *DetectImageQRCodesResponseBody) SetImageUri(v string) *DetectImageQRCodesResponseBody {
-	s.ImageUri = &v
+func (s *DetectImageQRCodesResponseBody) SetRequestId(v string) *DetectImageQRCodesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3239,10 +3093,10 @@ func (s *DetectImageQRCodesResponseBodyQRCodes) SetQRCodeBoundary(v *DetectImage
 }
 
 type DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) String() string {
@@ -3251,6 +3105,11 @@ func (s DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) String() string {
 
 func (s DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetLeft(v int32) *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetTop(v int32) *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary {
@@ -3265,11 +3124,6 @@ func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetWidth(v int32) 
 
 func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetHeight(v int32) *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetLeft(v int32) *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -3299,7 +3153,6 @@ func (s *DetectImageQRCodesResponse) SetBody(v *DetectImageQRCodesResponseBody) 
 type DetectImageTagsRequest struct {
 	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	RealUid  *string `json:"RealUid,omitempty" xml:"RealUid,omitempty"`
 }
 
 func (s DetectImageTagsRequest) String() string {
@@ -3320,14 +3173,9 @@ func (s *DetectImageTagsRequest) SetImageUri(v string) *DetectImageTagsRequest {
 	return s
 }
 
-func (s *DetectImageTagsRequest) SetRealUid(v string) *DetectImageTagsRequest {
-	s.RealUid = &v
-	return s
-}
-
 type DetectImageTagsResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageUri  *string                            `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*DetectImageTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -3339,13 +3187,13 @@ func (s DetectImageTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DetectImageTagsResponseBody) SetRequestId(v string) *DetectImageTagsResponseBody {
-	s.RequestId = &v
+func (s *DetectImageTagsResponseBody) SetImageUri(v string) *DetectImageTagsResponseBody {
+	s.ImageUri = &v
 	return s
 }
 
-func (s *DetectImageTagsResponseBody) SetImageUri(v string) *DetectImageTagsResponseBody {
-	s.ImageUri = &v
+func (s *DetectImageTagsResponseBody) SetRequestId(v string) *DetectImageTagsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3448,8 +3296,8 @@ func (s *DetectQRCodesRequest) SetSrcUris(v string) *DetectQRCodesRequest {
 }
 
 type DetectQRCodesResponseBody struct {
-	SuccessDetails []*DetectQRCodesResponseBodySuccessDetails `json:"SuccessDetails,omitempty" xml:"SuccessDetails,omitempty" type:"Repeated"`
 	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessDetails []*DetectQRCodesResponseBodySuccessDetails `json:"SuccessDetails,omitempty" xml:"SuccessDetails,omitempty" type:"Repeated"`
 	FailDetails    []*DetectQRCodesResponseBodyFailDetails    `json:"FailDetails,omitempty" xml:"FailDetails,omitempty" type:"Repeated"`
 }
 
@@ -3461,13 +3309,13 @@ func (s DetectQRCodesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DetectQRCodesResponseBody) SetSuccessDetails(v []*DetectQRCodesResponseBodySuccessDetails) *DetectQRCodesResponseBody {
-	s.SuccessDetails = v
+func (s *DetectQRCodesResponseBody) SetRequestId(v string) *DetectQRCodesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DetectQRCodesResponseBody) SetRequestId(v string) *DetectQRCodesResponseBody {
-	s.RequestId = &v
+func (s *DetectQRCodesResponseBody) SetSuccessDetails(v []*DetectQRCodesResponseBodySuccessDetails) *DetectQRCodesResponseBody {
+	s.SuccessDetails = v
 	return s
 }
 
@@ -3500,8 +3348,8 @@ func (s *DetectQRCodesResponseBodySuccessDetails) SetQRCodes(v []*DetectQRCodesR
 }
 
 type DetectQRCodesResponseBodySuccessDetailsQRCodes struct {
-	QRCodesRectangle *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle `json:"QRCodesRectangle,omitempty" xml:"QRCodesRectangle,omitempty" type:"Struct"`
 	Content          *string                                                         `json:"Content,omitempty" xml:"Content,omitempty"`
+	QRCodesRectangle *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle `json:"QRCodesRectangle,omitempty" xml:"QRCodesRectangle,omitempty" type:"Struct"`
 }
 
 func (s DetectQRCodesResponseBodySuccessDetailsQRCodes) String() string {
@@ -3512,21 +3360,21 @@ func (s DetectQRCodesResponseBodySuccessDetailsQRCodes) GoString() string {
 	return s.String()
 }
 
-func (s *DetectQRCodesResponseBodySuccessDetailsQRCodes) SetQRCodesRectangle(v *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) *DetectQRCodesResponseBodySuccessDetailsQRCodes {
-	s.QRCodesRectangle = v
-	return s
-}
-
 func (s *DetectQRCodesResponseBodySuccessDetailsQRCodes) SetContent(v string) *DetectQRCodesResponseBodySuccessDetailsQRCodes {
 	s.Content = &v
 	return s
 }
 
+func (s *DetectQRCodesResponseBodySuccessDetailsQRCodes) SetQRCodesRectangle(v *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) *DetectQRCodesResponseBodySuccessDetailsQRCodes {
+	s.QRCodesRectangle = v
+	return s
+}
+
 type DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle struct {
+	Left   *string `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *string `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *string `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *string `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) String() string {
@@ -3535,6 +3383,11 @@ func (s DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) String()
 
 func (s DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) GoString() string {
 	return s.String()
+}
+
+func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetLeft(v string) *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle {
+	s.Left = &v
+	return s
 }
 
 func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetTop(v string) *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle {
@@ -3549,11 +3402,6 @@ func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetWidt
 
 func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetHeight(v string) *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle {
 	s.Height = &v
-	return s
-}
-
-func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetLeft(v string) *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle {
-	s.Left = &v
 	return s
 }
 
@@ -3618,7 +3466,6 @@ type EncodeBlindWatermarkRequest struct {
 	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	TargetImageType *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
 	Model           *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	WatermarkType   *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s EncodeBlindWatermarkRequest) String() string {
@@ -3669,15 +3516,10 @@ func (s *EncodeBlindWatermarkRequest) SetModel(v string) *EncodeBlindWatermarkRe
 	return s
 }
 
-func (s *EncodeBlindWatermarkRequest) SetWatermarkType(v string) *EncodeBlindWatermarkRequest {
-	s.WatermarkType = &v
-	return s
-}
-
 type EncodeBlindWatermarkResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	TargetUri *string `json:"TargetUri,omitempty" xml:"TargetUri,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
 func (s EncodeBlindWatermarkResponseBody) String() string {
@@ -3693,13 +3535,13 @@ func (s *EncodeBlindWatermarkResponseBody) SetRequestId(v string) *EncodeBlindWa
 	return s
 }
 
-func (s *EncodeBlindWatermarkResponseBody) SetContent(v string) *EncodeBlindWatermarkResponseBody {
-	s.Content = &v
+func (s *EncodeBlindWatermarkResponseBody) SetTargetUri(v string) *EncodeBlindWatermarkResponseBody {
+	s.TargetUri = &v
 	return s
 }
 
-func (s *EncodeBlindWatermarkResponseBody) SetTargetUri(v string) *EncodeBlindWatermarkResponseBody {
-	s.TargetUri = &v
+func (s *EncodeBlindWatermarkResponseBody) SetContent(v string) *EncodeBlindWatermarkResponseBody {
+	s.Content = &v
 	return s
 }
 
@@ -3913,9 +3755,9 @@ func (s *FindImagesRequest) SetRemarksArrayBIn(v string) *FindImagesRequest {
 
 type FindImagesResponseBody struct {
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Images     []*FindImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	NextMarker *string                         `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	SetId      *string                         `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	Images     []*FindImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 }
 
 func (s FindImagesResponseBody) String() string {
@@ -3931,11 +3773,6 @@ func (s *FindImagesResponseBody) SetRequestId(v string) *FindImagesResponseBody 
 	return s
 }
 
-func (s *FindImagesResponseBody) SetImages(v []*FindImagesResponseBodyImages) *FindImagesResponseBody {
-	s.Images = v
-	return s
-}
-
 func (s *FindImagesResponseBody) SetNextMarker(v string) *FindImagesResponseBody {
 	s.NextMarker = &v
 	return s
@@ -3943,6 +3780,11 @@ func (s *FindImagesResponseBody) SetNextMarker(v string) *FindImagesResponseBody
 
 func (s *FindImagesResponseBody) SetSetId(v string) *FindImagesResponseBody {
 	s.SetId = &v
+	return s
+}
+
+func (s *FindImagesResponseBody) SetImages(v []*FindImagesResponseBodyImages) *FindImagesResponseBody {
+	s.Images = v
 	return s
 }
 
@@ -3954,32 +3796,26 @@ type FindImagesResponseBodyImages struct {
 	CreateTime                   *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SourceType                   *string                                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	FacesFailReason              *string                                           `json:"FacesFailReason,omitempty" xml:"FacesFailReason,omitempty"`
-	Tags                         []*FindImagesResponseBodyImagesTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	FacesModifyTime              *string                                           `json:"FacesModifyTime,omitempty" xml:"FacesModifyTime,omitempty"`
 	ImageTime                    *string                                           `json:"ImageTime,omitempty" xml:"ImageTime,omitempty"`
 	OCRModifyTime                *string                                           `json:"OCRModifyTime,omitempty" xml:"OCRModifyTime,omitempty"`
 	AddressModifyTime            *string                                           `json:"AddressModifyTime,omitempty" xml:"AddressModifyTime,omitempty"`
-	OCR                          []*FindImagesResponseBodyImagesOCR                `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
 	ImageQualityFailReason       *string                                           `json:"ImageQualityFailReason,omitempty" xml:"ImageQualityFailReason,omitempty"`
 	FacesStatus                  *string                                           `json:"FacesStatus,omitempty" xml:"FacesStatus,omitempty"`
-	ImageHeight                  *int32                                            `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	RemarksArrayA                *string                                           `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
-	Address                      *FindImagesResponseBodyImagesAddress              `json:"Address,omitempty" xml:"Address,omitempty" type:"Struct"`
+	ImageHeight                  *int32                                            `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	ExternalId                   *string                                           `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	SourceUri                    *string                                           `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	ModifyTime                   *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	FileSize                     *int32                                            `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	ModifyTime                   *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	SourcePosition               *string                                           `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	Faces                        []*FindImagesResponseBodyImagesFaces              `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
 	ImageQualityStatus           *string                                           `json:"ImageQualityStatus,omitempty" xml:"ImageQualityStatus,omitempty"`
 	OCRFailReason                *string                                           `json:"OCRFailReason,omitempty" xml:"OCRFailReason,omitempty"`
 	AddressFailReason            *string                                           `json:"AddressFailReason,omitempty" xml:"AddressFailReason,omitempty"`
-	ImageQuality                 *FindImagesResponseBodyImagesImageQuality         `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
 	CroppingSuggestionModifyTime *string                                           `json:"CroppingSuggestionModifyTime,omitempty" xml:"CroppingSuggestionModifyTime,omitempty"`
 	ImageFormat                  *string                                           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	ImageWidth                   *int32                                            `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
 	RemarksArrayB                *string                                           `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
-	CroppingSuggestion           []*FindImagesResponseBodyImagesCroppingSuggestion `json:"CroppingSuggestion,omitempty" xml:"CroppingSuggestion,omitempty" type:"Repeated"`
 	Orientation                  *string                                           `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
 	RemarksD                     *string                                           `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
 	TagsStatus                   *string                                           `json:"TagsStatus,omitempty" xml:"TagsStatus,omitempty"`
@@ -3992,6 +3828,12 @@ type FindImagesResponseBodyImages struct {
 	Exif                         *string                                           `json:"Exif,omitempty" xml:"Exif,omitempty"`
 	Location                     *string                                           `json:"Location,omitempty" xml:"Location,omitempty"`
 	RemarksB                     *string                                           `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	CroppingSuggestion           []*FindImagesResponseBodyImagesCroppingSuggestion `json:"CroppingSuggestion,omitempty" xml:"CroppingSuggestion,omitempty" type:"Repeated"`
+	Faces                        []*FindImagesResponseBodyImagesFaces              `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	Tags                         []*FindImagesResponseBodyImagesTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OCR                          []*FindImagesResponseBodyImagesOCR                `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
+	ImageQuality                 *FindImagesResponseBodyImagesImageQuality         `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
+	Address                      *FindImagesResponseBodyImagesAddress              `json:"Address,omitempty" xml:"Address,omitempty" type:"Struct"`
 }
 
 func (s FindImagesResponseBodyImages) String() string {
@@ -4037,11 +3879,6 @@ func (s *FindImagesResponseBodyImages) SetFacesFailReason(v string) *FindImagesR
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetTags(v []*FindImagesResponseBodyImagesTags) *FindImagesResponseBodyImages {
-	s.Tags = v
-	return s
-}
-
 func (s *FindImagesResponseBodyImages) SetFacesModifyTime(v string) *FindImagesResponseBodyImages {
 	s.FacesModifyTime = &v
 	return s
@@ -4062,11 +3899,6 @@ func (s *FindImagesResponseBodyImages) SetAddressModifyTime(v string) *FindImage
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetOCR(v []*FindImagesResponseBodyImagesOCR) *FindImagesResponseBodyImages {
-	s.OCR = v
-	return s
-}
-
 func (s *FindImagesResponseBodyImages) SetImageQualityFailReason(v string) *FindImagesResponseBodyImages {
 	s.ImageQualityFailReason = &v
 	return s
@@ -4077,18 +3909,13 @@ func (s *FindImagesResponseBodyImages) SetFacesStatus(v string) *FindImagesRespo
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetImageHeight(v int32) *FindImagesResponseBodyImages {
-	s.ImageHeight = &v
-	return s
-}
-
 func (s *FindImagesResponseBodyImages) SetRemarksArrayA(v string) *FindImagesResponseBodyImages {
 	s.RemarksArrayA = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetAddress(v *FindImagesResponseBodyImagesAddress) *FindImagesResponseBodyImages {
-	s.Address = v
+func (s *FindImagesResponseBodyImages) SetImageHeight(v int32) *FindImagesResponseBodyImages {
+	s.ImageHeight = &v
 	return s
 }
 
@@ -4102,23 +3929,18 @@ func (s *FindImagesResponseBodyImages) SetSourceUri(v string) *FindImagesRespons
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetModifyTime(v string) *FindImagesResponseBodyImages {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *FindImagesResponseBodyImages) SetFileSize(v int32) *FindImagesResponseBodyImages {
 	s.FileSize = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetSourcePosition(v string) *FindImagesResponseBodyImages {
-	s.SourcePosition = &v
+func (s *FindImagesResponseBodyImages) SetModifyTime(v string) *FindImagesResponseBodyImages {
+	s.ModifyTime = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImages) SetFaces(v []*FindImagesResponseBodyImagesFaces) *FindImagesResponseBodyImages {
-	s.Faces = v
+func (s *FindImagesResponseBodyImages) SetSourcePosition(v string) *FindImagesResponseBodyImages {
+	s.SourcePosition = &v
 	return s
 }
 
@@ -4134,11 +3956,6 @@ func (s *FindImagesResponseBodyImages) SetOCRFailReason(v string) *FindImagesRes
 
 func (s *FindImagesResponseBodyImages) SetAddressFailReason(v string) *FindImagesResponseBodyImages {
 	s.AddressFailReason = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImages) SetImageQuality(v *FindImagesResponseBodyImagesImageQuality) *FindImagesResponseBodyImages {
-	s.ImageQuality = v
 	return s
 }
 
@@ -4159,11 +3976,6 @@ func (s *FindImagesResponseBodyImages) SetImageWidth(v int32) *FindImagesRespons
 
 func (s *FindImagesResponseBodyImages) SetRemarksArrayB(v string) *FindImagesResponseBodyImages {
 	s.RemarksArrayB = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImages) SetCroppingSuggestion(v []*FindImagesResponseBodyImagesCroppingSuggestion) *FindImagesResponseBodyImages {
-	s.CroppingSuggestion = v
 	return s
 }
 
@@ -4227,165 +4039,113 @@ func (s *FindImagesResponseBodyImages) SetRemarksB(v string) *FindImagesResponse
 	return s
 }
 
-type FindImagesResponseBodyImagesTags struct {
-	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
-	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
-	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+func (s *FindImagesResponseBodyImages) SetCroppingSuggestion(v []*FindImagesResponseBodyImagesCroppingSuggestion) *FindImagesResponseBodyImages {
+	s.CroppingSuggestion = v
+	return s
 }
 
-func (s FindImagesResponseBodyImagesTags) String() string {
+func (s *FindImagesResponseBodyImages) SetFaces(v []*FindImagesResponseBodyImagesFaces) *FindImagesResponseBodyImages {
+	s.Faces = v
+	return s
+}
+
+func (s *FindImagesResponseBodyImages) SetTags(v []*FindImagesResponseBodyImagesTags) *FindImagesResponseBodyImages {
+	s.Tags = v
+	return s
+}
+
+func (s *FindImagesResponseBodyImages) SetOCR(v []*FindImagesResponseBodyImagesOCR) *FindImagesResponseBodyImages {
+	s.OCR = v
+	return s
+}
+
+func (s *FindImagesResponseBodyImages) SetImageQuality(v *FindImagesResponseBodyImagesImageQuality) *FindImagesResponseBodyImages {
+	s.ImageQuality = v
+	return s
+}
+
+func (s *FindImagesResponseBodyImages) SetAddress(v *FindImagesResponseBodyImagesAddress) *FindImagesResponseBodyImages {
+	s.Address = v
+	return s
+}
+
+type FindImagesResponseBodyImagesCroppingSuggestion struct {
+	Score            *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	AspectRatio      *string                                                         `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	CroppingBoundary *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
+}
+
+func (s FindImagesResponseBodyImagesCroppingSuggestion) String() string {
 	return tea.Prettify(s)
 }
 
-func (s FindImagesResponseBodyImagesTags) GoString() string {
+func (s FindImagesResponseBodyImagesCroppingSuggestion) GoString() string {
 	return s.String()
 }
 
-func (s *FindImagesResponseBodyImagesTags) SetTagConfidence(v float32) *FindImagesResponseBodyImagesTags {
-	s.TagConfidence = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetScore(v float32) *FindImagesResponseBodyImagesCroppingSuggestion {
+	s.Score = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesTags) SetTagName(v string) *FindImagesResponseBodyImagesTags {
-	s.TagName = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetAspectRatio(v string) *FindImagesResponseBodyImagesCroppingSuggestion {
+	s.AspectRatio = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesTags) SetTagLevel(v int32) *FindImagesResponseBodyImagesTags {
-	s.TagLevel = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetCroppingBoundary(v *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) *FindImagesResponseBodyImagesCroppingSuggestion {
+	s.CroppingBoundary = v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesTags) SetParentTagName(v string) *FindImagesResponseBodyImagesTags {
-	s.ParentTagName = &v
-	return s
-}
-
-type FindImagesResponseBodyImagesOCR struct {
-	OCRConfidence *float32                                    `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
-	OCRContents   *string                                     `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
-	OCRBoundary   *FindImagesResponseBodyImagesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
-}
-
-func (s FindImagesResponseBodyImagesOCR) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesOCR) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesOCR) SetOCRConfidence(v float32) *FindImagesResponseBodyImagesOCR {
-	s.OCRConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesOCR) SetOCRContents(v string) *FindImagesResponseBodyImagesOCR {
-	s.OCRContents = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesOCR) SetOCRBoundary(v *FindImagesResponseBodyImagesOCROCRBoundary) *FindImagesResponseBodyImagesOCR {
-	s.OCRBoundary = v
-	return s
-}
-
-type FindImagesResponseBodyImagesOCROCRBoundary struct {
+type FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
-func (s FindImagesResponseBodyImagesOCROCRBoundary) String() string {
+func (s FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) String() string {
 	return tea.Prettify(s)
 }
 
-func (s FindImagesResponseBodyImagesOCROCRBoundary) GoString() string {
+func (s FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) GoString() string {
 	return s.String()
 }
 
-func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetTop(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
+func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
 	s.Left = &v
 	return s
 }
 
-type FindImagesResponseBodyImagesAddress struct {
-	Township    *string `json:"Township,omitempty" xml:"Township,omitempty"`
-	District    *string `json:"District,omitempty" xml:"District,omitempty"`
-	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
-	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	City        *string `json:"City,omitempty" xml:"City,omitempty"`
-	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
-}
-
-func (s FindImagesResponseBodyImagesAddress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesAddress) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesAddress) SetTownship(v string) *FindImagesResponseBodyImagesAddress {
-	s.Township = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetTop(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Top = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesAddress) SetDistrict(v string) *FindImagesResponseBodyImagesAddress {
-	s.District = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Width = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesAddress) SetAddressLine(v string) *FindImagesResponseBodyImagesAddress {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesAddress) SetCountry(v string) *FindImagesResponseBodyImagesAddress {
-	s.Country = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesAddress) SetCity(v string) *FindImagesResponseBodyImagesAddress {
-	s.City = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesAddress) SetProvince(v string) *FindImagesResponseBodyImagesAddress {
-	s.Province = &v
+func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Height = &v
 	return s
 }
 
 type FindImagesResponseBodyImagesFaces struct {
+	EmotionConfidence *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	Attractive        *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
+	GroupId           *string                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Gender            *string                                          `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	FaceId            *string                                          `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	GenderConfidence  *float32                                         `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	FaceAttributes    *FindImagesResponseBodyImagesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 	FaceQuality       *float32                                         `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
 	Emotion           *string                                          `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
 	Age               *int32                                           `json:"Age,omitempty" xml:"Age,omitempty"`
 	FaceConfidence    *float32                                         `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	EmotionConfidence *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	Attractive        *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	GroupId           *string                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	EmotionDetails    *FindImagesResponseBodyImagesFacesEmotionDetails `json:"EmotionDetails,omitempty" xml:"EmotionDetails,omitempty" type:"Struct"`
+	FaceAttributes    *FindImagesResponseBodyImagesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 }
 
 func (s FindImagesResponseBodyImagesFaces) String() string {
@@ -4394,6 +4154,21 @@ func (s FindImagesResponseBodyImagesFaces) String() string {
 
 func (s FindImagesResponseBodyImagesFaces) GoString() string {
 	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesFaces) SetEmotionConfidence(v float32) *FindImagesResponseBodyImagesFaces {
+	s.EmotionConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFaces) SetAttractive(v float32) *FindImagesResponseBodyImagesFaces {
+	s.Attractive = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFaces) SetGroupId(v string) *FindImagesResponseBodyImagesFaces {
+	s.GroupId = &v
+	return s
 }
 
 func (s *FindImagesResponseBodyImagesFaces) SetGender(v string) *FindImagesResponseBodyImagesFaces {
@@ -4408,11 +4183,6 @@ func (s *FindImagesResponseBodyImagesFaces) SetFaceId(v string) *FindImagesRespo
 
 func (s *FindImagesResponseBodyImagesFaces) SetGenderConfidence(v float32) *FindImagesResponseBodyImagesFaces {
 	s.GenderConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFaces) SetFaceAttributes(v *FindImagesResponseBodyImagesFacesFaceAttributes) *FindImagesResponseBodyImagesFaces {
-	s.FaceAttributes = v
 	return s
 }
 
@@ -4436,146 +4206,13 @@ func (s *FindImagesResponseBodyImagesFaces) SetFaceConfidence(v float32) *FindIm
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesFaces) SetEmotionConfidence(v float32) *FindImagesResponseBodyImagesFaces {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFaces) SetAttractive(v float32) *FindImagesResponseBodyImagesFaces {
-	s.Attractive = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFaces) SetGroupId(v string) *FindImagesResponseBodyImagesFaces {
-	s.GroupId = &v
-	return s
-}
-
 func (s *FindImagesResponseBodyImagesFaces) SetEmotionDetails(v *FindImagesResponseBodyImagesFacesEmotionDetails) *FindImagesResponseBodyImagesFaces {
 	s.EmotionDetails = v
 	return s
 }
 
-type FindImagesResponseBodyImagesFacesFaceAttributes struct {
-	GlassesConfidence *float32                                                     `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	Glasses           *string                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Mask              *string                                                      `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	BeardConfidence   *float32                                                     `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	MaskConfidence    *float32                                                     `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	FaceBoundary      *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
-	HeadPose          *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
-	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetGlassesConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.GlassesConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetGlasses(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.Glasses = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetMask(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.Mask = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetBeardConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.BeardConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetMaskConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.MaskConfidence = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetFaceBoundary(v *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.FaceBoundary = v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetHeadPose(v *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.HeadPose = v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetBeard(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
-	s.Beard = &v
-	return s
-}
-
-type FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetTop(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Left = &v
-	return s
-}
-
-type FindImagesResponseBodyImagesFacesFaceAttributesHeadPose struct {
-	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetPitch(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Pitch = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetRoll(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Roll = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetYaw(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Yaw = &v
+func (s *FindImagesResponseBodyImagesFaces) SetFaceAttributes(v *FindImagesResponseBodyImagesFacesFaceAttributes) *FindImagesResponseBodyImagesFaces {
+	s.FaceAttributes = v
 	return s
 }
 
@@ -4629,6 +4266,228 @@ func (s *FindImagesResponseBodyImagesFacesEmotionDetails) SetSAD(v float32) *Fin
 
 func (s *FindImagesResponseBodyImagesFacesEmotionDetails) SetSCARED(v float32) *FindImagesResponseBodyImagesFacesEmotionDetails {
 	s.SCARED = &v
+	return s
+}
+
+type FindImagesResponseBodyImagesFacesFaceAttributes struct {
+	GlassesConfidence *float32                                                     `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
+	Glasses           *string                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Mask              *string                                                      `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	BeardConfidence   *float32                                                     `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
+	MaskConfidence    *float32                                                     `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
+	FaceBoundary      *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
+	HeadPose          *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetGlassesConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.GlassesConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetGlasses(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.Glasses = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetMask(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.Mask = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetBeardConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.BeardConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetMaskConfidence(v float32) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.MaskConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetBeard(v string) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.Beard = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetFaceBoundary(v *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.FaceBoundary = v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributes) SetHeadPose(v *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) *FindImagesResponseBodyImagesFacesFaceAttributes {
+	s.HeadPose = v
+	return s
+}
+
+type FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetTop(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Height = &v
+	return s
+}
+
+type FindImagesResponseBodyImagesFacesFaceAttributesHeadPose struct {
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetPitch(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Pitch = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetRoll(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Roll = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetYaw(v float32) *FindImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Yaw = &v
+	return s
+}
+
+type FindImagesResponseBodyImagesTags struct {
+	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
+	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
+	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s FindImagesResponseBodyImagesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesTags) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesTags) SetTagLevel(v int32) *FindImagesResponseBodyImagesTags {
+	s.TagLevel = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesTags) SetParentTagName(v string) *FindImagesResponseBodyImagesTags {
+	s.ParentTagName = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesTags) SetTagConfidence(v float32) *FindImagesResponseBodyImagesTags {
+	s.TagConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesTags) SetTagName(v string) *FindImagesResponseBodyImagesTags {
+	s.TagName = &v
+	return s
+}
+
+type FindImagesResponseBodyImagesOCR struct {
+	OCRConfidence *float32                                    `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
+	OCRContents   *string                                     `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
+	OCRBoundary   *FindImagesResponseBodyImagesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
+}
+
+func (s FindImagesResponseBodyImagesOCR) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesOCR) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesOCR) SetOCRConfidence(v float32) *FindImagesResponseBodyImagesOCR {
+	s.OCRConfidence = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesOCR) SetOCRContents(v string) *FindImagesResponseBodyImagesOCR {
+	s.OCRContents = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesOCR) SetOCRBoundary(v *FindImagesResponseBodyImagesOCROCRBoundary) *FindImagesResponseBodyImagesOCR {
+	s.OCRBoundary = v
+	return s
+}
+
+type FindImagesResponseBodyImagesOCROCRBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s FindImagesResponseBodyImagesOCROCRBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindImagesResponseBodyImagesOCROCRBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetTop(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesOCROCRBoundary {
+	s.Height = &v
 	return s
 }
 
@@ -4703,67 +4562,50 @@ func (s *FindImagesResponseBodyImagesImageQuality) SetCompositionScore(v float32
 	return s
 }
 
-type FindImagesResponseBodyImagesCroppingSuggestion struct {
-	Score            *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
-	CroppingBoundary *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
-	AspectRatio      *string                                                         `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+type FindImagesResponseBodyImagesAddress struct {
+	Township    *string `json:"Township,omitempty" xml:"Township,omitempty"`
+	District    *string `json:"District,omitempty" xml:"District,omitempty"`
+	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
+	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	City        *string `json:"City,omitempty" xml:"City,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
-func (s FindImagesResponseBodyImagesCroppingSuggestion) String() string {
+func (s FindImagesResponseBodyImagesAddress) String() string {
 	return tea.Prettify(s)
 }
 
-func (s FindImagesResponseBodyImagesCroppingSuggestion) GoString() string {
+func (s FindImagesResponseBodyImagesAddress) GoString() string {
 	return s.String()
 }
 
-func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetScore(v float32) *FindImagesResponseBodyImagesCroppingSuggestion {
-	s.Score = &v
+func (s *FindImagesResponseBodyImagesAddress) SetTownship(v string) *FindImagesResponseBodyImagesAddress {
+	s.Township = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetCroppingBoundary(v *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) *FindImagesResponseBodyImagesCroppingSuggestion {
-	s.CroppingBoundary = v
+func (s *FindImagesResponseBodyImagesAddress) SetDistrict(v string) *FindImagesResponseBodyImagesAddress {
+	s.District = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesCroppingSuggestion) SetAspectRatio(v string) *FindImagesResponseBodyImagesCroppingSuggestion {
-	s.AspectRatio = &v
+func (s *FindImagesResponseBodyImagesAddress) SetAddressLine(v string) *FindImagesResponseBodyImagesAddress {
+	s.AddressLine = &v
 	return s
 }
 
-type FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetTop(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Top = &v
+func (s *FindImagesResponseBodyImagesAddress) SetCountry(v string) *FindImagesResponseBodyImagesAddress {
+	s.Country = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetWidth(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Width = &v
+func (s *FindImagesResponseBodyImagesAddress) SetCity(v string) *FindImagesResponseBodyImagesAddress {
+	s.City = &v
 	return s
 }
 
-func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetHeight(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetLeft(v int32) *FindImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Left = &v
+func (s *FindImagesResponseBodyImagesAddress) SetProvince(v string) *FindImagesResponseBodyImagesAddress {
+	s.Province = &v
 	return s
 }
 
@@ -4867,12 +4709,12 @@ func (s *FindSimilarFacesResponseBody) SetFaces(v []*FindSimilarFacesResponseBod
 }
 
 type FindSimilarFacesResponseBodyFaces struct {
+	ExternalId     *string                                          `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	Similarity     *float32                                         `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 	FaceId         *string                                          `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	ImageUri       *string                                          `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	ExternalId     *string                                          `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	FaceAttributes *FindSimilarFacesResponseBodyFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
-	Similarity     *float32                                         `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 	SimilarFaces   []*FindSimilarFacesResponseBodyFacesSimilarFaces `json:"SimilarFaces,omitempty" xml:"SimilarFaces,omitempty" type:"Repeated"`
+	FaceAttributes *FindSimilarFacesResponseBodyFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 }
 
 func (s FindSimilarFacesResponseBodyFaces) String() string {
@@ -4881,6 +4723,16 @@ func (s FindSimilarFacesResponseBodyFaces) String() string {
 
 func (s FindSimilarFacesResponseBodyFaces) GoString() string {
 	return s.String()
+}
+
+func (s *FindSimilarFacesResponseBodyFaces) SetExternalId(v string) *FindSimilarFacesResponseBodyFaces {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *FindSimilarFacesResponseBodyFaces) SetSimilarity(v float32) *FindSimilarFacesResponseBodyFaces {
+	s.Similarity = &v
+	return s
 }
 
 func (s *FindSimilarFacesResponseBodyFaces) SetFaceId(v string) *FindSimilarFacesResponseBodyFaces {
@@ -4893,8 +4745,8 @@ func (s *FindSimilarFacesResponseBodyFaces) SetImageUri(v string) *FindSimilarFa
 	return s
 }
 
-func (s *FindSimilarFacesResponseBodyFaces) SetExternalId(v string) *FindSimilarFacesResponseBodyFaces {
-	s.ExternalId = &v
+func (s *FindSimilarFacesResponseBodyFaces) SetSimilarFaces(v []*FindSimilarFacesResponseBodyFacesSimilarFaces) *FindSimilarFacesResponseBodyFaces {
+	s.SimilarFaces = v
 	return s
 }
 
@@ -4903,74 +4755,12 @@ func (s *FindSimilarFacesResponseBodyFaces) SetFaceAttributes(v *FindSimilarFace
 	return s
 }
 
-func (s *FindSimilarFacesResponseBodyFaces) SetSimilarity(v float32) *FindSimilarFacesResponseBodyFaces {
-	s.Similarity = &v
-	return s
-}
-
-func (s *FindSimilarFacesResponseBodyFaces) SetSimilarFaces(v []*FindSimilarFacesResponseBodyFacesSimilarFaces) *FindSimilarFacesResponseBodyFaces {
-	s.SimilarFaces = v
-	return s
-}
-
-type FindSimilarFacesResponseBodyFacesFaceAttributes struct {
-	FaceBoundary *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
-}
-
-func (s FindSimilarFacesResponseBodyFacesFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindSimilarFacesResponseBodyFacesFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *FindSimilarFacesResponseBodyFacesFaceAttributes) SetFaceBoundary(v *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) *FindSimilarFacesResponseBodyFacesFaceAttributes {
-	s.FaceBoundary = v
-	return s
-}
-
-type FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetTop(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetWidth(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetHeight(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
-	s.Left = &v
-	return s
-}
-
 type FindSimilarFacesResponseBodyFacesSimilarFaces struct {
+	ExternalId     *string                                                      `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	Similarity     *float32                                                     `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 	FaceId         *string                                                      `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	ImageUri       *string                                                      `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	ExternalId     *string                                                      `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	FaceAttributes *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
-	Similarity     *float32                                                     `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s FindSimilarFacesResponseBodyFacesSimilarFaces) String() string {
@@ -4979,6 +4769,16 @@ func (s FindSimilarFacesResponseBodyFacesSimilarFaces) String() string {
 
 func (s FindSimilarFacesResponseBodyFacesSimilarFaces) GoString() string {
 	return s.String()
+}
+
+func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetExternalId(v string) *FindSimilarFacesResponseBodyFacesSimilarFaces {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetSimilarity(v float32) *FindSimilarFacesResponseBodyFacesSimilarFaces {
+	s.Similarity = &v
+	return s
 }
 
 func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetFaceId(v string) *FindSimilarFacesResponseBodyFacesSimilarFaces {
@@ -4991,18 +4791,8 @@ func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetImageUri(v string) *F
 	return s
 }
 
-func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetExternalId(v string) *FindSimilarFacesResponseBodyFacesSimilarFaces {
-	s.ExternalId = &v
-	return s
-}
-
 func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetFaceAttributes(v *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributes) *FindSimilarFacesResponseBodyFacesSimilarFaces {
 	s.FaceAttributes = v
-	return s
-}
-
-func (s *FindSimilarFacesResponseBodyFacesSimilarFaces) SetSimilarity(v float32) *FindSimilarFacesResponseBodyFacesSimilarFaces {
-	s.Similarity = &v
 	return s
 }
 
@@ -5024,10 +4814,10 @@ func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributes) SetFaceBou
 }
 
 type FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary) String() string {
@@ -5036,6 +4826,11 @@ func (s FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary)
 
 func (s FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary) SetTop(v int32) *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary {
@@ -5053,8 +4848,55 @@ func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary
 	return s
 }
 
-func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary {
+type FindSimilarFacesResponseBodyFacesFaceAttributes struct {
+	FaceBoundary *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
+}
+
+func (s FindSimilarFacesResponseBodyFacesFaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindSimilarFacesResponseBodyFacesFaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *FindSimilarFacesResponseBodyFacesFaceAttributes) SetFaceBoundary(v *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) *FindSimilarFacesResponseBodyFacesFaceAttributes {
+	s.FaceBoundary = v
+	return s
+}
+
+type FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetLeft(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
 	s.Left = &v
+	return s
+}
+
+func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetTop(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetWidth(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary) SetHeight(v int32) *FindSimilarFacesResponseBodyFacesFaceAttributesFaceBoundary {
+	s.Height = &v
 	return s
 }
 
@@ -6164,8 +6006,8 @@ func (s *GetImageCroppingSuggestionsRequest) SetAspectRatios(v string) *GetImage
 }
 
 type GetImageCroppingSuggestionsResponseBody struct {
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageUri            *string                                                       `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CroppingSuggestions []*GetImageCroppingSuggestionsResponseBodyCroppingSuggestions `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
 }
 
@@ -6177,13 +6019,13 @@ func (s GetImageCroppingSuggestionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetImageCroppingSuggestionsResponseBody) SetRequestId(v string) *GetImageCroppingSuggestionsResponseBody {
-	s.RequestId = &v
+func (s *GetImageCroppingSuggestionsResponseBody) SetImageUri(v string) *GetImageCroppingSuggestionsResponseBody {
+	s.ImageUri = &v
 	return s
 }
 
-func (s *GetImageCroppingSuggestionsResponseBody) SetImageUri(v string) *GetImageCroppingSuggestionsResponseBody {
-	s.ImageUri = &v
+func (s *GetImageCroppingSuggestionsResponseBody) SetRequestId(v string) *GetImageCroppingSuggestionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6194,8 +6036,8 @@ func (s *GetImageCroppingSuggestionsResponseBody) SetCroppingSuggestions(v []*Ge
 
 type GetImageCroppingSuggestionsResponseBodyCroppingSuggestions struct {
 	Score            *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
-	CroppingBoundary *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
 	AspectRatio      *string                                                                     `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	CroppingBoundary *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
 }
 
 func (s GetImageCroppingSuggestionsResponseBodyCroppingSuggestions) String() string {
@@ -6211,21 +6053,21 @@ func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions) SetScore(v 
 	return s
 }
 
-func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions) SetCroppingBoundary(v *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions {
-	s.CroppingBoundary = v
-	return s
-}
-
 func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions) SetAspectRatio(v string) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions {
 	s.AspectRatio = &v
 	return s
 }
 
+func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions) SetCroppingBoundary(v *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestions {
+	s.CroppingBoundary = v
+	return s
+}
+
 type GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
 func (s GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) String() string {
@@ -6234,6 +6076,11 @@ func (s GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBounda
 
 func (s GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) GoString() string {
 	return s.String()
+}
+
+func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) SetLeft(v int32) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary {
+	s.Left = &v
+	return s
 }
 
 func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) SetTop(v int32) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary {
@@ -6248,11 +6095,6 @@ func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBound
 
 func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) SetHeight(v int32) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary {
 	s.Height = &v
-	return s
-}
-
-func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary) SetLeft(v int32) *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBoundary {
-	s.Left = &v
 	return s
 }
 
@@ -6303,9 +6145,9 @@ func (s *GetImageQualityRequest) SetImageUri(v string) *GetImageQualityRequest {
 }
 
 type GetImageQualityResponseBody struct {
-	ImageQuality *GetImageQualityResponseBodyImageQuality `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageUri     *string                                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ImageQuality *GetImageQualityResponseBodyImageQuality `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
 }
 
 func (s GetImageQualityResponseBody) String() string {
@@ -6316,8 +6158,8 @@ func (s GetImageQualityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetImageQualityResponseBody) SetImageQuality(v *GetImageQualityResponseBodyImageQuality) *GetImageQualityResponseBody {
-	s.ImageQuality = v
+func (s *GetImageQualityResponseBody) SetImageUri(v string) *GetImageQualityResponseBody {
+	s.ImageUri = &v
 	return s
 }
 
@@ -6326,8 +6168,8 @@ func (s *GetImageQualityResponseBody) SetRequestId(v string) *GetImageQualityRes
 	return s
 }
 
-func (s *GetImageQualityResponseBody) SetImageUri(v string) *GetImageQualityResponseBody {
-	s.ImageUri = &v
+func (s *GetImageQualityResponseBody) SetImageQuality(v *GetImageQualityResponseBodyImageQuality) *GetImageQualityResponseBody {
+	s.ImageQuality = v
 	return s
 }
 
@@ -7045,20 +6887,20 @@ func (s *GetOfficeConversionTaskRequest) SetTaskId(v string) *GetOfficeConversio
 
 type GetOfficeConversionTaskResponseBody struct {
 	Status          *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	FailDetail      *GetOfficeConversionTaskResponseBodyFailDetail `json:"FailDetail,omitempty" xml:"FailDetail,omitempty" type:"Struct"`
-	TgtType         *string                                        `json:"TgtType,omitempty" xml:"TgtType,omitempty"`
-	TaskId          *string                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Percent         *int32                                         `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	CreateTime      *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExternalID      *string                                        `json:"ExternalID,omitempty" xml:"ExternalID,omitempty"`
-	ImageSpec       *string                                        `json:"ImageSpec,omitempty" xml:"ImageSpec,omitempty"`
-	NotifyEndpoint  *string                                        `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	TgtUri          *string                                        `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
 	FinishTime      *string                                        `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	CreateTime      *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	PageCount       *int32                                         `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	NotifyTopicName *string                                        `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NotifyEndpoint  *string                                        `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	SrcUri          *string                                        `json:"SrcUri,omitempty" xml:"SrcUri,omitempty"`
+	TgtType         *string                                        `json:"TgtType,omitempty" xml:"TgtType,omitempty"`
+	TgtUri          *string                                        `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
+	ImageSpec       *string                                        `json:"ImageSpec,omitempty" xml:"ImageSpec,omitempty"`
+	ExternalID      *string                                        `json:"ExternalID,omitempty" xml:"ExternalID,omitempty"`
+	TaskId          *string                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	FailDetail      *GetOfficeConversionTaskResponseBodyFailDetail `json:"FailDetail,omitempty" xml:"FailDetail,omitempty" type:"Struct"`
 }
 
 func (s GetOfficeConversionTaskResponseBody) String() string {
@@ -7074,58 +6916,18 @@ func (s *GetOfficeConversionTaskResponseBody) SetStatus(v string) *GetOfficeConv
 	return s
 }
 
-func (s *GetOfficeConversionTaskResponseBody) SetFailDetail(v *GetOfficeConversionTaskResponseBodyFailDetail) *GetOfficeConversionTaskResponseBody {
-	s.FailDetail = v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetTgtType(v string) *GetOfficeConversionTaskResponseBody {
-	s.TgtType = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetTaskId(v string) *GetOfficeConversionTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetRequestId(v string) *GetOfficeConversionTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetOfficeConversionTaskResponseBody) SetPercent(v int32) *GetOfficeConversionTaskResponseBody {
 	s.Percent = &v
 	return s
 }
 
-func (s *GetOfficeConversionTaskResponseBody) SetCreateTime(v string) *GetOfficeConversionTaskResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetExternalID(v string) *GetOfficeConversionTaskResponseBody {
-	s.ExternalID = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetImageSpec(v string) *GetOfficeConversionTaskResponseBody {
-	s.ImageSpec = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetNotifyEndpoint(v string) *GetOfficeConversionTaskResponseBody {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetTgtUri(v string) *GetOfficeConversionTaskResponseBody {
-	s.TgtUri = &v
-	return s
-}
-
 func (s *GetOfficeConversionTaskResponseBody) SetFinishTime(v string) *GetOfficeConversionTaskResponseBody {
 	s.FinishTime = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetCreateTime(v string) *GetOfficeConversionTaskResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -7139,8 +6941,48 @@ func (s *GetOfficeConversionTaskResponseBody) SetNotifyTopicName(v string) *GetO
 	return s
 }
 
+func (s *GetOfficeConversionTaskResponseBody) SetRequestId(v string) *GetOfficeConversionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetNotifyEndpoint(v string) *GetOfficeConversionTaskResponseBody {
+	s.NotifyEndpoint = &v
+	return s
+}
+
 func (s *GetOfficeConversionTaskResponseBody) SetSrcUri(v string) *GetOfficeConversionTaskResponseBody {
 	s.SrcUri = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetTgtType(v string) *GetOfficeConversionTaskResponseBody {
+	s.TgtType = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetTgtUri(v string) *GetOfficeConversionTaskResponseBody {
+	s.TgtUri = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetImageSpec(v string) *GetOfficeConversionTaskResponseBody {
+	s.ImageSpec = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetExternalID(v string) *GetOfficeConversionTaskResponseBody {
+	s.ExternalID = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetTaskId(v string) *GetOfficeConversionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetFailDetail(v *GetOfficeConversionTaskResponseBodyFailDetail) *GetOfficeConversionTaskResponseBody {
+	s.FailDetail = v
 	return s
 }
 
@@ -7256,12 +7098,12 @@ func (s *GetOfficeEditURLRequest) SetFileName(v string) *GetOfficeEditURLRequest
 }
 
 type GetOfficeEditURLResponseBody struct {
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
 	EditURL                 *string `json:"EditURL,omitempty" xml:"EditURL,omitempty"`
 	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
 }
 
 func (s GetOfficeEditURLResponseBody) String() string {
@@ -7272,13 +7114,13 @@ func (s GetOfficeEditURLResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetOfficeEditURLResponseBody) SetRefreshToken(v string) *GetOfficeEditURLResponseBody {
-	s.RefreshToken = &v
+func (s *GetOfficeEditURLResponseBody) SetRequestId(v string) *GetOfficeEditURLResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetOfficeEditURLResponseBody) SetRequestId(v string) *GetOfficeEditURLResponseBody {
-	s.RequestId = &v
+func (s *GetOfficeEditURLResponseBody) SetAccessTokenExpiredTime(v string) *GetOfficeEditURLResponseBody {
+	s.AccessTokenExpiredTime = &v
 	return s
 }
 
@@ -7292,13 +7134,13 @@ func (s *GetOfficeEditURLResponseBody) SetAccessToken(v string) *GetOfficeEditUR
 	return s
 }
 
-func (s *GetOfficeEditURLResponseBody) SetRefreshTokenExpiredTime(v string) *GetOfficeEditURLResponseBody {
-	s.RefreshTokenExpiredTime = &v
+func (s *GetOfficeEditURLResponseBody) SetRefreshToken(v string) *GetOfficeEditURLResponseBody {
+	s.RefreshToken = &v
 	return s
 }
 
-func (s *GetOfficeEditURLResponseBody) SetAccessTokenExpiredTime(v string) *GetOfficeEditURLResponseBody {
-	s.AccessTokenExpiredTime = &v
+func (s *GetOfficeEditURLResponseBody) SetRefreshTokenExpiredTime(v string) *GetOfficeEditURLResponseBody {
+	s.RefreshTokenExpiredTime = &v
 	return s
 }
 
@@ -7397,12 +7239,12 @@ func (s *GetOfficePreviewURLRequest) SetWatermarkVertical(v int32) *GetOfficePre
 }
 
 type GetOfficePreviewURLResponseBody struct {
-	PreviewURL              *string `json:"PreviewURL,omitempty" xml:"PreviewURL,omitempty"`
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+	PreviewURL              *string `json:"PreviewURL,omitempty" xml:"PreviewURL,omitempty"`
 	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
 }
 
 func (s GetOfficePreviewURLResponseBody) String() string {
@@ -7413,18 +7255,18 @@ func (s GetOfficePreviewURLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetOfficePreviewURLResponseBody) SetRequestId(v string) *GetOfficePreviewURLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *GetOfficePreviewURLResponseBody) SetPreviewURL(v string) *GetOfficePreviewURLResponseBody {
 	s.PreviewURL = &v
 	return s
 }
 
-func (s *GetOfficePreviewURLResponseBody) SetRefreshToken(v string) *GetOfficePreviewURLResponseBody {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *GetOfficePreviewURLResponseBody) SetRequestId(v string) *GetOfficePreviewURLResponseBody {
-	s.RequestId = &v
+func (s *GetOfficePreviewURLResponseBody) SetAccessTokenExpiredTime(v string) *GetOfficePreviewURLResponseBody {
+	s.AccessTokenExpiredTime = &v
 	return s
 }
 
@@ -7433,13 +7275,13 @@ func (s *GetOfficePreviewURLResponseBody) SetAccessToken(v string) *GetOfficePre
 	return s
 }
 
-func (s *GetOfficePreviewURLResponseBody) SetRefreshTokenExpiredTime(v string) *GetOfficePreviewURLResponseBody {
-	s.RefreshTokenExpiredTime = &v
+func (s *GetOfficePreviewURLResponseBody) SetRefreshToken(v string) *GetOfficePreviewURLResponseBody {
+	s.RefreshToken = &v
 	return s
 }
 
-func (s *GetOfficePreviewURLResponseBody) SetAccessTokenExpiredTime(v string) *GetOfficePreviewURLResponseBody {
-	s.AccessTokenExpiredTime = &v
+func (s *GetOfficePreviewURLResponseBody) SetRefreshTokenExpiredTime(v string) *GetOfficePreviewURLResponseBody {
+	s.RefreshTokenExpiredTime = &v
 	return s
 }
 
@@ -7484,16 +7326,16 @@ func (s *GetProjectRequest) SetProject(v string) *GetProjectRequest {
 }
 
 type GetProjectResponseBody struct {
-	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	CU          *int32  `json:"CU,omitempty" xml:"CU,omitempty"`
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	CU          *int32  `json:"CU,omitempty" xml:"CU,omitempty"`
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Endpoint    *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
 func (s GetProjectResponseBody) String() string {
@@ -7504,28 +7346,8 @@ func (s GetProjectResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetProjectResponseBody) SetProject(v string) *GetProjectResponseBody {
-	s.Project = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetModifyTime(v string) *GetProjectResponseBody {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *GetProjectResponseBody) SetType(v string) *GetProjectResponseBody {
 	s.Type = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetCU(v int32) *GetProjectResponseBody {
-	s.CU = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetServiceRole(v string) *GetProjectResponseBody {
-	s.ServiceRole = &v
 	return s
 }
 
@@ -7534,13 +7356,28 @@ func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody 
 	return s
 }
 
-func (s *GetProjectResponseBody) SetEndpoint(v string) *GetProjectResponseBody {
-	s.Endpoint = &v
+func (s *GetProjectResponseBody) SetCU(v int32) *GetProjectResponseBody {
+	s.CU = &v
 	return s
 }
 
 func (s *GetProjectResponseBody) SetCreateTime(v string) *GetProjectResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetEndpoint(v string) *GetProjectResponseBody {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetServiceRole(v string) *GetProjectResponseBody {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetProject(v string) *GetProjectResponseBody {
+	s.Project = &v
 	return s
 }
 
@@ -7551,6 +7388,11 @@ func (s *GetProjectResponseBody) SetRegionId(v string) *GetProjectResponseBody {
 
 func (s *GetProjectResponseBody) SetBillingType(v string) *GetProjectResponseBody {
 	s.BillingType = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetModifyTime(v string) *GetProjectResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -7601,15 +7443,15 @@ func (s *GetSetRequest) SetSetId(v string) *GetSetRequest {
 }
 
 type GetSetResponseBody struct {
-	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	VideoCount  *int32  `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
-	ImageCount  *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SetName     *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
-	SetId       *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
 	VideoLength *int32  `json:"VideoLength,omitempty" xml:"VideoLength,omitempty"`
+	SetId       *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	ImageCount  *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
 	FaceCount   *int32  `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	SetName     *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
+	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
 func (s GetSetResponseBody) String() string {
@@ -7620,18 +7462,8 @@ func (s GetSetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetSetResponseBody) SetModifyTime(v string) *GetSetResponseBody {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *GetSetResponseBody) SetVideoCount(v int32) *GetSetResponseBody {
 	s.VideoCount = &v
-	return s
-}
-
-func (s *GetSetResponseBody) SetImageCount(v int32) *GetSetResponseBody {
-	s.ImageCount = &v
 	return s
 }
 
@@ -7645,8 +7477,8 @@ func (s *GetSetResponseBody) SetCreateTime(v string) *GetSetResponseBody {
 	return s
 }
 
-func (s *GetSetResponseBody) SetSetName(v string) *GetSetResponseBody {
-	s.SetName = &v
+func (s *GetSetResponseBody) SetVideoLength(v int32) *GetSetResponseBody {
+	s.VideoLength = &v
 	return s
 }
 
@@ -7655,13 +7487,23 @@ func (s *GetSetResponseBody) SetSetId(v string) *GetSetResponseBody {
 	return s
 }
 
-func (s *GetSetResponseBody) SetVideoLength(v int32) *GetSetResponseBody {
-	s.VideoLength = &v
+func (s *GetSetResponseBody) SetImageCount(v int32) *GetSetResponseBody {
+	s.ImageCount = &v
 	return s
 }
 
 func (s *GetSetResponseBody) SetFaceCount(v int32) *GetSetResponseBody {
 	s.FaceCount = &v
+	return s
+}
+
+func (s *GetSetResponseBody) SetSetName(v string) *GetSetResponseBody {
+	s.SetName = &v
+	return s
+}
+
+func (s *GetSetResponseBody) SetModifyTime(v string) *GetSetResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -8164,6 +8006,8 @@ type GetWebofficeURLRequest struct {
 	File            *string `json:"File,omitempty" xml:"File,omitempty"`
 	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Watermark       *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	Hidecmb         *bool   `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
 }
 
 func (s GetWebofficeURLRequest) String() string {
@@ -8211,6 +8055,16 @@ func (s *GetWebofficeURLRequest) SetNotifyEndpoint(v string) *GetWebofficeURLReq
 
 func (s *GetWebofficeURLRequest) SetNotifyTopicName(v string) *GetWebofficeURLRequest {
 	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetWatermark(v string) *GetWebofficeURLRequest {
+	s.Watermark = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetHidecmb(v bool) *GetWebofficeURLRequest {
+	s.Hidecmb = &v
 	return s
 }
 
@@ -8296,7 +8150,6 @@ type IndexImageRequest struct {
 	RemarksC        *string `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
 	RemarksD        *string `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
 	ExternalId      *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	RealUid         *string `json:"RealUid,omitempty" xml:"RealUid,omitempty"`
 	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	RemarksArrayA   *string `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
@@ -8363,11 +8216,6 @@ func (s *IndexImageRequest) SetRemarksD(v string) *IndexImageRequest {
 
 func (s *IndexImageRequest) SetExternalId(v string) *IndexImageRequest {
 	s.ExternalId = &v
-	return s
-}
-
-func (s *IndexImageRequest) SetRealUid(v string) *IndexImageRequest {
-	s.RealUid = &v
 	return s
 }
 
@@ -8503,11 +8351,6 @@ type IndexVideoRequest struct {
 	VideoUri        *string `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
 	RemarksA        *string `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
 	RemarksB        *string `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
-	GrabType        *string `json:"GrabType,omitempty" xml:"GrabType,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SaveType        *bool   `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Interval        *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	TgtUri          *string `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
 	RemarksC        *string `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
 	RemarksD        *string `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
@@ -8546,31 +8389,6 @@ func (s *IndexVideoRequest) SetRemarksA(v string) *IndexVideoRequest {
 
 func (s *IndexVideoRequest) SetRemarksB(v string) *IndexVideoRequest {
 	s.RemarksB = &v
-	return s
-}
-
-func (s *IndexVideoRequest) SetGrabType(v string) *IndexVideoRequest {
-	s.GrabType = &v
-	return s
-}
-
-func (s *IndexVideoRequest) SetStartTime(v string) *IndexVideoRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *IndexVideoRequest) SetEndTime(v string) *IndexVideoRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *IndexVideoRequest) SetSaveType(v bool) *IndexVideoRequest {
-	s.SaveType = &v
-	return s
-}
-
-func (s *IndexVideoRequest) SetInterval(v string) *IndexVideoRequest {
-	s.Interval = &v
 	return s
 }
 
@@ -8936,9 +8754,12 @@ func (s *ListFaceGroupsResponseBodyFaceGroups) SetModifyTime(v string) *ListFace
 }
 
 type ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace struct {
-	ImageUri     *string                                                         `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	FaceId       *string                                                         `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	ImageUri     *string                                                         `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	FaceBoundary *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
+	ExternalId   *string                                                         `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	ImageHeight  *int64                                                          `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	ImageWidth   *int64                                                          `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
 }
 
 func (s ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) String() string {
@@ -8949,18 +8770,33 @@ func (s ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) GoString() string {
 	return s.String()
 }
 
-func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetImageUri(v string) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
-	s.ImageUri = &v
-	return s
-}
-
 func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetFaceId(v string) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
 	s.FaceId = &v
 	return s
 }
 
+func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetImageUri(v string) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
+	s.ImageUri = &v
+	return s
+}
+
 func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetFaceBoundary(v *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
 	s.FaceBoundary = v
+	return s
+}
+
+func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetExternalId(v string) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetImageHeight(v int64) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
+	s.ImageHeight = &v
+	return s
+}
+
+func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace) SetImageWidth(v int64) *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFace {
+	s.ImageWidth = &v
 	return s
 }
 
@@ -9065,9 +8901,9 @@ func (s *ListImagesRequest) SetLimit(v int32) *ListImagesRequest {
 
 type ListImagesResponseBody struct {
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Images     []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	NextMarker *string                         `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	SetId      *string                         `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	Images     []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -9083,11 +8919,6 @@ func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody 
 	return s
 }
 
-func (s *ListImagesResponseBody) SetImages(v []*ListImagesResponseBodyImages) *ListImagesResponseBody {
-	s.Images = v
-	return s
-}
-
 func (s *ListImagesResponseBody) SetNextMarker(v string) *ListImagesResponseBody {
 	s.NextMarker = &v
 	return s
@@ -9095,6 +8926,11 @@ func (s *ListImagesResponseBody) SetNextMarker(v string) *ListImagesResponseBody
 
 func (s *ListImagesResponseBody) SetSetId(v string) *ListImagesResponseBody {
 	s.SetId = &v
+	return s
+}
+
+func (s *ListImagesResponseBody) SetImages(v []*ListImagesResponseBodyImages) *ListImagesResponseBody {
+	s.Images = v
 	return s
 }
 
@@ -9106,32 +8942,26 @@ type ListImagesResponseBodyImages struct {
 	CreateTime                   *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SourceType                   *string                                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	FacesFailReason              *string                                           `json:"FacesFailReason,omitempty" xml:"FacesFailReason,omitempty"`
-	Tags                         []*ListImagesResponseBodyImagesTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	FacesModifyTime              *string                                           `json:"FacesModifyTime,omitempty" xml:"FacesModifyTime,omitempty"`
 	ImageTime                    *string                                           `json:"ImageTime,omitempty" xml:"ImageTime,omitempty"`
 	OCRModifyTime                *string                                           `json:"OCRModifyTime,omitempty" xml:"OCRModifyTime,omitempty"`
 	AddressModifyTime            *string                                           `json:"AddressModifyTime,omitempty" xml:"AddressModifyTime,omitempty"`
-	OCR                          []*ListImagesResponseBodyImagesOCR                `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
 	ImageQualityFailReason       *string                                           `json:"ImageQualityFailReason,omitempty" xml:"ImageQualityFailReason,omitempty"`
 	FacesStatus                  *string                                           `json:"FacesStatus,omitempty" xml:"FacesStatus,omitempty"`
-	ImageHeight                  *int32                                            `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	RemarksArrayA                *string                                           `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
-	Address                      *ListImagesResponseBodyImagesAddress              `json:"Address,omitempty" xml:"Address,omitempty" type:"Struct"`
+	ImageHeight                  *int32                                            `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	ExternalId                   *string                                           `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	SourceUri                    *string                                           `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	ModifyTime                   *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	FileSize                     *int32                                            `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	ModifyTime                   *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	SourcePosition               *string                                           `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	Faces                        []*ListImagesResponseBodyImagesFaces              `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
 	ImageQualityStatus           *string                                           `json:"ImageQualityStatus,omitempty" xml:"ImageQualityStatus,omitempty"`
 	OCRFailReason                *string                                           `json:"OCRFailReason,omitempty" xml:"OCRFailReason,omitempty"`
 	AddressFailReason            *string                                           `json:"AddressFailReason,omitempty" xml:"AddressFailReason,omitempty"`
-	ImageQuality                 *ListImagesResponseBodyImagesImageQuality         `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
 	CroppingSuggestionModifyTime *string                                           `json:"CroppingSuggestionModifyTime,omitempty" xml:"CroppingSuggestionModifyTime,omitempty"`
 	ImageFormat                  *string                                           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	ImageWidth                   *int32                                            `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
 	RemarksArrayB                *string                                           `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
-	CroppingSuggestion           []*ListImagesResponseBodyImagesCroppingSuggestion `json:"CroppingSuggestion,omitempty" xml:"CroppingSuggestion,omitempty" type:"Repeated"`
 	Orientation                  *string                                           `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
 	RemarksD                     *string                                           `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
 	TagsStatus                   *string                                           `json:"TagsStatus,omitempty" xml:"TagsStatus,omitempty"`
@@ -9144,6 +8974,12 @@ type ListImagesResponseBodyImages struct {
 	Exif                         *string                                           `json:"Exif,omitempty" xml:"Exif,omitempty"`
 	Location                     *string                                           `json:"Location,omitempty" xml:"Location,omitempty"`
 	RemarksB                     *string                                           `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	CroppingSuggestion           []*ListImagesResponseBodyImagesCroppingSuggestion `json:"CroppingSuggestion,omitempty" xml:"CroppingSuggestion,omitempty" type:"Repeated"`
+	Faces                        []*ListImagesResponseBodyImagesFaces              `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	Tags                         []*ListImagesResponseBodyImagesTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OCR                          []*ListImagesResponseBodyImagesOCR                `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
+	ImageQuality                 *ListImagesResponseBodyImagesImageQuality         `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty" type:"Struct"`
+	Address                      *ListImagesResponseBodyImagesAddress              `json:"Address,omitempty" xml:"Address,omitempty" type:"Struct"`
 }
 
 func (s ListImagesResponseBodyImages) String() string {
@@ -9189,11 +9025,6 @@ func (s *ListImagesResponseBodyImages) SetFacesFailReason(v string) *ListImagesR
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetTags(v []*ListImagesResponseBodyImagesTags) *ListImagesResponseBodyImages {
-	s.Tags = v
-	return s
-}
-
 func (s *ListImagesResponseBodyImages) SetFacesModifyTime(v string) *ListImagesResponseBodyImages {
 	s.FacesModifyTime = &v
 	return s
@@ -9214,11 +9045,6 @@ func (s *ListImagesResponseBodyImages) SetAddressModifyTime(v string) *ListImage
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetOCR(v []*ListImagesResponseBodyImagesOCR) *ListImagesResponseBodyImages {
-	s.OCR = v
-	return s
-}
-
 func (s *ListImagesResponseBodyImages) SetImageQualityFailReason(v string) *ListImagesResponseBodyImages {
 	s.ImageQualityFailReason = &v
 	return s
@@ -9229,18 +9055,13 @@ func (s *ListImagesResponseBodyImages) SetFacesStatus(v string) *ListImagesRespo
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetImageHeight(v int32) *ListImagesResponseBodyImages {
-	s.ImageHeight = &v
-	return s
-}
-
 func (s *ListImagesResponseBodyImages) SetRemarksArrayA(v string) *ListImagesResponseBodyImages {
 	s.RemarksArrayA = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetAddress(v *ListImagesResponseBodyImagesAddress) *ListImagesResponseBodyImages {
-	s.Address = v
+func (s *ListImagesResponseBodyImages) SetImageHeight(v int32) *ListImagesResponseBodyImages {
+	s.ImageHeight = &v
 	return s
 }
 
@@ -9254,23 +9075,18 @@ func (s *ListImagesResponseBodyImages) SetSourceUri(v string) *ListImagesRespons
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetModifyTime(v string) *ListImagesResponseBodyImages {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *ListImagesResponseBodyImages) SetFileSize(v int32) *ListImagesResponseBodyImages {
 	s.FileSize = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetSourcePosition(v string) *ListImagesResponseBodyImages {
-	s.SourcePosition = &v
+func (s *ListImagesResponseBodyImages) SetModifyTime(v string) *ListImagesResponseBodyImages {
+	s.ModifyTime = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetFaces(v []*ListImagesResponseBodyImagesFaces) *ListImagesResponseBodyImages {
-	s.Faces = v
+func (s *ListImagesResponseBodyImages) SetSourcePosition(v string) *ListImagesResponseBodyImages {
+	s.SourcePosition = &v
 	return s
 }
 
@@ -9286,11 +9102,6 @@ func (s *ListImagesResponseBodyImages) SetOCRFailReason(v string) *ListImagesRes
 
 func (s *ListImagesResponseBodyImages) SetAddressFailReason(v string) *ListImagesResponseBodyImages {
 	s.AddressFailReason = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImages) SetImageQuality(v *ListImagesResponseBodyImagesImageQuality) *ListImagesResponseBodyImages {
-	s.ImageQuality = v
 	return s
 }
 
@@ -9311,11 +9122,6 @@ func (s *ListImagesResponseBodyImages) SetImageWidth(v int32) *ListImagesRespons
 
 func (s *ListImagesResponseBodyImages) SetRemarksArrayB(v string) *ListImagesResponseBodyImages {
 	s.RemarksArrayB = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImages) SetCroppingSuggestion(v []*ListImagesResponseBodyImagesCroppingSuggestion) *ListImagesResponseBodyImages {
-	s.CroppingSuggestion = v
 	return s
 }
 
@@ -9379,165 +9185,113 @@ func (s *ListImagesResponseBodyImages) SetRemarksB(v string) *ListImagesResponse
 	return s
 }
 
-type ListImagesResponseBodyImagesTags struct {
-	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
-	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
-	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+func (s *ListImagesResponseBodyImages) SetCroppingSuggestion(v []*ListImagesResponseBodyImagesCroppingSuggestion) *ListImagesResponseBodyImages {
+	s.CroppingSuggestion = v
+	return s
 }
 
-func (s ListImagesResponseBodyImagesTags) String() string {
+func (s *ListImagesResponseBodyImages) SetFaces(v []*ListImagesResponseBodyImagesFaces) *ListImagesResponseBodyImages {
+	s.Faces = v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetTags(v []*ListImagesResponseBodyImagesTags) *ListImagesResponseBodyImages {
+	s.Tags = v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetOCR(v []*ListImagesResponseBodyImagesOCR) *ListImagesResponseBodyImages {
+	s.OCR = v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetImageQuality(v *ListImagesResponseBodyImagesImageQuality) *ListImagesResponseBodyImages {
+	s.ImageQuality = v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetAddress(v *ListImagesResponseBodyImagesAddress) *ListImagesResponseBodyImages {
+	s.Address = v
+	return s
+}
+
+type ListImagesResponseBodyImagesCroppingSuggestion struct {
+	Score            *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	AspectRatio      *string                                                         `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	CroppingBoundary *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
+}
+
+func (s ListImagesResponseBodyImagesCroppingSuggestion) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListImagesResponseBodyImagesTags) GoString() string {
+func (s ListImagesResponseBodyImagesCroppingSuggestion) GoString() string {
 	return s.String()
 }
 
-func (s *ListImagesResponseBodyImagesTags) SetTagConfidence(v float32) *ListImagesResponseBodyImagesTags {
-	s.TagConfidence = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetScore(v float32) *ListImagesResponseBodyImagesCroppingSuggestion {
+	s.Score = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesTags) SetTagName(v string) *ListImagesResponseBodyImagesTags {
-	s.TagName = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetAspectRatio(v string) *ListImagesResponseBodyImagesCroppingSuggestion {
+	s.AspectRatio = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesTags) SetTagLevel(v int32) *ListImagesResponseBodyImagesTags {
-	s.TagLevel = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetCroppingBoundary(v *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) *ListImagesResponseBodyImagesCroppingSuggestion {
+	s.CroppingBoundary = v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesTags) SetParentTagName(v string) *ListImagesResponseBodyImagesTags {
-	s.ParentTagName = &v
-	return s
-}
-
-type ListImagesResponseBodyImagesOCR struct {
-	OCRConfidence *float32                                    `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
-	OCRContents   *string                                     `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
-	OCRBoundary   *ListImagesResponseBodyImagesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
-}
-
-func (s ListImagesResponseBodyImagesOCR) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesOCR) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesOCR) SetOCRConfidence(v float32) *ListImagesResponseBodyImagesOCR {
-	s.OCRConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesOCR) SetOCRContents(v string) *ListImagesResponseBodyImagesOCR {
-	s.OCRContents = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesOCR) SetOCRBoundary(v *ListImagesResponseBodyImagesOCROCRBoundary) *ListImagesResponseBodyImagesOCR {
-	s.OCRBoundary = v
-	return s
-}
-
-type ListImagesResponseBodyImagesOCROCRBoundary struct {
+type ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
 }
 
-func (s ListImagesResponseBodyImagesOCROCRBoundary) String() string {
+func (s ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListImagesResponseBodyImagesOCROCRBoundary) GoString() string {
+func (s ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) GoString() string {
 	return s.String()
 }
 
-func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetTop(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
+func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
 	s.Left = &v
 	return s
 }
 
-type ListImagesResponseBodyImagesAddress struct {
-	Township    *string `json:"Township,omitempty" xml:"Township,omitempty"`
-	District    *string `json:"District,omitempty" xml:"District,omitempty"`
-	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
-	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	City        *string `json:"City,omitempty" xml:"City,omitempty"`
-	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
-}
-
-func (s ListImagesResponseBodyImagesAddress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesAddress) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesAddress) SetTownship(v string) *ListImagesResponseBodyImagesAddress {
-	s.Township = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetTop(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Top = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesAddress) SetDistrict(v string) *ListImagesResponseBodyImagesAddress {
-	s.District = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Width = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesAddress) SetAddressLine(v string) *ListImagesResponseBodyImagesAddress {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesAddress) SetCountry(v string) *ListImagesResponseBodyImagesAddress {
-	s.Country = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesAddress) SetCity(v string) *ListImagesResponseBodyImagesAddress {
-	s.City = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesAddress) SetProvince(v string) *ListImagesResponseBodyImagesAddress {
-	s.Province = &v
+func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
+	s.Height = &v
 	return s
 }
 
 type ListImagesResponseBodyImagesFaces struct {
+	EmotionConfidence *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	Attractive        *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
+	GroupId           *string                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Gender            *string                                          `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	FaceId            *string                                          `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	GenderConfidence  *float32                                         `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	FaceAttributes    *ListImagesResponseBodyImagesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 	FaceQuality       *float32                                         `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
 	Emotion           *string                                          `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
 	Age               *int32                                           `json:"Age,omitempty" xml:"Age,omitempty"`
 	FaceConfidence    *float32                                         `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	EmotionConfidence *float32                                         `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	Attractive        *float32                                         `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	GroupId           *string                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	EmotionDetails    *ListImagesResponseBodyImagesFacesEmotionDetails `json:"EmotionDetails,omitempty" xml:"EmotionDetails,omitempty" type:"Struct"`
+	FaceAttributes    *ListImagesResponseBodyImagesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 }
 
 func (s ListImagesResponseBodyImagesFaces) String() string {
@@ -9546,6 +9300,21 @@ func (s ListImagesResponseBodyImagesFaces) String() string {
 
 func (s ListImagesResponseBodyImagesFaces) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesFaces) SetEmotionConfidence(v float32) *ListImagesResponseBodyImagesFaces {
+	s.EmotionConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFaces) SetAttractive(v float32) *ListImagesResponseBodyImagesFaces {
+	s.Attractive = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFaces) SetGroupId(v string) *ListImagesResponseBodyImagesFaces {
+	s.GroupId = &v
+	return s
 }
 
 func (s *ListImagesResponseBodyImagesFaces) SetGender(v string) *ListImagesResponseBodyImagesFaces {
@@ -9560,11 +9329,6 @@ func (s *ListImagesResponseBodyImagesFaces) SetFaceId(v string) *ListImagesRespo
 
 func (s *ListImagesResponseBodyImagesFaces) SetGenderConfidence(v float32) *ListImagesResponseBodyImagesFaces {
 	s.GenderConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFaces) SetFaceAttributes(v *ListImagesResponseBodyImagesFacesFaceAttributes) *ListImagesResponseBodyImagesFaces {
-	s.FaceAttributes = v
 	return s
 }
 
@@ -9588,146 +9352,13 @@ func (s *ListImagesResponseBodyImagesFaces) SetFaceConfidence(v float32) *ListIm
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesFaces) SetEmotionConfidence(v float32) *ListImagesResponseBodyImagesFaces {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFaces) SetAttractive(v float32) *ListImagesResponseBodyImagesFaces {
-	s.Attractive = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFaces) SetGroupId(v string) *ListImagesResponseBodyImagesFaces {
-	s.GroupId = &v
-	return s
-}
-
 func (s *ListImagesResponseBodyImagesFaces) SetEmotionDetails(v *ListImagesResponseBodyImagesFacesEmotionDetails) *ListImagesResponseBodyImagesFaces {
 	s.EmotionDetails = v
 	return s
 }
 
-type ListImagesResponseBodyImagesFacesFaceAttributes struct {
-	GlassesConfidence *float32                                                     `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	Glasses           *string                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Mask              *string                                                      `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	BeardConfidence   *float32                                                     `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	MaskConfidence    *float32                                                     `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	FaceBoundary      *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
-	HeadPose          *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
-	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetGlassesConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.GlassesConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetGlasses(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.Glasses = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetMask(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.Mask = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetBeardConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.BeardConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetMaskConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.MaskConfidence = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetFaceBoundary(v *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.FaceBoundary = v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetHeadPose(v *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.HeadPose = v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetBeard(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
-	s.Beard = &v
-	return s
-}
-
-type ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetTop(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
-	s.Left = &v
-	return s
-}
-
-type ListImagesResponseBodyImagesFacesFaceAttributesHeadPose struct {
-	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetPitch(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Pitch = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetRoll(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Roll = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetYaw(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
-	s.Yaw = &v
+func (s *ListImagesResponseBodyImagesFaces) SetFaceAttributes(v *ListImagesResponseBodyImagesFacesFaceAttributes) *ListImagesResponseBodyImagesFaces {
+	s.FaceAttributes = v
 	return s
 }
 
@@ -9781,6 +9412,228 @@ func (s *ListImagesResponseBodyImagesFacesEmotionDetails) SetSAD(v float32) *Lis
 
 func (s *ListImagesResponseBodyImagesFacesEmotionDetails) SetSCARED(v float32) *ListImagesResponseBodyImagesFacesEmotionDetails {
 	s.SCARED = &v
+	return s
+}
+
+type ListImagesResponseBodyImagesFacesFaceAttributes struct {
+	GlassesConfidence *float32                                                     `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
+	Glasses           *string                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Mask              *string                                                      `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	BeardConfidence   *float32                                                     `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
+	MaskConfidence    *float32                                                     `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	Beard             *string                                                      `json:"Beard,omitempty" xml:"Beard,omitempty"`
+	FaceBoundary      *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
+	HeadPose          *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetGlassesConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.GlassesConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetGlasses(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.Glasses = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetMask(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.Mask = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetBeardConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.BeardConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetMaskConfidence(v float32) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.MaskConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetBeard(v string) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.Beard = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetFaceBoundary(v *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.FaceBoundary = v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributes) SetHeadPose(v *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) *ListImagesResponseBodyImagesFacesFaceAttributes {
+	s.HeadPose = v
+	return s
+}
+
+type ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetTop(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesFacesFaceAttributesFaceBoundary {
+	s.Height = &v
+	return s
+}
+
+type ListImagesResponseBodyImagesFacesFaceAttributesHeadPose struct {
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetPitch(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Pitch = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetRoll(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Roll = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose) SetYaw(v float32) *ListImagesResponseBodyImagesFacesFaceAttributesHeadPose {
+	s.Yaw = &v
+	return s
+}
+
+type ListImagesResponseBodyImagesTags struct {
+	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
+	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
+	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s ListImagesResponseBodyImagesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesTags) SetTagLevel(v int32) *ListImagesResponseBodyImagesTags {
+	s.TagLevel = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesTags) SetParentTagName(v string) *ListImagesResponseBodyImagesTags {
+	s.ParentTagName = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesTags) SetTagConfidence(v float32) *ListImagesResponseBodyImagesTags {
+	s.TagConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesTags) SetTagName(v string) *ListImagesResponseBodyImagesTags {
+	s.TagName = &v
+	return s
+}
+
+type ListImagesResponseBodyImagesOCR struct {
+	OCRConfidence *float32                                    `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
+	OCRContents   *string                                     `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
+	OCRBoundary   *ListImagesResponseBodyImagesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
+}
+
+func (s ListImagesResponseBodyImagesOCR) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesOCR) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesOCR) SetOCRConfidence(v float32) *ListImagesResponseBodyImagesOCR {
+	s.OCRConfidence = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesOCR) SetOCRContents(v string) *ListImagesResponseBodyImagesOCR {
+	s.OCRContents = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesOCR) SetOCRBoundary(v *ListImagesResponseBodyImagesOCROCRBoundary) *ListImagesResponseBodyImagesOCR {
+	s.OCRBoundary = v
+	return s
+}
+
+type ListImagesResponseBodyImagesOCROCRBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s ListImagesResponseBodyImagesOCROCRBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImagesOCROCRBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetTop(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesOCROCRBoundary {
+	s.Height = &v
 	return s
 }
 
@@ -9855,67 +9708,50 @@ func (s *ListImagesResponseBodyImagesImageQuality) SetCompositionScore(v float32
 	return s
 }
 
-type ListImagesResponseBodyImagesCroppingSuggestion struct {
-	Score            *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
-	CroppingBoundary *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary `json:"CroppingBoundary,omitempty" xml:"CroppingBoundary,omitempty" type:"Struct"`
-	AspectRatio      *string                                                         `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+type ListImagesResponseBodyImagesAddress struct {
+	Township    *string `json:"Township,omitempty" xml:"Township,omitempty"`
+	District    *string `json:"District,omitempty" xml:"District,omitempty"`
+	AddressLine *string `json:"AddressLine,omitempty" xml:"AddressLine,omitempty"`
+	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	City        *string `json:"City,omitempty" xml:"City,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
-func (s ListImagesResponseBodyImagesCroppingSuggestion) String() string {
+func (s ListImagesResponseBodyImagesAddress) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListImagesResponseBodyImagesCroppingSuggestion) GoString() string {
+func (s ListImagesResponseBodyImagesAddress) GoString() string {
 	return s.String()
 }
 
-func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetScore(v float32) *ListImagesResponseBodyImagesCroppingSuggestion {
-	s.Score = &v
+func (s *ListImagesResponseBodyImagesAddress) SetTownship(v string) *ListImagesResponseBodyImagesAddress {
+	s.Township = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetCroppingBoundary(v *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) *ListImagesResponseBodyImagesCroppingSuggestion {
-	s.CroppingBoundary = v
+func (s *ListImagesResponseBodyImagesAddress) SetDistrict(v string) *ListImagesResponseBodyImagesAddress {
+	s.District = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesCroppingSuggestion) SetAspectRatio(v string) *ListImagesResponseBodyImagesCroppingSuggestion {
-	s.AspectRatio = &v
+func (s *ListImagesResponseBodyImagesAddress) SetAddressLine(v string) *ListImagesResponseBodyImagesAddress {
+	s.AddressLine = &v
 	return s
 }
 
-type ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetTop(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Top = &v
+func (s *ListImagesResponseBodyImagesAddress) SetCountry(v string) *ListImagesResponseBodyImagesAddress {
+	s.Country = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetWidth(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Width = &v
+func (s *ListImagesResponseBodyImagesAddress) SetCity(v string) *ListImagesResponseBodyImagesAddress {
+	s.City = &v
 	return s
 }
 
-func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetHeight(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary) SetLeft(v int32) *ListImagesResponseBodyImagesCroppingSuggestionCroppingBoundary {
-	s.Left = &v
+func (s *ListImagesResponseBodyImagesAddress) SetProvince(v string) *ListImagesResponseBodyImagesAddress {
+	s.Province = &v
 	return s
 }
 
@@ -9972,9 +9808,9 @@ func (s *ListOfficeConversionTaskRequest) SetMaxKeys(v int32) *ListOfficeConvers
 }
 
 type ListOfficeConversionTaskResponseBody struct {
-	Tasks      []*ListOfficeConversionTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	NextMarker *string                                      `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*ListOfficeConversionTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListOfficeConversionTaskResponseBody) String() string {
@@ -9985,8 +9821,8 @@ func (s ListOfficeConversionTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfficeConversionTaskResponseBody) SetTasks(v []*ListOfficeConversionTaskResponseBodyTasks) *ListOfficeConversionTaskResponseBody {
-	s.Tasks = v
+func (s *ListOfficeConversionTaskResponseBody) SetNextMarker(v string) *ListOfficeConversionTaskResponseBody {
+	s.NextMarker = &v
 	return s
 }
 
@@ -9995,8 +9831,8 @@ func (s *ListOfficeConversionTaskResponseBody) SetRequestId(v string) *ListOffic
 	return s
 }
 
-func (s *ListOfficeConversionTaskResponseBody) SetNextMarker(v string) *ListOfficeConversionTaskResponseBody {
-	s.NextMarker = &v
+func (s *ListOfficeConversionTaskResponseBody) SetTasks(v []*ListOfficeConversionTaskResponseBodyTasks) *ListOfficeConversionTaskResponseBody {
+	s.Tasks = v
 	return s
 }
 
@@ -10008,9 +9844,9 @@ type ListOfficeConversionTaskResponseBodyTasks struct {
 	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	TgtUri          *string `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
-	TgtType         *string `json:"TgtType,omitempty" xml:"TgtType,omitempty"`
 	SrcUri          *string `json:"SrcUri,omitempty" xml:"SrcUri,omitempty"`
+	TgtType         *string `json:"TgtType,omitempty" xml:"TgtType,omitempty"`
+	TgtUri          *string `json:"TgtUri,omitempty" xml:"TgtUri,omitempty"`
 	ImageSpec       *string `json:"ImageSpec,omitempty" xml:"ImageSpec,omitempty"`
 	ExternalID      *string `json:"ExternalID,omitempty" xml:"ExternalID,omitempty"`
 	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -10059,8 +9895,8 @@ func (s *ListOfficeConversionTaskResponseBodyTasks) SetNotifyEndpoint(v string) 
 	return s
 }
 
-func (s *ListOfficeConversionTaskResponseBodyTasks) SetTgtUri(v string) *ListOfficeConversionTaskResponseBodyTasks {
-	s.TgtUri = &v
+func (s *ListOfficeConversionTaskResponseBodyTasks) SetSrcUri(v string) *ListOfficeConversionTaskResponseBodyTasks {
+	s.SrcUri = &v
 	return s
 }
 
@@ -10069,8 +9905,8 @@ func (s *ListOfficeConversionTaskResponseBodyTasks) SetTgtType(v string) *ListOf
 	return s
 }
 
-func (s *ListOfficeConversionTaskResponseBodyTasks) SetSrcUri(v string) *ListOfficeConversionTaskResponseBodyTasks {
-	s.SrcUri = &v
+func (s *ListOfficeConversionTaskResponseBodyTasks) SetTgtUri(v string) *ListOfficeConversionTaskResponseBodyTasks {
+	s.TgtUri = &v
 	return s
 }
 
@@ -10205,9 +10041,9 @@ func (s *ListProjectsRequest) SetMaxKeys(v int32) *ListProjectsRequest {
 }
 
 type ListProjectsResponseBody struct {
+	NextMarker *string                             `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Projects   []*ListProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	NextMarker *string                             `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -10218,6 +10054,11 @@ func (s ListProjectsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListProjectsResponseBody) SetNextMarker(v string) *ListProjectsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
 func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
 	s.RequestId = &v
 	return s
@@ -10225,11 +10066,6 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 
 func (s *ListProjectsResponseBody) SetProjects(v []*ListProjectsResponseBodyProjects) *ListProjectsResponseBody {
 	s.Projects = v
-	return s
-}
-
-func (s *ListProjectsResponseBody) SetNextMarker(v string) *ListProjectsResponseBody {
-	s.NextMarker = &v
 	return s
 }
 
@@ -10345,9 +10181,9 @@ func (s *ListSetsRequest) SetMarker(v string) *ListSetsRequest {
 }
 
 type ListSetsResponseBody struct {
+	NextMarker *string                     `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Sets       []*ListSetsResponseBodySets `json:"Sets,omitempty" xml:"Sets,omitempty" type:"Repeated"`
-	NextMarker *string                     `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 }
 
 func (s ListSetsResponseBody) String() string {
@@ -10358,6 +10194,11 @@ func (s ListSetsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListSetsResponseBody) SetNextMarker(v string) *ListSetsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
 func (s *ListSetsResponseBody) SetRequestId(v string) *ListSetsResponseBody {
 	s.RequestId = &v
 	return s
@@ -10365,11 +10206,6 @@ func (s *ListSetsResponseBody) SetRequestId(v string) *ListSetsResponseBody {
 
 func (s *ListSetsResponseBody) SetSets(v []*ListSetsResponseBodySets) *ListSetsResponseBody {
 	s.Sets = v
-	return s
-}
-
-func (s *ListSetsResponseBody) SetNextMarker(v string) *ListSetsResponseBody {
-	s.NextMarker = &v
 	return s
 }
 
@@ -10479,8 +10315,8 @@ func (s *ListSetTagsRequest) SetSetId(v string) *ListSetTagsRequest {
 }
 
 type ListSetTagsResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SetId     *string                        `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListSetTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -10492,13 +10328,13 @@ func (s ListSetTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListSetTagsResponseBody) SetRequestId(v string) *ListSetTagsResponseBody {
-	s.RequestId = &v
+func (s *ListSetTagsResponseBody) SetSetId(v string) *ListSetTagsResponseBody {
+	s.SetId = &v
 	return s
 }
 
-func (s *ListSetTagsResponseBody) SetSetId(v string) *ListSetTagsResponseBody {
-	s.SetId = &v
+func (s *ListSetTagsResponseBody) SetRequestId(v string) *ListSetTagsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10508,9 +10344,9 @@ func (s *ListSetTagsResponseBody) SetTags(v []*ListSetTagsResponseBodyTags) *Lis
 }
 
 type ListSetTagsResponseBodyTags struct {
+	TagLevel *int32  `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
 	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	TagCount *int32  `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	TagLevel *int32  `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
 }
 
 func (s ListSetTagsResponseBodyTags) String() string {
@@ -10521,6 +10357,11 @@ func (s ListSetTagsResponseBodyTags) GoString() string {
 	return s.String()
 }
 
+func (s *ListSetTagsResponseBodyTags) SetTagLevel(v int32) *ListSetTagsResponseBodyTags {
+	s.TagLevel = &v
+	return s
+}
+
 func (s *ListSetTagsResponseBodyTags) SetTagName(v string) *ListSetTagsResponseBodyTags {
 	s.TagName = &v
 	return s
@@ -10528,11 +10369,6 @@ func (s *ListSetTagsResponseBodyTags) SetTagName(v string) *ListSetTagsResponseB
 
 func (s *ListSetTagsResponseBodyTags) SetTagCount(v int32) *ListSetTagsResponseBodyTags {
 	s.TagCount = &v
-	return s
-}
-
-func (s *ListSetTagsResponseBodyTags) SetTagLevel(v int32) *ListSetTagsResponseBodyTags {
-	s.TagLevel = &v
 	return s
 }
 
@@ -10595,11 +10431,11 @@ func (s *ListVideoAudiosRequest) SetMarker(v string) *ListVideoAudiosRequest {
 }
 
 type ListVideoAudiosResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Audios     []*ListVideoAudiosResponseBodyAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
 	VideoUri   *string                              `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	NextMarker *string                              `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	SetId      *string                              `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	Audios     []*ListVideoAudiosResponseBodyAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
 }
 
 func (s ListVideoAudiosResponseBody) String() string {
@@ -10610,18 +10446,13 @@ func (s ListVideoAudiosResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVideoAudiosResponseBody) SetRequestId(v string) *ListVideoAudiosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBody) SetAudios(v []*ListVideoAudiosResponseBodyAudios) *ListVideoAudiosResponseBody {
-	s.Audios = v
-	return s
-}
-
 func (s *ListVideoAudiosResponseBody) SetVideoUri(v string) *ListVideoAudiosResponseBody {
 	s.VideoUri = &v
+	return s
+}
+
+func (s *ListVideoAudiosResponseBody) SetRequestId(v string) *ListVideoAudiosResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10635,22 +10466,26 @@ func (s *ListVideoAudiosResponseBody) SetSetId(v string) *ListVideoAudiosRespons
 	return s
 }
 
+func (s *ListVideoAudiosResponseBody) SetAudios(v []*ListVideoAudiosResponseBodyAudios) *ListVideoAudiosResponseBody {
+	s.Audios = v
+	return s
+}
+
 type ListVideoAudiosResponseBodyAudios struct {
 	SourcePosition       *string                                        `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	CreateTime           *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RemarksC             *string                                        `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
-	AudioDuration        *float32                                       `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
+	CreateTime           *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SourceType           *string                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	AudioDuration        *float32                                       `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
 	AudioTextsStatus     *string                                        `json:"AudioTextsStatus,omitempty" xml:"AudioTextsStatus,omitempty"`
 	AudioFormat          *string                                        `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
 	RemarksD             *string                                        `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
-	ProcessModifyTime    *string                                        `json:"ProcessModifyTime,omitempty" xml:"ProcessModifyTime,omitempty"`
 	ProcessFailReason    *string                                        `json:"ProcessFailReason,omitempty" xml:"ProcessFailReason,omitempty"`
-	AudioUri             *string                                        `json:"AudioUri,omitempty" xml:"AudioUri,omitempty"`
+	ProcessModifyTime    *string                                        `json:"ProcessModifyTime,omitempty" xml:"ProcessModifyTime,omitempty"`
 	AudioRate            *int32                                         `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
+	AudioUri             *string                                        `json:"AudioUri,omitempty" xml:"AudioUri,omitempty"`
 	AudioTextsModifyTime *string                                        `json:"AudioTextsModifyTime,omitempty" xml:"AudioTextsModifyTime,omitempty"`
 	RemarksA             *string                                        `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
-	AudioTexts           []*ListVideoAudiosResponseBodyAudiosAudioTexts `json:"AudioTexts,omitempty" xml:"AudioTexts,omitempty" type:"Repeated"`
 	ExternalId           *string                                        `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	SourceUri            *string                                        `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
 	ProcessStatus        *string                                        `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
@@ -10658,6 +10493,7 @@ type ListVideoAudiosResponseBodyAudios struct {
 	RemarksB             *string                                        `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
 	FileSize             *int32                                         `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	ModifyTime           *string                                        `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	AudioTexts           []*ListVideoAudiosResponseBodyAudiosAudioTexts `json:"AudioTexts,omitempty" xml:"AudioTexts,omitempty" type:"Repeated"`
 }
 
 func (s ListVideoAudiosResponseBodyAudios) String() string {
@@ -10673,23 +10509,23 @@ func (s *ListVideoAudiosResponseBodyAudios) SetSourcePosition(v string) *ListVid
 	return s
 }
 
-func (s *ListVideoAudiosResponseBodyAudios) SetCreateTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.CreateTime = &v
-	return s
-}
-
 func (s *ListVideoAudiosResponseBodyAudios) SetRemarksC(v string) *ListVideoAudiosResponseBodyAudios {
 	s.RemarksC = &v
 	return s
 }
 
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioDuration(v float32) *ListVideoAudiosResponseBodyAudios {
-	s.AudioDuration = &v
+func (s *ListVideoAudiosResponseBodyAudios) SetCreateTime(v string) *ListVideoAudiosResponseBodyAudios {
+	s.CreateTime = &v
 	return s
 }
 
 func (s *ListVideoAudiosResponseBodyAudios) SetSourceType(v string) *ListVideoAudiosResponseBodyAudios {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ListVideoAudiosResponseBodyAudios) SetAudioDuration(v float32) *ListVideoAudiosResponseBodyAudios {
+	s.AudioDuration = &v
 	return s
 }
 
@@ -10708,23 +10544,23 @@ func (s *ListVideoAudiosResponseBodyAudios) SetRemarksD(v string) *ListVideoAudi
 	return s
 }
 
-func (s *ListVideoAudiosResponseBodyAudios) SetProcessModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ProcessModifyTime = &v
-	return s
-}
-
 func (s *ListVideoAudiosResponseBodyAudios) SetProcessFailReason(v string) *ListVideoAudiosResponseBodyAudios {
 	s.ProcessFailReason = &v
 	return s
 }
 
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioUri(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioUri = &v
+func (s *ListVideoAudiosResponseBodyAudios) SetProcessModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
+	s.ProcessModifyTime = &v
 	return s
 }
 
 func (s *ListVideoAudiosResponseBodyAudios) SetAudioRate(v int32) *ListVideoAudiosResponseBodyAudios {
 	s.AudioRate = &v
+	return s
+}
+
+func (s *ListVideoAudiosResponseBodyAudios) SetAudioUri(v string) *ListVideoAudiosResponseBodyAudios {
+	s.AudioUri = &v
 	return s
 }
 
@@ -10735,11 +10571,6 @@ func (s *ListVideoAudiosResponseBodyAudios) SetAudioTextsModifyTime(v string) *L
 
 func (s *ListVideoAudiosResponseBodyAudios) SetRemarksA(v string) *ListVideoAudiosResponseBodyAudios {
 	s.RemarksA = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioTexts(v []*ListVideoAudiosResponseBodyAudiosAudioTexts) *ListVideoAudiosResponseBodyAudios {
-	s.AudioTexts = v
 	return s
 }
 
@@ -10775,6 +10606,11 @@ func (s *ListVideoAudiosResponseBodyAudios) SetFileSize(v int32) *ListVideoAudio
 
 func (s *ListVideoAudiosResponseBodyAudios) SetModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListVideoAudiosResponseBodyAudios) SetAudioTexts(v []*ListVideoAudiosResponseBodyAudiosAudioTexts) *ListVideoAudiosResponseBodyAudios {
+	s.AudioTexts = v
 	return s
 }
 
@@ -10908,11 +10744,11 @@ func (s *ListVideoFramesRequest) SetMarker(v string) *ListVideoFramesRequest {
 }
 
 type ListVideoFramesResponseBody struct {
-	Frames     []*ListVideoFramesResponseBodyFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VideoUri   *string                              `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	NextMarker *string                              `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
 	SetId      *string                              `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	Frames     []*ListVideoFramesResponseBodyFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
 }
 
 func (s ListVideoFramesResponseBody) String() string {
@@ -10923,18 +10759,13 @@ func (s ListVideoFramesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVideoFramesResponseBody) SetFrames(v []*ListVideoFramesResponseBodyFrames) *ListVideoFramesResponseBody {
-	s.Frames = v
+func (s *ListVideoFramesResponseBody) SetVideoUri(v string) *ListVideoFramesResponseBody {
+	s.VideoUri = &v
 	return s
 }
 
 func (s *ListVideoFramesResponseBody) SetRequestId(v string) *ListVideoFramesResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBody) SetVideoUri(v string) *ListVideoFramesResponseBody {
-	s.VideoUri = &v
 	return s
 }
 
@@ -10948,25 +10779,27 @@ func (s *ListVideoFramesResponseBody) SetSetId(v string) *ListVideoFramesRespons
 	return s
 }
 
+func (s *ListVideoFramesResponseBody) SetFrames(v []*ListVideoFramesResponseBodyFrames) *ListVideoFramesResponseBody {
+	s.Frames = v
+	return s
+}
+
 type ListVideoFramesResponseBodyFrames struct {
 	TagsFailReason  *string                                   `json:"TagsFailReason,omitempty" xml:"TagsFailReason,omitempty"`
 	RemarksC        *string                                   `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
 	CreateTime      *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SourceType      *string                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	FacesFailReason *string                                   `json:"FacesFailReason,omitempty" xml:"FacesFailReason,omitempty"`
-	Tags            []*ListVideoFramesResponseBodyFramesTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	FacesModifyTime *string                                   `json:"FacesModifyTime,omitempty" xml:"FacesModifyTime,omitempty"`
 	ImageTime       *string                                   `json:"ImageTime,omitempty" xml:"ImageTime,omitempty"`
 	OCRModifyTime   *string                                   `json:"OCRModifyTime,omitempty" xml:"OCRModifyTime,omitempty"`
-	OCR             []*ListVideoFramesResponseBodyFramesOCR   `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
 	FacesStatus     *string                                   `json:"FacesStatus,omitempty" xml:"FacesStatus,omitempty"`
 	ImageHeight     *int32                                    `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	ExternalId      *string                                   `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	SourceUri       *string                                   `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	FileSize        *int32                                    `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	ModifyTime      *string                                   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	FileSize        *int32                                    `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	SourcePosition  *string                                   `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	Faces           []*ListVideoFramesResponseBodyFramesFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
 	OCRFailReason   *string                                   `json:"OCRFailReason,omitempty" xml:"OCRFailReason,omitempty"`
 	ImageFormat     *string                                   `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	ImageWidth      *int32                                    `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
@@ -10980,6 +10813,9 @@ type ListVideoFramesResponseBodyFrames struct {
 	Exif            *string                                   `json:"Exif,omitempty" xml:"Exif,omitempty"`
 	Location        *string                                   `json:"Location,omitempty" xml:"Location,omitempty"`
 	RemarksB        *string                                   `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	Faces           []*ListVideoFramesResponseBodyFramesFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	Tags            []*ListVideoFramesResponseBodyFramesTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OCR             []*ListVideoFramesResponseBodyFramesOCR   `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
 }
 
 func (s ListVideoFramesResponseBodyFrames) String() string {
@@ -11015,11 +10851,6 @@ func (s *ListVideoFramesResponseBodyFrames) SetFacesFailReason(v string) *ListVi
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFrames) SetTags(v []*ListVideoFramesResponseBodyFramesTags) *ListVideoFramesResponseBodyFrames {
-	s.Tags = v
-	return s
-}
-
 func (s *ListVideoFramesResponseBodyFrames) SetFacesModifyTime(v string) *ListVideoFramesResponseBodyFrames {
 	s.FacesModifyTime = &v
 	return s
@@ -11032,11 +10863,6 @@ func (s *ListVideoFramesResponseBodyFrames) SetImageTime(v string) *ListVideoFra
 
 func (s *ListVideoFramesResponseBodyFrames) SetOCRModifyTime(v string) *ListVideoFramesResponseBodyFrames {
 	s.OCRModifyTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOCR(v []*ListVideoFramesResponseBodyFramesOCR) *ListVideoFramesResponseBodyFrames {
-	s.OCR = v
 	return s
 }
 
@@ -11060,23 +10886,18 @@ func (s *ListVideoFramesResponseBodyFrames) SetSourceUri(v string) *ListVideoFra
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFrames) SetFileSize(v int32) *ListVideoFramesResponseBodyFrames {
-	s.FileSize = &v
-	return s
-}
-
 func (s *ListVideoFramesResponseBodyFrames) SetModifyTime(v string) *ListVideoFramesResponseBodyFrames {
 	s.ModifyTime = &v
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFrames) SetSourcePosition(v string) *ListVideoFramesResponseBodyFrames {
-	s.SourcePosition = &v
+func (s *ListVideoFramesResponseBodyFrames) SetFileSize(v int32) *ListVideoFramesResponseBodyFrames {
+	s.FileSize = &v
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFrames) SetFaces(v []*ListVideoFramesResponseBodyFramesFaces) *ListVideoFramesResponseBodyFrames {
-	s.Faces = v
+func (s *ListVideoFramesResponseBodyFrames) SetSourcePosition(v string) *ListVideoFramesResponseBodyFrames {
+	s.SourcePosition = &v
 	return s
 }
 
@@ -11145,118 +10966,34 @@ func (s *ListVideoFramesResponseBodyFrames) SetRemarksB(v string) *ListVideoFram
 	return s
 }
 
-type ListVideoFramesResponseBodyFramesTags struct {
-	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
-	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
-	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagConfidence(v float32) *ListVideoFramesResponseBodyFramesTags {
-	s.TagConfidence = &v
+func (s *ListVideoFramesResponseBodyFrames) SetFaces(v []*ListVideoFramesResponseBodyFramesFaces) *ListVideoFramesResponseBodyFrames {
+	s.Faces = v
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagName(v string) *ListVideoFramesResponseBodyFramesTags {
-	s.TagName = &v
+func (s *ListVideoFramesResponseBodyFrames) SetTags(v []*ListVideoFramesResponseBodyFramesTags) *ListVideoFramesResponseBodyFrames {
+	s.Tags = v
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagLevel(v int32) *ListVideoFramesResponseBodyFramesTags {
-	s.TagLevel = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetParentTagName(v string) *ListVideoFramesResponseBodyFramesTags {
-	s.ParentTagName = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesOCR struct {
-	OCRConfidence *float32                                         `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
-	OCRContents   *string                                          `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
-	OCRBoundary   *ListVideoFramesResponseBodyFramesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
-}
-
-func (s ListVideoFramesResponseBodyFramesOCR) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesOCR) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRConfidence(v float32) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRContents(v string) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRContents = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRBoundary(v *ListVideoFramesResponseBodyFramesOCROCRBoundary) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRBoundary = v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesOCROCRBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Left = &v
+func (s *ListVideoFramesResponseBodyFrames) SetOCR(v []*ListVideoFramesResponseBodyFramesOCR) *ListVideoFramesResponseBodyFrames {
+	s.OCR = v
 	return s
 }
 
 type ListVideoFramesResponseBodyFramesFaces struct {
+	EmotionConfidence *float32                                              `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	Attractive        *float32                                              `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
+	GroupId           *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Gender            *string                                               `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	FaceId            *string                                               `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	GenderConfidence  *float32                                              `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	FaceAttributes    *ListVideoFramesResponseBodyFramesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 	FaceQuality       *float32                                              `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
 	Emotion           *string                                               `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
 	Age               *int32                                                `json:"Age,omitempty" xml:"Age,omitempty"`
 	FaceConfidence    *float32                                              `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	EmotionConfidence *float32                                              `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	Attractive        *float32                                              `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	GroupId           *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	EmotionDetails    *ListVideoFramesResponseBodyFramesFacesEmotionDetails `json:"EmotionDetails,omitempty" xml:"EmotionDetails,omitempty" type:"Struct"`
+	FaceAttributes    *ListVideoFramesResponseBodyFramesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
 }
 
 func (s ListVideoFramesResponseBodyFramesFaces) String() string {
@@ -11265,6 +11002,21 @@ func (s ListVideoFramesResponseBodyFramesFaces) String() string {
 
 func (s ListVideoFramesResponseBodyFramesFaces) GoString() string {
 	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotionConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
+	s.EmotionConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFaces) SetAttractive(v float32) *ListVideoFramesResponseBodyFramesFaces {
+	s.Attractive = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFaces) SetGroupId(v string) *ListVideoFramesResponseBodyFramesFaces {
+	s.GroupId = &v
+	return s
 }
 
 func (s *ListVideoFramesResponseBodyFramesFaces) SetGender(v string) *ListVideoFramesResponseBodyFramesFaces {
@@ -11279,11 +11031,6 @@ func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceId(v string) *ListVideoF
 
 func (s *ListVideoFramesResponseBodyFramesFaces) SetGenderConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
 	s.GenderConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceAttributes(v *ListVideoFramesResponseBodyFramesFacesFaceAttributes) *ListVideoFramesResponseBodyFramesFaces {
-	s.FaceAttributes = v
 	return s
 }
 
@@ -11307,146 +11054,13 @@ func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceConfidence(v float32) *L
 	return s
 }
 
-func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotionConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetAttractive(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.Attractive = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetGroupId(v string) *ListVideoFramesResponseBodyFramesFaces {
-	s.GroupId = &v
-	return s
-}
-
 func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotionDetails(v *ListVideoFramesResponseBodyFramesFacesEmotionDetails) *ListVideoFramesResponseBodyFramesFaces {
 	s.EmotionDetails = v
 	return s
 }
 
-type ListVideoFramesResponseBodyFramesFacesFaceAttributes struct {
-	GlassesConfidence *float32                                                          `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	Glasses           *string                                                           `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Mask              *string                                                           `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	BeardConfidence   *float32                                                          `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	MaskConfidence    *float32                                                          `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	FaceBoundary      *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
-	HeadPose          *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
-	Beard             *string                                                           `json:"Beard,omitempty" xml:"Beard,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlassesConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.GlassesConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlasses(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Glasses = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMask(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Mask = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeardConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.BeardConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMaskConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.MaskConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetFaceBoundary(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.FaceBoundary = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetHeadPose(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.HeadPose = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeard(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Beard = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary struct {
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Width = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Left = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose struct {
-	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetPitch(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Pitch = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetRoll(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Roll = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetYaw(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Yaw = &v
+func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceAttributes(v *ListVideoFramesResponseBodyFramesFacesFaceAttributes) *ListVideoFramesResponseBodyFramesFaces {
+	s.FaceAttributes = v
 	return s
 }
 
@@ -11500,6 +11114,228 @@ func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetSAD(v float32)
 
 func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetSCARED(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
 	s.SCARED = &v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesFacesFaceAttributes struct {
+	GlassesConfidence *float32                                                          `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
+	Glasses           *string                                                           `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Mask              *string                                                           `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	BeardConfidence   *float32                                                          `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
+	MaskConfidence    *float32                                                          `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	Beard             *string                                                           `json:"Beard,omitempty" xml:"Beard,omitempty"`
+	FaceBoundary      *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
+	HeadPose          *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlassesConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.GlassesConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlasses(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.Glasses = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMask(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.Mask = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeardConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.BeardConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMaskConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.MaskConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeard(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.Beard = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetFaceBoundary(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.FaceBoundary = v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetHeadPose(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
+	s.HeadPose = v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
+	s.Height = &v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose struct {
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetPitch(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
+	s.Pitch = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetRoll(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
+	s.Roll = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetYaw(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
+	s.Yaw = &v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesTags struct {
+	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
+	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
+	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s ListVideoFramesResponseBodyFramesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesTags) SetTagLevel(v int32) *ListVideoFramesResponseBodyFramesTags {
+	s.TagLevel = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesTags) SetParentTagName(v string) *ListVideoFramesResponseBodyFramesTags {
+	s.ParentTagName = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesTags) SetTagConfidence(v float32) *ListVideoFramesResponseBodyFramesTags {
+	s.TagConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesTags) SetTagName(v string) *ListVideoFramesResponseBodyFramesTags {
+	s.TagName = &v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesOCR struct {
+	OCRConfidence *float32                                         `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
+	OCRContents   *string                                          `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
+	OCRBoundary   *ListVideoFramesResponseBodyFramesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
+}
+
+func (s ListVideoFramesResponseBodyFramesOCR) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesOCR) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRConfidence(v float32) *ListVideoFramesResponseBodyFramesOCR {
+	s.OCRConfidence = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRContents(v string) *ListVideoFramesResponseBodyFramesOCR {
+	s.OCRContents = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRBoundary(v *ListVideoFramesResponseBodyFramesOCROCRBoundary) *ListVideoFramesResponseBodyFramesOCR {
+	s.OCRBoundary = v
+	return s
+}
+
+type ListVideoFramesResponseBodyFramesOCROCRBoundary struct {
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+}
+
+func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
+	s.Left = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
+	s.Top = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
+	s.Width = &v
+	return s
+}
+
+func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
+	s.Height = &v
 	return s
 }
 
@@ -11602,25 +11438,25 @@ type ListVideosResponseBodyVideos struct {
 	VideoTagsFailReason *string                                  `json:"VideoTagsFailReason,omitempty" xml:"VideoTagsFailReason,omitempty"`
 	SourceType          *string                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	VideoDuration       *float32                                 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
-	VideoTags           []*ListVideosResponseBodyVideosVideoTags `json:"VideoTags,omitempty" xml:"VideoTags,omitempty" type:"Repeated"`
 	ProcessModifyTime   *string                                  `json:"ProcessModifyTime,omitempty" xml:"ProcessModifyTime,omitempty"`
 	VideoFrames         *int32                                   `json:"VideoFrames,omitempty" xml:"VideoFrames,omitempty"`
 	VideoTagsStatus     *string                                  `json:"VideoTagsStatus,omitempty" xml:"VideoTagsStatus,omitempty"`
 	ExternalId          *string                                  `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	SourceUri           *string                                  `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	FileSize            *int32                                   `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	ModifyTime          *string                                  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	FileSize            *int32                                   `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	SourcePosition      *string                                  `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
 	VideoWidth          *int32                                   `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
-	VideoFormat         *string                                  `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
 	VideoHeight         *int32                                   `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	VideoFormat         *string                                  `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
 	RemarksD            *string                                  `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
 	VideoUri            *string                                  `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-	ProcessFailReason   *string                                  `json:"ProcessFailReason,omitempty" xml:"ProcessFailReason,omitempty"`
 	VideoTagsModifyTime *string                                  `json:"VideoTagsModifyTime,omitempty" xml:"VideoTagsModifyTime,omitempty"`
+	ProcessFailReason   *string                                  `json:"ProcessFailReason,omitempty" xml:"ProcessFailReason,omitempty"`
 	RemarksA            *string                                  `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
 	ProcessStatus       *string                                  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
 	RemarksB            *string                                  `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	VideoTags           []*ListVideosResponseBodyVideosVideoTags `json:"VideoTags,omitempty" xml:"VideoTags,omitempty" type:"Repeated"`
 }
 
 func (s ListVideosResponseBodyVideos) String() string {
@@ -11656,11 +11492,6 @@ func (s *ListVideosResponseBodyVideos) SetVideoDuration(v float32) *ListVideosRe
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetVideoTags(v []*ListVideosResponseBodyVideosVideoTags) *ListVideosResponseBodyVideos {
-	s.VideoTags = v
-	return s
-}
-
 func (s *ListVideosResponseBodyVideos) SetProcessModifyTime(v string) *ListVideosResponseBodyVideos {
 	s.ProcessModifyTime = &v
 	return s
@@ -11686,13 +11517,13 @@ func (s *ListVideosResponseBodyVideos) SetSourceUri(v string) *ListVideosRespons
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetFileSize(v int32) *ListVideosResponseBodyVideos {
-	s.FileSize = &v
+func (s *ListVideosResponseBodyVideos) SetModifyTime(v string) *ListVideosResponseBodyVideos {
+	s.ModifyTime = &v
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetModifyTime(v string) *ListVideosResponseBodyVideos {
-	s.ModifyTime = &v
+func (s *ListVideosResponseBodyVideos) SetFileSize(v int32) *ListVideosResponseBodyVideos {
+	s.FileSize = &v
 	return s
 }
 
@@ -11706,13 +11537,13 @@ func (s *ListVideosResponseBodyVideos) SetVideoWidth(v int32) *ListVideosRespons
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetVideoFormat(v string) *ListVideosResponseBodyVideos {
-	s.VideoFormat = &v
+func (s *ListVideosResponseBodyVideos) SetVideoHeight(v int32) *ListVideosResponseBodyVideos {
+	s.VideoHeight = &v
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetVideoHeight(v int32) *ListVideosResponseBodyVideos {
-	s.VideoHeight = &v
+func (s *ListVideosResponseBodyVideos) SetVideoFormat(v string) *ListVideosResponseBodyVideos {
+	s.VideoFormat = &v
 	return s
 }
 
@@ -11726,13 +11557,13 @@ func (s *ListVideosResponseBodyVideos) SetVideoUri(v string) *ListVideosResponse
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetProcessFailReason(v string) *ListVideosResponseBodyVideos {
-	s.ProcessFailReason = &v
+func (s *ListVideosResponseBodyVideos) SetVideoTagsModifyTime(v string) *ListVideosResponseBodyVideos {
+	s.VideoTagsModifyTime = &v
 	return s
 }
 
-func (s *ListVideosResponseBodyVideos) SetVideoTagsModifyTime(v string) *ListVideosResponseBodyVideos {
-	s.VideoTagsModifyTime = &v
+func (s *ListVideosResponseBodyVideos) SetProcessFailReason(v string) *ListVideosResponseBodyVideos {
+	s.ProcessFailReason = &v
 	return s
 }
 
@@ -11751,11 +11582,16 @@ func (s *ListVideosResponseBodyVideos) SetRemarksB(v string) *ListVideosResponse
 	return s
 }
 
+func (s *ListVideosResponseBodyVideos) SetVideoTags(v []*ListVideosResponseBodyVideosVideoTags) *ListVideosResponseBodyVideos {
+	s.VideoTags = v
+	return s
+}
+
 type ListVideosResponseBodyVideosVideoTags struct {
-	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
 	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
 	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
+	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
 }
 
 func (s ListVideosResponseBodyVideosVideoTags) String() string {
@@ -11766,16 +11602,6 @@ func (s ListVideosResponseBodyVideosVideoTags) GoString() string {
 	return s.String()
 }
 
-func (s *ListVideosResponseBodyVideosVideoTags) SetTagName(v string) *ListVideosResponseBodyVideosVideoTags {
-	s.TagName = &v
-	return s
-}
-
-func (s *ListVideosResponseBodyVideosVideoTags) SetTagConfidence(v float32) *ListVideosResponseBodyVideosVideoTags {
-	s.TagConfidence = &v
-	return s
-}
-
 func (s *ListVideosResponseBodyVideosVideoTags) SetTagLevel(v int32) *ListVideosResponseBodyVideosVideoTags {
 	s.TagLevel = &v
 	return s
@@ -11783,6 +11609,16 @@ func (s *ListVideosResponseBodyVideosVideoTags) SetTagLevel(v int32) *ListVideos
 
 func (s *ListVideosResponseBodyVideosVideoTags) SetParentTagName(v string) *ListVideosResponseBodyVideosVideoTags {
 	s.ParentTagName = &v
+	return s
+}
+
+func (s *ListVideosResponseBodyVideosVideoTags) SetTagName(v string) *ListVideosResponseBodyVideosVideoTags {
+	s.TagName = &v
+	return s
+}
+
+func (s *ListVideosResponseBodyVideosVideoTags) SetTagConfidence(v float32) *ListVideosResponseBodyVideosVideoTags {
+	s.TagConfidence = &v
 	return s
 }
 
@@ -11845,9 +11681,9 @@ func (s *ListVideoTasksRequest) SetTaskType(v string) *ListVideoTasksRequest {
 }
 
 type ListVideoTasksResponseBody struct {
-	Tasks      []*ListVideoTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	NextMarker *string                            `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*ListVideoTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListVideoTasksResponseBody) String() string {
@@ -11858,8 +11694,8 @@ func (s ListVideoTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVideoTasksResponseBody) SetTasks(v []*ListVideoTasksResponseBodyTasks) *ListVideoTasksResponseBody {
-	s.Tasks = v
+func (s *ListVideoTasksResponseBody) SetNextMarker(v string) *ListVideoTasksResponseBody {
+	s.NextMarker = &v
 	return s
 }
 
@@ -11868,8 +11704,8 @@ func (s *ListVideoTasksResponseBody) SetRequestId(v string) *ListVideoTasksRespo
 	return s
 }
 
-func (s *ListVideoTasksResponseBody) SetNextMarker(v string) *ListVideoTasksResponseBody {
-	s.NextMarker = &v
+func (s *ListVideoTasksResponseBody) SetTasks(v []*ListVideoTasksResponseBodyTasks) *ListVideoTasksResponseBody {
+	s.Tasks = v
 	return s
 }
 
@@ -11991,8 +11827,8 @@ func (s *OpenImmServiceRequest) SetOwnerId(v int64) *OpenImmServiceRequest {
 }
 
 type OpenImmServiceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenImmServiceResponseBody) String() string {
@@ -12003,13 +11839,13 @@ func (s OpenImmServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *OpenImmServiceResponseBody) SetRequestId(v string) *OpenImmServiceResponseBody {
-	s.RequestId = &v
+func (s *OpenImmServiceResponseBody) SetOrderId(v string) *OpenImmServiceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *OpenImmServiceResponseBody) SetOrderId(v string) *OpenImmServiceResponseBody {
-	s.OrderId = &v
+func (s *OpenImmServiceResponseBody) SetRequestId(v string) *OpenImmServiceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12039,9 +11875,6 @@ func (s *OpenImmServiceResponse) SetBody(v *OpenImmServiceResponseBody) *OpenImm
 type PutProjectRequest struct {
 	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	CU          *int32  `json:"CU,omitempty" xml:"CU,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 }
 
 func (s PutProjectRequest) String() string {
@@ -12059,21 +11892,6 @@ func (s *PutProjectRequest) SetProject(v string) *PutProjectRequest {
 
 func (s *PutProjectRequest) SetServiceRole(v string) *PutProjectRequest {
 	s.ServiceRole = &v
-	return s
-}
-
-func (s *PutProjectRequest) SetCU(v int32) *PutProjectRequest {
-	s.CU = &v
-	return s
-}
-
-func (s *PutProjectRequest) SetType(v string) *PutProjectRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *PutProjectRequest) SetBillingType(v string) *PutProjectRequest {
-	s.BillingType = &v
 	return s
 }
 
@@ -12201,11 +12019,11 @@ func (s *RefreshOfficeEditTokenRequest) SetRefreshToken(v string) *RefreshOffice
 }
 
 type RefreshOfficeEditTokenResponseBody struct {
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
 }
 
 func (s RefreshOfficeEditTokenResponseBody) String() string {
@@ -12216,13 +12034,18 @@ func (s RefreshOfficeEditTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshOfficeEditTokenResponseBody) SetRefreshToken(v string) *RefreshOfficeEditTokenResponseBody {
-	s.RefreshToken = &v
+func (s *RefreshOfficeEditTokenResponseBody) SetRequestId(v string) *RefreshOfficeEditTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *RefreshOfficeEditTokenResponseBody) SetRequestId(v string) *RefreshOfficeEditTokenResponseBody {
-	s.RequestId = &v
+func (s *RefreshOfficeEditTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshOfficeEditTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *RefreshOfficeEditTokenResponseBody) SetRefreshToken(v string) *RefreshOfficeEditTokenResponseBody {
+	s.RefreshToken = &v
 	return s
 }
 
@@ -12233,11 +12056,6 @@ func (s *RefreshOfficeEditTokenResponseBody) SetAccessToken(v string) *RefreshOf
 
 func (s *RefreshOfficeEditTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshOfficeEditTokenResponseBody {
 	s.RefreshTokenExpiredTime = &v
-	return s
-}
-
-func (s *RefreshOfficeEditTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshOfficeEditTokenResponseBody {
-	s.AccessTokenExpiredTime = &v
 	return s
 }
 
@@ -12294,11 +12112,11 @@ func (s *RefreshOfficePreviewTokenRequest) SetRefreshToken(v string) *RefreshOff
 }
 
 type RefreshOfficePreviewTokenResponseBody struct {
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
 }
 
 func (s RefreshOfficePreviewTokenResponseBody) String() string {
@@ -12309,13 +12127,18 @@ func (s RefreshOfficePreviewTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshOfficePreviewTokenResponseBody) SetRefreshToken(v string) *RefreshOfficePreviewTokenResponseBody {
-	s.RefreshToken = &v
+func (s *RefreshOfficePreviewTokenResponseBody) SetRequestId(v string) *RefreshOfficePreviewTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *RefreshOfficePreviewTokenResponseBody) SetRequestId(v string) *RefreshOfficePreviewTokenResponseBody {
-	s.RequestId = &v
+func (s *RefreshOfficePreviewTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshOfficePreviewTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *RefreshOfficePreviewTokenResponseBody) SetRefreshToken(v string) *RefreshOfficePreviewTokenResponseBody {
+	s.RefreshToken = &v
 	return s
 }
 
@@ -12326,11 +12149,6 @@ func (s *RefreshOfficePreviewTokenResponseBody) SetAccessToken(v string) *Refres
 
 func (s *RefreshOfficePreviewTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshOfficePreviewTokenResponseBody {
 	s.RefreshTokenExpiredTime = &v
-	return s
-}
-
-func (s *RefreshOfficePreviewTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshOfficePreviewTokenResponseBody {
-	s.AccessTokenExpiredTime = &v
 	return s
 }
 
@@ -12387,11 +12205,11 @@ func (s *RefreshWebofficeTokenRequest) SetRefreshToken(v string) *RefreshWeboffi
 }
 
 type RefreshWebofficeTokenResponseBody struct {
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
 }
 
 func (s RefreshWebofficeTokenResponseBody) String() string {
@@ -12402,13 +12220,18 @@ func (s RefreshWebofficeTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RefreshWebofficeTokenResponseBody) SetRefreshToken(v string) *RefreshWebofficeTokenResponseBody {
-	s.RefreshToken = &v
+func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebofficeTokenResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebofficeTokenResponseBody {
-	s.RequestId = &v
+func (s *RefreshWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRefreshToken(v string) *RefreshWebofficeTokenResponseBody {
+	s.RefreshToken = &v
 	return s
 }
 
@@ -12419,11 +12242,6 @@ func (s *RefreshWebofficeTokenResponseBody) SetAccessToken(v string) *RefreshWeb
 
 func (s *RefreshWebofficeTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
 	s.RefreshTokenExpiredTime = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
-	s.AccessTokenExpiredTime = &v
 	return s
 }
 
@@ -12463,6 +12281,7 @@ type UpdateFaceGroupRequest struct {
 	RemarksArrayA    *string `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
 	RemarksArrayB    *string `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
 	ExternalId       *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	ResetItems       *string `json:"ResetItems,omitempty" xml:"ResetItems,omitempty"`
 }
 
 func (s UpdateFaceGroupRequest) String() string {
@@ -12533,10 +12352,15 @@ func (s *UpdateFaceGroupRequest) SetExternalId(v string) *UpdateFaceGroupRequest
 	return s
 }
 
+func (s *UpdateFaceGroupRequest) SetResetItems(v string) *UpdateFaceGroupRequest {
+	s.ResetItems = &v
+	return s
+}
+
 type UpdateFaceGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SetId     *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
 	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SetId     *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
 }
 
 func (s UpdateFaceGroupResponseBody) String() string {
@@ -12552,13 +12376,13 @@ func (s *UpdateFaceGroupResponseBody) SetRequestId(v string) *UpdateFaceGroupRes
 	return s
 }
 
-func (s *UpdateFaceGroupResponseBody) SetSetId(v string) *UpdateFaceGroupResponseBody {
-	s.SetId = &v
+func (s *UpdateFaceGroupResponseBody) SetGroupId(v string) *UpdateFaceGroupResponseBody {
+	s.GroupId = &v
 	return s
 }
 
-func (s *UpdateFaceGroupResponseBody) SetGroupId(v string) *UpdateFaceGroupResponseBody {
-	s.GroupId = &v
+func (s *UpdateFaceGroupResponseBody) SetSetId(v string) *UpdateFaceGroupResponseBody {
+	s.SetId = &v
 	return s
 }
 
@@ -12586,19 +12410,20 @@ func (s *UpdateFaceGroupResponse) SetBody(v *UpdateFaceGroupResponseBody) *Updat
 }
 
 type UpdateImageRequest struct {
-	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	SetId          *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	ImageUri       *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	RemarksA       *string `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
-	RemarksB       *string `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
-	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceUri      *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	SourcePosition *string `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	RemarksC       *string `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
-	RemarksD       *string `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
-	ExternalId     *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	RemarksArrayA  *string `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
-	RemarksArrayB  *string `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
+	Project        *string                    `json:"Project,omitempty" xml:"Project,omitempty"`
+	SetId          *string                    `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	ImageUri       *string                    `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RemarksA       *string                    `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
+	RemarksB       *string                    `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	SourceType     *string                    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceUri      *string                    `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
+	SourcePosition *string                    `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
+	RemarksC       *string                    `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
+	RemarksD       *string                    `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
+	ExternalId     *string                    `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	RemarksArrayA  *string                    `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
+	RemarksArrayB  *string                    `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
+	Faces          []*UpdateImageRequestFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
 }
 
 func (s UpdateImageRequest) String() string {
@@ -12671,6 +12496,129 @@ func (s *UpdateImageRequest) SetRemarksArrayA(v string) *UpdateImageRequest {
 
 func (s *UpdateImageRequest) SetRemarksArrayB(v string) *UpdateImageRequest {
 	s.RemarksArrayB = &v
+	return s
+}
+
+func (s *UpdateImageRequest) SetFaces(v []*UpdateImageRequestFaces) *UpdateImageRequest {
+	s.Faces = v
+	return s
+}
+
+type UpdateImageRequestFaces struct {
+	FaceId  *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UpdateImageRequestFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateImageRequestFaces) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateImageRequestFaces) SetFaceId(v string) *UpdateImageRequestFaces {
+	s.FaceId = &v
+	return s
+}
+
+func (s *UpdateImageRequestFaces) SetGroupId(v string) *UpdateImageRequestFaces {
+	s.GroupId = &v
+	return s
+}
+
+type UpdateImageShrinkRequest struct {
+	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	SetId          *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	ImageUri       *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	RemarksA       *string `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
+	RemarksB       *string `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceUri      *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
+	SourcePosition *string `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
+	RemarksC       *string `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
+	RemarksD       *string `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
+	ExternalId     *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	RemarksArrayA  *string `json:"RemarksArrayA,omitempty" xml:"RemarksArrayA,omitempty"`
+	RemarksArrayB  *string `json:"RemarksArrayB,omitempty" xml:"RemarksArrayB,omitempty"`
+	FacesShrink    *string `json:"Faces,omitempty" xml:"Faces,omitempty"`
+}
+
+func (s UpdateImageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateImageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateImageShrinkRequest) SetProject(v string) *UpdateImageShrinkRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetSetId(v string) *UpdateImageShrinkRequest {
+	s.SetId = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetImageUri(v string) *UpdateImageShrinkRequest {
+	s.ImageUri = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksA(v string) *UpdateImageShrinkRequest {
+	s.RemarksA = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksB(v string) *UpdateImageShrinkRequest {
+	s.RemarksB = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetSourceType(v string) *UpdateImageShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetSourceUri(v string) *UpdateImageShrinkRequest {
+	s.SourceUri = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetSourcePosition(v string) *UpdateImageShrinkRequest {
+	s.SourcePosition = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksC(v string) *UpdateImageShrinkRequest {
+	s.RemarksC = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksD(v string) *UpdateImageShrinkRequest {
+	s.RemarksD = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetExternalId(v string) *UpdateImageShrinkRequest {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksArrayA(v string) *UpdateImageShrinkRequest {
+	s.RemarksArrayA = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetRemarksArrayB(v string) *UpdateImageShrinkRequest {
+	s.RemarksArrayB = &v
+	return s
+}
+
+func (s *UpdateImageShrinkRequest) SetFacesShrink(v string) *UpdateImageShrinkRequest {
+	s.FacesShrink = &v
 	return s
 }
 
@@ -12810,14 +12758,14 @@ func (s *UpdateProjectRequest) SetNewServiceRole(v string) *UpdateProjectRequest
 }
 
 type UpdateProjectResponseBody struct {
-	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	CU          *int32  `json:"CU,omitempty" xml:"CU,omitempty"`
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CU          *int32  `json:"CU,omitempty" xml:"CU,omitempty"`
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 }
 
 func (s UpdateProjectResponseBody) String() string {
@@ -12828,28 +12776,8 @@ func (s UpdateProjectResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateProjectResponseBody) SetProject(v string) *UpdateProjectResponseBody {
-	s.Project = &v
-	return s
-}
-
-func (s *UpdateProjectResponseBody) SetModifyTime(v string) *UpdateProjectResponseBody {
-	s.ModifyTime = &v
-	return s
-}
-
 func (s *UpdateProjectResponseBody) SetType(v string) *UpdateProjectResponseBody {
 	s.Type = &v
-	return s
-}
-
-func (s *UpdateProjectResponseBody) SetCU(v int32) *UpdateProjectResponseBody {
-	s.CU = &v
-	return s
-}
-
-func (s *UpdateProjectResponseBody) SetServiceRole(v string) *UpdateProjectResponseBody {
-	s.ServiceRole = &v
 	return s
 }
 
@@ -12858,13 +12786,33 @@ func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectRespons
 	return s
 }
 
+func (s *UpdateProjectResponseBody) SetCU(v int32) *UpdateProjectResponseBody {
+	s.CU = &v
+	return s
+}
+
 func (s *UpdateProjectResponseBody) SetCreateTime(v string) *UpdateProjectResponseBody {
 	s.CreateTime = &v
 	return s
 }
 
+func (s *UpdateProjectResponseBody) SetServiceRole(v string) *UpdateProjectResponseBody {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetProject(v string) *UpdateProjectResponseBody {
+	s.Project = &v
+	return s
+}
+
 func (s *UpdateProjectResponseBody) SetRegionId(v string) *UpdateProjectResponseBody {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetModifyTime(v string) *UpdateProjectResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -12921,10 +12869,10 @@ func (s *UpdateSetRequest) SetSetName(v string) *UpdateSetRequest {
 }
 
 type UpdateSetResponseBody struct {
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SetName    *string `json:"SetName,omitempty" xml:"SetName,omitempty"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	SetId      *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
 }
 
@@ -12934,11 +12882,6 @@ func (s UpdateSetResponseBody) String() string {
 
 func (s UpdateSetResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateSetResponseBody) SetModifyTime(v string) *UpdateSetResponseBody {
-	s.ModifyTime = &v
-	return s
 }
 
 func (s *UpdateSetResponseBody) SetRequestId(v string) *UpdateSetResponseBody {
@@ -12953,6 +12896,11 @@ func (s *UpdateSetResponseBody) SetCreateTime(v string) *UpdateSetResponseBody {
 
 func (s *UpdateSetResponseBody) SetSetName(v string) *UpdateSetResponseBody {
 	s.SetName = &v
+	return s
+}
+
+func (s *UpdateSetResponseBody) SetModifyTime(v string) *UpdateSetResponseBody {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -13279,34 +13227,6 @@ func (client *Client) CreateSet(request *CreateSetRequest) (_result *CreateSetRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSetResponse{}
 	_body, _err := client.CreateSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateStreamAnalyseTaskWithOptions(request *CreateStreamAnalyseTaskRequest, runtime *util.RuntimeOptions) (_result *CreateStreamAnalyseTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateStreamAnalyseTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStreamAnalyseTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateStreamAnalyseTask(request *CreateStreamAnalyseTaskRequest) (_result *CreateStreamAnalyseTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateStreamAnalyseTaskResponse{}
-	_body, _err := client.CreateStreamAnalyseTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14848,11 +14768,17 @@ func (client *Client) UpdateFaceGroup(request *UpdateFaceGroupRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtime *util.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateImageWithOptions(tmpReq *UpdateImageRequest, runtime *util.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Faces)) {
+		request.FacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Faces, tea.String("Faces"), tea.String("json"))
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
