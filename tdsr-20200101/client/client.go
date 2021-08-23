@@ -2804,6 +2804,8 @@ type DetailSubSceneResponseBody struct {
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// 最后修改时间
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 切图路径
+	CubemapPath *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
 }
 
 func (s DetailSubSceneResponseBody) String() string {
@@ -2871,6 +2873,11 @@ func (s *DetailSubSceneResponseBody) SetGmtCreate(v int64) *DetailSubSceneRespon
 
 func (s *DetailSubSceneResponseBody) SetGmtModified(v int64) *DetailSubSceneResponseBody {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DetailSubSceneResponseBody) SetCubemapPath(v string) *DetailSubSceneResponseBody {
+	s.CubemapPath = &v
 	return s
 }
 
@@ -3020,6 +3027,10 @@ type ListSubSceneResponseBodyList struct {
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// 最后修改时间
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// 切图的路径
+	CubemapPath *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
 }
 
 func (s ListSubSceneResponseBodyList) String() string {
@@ -3067,6 +3078,16 @@ func (s *ListSubSceneResponseBodyList) SetGmtCreate(v int64) *ListSubSceneRespon
 
 func (s *ListSubSceneResponseBodyList) SetGmtModified(v int64) *ListSubSceneResponseBodyList {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *ListSubSceneResponseBodyList) SetResourceName(v string) *ListSubSceneResponseBodyList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListSubSceneResponseBodyList) SetCubemapPath(v string) *ListSubSceneResponseBodyList {
+	s.CubemapPath = &v
 	return s
 }
 
@@ -3530,6 +3551,9 @@ func (s *GetWindowConfigResponse) SetBody(v *GetWindowConfigResponseBody) *GetWi
 
 type GetHotspotConfigRequest struct {
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	Type         *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s GetHotspotConfigRequest) String() string {
@@ -3545,12 +3569,31 @@ func (s *GetHotspotConfigRequest) SetPreviewToken(v string) *GetHotspotConfigReq
 	return s
 }
 
+func (s *GetHotspotConfigRequest) SetType(v int64) *GetHotspotConfigRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *GetHotspotConfigRequest) SetEnabled(v bool) *GetHotspotConfigRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetHotspotConfigRequest) SetDomain(v string) *GetHotspotConfigRequest {
+	s.Domain = &v
+	return s
+}
+
 type GetHotspotConfigResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 
 func (s GetHotspotConfigResponseBody) String() string {
@@ -3566,23 +3609,23 @@ func (s *GetHotspotConfigResponseBody) SetRequestId(v string) *GetHotspotConfigR
 	return s
 }
 
-func (s *GetHotspotConfigResponseBody) SetObjectString(v string) *GetHotspotConfigResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *GetHotspotConfigResponseBody) SetData(v string) *GetHotspotConfigResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetHotspotConfigResponseBody) SetErrMessage(v string) *GetHotspotConfigResponseBody {
-	s.ErrMessage = &v
+func (s *GetHotspotConfigResponseBody) SetCode(v int64) *GetHotspotConfigResponseBody {
+	s.Code = &v
 	return s
 }
 
 func (s *GetHotspotConfigResponseBody) SetSuccess(v bool) *GetHotspotConfigResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetHotspotConfigResponseBody) SetMessage(v string) *GetHotspotConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotspotConfigResponseBody) SetData(v string) *GetHotspotConfigResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -4136,6 +4179,8 @@ type GetHotspotTagRequest struct {
 	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
 	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s GetHotspotTagRequest) String() string {
@@ -4161,12 +4206,26 @@ func (s *GetHotspotTagRequest) SetType(v string) *GetHotspotTagRequest {
 	return s
 }
 
+func (s *GetHotspotTagRequest) SetEnabled(v bool) *GetHotspotTagRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetHotspotTagRequest) SetDomain(v string) *GetHotspotTagRequest {
+	s.Domain = &v
+	return s
+}
+
 type GetHotspotTagResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 
 func (s GetHotspotTagResponseBody) String() string {
@@ -4182,23 +4241,23 @@ func (s *GetHotspotTagResponseBody) SetRequestId(v string) *GetHotspotTagRespons
 	return s
 }
 
-func (s *GetHotspotTagResponseBody) SetObjectString(v string) *GetHotspotTagResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *GetHotspotTagResponseBody) SetData(v string) *GetHotspotTagResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetHotspotTagResponseBody) SetErrMessage(v string) *GetHotspotTagResponseBody {
-	s.ErrMessage = &v
+func (s *GetHotspotTagResponseBody) SetCode(v int64) *GetHotspotTagResponseBody {
+	s.Code = &v
 	return s
 }
 
 func (s *GetHotspotTagResponseBody) SetSuccess(v bool) *GetHotspotTagResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetHotspotTagResponseBody) SetMessage(v string) *GetHotspotTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHotspotTagResponseBody) SetData(v string) *GetHotspotTagResponseBody {
+	s.Data = &v
 	return s
 }
 
