@@ -4217,15 +4217,11 @@ func (s *GetHotspotTagRequest) SetDomain(v string) *GetHotspotTagRequest {
 }
 
 type GetHotspotTagResponseBody struct {
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ObjectString *string `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotspotTagResponseBody) String() string {
@@ -4241,23 +4237,23 @@ func (s *GetHotspotTagResponseBody) SetRequestId(v string) *GetHotspotTagRespons
 	return s
 }
 
-func (s *GetHotspotTagResponseBody) SetCode(v int64) *GetHotspotTagResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetHotspotTagResponseBody) SetSuccess(v bool) *GetHotspotTagResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetHotspotTagResponseBody) SetMessage(v string) *GetHotspotTagResponseBody {
-	s.Message = &v
+func (s *GetHotspotTagResponseBody) SetObjectString(v string) *GetHotspotTagResponseBody {
+	s.ObjectString = &v
 	return s
 }
 
 func (s *GetHotspotTagResponseBody) SetData(v string) *GetHotspotTagResponseBody {
 	s.Data = &v
+	return s
+}
+
+func (s *GetHotspotTagResponseBody) SetErrMessage(v string) *GetHotspotTagResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *GetHotspotTagResponseBody) SetSuccess(v bool) *GetHotspotTagResponseBody {
+	s.Success = &v
 	return s
 }
 
