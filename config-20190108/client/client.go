@@ -1,22 +1,2021 @@
 // This file is auto-generated, don't edit it. Thanks.
+/**
+ *
+ */
 package client
 
 import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ActiveConfigRulesRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s ActiveConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActiveConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ActiveConfigRulesRequest) SetConfigRuleIds(v string) *ActiveConfigRulesRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type ActiveConfigRulesResponseBody struct {
+	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OperateRuleResult *ActiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
+}
+
+func (s ActiveConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActiveConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ActiveConfigRulesResponseBody) SetRequestId(v string) *ActiveConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ActiveConfigRulesResponseBody) SetOperateRuleResult(v *ActiveConfigRulesResponseBodyOperateRuleResult) *ActiveConfigRulesResponseBody {
+	s.OperateRuleResult = v
+	return s
+}
+
+type ActiveConfigRulesResponseBodyOperateRuleResult struct {
+	OperateRuleItemList []*ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
+}
+
+func (s ActiveConfigRulesResponseBodyOperateRuleResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActiveConfigRulesResponseBodyOperateRuleResult) GoString() string {
+	return s.String()
+}
+
+func (s *ActiveConfigRulesResponseBodyOperateRuleResult) SetOperateRuleItemList(v []*ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) *ActiveConfigRulesResponseBodyOperateRuleResult {
+	s.OperateRuleItemList = v
+	return s
+}
+
+type ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) GoString() string {
+	return s.String()
+}
+
+func (s *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.Success = &v
+	return s
+}
+
+type ActiveConfigRulesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ActiveConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ActiveConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActiveConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ActiveConfigRulesResponse) SetHeaders(v map[string]*string) *ActiveConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ActiveConfigRulesResponse) SetBody(v *ActiveConfigRulesResponseBody) *ActiveConfigRulesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteConfigRulesRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s DeleteConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRulesRequest) SetConfigRuleIds(v string) *DeleteConfigRulesRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type DeleteConfigRulesResponseBody struct {
+	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OperateRuleResult *DeleteConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
+}
+
+func (s DeleteConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRulesResponseBody) SetRequestId(v string) *DeleteConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteConfigRulesResponseBody) SetOperateRuleResult(v *DeleteConfigRulesResponseBodyOperateRuleResult) *DeleteConfigRulesResponseBody {
+	s.OperateRuleResult = v
+	return s
+}
+
+type DeleteConfigRulesResponseBodyOperateRuleResult struct {
+	OperateRuleItemList []*DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteConfigRulesResponseBodyOperateRuleResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRulesResponseBodyOperateRuleResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRulesResponseBodyOperateRuleResult) SetOperateRuleItemList(v []*DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) *DeleteConfigRulesResponseBodyOperateRuleResult {
+	s.OperateRuleItemList = v
+	return s
+}
+
+type DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.Success = &v
+	return s
+}
+
+type DeleteConfigRulesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRulesResponse) SetHeaders(v map[string]*string) *DeleteConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigRulesResponse) SetBody(v *DeleteConfigRulesResponseBody) *DeleteConfigRulesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeComplianceRequest struct {
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	MultiAccount   *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId       *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s DescribeComplianceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceRequest) SetResourceType(v string) *DescribeComplianceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeComplianceRequest) SetResourceId(v string) *DescribeComplianceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeComplianceRequest) SetComplianceType(v string) *DescribeComplianceRequest {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *DescribeComplianceRequest) SetConfigRuleId(v string) *DescribeComplianceRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeComplianceRequest) SetMultiAccount(v bool) *DescribeComplianceRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *DescribeComplianceRequest) SetMemberId(v int64) *DescribeComplianceRequest {
+	s.MemberId = &v
+	return s
+}
+
+type DescribeComplianceResponseBody struct {
+	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ComplianceResult *DescribeComplianceResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
+}
+
+func (s DescribeComplianceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceResponseBody) SetRequestId(v string) *DescribeComplianceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeComplianceResponseBody) SetComplianceResult(v *DescribeComplianceResponseBodyComplianceResult) *DescribeComplianceResponseBody {
+	s.ComplianceResult = v
+	return s
+}
+
+type DescribeComplianceResponseBodyComplianceResult struct {
+	TotalCount  *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Compliances []*DescribeComplianceResponseBodyComplianceResultCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+}
+
+func (s DescribeComplianceResponseBodyComplianceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceResponseBodyComplianceResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceResponseBodyComplianceResult) SetTotalCount(v int64) *DescribeComplianceResponseBodyComplianceResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeComplianceResponseBodyComplianceResult) SetCompliances(v []*DescribeComplianceResponseBodyComplianceResultCompliances) *DescribeComplianceResponseBodyComplianceResult {
+	s.Compliances = v
+	return s
+}
+
+type DescribeComplianceResponseBodyComplianceResultCompliances struct {
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+}
+
+func (s DescribeComplianceResponseBodyComplianceResultCompliances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceResponseBodyComplianceResultCompliances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceResponseBodyComplianceResultCompliances) SetCount(v int32) *DescribeComplianceResponseBodyComplianceResultCompliances {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeComplianceResponseBodyComplianceResultCompliances) SetComplianceType(v string) *DescribeComplianceResponseBodyComplianceResultCompliances {
+	s.ComplianceType = &v
+	return s
+}
+
+type DescribeComplianceResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeComplianceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeComplianceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceResponse) SetHeaders(v map[string]*string) *DescribeComplianceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeComplianceResponse) SetBody(v *DescribeComplianceResponseBody) *DescribeComplianceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeComplianceSummaryRequest struct {
+	MultiAccount *bool  `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId     *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s DescribeComplianceSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryRequest) SetMultiAccount(v bool) *DescribeComplianceSummaryRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryRequest) SetMemberId(v int64) *DescribeComplianceSummaryRequest {
+	s.MemberId = &v
+	return s
+}
+
+type DescribeComplianceSummaryResponseBody struct {
+	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ComplianceSummary *DescribeComplianceSummaryResponseBodyComplianceSummary `json:"ComplianceSummary,omitempty" xml:"ComplianceSummary,omitempty" type:"Struct"`
+}
+
+func (s DescribeComplianceSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryResponseBody) SetRequestId(v string) *DescribeComplianceSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBody) SetComplianceSummary(v *DescribeComplianceSummaryResponseBodyComplianceSummary) *DescribeComplianceSummaryResponseBody {
+	s.ComplianceSummary = v
+	return s
+}
+
+type DescribeComplianceSummaryResponseBodyComplianceSummary struct {
+	ComplianceSummaryByConfigRule *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule `json:"ComplianceSummaryByConfigRule,omitempty" xml:"ComplianceSummaryByConfigRule,omitempty" type:"Struct"`
+	ComplianceSummaryByResource   *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource   `json:"ComplianceSummaryByResource,omitempty" xml:"ComplianceSummaryByResource,omitempty" type:"Struct"`
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummary) SetComplianceSummaryByConfigRule(v *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) *DescribeComplianceSummaryResponseBodyComplianceSummary {
+	s.ComplianceSummaryByConfigRule = v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummary) SetComplianceSummaryByResource(v *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) *DescribeComplianceSummaryResponseBodyComplianceSummary {
+	s.ComplianceSummaryByResource = v
+	return s
+}
+
+type DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule struct {
+	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty"`
+	CompliantCount             *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	TotalCount                 *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NonCompliantCount          *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) SetComplianceSummaryTimestamp(v int64) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule {
+	s.ComplianceSummaryTimestamp = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) SetCompliantCount(v int32) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule {
+	s.CompliantCount = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) SetTotalCount(v int64) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule) SetNonCompliantCount(v int32) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule {
+	s.NonCompliantCount = &v
+	return s
+}
+
+type DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource struct {
+	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty"`
+	CompliantCount             *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	TotalCount                 *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NonCompliantCount          *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) SetComplianceSummaryTimestamp(v int64) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource {
+	s.ComplianceSummaryTimestamp = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) SetCompliantCount(v int32) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource {
+	s.CompliantCount = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) SetTotalCount(v int64) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource) SetNonCompliantCount(v int32) *DescribeComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource {
+	s.NonCompliantCount = &v
+	return s
+}
+
+type DescribeComplianceSummaryResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeComplianceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeComplianceSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComplianceSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComplianceSummaryResponse) SetHeaders(v map[string]*string) *DescribeComplianceSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeComplianceSummaryResponse) SetBody(v *DescribeComplianceSummaryResponseBody) *DescribeComplianceSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeConfigRuleRequest struct {
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s DescribeConfigRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleRequest) SetConfigRuleId(v string) *DescribeConfigRuleRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeConfigRuleRequest) SetMultiAccount(v bool) *DescribeConfigRuleRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *DescribeConfigRuleRequest) SetMemberId(v int64) *DescribeConfigRuleRequest {
+	s.MemberId = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBody struct {
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfigRule *DescribeConfigRuleResponseBodyConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" type:"Struct"`
+}
+
+func (s DescribeConfigRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBody) SetRequestId(v string) *DescribeConfigRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBody) SetConfigRule(v *DescribeConfigRuleResponseBodyConfigRule) *DescribeConfigRuleResponseBody {
+	s.ConfigRule = v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRule struct {
+	RiskLevel                  *int32                                                              `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	InputParameters            map[string]interface{}                                              `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	Source                     *DescribeConfigRuleResponseBodyConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	ConfigRuleState            *string                                                             `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	MaximumExecutionFrequency  *string                                                             `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	ManagedRule                *DescribeConfigRuleResponseBodyConfigRuleManagedRule                `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
+	ConfigRuleArn              *string                                                             `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	Description                *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	ConfigRuleName             *string                                                             `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Scope                      *DescribeConfigRuleResponseBodyConfigRuleScope                      `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	ConfigRuleEvaluationStatus *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
+	ConfigRuleId               *string                                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ModifiedTimestamp          *int64                                                              `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
+	CreateTimestamp            *int64                                                              `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetRiskLevel(v int32) *DescribeConfigRuleResponseBodyConfigRule {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetInputParameters(v map[string]interface{}) *DescribeConfigRuleResponseBodyConfigRule {
+	s.InputParameters = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetSource(v *DescribeConfigRuleResponseBodyConfigRuleSource) *DescribeConfigRuleResponseBodyConfigRule {
+	s.Source = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetConfigRuleState(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.MaximumExecutionFrequency = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetManagedRule(v *DescribeConfigRuleResponseBodyConfigRuleManagedRule) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ManagedRule = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetConfigRuleArn(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ConfigRuleArn = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetDescription(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetConfigRuleName(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetScope(v *DescribeConfigRuleResponseBodyConfigRuleScope) *DescribeConfigRuleResponseBodyConfigRule {
+	s.Scope = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetConfigRuleEvaluationStatus(v *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ConfigRuleEvaluationStatus = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetConfigRuleId(v string) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetModifiedTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRule {
+	s.ModifiedTimestamp = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRule) SetCreateTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRule {
+	s.CreateTimestamp = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleSource struct {
+	SourceDetails    []*DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails    `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	Owner            *string                                                           `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SourceConditions []*DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions `json:"SourceConditions,omitempty" xml:"SourceConditions,omitempty" type:"Repeated"`
+	Identifier       *string                                                           `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSource) SetSourceDetails(v []*DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) *DescribeConfigRuleResponseBodyConfigRuleSource {
+	s.SourceDetails = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSource) SetOwner(v string) *DescribeConfigRuleResponseBodyConfigRuleSource {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSource) SetSourceConditions(v []*DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) *DescribeConfigRuleResponseBodyConfigRuleSource {
+	s.SourceConditions = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSource) SetIdentifier(v string) *DescribeConfigRuleResponseBodyConfigRuleSource {
+	s.Identifier = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails struct {
+	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessageType(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails {
+	s.MessageType = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetEventSource(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails {
+	s.EventSource = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceDetails {
+	s.MaximumExecutionFrequency = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions struct {
+	DesiredValue *string `json:"DesiredValue,omitempty" xml:"DesiredValue,omitempty"`
+	Tips         *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetDesiredValue(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions {
+	s.DesiredValue = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetTips(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions {
+	s.Tips = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetOperator(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetName(v string) *DescribeConfigRuleResponseBodyConfigRuleSourceSourceConditions {
+	s.Name = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleManagedRule struct {
+	SourceDetails                   []*DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	Description                     *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels                          []*string                                                           `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Identifier                      *string                                                             `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	OptionalInputParameterDetails   map[string]interface{}                                              `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	ManagedRuleName                 *string                                                             `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
+	CompulsoryInputParameterDetails map[string]interface{}                                              `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleManagedRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleManagedRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetSourceDetails(v []*DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.SourceDetails = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetDescription(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetLabels(v []*string) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetIdentifier(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.Identifier = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetOptionalInputParameterDetails(v map[string]interface{}) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.OptionalInputParameterDetails = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetManagedRuleName(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.ManagedRuleName = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRule) SetCompulsoryInputParameterDetails(v map[string]interface{}) *DescribeConfigRuleResponseBodyConfigRuleManagedRule {
+	s.CompulsoryInputParameterDetails = v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails struct {
+	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) SetMessageType(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails {
+	s.MessageType = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) SetEventSource(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails {
+	s.EventSource = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails {
+	s.MaximumExecutionFrequency = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleScope struct {
+	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
+	ComplianceResourceId    *string   `json:"ComplianceResourceId,omitempty" xml:"ComplianceResourceId,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleScope) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleScope) SetComplianceResourceTypes(v []*string) *DescribeConfigRuleResponseBodyConfigRuleScope {
+	s.ComplianceResourceTypes = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleScope) SetComplianceResourceId(v string) *DescribeConfigRuleResponseBodyConfigRuleScope {
+	s.ComplianceResourceId = &v
+	return s
+}
+
+type DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus struct {
+	LastErrorCode                     *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
+	LastSuccessfulEvaluationTimestamp *int64  `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
+	FirstActivatedTimestamp           *int64  `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
+	FirstEvaluationStarted            *bool   `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
+	LastSuccessfulInvocationTimestamp *int64  `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty"`
+	LastErrorMessage                  *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
+	LastFailedEvaluationTimestamp     *int64  `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
+	LastFailedInvocationTimestamp     *int64  `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastErrorCode(v string) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastErrorCode = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastSuccessfulEvaluationTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastSuccessfulEvaluationTimestamp = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetFirstActivatedTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.FirstActivatedTimestamp = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetFirstEvaluationStarted(v bool) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.FirstEvaluationStarted = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastSuccessfulInvocationTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastSuccessfulInvocationTimestamp = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastErrorMessage(v string) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastErrorMessage = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastFailedEvaluationTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastFailedEvaluationTimestamp = &v
+	return s
+}
+
+func (s *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastFailedInvocationTimestamp(v int64) *DescribeConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus {
+	s.LastFailedInvocationTimestamp = &v
+	return s
+}
+
+type DescribeConfigRuleResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeConfigRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigRuleResponse) SetHeaders(v map[string]*string) *DescribeConfigRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigRuleResponse) SetBody(v *DescribeConfigRuleResponseBody) *DescribeConfigRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeConfigurationRecorderResponseBody struct {
+	RequestId             *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfigurationRecorder *DescribeConfigurationRecorderResponseBodyConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" type:"Struct"`
+}
+
+func (s DescribeConfigurationRecorderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationRecorderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationRecorderResponseBody) SetRequestId(v string) *DescribeConfigurationRecorderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeConfigurationRecorderResponseBody) SetConfigurationRecorder(v *DescribeConfigurationRecorderResponseBodyConfigurationRecorder) *DescribeConfigurationRecorderResponseBody {
+	s.ConfigurationRecorder = v
+	return s
+}
+
+type DescribeConfigurationRecorderResponseBodyConfigurationRecorder struct {
+	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
+	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeConfigurationRecorderResponseBodyConfigurationRecorder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationRecorderResponseBodyConfigurationRecorder) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationRecorderResponseBodyConfigurationRecorder) SetAccountId(v int64) *DescribeConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeConfigurationRecorderResponseBodyConfigurationRecorder) SetConfigurationRecorderStatus(v string) *DescribeConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.ConfigurationRecorderStatus = &v
+	return s
+}
+
+func (s *DescribeConfigurationRecorderResponseBodyConfigurationRecorder) SetResourceTypes(v []*string) *DescribeConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.ResourceTypes = v
+	return s
+}
+
+type DescribeConfigurationRecorderResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeConfigurationRecorderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationRecorderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationRecorderResponse) SetHeaders(v map[string]*string) *DescribeConfigurationRecorderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigurationRecorderResponse) SetBody(v *DescribeConfigurationRecorderResponseBody) *DescribeConfigurationRecorderResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDeliveryChannelsRequest struct {
+	DeliveryChannelIds *string `json:"DeliveryChannelIds,omitempty" xml:"DeliveryChannelIds,omitempty"`
+}
+
+func (s DescribeDeliveryChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeliveryChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeliveryChannelsRequest) SetDeliveryChannelIds(v string) *DescribeDeliveryChannelsRequest {
+	s.DeliveryChannelIds = &v
+	return s
+}
+
+type DescribeDeliveryChannelsResponseBody struct {
+	DeliveryChannels []*DescribeDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDeliveryChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeliveryChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeliveryChannelsResponseBody) SetDeliveryChannels(v []*DescribeDeliveryChannelsResponseBodyDeliveryChannels) *DescribeDeliveryChannelsResponseBody {
+	s.DeliveryChannels = v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBody) SetRequestId(v string) *DescribeDeliveryChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDeliveryChannelsResponseBodyDeliveryChannels struct {
+	Status                              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+}
+
+func (s DescribeDeliveryChannelsResponseBodyDeliveryChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeliveryChannelsResponseBodyDeliveryChannels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetStatus(v int32) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelName(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelId(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelType(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelAssumeRoleArn(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelAssumeRoleArn = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDescription(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelCondition(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelCondition = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelTargetArn(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelTargetArn = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetConfigurationSnapshot(v bool) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.ConfigurationSnapshot = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetConfigurationItemChangeNotification(v bool) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.ConfigurationItemChangeNotification = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetNonCompliantNotification(v bool) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.NonCompliantNotification = &v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponseBodyDeliveryChannels) SetOversizedDataOSSTargetArn(v string) *DescribeDeliveryChannelsResponseBodyDeliveryChannels {
+	s.OversizedDataOSSTargetArn = &v
+	return s
+}
+
+type DescribeDeliveryChannelsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDeliveryChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeliveryChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeliveryChannelsResponse) SetHeaders(v map[string]*string) *DescribeDeliveryChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeliveryChannelsResponse) SetBody(v *DescribeDeliveryChannelsResponseBody) *DescribeDeliveryChannelsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiscoveredResourceRequest struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s DescribeDiscoveredResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiscoveredResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiscoveredResourceRequest) SetResourceId(v string) *DescribeDiscoveredResourceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceRequest) SetResourceType(v string) *DescribeDiscoveredResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceRequest) SetRegion(v string) *DescribeDiscoveredResourceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceRequest) SetMultiAccount(v bool) *DescribeDiscoveredResourceRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceRequest) SetMemberId(v int64) *DescribeDiscoveredResourceRequest {
+	s.MemberId = &v
+	return s
+}
+
+type DescribeDiscoveredResourceResponseBody struct {
+	RequestId                *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DiscoveredResourceDetail *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeDiscoveredResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiscoveredResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiscoveredResourceResponseBody) SetRequestId(v string) *DescribeDiscoveredResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBody) SetDiscoveredResourceDetail(v *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) *DescribeDiscoveredResourceResponseBody {
+	s.DiscoveredResourceDetail = v
+	return s
+}
+
+type DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+}
+
+func (s DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAvailabilityZone(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceType(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetConfiguration(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Configuration = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetRegion(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceCreationTime(v int64) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAccountId(v int64) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceId(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceDeleted(v int32) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceName(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceStatus(v string) *DescribeDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceStatus = &v
+	return s
+}
+
+type DescribeDiscoveredResourceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiscoveredResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiscoveredResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiscoveredResourceResponse) SetHeaders(v map[string]*string) *DescribeDiscoveredResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiscoveredResourceResponse) SetBody(v *DescribeDiscoveredResourceResponseBody) *DescribeDiscoveredResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEvaluationResultsRequest struct {
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	MultiAccount   *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId       *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s DescribeEvaluationResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsRequest) SetResourceType(v string) *DescribeEvaluationResultsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetResourceId(v string) *DescribeEvaluationResultsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetComplianceType(v string) *DescribeEvaluationResultsRequest {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetPageNumber(v int32) *DescribeEvaluationResultsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetPageSize(v int32) *DescribeEvaluationResultsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetConfigRuleId(v string) *DescribeEvaluationResultsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetMultiAccount(v bool) *DescribeEvaluationResultsRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsRequest) SetMemberId(v int64) *DescribeEvaluationResultsRequest {
+	s.MemberId = &v
+	return s
+}
+
+type DescribeEvaluationResultsResponseBody struct {
+	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	EvaluationResults *DescribeEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
+}
+
+func (s DescribeEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponseBody) SetRequestId(v string) *DescribeEvaluationResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBody) SetEvaluationResults(v *DescribeEvaluationResultsResponseBodyEvaluationResults) *DescribeEvaluationResultsResponseBody {
+	s.EvaluationResults = v
+	return s
+}
+
+type DescribeEvaluationResultsResponseBodyEvaluationResults struct {
+	PageNumber           *int32                                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount           *int64                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	EvaluationResultList []*DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResults) SetPageNumber(v int32) *DescribeEvaluationResultsResponseBodyEvaluationResults {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResults) SetPageSize(v int32) *DescribeEvaluationResultsResponseBodyEvaluationResults {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResults) SetTotalCount(v int64) *DescribeEvaluationResultsResponseBodyEvaluationResults {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResults) SetEvaluationResultList(v []*DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) *DescribeEvaluationResultsResponseBodyEvaluationResults {
+	s.EvaluationResultList = v
+	return s
+}
+
+type DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
+	RiskLevel                  *int32                                                                                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ComplianceType             *string                                                                                               `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	ResultRecordedTimestamp    *int64                                                                                                `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
+	Annotation                 *string                                                                                               `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	ConfigRuleInvokedTimestamp *int64                                                                                                `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	InvokingEventMessageType   *string                                                                                               `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	RemediationEnabled         *bool                                                                                                 `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
+	EvaluationResultIdentifier *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetRiskLevel(v int32) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetComplianceType(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetResultRecordedTimestamp(v int64) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.ResultRecordedTimestamp = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetAnnotation(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.Annotation = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetConfigRuleInvokedTimestamp(v int64) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.ConfigRuleInvokedTimestamp = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetInvokingEventMessageType(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.InvokingEventMessageType = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetRemediationEnabled(v bool) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.RemediationEnabled = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) SetEvaluationResultIdentifier(v *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList {
+	s.EvaluationResultIdentifier = v
+	return s
+}
+
+type DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
+	OrderingTimestamp         *int64                                                                                                                         `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
+	EvaluationResultQualifier *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) SetOrderingTimestamp(v int64) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier {
+	s.OrderingTimestamp = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) SetEvaluationResultQualifier(v *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier {
+	s.EvaluationResultQualifier = v
+	return s
+}
+
+type DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
+	ConfigRuleArn  *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourceName   *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleArn(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ConfigRuleArn = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceType(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleName(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceId(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleId(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceName(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetRegionId(v string) *DescribeEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEvaluationResultsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEvaluationResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEvaluationResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEvaluationResultsResponse) SetHeaders(v map[string]*string) *DescribeEvaluationResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEvaluationResultsResponse) SetBody(v *DescribeEvaluationResultsResponseBody) *DescribeEvaluationResultsResponse {
+	s.Body = v
+	return s
+}
+
+type GetAggregateDiscoveredResourceRequest struct {
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetAggregateDiscoveredResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceId(v string) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceType(v string) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetRegion(v string) *GetAggregateDiscoveredResourceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetAggregatorId(v string) *GetAggregateDiscoveredResourceRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceOwnerId(v int64) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponseBody struct {
+	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DiscoveredResourceDetail *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
+}
+
+func (s GetAggregateDiscoveredResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBody) SetRequestId(v string) *GetAggregateDiscoveredResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBody) SetDiscoveredResourceDetail(v *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) *GetAggregateDiscoveredResourceResponseBody {
+	s.DiscoveredResourceDetail = v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+}
+
+func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAvailabilityZone(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceType(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetConfiguration(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetRegion(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceCreationTime(v int64) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAccountId(v int64) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceId(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceDeleted(v int32) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceName(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceStatus(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceStatus = &v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateDiscoveredResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponse) SetHeaders(v map[string]*string) *GetAggregateDiscoveredResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponse) SetBody(v *GetAggregateDiscoveredResourceResponseBody) *GetAggregateDiscoveredResourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetDiscoveredResourceCountsRequest struct {
+	GroupByKey   *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s GetDiscoveredResourceCountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceCountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceCountsRequest) SetGroupByKey(v string) *GetDiscoveredResourceCountsRequest {
+	s.GroupByKey = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsRequest) SetMultiAccount(v bool) *GetDiscoveredResourceCountsRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsRequest) SetMemberId(v int64) *GetDiscoveredResourceCountsRequest {
+	s.MemberId = &v
+	return s
+}
+
+type GetDiscoveredResourceCountsResponseBody struct {
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupedResourceCounts *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts `json:"GroupedResourceCounts,omitempty" xml:"GroupedResourceCounts,omitempty" type:"Struct"`
+}
+
+func (s GetDiscoveredResourceCountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceCountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceCountsResponseBody) SetRequestId(v string) *GetDiscoveredResourceCountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsResponseBody) SetGroupedResourceCounts(v *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts) *GetDiscoveredResourceCountsResponseBody {
+	s.GroupedResourceCounts = v
+	return s
+}
+
+type GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts struct {
+	GroupByKey               *string                                                                                 `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	GroupedResourceCountList []*GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList `json:"GroupedResourceCountList,omitempty" xml:"GroupedResourceCountList,omitempty" type:"Repeated"`
+}
+
+func (s GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts) SetGroupByKey(v string) *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts {
+	s.GroupByKey = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts) SetGroupedResourceCountList(v []*GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList) *GetDiscoveredResourceCountsResponseBodyGroupedResourceCounts {
+	s.GroupedResourceCountList = v
+	return s
+}
+
+type GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+}
+
+func (s GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList) SetGroupName(v string) *GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList) SetResourceCount(v int64) *GetDiscoveredResourceCountsResponseBodyGroupedResourceCountsGroupedResourceCountList {
+	s.ResourceCount = &v
+	return s
+}
+
+type GetDiscoveredResourceCountsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDiscoveredResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiscoveredResourceCountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceCountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceCountsResponse) SetHeaders(v map[string]*string) *GetDiscoveredResourceCountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiscoveredResourceCountsResponse) SetBody(v *GetDiscoveredResourceCountsResponseBody) *GetDiscoveredResourceCountsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDiscoveredResourceSummaryRequest struct {
+	MultiAccount *bool  `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId     *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+}
+
+func (s GetDiscoveredResourceSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceSummaryRequest) SetMultiAccount(v bool) *GetDiscoveredResourceSummaryRequest {
+	s.MultiAccount = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryRequest) SetMemberId(v int64) *GetDiscoveredResourceSummaryRequest {
+	s.MemberId = &v
+	return s
+}
+
+type GetDiscoveredResourceSummaryResponseBody struct {
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DiscoveredResourceSummary *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary `json:"DiscoveredResourceSummary,omitempty" xml:"DiscoveredResourceSummary,omitempty" type:"Struct"`
+}
+
+func (s GetDiscoveredResourceSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceSummaryResponseBody) SetRequestId(v string) *GetDiscoveredResourceSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryResponseBody) SetDiscoveredResourceSummary(v *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) *GetDiscoveredResourceSummaryResponseBody {
+	s.DiscoveredResourceSummary = v
+	return s
+}
+
+type GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary struct {
+	ResourceTypeCount *int32 `json:"ResourceTypeCount,omitempty" xml:"ResourceTypeCount,omitempty"`
+	RegionCount       *int32 `json:"RegionCount,omitempty" xml:"RegionCount,omitempty"`
+	ResourceCount     *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+}
+
+func (s GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) SetResourceTypeCount(v int32) *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary {
+	s.ResourceTypeCount = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) SetRegionCount(v int32) *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary {
+	s.RegionCount = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary) SetResourceCount(v int32) *GetDiscoveredResourceSummaryResponseBodyDiscoveredResourceSummary {
+	s.ResourceCount = &v
+	return s
+}
+
+type GetDiscoveredResourceSummaryResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDiscoveredResourceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiscoveredResourceSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceSummaryResponse) SetHeaders(v map[string]*string) *GetDiscoveredResourceSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiscoveredResourceSummaryResponse) SetBody(v *GetDiscoveredResourceSummaryResponseBody) *GetDiscoveredResourceSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceComplianceTimelineRequest struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Limit        *int    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit        *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
 	MemberId     *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -48,7 +2047,7 @@ func (s *GetResourceComplianceTimelineRequest) SetEndTime(v int64) *GetResourceC
 	return s
 }
 
-func (s *GetResourceComplianceTimelineRequest) SetLimit(v int) *GetResourceComplianceTimelineRequest {
+func (s *GetResourceComplianceTimelineRequest) SetLimit(v int32) *GetResourceComplianceTimelineRequest {
 	s.Limit = &v
 	return s
 }
@@ -73,9 +2072,150 @@ func (s *GetResourceComplianceTimelineRequest) SetNextToken(v string) *GetResour
 	return s
 }
 
+type GetResourceComplianceTimelineResponseBody struct {
+	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceComplianceTimeline *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" type:"Struct"`
+}
+
+func (s GetResourceComplianceTimelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceTimelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceTimelineResponseBody) SetRequestId(v string) *GetResourceComplianceTimelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBody) SetResourceComplianceTimeline(v *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) *GetResourceComplianceTimelineResponseBody {
+	s.ResourceComplianceTimeline = v
+	return s
+}
+
+type GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline struct {
+	NextToken      *string                                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount     *int64                                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Limit          *int32                                                                               `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	ComplianceList []*GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) SetNextToken(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) SetTotalCount(v int64) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) SetLimit(v int32) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline {
+	s.Limit = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) SetComplianceList(v []*GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline {
+	s.ComplianceList = v
+	return s
+}
+
+type GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList struct {
+	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceCreateTime *int64  `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	Configuration      *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CaptureTime        *int64  `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus     *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+}
+
+func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetAccountId(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetTags(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetAvailabilityZone(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetResourceType(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetResourceCreateTime(v int64) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ResourceCreateTime = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetConfiguration(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetRegion(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.Region = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetCaptureTime(v int64) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.CaptureTime = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetConfigurationDiff(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ConfigurationDiff = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetResourceId(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetResourceName(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) SetResourceStatus(v string) *GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList {
+	s.ResourceStatus = &v
+	return s
+}
+
 type GetResourceComplianceTimelineResponse struct {
-	RequestId                  *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ResourceComplianceTimeline *GetResourceComplianceTimelineResponseResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetResourceComplianceTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResourceComplianceTimelineResponse) String() string {
@@ -86,141 +2226,23 @@ func (s GetResourceComplianceTimelineResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceComplianceTimelineResponse) SetRequestId(v string) *GetResourceComplianceTimelineResponse {
-	s.RequestId = &v
+func (s *GetResourceComplianceTimelineResponse) SetHeaders(v map[string]*string) *GetResourceComplianceTimelineResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetResourceComplianceTimelineResponse) SetResourceComplianceTimeline(v *GetResourceComplianceTimelineResponseResourceComplianceTimeline) *GetResourceComplianceTimelineResponse {
-	s.ResourceComplianceTimeline = v
-	return s
-}
-
-type GetResourceComplianceTimelineResponseResourceComplianceTimeline struct {
-	Limit          *int                                                                             `json:"Limit,omitempty" xml:"Limit,omitempty" require:"true"`
-	TotalCount     *int64                                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	NextToken      *string                                                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
-	ComplianceList []*GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetResourceComplianceTimelineResponseResourceComplianceTimeline) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceComplianceTimelineResponseResourceComplianceTimeline) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimeline) SetLimit(v int) *GetResourceComplianceTimelineResponseResourceComplianceTimeline {
-	s.Limit = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimeline) SetTotalCount(v int64) *GetResourceComplianceTimelineResponseResourceComplianceTimeline {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimeline) SetNextToken(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimeline {
-	s.NextToken = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimeline) SetComplianceList(v []*GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) *GetResourceComplianceTimelineResponseResourceComplianceTimeline {
-	s.ComplianceList = v
-	return s
-}
-
-type GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList struct {
-	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty" require:"true"`
-	CaptureTime        *int64  `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty" require:"true"`
-	Configuration      *string `json:"Configuration,omitempty" xml:"Configuration,omitempty" require:"true"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty" require:"true"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
-	ResourceCreateTime *int64  `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty" require:"true"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty" require:"true"`
-	ResourceStatus     *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty" require:"true"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true"`
-}
-
-func (s GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetAccountId(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetAvailabilityZone(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.AvailabilityZone = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetCaptureTime(v int64) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.CaptureTime = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetConfiguration(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.Configuration = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetConfigurationDiff(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ConfigurationDiff = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetRegion(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.Region = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetResourceCreateTime(v int64) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ResourceCreateTime = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetResourceId(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetResourceName(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetResourceStatus(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ResourceStatus = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetResourceType(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList) SetTags(v string) *GetResourceComplianceTimelineResponseResourceComplianceTimelineComplianceList {
-	s.Tags = &v
+func (s *GetResourceComplianceTimelineResponse) SetBody(v *GetResourceComplianceTimelineResponseBody) *GetResourceComplianceTimelineResponse {
+	s.Body = v
 	return s
 }
 
 type GetResourceConfigurationTimelineRequest struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Limit        *int    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
+	Limit        *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
 	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -249,7 +2271,7 @@ func (s *GetResourceConfigurationTimelineRequest) SetEndTime(v int64) *GetResour
 	return s
 }
 
-func (s *GetResourceConfigurationTimelineRequest) SetLimit(v int) *GetResourceConfigurationTimelineRequest {
+func (s *GetResourceConfigurationTimelineRequest) SetLimit(v int32) *GetResourceConfigurationTimelineRequest {
 	s.Limit = &v
 	return s
 }
@@ -279,9 +2301,144 @@ func (s *GetResourceConfigurationTimelineRequest) SetNextToken(v string) *GetRes
 	return s
 }
 
+type GetResourceConfigurationTimelineResponseBody struct {
+	RequestId                     *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceConfigurationTimeline *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" type:"Struct"`
+}
+
+func (s GetResourceConfigurationTimelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceConfigurationTimelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceConfigurationTimelineResponseBody) SetRequestId(v string) *GetResourceConfigurationTimelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBody) SetResourceConfigurationTimeline(v *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) *GetResourceConfigurationTimelineResponseBody {
+	s.ResourceConfigurationTimeline = v
+	return s
+}
+
+type GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline struct {
+	NextToken         *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount        *int64                                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Limit             *int32                                                                                        `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	ConfigurationList []*GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) SetNextToken(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) SetTotalCount(v int64) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) SetLimit(v int32) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline {
+	s.Limit = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) SetConfigurationList(v []*GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline {
+	s.ConfigurationList = v
+	return s
+}
+
+type GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList struct {
+	ResourceEventType  *string `json:"ResourceEventType,omitempty" xml:"ResourceEventType,omitempty"`
+	AccountId          *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CaptureTime        *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetResourceEventType(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ResourceEventType = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetAccountId(v int64) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetTags(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetAvailabilityZone(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetResourceType(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetResourceCreateTime(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ResourceCreateTime = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetRegion(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.Region = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetCaptureTime(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.CaptureTime = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetConfigurationDiff(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ConfigurationDiff = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetResourceId(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) SetResourceName(v string) *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList {
+	s.ResourceName = &v
+	return s
+}
+
 type GetResourceConfigurationTimelineResponse struct {
-	RequestId                     *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ResourceConfigurationTimeline *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetResourceConfigurationTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResourceConfigurationTimelineResponse) String() string {
@@ -292,709 +2449,289 @@ func (s GetResourceConfigurationTimelineResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceConfigurationTimelineResponse) SetRequestId(v string) *GetResourceConfigurationTimelineResponse {
+func (s *GetResourceConfigurationTimelineResponse) SetHeaders(v map[string]*string) *GetResourceConfigurationTimelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceConfigurationTimelineResponse) SetBody(v *GetResourceConfigurationTimelineResponseBody) *GetResourceConfigurationTimelineResponse {
+	s.Body = v
+	return s
+}
+
+type GetSupportedResourceTypesResponseBody struct {
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetSupportedResourceTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupportedResourceTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupportedResourceTypesResponseBody) SetRequestId(v string) *GetSupportedResourceTypesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetResourceConfigurationTimelineResponse) SetResourceConfigurationTimeline(v *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) *GetResourceConfigurationTimelineResponse {
-	s.ResourceConfigurationTimeline = v
-	return s
-}
-
-type GetResourceConfigurationTimelineResponseResourceConfigurationTimeline struct {
-	NextToken         *string                                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty" require:"true"`
-	Limit             *int                                                                                      `json:"Limit,omitempty" xml:"Limit,omitempty" require:"true"`
-	TotalCount        *int64                                                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	ConfigurationList []*GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) SetNextToken(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline {
-	s.NextToken = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) SetLimit(v int) *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline {
-	s.Limit = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) SetTotalCount(v int64) *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline) SetConfigurationList(v []*GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) *GetResourceConfigurationTimelineResponseResourceConfigurationTimeline {
-	s.ConfigurationList = v
-	return s
-}
-
-type GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList struct {
-	AccountId          *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty" require:"true"`
-	CaptureTime        *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty" require:"true"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty" require:"true"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
-	Relationship       *string `json:"Relationship,omitempty" xml:"Relationship,omitempty" require:"true"`
-	RelationshipDiff   *string `json:"RelationshipDiff,omitempty" xml:"RelationshipDiff,omitempty" require:"true"`
-	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty" require:"true"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty" require:"true"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true"`
-}
-
-func (s GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetAccountId(v int64) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetAvailabilityZone(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.AvailabilityZone = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetCaptureTime(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.CaptureTime = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetConfigurationDiff(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.ConfigurationDiff = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetRegion(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.Region = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetRelationship(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.Relationship = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetRelationshipDiff(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.RelationshipDiff = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetResourceCreateTime(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.ResourceCreateTime = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetResourceId(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetResourceName(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetResourceType(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList) SetTags(v string) *GetResourceConfigurationTimelineResponseResourceConfigurationTimelineConfigurationList {
-	s.Tags = &v
-	return s
-}
-
-type DescribeDeliveryChannelsRequest struct {
-	DeliveryChannelIds *string `json:"DeliveryChannelIds,omitempty" xml:"DeliveryChannelIds,omitempty"`
-}
-
-func (s DescribeDeliveryChannelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeliveryChannelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeliveryChannelsRequest) SetDeliveryChannelIds(v string) *DescribeDeliveryChannelsRequest {
-	s.DeliveryChannelIds = &v
-	return s
-}
-
-type DescribeDeliveryChannelsResponse struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	DeliveryChannels []*DescribeDeliveryChannelsResponseDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeDeliveryChannelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeliveryChannelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeliveryChannelsResponse) SetRequestId(v string) *DescribeDeliveryChannelsResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponse) SetDeliveryChannels(v []*DescribeDeliveryChannelsResponseDeliveryChannels) *DescribeDeliveryChannelsResponse {
-	s.DeliveryChannels = v
-	return s
-}
-
-type DescribeDeliveryChannelsResponseDeliveryChannels struct {
-	DeliveryChannelId            *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty" require:"true"`
-	DeliveryChannelName          *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty" require:"true"`
-	DeliveryChannelType          *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty" require:"true"`
-	DeliveryChannelTargetArn     *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty" require:"true"`
-	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty" require:"true"`
-	DeliveryChannelCondition     *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty" require:"true"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	Status                       *int    `json:"Status,omitempty" xml:"Status,omitempty" require:"true"`
-}
-
-func (s DescribeDeliveryChannelsResponseDeliveryChannels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDeliveryChannelsResponseDeliveryChannels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelId(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelId = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelName(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelName = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelType(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelType = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelTargetArn(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelTargetArn = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelAssumeRoleArn(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelAssumeRoleArn = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDeliveryChannelCondition(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.DeliveryChannelCondition = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetDescription(v string) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeDeliveryChannelsResponseDeliveryChannels) SetStatus(v int) *DescribeDeliveryChannelsResponseDeliveryChannels {
-	s.Status = &v
-	return s
-}
-
-type PutConfigurationRecorderRequest struct {
-	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" require:"true"`
-}
-
-func (s PutConfigurationRecorderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutConfigurationRecorderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PutConfigurationRecorderRequest) SetResourceTypes(v string) *PutConfigurationRecorderRequest {
-	s.ResourceTypes = &v
-	return s
-}
-
-type PutConfigurationRecorderResponse struct {
-	RequestId             *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ConfigurationRecorder *PutConfigurationRecorderResponseConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" require:"true" type:"Struct"`
-}
-
-func (s PutConfigurationRecorderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutConfigurationRecorderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PutConfigurationRecorderResponse) SetRequestId(v string) *PutConfigurationRecorderResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PutConfigurationRecorderResponse) SetConfigurationRecorder(v *PutConfigurationRecorderResponseConfigurationRecorder) *PutConfigurationRecorderResponse {
-	s.ConfigurationRecorder = v
-	return s
-}
-
-type PutConfigurationRecorderResponseConfigurationRecorder struct {
-	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty" require:"true"`
-	OrganizationMasterId        *int64    `json:"OrganizationMasterId,omitempty" xml:"OrganizationMasterId,omitempty" require:"true"`
-	OrganizationEnableStatus    *string   `json:"OrganizationEnableStatus,omitempty" xml:"OrganizationEnableStatus,omitempty" require:"true"`
-	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s PutConfigurationRecorderResponseConfigurationRecorder) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutConfigurationRecorderResponseConfigurationRecorder) GoString() string {
-	return s.String()
-}
-
-func (s *PutConfigurationRecorderResponseConfigurationRecorder) SetAccountId(v int64) *PutConfigurationRecorderResponseConfigurationRecorder {
-	s.AccountId = &v
-	return s
-}
-
-func (s *PutConfigurationRecorderResponseConfigurationRecorder) SetConfigurationRecorderStatus(v string) *PutConfigurationRecorderResponseConfigurationRecorder {
-	s.ConfigurationRecorderStatus = &v
-	return s
-}
-
-func (s *PutConfigurationRecorderResponseConfigurationRecorder) SetOrganizationMasterId(v int64) *PutConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationMasterId = &v
-	return s
-}
-
-func (s *PutConfigurationRecorderResponseConfigurationRecorder) SetOrganizationEnableStatus(v string) *PutConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationEnableStatus = &v
-	return s
-}
-
-func (s *PutConfigurationRecorderResponseConfigurationRecorder) SetResourceTypes(v []*string) *PutConfigurationRecorderResponseConfigurationRecorder {
+func (s *GetSupportedResourceTypesResponseBody) SetResourceTypes(v []*string) *GetSupportedResourceTypesResponseBody {
 	s.ResourceTypes = v
 	return s
 }
 
-type GetDiscoveredResourceSummaryRequest struct {
-	MultiAccount *bool  `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+type GetSupportedResourceTypesResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSupportedResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetDiscoveredResourceSummaryRequest) String() string {
+func (s GetSupportedResourceTypesResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDiscoveredResourceSummaryRequest) GoString() string {
+func (s GetSupportedResourceTypesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetDiscoveredResourceSummaryRequest) SetMultiAccount(v bool) *GetDiscoveredResourceSummaryRequest {
-	s.MultiAccount = &v
+func (s *GetSupportedResourceTypesResponse) SetHeaders(v map[string]*string) *GetSupportedResourceTypesResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *GetDiscoveredResourceSummaryRequest) SetMemberId(v int64) *GetDiscoveredResourceSummaryRequest {
-	s.MemberId = &v
+func (s *GetSupportedResourceTypesResponse) SetBody(v *GetSupportedResourceTypesResponseBody) *GetSupportedResourceTypesResponse {
+	s.Body = v
 	return s
 }
 
-type GetDiscoveredResourceSummaryResponse struct {
-	RequestId                 *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	DiscoveredResourceSummary *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary `json:"DiscoveredResourceSummary,omitempty" xml:"DiscoveredResourceSummary,omitempty" require:"true" type:"Struct"`
+type ListAggregateDiscoveredResourcesRequest struct {
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
-func (s GetDiscoveredResourceSummaryResponse) String() string {
+func (s ListAggregateDiscoveredResourcesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDiscoveredResourceSummaryResponse) GoString() string {
+func (s ListAggregateDiscoveredResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetDiscoveredResourceSummaryResponse) SetRequestId(v string) *GetDiscoveredResourceSummaryResponse {
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceId(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceDeleted(v int32) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetPageSize(v int32) *ListAggregateDiscoveredResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetPageNumber(v int32) *ListAggregateDiscoveredResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceTypes(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetRegions(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.Regions = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetComplianceType(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetAggregatorId(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceOwnerId(v int64) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponseBody struct {
+	DiscoveredResourceProfiles *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
+	RequestId                  *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBody) SetDiscoveredResourceProfiles(v *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) *ListAggregateDiscoveredResourcesResponseBody {
+	s.DiscoveredResourceProfiles = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBody) SetRequestId(v string) *ListAggregateDiscoveredResourcesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetDiscoveredResourceSummaryResponse) SetDiscoveredResourceSummary(v *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) *GetDiscoveredResourceSummaryResponse {
-	s.DiscoveredResourceSummary = v
-	return s
+type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	DiscoveredResourceProfileList []*ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
+	PageNumber                    *int32                                                                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                      *int32                                                                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount                    *int32                                                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-type GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary struct {
-	ResourceCount     *int `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty" require:"true"`
-	ResourceTypeCount *int `json:"ResourceTypeCount,omitempty" xml:"ResourceTypeCount,omitempty" require:"true"`
-	RegionCount       *int `json:"RegionCount,omitempty" xml:"RegionCount,omitempty" require:"true"`
-}
-
-func (s GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) String() string {
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) GoString() string {
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) GoString() string {
 	return s.String()
 }
 
-func (s *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) SetResourceCount(v int) *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary {
-	s.ResourceCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetDiscoveredResourceProfileList(v []*ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.DiscoveredResourceProfileList = v
 	return s
 }
 
-func (s *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) SetResourceTypeCount(v int) *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary {
-	s.ResourceTypeCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPageNumber(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary) SetRegionCount(v int) *GetDiscoveredResourceSummaryResponseDiscoveredResourceSummary {
-	s.RegionCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPageSize(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PageSize = &v
 	return s
 }
 
-type ActiveConfigRulesRequest struct {
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty" require:"true"`
-}
-
-func (s ActiveConfigRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ActiveConfigRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ActiveConfigRulesRequest) SetConfigRuleIds(v string) *ActiveConfigRulesRequest {
-	s.ConfigRuleIds = &v
-	return s
-}
-
-type ActiveConfigRulesResponse struct {
-	RequestId         *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	OperateRuleResult *ActiveConfigRulesResponseOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ActiveConfigRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ActiveConfigRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ActiveConfigRulesResponse) SetRequestId(v string) *ActiveConfigRulesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ActiveConfigRulesResponse) SetOperateRuleResult(v *ActiveConfigRulesResponseOperateRuleResult) *ActiveConfigRulesResponse {
-	s.OperateRuleResult = v
-	return s
-}
-
-type ActiveConfigRulesResponseOperateRuleResult struct {
-	OperateRuleItemList []*ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ActiveConfigRulesResponseOperateRuleResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ActiveConfigRulesResponseOperateRuleResult) GoString() string {
-	return s.String()
-}
-
-func (s *ActiveConfigRulesResponseOperateRuleResult) SetOperateRuleItemList(v []*ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) *ActiveConfigRulesResponseOperateRuleResult {
-	s.OperateRuleItemList = v
-	return s
-}
-
-type ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
-}
-
-func (s ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) GoString() string {
-	return s.String()
-}
-
-func (s *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *ActiveConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.Success = &v
-	return s
-}
-
-type StopConfigRulesRequest struct {
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty" require:"true"`
-}
-
-func (s StopConfigRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopConfigRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopConfigRulesRequest) SetConfigRuleIds(v string) *StopConfigRulesRequest {
-	s.ConfigRuleIds = &v
-	return s
-}
-
-type StopConfigRulesResponse struct {
-	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	OperateRuleResult *StopConfigRulesResponseOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" require:"true" type:"Struct"`
-}
-
-func (s StopConfigRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopConfigRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopConfigRulesResponse) SetRequestId(v string) *StopConfigRulesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StopConfigRulesResponse) SetOperateRuleResult(v *StopConfigRulesResponseOperateRuleResult) *StopConfigRulesResponse {
-	s.OperateRuleResult = v
-	return s
-}
-
-type StopConfigRulesResponseOperateRuleResult struct {
-	OperateRuleItemList []*StopConfigRulesResponseOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s StopConfigRulesResponseOperateRuleResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopConfigRulesResponseOperateRuleResult) GoString() string {
-	return s.String()
-}
-
-func (s *StopConfigRulesResponseOperateRuleResult) SetOperateRuleItemList(v []*StopConfigRulesResponseOperateRuleResultOperateRuleItemList) *StopConfigRulesResponseOperateRuleResult {
-	s.OperateRuleItemList = v
-	return s
-}
-
-type StopConfigRulesResponseOperateRuleResultOperateRuleItemList struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
-}
-
-func (s StopConfigRulesResponseOperateRuleResultOperateRuleItemList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopConfigRulesResponseOperateRuleResultOperateRuleItemList) GoString() string {
-	return s.String()
-}
-
-func (s *StopConfigRulesResponseOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *StopConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *StopConfigRulesResponseOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *StopConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *StopConfigRulesResponseOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *StopConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.Success = &v
-	return s
-}
-
-type DescribeComplianceSummaryRequest struct {
-	MultiAccount *bool  `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-}
-
-func (s DescribeComplianceSummaryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceSummaryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceSummaryRequest) SetMultiAccount(v bool) *DescribeComplianceSummaryRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *DescribeComplianceSummaryRequest) SetMemberId(v int64) *DescribeComplianceSummaryRequest {
-	s.MemberId = &v
-	return s
-}
-
-type DescribeComplianceSummaryResponse struct {
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ComplianceSummary *DescribeComplianceSummaryResponseComplianceSummary `json:"ComplianceSummary,omitempty" xml:"ComplianceSummary,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeComplianceSummaryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceSummaryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceSummaryResponse) SetRequestId(v string) *DescribeComplianceSummaryResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeComplianceSummaryResponse) SetComplianceSummary(v *DescribeComplianceSummaryResponseComplianceSummary) *DescribeComplianceSummaryResponse {
-	s.ComplianceSummary = v
-	return s
-}
-
-type DescribeComplianceSummaryResponseComplianceSummary struct {
-	ComplianceSummaryByConfigRule *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule `json:"ComplianceSummaryByConfigRule,omitempty" xml:"ComplianceSummaryByConfigRule,omitempty" require:"true" type:"Struct"`
-	ComplianceSummaryByResource   *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource   `json:"ComplianceSummaryByResource,omitempty" xml:"ComplianceSummaryByResource,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeComplianceSummaryResponseComplianceSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceSummaryResponseComplianceSummary) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummary) SetComplianceSummaryByConfigRule(v *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) *DescribeComplianceSummaryResponseComplianceSummary {
-	s.ComplianceSummaryByConfigRule = v
-	return s
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummary) SetComplianceSummaryByResource(v *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) *DescribeComplianceSummaryResponseComplianceSummary {
-	s.ComplianceSummaryByResource = v
-	return s
-}
-
-type DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule struct {
-	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty" require:"true"`
-	CompliantCount             *int   `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty" require:"true"`
-	NonCompliantCount          *int   `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty" require:"true"`
-	TotalCount                 *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-}
-
-func (s DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) SetComplianceSummaryTimestamp(v int64) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule {
-	s.ComplianceSummaryTimestamp = &v
-	return s
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) SetCompliantCount(v int) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule {
-	s.CompliantCount = &v
-	return s
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) SetNonCompliantCount(v int) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule {
-	s.NonCompliantCount = &v
-	return s
-}
-
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule) SetTotalCount(v int64) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByConfigRule {
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetTotalCount(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
 	s.TotalCount = &v
 	return s
 }
 
-type DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource struct {
-	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty" require:"true"`
-	CompliantCount             *int   `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty" require:"true"`
-	NonCompliantCount          *int   `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty" require:"true"`
-	TotalCount                 *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
+type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
-func (s DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) String() string {
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) GoString() string {
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) SetComplianceSummaryTimestamp(v int64) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource {
-	s.ComplianceSummaryTimestamp = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceType(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) SetCompliantCount(v int) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource {
-	s.CompliantCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetRegion(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Region = &v
 	return s
 }
 
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) SetNonCompliantCount(v int) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource {
-	s.NonCompliantCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceCreationTime(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceCreationTime = &v
 	return s
 }
 
-func (s *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource) SetTotalCount(v int64) *DescribeComplianceSummaryResponseComplianceSummaryComplianceSummaryByResource {
-	s.TotalCount = &v
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceId(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceName(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceDeleted(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceStatus(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceOwnerId(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListAggregateDiscoveredResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponse) SetBody(v *ListAggregateDiscoveredResourcesResponseBody) *ListAggregateDiscoveredResourcesResponse {
+	s.Body = v
 	return s
 }
 
 type ListConfigRulesRequest struct {
-	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	RiskLevel       *int    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	MessageType     *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	PageNumber      *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	MultiAccount    *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId        *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	ConfigRuleState  *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	ComplianceType   *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	RiskLevel        *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	MultiAccount     *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId         *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	ConfigRuleName   *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
 func (s ListConfigRulesRequest) String() string {
@@ -1015,22 +2752,17 @@ func (s *ListConfigRulesRequest) SetComplianceType(v string) *ListConfigRulesReq
 	return s
 }
 
-func (s *ListConfigRulesRequest) SetRiskLevel(v int) *ListConfigRulesRequest {
+func (s *ListConfigRulesRequest) SetRiskLevel(v int32) *ListConfigRulesRequest {
 	s.RiskLevel = &v
 	return s
 }
 
-func (s *ListConfigRulesRequest) SetMessageType(v string) *ListConfigRulesRequest {
-	s.MessageType = &v
-	return s
-}
-
-func (s *ListConfigRulesRequest) SetPageNumber(v int) *ListConfigRulesRequest {
+func (s *ListConfigRulesRequest) SetPageNumber(v int32) *ListConfigRulesRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListConfigRulesRequest) SetPageSize(v int) *ListConfigRulesRequest {
+func (s *ListConfigRulesRequest) SetPageSize(v int32) *ListConfigRulesRequest {
 	s.PageSize = &v
 	return s
 }
@@ -1045,9 +2777,212 @@ func (s *ListConfigRulesRequest) SetMemberId(v int64) *ListConfigRulesRequest {
 	return s
 }
 
+func (s *ListConfigRulesRequest) SetConfigRuleName(v string) *ListConfigRulesRequest {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetCompliancePackId(v string) *ListConfigRulesRequest {
+	s.CompliancePackId = &v
+	return s
+}
+
+type ListConfigRulesResponseBody struct {
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfigRules *ListConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
+}
+
+func (s ListConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBody) SetRequestId(v string) *ListConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBody) SetConfigRules(v *ListConfigRulesResponseBodyConfigRules) *ListConfigRulesResponseBody {
+	s.ConfigRules = v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRules struct {
+	ConfigRuleList []*ListConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
+	PageNumber     *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetConfigRuleList(v []*ListConfigRulesResponseBodyConfigRulesConfigRuleList) *ListConfigRulesResponseBodyConfigRules {
+	s.ConfigRuleList = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetPageNumber(v int32) *ListConfigRulesResponseBodyConfigRules {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetPageSize(v int32) *ListConfigRulesResponseBodyConfigRules {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetTotalCount(v int64) *ListConfigRulesResponseBodyConfigRules {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
+	CompliancePackId *string                                                         `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	RiskLevel        *int32                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SourceOwner      *string                                                         `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	AccountId        *int64                                                          `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigRuleState  *string                                                         `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	Compliance       *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
+	SourceIdentifier *string                                                         `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	ConfigRuleArn    *string                                                         `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	Description      *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateBy         *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	AutomationType   *string                                                         `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
+	ConfigRuleName   *string                                                         `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	ConfigRuleId     *string                                                         `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetCompliancePackId(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetRiskLevel(v int32) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetSourceOwner(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.SourceOwner = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetAccountId(v int64) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleState(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetCompliance(v *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Compliance = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetSourceIdentifier(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.SourceIdentifier = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleArn(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleArn = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetDescription(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetCreateBy(v *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.CreateBy = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetAutomationType(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.AutomationType = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleName(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleId(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleId = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) SetComplianceType(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) SetCount(v int32) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance {
+	s.Count = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
+	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) SetCompliancePackId(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) SetCompliancePackName(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy {
+	s.CompliancePackName = &v
+	return s
+}
+
 type ListConfigRulesResponse struct {
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ConfigRules *ListConfigRulesResponseConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" require:"true" type:"Struct"`
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigRulesResponse) String() string {
@@ -1058,210 +2993,343 @@ func (s ListConfigRulesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListConfigRulesResponse) SetRequestId(v string) *ListConfigRulesResponse {
-	s.RequestId = &v
+func (s *ListConfigRulesResponse) SetHeaders(v map[string]*string) *ListConfigRulesResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *ListConfigRulesResponse) SetConfigRules(v *ListConfigRulesResponseConfigRules) *ListConfigRulesResponse {
-	s.ConfigRules = v
+func (s *ListConfigRulesResponse) SetBody(v *ListConfigRulesResponseBody) *ListConfigRulesResponse {
+	s.Body = v
 	return s
 }
 
-type ListConfigRulesResponseConfigRules struct {
-	PageNumber     *int                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
-	PageSize       *int                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
-	TotalCount     *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	ConfigRuleList []*ListConfigRulesResponseConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" require:"true" type:"Repeated"`
+type ListDiscoveredResourcesRequest struct {
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	MultiAccount    *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
+	MemberId        *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 }
 
-func (s ListConfigRulesResponseConfigRules) String() string {
+func (s ListDiscoveredResourcesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListConfigRulesResponseConfigRules) GoString() string {
+func (s ListDiscoveredResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListConfigRulesResponseConfigRules) SetPageNumber(v int) *ListConfigRulesResponseConfigRules {
-	s.PageNumber = &v
+func (s *ListDiscoveredResourcesRequest) SetResourceId(v string) *ListDiscoveredResourcesRequest {
+	s.ResourceId = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRules) SetPageSize(v int) *ListConfigRulesResponseConfigRules {
+func (s *ListDiscoveredResourcesRequest) SetResourceDeleted(v int32) *ListDiscoveredResourcesRequest {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetPageSize(v int32) *ListDiscoveredResourcesRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRules) SetTotalCount(v int64) *ListConfigRulesResponseConfigRules {
-	s.TotalCount = &v
+func (s *ListDiscoveredResourcesRequest) SetPageNumber(v int32) *ListDiscoveredResourcesRequest {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRules) SetConfigRuleList(v []*ListConfigRulesResponseConfigRulesConfigRuleList) *ListConfigRulesResponseConfigRules {
-	s.ConfigRuleList = v
+func (s *ListDiscoveredResourcesRequest) SetResourceTypes(v string) *ListDiscoveredResourcesRequest {
+	s.ResourceTypes = &v
 	return s
 }
 
-type ListConfigRulesResponseConfigRulesConfigRuleList struct {
-	AccountId        *int64                                                      `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	ConfigRuleArn    *string                                                     `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty" require:"true"`
-	ConfigRuleId     *string                                                     `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ConfigRuleName   *string                                                     `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty" require:"true"`
-	ConfigRuleState  *string                                                     `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty" require:"true"`
-	Description      *string                                                     `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	RiskLevel        *int                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" require:"true"`
-	SourceIdentifier *string                                                     `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty" require:"true"`
-	SourceOwner      *string                                                     `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty" require:"true"`
-	AutomationType   *string                                                     `json:"AutomationType,omitempty" xml:"AutomationType,omitempty" require:"true"`
-	Compliance       *ListConfigRulesResponseConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" require:"true" type:"Struct"`
-	CreateBy         *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ListConfigRulesResponseConfigRulesConfigRuleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConfigRulesResponseConfigRulesConfigRuleList) GoString() string {
-	return s.String()
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetAccountId(v int64) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.AccountId = &v
+func (s *ListDiscoveredResourcesRequest) SetRegions(v string) *ListDiscoveredResourcesRequest {
+	s.Regions = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetConfigRuleArn(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.ConfigRuleArn = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetConfigRuleId(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetConfigRuleName(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.ConfigRuleName = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetConfigRuleState(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.ConfigRuleState = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetDescription(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetRiskLevel(v int) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.RiskLevel = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetSourceIdentifier(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.SourceIdentifier = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetSourceOwner(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.SourceOwner = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetAutomationType(v string) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.AutomationType = &v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetCompliance(v *ListConfigRulesResponseConfigRulesConfigRuleListCompliance) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.Compliance = v
-	return s
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleList) SetCreateBy(v *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) *ListConfigRulesResponseConfigRulesConfigRuleList {
-	s.CreateBy = v
-	return s
-}
-
-type ListConfigRulesResponseConfigRulesConfigRuleListCompliance struct {
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty" require:"true"`
-	Count          *int    `json:"Count,omitempty" xml:"Count,omitempty" require:"true"`
-}
-
-func (s ListConfigRulesResponseConfigRulesConfigRuleListCompliance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConfigRulesResponseConfigRulesConfigRuleListCompliance) GoString() string {
-	return s.String()
-}
-
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCompliance) SetComplianceType(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCompliance {
+func (s *ListDiscoveredResourcesRequest) SetComplianceType(v string) *ListDiscoveredResourcesRequest {
 	s.ComplianceType = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCompliance) SetCount(v int) *ListConfigRulesResponseConfigRulesConfigRuleListCompliance {
-	s.Count = &v
+func (s *ListDiscoveredResourcesRequest) SetMultiAccount(v bool) *ListDiscoveredResourcesRequest {
+	s.MultiAccount = &v
 	return s
 }
 
-type ListConfigRulesResponseConfigRulesConfigRuleListCreateBy struct {
-	CreatorId           *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty" require:"true"`
-	CreatorName         *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty" require:"true"`
-	CreatorType         *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty" require:"true"`
-	ConfigRuleSceneId   *string `json:"ConfigRuleSceneId,omitempty" xml:"ConfigRuleSceneId,omitempty" require:"true"`
-	ConfigRuleSceneName *string `json:"ConfigRuleSceneName,omitempty" xml:"ConfigRuleSceneName,omitempty" require:"true"`
+func (s *ListDiscoveredResourcesRequest) SetMemberId(v int64) *ListDiscoveredResourcesRequest {
+	s.MemberId = &v
+	return s
 }
 
-func (s ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) String() string {
+type ListDiscoveredResourcesResponseBody struct {
+	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DiscoveredResourceProfiles *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
+}
+
+func (s ListDiscoveredResourcesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) GoString() string {
+func (s ListDiscoveredResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) SetCreatorId(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy {
-	s.CreatorId = &v
+func (s *ListDiscoveredResourcesResponseBody) SetRequestId(v string) *ListDiscoveredResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) SetCreatorName(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy {
-	s.CreatorName = &v
+func (s *ListDiscoveredResourcesResponseBody) SetDiscoveredResourceProfiles(v *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) *ListDiscoveredResourcesResponseBody {
+	s.DiscoveredResourceProfiles = v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) SetCreatorType(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy {
-	s.CreatorType = &v
+type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	PageNumber                    *int32                                                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                      *int32                                                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount                    *int32                                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DiscoveredResourceProfileList []*ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPageNumber(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PageNumber = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) SetConfigRuleSceneId(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy {
-	s.ConfigRuleSceneId = &v
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPageSize(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PageSize = &v
 	return s
 }
 
-func (s *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy) SetConfigRuleSceneName(v string) *ListConfigRulesResponseConfigRulesConfigRuleListCreateBy {
-	s.ConfigRuleSceneName = &v
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetTotalCount(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetDiscoveredResourceProfileList(v []*ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.DiscoveredResourceProfileList = v
+	return s
+}
+
+type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceType(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetRegion(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Region = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceCreationTime(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceId(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceName(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceDeleted(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceStatus(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceStatus = &v
+	return s
+}
+
+type ListDiscoveredResourcesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDiscoveredResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListDiscoveredResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponse) SetBody(v *ListDiscoveredResourcesResponseBody) *ListDiscoveredResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRemediationTemplatesRequest struct {
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+}
+
+func (s ListRemediationTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesRequest) SetRemediationType(v string) *ListRemediationTemplatesRequest {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesRequest) SetManagedRuleIdentifier(v string) *ListRemediationTemplatesRequest {
+	s.ManagedRuleIdentifier = &v
+	return s
+}
+
+type ListRemediationTemplatesResponseBody struct {
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RemediationTemplates []*ListRemediationTemplatesResponseBodyRemediationTemplates `json:"RemediationTemplates,omitempty" xml:"RemediationTemplates,omitempty" type:"Repeated"`
+}
+
+func (s ListRemediationTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponseBody) SetRequestId(v string) *ListRemediationTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBody) SetRemediationTemplates(v []*ListRemediationTemplatesResponseBodyRemediationTemplates) *ListRemediationTemplatesResponseBody {
+	s.RemediationTemplates = v
+	return s
+}
+
+type ListRemediationTemplatesResponseBodyRemediationTemplates struct {
+	RemediationType    *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	TemplateIdentifier *string `json:"TemplateIdentifier,omitempty" xml:"TemplateIdentifier,omitempty"`
+	TemplateName       *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateDefinition *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
+}
+
+func (s ListRemediationTemplatesResponseBodyRemediationTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponseBodyRemediationTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetRemediationType(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateIdentifier(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateIdentifier = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateName(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateDefinition(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateDefinition = &v
+	return s
+}
+
+type ListRemediationTemplatesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRemediationTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponse) SetHeaders(v map[string]*string) *ListRemediationTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponse) SetBody(v *ListRemediationTemplatesResponseBody) *ListRemediationTemplatesResponse {
+	s.Body = v
 	return s
 }
 
 type PutConfigRuleRequest struct {
 	ConfigRuleId                    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName                  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty" require:"true"`
+	ConfigRuleName                  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	Description                     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InputParameters                 *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	SourceOwner                     *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty" require:"true"`
-	SourceIdentifier                *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty" require:"true"`
-	SourceDetailMessageType         *string `json:"SourceDetailMessageType,omitempty" xml:"SourceDetailMessageType,omitempty" require:"true"`
+	SourceOwner                     *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	SourceIdentifier                *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	SourceDetailMessageType         *string `json:"SourceDetailMessageType,omitempty" xml:"SourceDetailMessageType,omitempty"`
 	SourceMaximumExecutionFrequency *string `json:"SourceMaximumExecutionFrequency,omitempty" xml:"SourceMaximumExecutionFrequency,omitempty"`
 	ScopeComplianceResourceId       *string `json:"ScopeComplianceResourceId,omitempty" xml:"ScopeComplianceResourceId,omitempty"`
-	ScopeComplianceResourceTypes    *string `json:"ScopeComplianceResourceTypes,omitempty" xml:"ScopeComplianceResourceTypes,omitempty" require:"true"`
-	RiskLevel                       *int    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" require:"true"`
+	ScopeComplianceResourceTypes    *string `json:"ScopeComplianceResourceTypes,omitempty" xml:"ScopeComplianceResourceTypes,omitempty"`
+	RiskLevel                       *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	ClientToken                     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	MultiAccount                    *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
 	MemberId                        *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
@@ -1325,7 +3393,7 @@ func (s *PutConfigRuleRequest) SetScopeComplianceResourceTypes(v string) *PutCon
 	return s
 }
 
-func (s *PutConfigRuleRequest) SetRiskLevel(v int) *PutConfigRuleRequest {
+func (s *PutConfigRuleRequest) SetRiskLevel(v int32) *PutConfigRuleRequest {
 	s.RiskLevel = &v
 	return s
 }
@@ -1345,9 +3413,32 @@ func (s *PutConfigRuleRequest) SetMemberId(v int64) *PutConfigRuleRequest {
 	return s
 }
 
+type PutConfigRuleResponseBody struct {
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutConfigRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutConfigRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutConfigRuleResponseBody) SetConfigRuleId(v string) *PutConfigRuleResponseBody {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *PutConfigRuleResponseBody) SetRequestId(v string) *PutConfigRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type PutConfigRuleResponse struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PutConfigRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutConfigRuleResponse) String() string {
@@ -1358,1547 +3449,105 @@ func (s PutConfigRuleResponse) GoString() string {
 	return s.String()
 }
 
-func (s *PutConfigRuleResponse) SetConfigRuleId(v string) *PutConfigRuleResponse {
-	s.ConfigRuleId = &v
+func (s *PutConfigRuleResponse) SetHeaders(v map[string]*string) *PutConfigRuleResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *PutConfigRuleResponse) SetRequestId(v string) *PutConfigRuleResponse {
-	s.RequestId = &v
+func (s *PutConfigRuleResponse) SetBody(v *PutConfigRuleResponseBody) *PutConfigRuleResponse {
+	s.Body = v
 	return s
 }
 
-type DescribeEvaluationResultsRequest struct {
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	PageNumber     *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	MultiAccount   *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId       *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+type PutConfigurationRecorderRequest struct {
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
-func (s DescribeEvaluationResultsRequest) String() string {
+func (s PutConfigurationRecorderRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeEvaluationResultsRequest) GoString() string {
+func (s PutConfigurationRecorderRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEvaluationResultsRequest) SetResourceType(v string) *DescribeEvaluationResultsRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetResourceId(v string) *DescribeEvaluationResultsRequest {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetComplianceType(v string) *DescribeEvaluationResultsRequest {
-	s.ComplianceType = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetPageNumber(v int) *DescribeEvaluationResultsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetPageSize(v int) *DescribeEvaluationResultsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetConfigRuleId(v string) *DescribeEvaluationResultsRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetMultiAccount(v bool) *DescribeEvaluationResultsRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsRequest) SetMemberId(v int64) *DescribeEvaluationResultsRequest {
-	s.MemberId = &v
-	return s
-}
-
-type DescribeEvaluationResultsResponse struct {
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	EvaluationResults *DescribeEvaluationResultsResponseEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeEvaluationResultsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEvaluationResultsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEvaluationResultsResponse) SetRequestId(v string) *DescribeEvaluationResultsResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponse) SetEvaluationResults(v *DescribeEvaluationResultsResponseEvaluationResults) *DescribeEvaluationResultsResponse {
-	s.EvaluationResults = v
-	return s
-}
-
-type DescribeEvaluationResultsResponseEvaluationResults struct {
-	PageNumber           *int                                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
-	PageSize             *int                                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
-	TotalCount           *int64                                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	EvaluationResultList []*DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResults) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResults) SetPageNumber(v int) *DescribeEvaluationResultsResponseEvaluationResults {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResults) SetPageSize(v int) *DescribeEvaluationResultsResponseEvaluationResults {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResults) SetTotalCount(v int64) *DescribeEvaluationResultsResponseEvaluationResults {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResults) SetEvaluationResultList(v []*DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) *DescribeEvaluationResultsResponseEvaluationResults {
-	s.EvaluationResultList = v
-	return s
-}
-
-type DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList struct {
-	Annotation                 *string                                                                                           `json:"Annotation,omitempty" xml:"Annotation,omitempty" require:"true"`
-	ComplianceType             *string                                                                                           `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty" require:"true"`
-	ConfigRuleInvokedTimestamp *int64                                                                                            `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty" require:"true"`
-	InvokingEventMessageType   *string                                                                                           `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty" require:"true"`
-	ResultRecordedTimestamp    *int64                                                                                            `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty" require:"true"`
-	RiskLevel                  *int                                                                                              `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" require:"true"`
-	EvaluationResultIdentifier *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetAnnotation(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.Annotation = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetComplianceType(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.ComplianceType = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetConfigRuleInvokedTimestamp(v int64) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.ConfigRuleInvokedTimestamp = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetInvokingEventMessageType(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.InvokingEventMessageType = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetResultRecordedTimestamp(v int64) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.ResultRecordedTimestamp = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetRiskLevel(v int) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.RiskLevel = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList) SetEvaluationResultIdentifier(v *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultList {
-	s.EvaluationResultIdentifier = v
-	return s
-}
-
-type DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
-	OrderingTimestamp         *int64                                                                                                                     `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty" require:"true"`
-	EvaluationResultQualifier *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier) SetOrderingTimestamp(v int64) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier {
-	s.OrderingTimestamp = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier) SetEvaluationResultQualifier(v *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifier {
-	s.EvaluationResultQualifier = v
-	return s
-}
-
-type DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
-	ConfigRuleArn  *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty" require:"true"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty" require:"true"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty" require:"true"`
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleArn(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.ConfigRuleArn = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleId(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetConfigRuleName(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.ConfigRuleName = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceId(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceType(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetRegionId(v string) *DescribeEvaluationResultsResponseEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
-	s.RegionId = &v
-	return s
-}
-
-type DeleteConfigRulesRequest struct {
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty" require:"true"`
-}
-
-func (s DeleteConfigRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConfigRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConfigRulesRequest) SetConfigRuleIds(v string) *DeleteConfigRulesRequest {
-	s.ConfigRuleIds = &v
-	return s
-}
-
-type DeleteConfigRulesResponse struct {
-	RequestId         *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	OperateRuleResult *DeleteConfigRulesResponseOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DeleteConfigRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConfigRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConfigRulesResponse) SetRequestId(v string) *DeleteConfigRulesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteConfigRulesResponse) SetOperateRuleResult(v *DeleteConfigRulesResponseOperateRuleResult) *DeleteConfigRulesResponse {
-	s.OperateRuleResult = v
-	return s
-}
-
-type DeleteConfigRulesResponseOperateRuleResult struct {
-	OperateRuleItemList []*DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DeleteConfigRulesResponseOperateRuleResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConfigRulesResponseOperateRuleResult) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConfigRulesResponseOperateRuleResult) SetOperateRuleItemList(v []*DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) *DeleteConfigRulesResponseOperateRuleResult {
-	s.OperateRuleItemList = v
-	return s
-}
-
-type DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty" require:"true"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty" require:"true"`
-}
-
-func (s DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *DeleteConfigRulesResponseOperateRuleResultOperateRuleItemList {
-	s.Success = &v
-	return s
-}
-
-type DescribeComplianceRequest struct {
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	MultiAccount   *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId       *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-}
-
-func (s DescribeComplianceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceRequest) SetResourceType(v string) *DescribeComplianceRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeComplianceRequest) SetResourceId(v string) *DescribeComplianceRequest {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeComplianceRequest) SetComplianceType(v string) *DescribeComplianceRequest {
-	s.ComplianceType = &v
-	return s
-}
-
-func (s *DescribeComplianceRequest) SetConfigRuleId(v string) *DescribeComplianceRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DescribeComplianceRequest) SetMultiAccount(v bool) *DescribeComplianceRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *DescribeComplianceRequest) SetMemberId(v int64) *DescribeComplianceRequest {
-	s.MemberId = &v
-	return s
-}
-
-type DescribeComplianceResponse struct {
-	RequestId        *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ComplianceResult *DescribeComplianceResponseComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeComplianceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceResponse) SetRequestId(v string) *DescribeComplianceResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeComplianceResponse) SetComplianceResult(v *DescribeComplianceResponseComplianceResult) *DescribeComplianceResponse {
-	s.ComplianceResult = v
-	return s
-}
-
-type DescribeComplianceResponseComplianceResult struct {
-	TotalCount  *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	Compliances []*DescribeComplianceResponseComplianceResultCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeComplianceResponseComplianceResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceResponseComplianceResult) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceResponseComplianceResult) SetTotalCount(v int64) *DescribeComplianceResponseComplianceResult {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeComplianceResponseComplianceResult) SetCompliances(v []*DescribeComplianceResponseComplianceResultCompliances) *DescribeComplianceResponseComplianceResult {
-	s.Compliances = v
-	return s
-}
-
-type DescribeComplianceResponseComplianceResultCompliances struct {
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty" require:"true"`
-	Count          *int    `json:"Count,omitempty" xml:"Count,omitempty" require:"true"`
-}
-
-func (s DescribeComplianceResponseComplianceResultCompliances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeComplianceResponseComplianceResultCompliances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeComplianceResponseComplianceResultCompliances) SetComplianceType(v string) *DescribeComplianceResponseComplianceResultCompliances {
-	s.ComplianceType = &v
-	return s
-}
-
-func (s *DescribeComplianceResponseComplianceResultCompliances) SetCount(v int) *DescribeComplianceResponseComplianceResultCompliances {
-	s.Count = &v
-	return s
-}
-
-type GetDiscoveredResourceCountsRequest struct {
-	GroupByKey   *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
-	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-}
-
-func (s GetDiscoveredResourceCountsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiscoveredResourceCountsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiscoveredResourceCountsRequest) SetGroupByKey(v string) *GetDiscoveredResourceCountsRequest {
-	s.GroupByKey = &v
-	return s
-}
-
-func (s *GetDiscoveredResourceCountsRequest) SetMultiAccount(v bool) *GetDiscoveredResourceCountsRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *GetDiscoveredResourceCountsRequest) SetMemberId(v int64) *GetDiscoveredResourceCountsRequest {
-	s.MemberId = &v
-	return s
-}
-
-type GetDiscoveredResourceCountsResponse struct {
-	RequestId             *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	GroupedResourceCounts *GetDiscoveredResourceCountsResponseGroupedResourceCounts `json:"GroupedResourceCounts,omitempty" xml:"GroupedResourceCounts,omitempty" require:"true" type:"Struct"`
-}
-
-func (s GetDiscoveredResourceCountsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiscoveredResourceCountsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiscoveredResourceCountsResponse) SetRequestId(v string) *GetDiscoveredResourceCountsResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDiscoveredResourceCountsResponse) SetGroupedResourceCounts(v *GetDiscoveredResourceCountsResponseGroupedResourceCounts) *GetDiscoveredResourceCountsResponse {
-	s.GroupedResourceCounts = v
-	return s
-}
-
-type GetDiscoveredResourceCountsResponseGroupedResourceCounts struct {
-	GroupByKey               *string                                                                             `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty" require:"true"`
-	GroupedResourceCountList []*GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList `json:"GroupedResourceCountList,omitempty" xml:"GroupedResourceCountList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetDiscoveredResourceCountsResponseGroupedResourceCounts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiscoveredResourceCountsResponseGroupedResourceCounts) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiscoveredResourceCountsResponseGroupedResourceCounts) SetGroupByKey(v string) *GetDiscoveredResourceCountsResponseGroupedResourceCounts {
-	s.GroupByKey = &v
-	return s
-}
-
-func (s *GetDiscoveredResourceCountsResponseGroupedResourceCounts) SetGroupedResourceCountList(v []*GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList) *GetDiscoveredResourceCountsResponseGroupedResourceCounts {
-	s.GroupedResourceCountList = v
-	return s
-}
-
-type GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty" require:"true"`
-	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty" require:"true"`
-}
-
-func (s GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList) GoString() string {
-	return s.String()
-}
-
-func (s *GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList) SetGroupName(v string) *GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList {
-	s.GroupName = &v
-	return s
-}
-
-func (s *GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList) SetResourceCount(v int64) *GetDiscoveredResourceCountsResponseGroupedResourceCountsGroupedResourceCountList {
-	s.ResourceCount = &v
-	return s
-}
-
-type ListDiscoveredResourcesRequest struct {
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceDeleted *int    `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	PageSize        *int    `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
-	PageNumber      *int    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
-	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	MultiAccount    *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId        *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-}
-
-func (s ListDiscoveredResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiscoveredResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiscoveredResourcesRequest) SetResourceId(v string) *ListDiscoveredResourcesRequest {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetResourceDeleted(v int) *ListDiscoveredResourcesRequest {
-	s.ResourceDeleted = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetPageSize(v int) *ListDiscoveredResourcesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetPageNumber(v int) *ListDiscoveredResourcesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetResourceTypes(v string) *ListDiscoveredResourcesRequest {
+func (s *PutConfigurationRecorderRequest) SetResourceTypes(v string) *PutConfigurationRecorderRequest {
 	s.ResourceTypes = &v
 	return s
 }
 
-func (s *ListDiscoveredResourcesRequest) SetRegions(v string) *ListDiscoveredResourcesRequest {
-	s.Regions = &v
-	return s
+type PutConfigurationRecorderResponseBody struct {
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfigurationRecorder *PutConfigurationRecorderResponseBodyConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" type:"Struct"`
 }
 
-func (s *ListDiscoveredResourcesRequest) SetComplianceType(v string) *ListDiscoveredResourcesRequest {
-	s.ComplianceType = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetMultiAccount(v bool) *ListDiscoveredResourcesRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesRequest) SetMemberId(v int64) *ListDiscoveredResourcesRequest {
-	s.MemberId = &v
-	return s
-}
-
-type ListDiscoveredResourcesResponse struct {
-	RequestId                  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	DiscoveredResourceProfiles *ListDiscoveredResourcesResponseDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" require:"true" type:"Struct"`
-}
-
-func (s ListDiscoveredResourcesResponse) String() string {
+func (s PutConfigurationRecorderResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListDiscoveredResourcesResponse) GoString() string {
+func (s PutConfigurationRecorderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDiscoveredResourcesResponse) SetRequestId(v string) *ListDiscoveredResourcesResponse {
+func (s *PutConfigurationRecorderResponseBody) SetRequestId(v string) *PutConfigurationRecorderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListDiscoveredResourcesResponse) SetDiscoveredResourceProfiles(v *ListDiscoveredResourcesResponseDiscoveredResourceProfiles) *ListDiscoveredResourcesResponse {
-	s.DiscoveredResourceProfiles = v
-	return s
-}
-
-type ListDiscoveredResourcesResponseDiscoveredResourceProfiles struct {
-	PageNumber                    *int                                                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" require:"true"`
-	PageSize                      *int                                                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty" require:"true"`
-	TotalCount                    *int                                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty" require:"true"`
-	DiscoveredResourceProfileList []*ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s ListDiscoveredResourcesResponseDiscoveredResourceProfiles) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiscoveredResourcesResponseDiscoveredResourceProfiles) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfiles) SetPageNumber(v int) *ListDiscoveredResourcesResponseDiscoveredResourceProfiles {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfiles) SetPageSize(v int) *ListDiscoveredResourcesResponseDiscoveredResourceProfiles {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfiles) SetTotalCount(v int) *ListDiscoveredResourcesResponseDiscoveredResourceProfiles {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfiles) SetDiscoveredResourceProfileList(v []*ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) *ListDiscoveredResourcesResponseDiscoveredResourceProfiles {
-	s.DiscoveredResourceProfileList = v
-	return s
-}
-
-type ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty" require:"true"`
-	ResourceDeleted      *int    `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty" require:"true"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty" require:"true"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty" require:"true"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true"`
-}
-
-func (s ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetRegion(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.Region = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceCreationTime(v int64) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceCreationTime = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceDeleted(v int) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceDeleted = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceId(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceName(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceStatus(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceStatus = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceType(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListDiscoveredResourcesResponseDiscoveredResourceProfilesDiscoveredResourceProfileList {
-	s.Tags = &v
-	return s
-}
-
-type DescribeConfigurationRecorderRequest struct {
-}
-
-func (s DescribeConfigurationRecorderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigurationRecorderRequest) GoString() string {
-	return s.String()
-}
-
-type DescribeConfigurationRecorderResponse struct {
-	RequestId             *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ConfigurationRecorder *DescribeConfigurationRecorderResponseConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeConfigurationRecorderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigurationRecorderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigurationRecorderResponse) SetRequestId(v string) *DescribeConfigurationRecorderResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeConfigurationRecorderResponse) SetConfigurationRecorder(v *DescribeConfigurationRecorderResponseConfigurationRecorder) *DescribeConfigurationRecorderResponse {
+func (s *PutConfigurationRecorderResponseBody) SetConfigurationRecorder(v *PutConfigurationRecorderResponseBodyConfigurationRecorder) *PutConfigurationRecorderResponseBody {
 	s.ConfigurationRecorder = v
 	return s
 }
 
-type DescribeConfigurationRecorderResponseConfigurationRecorder struct {
-	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty" require:"true"`
-	OrganizationMasterId        *int64    `json:"OrganizationMasterId,omitempty" xml:"OrganizationMasterId,omitempty" require:"true"`
-	OrganizationEnableStatus    *string   `json:"OrganizationEnableStatus,omitempty" xml:"OrganizationEnableStatus,omitempty" require:"true"`
-	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" require:"true" type:"Repeated"`
+type PutConfigurationRecorderResponseBodyConfigurationRecorder struct {
+	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
+	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
-func (s DescribeConfigurationRecorderResponseConfigurationRecorder) String() string {
+func (s PutConfigurationRecorderResponseBodyConfigurationRecorder) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeConfigurationRecorderResponseConfigurationRecorder) GoString() string {
+func (s PutConfigurationRecorderResponseBodyConfigurationRecorder) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConfigurationRecorderResponseConfigurationRecorder) SetAccountId(v int64) *DescribeConfigurationRecorderResponseConfigurationRecorder {
+func (s *PutConfigurationRecorderResponseBodyConfigurationRecorder) SetAccountId(v int64) *PutConfigurationRecorderResponseBodyConfigurationRecorder {
 	s.AccountId = &v
 	return s
 }
 
-func (s *DescribeConfigurationRecorderResponseConfigurationRecorder) SetConfigurationRecorderStatus(v string) *DescribeConfigurationRecorderResponseConfigurationRecorder {
+func (s *PutConfigurationRecorderResponseBodyConfigurationRecorder) SetConfigurationRecorderStatus(v string) *PutConfigurationRecorderResponseBodyConfigurationRecorder {
 	s.ConfigurationRecorderStatus = &v
 	return s
 }
 
-func (s *DescribeConfigurationRecorderResponseConfigurationRecorder) SetOrganizationMasterId(v int64) *DescribeConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationMasterId = &v
-	return s
-}
-
-func (s *DescribeConfigurationRecorderResponseConfigurationRecorder) SetOrganizationEnableStatus(v string) *DescribeConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationEnableStatus = &v
-	return s
-}
-
-func (s *DescribeConfigurationRecorderResponseConfigurationRecorder) SetResourceTypes(v []*string) *DescribeConfigurationRecorderResponseConfigurationRecorder {
+func (s *PutConfigurationRecorderResponseBodyConfigurationRecorder) SetResourceTypes(v []*string) *PutConfigurationRecorderResponseBodyConfigurationRecorder {
 	s.ResourceTypes = v
 	return s
 }
 
-type DescribeDiscoveredResourceRequest struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+type PutConfigurationRecorderResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PutConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribeDiscoveredResourceRequest) String() string {
+func (s PutConfigurationRecorderResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDiscoveredResourceRequest) GoString() string {
+func (s PutConfigurationRecorderResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDiscoveredResourceRequest) SetResourceId(v string) *DescribeDiscoveredResourceRequest {
-	s.ResourceId = &v
+func (s *PutConfigurationRecorderResponse) SetHeaders(v map[string]*string) *PutConfigurationRecorderResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *DescribeDiscoveredResourceRequest) SetResourceType(v string) *DescribeDiscoveredResourceRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceRequest) SetRegion(v string) *DescribeDiscoveredResourceRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceRequest) SetMultiAccount(v bool) *DescribeDiscoveredResourceRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceRequest) SetMemberId(v int64) *DescribeDiscoveredResourceRequest {
-	s.MemberId = &v
-	return s
-}
-
-type DescribeDiscoveredResourceResponse struct {
-	RequestId                *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	DiscoveredResourceDetail *DescribeDiscoveredResourceResponseDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeDiscoveredResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiscoveredResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiscoveredResourceResponse) SetRequestId(v string) *DescribeDiscoveredResourceResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponse) SetDiscoveredResourceDetail(v *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) *DescribeDiscoveredResourceResponse {
-	s.DiscoveredResourceDetail = v
-	return s
-}
-
-type DescribeDiscoveredResourceResponseDiscoveredResourceDetail struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" require:"true"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" require:"true"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty" require:"true"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty" require:"true"`
-	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty" require:"true"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty" require:"true"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty" require:"true"`
-	ResourceDeleted      *int    `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty" require:"true"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty" require:"true"`
-	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty" require:"true"`
-}
-
-func (s DescribeDiscoveredResourceResponseDiscoveredResourceDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiscoveredResourceResponseDiscoveredResourceDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetAccountId(v int64) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.AccountId = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceId(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceType(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceName(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetRegion(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetAvailabilityZone(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.AvailabilityZone = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceCreationTime(v int64) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceCreationTime = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceStatus(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceStatus = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetResourceDeleted(v int) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.ResourceDeleted = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetTags(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.Tags = &v
-	return s
-}
-
-func (s *DescribeDiscoveredResourceResponseDiscoveredResourceDetail) SetConfiguration(v string) *DescribeDiscoveredResourceResponseDiscoveredResourceDetail {
-	s.Configuration = &v
-	return s
-}
-
-type StartConfigurationRecorderRequest struct {
-	EnterpriseEdition *bool `json:"EnterpriseEdition,omitempty" xml:"EnterpriseEdition,omitempty"`
-}
-
-func (s StartConfigurationRecorderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartConfigurationRecorderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartConfigurationRecorderRequest) SetEnterpriseEdition(v bool) *StartConfigurationRecorderRequest {
-	s.EnterpriseEdition = &v
-	return s
-}
-
-type StartConfigurationRecorderResponse struct {
-	RequestId             *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ConfigurationRecorder *StartConfigurationRecorderResponseConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" require:"true" type:"Struct"`
-}
-
-func (s StartConfigurationRecorderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartConfigurationRecorderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartConfigurationRecorderResponse) SetRequestId(v string) *StartConfigurationRecorderResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StartConfigurationRecorderResponse) SetConfigurationRecorder(v *StartConfigurationRecorderResponseConfigurationRecorder) *StartConfigurationRecorderResponse {
-	s.ConfigurationRecorder = v
-	return s
-}
-
-type StartConfigurationRecorderResponseConfigurationRecorder struct {
-	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty" require:"true"`
-	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty" require:"true"`
-	OrganizationMasterId        *int64    `json:"OrganizationMasterId,omitempty" xml:"OrganizationMasterId,omitempty" require:"true"`
-	OrganizationEnableStatus    *string   `json:"OrganizationEnableStatus,omitempty" xml:"OrganizationEnableStatus,omitempty" require:"true"`
-	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s StartConfigurationRecorderResponseConfigurationRecorder) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartConfigurationRecorderResponseConfigurationRecorder) GoString() string {
-	return s.String()
-}
-
-func (s *StartConfigurationRecorderResponseConfigurationRecorder) SetAccountId(v int64) *StartConfigurationRecorderResponseConfigurationRecorder {
-	s.AccountId = &v
-	return s
-}
-
-func (s *StartConfigurationRecorderResponseConfigurationRecorder) SetConfigurationRecorderStatus(v string) *StartConfigurationRecorderResponseConfigurationRecorder {
-	s.ConfigurationRecorderStatus = &v
-	return s
-}
-
-func (s *StartConfigurationRecorderResponseConfigurationRecorder) SetOrganizationMasterId(v int64) *StartConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationMasterId = &v
-	return s
-}
-
-func (s *StartConfigurationRecorderResponseConfigurationRecorder) SetOrganizationEnableStatus(v string) *StartConfigurationRecorderResponseConfigurationRecorder {
-	s.OrganizationEnableStatus = &v
-	return s
-}
-
-func (s *StartConfigurationRecorderResponseConfigurationRecorder) SetResourceTypes(v []*string) *StartConfigurationRecorderResponseConfigurationRecorder {
-	s.ResourceTypes = v
-	return s
-}
-
-type DescribeConfigRuleRequest struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-}
-
-func (s DescribeConfigRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleRequest) SetConfigRuleId(v string) *DescribeConfigRuleRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleRequest) SetMultiAccount(v bool) *DescribeConfigRuleRequest {
-	s.MultiAccount = &v
-	return s
-}
-
-func (s *DescribeConfigRuleRequest) SetMemberId(v int64) *DescribeConfigRuleRequest {
-	s.MemberId = &v
-	return s
-}
-
-type DescribeConfigRuleResponse struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ConfigRule *DescribeConfigRuleResponseConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeConfigRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponse) SetRequestId(v string) *DescribeConfigRuleResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponse) SetConfigRule(v *DescribeConfigRuleResponseConfigRule) *DescribeConfigRuleResponse {
-	s.ConfigRule = v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRule struct {
-	ConfigRuleArn              *string                                                         `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty" require:"true"`
-	ConfigRuleId               *string                                                         `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	ConfigRuleName             *string                                                         `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty" require:"true"`
-	ConfigRuleState            *string                                                         `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty" require:"true"`
-	CreateTimestamp            *int64                                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty" require:"true"`
-	Description                *string                                                         `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	InputParameters            map[string]interface{}                                          `json:"InputParameters,omitempty" xml:"InputParameters,omitempty" require:"true"`
-	ModifiedTimestamp          *int64                                                          `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty" require:"true"`
-	RiskLevel                  *int                                                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" require:"true"`
-	MaximumExecutionFrequency  *string                                                         `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty" require:"true"`
-	CreateBy                   *DescribeConfigRuleResponseConfigRuleCreateBy                   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" require:"true" type:"Struct"`
-	ConfigRuleEvaluationStatus *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" require:"true" type:"Struct"`
-	ManagedRule                *DescribeConfigRuleResponseConfigRuleManagedRule                `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" require:"true" type:"Struct"`
-	Source                     *DescribeConfigRuleResponseConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" require:"true" type:"Struct"`
-	Scope                      *DescribeConfigRuleResponseConfigRuleScope                      `json:"Scope,omitempty" xml:"Scope,omitempty" require:"true" type:"Struct"`
-}
-
-func (s DescribeConfigRuleResponseConfigRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetConfigRuleArn(v string) *DescribeConfigRuleResponseConfigRule {
-	s.ConfigRuleArn = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetConfigRuleId(v string) *DescribeConfigRuleResponseConfigRule {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetConfigRuleName(v string) *DescribeConfigRuleResponseConfigRule {
-	s.ConfigRuleName = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetConfigRuleState(v string) *DescribeConfigRuleResponseConfigRule {
-	s.ConfigRuleState = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetCreateTimestamp(v int64) *DescribeConfigRuleResponseConfigRule {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetDescription(v string) *DescribeConfigRuleResponseConfigRule {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetInputParameters(v map[string]interface{}) *DescribeConfigRuleResponseConfigRule {
-	s.InputParameters = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetModifiedTimestamp(v int64) *DescribeConfigRuleResponseConfigRule {
-	s.ModifiedTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetRiskLevel(v int) *DescribeConfigRuleResponseConfigRule {
-	s.RiskLevel = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseConfigRule {
-	s.MaximumExecutionFrequency = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetCreateBy(v *DescribeConfigRuleResponseConfigRuleCreateBy) *DescribeConfigRuleResponseConfigRule {
-	s.CreateBy = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetConfigRuleEvaluationStatus(v *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) *DescribeConfigRuleResponseConfigRule {
-	s.ConfigRuleEvaluationStatus = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetManagedRule(v *DescribeConfigRuleResponseConfigRuleManagedRule) *DescribeConfigRuleResponseConfigRule {
-	s.ManagedRule = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetSource(v *DescribeConfigRuleResponseConfigRuleSource) *DescribeConfigRuleResponseConfigRule {
-	s.Source = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRule) SetScope(v *DescribeConfigRuleResponseConfigRuleScope) *DescribeConfigRuleResponseConfigRule {
-	s.Scope = v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleCreateBy struct {
-	CreatorType         *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty" require:"true"`
-	CreatorId           *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty" require:"true"`
-	CreatorName         *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty" require:"true"`
-	ConfigRuleSceneId   *string `json:"ConfigRuleSceneId,omitempty" xml:"ConfigRuleSceneId,omitempty" require:"true"`
-	ConfigRuleSceneName *string `json:"ConfigRuleSceneName,omitempty" xml:"ConfigRuleSceneName,omitempty" require:"true"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleCreateBy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleCreateBy) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleCreateBy) SetCreatorType(v string) *DescribeConfigRuleResponseConfigRuleCreateBy {
-	s.CreatorType = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleCreateBy) SetCreatorId(v string) *DescribeConfigRuleResponseConfigRuleCreateBy {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleCreateBy) SetCreatorName(v string) *DescribeConfigRuleResponseConfigRuleCreateBy {
-	s.CreatorName = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleCreateBy) SetConfigRuleSceneId(v string) *DescribeConfigRuleResponseConfigRuleCreateBy {
-	s.ConfigRuleSceneId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleCreateBy) SetConfigRuleSceneName(v string) *DescribeConfigRuleResponseConfigRuleCreateBy {
-	s.ConfigRuleSceneName = &v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus struct {
-	FirstActivatedTimestamp           *int64  `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty" require:"true"`
-	FirstEvaluationStarted            *bool   `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty" require:"true"`
-	LastErrorCode                     *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty" require:"true"`
-	LastErrorMessage                  *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty" require:"true"`
-	LastFailedEvaluationTimestamp     *int64  `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty" require:"true"`
-	LastFailedInvocationTimestamp     *int64  `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty" require:"true"`
-	LastSuccessfulEvaluationTimestamp *int64  `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty" require:"true"`
-	LastSuccessfulInvocationTimestamp *int64  `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty" require:"true"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetFirstActivatedTimestamp(v int64) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.FirstActivatedTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetFirstEvaluationStarted(v bool) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.FirstEvaluationStarted = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastErrorCode(v string) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastErrorCode = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastErrorMessage(v string) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastErrorMessage = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastFailedEvaluationTimestamp(v int64) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastFailedEvaluationTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastFailedInvocationTimestamp(v int64) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastFailedInvocationTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastSuccessfulEvaluationTimestamp(v int64) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastSuccessfulEvaluationTimestamp = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus) SetLastSuccessfulInvocationTimestamp(v int64) *DescribeConfigRuleResponseConfigRuleConfigRuleEvaluationStatus {
-	s.LastSuccessfulInvocationTimestamp = &v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleManagedRule struct {
-	ManagedRuleName                 *string                                                         `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty" require:"true"`
-	Description                     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty" require:"true"`
-	Identifier                      *string                                                         `json:"Identifier,omitempty" xml:"Identifier,omitempty" require:"true"`
-	CompulsoryInputParameterDetails map[string]interface{}                                          `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty" require:"true"`
-	OptionalInputParameterDetails   map[string]interface{}                                          `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty" require:"true"`
-	HelpUrl                         *string                                                         `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty" require:"true"`
-	SourceDetails                   []*DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" require:"true" type:"Repeated"`
-	Labels                          []*string                                                       `json:"Labels,omitempty" xml:"Labels,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleManagedRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleManagedRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetManagedRuleName(v string) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.ManagedRuleName = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetDescription(v string) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetIdentifier(v string) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.Identifier = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetCompulsoryInputParameterDetails(v map[string]interface{}) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.CompulsoryInputParameterDetails = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetOptionalInputParameterDetails(v map[string]interface{}) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.OptionalInputParameterDetails = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetHelpUrl(v string) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.HelpUrl = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetSourceDetails(v []*DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.SourceDetails = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRule) SetLabels(v []*string) *DescribeConfigRuleResponseConfigRuleManagedRule {
-	s.Labels = v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty" require:"true"`
-	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty" require:"true"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty" require:"true"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) SetEventSource(v string) *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails {
-	s.EventSource = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails {
-	s.MaximumExecutionFrequency = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails) SetMessageType(v string) *DescribeConfigRuleResponseConfigRuleManagedRuleSourceDetails {
-	s.MessageType = &v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleSource struct {
-	Identifier       *string                                                       `json:"Identifier,omitempty" xml:"Identifier,omitempty" require:"true"`
-	Owner            *string                                                       `json:"Owner,omitempty" xml:"Owner,omitempty" require:"true"`
-	SourceConditions []*DescribeConfigRuleResponseConfigRuleSourceSourceConditions `json:"SourceConditions,omitempty" xml:"SourceConditions,omitempty" require:"true" type:"Repeated"`
-	SourceDetails    []*DescribeConfigRuleResponseConfigRuleSourceSourceDetails    `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSource) SetIdentifier(v string) *DescribeConfigRuleResponseConfigRuleSource {
-	s.Identifier = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSource) SetOwner(v string) *DescribeConfigRuleResponseConfigRuleSource {
-	s.Owner = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSource) SetSourceConditions(v []*DescribeConfigRuleResponseConfigRuleSourceSourceConditions) *DescribeConfigRuleResponseConfigRuleSource {
-	s.SourceConditions = v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSource) SetSourceDetails(v []*DescribeConfigRuleResponseConfigRuleSourceSourceDetails) *DescribeConfigRuleResponseConfigRuleSource {
-	s.SourceDetails = v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleSourceSourceConditions struct {
-	DesiredValue *string `json:"DesiredValue,omitempty" xml:"DesiredValue,omitempty" require:"true"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty" require:"true"`
-	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty" require:"true"`
-	Required     *bool   `json:"Required,omitempty" xml:"Required,omitempty" require:"true"`
-	SelectPath   *string `json:"SelectPath,omitempty" xml:"SelectPath,omitempty" require:"true"`
-	Tips         *string `json:"Tips,omitempty" xml:"Tips,omitempty" require:"true"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSourceSourceConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSourceSourceConditions) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetDesiredValue(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.DesiredValue = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetName(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetOperator(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.Operator = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetRequired(v bool) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.Required = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetSelectPath(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.SelectPath = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceConditions) SetTips(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceConditions {
-	s.Tips = &v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleSourceSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty" require:"true"`
-	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty" require:"true"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty" require:"true"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSourceSourceDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleSourceSourceDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceDetails) SetEventSource(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceDetails {
-	s.EventSource = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceDetails) SetMaximumExecutionFrequency(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceDetails {
-	s.MaximumExecutionFrequency = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleSourceSourceDetails) SetMessageType(v string) *DescribeConfigRuleResponseConfigRuleSourceSourceDetails {
-	s.MessageType = &v
-	return s
-}
-
-type DescribeConfigRuleResponseConfigRuleScope struct {
-	ComplianceResourceId    *string   `json:"ComplianceResourceId,omitempty" xml:"ComplianceResourceId,omitempty" require:"true"`
-	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeConfigRuleResponseConfigRuleScope) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeConfigRuleResponseConfigRuleScope) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleScope) SetComplianceResourceId(v string) *DescribeConfigRuleResponseConfigRuleScope {
-	s.ComplianceResourceId = &v
-	return s
-}
-
-func (s *DescribeConfigRuleResponseConfigRuleScope) SetComplianceResourceTypes(v []*string) *DescribeConfigRuleResponseConfigRuleScope {
-	s.ComplianceResourceTypes = v
-	return s
-}
-
-type GetSupportedResourceTypesRequest struct {
-}
-
-func (s GetSupportedResourceTypesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSupportedResourceTypesRequest) GoString() string {
-	return s.String()
-}
-
-type GetSupportedResourceTypesResponse struct {
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s GetSupportedResourceTypesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSupportedResourceTypesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSupportedResourceTypesResponse) SetRequestId(v string) *GetSupportedResourceTypesResponse {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSupportedResourceTypesResponse) SetResourceTypes(v []*string) *GetSupportedResourceTypesResponse {
-	s.ResourceTypes = v
+func (s *PutConfigurationRecorderResponse) SetBody(v *PutConfigurationRecorderResponseBody) *PutConfigurationRecorderResponse {
+	s.Body = v
 	return s
 }
 
@@ -2906,12 +3555,12 @@ type PutDeliveryChannelRequest struct {
 	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DeliveryChannelId            *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 	DeliveryChannelName          *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelType          *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty" require:"true"`
-	DeliveryChannelTargetArn     *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty" require:"true"`
-	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty" require:"true"`
+	DeliveryChannelType          *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliveryChannelTargetArn     *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
 	DeliveryChannelCondition     *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Status                       *int    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PutDeliveryChannelRequest) String() string {
@@ -2962,14 +3611,37 @@ func (s *PutDeliveryChannelRequest) SetDescription(v string) *PutDeliveryChannel
 	return s
 }
 
-func (s *PutDeliveryChannelRequest) SetStatus(v int) *PutDeliveryChannelRequest {
+func (s *PutDeliveryChannelRequest) SetStatus(v int32) *PutDeliveryChannelRequest {
 	s.Status = &v
 	return s
 }
 
+type PutDeliveryChannelResponseBody struct {
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *PutDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *PutDeliveryChannelResponseBody) SetRequestId(v string) *PutDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type PutDeliveryChannelResponse struct {
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty" require:"true"`
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PutDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutDeliveryChannelResponse) String() string {
@@ -2980,18 +3652,18 @@ func (s PutDeliveryChannelResponse) GoString() string {
 	return s.String()
 }
 
-func (s *PutDeliveryChannelResponse) SetRequestId(v string) *PutDeliveryChannelResponse {
-	s.RequestId = &v
+func (s *PutDeliveryChannelResponse) SetHeaders(v map[string]*string) *PutDeliveryChannelResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *PutDeliveryChannelResponse) SetDeliveryChannelId(v string) *PutDeliveryChannelResponse {
-	s.DeliveryChannelId = &v
+func (s *PutDeliveryChannelResponse) SetBody(v *PutDeliveryChannelResponseBody) *PutDeliveryChannelResponse {
+	s.Body = v
 	return s
 }
 
 type PutEvaluationsRequest struct {
-	ResultToken *string `json:"ResultToken,omitempty" xml:"ResultToken,omitempty" require:"true"`
+	ResultToken *string `json:"ResultToken,omitempty" xml:"ResultToken,omitempty"`
 	Evaluations *string `json:"Evaluations,omitempty" xml:"Evaluations,omitempty"`
 }
 
@@ -3013,9 +3685,32 @@ func (s *PutEvaluationsRequest) SetEvaluations(v string) *PutEvaluationsRequest 
 	return s
 }
 
+type PutEvaluationsResponseBody struct {
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutEvaluationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutEvaluationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutEvaluationsResponseBody) SetResult(v bool) *PutEvaluationsResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *PutEvaluationsResponseBody) SetRequestId(v string) *PutEvaluationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type PutEvaluationsResponse struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PutEvaluationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEvaluationsResponse) String() string {
@@ -3026,20 +3721,18 @@ func (s PutEvaluationsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *PutEvaluationsResponse) SetRequestId(v string) *PutEvaluationsResponse {
-	s.RequestId = &v
+func (s *PutEvaluationsResponse) SetHeaders(v map[string]*string) *PutEvaluationsResponse {
+	s.Headers = v
 	return s
 }
 
-func (s *PutEvaluationsResponse) SetResult(v bool) *PutEvaluationsResponse {
-	s.Result = &v
+func (s *PutEvaluationsResponse) SetBody(v *PutEvaluationsResponseBody) *PutEvaluationsResponse {
+	s.Body = v
 	return s
 }
 
 type StartConfigRuleEvaluationRequest struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty" require:"true"`
-	MultiAccount *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
-	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
 func (s StartConfigRuleEvaluationRequest) String() string {
@@ -3055,19 +3748,32 @@ func (s *StartConfigRuleEvaluationRequest) SetConfigRuleId(v string) *StartConfi
 	return s
 }
 
-func (s *StartConfigRuleEvaluationRequest) SetMultiAccount(v bool) *StartConfigRuleEvaluationRequest {
-	s.MultiAccount = &v
+type StartConfigRuleEvaluationResponseBody struct {
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartConfigRuleEvaluationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartConfigRuleEvaluationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartConfigRuleEvaluationResponseBody) SetResult(v bool) *StartConfigRuleEvaluationResponseBody {
+	s.Result = &v
 	return s
 }
 
-func (s *StartConfigRuleEvaluationRequest) SetMemberId(v int64) *StartConfigRuleEvaluationRequest {
-	s.MemberId = &v
+func (s *StartConfigRuleEvaluationResponseBody) SetRequestId(v string) *StartConfigRuleEvaluationResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type StartConfigRuleEvaluationResponse struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty" require:"true"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty" require:"true"`
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartConfigRuleEvaluationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartConfigRuleEvaluationResponse) String() string {
@@ -3078,27 +3784,240 @@ func (s StartConfigRuleEvaluationResponse) GoString() string {
 	return s.String()
 }
 
-func (s *StartConfigRuleEvaluationResponse) SetRequestId(v string) *StartConfigRuleEvaluationResponse {
+func (s *StartConfigRuleEvaluationResponse) SetHeaders(v map[string]*string) *StartConfigRuleEvaluationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartConfigRuleEvaluationResponse) SetBody(v *StartConfigRuleEvaluationResponseBody) *StartConfigRuleEvaluationResponse {
+	s.Body = v
+	return s
+}
+
+type StartConfigurationRecorderRequest struct {
+	EnterpriseEdition *bool `json:"EnterpriseEdition,omitempty" xml:"EnterpriseEdition,omitempty"`
+}
+
+func (s StartConfigurationRecorderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartConfigurationRecorderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartConfigurationRecorderRequest) SetEnterpriseEdition(v bool) *StartConfigurationRecorderRequest {
+	s.EnterpriseEdition = &v
+	return s
+}
+
+type StartConfigurationRecorderResponseBody struct {
+	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfigurationRecorder *StartConfigurationRecorderResponseBodyConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" type:"Struct"`
+}
+
+func (s StartConfigurationRecorderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartConfigurationRecorderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartConfigurationRecorderResponseBody) SetRequestId(v string) *StartConfigurationRecorderResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *StartConfigRuleEvaluationResponse) SetResult(v bool) *StartConfigRuleEvaluationResponse {
-	s.Result = &v
+func (s *StartConfigurationRecorderResponseBody) SetConfigurationRecorder(v *StartConfigurationRecorderResponseBodyConfigurationRecorder) *StartConfigurationRecorderResponseBody {
+	s.ConfigurationRecorder = v
+	return s
+}
+
+type StartConfigurationRecorderResponseBodyConfigurationRecorder struct {
+	OrganizationEnableStatus    *string   `json:"OrganizationEnableStatus,omitempty" xml:"OrganizationEnableStatus,omitempty"`
+	ConfigurationRecorderStatus *string   `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
+	OrganizationMasterId        *int64    `json:"OrganizationMasterId,omitempty" xml:"OrganizationMasterId,omitempty"`
+	AccountId                   *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ResourceTypes               []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s StartConfigurationRecorderResponseBodyConfigurationRecorder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartConfigurationRecorderResponseBodyConfigurationRecorder) GoString() string {
+	return s.String()
+}
+
+func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetOrganizationEnableStatus(v string) *StartConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.OrganizationEnableStatus = &v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetConfigurationRecorderStatus(v string) *StartConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.ConfigurationRecorderStatus = &v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetOrganizationMasterId(v int64) *StartConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.OrganizationMasterId = &v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetAccountId(v int64) *StartConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.AccountId = &v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponseBodyConfigurationRecorder) SetResourceTypes(v []*string) *StartConfigurationRecorderResponseBodyConfigurationRecorder {
+	s.ResourceTypes = v
+	return s
+}
+
+type StartConfigurationRecorderResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartConfigurationRecorderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartConfigurationRecorderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartConfigurationRecorderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartConfigurationRecorderResponse) SetHeaders(v map[string]*string) *StartConfigurationRecorderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartConfigurationRecorderResponse) SetBody(v *StartConfigurationRecorderResponseBody) *StartConfigurationRecorderResponse {
+	s.Body = v
+	return s
+}
+
+type StopConfigRulesRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s StopConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigRulesRequest) SetConfigRuleIds(v string) *StopConfigRulesRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type StopConfigRulesResponseBody struct {
+	RequestId         *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OperateRuleResult *StopConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
+}
+
+func (s StopConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigRulesResponseBody) SetRequestId(v string) *StopConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopConfigRulesResponseBody) SetOperateRuleResult(v *StopConfigRulesResponseBodyOperateRuleResult) *StopConfigRulesResponseBody {
+	s.OperateRuleResult = v
+	return s
+}
+
+type StopConfigRulesResponseBodyOperateRuleResult struct {
+	OperateRuleItemList []*StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
+}
+
+func (s StopConfigRulesResponseBodyOperateRuleResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigRulesResponseBodyOperateRuleResult) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigRulesResponseBodyOperateRuleResult) SetOperateRuleItemList(v []*StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) *StopConfigRulesResponseBodyOperateRuleResult {
+	s.OperateRuleItemList = v
+	return s
+}
+
+type StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+}
+
+func (s StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetErrorCode(v string) *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetSuccess(v bool) *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.Success = &v
+	return s
+}
+
+func (s *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) SetConfigRuleId(v string) *StopConfigRulesResponseBodyOperateRuleResultOperateRuleItemList {
+	s.ConfigRuleId = &v
+	return s
+}
+
+type StopConfigRulesResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopConfigRulesResponse) SetHeaders(v map[string]*string) *StopConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopConfigRulesResponse) SetBody(v *StopConfigRulesResponseBody) *StopConfigRulesResponse {
+	s.Body = v
 	return s
 }
 
 type Client struct {
-	rpc.Client
+	openapi.Client
 }
 
-func NewClient(config *rpc.Config) (*Client, error) {
+func NewClient(config *openapi.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *rpc.Config) (_err error) {
+func (client *Client) Init(config *openapi.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
@@ -3120,124 +4039,18 @@ func (client *Client) Init(config *rpc.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResourceComplianceTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceTimelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
 		return _result, _err
 	}
-	_result = &GetResourceComplianceTimelineResponse{}
-	_body, _err := client.DoRequest(tea.String("GetResourceComplianceTimeline"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
 
-func (client *Client) GetResourceComplianceTimeline(request *GetResourceComplianceTimelineRequest) (_result *GetResourceComplianceTimelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetResourceComplianceTimelineResponse{}
-	_body, _err := client.GetResourceComplianceTimelineWithOptions(request, runtime)
-	if _err != nil {
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
 		return _result, _err
 	}
-	_result = _body
-	return _result, _err
-}
 
-func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetResourceConfigurationTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceConfigurationTimelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetResourceConfigurationTimelineResponse{}
-	_body, _err := client.DoRequest(tea.String("GetResourceConfigurationTimeline"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfigurationTimelineRequest) (_result *GetResourceConfigurationTimelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetResourceConfigurationTimelineResponse{}
-	_body, _err := client.GetResourceConfigurationTimelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDeliveryChannelsWithOptions(request *DescribeDeliveryChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeDeliveryChannelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeDeliveryChannelsResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeDeliveryChannels"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDeliveryChannels(request *DescribeDeliveryChannelsRequest) (_result *DescribeDeliveryChannelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDeliveryChannelsResponse{}
-	_body, _err := client.DescribeDeliveryChannelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PutConfigurationRecorderWithOptions(request *PutConfigurationRecorderRequest, runtime *util.RuntimeOptions) (_result *PutConfigurationRecorderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &PutConfigurationRecorderResponse{}
-	_body, _err := client.DoRequest(tea.String("PutConfigurationRecorder"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PutConfigurationRecorder(request *PutConfigurationRecorderRequest) (_result *PutConfigurationRecorderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PutConfigurationRecorderResponse{}
-	_body, _err := client.PutConfigurationRecorderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDiscoveredResourceSummaryWithOptions(request *GetDiscoveredResourceSummaryRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceSummaryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetDiscoveredResourceSummaryResponse{}
-	_body, _err := client.DoRequest(tea.String("GetDiscoveredResourceSummary"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDiscoveredResourceSummary(request *GetDiscoveredResourceSummaryRequest) (_result *GetDiscoveredResourceSummaryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDiscoveredResourceSummaryResponse{}
-	_body, _err := client.GetDiscoveredResourceSummaryWithOptions(request, runtime)
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3250,8 +4063,11 @@ func (client *Client) ActiveConfigRulesWithOptions(request *ActiveConfigRulesReq
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &ActiveConfigRulesResponse{}
-	_body, _err := client.DoRequest(tea.String("ActiveConfigRules"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ActiveConfigRules"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3270,138 +4086,16 @@ func (client *Client) ActiveConfigRules(request *ActiveConfigRulesRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) StopConfigRulesWithOptions(request *StopConfigRulesRequest, runtime *util.RuntimeOptions) (_result *StopConfigRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &StopConfigRulesResponse{}
-	_body, _err := client.DoRequest(tea.String("StopConfigRules"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopConfigRules(request *StopConfigRulesRequest) (_result *StopConfigRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopConfigRulesResponse{}
-	_body, _err := client.StopConfigRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeComplianceSummaryWithOptions(request *DescribeComplianceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeComplianceSummaryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeComplianceSummaryResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeComplianceSummary"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeComplianceSummary(request *DescribeComplianceSummaryRequest) (_result *DescribeComplianceSummaryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeComplianceSummaryResponse{}
-	_body, _err := client.DescribeComplianceSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListConfigRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &ListConfigRulesResponse{}
-	_body, _err := client.DoRequest(tea.String("ListConfigRules"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListConfigRules(request *ListConfigRulesRequest) (_result *ListConfigRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListConfigRulesResponse{}
-	_body, _err := client.ListConfigRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PutConfigRuleWithOptions(request *PutConfigRuleRequest, runtime *util.RuntimeOptions) (_result *PutConfigRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &PutConfigRuleResponse{}
-	_body, _err := client.DoRequest(tea.String("PutConfigRule"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PutConfigRule(request *PutConfigRuleRequest) (_result *PutConfigRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PutConfigRuleResponse{}
-	_body, _err := client.PutConfigRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeEvaluationResultsWithOptions(request *DescribeEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeEvaluationResultsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeEvaluationResultsResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeEvaluationResults"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeEvaluationResults(request *DescribeEvaluationResultsRequest) (_result *DescribeEvaluationResultsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeEvaluationResultsResponse{}
-	_body, _err := client.DescribeEvaluationResultsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteConfigRulesWithOptions(request *DeleteConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &DeleteConfigRulesResponse{}
-	_body, _err := client.DoRequest(tea.String("DeleteConfigRules"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteConfigRules"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3425,8 +4119,12 @@ func (client *Client) DescribeComplianceWithOptions(request *DescribeComplianceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
 	_result = &DescribeComplianceResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeCompliance"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeCompliance"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3445,13 +4143,17 @@ func (client *Client) DescribeCompliance(request *DescribeComplianceRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscoveredResourceCountsRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceCountsResponse, _err error) {
+func (client *Client) DescribeComplianceSummaryWithOptions(request *DescribeComplianceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeComplianceSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	_result = &GetDiscoveredResourceCountsResponse{}
-	_body, _err := client.DoRequest(tea.String("GetDiscoveredResourceCounts"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeComplianceSummaryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeComplianceSummary"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3459,110 +4161,10 @@ func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscove
 	return _result, _err
 }
 
-func (client *Client) GetDiscoveredResourceCounts(request *GetDiscoveredResourceCountsRequest) (_result *GetDiscoveredResourceCountsResponse, _err error) {
+func (client *Client) DescribeComplianceSummary(request *DescribeComplianceSummaryRequest) (_result *DescribeComplianceSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetDiscoveredResourceCountsResponse{}
-	_body, _err := client.GetDiscoveredResourceCountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListDiscoveredResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &ListDiscoveredResourcesResponse{}
-	_body, _err := client.DoRequest(tea.String("ListDiscoveredResources"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRequest) (_result *ListDiscoveredResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDiscoveredResourcesResponse{}
-	_body, _err := client.ListDiscoveredResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeConfigurationRecorderWithOptions(request *DescribeConfigurationRecorderRequest, runtime *util.RuntimeOptions) (_result *DescribeConfigurationRecorderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeConfigurationRecorderResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeConfigurationRecorder"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeConfigurationRecorder(request *DescribeConfigurationRecorderRequest) (_result *DescribeConfigurationRecorderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeConfigurationRecorderResponse{}
-	_body, _err := client.DescribeConfigurationRecorderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDiscoveredResourceWithOptions(request *DescribeDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeDiscoveredResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &DescribeDiscoveredResourceResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeDiscoveredResource"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDiscoveredResource(request *DescribeDiscoveredResourceRequest) (_result *DescribeDiscoveredResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDiscoveredResourceResponse{}
-	_body, _err := client.DescribeDiscoveredResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartConfigurationRecorderWithOptions(request *StartConfigurationRecorderRequest, runtime *util.RuntimeOptions) (_result *StartConfigurationRecorderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &StartConfigurationRecorderResponse{}
-	_body, _err := client.DoRequest(tea.String("StartConfigurationRecorder"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartConfigurationRecorder(request *StartConfigurationRecorderRequest) (_result *StartConfigurationRecorderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartConfigurationRecorderResponse{}
-	_body, _err := client.StartConfigurationRecorderWithOptions(request, runtime)
+	_result = &DescribeComplianceSummaryResponse{}
+	_body, _err := client.DescribeComplianceSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3575,8 +4177,12 @@ func (client *Client) DescribeConfigRuleWithOptions(request *DescribeConfigRuleR
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
 	_result = &DescribeConfigRuleResponse{}
-	_body, _err := client.DoRequest(tea.String("DescribeConfigRule"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeConfigRule"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3595,13 +4201,10 @@ func (client *Client) DescribeConfigRule(request *DescribeConfigRuleRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetSupportedResourceTypesWithOptions(request *GetSupportedResourceTypesRequest, runtime *util.RuntimeOptions) (_result *GetSupportedResourceTypesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = &GetSupportedResourceTypesResponse{}
-	_body, _err := client.DoRequest(tea.String("GetSupportedResourceTypes"), tea.String("HTTPS"), tea.String("GET"), tea.String("2019-01-08"), tea.String("AK"), tea.ToMap(request), nil, runtime)
+func (client *Client) DescribeConfigurationRecorderWithOptions(runtime *util.RuntimeOptions) (_result *DescribeConfigurationRecorderResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &DescribeConfigurationRecorderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeConfigurationRecorder"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3609,10 +4212,435 @@ func (client *Client) GetSupportedResourceTypesWithOptions(request *GetSupported
 	return _result, _err
 }
 
-func (client *Client) GetSupportedResourceTypes(request *GetSupportedResourceTypesRequest) (_result *GetSupportedResourceTypesResponse, _err error) {
+func (client *Client) DescribeConfigurationRecorder() (_result *DescribeConfigurationRecorderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeConfigurationRecorderResponse{}
+	_body, _err := client.DescribeConfigurationRecorderWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDeliveryChannelsWithOptions(request *DescribeDeliveryChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeDeliveryChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeDeliveryChannelsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDeliveryChannels"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeliveryChannels(request *DescribeDeliveryChannelsRequest) (_result *DescribeDeliveryChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDeliveryChannelsResponse{}
+	_body, _err := client.DescribeDeliveryChannelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiscoveredResourceWithOptions(request *DescribeDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeDiscoveredResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeDiscoveredResourceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDiscoveredResource"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiscoveredResource(request *DescribeDiscoveredResourceRequest) (_result *DescribeDiscoveredResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiscoveredResourceResponse{}
+	_body, _err := client.DescribeDiscoveredResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEvaluationResultsWithOptions(request *DescribeEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeEvaluationResultsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEvaluationResults"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEvaluationResults(request *DescribeEvaluationResultsRequest) (_result *DescribeEvaluationResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEvaluationResultsResponse{}
+	_body, _err := client.DescribeEvaluationResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggregateDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetAggregateDiscoveredResourceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAggregateDiscoveredResource"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateDiscoveredResource(request *GetAggregateDiscoveredResourceRequest) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateDiscoveredResourceResponse{}
+	_body, _err := client.GetAggregateDiscoveredResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscoveredResourceCountsRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceCountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetDiscoveredResourceCountsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDiscoveredResourceCounts"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResourceCounts(request *GetDiscoveredResourceCountsRequest) (_result *GetDiscoveredResourceCountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiscoveredResourceCountsResponse{}
+	_body, _err := client.GetDiscoveredResourceCountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResourceSummaryWithOptions(request *GetDiscoveredResourceSummaryRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetDiscoveredResourceSummaryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDiscoveredResourceSummary"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResourceSummary(request *GetDiscoveredResourceSummaryRequest) (_result *GetDiscoveredResourceSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiscoveredResourceSummaryResponse{}
+	_body, _err := client.GetDiscoveredResourceSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResourceComplianceTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceTimelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetResourceComplianceTimelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetResourceComplianceTimeline"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceTimeline(request *GetResourceComplianceTimelineRequest) (_result *GetResourceComplianceTimelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceComplianceTimelineResponse{}
+	_body, _err := client.GetResourceComplianceTimelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetResourceConfigurationTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceConfigurationTimelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetResourceConfigurationTimelineResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetResourceConfigurationTimeline"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfigurationTimelineRequest) (_result *GetResourceConfigurationTimelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceConfigurationTimelineResponse{}
+	_body, _err := client.GetResourceConfigurationTimelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSupportedResourceTypesWithOptions(runtime *util.RuntimeOptions) (_result *GetSupportedResourceTypesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	_result = &GetSupportedResourceTypesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetSupportedResourceTypes"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSupportedResourceTypes() (_result *GetSupportedResourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSupportedResourceTypesResponse{}
-	_body, _err := client.GetSupportedResourceTypesWithOptions(request, runtime)
+	_body, _err := client.GetSupportedResourceTypesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListAggregateDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListAggregateDiscoveredResourcesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListAggregateDiscoveredResources"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateDiscoveredResources(request *ListAggregateDiscoveredResourcesRequest) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateDiscoveredResourcesResponse{}
+	_body, _err := client.ListAggregateDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListConfigRulesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListConfigRules"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConfigRules(request *ListConfigRulesRequest) (_result *ListConfigRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConfigRulesResponse{}
+	_body, _err := client.ListConfigRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListDiscoveredResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListDiscoveredResourcesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDiscoveredResources"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRequest) (_result *ListDiscoveredResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiscoveredResourcesResponse{}
+	_body, _err := client.ListDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediationTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListRemediationTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListRemediationTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListRemediationTemplates"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRemediationTemplates(request *ListRemediationTemplatesRequest) (_result *ListRemediationTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRemediationTemplatesResponse{}
+	_body, _err := client.ListRemediationTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutConfigRuleWithOptions(request *PutConfigRuleRequest, runtime *util.RuntimeOptions) (_result *PutConfigRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PutConfigRuleResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PutConfigRule"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutConfigRule(request *PutConfigRuleRequest) (_result *PutConfigRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutConfigRuleResponse{}
+	_body, _err := client.PutConfigRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutConfigurationRecorderWithOptions(request *PutConfigurationRecorderRequest, runtime *util.RuntimeOptions) (_result *PutConfigurationRecorderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PutConfigurationRecorderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PutConfigurationRecorder"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutConfigurationRecorder(request *PutConfigurationRecorderRequest) (_result *PutConfigurationRecorderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutConfigurationRecorderResponse{}
+	_body, _err := client.PutConfigurationRecorderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3625,8 +4653,11 @@ func (client *Client) PutDeliveryChannelWithOptions(request *PutDeliveryChannelR
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &PutDeliveryChannelResponse{}
-	_body, _err := client.DoRequest(tea.String("PutDeliveryChannel"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("PutDeliveryChannel"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3650,8 +4681,11 @@ func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &PutEvaluationsResponse{}
-	_body, _err := client.DoRequest(tea.String("PutEvaluations"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("PutEvaluations"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3675,8 +4709,11 @@ func (client *Client) StartConfigRuleEvaluationWithOptions(request *StartConfigR
 	if _err != nil {
 		return _result, _err
 	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
 	_result = &StartConfigRuleEvaluationResponse{}
-	_body, _err := client.DoRequest(tea.String("StartConfigRuleEvaluation"), tea.String("HTTPS"), tea.String("POST"), tea.String("2019-01-08"), tea.String("AK"), nil, tea.ToMap(request), runtime)
+	_body, _err := client.DoRPCRequest(tea.String("StartConfigRuleEvaluation"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3695,18 +4732,55 @@ func (client *Client) StartConfigRuleEvaluation(request *StartConfigRuleEvaluati
 	return _result, _err
 }
 
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
-		_result = endpoint
+func (client *Client) StartConfigurationRecorderWithOptions(request *StartConfigurationRecorderRequest, runtime *util.RuntimeOptions) (_result *StartConfigurationRecorderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
 		return _result, _err
 	}
-
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StartConfigurationRecorderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StartConfigurationRecorder"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
 
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+func (client *Client) StartConfigurationRecorder(request *StartConfigurationRecorderRequest) (_result *StartConfigurationRecorderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartConfigurationRecorderResponse{}
+	_body, _err := client.StartConfigurationRecorderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopConfigRulesWithOptions(request *StopConfigRulesRequest, runtime *util.RuntimeOptions) (_result *StopConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopConfigRulesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopConfigRules"), tea.String("2019-01-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopConfigRules(request *StopConfigRulesRequest) (_result *StopConfigRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopConfigRulesResponse{}
+	_body, _err := client.StopConfigRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
