@@ -299,6 +299,10 @@ type Instance struct {
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 	// 定时关机任务
 	InstanceShutdownTimer *InstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty"`
+	// 工作空间id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// 工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s Instance) String() string {
@@ -386,6 +390,16 @@ func (s *Instance) SetUserVpc(v *UserVpc) *Instance {
 
 func (s *Instance) SetInstanceShutdownTimer(v *InstanceShutdownTimer) *Instance {
 	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *Instance) SetWorkspaceId(v string) *Instance {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *Instance) SetWorkspaceName(v string) *Instance {
+	s.WorkspaceName = &v
 	return s
 }
 
@@ -815,6 +829,72 @@ func (s *ListEcsSpecsResponse) SetHeaders(v map[string]*string) *ListEcsSpecsRes
 }
 
 func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpecsResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstancesStatisticsRequest struct {
+	// 工作空间id列表
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+}
+
+func (s GetInstancesStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstancesStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstancesStatisticsRequest) SetWorkspaceIds(v string) *GetInstancesStatisticsRequest {
+	s.WorkspaceIds = &v
+	return s
+}
+
+type GetInstancesStatisticsResponseBody struct {
+	// Id of the request
+	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	// 统计数据
+	Statistics map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+}
+
+func (s GetInstancesStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstancesStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstancesStatisticsResponseBody) SetRequestID(v string) *GetInstancesStatisticsResponseBody {
+	s.RequestID = &v
+	return s
+}
+
+func (s *GetInstancesStatisticsResponseBody) SetStatistics(v map[string]interface{}) *GetInstancesStatisticsResponseBody {
+	s.Statistics = v
+	return s
+}
+
+type GetInstancesStatisticsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInstancesStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstancesStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstancesStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstancesStatisticsResponse) SetHeaders(v map[string]*string) *GetInstancesStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstancesStatisticsResponse) SetBody(v *GetInstancesStatisticsResponseBody) *GetInstancesStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -2048,6 +2128,41 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 	}
 	_result = &ListEcsSpecsResponse{}
 	_body, _err := client.DoROARequest(tea.String("ListEcsSpecs"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/ecsSpecs"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstancesStatistics(request *GetInstancesStatisticsRequest) (_result *GetInstancesStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstancesStatisticsResponse{}
+	_body, _err := client.GetInstancesStatisticsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstancesStatisticsWithOptions(request *GetInstancesStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstancesStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
+		query["WorkspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetInstancesStatisticsResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetInstancesStatistics"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/statistics/instances"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
