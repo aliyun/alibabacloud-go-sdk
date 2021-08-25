@@ -977,6 +977,167 @@ func (s *CreateMergeRequestResponse) SetBody(v *CreateMergeRequestResponseBody) 
 	return s
 }
 
+type DeleteRepositoryMemberWithExternUidRequest struct {
+	// 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// 云效用户ID
+	ExternUserId *string `json:"ExternUserId,omitempty" xml:"ExternUserId,omitempty"`
+}
+
+func (s DeleteRepositoryMemberWithExternUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberWithExternUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberWithExternUidRequest) SetAccessToken(v string) *DeleteRepositoryMemberWithExternUidRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidRequest) SetOrganizationId(v string) *DeleteRepositoryMemberWithExternUidRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidRequest) SetExternUserId(v string) *DeleteRepositoryMemberWithExternUidRequest {
+	s.ExternUserId = &v
+	return s
+}
+
+type DeleteRepositoryMemberWithExternUidResponseBody struct {
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 请求结果
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 响应结果
+	Result *DeleteRepositoryMemberWithExternUidResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBody) SetErrorMessage(v string) *DeleteRepositoryMemberWithExternUidResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBody) SetRequestId(v string) *DeleteRepositoryMemberWithExternUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBody) SetErrorCode(v string) *DeleteRepositoryMemberWithExternUidResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBody) SetSuccess(v bool) *DeleteRepositoryMemberWithExternUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBody) SetResult(v *DeleteRepositoryMemberWithExternUidResponseBodyResult) *DeleteRepositoryMemberWithExternUidResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteRepositoryMemberWithExternUidResponseBodyResult struct {
+	// Codeup用户ID
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 资源类型
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// 权限类型。20-浏览者，30-开发者,40-管理员。
+	AccessLevel *int32 `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// 更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// 代码库ID
+	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// ID
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetUserId(v int64) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.UserId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetSourceType(v string) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetCreatedAt(v string) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetAccessLevel(v int32) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetUpdatedAt(v string) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetSourceId(v int64) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponseBodyResult) SetId(v int64) *DeleteRepositoryMemberWithExternUidResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+type DeleteRepositoryMemberWithExternUidResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteRepositoryMemberWithExternUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRepositoryMemberWithExternUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponse) SetHeaders(v map[string]*string) *DeleteRepositoryMemberWithExternUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRepositoryMemberWithExternUidResponse) SetBody(v *DeleteRepositoryMemberWithExternUidResponseBody) *DeleteRepositoryMemberWithExternUidResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRepositoryRequest struct {
 	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
@@ -14008,6 +14169,49 @@ func (client *Client) CreateMergeRequestWithOptions(ProjectId *string, request *
 	}
 	_result = &CreateMergeRequestResponse{}
 	_body, _err := client.DoROARequest(tea.String("CreateMergeRequest"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v4/projects/"+tea.StringValue(ProjectId)+"/merge_requests"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryMemberWithExternUid(ProjectId *string, request *DeleteRepositoryMemberWithExternUidRequest) (_result *DeleteRepositoryMemberWithExternUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteRepositoryMemberWithExternUidResponse{}
+	_body, _err := client.DeleteRepositoryMemberWithExternUidWithOptions(ProjectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRepositoryMemberWithExternUidWithOptions(ProjectId *string, request *DeleteRepositoryMemberWithExternUidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepositoryMemberWithExternUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternUserId)) {
+		query["ExternUserId"] = request.ExternUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &DeleteRepositoryMemberWithExternUidResponse{}
+	_body, _err := client.DoROARequest(tea.String("DeleteRepositoryMemberWithExternUid"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v4/projects/"+tea.StringValue(ProjectId)+"/members/remove"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
