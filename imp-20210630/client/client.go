@@ -1451,7 +1451,7 @@ type CreateAppTemplateRequest struct {
 	// 应用模板名称
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
-	Sence *string `json:"Sence,omitempty" xml:"Sence,omitempty"`
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// 组件列表
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 }
@@ -1469,8 +1469,8 @@ func (s *CreateAppTemplateRequest) SetAppTemplateName(v string) *CreateAppTempla
 	return s
 }
 
-func (s *CreateAppTemplateRequest) SetSence(v string) *CreateAppTemplateRequest {
-	s.Sence = &v
+func (s *CreateAppTemplateRequest) SetScene(v string) *CreateAppTemplateRequest {
+	s.Scene = &v
 	return s
 }
 
@@ -1483,7 +1483,7 @@ type CreateAppTemplateShrinkRequest struct {
 	// 应用模板名称
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
-	Sence *string `json:"Sence,omitempty" xml:"Sence,omitempty"`
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// 组件列表
 	ComponentListShrink *string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty"`
 }
@@ -1501,8 +1501,8 @@ func (s *CreateAppTemplateShrinkRequest) SetAppTemplateName(v string) *CreateApp
 	return s
 }
 
-func (s *CreateAppTemplateShrinkRequest) SetSence(v string) *CreateAppTemplateShrinkRequest {
-	s.Sence = &v
+func (s *CreateAppTemplateShrinkRequest) SetScene(v string) *CreateAppTemplateShrinkRequest {
+	s.Scene = &v
 	return s
 }
 
