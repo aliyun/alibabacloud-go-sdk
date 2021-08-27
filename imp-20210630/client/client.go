@@ -12,6 +12,2488 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateIceProjectRequest struct {
+	// appId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 回放地址的地址
+	UrlRegionId *string `json:"UrlRegionId,omitempty" xml:"UrlRegionId,omitempty"`
+	// 工程标题
+	ProjectTitle *string `json:"ProjectTitle,omitempty" xml:"ProjectTitle,omitempty"`
+	// 封面
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 唯一ID，比如直播uuid
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s CreateIceProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIceProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIceProjectRequest) SetAppId(v string) *CreateIceProjectRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateIceProjectRequest) SetUrlRegionId(v string) *CreateIceProjectRequest {
+	s.UrlRegionId = &v
+	return s
+}
+
+func (s *CreateIceProjectRequest) SetProjectTitle(v string) *CreateIceProjectRequest {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *CreateIceProjectRequest) SetCoverURL(v string) *CreateIceProjectRequest {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *CreateIceProjectRequest) SetLiveId(v string) *CreateIceProjectRequest {
+	s.LiveId = &v
+	return s
+}
+
+type CreateIceProjectResponseBody struct {
+	// 请求ID
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateIceProjectResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CreateIceProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIceProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIceProjectResponseBody) SetRequestId(v string) *CreateIceProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIceProjectResponseBody) SetResult(v *CreateIceProjectResponseBodyResult) *CreateIceProjectResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateIceProjectResponseBodyResult struct {
+	// 工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s CreateIceProjectResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIceProjectResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIceProjectResponseBodyResult) SetProjectId(v string) *CreateIceProjectResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+type CreateIceProjectResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateIceProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIceProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIceProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIceProjectResponse) SetHeaders(v map[string]*string) *CreateIceProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIceProjectResponse) SetBody(v *CreateIceProjectResponseBody) *CreateIceProjectResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveMemberRequest struct {
+	// 会议唯一标识
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 被邀请用户ID
+	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
+	// 邀请者用户ID
+	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+}
+
+func (s RemoveMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveMemberRequest) SetConferenceId(v string) *RemoveMemberRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *RemoveMemberRequest) SetToUserId(v string) *RemoveMemberRequest {
+	s.ToUserId = &v
+	return s
+}
+
+func (s *RemoveMemberRequest) SetFromUserId(v string) *RemoveMemberRequest {
+	s.FromUserId = &v
+	return s
+}
+
+type RemoveMemberResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveMemberResponseBody) SetRequestId(v string) *RemoveMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveMemberResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveMemberResponse) SetHeaders(v map[string]*string) *RemoveMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveMemberResponse) SetBody(v *RemoveMemberResponseBody) *RemoveMemberResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplyLinkMicUsersRequest struct {
+	// 会议唯一标识符
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 查询页码，从第1页开始。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大显示个数为100。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListApplyLinkMicUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplyLinkMicUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplyLinkMicUsersRequest) SetConferenceId(v string) *ListApplyLinkMicUsersRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersRequest) SetPageNumber(v int32) *ListApplyLinkMicUsersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersRequest) SetPageSize(v int32) *ListApplyLinkMicUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListApplyLinkMicUsersResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *ListApplyLinkMicUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListApplyLinkMicUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplyLinkMicUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplyLinkMicUsersResponseBody) SetRequestId(v string) *ListApplyLinkMicUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersResponseBody) SetResult(v *ListApplyLinkMicUsersResponseBodyResult) *ListApplyLinkMicUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListApplyLinkMicUsersResponseBodyResult struct {
+	// 会议申请连麦用户列表。
+	ApplyLinkMicUserList []*string `json:"ApplyLinkMicUserList,omitempty" xml:"ApplyLinkMicUserList,omitempty" type:"Repeated"`
+	// 是否还有下一页成员列表。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 该会议的申请连麦成员总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 改会议的申请连麦成员总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+}
+
+func (s ListApplyLinkMicUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplyLinkMicUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplyLinkMicUsersResponseBodyResult) SetApplyLinkMicUserList(v []*string) *ListApplyLinkMicUsersResponseBodyResult {
+	s.ApplyLinkMicUserList = v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersResponseBodyResult) SetHasMore(v bool) *ListApplyLinkMicUsersResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersResponseBodyResult) SetTotalCount(v int32) *ListApplyLinkMicUsersResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersResponseBodyResult) SetPageTotal(v int32) *ListApplyLinkMicUsersResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+type ListApplyLinkMicUsersResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListApplyLinkMicUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplyLinkMicUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplyLinkMicUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplyLinkMicUsersResponse) SetHeaders(v map[string]*string) *ListApplyLinkMicUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersResponse) SetBody(v *ListApplyLinkMicUsersResponseBody) *ListApplyLinkMicUsersResponse {
+	s.Body = v
+	return s
+}
+
+type GetRoomRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+}
+
+func (s GetRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomRequest) SetAppId(v string) *GetRoomRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetRoomRequest) SetRoomId(v string) *GetRoomRequest {
+	s.RoomId = &v
+	return s
+}
+
+type GetRoomResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 查询房间信息返回结果。
+	Result *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomResponseBody) SetRequestId(v string) *GetRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRoomResponseBody) SetResult(v *GetRoomResponseBodyResult) *GetRoomResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetRoomResponseBodyResult struct {
+	// 房间信息。
+	RoomInfo *GetRoomResponseBodyResultRoomInfo `json:"RoomInfo,omitempty" xml:"RoomInfo,omitempty" type:"Struct"`
+}
+
+func (s GetRoomResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomResponseBodyResult) SetRoomInfo(v *GetRoomResponseBodyResultRoomInfo) *GetRoomResponseBodyResult {
+	s.RoomInfo = v
+	return s
+}
+
+type GetRoomResponseBodyResultRoomInfo struct {
+	// 房间唯一标识。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 房间标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 房间创建时间戳，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 房间公告。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 房主用户id。
+	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	// 访问用户数。
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 在线用户数。
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	// 活跃插件列表。
+	PluginInstanceInfoList []*GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 创建房间使用的模板id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 房间拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s GetRoomResponseBodyResultRoomInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomResponseBodyResultRoomInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetRoomId(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.RoomId = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetTitle(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.Title = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetCreateTime(v int64) *GetRoomResponseBodyResultRoomInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetNotice(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.Notice = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetRoomOwnerId(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.RoomOwnerId = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetUv(v int64) *GetRoomResponseBodyResultRoomInfo {
+	s.Uv = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetOnlineCount(v int64) *GetRoomResponseBodyResultRoomInfo {
+	s.OnlineCount = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetPluginInstanceInfoList(v []*GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) *GetRoomResponseBodyResultRoomInfo {
+	s.PluginInstanceInfoList = v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetAppId(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetTemplateId(v string) *GetRoomResponseBodyResultRoomInfo {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetExtension(v map[string]*string) *GetRoomResponseBodyResultRoomInfo {
+	s.Extension = v
+	return s
+}
+
+type GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList struct {
+	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// 插件实例唯一标识。
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 插件实例创建时间戳，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 插件拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetPluginType(v string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
+	s.PluginType = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetPluginId(v string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
+	s.PluginId = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetCreateTime(v int64) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetExtension(v map[string]*string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
+	s.Extension = v
+	return s
+}
+
+type GetRoomResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoomResponse) SetHeaders(v map[string]*string) *GetRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
+	s.Body = v
+	return s
+}
+
+type BanCommentRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 用户在房间内的唯一标识
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 被禁言的用户在房间内的唯一标识
+	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
+	// 禁言时长（秒）
+	BanCommentTime *int64 `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
+}
+
+func (s BanCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentRequest) SetAppId(v string) *BanCommentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetRoomId(v string) *BanCommentRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetUserId(v string) *BanCommentRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetBanCommentUser(v string) *BanCommentRequest {
+	s.BanCommentUser = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetBanCommentTime(v int64) *BanCommentRequest {
+	s.BanCommentTime = &v
+	return s
+}
+
+type BanCommentResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 操作是否成功
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s BanCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentResponseBody) SetRequestId(v string) *BanCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BanCommentResponseBody) SetResult(v bool) *BanCommentResponseBody {
+	s.Result = &v
+	return s
+}
+
+type BanCommentResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BanCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BanCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BanCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BanCommentResponse) SetHeaders(v map[string]*string) *BanCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BanCommentResponse) SetBody(v *BanCommentResponseBody) *BanCommentResponse {
+	s.Body = v
+	return s
+}
+
+type AddMemberRequest struct {
+	// 会议唯一标识
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 被邀请用户ID
+	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
+	// 邀请者用户ID
+	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+}
+
+func (s AddMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMemberRequest) SetConferenceId(v string) *AddMemberRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *AddMemberRequest) SetToUserId(v string) *AddMemberRequest {
+	s.ToUserId = &v
+	return s
+}
+
+func (s *AddMemberRequest) SetFromUserId(v string) *AddMemberRequest {
+	s.FromUserId = &v
+	return s
+}
+
+type AddMemberResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMemberResponseBody) SetRequestId(v string) *AddMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddMemberResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMemberResponse) SetHeaders(v map[string]*string) *AddMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMemberResponse) SetBody(v *AddMemberResponseBody) *AddMemberResponse {
+	s.Body = v
+	return s
+}
+
+type ListRoomsRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 查询页码，从1开始，传空默认查询第1页。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListRoomsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsRequest) SetAppId(v string) *ListRoomsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListRoomsRequest) SetPageNumber(v int32) *ListRoomsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoomsRequest) SetPageSize(v int32) *ListRoomsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListRoomsResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API请求的返回结果结构体。
+	Result *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListRoomsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsResponseBody) SetRequestId(v string) *ListRoomsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBody) SetResult(v *ListRoomsResponseBodyResult) *ListRoomsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListRoomsResponseBodyResult struct {
+	// 该应用的房间总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 该应用的房间总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	// 是否还有下一页房间列表。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 房间列表信息。
+	RoomInfoList []*ListRoomsResponseBodyResultRoomInfoList `json:"RoomInfoList,omitempty" xml:"RoomInfoList,omitempty" type:"Repeated"`
+}
+
+func (s ListRoomsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsResponseBodyResult) SetTotalCount(v int32) *ListRoomsResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResult) SetPageTotal(v int32) *ListRoomsResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResult) SetHasMore(v bool) *ListRoomsResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResult) SetRoomInfoList(v []*ListRoomsResponseBodyResultRoomInfoList) *ListRoomsResponseBodyResult {
+	s.RoomInfoList = v
+	return s
+}
+
+type ListRoomsResponseBodyResultRoomInfoList struct {
+	// 房间唯一标识。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 房间标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 房主用户id。
+	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
+	// 房间公告。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 用户访问数。
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 用户在线数。
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	// 活跃插件列表。
+	PluginInstanceInfoList []*ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
+	// 房间创建时间戳，单位：毫秒。
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 创建房间使用的模板id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 房间拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s ListRoomsResponseBodyResultRoomInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsResponseBodyResultRoomInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetRoomId(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetTitle(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetRoomOwnerId(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.RoomOwnerId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetNotice(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.Notice = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetUv(v int64) *ListRoomsResponseBodyResultRoomInfoList {
+	s.Uv = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetOnlineCount(v int64) *ListRoomsResponseBodyResultRoomInfoList {
+	s.OnlineCount = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetPluginInstanceInfoList(v []*ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) *ListRoomsResponseBodyResultRoomInfoList {
+	s.PluginInstanceInfoList = v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetCreateTime(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetAppId(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetTemplateId(v string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoList) SetExtension(v map[string]*string) *ListRoomsResponseBodyResultRoomInfoList {
+	s.Extension = v
+	return s
+}
+
+type ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList struct {
+	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// 插件实例唯一标识。
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 插件实例创建时间戳，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 插件拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetPluginType(v string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
+	s.PluginType = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetPluginId(v string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
+	s.PluginId = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetCreateTime(v int64) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetExtension(v map[string]*string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
+	s.Extension = v
+	return s
+}
+
+type ListRoomsResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRoomsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomsResponse) SetHeaders(v map[string]*string) *ListRoomsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoomsResponse) SetBody(v *ListRoomsResponseBody) *ListRoomsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAppTemplateRequest struct {
+	// 模板唯一标识
+	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+}
+
+func (s DeleteAppTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppTemplateRequest) SetAppTemplateId(v string) *DeleteAppTemplateRequest {
+	s.AppTemplateId = &v
+	return s
+}
+
+type DeleteAppTemplateResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppTemplateResponseBody) SetRequestId(v string) *DeleteAppTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppTemplateResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAppTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAppTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppTemplateResponse) SetHeaders(v map[string]*string) *DeleteAppTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppTemplateResponse) SetBody(v *DeleteAppTemplateResponseBody) *DeleteAppTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAppTemplateConfigRequest struct {
+	// 应用模板唯一标识
+	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 更新配置
+	ConfigList []*UpdateAppTemplateConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppTemplateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigRequest) SetAppTemplateId(v string) *UpdateAppTemplateConfigRequest {
+	s.AppTemplateId = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigRequest) SetConfigList(v []*UpdateAppTemplateConfigRequestConfigList) *UpdateAppTemplateConfigRequest {
+	s.ConfigList = v
+	return s
+}
+
+type UpdateAppTemplateConfigRequestConfigList struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateAppTemplateConfigRequestConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigRequestConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigRequestConfigList) SetKey(v string) *UpdateAppTemplateConfigRequestConfigList {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigRequestConfigList) SetValue(v string) *UpdateAppTemplateConfigRequestConfigList {
+	s.Value = &v
+	return s
+}
+
+type UpdateAppTemplateConfigShrinkRequest struct {
+	// 应用模板唯一标识
+	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 更新配置
+	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+}
+
+func (s UpdateAppTemplateConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigShrinkRequest) SetAppTemplateId(v string) *UpdateAppTemplateConfigShrinkRequest {
+	s.AppTemplateId = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigShrinkRequest) SetConfigListShrink(v string) *UpdateAppTemplateConfigShrinkRequest {
+	s.ConfigListShrink = &v
+	return s
+}
+
+type UpdateAppTemplateConfigResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAppTemplateConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigResponseBody) SetRequestId(v string) *UpdateAppTemplateConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAppTemplateConfigResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAppTemplateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppTemplateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigResponse) SetHeaders(v map[string]*string) *UpdateAppTemplateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigResponse) SetBody(v *UpdateAppTemplateConfigResponseBody) *UpdateAppTemplateConfigResponse {
+	s.Body = v
+	return s
+}
+
+type StopLiveRequest struct {
+	// 租户名
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID，最大长度36位
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 创建直播用户ID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 直播资源的唯一标识ID
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s StopLiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveRequest) SetAppId(v string) *StopLiveRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopLiveRequest) SetRoomId(v string) *StopLiveRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *StopLiveRequest) SetUserId(v string) *StopLiveRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *StopLiveRequest) SetLiveId(v string) *StopLiveRequest {
+	s.LiveId = &v
+	return s
+}
+
+type StopLiveResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopLiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveResponseBody) SetRequestId(v string) *StopLiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopLiveResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopLiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveResponse) SetHeaders(v map[string]*string) *StopLiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopLiveResponse) SetBody(v *StopLiveResponseBody) *StopLiveResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterIceOssMediaRequest struct {
+	// 工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// appId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 回放cdn域名
+	PlaybackUrlDomain *string `json:"PlaybackUrlDomain,omitempty" xml:"PlaybackUrlDomain,omitempty"`
+	// oss bucket
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// oss域名
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// 回放地址的区域ID
+	UrlRegionId *string `json:"UrlRegionId,omitempty" xml:"UrlRegionId,omitempty"`
+	// 待注册的媒资在相应系统中的地址
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// 来源的服务
+	FromType *string `json:"FromType,omitempty" xml:"FromType,omitempty"`
+	// 媒资标题
+	MediaTitle *string `json:"MediaTitle,omitempty" xml:"MediaTitle,omitempty"`
+	// 唯一ID，比如直播uuid
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s RegisterIceOssMediaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterIceOssMediaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterIceOssMediaRequest) SetProjectId(v string) *RegisterIceOssMediaRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetAppId(v string) *RegisterIceOssMediaRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetPlaybackUrlDomain(v string) *RegisterIceOssMediaRequest {
+	s.PlaybackUrlDomain = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetOssBucket(v string) *RegisterIceOssMediaRequest {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetOssEndpoint(v string) *RegisterIceOssMediaRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetUrlRegionId(v string) *RegisterIceOssMediaRequest {
+	s.UrlRegionId = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetMediaUrl(v string) *RegisterIceOssMediaRequest {
+	s.MediaUrl = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetFromType(v string) *RegisterIceOssMediaRequest {
+	s.FromType = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetMediaTitle(v string) *RegisterIceOssMediaRequest {
+	s.MediaTitle = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaRequest) SetLiveId(v string) *RegisterIceOssMediaRequest {
+	s.LiveId = &v
+	return s
+}
+
+type RegisterIceOssMediaResponseBody struct {
+	// 请求ID
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *RegisterIceOssMediaResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s RegisterIceOssMediaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterIceOssMediaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterIceOssMediaResponseBody) SetRequestId(v string) *RegisterIceOssMediaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterIceOssMediaResponseBody) SetResult(v *RegisterIceOssMediaResponseBodyResult) *RegisterIceOssMediaResponseBody {
+	s.Result = v
+	return s
+}
+
+type RegisterIceOssMediaResponseBodyResult struct {
+	// 媒体Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RegisterIceOssMediaResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterIceOssMediaResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterIceOssMediaResponseBodyResult) SetMediaId(v string) *RegisterIceOssMediaResponseBodyResult {
+	s.MediaId = &v
+	return s
+}
+
+type RegisterIceOssMediaResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterIceOssMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterIceOssMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterIceOssMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterIceOssMediaResponse) SetHeaders(v map[string]*string) *RegisterIceOssMediaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterIceOssMediaResponse) SetBody(v *RegisterIceOssMediaResponseBody) *RegisterIceOssMediaResponse {
+	s.Body = v
+	return s
+}
+
+type CreateConferenceRequest struct {
+	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 创建会议用户。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 会议标题，支持中英文，最大长度256位。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateConferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConferenceRequest) SetAppId(v string) *CreateConferenceRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateConferenceRequest) SetRoomId(v string) *CreateConferenceRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *CreateConferenceRequest) SetUserId(v string) *CreateConferenceRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateConferenceRequest) SetTitle(v string) *CreateConferenceRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateConferenceResponseBody struct {
+	// 请求ID。
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateConferenceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CreateConferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConferenceResponseBody) SetRequestId(v string) *CreateConferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateConferenceResponseBody) SetResult(v *CreateConferenceResponseBodyResult) *CreateConferenceResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateConferenceResponseBodyResult struct {
+	// 会议的唯一标识ID。
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+}
+
+func (s CreateConferenceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConferenceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConferenceResponseBodyResult) SetConferenceId(v string) *CreateConferenceResponseBodyResult {
+	s.ConferenceId = &v
+	return s
+}
+
+type CreateConferenceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateConferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConferenceResponse) SetHeaders(v map[string]*string) *CreateConferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateConferenceResponse) SetBody(v *CreateConferenceResponseBody) *CreateConferenceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLiveRequest struct {
+	// 直播资源的唯一标识ID
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s DeleteLiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveRequest) SetLiveId(v string) *DeleteLiveRequest {
+	s.LiveId = &v
+	return s
+}
+
+type DeleteLiveResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveResponseBody) SetRequestId(v string) *DeleteLiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLiveResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLiveResponse) SetHeaders(v map[string]*string) *DeleteLiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLiveResponse) SetBody(v *DeleteLiveResponseBody) *DeleteLiveResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveDomainStatusRequest struct {
+	// 应用唯一标识
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播域名列表
+	LiveDomainList []*string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty" type:"Repeated"`
+	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
+	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
+}
+
+func (s GetLiveDomainStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusRequest) SetAppId(v string) *GetLiveDomainStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusRequest) SetLiveDomainList(v []*string) *GetLiveDomainStatusRequest {
+	s.LiveDomainList = v
+	return s
+}
+
+func (s *GetLiveDomainStatusRequest) SetLiveDomainType(v string) *GetLiveDomainStatusRequest {
+	s.LiveDomainType = &v
+	return s
+}
+
+type GetLiveDomainStatusShrinkRequest struct {
+	// 应用唯一标识
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播域名列表
+	LiveDomainListShrink *string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty"`
+	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
+	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
+}
+
+func (s GetLiveDomainStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusShrinkRequest) SetAppId(v string) *GetLiveDomainStatusShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainListShrink(v string) *GetLiveDomainStatusShrinkRequest {
+	s.LiveDomainListShrink = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainType(v string) *GetLiveDomainStatusShrinkRequest {
+	s.LiveDomainType = &v
+	return s
+}
+
+type GetLiveDomainStatusResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *GetLiveDomainStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetLiveDomainStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusResponseBody) SetRequestId(v string) *GetLiveDomainStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusResponseBody) SetResult(v *GetLiveDomainStatusResponseBodyResult) *GetLiveDomainStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetLiveDomainStatusResponseBodyResult struct {
+	// 直播域名信息列表
+	LiveDomainInfoList []*GetLiveDomainStatusResponseBodyResultLiveDomainInfoList `json:"LiveDomainInfoList,omitempty" xml:"LiveDomainInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetLiveDomainStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusResponseBodyResult) SetLiveDomainInfoList(v []*GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) *GetLiveDomainStatusResponseBodyResult {
+	s.LiveDomainInfoList = v
+	return s
+}
+
+type GetLiveDomainStatusResponseBodyResultLiveDomainInfoList struct {
+	// 直播域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 直播域名CNAME
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// 直播域名状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetDomain(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetCname(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
+	s.Cname = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetStatus(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
+	s.Status = &v
+	return s
+}
+
+type GetLiveDomainStatusResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveDomainStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveDomainStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveDomainStatusResponse) SetHeaders(v map[string]*string) *GetLiveDomainStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveDomainStatusResponse) SetBody(v *GetLiveDomainStatusResponseBody) *GetLiveDomainStatusResponse {
+	s.Body = v
+	return s
+}
+
+type SendCustomMessageToAllRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由调用CreateRoom返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 消息体内容。
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+}
+
+func (s SendCustomMessageToAllRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllRequest) SetAppId(v string) *SendCustomMessageToAllRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllRequest) SetRoomId(v string) *SendCustomMessageToAllRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllRequest) SetBody(v string) *SendCustomMessageToAllRequest {
+	s.Body = &v
+	return s
+}
+
+type SendCustomMessageToAllResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API请求的返回结果结构体。
+	Result *SendCustomMessageToAllResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s SendCustomMessageToAllResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponseBody) SetRequestId(v string) *SendCustomMessageToAllResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllResponseBody) SetResult(v *SendCustomMessageToAllResponseBodyResult) *SendCustomMessageToAllResponseBody {
+	s.Result = v
+	return s
+}
+
+type SendCustomMessageToAllResponseBodyResult struct {
+	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s SendCustomMessageToAllResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponseBodyResult) SetMessageId(v string) *SendCustomMessageToAllResponseBodyResult {
+	s.MessageId = &v
+	return s
+}
+
+type SendCustomMessageToAllResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendCustomMessageToAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCustomMessageToAllResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCustomMessageToAllResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCustomMessageToAllResponse) SetHeaders(v map[string]*string) *SendCustomMessageToAllResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCustomMessageToAllResponse) SetBody(v *SendCustomMessageToAllResponseBody) *SendCustomMessageToAllResponse {
+	s.Body = v
+	return s
+}
+
+type AgreeLinkMicRequest struct {
+	// 会议唯一标识
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 被同意用户ID
+	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
+	// 同意者用户ID
+	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+}
+
+func (s AgreeLinkMicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgreeLinkMicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AgreeLinkMicRequest) SetConferenceId(v string) *AgreeLinkMicRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *AgreeLinkMicRequest) SetToUserId(v string) *AgreeLinkMicRequest {
+	s.ToUserId = &v
+	return s
+}
+
+func (s *AgreeLinkMicRequest) SetFromUserId(v string) *AgreeLinkMicRequest {
+	s.FromUserId = &v
+	return s
+}
+
+type AgreeLinkMicResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AgreeLinkMicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgreeLinkMicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AgreeLinkMicResponseBody) SetRequestId(v string) *AgreeLinkMicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AgreeLinkMicResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AgreeLinkMicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AgreeLinkMicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgreeLinkMicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AgreeLinkMicResponse) SetHeaders(v map[string]*string) *AgreeLinkMicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AgreeLinkMicResponse) SetBody(v *AgreeLinkMicResponseBody) *AgreeLinkMicResponse {
+	s.Body = v
+	return s
+}
+
+type GetDomainOwnerVerifyContentRequest struct {
+	// 直播域名
+	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
+}
+
+func (s GetDomainOwnerVerifyContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentRequest) SetLiveDomainName(v string) *GetDomainOwnerVerifyContentRequest {
+	s.LiveDomainName = &v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *GetDomainOwnerVerifyContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetDomainOwnerVerifyContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBody) SetRequestId(v string) *GetDomainOwnerVerifyContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBody) SetResult(v *GetDomainOwnerVerifyContentResponseBodyResult) *GetDomainOwnerVerifyContentResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponseBodyResult struct {
+	// 域名归属校验内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s GetDomainOwnerVerifyContentResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponseBodyResult) SetContent(v string) *GetDomainOwnerVerifyContentResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+type GetDomainOwnerVerifyContentResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDomainOwnerVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDomainOwnerVerifyContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainOwnerVerifyContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainOwnerVerifyContentResponse) SetHeaders(v map[string]*string) *GetDomainOwnerVerifyContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDomainOwnerVerifyContentResponse) SetBody(v *GetDomainOwnerVerifyContentResponseBody) *GetDomainOwnerVerifyContentResponse {
+	s.Body = v
+	return s
+}
+
+type GetAuthTokenRequest struct {
+	// 用户的应用ID，在控制台创建应用时生成
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 用户UserId,在AppId下单独唯一
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 终端设备类型,通过控制台创建和查询
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// 终端设备ID
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+}
+
+func (s GetAuthTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthTokenRequest) SetAppId(v string) *GetAuthTokenRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetUserId(v string) *GetAuthTokenRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetAppKey(v string) *GetAuthTokenRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetDeviceId(v string) *GetAuthTokenRequest {
+	s.DeviceId = &v
+	return s
+}
+
+type GetAuthTokenResponseBody struct {
+	// Id of the request
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetAuthTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetAuthTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthTokenResponseBody) SetRequestId(v string) *GetAuthTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAuthTokenResponseBody) SetResult(v *GetAuthTokenResponseBodyResult) *GetAuthTokenResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetAuthTokenResponseBodyResult struct {
+	// 用于长链接建连的token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 更新Token，若AccessToken过期，则可以使用RefreshToken再次获取新Token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// 登录token过期时间(毫秒)
+	AccessTokenExpiredTime *int64 `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+}
+
+func (s GetAuthTokenResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthTokenResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthTokenResponseBodyResult) SetAccessToken(v string) *GetAuthTokenResponseBodyResult {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetAuthTokenResponseBodyResult) SetRefreshToken(v string) *GetAuthTokenResponseBodyResult {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *GetAuthTokenResponseBodyResult) SetAccessTokenExpiredTime(v int64) *GetAuthTokenResponseBodyResult {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+type GetAuthTokenResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAuthTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthTokenResponse) SetHeaders(v map[string]*string) *GetAuthTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthTokenResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAppTemplateRequest struct {
+	// 应用模板唯一标识
+	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 应用模板名称
+	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
+}
+
+func (s UpdateAppTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateRequest) SetAppTemplateId(v string) *UpdateAppTemplateRequest {
+	s.AppTemplateId = &v
+	return s
+}
+
+func (s *UpdateAppTemplateRequest) SetAppTemplateName(v string) *UpdateAppTemplateRequest {
+	s.AppTemplateName = &v
+	return s
+}
+
+type UpdateAppTemplateResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAppTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateResponseBody) SetRequestId(v string) *UpdateAppTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAppTemplateResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAppTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateResponse) SetHeaders(v map[string]*string) *UpdateAppTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppTemplateResponse) SetBody(v *UpdateAppTemplateResponseBody) *UpdateAppTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetImpProductStatusResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 开通状态
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetImpProductStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImpProductStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetImpProductStatusResponseBody) SetRequestId(v string) *GetImpProductStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetImpProductStatusResponseBody) SetResult(v bool) *GetImpProductStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type GetImpProductStatusResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetImpProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetImpProductStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImpProductStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImpProductStatusResponse) SetHeaders(v map[string]*string) *GetImpProductStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImpProductStatusResponse) SetBody(v *GetImpProductStatusResponseBody) *GetImpProductStatusResponse {
+	s.Body = v
+	return s
+}
+
+type PublishLiveRequest struct {
+	// 直播资源的唯一标识ID
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 当前用户Id
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s PublishLiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishLiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishLiveRequest) SetLiveId(v string) *PublishLiveRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *PublishLiveRequest) SetUserId(v string) *PublishLiveRequest {
+	s.UserId = &v
+	return s
+}
+
+type PublishLiveResponseBody struct {
+	// Id of the request
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *PublishLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s PublishLiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishLiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishLiveResponseBody) SetRequestId(v string) *PublishLiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishLiveResponseBody) SetResult(v *PublishLiveResponseBodyResult) *PublishLiveResponseBody {
+	s.Result = v
+	return s
+}
+
+type PublishLiveResponseBodyResult struct {
+	// 直播资源的唯一标识ID
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 直播状态：Created-已创建未开播，Living-直播中，End-直播结束
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 直播推流地址
+	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	// 直播拉流地址
+	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+}
+
+func (s PublishLiveResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishLiveResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *PublishLiveResponseBodyResult) SetLiveId(v string) *PublishLiveResponseBodyResult {
+	s.LiveId = &v
+	return s
+}
+
+func (s *PublishLiveResponseBodyResult) SetAnchorId(v string) *PublishLiveResponseBodyResult {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *PublishLiveResponseBodyResult) SetStatus(v string) *PublishLiveResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *PublishLiveResponseBodyResult) SetPushUrl(v string) *PublishLiveResponseBodyResult {
+	s.PushUrl = &v
+	return s
+}
+
+func (s *PublishLiveResponseBodyResult) SetLiveUrl(v string) *PublishLiveResponseBodyResult {
+	s.LiveUrl = &v
+	return s
+}
+
+type PublishLiveResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PublishLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishLiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishLiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishLiveResponse) SetHeaders(v map[string]*string) *PublishLiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishLiveResponse) SetBody(v *PublishLiveResponseBody) *PublishLiveResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRoomRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+}
+
+func (s DeleteRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoomRequest) SetAppId(v string) *DeleteRoomRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteRoomRequest) SetRoomId(v string) *DeleteRoomRequest {
+	s.RoomId = &v
+	return s
+}
+
+type DeleteRoomResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoomResponseBody) SetRequestId(v string) *DeleteRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRoomResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoomResponse) SetHeaders(v map[string]*string) *DeleteRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoomResponse) SetBody(v *DeleteRoomResponseBody) *DeleteRoomResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteConferenceRequest struct {
+	// 租户名
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID，最大长度36位
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 创建会议用户ID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 会议资源的唯一标识ID
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+}
+
+func (s DeleteConferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConferenceRequest) SetAppId(v string) *DeleteConferenceRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteConferenceRequest) SetRoomId(v string) *DeleteConferenceRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *DeleteConferenceRequest) SetUserId(v string) *DeleteConferenceRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *DeleteConferenceRequest) SetConferenceId(v string) *DeleteConferenceRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type DeleteConferenceResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteConferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConferenceResponseBody) SetRequestId(v string) *DeleteConferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConferenceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteConferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConferenceResponse) SetHeaders(v map[string]*string) *DeleteConferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConferenceResponse) SetBody(v *DeleteConferenceResponseBody) *DeleteConferenceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAppRequest struct {
+	// 应用唯一标识
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 应用状态
+	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+}
+
+func (s UpdateAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppRequest) SetAppId(v string) *UpdateAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppRequest) SetAppName(v string) *UpdateAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateAppRequest) SetAppStatus(v string) *UpdateAppRequest {
+	s.AppStatus = &v
+	return s
+}
+
+type UpdateAppResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppResponseBody) SetRequestId(v string) *UpdateAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAppResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppResponse) SetHeaders(v map[string]*string) *UpdateAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppResponse) SetBody(v *UpdateAppResponseBody) *UpdateAppResponse {
+	s.Body = v
+	return s
+}
+
 type VerifyDomainOwnerRequest struct {
 	// 直播域名
 	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
@@ -210,79 +2692,6 @@ func (s *CreateLiveResponse) SetBody(v *CreateLiveResponseBody) *CreateLiveRespo
 	return s
 }
 
-type RemoveMemberRequest struct {
-	// 会议唯一标识
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 被邀请用户ID
-	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
-	// 邀请者用户ID
-	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-}
-
-func (s RemoveMemberRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMemberRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMemberRequest) SetConferenceId(v string) *RemoveMemberRequest {
-	s.ConferenceId = &v
-	return s
-}
-
-func (s *RemoveMemberRequest) SetToUserId(v string) *RemoveMemberRequest {
-	s.ToUserId = &v
-	return s
-}
-
-func (s *RemoveMemberRequest) SetFromUserId(v string) *RemoveMemberRequest {
-	s.FromUserId = &v
-	return s
-}
-
-type RemoveMemberResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RemoveMemberResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMemberResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMemberResponseBody) SetRequestId(v string) *RemoveMemberResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RemoveMemberResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveMemberResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMemberResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMemberResponse) SetHeaders(v map[string]*string) *RemoveMemberResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveMemberResponse) SetBody(v *RemoveMemberResponseBody) *RemoveMemberResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -338,125 +2747,6 @@ func (s *DeleteAppResponse) SetHeaders(v map[string]*string) *DeleteAppResponse 
 }
 
 func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse {
-	s.Body = v
-	return s
-}
-
-type ListApplyLinkMicUsersRequest struct {
-	// 会议唯一标识符
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 查询页码，从第1页开始。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大显示个数为100。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListApplyLinkMicUsersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplyLinkMicUsersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplyLinkMicUsersRequest) SetConferenceId(v string) *ListApplyLinkMicUsersRequest {
-	s.ConferenceId = &v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersRequest) SetPageNumber(v int32) *ListApplyLinkMicUsersRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersRequest) SetPageSize(v int32) *ListApplyLinkMicUsersRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListApplyLinkMicUsersResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result *ListApplyLinkMicUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s ListApplyLinkMicUsersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplyLinkMicUsersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplyLinkMicUsersResponseBody) SetRequestId(v string) *ListApplyLinkMicUsersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersResponseBody) SetResult(v *ListApplyLinkMicUsersResponseBodyResult) *ListApplyLinkMicUsersResponseBody {
-	s.Result = v
-	return s
-}
-
-type ListApplyLinkMicUsersResponseBodyResult struct {
-	// 会议申请连麦用户列表。
-	ApplyLinkMicUserList []*string `json:"ApplyLinkMicUserList,omitempty" xml:"ApplyLinkMicUserList,omitempty" type:"Repeated"`
-	// 是否还有下一页成员列表。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 该会议的申请连麦成员总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 改会议的申请连麦成员总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-}
-
-func (s ListApplyLinkMicUsersResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplyLinkMicUsersResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplyLinkMicUsersResponseBodyResult) SetApplyLinkMicUserList(v []*string) *ListApplyLinkMicUsersResponseBodyResult {
-	s.ApplyLinkMicUserList = v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersResponseBodyResult) SetHasMore(v bool) *ListApplyLinkMicUsersResponseBodyResult {
-	s.HasMore = &v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersResponseBodyResult) SetTotalCount(v int32) *ListApplyLinkMicUsersResponseBodyResult {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersResponseBodyResult) SetPageTotal(v int32) *ListApplyLinkMicUsersResponseBodyResult {
-	s.PageTotal = &v
-	return s
-}
-
-type ListApplyLinkMicUsersResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListApplyLinkMicUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListApplyLinkMicUsersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApplyLinkMicUsersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListApplyLinkMicUsersResponse) SetHeaders(v map[string]*string) *ListApplyLinkMicUsersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListApplyLinkMicUsersResponse) SetBody(v *ListApplyLinkMicUsersResponseBody) *ListApplyLinkMicUsersResponse {
 	s.Body = v
 	return s
 }
@@ -1018,224 +3308,6 @@ func (s *GetAppTemplateResponse) SetBody(v *GetAppTemplateResponseBody) *GetAppT
 	return s
 }
 
-type GetRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-}
-
-func (s GetRoomRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomRequest) SetAppId(v string) *GetRoomRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetRoomRequest) SetRoomId(v string) *GetRoomRequest {
-	s.RoomId = &v
-	return s
-}
-
-type GetRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 查询房间信息返回结果。
-	Result *GetRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetRoomResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomResponseBody) SetRequestId(v string) *GetRoomResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetRoomResponseBody) SetResult(v *GetRoomResponseBodyResult) *GetRoomResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetRoomResponseBodyResult struct {
-	// 房间信息。
-	RoomInfo *GetRoomResponseBodyResultRoomInfo `json:"RoomInfo,omitempty" xml:"RoomInfo,omitempty" type:"Struct"`
-}
-
-func (s GetRoomResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomResponseBodyResult) SetRoomInfo(v *GetRoomResponseBodyResultRoomInfo) *GetRoomResponseBodyResult {
-	s.RoomInfo = v
-	return s
-}
-
-type GetRoomResponseBodyResultRoomInfo struct {
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房间标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 房间创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 房间公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 房主用户id。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 访问用户数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	// 在线用户数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 活跃插件列表。
-	PluginInstanceInfoList []*GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建房间使用的模板id。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-}
-
-func (s GetRoomResponseBodyResultRoomInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomResponseBodyResultRoomInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetRoomId(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.RoomId = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetTitle(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.Title = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetCreateTime(v int64) *GetRoomResponseBodyResultRoomInfo {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetNotice(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.Notice = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetRoomOwnerId(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.RoomOwnerId = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetUv(v int64) *GetRoomResponseBodyResultRoomInfo {
-	s.Uv = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetOnlineCount(v int64) *GetRoomResponseBodyResultRoomInfo {
-	s.OnlineCount = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetPluginInstanceInfoList(v []*GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) *GetRoomResponseBodyResultRoomInfo {
-	s.PluginInstanceInfoList = v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetAppId(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetTemplateId(v string) *GetRoomResponseBodyResultRoomInfo {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfo) SetExtension(v map[string]*string) *GetRoomResponseBodyResultRoomInfo {
-	s.Extension = v
-	return s
-}
-
-type GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList struct {
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-}
-
-func (s GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetPluginType(v string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
-	s.PluginType = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetPluginId(v string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
-	s.PluginId = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetCreateTime(v int64) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList) SetExtension(v map[string]*string) *GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList {
-	s.Extension = v
-	return s
-}
-
-type GetRoomResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRoomResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRoomResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRoomResponse) SetHeaders(v map[string]*string) *GetRoomResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
-	s.Body = v
-	return s
-}
-
 type SendCommentRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -1703,100 +3775,6 @@ func (s *GetConferenceResponse) SetBody(v *GetConferenceResponseBody) *GetConfer
 	return s
 }
 
-type BanCommentRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 用户在房间内的唯一标识
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 被禁言的用户在房间内的唯一标识
-	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
-	// 禁言时长（秒）
-	BanCommentTime *int64 `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
-}
-
-func (s BanCommentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BanCommentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BanCommentRequest) SetAppId(v string) *BanCommentRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *BanCommentRequest) SetRoomId(v string) *BanCommentRequest {
-	s.RoomId = &v
-	return s
-}
-
-func (s *BanCommentRequest) SetUserId(v string) *BanCommentRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *BanCommentRequest) SetBanCommentUser(v string) *BanCommentRequest {
-	s.BanCommentUser = &v
-	return s
-}
-
-func (s *BanCommentRequest) SetBanCommentTime(v int64) *BanCommentRequest {
-	s.BanCommentTime = &v
-	return s
-}
-
-type BanCommentResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作是否成功
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s BanCommentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BanCommentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BanCommentResponseBody) SetRequestId(v string) *BanCommentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BanCommentResponseBody) SetResult(v bool) *BanCommentResponseBody {
-	s.Result = &v
-	return s
-}
-
-type BanCommentResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BanCommentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BanCommentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BanCommentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BanCommentResponse) SetHeaders(v map[string]*string) *BanCommentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BanCommentResponse) SetBody(v *BanCommentResponseBody) *BanCommentResponse {
-	s.Body = v
-	return s
-}
-
 type RejectLinkMicRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
@@ -2042,79 +4020,6 @@ func (s *ListAppsResponse) SetBody(v *ListAppsResponseBody) *ListAppsResponse {
 	return s
 }
 
-type AddMemberRequest struct {
-	// 会议唯一标识
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 被邀请用户ID
-	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
-	// 邀请者用户ID
-	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-}
-
-func (s AddMemberRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMemberRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddMemberRequest) SetConferenceId(v string) *AddMemberRequest {
-	s.ConferenceId = &v
-	return s
-}
-
-func (s *AddMemberRequest) SetToUserId(v string) *AddMemberRequest {
-	s.ToUserId = &v
-	return s
-}
-
-func (s *AddMemberRequest) SetFromUserId(v string) *AddMemberRequest {
-	s.FromUserId = &v
-	return s
-}
-
-type AddMemberResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddMemberResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMemberResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddMemberResponseBody) SetRequestId(v string) *AddMemberResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddMemberResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddMemberResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMemberResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddMemberResponse) SetHeaders(v map[string]*string) *AddMemberResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddMemberResponse) SetBody(v *AddMemberResponseBody) *AddMemberResponse {
-	s.Body = v
-	return s
-}
-
 type CancelBanAllCommentRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -2191,311 +4096,6 @@ func (s *CancelBanAllCommentResponse) SetHeaders(v map[string]*string) *CancelBa
 }
 
 func (s *CancelBanAllCommentResponse) SetBody(v *CancelBanAllCommentResponseBody) *CancelBanAllCommentResponse {
-	s.Body = v
-	return s
-}
-
-type ListRoomsRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询页码，从1开始，传空默认查询第1页。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListRoomsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsRequest) SetAppId(v string) *ListRoomsRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *ListRoomsRequest) SetPageNumber(v int32) *ListRoomsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListRoomsRequest) SetPageSize(v int32) *ListRoomsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListRoomsResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *ListRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s ListRoomsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsResponseBody) SetRequestId(v string) *ListRoomsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBody) SetResult(v *ListRoomsResponseBodyResult) *ListRoomsResponseBody {
-	s.Result = v
-	return s
-}
-
-type ListRoomsResponseBodyResult struct {
-	// 该应用的房间总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 该应用的房间总页数。
-	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// 是否还有下一页房间列表。
-	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// 房间列表信息。
-	RoomInfoList []*ListRoomsResponseBodyResultRoomInfoList `json:"RoomInfoList,omitempty" xml:"RoomInfoList,omitempty" type:"Repeated"`
-}
-
-func (s ListRoomsResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsResponseBodyResult) SetTotalCount(v int32) *ListRoomsResponseBodyResult {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResult) SetPageTotal(v int32) *ListRoomsResponseBodyResult {
-	s.PageTotal = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResult) SetHasMore(v bool) *ListRoomsResponseBodyResult {
-	s.HasMore = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResult) SetRoomInfoList(v []*ListRoomsResponseBodyResultRoomInfoList) *ListRoomsResponseBodyResult {
-	s.RoomInfoList = v
-	return s
-}
-
-type ListRoomsResponseBodyResultRoomInfoList struct {
-	// 房间唯一标识。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 房间标题。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 房主用户id。
-	RoomOwnerId *string `json:"RoomOwnerId,omitempty" xml:"RoomOwnerId,omitempty"`
-	// 房间公告。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// 用户访问数。
-	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	// 用户在线数。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
-	// 活跃插件列表。
-	PluginInstanceInfoList []*ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
-	// 房间创建时间戳，单位：毫秒。
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建房间使用的模板id。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 房间拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-}
-
-func (s ListRoomsResponseBodyResultRoomInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsResponseBodyResultRoomInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetRoomId(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.RoomId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetTitle(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.Title = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetRoomOwnerId(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.RoomOwnerId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetNotice(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.Notice = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetUv(v int64) *ListRoomsResponseBodyResultRoomInfoList {
-	s.Uv = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetOnlineCount(v int64) *ListRoomsResponseBodyResultRoomInfoList {
-	s.OnlineCount = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetPluginInstanceInfoList(v []*ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) *ListRoomsResponseBodyResultRoomInfoList {
-	s.PluginInstanceInfoList = v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetCreateTime(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetAppId(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.AppId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetTemplateId(v string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoList) SetExtension(v map[string]*string) *ListRoomsResponseBodyResultRoomInfoList {
-	s.Extension = v
-	return s
-}
-
-type ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList struct {
-	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// 插件实例唯一标识。
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// 插件实例创建时间戳，单位：毫秒。
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 插件拓展字段。
-	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-}
-
-func (s ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetPluginType(v string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
-	s.PluginType = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetPluginId(v string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
-	s.PluginId = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetCreateTime(v int64) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList) SetExtension(v map[string]*string) *ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList {
-	s.Extension = v
-	return s
-}
-
-type ListRoomsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRoomsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRoomsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRoomsResponse) SetHeaders(v map[string]*string) *ListRoomsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRoomsResponse) SetBody(v *ListRoomsResponseBody) *ListRoomsResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteAppTemplateRequest struct {
-	// 模板唯一标识
-	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
-}
-
-func (s DeleteAppTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppTemplateRequest) SetAppTemplateId(v string) *DeleteAppTemplateRequest {
-	s.AppTemplateId = &v
-	return s
-}
-
-type DeleteAppTemplateResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAppTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppTemplateResponseBody) SetRequestId(v string) *DeleteAppTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAppTemplateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAppTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAppTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppTemplateResponse) SetHeaders(v map[string]*string) *DeleteAppTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAppTemplateResponse) SetBody(v *DeleteAppTemplateResponseBody) *DeleteAppTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3274,120 +4874,6 @@ func (s *UpdateLiveResponse) SetBody(v *UpdateLiveResponseBody) *UpdateLiveRespo
 	return s
 }
 
-type UpdateAppTemplateConfigRequest struct {
-	// 应用模板唯一标识
-	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
-	// 更新配置
-	ConfigList []*UpdateAppTemplateConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-}
-
-func (s UpdateAppTemplateConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateConfigRequest) SetAppTemplateId(v string) *UpdateAppTemplateConfigRequest {
-	s.AppTemplateId = &v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigRequest) SetConfigList(v []*UpdateAppTemplateConfigRequestConfigList) *UpdateAppTemplateConfigRequest {
-	s.ConfigList = v
-	return s
-}
-
-type UpdateAppTemplateConfigRequestConfigList struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateAppTemplateConfigRequestConfigList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateConfigRequestConfigList) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateConfigRequestConfigList) SetKey(v string) *UpdateAppTemplateConfigRequestConfigList {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigRequestConfigList) SetValue(v string) *UpdateAppTemplateConfigRequestConfigList {
-	s.Value = &v
-	return s
-}
-
-type UpdateAppTemplateConfigShrinkRequest struct {
-	// 应用模板唯一标识
-	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
-	// 更新配置
-	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
-}
-
-func (s UpdateAppTemplateConfigShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateConfigShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateConfigShrinkRequest) SetAppTemplateId(v string) *UpdateAppTemplateConfigShrinkRequest {
-	s.AppTemplateId = &v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigShrinkRequest) SetConfigListShrink(v string) *UpdateAppTemplateConfigShrinkRequest {
-	s.ConfigListShrink = &v
-	return s
-}
-
-type UpdateAppTemplateConfigResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppTemplateConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateConfigResponseBody) SetRequestId(v string) *UpdateAppTemplateConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAppTemplateConfigResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppTemplateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppTemplateConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateConfigResponse) SetHeaders(v map[string]*string) *UpdateAppTemplateConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAppTemplateConfigResponse) SetBody(v *UpdateAppTemplateConfigResponseBody) *UpdateAppTemplateConfigResponse {
-	s.Body = v
-	return s
-}
-
 type ApplyLinkMicRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
@@ -3520,86 +5006,6 @@ func (s *CancelApplyLinkMicResponse) SetBody(v *CancelApplyLinkMicResponseBody) 
 	return s
 }
 
-type StopLiveRequest struct {
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间ID，最大长度36位
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 创建直播用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-}
-
-func (s StopLiveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopLiveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopLiveRequest) SetAppId(v string) *StopLiveRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *StopLiveRequest) SetRoomId(v string) *StopLiveRequest {
-	s.RoomId = &v
-	return s
-}
-
-func (s *StopLiveRequest) SetUserId(v string) *StopLiveRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *StopLiveRequest) SetLiveId(v string) *StopLiveRequest {
-	s.LiveId = &v
-	return s
-}
-
-type StopLiveResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopLiveResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopLiveResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopLiveResponseBody) SetRequestId(v string) *StopLiveResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopLiveResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopLiveResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopLiveResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopLiveResponse) SetHeaders(v map[string]*string) *StopLiveResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopLiveResponse) SetBody(v *StopLiveResponseBody) *StopLiveResponse {
-	s.Body = v
-	return s
-}
-
 type GetAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3722,586 +5128,6 @@ func (s *GetAppResponse) SetHeaders(v map[string]*string) *GetAppResponse {
 }
 
 func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
-	s.Body = v
-	return s
-}
-
-type CreateConferenceRequest struct {
-	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 创建会议用户。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 会议标题，支持中英文，最大长度256位。
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s CreateConferenceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConferenceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConferenceRequest) SetAppId(v string) *CreateConferenceRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CreateConferenceRequest) SetRoomId(v string) *CreateConferenceRequest {
-	s.RoomId = &v
-	return s
-}
-
-func (s *CreateConferenceRequest) SetUserId(v string) *CreateConferenceRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *CreateConferenceRequest) SetTitle(v string) *CreateConferenceRequest {
-	s.Title = &v
-	return s
-}
-
-type CreateConferenceResponseBody struct {
-	// 请求ID。
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreateConferenceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s CreateConferenceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConferenceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConferenceResponseBody) SetRequestId(v string) *CreateConferenceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateConferenceResponseBody) SetResult(v *CreateConferenceResponseBodyResult) *CreateConferenceResponseBody {
-	s.Result = v
-	return s
-}
-
-type CreateConferenceResponseBodyResult struct {
-	// 会议的唯一标识ID。
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-}
-
-func (s CreateConferenceResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConferenceResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConferenceResponseBodyResult) SetConferenceId(v string) *CreateConferenceResponseBodyResult {
-	s.ConferenceId = &v
-	return s
-}
-
-type CreateConferenceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateConferenceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConferenceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConferenceResponse) SetHeaders(v map[string]*string) *CreateConferenceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateConferenceResponse) SetBody(v *CreateConferenceResponseBody) *CreateConferenceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteLiveRequest struct {
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-}
-
-func (s DeleteLiveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLiveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLiveRequest) SetLiveId(v string) *DeleteLiveRequest {
-	s.LiveId = &v
-	return s
-}
-
-type DeleteLiveResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteLiveResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLiveResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLiveResponseBody) SetRequestId(v string) *DeleteLiveResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteLiveResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteLiveResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteLiveResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteLiveResponse) SetHeaders(v map[string]*string) *DeleteLiveResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteLiveResponse) SetBody(v *DeleteLiveResponseBody) *DeleteLiveResponse {
-	s.Body = v
-	return s
-}
-
-type GetLiveDomainStatusRequest struct {
-	// 应用唯一标识
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播域名列表
-	LiveDomainList []*string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty" type:"Repeated"`
-	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
-	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
-}
-
-func (s GetLiveDomainStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusRequest) SetAppId(v string) *GetLiveDomainStatusRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusRequest) SetLiveDomainList(v []*string) *GetLiveDomainStatusRequest {
-	s.LiveDomainList = v
-	return s
-}
-
-func (s *GetLiveDomainStatusRequest) SetLiveDomainType(v string) *GetLiveDomainStatusRequest {
-	s.LiveDomainType = &v
-	return s
-}
-
-type GetLiveDomainStatusShrinkRequest struct {
-	// 应用唯一标识
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 直播域名列表
-	LiveDomainListShrink *string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty"`
-	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
-	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
-}
-
-func (s GetLiveDomainStatusShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusShrinkRequest) SetAppId(v string) *GetLiveDomainStatusShrinkRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainListShrink(v string) *GetLiveDomainStatusShrinkRequest {
-	s.LiveDomainListShrink = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainType(v string) *GetLiveDomainStatusShrinkRequest {
-	s.LiveDomainType = &v
-	return s
-}
-
-type GetLiveDomainStatusResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result *GetLiveDomainStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetLiveDomainStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusResponseBody) SetRequestId(v string) *GetLiveDomainStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponseBody) SetResult(v *GetLiveDomainStatusResponseBodyResult) *GetLiveDomainStatusResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetLiveDomainStatusResponseBodyResult struct {
-	// 直播域名信息列表
-	LiveDomainInfoList []*GetLiveDomainStatusResponseBodyResultLiveDomainInfoList `json:"LiveDomainInfoList,omitempty" xml:"LiveDomainInfoList,omitempty" type:"Repeated"`
-}
-
-func (s GetLiveDomainStatusResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusResponseBodyResult) SetLiveDomainInfoList(v []*GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) *GetLiveDomainStatusResponseBodyResult {
-	s.LiveDomainInfoList = v
-	return s
-}
-
-type GetLiveDomainStatusResponseBodyResultLiveDomainInfoList struct {
-	// 直播域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// 直播域名CNAME
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// 直播域名状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetDomain(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
-	s.Domain = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetCname(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
-	s.Cname = &v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList) SetStatus(v string) *GetLiveDomainStatusResponseBodyResultLiveDomainInfoList {
-	s.Status = &v
-	return s
-}
-
-type GetLiveDomainStatusResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLiveDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLiveDomainStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLiveDomainStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLiveDomainStatusResponse) SetHeaders(v map[string]*string) *GetLiveDomainStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLiveDomainStatusResponse) SetBody(v *GetLiveDomainStatusResponseBody) *GetLiveDomainStatusResponse {
-	s.Body = v
-	return s
-}
-
-type SendCustomMessageToAllRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由调用CreateRoom返回。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 消息体内容。
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-}
-
-func (s SendCustomMessageToAllRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCustomMessageToAllRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SendCustomMessageToAllRequest) SetAppId(v string) *SendCustomMessageToAllRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *SendCustomMessageToAllRequest) SetRoomId(v string) *SendCustomMessageToAllRequest {
-	s.RoomId = &v
-	return s
-}
-
-func (s *SendCustomMessageToAllRequest) SetBody(v string) *SendCustomMessageToAllRequest {
-	s.Body = &v
-	return s
-}
-
-type SendCustomMessageToAllResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API请求的返回结果结构体。
-	Result *SendCustomMessageToAllResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s SendCustomMessageToAllResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCustomMessageToAllResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SendCustomMessageToAllResponseBody) SetRequestId(v string) *SendCustomMessageToAllResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SendCustomMessageToAllResponseBody) SetResult(v *SendCustomMessageToAllResponseBodyResult) *SendCustomMessageToAllResponseBody {
-	s.Result = v
-	return s
-}
-
-type SendCustomMessageToAllResponseBodyResult struct {
-	// 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-}
-
-func (s SendCustomMessageToAllResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCustomMessageToAllResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *SendCustomMessageToAllResponseBodyResult) SetMessageId(v string) *SendCustomMessageToAllResponseBodyResult {
-	s.MessageId = &v
-	return s
-}
-
-type SendCustomMessageToAllResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendCustomMessageToAllResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SendCustomMessageToAllResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCustomMessageToAllResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SendCustomMessageToAllResponse) SetHeaders(v map[string]*string) *SendCustomMessageToAllResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SendCustomMessageToAllResponse) SetBody(v *SendCustomMessageToAllResponseBody) *SendCustomMessageToAllResponse {
-	s.Body = v
-	return s
-}
-
-type AgreeLinkMicRequest struct {
-	// 会议唯一标识
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// 被同意用户ID
-	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
-	// 同意者用户ID
-	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-}
-
-func (s AgreeLinkMicRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AgreeLinkMicRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AgreeLinkMicRequest) SetConferenceId(v string) *AgreeLinkMicRequest {
-	s.ConferenceId = &v
-	return s
-}
-
-func (s *AgreeLinkMicRequest) SetToUserId(v string) *AgreeLinkMicRequest {
-	s.ToUserId = &v
-	return s
-}
-
-func (s *AgreeLinkMicRequest) SetFromUserId(v string) *AgreeLinkMicRequest {
-	s.FromUserId = &v
-	return s
-}
-
-type AgreeLinkMicResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AgreeLinkMicResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AgreeLinkMicResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AgreeLinkMicResponseBody) SetRequestId(v string) *AgreeLinkMicResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AgreeLinkMicResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AgreeLinkMicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AgreeLinkMicResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AgreeLinkMicResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AgreeLinkMicResponse) SetHeaders(v map[string]*string) *AgreeLinkMicResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AgreeLinkMicResponse) SetBody(v *AgreeLinkMicResponseBody) *AgreeLinkMicResponse {
-	s.Body = v
-	return s
-}
-
-type GetDomainOwnerVerifyContentRequest struct {
-	// 直播域名
-	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
-}
-
-func (s GetDomainOwnerVerifyContentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDomainOwnerVerifyContentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDomainOwnerVerifyContentRequest) SetLiveDomainName(v string) *GetDomainOwnerVerifyContentRequest {
-	s.LiveDomainName = &v
-	return s
-}
-
-type GetDomainOwnerVerifyContentResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回结果
-	Result *GetDomainOwnerVerifyContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetDomainOwnerVerifyContentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDomainOwnerVerifyContentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDomainOwnerVerifyContentResponseBody) SetRequestId(v string) *GetDomainOwnerVerifyContentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDomainOwnerVerifyContentResponseBody) SetResult(v *GetDomainOwnerVerifyContentResponseBodyResult) *GetDomainOwnerVerifyContentResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetDomainOwnerVerifyContentResponseBodyResult struct {
-	// 域名归属校验内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s GetDomainOwnerVerifyContentResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDomainOwnerVerifyContentResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetDomainOwnerVerifyContentResponseBodyResult) SetContent(v string) *GetDomainOwnerVerifyContentResponseBodyResult {
-	s.Content = &v
-	return s
-}
-
-type GetDomainOwnerVerifyContentResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDomainOwnerVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDomainOwnerVerifyContentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDomainOwnerVerifyContentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDomainOwnerVerifyContentResponse) SetHeaders(v map[string]*string) *GetDomainOwnerVerifyContentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDomainOwnerVerifyContentResponse) SetBody(v *GetDomainOwnerVerifyContentResponseBody) *GetDomainOwnerVerifyContentResponse {
 	s.Body = v
 	return s
 }
@@ -4487,356 +5313,6 @@ func (s *BanAllCommentResponse) SetHeaders(v map[string]*string) *BanAllCommentR
 }
 
 func (s *BanAllCommentResponse) SetBody(v *BanAllCommentResponseBody) *BanAllCommentResponse {
-	s.Body = v
-	return s
-}
-
-type GetAuthTokenRequest struct {
-	// 用户的应用ID，在控制台创建应用时生成
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 用户UserId,在AppId下单独唯一
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 终端设备类型,通过控制台创建和查询
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// 终端设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-}
-
-func (s GetAuthTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthTokenRequest) SetAppId(v string) *GetAuthTokenRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetAuthTokenRequest) SetUserId(v string) *GetAuthTokenRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *GetAuthTokenRequest) SetAppKey(v string) *GetAuthTokenRequest {
-	s.AppKey = &v
-	return s
-}
-
-func (s *GetAuthTokenRequest) SetDeviceId(v string) *GetAuthTokenRequest {
-	s.DeviceId = &v
-	return s
-}
-
-type GetAuthTokenResponseBody struct {
-	// Id of the request
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetAuthTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetAuthTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthTokenResponseBody) SetRequestId(v string) *GetAuthTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetAuthTokenResponseBody) SetResult(v *GetAuthTokenResponseBodyResult) *GetAuthTokenResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetAuthTokenResponseBodyResult struct {
-	// 用于长链接建连的token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// 更新Token，若AccessToken过期，则可以使用RefreshToken再次获取新Token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// 登录token过期时间(毫秒)
-	AccessTokenExpiredTime *int64 `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-}
-
-func (s GetAuthTokenResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthTokenResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthTokenResponseBodyResult) SetAccessToken(v string) *GetAuthTokenResponseBodyResult {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *GetAuthTokenResponseBodyResult) SetRefreshToken(v string) *GetAuthTokenResponseBodyResult {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *GetAuthTokenResponseBodyResult) SetAccessTokenExpiredTime(v int64) *GetAuthTokenResponseBodyResult {
-	s.AccessTokenExpiredTime = &v
-	return s
-}
-
-type GetAuthTokenResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAuthTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAuthTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAuthTokenResponse) SetHeaders(v map[string]*string) *GetAuthTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthTokenResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAppTemplateRequest struct {
-	// 应用模板唯一标识
-	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
-	// 应用模板名称
-	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
-}
-
-func (s UpdateAppTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateRequest) SetAppTemplateId(v string) *UpdateAppTemplateRequest {
-	s.AppTemplateId = &v
-	return s
-}
-
-func (s *UpdateAppTemplateRequest) SetAppTemplateName(v string) *UpdateAppTemplateRequest {
-	s.AppTemplateName = &v
-	return s
-}
-
-type UpdateAppTemplateResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateResponseBody) SetRequestId(v string) *UpdateAppTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAppTemplateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppTemplateResponse) SetHeaders(v map[string]*string) *UpdateAppTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAppTemplateResponse) SetBody(v *UpdateAppTemplateResponseBody) *UpdateAppTemplateResponse {
-	s.Body = v
-	return s
-}
-
-type GetImpProductStatusResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 开通状态
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s GetImpProductStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImpProductStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetImpProductStatusResponseBody) SetRequestId(v string) *GetImpProductStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetImpProductStatusResponseBody) SetResult(v bool) *GetImpProductStatusResponseBody {
-	s.Result = &v
-	return s
-}
-
-type GetImpProductStatusResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImpProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetImpProductStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImpProductStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetImpProductStatusResponse) SetHeaders(v map[string]*string) *GetImpProductStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetImpProductStatusResponse) SetBody(v *GetImpProductStatusResponseBody) *GetImpProductStatusResponse {
-	s.Body = v
-	return s
-}
-
-type PublishLiveRequest struct {
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 当前用户Id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s PublishLiveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLiveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLiveRequest) SetLiveId(v string) *PublishLiveRequest {
-	s.LiveId = &v
-	return s
-}
-
-func (s *PublishLiveRequest) SetUserId(v string) *PublishLiveRequest {
-	s.UserId = &v
-	return s
-}
-
-type PublishLiveResponseBody struct {
-	// Id of the request
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *PublishLiveResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s PublishLiveResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLiveResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLiveResponseBody) SetRequestId(v string) *PublishLiveResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PublishLiveResponseBody) SetResult(v *PublishLiveResponseBodyResult) *PublishLiveResponseBody {
-	s.Result = v
-	return s
-}
-
-type PublishLiveResponseBodyResult struct {
-	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 主播ID
-	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
-	// 直播状态：Created-已创建未开播，Living-直播中，End-直播结束
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 直播推流地址
-	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
-	// 直播拉流地址
-	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-}
-
-func (s PublishLiveResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLiveResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLiveResponseBodyResult) SetLiveId(v string) *PublishLiveResponseBodyResult {
-	s.LiveId = &v
-	return s
-}
-
-func (s *PublishLiveResponseBodyResult) SetAnchorId(v string) *PublishLiveResponseBodyResult {
-	s.AnchorId = &v
-	return s
-}
-
-func (s *PublishLiveResponseBodyResult) SetStatus(v string) *PublishLiveResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
-func (s *PublishLiveResponseBodyResult) SetPushUrl(v string) *PublishLiveResponseBodyResult {
-	s.PushUrl = &v
-	return s
-}
-
-func (s *PublishLiveResponseBodyResult) SetLiveUrl(v string) *PublishLiveResponseBodyResult {
-	s.LiveUrl = &v
-	return s
-}
-
-type PublishLiveResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PublishLiveResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLiveResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLiveResponse) SetHeaders(v map[string]*string) *PublishLiveResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishLiveResponse) SetBody(v *PublishLiveResponseBody) *PublishLiveResponse {
 	s.Body = v
 	return s
 }
@@ -5078,72 +5554,6 @@ func (s *GetLiveResponse) SetHeaders(v map[string]*string) *GetLiveResponse {
 }
 
 func (s *GetLiveResponse) SetBody(v *GetLiveResponseBody) *GetLiveResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteRoomRequest struct {
-	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-}
-
-func (s DeleteRoomRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoomRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoomRequest) SetAppId(v string) *DeleteRoomRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DeleteRoomRequest) SetRoomId(v string) *DeleteRoomRequest {
-	s.RoomId = &v
-	return s
-}
-
-type DeleteRoomResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteRoomResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoomResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoomResponseBody) SetRequestId(v string) *DeleteRoomResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteRoomResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteRoomResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoomResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoomResponse) SetHeaders(v map[string]*string) *DeleteRoomResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteRoomResponse) SetBody(v *DeleteRoomResponseBody) *DeleteRoomResponse {
 	s.Body = v
 	return s
 }
@@ -5491,159 +5901,6 @@ func (s *UpdateConferenceResponse) SetBody(v *UpdateConferenceResponseBody) *Upd
 	return s
 }
 
-type DeleteConferenceRequest struct {
-	// 租户名
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 房间ID，最大长度36位
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	// 创建会议用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 会议资源的唯一标识ID
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-}
-
-func (s DeleteConferenceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConferenceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConferenceRequest) SetAppId(v string) *DeleteConferenceRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DeleteConferenceRequest) SetRoomId(v string) *DeleteConferenceRequest {
-	s.RoomId = &v
-	return s
-}
-
-func (s *DeleteConferenceRequest) SetUserId(v string) *DeleteConferenceRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *DeleteConferenceRequest) SetConferenceId(v string) *DeleteConferenceRequest {
-	s.ConferenceId = &v
-	return s
-}
-
-type DeleteConferenceResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteConferenceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConferenceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConferenceResponseBody) SetRequestId(v string) *DeleteConferenceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteConferenceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteConferenceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConferenceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConferenceResponse) SetHeaders(v map[string]*string) *DeleteConferenceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteConferenceResponse) SetBody(v *DeleteConferenceResponseBody) *DeleteConferenceResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAppRequest struct {
-	// 应用唯一标识
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用状态
-	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-}
-
-func (s UpdateAppRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppRequest) SetAppId(v string) *UpdateAppRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *UpdateAppRequest) SetAppName(v string) *UpdateAppRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *UpdateAppRequest) SetAppStatus(v string) *UpdateAppRequest {
-	s.AppStatus = &v
-	return s
-}
-
-type UpdateAppResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppResponseBody) SetRequestId(v string) *UpdateAppResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAppResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppResponse) SetHeaders(v map[string]*string) *UpdateAppResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAppResponse) SetBody(v *UpdateAppResponseBody) *UpdateAppResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -5691,7 +5948,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyDomainOwnerResponse, _err error) {
+func (client *Client) CreateIceProjectWithOptions(request *CreateIceProjectRequest, runtime *util.RuntimeOptions) (_result *CreateIceProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -5699,8 +5956,8 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &VerifyDomainOwnerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyDomainOwner"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &CreateIceProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateIceProject"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5708,38 +5965,10 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	return _result, _err
 }
 
-func (client *Client) VerifyDomainOwner(request *VerifyDomainOwnerRequest) (_result *VerifyDomainOwnerResponse, _err error) {
+func (client *Client) CreateIceProject(request *CreateIceProjectRequest) (_result *CreateIceProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &VerifyDomainOwnerResponse{}
-	_body, _err := client.VerifyDomainOwnerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateLiveWithOptions(request *CreateLiveRequest, runtime *util.RuntimeOptions) (_result *CreateLiveResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiveResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateLiveResponse{}
-	_body, _err := client.CreateLiveWithOptions(request, runtime)
+	_result = &CreateIceProjectResponse{}
+	_body, _err := client.CreateIceProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5775,34 +6004,6 @@ func (client *Client) RemoveMember(request *RemoveMemberRequest) (_result *Remov
 	return _result, _err
 }
 
-func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAppResponse{}
-	_body, _err := client.DeleteAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListApplyLinkMicUsersWithOptions(request *ListApplyLinkMicUsersRequest, runtime *util.RuntimeOptions) (_result *ListApplyLinkMicUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5824,102 +6025,6 @@ func (client *Client) ListApplyLinkMicUsers(request *ListApplyLinkMicUsersReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplyLinkMicUsersResponse{}
 	_body, _err := client.ListApplyLinkMicUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRoomLivesWithOptions(tmpReq *ListRoomLivesRequest, runtime *util.RuntimeOptions) (_result *ListRoomLivesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ListRoomLivesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RoomIdList)) {
-		request.RoomIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomIdList, tea.String("RoomIdList"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListRoomLivesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRoomLives"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRoomLives(request *ListRoomLivesRequest) (_result *ListRoomLivesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListRoomLivesResponse{}
-	_body, _err := client.ListRoomLivesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateRoomWithOptions(tmpReq *UpdateRoomRequest, runtime *util.RuntimeOptions) (_result *UpdateRoomResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &UpdateRoomShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
-		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateRoom(request *UpdateRoomRequest) (_result *UpdateRoomResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateRoomResponse{}
-	_body, _err := client.UpdateRoomWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, runtime *util.RuntimeOptions) (_result *GetAppTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAppTemplate(request *GetAppTemplateRequest) (_result *GetAppTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAppTemplateResponse{}
-	_body, _err := client.GetAppTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5955,102 +6060,6 @@ func (client *Client) GetRoom(request *GetRoomRequest) (_result *GetRoomResponse
 	return _result, _err
 }
 
-func (client *Client) SendCommentWithOptions(tmpReq *SendCommentRequest, runtime *util.RuntimeOptions) (_result *SendCommentResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &SendCommentShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
-		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SendCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SendComment(request *SendCommentRequest) (_result *SendCommentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SendCommentResponse{}
-	_body, _err := client.SendCommentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateAppTemplateWithOptions(tmpReq *CreateAppTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppTemplateResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateAppTemplateShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ComponentList)) {
-		request.ComponentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComponentList, tea.String("ComponentList"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAppTemplate(request *CreateAppTemplateRequest) (_result *CreateAppTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAppTemplateResponse{}
-	_body, _err := client.CreateAppTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetConferenceWithOptions(request *GetConferenceRequest, runtime *util.RuntimeOptions) (_result *GetConferenceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetConference(request *GetConferenceRequest) (_result *GetConferenceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetConferenceResponse{}
-	_body, _err := client.GetConferenceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) BanCommentWithOptions(request *BanCommentRequest, runtime *util.RuntimeOptions) (_result *BanCommentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6079,62 +6088,6 @@ func (client *Client) BanComment(request *BanCommentRequest) (_result *BanCommen
 	return _result, _err
 }
 
-func (client *Client) RejectLinkMicWithOptions(request *RejectLinkMicRequest, runtime *util.RuntimeOptions) (_result *RejectLinkMicResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RejectLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RejectLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RejectLinkMic(request *RejectLinkMicRequest) (_result *RejectLinkMicResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RejectLinkMicResponse{}
-	_body, _err := client.RejectLinkMicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListAppsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListApps"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListAppsResponse{}
-	_body, _err := client.ListAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddMemberWithOptions(request *AddMemberRequest, runtime *util.RuntimeOptions) (_result *AddMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6156,34 +6109,6 @@ func (client *Client) AddMember(request *AddMemberRequest) (_result *AddMemberRe
 	runtime := &util.RuntimeOptions{}
 	_result = &AddMemberResponse{}
 	_body, _err := client.AddMemberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelBanAllCommentWithOptions(request *CancelBanAllCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanAllCommentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CancelBanAllCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelBanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelBanAllComment(request *CancelBanAllCommentRequest) (_result *CancelBanAllCommentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelBanAllCommentResponse{}
-	_body, _err := client.CancelBanAllCommentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6247,146 +6172,6 @@ func (client *Client) DeleteAppTemplate(request *DeleteAppTemplateRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListConferenceUsersWithOptions(request *ListConferenceUsersRequest, runtime *util.RuntimeOptions) (_result *ListConferenceUsersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListConferenceUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConferenceUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListConferenceUsers(request *ListConferenceUsersRequest) (_result *ListConferenceUsersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListConferenceUsersResponse{}
-	_body, _err := client.ListConferenceUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelBanCommentWithOptions(request *CancelBanCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanCommentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CancelBanCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelBanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelBanComment(request *CancelBanCommentRequest) (_result *CancelBanCommentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelBanCommentResponse{}
-	_body, _err := client.CancelBanCommentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListAppTemplatesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListAppTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAppTemplates"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListAppTemplates(request *ListAppTemplatesRequest) (_result *ListAppTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListAppTemplatesResponse{}
-	_body, _err := client.ListAppTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListComponentsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListComponents"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListComponentsResponse{}
-	_body, _err := client.ListComponentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateLiveWithOptions(request *UpdateLiveRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiveResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateLiveResponse{}
-	_body, _err := client.UpdateLiveWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateAppTemplateConfigWithOptions(tmpReq *UpdateAppTemplateConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateAppTemplateConfigResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6414,62 +6199,6 @@ func (client *Client) UpdateAppTemplateConfig(request *UpdateAppTemplateConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAppTemplateConfigResponse{}
 	_body, _err := client.UpdateAppTemplateConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ApplyLinkMicWithOptions(request *ApplyLinkMicRequest, runtime *util.RuntimeOptions) (_result *ApplyLinkMicResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ApplyLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ApplyLinkMic(request *ApplyLinkMicRequest) (_result *ApplyLinkMicResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ApplyLinkMicResponse{}
-	_body, _err := client.ApplyLinkMicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CancelApplyLinkMicWithOptions(request *CancelApplyLinkMicRequest, runtime *util.RuntimeOptions) (_result *CancelApplyLinkMicResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CancelApplyLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelApplyLinkMic(request *CancelApplyLinkMicRequest) (_result *CancelApplyLinkMicResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelApplyLinkMicResponse{}
-	_body, _err := client.CancelApplyLinkMicWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6505,7 +6234,7 @@ func (client *Client) StopLive(request *StopLiveRequest) (_result *StopLiveRespo
 	return _result, _err
 }
 
-func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
+func (client *Client) RegisterIceOssMediaWithOptions(request *RegisterIceOssMediaRequest, runtime *util.RuntimeOptions) (_result *RegisterIceOssMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -6513,8 +6242,8 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &GetAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &RegisterIceOssMediaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterIceOssMedia"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6522,10 +6251,10 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 	return _result, _err
 }
 
-func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _err error) {
+func (client *Client) RegisterIceOssMedia(request *RegisterIceOssMediaRequest) (_result *RegisterIceOssMediaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetAppResponse{}
-	_body, _err := client.GetAppWithOptions(request, runtime)
+	_result = &RegisterIceOssMediaResponse{}
+	_body, _err := client.RegisterIceOssMediaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6707,62 +6436,6 @@ func (client *Client) GetDomainOwnerVerifyContent(request *GetDomainOwnerVerifyC
 	return _result, _err
 }
 
-func (client *Client) SendCustomMessageToUsersWithOptions(request *SendCustomMessageToUsersRequest, runtime *util.RuntimeOptions) (_result *SendCustomMessageToUsersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SendCustomMessageToUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SendCustomMessageToUsers(request *SendCustomMessageToUsersRequest) (_result *SendCustomMessageToUsersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SendCustomMessageToUsersResponse{}
-	_body, _err := client.SendCustomMessageToUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BanAllCommentWithOptions(request *BanAllCommentRequest, runtime *util.RuntimeOptions) (_result *BanAllCommentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &BanAllCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BanAllComment(request *BanAllCommentRequest) (_result *BanAllCommentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BanAllCommentResponse{}
-	_body, _err := client.BanAllCommentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6869,34 +6542,6 @@ func (client *Client) PublishLive(request *PublishLiveRequest) (_result *Publish
 	return _result, _err
 }
 
-func (client *Client) GetLiveWithOptions(request *GetLiveRequest, runtime *util.RuntimeOptions) (_result *GetLiveResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetLive(request *GetLiveRequest) (_result *GetLiveResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetLiveResponse{}
-	_body, _err := client.GetLiveWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteRoomWithOptions(request *DeleteRoomRequest, runtime *util.RuntimeOptions) (_result *DeleteRoomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6918,6 +6563,730 @@ func (client *Client) DeleteRoom(request *DeleteRoomRequest) (_result *DeleteRoo
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRoomResponse{}
 	_body, _err := client.DeleteRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteConferenceWithOptions(request *DeleteConferenceRequest, runtime *util.RuntimeOptions) (_result *DeleteConferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteConferenceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteConference(request *DeleteConferenceRequest) (_result *DeleteConferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteConferenceResponse{}
+	_body, _err := client.DeleteConferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *util.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateAppResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateApp(request *UpdateAppRequest) (_result *UpdateAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAppResponse{}
+	_body, _err := client.UpdateAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyDomainOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &VerifyDomainOwnerResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("VerifyDomainOwner"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyDomainOwner(request *VerifyDomainOwnerRequest) (_result *VerifyDomainOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyDomainOwnerResponse{}
+	_body, _err := client.VerifyDomainOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLiveWithOptions(request *CreateLiveRequest, runtime *util.RuntimeOptions) (_result *CreateLiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLiveResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLiveResponse{}
+	_body, _err := client.CreateLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteAppResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppResponse{}
+	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRoomLivesWithOptions(tmpReq *ListRoomLivesRequest, runtime *util.RuntimeOptions) (_result *ListRoomLivesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListRoomLivesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoomIdList)) {
+		request.RoomIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomIdList, tea.String("RoomIdList"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListRoomLivesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListRoomLives"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRoomLives(request *ListRoomLivesRequest) (_result *ListRoomLivesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoomLivesResponse{}
+	_body, _err := client.ListRoomLivesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRoomWithOptions(tmpReq *UpdateRoomRequest, runtime *util.RuntimeOptions) (_result *UpdateRoomResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateRoomShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateRoomResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRoom(request *UpdateRoomRequest) (_result *UpdateRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRoomResponse{}
+	_body, _err := client.UpdateRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, runtime *util.RuntimeOptions) (_result *GetAppTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAppTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppTemplate(request *GetAppTemplateRequest) (_result *GetAppTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppTemplateResponse{}
+	_body, _err := client.GetAppTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendCommentWithOptions(tmpReq *SendCommentRequest, runtime *util.RuntimeOptions) (_result *SendCommentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendCommentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendComment(request *SendCommentRequest) (_result *SendCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCommentResponse{}
+	_body, _err := client.SendCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAppTemplateWithOptions(tmpReq *CreateAppTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ComponentList)) {
+		request.ComponentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComponentList, tea.String("ComponentList"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateAppTemplateResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAppTemplate(request *CreateAppTemplateRequest) (_result *CreateAppTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppTemplateResponse{}
+	_body, _err := client.CreateAppTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetConferenceWithOptions(request *GetConferenceRequest, runtime *util.RuntimeOptions) (_result *GetConferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetConferenceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetConference(request *GetConferenceRequest) (_result *GetConferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetConferenceResponse{}
+	_body, _err := client.GetConferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RejectLinkMicWithOptions(request *RejectLinkMicRequest, runtime *util.RuntimeOptions) (_result *RejectLinkMicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RejectLinkMicResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RejectLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RejectLinkMic(request *RejectLinkMicRequest) (_result *RejectLinkMicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectLinkMicResponse{}
+	_body, _err := client.RejectLinkMicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListAppsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListApps"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAppsResponse{}
+	_body, _err := client.ListAppsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelBanAllCommentWithOptions(request *CancelBanAllCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanAllCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelBanAllCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelBanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelBanAllComment(request *CancelBanAllCommentRequest) (_result *CancelBanAllCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelBanAllCommentResponse{}
+	_body, _err := client.CancelBanAllCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListConferenceUsersWithOptions(request *ListConferenceUsersRequest, runtime *util.RuntimeOptions) (_result *ListConferenceUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListConferenceUsersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListConferenceUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConferenceUsers(request *ListConferenceUsersRequest) (_result *ListConferenceUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConferenceUsersResponse{}
+	_body, _err := client.ListConferenceUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelBanCommentWithOptions(request *CancelBanCommentRequest, runtime *util.RuntimeOptions) (_result *CancelBanCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelBanCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelBanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelBanComment(request *CancelBanCommentRequest) (_result *CancelBanCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelBanCommentResponse{}
+	_body, _err := client.CancelBanCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListAppTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListAppTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListAppTemplates"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAppTemplates(request *ListAppTemplatesRequest) (_result *ListAppTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAppTemplatesResponse{}
+	_body, _err := client.ListAppTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListComponents"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLiveWithOptions(request *UpdateLiveRequest, runtime *util.RuntimeOptions) (_result *UpdateLiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateLiveResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLiveResponse{}
+	_body, _err := client.UpdateLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyLinkMicWithOptions(request *ApplyLinkMicRequest, runtime *util.RuntimeOptions) (_result *ApplyLinkMicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ApplyLinkMicResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyLinkMic(request *ApplyLinkMicRequest) (_result *ApplyLinkMicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyLinkMicResponse{}
+	_body, _err := client.ApplyLinkMicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelApplyLinkMicWithOptions(request *CancelApplyLinkMicRequest, runtime *util.RuntimeOptions) (_result *CancelApplyLinkMicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelApplyLinkMicResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelApplyLinkMic(request *CancelApplyLinkMicRequest) (_result *CancelApplyLinkMicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelApplyLinkMicResponse{}
+	_body, _err := client.CancelApplyLinkMicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetAppResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppResponse{}
+	_body, _err := client.GetAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToUsersWithOptions(request *SendCustomMessageToUsersRequest, runtime *util.RuntimeOptions) (_result *SendCustomMessageToUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendCustomMessageToUsersResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendCustomMessageToUsers(request *SendCustomMessageToUsersRequest) (_result *SendCustomMessageToUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCustomMessageToUsersResponse{}
+	_body, _err := client.SendCustomMessageToUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BanAllCommentWithOptions(request *BanAllCommentRequest, runtime *util.RuntimeOptions) (_result *BanAllCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BanAllCommentResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BanAllComment(request *BanAllCommentRequest) (_result *BanAllCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BanAllCommentResponse{}
+	_body, _err := client.BanAllCommentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveWithOptions(request *GetLiveRequest, runtime *util.RuntimeOptions) (_result *GetLiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLiveResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLive(request *GetLiveRequest) (_result *GetLiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveResponse{}
+	_body, _err := client.GetLiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7008,62 +7377,6 @@ func (client *Client) UpdateConference(request *UpdateConferenceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConferenceResponse{}
 	_body, _err := client.UpdateConferenceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteConferenceWithOptions(request *DeleteConferenceRequest, runtime *util.RuntimeOptions) (_result *DeleteConferenceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteConference(request *DeleteConferenceRequest) (_result *DeleteConferenceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteConferenceResponse{}
-	_body, _err := client.DeleteConferenceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *util.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateApp(request *UpdateAppRequest) (_result *UpdateAppResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateAppResponse{}
-	_body, _err := client.UpdateAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
