@@ -11,6 +11,228 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateTagsRequest struct {
+	OwnerId              *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	OwnerAccount         *string                                  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TagKeyValueParamList []*CreateTagsRequestTagKeyValueParamList `json:"TagKeyValueParamList,omitempty" xml:"TagKeyValueParamList,omitempty" type:"Repeated"`
+}
+
+func (s CreateTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagsRequest) SetOwnerId(v int64) *CreateTagsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTagsRequest) SetResourceOwnerAccount(v string) *CreateTagsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTagsRequest) SetOwnerAccount(v string) *CreateTagsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTagsRequest) SetRegionId(v string) *CreateTagsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTagsRequest) SetTagKeyValueParamList(v []*CreateTagsRequestTagKeyValueParamList) *CreateTagsRequest {
+	s.TagKeyValueParamList = v
+	return s
+}
+
+type CreateTagsRequestTagKeyValueParamList struct {
+	Key               *string                                                   `json:"Key,omitempty" xml:"Key,omitempty"`
+	TagValueParamList []*CreateTagsRequestTagKeyValueParamListTagValueParamList `json:"TagValueParamList,omitempty" xml:"TagValueParamList,omitempty" type:"Repeated"`
+	Description       *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s CreateTagsRequestTagKeyValueParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagsRequestTagKeyValueParamList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagsRequestTagKeyValueParamList) SetKey(v string) *CreateTagsRequestTagKeyValueParamList {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTagsRequestTagKeyValueParamList) SetTagValueParamList(v []*CreateTagsRequestTagKeyValueParamListTagValueParamList) *CreateTagsRequestTagKeyValueParamList {
+	s.TagValueParamList = v
+	return s
+}
+
+func (s *CreateTagsRequestTagKeyValueParamList) SetDescription(v string) *CreateTagsRequestTagKeyValueParamList {
+	s.Description = &v
+	return s
+}
+
+type CreateTagsRequestTagKeyValueParamListTagValueParamList struct {
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s CreateTagsRequestTagKeyValueParamListTagValueParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagsRequestTagKeyValueParamListTagValueParamList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetValue(v string) *CreateTagsRequestTagKeyValueParamListTagValueParamList {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetDescription(v string) *CreateTagsRequestTagKeyValueParamListTagValueParamList {
+	s.Description = &v
+	return s
+}
+
+type CreateTagsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagsResponseBody) SetRequestId(v string) *CreateTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTagsResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagsResponse) SetHeaders(v map[string]*string) *CreateTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTagsResponse) SetBody(v *CreateTagsResponseBody) *CreateTagsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTagRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value                *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DeleteTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagRequest) SetOwnerId(v int64) *DeleteTagRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetResourceOwnerAccount(v string) *DeleteTagRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetOwnerAccount(v string) *DeleteTagRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetRegionId(v string) *DeleteTagRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetKey(v string) *DeleteTagRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DeleteTagRequest) SetValue(v string) *DeleteTagRequest {
+	s.Value = &v
+	return s
+}
+
+type DeleteTagResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponseBody) SetRequestId(v string) *DeleteTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTagResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponse) SetHeaders(v map[string]*string) *DeleteTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -99,8 +321,8 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -112,13 +334,13 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
 	return s
 }
 
@@ -159,7 +381,7 @@ type ListTagKeysRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagProduct           *string `json:"TagProduct,omitempty" xml:"TagProduct,omitempty"`
+	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -210,8 +432,8 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 	return s
 }
 
-func (s *ListTagKeysRequest) SetTagProduct(v string) *ListTagKeysRequest {
-	s.TagProduct = &v
+func (s *ListTagKeysRequest) SetQueryType(v string) *ListTagKeysRequest {
+	s.QueryType = &v
 	return s
 }
 
@@ -262,8 +484,9 @@ func (s *ListTagKeysResponseBodyKeys) SetKey(v []*ListTagKeysResponseBodyKeysKey
 }
 
 type ListTagKeysResponseBodyKeysKey struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s ListTagKeysResponseBodyKeysKey) String() string {
@@ -281,6 +504,11 @@ func (s *ListTagKeysResponseBodyKeysKey) SetKey(v string) *ListTagKeysResponseBo
 
 func (s *ListTagKeysResponseBodyKeysKey) SetCategory(v string) *ListTagKeysResponseBodyKeysKey {
 	s.Category = &v
+	return s
+}
+
+func (s *ListTagKeysResponseBodyKeysKey) SetDescription(v string) *ListTagKeysResponseBodyKeysKey {
+	s.Description = &v
 	return s
 }
 
@@ -312,11 +540,11 @@ type ListTagResourcesRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Tags                 *string   `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Category             *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -347,6 +575,11 @@ func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest
 	return s
 }
 
+func (s *ListTagResourcesRequest) SetResourceARN(v []*string) *ListTagResourcesRequest {
+	s.ResourceARN = v
+	return s
+}
+
 func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
 	s.NextToken = &v
 	return s
@@ -364,11 +597,6 @@ func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
 
 func (s *ListTagResourcesRequest) SetCategory(v string) *ListTagResourcesRequest {
 	s.Category = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceARN(v []*string) *ListTagResourcesRequest {
-	s.ResourceARN = v
 	return s
 }
 
@@ -485,7 +713,7 @@ type ListTagValuesRequest struct {
 	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagProduct           *string `json:"TagProduct,omitempty" xml:"TagProduct,omitempty"`
+	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -536,8 +764,8 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 	return s
 }
 
-func (s *ListTagValuesRequest) SetTagProduct(v string) *ListTagValuesRequest {
-	s.TagProduct = &v
+func (s *ListTagValuesRequest) SetQueryType(v string) *ListTagValuesRequest {
+	s.QueryType = &v
 	return s
 }
 
@@ -1006,6 +1234,62 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime *util.RuntimeOptions) (_result *CreateTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateTagsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateTags"), tea.String("2018-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTags(request *CreateTagsRequest) (_result *CreateTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTagsResponse{}
+	_body, _err := client.CreateTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *util.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteTag"), tea.String("2018-08-28"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.DeleteTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
