@@ -216,7 +216,7 @@ func (s *QueryTraceMuResponse) SetBody(v *QueryTraceMuResponseBody) *QueryTraceM
 }
 
 type SubmitImageCopyrightRequest struct {
-	// 需要加水印的图片oss地址
+	// 需要加水印的图片oss地址(Input和url二选一)
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// 水印强度
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
@@ -224,6 +224,8 @@ type SubmitImageCopyrightRequest struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 水印图片输出oss地址
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// 外部url链接(Input和url二选一)
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SubmitImageCopyrightRequest) String() string {
@@ -251,6 +253,11 @@ func (s *SubmitImageCopyrightRequest) SetMessage(v string) *SubmitImageCopyright
 
 func (s *SubmitImageCopyrightRequest) SetOutput(v string) *SubmitImageCopyrightRequest {
 	s.Output = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightRequest) SetUrl(v string) *SubmitImageCopyrightRequest {
+	s.Url = &v
 	return s
 }
 
@@ -1029,6 +1036,8 @@ type SubmitTraceAbRequest struct {
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	// 用户自定义数据，最大长度1024个字节
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 外部url链接(Input和url二选一)
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SubmitTraceAbRequest) String() string {
@@ -1061,6 +1070,11 @@ func (s *SubmitTraceAbRequest) SetOutput(v string) *SubmitTraceAbRequest {
 
 func (s *SubmitTraceAbRequest) SetUserData(v string) *SubmitTraceAbRequest {
 	s.UserData = &v
+	return s
+}
+
+func (s *SubmitTraceAbRequest) SetUrl(v string) *SubmitTraceAbRequest {
+	s.Url = &v
 	return s
 }
 
@@ -1170,6 +1184,8 @@ type SubmitCopyrightJobRequest struct {
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	// 用户自定义数据
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 外部url链接(Input和url二选一)
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SubmitCopyrightJobRequest) String() string {
@@ -1222,6 +1238,11 @@ func (s *SubmitCopyrightJobRequest) SetOutput(v string) *SubmitCopyrightJobReque
 
 func (s *SubmitCopyrightJobRequest) SetUserData(v string) *SubmitCopyrightJobRequest {
 	s.UserData = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetUrl(v string) *SubmitCopyrightJobRequest {
+	s.Url = &v
 	return s
 }
 
@@ -1489,6 +1510,10 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 		body["Output"] = request.Output
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1728,6 +1753,10 @@ func (client *Client) SubmitTraceAbWithOptions(request *SubmitTraceAbRequest, he
 		body["UserData"] = request.UserData
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1793,6 +1822,10 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		body["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
 	}
 
 	req := &openapi.OpenApiRequest{
