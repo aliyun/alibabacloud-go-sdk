@@ -7,9 +7,85 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type CancelArtifactBuildTaskRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
+}
+
+func (s CancelArtifactBuildTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelArtifactBuildTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelArtifactBuildTaskRequest) SetInstanceId(v string) *CancelArtifactBuildTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CancelArtifactBuildTaskRequest) SetBuildTaskId(v string) *CancelArtifactBuildTaskRequest {
+	s.BuildTaskId = &v
+	return s
+}
+
+type CancelArtifactBuildTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelArtifactBuildTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelArtifactBuildTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelArtifactBuildTaskResponseBody) SetCode(v string) *CancelArtifactBuildTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelArtifactBuildTaskResponseBody) SetIsSuccess(v bool) *CancelArtifactBuildTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CancelArtifactBuildTaskResponseBody) SetRequestId(v string) *CancelArtifactBuildTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelArtifactBuildTaskResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelArtifactBuildTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelArtifactBuildTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelArtifactBuildTaskResponse) SetHeaders(v map[string]*string) *CancelArtifactBuildTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelArtifactBuildTaskResponse) SetBody(v *CancelArtifactBuildTaskResponseBody) *CancelArtifactBuildTaskResponse {
+	s.Body = v
+	return s
+}
 
 type CancelRepoBuildRecordRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -41,9 +117,9 @@ func (s *CancelRepoBuildRecordRequest) SetBuildRecordId(v string) *CancelRepoBui
 }
 
 type CancelRepoBuildRecordResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CancelRepoBuildRecordResponseBody) String() string {
@@ -54,6 +130,11 @@ func (s CancelRepoBuildRecordResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CancelRepoBuildRecordResponseBody) SetCode(v string) *CancelRepoBuildRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CancelRepoBuildRecordResponseBody) SetIsSuccess(v bool) *CancelRepoBuildRecordResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -61,11 +142,6 @@ func (s *CancelRepoBuildRecordResponseBody) SetIsSuccess(v bool) *CancelRepoBuil
 
 func (s *CancelRepoBuildRecordResponseBody) SetRequestId(v string) *CancelRepoBuildRecordResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CancelRepoBuildRecordResponseBody) SetCode(v string) *CancelRepoBuildRecordResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -122,10 +198,10 @@ func (s *CreateBuildRecordByRuleRequest) SetBuildRuleId(v string) *CreateBuildRe
 }
 
 type CreateBuildRecordByRuleResponseBody struct {
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess     *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateBuildRecordByRuleResponseBody) String() string {
@@ -134,6 +210,11 @@ func (s CreateBuildRecordByRuleResponseBody) String() string {
 
 func (s CreateBuildRecordByRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBuildRecordByRuleResponseBody) SetCode(v string) *CreateBuildRecordByRuleResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateBuildRecordByRuleResponseBody) SetIsSuccess(v bool) *CreateBuildRecordByRuleResponseBody {
@@ -148,11 +229,6 @@ func (s *CreateBuildRecordByRuleResponseBody) SetRequestId(v string) *CreateBuil
 
 func (s *CreateBuildRecordByRuleResponseBody) SetBuildRecordId(v string) *CreateBuildRecordByRuleResponseBody {
 	s.BuildRecordId = &v
-	return s
-}
-
-func (s *CreateBuildRecordByRuleResponseBody) SetCode(v string) *CreateBuildRecordByRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -215,9 +291,9 @@ func (s *CreateChartNamespaceRequest) SetDefaultRepoType(v string) *CreateChartN
 }
 
 type CreateChartNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateChartNamespaceResponseBody) String() string {
@@ -228,6 +304,11 @@ func (s CreateChartNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateChartNamespaceResponseBody) SetCode(v string) *CreateChartNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateChartNamespaceResponseBody) SetIsSuccess(v bool) *CreateChartNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -235,11 +316,6 @@ func (s *CreateChartNamespaceResponseBody) SetIsSuccess(v bool) *CreateChartName
 
 func (s *CreateChartNamespaceResponseBody) SetRequestId(v string) *CreateChartNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateChartNamespaceResponseBody) SetCode(v string) *CreateChartNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -308,10 +384,10 @@ func (s *CreateChartRepositoryRequest) SetSummary(v string) *CreateChartReposito
 }
 
 type CreateChartRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateChartRepositoryResponseBody) String() string {
@@ -322,13 +398,8 @@ func (s CreateChartRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateChartRepositoryResponseBody) SetIsSuccess(v bool) *CreateChartRepositoryResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *CreateChartRepositoryResponseBody) SetRequestId(v string) *CreateChartRepositoryResponseBody {
-	s.RequestId = &v
+func (s *CreateChartRepositoryResponseBody) SetCode(v string) *CreateChartRepositoryResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -337,8 +408,13 @@ func (s *CreateChartRepositoryResponseBody) SetRepoId(v string) *CreateChartRepo
 	return s
 }
 
-func (s *CreateChartRepositoryResponseBody) SetCode(v string) *CreateChartRepositoryResponseBody {
-	s.Code = &v
+func (s *CreateChartRepositoryResponseBody) SetIsSuccess(v bool) *CreateChartRepositoryResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateChartRepositoryResponseBody) SetRequestId(v string) *CreateChartRepositoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -407,9 +483,9 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Create
 }
 
 type CreateInstanceEndpointAclPolicyResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateInstanceEndpointAclPolicyResponseBody) String() string {
@@ -420,6 +496,11 @@ func (s CreateInstanceEndpointAclPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceEndpointAclPolicyResponseBody) SetCode(v string) *CreateInstanceEndpointAclPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateInstanceEndpointAclPolicyResponseBody) SetIsSuccess(v bool) *CreateInstanceEndpointAclPolicyResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -427,11 +508,6 @@ func (s *CreateInstanceEndpointAclPolicyResponseBody) SetIsSuccess(v bool) *Crea
 
 func (s *CreateInstanceEndpointAclPolicyResponseBody) SetRequestId(v string) *CreateInstanceEndpointAclPolicyResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateInstanceEndpointAclPolicyResponseBody) SetCode(v string) *CreateInstanceEndpointAclPolicyResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -494,9 +570,9 @@ func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *Cre
 }
 
 type CreateInstanceVpcEndpointLinkedVpcResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateInstanceVpcEndpointLinkedVpcResponseBody) String() string {
@@ -507,6 +583,11 @@ func (s CreateInstanceVpcEndpointLinkedVpcResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetCode(v string) *CreateInstanceVpcEndpointLinkedVpcResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetIsSuccess(v bool) *CreateInstanceVpcEndpointLinkedVpcResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -514,11 +595,6 @@ func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetIsSuccess(v bool) *C
 
 func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetRequestId(v string) *CreateInstanceVpcEndpointLinkedVpcResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetCode(v string) *CreateInstanceVpcEndpointLinkedVpcResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -581,9 +657,9 @@ func (s *CreateNamespaceRequest) SetDefaultRepoType(v string) *CreateNamespaceRe
 }
 
 type CreateNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -594,6 +670,11 @@ func (s CreateNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateNamespaceResponseBody) SetCode(v string) *CreateNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateNamespaceResponseBody) SetIsSuccess(v bool) *CreateNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -601,11 +682,6 @@ func (s *CreateNamespaceResponseBody) SetIsSuccess(v bool) *CreateNamespaceRespo
 
 func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateNamespaceResponseBody) SetCode(v string) *CreateNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -686,10 +762,10 @@ func (s *CreateRepoBuildRuleRequest) SetImageTag(v string) *CreateRepoBuildRuleR
 }
 
 type CreateRepoBuildRuleResponseBody struct {
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponseBody) String() string {
@@ -700,13 +776,13 @@ func (s CreateRepoBuildRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRepoBuildRuleResponseBody) SetIsSuccess(v bool) *CreateRepoBuildRuleResponseBody {
-	s.IsSuccess = &v
+func (s *CreateRepoBuildRuleResponseBody) SetCode(v string) *CreateRepoBuildRuleResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *CreateRepoBuildRuleResponseBody) SetBuildRuleId(v string) *CreateRepoBuildRuleResponseBody {
-	s.BuildRuleId = &v
+func (s *CreateRepoBuildRuleResponseBody) SetIsSuccess(v bool) *CreateRepoBuildRuleResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
@@ -715,8 +791,8 @@ func (s *CreateRepoBuildRuleResponseBody) SetRequestId(v string) *CreateRepoBuil
 	return s
 }
 
-func (s *CreateRepoBuildRuleResponseBody) SetCode(v string) *CreateRepoBuildRuleResponseBody {
-	s.Code = &v
+func (s *CreateRepoBuildRuleResponseBody) SetBuildRuleId(v string) *CreateRepoBuildRuleResponseBody {
+	s.BuildRuleId = &v
 	return s
 }
 
@@ -797,10 +873,10 @@ func (s *CreateRepositoryRequest) SetTagImmutability(v bool) *CreateRepositoryRe
 }
 
 type CreateRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RepoId    *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateRepositoryResponseBody) String() string {
@@ -811,13 +887,8 @@ func (s CreateRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRepositoryResponseBody) SetIsSuccess(v bool) *CreateRepositoryResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *CreateRepositoryResponseBody) SetRequestId(v string) *CreateRepositoryResponseBody {
-	s.RequestId = &v
+func (s *CreateRepositoryResponseBody) SetCode(v string) *CreateRepositoryResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -826,8 +897,13 @@ func (s *CreateRepositoryResponseBody) SetRepoId(v string) *CreateRepositoryResp
 	return s
 }
 
-func (s *CreateRepositoryResponseBody) SetCode(v string) *CreateRepositoryResponseBody {
-	s.Code = &v
+func (s *CreateRepositoryResponseBody) SetIsSuccess(v bool) *CreateRepositoryResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBody) SetRequestId(v string) *CreateRepositoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -850,6 +926,117 @@ func (s *CreateRepositoryResponse) SetHeaders(v map[string]*string) *CreateRepos
 }
 
 func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *CreateRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRepoSourceCodeRepoRequest struct {
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
+	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	AutoBuild             *bool   `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	OverseaBuild          *bool   `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	DisableCacheBuild     *bool   `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+}
+
+func (s CreateRepoSourceCodeRepoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoSourceCodeRepoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetInstanceId(v string) *CreateRepoSourceCodeRepoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetRepoId(v string) *CreateRepoSourceCodeRepoRequest {
+	s.RepoId = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetCodeRepoType(v string) *CreateRepoSourceCodeRepoRequest {
+	s.CodeRepoType = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetCodeRepoNamespaceName(v string) *CreateRepoSourceCodeRepoRequest {
+	s.CodeRepoNamespaceName = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetCodeRepoName(v string) *CreateRepoSourceCodeRepoRequest {
+	s.CodeRepoName = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetAutoBuild(v bool) *CreateRepoSourceCodeRepoRequest {
+	s.AutoBuild = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetOverseaBuild(v bool) *CreateRepoSourceCodeRepoRequest {
+	s.OverseaBuild = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetDisableCacheBuild(v bool) *CreateRepoSourceCodeRepoRequest {
+	s.DisableCacheBuild = &v
+	return s
+}
+
+type CreateRepoSourceCodeRepoResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRepoSourceCodeRepoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoSourceCodeRepoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoSourceCodeRepoResponseBody) SetCode(v string) *CreateRepoSourceCodeRepoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoResponseBody) SetIsSuccess(v bool) *CreateRepoSourceCodeRepoResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoResponseBody) SetRequestId(v string) *CreateRepoSourceCodeRepoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRepoSourceCodeRepoResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRepoSourceCodeRepoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoSourceCodeRepoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoSourceCodeRepoResponse) SetHeaders(v map[string]*string) *CreateRepoSourceCodeRepoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoResponse) SetBody(v *CreateRepoSourceCodeRepoResponseBody) *CreateRepoSourceCodeRepoResponse {
 	s.Body = v
 	return s
 }
@@ -932,10 +1119,10 @@ func (s *CreateRepoSyncRuleRequest) SetSyncTrigger(v string) *CreateRepoSyncRule
 }
 
 type CreateRepoSyncRuleResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateRepoSyncRuleResponseBody) String() string {
@@ -944,6 +1131,11 @@ func (s CreateRepoSyncRuleResponseBody) String() string {
 
 func (s CreateRepoSyncRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRepoSyncRuleResponseBody) SetCode(v string) *CreateRepoSyncRuleResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateRepoSyncRuleResponseBody) SetSyncRuleId(v string) *CreateRepoSyncRuleResponseBody {
@@ -958,11 +1150,6 @@ func (s *CreateRepoSyncRuleResponseBody) SetIsSuccess(v bool) *CreateRepoSyncRul
 
 func (s *CreateRepoSyncRuleResponseBody) SetRequestId(v string) *CreateRepoSyncRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRepoSyncRuleResponseBody) SetCode(v string) *CreateRepoSyncRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1025,9 +1212,9 @@ func (s *CreateRepoSyncTaskByRuleRequest) SetSyncRuleId(v string) *CreateRepoSyn
 }
 
 type CreateRepoSyncTaskByRuleResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -1039,6 +1226,11 @@ func (s CreateRepoSyncTaskByRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRepoSyncTaskByRuleResponseBody) SetCode(v string) *CreateRepoSyncTaskByRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateRepoSyncTaskByRuleResponseBody) SetIsSuccess(v bool) *CreateRepoSyncTaskByRuleResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1046,11 +1238,6 @@ func (s *CreateRepoSyncTaskByRuleResponseBody) SetIsSuccess(v bool) *CreateRepoS
 
 func (s *CreateRepoSyncTaskByRuleResponseBody) SetRequestId(v string) *CreateRepoSyncTaskByRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRepoSyncTaskByRuleResponseBody) SetCode(v string) *CreateRepoSyncTaskByRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1082,10 +1269,105 @@ func (s *CreateRepoSyncTaskByRuleResponse) SetBody(v *CreateRepoSyncTaskByRuleRe
 	return s
 }
 
+type CreateRepoTagRequest struct {
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	FromTag       *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
+	ToTag         *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
+}
+
+func (s CreateRepoTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoTagRequest) SetInstanceId(v string) *CreateRepoTagRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoTagRequest) SetNamespaceName(v string) *CreateRepoTagRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateRepoTagRequest) SetRepoName(v string) *CreateRepoTagRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *CreateRepoTagRequest) SetFromTag(v string) *CreateRepoTagRequest {
+	s.FromTag = &v
+	return s
+}
+
+func (s *CreateRepoTagRequest) SetToTag(v string) *CreateRepoTagRequest {
+	s.ToTag = &v
+	return s
+}
+
+type CreateRepoTagResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRepoTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoTagResponseBody) SetCode(v string) *CreateRepoTagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRepoTagResponseBody) SetIsSuccess(v bool) *CreateRepoTagResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateRepoTagResponseBody) SetRequestId(v string) *CreateRepoTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRepoTagResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRepoTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepoTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepoTagResponse) SetHeaders(v map[string]*string) *CreateRepoTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRepoTagResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRepoTagScanTaskRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 }
 
 func (s CreateRepoTagScanTaskRequest) String() string {
@@ -1111,10 +1393,20 @@ func (s *CreateRepoTagScanTaskRequest) SetTag(v string) *CreateRepoTagScanTaskRe
 	return s
 }
 
+func (s *CreateRepoTagScanTaskRequest) SetDigest(v string) *CreateRepoTagScanTaskRequest {
+	s.Digest = &v
+	return s
+}
+
+func (s *CreateRepoTagScanTaskRequest) SetScanService(v string) *CreateRepoTagScanTaskRequest {
+	s.ScanService = &v
+	return s
+}
+
 type CreateRepoTagScanTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateRepoTagScanTaskResponseBody) String() string {
@@ -1125,6 +1417,11 @@ func (s CreateRepoTagScanTaskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRepoTagScanTaskResponseBody) SetCode(v string) *CreateRepoTagScanTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateRepoTagScanTaskResponseBody) SetIsSuccess(v bool) *CreateRepoTagScanTaskResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1132,11 +1429,6 @@ func (s *CreateRepoTagScanTaskResponseBody) SetIsSuccess(v bool) *CreateRepoTagS
 
 func (s *CreateRepoTagScanTaskResponseBody) SetRequestId(v string) *CreateRepoTagScanTaskResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRepoTagScanTaskResponseBody) SetCode(v string) *CreateRepoTagScanTaskResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1211,10 +1503,10 @@ func (s *CreateRepoTriggerRequest) SetTriggerTag(v string) *CreateRepoTriggerReq
 }
 
 type CreateRepoTriggerResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateRepoTriggerResponseBody) String() string {
@@ -1223,6 +1515,11 @@ func (s CreateRepoTriggerResponseBody) String() string {
 
 func (s CreateRepoTriggerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRepoTriggerResponseBody) SetCode(v string) *CreateRepoTriggerResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateRepoTriggerResponseBody) SetIsSuccess(v bool) *CreateRepoTriggerResponseBody {
@@ -1237,11 +1534,6 @@ func (s *CreateRepoTriggerResponseBody) SetRequestId(v string) *CreateRepoTrigge
 
 func (s *CreateRepoTriggerResponseBody) SetTriggerId(v string) *CreateRepoTriggerResponseBody {
 	s.TriggerId = &v
-	return s
-}
-
-func (s *CreateRepoTriggerResponseBody) SetCode(v string) *CreateRepoTriggerResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1292,9 +1584,9 @@ func (s *DeleteChartNamespaceRequest) SetNamespaceName(v string) *DeleteChartNam
 }
 
 type DeleteChartNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteChartNamespaceResponseBody) String() string {
@@ -1305,6 +1597,11 @@ func (s DeleteChartNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteChartNamespaceResponseBody) SetCode(v string) *DeleteChartNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteChartNamespaceResponseBody) SetIsSuccess(v bool) *DeleteChartNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1312,11 +1609,6 @@ func (s *DeleteChartNamespaceResponseBody) SetIsSuccess(v bool) *DeleteChartName
 
 func (s *DeleteChartNamespaceResponseBody) SetRequestId(v string) *DeleteChartNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteChartNamespaceResponseBody) SetCode(v string) *DeleteChartNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1385,9 +1677,9 @@ func (s *DeleteChartReleaseRequest) SetRepoNamespaceName(v string) *DeleteChartR
 }
 
 type DeleteChartReleaseResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteChartReleaseResponseBody) String() string {
@@ -1398,6 +1690,11 @@ func (s DeleteChartReleaseResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteChartReleaseResponseBody) SetCode(v string) *DeleteChartReleaseResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteChartReleaseResponseBody) SetIsSuccess(v bool) *DeleteChartReleaseResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1405,11 +1702,6 @@ func (s *DeleteChartReleaseResponseBody) SetIsSuccess(v bool) *DeleteChartReleas
 
 func (s *DeleteChartReleaseResponseBody) SetRequestId(v string) *DeleteChartReleaseResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteChartReleaseResponseBody) SetCode(v string) *DeleteChartReleaseResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1466,9 +1758,9 @@ func (s *DeleteChartRepositoryRequest) SetRepoName(v string) *DeleteChartReposit
 }
 
 type DeleteChartRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteChartRepositoryResponseBody) String() string {
@@ -1479,6 +1771,11 @@ func (s DeleteChartRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteChartRepositoryResponseBody) SetCode(v string) *DeleteChartRepositoryResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteChartRepositoryResponseBody) SetIsSuccess(v bool) *DeleteChartRepositoryResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1486,11 +1783,6 @@ func (s *DeleteChartRepositoryResponseBody) SetIsSuccess(v bool) *DeleteChartRep
 
 func (s *DeleteChartRepositoryResponseBody) SetRequestId(v string) *DeleteChartRepositoryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteChartRepositoryResponseBody) SetCode(v string) *DeleteChartRepositoryResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1553,9 +1845,9 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Delete
 }
 
 type DeleteInstanceEndpointAclPolicyResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteInstanceEndpointAclPolicyResponseBody) String() string {
@@ -1566,6 +1858,11 @@ func (s DeleteInstanceEndpointAclPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetCode(v string) *DeleteInstanceEndpointAclPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetIsSuccess(v bool) *DeleteInstanceEndpointAclPolicyResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1573,11 +1870,6 @@ func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetIsSuccess(v bool) *Dele
 
 func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetRequestId(v string) *DeleteInstanceEndpointAclPolicyResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetCode(v string) *DeleteInstanceEndpointAclPolicyResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1640,9 +1932,9 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *Del
 }
 
 type DeleteInstanceVpcEndpointLinkedVpcResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteInstanceVpcEndpointLinkedVpcResponseBody) String() string {
@@ -1653,6 +1945,11 @@ func (s DeleteInstanceVpcEndpointLinkedVpcResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetCode(v string) *DeleteInstanceVpcEndpointLinkedVpcResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetIsSuccess(v bool) *DeleteInstanceVpcEndpointLinkedVpcResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1660,11 +1957,6 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetIsSuccess(v bool) *D
 
 func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetRequestId(v string) *DeleteInstanceVpcEndpointLinkedVpcResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetCode(v string) *DeleteInstanceVpcEndpointLinkedVpcResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1715,9 +2007,9 @@ func (s *DeleteNamespaceRequest) SetNamespaceName(v string) *DeleteNamespaceRequ
 }
 
 type DeleteNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteNamespaceResponseBody) String() string {
@@ -1728,6 +2020,11 @@ func (s DeleteNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteNamespaceResponseBody) SetCode(v string) *DeleteNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteNamespaceResponseBody) SetIsSuccess(v bool) *DeleteNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1735,11 +2032,6 @@ func (s *DeleteNamespaceResponseBody) SetIsSuccess(v bool) *DeleteNamespaceRespo
 
 func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteNamespaceResponseBody) SetCode(v string) *DeleteNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1796,9 +2088,9 @@ func (s *DeleteRepoBuildRuleRequest) SetBuildRuleId(v string) *DeleteRepoBuildRu
 }
 
 type DeleteRepoBuildRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteRepoBuildRuleResponseBody) String() string {
@@ -1809,6 +2101,11 @@ func (s DeleteRepoBuildRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRepoBuildRuleResponseBody) SetCode(v string) *DeleteRepoBuildRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRepoBuildRuleResponseBody) SetIsSuccess(v bool) *DeleteRepoBuildRuleResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1816,11 +2113,6 @@ func (s *DeleteRepoBuildRuleResponseBody) SetIsSuccess(v bool) *DeleteRepoBuildR
 
 func (s *DeleteRepoBuildRuleResponseBody) SetRequestId(v string) *DeleteRepoBuildRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRepoBuildRuleResponseBody) SetCode(v string) *DeleteRepoBuildRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1871,9 +2163,9 @@ func (s *DeleteRepositoryRequest) SetRepoId(v string) *DeleteRepositoryRequest {
 }
 
 type DeleteRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteRepositoryResponseBody) String() string {
@@ -1884,6 +2176,11 @@ func (s DeleteRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRepositoryResponseBody) SetCode(v string) *DeleteRepositoryResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRepositoryResponseBody) SetIsSuccess(v bool) *DeleteRepositoryResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1891,11 +2188,6 @@ func (s *DeleteRepositoryResponseBody) SetIsSuccess(v bool) *DeleteRepositoryRes
 
 func (s *DeleteRepositoryResponseBody) SetRequestId(v string) *DeleteRepositoryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRepositoryResponseBody) SetCode(v string) *DeleteRepositoryResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1946,9 +2238,9 @@ func (s *DeleteRepoSyncRuleRequest) SetSyncRuleId(v string) *DeleteRepoSyncRuleR
 }
 
 type DeleteRepoSyncRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteRepoSyncRuleResponseBody) String() string {
@@ -1959,6 +2251,11 @@ func (s DeleteRepoSyncRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRepoSyncRuleResponseBody) SetCode(v string) *DeleteRepoSyncRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRepoSyncRuleResponseBody) SetIsSuccess(v bool) *DeleteRepoSyncRuleResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -1966,11 +2263,6 @@ func (s *DeleteRepoSyncRuleResponseBody) SetIsSuccess(v bool) *DeleteRepoSyncRul
 
 func (s *DeleteRepoSyncRuleResponseBody) SetRequestId(v string) *DeleteRepoSyncRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRepoSyncRuleResponseBody) SetCode(v string) *DeleteRepoSyncRuleResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2027,9 +2319,9 @@ func (s *DeleteRepoTagRequest) SetTag(v string) *DeleteRepoTagRequest {
 }
 
 type DeleteRepoTagResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteRepoTagResponseBody) String() string {
@@ -2040,6 +2332,11 @@ func (s DeleteRepoTagResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRepoTagResponseBody) SetCode(v string) *DeleteRepoTagResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRepoTagResponseBody) SetIsSuccess(v bool) *DeleteRepoTagResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -2047,11 +2344,6 @@ func (s *DeleteRepoTagResponseBody) SetIsSuccess(v bool) *DeleteRepoTagResponseB
 
 func (s *DeleteRepoTagResponseBody) SetRequestId(v string) *DeleteRepoTagResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRepoTagResponseBody) SetCode(v string) *DeleteRepoTagResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2108,9 +2400,9 @@ func (s *DeleteRepoTriggerRequest) SetTriggerId(v string) *DeleteRepoTriggerRequ
 }
 
 type DeleteRepoTriggerResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteRepoTriggerResponseBody) String() string {
@@ -2121,6 +2413,11 @@ func (s DeleteRepoTriggerResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteRepoTriggerResponseBody) SetCode(v string) *DeleteRepoTriggerResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteRepoTriggerResponseBody) SetIsSuccess(v bool) *DeleteRepoTriggerResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -2128,11 +2425,6 @@ func (s *DeleteRepoTriggerResponseBody) SetIsSuccess(v bool) *DeleteRepoTriggerR
 
 func (s *DeleteRepoTriggerResponseBody) SetRequestId(v string) *DeleteRepoTriggerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRepoTriggerResponseBody) SetCode(v string) *DeleteRepoTriggerResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2159,6 +2451,187 @@ func (s *DeleteRepoTriggerResponse) SetBody(v *DeleteRepoTriggerResponseBody) *D
 	return s
 }
 
+type GetArtifactBuildTaskRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
+}
+
+func (s GetArtifactBuildTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskRequest) SetInstanceId(v string) *GetArtifactBuildTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskRequest) SetBuildTaskId(v string) *GetArtifactBuildTaskRequest {
+	s.BuildTaskId = &v
+	return s
+}
+
+type GetArtifactBuildTaskResponseBody struct {
+	EndTime           *int32                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime         *int32                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ArtifactBuildType *string                                         `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskStatus        *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	BuildTaskId       *string                                         `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
+	Code              *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess         *bool                                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	Instructions      []*string                                       `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
+	SourceArtifact    *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
+	TargetArtifact    *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
+}
+
+func (s GetArtifactBuildTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetEndTime(v int32) *GetArtifactBuildTaskResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetStartTime(v int32) *GetArtifactBuildTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetArtifactBuildType(v string) *GetArtifactBuildTaskResponseBody {
+	s.ArtifactBuildType = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetRequestId(v string) *GetArtifactBuildTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetTaskStatus(v string) *GetArtifactBuildTaskResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetBuildTaskId(v string) *GetArtifactBuildTaskResponseBody {
+	s.BuildTaskId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetCode(v string) *GetArtifactBuildTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetIsSuccess(v bool) *GetArtifactBuildTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetInstructions(v []*string) *GetArtifactBuildTaskResponseBody {
+	s.Instructions = v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetSourceArtifact(v *GetArtifactBuildTaskResponseBodySourceArtifact) *GetArtifactBuildTaskResponseBody {
+	s.SourceArtifact = v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetTargetArtifact(v *GetArtifactBuildTaskResponseBodyTargetArtifact) *GetArtifactBuildTaskResponseBody {
+	s.TargetArtifact = v
+	return s
+}
+
+type GetArtifactBuildTaskResponseBodySourceArtifact struct {
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+}
+
+func (s GetArtifactBuildTaskResponseBodySourceArtifact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskResponseBodySourceArtifact) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetRepoId(v string) *GetArtifactBuildTaskResponseBodySourceArtifact {
+	s.RepoId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetVersion(v string) *GetArtifactBuildTaskResponseBodySourceArtifact {
+	s.Version = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetArtifactType(v string) *GetArtifactBuildTaskResponseBodySourceArtifact {
+	s.ArtifactType = &v
+	return s
+}
+
+type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+}
+
+func (s GetArtifactBuildTaskResponseBodyTargetArtifact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskResponseBodyTargetArtifact) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetRepoId(v string) *GetArtifactBuildTaskResponseBodyTargetArtifact {
+	s.RepoId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetVersion(v string) *GetArtifactBuildTaskResponseBodyTargetArtifact {
+	s.Version = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetArtifactType(v string) *GetArtifactBuildTaskResponseBodyTargetArtifact {
+	s.ArtifactType = &v
+	return s
+}
+
+type GetArtifactBuildTaskResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetArtifactBuildTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskResponse) SetHeaders(v map[string]*string) *GetArtifactBuildTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBody) *GetArtifactBuildTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetAuthorizationTokenRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -2177,12 +2650,12 @@ func (s *GetAuthorizationTokenRequest) SetInstanceId(v string) *GetAuthorization
 }
 
 type GetAuthorizationTokenResponseBody struct {
-	IsSuccess          *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TempUsername       *string `json:"TempUsername,omitempty" xml:"TempUsername,omitempty"`
-	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
 	ExpireTime         *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess          *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	TempUsername       *string `json:"TempUsername,omitempty" xml:"TempUsername,omitempty"`
+	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
 }
 
 func (s GetAuthorizationTokenResponseBody) String() string {
@@ -2193,23 +2666,8 @@ func (s GetAuthorizationTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAuthorizationTokenResponseBody) SetIsSuccess(v bool) *GetAuthorizationTokenResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
 func (s *GetAuthorizationTokenResponseBody) SetRequestId(v string) *GetAuthorizationTokenResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetAuthorizationTokenResponseBody) SetTempUsername(v string) *GetAuthorizationTokenResponseBody {
-	s.TempUsername = &v
-	return s
-}
-
-func (s *GetAuthorizationTokenResponseBody) SetAuthorizationToken(v string) *GetAuthorizationTokenResponseBody {
-	s.AuthorizationToken = &v
 	return s
 }
 
@@ -2220,6 +2678,21 @@ func (s *GetAuthorizationTokenResponseBody) SetExpireTime(v int64) *GetAuthoriza
 
 func (s *GetAuthorizationTokenResponseBody) SetCode(v string) *GetAuthorizationTokenResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetAuthorizationTokenResponseBody) SetIsSuccess(v bool) *GetAuthorizationTokenResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetAuthorizationTokenResponseBody) SetTempUsername(v string) *GetAuthorizationTokenResponseBody {
+	s.TempUsername = &v
+	return s
+}
+
+func (s *GetAuthorizationTokenResponseBody) SetAuthorizationToken(v string) *GetAuthorizationTokenResponseBody {
+	s.AuthorizationToken = &v
 	return s
 }
 
@@ -2270,15 +2743,15 @@ func (s *GetChartNamespaceRequest) SetNamespaceName(v string) *GetChartNamespace
 }
 
 type GetChartNamespaceResponseBody struct {
-	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s GetChartNamespaceResponseBody) String() string {
@@ -2289,28 +2762,28 @@ func (s GetChartNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetChartNamespaceResponseBody) SetNamespaceStatus(v string) *GetChartNamespaceResponseBody {
-	s.NamespaceStatus = &v
-	return s
-}
-
-func (s *GetChartNamespaceResponseBody) SetIsSuccess(v bool) *GetChartNamespaceResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *GetChartNamespaceResponseBody) SetNamespaceName(v string) *GetChartNamespaceResponseBody {
-	s.NamespaceName = &v
-	return s
-}
-
 func (s *GetChartNamespaceResponseBody) SetDefaultRepoType(v string) *GetChartNamespaceResponseBody {
 	s.DefaultRepoType = &v
 	return s
 }
 
+func (s *GetChartNamespaceResponseBody) SetNamespaceId(v string) *GetChartNamespaceResponseBody {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetChartNamespaceResponseBody) SetNamespaceStatus(v string) *GetChartNamespaceResponseBody {
+	s.NamespaceStatus = &v
+	return s
+}
+
 func (s *GetChartNamespaceResponseBody) SetRequestId(v string) *GetChartNamespaceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetChartNamespaceResponseBody) SetCode(v string) *GetChartNamespaceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2324,13 +2797,13 @@ func (s *GetChartNamespaceResponseBody) SetAutoCreateRepo(v bool) *GetChartNames
 	return s
 }
 
-func (s *GetChartNamespaceResponseBody) SetNamespaceId(v string) *GetChartNamespaceResponseBody {
-	s.NamespaceId = &v
+func (s *GetChartNamespaceResponseBody) SetIsSuccess(v bool) *GetChartNamespaceResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
-func (s *GetChartNamespaceResponseBody) SetCode(v string) *GetChartNamespaceResponseBody {
-	s.Code = &v
+func (s *GetChartNamespaceResponseBody) SetNamespaceName(v string) *GetChartNamespaceResponseBody {
+	s.NamespaceName = &v
 	return s
 }
 
@@ -2387,18 +2860,18 @@ func (s *GetChartRepositoryRequest) SetRepoName(v string) *GetChartRepositoryReq
 }
 
 type GetChartRepositoryResponseBody struct {
+	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 }
 
 func (s GetChartRepositoryResponseBody) String() string {
@@ -2409,18 +2882,23 @@ func (s GetChartRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetChartRepositoryResponseBody) SetSummary(v string) *GetChartRepositoryResponseBody {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetChartRepositoryResponseBody) SetCreateTime(v int64) *GetChartRepositoryResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *GetChartRepositoryResponseBody) SetIsSuccess(v bool) *GetChartRepositoryResponseBody {
 	s.IsSuccess = &v
 	return s
 }
 
-func (s *GetChartRepositoryResponseBody) SetRepoNamespaceName(v string) *GetChartRepositoryResponseBody {
-	s.RepoNamespaceName = &v
-	return s
-}
-
-func (s *GetChartRepositoryResponseBody) SetRequestId(v string) *GetChartRepositoryResponseBody {
-	s.RequestId = &v
+func (s *GetChartRepositoryResponseBody) SetInstanceId(v string) *GetChartRepositoryResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2434,28 +2912,8 @@ func (s *GetChartRepositoryResponseBody) SetRepoType(v string) *GetChartReposito
 	return s
 }
 
-func (s *GetChartRepositoryResponseBody) SetModifiedTime(v int64) *GetChartRepositoryResponseBody {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *GetChartRepositoryResponseBody) SetInstanceId(v string) *GetChartRepositoryResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetChartRepositoryResponseBody) SetCreateTime(v int64) *GetChartRepositoryResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetChartRepositoryResponseBody) SetRepoName(v string) *GetChartRepositoryResponseBody {
-	s.RepoName = &v
-	return s
-}
-
-func (s *GetChartRepositoryResponseBody) SetSummary(v string) *GetChartRepositoryResponseBody {
-	s.Summary = &v
+func (s *GetChartRepositoryResponseBody) SetRequestId(v string) *GetChartRepositoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2464,8 +2922,23 @@ func (s *GetChartRepositoryResponseBody) SetRepoId(v string) *GetChartRepository
 	return s
 }
 
+func (s *GetChartRepositoryResponseBody) SetModifiedTime(v int64) *GetChartRepositoryResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
 func (s *GetChartRepositoryResponseBody) SetCode(v string) *GetChartRepositoryResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetChartRepositoryResponseBody) SetRepoNamespaceName(v string) *GetChartRepositoryResponseBody {
+	s.RepoNamespaceName = &v
+	return s
+}
+
+func (s *GetChartRepositoryResponseBody) SetRepoName(v string) *GetChartRepositoryResponseBody {
+	s.RepoName = &v
 	return s
 }
 
@@ -2510,15 +2983,15 @@ func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	ModifiedTime          *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
 	Code                  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -2527,16 +3000,6 @@ func (s GetInstanceResponseBody) String() string {
 
 func (s GetInstanceResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetInstanceResponseBody) SetInstanceName(v string) *GetInstanceResponseBody {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *GetInstanceResponseBody) SetIsSuccess(v bool) *GetInstanceResponseBody {
-	s.IsSuccess = &v
-	return s
 }
 
 func (s *GetInstanceResponseBody) SetModifiedTime(v int64) *GetInstanceResponseBody {
@@ -2549,13 +3012,23 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetCreateTime(v int64) *GetInstanceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetInstanceName(v string) *GetInstanceResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetInstanceSpecification(v string) *GetInstanceResponseBody {
 	s.InstanceSpecification = &v
 	return s
 }
 
-func (s *GetInstanceResponseBody) SetInstanceId(v string) *GetInstanceResponseBody {
-	s.InstanceId = &v
+func (s *GetInstanceResponseBody) SetCode(v string) *GetInstanceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2564,13 +3037,13 @@ func (s *GetInstanceResponseBody) SetInstanceStatus(v string) *GetInstanceRespon
 	return s
 }
 
-func (s *GetInstanceResponseBody) SetCreateTime(v int64) *GetInstanceResponseBody {
-	s.CreateTime = &v
+func (s *GetInstanceResponseBody) SetInstanceId(v string) *GetInstanceResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *GetInstanceResponseBody) SetCode(v string) *GetInstanceResponseBody {
-	s.Code = &v
+func (s *GetInstanceResponseBody) SetIsSuccess(v bool) *GetInstanceResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
@@ -2598,10 +3071,10 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceCountResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetInstanceCountResponseBody) String() string {
@@ -2610,6 +3083,11 @@ func (s GetInstanceCountResponseBody) String() string {
 
 func (s GetInstanceCountResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceCountResponseBody) SetCode(v string) *GetInstanceCountResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetInstanceCountResponseBody) SetIsSuccess(v bool) *GetInstanceCountResponseBody {
@@ -2624,11 +3102,6 @@ func (s *GetInstanceCountResponseBody) SetRequestId(v string) *GetInstanceCountR
 
 func (s *GetInstanceCountResponseBody) SetCount(v int32) *GetInstanceCountResponseBody {
 	s.Count = &v
-	return s
-}
-
-func (s *GetInstanceCountResponseBody) SetCode(v string) *GetInstanceCountResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2686,13 +3159,13 @@ func (s *GetInstanceEndpointRequest) SetModuleName(v string) *GetInstanceEndpoin
 
 type GetInstanceEndpointResponseBody struct {
 	Status     *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Domains    []*GetInstanceEndpointResponseBodyDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	AclEntries []*GetInstanceEndpointResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess  *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	AclEnable  *bool                                        `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Enable     *bool                                        `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Domains    []*GetInstanceEndpointResponseBodyDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	AclEntries []*GetInstanceEndpointResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceEndpointResponseBody) String() string {
@@ -2708,13 +3181,13 @@ func (s *GetInstanceEndpointResponseBody) SetStatus(v string) *GetInstanceEndpoi
 	return s
 }
 
-func (s *GetInstanceEndpointResponseBody) SetDomains(v []*GetInstanceEndpointResponseBodyDomains) *GetInstanceEndpointResponseBody {
-	s.Domains = v
+func (s *GetInstanceEndpointResponseBody) SetRequestId(v string) *GetInstanceEndpointResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetInstanceEndpointResponseBody) SetAclEntries(v []*GetInstanceEndpointResponseBodyAclEntries) *GetInstanceEndpointResponseBody {
-	s.AclEntries = v
+func (s *GetInstanceEndpointResponseBody) SetCode(v string) *GetInstanceEndpointResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2728,18 +3201,18 @@ func (s *GetInstanceEndpointResponseBody) SetAclEnable(v bool) *GetInstanceEndpo
 	return s
 }
 
-func (s *GetInstanceEndpointResponseBody) SetRequestId(v string) *GetInstanceEndpointResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetInstanceEndpointResponseBody) SetEnable(v bool) *GetInstanceEndpointResponseBody {
 	s.Enable = &v
 	return s
 }
 
-func (s *GetInstanceEndpointResponseBody) SetCode(v string) *GetInstanceEndpointResponseBody {
-	s.Code = &v
+func (s *GetInstanceEndpointResponseBody) SetDomains(v []*GetInstanceEndpointResponseBodyDomains) *GetInstanceEndpointResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *GetInstanceEndpointResponseBody) SetAclEntries(v []*GetInstanceEndpointResponseBodyAclEntries) *GetInstanceEndpointResponseBody {
+	s.AclEntries = v
 	return s
 }
 
@@ -2830,13 +3303,17 @@ func (s *GetInstanceUsageRequest) SetInstanceId(v string) *GetInstanceUsageReque
 }
 
 type GetInstanceUsageResponseBody struct {
-	IsSuccess      *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RepoQuota      *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
-	RepoUsage      *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
-	NamespaceQuota *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	NamespaceUsage *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	NamespaceUsage      *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
+	RepoQuota           *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ChartNamespaceQuota *string `json:"ChartNamespaceQuota,omitempty" xml:"ChartNamespaceQuota,omitempty"`
+	RepoUsage           *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
+	NamespaceQuota      *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	Code                *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess           *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	ChartRepoUsage      *string `json:"ChartRepoUsage,omitempty" xml:"ChartRepoUsage,omitempty"`
+	ChartNamespaceUsage *string `json:"ChartNamespaceUsage,omitempty" xml:"ChartNamespaceUsage,omitempty"`
+	ChartRepoQuota      *string `json:"ChartRepoQuota,omitempty" xml:"ChartRepoQuota,omitempty"`
 }
 
 func (s GetInstanceUsageResponseBody) String() string {
@@ -2847,8 +3324,13 @@ func (s GetInstanceUsageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceUsageResponseBody) SetIsSuccess(v bool) *GetInstanceUsageResponseBody {
-	s.IsSuccess = &v
+func (s *GetInstanceUsageResponseBody) SetNamespaceUsage(v string) *GetInstanceUsageResponseBody {
+	s.NamespaceUsage = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetRepoQuota(v string) *GetInstanceUsageResponseBody {
+	s.RepoQuota = &v
 	return s
 }
 
@@ -2857,8 +3339,8 @@ func (s *GetInstanceUsageResponseBody) SetRequestId(v string) *GetInstanceUsageR
 	return s
 }
 
-func (s *GetInstanceUsageResponseBody) SetRepoQuota(v string) *GetInstanceUsageResponseBody {
-	s.RepoQuota = &v
+func (s *GetInstanceUsageResponseBody) SetChartNamespaceQuota(v string) *GetInstanceUsageResponseBody {
+	s.ChartNamespaceQuota = &v
 	return s
 }
 
@@ -2872,13 +3354,28 @@ func (s *GetInstanceUsageResponseBody) SetNamespaceQuota(v string) *GetInstanceU
 	return s
 }
 
-func (s *GetInstanceUsageResponseBody) SetNamespaceUsage(v string) *GetInstanceUsageResponseBody {
-	s.NamespaceUsage = &v
+func (s *GetInstanceUsageResponseBody) SetCode(v string) *GetInstanceUsageResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *GetInstanceUsageResponseBody) SetCode(v string) *GetInstanceUsageResponseBody {
-	s.Code = &v
+func (s *GetInstanceUsageResponseBody) SetIsSuccess(v bool) *GetInstanceUsageResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetChartRepoUsage(v string) *GetInstanceUsageResponseBody {
+	s.ChartRepoUsage = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetChartNamespaceUsage(v string) *GetInstanceUsageResponseBody {
+	s.ChartNamespaceUsage = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetChartRepoQuota(v string) *GetInstanceUsageResponseBody {
+	s.ChartRepoQuota = &v
 	return s
 }
 
@@ -2929,11 +3426,11 @@ func (s *GetInstanceVpcEndpointRequest) SetModuleName(v string) *GetInstanceVpcE
 }
 
 type GetInstanceVpcEndpointResponseBody struct {
-	Domains    []*string                                       `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess  *bool                                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Enable     *bool                                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Domains    []*string                                       `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	LinkedVpcs []*GetInstanceVpcEndpointResponseBodyLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
 }
 
@@ -2945,8 +3442,8 @@ func (s GetInstanceVpcEndpointResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceVpcEndpointResponseBody) SetDomains(v []*string) *GetInstanceVpcEndpointResponseBody {
-	s.Domains = v
+func (s *GetInstanceVpcEndpointResponseBody) SetCode(v string) *GetInstanceVpcEndpointResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -2965,8 +3462,8 @@ func (s *GetInstanceVpcEndpointResponseBody) SetEnable(v bool) *GetInstanceVpcEn
 	return s
 }
 
-func (s *GetInstanceVpcEndpointResponseBody) SetCode(v string) *GetInstanceVpcEndpointResponseBody {
-	s.Code = &v
+func (s *GetInstanceVpcEndpointResponseBody) SetDomains(v []*string) *GetInstanceVpcEndpointResponseBody {
+	s.Domains = v
 	return s
 }
 
@@ -2978,9 +3475,9 @@ func (s *GetInstanceVpcEndpointResponseBody) SetLinkedVpcs(v []*GetInstanceVpcEn
 type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	DefaultAccess *bool   `json:"DefaultAccess,omitempty" xml:"DefaultAccess,omitempty"`
 	VswitchId     *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointResponseBodyLinkedVpcs) String() string {
@@ -3001,6 +3498,11 @@ func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetVpcId(v string) *GetIn
 	return s
 }
 
+func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetIp(v string) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
+	s.Ip = &v
+	return s
+}
+
 func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetDefaultAccess(v bool) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
 	s.DefaultAccess = &v
 	return s
@@ -3008,11 +3510,6 @@ func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetDefaultAccess(v bool) 
 
 func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetVswitchId(v string) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
 	s.VswitchId = &v
-	return s
-}
-
-func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetIp(v string) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
-	s.Ip = &v
 	return s
 }
 
@@ -3069,15 +3566,15 @@ func (s *GetNamespaceRequest) SetNamespaceId(v string) *GetNamespaceRequest {
 }
 
 type GetNamespaceResponseBody struct {
-	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s GetNamespaceResponseBody) String() string {
@@ -3088,28 +3585,28 @@ func (s GetNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNamespaceResponseBody) SetNamespaceStatus(v string) *GetNamespaceResponseBody {
-	s.NamespaceStatus = &v
-	return s
-}
-
-func (s *GetNamespaceResponseBody) SetIsSuccess(v bool) *GetNamespaceResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *GetNamespaceResponseBody) SetNamespaceName(v string) *GetNamespaceResponseBody {
-	s.NamespaceName = &v
-	return s
-}
-
 func (s *GetNamespaceResponseBody) SetDefaultRepoType(v string) *GetNamespaceResponseBody {
 	s.DefaultRepoType = &v
 	return s
 }
 
+func (s *GetNamespaceResponseBody) SetNamespaceId(v string) *GetNamespaceResponseBody {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBody) SetNamespaceStatus(v string) *GetNamespaceResponseBody {
+	s.NamespaceStatus = &v
+	return s
+}
+
 func (s *GetNamespaceResponseBody) SetRequestId(v string) *GetNamespaceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBody) SetCode(v string) *GetNamespaceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -3123,13 +3620,13 @@ func (s *GetNamespaceResponseBody) SetAutoCreateRepo(v bool) *GetNamespaceRespon
 	return s
 }
 
-func (s *GetNamespaceResponseBody) SetNamespaceId(v string) *GetNamespaceResponseBody {
-	s.NamespaceId = &v
+func (s *GetNamespaceResponseBody) SetIsSuccess(v bool) *GetNamespaceResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
-func (s *GetNamespaceResponseBody) SetCode(v string) *GetNamespaceResponseBody {
-	s.Code = &v
+func (s *GetNamespaceResponseBody) SetNamespaceName(v string) *GetNamespaceResponseBody {
+	s.NamespaceName = &v
 	return s
 }
 
@@ -3181,13 +3678,13 @@ func (s *GetRepoBuildRecordRequest) SetBuildRecordId(v string) *GetRepoBuildReco
 
 type GetRepoBuildRecordResponseBody struct {
 	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	IsSuccess     *bool                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	EndTime       *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartTime     *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code          *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess     *bool                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	BuildRecordId *string                              `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	Image         *GetRepoBuildRecordResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	Code          *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetRepoBuildRecordResponseBody) String() string {
@@ -3203,13 +3700,13 @@ func (s *GetRepoBuildRecordResponseBody) SetStatus(v string) *GetRepoBuildRecord
 	return s
 }
 
-func (s *GetRepoBuildRecordResponseBody) SetIsSuccess(v bool) *GetRepoBuildRecordResponseBody {
-	s.IsSuccess = &v
+func (s *GetRepoBuildRecordResponseBody) SetEndTime(v int64) *GetRepoBuildRecordResponseBody {
+	s.EndTime = &v
 	return s
 }
 
-func (s *GetRepoBuildRecordResponseBody) SetEndTime(v int64) *GetRepoBuildRecordResponseBody {
-	s.EndTime = &v
+func (s *GetRepoBuildRecordResponseBody) SetStartTime(v int64) *GetRepoBuildRecordResponseBody {
+	s.StartTime = &v
 	return s
 }
 
@@ -3218,8 +3715,13 @@ func (s *GetRepoBuildRecordResponseBody) SetRequestId(v string) *GetRepoBuildRec
 	return s
 }
 
-func (s *GetRepoBuildRecordResponseBody) SetStartTime(v int64) *GetRepoBuildRecordResponseBody {
-	s.StartTime = &v
+func (s *GetRepoBuildRecordResponseBody) SetCode(v string) *GetRepoBuildRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRepoBuildRecordResponseBody) SetIsSuccess(v bool) *GetRepoBuildRecordResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
@@ -3230,11 +3732,6 @@ func (s *GetRepoBuildRecordResponseBody) SetBuildRecordId(v string) *GetRepoBuil
 
 func (s *GetRepoBuildRecordResponseBody) SetImage(v *GetRepoBuildRecordResponseBodyImage) *GetRepoBuildRecordResponseBody {
 	s.Image = v
-	return s
-}
-
-func (s *GetRepoBuildRecordResponseBody) SetCode(v string) *GetRepoBuildRecordResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3320,10 +3817,10 @@ func (s *GetRepoBuildRecordStatusRequest) SetBuildRecordId(v string) *GetRepoBui
 }
 
 type GetRepoBuildRecordStatusResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetRepoBuildRecordStatusResponseBody) String() string {
@@ -3332,6 +3829,11 @@ func (s GetRepoBuildRecordStatusResponseBody) String() string {
 
 func (s GetRepoBuildRecordStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetRepoBuildRecordStatusResponseBody) SetCode(v string) *GetRepoBuildRecordStatusResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetRepoBuildRecordStatusResponseBody) SetIsSuccess(v bool) *GetRepoBuildRecordStatusResponseBody {
@@ -3346,11 +3848,6 @@ func (s *GetRepoBuildRecordStatusResponseBody) SetRequestId(v string) *GetRepoBu
 
 func (s *GetRepoBuildRecordStatusResponseBody) SetBuildStatus(v string) *GetRepoBuildRecordStatusResponseBody {
 	s.BuildStatus = &v
-	return s
-}
-
-func (s *GetRepoBuildRecordStatusResponseBody) SetCode(v string) *GetRepoBuildRecordStatusResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3413,20 +3910,20 @@ func (s *GetRepositoryRequest) SetRepoName(v string) *GetRepositoryRequest {
 }
 
 type GetRepositoryResponseBody struct {
-	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
-	RepoBuildType     *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
+	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	RepoBuildType     *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
 	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 }
 
@@ -3438,23 +3935,8 @@ func (s GetRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepositoryResponseBody) SetIsSuccess(v bool) *GetRepositoryResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *GetRepositoryResponseBody) SetRepoNamespaceName(v string) *GetRepositoryResponseBody {
-	s.RepoNamespaceName = &v
-	return s
-}
-
-func (s *GetRepositoryResponseBody) SetRequestId(v string) *GetRepositoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetRepositoryResponseBody) SetInstanceId(v string) *GetRepositoryResponseBody {
-	s.InstanceId = &v
+func (s *GetRepositoryResponseBody) SetSummary(v string) *GetRepositoryResponseBody {
+	s.Summary = &v
 	return s
 }
 
@@ -3463,23 +3945,13 @@ func (s *GetRepositoryResponseBody) SetCreateTime(v int64) *GetRepositoryRespons
 	return s
 }
 
-func (s *GetRepositoryResponseBody) SetRepoName(v string) *GetRepositoryResponseBody {
-	s.RepoName = &v
+func (s *GetRepositoryResponseBody) SetIsSuccess(v bool) *GetRepositoryResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
-func (s *GetRepositoryResponseBody) SetCode(v string) *GetRepositoryResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRepositoryResponseBody) SetTagImmutability(v bool) *GetRepositoryResponseBody {
-	s.TagImmutability = &v
-	return s
-}
-
-func (s *GetRepositoryResponseBody) SetRepoBuildType(v string) *GetRepositoryResponseBody {
-	s.RepoBuildType = &v
+func (s *GetRepositoryResponseBody) SetInstanceId(v string) *GetRepositoryResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3493,18 +3965,43 @@ func (s *GetRepositoryResponseBody) SetRepoType(v string) *GetRepositoryResponse
 	return s
 }
 
+func (s *GetRepositoryResponseBody) SetRepoBuildType(v string) *GetRepositoryResponseBody {
+	s.RepoBuildType = &v
+	return s
+}
+
 func (s *GetRepositoryResponseBody) SetModifiedTime(v int64) *GetRepositoryResponseBody {
 	s.ModifiedTime = &v
 	return s
 }
 
-func (s *GetRepositoryResponseBody) SetSummary(v string) *GetRepositoryResponseBody {
-	s.Summary = &v
+func (s *GetRepositoryResponseBody) SetRequestId(v string) *GetRepositoryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *GetRepositoryResponseBody) SetRepoId(v string) *GetRepositoryResponseBody {
 	s.RepoId = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetCode(v string) *GetRepositoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetRepoNamespaceName(v string) *GetRepositoryResponseBody {
+	s.RepoNamespaceName = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetTagImmutability(v bool) *GetRepositoryResponseBody {
+	s.TagImmutability = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetRepoName(v string) *GetRepositoryResponseBody {
+	s.RepoName = &v
 	return s
 }
 
@@ -3536,6 +4033,129 @@ func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetReposi
 	return s
 }
 
+type GetRepoSourceCodeRepoRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s GetRepoSourceCodeRepoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoSourceCodeRepoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoSourceCodeRepoRequest) SetInstanceId(v string) *GetRepoSourceCodeRepoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoRequest) SetRepoId(v string) *GetRepoSourceCodeRepoRequest {
+	s.RepoId = &v
+	return s
+}
+
+type GetRepoSourceCodeRepoResponseBody struct {
+	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
+	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	Code                  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	AutoBuild             *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+	CodeRepoDomain        *string `json:"CodeRepoDomain,omitempty" xml:"CodeRepoDomain,omitempty"`
+}
+
+func (s GetRepoSourceCodeRepoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoSourceCodeRepoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetCodeRepoType(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.CodeRepoType = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetRepoId(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.RepoId = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetRequestId(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetCodeRepoNamespaceName(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.CodeRepoNamespaceName = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetOverseaBuild(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.OverseaBuild = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetCode(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetCodeRepoName(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.CodeRepoName = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetAutoBuild(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.AutoBuild = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetIsSuccess(v bool) *GetRepoSourceCodeRepoResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetDisableCacheBuild(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.DisableCacheBuild = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponseBody) SetCodeRepoDomain(v string) *GetRepoSourceCodeRepoResponseBody {
+	s.CodeRepoDomain = &v
+	return s
+}
+
+type GetRepoSourceCodeRepoResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRepoSourceCodeRepoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoSourceCodeRepoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoSourceCodeRepoResponse) SetHeaders(v map[string]*string) *GetRepoSourceCodeRepoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoResponse) SetBody(v *GetRepoSourceCodeRepoResponseBody) *GetRepoSourceCodeRepoResponse {
+	s.Body = v
+	return s
+}
+
 type GetRepoSyncTaskRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
@@ -3560,19 +4180,19 @@ func (s *GetRepoSyncTaskRequest) SetSyncTaskId(v string) *GetRepoSyncTaskRequest
 }
 
 type GetRepoSyncTaskResponseBody struct {
-	IsSuccess       *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	SyncRuleId      *string                                  `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	Progress        *int64                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LayerTasks      []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
+	SyncedSize      *int64                                   `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
 	TaskStatus      *string                                  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	SyncTaskId      *string                                  `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	SyncedSize      *int64                                   `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	SyncRuleId      *string                                  `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	ImageFrom       *GetRepoSyncTaskResponseBodyImageFrom    `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	TaskTrigger     *string                                  `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
-	ImageTo         *GetRepoSyncTaskResponseBodyImageTo      `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 	SyncBatchTaskId *string                                  `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess       *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	TaskTrigger     *string                                  `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
+	ImageFrom       *GetRepoSyncTaskResponseBodyImageFrom    `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	ImageTo         *GetRepoSyncTaskResponseBodyImageTo      `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	LayerTasks      []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
 }
 
 func (s GetRepoSyncTaskResponseBody) String() string {
@@ -3583,8 +4203,8 @@ func (s GetRepoSyncTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepoSyncTaskResponseBody) SetIsSuccess(v bool) *GetRepoSyncTaskResponseBody {
-	s.IsSuccess = &v
+func (s *GetRepoSyncTaskResponseBody) SetSyncRuleId(v string) *GetRepoSyncTaskResponseBody {
+	s.SyncRuleId = &v
 	return s
 }
 
@@ -3598,8 +4218,8 @@ func (s *GetRepoSyncTaskResponseBody) SetRequestId(v string) *GetRepoSyncTaskRes
 	return s
 }
 
-func (s *GetRepoSyncTaskResponseBody) SetLayerTasks(v []*GetRepoSyncTaskResponseBodyLayerTasks) *GetRepoSyncTaskResponseBody {
-	s.LayerTasks = v
+func (s *GetRepoSyncTaskResponseBody) SetSyncedSize(v int64) *GetRepoSyncTaskResponseBody {
+	s.SyncedSize = &v
 	return s
 }
 
@@ -3613,23 +4233,18 @@ func (s *GetRepoSyncTaskResponseBody) SetSyncTaskId(v string) *GetRepoSyncTaskRe
 	return s
 }
 
+func (s *GetRepoSyncTaskResponseBody) SetSyncBatchTaskId(v string) *GetRepoSyncTaskResponseBody {
+	s.SyncBatchTaskId = &v
+	return s
+}
+
 func (s *GetRepoSyncTaskResponseBody) SetCode(v string) *GetRepoSyncTaskResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetRepoSyncTaskResponseBody) SetSyncedSize(v int64) *GetRepoSyncTaskResponseBody {
-	s.SyncedSize = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBody) SetSyncRuleId(v string) *GetRepoSyncTaskResponseBody {
-	s.SyncRuleId = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBody) SetImageFrom(v *GetRepoSyncTaskResponseBodyImageFrom) *GetRepoSyncTaskResponseBody {
-	s.ImageFrom = v
+func (s *GetRepoSyncTaskResponseBody) SetIsSuccess(v bool) *GetRepoSyncTaskResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
@@ -3638,54 +4253,18 @@ func (s *GetRepoSyncTaskResponseBody) SetTaskTrigger(v string) *GetRepoSyncTaskR
 	return s
 }
 
+func (s *GetRepoSyncTaskResponseBody) SetImageFrom(v *GetRepoSyncTaskResponseBodyImageFrom) *GetRepoSyncTaskResponseBody {
+	s.ImageFrom = v
+	return s
+}
+
 func (s *GetRepoSyncTaskResponseBody) SetImageTo(v *GetRepoSyncTaskResponseBodyImageTo) *GetRepoSyncTaskResponseBody {
 	s.ImageTo = v
 	return s
 }
 
-func (s *GetRepoSyncTaskResponseBody) SetSyncBatchTaskId(v string) *GetRepoSyncTaskResponseBody {
-	s.SyncBatchTaskId = &v
-	return s
-}
-
-type GetRepoSyncTaskResponseBodyLayerTasks struct {
-	SyncedSize      *int64  `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	Digest          *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	TaskStatus      *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SyncLayerTaskId *string `json:"SyncLayerTaskId,omitempty" xml:"SyncLayerTaskId,omitempty"`
-}
-
-func (s GetRepoSyncTaskResponseBodyLayerTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoSyncTaskResponseBodyLayerTasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSyncedSize(v int64) *GetRepoSyncTaskResponseBodyLayerTasks {
-	s.SyncedSize = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetDigest(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
-	s.Digest = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetTaskStatus(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSize(v int64) *GetRepoSyncTaskResponseBodyLayerTasks {
-	s.Size = &v
-	return s
-}
-
-func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSyncLayerTaskId(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
-	s.SyncLayerTaskId = &v
+func (s *GetRepoSyncTaskResponseBody) SetLayerTasks(v []*GetRepoSyncTaskResponseBodyLayerTasks) *GetRepoSyncTaskResponseBody {
+	s.LayerTasks = v
 	return s
 }
 
@@ -3771,6 +4350,53 @@ func (s *GetRepoSyncTaskResponseBodyImageTo) SetRegionId(v string) *GetRepoSyncT
 	return s
 }
 
+type GetRepoSyncTaskResponseBodyLayerTasks struct {
+	TaskStatus      *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Digest          *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	SyncedSize      *int64  `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SyncLayerTaskId *string `json:"SyncLayerTaskId,omitempty" xml:"SyncLayerTaskId,omitempty"`
+	ArtifactDigest  *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
+}
+
+func (s GetRepoSyncTaskResponseBodyLayerTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoSyncTaskResponseBodyLayerTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetTaskStatus(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetDigest(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.Digest = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSyncedSize(v int64) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.SyncedSize = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSize(v int64) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.Size = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetSyncLayerTaskId(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.SyncLayerTaskId = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetArtifactDigest(v string) *GetRepoSyncTaskResponseBodyLayerTasks {
+	s.ArtifactDigest = &v
+	return s
+}
+
 type GetRepoSyncTaskResponse struct {
 	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3798,6 +4424,7 @@ type GetRepoTagLayersRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 }
 
 func (s GetRepoTagLayersRequest) String() string {
@@ -3823,10 +4450,15 @@ func (s *GetRepoTagLayersRequest) SetTag(v string) *GetRepoTagLayersRequest {
 	return s
 }
 
+func (s *GetRepoTagLayersRequest) SetDigest(v string) *GetRepoTagLayersRequest {
+	s.Digest = &v
+	return s
+}
+
 type GetRepoTagLayersResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool                                 `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Layers    []*GetRepoTagLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 }
 
@@ -3838,6 +4470,11 @@ func (s GetRepoTagLayersResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetRepoTagLayersResponseBody) SetCode(v string) *GetRepoTagLayersResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *GetRepoTagLayersResponseBody) SetIsSuccess(v bool) *GetRepoTagLayersResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -3845,11 +4482,6 @@ func (s *GetRepoTagLayersResponseBody) SetIsSuccess(v bool) *GetRepoTagLayersRes
 
 func (s *GetRepoTagLayersResponseBody) SetRequestId(v string) *GetRepoTagLayersResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBody) SetCode(v string) *GetRepoTagLayersResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3958,10 +4590,10 @@ func (s *GetRepoTagManifestRequest) SetRepoId(v string) *GetRepoTagManifestReque
 }
 
 type GetRepoTagManifestResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool                                   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Manifest  *GetRepoTagManifestResponseBodyManifest `json:"Manifest,omitempty" xml:"Manifest,omitempty" type:"Struct"`
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBody) String() string {
@@ -3970,6 +4602,11 @@ func (s GetRepoTagManifestResponseBody) String() string {
 
 func (s GetRepoTagManifestResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetRepoTagManifestResponseBody) SetCode(v string) *GetRepoTagManifestResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *GetRepoTagManifestResponseBody) SetIsSuccess(v bool) *GetRepoTagManifestResponseBody {
@@ -3987,22 +4624,17 @@ func (s *GetRepoTagManifestResponseBody) SetManifest(v *GetRepoTagManifestRespon
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBody) SetCode(v string) *GetRepoTagManifestResponseBody {
-	s.Code = &v
-	return s
-}
-
 type GetRepoTagManifestResponseBodyManifest struct {
-	History       []*GetRepoTagManifestResponseBodyManifestHistory    `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
-	SchemaVersion *int32                                              `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	Layers        []*GetRepoTagManifestResponseBodyManifestLayers     `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	Tag           *string                                             `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Name          *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	MediaType     *string                                             `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	FsLayers      []*GetRepoTagManifestResponseBodyManifestFsLayers   `json:"FsLayers,omitempty" xml:"FsLayers,omitempty" type:"Repeated"`
-	Signatures    []*GetRepoTagManifestResponseBodyManifestSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	Config        *GetRepoTagManifestResponseBodyManifestConfig       `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	SchemaVersion *int32                                              `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
 	Architecture  *string                                             `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	FsLayers      []*GetRepoTagManifestResponseBodyManifestFsLayers   `json:"FsLayers,omitempty" xml:"FsLayers,omitempty" type:"Repeated"`
+	History       []*GetRepoTagManifestResponseBodyManifestHistory    `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
+	Signatures    []*GetRepoTagManifestResponseBodyManifestSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
+	Layers        []*GetRepoTagManifestResponseBodyManifestLayers     `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
+	Config        *GetRepoTagManifestResponseBodyManifestConfig       `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifest) String() string {
@@ -4011,21 +4643,6 @@ func (s GetRepoTagManifestResponseBodyManifest) String() string {
 
 func (s GetRepoTagManifestResponseBodyManifest) GoString() string {
 	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetHistory(v []*GetRepoTagManifestResponseBodyManifestHistory) *GetRepoTagManifestResponseBodyManifest {
-	s.History = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetSchemaVersion(v int32) *GetRepoTagManifestResponseBodyManifest {
-	s.SchemaVersion = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetLayers(v []*GetRepoTagManifestResponseBodyManifestLayers) *GetRepoTagManifestResponseBodyManifest {
-	s.Layers = v
-	return s
 }
 
 func (s *GetRepoTagManifestResponseBodyManifest) SetTag(v string) *GetRepoTagManifestResponseBodyManifest {
@@ -4043,18 +4660,8 @@ func (s *GetRepoTagManifestResponseBodyManifest) SetMediaType(v string) *GetRepo
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifest) SetFsLayers(v []*GetRepoTagManifestResponseBodyManifestFsLayers) *GetRepoTagManifestResponseBodyManifest {
-	s.FsLayers = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetSignatures(v []*GetRepoTagManifestResponseBodyManifestSignatures) *GetRepoTagManifestResponseBodyManifest {
-	s.Signatures = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetConfig(v *GetRepoTagManifestResponseBodyManifestConfig) *GetRepoTagManifestResponseBodyManifest {
-	s.Config = v
+func (s *GetRepoTagManifestResponseBodyManifest) SetSchemaVersion(v int32) *GetRepoTagManifestResponseBodyManifest {
+	s.SchemaVersion = &v
 	return s
 }
 
@@ -4063,49 +4670,28 @@ func (s *GetRepoTagManifestResponseBodyManifest) SetArchitecture(v string) *GetR
 	return s
 }
 
-type GetRepoTagManifestResponseBodyManifestHistory struct {
-	V1Compatibility map[string]interface{} `json:"V1Compatibility,omitempty" xml:"V1Compatibility,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestHistory) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestHistory) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestHistory) SetV1Compatibility(v map[string]interface{}) *GetRepoTagManifestResponseBodyManifestHistory {
-	s.V1Compatibility = v
+func (s *GetRepoTagManifestResponseBodyManifest) SetFsLayers(v []*GetRepoTagManifestResponseBodyManifestFsLayers) *GetRepoTagManifestResponseBodyManifest {
+	s.FsLayers = v
 	return s
 }
 
-type GetRepoTagManifestResponseBodyManifestLayers struct {
-	Digest    *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestLayers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestLayers) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetDigest(v string) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.Digest = &v
+func (s *GetRepoTagManifestResponseBodyManifest) SetHistory(v []*GetRepoTagManifestResponseBodyManifestHistory) *GetRepoTagManifestResponseBodyManifest {
+	s.History = v
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.Size = &v
+func (s *GetRepoTagManifestResponseBodyManifest) SetSignatures(v []*GetRepoTagManifestResponseBodyManifestSignatures) *GetRepoTagManifestResponseBodyManifest {
+	s.Signatures = v
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.MediaType = &v
+func (s *GetRepoTagManifestResponseBodyManifest) SetLayers(v []*GetRepoTagManifestResponseBodyManifestLayers) *GetRepoTagManifestResponseBodyManifest {
+	s.Layers = v
+	return s
+}
+
+func (s *GetRepoTagManifestResponseBodyManifest) SetConfig(v *GetRepoTagManifestResponseBodyManifestConfig) *GetRepoTagManifestResponseBodyManifest {
+	s.Config = v
 	return s
 }
 
@@ -4126,10 +4712,27 @@ func (s *GetRepoTagManifestResponseBodyManifestFsLayers) SetBlobSum(v string) *G
 	return s
 }
 
+type GetRepoTagManifestResponseBodyManifestHistory struct {
+	V1Compatibility map[string]interface{} `json:"V1Compatibility,omitempty" xml:"V1Compatibility,omitempty"`
+}
+
+func (s GetRepoTagManifestResponseBodyManifestHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagManifestResponseBodyManifestHistory) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagManifestResponseBodyManifestHistory) SetV1Compatibility(v map[string]interface{}) *GetRepoTagManifestResponseBodyManifestHistory {
+	s.V1Compatibility = v
+	return s
+}
+
 type GetRepoTagManifestResponseBodyManifestSignatures struct {
 	Signature *string                `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	Protected *string                `json:"Protected,omitempty" xml:"Protected,omitempty"`
 	Header    map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	Protected *string                `json:"Protected,omitempty" xml:"Protected,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifestSignatures) String() string {
@@ -4145,20 +4748,49 @@ func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetSignature(v string
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetProtected(v string) *GetRepoTagManifestResponseBodyManifestSignatures {
-	s.Protected = &v
-	return s
-}
-
 func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetHeader(v map[string]interface{}) *GetRepoTagManifestResponseBodyManifestSignatures {
 	s.Header = v
 	return s
 }
 
+func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetProtected(v string) *GetRepoTagManifestResponseBodyManifestSignatures {
+	s.Protected = &v
+	return s
+}
+
+type GetRepoTagManifestResponseBodyManifestLayers struct {
+	Digest    *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s GetRepoTagManifestResponseBodyManifestLayers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagManifestResponseBodyManifestLayers) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagManifestResponseBodyManifestLayers) SetDigest(v string) *GetRepoTagManifestResponseBodyManifestLayers {
+	s.Digest = &v
+	return s
+}
+
+func (s *GetRepoTagManifestResponseBodyManifestLayers) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestLayers {
+	s.MediaType = &v
+	return s
+}
+
+func (s *GetRepoTagManifestResponseBodyManifestLayers) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestLayers {
+	s.Size = &v
+	return s
+}
+
 type GetRepoTagManifestResponseBodyManifestConfig struct {
 	Digest    *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s GetRepoTagManifestResponseBodyManifestConfig) String() string {
@@ -4174,13 +4806,13 @@ func (s *GetRepoTagManifestResponseBodyManifestConfig) SetDigest(v string) *GetR
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifestConfig) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestConfig {
-	s.Size = &v
+func (s *GetRepoTagManifestResponseBodyManifestConfig) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestConfig {
+	s.MediaType = &v
 	return s
 }
 
-func (s *GetRepoTagManifestResponseBodyManifestConfig) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestConfig {
-	s.MediaType = &v
+func (s *GetRepoTagManifestResponseBodyManifestConfig) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestConfig {
+	s.Size = &v
 	return s
 }
 
@@ -4212,6 +4844,7 @@ type GetRepoTagScanStatusRequest struct {
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 }
 
 func (s GetRepoTagScanStatusRequest) String() string {
@@ -4242,11 +4875,17 @@ func (s *GetRepoTagScanStatusRequest) SetScanTaskId(v string) *GetRepoTagScanSta
 	return s
 }
 
+func (s *GetRepoTagScanStatusRequest) SetDigest(v string) *GetRepoTagScanStatusRequest {
+	s.Digest = &v
+	return s
+}
+
 type GetRepoTagScanStatusResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 }
 
 func (s GetRepoTagScanStatusResponseBody) String() string {
@@ -4262,6 +4901,11 @@ func (s *GetRepoTagScanStatusResponseBody) SetStatus(v string) *GetRepoTagScanSt
 	return s
 }
 
+func (s *GetRepoTagScanStatusResponseBody) SetCode(v string) *GetRepoTagScanStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *GetRepoTagScanStatusResponseBody) SetIsSuccess(v bool) *GetRepoTagScanStatusResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -4272,8 +4916,8 @@ func (s *GetRepoTagScanStatusResponseBody) SetRequestId(v string) *GetRepoTagSca
 	return s
 }
 
-func (s *GetRepoTagScanStatusResponseBody) SetCode(v string) *GetRepoTagScanStatusResponseBody {
-	s.Code = &v
+func (s *GetRepoTagScanStatusResponseBody) SetScanService(v string) *GetRepoTagScanStatusResponseBody {
+	s.ScanService = &v
 	return s
 }
 
@@ -4305,6 +4949,7 @@ type GetRepoTagScanSummaryRequest struct {
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 }
 
 func (s GetRepoTagScanSummaryRequest) String() string {
@@ -4335,15 +4980,20 @@ func (s *GetRepoTagScanSummaryRequest) SetScanTaskId(v string) *GetRepoTagScanSu
 	return s
 }
 
+func (s *GetRepoTagScanSummaryRequest) SetDigest(v string) *GetRepoTagScanSummaryRequest {
+	s.Digest = &v
+	return s
+}
+
 type GetRepoTagScanSummaryResponseBody struct {
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LowSeverity     *int32  `json:"LowSeverity,omitempty" xml:"LowSeverity,omitempty"`
-	MediumSeverity  *int32  `json:"MediumSeverity,omitempty" xml:"MediumSeverity,omitempty"`
-	HighSeverity    *int32  `json:"HighSeverity,omitempty" xml:"HighSeverity,omitempty"`
 	UnknownSeverity *int32  `json:"UnknownSeverity,omitempty" xml:"UnknownSeverity,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalSeverity   *int32  `json:"TotalSeverity,omitempty" xml:"TotalSeverity,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediumSeverity  *int32  `json:"MediumSeverity,omitempty" xml:"MediumSeverity,omitempty"`
+	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	HighSeverity    *int32  `json:"HighSeverity,omitempty" xml:"HighSeverity,omitempty"`
+	LowSeverity     *int32  `json:"LowSeverity,omitempty" xml:"LowSeverity,omitempty"`
 }
 
 func (s GetRepoTagScanSummaryResponseBody) String() string {
@@ -4354,8 +5004,8 @@ func (s GetRepoTagScanSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepoTagScanSummaryResponseBody) SetIsSuccess(v bool) *GetRepoTagScanSummaryResponseBody {
-	s.IsSuccess = &v
+func (s *GetRepoTagScanSummaryResponseBody) SetUnknownSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
+	s.UnknownSeverity = &v
 	return s
 }
 
@@ -4364,23 +5014,8 @@ func (s *GetRepoTagScanSummaryResponseBody) SetRequestId(v string) *GetRepoTagSc
 	return s
 }
 
-func (s *GetRepoTagScanSummaryResponseBody) SetLowSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
-	s.LowSeverity = &v
-	return s
-}
-
-func (s *GetRepoTagScanSummaryResponseBody) SetMediumSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
-	s.MediumSeverity = &v
-	return s
-}
-
-func (s *GetRepoTagScanSummaryResponseBody) SetHighSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
-	s.HighSeverity = &v
-	return s
-}
-
-func (s *GetRepoTagScanSummaryResponseBody) SetUnknownSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
-	s.UnknownSeverity = &v
+func (s *GetRepoTagScanSummaryResponseBody) SetTotalSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
+	s.TotalSeverity = &v
 	return s
 }
 
@@ -4389,8 +5024,23 @@ func (s *GetRepoTagScanSummaryResponseBody) SetCode(v string) *GetRepoTagScanSum
 	return s
 }
 
-func (s *GetRepoTagScanSummaryResponseBody) SetTotalSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
-	s.TotalSeverity = &v
+func (s *GetRepoTagScanSummaryResponseBody) SetMediumSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
+	s.MediumSeverity = &v
+	return s
+}
+
+func (s *GetRepoTagScanSummaryResponseBody) SetIsSuccess(v bool) *GetRepoTagScanSummaryResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetRepoTagScanSummaryResponseBody) SetHighSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
+	s.HighSeverity = &v
+	return s
+}
+
+func (s *GetRepoTagScanSummaryResponseBody) SetLowSeverity(v int32) *GetRepoTagScanSummaryResponseBody {
+	s.LowSeverity = &v
 	return s
 }
 
@@ -4413,6 +5063,128 @@ func (s *GetRepoTagScanSummaryResponse) SetHeaders(v map[string]*string) *GetRep
 }
 
 func (s *GetRepoTagScanSummaryResponse) SetBody(v *GetRepoTagScanSummaryResponseBody) *GetRepoTagScanSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type ListArtifactBuildTaskLogRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
+	Page        *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListArtifactBuildTaskLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactBuildTaskLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactBuildTaskLogRequest) SetInstanceId(v string) *ListArtifactBuildTaskLogRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogRequest) SetBuildTaskId(v string) *ListArtifactBuildTaskLogRequest {
+	s.BuildTaskId = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogRequest) SetPage(v int32) *ListArtifactBuildTaskLogRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogRequest) SetPageSize(v int32) *ListArtifactBuildTaskLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListArtifactBuildTaskLogResponseBody struct {
+	Code          *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess     *bool                                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BuildTaskLogs []*ListArtifactBuildTaskLogResponseBodyBuildTaskLogs `json:"BuildTaskLogs,omitempty" xml:"BuildTaskLogs,omitempty" type:"Repeated"`
+}
+
+func (s ListArtifactBuildTaskLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactBuildTaskLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactBuildTaskLogResponseBody) SetCode(v string) *ListArtifactBuildTaskLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponseBody) SetIsSuccess(v bool) *ListArtifactBuildTaskLogResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponseBody) SetRequestId(v string) *ListArtifactBuildTaskLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponseBody) SetTotalCount(v int32) *ListArtifactBuildTaskLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponseBody) SetBuildTaskLogs(v []*ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) *ListArtifactBuildTaskLogResponseBody {
+	s.BuildTaskLogs = v
+	return s
+}
+
+type ListArtifactBuildTaskLogResponseBodyBuildTaskLogs struct {
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	LineNumber *int32  `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
+}
+
+func (s ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) SetMessage(v string) *ListArtifactBuildTaskLogResponseBodyBuildTaskLogs {
+	s.Message = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) SetLineNumber(v int32) *ListArtifactBuildTaskLogResponseBodyBuildTaskLogs {
+	s.LineNumber = &v
+	return s
+}
+
+type ListArtifactBuildTaskLogResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListArtifactBuildTaskLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListArtifactBuildTaskLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactBuildTaskLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactBuildTaskLogResponse) SetHeaders(v map[string]*string) *ListArtifactBuildTaskLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogResponse) SetBody(v *ListArtifactBuildTaskLogResponseBody) *ListArtifactBuildTaskLogResponse {
 	s.Body = v
 	return s
 }
@@ -4459,13 +5231,13 @@ func (s *ListChartNamespaceRequest) SetPageSize(v int32) *ListChartNamespaceRequ
 }
 
 type ListChartNamespaceResponseBody struct {
-	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Namespaces []*ListChartNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	TotalCount *string                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo     *int32                                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Namespaces []*ListChartNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 }
 
 func (s ListChartNamespaceResponseBody) String() string {
@@ -4476,28 +5248,13 @@ func (s ListChartNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListChartNamespaceResponseBody) SetIsSuccess(v bool) *ListChartNamespaceResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListChartNamespaceResponseBody) SetNamespaces(v []*ListChartNamespaceResponseBodyNamespaces) *ListChartNamespaceResponseBody {
-	s.Namespaces = v
-	return s
-}
-
-func (s *ListChartNamespaceResponseBody) SetTotalCount(v string) *ListChartNamespaceResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListChartNamespaceResponseBody) SetRequestId(v string) *ListChartNamespaceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListChartNamespaceResponseBody) SetPageSize(v int32) *ListChartNamespaceResponseBody {
-	s.PageSize = &v
+func (s *ListChartNamespaceResponseBody) SetCode(v string) *ListChartNamespaceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4506,8 +5263,23 @@ func (s *ListChartNamespaceResponseBody) SetPageNo(v int32) *ListChartNamespaceR
 	return s
 }
 
-func (s *ListChartNamespaceResponseBody) SetCode(v string) *ListChartNamespaceResponseBody {
-	s.Code = &v
+func (s *ListChartNamespaceResponseBody) SetIsSuccess(v bool) *ListChartNamespaceResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListChartNamespaceResponseBody) SetPageSize(v int32) *ListChartNamespaceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartNamespaceResponseBody) SetTotalCount(v string) *ListChartNamespaceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListChartNamespaceResponseBody) SetNamespaces(v []*ListChartNamespaceResponseBodyNamespaces) *ListChartNamespaceResponseBody {
+	s.Namespaces = v
 	return s
 }
 
@@ -4629,13 +5401,13 @@ func (s *ListChartReleaseRequest) SetChart(v string) *ListChartReleaseRequest {
 }
 
 type ListChartReleaseResponseBody struct {
-	IsSuccess     *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount    *string                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize      *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ChartReleases []*ListChartReleaseResponseBodyChartReleases `json:"ChartReleases,omitempty" xml:"ChartReleases,omitempty" type:"Repeated"`
-	PageNo        *int32                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code          *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo        *int32                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess     *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize      *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *string                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ChartReleases []*ListChartReleaseResponseBodyChartReleases `json:"ChartReleases,omitempty" xml:"ChartReleases,omitempty" type:"Repeated"`
 }
 
 func (s ListChartReleaseResponseBody) String() string {
@@ -4646,28 +5418,13 @@ func (s ListChartReleaseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListChartReleaseResponseBody) SetIsSuccess(v bool) *ListChartReleaseResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListChartReleaseResponseBody) SetTotalCount(v string) *ListChartReleaseResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListChartReleaseResponseBody) SetRequestId(v string) *ListChartReleaseResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListChartReleaseResponseBody) SetPageSize(v int32) *ListChartReleaseResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListChartReleaseResponseBody) SetChartReleases(v []*ListChartReleaseResponseBodyChartReleases) *ListChartReleaseResponseBody {
-	s.ChartReleases = v
+func (s *ListChartReleaseResponseBody) SetCode(v string) *ListChartReleaseResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4676,8 +5433,23 @@ func (s *ListChartReleaseResponseBody) SetPageNo(v int32) *ListChartReleaseRespo
 	return s
 }
 
-func (s *ListChartReleaseResponseBody) SetCode(v string) *ListChartReleaseResponseBody {
-	s.Code = &v
+func (s *ListChartReleaseResponseBody) SetIsSuccess(v bool) *ListChartReleaseResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListChartReleaseResponseBody) SetPageSize(v int32) *ListChartReleaseResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartReleaseResponseBody) SetTotalCount(v string) *ListChartReleaseResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListChartReleaseResponseBody) SetChartReleases(v []*ListChartReleaseResponseBodyChartReleases) *ListChartReleaseResponseBody {
+	s.ChartReleases = v
 	return s
 }
 
@@ -4805,13 +5577,13 @@ func (s *ListChartRepositoryRequest) SetPageSize(v int32) *ListChartRepositoryRe
 }
 
 type ListChartRepositoryResponseBody struct {
-	Repositories []*ListChartRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Repositories []*ListChartRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 }
 
 func (s ListChartRepositoryResponseBody) String() string {
@@ -4822,28 +5594,13 @@ func (s ListChartRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListChartRepositoryResponseBody) SetRepositories(v []*ListChartRepositoryResponseBodyRepositories) *ListChartRepositoryResponseBody {
-	s.Repositories = v
-	return s
-}
-
-func (s *ListChartRepositoryResponseBody) SetIsSuccess(v bool) *ListChartRepositoryResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListChartRepositoryResponseBody) SetTotalCount(v string) *ListChartRepositoryResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListChartRepositoryResponseBody) SetRequestId(v string) *ListChartRepositoryResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListChartRepositoryResponseBody) SetPageSize(v int32) *ListChartRepositoryResponseBody {
-	s.PageSize = &v
+func (s *ListChartRepositoryResponseBody) SetCode(v string) *ListChartRepositoryResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -4852,8 +5609,23 @@ func (s *ListChartRepositoryResponseBody) SetPageNo(v int32) *ListChartRepositor
 	return s
 }
 
-func (s *ListChartRepositoryResponseBody) SetCode(v string) *ListChartRepositoryResponseBody {
-	s.Code = &v
+func (s *ListChartRepositoryResponseBody) SetIsSuccess(v bool) *ListChartRepositoryResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListChartRepositoryResponseBody) SetPageSize(v int32) *ListChartRepositoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartRepositoryResponseBody) SetTotalCount(v string) *ListChartRepositoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListChartRepositoryResponseBody) SetRepositories(v []*ListChartRepositoryResponseBodyRepositories) *ListChartRepositoryResponseBody {
+	s.Repositories = v
 	return s
 }
 
@@ -4981,13 +5753,13 @@ func (s *ListInstanceRequest) SetPageSize(v int32) *ListInstanceRequest {
 }
 
 type ListInstanceResponseBody struct {
-	Instances  []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	IsSuccess  *bool                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo     *int32                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances  []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceResponseBody) String() string {
@@ -4998,28 +5770,13 @@ func (s ListInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceResponseBody) SetInstances(v []*ListInstanceResponseBodyInstances) *ListInstanceResponseBody {
-	s.Instances = v
-	return s
-}
-
-func (s *ListInstanceResponseBody) SetIsSuccess(v bool) *ListInstanceResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListInstanceResponseBody) SetTotalCount(v int32) *ListInstanceResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListInstanceResponseBody) SetRequestId(v string) *ListInstanceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListInstanceResponseBody) SetPageSize(v int32) *ListInstanceResponseBody {
-	s.PageSize = &v
+func (s *ListInstanceResponseBody) SetCode(v string) *ListInstanceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5028,8 +5785,23 @@ func (s *ListInstanceResponseBody) SetPageNo(v int32) *ListInstanceResponseBody 
 	return s
 }
 
-func (s *ListInstanceResponseBody) SetCode(v string) *ListInstanceResponseBody {
-	s.Code = &v
+func (s *ListInstanceResponseBody) SetIsSuccess(v bool) *ListInstanceResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListInstanceResponseBody) SetPageSize(v int32) *ListInstanceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceResponseBody) SetTotalCount(v int32) *ListInstanceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListInstanceResponseBody) SetInstances(v []*ListInstanceResponseBodyInstances) *ListInstanceResponseBody {
+	s.Instances = v
 	return s
 }
 
@@ -5133,10 +5905,10 @@ func (s *ListInstanceEndpointRequest) SetModuleName(v string) *ListInstanceEndpo
 }
 
 type ListInstanceEndpointResponseBody struct {
-	Endpoints []*ListInstanceEndpointResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Endpoints []*ListInstanceEndpointResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceEndpointResponseBody) String() string {
@@ -5147,8 +5919,8 @@ func (s ListInstanceEndpointResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceEndpointResponseBody) SetEndpoints(v []*ListInstanceEndpointResponseBodyEndpoints) *ListInstanceEndpointResponseBody {
-	s.Endpoints = v
+func (s *ListInstanceEndpointResponseBody) SetCode(v string) *ListInstanceEndpointResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5162,19 +5934,19 @@ func (s *ListInstanceEndpointResponseBody) SetRequestId(v string) *ListInstanceE
 	return s
 }
 
-func (s *ListInstanceEndpointResponseBody) SetCode(v string) *ListInstanceEndpointResponseBody {
-	s.Code = &v
+func (s *ListInstanceEndpointResponseBody) SetEndpoints(v []*ListInstanceEndpointResponseBodyEndpoints) *ListInstanceEndpointResponseBody {
+	s.Endpoints = v
 	return s
 }
 
 type ListInstanceEndpointResponseBodyEndpoints struct {
 	Status       *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Domains      []*ListInstanceEndpointResponseBodyEndpointsDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	EndpointType *string                                                `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	LinkedVpcs   []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
 	AclEnable    *bool                                                  `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
-	AclEntries   []*ListInstanceEndpointResponseBodyEndpointsAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	Enable       *bool                                                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Domains      []*ListInstanceEndpointResponseBodyEndpointsDomains    `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	LinkedVpcs   []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
+	AclEntries   []*ListInstanceEndpointResponseBodyEndpointsAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceEndpointResponseBodyEndpoints) String() string {
@@ -5190,18 +5962,8 @@ func (s *ListInstanceEndpointResponseBodyEndpoints) SetStatus(v string) *ListIns
 	return s
 }
 
-func (s *ListInstanceEndpointResponseBodyEndpoints) SetDomains(v []*ListInstanceEndpointResponseBodyEndpointsDomains) *ListInstanceEndpointResponseBodyEndpoints {
-	s.Domains = v
-	return s
-}
-
 func (s *ListInstanceEndpointResponseBodyEndpoints) SetEndpointType(v string) *ListInstanceEndpointResponseBodyEndpoints {
 	s.EndpointType = &v
-	return s
-}
-
-func (s *ListInstanceEndpointResponseBodyEndpoints) SetLinkedVpcs(v []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs) *ListInstanceEndpointResponseBodyEndpoints {
-	s.LinkedVpcs = v
 	return s
 }
 
@@ -5210,13 +5972,23 @@ func (s *ListInstanceEndpointResponseBodyEndpoints) SetAclEnable(v bool) *ListIn
 	return s
 }
 
-func (s *ListInstanceEndpointResponseBodyEndpoints) SetAclEntries(v []*ListInstanceEndpointResponseBodyEndpointsAclEntries) *ListInstanceEndpointResponseBodyEndpoints {
-	s.AclEntries = v
+func (s *ListInstanceEndpointResponseBodyEndpoints) SetEnable(v bool) *ListInstanceEndpointResponseBodyEndpoints {
+	s.Enable = &v
 	return s
 }
 
-func (s *ListInstanceEndpointResponseBodyEndpoints) SetEnable(v bool) *ListInstanceEndpointResponseBodyEndpoints {
-	s.Enable = &v
+func (s *ListInstanceEndpointResponseBodyEndpoints) SetDomains(v []*ListInstanceEndpointResponseBodyEndpointsDomains) *ListInstanceEndpointResponseBodyEndpoints {
+	s.Domains = v
+	return s
+}
+
+func (s *ListInstanceEndpointResponseBodyEndpoints) SetLinkedVpcs(v []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs) *ListInstanceEndpointResponseBodyEndpoints {
+	s.LinkedVpcs = v
+	return s
+}
+
+func (s *ListInstanceEndpointResponseBodyEndpoints) SetAclEntries(v []*ListInstanceEndpointResponseBodyEndpointsAclEntries) *ListInstanceEndpointResponseBodyEndpoints {
+	s.AclEntries = v
 	return s
 }
 
@@ -5318,10 +6090,10 @@ func (s *ListInstanceRegionRequest) SetLang(v string) *ListInstanceRegionRequest
 }
 
 type ListInstanceRegionResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   []*ListInstanceRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ListInstanceRegionResponseBody) String() string {
@@ -5330,6 +6102,11 @@ func (s ListInstanceRegionResponseBody) String() string {
 
 func (s ListInstanceRegionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceRegionResponseBody) SetCode(v string) *ListInstanceRegionResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListInstanceRegionResponseBody) SetIsSuccess(v bool) *ListInstanceRegionResponseBody {
@@ -5344,11 +6121,6 @@ func (s *ListInstanceRegionResponseBody) SetRequestId(v string) *ListInstanceReg
 
 func (s *ListInstanceRegionResponseBody) SetRegions(v []*ListInstanceRegionResponseBodyRegions) *ListInstanceRegionResponseBody {
 	s.Regions = v
-	return s
-}
-
-func (s *ListInstanceRegionResponseBody) SetCode(v string) *ListInstanceRegionResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -5440,13 +6212,13 @@ func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 }
 
 type ListNamespaceResponseBody struct {
-	IsSuccess  *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Namespaces []*ListNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	TotalCount *string                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Namespaces []*ListNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 }
 
 func (s ListNamespaceResponseBody) String() string {
@@ -5457,28 +6229,13 @@ func (s ListNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNamespaceResponseBody) SetIsSuccess(v bool) *ListNamespaceResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListNamespaceResponseBody) SetNamespaces(v []*ListNamespaceResponseBodyNamespaces) *ListNamespaceResponseBody {
-	s.Namespaces = v
-	return s
-}
-
-func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListNamespaceResponseBody) SetRequestId(v string) *ListNamespaceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListNamespaceResponseBody) SetPageSize(v int32) *ListNamespaceResponseBody {
-	s.PageSize = &v
+func (s *ListNamespaceResponseBody) SetCode(v string) *ListNamespaceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5487,8 +6244,23 @@ func (s *ListNamespaceResponseBody) SetPageNo(v int32) *ListNamespaceResponseBod
 	return s
 }
 
-func (s *ListNamespaceResponseBody) SetCode(v string) *ListNamespaceResponseBody {
-	s.Code = &v
+func (s *ListNamespaceResponseBody) SetIsSuccess(v bool) *ListNamespaceResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBody) SetPageSize(v int32) *ListNamespaceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBody) SetNamespaces(v []*ListNamespaceResponseBodyNamespaces) *ListNamespaceResponseBody {
+	s.Namespaces = v
 	return s
 }
 
@@ -5598,13 +6370,13 @@ func (s *ListRepoBuildRecordRequest) SetPageSize(v int32) *ListRepoBuildRecordRe
 }
 
 type ListRepoBuildRecordResponseBody struct {
-	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
-	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code         *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo       *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess    *bool                                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize     *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount   *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoBuildRecordResponseBody) String() string {
@@ -5615,33 +6387,8 @@ func (s ListRepoBuildRecordResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBody) SetBuildRecords(v []*ListRepoBuildRecordResponseBodyBuildRecords) *ListRepoBuildRecordResponseBody {
-	s.BuildRecords = v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuildRecordResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoBuildRecordResponseBody) SetRequestId(v string) *ListRepoBuildRecordResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBody) SetPageSize(v int32) *ListRepoBuildRecordResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordResponseBody) SetPageNo(v int32) *ListRepoBuildRecordResponseBody {
-	s.PageNo = &v
 	return s
 }
 
@@ -5650,12 +6397,37 @@ func (s *ListRepoBuildRecordResponseBody) SetCode(v string) *ListRepoBuildRecord
 	return s
 }
 
+func (s *ListRepoBuildRecordResponseBody) SetPageNo(v int32) *ListRepoBuildRecordResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetPageSize(v int32) *ListRepoBuildRecordResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuildRecordResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBody) SetBuildRecords(v []*ListRepoBuildRecordResponseBodyBuildRecords) *ListRepoBuildRecordResponseBody {
+	s.BuildRecords = v
+	return s
+}
+
 type ListRepoBuildRecordResponseBodyBuildRecords struct {
 	EndTime       *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime     *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Image         *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
 	BuildStatus   *string                                           `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
 	BuildRecordId *string                                           `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	Image         *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
 }
 
 func (s ListRepoBuildRecordResponseBodyBuildRecords) String() string {
@@ -5676,11 +6448,6 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetStartTime(v string) *Li
 	return s
 }
 
-func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetImage(v *ListRepoBuildRecordResponseBodyBuildRecordsImage) *ListRepoBuildRecordResponseBodyBuildRecords {
-	s.Image = v
-	return s
-}
-
 func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildStatus(v string) *ListRepoBuildRecordResponseBodyBuildRecords {
 	s.BuildStatus = &v
 	return s
@@ -5691,10 +6458,15 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetBuildRecordId(v string)
 	return s
 }
 
+func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetImage(v *ListRepoBuildRecordResponseBodyBuildRecordsImage) *ListRepoBuildRecordResponseBodyBuildRecords {
+	s.Image = v
+	return s
+}
+
 type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 }
 
@@ -5706,11 +6478,6 @@ func (s ListRepoBuildRecordResponseBodyBuildRecordsImage) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoId(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
-	s.RepoId = &v
-	return s
-}
-
 func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoNamespaceName(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
 	s.RepoNamespaceName = &v
 	return s
@@ -5718,6 +6485,11 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoNamespaceName(
 
 func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetImageTag(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
 	s.ImageTag = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoId(v string) *ListRepoBuildRecordResponseBodyBuildRecordsImage {
+	s.RepoId = &v
 	return s
 }
 
@@ -5785,13 +6557,13 @@ func (s *ListRepoBuildRecordLogRequest) SetOffset(v int32) *ListRepoBuildRecordL
 }
 
 type ListRepoBuildRecordLogResponseBody struct {
-	IsSuccess       *bool                                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	BuildRecordLogs []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs `json:"BuildRecordLogs,omitempty" xml:"BuildRecordLogs,omitempty" type:"Repeated"`
-	TotalCount      *string                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize        *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo          *int32                                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code            *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo          *int32                                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess       *bool                                                `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize        *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *string                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BuildRecordLogs []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs `json:"BuildRecordLogs,omitempty" xml:"BuildRecordLogs,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoBuildRecordLogResponseBody) String() string {
@@ -5802,28 +6574,13 @@ func (s ListRepoBuildRecordLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRecordLogResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordLogResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordLogResponseBody) SetBuildRecordLogs(v []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs) *ListRepoBuildRecordLogResponseBody {
-	s.BuildRecordLogs = v
-	return s
-}
-
-func (s *ListRepoBuildRecordLogResponseBody) SetTotalCount(v string) *ListRepoBuildRecordLogResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoBuildRecordLogResponseBody) SetRequestId(v string) *ListRepoBuildRecordLogResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepoBuildRecordLogResponseBody) SetPageSize(v int32) *ListRepoBuildRecordLogResponseBody {
-	s.PageSize = &v
+func (s *ListRepoBuildRecordLogResponseBody) SetCode(v string) *ListRepoBuildRecordLogResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -5832,8 +6589,23 @@ func (s *ListRepoBuildRecordLogResponseBody) SetPageNo(v int32) *ListRepoBuildRe
 	return s
 }
 
-func (s *ListRepoBuildRecordLogResponseBody) SetCode(v string) *ListRepoBuildRecordLogResponseBody {
-	s.Code = &v
+func (s *ListRepoBuildRecordLogResponseBody) SetIsSuccess(v bool) *ListRepoBuildRecordLogResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordLogResponseBody) SetPageSize(v int32) *ListRepoBuildRecordLogResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordLogResponseBody) SetTotalCount(v string) *ListRepoBuildRecordLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordLogResponseBody) SetBuildRecordLogs(v []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs) *ListRepoBuildRecordLogResponseBody {
+	s.BuildRecordLogs = v
 	return s
 }
 
@@ -5925,13 +6697,13 @@ func (s *ListRepoBuildRuleRequest) SetPageSize(v int32) *ListRepoBuildRuleReques
 }
 
 type ListRepoBuildRuleResponseBody struct {
-	IsSuccess  *bool                                      `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount *string                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BuildRules []*ListRepoBuildRuleResponseBodyBuildRules `json:"BuildRules,omitempty" xml:"BuildRules,omitempty" type:"Repeated"`
-	PageNo     *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                      `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BuildRules []*ListRepoBuildRuleResponseBodyBuildRules `json:"BuildRules,omitempty" xml:"BuildRules,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoBuildRuleResponseBody) String() string {
@@ -5942,33 +6714,8 @@ func (s ListRepoBuildRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoBuildRuleResponseBody) SetIsSuccess(v bool) *ListRepoBuildRuleResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoBuildRuleResponseBody) SetTotalCount(v string) *ListRepoBuildRuleResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoBuildRuleResponseBody) SetRequestId(v string) *ListRepoBuildRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListRepoBuildRuleResponseBody) SetPageSize(v int32) *ListRepoBuildRuleResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoBuildRuleResponseBody) SetBuildRules(v []*ListRepoBuildRuleResponseBodyBuildRules) *ListRepoBuildRuleResponseBody {
-	s.BuildRules = v
-	return s
-}
-
-func (s *ListRepoBuildRuleResponseBody) SetPageNo(v int32) *ListRepoBuildRuleResponseBody {
-	s.PageNo = &v
 	return s
 }
 
@@ -5977,13 +6724,40 @@ func (s *ListRepoBuildRuleResponseBody) SetCode(v string) *ListRepoBuildRuleResp
 	return s
 }
 
+func (s *ListRepoBuildRuleResponseBody) SetPageNo(v int32) *ListRepoBuildRuleResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBody) SetIsSuccess(v bool) *ListRepoBuildRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBody) SetPageSize(v int32) *ListRepoBuildRuleResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBody) SetTotalCount(v string) *ListRepoBuildRuleResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBody) SetBuildRules(v []*ListRepoBuildRuleResponseBodyBuildRules) *ListRepoBuildRuleResponseBody {
+	s.BuildRules = v
+	return s
+}
+
 type ListRepoBuildRuleResponseBodyBuildRules struct {
-	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	BuildRuleId        *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	PushType           *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	PushName           *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	DockerfileName     *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	BuildRuleId        *string   `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoBuildRuleResponseBodyBuildRules) String() string {
@@ -6021,6 +6795,16 @@ func (s *ListRepoBuildRuleResponseBodyBuildRules) SetImageTag(v string) *ListRep
 
 func (s *ListRepoBuildRuleResponseBodyBuildRules) SetDockerfileName(v string) *ListRepoBuildRuleResponseBodyBuildRules {
 	s.DockerfileName = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBodyBuildRules) SetPlatforms(v []*string) *ListRepoBuildRuleResponseBodyBuildRules {
+	s.Platforms = v
+	return s
+}
+
+func (s *ListRepoBuildRuleResponseBodyBuildRules) SetBuildArgs(v []*string) *ListRepoBuildRuleResponseBodyBuildRules {
+	s.BuildArgs = v
 	return s
 }
 
@@ -6095,13 +6879,13 @@ func (s *ListRepositoryRequest) SetPageSize(v int32) *ListRepositoryRequest {
 }
 
 type ListRepositoryResponseBody struct {
-	Repositories []*ListRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	IsSuccess    *bool                                     `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount   *string                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo       *int32                                    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo       *int32                                    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess    *bool                                     `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount   *string                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Repositories []*ListRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 }
 
 func (s ListRepositoryResponseBody) String() string {
@@ -6112,28 +6896,13 @@ func (s ListRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepositoryResponseBody) SetRepositories(v []*ListRepositoryResponseBodyRepositories) *ListRepositoryResponseBody {
-	s.Repositories = v
-	return s
-}
-
-func (s *ListRepositoryResponseBody) SetIsSuccess(v bool) *ListRepositoryResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepositoryResponseBody) SetTotalCount(v string) *ListRepositoryResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepositoryResponseBody) SetRequestId(v string) *ListRepositoryResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepositoryResponseBody) SetPageSize(v int32) *ListRepositoryResponseBody {
-	s.PageSize = &v
+func (s *ListRepositoryResponseBody) SetCode(v string) *ListRepositoryResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -6142,8 +6911,23 @@ func (s *ListRepositoryResponseBody) SetPageNo(v int32) *ListRepositoryResponseB
 	return s
 }
 
-func (s *ListRepositoryResponseBody) SetCode(v string) *ListRepositoryResponseBody {
-	s.Code = &v
+func (s *ListRepositoryResponseBody) SetIsSuccess(v bool) *ListRepositoryResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBody) SetPageSize(v int32) *ListRepositoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBody) SetTotalCount(v string) *ListRepositoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBody) SetRepositories(v []*ListRepositoryResponseBodyRepositories) *ListRepositoryResponseBody {
+	s.Repositories = v
 	return s
 }
 
@@ -6301,13 +7085,13 @@ func (s *ListRepoSyncRuleRequest) SetTargetRegionId(v string) *ListRepoSyncRuleR
 }
 
 type ListRepoSyncRuleResponseBody struct {
-	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SyncRules  []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
-	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	SyncRules  []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoSyncRuleResponseBody) String() string {
@@ -6318,28 +7102,13 @@ func (s ListRepoSyncRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoSyncRuleResponseBody) SetIsSuccess(v bool) *ListRepoSyncRuleResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoSyncRuleResponseBody) SetTotalCount(v int32) *ListRepoSyncRuleResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoSyncRuleResponseBody) SetRequestId(v string) *ListRepoSyncRuleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepoSyncRuleResponseBody) SetPageSize(v int32) *ListRepoSyncRuleResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoSyncRuleResponseBody) SetSyncRules(v []*ListRepoSyncRuleResponseBodySyncRules) *ListRepoSyncRuleResponseBody {
-	s.SyncRules = v
+func (s *ListRepoSyncRuleResponseBody) SetCode(v string) *ListRepoSyncRuleResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -6348,8 +7117,23 @@ func (s *ListRepoSyncRuleResponseBody) SetPageNo(v int32) *ListRepoSyncRuleRespo
 	return s
 }
 
-func (s *ListRepoSyncRuleResponseBody) SetCode(v string) *ListRepoSyncRuleResponseBody {
-	s.Code = &v
+func (s *ListRepoSyncRuleResponseBody) SetIsSuccess(v bool) *ListRepoSyncRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBody) SetPageSize(v int32) *ListRepoSyncRuleResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBody) SetTotalCount(v int32) *ListRepoSyncRuleResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBody) SetSyncRules(v []*ListRepoSyncRuleResponseBodySyncRules) *ListRepoSyncRuleResponseBody {
+	s.SyncRules = v
 	return s
 }
 
@@ -6360,8 +7144,8 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncScope           *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
 	TagFilter           *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
-	TargetRepoName      *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
 	TargetInstanceId    *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetRepoName      *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
 	SyncRuleId          *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	ModifiedTime        *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	SyncRuleName        *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
@@ -6410,13 +7194,13 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetNamespaceName(v string)
 	return s
 }
 
-func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetRepoName(v string) *ListRepoSyncRuleResponseBodySyncRules {
-	s.TargetRepoName = &v
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetInstanceId(v string) *ListRepoSyncRuleResponseBodySyncRules {
+	s.TargetInstanceId = &v
 	return s
 }
 
-func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetInstanceId(v string) *ListRepoSyncRuleResponseBodySyncRules {
-	s.TargetInstanceId = &v
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetRepoName(v string) *ListRepoSyncRuleResponseBodySyncRules {
+	s.TargetRepoName = &v
 	return s
 }
 
@@ -6484,10 +7268,13 @@ func (s *ListRepoSyncRuleResponse) SetBody(v *ListRepoSyncRuleResponseBody) *Lis
 }
 
 type ListRepoSyncTaskRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SyncRecordId *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	Tag               *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SyncRecordId      *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
 }
 
 func (s ListRepoSyncTaskRequest) String() string {
@@ -6500,6 +7287,21 @@ func (s ListRepoSyncTaskRequest) GoString() string {
 
 func (s *ListRepoSyncTaskRequest) SetInstanceId(v string) *ListRepoSyncTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskRequest) SetRepoNamespaceName(v string) *ListRepoSyncTaskRequest {
+	s.RepoNamespaceName = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskRequest) SetRepoName(v string) *ListRepoSyncTaskRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskRequest) SetTag(v string) *ListRepoSyncTaskRequest {
+	s.Tag = &v
 	return s
 }
 
@@ -6519,13 +7321,13 @@ func (s *ListRepoSyncTaskRequest) SetSyncRecordId(v string) *ListRepoSyncTaskReq
 }
 
 type ListRepoSyncTaskResponseBody struct {
-	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount *string                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	SyncTasks  []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
 	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	SyncTasks  []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoSyncTaskResponseBody) String() string {
@@ -6536,23 +7338,13 @@ func (s ListRepoSyncTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoSyncTaskResponseBody) SetIsSuccess(v bool) *ListRepoSyncTaskResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoSyncTaskResponseBody) SetRequestId(v string) *ListRepoSyncTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepoSyncTaskResponseBody) SetPageSize(v int32) *ListRepoSyncTaskResponseBody {
-	s.PageSize = &v
+func (s *ListRepoSyncTaskResponseBody) SetCode(v string) *ListRepoSyncTaskResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -6561,13 +7353,23 @@ func (s *ListRepoSyncTaskResponseBody) SetPageNo(v int32) *ListRepoSyncTaskRespo
 	return s
 }
 
-func (s *ListRepoSyncTaskResponseBody) SetSyncTasks(v []*ListRepoSyncTaskResponseBodySyncTasks) *ListRepoSyncTaskResponseBody {
-	s.SyncTasks = v
+func (s *ListRepoSyncTaskResponseBody) SetIsSuccess(v bool) *ListRepoSyncTaskResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
-func (s *ListRepoSyncTaskResponseBody) SetCode(v string) *ListRepoSyncTaskResponseBody {
-	s.Code = &v
+func (s *ListRepoSyncTaskResponseBody) SetPageSize(v int32) *ListRepoSyncTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBody) SetSyncTasks(v []*ListRepoSyncTaskResponseBodySyncTasks) *ListRepoSyncTaskResponseBody {
+	s.SyncTasks = v
 	return s
 }
 
@@ -6579,8 +7381,8 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	CreateTime      *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SyncBatchTaskId *string                                         `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
 	TaskTrigger     *string                                         `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
-	ImageTo         *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 	ImageFrom       *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	ImageTo         *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 }
 
 func (s ListRepoSyncTaskResponseBodySyncTasks) String() string {
@@ -6626,54 +7428,13 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskTrigger(v string) *ListRe
 	return s
 }
 
-func (s *ListRepoSyncTaskResponseBodySyncTasks) SetImageTo(v *ListRepoSyncTaskResponseBodySyncTasksImageTo) *ListRepoSyncTaskResponseBodySyncTasks {
-	s.ImageTo = v
-	return s
-}
-
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetImageFrom(v *ListRepoSyncTaskResponseBodySyncTasksImageFrom) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.ImageFrom = v
 	return s
 }
 
-type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
-	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListRepoSyncTaskResponseBodySyncTasksImageTo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRepoSyncTaskResponseBodySyncTasksImageTo) GoString() string {
-	return s.String()
-}
-
-func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRepoNamespaceName(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
-	s.RepoNamespaceName = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetInstanceId(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetImageTag(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
-	s.ImageTag = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRepoName(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
-	s.RepoName = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRegionId(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
-	s.RegionId = &v
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetImageTo(v *ListRepoSyncTaskResponseBodySyncTasksImageTo) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.ImageTo = v
 	return s
 }
 
@@ -6714,6 +7475,47 @@ func (s *ListRepoSyncTaskResponseBodySyncTasksImageFrom) SetRepoName(v string) *
 }
 
 func (s *ListRepoSyncTaskResponseBodySyncTasksImageFrom) SetRegionId(v string) *ListRepoSyncTaskResponseBodySyncTasksImageFrom {
+	s.RegionId = &v
+	return s
+}
+
+type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListRepoSyncTaskResponseBodySyncTasksImageTo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepoSyncTaskResponseBodySyncTasksImageTo) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRepoNamespaceName(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
+	s.RepoNamespaceName = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetInstanceId(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetImageTag(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
+	s.ImageTag = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRepoName(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRegionId(v string) *ListRepoSyncTaskResponseBodySyncTasksImageTo {
 	s.RegionId = &v
 	return s
 }
@@ -6777,13 +7579,13 @@ func (s *ListRepoTagRequest) SetPageSize(v int32) *ListRepoTagRequest {
 }
 
 type ListRepoTagResponseBody struct {
-	IsSuccess  *bool                            `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount *string                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Images     []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PageNo     *int32                           `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo     *int32                           `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess  *bool                            `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Images     []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoTagResponseBody) String() string {
@@ -6794,28 +7596,13 @@ func (s ListRepoTagResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoTagResponseBody) SetIsSuccess(v bool) *ListRepoTagResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoTagResponseBody) SetTotalCount(v string) *ListRepoTagResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoTagResponseBody) SetRequestId(v string) *ListRepoTagResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepoTagResponseBody) SetPageSize(v int32) *ListRepoTagResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoTagResponseBody) SetImages(v []*ListRepoTagResponseBodyImages) *ListRepoTagResponseBody {
-	s.Images = v
+func (s *ListRepoTagResponseBody) SetCode(v string) *ListRepoTagResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -6824,8 +7611,23 @@ func (s *ListRepoTagResponseBody) SetPageNo(v int32) *ListRepoTagResponseBody {
 	return s
 }
 
-func (s *ListRepoTagResponseBody) SetCode(v string) *ListRepoTagResponseBody {
-	s.Code = &v
+func (s *ListRepoTagResponseBody) SetIsSuccess(v bool) *ListRepoTagResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListRepoTagResponseBody) SetPageSize(v int32) *ListRepoTagResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoTagResponseBody) SetTotalCount(v string) *ListRepoTagResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoTagResponseBody) SetImages(v []*ListRepoTagResponseBodyImages) *ListRepoTagResponseBody {
+	s.Images = v
 	return s
 }
 
@@ -6913,6 +7715,7 @@ type ListRepoTagScanResultRequest struct {
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 }
 
 func (s ListRepoTagScanResultRequest) String() string {
@@ -6958,14 +7761,19 @@ func (s *ListRepoTagScanResultRequest) SetSeverity(v string) *ListRepoTagScanRes
 	return s
 }
 
+func (s *ListRepoTagScanResultRequest) SetDigest(v string) *ListRepoTagScanResultRequest {
+	s.Digest = &v
+	return s
+}
+
 type ListRepoTagScanResultResponseBody struct {
-	IsSuccess       *bool                                               `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo          *int32                                              `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Vulnerabilities []*ListRepoTagScanResultResponseBodyVulnerabilities `json:"Vulnerabilities,omitempty" xml:"Vulnerabilities,omitempty" type:"Repeated"`
 	Code            *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNo          *int32                                              `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	IsSuccess       *bool                                               `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vulnerabilities []*ListRepoTagScanResultResponseBodyVulnerabilities `json:"Vulnerabilities,omitempty" xml:"Vulnerabilities,omitempty" type:"Repeated"`
 }
 
 func (s ListRepoTagScanResultResponseBody) String() string {
@@ -6976,23 +7784,13 @@ func (s ListRepoTagScanResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRepoTagScanResultResponseBody) SetIsSuccess(v bool) *ListRepoTagScanResultResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *ListRepoTagScanResultResponseBody) SetTotalCount(v int32) *ListRepoTagScanResultResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListRepoTagScanResultResponseBody) SetRequestId(v string) *ListRepoTagScanResultResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRepoTagScanResultResponseBody) SetPageSize(v int32) *ListRepoTagScanResultResponseBody {
-	s.PageSize = &v
+func (s *ListRepoTagScanResultResponseBody) SetCode(v string) *ListRepoTagScanResultResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -7001,13 +7799,23 @@ func (s *ListRepoTagScanResultResponseBody) SetPageNo(v int32) *ListRepoTagScanR
 	return s
 }
 
-func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagScanResultResponseBodyVulnerabilities) *ListRepoTagScanResultResponseBody {
-	s.Vulnerabilities = v
+func (s *ListRepoTagScanResultResponseBody) SetIsSuccess(v bool) *ListRepoTagScanResultResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
-func (s *ListRepoTagScanResultResponseBody) SetCode(v string) *ListRepoTagScanResultResponseBody {
-	s.Code = &v
+func (s *ListRepoTagScanResultResponseBody) SetPageSize(v int32) *ListRepoTagScanResultResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultResponseBody) SetTotalCount(v int32) *ListRepoTagScanResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagScanResultResponseBodyVulnerabilities) *ListRepoTagScanResultResponseBody {
+	s.Vulnerabilities = v
 	return s
 }
 
@@ -7021,6 +7829,7 @@ type ListRepoTagScanResultResponseBodyVulnerabilities struct {
 	VersionFormat *string `json:"VersionFormat,omitempty" xml:"VersionFormat,omitempty"`
 	CveLink       *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
 	VersionFixed  *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
+	FixCmd        *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
 }
 
 func (s ListRepoTagScanResultResponseBodyVulnerabilities) String() string {
@@ -7076,6 +7885,11 @@ func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetVersionFixed(v str
 	return s
 }
 
+func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetFixCmd(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
+	s.FixCmd = &v
+	return s
+}
+
 type ListRepoTagScanResultResponse struct {
 	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *ListRepoTagScanResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -7123,10 +7937,10 @@ func (s *ListRepoTriggerRequest) SetRepoId(v string) *ListRepoTriggerRequest {
 }
 
 type ListRepoTriggerResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Triggers  []*ListRepoTriggerResponseBodyTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ListRepoTriggerResponseBody) String() string {
@@ -7135,6 +7949,11 @@ func (s ListRepoTriggerResponseBody) String() string {
 
 func (s ListRepoTriggerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListRepoTriggerResponseBody) SetCode(v string) *ListRepoTriggerResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListRepoTriggerResponseBody) SetIsSuccess(v bool) *ListRepoTriggerResponseBody {
@@ -7149,11 +7968,6 @@ func (s *ListRepoTriggerResponseBody) SetRequestId(v string) *ListRepoTriggerRes
 
 func (s *ListRepoTriggerResponseBody) SetTriggers(v []*ListRepoTriggerResponseBodyTriggers) *ListRepoTriggerResponseBody {
 	s.Triggers = v
-	return s
-}
-
-func (s *ListRepoTriggerResponseBody) SetCode(v string) *ListRepoTriggerResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7251,10 +8065,10 @@ func (s *ListRepoTriggerRecordRequest) SetTriggerRecordId(v string) *ListRepoTri
 }
 
 type ListRepoTriggerRecordResponseBody struct {
+	Code               *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess          *bool                                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RepoTriggerRecords []*ListRepoTriggerRecordResponseBodyRepoTriggerRecords `json:"RepoTriggerRecords,omitempty" xml:"RepoTriggerRecords,omitempty" type:"Repeated"`
-	Code               *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ListRepoTriggerRecordResponseBody) String() string {
@@ -7263,6 +8077,11 @@ func (s ListRepoTriggerRecordResponseBody) String() string {
 
 func (s ListRepoTriggerRecordResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListRepoTriggerRecordResponseBody) SetCode(v string) *ListRepoTriggerRecordResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListRepoTriggerRecordResponseBody) SetIsSuccess(v bool) *ListRepoTriggerRecordResponseBody {
@@ -7280,21 +8099,16 @@ func (s *ListRepoTriggerRecordResponseBody) SetRepoTriggerRecords(v []*ListRepoT
 	return s
 }
 
-func (s *ListRepoTriggerRecordResponseBody) SetCode(v string) *ListRepoTriggerRecordResponseBody {
-	s.Code = &v
-	return s
-}
-
 type ListRepoTriggerRecordResponseBodyRepoTriggerRecords struct {
 	RequestHeaders  *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	ResponseHeaders *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
 	TriggerName     *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
+	ResponseHeaders *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
 	TriggerLogId    *string `json:"TriggerLogId,omitempty" xml:"TriggerLogId,omitempty"`
-	RequestBody     *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
-	TriggerUrl      *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 	ResponseBody    *string `json:"ResponseBody,omitempty" xml:"ResponseBody,omitempty"`
-	TriggerTag      *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
+	TriggerUrl      *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
+	RequestBody     *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
 	TriggerType     *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerTag      *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
 	StatusCode      *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	RepoEvent       *string `json:"RepoEvent,omitempty" xml:"RepoEvent,omitempty"`
 	TriggerId       *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
@@ -7314,13 +8128,13 @@ func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetRequestHeaders(
 	return s
 }
 
-func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetResponseHeaders(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
-	s.ResponseHeaders = &v
+func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerName(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
+	s.TriggerName = &v
 	return s
 }
 
-func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerName(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
-	s.TriggerName = &v
+func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetResponseHeaders(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
+	s.ResponseHeaders = &v
 	return s
 }
 
@@ -7329,8 +8143,8 @@ func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerLogId(v 
 	return s
 }
 
-func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetRequestBody(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
-	s.RequestBody = &v
+func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetResponseBody(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
+	s.ResponseBody = &v
 	return s
 }
 
@@ -7339,18 +8153,18 @@ func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerUrl(v st
 	return s
 }
 
-func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetResponseBody(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
-	s.ResponseBody = &v
-	return s
-}
-
-func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerTag(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
-	s.TriggerTag = &v
+func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetRequestBody(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
+	s.RequestBody = &v
 	return s
 }
 
 func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerType(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListRepoTriggerRecordResponseBodyRepoTriggerRecords) SetTriggerTag(v string) *ListRepoTriggerRecordResponseBodyRepoTriggerRecords {
+	s.TriggerTag = &v
 	return s
 }
 
@@ -7421,9 +8235,9 @@ func (s *ResetLoginPasswordRequest) SetPassword(v string) *ResetLoginPasswordReq
 }
 
 type ResetLoginPasswordResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ResetLoginPasswordResponseBody) String() string {
@@ -7434,6 +8248,11 @@ func (s ResetLoginPasswordResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetLoginPasswordResponseBody) SetCode(v string) *ResetLoginPasswordResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ResetLoginPasswordResponseBody) SetIsSuccess(v bool) *ResetLoginPasswordResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -7441,11 +8260,6 @@ func (s *ResetLoginPasswordResponseBody) SetIsSuccess(v bool) *ResetLoginPasswor
 
 func (s *ResetLoginPasswordResponseBody) SetRequestId(v string) *ResetLoginPasswordResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ResetLoginPasswordResponseBody) SetCode(v string) *ResetLoginPasswordResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7508,9 +8322,9 @@ func (s *UpdateChartNamespaceRequest) SetDefaultRepoType(v string) *UpdateChartN
 }
 
 type UpdateChartNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateChartNamespaceResponseBody) String() string {
@@ -7521,6 +8335,11 @@ func (s UpdateChartNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateChartNamespaceResponseBody) SetCode(v string) *UpdateChartNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateChartNamespaceResponseBody) SetIsSuccess(v bool) *UpdateChartNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -7528,11 +8347,6 @@ func (s *UpdateChartNamespaceResponseBody) SetIsSuccess(v bool) *UpdateChartName
 
 func (s *UpdateChartNamespaceResponseBody) SetRequestId(v string) *UpdateChartNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateChartNamespaceResponseBody) SetCode(v string) *UpdateChartNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7601,9 +8415,9 @@ func (s *UpdateChartRepositoryRequest) SetRepoName(v string) *UpdateChartReposit
 }
 
 type UpdateChartRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateChartRepositoryResponseBody) String() string {
@@ -7614,6 +8428,11 @@ func (s UpdateChartRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateChartRepositoryResponseBody) SetCode(v string) *UpdateChartRepositoryResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateChartRepositoryResponseBody) SetIsSuccess(v bool) *UpdateChartRepositoryResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -7621,11 +8440,6 @@ func (s *UpdateChartRepositoryResponseBody) SetIsSuccess(v bool) *UpdateChartRep
 
 func (s *UpdateChartRepositoryResponseBody) SetRequestId(v string) *UpdateChartRepositoryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateChartRepositoryResponseBody) SetCode(v string) *UpdateChartRepositoryResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7688,9 +8502,9 @@ func (s *UpdateInstanceEndpointStatusRequest) SetModuleName(v string) *UpdateIns
 }
 
 type UpdateInstanceEndpointStatusResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateInstanceEndpointStatusResponseBody) String() string {
@@ -7701,6 +8515,11 @@ func (s UpdateInstanceEndpointStatusResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstanceEndpointStatusResponseBody) SetCode(v string) *UpdateInstanceEndpointStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateInstanceEndpointStatusResponseBody) SetIsSuccess(v bool) *UpdateInstanceEndpointStatusResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -7708,11 +8527,6 @@ func (s *UpdateInstanceEndpointStatusResponseBody) SetIsSuccess(v bool) *UpdateI
 
 func (s *UpdateInstanceEndpointStatusResponseBody) SetRequestId(v string) *UpdateInstanceEndpointStatusResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateInstanceEndpointStatusResponseBody) SetCode(v string) *UpdateInstanceEndpointStatusResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7775,9 +8589,9 @@ func (s *UpdateNamespaceRequest) SetDefaultRepoType(v string) *UpdateNamespaceRe
 }
 
 type UpdateNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateNamespaceResponseBody) String() string {
@@ -7788,6 +8602,11 @@ func (s UpdateNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateNamespaceResponseBody) SetCode(v string) *UpdateNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateNamespaceResponseBody) SetIsSuccess(v bool) *UpdateNamespaceResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -7795,11 +8614,6 @@ func (s *UpdateNamespaceResponseBody) SetIsSuccess(v bool) *UpdateNamespaceRespo
 
 func (s *UpdateNamespaceResponseBody) SetRequestId(v string) *UpdateNamespaceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateNamespaceResponseBody) SetCode(v string) *UpdateNamespaceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7827,14 +8641,15 @@ func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *Updat
 }
 
 type UpdateRepoBuildRuleRequest struct {
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	DockerfileName     *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	PushType           *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	PushName           *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	BuildRuleId        *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	BuildRuleId        *string   `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRepoBuildRuleRequest) String() string {
@@ -7885,11 +8700,16 @@ func (s *UpdateRepoBuildRuleRequest) SetBuildRuleId(v string) *UpdateRepoBuildRu
 	return s
 }
 
+func (s *UpdateRepoBuildRuleRequest) SetPlatforms(v []*string) *UpdateRepoBuildRuleRequest {
+	s.Platforms = v
+	return s
+}
+
 type UpdateRepoBuildRuleResponseBody struct {
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 }
 
 func (s UpdateRepoBuildRuleResponseBody) String() string {
@@ -7900,13 +8720,13 @@ func (s UpdateRepoBuildRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRepoBuildRuleResponseBody) SetIsSuccess(v bool) *UpdateRepoBuildRuleResponseBody {
-	s.IsSuccess = &v
+func (s *UpdateRepoBuildRuleResponseBody) SetCode(v string) *UpdateRepoBuildRuleResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *UpdateRepoBuildRuleResponseBody) SetBuildRuleId(v string) *UpdateRepoBuildRuleResponseBody {
-	s.BuildRuleId = &v
+func (s *UpdateRepoBuildRuleResponseBody) SetIsSuccess(v bool) *UpdateRepoBuildRuleResponseBody {
+	s.IsSuccess = &v
 	return s
 }
 
@@ -7915,8 +8735,8 @@ func (s *UpdateRepoBuildRuleResponseBody) SetRequestId(v string) *UpdateRepoBuil
 	return s
 }
 
-func (s *UpdateRepoBuildRuleResponseBody) SetCode(v string) *UpdateRepoBuildRuleResponseBody {
-	s.Code = &v
+func (s *UpdateRepoBuildRuleResponseBody) SetBuildRuleId(v string) *UpdateRepoBuildRuleResponseBody {
+	s.BuildRuleId = &v
 	return s
 }
 
@@ -7991,9 +8811,9 @@ func (s *UpdateRepositoryRequest) SetTagImmutability(v bool) *UpdateRepositoryRe
 }
 
 type UpdateRepositoryResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateRepositoryResponseBody) String() string {
@@ -8004,6 +8824,11 @@ func (s UpdateRepositoryResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateRepositoryResponseBody) SetCode(v string) *UpdateRepositoryResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateRepositoryResponseBody) SetIsSuccess(v bool) *UpdateRepositoryResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -8011,11 +8836,6 @@ func (s *UpdateRepositoryResponseBody) SetIsSuccess(v bool) *UpdateRepositoryRes
 
 func (s *UpdateRepositoryResponseBody) SetRequestId(v string) *UpdateRepositoryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateRepositoryResponseBody) SetCode(v string) *UpdateRepositoryResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -8038,6 +8858,123 @@ func (s *UpdateRepositoryResponse) SetHeaders(v map[string]*string) *UpdateRepos
 }
 
 func (s *UpdateRepositoryResponse) SetBody(v *UpdateRepositoryResponseBody) *UpdateRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRepoSourceCodeRepoRequest struct {
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	CodeRepoType          *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
+	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
+	CodeRepoName          *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
+	AutoBuild             *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
+	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
+	CodeRepoId            *string `json:"CodeRepoId,omitempty" xml:"CodeRepoId,omitempty"`
+}
+
+func (s UpdateRepoSourceCodeRepoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepoSourceCodeRepoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetInstanceId(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetRepoId(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.RepoId = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetCodeRepoType(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.CodeRepoType = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetCodeRepoNamespaceName(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.CodeRepoNamespaceName = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetCodeRepoName(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.CodeRepoName = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetAutoBuild(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.AutoBuild = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetOverseaBuild(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.OverseaBuild = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetDisableCacheBuild(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.DisableCacheBuild = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetCodeRepoId(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.CodeRepoId = &v
+	return s
+}
+
+type UpdateRepoSourceCodeRepoResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRepoSourceCodeRepoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepoSourceCodeRepoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepoSourceCodeRepoResponseBody) SetCode(v string) *UpdateRepoSourceCodeRepoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoResponseBody) SetIsSuccess(v bool) *UpdateRepoSourceCodeRepoResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoResponseBody) SetRequestId(v string) *UpdateRepoSourceCodeRepoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRepoSourceCodeRepoResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRepoSourceCodeRepoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepoSourceCodeRepoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepoSourceCodeRepoResponse) SetHeaders(v map[string]*string) *UpdateRepoSourceCodeRepoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoResponse) SetBody(v *UpdateRepoSourceCodeRepoResponseBody) *UpdateRepoSourceCodeRepoResponse {
 	s.Body = v
 	return s
 }
@@ -8096,9 +9033,9 @@ func (s *UpdateRepoTriggerRequest) SetTriggerId(v string) *UpdateRepoTriggerRequ
 }
 
 type UpdateRepoTriggerResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateRepoTriggerResponseBody) String() string {
@@ -8109,6 +9046,11 @@ func (s UpdateRepoTriggerResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateRepoTriggerResponseBody) SetCode(v string) *UpdateRepoTriggerResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateRepoTriggerResponseBody) SetIsSuccess(v bool) *UpdateRepoTriggerResponseBody {
 	s.IsSuccess = &v
 	return s
@@ -8116,11 +9058,6 @@ func (s *UpdateRepoTriggerResponseBody) SetIsSuccess(v bool) *UpdateRepoTriggerR
 
 func (s *UpdateRepoTriggerResponseBody) SetRequestId(v string) *UpdateRepoTriggerResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateRepoTriggerResponseBody) SetCode(v string) *UpdateRepoTriggerResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -8187,6 +9124,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifactBuildTaskRequest, runtime *util.RuntimeOptions) (_result *CancelArtifactBuildTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelArtifactBuildTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelArtifactBuildTask"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRequest) (_result *CancelArtifactBuildTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelArtifactBuildTaskResponse{}
+	_body, _err := client.CancelArtifactBuildTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8446,6 +9411,34 @@ func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateRepoSourceCodeRepoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRepoSourceCodeRepo"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepoRequest) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRepoSourceCodeRepoResponse{}
+	_body, _err := client.CreateRepoSourceCodeRepoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSyncRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8495,6 +9488,34 @@ func (client *Client) CreateRepoSyncTaskByRule(request *CreateRepoSyncTaskByRule
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoSyncTaskByRuleResponse{}
 	_body, _err := client.CreateRepoSyncTaskByRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, runtime *util.RuntimeOptions) (_result *CreateRepoTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateRepoTagResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRepoTag"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *CreateRepoTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRepoTagResponse{}
+	_body, _err := client.CreateRepoTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8866,6 +9887,35 @@ func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildTaskRequest, runtime *util.RuntimeOptions) (_result *GetArtifactBuildTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetArtifactBuildTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetArtifactBuildTask"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest) (_result *GetArtifactBuildTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactBuildTaskResponse{}
+	_body, _err := client.GetArtifactBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorizationTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthorizationTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9196,6 +10246,34 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *GetRepoSourceCodeRepoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetRepoSourceCodeRepoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRepoSourceCodeRepo"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoRequest) (_result *GetRepoSourceCodeRepoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRepoSourceCodeRepoResponse{}
+	_body, _err := client.GetRepoSourceCodeRepoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest, runtime *util.RuntimeOptions) (_result *GetRepoSyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9329,6 +10407,35 @@ func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoTagScanSummaryResponse{}
 	_body, _err := client.GetRepoTagScanSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactBuildTaskLogRequest, runtime *util.RuntimeOptions) (_result *ListArtifactBuildTaskLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListArtifactBuildTaskLogResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListArtifactBuildTaskLog"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLogRequest) (_result *ListArtifactBuildTaskLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListArtifactBuildTaskLogResponse{}
+	_body, _err := client.ListArtifactBuildTaskLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10001,6 +11108,34 @@ func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRepositoryResponse{}
 	_body, _err := client.UpdateRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateRepoSourceCodeRepoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateRepoSourceCodeRepo"), tea.String("2018-12-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepoRequest) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRepoSourceCodeRepoResponse{}
+	_body, _err := client.UpdateRepoSourceCodeRepoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
