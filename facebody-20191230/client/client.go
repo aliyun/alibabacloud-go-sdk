@@ -5962,6 +5962,7 @@ type BeautifyBodyRequest struct {
 	BodyBoxes           []*BeautifyBodyRequestBodyBoxes `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty" type:"Repeated"`
 	FaceList            []*BeautifyBodyRequestFaceList  `json:"FaceList,omitempty" xml:"FaceList,omitempty" type:"Repeated"`
 	PoseList            []*BeautifyBodyRequestPoseList  `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	IsPregnant          *bool                           `json:"IsPregnant,omitempty" xml:"IsPregnant,omitempty"`
 }
 
 func (s BeautifyBodyRequest) String() string {
@@ -6024,6 +6025,11 @@ func (s *BeautifyBodyRequest) SetFaceList(v []*BeautifyBodyRequestFaceList) *Bea
 
 func (s *BeautifyBodyRequest) SetPoseList(v []*BeautifyBodyRequestPoseList) *BeautifyBodyRequest {
 	s.PoseList = v
+	return s
+}
+
+func (s *BeautifyBodyRequest) SetIsPregnant(v bool) *BeautifyBodyRequest {
+	s.IsPregnant = &v
 	return s
 }
 
@@ -6207,6 +6213,7 @@ type BeautifyBodyAdvanceRequest struct {
 	BodyBoxes           []*BeautifyBodyAdvanceRequestBodyBoxes `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty" type:"Repeated"`
 	FaceList            []*BeautifyBodyAdvanceRequestFaceList  `json:"FaceList,omitempty" xml:"FaceList,omitempty" type:"Repeated"`
 	PoseList            []*BeautifyBodyAdvanceRequestPoseList  `json:"PoseList,omitempty" xml:"PoseList,omitempty" type:"Repeated"`
+	IsPregnant          *bool                                  `json:"IsPregnant,omitempty" xml:"IsPregnant,omitempty"`
 }
 
 func (s BeautifyBodyAdvanceRequest) String() string {
@@ -6269,6 +6276,11 @@ func (s *BeautifyBodyAdvanceRequest) SetFaceList(v []*BeautifyBodyAdvanceRequest
 
 func (s *BeautifyBodyAdvanceRequest) SetPoseList(v []*BeautifyBodyAdvanceRequestPoseList) *BeautifyBodyAdvanceRequest {
 	s.PoseList = v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetIsPregnant(v bool) *BeautifyBodyAdvanceRequest {
+	s.IsPregnant = &v
 	return s
 }
 
@@ -6452,6 +6464,7 @@ type BeautifyBodyShrinkRequest struct {
 	BodyBoxesShrink     *string  `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty"`
 	FaceListShrink      *string  `json:"FaceList,omitempty" xml:"FaceList,omitempty"`
 	PoseListShrink      *string  `json:"PoseList,omitempty" xml:"PoseList,omitempty"`
+	IsPregnant          *bool    `json:"IsPregnant,omitempty" xml:"IsPregnant,omitempty"`
 }
 
 func (s BeautifyBodyShrinkRequest) String() string {
@@ -6514,6 +6527,11 @@ func (s *BeautifyBodyShrinkRequest) SetFaceListShrink(v string) *BeautifyBodyShr
 
 func (s *BeautifyBodyShrinkRequest) SetPoseListShrink(v string) *BeautifyBodyShrinkRequest {
 	s.PoseListShrink = &v
+	return s
+}
+
+func (s *BeautifyBodyShrinkRequest) SetIsPregnant(v bool) *BeautifyBodyShrinkRequest {
+	s.IsPregnant = &v
 	return s
 }
 
