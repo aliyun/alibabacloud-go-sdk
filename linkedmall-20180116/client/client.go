@@ -7554,14 +7554,14 @@ func (s *QueryBestSession4ItemsResponse) SetBody(v *QueryBestSession4ItemsRespon
 }
 
 type QueryBizItemListRequest struct {
-	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	SubBizId   *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	LmItemIds  *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
-	ItemIds    *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	BizId      *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	SubBizId   *string                `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	UserId     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	LmItemIds  map[string]interface{} `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	ItemIds    map[string]interface{} `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	CategoryId *int64                 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s QueryBizItemListRequest) String() string {
@@ -7597,13 +7597,13 @@ func (s *QueryBizItemListRequest) SetUserId(v string) *QueryBizItemListRequest {
 	return s
 }
 
-func (s *QueryBizItemListRequest) SetLmItemIds(v string) *QueryBizItemListRequest {
-	s.LmItemIds = &v
+func (s *QueryBizItemListRequest) SetLmItemIds(v map[string]interface{}) *QueryBizItemListRequest {
+	s.LmItemIds = v
 	return s
 }
 
-func (s *QueryBizItemListRequest) SetItemIds(v string) *QueryBizItemListRequest {
-	s.ItemIds = &v
+func (s *QueryBizItemListRequest) SetItemIds(v map[string]interface{}) *QueryBizItemListRequest {
+	s.ItemIds = v
 	return s
 }
 
@@ -7612,13 +7612,72 @@ func (s *QueryBizItemListRequest) SetCategoryId(v int64) *QueryBizItemListReques
 	return s
 }
 
+type QueryBizItemListShrinkRequest struct {
+	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	SubBizId        *string `json:"SubBizId,omitempty" xml:"SubBizId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	LmItemIdsShrink *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	ItemIdsShrink   *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+}
+
+func (s QueryBizItemListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBizItemListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBizItemListShrinkRequest) SetBizId(v string) *QueryBizItemListShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetSubBizId(v string) *QueryBizItemListShrinkRequest {
+	s.SubBizId = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetPageSize(v int32) *QueryBizItemListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetPageNumber(v int32) *QueryBizItemListShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetUserId(v string) *QueryBizItemListShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetLmItemIdsShrink(v string) *QueryBizItemListShrinkRequest {
+	s.LmItemIdsShrink = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetItemIdsShrink(v string) *QueryBizItemListShrinkRequest {
+	s.ItemIdsShrink = &v
+	return s
+}
+
+func (s *QueryBizItemListShrinkRequest) SetCategoryId(v int64) *QueryBizItemListShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
 type QueryBizItemListResponseBody struct {
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ItemList   *QueryBizItemListResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Struct"`
 }
 
@@ -7630,6 +7689,11 @@ func (s QueryBizItemListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *QueryBizItemListResponseBody) SetRequestId(v string) *QueryBizItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *QueryBizItemListResponseBody) SetCode(v string) *QueryBizItemListResponseBody {
 	s.Code = &v
 	return s
@@ -7637,11 +7701,6 @@ func (s *QueryBizItemListResponseBody) SetCode(v string) *QueryBizItemListRespon
 
 func (s *QueryBizItemListResponseBody) SetMessage(v string) *QueryBizItemListResponseBody {
 	s.Message = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBody) SetTotalCount(v int32) *QueryBizItemListResponseBody {
-	s.TotalCount = &v
 	return s
 }
 
@@ -7655,8 +7714,8 @@ func (s *QueryBizItemListResponseBody) SetPageSize(v int32) *QueryBizItemListRes
 	return s
 }
 
-func (s *QueryBizItemListResponseBody) SetRequestId(v string) *QueryBizItemListResponseBody {
-	s.RequestId = &v
+func (s *QueryBizItemListResponseBody) SetTotalCount(v int32) *QueryBizItemListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7683,17 +7742,17 @@ func (s *QueryBizItemListResponseBodyItemList) SetItem(v []*QueryBizItemListResp
 }
 
 type QueryBizItemListResponseBodyItemListItem struct {
-	ItemId             *int64                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemTitle          *string                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
-	CustomizedItemName *string                                          `json:"CustomizedItemName,omitempty" xml:"CustomizedItemName,omitempty"`
+	ExtJson            *string                                          `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
 	MainPicUrl         *string                                          `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
-	ReservePrice       *int64                                           `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	ItemTitle          *string                                          `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmItemId           *string                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	SellerId           *int64                                           `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
 	CategoryId         *int64                                           `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CanSell            *bool                                            `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	CustomizedItemName *string                                          `json:"CustomizedItemName,omitempty" xml:"CustomizedItemName,omitempty"`
+	ItemId             *int64                                           `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ReservePrice       *int64                                           `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 	TaobaoShopName     *string                                          `json:"TaobaoShopName,omitempty" xml:"TaobaoShopName,omitempty"`
-	ExtJson            *string                                          `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
-	SellerId           *int64                                           `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	LmItemId           *string                                          `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SkuList            *QueryBizItemListResponseBodyItemListItemSkuList `json:"SkuList,omitempty" xml:"SkuList,omitempty" type:"Struct"`
 }
 
@@ -7705,18 +7764,8 @@ func (s QueryBizItemListResponseBodyItemListItem) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetItemId(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.ItemId = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetItemTitle(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.ItemTitle = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetCustomizedItemName(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.CustomizedItemName = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetExtJson(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.ExtJson = &v
 	return s
 }
 
@@ -7725,8 +7774,18 @@ func (s *QueryBizItemListResponseBodyItemListItem) SetMainPicUrl(v string) *Quer
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItem) SetReservePrice(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.ReservePrice = &v
+func (s *QueryBizItemListResponseBodyItemListItem) SetItemTitle(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItem) SetLmItemId(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItem) SetSellerId(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.SellerId = &v
 	return s
 }
 
@@ -7740,23 +7799,23 @@ func (s *QueryBizItemListResponseBodyItemListItem) SetCanSell(v bool) *QueryBizI
 	return s
 }
 
+func (s *QueryBizItemListResponseBodyItemListItem) SetCustomizedItemName(v string) *QueryBizItemListResponseBodyItemListItem {
+	s.CustomizedItemName = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItem) SetItemId(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItem) SetReservePrice(v int64) *QueryBizItemListResponseBodyItemListItem {
+	s.ReservePrice = &v
+	return s
+}
+
 func (s *QueryBizItemListResponseBodyItemListItem) SetTaobaoShopName(v string) *QueryBizItemListResponseBodyItemListItem {
 	s.TaobaoShopName = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetExtJson(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.ExtJson = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetSellerId(v int64) *QueryBizItemListResponseBodyItemListItem {
-	s.SellerId = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItem) SetLmItemId(v string) *QueryBizItemListResponseBodyItemListItem {
-	s.LmItemId = &v
 	return s
 }
 
@@ -7783,18 +7842,18 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuList) SetSku(v []*QueryBizIt
 }
 
 type QueryBizItemListResponseBodyItemListItemSkuListSku struct {
-	SkuId                  *int64                                                              `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	SkuPicUrl              *string                                                             `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
-	SkuTitle               *string                                                             `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
 	PriceCent              *int64                                                              `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	SkuId                  *int64                                                              `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	TaoBaoCurrentPrice     *int64                                                              `json:"TaoBaoCurrentPrice,omitempty" xml:"TaoBaoCurrentPrice,omitempty"`
+	CanSell                *bool                                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	SkuPicUrl              *string                                                             `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
 	Points                 *int64                                                              `json:"Points,omitempty" xml:"Points,omitempty"`
+	SkuTitle               *string                                                             `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
 	PointsAmount           *int64                                                              `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
 	BenefitId              *string                                                             `json:"BenefitId,omitempty" xml:"BenefitId,omitempty"`
-	CanSell                *bool                                                               `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
-	CustomizedAttributeMap map[string]*string                                                  `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
-	TaoBaoCurrentPrice     *int64                                                              `json:"TaoBaoCurrentPrice,omitempty" xml:"TaoBaoCurrentPrice,omitempty"`
-	UserLabelList          *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList    `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
+	CustomizedAttributeMap map[string]interface{}                                              `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
 	GradePriceModels       *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels `json:"GradePriceModels,omitempty" xml:"GradePriceModels,omitempty" type:"Struct"`
+	UserLabelList          *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList    `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
 }
 
 func (s QueryBizItemListResponseBodyItemListItemSkuListSku) String() string {
@@ -7805,8 +7864,23 @@ func (s QueryBizItemListResponseBodyItemListItemSkuListSku) GoString() string {
 	return s.String()
 }
 
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.PriceCent = &v
+	return s
+}
+
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuId(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.SkuId = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetTaoBaoCurrentPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.TaoBaoCurrentPrice = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCanSell(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.CanSell = &v
 	return s
 }
 
@@ -7815,18 +7889,13 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuPicUrl(v stri
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuTitle(v string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.SkuTitle = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.PriceCent = &v
-	return s
-}
-
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.Points = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetSkuTitle(v string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+	s.SkuTitle = &v
 	return s
 }
 
@@ -7840,23 +7909,8 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetBenefitId(v stri
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCanSell(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.CanSell = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCustomizedAttributeMap(v map[string]*string) *QueryBizItemListResponseBodyItemListItemSkuListSku {
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetCustomizedAttributeMap(v map[string]interface{}) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.CustomizedAttributeMap = v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetTaoBaoCurrentPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.TaoBaoCurrentPrice = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetUserLabelList(v *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) *QueryBizItemListResponseBodyItemListItemSkuListSku {
-	s.UserLabelList = v
 	return s
 }
 
@@ -7865,19 +7919,7 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetGradePriceModels
 	return s
 }
 
-type QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList struct {
-	UserLabelList []*string `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Repeated"`
-}
-
-func (s QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) SetUserLabelList(v []*string) *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList {
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSku) SetUserLabelList(v *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) *QueryBizItemListResponseBodyItemListItemSkuListSku {
 	s.UserLabelList = v
 	return s
 }
@@ -7900,19 +7942,19 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModels) Set
 }
 
 type QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel struct {
-	CharacteristicCode *string                                                                                         `json:"CharacteristicCode,omitempty" xml:"CharacteristicCode,omitempty"`
-	CharacteristicName *string                                                                                         `json:"CharacteristicName,omitempty" xml:"CharacteristicName,omitempty"`
-	SubBizCode         *string                                                                                         `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
-	CanBuy             *bool                                                                                           `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
-	Exclusive          *bool                                                                                           `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
 	Recommend          *bool                                                                                           `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
-	PriceCent          *int64                                                                                          `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
-	PointsAmount       *int64                                                                                          `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
-	Points             *int64                                                                                          `json:"Points,omitempty" xml:"Points,omitempty"`
-	PointPrice         *int64                                                                                          `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
 	ShowName           *string                                                                                         `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	AccessUrl          *string                                                                                         `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	PriceCent          *int64                                                                                          `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	Icon               *string                                                                                         `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	PointPrice         *int64                                                                                          `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	Exclusive          *bool                                                                                           `json:"Exclusive,omitempty" xml:"Exclusive,omitempty"`
+	CharacteristicName *string                                                                                         `json:"CharacteristicName,omitempty" xml:"CharacteristicName,omitempty"`
+	AccessUrl          *string                                                                                         `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	SubBizCode         *string                                                                                         `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
+	CharacteristicCode *string                                                                                         `json:"CharacteristicCode,omitempty" xml:"CharacteristicCode,omitempty"`
+	CanBuy             *bool                                                                                           `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
+	Points             *int64                                                                                          `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount       *int64                                                                                          `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
 	UserLabelList      *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModelUserLabelList `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Struct"`
 }
 
@@ -7924,53 +7966,8 @@ func (s QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradeP
 	return s.String()
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.CharacteristicCode = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicName(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.CharacteristicName = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetSubBizCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.SubBizCode = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCanBuy(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.CanBuy = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetExclusive(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Exclusive = &v
-	return s
-}
-
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetRecommend(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
 	s.Recommend = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.PriceCent = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointsAmount(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.PointsAmount = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.Points = &v
-	return s
-}
-
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.PointPrice = &v
 	return s
 }
 
@@ -7979,13 +7976,58 @@ func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGrade
 	return s
 }
 
-func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetAccessUrl(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
-	s.AccessUrl = &v
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPriceCent(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.PriceCent = &v
 	return s
 }
 
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetIcon(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
 	s.Icon = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointPrice(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetExclusive(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Exclusive = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicName(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.CharacteristicName = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetAccessUrl(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetSubBizCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.SubBizCode = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCharacteristicCode(v string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.CharacteristicCode = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetCanBuy(v bool) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.CanBuy = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPoints(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.Points = &v
+	return s
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel) SetPointsAmount(v int64) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModel {
+	s.PointsAmount = &v
 	return s
 }
 
@@ -8007,6 +8049,23 @@ func (s QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradeP
 }
 
 func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModelUserLabelList) SetUserLabelList(v []*string) *QueryBizItemListResponseBodyItemListItemSkuListSkuGradePriceModelsGradePriceModelUserLabelList {
+	s.UserLabelList = v
+	return s
+}
+
+type QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList struct {
+	UserLabelList []*string `json:"UserLabelList,omitempty" xml:"UserLabelList,omitempty" type:"Repeated"`
+}
+
+func (s QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList) SetUserLabelList(v []*string) *QueryBizItemListResponseBodyItemListItemSkuListSkuUserLabelList {
 	s.UserLabelList = v
 	return s
 }
@@ -8935,6 +8994,206 @@ func (s *QueryGuideItemGroupResponse) SetHeaders(v map[string]*string) *QueryGui
 }
 
 func (s *QueryGuideItemGroupResponse) SetBody(v *QueryGuideItemGroupResponseBody) *QueryGuideItemGroupResponse {
+	s.Body = v
+	return s
+}
+
+type QueryGuideItemGroupWithOutInventoryRequest struct {
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s QueryGuideItemGroupWithOutInventoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGuideItemGroupWithOutInventoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryRequest) SetGroupId(v string) *QueryGuideItemGroupWithOutInventoryRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryRequest) SetPageSize(v int32) *QueryGuideItemGroupWithOutInventoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryRequest) SetPageNumber(v int32) *QueryGuideItemGroupWithOutInventoryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryRequest) SetBizId(v string) *QueryGuideItemGroupWithOutInventoryRequest {
+	s.BizId = &v
+	return s
+}
+
+type QueryGuideItemGroupWithOutInventoryResponseBody struct {
+	RequestId  *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code       *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize   *int64                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int64                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ItemList   []*QueryGuideItemGroupWithOutInventoryResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetRequestId(v string) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetCode(v string) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetMessage(v string) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetPageSize(v int64) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetPageNumber(v int64) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetTotalCount(v int64) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBody) SetItemList(v []*QueryGuideItemGroupWithOutInventoryResponseBodyItemList) *QueryGuideItemGroupWithOutInventoryResponseBody {
+	s.ItemList = v
+	return s
+}
+
+type QueryGuideItemGroupWithOutInventoryResponseBodyItemList struct {
+	ItemTitle              *string                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	PriceCent              *int64                 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	LmItemId               *string                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PointPrice             *int64                 `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	ItemId                 *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	WhitePicUrl            *string                `json:"WhitePicUrl,omitempty" xml:"WhitePicUrl,omitempty"`
+	MainPicUrl             *string                `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	Points                 *int64                 `json:"Points,omitempty" xml:"Points,omitempty"`
+	ItemUrl                *string                `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	PointsAmount           *int64                 `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	ReservePrice           *string                `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	CustomizedAttributeMap map[string]interface{} `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	Tags                   []*string              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponseBodyItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponseBodyItemList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetItemTitle(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetPriceCent(v int64) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetLmItemId(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetPointPrice(v int64) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetItemId(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetWhitePicUrl(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.WhitePicUrl = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetMainPicUrl(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.MainPicUrl = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetPoints(v int64) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.Points = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetItemUrl(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.ItemUrl = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetPointsAmount(v int64) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetReservePrice(v string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetCustomizedAttributeMap(v map[string]interface{}) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponseBodyItemList) SetTags(v []*string) *QueryGuideItemGroupWithOutInventoryResponseBodyItemList {
+	s.Tags = v
+	return s
+}
+
+type QueryGuideItemGroupWithOutInventoryResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryGuideItemGroupWithOutInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGuideItemGroupWithOutInventoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponse) SetHeaders(v map[string]*string) *QueryGuideItemGroupWithOutInventoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGuideItemGroupWithOutInventoryResponse) SetBody(v *QueryGuideItemGroupWithOutInventoryResponseBody) *QueryGuideItemGroupWithOutInventoryResponse {
 	s.Body = v
 	return s
 }
@@ -17978,12 +18237,12 @@ type RenderOrderRequest struct {
 	BizId                 *string                       `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	BizUid                *string                       `json:"BizUid,omitempty" xml:"BizUid,omitempty"`
 	ExtJson               *string                       `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
-	ItemList              []*RenderOrderRequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 	DeliveryAddress       *string                       `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
 	UseAnonymousTbAccount *bool                         `json:"UseAnonymousTbAccount,omitempty" xml:"UseAnonymousTbAccount,omitempty"`
 	ThirdPartyUserId      *string                       `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
 	LmItemId              *string                       `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	AccountType           *string                       `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	ItemList              []*RenderOrderRequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
 }
 
 func (s RenderOrderRequest) String() string {
@@ -18006,11 +18265,6 @@ func (s *RenderOrderRequest) SetBizUid(v string) *RenderOrderRequest {
 
 func (s *RenderOrderRequest) SetExtJson(v string) *RenderOrderRequest {
 	s.ExtJson = &v
-	return s
-}
-
-func (s *RenderOrderRequest) SetItemList(v []*RenderOrderRequestItemList) *RenderOrderRequest {
-	s.ItemList = v
 	return s
 }
 
@@ -18039,11 +18293,16 @@ func (s *RenderOrderRequest) SetAccountType(v string) *RenderOrderRequest {
 	return s
 }
 
+func (s *RenderOrderRequest) SetItemList(v []*RenderOrderRequestItemList) *RenderOrderRequest {
+	s.ItemList = v
+	return s
+}
+
 type RenderOrderRequestItemList struct {
-	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	SkuId    *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s RenderOrderRequestItemList) String() string {
@@ -18054,18 +18313,8 @@ func (s RenderOrderRequestItemList) GoString() string {
 	return s.String()
 }
 
-func (s *RenderOrderRequestItemList) SetItemId(v int64) *RenderOrderRequestItemList {
-	s.ItemId = &v
-	return s
-}
-
 func (s *RenderOrderRequestItemList) SetSkuId(v int64) *RenderOrderRequestItemList {
 	s.SkuId = &v
-	return s
-}
-
-func (s *RenderOrderRequestItemList) SetQuantity(v int32) *RenderOrderRequestItemList {
-	s.Quantity = &v
 	return s
 }
 
@@ -18074,15 +18323,25 @@ func (s *RenderOrderRequestItemList) SetLmItemId(v string) *RenderOrderRequestIt
 	return s
 }
 
+func (s *RenderOrderRequestItemList) SetItemId(v int64) *RenderOrderRequestItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderRequestItemList) SetQuantity(v int32) *RenderOrderRequestItemList {
+	s.Quantity = &v
+	return s
+}
+
 type RenderOrderResponseBody struct {
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
 	Code       *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message    *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	SubCode    *string                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	LogsId     *string                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
-	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogsId     *string                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Model      *RenderOrderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 }
 
@@ -18096,6 +18355,16 @@ func (s RenderOrderResponseBody) GoString() string {
 
 func (s *RenderOrderResponseBody) SetRequestId(v string) *RenderOrderResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RenderOrderResponseBody) SetSuccess(v bool) *RenderOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RenderOrderResponseBody) SetSubMessage(v string) *RenderOrderResponseBody {
+	s.SubMessage = &v
 	return s
 }
 
@@ -18114,23 +18383,13 @@ func (s *RenderOrderResponseBody) SetSubCode(v string) *RenderOrderResponseBody 
 	return s
 }
 
-func (s *RenderOrderResponseBody) SetSubMessage(v string) *RenderOrderResponseBody {
-	s.SubMessage = &v
+func (s *RenderOrderResponseBody) SetTotalCount(v int64) *RenderOrderResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 func (s *RenderOrderResponseBody) SetLogsId(v string) *RenderOrderResponseBody {
 	s.LogsId = &v
-	return s
-}
-
-func (s *RenderOrderResponseBody) SetSuccess(v bool) *RenderOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *RenderOrderResponseBody) SetTotalCount(v int64) *RenderOrderResponseBody {
-	s.TotalCount = &v
 	return s
 }
 
@@ -18174,7 +18433,7 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfos) SetRenderOrderInfos(v []*
 }
 
 type RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos struct {
-	ExtInfo       map[string]*string                                                         `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	ExtInfo       map[string]interface{}                                                     `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	LmItemInfos   *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfos   `json:"LmItemInfos,omitempty" xml:"LmItemInfos,omitempty" type:"Struct"`
 	DeliveryInfos *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfos `json:"DeliveryInfos,omitempty" xml:"DeliveryInfos,omitempty" type:"Struct"`
 }
@@ -18187,7 +18446,7 @@ func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos) GoString()
 	return s.String()
 }
 
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos) SetExtInfo(v map[string]*string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos {
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos) SetExtInfo(v map[string]interface{}) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfos {
 	s.ExtInfo = v
 	return s
 }
@@ -18220,19 +18479,19 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfos
 }
 
 type RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos struct {
-	ItemId      *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	SkuId       *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	Quantity    *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	CanSell     *bool   `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ItemName    *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	SkuName     *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 	LmItemId    *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	SellerId    *int64  `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	SellerNick  *string `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ItemId      *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	CanSell     *bool   `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
 	Cash        *int64  `json:"Cash,omitempty" xml:"Cash,omitempty"`
-	Points      *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	ItemName    *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	ActualPrice *int64  `json:"ActualPrice,omitempty" xml:"ActualPrice,omitempty"`
+	SkuName     *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	SkuId       *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	Points      *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	SellerNick  *string `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
+	Quantity    *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	ItemPicUrl  *string `json:"ItemPicUrl,omitempty" xml:"ItemPicUrl,omitempty"`
 }
 
@@ -18242,41 +18501,6 @@ func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosL
 
 func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) GoString() string {
 	return s.String()
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetItemId(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.ItemId = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSkuId(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.SkuId = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetQuantity(v int32) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.Quantity = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetCanSell(v bool) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.CanSell = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetMessage(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.Message = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetItemName(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.ItemName = &v
-	return s
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSkuName(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.SkuName = &v
-	return s
 }
 
 func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetLmItemId(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
@@ -18289,8 +18513,18 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfos
 	return s
 }
 
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSellerNick(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.SellerNick = &v
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetMessage(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetItemId(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetCanSell(v bool) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.CanSell = &v
 	return s
 }
 
@@ -18299,13 +18533,38 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfos
 	return s
 }
 
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetPoints(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
-	s.Points = &v
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetItemName(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.ItemName = &v
 	return s
 }
 
 func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetActualPrice(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
 	s.ActualPrice = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSkuName(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.SkuName = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSkuId(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetPoints(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetSellerNick(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.SellerNick = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos) SetQuantity(v int32) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosLmItemInfosLmItemInfos {
+	s.Quantity = &v
 	return s
 }
 
@@ -18332,10 +18591,10 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInf
 }
 
 type RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	PostFee     *int64  `json:"PostFee,omitempty" xml:"PostFee,omitempty"`
 	ServiceType *int64  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) String() string {
@@ -18344,11 +18603,6 @@ func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfo
 
 func (s RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) GoString() string {
 	return s.String()
-}
-
-func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) SetId(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos {
-	s.Id = &v
-	return s
 }
 
 func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) SetDisplayName(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos {
@@ -18363,6 +18617,11 @@ func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInf
 
 func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) SetServiceType(v int64) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos) SetId(v string) *RenderOrderResponseBodyModelRenderOrderInfosRenderOrderInfosDeliveryInfosDeliveryInfos {
+	s.Id = &v
 	return s
 }
 
@@ -20887,11 +21146,21 @@ func (client *Client) QueryBestSession4Items(request *QueryBestSession4ItemsRequ
 	return _result, _err
 }
 
-func (client *Client) QueryBizItemListWithOptions(request *QueryBizItemListRequest, runtime *util.RuntimeOptions) (_result *QueryBizItemListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryBizItemListWithOptions(tmpReq *QueryBizItemListRequest, runtime *util.RuntimeOptions) (_result *QueryBizItemListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &QueryBizItemListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LmItemIds)) {
+		request.LmItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LmItemIds, tea.String("LmItemIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItemIds)) {
+		request.ItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemIds, tea.String("ItemIds"), tea.String("json"))
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
@@ -21003,6 +21272,35 @@ func (client *Client) QueryGuideItemGroup(request *QueryGuideItemGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGuideItemGroupResponse{}
 	_body, _err := client.QueryGuideItemGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryGuideItemGroupWithOutInventoryWithOptions(request *QueryGuideItemGroupWithOutInventoryRequest, runtime *util.RuntimeOptions) (_result *QueryGuideItemGroupWithOutInventoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &QueryGuideItemGroupWithOutInventoryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryGuideItemGroupWithOutInventory"), tea.String("2018-01-16"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGuideItemGroupWithOutInventory(request *QueryGuideItemGroupWithOutInventoryRequest) (_result *QueryGuideItemGroupWithOutInventoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGuideItemGroupWithOutInventoryResponse{}
+	_body, _err := client.QueryGuideItemGroupWithOutInventoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

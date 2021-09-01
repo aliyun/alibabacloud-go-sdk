@@ -1,3 +1,6 @@
+2021-09-01 Version: v1.0.2
+- Generated golang 2018-01-16 for linkedmall.
+
 2021-05-15 Version: v1.0.1
 - Fixed long bug.
 
