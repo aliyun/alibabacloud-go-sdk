@@ -11,146 +11,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddShortUrlRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	ShortUrlName         *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
-	EffectiveDays        *string `json:"EffectiveDays,omitempty" xml:"EffectiveDays,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-}
-
-func (s AddShortUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddShortUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddShortUrlRequest) SetOwnerId(v int64) *AddShortUrlRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetResourceOwnerAccount(v string) *AddShortUrlRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetResourceOwnerId(v int64) *AddShortUrlRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetSourceUrl(v string) *AddShortUrlRequest {
-	s.SourceUrl = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetShortUrlName(v string) *AddShortUrlRequest {
-	s.ShortUrlName = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetEffectiveDays(v string) *AddShortUrlRequest {
-	s.EffectiveDays = &v
-	return s
-}
-
-func (s *AddShortUrlRequest) SetProdCode(v string) *AddShortUrlRequest {
-	s.ProdCode = &v
-	return s
-}
-
-type AddShortUrlResponseBody struct {
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *AddShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s AddShortUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddShortUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddShortUrlResponseBody) SetMessage(v string) *AddShortUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddShortUrlResponseBody) SetRequestId(v string) *AddShortUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddShortUrlResponseBody) SetData(v *AddShortUrlResponseBodyData) *AddShortUrlResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddShortUrlResponseBody) SetCode(v string) *AddShortUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
-type AddShortUrlResponseBodyData struct {
-	SourceUrl  *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ShortUrl   *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-}
-
-func (s AddShortUrlResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddShortUrlResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddShortUrlResponseBodyData) SetSourceUrl(v string) *AddShortUrlResponseBodyData {
-	s.SourceUrl = &v
-	return s
-}
-
-func (s *AddShortUrlResponseBodyData) SetExpireDate(v string) *AddShortUrlResponseBodyData {
-	s.ExpireDate = &v
-	return s
-}
-
-func (s *AddShortUrlResponseBodyData) SetShortUrl(v string) *AddShortUrlResponseBodyData {
-	s.ShortUrl = &v
-	return s
-}
-
-type AddShortUrlResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddShortUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddShortUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddShortUrlResponse) SetHeaders(v map[string]*string) *AddShortUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddShortUrlResponse) SetBody(v *AddShortUrlResponseBody) *AddShortUrlResponse {
-	s.Body = v
-	return s
-}
-
 type AddSmsSignRequest struct {
 	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -228,9 +88,9 @@ func (s *AddSmsSignRequestSignFileList) SetFileSuffix(v string) *AddSmsSignReque
 }
 
 type AddSmsSignResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
@@ -242,6 +102,11 @@ func (s AddSmsSignResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AddSmsSignResponseBody) SetCode(v string) *AddSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *AddSmsSignResponseBody) SetMessage(v string) *AddSmsSignResponseBody {
 	s.Message = &v
 	return s
@@ -249,11 +114,6 @@ func (s *AddSmsSignResponseBody) SetMessage(v string) *AddSmsSignResponseBody {
 
 func (s *AddSmsSignResponseBody) SetRequestId(v string) *AddSmsSignResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AddSmsSignResponseBody) SetCode(v string) *AddSmsSignResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -339,10 +199,10 @@ func (s *AddSmsTemplateRequest) SetRemark(v string) *AddSmsTemplateRequest {
 }
 
 type AddSmsTemplateResponseBody struct {
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s AddSmsTemplateResponseBody) String() string {
@@ -353,8 +213,8 @@ func (s AddSmsTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddSmsTemplateResponseBody) SetTemplateCode(v string) *AddSmsTemplateResponseBody {
-	s.TemplateCode = &v
+func (s *AddSmsTemplateResponseBody) SetCode(v string) *AddSmsTemplateResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -368,8 +228,8 @@ func (s *AddSmsTemplateResponseBody) SetRequestId(v string) *AddSmsTemplateRespo
 	return s
 }
 
-func (s *AddSmsTemplateResponseBody) SetCode(v string) *AddSmsTemplateResponseBody {
-	s.Code = &v
+func (s *AddSmsTemplateResponseBody) SetTemplateCode(v string) *AddSmsTemplateResponseBody {
+	s.TemplateCode = &v
 	return s
 }
 
@@ -392,227 +252,6 @@ func (s *AddSmsTemplateResponse) SetHeaders(v map[string]*string) *AddSmsTemplat
 }
 
 func (s *AddSmsTemplateResponse) SetBody(v *AddSmsTemplateResponseBody) *AddSmsTemplateResponse {
-	s.Body = v
-	return s
-}
-
-type CreateShortParamRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-}
-
-func (s CreateShortParamRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShortParamRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShortParamRequest) SetOwnerId(v int64) *CreateShortParamRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateShortParamRequest) SetResourceOwnerAccount(v string) *CreateShortParamRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateShortParamRequest) SetResourceOwnerId(v int64) *CreateShortParamRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateShortParamRequest) SetPhoneNumbers(v string) *CreateShortParamRequest {
-	s.PhoneNumbers = &v
-	return s
-}
-
-func (s *CreateShortParamRequest) SetProdCode(v string) *CreateShortParamRequest {
-	s.ProdCode = &v
-	return s
-}
-
-type CreateShortParamResponseBody struct {
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *CreateShortParamResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s CreateShortParamResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShortParamResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShortParamResponseBody) SetMessage(v string) *CreateShortParamResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateShortParamResponseBody) SetRequestId(v string) *CreateShortParamResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateShortParamResponseBody) SetData(v *CreateShortParamResponseBodyData) *CreateShortParamResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateShortParamResponseBody) SetCode(v string) *CreateShortParamResponseBody {
-	s.Code = &v
-	return s
-}
-
-type CreateShortParamResponseBodyData struct {
-	PhoneNumbers *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
-	ShortParam   *string `json:"ShortParam,omitempty" xml:"ShortParam,omitempty"`
-	ParamDetail  *string `json:"ParamDetail,omitempty" xml:"ParamDetail,omitempty"`
-}
-
-func (s CreateShortParamResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShortParamResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShortParamResponseBodyData) SetPhoneNumbers(v string) *CreateShortParamResponseBodyData {
-	s.PhoneNumbers = &v
-	return s
-}
-
-func (s *CreateShortParamResponseBodyData) SetShortParam(v string) *CreateShortParamResponseBodyData {
-	s.ShortParam = &v
-	return s
-}
-
-func (s *CreateShortParamResponseBodyData) SetParamDetail(v string) *CreateShortParamResponseBodyData {
-	s.ParamDetail = &v
-	return s
-}
-
-type CreateShortParamResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateShortParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateShortParamResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShortParamResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShortParamResponse) SetHeaders(v map[string]*string) *CreateShortParamResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateShortParamResponse) SetBody(v *CreateShortParamResponseBody) *CreateShortParamResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteShortUrlRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-}
-
-func (s DeleteShortUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShortUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShortUrlRequest) SetOwnerId(v int64) *DeleteShortUrlRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteShortUrlRequest) SetResourceOwnerAccount(v string) *DeleteShortUrlRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteShortUrlRequest) SetResourceOwnerId(v int64) *DeleteShortUrlRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteShortUrlRequest) SetSourceUrl(v string) *DeleteShortUrlRequest {
-	s.SourceUrl = &v
-	return s
-}
-
-func (s *DeleteShortUrlRequest) SetProdCode(v string) *DeleteShortUrlRequest {
-	s.ProdCode = &v
-	return s
-}
-
-type DeleteShortUrlResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s DeleteShortUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShortUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShortUrlResponseBody) SetMessage(v string) *DeleteShortUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteShortUrlResponseBody) SetRequestId(v string) *DeleteShortUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteShortUrlResponseBody) SetCode(v string) *DeleteShortUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
-type DeleteShortUrlResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteShortUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShortUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShortUrlResponse) SetHeaders(v map[string]*string) *DeleteShortUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteShortUrlResponse) SetBody(v *DeleteShortUrlResponseBody) *DeleteShortUrlResponse {
 	s.Body = v
 	return s
 }
@@ -653,9 +292,9 @@ func (s *DeleteSmsSignRequest) SetSignName(v string) *DeleteSmsSignRequest {
 }
 
 type DeleteSmsSignResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
@@ -667,6 +306,11 @@ func (s DeleteSmsSignResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteSmsSignResponseBody) SetCode(v string) *DeleteSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteSmsSignResponseBody) SetMessage(v string) *DeleteSmsSignResponseBody {
 	s.Message = &v
 	return s
@@ -674,11 +318,6 @@ func (s *DeleteSmsSignResponseBody) SetMessage(v string) *DeleteSmsSignResponseB
 
 func (s *DeleteSmsSignResponseBody) SetRequestId(v string) *DeleteSmsSignResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteSmsSignResponseBody) SetCode(v string) *DeleteSmsSignResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -746,10 +385,10 @@ func (s *DeleteSmsTemplateRequest) SetTemplateCode(v string) *DeleteSmsTemplateR
 }
 
 type DeleteSmsTemplateResponseBody struct {
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s DeleteSmsTemplateResponseBody) String() string {
@@ -760,8 +399,8 @@ func (s DeleteSmsTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSmsTemplateResponseBody) SetTemplateCode(v string) *DeleteSmsTemplateResponseBody {
-	s.TemplateCode = &v
+func (s *DeleteSmsTemplateResponseBody) SetCode(v string) *DeleteSmsTemplateResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -775,8 +414,8 @@ func (s *DeleteSmsTemplateResponseBody) SetRequestId(v string) *DeleteSmsTemplat
 	return s
 }
 
-func (s *DeleteSmsTemplateResponseBody) SetCode(v string) *DeleteSmsTemplateResponseBody {
-	s.Code = &v
+func (s *DeleteSmsTemplateResponseBody) SetTemplateCode(v string) *DeleteSmsTemplateResponseBody {
+	s.TemplateCode = &v
 	return s
 }
 
@@ -880,9 +519,9 @@ func (s *ModifySmsSignRequestSignFileList) SetFileSuffix(v string) *ModifySmsSig
 }
 
 type ModifySmsSignResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
@@ -894,6 +533,11 @@ func (s ModifySmsSignResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifySmsSignResponseBody) SetCode(v string) *ModifySmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ModifySmsSignResponseBody) SetMessage(v string) *ModifySmsSignResponseBody {
 	s.Message = &v
 	return s
@@ -901,11 +545,6 @@ func (s *ModifySmsSignResponseBody) SetMessage(v string) *ModifySmsSignResponseB
 
 func (s *ModifySmsSignResponseBody) SetRequestId(v string) *ModifySmsSignResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModifySmsSignResponseBody) SetCode(v string) *ModifySmsSignResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -997,10 +636,10 @@ func (s *ModifySmsTemplateRequest) SetRemark(v string) *ModifySmsTemplateRequest
 }
 
 type ModifySmsTemplateResponseBody struct {
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s ModifySmsTemplateResponseBody) String() string {
@@ -1011,8 +650,8 @@ func (s ModifySmsTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifySmsTemplateResponseBody) SetTemplateCode(v string) *ModifySmsTemplateResponseBody {
-	s.TemplateCode = &v
+func (s *ModifySmsTemplateResponseBody) SetCode(v string) *ModifySmsTemplateResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -1026,8 +665,8 @@ func (s *ModifySmsTemplateResponseBody) SetRequestId(v string) *ModifySmsTemplat
 	return s
 }
 
-func (s *ModifySmsTemplateResponseBody) SetCode(v string) *ModifySmsTemplateResponseBody {
-	s.Code = &v
+func (s *ModifySmsTemplateResponseBody) SetTemplateCode(v string) *ModifySmsTemplateResponseBody {
+	s.TemplateCode = &v
 	return s
 }
 
@@ -1114,10 +753,10 @@ func (s *QuerySendDetailsRequest) SetCurrentPage(v int64) *QuerySendDetailsReque
 }
 
 type QuerySendDetailsResponseBody struct {
-	TotalCount        *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Code              *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message           *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code              *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	TotalCount        *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	SmsSendDetailDTOs *QuerySendDetailsResponseBodySmsSendDetailDTOs `json:"SmsSendDetailDTOs,omitempty" xml:"SmsSendDetailDTOs,omitempty" type:"Struct"`
 }
 
@@ -1129,8 +768,8 @@ func (s QuerySendDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySendDetailsResponseBody) SetTotalCount(v string) *QuerySendDetailsResponseBody {
-	s.TotalCount = &v
+func (s *QuerySendDetailsResponseBody) SetCode(v string) *QuerySendDetailsResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -1144,8 +783,8 @@ func (s *QuerySendDetailsResponseBody) SetRequestId(v string) *QuerySendDetailsR
 	return s
 }
 
-func (s *QuerySendDetailsResponseBody) SetCode(v string) *QuerySendDetailsResponseBody {
-	s.Code = &v
+func (s *QuerySendDetailsResponseBody) SetTotalCount(v string) *QuerySendDetailsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1253,164 +892,6 @@ func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *Que
 	return s
 }
 
-type QueryShortUrlRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-}
-
-func (s QueryShortUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryShortUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryShortUrlRequest) SetOwnerId(v int64) *QueryShortUrlRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryShortUrlRequest) SetResourceOwnerAccount(v string) *QueryShortUrlRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryShortUrlRequest) SetResourceOwnerId(v int64) *QueryShortUrlRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryShortUrlRequest) SetProdCode(v string) *QueryShortUrlRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *QueryShortUrlRequest) SetShortUrl(v string) *QueryShortUrlRequest {
-	s.ShortUrl = &v
-	return s
-}
-
-type QueryShortUrlResponseBody struct {
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *QueryShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s QueryShortUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryShortUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryShortUrlResponseBody) SetMessage(v string) *QueryShortUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBody) SetRequestId(v string) *QueryShortUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBody) SetData(v *QueryShortUrlResponseBodyData) *QueryShortUrlResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryShortUrlResponseBody) SetCode(v string) *QueryShortUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
-type QueryShortUrlResponseBodyData struct {
-	UniqueVisitorCount *string `json:"UniqueVisitorCount,omitempty" xml:"UniqueVisitorCount,omitempty"`
-	SourceUrl          *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	ShortUrlStatus     *string `json:"ShortUrlStatus,omitempty" xml:"ShortUrlStatus,omitempty"`
-	PageViewCount      *string `json:"PageViewCount,omitempty" xml:"PageViewCount,omitempty"`
-	ExpireDate         *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ShortUrlName       *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
-	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	ShortUrl           *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-}
-
-func (s QueryShortUrlResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryShortUrlResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryShortUrlResponseBodyData) SetUniqueVisitorCount(v string) *QueryShortUrlResponseBodyData {
-	s.UniqueVisitorCount = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetSourceUrl(v string) *QueryShortUrlResponseBodyData {
-	s.SourceUrl = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetShortUrlStatus(v string) *QueryShortUrlResponseBodyData {
-	s.ShortUrlStatus = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetPageViewCount(v string) *QueryShortUrlResponseBodyData {
-	s.PageViewCount = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetExpireDate(v string) *QueryShortUrlResponseBodyData {
-	s.ExpireDate = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetShortUrlName(v string) *QueryShortUrlResponseBodyData {
-	s.ShortUrlName = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetCreateDate(v string) *QueryShortUrlResponseBodyData {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *QueryShortUrlResponseBodyData) SetShortUrl(v string) *QueryShortUrlResponseBodyData {
-	s.ShortUrl = &v
-	return s
-}
-
-type QueryShortUrlResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryShortUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryShortUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryShortUrlResponse) SetHeaders(v map[string]*string) *QueryShortUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryShortUrlResponse) SetBody(v *QueryShortUrlResponseBody) *QueryShortUrlResponse {
-	s.Body = v
-	return s
-}
-
 type QuerySmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1448,9 +929,9 @@ func (s *QuerySmsSignRequest) SetSignName(v string) *QuerySmsSignRequest {
 
 type QuerySmsSignResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	SignStatus *int32  `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
 	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	SignName   *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
@@ -1469,11 +950,6 @@ func (s *QuerySmsSignResponseBody) SetRequestId(v string) *QuerySmsSignResponseB
 	return s
 }
 
-func (s *QuerySmsSignResponseBody) SetMessage(v string) *QuerySmsSignResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *QuerySmsSignResponseBody) SetSignStatus(v int32) *QuerySmsSignResponseBody {
 	s.SignStatus = &v
 	return s
@@ -1481,6 +957,11 @@ func (s *QuerySmsSignResponseBody) SetSignStatus(v int32) *QuerySmsSignResponseB
 
 func (s *QuerySmsSignResponseBody) SetCode(v string) *QuerySmsSignResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsSignResponseBody) SetMessage(v string) *QuerySmsSignResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1558,16 +1039,16 @@ func (s *QuerySmsTemplateRequest) SetTemplateCode(v string) *QuerySmsTemplateReq
 }
 
 type QuerySmsTemplateResponseBody struct {
-	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType    *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateStatus  *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	TemplateType    *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	TemplateStatus  *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 }
 
 func (s QuerySmsTemplateResponseBody) String() string {
@@ -1578,8 +1059,8 @@ func (s QuerySmsTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySmsTemplateResponseBody) SetTemplateCode(v string) *QuerySmsTemplateResponseBody {
-	s.TemplateCode = &v
+func (s *QuerySmsTemplateResponseBody) SetTemplateContent(v string) *QuerySmsTemplateResponseBody {
+	s.TemplateContent = &v
 	return s
 }
 
@@ -1588,18 +1069,18 @@ func (s *QuerySmsTemplateResponseBody) SetRequestId(v string) *QuerySmsTemplateR
 	return s
 }
 
-func (s *QuerySmsTemplateResponseBody) SetMessage(v string) *QuerySmsTemplateResponseBody {
-	s.Message = &v
+func (s *QuerySmsTemplateResponseBody) SetTemplateCode(v string) *QuerySmsTemplateResponseBody {
+	s.TemplateCode = &v
 	return s
 }
 
-func (s *QuerySmsTemplateResponseBody) SetTemplateContent(v string) *QuerySmsTemplateResponseBody {
-	s.TemplateContent = &v
+func (s *QuerySmsTemplateResponseBody) SetTemplateStatus(v int32) *QuerySmsTemplateResponseBody {
+	s.TemplateStatus = &v
 	return s
 }
 
-func (s *QuerySmsTemplateResponseBody) SetTemplateName(v string) *QuerySmsTemplateResponseBody {
-	s.TemplateName = &v
+func (s *QuerySmsTemplateResponseBody) SetCode(v string) *QuerySmsTemplateResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -1608,8 +1089,13 @@ func (s *QuerySmsTemplateResponseBody) SetTemplateType(v int32) *QuerySmsTemplat
 	return s
 }
 
-func (s *QuerySmsTemplateResponseBody) SetCode(v string) *QuerySmsTemplateResponseBody {
-	s.Code = &v
+func (s *QuerySmsTemplateResponseBody) SetMessage(v string) *QuerySmsTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsTemplateResponseBody) SetTemplateName(v string) *QuerySmsTemplateResponseBody {
+	s.TemplateName = &v
 	return s
 }
 
@@ -1620,11 +1106,6 @@ func (s *QuerySmsTemplateResponseBody) SetCreateDate(v string) *QuerySmsTemplate
 
 func (s *QuerySmsTemplateResponseBody) SetReason(v string) *QuerySmsTemplateResponseBody {
 	s.Reason = &v
-	return s
-}
-
-func (s *QuerySmsTemplateResponseBody) SetTemplateStatus(v int32) *QuerySmsTemplateResponseBody {
-	s.TemplateStatus = &v
 	return s
 }
 
@@ -1658,7 +1139,7 @@ type SendBatchSmsRequest struct {
 	PhoneNumberJson      *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
 	SignNameJson         *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
 	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParamJson    *string `json:"templateParamJson,omitempty" xml:"templateParamJson,omitempty"`
+	TemplateParamJson    *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
 	SmsUpExtendCodeJson  *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
 }
 
@@ -1711,10 +1192,10 @@ func (s *SendBatchSmsRequest) SetSmsUpExtendCodeJson(v string) *SendBatchSmsRequ
 }
 
 type SendBatchSmsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SendBatchSmsResponseBody) String() string {
@@ -1725,23 +1206,23 @@ func (s SendBatchSmsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SendBatchSmsResponseBody) SetMessage(v string) *SendBatchSmsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SendBatchSmsResponseBody) SetRequestId(v string) *SendBatchSmsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *SendBatchSmsResponseBody) SetCode(v string) *SendBatchSmsResponseBody {
 	s.Code = &v
 	return s
 }
 
+func (s *SendBatchSmsResponseBody) SetMessage(v string) *SendBatchSmsResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *SendBatchSmsResponseBody) SetBizId(v string) *SendBatchSmsResponseBody {
 	s.BizId = &v
+	return s
+}
+
+func (s *SendBatchSmsResponseBody) SetRequestId(v string) *SendBatchSmsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1764,6 +1245,164 @@ func (s *SendBatchSmsResponse) SetHeaders(v map[string]*string) *SendBatchSmsRes
 }
 
 func (s *SendBatchSmsResponse) SetBody(v *SendBatchSmsResponseBody) *SendBatchSmsResponse {
+	s.Body = v
+	return s
+}
+
+type SendMessageToGlobeRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	To                   *string `json:"To,omitempty" xml:"To,omitempty"`
+	From                 *string `json:"From,omitempty" xml:"From,omitempty"`
+	Message              *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendMessageToGlobeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGlobeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGlobeRequest) SetOwnerId(v int64) *SendMessageToGlobeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetResourceOwnerAccount(v string) *SendMessageToGlobeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetResourceOwnerId(v int64) *SendMessageToGlobeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetTo(v string) *SendMessageToGlobeRequest {
+	s.To = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetFrom(v string) *SendMessageToGlobeRequest {
+	s.From = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetMessage(v string) *SendMessageToGlobeRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *SendMessageToGlobeRequest) SetType(v string) *SendMessageToGlobeRequest {
+	s.Type = &v
+	return s
+}
+
+type SendMessageToGlobeResponseBody struct {
+	From         *string                                     `json:"From,omitempty" xml:"From,omitempty"`
+	MessageId    *string                                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Segments     *string                                     `json:"Segments,omitempty" xml:"Segments,omitempty"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	To           *string                                     `json:"To,omitempty" xml:"To,omitempty"`
+	NumberDetail *SendMessageToGlobeResponseBodyNumberDetail `json:"NumberDetail,omitempty" xml:"NumberDetail,omitempty" type:"Struct"`
+}
+
+func (s SendMessageToGlobeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGlobeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGlobeResponseBody) SetFrom(v string) *SendMessageToGlobeResponseBody {
+	s.From = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetMessageId(v string) *SendMessageToGlobeResponseBody {
+	s.MessageId = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetRequestId(v string) *SendMessageToGlobeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetSegments(v string) *SendMessageToGlobeResponseBody {
+	s.Segments = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetCode(v string) *SendMessageToGlobeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetTo(v string) *SendMessageToGlobeResponseBody {
+	s.To = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBody) SetNumberDetail(v *SendMessageToGlobeResponseBodyNumberDetail) *SendMessageToGlobeResponseBody {
+	s.NumberDetail = v
+	return s
+}
+
+type SendMessageToGlobeResponseBodyNumberDetail struct {
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s SendMessageToGlobeResponseBodyNumberDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGlobeResponseBodyNumberDetail) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGlobeResponseBodyNumberDetail) SetCountry(v string) *SendMessageToGlobeResponseBodyNumberDetail {
+	s.Country = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBodyNumberDetail) SetCarrier(v string) *SendMessageToGlobeResponseBodyNumberDetail {
+	s.Carrier = &v
+	return s
+}
+
+func (s *SendMessageToGlobeResponseBodyNumberDetail) SetRegion(v string) *SendMessageToGlobeResponseBodyNumberDetail {
+	s.Region = &v
+	return s
+}
+
+type SendMessageToGlobeResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendMessageToGlobeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageToGlobeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageToGlobeResponse) SetHeaders(v map[string]*string) *SendMessageToGlobeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendMessageToGlobeResponse) SetBody(v *SendMessageToGlobeResponseBody) *SendMessageToGlobeResponse {
 	s.Body = v
 	return s
 }
@@ -1834,10 +1473,10 @@ func (s *SendSmsRequest) SetOutId(v string) *SendSmsRequest {
 }
 
 type SendSmsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SendSmsResponseBody) String() string {
@@ -1848,23 +1487,23 @@ func (s SendSmsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SendSmsResponseBody) SetMessage(v string) *SendSmsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SendSmsResponseBody) SetRequestId(v string) *SendSmsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *SendSmsResponseBody) SetCode(v string) *SendSmsResponseBody {
 	s.Code = &v
 	return s
 }
 
+func (s *SendSmsResponseBody) SetMessage(v string) *SendSmsResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *SendSmsResponseBody) SetBizId(v string) *SendSmsResponseBody {
 	s.BizId = &v
+	return s
+}
+
+func (s *SendSmsResponseBody) SetRequestId(v string) *SendSmsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1908,21 +1547,10 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2-pop": tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":         tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-1":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"cn-beijing":         tea.String("dysmsapi-proxy.cn-beijing.aliyuncs.com"),
-		"eu-central-1":       tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1":          tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1-oxs":      tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"me-east-1":          tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"rus-west-1-pop":     tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"us-east-1":          tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
-		"us-west-1":          tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-1": tea.String("dysmsapi.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5": tea.String("dysmsapi-xman.ap-southeast-5.aliyuncs.com"),
+		"cn-beijing":     tea.String("dysmsapi-proxy.cn-beijing.aliyuncs.com"),
+		"cn-hongkong":    tea.String("dysmsapi-xman.cn-hongkong.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1948,34 +1576,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddShortUrlWithOptions(request *AddShortUrlRequest, runtime *util.RuntimeOptions) (_result *AddShortUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AddShortUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddShortUrl"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddShortUrl(request *AddShortUrlRequest) (_result *AddShortUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddShortUrlResponse{}
-	_body, _err := client.AddShortUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2032,62 +1632,6 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSmsTemplateResponse{}
 	_body, _err := client.AddSmsTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateShortParamWithOptions(request *CreateShortParamRequest, runtime *util.RuntimeOptions) (_result *CreateShortParamResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateShortParamResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateShortParam"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateShortParam(request *CreateShortParamRequest) (_result *CreateShortParamResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateShortParamResponse{}
-	_body, _err := client.CreateShortParamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, runtime *util.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteShortUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteShortUrl"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteShortUrl(request *DeleteShortUrlRequest) (_result *DeleteShortUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteShortUrlResponse{}
-	_body, _err := client.DeleteShortUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2235,34 +1779,6 @@ func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) QueryShortUrlWithOptions(request *QueryShortUrlRequest, runtime *util.RuntimeOptions) (_result *QueryShortUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryShortUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryShortUrl"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *QueryShortUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryShortUrlResponse{}
-	_body, _err := client.QueryShortUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runtime *util.RuntimeOptions) (_result *QuerySmsSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2340,6 +1856,34 @@ func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendB
 	runtime := &util.RuntimeOptions{}
 	_result = &SendBatchSmsResponse{}
 	_body, _err := client.SendBatchSmsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeRequest, runtime *util.RuntimeOptions) (_result *SendMessageToGlobeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SendMessageToGlobeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SendMessageToGlobe"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendMessageToGlobe(request *SendMessageToGlobeRequest) (_result *SendMessageToGlobeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendMessageToGlobeResponse{}
+	_body, _err := client.SendMessageToGlobeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

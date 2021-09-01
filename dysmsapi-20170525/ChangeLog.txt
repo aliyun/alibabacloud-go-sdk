@@ -1,3 +1,6 @@
+2021-09-01 Version: v2.0.2
+- Generated golang 2017-05-25 for Dysmsapi.
+
 2021-01-04 Version: v2.0.1
 - AMP Version Change.
 
