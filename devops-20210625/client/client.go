@@ -1404,6 +1404,195 @@ func (s *ResetSshKeyResponse) SetBody(v *ResetSshKeyResponseBody) *ResetSshKeyRe
 	return s
 }
 
+type CreateWorkspaceRequest struct {
+	// 工作空间名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 技术栈
+	WorkspaceTemplate *string `json:"workspaceTemplate,omitempty" xml:"workspaceTemplate,omitempty"`
+	// 代码来源URL（当前仅支持云效 Codeup 来源）
+	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
+	// 代码版本，支持 commitSHA、分支、标签
+	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
+	// 打开空间默认打开的文件相对路径
+	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	// 工作空间复用标识，按照"用户+技术栈+代码地址+版本"进行复用 true - 复用 false - 不复用，每次均为新创建
+	Reuse *bool `json:"reuse,omitempty" xml:"reuse,omitempty"`
+	// 资源标识，提供给非标代码源作为空间复用的唯一标识
+	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	// 请求来源（用于统计，云产品集成时需要传入）
+	RequestFrom *string `json:"requestFrom,omitempty" xml:"requestFrom,omitempty"`
+}
+
+func (s CreateWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceRequest) SetName(v string) *CreateWorkspaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetWorkspaceTemplate(v string) *CreateWorkspaceRequest {
+	s.WorkspaceTemplate = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetCodeUrl(v string) *CreateWorkspaceRequest {
+	s.CodeUrl = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetCodeVersion(v string) *CreateWorkspaceRequest {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetFilePath(v string) *CreateWorkspaceRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetReuse(v bool) *CreateWorkspaceRequest {
+	s.Reuse = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetResourceIdentifier(v string) *CreateWorkspaceRequest {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequest) SetRequestFrom(v string) *CreateWorkspaceRequest {
+	s.RequestFrom = &v
+	return s
+}
+
+type CreateWorkspaceResponseBody struct {
+	// 工作空间信息
+	Workspace *CreateWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+}
+
+func (s CreateWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceResponseBody) SetWorkspace(v *CreateWorkspaceResponseBodyWorkspace) *CreateWorkspaceResponseBody {
+	s.Workspace = v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBody) SetRequestId(v string) *CreateWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBody) SetSuccess(v bool) *CreateWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBody) SetErrorCode(v string) *CreateWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBody) SetErrorMessage(v string) *CreateWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateWorkspaceResponseBodyWorkspace struct {
+	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 工作空间名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 工作空间模板
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// 创建者，阿里云PK
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 创建时间戳
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+}
+
+func (s CreateWorkspaceResponseBodyWorkspace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkspaceResponseBodyWorkspace) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetId(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetName(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetStatus(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetTemplate(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetCreator(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.Creator = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyWorkspace) SetCreateTime(v string) *CreateWorkspaceResponseBodyWorkspace {
+	s.CreateTime = &v
+	return s
+}
+
+type CreateWorkspaceResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceResponse) SetHeaders(v map[string]*string) *CreateWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *CreateWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceConnectionsRequest struct {
 	// aliyun_code  阿里云代码 Codeup       Codeup  Gitee        码云 github       Github ack       容器服务Kubernetes(ACK) docker_register_aliyun    容器镜像服务(ACR) ecs          对象存储(OSS) edas          企业级分布式应用(EDAS) emas         移动研发平台(EMAS) fc            阿里云函数计算(FC) kubernetes     自建k8s集群 oss            对象存储(OSS) PACKAGES       制品仓库 ros   资源编排服务(ROS) sae       Serverless应用引擎(SAE)
 	SericeConnectionType *string `json:"sericeConnectionType,omitempty" xml:"sericeConnectionType,omitempty"`
@@ -2155,6 +2344,248 @@ func (s *StartPipelineRunResponse) SetHeaders(v map[string]*string) *StartPipeli
 }
 
 func (s *StartPipelineRunResponse) SetBody(v *StartPipelineRunResponseBody) *StartPipelineRunResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspacesRequest struct {
+	// 用来标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 本次读取的最大数据记录数量，默认10，最大100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
+	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	// 空间模板列表
+	WorkspaceTemplateList []*string `json:"workspaceTemplateList,omitempty" xml:"workspaceTemplateList,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkspacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesRequest) SetNextToken(v string) *ListWorkspacesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetMaxResults(v int32) *ListWorkspacesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetStatusList(v []*string) *ListWorkspacesRequest {
+	s.StatusList = v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetWorkspaceTemplateList(v []*string) *ListWorkspacesRequest {
+	s.WorkspaceTemplateList = v
+	return s
+}
+
+type ListWorkspacesShrinkRequest struct {
+	// 用来标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 本次读取的最大数据记录数量，默认10，最大100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
+	StatusListShrink *string `json:"statusList,omitempty" xml:"statusList,omitempty"`
+	// 空间模板列表
+	WorkspaceTemplateListShrink *string `json:"workspaceTemplateList,omitempty" xml:"workspaceTemplateList,omitempty"`
+}
+
+func (s ListWorkspacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesShrinkRequest) SetNextToken(v string) *ListWorkspacesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetMaxResults(v int32) *ListWorkspacesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetStatusListShrink(v string) *ListWorkspacesShrinkRequest {
+	s.StatusListShrink = &v
+	return s
+}
+
+func (s *ListWorkspacesShrinkRequest) SetWorkspaceTemplateListShrink(v string) *ListWorkspacesShrinkRequest {
+	s.WorkspaceTemplateListShrink = &v
+	return s
+}
+
+type ListWorkspacesResponseBody struct {
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// MaxResults本次请求所返回的最大记录条数
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 工作空间列表
+	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+}
+
+func (s ListWorkspacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBody) SetTotalCount(v int32) *ListWorkspacesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetNextToken(v string) *ListWorkspacesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetMaxResults(v int32) *ListWorkspacesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBodyWorkspaces) *ListWorkspacesResponseBody {
+	s.Workspaces = v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetRequestId(v string) *ListWorkspacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetSuccess(v bool) *ListWorkspacesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetErrorCode(v string) *ListWorkspacesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetErrorMessage(v string) *ListWorkspacesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListWorkspacesResponseBodyWorkspaces struct {
+	// 代码版本，支持 commitSHA、分支、标签
+	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
+	// 代码来源URL
+	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
+	// 工作空间名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 机器规格
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 工作空间模板
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 用户阿里云PK
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// 创建时间戳
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyWorkspaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyWorkspaces) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetCodeVersion(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetCodeUrl(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.CodeUrl = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetName(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetSpec(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Spec = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetStatus(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetTemplate(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Template = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetUserId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetCreateTime(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.CreateTime = &v
+	return s
+}
+
+type ListWorkspacesResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkspacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponse) SetHeaders(v map[string]*string) *ListWorkspacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWorkspacesResponse {
 	s.Body = v
 	return s
 }
@@ -3029,6 +3460,149 @@ func (s *DeleteVariableGroupResponse) SetBody(v *DeleteVariableGroupResponseBody
 	return s
 }
 
+type GetWorkspaceResponseBody struct {
+	// 工作空间信息
+	Workspace *GetWorkspaceResponseBodyWorkspace `json:"workspace,omitempty" xml:"workspace,omitempty" type:"Struct"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponseBody) SetWorkspace(v *GetWorkspaceResponseBodyWorkspace) *GetWorkspaceResponseBody {
+	s.Workspace = v
+	return s
+}
+
+func (s *GetWorkspaceResponseBody) SetSuccess(v bool) *GetWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBody) SetErrorCode(v string) *GetWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBody) SetErrorMessage(v string) *GetWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBody) SetRequestId(v string) *GetWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetWorkspaceResponseBodyWorkspace struct {
+	// 代码版本，支持 commitSHA、分支、标签
+	CodeVersion *string `json:"codeVersion,omitempty" xml:"codeVersion,omitempty"`
+	// 代码来源URL
+	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
+	// 工作空间名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 机器规格
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 工作空间模板
+	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 用户阿里云PK
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// 创建时间戳
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+}
+
+func (s GetWorkspaceResponseBodyWorkspace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkspaceResponseBodyWorkspace) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetCodeVersion(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetCodeUrl(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.CodeUrl = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetName(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetSpec(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.Spec = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetStatus(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetTemplate(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.Template = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetId(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetUserId(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) SetCreateTime(v string) *GetWorkspaceResponseBodyWorkspace {
+	s.CreateTime = &v
+	return s
+}
+
+type GetWorkspaceResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponse) SetHeaders(v map[string]*string) *GetWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSshKeyResponseBody struct {
 	// 请求id，每次请求都是唯一值，便于后续排查问题
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
@@ -3181,6 +3755,68 @@ func (s *DeleteHostGroupResponse) SetHeaders(v map[string]*string) *DeleteHostGr
 }
 
 func (s *DeleteHostGroupResponse) SetBody(v *DeleteHostGroupResponseBody) *DeleteHostGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ReleaseWorkspaceResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+}
+
+func (s ReleaseWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkspaceResponseBody) SetRequestId(v string) *ReleaseWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReleaseWorkspaceResponseBody) SetSuccess(v bool) *ReleaseWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ReleaseWorkspaceResponseBody) SetErrorCode(v string) *ReleaseWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReleaseWorkspaceResponseBody) SetErrorMessage(v string) *ReleaseWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ReleaseWorkspaceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReleaseWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseWorkspaceResponse) SetHeaders(v map[string]*string) *ReleaseWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseWorkspaceResponse) SetBody(v *ReleaseWorkspaceResponseBody) *ReleaseWorkspaceResponse {
 	s.Body = v
 	return s
 }
@@ -3496,6 +4132,68 @@ func (s *DeletePipelineResponse) SetHeaders(v map[string]*string) *DeletePipelin
 }
 
 func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeletePipelineResponse {
+	s.Body = v
+	return s
+}
+
+type FrozenWorkspaceResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+}
+
+func (s FrozenWorkspaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FrozenWorkspaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FrozenWorkspaceResponseBody) SetRequestId(v string) *FrozenWorkspaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FrozenWorkspaceResponseBody) SetSuccess(v bool) *FrozenWorkspaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FrozenWorkspaceResponseBody) SetErrorCode(v string) *FrozenWorkspaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *FrozenWorkspaceResponseBody) SetErrorMessage(v string) *FrozenWorkspaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type FrozenWorkspaceResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *FrozenWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FrozenWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FrozenWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FrozenWorkspaceResponse) SetHeaders(v map[string]*string) *FrozenWorkspaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FrozenWorkspaceResponse) SetBody(v *FrozenWorkspaceResponseBody) *FrozenWorkspaceResponse {
 	s.Body = v
 	return s
 }
@@ -4109,6 +4807,69 @@ func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map
 	return _result, _err
 }
 
+func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceTemplate)) {
+		body["workspaceTemplate"] = request.WorkspaceTemplate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeUrl)) {
+		body["codeUrl"] = request.CodeUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeVersion)) {
+		body["codeVersion"] = request.CodeVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["filePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reuse)) {
+		body["reuse"] = request.Reuse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdentifier)) {
+		body["resourceIdentifier"] = request.ResourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestFrom)) {
+		body["requestFrom"] = request.RequestFrom
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.DoROARequestWithForm(tea.String("CreateWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/workspaces"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListServiceConnections(organizationId *string, request *ListServiceConnectionsRequest) (_result *ListServiceConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4435,6 +5196,63 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 	return _result, _err
 }
 
+func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWorkspacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StatusList)) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, tea.String("statusList"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkspaceTemplateList)) {
+		request.WorkspaceTemplateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkspaceTemplateList, tea.String("workspaceTemplateList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusListShrink)) {
+		query["statusList"] = request.StatusListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceTemplateListShrink)) {
+		query["workspaceTemplateList"] = request.WorkspaceTemplateListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListWorkspaces"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/workspaces"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *GetPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4553,6 +5371,31 @@ func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id 
 	return _result, _err
 }
 
+func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.GetWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateSshKey(organizationId *string) (_result *CreateSshKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4596,6 +5439,31 @@ func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *str
 	}
 	_result = &DeleteHostGroupResponse{}
 	_body, _err := client.DoROARequest(tea.String("DeleteHostGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReleaseWorkspaceResponse{}
+	_body, _err := client.ReleaseWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseWorkspaceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ReleaseWorkspaceResponse{}
+	_body, _err := client.DoROARequest(tea.String("ReleaseWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)+"/release"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4668,6 +5536,31 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 	}
 	_result = &DeletePipelineResponse{}
 	_body, _err := client.DoROARequest(tea.String("DeletePipeline"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FrozenWorkspaceResponse{}
+	_body, _err := client.FrozenWorkspaceWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FrozenWorkspaceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &FrozenWorkspaceResponse{}
+	_body, _err := client.DoROARequest(tea.String("FrozenWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)+"/frozen"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
