@@ -59,9 +59,12 @@ func (s *CreateSignatureRequest) SetProcessInstanceID(v string) *CreateSignature
 }
 
 type CreateSignatureResponseBody struct {
-	Data         *CreateSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *CreateSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateSignatureResponseBody) String() string {
@@ -160,8 +163,11 @@ func (s *CreateSignatureResponse) SetBody(v *CreateSignatureResponseBody) *Creat
 }
 
 type DeleteTemplateResponseBody struct {
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
@@ -212,7 +218,7 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type CreateTemplateRequest struct {
-	// 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，必须在结尾添加"回T退订"
+	// 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，必须在结尾添加”回T退订“
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 申请说明
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -220,6 +226,14 @@ type CreateTemplateRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// 无需填写
 	ProcessInstanceID *string `json:"ProcessInstanceID,omitempty" xml:"ProcessInstanceID,omitempty"`
+	// 签名ID
+	SignatureID *string `json:"SignatureID,omitempty" xml:"SignatureID,omitempty"`
+	// 模板类型：
+	// 0：验证码。
+	// 1：短信通知。
+	// 2：推广短信。
+	// 3：国际/港澳台消息。
+	Type *int `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -250,10 +264,23 @@ func (s *CreateTemplateRequest) SetProcessInstanceID(v string) *CreateTemplateRe
 	return s
 }
 
+func (s *CreateTemplateRequest) SetSignatureID(v string) *CreateTemplateRequest {
+	s.SignatureID = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetType(v int) *CreateTemplateRequest {
+	s.Type = &v
+	return s
+}
+
 type CreateTemplateResponseBody struct {
-	Data         *CreateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *CreateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {
@@ -405,9 +432,12 @@ func (s *ListTemplatesRequest) SetStatus(v int32) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	Data         *ListTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *ListTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -559,8 +589,11 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type DeleteScheduleResponseBody struct {
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
@@ -611,9 +644,12 @@ func (s *DeleteScheduleResponse) SetBody(v *DeleteScheduleResponseBody) *DeleteS
 }
 
 type GetTemplateResponseBody struct {
-	Data         *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -779,9 +815,12 @@ func (s *ListSignaturesRequest) SetStatus(v int32) *ListSignaturesRequest {
 }
 
 type ListSignaturesResponseBody struct {
-	Data         *ListSignaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *ListSignaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s ListSignaturesResponseBody) String() string {
@@ -919,9 +958,12 @@ func (s *ListSignaturesResponse) SetBody(v *ListSignaturesResponseBody) *ListSig
 }
 
 type GetSignatureResponseBody struct {
-	Data         *GetSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *GetSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s GetSignatureResponseBody) String() string {
@@ -948,7 +990,7 @@ func (s *GetSignatureResponseBody) SetErrorMessage(v string) *GetSignatureRespon
 }
 
 type GetSignatureResponseBodyData struct {
-	// 签名归属方的三证合一，OSS地址
+	// 签名归属方的三证合一，OSS地址，必须以https开头，使用前需要授权
 	Certificates *string `json:"Certificates,omitempty" xml:"Certificates,omitempty"`
 	// 创建时间 (UTC+8)
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
@@ -958,7 +1000,7 @@ type GetSignatureResponseBodyData struct {
 	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
 	// 签名名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 授权委托书(Power of attorney)， OSS地址
+	// 授权委托书(Power of attorney)， OSS地址，必须以https或oss开头，使用前需要授权，同上
 	PowerOfAttorney *string `json:"PowerOfAttorney,omitempty" xml:"PowerOfAttorney,omitempty"`
 	// 审核结果说明
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
@@ -1049,8 +1091,9 @@ func (s *GetSignatureResponse) SetBody(v *GetSignatureResponseBody) *GetSignatur
 
 type CreateScheduleRequest struct {
 	// 数据源地址
-	// - 0: endpoint/project/table:column
-	// - 1: oss地址
+	// - 0: project/table
+	// MaxCompute项目名和表名，使用前需要授权
+	// - 1: oss地址 https://bucket.endpoint/path/to/file
 	// OSS地址，必须以https开头，使用前需要授权，如 https://bucket.endpoint/path/to/file
 	DataAddress *string `json:"DataAddress,omitempty" xml:"DataAddress,omitempty"`
 	// 数据源类型
@@ -1145,9 +1188,12 @@ func (s *CreateScheduleRequest) SetTemplateID(v string) *CreateScheduleRequest {
 }
 
 type CreateScheduleResponseBody struct {
-	Data         *CreateScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *CreateScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s CreateScheduleResponseBody) String() string {
@@ -1309,9 +1355,12 @@ func (s *ListSchedulesRequest) SetStatus(v int32) *ListSchedulesRequest {
 }
 
 type ListSchedulesResponseBody struct {
-	Data         *ListSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *int32                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 返回数据
+	Data *ListSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
 func (s ListSchedulesResponseBody) String() string {
@@ -1473,8 +1522,11 @@ func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSched
 }
 
 type DeleteSignatureResponseBody struct {
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
@@ -1679,6 +1731,14 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ProcessInstanceID)) {
 		body["ProcessInstanceID"] = request.ProcessInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureID)) {
+		body["SignatureID"] = request.SignatureID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
