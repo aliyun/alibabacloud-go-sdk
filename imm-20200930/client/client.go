@@ -1460,6 +1460,208 @@ func (s *File) SetCustomLabels(v map[string]interface{}) *File {
 	return s
 }
 
+type WebofficeUser struct {
+	// Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 名字
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 头像
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+}
+
+func (s WebofficeUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebofficeUser) GoString() string {
+	return s.String()
+}
+
+func (s *WebofficeUser) SetId(v string) *WebofficeUser {
+	s.Id = &v
+	return s
+}
+
+func (s *WebofficeUser) SetName(v string) *WebofficeUser {
+	s.Name = &v
+	return s
+}
+
+func (s *WebofficeUser) SetAvatar(v string) *WebofficeUser {
+	s.Avatar = &v
+	return s
+}
+
+type AssumeRoleChain struct {
+	// 当前用户 policy
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// 链式授权节点
+	Chain []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
+}
+
+func (s AssumeRoleChain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleChain) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleChain) SetPolicy(v string) *AssumeRoleChain {
+	s.Policy = &v
+	return s
+}
+
+func (s *AssumeRoleChain) SetChain(v []*AssumeRoleChainNode) *AssumeRoleChain {
+	s.Chain = v
+	return s
+}
+
+type WebofficeWatermark struct {
+	// 水印类型，目前仅支持文字水印，0: 无水印；1: 文字水印
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 水印文字
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 旋转角度
+	Rotate *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// 垂直间距
+	Vertical *int64 `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	// 水平间距
+	Horizontal *int64 `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
+	// 字体样式
+	Font *string `json:"Font,omitempty" xml:"Font,omitempty"`
+	// 字体颜色
+	FillStyle *string `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
+}
+
+func (s WebofficeWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebofficeWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *WebofficeWatermark) SetType(v int64) *WebofficeWatermark {
+	s.Type = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetValue(v string) *WebofficeWatermark {
+	s.Value = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetRotate(v float32) *WebofficeWatermark {
+	s.Rotate = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
+	s.Vertical = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetHorizontal(v int64) *WebofficeWatermark {
+	s.Horizontal = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetFont(v string) *WebofficeWatermark {
+	s.Font = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetFillStyle(v string) *WebofficeWatermark {
+	s.FillStyle = &v
+	return s
+}
+
+type AssumeRoleChainNode struct {
+	// 账号类型，普通账号填 user，服务账号填 service
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 账号id
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 授权角色名
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AssumeRoleChainNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleChainNode) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleChainNode) SetType(v string) *AssumeRoleChainNode {
+	s.Type = &v
+	return s
+}
+
+func (s *AssumeRoleChainNode) SetOwnerId(v string) *AssumeRoleChainNode {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AssumeRoleChainNode) SetRole(v string) *AssumeRoleChainNode {
+	s.Role = &v
+	return s
+}
+
+type WebofficePermission struct {
+	// 重命名
+	Rename *bool `json:"Rename,omitempty" xml:"Rename,omitempty"`
+	// 只读模式
+	Readonly *bool `json:"Readonly,omitempty" xml:"Readonly,omitempty"`
+	// 查看历史版本
+	History *bool `json:"History,omitempty" xml:"History,omitempty"`
+	// 打印
+	Print *bool `json:"Print,omitempty" xml:"Print,omitempty"`
+	// 导出
+	Export *bool `json:"Export,omitempty" xml:"Export,omitempty"`
+	// 拷贝
+	Copy *bool `json:"Copy,omitempty" xml:"Copy,omitempty"`
+}
+
+func (s WebofficePermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebofficePermission) GoString() string {
+	return s.String()
+}
+
+func (s *WebofficePermission) SetRename(v bool) *WebofficePermission {
+	s.Rename = &v
+	return s
+}
+
+func (s *WebofficePermission) SetReadonly(v bool) *WebofficePermission {
+	s.Readonly = &v
+	return s
+}
+
+func (s *WebofficePermission) SetHistory(v bool) *WebofficePermission {
+	s.History = &v
+	return s
+}
+
+func (s *WebofficePermission) SetPrint(v bool) *WebofficePermission {
+	s.Print = &v
+	return s
+}
+
+func (s *WebofficePermission) SetExport(v bool) *WebofficePermission {
+	s.Export = &v
+	return s
+}
+
+func (s *WebofficePermission) SetCopy(v bool) *WebofficePermission {
+	s.Copy = &v
+	return s
+}
+
 type SimpleQuery struct {
 	// 需要查询的字段名
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
@@ -3275,6 +3477,300 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 	return s
 }
 
+type GetWebofficeUrlRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 预览编辑地址
+	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
+	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// 用户自定义数据，在消息通知中返回
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 预览前几页
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// 文件密码
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// 是否支持外部上传
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// mns 消息通知地址
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// mns 消息通知 topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 隐藏工具栏，预览模式下使用
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// 权限
+	Permission *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// 用户
+	User *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
+	// 水印
+	Watermark *WebofficeWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// 链式授权
+	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s GetWebofficeUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeUrlRequest) SetProjectName(v string) *GetWebofficeUrlRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetSourceUri(v string) *GetWebofficeUrlRequest {
+	s.SourceUri = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetFilename(v string) *GetWebofficeUrlRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetUserData(v string) *GetWebofficeUrlRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetPreviewPages(v int64) *GetWebofficeUrlRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetPassword(v string) *GetWebofficeUrlRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetExternalUploaded(v bool) *GetWebofficeUrlRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetNotifyEndpoint(v string) *GetWebofficeUrlRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetNotifyTopicName(v string) *GetWebofficeUrlRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetHidecmb(v bool) *GetWebofficeUrlRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetPermission(v *WebofficePermission) *GetWebofficeUrlRequest {
+	s.Permission = v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetUser(v *WebofficeUser) *GetWebofficeUrlRequest {
+	s.User = v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetWatermark(v *WebofficeWatermark) *GetWebofficeUrlRequest {
+	s.Watermark = v
+	return s
+}
+
+func (s *GetWebofficeUrlRequest) SetAssumeRoleChain(v *AssumeRoleChain) *GetWebofficeUrlRequest {
+	s.AssumeRoleChain = v
+	return s
+}
+
+type GetWebofficeUrlShrinkRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 预览编辑地址
+	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
+	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// 用户自定义数据，在消息通知中返回
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 预览前几页
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// 文件密码
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// 是否支持外部上传
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// mns 消息通知地址
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// mns 消息通知 topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 隐藏工具栏，预览模式下使用
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// 权限
+	PermissionShrink *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// 用户
+	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
+	// 水印
+	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// 链式授权
+	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s GetWebofficeUrlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeUrlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetProjectName(v string) *GetWebofficeUrlShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetSourceUri(v string) *GetWebofficeUrlShrinkRequest {
+	s.SourceUri = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetFilename(v string) *GetWebofficeUrlShrinkRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetUserData(v string) *GetWebofficeUrlShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetPreviewPages(v int64) *GetWebofficeUrlShrinkRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetPassword(v string) *GetWebofficeUrlShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetExternalUploaded(v bool) *GetWebofficeUrlShrinkRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetNotifyEndpoint(v string) *GetWebofficeUrlShrinkRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetNotifyTopicName(v string) *GetWebofficeUrlShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetHidecmb(v bool) *GetWebofficeUrlShrinkRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetPermissionShrink(v string) *GetWebofficeUrlShrinkRequest {
+	s.PermissionShrink = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetUserShrink(v string) *GetWebofficeUrlShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetWatermarkShrink(v string) *GetWebofficeUrlShrinkRequest {
+	s.WatermarkShrink = &v
+	return s
+}
+
+func (s *GetWebofficeUrlShrinkRequest) SetAssumeRoleChainShrink(v string) *GetWebofficeUrlShrinkRequest {
+	s.AssumeRoleChainShrink = &v
+	return s
+}
+
+type GetWebofficeUrlResponseBody struct {
+	// 请求 id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 预览编辑地址
+	WebofficeUrl *string `json:"WebofficeUrl,omitempty" xml:"WebofficeUrl,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// access token 过期时间
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	// refresh token 过期时间
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+}
+
+func (s GetWebofficeUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeUrlResponseBody) SetRequestId(v string) *GetWebofficeUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWebofficeUrlResponseBody) SetWebofficeUrl(v string) *GetWebofficeUrlResponseBody {
+	s.WebofficeUrl = &v
+	return s
+}
+
+func (s *GetWebofficeUrlResponseBody) SetAccessToken(v string) *GetWebofficeUrlResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetWebofficeUrlResponseBody) SetRefreshToken(v string) *GetWebofficeUrlResponseBody {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *GetWebofficeUrlResponseBody) SetAccessTokenExpiredTime(v string) *GetWebofficeUrlResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *GetWebofficeUrlResponseBody) SetRefreshTokenExpiredTime(v string) *GetWebofficeUrlResponseBody {
+	s.RefreshTokenExpiredTime = &v
+	return s
+}
+
+type GetWebofficeUrlResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWebofficeUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWebofficeUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeUrlResponse) SetHeaders(v map[string]*string) *GetWebofficeUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWebofficeUrlResponse) SetBody(v *GetWebofficeUrlResponseBody) *GetWebofficeUrlResponse {
+	s.Body = v
+	return s
+}
+
 type IndexFileMetaRequest struct {
 	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -3914,6 +4410,153 @@ func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsRes
 }
 
 func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshWebofficeTokenRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// 链式授权
+	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s RefreshWebofficeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenRequest) SetProjectName(v string) *RefreshWebofficeTokenRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetAccessToken(v string) *RefreshWebofficeTokenRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetRefreshToken(v string) *RefreshWebofficeTokenRequest {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetAssumeRoleChain(v *AssumeRoleChain) *RefreshWebofficeTokenRequest {
+	s.AssumeRoleChain = v
+	return s
+}
+
+type RefreshWebofficeTokenShrinkRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// 链式授权
+	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s RefreshWebofficeTokenShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetProjectName(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetAccessToken(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetRefreshToken(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetAssumeRoleChainShrink(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.AssumeRoleChainShrink = &v
+	return s
+}
+
+type RefreshWebofficeTokenResponseBody struct {
+	// 请求 Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token 过期时间
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+	// access token 过期时间
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+}
+
+func (s RefreshWebofficeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebofficeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRefreshToken(v string) *RefreshWebofficeTokenResponseBody {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetAccessToken(v string) *RefreshWebofficeTokenResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
+	s.RefreshTokenExpiredTime = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+type RefreshWebofficeTokenResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshWebofficeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenResponse) SetHeaders(v map[string]*string) *RefreshWebofficeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponseBody) *RefreshWebofficeTokenResponse {
 	s.Body = v
 	return s
 }
@@ -5404,6 +6047,52 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	return _result, _err
 }
 
+func (client *Client) GetWebofficeUrlWithOptions(tmpReq *GetWebofficeUrlRequest, runtime *util.RuntimeOptions) (_result *GetWebofficeUrlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetWebofficeUrlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Permission))) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Permission), tea.String("Permission"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.User))) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.User), tea.String("User"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Watermark))) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Watermark), tea.String("Watermark"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
+		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetWebofficeUrlResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetWebofficeUrl"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWebofficeUrl(request *GetWebofficeUrlRequest) (_result *GetWebofficeUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWebofficeUrlResponse{}
+	_body, _err := client.GetWebofficeUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *IndexFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5515,6 +6204,40 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProjectsResponse{}
 	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RefreshWebofficeTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
+		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RefreshWebofficeTokenResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RefreshWebofficeToken"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenRequest) (_result *RefreshWebofficeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshWebofficeTokenResponse{}
+	_body, _err := client.RefreshWebofficeTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
