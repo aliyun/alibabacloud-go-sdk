@@ -2373,6 +2373,132 @@ func (s *UpdateMergeRequestCommentResponse) SetBody(v *UpdateMergeRequestComment
 	return s
 }
 
+type TriggerRepositoryMirrorSyncRequest struct {
+	// 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// 远程同步库克隆账号
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 远程同步库克隆令牌
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s TriggerRepositoryMirrorSyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetAccessToken(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetOrganizationId(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetAccount(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetToken(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.Token = &v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponseBody struct {
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 响应结果
+	Result *TriggerRepositoryMirrorSyncResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetErrorMessage(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetRequestId(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetSuccess(v bool) *TriggerRepositoryMirrorSyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetErrorCode(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetResult(v *TriggerRepositoryMirrorSyncResponseBodyResult) *TriggerRepositoryMirrorSyncResponseBody {
+	s.Result = v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponseBodyResult struct {
+	// 仓库同步触发结果
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBodyResult) SetResult(v bool) *TriggerRepositoryMirrorSyncResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TriggerRepositoryMirrorSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponse) SetHeaders(v map[string]*string) *TriggerRepositoryMirrorSyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponse) SetBody(v *TriggerRepositoryMirrorSyncResponseBody) *TriggerRepositoryMirrorSyncResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBranchRequest struct {
 	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	BranchName     *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
@@ -13207,6 +13333,224 @@ func (s *CreateBranchResponse) SetBody(v *CreateBranchResponseBody) *CreateBranc
 	return s
 }
 
+type GetOrganizationRepositorySettingRequest struct {
+	// 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s GetOrganizationRepositorySettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingRequest) SetAccessToken(v string) *GetOrganizationRepositorySettingRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingRequest) SetOrganizationId(v string) *GetOrganizationRepositorySettingRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetOrganizationRepositorySettingResponseBody struct {
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求结果
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 响应结果
+	Result *GetOrganizationRepositorySettingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetOrganizationRepositorySettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingResponseBody) SetErrorMessage(v string) *GetOrganizationRepositorySettingResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBody) SetRequestId(v string) *GetOrganizationRepositorySettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBody) SetSuccess(v bool) *GetOrganizationRepositorySettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBody) SetErrorCode(v string) *GetOrganizationRepositorySettingResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBody) SetResult(v *GetOrganizationRepositorySettingResponseBodyResult) *GetOrganizationRepositorySettingResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetOrganizationRepositorySettingResponseBodyResult struct {
+	// 创建库是否必选代码组
+	GroupRequired *bool `json:"GroupRequired,omitempty" xml:"GroupRequired,omitempty"`
+	// 创建代码库允许使用的可见性选项。0：允许私有；10：允许企业可见
+	RepoVisibilityLevel []*int64 `json:"RepoVisibilityLevel,omitempty" xml:"RepoVisibilityLevel,omitempty" type:"Repeated"`
+	// 允许创建代码库的角色。5：企业外部成员；15：企业成员；60：企业管理员
+	RepoCreatorIdentity []*int64 `json:"RepoCreatorIdentity,omitempty" xml:"RepoCreatorIdentity,omitempty" type:"Repeated"`
+	// 库公开性调整设置。0：允许库管理员调整公开性为私有；10：允许库管理员调整公开性为企业可见
+	RepoAdminAccessVisibilityLevel []*int64 `json:"RepoAdminAccessVisibilityLevel,omitempty" xml:"RepoAdminAccessVisibilityLevel,omitempty" type:"Repeated"`
+	// 库管理员允许操作。1：允许库管理员删除代码库；2：未使用保留操作
+	RepoAdminOperation []*int64 `json:"RepoAdminOperation,omitempty" xml:"RepoAdminOperation,omitempty" type:"Repeated"`
+	// 开启克隆下载限制
+	OpenCloneDownloadControl *bool `json:"OpenCloneDownloadControl,omitempty" xml:"OpenCloneDownloadControl,omitempty"`
+	// 克隆下载限制方法列表
+	OrgCloneDownloadMethodList []*GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList `json:"OrgCloneDownloadMethodList,omitempty" xml:"OrgCloneDownloadMethodList,omitempty" type:"Repeated"`
+	// 克隆下载限制角色列表
+	OrgCloneDownloadRoleList []*GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList `json:"OrgCloneDownloadRoleList,omitempty" xml:"OrgCloneDownloadRoleList,omitempty" type:"Repeated"`
+	// 禁止强制推送（Force Push）
+	ForcePushForbidden *bool `json:"ForcePushForbidden,omitempty" xml:"ForcePushForbidden,omitempty"`
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetGroupRequired(v bool) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.GroupRequired = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetRepoVisibilityLevel(v []*int64) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.RepoVisibilityLevel = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetRepoCreatorIdentity(v []*int64) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.RepoCreatorIdentity = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetRepoAdminAccessVisibilityLevel(v []*int64) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.RepoAdminAccessVisibilityLevel = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetRepoAdminOperation(v []*int64) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.RepoAdminOperation = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetOpenCloneDownloadControl(v bool) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.OpenCloneDownloadControl = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetOrgCloneDownloadMethodList(v []*GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.OrgCloneDownloadMethodList = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetOrgCloneDownloadRoleList(v []*GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.OrgCloneDownloadRoleList = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResult) SetForcePushForbidden(v bool) *GetOrganizationRepositorySettingResponseBodyResult {
+	s.ForcePushForbidden = &v
+	return s
+}
+
+type GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList struct {
+	// 权限码。ssh-clone：SSH克隆；http-clone：HTTP克隆；download：下载ZIP/TAR
+	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
+	// 是否允许
+	Allowed *bool `json:"Allowed,omitempty" xml:"Allowed,omitempty"`
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList) SetPermissionCode(v string) *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList {
+	s.PermissionCode = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList) SetAllowed(v bool) *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadMethodList {
+	s.Allowed = &v
+	return s
+}
+
+type GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList struct {
+	// 角色Code。5：企业外部成员；9999：企业成员（含管理员）
+	RoleCode *int64 `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// 是否允许
+	Allowed *bool `json:"Allowed,omitempty" xml:"Allowed,omitempty"`
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList) SetRoleCode(v int64) *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList {
+	s.RoleCode = &v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList) SetAllowed(v bool) *GetOrganizationRepositorySettingResponseBodyResultOrgCloneDownloadRoleList {
+	s.Allowed = &v
+	return s
+}
+
+type GetOrganizationRepositorySettingResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetOrganizationRepositorySettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrganizationRepositorySettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationRepositorySettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationRepositorySettingResponse) SetHeaders(v map[string]*string) *GetOrganizationRepositorySettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrganizationRepositorySettingResponse) SetBody(v *GetOrganizationRepositorySettingResponseBody) *GetOrganizationRepositorySettingResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupRepositoriesRequest struct {
 	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
@@ -14411,6 +14755,53 @@ func (client *Client) UpdateMergeRequestCommentWithOptions(ProjectId *string, Me
 	}
 	_result = &UpdateMergeRequestCommentResponse{}
 	_body, _err := client.DoROARequest(tea.String("UpdateMergeRequestComment"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v3/projects/"+tea.StringValue(ProjectId)+"/merge_requests/"+tea.StringValue(MergeRequestId)+"/notes/"+tea.StringValue(NoteId)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TriggerRepositoryMirrorSync(ProjectId *string, request *TriggerRepositoryMirrorSyncRequest) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TriggerRepositoryMirrorSyncResponse{}
+	_body, _err := client.TriggerRepositoryMirrorSyncWithOptions(ProjectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TriggerRepositoryMirrorSyncWithOptions(ProjectId *string, request *TriggerRepositoryMirrorSyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &TriggerRepositoryMirrorSyncResponse{}
+	_body, _err := client.DoROARequest(tea.String("TriggerRepositoryMirrorSync"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v4/projects/"+tea.StringValue(ProjectId)+"/mirror"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16877,6 +17268,45 @@ func (client *Client) CreateBranchWithOptions(ProjectId *string, request *Create
 	}
 	_result = &CreateBranchResponse{}
 	_body, _err := client.DoROARequest(tea.String("CreateBranch"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v3/projects/"+tea.StringValue(ProjectId)+"/repository/branches"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrganizationRepositorySetting(request *GetOrganizationRepositorySettingRequest) (_result *GetOrganizationRepositorySettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOrganizationRepositorySettingResponse{}
+	_body, _err := client.GetOrganizationRepositorySettingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrganizationRepositorySettingWithOptions(request *GetOrganizationRepositorySettingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrganizationRepositorySettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetOrganizationRepositorySettingResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetOrganizationRepositorySetting"), tea.String("2020-04-14"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v4/organization/settings/repo"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
