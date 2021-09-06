@@ -421,7 +421,7 @@ type ImportMessageRequestRequestParamsMessages struct {
 	// 发送者ID
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
 	// 接受者列表, 群聊如果列表为空者全员接收
-	ReceiverUsers []*ImportMessageRequestRequestParamsMessagesReceiverUsers `json:"ReceiverUsers,omitempty" xml:"ReceiverUsers,omitempty" type:"Repeated"`
+	ReceiverIds []*string `json:"ReceiverIds,omitempty" xml:"ReceiverIds,omitempty" type:"Repeated"`
 	// 消息类型
 	ContentType *int64 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// 消息内容
@@ -460,8 +460,8 @@ func (s *ImportMessageRequestRequestParamsMessages) SetSenderId(v string) *Impor
 	return s
 }
 
-func (s *ImportMessageRequestRequestParamsMessages) SetReceiverUsers(v []*ImportMessageRequestRequestParamsMessagesReceiverUsers) *ImportMessageRequestRequestParamsMessages {
-	s.ReceiverUsers = v
+func (s *ImportMessageRequestRequestParamsMessages) SetReceiverIds(v []*string) *ImportMessageRequestRequestParamsMessages {
+	s.ReceiverIds = v
 	return s
 }
 
@@ -482,31 +482,6 @@ func (s *ImportMessageRequestRequestParamsMessages) SetCreateTime(v int64) *Impo
 
 func (s *ImportMessageRequestRequestParamsMessages) SetExtensions(v map[string]*string) *ImportMessageRequestRequestParamsMessages {
 	s.Extensions = v
-	return s
-}
-
-type ImportMessageRequestRequestParamsMessagesReceiverUsers struct {
-	// 接受者ID
-	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
-	// 消息已阅读标志
-	ReadFlag *bool `json:"ReadFlag,omitempty" xml:"ReadFlag,omitempty"`
-}
-
-func (s ImportMessageRequestRequestParamsMessagesReceiverUsers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportMessageRequestRequestParamsMessagesReceiverUsers) GoString() string {
-	return s.String()
-}
-
-func (s *ImportMessageRequestRequestParamsMessagesReceiverUsers) SetReceiverId(v string) *ImportMessageRequestRequestParamsMessagesReceiverUsers {
-	s.ReceiverId = &v
-	return s
-}
-
-func (s *ImportMessageRequestRequestParamsMessagesReceiverUsers) SetReadFlag(v bool) *ImportMessageRequestRequestParamsMessagesReceiverUsers {
-	s.ReadFlag = &v
 	return s
 }
 
@@ -3590,6 +3565,131 @@ func (s *GetRoomStatisticsResponse) SetHeaders(v map[string]*string) *GetRoomSta
 }
 
 func (s *GetRoomStatisticsResponse) SetBody(v *GetRoomStatisticsResponseBody) *GetRoomStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type ReadMessageRequest struct {
+	// AppId
+	AppId         *string                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParams *ReadMessageRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s ReadMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadMessageRequest) SetAppId(v string) *ReadMessageRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ReadMessageRequest) SetRequestParams(v *ReadMessageRequestRequestParams) *ReadMessageRequest {
+	s.RequestParams = v
+	return s
+}
+
+type ReadMessageRequestRequestParams struct {
+	// 操作者ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 消息ID
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+}
+
+func (s ReadMessageRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadMessageRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *ReadMessageRequestRequestParams) SetAppUid(v string) *ReadMessageRequestRequestParams {
+	s.AppUid = &v
+	return s
+}
+
+func (s *ReadMessageRequestRequestParams) SetMsgId(v string) *ReadMessageRequestRequestParams {
+	s.MsgId = &v
+	return s
+}
+
+type ReadMessageShrinkRequest struct {
+	// AppId
+	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s ReadMessageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadMessageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadMessageShrinkRequest) SetAppId(v string) *ReadMessageShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ReadMessageShrinkRequest) SetRequestParamsShrink(v string) *ReadMessageShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type ReadMessageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s ReadMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReadMessageResponseBody) SetRequestId(v string) *ReadMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReadMessageResponseBody) SetCode(v string) *ReadMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReadMessageResponseBody) SetMessage(v string) *ReadMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+type ReadMessageResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReadMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReadMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReadMessageResponse) SetHeaders(v map[string]*string) *ReadMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReadMessageResponse) SetBody(v *ReadMessageResponseBody) *ReadMessageResponse {
 	s.Body = v
 	return s
 }
@@ -6973,7 +7073,7 @@ type ListGroupSilenceMembersResponseBodyResult struct {
 	AppCid *string `json:"AppCid,omitempty" xml:"AppCid,omitempty"`
 	// 禁言白名单
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
-	// 禁言黑名单用户及对应禁言截止时间
+	// 禁言黑名单用户及对应禁言时长
 	Blacklist map[string]*int64 `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
 }
 
@@ -7718,11 +7818,11 @@ func (s *DestroyRoomRequest) SetRequest(v *DestroyRoomRequestRequest) *DestroyRo
 }
 
 type DestroyRoomRequestRequest struct {
-	// 应用的appKey。
+	// 应用appKey
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 房间ID，由调用CreateRoom时返回。
+	// 房间id
 	RoomId *string `json:"roomId,omitempty" xml:"roomId,omitempty"`
-	// 操作人ID。
+	// 操作人id
 	OpenId *string `json:"openId,omitempty" xml:"openId,omitempty"`
 }
 
@@ -7750,13 +7850,13 @@ func (s *DestroyRoomRequestRequest) SetOpenId(v string) *DestroyRoomRequestReque
 }
 
 type DestroyRoomResponseBody struct {
-	// 错误码。
+	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息。
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// 请求ID。
+	// 错误信息
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功。
+	// 是否销毁成功
+	Result          *bool `json:"result,omitempty" xml:"result,omitempty"`
 	ResponseSuccess *bool `json:"ResponseSuccess,omitempty" xml:"ResponseSuccess,omitempty"`
 }
 
@@ -7780,6 +7880,11 @@ func (s *DestroyRoomResponseBody) SetErrorMsg(v string) *DestroyRoomResponseBody
 
 func (s *DestroyRoomResponseBody) SetRequestId(v string) *DestroyRoomResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DestroyRoomResponseBody) SetResult(v bool) *DestroyRoomResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -10260,6 +10365,40 @@ func (client *Client) GetRoomStatistics(request *GetRoomStatisticsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRoomStatisticsResponse{}
 	_body, _err := client.GetRoomStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReadMessageWithOptions(tmpReq *ReadMessageRequest, runtime *util.RuntimeOptions) (_result *ReadMessageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReadMessageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ReadMessageResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ReadMessage"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReadMessage(request *ReadMessageRequest) (_result *ReadMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReadMessageResponse{}
+	_body, _err := client.ReadMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
