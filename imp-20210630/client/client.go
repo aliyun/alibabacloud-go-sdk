@@ -3340,6 +3340,12 @@ type GetAppTemplateResponseBodyResult struct {
 	SdkInfo    *string `json:"SdkInfo,omitempty" xml:"SdkInfo,omitempty"`
 	// 配置列表
 	ConfigList []*GetAppTemplateResponseBodyResultConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// 应用模板场景，电商business，课堂classroom
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 样板间信息
+	StandardRoomInfo *string `json:"StandardRoomInfo,omitempty" xml:"StandardRoomInfo,omitempty"`
 }
 
 func (s GetAppTemplateResponseBodyResult) String() string {
@@ -3382,6 +3388,21 @@ func (s *GetAppTemplateResponseBodyResult) SetSdkInfo(v string) *GetAppTemplateR
 
 func (s *GetAppTemplateResponseBodyResult) SetConfigList(v []*GetAppTemplateResponseBodyResultConfigList) *GetAppTemplateResponseBodyResult {
 	s.ConfigList = v
+	return s
+}
+
+func (s *GetAppTemplateResponseBodyResult) SetScene(v string) *GetAppTemplateResponseBodyResult {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetAppTemplateResponseBodyResult) SetIntegrationMode(v string) *GetAppTemplateResponseBodyResult {
+	s.IntegrationMode = &v
+	return s
+}
+
+func (s *GetAppTemplateResponseBodyResult) SetStandardRoomInfo(v string) *GetAppTemplateResponseBodyResult {
+	s.StandardRoomInfo = &v
 	return s
 }
 
@@ -3649,6 +3670,8 @@ type CreateAppTemplateRequest struct {
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
 	// 组件列表
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 }
@@ -3671,6 +3694,11 @@ func (s *CreateAppTemplateRequest) SetScene(v string) *CreateAppTemplateRequest 
 	return s
 }
 
+func (s *CreateAppTemplateRequest) SetIntegrationMode(v string) *CreateAppTemplateRequest {
+	s.IntegrationMode = &v
+	return s
+}
+
 func (s *CreateAppTemplateRequest) SetComponentList(v []*string) *CreateAppTemplateRequest {
 	s.ComponentList = v
 	return s
@@ -3681,6 +3709,8 @@ type CreateAppTemplateShrinkRequest struct {
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
 	// 组件列表
 	ComponentListShrink *string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty"`
 }
@@ -3700,6 +3730,11 @@ func (s *CreateAppTemplateShrinkRequest) SetAppTemplateName(v string) *CreateApp
 
 func (s *CreateAppTemplateShrinkRequest) SetScene(v string) *CreateAppTemplateShrinkRequest {
 	s.Scene = &v
+	return s
+}
+
+func (s *CreateAppTemplateShrinkRequest) SetIntegrationMode(v string) *CreateAppTemplateShrinkRequest {
+	s.IntegrationMode = &v
 	return s
 }
 
@@ -3978,6 +4013,10 @@ type ListAppsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，参数为空默认显示个数为10。
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 应用状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {
@@ -3995,6 +4034,16 @@ func (s *ListAppsRequest) SetPageNumber(v int32) *ListAppsRequest {
 
 func (s *ListAppsRequest) SetPageSize(v int32) *ListAppsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetStatus(v string) *ListAppsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetIntegrationMode(v string) *ListAppsRequest {
+	s.IntegrationMode = &v
 	return s
 }
 
@@ -4068,8 +4117,14 @@ type ListAppsResponseBodyResultAppInfoList struct {
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// 应用状态
 	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// 应用配置状态
+	AppConfigStatus *string `json:"AppConfigStatus,omitempty" xml:"AppConfigStatus,omitempty"`
 	// 应用创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 样板间信息
+	StandardRoomInfo *string `json:"StandardRoomInfo,omitempty" xml:"StandardRoomInfo,omitempty"`
 	// 应用组件列表
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 }
@@ -4112,8 +4167,23 @@ func (s *ListAppsResponseBodyResultAppInfoList) SetAppStatus(v string) *ListApps
 	return s
 }
 
+func (s *ListAppsResponseBodyResultAppInfoList) SetAppConfigStatus(v string) *ListAppsResponseBodyResultAppInfoList {
+	s.AppConfigStatus = &v
+	return s
+}
+
 func (s *ListAppsResponseBodyResultAppInfoList) SetCreateTime(v string) *ListAppsResponseBodyResultAppInfoList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyResultAppInfoList) SetIntegrationMode(v string) *ListAppsResponseBodyResultAppInfoList {
+	s.IntegrationMode = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyResultAppInfoList) SetStandardRoomInfo(v string) *ListAppsResponseBodyResultAppInfoList {
+	s.StandardRoomInfo = &v
 	return s
 }
 
@@ -4555,6 +4625,12 @@ type ListAppTemplatesResponseBodyResultAppTemplateInfoList struct {
 	SdkInfo *string `json:"SdkInfo,omitempty" xml:"SdkInfo,omitempty"`
 	// 配置列表
 	ConfigList []*ListAppTemplatesResponseBodyResultAppTemplateInfoListConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// 应用模板场景，电商business，课堂classroom
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 样板间信息
+	StandardRoomInfo *string `json:"StandardRoomInfo,omitempty" xml:"StandardRoomInfo,omitempty"`
 }
 
 func (s ListAppTemplatesResponseBodyResultAppTemplateInfoList) String() string {
@@ -4602,6 +4678,21 @@ func (s *ListAppTemplatesResponseBodyResultAppTemplateInfoList) SetSdkInfo(v str
 
 func (s *ListAppTemplatesResponseBodyResultAppTemplateInfoList) SetConfigList(v []*ListAppTemplatesResponseBodyResultAppTemplateInfoListConfigList) *ListAppTemplatesResponseBodyResultAppTemplateInfoList {
 	s.ConfigList = v
+	return s
+}
+
+func (s *ListAppTemplatesResponseBodyResultAppTemplateInfoList) SetScene(v string) *ListAppTemplatesResponseBodyResultAppTemplateInfoList {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListAppTemplatesResponseBodyResultAppTemplateInfoList) SetIntegrationMode(v string) *ListAppTemplatesResponseBodyResultAppTemplateInfoList {
+	s.IntegrationMode = &v
+	return s
+}
+
+func (s *ListAppTemplatesResponseBodyResultAppTemplateInfoList) SetStandardRoomInfo(v string) *ListAppTemplatesResponseBodyResultAppTemplateInfoList {
+	s.StandardRoomInfo = &v
 	return s
 }
 
@@ -5183,10 +5274,16 @@ type GetAppResponseBodyResult struct {
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 应用状态
 	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// 应用配置状态
+	AppConfigStatus *string `json:"AppConfigStatus,omitempty" xml:"AppConfigStatus,omitempty"`
 	// 应用Key
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
+	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 样板间信息
+	StandardRoomInfo *string `json:"StandardRoomInfo,omitempty" xml:"StandardRoomInfo,omitempty"`
 	// 组件列表。
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 }
@@ -5219,6 +5316,11 @@ func (s *GetAppResponseBodyResult) SetAppStatus(v string) *GetAppResponseBodyRes
 	return s
 }
 
+func (s *GetAppResponseBodyResult) SetAppConfigStatus(v string) *GetAppResponseBodyResult {
+	s.AppConfigStatus = &v
+	return s
+}
+
 func (s *GetAppResponseBodyResult) SetAppKey(v string) *GetAppResponseBodyResult {
 	s.AppKey = &v
 	return s
@@ -5226,6 +5328,16 @@ func (s *GetAppResponseBodyResult) SetAppKey(v string) *GetAppResponseBodyResult
 
 func (s *GetAppResponseBodyResult) SetCreateTime(v string) *GetAppResponseBodyResult {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetIntegrationMode(v string) *GetAppResponseBodyResult {
+	s.IntegrationMode = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetStandardRoomInfo(v string) *GetAppResponseBodyResult {
+	s.StandardRoomInfo = &v
 	return s
 }
 
