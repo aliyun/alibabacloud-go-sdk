@@ -2692,6 +2692,131 @@ func (s *CreateLiveResponse) SetBody(v *CreateLiveResponseBody) *CreateLiveRespo
 	return s
 }
 
+type GetStandardRoomJumpUrlRequest struct {
+	// 用户的应用ID，在控制台创建应用时生成
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 用户UserId,在AppId下单独唯一
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 终端设备类型,通过控制台创建和查询
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// 平台：win, mac, android, ios, web
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// 业务类型：互动直播live，互动课堂class
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// 资源ID：根据业务类型来定，比如直播ID，课堂ID等
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// 用户昵称
+	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+}
+
+func (s GetStandardRoomJumpUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardRoomJumpUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetAppId(v string) *GetStandardRoomJumpUrlRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetUserId(v string) *GetStandardRoomJumpUrlRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetAppKey(v string) *GetStandardRoomJumpUrlRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetPlatform(v string) *GetStandardRoomJumpUrlRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetBizType(v string) *GetStandardRoomJumpUrlRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetBizId(v string) *GetStandardRoomJumpUrlRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetUserNick(v string) *GetStandardRoomJumpUrlRequest {
+	s.UserNick = &v
+	return s
+}
+
+type GetStandardRoomJumpUrlResponseBody struct {
+	// Id of the request
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetStandardRoomJumpUrlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetStandardRoomJumpUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardRoomJumpUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardRoomJumpUrlResponseBody) SetRequestId(v string) *GetStandardRoomJumpUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlResponseBody) SetResult(v *GetStandardRoomJumpUrlResponseBodyResult) *GetStandardRoomJumpUrlResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetStandardRoomJumpUrlResponseBodyResult struct {
+	// 样板间跳转协议地址
+	StandardRoomJumpUrl *string `json:"StandardRoomJumpUrl,omitempty" xml:"StandardRoomJumpUrl,omitempty"`
+}
+
+func (s GetStandardRoomJumpUrlResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardRoomJumpUrlResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardRoomJumpUrlResponseBodyResult) SetStandardRoomJumpUrl(v string) *GetStandardRoomJumpUrlResponseBodyResult {
+	s.StandardRoomJumpUrl = &v
+	return s
+}
+
+type GetStandardRoomJumpUrlResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetStandardRoomJumpUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStandardRoomJumpUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStandardRoomJumpUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStandardRoomJumpUrlResponse) SetHeaders(v map[string]*string) *GetStandardRoomJumpUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlResponse) SetBody(v *GetStandardRoomJumpUrlResponseBody) *GetStandardRoomJumpUrlResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -6675,6 +6800,34 @@ func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiv
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLiveResponse{}
 	_body, _err := client.CreateLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStandardRoomJumpUrlWithOptions(request *GetStandardRoomJumpUrlRequest, runtime *util.RuntimeOptions) (_result *GetStandardRoomJumpUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetStandardRoomJumpUrlResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetStandardRoomJumpUrl"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStandardRoomJumpUrl(request *GetStandardRoomJumpUrlRequest) (_result *GetStandardRoomJumpUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStandardRoomJumpUrlResponse{}
+	_body, _err := client.GetStandardRoomJumpUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
