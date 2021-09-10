@@ -265,6 +265,270 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 	return s
 }
 
+type GetLiveEditingJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetLiveEditingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobRequest) SetJobId(v string) *GetLiveEditingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetLiveEditingJobResponseBody struct {
+	// Id of the request
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LiveEditingJob *GetLiveEditingJobResponseBodyLiveEditingJob `json:"LiveEditingJob,omitempty" xml:"LiveEditingJob,omitempty" type:"Struct"`
+}
+
+func (s GetLiveEditingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponseBody) SetRequestId(v string) *GetLiveEditingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBody) SetLiveEditingJob(v *GetLiveEditingJobResponseBodyLiveEditingJob) *GetLiveEditingJobResponseBody {
+	s.LiveEditingJob = v
+	return s
+}
+
+type GetLiveEditingJobResponseBodyLiveEditingJob struct {
+	JobId              *string                                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ProjectId          *string                                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Clips              *string                                                        `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	UserData           *string                                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CreationTime       *string                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ModifiedTime       *string                                                        `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	CompleteTime       *string                                                        `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	MediaId            *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL           *string                                                        `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	Code               *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	LiveStreamConfig   *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig   `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
+	MediaProduceConfig *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty" type:"Struct"`
+	OutputMediaConfig  *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig  `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetJobId(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetProjectId(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetStatus(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetClips(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.Clips = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetUserData(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetCreationTime(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetModifiedTime(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetCompleteTime(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetMediaId(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetMediaURL(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetCode(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetMessage(v string) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetLiveStreamConfig(v *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.LiveStreamConfig = v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetMediaProduceConfig(v *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.MediaProduceConfig = v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetOutputMediaConfig(v *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) *GetLiveEditingJobResponseBodyLiveEditingJob {
+	s.OutputMediaConfig = v
+	return s
+}
+
+type GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetAppName(v string) *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetDomainName(v string) *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetStreamName(v string) *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig {
+	s.StreamName = &v
+	return s
+}
+
+type GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig struct {
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) SetMode(v string) *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig {
+	s.Mode = &v
+	return s
+}
+
+type GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig struct {
+	MediaURL           *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	StorageLocation    *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Width              *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height             *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Bitrate            *int64  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	VodTemplateGroupId *string `json:"VodTemplateGroupId,omitempty" xml:"VodTemplateGroupId,omitempty"`
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetMediaURL(v string) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetStorageLocation(v string) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetFileName(v string) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetWidth(v int32) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.Width = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetHeight(v int32) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.Height = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetBitrate(v int64) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) SetVodTemplateGroupId(v string) *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig {
+	s.VodTemplateGroupId = &v
+	return s
+}
+
+type GetLiveEditingJobResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveEditingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveEditingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingJobResponse) SetHeaders(v map[string]*string) *GetLiveEditingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveEditingJobResponse) SetBody(v *GetLiveEditingJobResponseBody) *GetLiveEditingJobResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRelatedAuthorizationStatusResponseBody struct {
 	// Id of the request
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -599,7 +863,8 @@ type UpdateEditingProjectRequest struct {
 	// 云剪辑工程封面
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// 云剪辑工程ID
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 }
 
 func (s UpdateEditingProjectRequest) String() string {
@@ -632,6 +897,11 @@ func (s *UpdateEditingProjectRequest) SetCoverURL(v string) *UpdateEditingProjec
 
 func (s *UpdateEditingProjectRequest) SetProjectId(v string) *UpdateEditingProjectRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetBusinessStatus(v string) *UpdateEditingProjectRequest {
+	s.BusinessStatus = &v
 	return s
 }
 
@@ -853,7 +1123,9 @@ type GetEditingProjectMaterialsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// 符合要求的媒资集合
-	MediaInfos []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	MediaInfos       []*GetEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	LiveMaterials    []*GetEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
+	ProjectMaterials *string                                                `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBody) String() string {
@@ -876,6 +1148,16 @@ func (s *GetEditingProjectMaterialsResponseBody) SetProjectId(v string) *GetEdit
 
 func (s *GetEditingProjectMaterialsResponseBody) SetMediaInfos(v []*GetEditingProjectMaterialsResponseBodyMediaInfos) *GetEditingProjectMaterialsResponseBody {
 	s.MediaInfos = v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBody) SetLiveMaterials(v []*GetEditingProjectMaterialsResponseBodyLiveMaterials) *GetEditingProjectMaterialsResponseBody {
+	s.LiveMaterials = v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBody) SetProjectMaterials(v string) *GetEditingProjectMaterialsResponseBody {
+	s.ProjectMaterials = &v
 	return s
 }
 
@@ -1151,6 +1433,41 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 
 func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo) SetHeight(v string) *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo {
 	s.Height = &v
+	return s
+}
+
+type GetEditingProjectMaterialsResponseBodyLiveMaterials struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LiveUrl    *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+}
+
+func (s GetEditingProjectMaterialsResponseBodyLiveMaterials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEditingProjectMaterialsResponseBodyLiveMaterials) GoString() string {
+	return s.String()
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetAppName(v string) *GetEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v string) *GetEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.StreamName = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetDomainName(v string) *GetEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) SetLiveUrl(v string) *GetEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.LiveUrl = &v
 	return s
 }
 
@@ -1716,8 +2033,12 @@ type CreateEditingProjectRequest struct {
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// 云剪辑工程封面
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// FEExtend
-	FEExtend *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
+	// 工程关联素材，多个素材以逗号（,）分隔；每种类型最多支持10个素材ID
+	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
+	// 工程业务配置。如果是直播剪辑工程必填OutputMediaConfig.StorageLocation,   Path 不填默认合成的直播片段存储在根路径下 OutputMediaTarget 不填默认oss-object，可以填vod-media 表示存储到vod  OutputMediaTarget 为vod-media 时，Path不生效。
+	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 }
 
 func (s CreateEditingProjectRequest) String() string {
@@ -1748,13 +2069,23 @@ func (s *CreateEditingProjectRequest) SetCoverURL(v string) *CreateEditingProjec
 	return s
 }
 
-func (s *CreateEditingProjectRequest) SetFEExtend(v string) *CreateEditingProjectRequest {
-	s.FEExtend = &v
+func (s *CreateEditingProjectRequest) SetMaterialMaps(v string) *CreateEditingProjectRequest {
+	s.MaterialMaps = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetBusinessConfig(v string) *CreateEditingProjectRequest {
+	s.BusinessConfig = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetProjectType(v string) *CreateEditingProjectRequest {
+	s.ProjectType = &v
 	return s
 }
 
 type CreateEditingProjectResponseBody struct {
-	// Id of the request
+	// 请求ID
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Project   *CreateEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
 }
@@ -1778,19 +2109,37 @@ func (s *CreateEditingProjectResponseBody) SetProject(v *CreateEditingProjectRes
 }
 
 type CreateEditingProjectResponseBodyProject struct {
-	ProjectId      *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Title          *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Timeline       *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	CoverURL       *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	Status         *int64   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName     *string  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifiedTime   *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Duration       *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	CreateSource   *string  `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
-	ModifiedSource *string  `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
-	TemplateType   *string  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// 云剪辑工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 云剪辑工程标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 云剪辑工程描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 云剪辑工程时间线，Json格式
+	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// 云剪辑工程封面。
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 云剪辑工程状态。  所有云剪辑工程状态列表：  -1:Draft  -2:Editing  -3:Producing  -4:Produced  -5:ProduceFailed  -7:Deleted
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 云剪辑状态名称，对应状态列表中状态名称。
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// 云剪辑工程创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 云剪辑工程编辑时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 云剪辑工程时长
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// 工程业务配置
+	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// 业务状态，业务状态 /** 预约中 **/ RESERVING(0, "Reserving"), /** 预约取消 **/ RESERVATION_CANCELED(1, "ReservationCanceled"), /** 直播中 **/ BROADCASTING(3, "BroadCasting"), /** 加载失败 **/ LOADING_FAILED(4, "LoadingFailed"), /** 直播结束 **/ LIVE_FINISHED(5, "LiveFinished");
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 }
 
 func (s CreateEditingProjectResponseBodyProject) String() string {
@@ -1863,6 +2212,21 @@ func (s *CreateEditingProjectResponseBodyProject) SetModifiedSource(v string) *C
 
 func (s *CreateEditingProjectResponseBodyProject) SetTemplateType(v string) *CreateEditingProjectResponseBodyProject {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetBusinessConfig(v string) *CreateEditingProjectResponseBodyProject {
+	s.BusinessConfig = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetProjectType(v string) *CreateEditingProjectResponseBodyProject {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetBusinessStatus(v string) *CreateEditingProjectResponseBodyProject {
+	s.BusinessStatus = &v
 	return s
 }
 
@@ -2660,6 +3024,88 @@ func (s *DescribeIceProductStatusResponse) SetBody(v *DescribeIceProductStatusRe
 	return s
 }
 
+type GetLiveEditingIndexFileRequest struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetLiveEditingIndexFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingIndexFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingIndexFileRequest) SetAppName(v string) *GetLiveEditingIndexFileRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetLiveEditingIndexFileRequest) SetDomainName(v string) *GetLiveEditingIndexFileRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetLiveEditingIndexFileRequest) SetStreamName(v string) *GetLiveEditingIndexFileRequest {
+	s.StreamName = &v
+	return s
+}
+
+func (s *GetLiveEditingIndexFileRequest) SetProjectId(v string) *GetLiveEditingIndexFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetLiveEditingIndexFileResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IndexFile *string `json:"IndexFile,omitempty" xml:"IndexFile,omitempty"`
+}
+
+func (s GetLiveEditingIndexFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingIndexFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingIndexFileResponseBody) SetRequestId(v string) *GetLiveEditingIndexFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveEditingIndexFileResponseBody) SetIndexFile(v string) *GetLiveEditingIndexFileResponseBody {
+	s.IndexFile = &v
+	return s
+}
+
+type GetLiveEditingIndexFileResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveEditingIndexFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveEditingIndexFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveEditingIndexFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveEditingIndexFileResponse) SetHeaders(v map[string]*string) *GetLiveEditingIndexFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveEditingIndexFileResponse) SetBody(v *GetLiveEditingIndexFileResponseBody) *GetLiveEditingIndexFileResponse {
+	s.Body = v
+	return s
+}
+
 type ListMediaBasicInfosRequest struct {
 	// 创建时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -3332,7 +3778,9 @@ type AddEditingProjectMaterialsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// 符合要求的媒资集合
-	MediaInfos []*AddEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	MediaInfos       []*AddEditingProjectMaterialsResponseBodyMediaInfos    `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	LiveMaterials    []*AddEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
+	ProjectMaterials *string                                                `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponseBody) String() string {
@@ -3355,6 +3803,16 @@ func (s *AddEditingProjectMaterialsResponseBody) SetProjectId(v string) *AddEdit
 
 func (s *AddEditingProjectMaterialsResponseBody) SetMediaInfos(v []*AddEditingProjectMaterialsResponseBodyMediaInfos) *AddEditingProjectMaterialsResponseBody {
 	s.MediaInfos = v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBody) SetLiveMaterials(v []*AddEditingProjectMaterialsResponseBodyLiveMaterials) *AddEditingProjectMaterialsResponseBody {
+	s.LiveMaterials = v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBody) SetProjectMaterials(v string) *AddEditingProjectMaterialsResponseBody {
+	s.ProjectMaterials = &v
 	return s
 }
 
@@ -3633,6 +4091,41 @@ func (s *AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 	return s
 }
 
+type AddEditingProjectMaterialsResponseBodyLiveMaterials struct {
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LiveUrl    *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+}
+
+func (s AddEditingProjectMaterialsResponseBodyLiveMaterials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEditingProjectMaterialsResponseBodyLiveMaterials) GoString() string {
+	return s.String()
+}
+
+func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetAppName(v string) *AddEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.AppName = &v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetStreamName(v string) *AddEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.StreamName = &v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetDomainName(v string) *AddEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.DomainName = &v
+	return s
+}
+
+func (s *AddEditingProjectMaterialsResponseBodyLiveMaterials) SetLiveUrl(v string) *AddEditingProjectMaterialsResponseBodyLiveMaterials {
+	s.LiveUrl = &v
+	return s
+}
+
 type AddEditingProjectMaterialsResponse struct {
 	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *AddEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3837,6 +4330,9 @@ type GetEditingProjectResponseBodyProject struct {
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// 云剪辑工程修改来源
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 }
 
 func (s GetEditingProjectResponseBodyProject) String() string {
@@ -3904,6 +4400,21 @@ func (s *GetEditingProjectResponseBodyProject) SetTemplateType(v string) *GetEdi
 
 func (s *GetEditingProjectResponseBodyProject) SetModifiedSource(v string) *GetEditingProjectResponseBodyProject {
 	s.ModifiedSource = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetProjectType(v string) *GetEditingProjectResponseBodyProject {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetBusinessConfig(v string) *GetEditingProjectResponseBodyProject {
+	s.BusinessConfig = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetBusinessStatus(v string) *GetEditingProjectResponseBodyProject {
+	s.BusinessStatus = &v
 	return s
 }
 
@@ -4313,6 +4824,7 @@ type SearchEditingProjectRequest struct {
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
 	// 模板类型
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	ProjectType  *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 }
 
 func (s SearchEditingProjectRequest) String() string {
@@ -4360,6 +4872,11 @@ func (s *SearchEditingProjectRequest) SetCreateSource(v string) *SearchEditingPr
 
 func (s *SearchEditingProjectRequest) SetTemplateType(v string) *SearchEditingProjectRequest {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *SearchEditingProjectRequest) SetProjectType(v string) *SearchEditingProjectRequest {
+	s.ProjectType = &v
 	return s
 }
 
@@ -4435,7 +4952,10 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	// 最后一次修改来源
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
 	// 模板类型
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 }
 
 func (s SearchEditingProjectResponseBodyProjectList) String() string {
@@ -4513,6 +5033,21 @@ func (s *SearchEditingProjectResponseBodyProjectList) SetModifiedSource(v string
 
 func (s *SearchEditingProjectResponseBodyProjectList) SetTemplateType(v string) *SearchEditingProjectResponseBodyProjectList {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetProjectType(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetBusinessConfig(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.BusinessConfig = &v
+	return s
+}
+
+func (s *SearchEditingProjectResponseBodyProjectList) SetBusinessStatus(v string) *SearchEditingProjectResponseBodyProjectList {
+	s.BusinessStatus = &v
 	return s
 }
 
@@ -4761,8 +5296,7 @@ func (s *DeleteEditingProjectsRequest) SetProjectIds(v string) *DeleteEditingPro
 
 type DeleteEditingProjectsResponseBody struct {
 	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IgnoredList *string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteEditingProjectsResponseBody) String() string {
@@ -4775,11 +5309,6 @@ func (s DeleteEditingProjectsResponseBody) GoString() string {
 
 func (s *DeleteEditingProjectsResponseBody) SetRequestId(v string) *DeleteEditingProjectsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteEditingProjectsResponseBody) SetIgnoredList(v string) *DeleteEditingProjectsResponseBody {
-	s.IgnoredList = &v
 	return s
 }
 
@@ -7388,6 +7917,124 @@ func (s *SubmitH2VJobResponse) SetBody(v *SubmitH2VJobResponseBody) *SubmitH2VJo
 	return s
 }
 
+type SubmitLiveEditingJobRequest struct {
+	Clips              *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	LiveStreamConfig   *string `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty"`
+	OutputMediaConfig  *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
+	MediaProduceConfig *string `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	OutputMediaTarget  *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
+}
+
+func (s SubmitLiveEditingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveEditingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveEditingJobRequest) SetClips(v string) *SubmitLiveEditingJobRequest {
+	s.Clips = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetProjectId(v string) *SubmitLiveEditingJobRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetLiveStreamConfig(v string) *SubmitLiveEditingJobRequest {
+	s.LiveStreamConfig = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetOutputMediaConfig(v string) *SubmitLiveEditingJobRequest {
+	s.OutputMediaConfig = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetMediaProduceConfig(v string) *SubmitLiveEditingJobRequest {
+	s.MediaProduceConfig = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetUserData(v string) *SubmitLiveEditingJobRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobRequest) SetOutputMediaTarget(v string) *SubmitLiveEditingJobRequest {
+	s.OutputMediaTarget = &v
+	return s
+}
+
+type SubmitLiveEditingJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL  *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+}
+
+func (s SubmitLiveEditingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveEditingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveEditingJobResponseBody) SetRequestId(v string) *SubmitLiveEditingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobResponseBody) SetProjectId(v string) *SubmitLiveEditingJobResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobResponseBody) SetJobId(v string) *SubmitLiveEditingJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobResponseBody) SetMediaId(v string) *SubmitLiveEditingJobResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SubmitLiveEditingJobResponseBody) SetMediaURL(v string) *SubmitLiveEditingJobResponseBody {
+	s.MediaURL = &v
+	return s
+}
+
+type SubmitLiveEditingJobResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitLiveEditingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitLiveEditingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitLiveEditingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLiveEditingJobResponse) SetHeaders(v map[string]*string) *SubmitLiveEditingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitLiveEditingJobResponse) SetBody(v *SubmitLiveEditingJobResponseBody) *SubmitLiveEditingJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitPPTCutJobRequest struct {
 	InputFile   *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
 	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -7622,6 +8269,34 @@ func (client *Client) ListSmartJobs(request *ListSmartJobsRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) GetLiveEditingJobWithOptions(request *GetLiveEditingJobRequest, runtime *util.RuntimeOptions) (_result *GetLiveEditingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLiveEditingJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLiveEditingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveEditingJob(request *GetLiveEditingJobRequest) (_result *GetLiveEditingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveEditingJobResponse{}
+	_body, _err := client.GetLiveEditingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRelatedAuthorizationStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRelatedAuthorizationStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	_result = &DescribeRelatedAuthorizationStatusResponse{}
@@ -7677,12 +8352,11 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Body: util.ToMap(request),
 	}
 	_result = &AddTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("AddTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8077,6 +8751,35 @@ func (client *Client) DescribeIceProductStatus() (_result *DescribeIceProductSta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIceProductStatusResponse{}
 	_body, _err := client.DescribeIceProductStatusWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditingIndexFileRequest, runtime *util.RuntimeOptions) (_result *GetLiveEditingIndexFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetLiveEditingIndexFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLiveEditingIndexFile"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveEditingIndexFile(request *GetLiveEditingIndexFileRequest) (_result *GetLiveEditingIndexFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveEditingIndexFileResponse{}
+	_body, _err := client.GetLiveEditingIndexFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8542,12 +9245,11 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Body: util.ToMap(request),
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpdateTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8834,6 +9536,34 @@ func (client *Client) SubmitH2VJob(request *SubmitH2VJobRequest) (_result *Submi
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitH2VJobResponse{}
 	_body, _err := client.SubmitH2VJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveEditingJobWithOptions(request *SubmitLiveEditingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitLiveEditingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SubmitLiveEditingJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SubmitLiveEditingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitLiveEditingJob(request *SubmitLiveEditingJobRequest) (_result *SubmitLiveEditingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitLiveEditingJobResponse{}
+	_body, _err := client.SubmitLiveEditingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
