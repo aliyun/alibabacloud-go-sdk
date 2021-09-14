@@ -406,6 +406,8 @@ type GetRoomResponseBodyResultRoomInfo struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 房间拓展字段。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 访问用户人次。
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
 }
 
 func (s GetRoomResponseBodyResultRoomInfo) String() string {
@@ -468,6 +470,11 @@ func (s *GetRoomResponseBodyResultRoomInfo) SetTemplateId(v string) *GetRoomResp
 
 func (s *GetRoomResponseBodyResultRoomInfo) SetExtension(v map[string]*string) *GetRoomResponseBodyResultRoomInfo {
 	s.Extension = v
+	return s
+}
+
+func (s *GetRoomResponseBodyResultRoomInfo) SetPv(v int64) *GetRoomResponseBodyResultRoomInfo {
+	s.Pv = &v
 	return s
 }
 
@@ -3058,6 +3065,10 @@ type ListRoomLivesResponseBodyResultLiveList struct {
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// 直播状态，0-在播 1-不在播。
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 用户访问人次。
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// 在线用户数。
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
 }
 
 func (s ListRoomLivesResponseBodyResultLiveList) String() string {
@@ -3110,6 +3121,16 @@ func (s *ListRoomLivesResponseBodyResultLiveList) SetLiveId(v string) *ListRoomL
 
 func (s *ListRoomLivesResponseBodyResultLiveList) SetStatus(v int32) *ListRoomLivesResponseBodyResultLiveList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListRoomLivesResponseBodyResultLiveList) SetPv(v int64) *ListRoomLivesResponseBodyResultLiveList {
+	s.Pv = &v
+	return s
+}
+
+func (s *ListRoomLivesResponseBodyResultLiveList) SetOnlineCount(v int64) *ListRoomLivesResponseBodyResultLiveList {
+	s.OnlineCount = &v
 	return s
 }
 
