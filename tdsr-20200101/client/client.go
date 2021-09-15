@@ -638,6 +638,7 @@ func (s *RectifyImageResponse) SetBody(v *RectifyImageResponseBody) *RectifyImag
 type LabelBuildRequest struct {
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s LabelBuildRequest) String() string {
@@ -650,6 +651,11 @@ func (s LabelBuildRequest) GoString() string {
 
 func (s *LabelBuildRequest) SetSceneId(v string) *LabelBuildRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *LabelBuildRequest) SetMode(v string) *LabelBuildRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -1231,8 +1237,8 @@ func (s *DeleteFileRequest) SetSubSceneUuid(v string) *DeleteFileRequest {
 
 type DeleteFileResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s DeleteFileResponseBody) String() string {
@@ -1248,13 +1254,13 @@ func (s *DeleteFileResponseBody) SetRequestId(v string) *DeleteFileResponseBody 
 	return s
 }
 
-func (s *DeleteFileResponseBody) SetErrMessage(v string) *DeleteFileResponseBody {
-	s.ErrMessage = &v
+func (s *DeleteFileResponseBody) SetSuccess(v bool) *DeleteFileResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DeleteFileResponseBody) SetSuccess(v bool) *DeleteFileResponseBody {
-	s.Success = &v
+func (s *DeleteFileResponseBody) SetErrMessage(v string) *DeleteFileResponseBody {
+	s.ErrMessage = &v
 	return s
 }
 
@@ -1734,10 +1740,10 @@ func (s *PublishHotspotRequest) SetSubSceneUuid(v string) *PublishHotspotRequest
 }
 
 type PublishHotspotResponseBody struct {
-	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data       map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success    *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s PublishHotspotResponseBody) String() string {
@@ -1748,23 +1754,23 @@ func (s PublishHotspotResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PublishHotspotResponseBody) SetRequestId(v string) *PublishHotspotResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *PublishHotspotResponseBody) SetData(v map[string]interface{}) *PublishHotspotResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *PublishHotspotResponseBody) SetErrMessage(v string) *PublishHotspotResponseBody {
-	s.ErrMessage = &v
+func (s *PublishHotspotResponseBody) SetRequestId(v string) *PublishHotspotResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *PublishHotspotResponseBody) SetSuccess(v bool) *PublishHotspotResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *PublishHotspotResponseBody) SetErrMessage(v string) *PublishHotspotResponseBody {
+	s.ErrMessage = &v
 	return s
 }
 
@@ -1990,8 +1996,8 @@ func (s *SaveHotspotTagRequest) SetSubSceneUuid(v string) *SaveHotspotTagRequest
 
 type SaveHotspotTagResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s SaveHotspotTagResponseBody) String() string {
@@ -2007,13 +2013,13 @@ func (s *SaveHotspotTagResponseBody) SetRequestId(v string) *SaveHotspotTagRespo
 	return s
 }
 
-func (s *SaveHotspotTagResponseBody) SetErrMessage(v string) *SaveHotspotTagResponseBody {
-	s.ErrMessage = &v
+func (s *SaveHotspotTagResponseBody) SetSuccess(v bool) *SaveHotspotTagResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SaveHotspotTagResponseBody) SetSuccess(v bool) *SaveHotspotTagResponseBody {
-	s.Success = &v
+func (s *SaveHotspotTagResponseBody) SetErrMessage(v string) *SaveHotspotTagResponseBody {
+	s.ErrMessage = &v
 	return s
 }
 
@@ -3418,8 +3424,8 @@ func (s *SaveHotspotConfigRequest) SetPreviewToken(v string) *SaveHotspotConfigR
 
 type SaveHotspotConfigResponseBody struct {
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s SaveHotspotConfigResponseBody) String() string {
@@ -3435,13 +3441,13 @@ func (s *SaveHotspotConfigResponseBody) SetRequestId(v string) *SaveHotspotConfi
 	return s
 }
 
-func (s *SaveHotspotConfigResponseBody) SetErrMessage(v string) *SaveHotspotConfigResponseBody {
-	s.ErrMessage = &v
+func (s *SaveHotspotConfigResponseBody) SetSuccess(v bool) *SaveHotspotConfigResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SaveHotspotConfigResponseBody) SetSuccess(v bool) *SaveHotspotConfigResponseBody {
-	s.Success = &v
+func (s *SaveHotspotConfigResponseBody) SetErrMessage(v string) *SaveHotspotConfigResponseBody {
+	s.ErrMessage = &v
 	return s
 }
 
@@ -3486,11 +3492,11 @@ func (s *GetWindowConfigRequest) SetPreviewToken(v string) *GetWindowConfigReque
 }
 
 type GetWindowConfigResponseBody struct {
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
 	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s GetWindowConfigResponseBody) String() string {
@@ -3501,8 +3507,8 @@ func (s GetWindowConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetWindowConfigResponseBody) SetRequestId(v string) *GetWindowConfigResponseBody {
-	s.RequestId = &v
+func (s *GetWindowConfigResponseBody) SetData(v map[string]interface{}) *GetWindowConfigResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -3511,18 +3517,18 @@ func (s *GetWindowConfigResponseBody) SetObjectString(v string) *GetWindowConfig
 	return s
 }
 
-func (s *GetWindowConfigResponseBody) SetData(v map[string]interface{}) *GetWindowConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetWindowConfigResponseBody) SetErrMessage(v string) *GetWindowConfigResponseBody {
-	s.ErrMessage = &v
+func (s *GetWindowConfigResponseBody) SetRequestId(v string) *GetWindowConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *GetWindowConfigResponseBody) SetSuccess(v bool) *GetWindowConfigResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetWindowConfigResponseBody) SetErrMessage(v string) *GetWindowConfigResponseBody {
+	s.ErrMessage = &v
 	return s
 }
 
@@ -5298,93 +5304,6 @@ func (s *PredictionWallLineResponse) SetBody(v *PredictionWallLineResponseBody) 
 	return s
 }
 
-type GetPolicyRequest struct {
-	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyRequest) SetSubSceneUuid(v string) *GetPolicyRequest {
-	s.SubSceneUuid = &v
-	return s
-}
-
-func (s *GetPolicyRequest) SetType(v string) *GetPolicyRequest {
-	s.Type = &v
-	return s
-}
-
-type GetPolicyResponseBody struct {
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetObjectString(v string) *GetPolicyResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetData(v map[string]interface{}) *GetPolicyResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetErrMessage(v string) *GetPolicyResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetSuccess(v bool) *GetPolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPolicyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
-	s.Body = v
-	return s
-}
-
 type GetScenePreviewInfoRequest struct {
 	// 模型token
 	ModelToken *string `json:"ModelToken,omitempty" xml:"ModelToken,omitempty"`
@@ -5520,6 +5439,93 @@ func (s *GetScenePreviewInfoResponse) SetHeaders(v map[string]*string) *GetScene
 }
 
 func (s *GetScenePreviewInfoResponse) SetBody(v *GetScenePreviewInfoResponseBody) *GetScenePreviewInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetPolicyRequest struct {
+	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyRequest) SetSubSceneUuid(v string) *GetPolicyRequest {
+	s.SubSceneUuid = &v
+	return s
+}
+
+func (s *GetPolicyRequest) SetType(v string) *GetPolicyRequest {
+	s.Type = &v
+	return s
+}
+
+type GetPolicyResponseBody struct {
+	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+}
+
+func (s GetPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBody) SetData(v map[string]interface{}) *GetPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetObjectString(v string) *GetPolicyResponseBody {
+	s.ObjectString = &v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetSuccess(v bool) *GetPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetErrMessage(v string) *GetPolicyResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+type GetPolicyResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -7127,34 +7133,6 @@ func (client *Client) PredictionWallLine(request *PredictionWallLineRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPolicy"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPolicyResponse{}
-	_body, _err := client.GetPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInfoRequest, runtime *util.RuntimeOptions) (_result *GetScenePreviewInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7176,6 +7154,34 @@ func (client *Client) GetScenePreviewInfo(request *GetScenePreviewInfoRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetScenePreviewInfoResponse{}
 	_body, _err := client.GetScenePreviewInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPolicy"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.GetPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
