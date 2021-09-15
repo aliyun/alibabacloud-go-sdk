@@ -1285,6 +1285,74 @@ func (s *LiveStreamCancelScanResponse) SetHeaders(v map[string]*string) *LiveStr
 	return s
 }
 
+type PostAsyncScanRequest struct {
+	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+}
+
+func (s PostAsyncScanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostAsyncScanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostAsyncScanRequest) SetClientInfo(v string) *PostAsyncScanRequest {
+	s.ClientInfo = &v
+	return s
+}
+
+type PostAsyncScanResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s PostAsyncScanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostAsyncScanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostAsyncScanResponse) SetHeaders(v map[string]*string) *PostAsyncScanResponse {
+	s.Headers = v
+	return s
+}
+
+type PostAsyncScanResultsRequest struct {
+	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+}
+
+func (s PostAsyncScanResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostAsyncScanResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostAsyncScanResultsRequest) SetClientInfo(v string) *PostAsyncScanResultsRequest {
+	s.ClientInfo = &v
+	return s
+}
+
+type PostAsyncScanResultsResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s PostAsyncScanResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostAsyncScanResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostAsyncScanResultsResponse) SetHeaders(v map[string]*string) *PostAsyncScanResultsResponse {
+	s.Headers = v
+	return s
+}
+
 type SearchPersonRequest struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
@@ -3684,6 +3752,76 @@ func (client *Client) LiveStreamCancelScanWithOptions(request *LiveStreamCancelS
 	}
 	_result = &LiveStreamCancelScanResponse{}
 	_body, _err := client.DoROARequest(tea.String("LiveStreamCancelScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/livestream/cancelscan"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostAsyncScan(request *PostAsyncScanRequest) (_result *PostAsyncScanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PostAsyncScanResponse{}
+	_body, _err := client.PostAsyncScanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostAsyncScanWithOptions(request *PostAsyncScanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PostAsyncScanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &PostAsyncScanResponse{}
+	_body, _err := client.DoROARequest(tea.String("PostAsyncScan"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/post/asyncscan"), tea.String("none"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostAsyncScanResults(request *PostAsyncScanResultsRequest) (_result *PostAsyncScanResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PostAsyncScanResultsResponse{}
+	_body, _err := client.PostAsyncScanResultsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostAsyncScanResultsWithOptions(request *PostAsyncScanResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PostAsyncScanResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &PostAsyncScanResultsResponse{}
+	_body, _err := client.DoROARequest(tea.String("PostAsyncScanResults"), tea.String("2018-05-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/green/post/results"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
