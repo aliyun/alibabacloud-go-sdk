@@ -4602,10 +4602,11 @@ func (s *SwapFacialFeaturesResponse) SetBody(v *SwapFacialFeaturesResponseBody) 
 }
 
 type SearchFaceRequest struct {
-	DbName   *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Limit    *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	DbNames  *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	DbName                *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	ImageUrl              *string  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Limit                 *int32   `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	DbNames               *string  `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
 }
 
 func (s SearchFaceRequest) String() string {
@@ -4636,11 +4637,17 @@ func (s *SearchFaceRequest) SetDbNames(v string) *SearchFaceRequest {
 	return s
 }
 
+func (s *SearchFaceRequest) SetQualityScoreThreshold(v float32) *SearchFaceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
 type SearchFaceAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Limit          *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	DbNames        *string   `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	ImageUrlObject        io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	DbName                *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Limit                 *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	DbNames               *string   `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
 }
 
 func (s SearchFaceAdvanceRequest) String() string {
@@ -4668,6 +4675,11 @@ func (s *SearchFaceAdvanceRequest) SetLimit(v int32) *SearchFaceAdvanceRequest {
 
 func (s *SearchFaceAdvanceRequest) SetDbNames(v string) *SearchFaceAdvanceRequest {
 	s.DbNames = &v
+	return s
+}
+
+func (s *SearchFaceAdvanceRequest) SetQualityScoreThreshold(v float32) *SearchFaceAdvanceRequest {
+	s.QualityScoreThreshold = &v
 	return s
 }
 
@@ -4735,11 +4747,12 @@ func (s *SearchFaceResponseBodyDataMatchList) SetLocation(v *SearchFaceResponseB
 }
 
 type SearchFaceResponseBodyDataMatchListFaceItems struct {
-	EntityId  *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	FaceId    *string  `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	ExtraData *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	DbName    *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EntityId   *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	FaceId     *string  `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	Score      *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	ExtraData  *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	DbName     *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 
 func (s SearchFaceResponseBodyDataMatchListFaceItems) String() string {
@@ -4772,6 +4785,11 @@ func (s *SearchFaceResponseBodyDataMatchListFaceItems) SetExtraData(v string) *S
 
 func (s *SearchFaceResponseBodyDataMatchListFaceItems) SetDbName(v string) *SearchFaceResponseBodyDataMatchListFaceItems {
 	s.DbName = &v
+	return s
+}
+
+func (s *SearchFaceResponseBodyDataMatchListFaceItems) SetConfidence(v float32) *SearchFaceResponseBodyDataMatchListFaceItems {
+	s.Confidence = &v
 	return s
 }
 
@@ -5223,10 +5241,13 @@ func (s *CreateBodyPersonResponse) SetBody(v *CreateBodyPersonResponseBody) *Cre
 }
 
 type AddFaceRequest struct {
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	EntityId  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	DbName                                *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	ImageUrl                              *string  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	EntityId                              *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	ExtraData                             *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	QualityScoreThreshold                 *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	SimilarityScoreThresholdInEntity      *float32 `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
+	SimilarityScoreThresholdBetweenEntity *float32 `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
 }
 
 func (s AddFaceRequest) String() string {
@@ -5257,11 +5278,29 @@ func (s *AddFaceRequest) SetExtraData(v string) *AddFaceRequest {
 	return s
 }
 
+func (s *AddFaceRequest) SetQualityScoreThreshold(v float32) *AddFaceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+func (s *AddFaceRequest) SetSimilarityScoreThresholdInEntity(v float32) *AddFaceRequest {
+	s.SimilarityScoreThresholdInEntity = &v
+	return s
+}
+
+func (s *AddFaceRequest) SetSimilarityScoreThresholdBetweenEntity(v float32) *AddFaceRequest {
+	s.SimilarityScoreThresholdBetweenEntity = &v
+	return s
+}
+
 type AddFaceAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EntityId       *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	ExtraData      *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageUrlObject                        io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	DbName                                *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EntityId                              *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	ExtraData                             *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	QualityScoreThreshold                 *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	SimilarityScoreThresholdInEntity      *float32  `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
+	SimilarityScoreThresholdBetweenEntity *float32  `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
 }
 
 func (s AddFaceAdvanceRequest) String() string {
@@ -5289,6 +5328,21 @@ func (s *AddFaceAdvanceRequest) SetEntityId(v string) *AddFaceAdvanceRequest {
 
 func (s *AddFaceAdvanceRequest) SetExtraData(v string) *AddFaceAdvanceRequest {
 	s.ExtraData = &v
+	return s
+}
+
+func (s *AddFaceAdvanceRequest) SetQualityScoreThreshold(v float32) *AddFaceAdvanceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+func (s *AddFaceAdvanceRequest) SetSimilarityScoreThresholdInEntity(v float32) *AddFaceAdvanceRequest {
+	s.SimilarityScoreThresholdInEntity = &v
+	return s
+}
+
+func (s *AddFaceAdvanceRequest) SetSimilarityScoreThresholdBetweenEntity(v float32) *AddFaceAdvanceRequest {
+	s.SimilarityScoreThresholdBetweenEntity = &v
 	return s
 }
 
