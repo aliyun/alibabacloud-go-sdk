@@ -3582,7 +3582,7 @@ type GetStackGroupOperationResponseBodyStackGroupOperation struct {
 	OperationPreferences           *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty" type:"Struct"`
 	EndTime                        *string                                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutionRoleName              *string                                                                              `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	AdministratorRoleName          *string                                                                              `json:"AdministratorRoleName,omitempty" xml:"AdministratorRoleName,omitempty"`
+	AdministrationRoleName         *string                                                                              `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
 	DeploymentTargets              *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets              `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
 }
 
@@ -3654,8 +3654,8 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetExecutionRole
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetAdministratorRoleName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.AdministratorRoleName = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetAdministrationRoleName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.AdministrationRoleName = &v
 	return s
 }
 
