@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -3156,10 +3157,9 @@ func (s *CreateIpSetsResponseBody) SetAcceleratorId(v string) *CreateIpSetsRespo
 }
 
 type CreateIpSetsResponseBodyIpSets struct {
-	AccelerateRegionId *string   `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	IpList             []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
+	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	IpSetId            *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 }
 
 func (s CreateIpSetsResponseBodyIpSets) String() string {
@@ -3182,11 +3182,6 @@ func (s *CreateIpSetsResponseBodyIpSets) SetBandwidth(v int32) *CreateIpSetsResp
 
 func (s *CreateIpSetsResponseBodyIpSets) SetIpSetId(v string) *CreateIpSetsResponseBodyIpSets {
 	s.IpSetId = &v
-	return s
-}
-
-func (s *CreateIpSetsResponseBodyIpSets) SetIpList(v []*string) *CreateIpSetsResponseBodyIpSets {
-	s.IpList = v
 	return s
 }
 
@@ -5624,93 +5619,6 @@ func (s *AttachLogStoreToEndpointGroupResponse) SetBody(v *AttachLogStoreToEndpo
 	return s
 }
 
-type UpdateCrossBorderPackageComplianceStatusRequest struct {
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	ComplianceStatus *string `json:"ComplianceStatus,omitempty" xml:"ComplianceStatus,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetRegionId(v string) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetClientToken(v string) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetDryRun(v bool) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.DryRun = &v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetComplianceStatus(v string) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.ComplianceStatus = &v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetInstanceId(v string) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusRequest) SetDescription(v string) *UpdateCrossBorderPackageComplianceStatusRequest {
-	s.Description = &v
-	return s
-}
-
-type UpdateCrossBorderPackageComplianceStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusResponseBody) SetRequestId(v string) *UpdateCrossBorderPackageComplianceStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateCrossBorderPackageComplianceStatusResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateCrossBorderPackageComplianceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCrossBorderPackageComplianceStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusResponse) SetHeaders(v map[string]*string) *UpdateCrossBorderPackageComplianceStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateCrossBorderPackageComplianceStatusResponse) SetBody(v *UpdateCrossBorderPackageComplianceStatusResponseBody) *UpdateCrossBorderPackageComplianceStatusResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateBandwidthPackageRequest struct {
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
@@ -6677,188 +6585,6 @@ func (s *DissociateAclsFromListenerResponse) SetBody(v *DissociateAclsFromListen
 	return s
 }
 
-type ListCrossBorderPackageForComplianceRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	ResourceUid *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
-	IsBinded    *bool   `json:"IsBinded,omitempty" xml:"IsBinded,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResult   *int32  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-}
-
-func (s ListCrossBorderPackageForComplianceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCrossBorderPackageForComplianceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetRegionId(v string) *ListCrossBorderPackageForComplianceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetClientToken(v string) *ListCrossBorderPackageForComplianceRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetDryRun(v bool) *ListCrossBorderPackageForComplianceRequest {
-	s.DryRun = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetResourceUid(v int64) *ListCrossBorderPackageForComplianceRequest {
-	s.ResourceUid = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetIsBinded(v bool) *ListCrossBorderPackageForComplianceRequest {
-	s.IsBinded = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetNextToken(v string) *ListCrossBorderPackageForComplianceRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceRequest) SetMaxResult(v int32) *ListCrossBorderPackageForComplianceRequest {
-	s.MaxResult = &v
-	return s
-}
-
-type ListCrossBorderPackageForComplianceResponseBody struct {
-	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken         *string                                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults        *int32                                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	BandwidthPackages []*ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
-}
-
-func (s ListCrossBorderPackageForComplianceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCrossBorderPackageForComplianceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBody) SetRequestId(v string) *ListCrossBorderPackageForComplianceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBody) SetTotalCount(v int32) *ListCrossBorderPackageForComplianceResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBody) SetNextToken(v string) *ListCrossBorderPackageForComplianceResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBody) SetMaxResults(v int32) *ListCrossBorderPackageForComplianceResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBody) SetBandwidthPackages(v []*ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) *ListCrossBorderPackageForComplianceResponseBody {
-	s.BandwidthPackages = v
-	return s
-}
-
-type ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages struct {
-	IsBinded               *bool   `json:"IsBinded,omitempty" xml:"IsBinded,omitempty"`
-	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CbnGeographicRegionIdA *string `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
-	BandwidthPackageId     *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ExpiredTime            *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	AliUid                 *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	BindTime               *int64  `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
-}
-
-func (s ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) GoString() string {
-	return s.String()
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetIsBinded(v bool) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.IsBinded = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetCreateTime(v int64) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetCbnGeographicRegionIdA(v string) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.CbnGeographicRegionIdA = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetBandwidthPackageId(v string) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.BandwidthPackageId = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetBandwidth(v int32) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetExpiredTime(v int64) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetCbnGeographicRegionIdB(v string) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.CbnGeographicRegionIdB = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetAliUid(v int64) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.AliUid = &v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages) SetBindTime(v int64) *ListCrossBorderPackageForComplianceResponseBodyBandwidthPackages {
-	s.BindTime = &v
-	return s
-}
-
-type ListCrossBorderPackageForComplianceResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCrossBorderPackageForComplianceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCrossBorderPackageForComplianceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCrossBorderPackageForComplianceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListCrossBorderPackageForComplianceResponse) SetHeaders(v map[string]*string) *ListCrossBorderPackageForComplianceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListCrossBorderPackageForComplianceResponse) SetBody(v *ListCrossBorderPackageForComplianceResponseBody) *ListCrossBorderPackageForComplianceResponse {
-	s.Body = v
-	return s
-}
-
 type ListAccelerateAreasRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6976,8 +6702,8 @@ func (s *ListAccelerateAreasResponse) SetBody(v *ListAccelerateAreasResponseBody
 
 type ListListenerCertificatesRequest struct {
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -6996,13 +6722,13 @@ func (s *ListListenerCertificatesRequest) SetRegionId(v string) *ListListenerCer
 	return s
 }
 
-func (s *ListListenerCertificatesRequest) SetClientToken(v string) *ListListenerCertificatesRequest {
-	s.ClientToken = &v
+func (s *ListListenerCertificatesRequest) SetAcceleratorId(v string) *ListListenerCertificatesRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *ListListenerCertificatesRequest) SetAcceleratorId(v string) *ListListenerCertificatesRequest {
-	s.AcceleratorId = &v
+func (s *ListListenerCertificatesRequest) SetRole(v string) *ListListenerCertificatesRequest {
+	s.Role = &v
 	return s
 }
 
@@ -7064,7 +6790,6 @@ func (s *ListListenerCertificatesResponseBody) SetCertificates(v []*ListListener
 
 type ListListenerCertificatesResponseBodyCertificates struct {
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	IsDefault     *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
@@ -7079,11 +6804,6 @@ func (s ListListenerCertificatesResponseBodyCertificates) GoString() string {
 
 func (s *ListListenerCertificatesResponseBodyCertificates) SetCertificateId(v string) *ListListenerCertificatesResponseBodyCertificates {
 	s.CertificateId = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBodyCertificates) SetType(v string) *ListListenerCertificatesResponseBodyCertificates {
-	s.Type = &v
 	return s
 }
 
@@ -9387,11 +9107,26 @@ func (client *Client) DescribeIpSetWithOptions(request *DescribeIpSetRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["IpSetId"] = request.IpSetId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9415,11 +9150,30 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AclIds"] = request.AclIds
+	query["AclName"] = request.AclName
+	query["NextToken"] = request.NextToken
+	query["MaxResults"] = request.MaxResults
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAcls"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAclsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAcls"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9443,11 +9197,32 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["Name"] = request.Name
+	query["Duration"] = request.Duration
+	query["PricingCycle"] = request.PricingCycle
+	query["Spec"] = request.Spec
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9471,11 +9246,26 @@ func (client *Client) DescribeListenerWithOptions(request *DescribeListenerReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9499,11 +9289,29 @@ func (client *Client) DeleteSpareIpsWithOptions(request *DeleteSpareIpsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
+	query["SpareIps"] = request.SpareIps
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9527,11 +9335,26 @@ func (client *Client) UpdateIpSetsWithOptions(request *UpdateIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["IpSets"] = request.IpSets
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9555,11 +9378,32 @@ func (client *Client) ConfigEndpointProbeWithOptions(request *ConfigEndpointProb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["EndpointType"] = request.EndpointType
+	query["Endpoint"] = request.Endpoint
+	query["ProbeProtocol"] = request.ProbeProtocol
+	query["ProbePort"] = request.ProbePort
+	query["Enable"] = request.Enable
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigEndpointProbe"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigEndpointProbeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConfigEndpointProbe"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9583,11 +9427,29 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclId"] = request.AclId
+	query["AclEntries"] = request.AclEntries
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveEntriesFromAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveEntriesFromAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveEntriesFromAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9611,11 +9473,26 @@ func (client *Client) DescribeBandwidthPackageWithOptions(request *DescribeBandw
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9639,11 +9516,30 @@ func (client *Client) ListBandwidthPackagesWithOptions(request *ListBandwidthPac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["State"] = request.State
+	query["Type"] = request.Type
+	query["BandwidthPackageId"] = request.BandwidthPackageId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBandwidthPackages"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBandwidthPackagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBandwidthPackages"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9667,11 +9563,40 @@ func (client *Client) UpdateEndpointGroupWithOptions(request *UpdateEndpointGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	query["TrafficPercentage"] = request.TrafficPercentage
+	query["HealthCheckIntervalSeconds"] = request.HealthCheckIntervalSeconds
+	query["HealthCheckPath"] = request.HealthCheckPath
+	query["HealthCheckPort"] = request.HealthCheckPort
+	query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	query["ThresholdCount"] = request.ThresholdCount
+	query["EndpointConfigurations"] = request.EndpointConfigurations
+	query["EndpointRequestProtocol"] = request.EndpointRequestProtocol
+	query["PortOverrides"] = request.PortOverrides
+	query["HealthCheckEnabled"] = request.HealthCheckEnabled
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9695,11 +9620,28 @@ func (client *Client) AttachDdosToAcceleratorWithOptions(request *AttachDdosToAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["DdosId"] = request.DdosId
+	query["DdosRegionId"] = request.DdosRegionId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDdosToAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachDdosToAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachDdosToAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9723,11 +9665,26 @@ func (client *Client) GetAclWithOptions(request *GetAclRequest, runtime *util.Ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclId"] = request.AclId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9751,11 +9708,30 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclIds"] = request.AclIds
+	query["ListenerId"] = request.ListenerId
+	query["AclType"] = request.AclType
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateAclsWithListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAclsWithListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateAclsWithListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9779,11 +9755,31 @@ func (client *Client) ListForwardingRulesWithOptions(request *ListForwardingRule
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["ListenerId"] = request.ListenerId
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ForwardingRuleId"] = request.ForwardingRuleId
+	query["NextToken"] = request.NextToken
+	query["MaxResults"] = request.MaxResults
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9807,11 +9803,38 @@ func (client *Client) CreateBandwidthPackageWithOptions(request *CreateBandwidth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["Bandwidth"] = request.Bandwidth
+	query["Duration"] = request.Duration
+	query["PricingCycle"] = request.PricingCycle
+	query["AutoPay"] = request.AutoPay
+	query["ClientToken"] = request.ClientToken
+	query["Type"] = request.Type
+	query["BandwidthType"] = request.BandwidthType
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["Ratio"] = request.Ratio
+	query["BillingType"] = request.BillingType
+	query["ChargeType"] = request.ChargeType
+	query["CbnGeographicRegionIdA"] = request.CbnGeographicRegionIdA
+	query["CbnGeographicRegionIdB"] = request.CbnGeographicRegionIdB
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9835,11 +9858,27 @@ func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthacka
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBandwidthackages"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBandwidthackagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBandwidthackages"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9863,11 +9902,27 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["ClientToken"] = request.ClientToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9891,11 +9946,29 @@ func (client *Client) GetHealthStatusWithOptions(request *GetHealthStatusRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHealthStatus"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetHealthStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetHealthStatus"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9919,11 +9992,26 @@ func (client *Client) DescribeAcceleratorWithOptions(request *DescribeAccelerato
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9947,11 +10035,29 @@ func (client *Client) DetachLogStoreFromEndpointGroupWithOptions(request *Detach
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["EndpointGroupIds"] = request.EndpointGroupIds
+	query["ClientToken"] = request.ClientToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachLogStoreFromEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachLogStoreFromEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachLogStoreFromEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9975,11 +10081,28 @@ func (client *Client) CreateIpSetsWithOptions(request *CreateIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["AccelerateRegion"] = request.AccelerateRegion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10003,11 +10126,29 @@ func (client *Client) CreateForwardingRulesWithOptions(request *CreateForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["ForwardingRules"] = request.ForwardingRules
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10031,11 +10172,26 @@ func (client *Client) ListAvailableAccelerateAreasWithOptions(request *ListAvail
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableAccelerateAreas"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAvailableAccelerateAreasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAvailableAccelerateAreas"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10059,11 +10215,28 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclId"] = request.AclId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10087,11 +10260,29 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclId"] = request.AclId
+	query["AclEntries"] = request.AclEntries
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEntriesToAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddEntriesToAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddEntriesToAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10115,11 +10306,29 @@ func (client *Client) CreateSpareIpsWithOptions(request *CreateSpareIpsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
+	query["SpareIps"] = request.SpareIps
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10143,11 +10352,29 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["Domains"] = request.Domains
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateAdditionalCertificatesFromListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAdditionalCertificatesFromListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateAdditionalCertificatesFromListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10171,11 +10398,32 @@ func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["EndpointGroupType"] = request.EndpointGroupType
+	query["AccessLogSwitch"] = request.AccessLogSwitch
+	query["EndpointGroupId"] = request.EndpointGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10199,11 +10447,25 @@ func (client *Client) ListBusiRegionsWithOptions(request *ListBusiRegionsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBusiRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBusiRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBusiRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10227,11 +10489,27 @@ func (client *Client) ReplaceBandwidthPackageWithOptions(request *ReplaceBandwid
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["TargetBandwidthPackageId"] = request.TargetBandwidthPackageId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReplaceBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReplaceBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReplaceBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10255,11 +10533,29 @@ func (client *Client) UpdateEndpointGroupAttributeWithOptions(request *UpdateEnd
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["Name"] = request.Name
+	query["Description"] = request.Description
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroupAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroupAttribute"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10283,11 +10579,29 @@ func (client *Client) UpdateForwardingRulesWithOptions(request *UpdateForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["ForwardingRules"] = request.ForwardingRules
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10311,11 +10625,28 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListListeners"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListListeners"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10339,11 +10670,26 @@ func (client *Client) DescribeEndpointGroupWithOptions(request *DescribeEndpoint
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["EndpointGroupId"] = request.EndpointGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10367,11 +10713,27 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10395,11 +10757,29 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["Certificates"] = request.Certificates
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateAdditionalCertificatesWithListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateAdditionalCertificatesWithListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10423,11 +10803,32 @@ func (client *Client) AttachLogStoreToEndpointGroupWithOptions(request *AttachLo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["SlsProjectName"] = request.SlsProjectName
+	query["SlsLogStoreName"] = request.SlsLogStoreName
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["SlsRegionId"] = request.SlsRegionId
+	query["EndpointGroupIds"] = request.EndpointGroupIds
+	query["ClientToken"] = request.ClientToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachLogStoreToEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachLogStoreToEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachLogStoreToEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10446,44 +10847,37 @@ func (client *Client) AttachLogStoreToEndpointGroup(request *AttachLogStoreToEnd
 	return _result, _err
 }
 
-func (client *Client) UpdateCrossBorderPackageComplianceStatusWithOptions(request *UpdateCrossBorderPackageComplianceStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCrossBorderPackageComplianceStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateCrossBorderPackageComplianceStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCrossBorderPackageComplianceStatus"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateCrossBorderPackageComplianceStatus(request *UpdateCrossBorderPackageComplianceStatusRequest) (_result *UpdateCrossBorderPackageComplianceStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateCrossBorderPackageComplianceStatusResponse{}
-	_body, _err := client.UpdateCrossBorderPackageComplianceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateBandwidthPackageWithOptions(request *UpdateBandwidthPackageRequest, runtime *util.RuntimeOptions) (_result *UpdateBandwidthPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["Bandwidth"] = request.Bandwidth
+	query["BandwidthType"] = request.BandwidthType
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10507,11 +10901,26 @@ func (client *Client) DeleteAcceleratorWithOptions(request *DeleteAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10535,11 +10944,42 @@ func (client *Client) CreateEndpointGroupWithOptions(request *CreateEndpointGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	query["ListenerId"] = request.ListenerId
+	query["TrafficPercentage"] = request.TrafficPercentage
+	query["HealthCheckIntervalSeconds"] = request.HealthCheckIntervalSeconds
+	query["HealthCheckPath"] = request.HealthCheckPath
+	query["HealthCheckPort"] = request.HealthCheckPort
+	query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	query["ThresholdCount"] = request.ThresholdCount
+	query["EndpointConfigurations"] = request.EndpointConfigurations
+	query["EndpointRequestProtocol"] = request.EndpointRequestProtocol
+	query["EndpointGroupType"] = request.EndpointGroupType
+	query["PortOverrides"] = request.PortOverrides
+	query["HealthCheckEnabled"] = request.HealthCheckEnabled
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10563,11 +11003,27 @@ func (client *Client) DeleteEndpointGroupWithOptions(request *DeleteEndpointGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["EndpointGroupId"] = request.EndpointGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10591,11 +11047,28 @@ func (client *Client) ListIpSetsWithOptions(request *ListIpSetsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10619,11 +11092,26 @@ func (client *Client) UpdateAcceleratorConfirmWithOptions(request *UpdateAcceler
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAcceleratorConfirm"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAcceleratorConfirmResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAcceleratorConfirm"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10647,11 +11135,27 @@ func (client *Client) BandwidthPackageRemoveAcceleratorWithOptions(request *Band
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BandwidthPackageRemoveAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BandwidthPackageRemoveAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BandwidthPackageRemoveAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10675,11 +11179,29 @@ func (client *Client) DeleteForwardingRulesWithOptions(request *DeleteForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["ForwardingRuleIds"] = request.ForwardingRuleIds
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10703,11 +11225,29 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclIds"] = request.AclIds
+	query["ListenerId"] = request.ListenerId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateAclsFromListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAclsFromListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateAclsFromListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10726,44 +11266,30 @@ func (client *Client) DissociateAclsFromListener(request *DissociateAclsFromList
 	return _result, _err
 }
 
-func (client *Client) ListCrossBorderPackageForComplianceWithOptions(request *ListCrossBorderPackageForComplianceRequest, runtime *util.RuntimeOptions) (_result *ListCrossBorderPackageForComplianceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListCrossBorderPackageForComplianceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCrossBorderPackageForCompliance"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCrossBorderPackageForCompliance(request *ListCrossBorderPackageForComplianceRequest) (_result *ListCrossBorderPackageForComplianceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCrossBorderPackageForComplianceResponse{}
-	_body, _err := client.ListCrossBorderPackageForComplianceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListAccelerateAreasWithOptions(request *ListAccelerateAreasRequest, runtime *util.RuntimeOptions) (_result *ListAccelerateAreasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccelerateAreas"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccelerateAreasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccelerateAreas"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10787,11 +11313,30 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Role"] = request.Role
+	query["ListenerId"] = request.ListenerId
+	query["NextToken"] = request.NextToken
+	query["MaxResults"] = request.MaxResults
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListListenerCertificates"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenerCertificatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListListenerCertificates"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10815,11 +11360,28 @@ func (client *Client) UpdateIpSetWithOptions(request *UpdateIpSetRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["IpSetId"] = request.IpSetId
+	query["Bandwidth"] = request.Bandwidth
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10843,11 +11405,30 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclName"] = request.AclName
+	query["AddressIPVersion"] = request.AddressIPVersion
+	query["AclEntries"] = request.AclEntries
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10871,11 +11452,25 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10899,11 +11494,35 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["ClientAffinity"] = request.ClientAffinity
+	query["Protocol"] = request.Protocol
+	query["ListenerId"] = request.ListenerId
+	query["ProxyProtocol"] = request.ProxyProtocol
+	query["PortRanges"] = request.PortRanges
+	query["Certificates"] = request.Certificates
+	query["BackendPorts"] = request.BackendPorts
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10927,11 +11546,26 @@ func (client *Client) ListAvailableBusiRegionsWithOptions(request *ListAvailable
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableBusiRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAvailableBusiRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAvailableBusiRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10955,11 +11589,32 @@ func (client *Client) UpdateAcceleratorWithOptions(request *UpdateAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Spec"] = request.Spec
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10983,11 +11638,28 @@ func (client *Client) DeleteEndpointGroupsWithOptions(request *DeleteEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["EndpointGroupIds"] = request.EndpointGroupIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11011,11 +11683,28 @@ func (client *Client) DeleteIpSetWithOptions(request *DeleteIpSetRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["IpSetId"] = request.IpSetId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11039,11 +11728,29 @@ func (client *Client) UpdateEndpointGroupsWithOptions(request *UpdateEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11067,11 +11774,26 @@ func (client *Client) DeleteIpSetsWithOptions(request *DeleteIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["IpSetIds"] = request.IpSetIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11095,11 +11817,27 @@ func (client *Client) BandwidthPackageAddAcceleratorWithOptions(request *Bandwid
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BandwidthPackageAddAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BandwidthPackageAddAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BandwidthPackageAddAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11123,11 +11861,29 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["AclId"] = request.AclId
+	query["AclName"] = request.AclName
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAclAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAclAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAclAttribute"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11151,11 +11907,29 @@ func (client *Client) ListAcceleratorsWithOptions(request *ListAcceleratorsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["AcceleratorId"] = request.AcceleratorId
+	query["State"] = request.State
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccelerators"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAcceleratorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccelerators"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11179,11 +11953,34 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Name"] = request.Name
+	query["Description"] = request.Description
+	query["ClientAffinity"] = request.ClientAffinity
+	query["Protocol"] = request.Protocol
+	query["ProxyProtocol"] = request.ProxyProtocol
+	query["PortRanges"] = request.PortRanges
+	query["Certificates"] = request.Certificates
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11207,11 +12004,28 @@ func (client *Client) ListSpareIpsWithOptions(request *ListSpareIpsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11235,11 +12049,30 @@ func (client *Client) CreateEndpointGroupsWithOptions(request *CreateEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11263,11 +12096,26 @@ func (client *Client) DetachDdosFromAcceleratorWithOptions(request *DetachDdosFr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDdosFromAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachDdosFromAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachDdosFromAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11291,11 +12139,29 @@ func (client *Client) GetSpareIpWithOptions(request *GetSpareIpRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["AcceleratorId"] = request.AcceleratorId
+	query["SpareIp"] = request.SpareIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSpareIp"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSpareIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSpareIp"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
