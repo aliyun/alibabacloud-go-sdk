@@ -951,13 +951,10 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 type MassPushRequestPushTask struct {
 	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
 	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
 	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
-	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
+	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
 	IOSApnsEnv                       *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
 	IOSBadgeAutoIncrement            *bool   `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
 	AndroidXiaoMiNotifyTitle         *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
@@ -965,37 +962,48 @@ type MassPushRequestPushTask struct {
 	AndroidXiaoMiActivity            *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
 	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
 	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
 	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
 	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
 	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	IOSExtParameters                 *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
 	AndroidXiaoMiNotifyBody          *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
-	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
 	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
 	TargetValue                      *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
 	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
 	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
 	Title                            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
 	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	IOSNotificationThreadId          *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	IOSExtParameters                 *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidXiaomiImageUrl            *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	SendChannels                     *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
 }
 
 func (s MassPushRequestPushTask) String() string {
@@ -1016,16 +1024,6 @@ func (s *MassPushRequestPushTask) SetIOSSilentNotification(v bool) *MassPushRequ
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSNotificationCollapseId(v string) *MassPushRequestPushTask {
-	s.IOSNotificationCollapseId = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
-	s.AndroidRenderStyle = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetStoreOffline(v bool) *MassPushRequestPushTask {
 	s.StoreOffline = &v
 	return s
@@ -1036,18 +1034,13 @@ func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushT
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
-	s.IOSNotificationCategory = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationHuaweiChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationHuaweiChannel = &v
 	return s
 }
 
 func (s *MassPushRequestPushTask) SetAndroidNotificationChannel(v string) *MassPushRequestPushTask {
 	s.AndroidNotificationChannel = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationHuaweiChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationHuaweiChannel = &v
 	return s
 }
 
@@ -1086,28 +1079,8 @@ func (s *MassPushRequestPushTask) SetIOSRemindBody(v string) *MassPushRequestPus
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidActivity(v string) *MassPushRequestPushTask {
-	s.AndroidActivity = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetAndroidNotifyType(v string) *MassPushRequestPushTask {
 	s.AndroidNotifyType = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidBigBody(v string) *MassPushRequestPushTask {
-	s.AndroidBigBody = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSMutableContent(v bool) *MassPushRequestPushTask {
-	s.IOSMutableContent = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetTarget(v string) *MassPushRequestPushTask {
-	s.Target = &v
 	return s
 }
 
@@ -1121,23 +1094,8 @@ func (s *MassPushRequestPushTask) SetAndroidBigTitle(v string) *MassPushRequestP
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidNotificationNotifyId(v int32) *MassPushRequestPushTask {
-	s.AndroidNotificationNotifyId = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetExpireTime(v string) *MassPushRequestPushTask {
 	s.ExpireTime = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationVivoChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationVivoChannel = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
-	s.DeviceType = &v
 	return s
 }
 
@@ -1146,48 +1104,13 @@ func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestP
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidPopupActivity(v string) *MassPushRequestPushTask {
-	s.AndroidPopupActivity = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidRemind(v bool) *MassPushRequestPushTask {
-	s.AndroidRemind = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidPopupBody(v string) *MassPushRequestPushTask {
-	s.AndroidPopupBody = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushRequestPushTask {
 	s.AndroidExtParameters = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSExtParameters(v string) *MassPushRequestPushTask {
-	s.IOSExtParameters = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyBody(v string) *MassPushRequestPushTask {
 	s.AndroidXiaoMiNotifyBody = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetBody(v string) *MassPushRequestPushTask {
-	s.Body = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationBarType(v int32) *MassPushRequestPushTask {
-	s.AndroidNotificationBarType = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationBarPriority(v int32) *MassPushRequestPushTask {
-	s.AndroidNotificationBarPriority = &v
 	return s
 }
 
@@ -1211,16 +1134,6 @@ func (s *MassPushRequestPushTask) SetIOSRemind(v bool) *MassPushRequestPushTask 
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetPushType(v string) *MassPushRequestPushTask {
-	s.PushType = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
-	s.SendSpeed = &v
-	return s
-}
-
 func (s *MassPushRequestPushTask) SetIOSBadge(v int32) *MassPushRequestPushTask {
 	s.IOSBadge = &v
 	return s
@@ -1231,13 +1144,148 @@ func (s *MassPushRequestPushTask) SetTitle(v string) *MassPushRequestPushTask {
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetAndroidMusic(v string) *MassPushRequestPushTask {
+	s.AndroidMusic = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationCollapseId(v string) *MassPushRequestPushTask {
+	s.IOSNotificationCollapseId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
+	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
+	s.IOSNotificationCategory = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationThreadId(v string) *MassPushRequestPushTask {
+	s.IOSNotificationThreadId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidActivity(v string) *MassPushRequestPushTask {
+	s.AndroidActivity = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidBigBody(v string) *MassPushRequestPushTask {
+	s.AndroidBigBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSMutableContent(v bool) *MassPushRequestPushTask {
+	s.IOSMutableContent = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetTarget(v string) *MassPushRequestPushTask {
+	s.Target = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationNotifyId(v int32) *MassPushRequestPushTask {
+	s.AndroidNotificationNotifyId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationVivoChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationVivoChannel = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidPopupActivity(v string) *MassPushRequestPushTask {
+	s.AndroidPopupActivity = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidRemind(v bool) *MassPushRequestPushTask {
+	s.AndroidRemind = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidPopupBody(v string) *MassPushRequestPushTask {
+	s.AndroidPopupBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSExtParameters(v string) *MassPushRequestPushTask {
+	s.IOSExtParameters = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetBody(v string) *MassPushRequestPushTask {
+	s.Body = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationBarPriority(v int32) *MassPushRequestPushTask {
+	s.AndroidNotificationBarPriority = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationBarType(v int32) *MassPushRequestPushTask {
+	s.AndroidNotificationBarType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetPushType(v string) *MassPushRequestPushTask {
+	s.PushType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
+	s.SendSpeed = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetPushTime(v string) *MassPushRequestPushTask {
 	s.PushTime = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidMusic(v string) *MassPushRequestPushTask {
-	s.AndroidMusic = &v
+func (s *MassPushRequestPushTask) SetAndroidBigPictureUrl(v string) *MassPushRequestPushTask {
+	s.AndroidBigPictureUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidInboxBody(v string) *MassPushRequestPushTask {
+	s.AndroidInboxBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidImageUrl(v string) *MassPushRequestPushTask {
+	s.AndroidImageUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaomiImageUrl(v string) *MassPushRequestPushTask {
+	s.AndroidXiaomiImageUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiUrgency(v string) *MassPushRequestPushTask {
+	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiCategory(v string) *MassPushRequestPushTask {
+	s.AndroidMessageHuaweiCategory = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetSendChannels(v string) *MassPushRequestPushTask {
+	s.SendChannels = &v
 	return s
 }
 
@@ -1358,6 +1406,14 @@ type PushRequest struct {
 	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
 	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
 	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	IOSNotificationThreadId          *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidXiaomiImageUrl            *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	SendChannels                     *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
 }
 
 func (s PushRequest) String() string {
@@ -1630,6 +1686,46 @@ func (s *PushRequest) SetAndroidBigBody(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
 	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSNotificationThreadId(v string) *PushRequest {
+	s.IOSNotificationThreadId = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigPictureUrl(v string) *PushRequest {
+	s.AndroidBigPictureUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidInboxBody(v string) *PushRequest {
+	s.AndroidInboxBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidImageUrl(v string) *PushRequest {
+	s.AndroidImageUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiImageUrl(v string) *PushRequest {
+	s.AndroidXiaomiImageUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
+	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
+	s.AndroidMessageHuaweiCategory = &v
+	return s
+}
+
+func (s *PushRequest) SetSendChannels(v string) *PushRequest {
+	s.SendChannels = &v
 	return s
 }
 
