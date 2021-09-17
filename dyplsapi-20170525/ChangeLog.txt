@@ -1,3 +1,6 @@
+2021-09-17 Version: v1.0.2
+- Fixed bug for GetSecretAsrDetail.
+
 2021-04-13 Version: v1.0.1
 - Fixed bugs for UnbindSubscription API.
 
