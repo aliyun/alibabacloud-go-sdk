@@ -5118,6 +5118,7 @@ type DescribeBackupPoliciesResponseBodyPolicies struct {
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	PolicyVersion        *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
 	Policy               *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	UpgradeStatus        *string   `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 	ServiceErrorCount    *int32    `json:"ServiceErrorCount,omitempty" xml:"ServiceErrorCount,omitempty"`
 	PolicyRegionId       *string   `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
 	ClientStatus         *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
@@ -5156,6 +5157,11 @@ func (s *DescribeBackupPoliciesResponseBodyPolicies) SetPolicyVersion(v string) 
 
 func (s *DescribeBackupPoliciesResponseBodyPolicies) SetPolicy(v string) *DescribeBackupPoliciesResponseBodyPolicies {
 	s.Policy = &v
+	return s
+}
+
+func (s *DescribeBackupPoliciesResponseBodyPolicies) SetUpgradeStatus(v string) *DescribeBackupPoliciesResponseBodyPolicies {
+	s.UpgradeStatus = &v
 	return s
 }
 
@@ -13200,6 +13206,7 @@ func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetCount(v int32) *Desc
 type DescribePropertyPortDetailResponseBodyPropertys struct {
 	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
 	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Pid             *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	BindIp          *string `json:"BindIp,omitempty" xml:"BindIp,omitempty"`
 	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	ProcName        *string `json:"ProcName,omitempty" xml:"ProcName,omitempty"`
@@ -13227,6 +13234,11 @@ func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreate(v string) *D
 
 func (s *DescribePropertyPortDetailResponseBodyPropertys) SetInternetIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
 	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailResponseBodyPropertys) SetPid(v string) *DescribePropertyPortDetailResponseBodyPropertys {
+	s.Pid = &v
 	return s
 }
 
@@ -18443,6 +18455,7 @@ type DescribeStrategyRequest struct {
 	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	StrategyIds *string `json:"StrategyIds,omitempty" xml:"StrategyIds,omitempty"`
+	CustomType  *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 }
 
 func (s DescribeStrategyRequest) String() string {
@@ -18465,6 +18478,11 @@ func (s *DescribeStrategyRequest) SetLang(v string) *DescribeStrategyRequest {
 
 func (s *DescribeStrategyRequest) SetStrategyIds(v string) *DescribeStrategyRequest {
 	s.StrategyIds = &v
+	return s
+}
+
+func (s *DescribeStrategyRequest) SetCustomType(v string) *DescribeStrategyRequest {
+	s.CustomType = &v
 	return s
 }
 
@@ -18492,15 +18510,16 @@ func (s *DescribeStrategyResponseBody) SetStrategies(v []*DescribeStrategyRespon
 }
 
 type DescribeStrategyResponseBodyStrategies struct {
-	ExecStatus     *int32                                                 `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
 	Type           *int32                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	ExecStatus     *int32                                                 `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
+	PassRate       *int32                                                 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
 	CycleStartTime *int32                                                 `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	CustomType     *string                                                `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	EcsCount       *int32                                                 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
 	ProcessRate    *int32                                                 `json:"ProcessRate,omitempty" xml:"ProcessRate,omitempty"`
 	CycleDays      *int32                                                 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
 	RiskCount      *int32                                                 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
 	Name           *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	PassRate       *int32                                                 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
 	Id             *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	ConfigTargets  []*DescribeStrategyResponseBodyStrategiesConfigTargets `json:"ConfigTargets,omitempty" xml:"ConfigTargets,omitempty" type:"Repeated"`
 }
@@ -18513,18 +18532,28 @@ func (s DescribeStrategyResponseBodyStrategies) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeStrategyResponseBodyStrategies) SetExecStatus(v int32) *DescribeStrategyResponseBodyStrategies {
-	s.ExecStatus = &v
-	return s
-}
-
 func (s *DescribeStrategyResponseBodyStrategies) SetType(v int32) *DescribeStrategyResponseBodyStrategies {
 	s.Type = &v
 	return s
 }
 
+func (s *DescribeStrategyResponseBodyStrategies) SetExecStatus(v int32) *DescribeStrategyResponseBodyStrategies {
+	s.ExecStatus = &v
+	return s
+}
+
+func (s *DescribeStrategyResponseBodyStrategies) SetPassRate(v int32) *DescribeStrategyResponseBodyStrategies {
+	s.PassRate = &v
+	return s
+}
+
 func (s *DescribeStrategyResponseBodyStrategies) SetCycleStartTime(v int32) *DescribeStrategyResponseBodyStrategies {
 	s.CycleStartTime = &v
+	return s
+}
+
+func (s *DescribeStrategyResponseBodyStrategies) SetCustomType(v string) *DescribeStrategyResponseBodyStrategies {
+	s.CustomType = &v
 	return s
 }
 
@@ -18550,11 +18579,6 @@ func (s *DescribeStrategyResponseBodyStrategies) SetRiskCount(v int32) *Describe
 
 func (s *DescribeStrategyResponseBodyStrategies) SetName(v string) *DescribeStrategyResponseBodyStrategies {
 	s.Name = &v
-	return s
-}
-
-func (s *DescribeStrategyResponseBodyStrategies) SetPassRate(v int32) *DescribeStrategyResponseBodyStrategies {
-	s.PassRate = &v
 	return s
 }
 
@@ -26336,12 +26360,14 @@ func (s *ModifyStartVulScanResponse) SetBody(v *ModifyStartVulScanResponseBody) 
 }
 
 type ModifyStrategyRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	CycleDays       *string `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	CycleStartTime  *string `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
-	RiskSubTypeName *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
-	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	CycleDays        *string `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	CycleStartTime   *string `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	RiskSubTypeName  *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
+	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RiskCustomParams *string `json:"RiskCustomParams,omitempty" xml:"RiskCustomParams,omitempty"`
+	CustomType       *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 }
 
 func (s ModifyStrategyRequest) String() string {
@@ -26379,6 +26405,16 @@ func (s *ModifyStrategyRequest) SetRiskSubTypeName(v string) *ModifyStrategyRequ
 
 func (s *ModifyStrategyRequest) SetId(v string) *ModifyStrategyRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetRiskCustomParams(v string) *ModifyStrategyRequest {
+	s.RiskCustomParams = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetCustomType(v string) *ModifyStrategyRequest {
+	s.CustomType = &v
 	return s
 }
 
@@ -28965,6 +29001,63 @@ func (s *UninstallUniBackupAgentResponse) SetHeaders(v map[string]*string) *Unin
 }
 
 func (s *UninstallUniBackupAgentResponse) SetBody(v *UninstallUniBackupAgentResponseBody) *UninstallUniBackupAgentResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeBackupPolicyVersionRequest struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpgradeBackupPolicyVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeBackupPolicyVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeBackupPolicyVersionRequest) SetId(v int64) *UpgradeBackupPolicyVersionRequest {
+	s.Id = &v
+	return s
+}
+
+type UpgradeBackupPolicyVersionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeBackupPolicyVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeBackupPolicyVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeBackupPolicyVersionResponseBody) SetRequestId(v string) *UpgradeBackupPolicyVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeBackupPolicyVersionResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpgradeBackupPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeBackupPolicyVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeBackupPolicyVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeBackupPolicyVersionResponse) SetHeaders(v map[string]*string) *UpgradeBackupPolicyVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeBackupPolicyVersionResponse) SetBody(v *UpgradeBackupPolicyVersionResponseBody) *UpgradeBackupPolicyVersionResponse {
 	s.Body = v
 	return s
 }
@@ -34985,6 +35078,34 @@ func (client *Client) UninstallUniBackupAgent(request *UninstallUniBackupAgentRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallUniBackupAgentResponse{}
 	_body, _err := client.UninstallUniBackupAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeBackupPolicyVersionWithOptions(request *UpgradeBackupPolicyVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeBackupPolicyVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpgradeBackupPolicyVersionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpgradeBackupPolicyVersion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeBackupPolicyVersion(request *UpgradeBackupPolicyVersionRequest) (_result *UpgradeBackupPolicyVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeBackupPolicyVersionResponse{}
+	_body, _err := client.UpgradeBackupPolicyVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
