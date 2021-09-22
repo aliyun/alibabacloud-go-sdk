@@ -312,6 +312,69 @@ func (s *AssetPublishTestOpenApiResponse) SetBody(v *AssetPublishTestOpenApiResp
 	return s
 }
 
+type AddTestRequest struct {
+	X *int32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y *int32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s AddTestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTestRequest) SetX(v int32) *AddTestRequest {
+	s.X = &v
+	return s
+}
+
+func (s *AddTestRequest) SetY(v int32) *AddTestRequest {
+	s.Y = &v
+	return s
+}
+
+type AddTestResponseBody struct {
+	Sum *int32 `json:"sum,omitempty" xml:"sum,omitempty"`
+}
+
+func (s AddTestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTestResponseBody) SetSum(v int32) *AddTestResponseBody {
+	s.Sum = &v
+	return s
+}
+
+type AddTestResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTestResponse) SetHeaders(v map[string]*string) *AddTestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTestResponse) SetBody(v *AddTestResponseBody) *AddTestResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -477,6 +540,45 @@ func (client *Client) AssetPublishTestOpenApiWithOptions(request *AssetPublishTe
 	}
 	_result = &AssetPublishTestOpenApiResponse{}
 	_body, _err := client.DoROARequest(tea.String("AssetPublishTestOpenApi"), tea.String("2021-09-16_10-36-00-223"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/kxRoaProduct/9_0_9/assetPublishTestOpenApi"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTest(request *AddTestRequest) (_result *AddTestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddTestResponse{}
+	_body, _err := client.AddTestWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddTestWithOptions(request *AddTestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddTestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.X)) {
+		query["x"] = request.X
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Y)) {
+		query["y"] = request.Y
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &AddTestResponse{}
+	_body, _err := client.DoROARequest(tea.String("AddTest"), tea.String("2021-09-16_10-36-00-223"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/kxRoaProduct/9_0_9/addTest"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
