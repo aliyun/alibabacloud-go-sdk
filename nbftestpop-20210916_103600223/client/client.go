@@ -185,6 +185,133 @@ func (s *ResolveOpenApiResponse) SetBody(v *ResolveOpenApiResponseBody) *Resolve
 	return s
 }
 
+type AssetPublishTestOpenApiRequest struct {
+	Name    *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	Teacher *AssetPublishTestOpenApiRequestTeacher `json:"teacher,omitempty" xml:"teacher,omitempty" type:"Struct"`
+}
+
+func (s AssetPublishTestOpenApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssetPublishTestOpenApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssetPublishTestOpenApiRequest) SetName(v string) *AssetPublishTestOpenApiRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiRequest) SetTeacher(v *AssetPublishTestOpenApiRequestTeacher) *AssetPublishTestOpenApiRequest {
+	s.Teacher = v
+	return s
+}
+
+type AssetPublishTestOpenApiRequestTeacher struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Age  *int32  `json:"age,omitempty" xml:"age,omitempty"`
+}
+
+func (s AssetPublishTestOpenApiRequestTeacher) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssetPublishTestOpenApiRequestTeacher) GoString() string {
+	return s.String()
+}
+
+func (s *AssetPublishTestOpenApiRequestTeacher) SetName(v string) *AssetPublishTestOpenApiRequestTeacher {
+	s.Name = &v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiRequestTeacher) SetAge(v int32) *AssetPublishTestOpenApiRequestTeacher {
+	s.Age = &v
+	return s
+}
+
+type AssetPublishTestOpenApiResponseBody struct {
+	Teacher   *AssetPublishTestOpenApiResponseBodyTeacher `json:"teacher,omitempty" xml:"teacher,omitempty" type:"Struct"`
+	Success   *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+	ErrorCode *string                                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+}
+
+func (s AssetPublishTestOpenApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssetPublishTestOpenApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssetPublishTestOpenApiResponseBody) SetTeacher(v *AssetPublishTestOpenApiResponseBodyTeacher) *AssetPublishTestOpenApiResponseBody {
+	s.Teacher = v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiResponseBody) SetSuccess(v bool) *AssetPublishTestOpenApiResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiResponseBody) SetErrorCode(v string) *AssetPublishTestOpenApiResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiResponseBody) SetErrorMsg(v string) *AssetPublishTestOpenApiResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+type AssetPublishTestOpenApiResponseBodyTeacher struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Age  *string `json:"age,omitempty" xml:"age,omitempty"`
+}
+
+func (s AssetPublishTestOpenApiResponseBodyTeacher) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssetPublishTestOpenApiResponseBodyTeacher) GoString() string {
+	return s.String()
+}
+
+func (s *AssetPublishTestOpenApiResponseBodyTeacher) SetName(v string) *AssetPublishTestOpenApiResponseBodyTeacher {
+	s.Name = &v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiResponseBodyTeacher) SetAge(v string) *AssetPublishTestOpenApiResponseBodyTeacher {
+	s.Age = &v
+	return s
+}
+
+type AssetPublishTestOpenApiResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AssetPublishTestOpenApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssetPublishTestOpenApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssetPublishTestOpenApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssetPublishTestOpenApiResponse) SetHeaders(v map[string]*string) *AssetPublishTestOpenApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssetPublishTestOpenApiResponse) SetBody(v *AssetPublishTestOpenApiResponseBody) *AssetPublishTestOpenApiResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -311,6 +438,45 @@ func (client *Client) ResolveOpenApiWithOptions(request *ResolveOpenApiRequest, 
 	}
 	_result = &ResolveOpenApiResponse{}
 	_body, _err := client.DoROARequest(tea.String("ResolveOpenApi"), tea.String("2021-09-16_10-36-00-223"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/kxRoaProduct/9_0_9/resolveOpenApi"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssetPublishTestOpenApi(request *AssetPublishTestOpenApiRequest) (_result *AssetPublishTestOpenApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AssetPublishTestOpenApiResponse{}
+	_body, _err := client.AssetPublishTestOpenApiWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AssetPublishTestOpenApiWithOptions(request *AssetPublishTestOpenApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AssetPublishTestOpenApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Teacher))) {
+		query["teacher"] = request.Teacher
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &AssetPublishTestOpenApiResponse{}
+	_body, _err := client.DoROARequest(tea.String("AssetPublishTestOpenApi"), tea.String("2021-09-16_10-36-00-223"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/kxRoaProduct/9_0_9/assetPublishTestOpenApi"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
