@@ -686,6 +686,7 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 }
 
 func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) String() string {
@@ -783,6 +784,11 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckTyp
 
 func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
 	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
 	return s
 }
 
@@ -1167,6 +1173,7 @@ func (s *ReInitDiskResponse) SetBody(v *ReInitDiskResponseBody) *ReInitDiskRespo
 type AddNetworkInterfaceToInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Networks   *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	AutoStart  *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
 }
 
 func (s AddNetworkInterfaceToInstanceRequest) String() string {
@@ -1184,6 +1191,11 @@ func (s *AddNetworkInterfaceToInstanceRequest) SetInstanceId(v string) *AddNetwo
 
 func (s *AddNetworkInterfaceToInstanceRequest) SetNetworks(v string) *AddNetworkInterfaceToInstanceRequest {
 	s.Networks = &v
+	return s
+}
+
+func (s *AddNetworkInterfaceToInstanceRequest) SetAutoStart(v bool) *AddNetworkInterfaceToInstanceRequest {
+	s.AutoStart = &v
 	return s
 }
 
@@ -5525,6 +5537,12 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// 负载均衡实例后端使用的端口，取值：1~65535
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// UDP监听健康检查的请求串，只允许包含字母、数字，最大长度限制为64个字符。
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// UDP监听健康检查的响应串，只允许包含字母、数字，最大长度限制为64个字符。
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 }
 
 func (s CreateLoadBalancerUDPListenerRequest) String() string {
@@ -5577,6 +5595,21 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckInterval(v int32) *
 
 func (s *CreateLoadBalancerUDPListenerRequest) SetBackendServerPort(v int32) *CreateLoadBalancerUDPListenerRequest {
 	s.BackendServerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckReq(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckReq = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckExp(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckExp = &v
 	return s
 }
 
@@ -8215,6 +8248,93 @@ func (s *DescribeEnsRegionIdIpv6InfoResponse) SetBody(v *DescribeEnsRegionIdIpv6
 	return s
 }
 
+type ModifyInstanceAutoRenewAttributeRequest struct {
+	InstanceIds   *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Duration      *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ModifyInstanceAutoRenewAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAutoRenewAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAutoRenewAttributeRequest) SetInstanceIds(v string) *ModifyInstanceAutoRenewAttributeRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeRequest) SetAutoRenew(v string) *ModifyInstanceAutoRenewAttributeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeRequest) SetDuration(v string) *ModifyInstanceAutoRenewAttributeRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeRequest) SetRenewalStatus(v string) *ModifyInstanceAutoRenewAttributeRequest {
+	s.RenewalStatus = &v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeRequest) SetOwnerId(v string) *ModifyInstanceAutoRenewAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ModifyInstanceAutoRenewAttributeResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceAutoRenewAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAutoRenewAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAutoRenewAttributeResponseBody) SetCode(v int32) *ModifyInstanceAutoRenewAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeResponseBody) SetRequestId(v string) *ModifyInstanceAutoRenewAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceAutoRenewAttributeResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyInstanceAutoRenewAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceAutoRenewAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceAutoRenewAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceAutoRenewAttributeResponse) SetHeaders(v map[string]*string) *ModifyInstanceAutoRenewAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceAutoRenewAttributeResponse) SetBody(v *ModifyInstanceAutoRenewAttributeResponseBody) *ModifyInstanceAutoRenewAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApplicationRequest struct {
 	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppVersions         *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
@@ -9494,6 +9614,10 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// 健康检查使用的端口。取值：1-65535  不设置此参数时，表示使用后端服务端口（BackendServerPort）
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// UDP监听健康检查的请求串，只允许包含字母、数字，最大长度限制为64个字符。
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// UDP监听健康检查的响应串，只允许包含字母、数字，最大长度限制为64个字符。
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 }
 
 func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
@@ -9546,6 +9670,16 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckInterval(v in
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckConnectPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckReq(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckReq = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckExp(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckExp = &v
 	return s
 }
 
@@ -11974,6 +12108,9 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 }
 
 func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) String() string {
@@ -12041,6 +12178,21 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetDescription(v 
 
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetBackendServerPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.BackendServerPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckConnectPort(v int32) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckConnectPort = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckReq(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckReq = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetHealthCheckExp(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.HealthCheckExp = &v
 	return s
 }
 
@@ -12642,6 +12794,8 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	// 负载均衡实例后端使用的端口，取值：1~65535
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// 健康检查使用的端口。  取值：1~65535。  不设置此参数时，表示使用后端服务端口（BackendServerPort）。
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 }
 
 func (s CreateLoadBalancerTCPListenerRequest) String() string {
@@ -12724,6 +12878,11 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckType(v string) *Cre
 
 func (s *CreateLoadBalancerTCPListenerRequest) SetBackendServerPort(v int32) *CreateLoadBalancerTCPListenerRequest {
 	s.BackendServerPort = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckConnectPort(v int32) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckConnectPort = &v
 	return s
 }
 
@@ -16545,10 +16704,11 @@ func (s *DescribeSecurityGroupAttributeResponse) SetBody(v *DescribeSecurityGrou
 
 type DescribeDeviceServiceRequest struct {
 	// Service ID
-	ServiceId  *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
 func (s DescribeDeviceServiceRequest) String() string {
@@ -16576,6 +16736,11 @@ func (s *DescribeDeviceServiceRequest) SetRegionId(v string) *DescribeDeviceServ
 
 func (s *DescribeDeviceServiceRequest) SetAppId(v string) *DescribeDeviceServiceRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceRequest) SetEnsRegionId(v string) *DescribeDeviceServiceRequest {
+	s.EnsRegionId = &v
 	return s
 }
 
@@ -20668,6 +20833,34 @@ func (client *Client) DescribeEnsRegionIdIpv6Info(request *DescribeEnsRegionIdIp
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnsRegionIdIpv6InfoResponse{}
 	_body, _err := client.DescribeEnsRegionIdIpv6InfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *ModifyInstanceAutoRenewAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceAutoRenewAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyInstanceAutoRenewAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceAutoRenewAttribute"), tea.String("2017-11-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAutoRenewAttributeRequest) (_result *ModifyInstanceAutoRenewAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceAutoRenewAttributeResponse{}
+	_body, _err := client.ModifyInstanceAutoRenewAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
