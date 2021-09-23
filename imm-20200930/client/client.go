@@ -12,35 +12,42 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type CroppingSuggestion struct {
-	// AspectRatio
-	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// Confidence
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Boundary
-	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+type SimpleQuery struct {
+	// 需要查询的字段名
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// 需要查询的字段值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 运算符
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// 由 SimpleQuery 结构体组成的子查询数组
+	SubQueries []*SimpleQuery `json:"SubQueries,omitempty" xml:"SubQueries,omitempty" type:"Repeated"`
 }
 
-func (s CroppingSuggestion) String() string {
+func (s SimpleQuery) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CroppingSuggestion) GoString() string {
+func (s SimpleQuery) GoString() string {
 	return s.String()
 }
 
-func (s *CroppingSuggestion) SetAspectRatio(v string) *CroppingSuggestion {
-	s.AspectRatio = &v
+func (s *SimpleQuery) SetField(v string) *SimpleQuery {
+	s.Field = &v
 	return s
 }
 
-func (s *CroppingSuggestion) SetConfidence(v float32) *CroppingSuggestion {
-	s.Confidence = &v
+func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
+	s.Value = &v
 	return s
 }
 
-func (s *CroppingSuggestion) SetBoundary(v *Boundary) *CroppingSuggestion {
-	s.Boundary = v
+func (s *SimpleQuery) SetOperation(v string) *SimpleQuery {
+	s.Operation = &v
+	return s
+}
+
+func (s *SimpleQuery) SetSubQueries(v []*SimpleQuery) *SimpleQuery {
+	s.SubQueries = v
 	return s
 }
 
@@ -136,35 +143,35 @@ func (s *SubtitleStream) SetContent(v string) *SubtitleStream {
 	return s
 }
 
-type HeadPose struct {
-	// Pitch
-	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	// Roll
-	Roll *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	// Yaw
-	Yaw *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+type AssumeRoleChainNode struct {
+	// 账号类型，普通账号填 user，服务账号填 service
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 账号id
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 授权角色名
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
-func (s HeadPose) String() string {
+func (s AssumeRoleChainNode) String() string {
 	return tea.Prettify(s)
 }
 
-func (s HeadPose) GoString() string {
+func (s AssumeRoleChainNode) GoString() string {
 	return s.String()
 }
 
-func (s *HeadPose) SetPitch(v float32) *HeadPose {
-	s.Pitch = &v
+func (s *AssumeRoleChainNode) SetType(v string) *AssumeRoleChainNode {
+	s.Type = &v
 	return s
 }
 
-func (s *HeadPose) SetRoll(v float32) *HeadPose {
-	s.Roll = &v
+func (s *AssumeRoleChainNode) SetOwnerId(v string) *AssumeRoleChainNode {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *HeadPose) SetYaw(v float32) *HeadPose {
-	s.Yaw = &v
+func (s *AssumeRoleChainNode) SetRole(v string) *AssumeRoleChainNode {
+	s.Role = &v
 	return s
 }
 
@@ -207,168 +214,35 @@ func (s *Label) SetLabelConfidence(v float32) *Label {
 	return s
 }
 
-type VideoStream struct {
-	// Index
-	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Language
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// CodecName
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// CodecLongName
-	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// Profile
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// CodecTimeBase
-	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// CodecTagString
-	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	// CodecTag
-	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	// Width
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
-	// Height
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// HasBFrames
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// SampleAspectRatio
-	SampleAspectRatio *string `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
-	// DisplayAspectRatio
-	DisplayAspectRatio *string `json:"DisplayAspectRatio,omitempty" xml:"DisplayAspectRatio,omitempty"`
-	// PixelFormat
-	PixelFormat *string `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
-	// Level
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// FrameRate
-	FrameRate *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	// AverageFrameRate
-	AverageFrameRate *float32 `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
-	// TimeBase
-	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
-	// StartTime
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Duration
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Bitrate
-	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// FrameCount
-	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+type WebofficeUser struct {
+	// Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 名字
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 头像
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
 }
 
-func (s VideoStream) String() string {
+func (s WebofficeUser) String() string {
 	return tea.Prettify(s)
 }
 
-func (s VideoStream) GoString() string {
+func (s WebofficeUser) GoString() string {
 	return s.String()
 }
 
-func (s *VideoStream) SetIndex(v int64) *VideoStream {
-	s.Index = &v
+func (s *WebofficeUser) SetId(v string) *WebofficeUser {
+	s.Id = &v
 	return s
 }
 
-func (s *VideoStream) SetLanguage(v string) *VideoStream {
-	s.Language = &v
+func (s *WebofficeUser) SetName(v string) *WebofficeUser {
+	s.Name = &v
 	return s
 }
 
-func (s *VideoStream) SetCodecName(v string) *VideoStream {
-	s.CodecName = &v
-	return s
-}
-
-func (s *VideoStream) SetCodecLongName(v string) *VideoStream {
-	s.CodecLongName = &v
-	return s
-}
-
-func (s *VideoStream) SetProfile(v string) *VideoStream {
-	s.Profile = &v
-	return s
-}
-
-func (s *VideoStream) SetCodecTimeBase(v string) *VideoStream {
-	s.CodecTimeBase = &v
-	return s
-}
-
-func (s *VideoStream) SetCodecTagString(v string) *VideoStream {
-	s.CodecTagString = &v
-	return s
-}
-
-func (s *VideoStream) SetCodecTag(v string) *VideoStream {
-	s.CodecTag = &v
-	return s
-}
-
-func (s *VideoStream) SetWidth(v int64) *VideoStream {
-	s.Width = &v
-	return s
-}
-
-func (s *VideoStream) SetHeight(v int64) *VideoStream {
-	s.Height = &v
-	return s
-}
-
-func (s *VideoStream) SetHasBFrames(v string) *VideoStream {
-	s.HasBFrames = &v
-	return s
-}
-
-func (s *VideoStream) SetSampleAspectRatio(v string) *VideoStream {
-	s.SampleAspectRatio = &v
-	return s
-}
-
-func (s *VideoStream) SetDisplayAspectRatio(v string) *VideoStream {
-	s.DisplayAspectRatio = &v
-	return s
-}
-
-func (s *VideoStream) SetPixelFormat(v string) *VideoStream {
-	s.PixelFormat = &v
-	return s
-}
-
-func (s *VideoStream) SetLevel(v int64) *VideoStream {
-	s.Level = &v
-	return s
-}
-
-func (s *VideoStream) SetFrameRate(v float32) *VideoStream {
-	s.FrameRate = &v
-	return s
-}
-
-func (s *VideoStream) SetAverageFrameRate(v float32) *VideoStream {
-	s.AverageFrameRate = &v
-	return s
-}
-
-func (s *VideoStream) SetTimeBase(v string) *VideoStream {
-	s.TimeBase = &v
-	return s
-}
-
-func (s *VideoStream) SetStartTime(v float32) *VideoStream {
-	s.StartTime = &v
-	return s
-}
-
-func (s *VideoStream) SetDuration(v float32) *VideoStream {
-	s.Duration = &v
-	return s
-}
-
-func (s *VideoStream) SetBitrate(v int64) *VideoStream {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *VideoStream) SetFrameCount(v int64) *VideoStream {
-	s.FrameCount = &v
+func (s *WebofficeUser) SetAvatar(v string) *WebofficeUser {
+	s.Avatar = &v
 	return s
 }
 
@@ -586,60 +460,28 @@ func (s *AudioStream) SetLyric(v string) *AudioStream {
 	return s
 }
 
-type ImageScore struct {
-	// OverallQualityScore
-	OverallQualityScore *float32 `json:"OverallQualityScore,omitempty" xml:"OverallQualityScore,omitempty"`
+type AssumeRoleChain struct {
+	// 当前用户 policy
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// 链式授权节点
+	Chain []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
 }
 
-func (s ImageScore) String() string {
+func (s AssumeRoleChain) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ImageScore) GoString() string {
+func (s AssumeRoleChain) GoString() string {
 	return s.String()
 }
 
-func (s *ImageScore) SetOverallQualityScore(v float32) *ImageScore {
-	s.OverallQualityScore = &v
+func (s *AssumeRoleChain) SetPolicy(v string) *AssumeRoleChain {
+	s.Policy = &v
 	return s
 }
 
-type OCRContents struct {
-	// Language
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Contents
-	Contents *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
-	// Confidence
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Boundary
-	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-}
-
-func (s OCRContents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OCRContents) GoString() string {
-	return s.String()
-}
-
-func (s *OCRContents) SetLanguage(v string) *OCRContents {
-	s.Language = &v
-	return s
-}
-
-func (s *OCRContents) SetContents(v string) *OCRContents {
-	s.Contents = &v
-	return s
-}
-
-func (s *OCRContents) SetConfidence(v float32) *OCRContents {
-	s.Confidence = &v
-	return s
-}
-
-func (s *OCRContents) SetBoundary(v *Boundary) *OCRContents {
-	s.Boundary = v
+func (s *AssumeRoleChain) SetChain(v []*AssumeRoleChainNode) *AssumeRoleChain {
+	s.Chain = v
 	return s
 }
 
@@ -852,6 +694,846 @@ func (s *Face) SetEmbeddingsFloat32(v []*float32) *Face {
 
 func (s *Face) SetEmbeddingsInt8(v []*int32) *Face {
 	s.EmbeddingsInt8 = v
+	return s
+}
+
+type Binding struct {
+	// ProjectName
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// DatasetName
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// URI
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// State
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Phase
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Detail
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// CreateTime
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// UpdateTime
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s Binding) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Binding) GoString() string {
+	return s.String()
+}
+
+func (s *Binding) SetProjectName(v string) *Binding {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *Binding) SetDatasetName(v string) *Binding {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *Binding) SetURI(v string) *Binding {
+	s.URI = &v
+	return s
+}
+
+func (s *Binding) SetState(v string) *Binding {
+	s.State = &v
+	return s
+}
+
+func (s *Binding) SetPhase(v string) *Binding {
+	s.Phase = &v
+	return s
+}
+
+func (s *Binding) SetDetail(v string) *Binding {
+	s.Detail = &v
+	return s
+}
+
+func (s *Binding) SetCreateTime(v string) *Binding {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Binding) SetUpdateTime(v string) *Binding {
+	s.UpdateTime = &v
+	return s
+}
+
+type CroppingSuggestion struct {
+	// AspectRatio
+	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// Confidence
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Boundary
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+}
+
+func (s CroppingSuggestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CroppingSuggestion) GoString() string {
+	return s.String()
+}
+
+func (s *CroppingSuggestion) SetAspectRatio(v string) *CroppingSuggestion {
+	s.AspectRatio = &v
+	return s
+}
+
+func (s *CroppingSuggestion) SetConfidence(v float32) *CroppingSuggestion {
+	s.Confidence = &v
+	return s
+}
+
+func (s *CroppingSuggestion) SetBoundary(v *Boundary) *CroppingSuggestion {
+	s.Boundary = v
+	return s
+}
+
+type KeyValuePair struct {
+	// 键
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s KeyValuePair) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeyValuePair) GoString() string {
+	return s.String()
+}
+
+func (s *KeyValuePair) SetKey(v string) *KeyValuePair {
+	s.Key = &v
+	return s
+}
+
+func (s *KeyValuePair) SetValue(v string) *KeyValuePair {
+	s.Value = &v
+	return s
+}
+
+type HeadPose struct {
+	// Pitch
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// Roll
+	Roll *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
+	// Yaw
+	Yaw *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
+}
+
+func (s HeadPose) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HeadPose) GoString() string {
+	return s.String()
+}
+
+func (s *HeadPose) SetPitch(v float32) *HeadPose {
+	s.Pitch = &v
+	return s
+}
+
+func (s *HeadPose) SetRoll(v float32) *HeadPose {
+	s.Roll = &v
+	return s
+}
+
+func (s *HeadPose) SetYaw(v float32) *HeadPose {
+	s.Yaw = &v
+	return s
+}
+
+type Dataset struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 媒体集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 媒体集最大绑定数
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// 媒体集最多文件数量
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// 媒体集最多实体数量
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// 媒体集最多关系数量
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// 媒体集最大文件总大小
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// 媒体集当前绑定数
+	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// 媒体集当前文件数
+	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// 媒体集当前文件总大小
+	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+}
+
+func (s Dataset) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Dataset) GoString() string {
+	return s.String()
+}
+
+func (s *Dataset) SetProjectName(v string) *Dataset {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetName(v string) *Dataset {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *Dataset) SetCreateTime(v string) *Dataset {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Dataset) SetUpdateTime(v string) *Dataset {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *Dataset) SetDescription(v string) *Dataset {
+	s.Description = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetMaxBindCount(v int64) *Dataset {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetMaxFileCount(v int64) *Dataset {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetMaxEntityCount(v int64) *Dataset {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetMaxRelationCount(v int64) *Dataset {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *Dataset) SetDatasetMaxTotalFileSize(v int64) *Dataset {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *Dataset) SetBindCount(v int64) *Dataset {
+	s.BindCount = &v
+	return s
+}
+
+func (s *Dataset) SetFileCount(v int64) *Dataset {
+	s.FileCount = &v
+	return s
+}
+
+func (s *Dataset) SetTotalFileSize(v int64) *Dataset {
+	s.TotalFileSize = &v
+	return s
+}
+
+type VideoStream struct {
+	// Index
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Language
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// CodecName
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// CodecLongName
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// Profile
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// CodecTimeBase
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// CodecTagString
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// CodecTag
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// Width
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// Height
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// HasBFrames
+	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// SampleAspectRatio
+	SampleAspectRatio *string `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
+	// DisplayAspectRatio
+	DisplayAspectRatio *string `json:"DisplayAspectRatio,omitempty" xml:"DisplayAspectRatio,omitempty"`
+	// PixelFormat
+	PixelFormat *string `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
+	// Level
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// FrameRate
+	FrameRate *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// AverageFrameRate
+	AverageFrameRate *float32 `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
+	// TimeBase
+	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
+	// StartTime
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Duration
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Bitrate
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// FrameCount
+	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+}
+
+func (s VideoStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoStream) GoString() string {
+	return s.String()
+}
+
+func (s *VideoStream) SetIndex(v int64) *VideoStream {
+	s.Index = &v
+	return s
+}
+
+func (s *VideoStream) SetLanguage(v string) *VideoStream {
+	s.Language = &v
+	return s
+}
+
+func (s *VideoStream) SetCodecName(v string) *VideoStream {
+	s.CodecName = &v
+	return s
+}
+
+func (s *VideoStream) SetCodecLongName(v string) *VideoStream {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *VideoStream) SetProfile(v string) *VideoStream {
+	s.Profile = &v
+	return s
+}
+
+func (s *VideoStream) SetCodecTimeBase(v string) *VideoStream {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *VideoStream) SetCodecTagString(v string) *VideoStream {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *VideoStream) SetCodecTag(v string) *VideoStream {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *VideoStream) SetWidth(v int64) *VideoStream {
+	s.Width = &v
+	return s
+}
+
+func (s *VideoStream) SetHeight(v int64) *VideoStream {
+	s.Height = &v
+	return s
+}
+
+func (s *VideoStream) SetHasBFrames(v string) *VideoStream {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *VideoStream) SetSampleAspectRatio(v string) *VideoStream {
+	s.SampleAspectRatio = &v
+	return s
+}
+
+func (s *VideoStream) SetDisplayAspectRatio(v string) *VideoStream {
+	s.DisplayAspectRatio = &v
+	return s
+}
+
+func (s *VideoStream) SetPixelFormat(v string) *VideoStream {
+	s.PixelFormat = &v
+	return s
+}
+
+func (s *VideoStream) SetLevel(v int64) *VideoStream {
+	s.Level = &v
+	return s
+}
+
+func (s *VideoStream) SetFrameRate(v float32) *VideoStream {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *VideoStream) SetAverageFrameRate(v float32) *VideoStream {
+	s.AverageFrameRate = &v
+	return s
+}
+
+func (s *VideoStream) SetTimeBase(v string) *VideoStream {
+	s.TimeBase = &v
+	return s
+}
+
+func (s *VideoStream) SetStartTime(v float32) *VideoStream {
+	s.StartTime = &v
+	return s
+}
+
+func (s *VideoStream) SetDuration(v float32) *VideoStream {
+	s.Duration = &v
+	return s
+}
+
+func (s *VideoStream) SetBitrate(v int64) *VideoStream {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *VideoStream) SetFrameCount(v int64) *VideoStream {
+	s.FrameCount = &v
+	return s
+}
+
+type OfficeConversionTask struct {
+	// 任务 id
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 任务状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Status 解释
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// 用户自定义内容
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 任务解释时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 转换页数
+	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s OfficeConversionTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfficeConversionTask) GoString() string {
+	return s.String()
+}
+
+func (s *OfficeConversionTask) SetTaskId(v string) *OfficeConversionTask {
+	s.TaskId = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetStatus(v string) *OfficeConversionTask {
+	s.Status = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetReason(v string) *OfficeConversionTask {
+	s.Reason = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetUserData(v string) *OfficeConversionTask {
+	s.UserData = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetCreateTime(v string) *OfficeConversionTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetStartTime(v string) *OfficeConversionTask {
+	s.StartTime = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetEndTime(v string) *OfficeConversionTask {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OfficeConversionTask) SetTotalPages(v int64) *OfficeConversionTask {
+	s.TotalPages = &v
+	return s
+}
+
+type FileForReq struct {
+	// URI
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// CustomId
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// CustomLabels
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+}
+
+func (s FileForReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileForReq) GoString() string {
+	return s.String()
+}
+
+func (s *FileForReq) SetURI(v string) *FileForReq {
+	s.URI = &v
+	return s
+}
+
+func (s *FileForReq) SetCustomId(v string) *FileForReq {
+	s.CustomId = &v
+	return s
+}
+
+func (s *FileForReq) SetCustomLabels(v map[string]interface{}) *FileForReq {
+	s.CustomLabels = v
+	return s
+}
+
+type Project struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 服务角色
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 项目QPS
+	ProjectQueriesPerSecond *int64 `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
+	// 项目最大并发数
+	EngineConcurrency *int64 `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
+	// 项目最多媒体集数量
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// 项目最多绑定数
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// 项目最多文件数
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// 项目最多实体数
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// 项目最多关系数
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// 项目最大文件总大小
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// 项目当前媒体集数
+	DatasetCount *int64 `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
+	// 项目当前文件数
+	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// 项目当前文件总大小
+	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+}
+
+func (s Project) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Project) GoString() string {
+	return s.String()
+}
+
+func (s *Project) SetProjectName(v string) *Project {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *Project) SetServiceRole(v string) *Project {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *Project) SetCreateTime(v string) *Project {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Project) SetUpdateTime(v string) *Project {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *Project) SetDescription(v string) *Project {
+	s.Description = &v
+	return s
+}
+
+func (s *Project) SetProjectQueriesPerSecond(v int64) *Project {
+	s.ProjectQueriesPerSecond = &v
+	return s
+}
+
+func (s *Project) SetEngineConcurrency(v int64) *Project {
+	s.EngineConcurrency = &v
+	return s
+}
+
+func (s *Project) SetProjectMaxDatasetCount(v int64) *Project {
+	s.ProjectMaxDatasetCount = &v
+	return s
+}
+
+func (s *Project) SetDatasetMaxBindCount(v int64) *Project {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *Project) SetDatasetMaxFileCount(v int64) *Project {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *Project) SetDatasetMaxEntityCount(v int64) *Project {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *Project) SetDatasetMaxRelationCount(v int64) *Project {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *Project) SetDatasetMaxTotalFileSize(v int64) *Project {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *Project) SetDatasetCount(v int64) *Project {
+	s.DatasetCount = &v
+	return s
+}
+
+func (s *Project) SetFileCount(v int64) *Project {
+	s.FileCount = &v
+	return s
+}
+
+func (s *Project) SetTotalFileSize(v int64) *Project {
+	s.TotalFileSize = &v
+	return s
+}
+
+type WebofficeWatermark struct {
+	// 水印类型，目前仅支持文字水印，0: 无水印；1: 文字水印
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 水印文字
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 旋转角度
+	Rotate *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// 垂直间距
+	Vertical *int64 `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
+	// 水平间距
+	Horizontal *int64 `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
+	// 字体样式
+	Font *string `json:"Font,omitempty" xml:"Font,omitempty"`
+	// 字体颜色
+	FillStyle *string `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
+}
+
+func (s WebofficeWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebofficeWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *WebofficeWatermark) SetType(v int64) *WebofficeWatermark {
+	s.Type = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetValue(v string) *WebofficeWatermark {
+	s.Value = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetRotate(v float32) *WebofficeWatermark {
+	s.Rotate = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
+	s.Vertical = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetHorizontal(v int64) *WebofficeWatermark {
+	s.Horizontal = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetFont(v string) *WebofficeWatermark {
+	s.Font = &v
+	return s
+}
+
+func (s *WebofficeWatermark) SetFillStyle(v string) *WebofficeWatermark {
+	s.FillStyle = &v
+	return s
+}
+
+type ImageScore struct {
+	// OverallQualityScore
+	OverallQualityScore *float32 `json:"OverallQualityScore,omitempty" xml:"OverallQualityScore,omitempty"`
+}
+
+func (s ImageScore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageScore) GoString() string {
+	return s.String()
+}
+
+func (s *ImageScore) SetOverallQualityScore(v float32) *ImageScore {
+	s.OverallQualityScore = &v
+	return s
+}
+
+type WebofficePermission struct {
+	// 重命名
+	Rename *bool `json:"Rename,omitempty" xml:"Rename,omitempty"`
+	// 只读模式
+	Readonly *bool `json:"Readonly,omitempty" xml:"Readonly,omitempty"`
+	// 查看历史版本
+	History *bool `json:"History,omitempty" xml:"History,omitempty"`
+	// 打印
+	Print *bool `json:"Print,omitempty" xml:"Print,omitempty"`
+	// 导出
+	Export *bool `json:"Export,omitempty" xml:"Export,omitempty"`
+	// 拷贝
+	Copy *bool `json:"Copy,omitempty" xml:"Copy,omitempty"`
+}
+
+func (s WebofficePermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebofficePermission) GoString() string {
+	return s.String()
+}
+
+func (s *WebofficePermission) SetRename(v bool) *WebofficePermission {
+	s.Rename = &v
+	return s
+}
+
+func (s *WebofficePermission) SetReadonly(v bool) *WebofficePermission {
+	s.Readonly = &v
+	return s
+}
+
+func (s *WebofficePermission) SetHistory(v bool) *WebofficePermission {
+	s.History = &v
+	return s
+}
+
+func (s *WebofficePermission) SetPrint(v bool) *WebofficePermission {
+	s.Print = &v
+	return s
+}
+
+func (s *WebofficePermission) SetExport(v bool) *WebofficePermission {
+	s.Export = &v
+	return s
+}
+
+func (s *WebofficePermission) SetCopy(v bool) *WebofficePermission {
+	s.Copy = &v
+	return s
+}
+
+type OCRContents struct {
+	// Language
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// Contents
+	Contents *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// Confidence
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Boundary
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+}
+
+func (s OCRContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OCRContents) GoString() string {
+	return s.String()
+}
+
+func (s *OCRContents) SetLanguage(v string) *OCRContents {
+	s.Language = &v
+	return s
+}
+
+func (s *OCRContents) SetContents(v string) *OCRContents {
+	s.Contents = &v
+	return s
+}
+
+func (s *OCRContents) SetConfidence(v float32) *OCRContents {
+	s.Confidence = &v
+	return s
+}
+
+func (s *OCRContents) SetBoundary(v *Boundary) *OCRContents {
+	s.Boundary = v
+	return s
+}
+
+type Row struct {
+	// URI
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// CustomLabels
+	CustomLabels []*KeyValuePair `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
+}
+
+func (s Row) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Row) GoString() string {
+	return s.String()
+}
+
+func (s *Row) SetURI(v string) *Row {
+	s.URI = &v
+	return s
+}
+
+func (s *Row) SetCustomLabels(v []*KeyValuePair) *Row {
+	s.CustomLabels = v
 	return s
 }
 
@@ -1460,1182 +2142,91 @@ func (s *File) SetCustomLabels(v map[string]interface{}) *File {
 	return s
 }
 
-type WebofficeUser struct {
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 头像
-	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-}
-
-func (s WebofficeUser) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WebofficeUser) GoString() string {
-	return s.String()
-}
-
-func (s *WebofficeUser) SetId(v string) *WebofficeUser {
-	s.Id = &v
-	return s
-}
-
-func (s *WebofficeUser) SetName(v string) *WebofficeUser {
-	s.Name = &v
-	return s
-}
-
-func (s *WebofficeUser) SetAvatar(v string) *WebofficeUser {
-	s.Avatar = &v
-	return s
-}
-
-type AssumeRoleChain struct {
-	// 当前用户 policy
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// 链式授权节点
-	Chain []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
-}
-
-func (s AssumeRoleChain) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssumeRoleChain) GoString() string {
-	return s.String()
-}
-
-func (s *AssumeRoleChain) SetPolicy(v string) *AssumeRoleChain {
-	s.Policy = &v
-	return s
-}
-
-func (s *AssumeRoleChain) SetChain(v []*AssumeRoleChainNode) *AssumeRoleChain {
-	s.Chain = v
-	return s
-}
-
-type WebofficeWatermark struct {
-	// 水印类型，目前仅支持文字水印，0: 无水印；1: 文字水印
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 水印文字
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 旋转角度
-	Rotate *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// 垂直间距
-	Vertical *int64 `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// 水平间距
-	Horizontal *int64 `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
-	// 字体样式
-	Font *string `json:"Font,omitempty" xml:"Font,omitempty"`
-	// 字体颜色
-	FillStyle *string `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
-}
-
-func (s WebofficeWatermark) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WebofficeWatermark) GoString() string {
-	return s.String()
-}
-
-func (s *WebofficeWatermark) SetType(v int64) *WebofficeWatermark {
-	s.Type = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetValue(v string) *WebofficeWatermark {
-	s.Value = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetRotate(v float32) *WebofficeWatermark {
-	s.Rotate = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
-	s.Vertical = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetHorizontal(v int64) *WebofficeWatermark {
-	s.Horizontal = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetFont(v string) *WebofficeWatermark {
-	s.Font = &v
-	return s
-}
-
-func (s *WebofficeWatermark) SetFillStyle(v string) *WebofficeWatermark {
-	s.FillStyle = &v
-	return s
-}
-
-type AssumeRoleChainNode struct {
-	// 账号类型，普通账号填 user，服务账号填 service
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 账号id
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 授权角色名
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-}
-
-func (s AssumeRoleChainNode) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssumeRoleChainNode) GoString() string {
-	return s.String()
-}
-
-func (s *AssumeRoleChainNode) SetType(v string) *AssumeRoleChainNode {
-	s.Type = &v
-	return s
-}
-
-func (s *AssumeRoleChainNode) SetOwnerId(v string) *AssumeRoleChainNode {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AssumeRoleChainNode) SetRole(v string) *AssumeRoleChainNode {
-	s.Role = &v
-	return s
-}
-
-type WebofficePermission struct {
-	// 重命名
-	Rename *bool `json:"Rename,omitempty" xml:"Rename,omitempty"`
-	// 只读模式
-	Readonly *bool `json:"Readonly,omitempty" xml:"Readonly,omitempty"`
-	// 查看历史版本
-	History *bool `json:"History,omitempty" xml:"History,omitempty"`
-	// 打印
-	Print *bool `json:"Print,omitempty" xml:"Print,omitempty"`
-	// 导出
-	Export *bool `json:"Export,omitempty" xml:"Export,omitempty"`
-	// 拷贝
-	Copy *bool `json:"Copy,omitempty" xml:"Copy,omitempty"`
-}
-
-func (s WebofficePermission) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WebofficePermission) GoString() string {
-	return s.String()
-}
-
-func (s *WebofficePermission) SetRename(v bool) *WebofficePermission {
-	s.Rename = &v
-	return s
-}
-
-func (s *WebofficePermission) SetReadonly(v bool) *WebofficePermission {
-	s.Readonly = &v
-	return s
-}
-
-func (s *WebofficePermission) SetHistory(v bool) *WebofficePermission {
-	s.History = &v
-	return s
-}
-
-func (s *WebofficePermission) SetPrint(v bool) *WebofficePermission {
-	s.Print = &v
-	return s
-}
-
-func (s *WebofficePermission) SetExport(v bool) *WebofficePermission {
-	s.Export = &v
-	return s
-}
-
-func (s *WebofficePermission) SetCopy(v bool) *WebofficePermission {
-	s.Copy = &v
-	return s
-}
-
-type SimpleQuery struct {
-	// 需要查询的字段名
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// 需要查询的字段值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 运算符
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// 由 SimpleQuery 结构体组成的子查询数组
-	SubQueries []*SimpleQuery `json:"SubQueries,omitempty" xml:"SubQueries,omitempty" type:"Repeated"`
-}
-
-func (s SimpleQuery) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SimpleQuery) GoString() string {
-	return s.String()
-}
-
-func (s *SimpleQuery) SetField(v string) *SimpleQuery {
-	s.Field = &v
-	return s
-}
-
-func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
-	s.Value = &v
-	return s
-}
-
-func (s *SimpleQuery) SetOperation(v string) *SimpleQuery {
-	s.Operation = &v
-	return s
-}
-
-func (s *SimpleQuery) SetSubQueries(v []*SimpleQuery) *SimpleQuery {
-	s.SubQueries = v
-	return s
-}
-
-type BatchDeleteFileMetaRequest struct {
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
-}
-
-func (s BatchDeleteFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchDeleteFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchDeleteFileMetaRequest) SetProjectName(v string) *BatchDeleteFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaRequest) SetDatasetName(v string) *BatchDeleteFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaRequest) SetURIs(v []*string) *BatchDeleteFileMetaRequest {
-	s.URIs = v
-	return s
-}
-
-type BatchDeleteFileMetaShrinkRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
-}
-
-func (s BatchDeleteFileMetaShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchDeleteFileMetaShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchDeleteFileMetaShrinkRequest) SetProjectName(v string) *BatchDeleteFileMetaShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaShrinkRequest) SetDatasetName(v string) *BatchDeleteFileMetaShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaShrinkRequest) SetURIsShrink(v string) *BatchDeleteFileMetaShrinkRequest {
-	s.URIsShrink = &v
-	return s
-}
-
-type BatchDeleteFileMetaResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchDeleteFileMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchDeleteFileMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchDeleteFileMetaResponseBody) SetRequestId(v string) *BatchDeleteFileMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchDeleteFileMetaResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchDeleteFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchDeleteFileMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchDeleteFileMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchDeleteFileMetaResponse) SetHeaders(v map[string]*string) *BatchDeleteFileMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchDeleteFileMetaResponse) SetBody(v *BatchDeleteFileMetaResponseBody) *BatchDeleteFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type BatchGetFileMetaRequest struct {
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
-}
-
-func (s BatchGetFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetFileMetaRequest) SetProjectName(v string) *BatchGetFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchGetFileMetaRequest) SetDatasetName(v string) *BatchGetFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchGetFileMetaRequest) SetURIs(v []*string) *BatchGetFileMetaRequest {
-	s.URIs = v
-	return s
-}
-
-type BatchGetFileMetaShrinkRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
-}
-
-func (s BatchGetFileMetaShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetFileMetaShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetFileMetaShrinkRequest) SetProjectName(v string) *BatchGetFileMetaShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchGetFileMetaShrinkRequest) SetDatasetName(v string) *BatchGetFileMetaShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchGetFileMetaShrinkRequest) SetURIsShrink(v string) *BatchGetFileMetaShrinkRequest {
-	s.URIsShrink = &v
-	return s
-}
-
-type BatchGetFileMetaResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-}
-
-func (s BatchGetFileMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetFileMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetFileMetaResponseBody) SetRequestId(v string) *BatchGetFileMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchGetFileMetaResponseBody) SetFiles(v []*File) *BatchGetFileMetaResponseBody {
-	s.Files = v
-	return s
-}
-
-type BatchGetFileMetaResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchGetFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchGetFileMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchGetFileMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchGetFileMetaResponse) SetHeaders(v map[string]*string) *BatchGetFileMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchGetFileMetaResponse) SetBody(v *BatchGetFileMetaResponseBody) *BatchGetFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type BatchIndexFileMetaRequest struct {
-	ProjectName *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string                           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*BatchIndexFileMetaRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-}
-
-func (s BatchIndexFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchIndexFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchIndexFileMetaRequest) SetProjectName(v string) *BatchIndexFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchIndexFileMetaRequest) SetDatasetName(v string) *BatchIndexFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchIndexFileMetaRequest) SetFiles(v []*BatchIndexFileMetaRequestFiles) *BatchIndexFileMetaRequest {
-	s.Files = v
-	return s
-}
-
-type BatchIndexFileMetaRequestFiles struct {
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-}
-
-func (s BatchIndexFileMetaRequestFiles) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchIndexFileMetaRequestFiles) GoString() string {
-	return s.String()
-}
-
-func (s *BatchIndexFileMetaRequestFiles) SetURI(v string) *BatchIndexFileMetaRequestFiles {
-	s.URI = &v
-	return s
-}
-
-func (s *BatchIndexFileMetaRequestFiles) SetCustomLabels(v map[string]interface{}) *BatchIndexFileMetaRequestFiles {
-	s.CustomLabels = v
-	return s
-}
-
-type BatchIndexFileMetaShrinkRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-}
-
-func (s BatchIndexFileMetaShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchIndexFileMetaShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchIndexFileMetaShrinkRequest) SetProjectName(v string) *BatchIndexFileMetaShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchIndexFileMetaShrinkRequest) SetDatasetName(v string) *BatchIndexFileMetaShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchIndexFileMetaShrinkRequest) SetFilesShrink(v string) *BatchIndexFileMetaShrinkRequest {
-	s.FilesShrink = &v
-	return s
-}
-
-type BatchIndexFileMetaResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchIndexFileMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchIndexFileMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchIndexFileMetaResponseBody) SetRequestId(v string) *BatchIndexFileMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchIndexFileMetaResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchIndexFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchIndexFileMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchIndexFileMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchIndexFileMetaResponse) SetHeaders(v map[string]*string) *BatchIndexFileMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) *BatchIndexFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type BatchUpdateFileMetaRequest struct {
-	ProjectName *string                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string                            `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*BatchUpdateFileMetaRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-}
-
-func (s BatchUpdateFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateFileMetaRequest) SetProjectName(v string) *BatchUpdateFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaRequest) SetDatasetName(v string) *BatchUpdateFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaRequest) SetFiles(v []*BatchUpdateFileMetaRequestFiles) *BatchUpdateFileMetaRequest {
-	s.Files = v
-	return s
-}
-
-type BatchUpdateFileMetaRequestFiles struct {
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-}
-
-func (s BatchUpdateFileMetaRequestFiles) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateFileMetaRequestFiles) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateFileMetaRequestFiles) SetURI(v string) *BatchUpdateFileMetaRequestFiles {
-	s.URI = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaRequestFiles) SetCustomLabels(v map[string]interface{}) *BatchUpdateFileMetaRequestFiles {
-	s.CustomLabels = v
-	return s
-}
-
-type BatchUpdateFileMetaShrinkRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-}
-
-func (s BatchUpdateFileMetaShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateFileMetaShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateFileMetaShrinkRequest) SetProjectName(v string) *BatchUpdateFileMetaShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaShrinkRequest) SetDatasetName(v string) *BatchUpdateFileMetaShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaShrinkRequest) SetFilesShrink(v string) *BatchUpdateFileMetaShrinkRequest {
-	s.FilesShrink = &v
-	return s
-}
-
-type BatchUpdateFileMetaResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchUpdateFileMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateFileMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateFileMetaResponseBody) SetRequestId(v string) *BatchUpdateFileMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchUpdateFileMetaResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchUpdateFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchUpdateFileMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateFileMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateFileMetaResponse) SetHeaders(v map[string]*string) *BatchUpdateFileMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody) *BatchUpdateFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type CreateBindingRequest struct {
-	// ProjectName
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// DatasetName
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// URI
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s CreateBindingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBindingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBindingRequest) SetProjectName(v string) *CreateBindingRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateBindingRequest) SetDatasetName(v string) *CreateBindingRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *CreateBindingRequest) SetURI(v string) *CreateBindingRequest {
-	s.URI = &v
-	return s
-}
-
-type CreateBindingResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateBindingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBindingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBindingResponseBody) SetRequestId(v string) *CreateBindingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateBindingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateBindingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBindingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBindingResponse) SetHeaders(v map[string]*string) *CreateBindingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBindingResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDatasetRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 对数据集的描述
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-}
-
-func (s CreateDatasetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDatasetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDatasetRequest) SetProjectName(v string) *CreateDatasetRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetName(v string) *CreateDatasetRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetTemplateId(v string) *CreateDatasetRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetMaxOSSBindCount(v int64) *CreateDatasetRequest {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetMaxFileCount(v int64) *CreateDatasetRequest {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetMaxEntityCount(v int64) *CreateDatasetRequest {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetMaxRelationCount(v int64) *CreateDatasetRequest {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *CreateDatasetRequest) SetDatasetMaxTotalFileSize(v int64) *CreateDatasetRequest {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-type CreateDatasetResponseBody struct {
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 数据集创建时间
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-}
-
-func (s CreateDatasetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDatasetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDatasetResponseBody) SetProjectName(v string) *CreateDatasetResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateDatasetResponseBody) SetDatasetName(v string) *CreateDatasetResponseBody {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *CreateDatasetResponseBody) SetCreateTime(v int64) *CreateDatasetResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *CreateDatasetResponseBody) SetDescription(v string) *CreateDatasetResponseBody {
-	s.Description = &v
-	return s
-}
-
-type CreateDatasetResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDatasetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDatasetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDatasetResponse) SetHeaders(v map[string]*string) *CreateDatasetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDatasetResponse {
-	s.Body = v
-	return s
-}
-
-type CreateProjectRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 项目描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 服务角色
-	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ProjectQPS              *int64  `json:"ProjectQPS,omitempty" xml:"ProjectQPS,omitempty"`
-	ProjectTPS              *int64  `json:"ProjectTPS,omitempty" xml:"ProjectTPS,omitempty"`
-	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-}
-
-func (s CreateProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetServiceRole(v string) *CreateProjectRequest {
-	s.ServiceRole = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectQPS(v int64) *CreateProjectRequest {
-	s.ProjectQPS = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectTPS(v int64) *CreateProjectRequest {
-	s.ProjectTPS = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetProjectMaxDatasetCount(v int64) *CreateProjectRequest {
-	s.ProjectMaxDatasetCount = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDatasetMaxOSSBindCount(v int64) *CreateProjectRequest {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDatasetMaxFileCount(v int64) *CreateProjectRequest {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDatasetMaxEntityCount(v int64) *CreateProjectRequest {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDatasetMaxRelationCount(v int64) *CreateProjectRequest {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetDatasetMaxTotalFileSize(v int64) *CreateProjectRequest {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-type CreateProjectResponseBody struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 项目创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 本次请求的唯一 ID
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-}
-
-func (s CreateProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponseBody) SetProjectName(v string) *CreateProjectResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetCreateTime(v int64) *CreateProjectResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetDescription(v string) *CreateProjectResponseBody {
-	s.Description = &v
-	return s
-}
-
-type CreateProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteBindingRequest struct {
+type ListBindingsRequest struct {
 	// A short description of struct
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
-func (s DeleteBindingRequest) String() string {
+func (s ListBindingsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteBindingRequest) GoString() string {
+func (s ListBindingsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteBindingRequest) SetProjectName(v string) *DeleteBindingRequest {
+func (s *ListBindingsRequest) SetProjectName(v string) *ListBindingsRequest {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *DeleteBindingRequest) SetDatasetName(v string) *DeleteBindingRequest {
+func (s *ListBindingsRequest) SetDatasetName(v string) *ListBindingsRequest {
 	s.DatasetName = &v
 	return s
 }
 
-func (s *DeleteBindingRequest) SetURI(v string) *DeleteBindingRequest {
-	s.URI = &v
+func (s *ListBindingsRequest) SetMaxResults(v int64) *ListBindingsRequest {
+	s.MaxResults = &v
 	return s
 }
 
-type DeleteBindingResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+func (s *ListBindingsRequest) SetNextToken(v string) *ListBindingsRequest {
+	s.NextToken = &v
+	return s
 }
 
-func (s DeleteBindingResponseBody) String() string {
+type ListBindingsResponseBody struct {
+	// Id of the request
+	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextToken *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Bindings  []*Binding `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+}
+
+func (s ListBindingsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteBindingResponseBody) GoString() string {
+func (s ListBindingsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteBindingResponseBody) SetRequestId(v string) *DeleteBindingResponseBody {
+func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DeleteBindingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ListBindingsResponseBody) SetNextToken(v string) *ListBindingsResponseBody {
+	s.NextToken = &v
+	return s
 }
 
-func (s DeleteBindingResponse) String() string {
+func (s *ListBindingsResponseBody) SetBindings(v []*Binding) *ListBindingsResponseBody {
+	s.Bindings = v
+	return s
+}
+
+type ListBindingsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBindingsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteBindingResponse) GoString() string {
+func (s ListBindingsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteBindingResponse) SetHeaders(v map[string]*string) *DeleteBindingResponse {
+func (s *ListBindingsResponse) SetHeaders(v map[string]*string) *ListBindingsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBindingResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDatasetRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-}
-
-func (s DeleteDatasetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDatasetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDatasetRequest) SetProjectName(v string) *DeleteDatasetRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *DeleteDatasetRequest) SetDatasetName(v string) *DeleteDatasetRequest {
-	s.DatasetName = &v
-	return s
-}
-
-type DeleteDatasetResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteDatasetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDatasetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDatasetResponseBody) SetRequestId(v string) *DeleteDatasetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteDatasetResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDatasetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDatasetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDatasetResponse) SetHeaders(v map[string]*string) *DeleteDatasetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDatasetResponse {
+func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBindingsResponse {
 	s.Body = v
 	return s
 }
@@ -2710,1923 +2301,101 @@ func (s *DeleteFileMetaResponse) SetBody(v *DeleteFileMetaResponseBody) *DeleteF
 	return s
 }
 
-type DeleteProjectRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+type BatchIndexFileMetaRequest struct {
+	ProjectName *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 }
 
-func (s DeleteProjectRequest) String() string {
+func (s BatchIndexFileMetaRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteProjectRequest) GoString() string {
+func (s BatchIndexFileMetaRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteProjectRequest) SetProjectName(v string) *DeleteProjectRequest {
+func (s *BatchIndexFileMetaRequest) SetProjectName(v string) *BatchIndexFileMetaRequest {
 	s.ProjectName = &v
 	return s
 }
 
-type DeleteProjectResponseBody struct {
-	// 本次请求的唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
-	s.Body = v
-	return s
-}
-
-type FuzzyQueryRequest struct {
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Dataset 名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 用于搜索的字符串
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-}
-
-func (s FuzzyQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FuzzyQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *FuzzyQueryRequest) SetNextToken(v string) *FuzzyQueryRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *FuzzyQueryRequest) SetMaxResults(v int64) *FuzzyQueryRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *FuzzyQueryRequest) SetProjectName(v string) *FuzzyQueryRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *FuzzyQueryRequest) SetDatasetName(v string) *FuzzyQueryRequest {
+func (s *BatchIndexFileMetaRequest) SetDatasetName(v string) *BatchIndexFileMetaRequest {
 	s.DatasetName = &v
 	return s
 }
 
-func (s *FuzzyQueryRequest) SetQuery(v string) *FuzzyQueryRequest {
-	s.Query = &v
-	return s
-}
-
-type FuzzyQueryResponseBody struct {
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 本次请求的唯一 Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-}
-
-func (s FuzzyQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FuzzyQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *FuzzyQueryResponseBody) SetNextToken(v string) *FuzzyQueryResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *FuzzyQueryResponseBody) SetRequestId(v string) *FuzzyQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *FuzzyQueryResponseBody) SetFiles(v []*File) *FuzzyQueryResponseBody {
+func (s *BatchIndexFileMetaRequest) SetFiles(v []*FileForReq) *BatchIndexFileMetaRequest {
 	s.Files = v
 	return s
 }
 
-type FuzzyQueryResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FuzzyQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s FuzzyQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FuzzyQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *FuzzyQueryResponse) SetHeaders(v map[string]*string) *FuzzyQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryResponse {
-	s.Body = v
-	return s
-}
-
-type GetBindingRequest struct {
+type BatchIndexFileMetaShrinkRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
 }
 
-func (s GetBindingRequest) String() string {
+func (s BatchIndexFileMetaShrinkRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetBindingRequest) GoString() string {
+func (s BatchIndexFileMetaShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetBindingRequest) SetProjectName(v string) *GetBindingRequest {
+func (s *BatchIndexFileMetaShrinkRequest) SetProjectName(v string) *BatchIndexFileMetaShrinkRequest {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *GetBindingRequest) SetDatasetName(v string) *GetBindingRequest {
+func (s *BatchIndexFileMetaShrinkRequest) SetDatasetName(v string) *BatchIndexFileMetaShrinkRequest {
 	s.DatasetName = &v
 	return s
 }
 
-func (s *GetBindingRequest) SetURI(v string) *GetBindingRequest {
-	s.URI = &v
+func (s *BatchIndexFileMetaShrinkRequest) SetFilesShrink(v string) *BatchIndexFileMetaShrinkRequest {
+	s.FilesShrink = &v
 	return s
 }
 
-type GetBindingResponseBody struct {
-	// Id of the request
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Binding   *GetBindingResponseBodyBinding `json:"Binding,omitempty" xml:"Binding,omitempty" type:"Struct"`
-}
-
-func (s GetBindingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBindingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetBindingResponseBody) SetRequestId(v string) *GetBindingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetBindingResponseBody) SetBinding(v *GetBindingResponseBodyBinding) *GetBindingResponseBody {
-	s.Binding = v
-	return s
-}
-
-type GetBindingResponseBodyBinding struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-	Phase       *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s GetBindingResponseBodyBinding) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBindingResponseBodyBinding) GoString() string {
-	return s.String()
-}
-
-func (s *GetBindingResponseBodyBinding) SetProjectName(v string) *GetBindingResponseBodyBinding {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetDatasetName(v string) *GetBindingResponseBodyBinding {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetURI(v string) *GetBindingResponseBodyBinding {
-	s.URI = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetState(v string) *GetBindingResponseBodyBinding {
-	s.State = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetPhase(v string) *GetBindingResponseBodyBinding {
-	s.Phase = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetReason(v string) *GetBindingResponseBodyBinding {
-	s.Reason = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetCreateTime(v int64) *GetBindingResponseBodyBinding {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetBindingResponseBodyBinding) SetUpdateTime(v int64) *GetBindingResponseBodyBinding {
-	s.UpdateTime = &v
-	return s
-}
-
-type GetBindingResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetBindingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetBindingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetBindingResponse) SetHeaders(v map[string]*string) *GetBindingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetBindingResponse) SetBody(v *GetBindingResponseBody) *GetBindingResponse {
-	s.Body = v
-	return s
-}
-
-type GetDatasetRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-}
-
-func (s GetDatasetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatasetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatasetRequest) SetProjectName(v string) *GetDatasetRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetDatasetRequest) SetDatasetName(v string) *GetDatasetRequest {
-	s.DatasetName = &v
-	return s
-}
-
-type GetDatasetResponseBody struct {
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime              *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	BindCount               *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	FileCount               *int64  `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	TotalFileSize           *int64  `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-}
-
-func (s GetDatasetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatasetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetProjectName(v string) *GetDatasetResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetName(v string) *GetDatasetResponseBody {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetTemplateId(v string) *GetDatasetResponseBody {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetCreateTime(v int64) *GetDatasetResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetUpdateTime(v int64) *GetDatasetResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDescription(v string) *GetDatasetResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetMaxOSSBindCount(v int64) *GetDatasetResponseBody {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetMaxFileCount(v int64) *GetDatasetResponseBody {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetMaxEntityCount(v int64) *GetDatasetResponseBody {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetMaxRelationCount(v int64) *GetDatasetResponseBody {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetDatasetMaxTotalFileSize(v int64) *GetDatasetResponseBody {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetBindCount(v int64) *GetDatasetResponseBody {
-	s.BindCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetFileCount(v int64) *GetDatasetResponseBody {
-	s.FileCount = &v
-	return s
-}
-
-func (s *GetDatasetResponseBody) SetTotalFileSize(v int64) *GetDatasetResponseBody {
-	s.TotalFileSize = &v
-	return s
-}
-
-type GetDatasetResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDatasetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatasetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatasetResponse) SetHeaders(v map[string]*string) *GetDatasetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetResponse {
-	s.Body = v
-	return s
-}
-
-type GetFileMetaRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GetFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileMetaRequest) SetProjectName(v string) *GetFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetFileMetaRequest) SetDatasetName(v string) *GetFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *GetFileMetaRequest) SetURI(v string) *GetFileMetaRequest {
-	s.URI = &v
-	return s
-}
-
-type GetFileMetaResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// File list.
-	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-}
-
-func (s GetFileMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileMetaResponseBody) SetRequestId(v string) *GetFileMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetFileMetaResponseBody) SetFiles(v []*File) *GetFileMetaResponseBody {
-	s.Files = v
-	return s
-}
-
-type GetFileMetaResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFileMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileMetaResponse) SetHeaders(v map[string]*string) *GetFileMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileMetaResponse) SetBody(v *GetFileMetaResponseBody) *GetFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type GetFileSignedURIRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GetFileSignedURIRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIRequest) SetProjectName(v string) *GetFileSignedURIRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetFileSignedURIRequest) SetURI(v string) *GetFileSignedURIRequest {
-	s.URI = &v
-	return s
-}
-
-type GetFileSignedURIResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 签名地址
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GetFileSignedURIResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIResponseBody) SetRequestId(v string) *GetFileSignedURIResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetFileSignedURIResponseBody) SetURI(v string) *GetFileSignedURIResponseBody {
-	s.URI = &v
-	return s
-}
-
-type GetFileSignedURIResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFileSignedURIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFileSignedURIResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIResponse) SetHeaders(v map[string]*string) *GetFileSignedURIResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileSignedURIResponse) SetBody(v *GetFileSignedURIResponseBody) *GetFileSignedURIResponse {
-	s.Body = v
-	return s
-}
-
-type GetProjectRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-}
-
-func (s GetProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectRequest) SetProjectName(v string) *GetProjectRequest {
-	s.ProjectName = &v
-	return s
-}
-
-type GetProjectResponseBody struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 项目描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 服务角色
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// 工作流
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 项目创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 项目修改时间
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 项目QPS
-	ProjectQPS *int64 `json:"ProjectQPS,omitempty" xml:"ProjectQPS,omitempty"`
-	// 项目TPS
-	ProjectTPS *int64 `json:"ProjectTPS,omitempty" xml:"ProjectTPS,omitempty"`
-	// 最大媒体集数量
-	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// 当前项目每个媒体集最大绑定数
-	DatasetMaxOSSBindCount *int64 `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	// 当前项目每个媒体集最大文件数
-	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// 当前项目每个媒体集最大实体数
-	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// 当前项目每个媒体集最大关系数
-	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// 当前项目每个媒体集最大文件总大小
-	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// 媒体集数量
-	DatasetCount *int64 `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
-	// 项目当前文件数量
-	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	// 项目当前文件总大小
-	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	// 本次请求的唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponseBody) SetProjectName(v string) *GetProjectResponseBody {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDescription(v string) *GetProjectResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetServiceRole(v string) *GetProjectResponseBody {
-	s.ServiceRole = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetTemplateId(v string) *GetProjectResponseBody {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetCreateTime(v int64) *GetProjectResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetUpdateTime(v int64) *GetProjectResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetProjectQPS(v int64) *GetProjectResponseBody {
-	s.ProjectQPS = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetProjectTPS(v int64) *GetProjectResponseBody {
-	s.ProjectTPS = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetProjectMaxDatasetCount(v int64) *GetProjectResponseBody {
-	s.ProjectMaxDatasetCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetMaxOSSBindCount(v int64) *GetProjectResponseBody {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetMaxFileCount(v int64) *GetProjectResponseBody {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetMaxEntityCount(v int64) *GetProjectResponseBody {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetMaxRelationCount(v int64) *GetProjectResponseBody {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetMaxTotalFileSize(v int64) *GetProjectResponseBody {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetDatasetCount(v int64) *GetProjectResponseBody {
-	s.DatasetCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetFileCount(v int64) *GetProjectResponseBody {
-	s.FileCount = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetTotalFileSize(v int64) *GetProjectResponseBody {
-	s.TotalFileSize = &v
-	return s
-}
-
-func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetProjectResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
-	s.Body = v
-	return s
-}
-
-type GetWebofficeUrlRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 预览编辑地址
-	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// 用户自定义数据，在消息通知中返回
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 预览前几页
-	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	// 文件密码
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 是否支持外部上传
-	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
-	// mns 消息通知地址
-	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	// mns 消息通知 topic
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	// 隐藏工具栏，预览模式下使用
-	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	// 权限
-	Permission *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// 用户
-	User *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
-	// 水印
-	Watermark *WebofficeWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	// 链式授权
-	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
-}
-
-func (s GetWebofficeUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWebofficeUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetWebofficeUrlRequest) SetProjectName(v string) *GetWebofficeUrlRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetSourceUri(v string) *GetWebofficeUrlRequest {
-	s.SourceUri = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetFilename(v string) *GetWebofficeUrlRequest {
-	s.Filename = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetUserData(v string) *GetWebofficeUrlRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetPreviewPages(v int64) *GetWebofficeUrlRequest {
-	s.PreviewPages = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetPassword(v string) *GetWebofficeUrlRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetExternalUploaded(v bool) *GetWebofficeUrlRequest {
-	s.ExternalUploaded = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetNotifyEndpoint(v string) *GetWebofficeUrlRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetNotifyTopicName(v string) *GetWebofficeUrlRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetHidecmb(v bool) *GetWebofficeUrlRequest {
-	s.Hidecmb = &v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetPermission(v *WebofficePermission) *GetWebofficeUrlRequest {
-	s.Permission = v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetUser(v *WebofficeUser) *GetWebofficeUrlRequest {
-	s.User = v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetWatermark(v *WebofficeWatermark) *GetWebofficeUrlRequest {
-	s.Watermark = v
-	return s
-}
-
-func (s *GetWebofficeUrlRequest) SetAssumeRoleChain(v *AssumeRoleChain) *GetWebofficeUrlRequest {
-	s.AssumeRoleChain = v
-	return s
-}
-
-type GetWebofficeUrlShrinkRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 预览编辑地址
-	SourceUri *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// 用户自定义数据，在消息通知中返回
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 预览前几页
-	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	// 文件密码
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 是否支持外部上传
-	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
-	// mns 消息通知地址
-	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	// mns 消息通知 topic
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	// 隐藏工具栏，预览模式下使用
-	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	// 权限
-	PermissionShrink *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// 用户
-	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
-	// 水印
-	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	// 链式授权
-	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
-}
-
-func (s GetWebofficeUrlShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWebofficeUrlShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetProjectName(v string) *GetWebofficeUrlShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetSourceUri(v string) *GetWebofficeUrlShrinkRequest {
-	s.SourceUri = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetFilename(v string) *GetWebofficeUrlShrinkRequest {
-	s.Filename = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetUserData(v string) *GetWebofficeUrlShrinkRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetPreviewPages(v int64) *GetWebofficeUrlShrinkRequest {
-	s.PreviewPages = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetPassword(v string) *GetWebofficeUrlShrinkRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetExternalUploaded(v bool) *GetWebofficeUrlShrinkRequest {
-	s.ExternalUploaded = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetNotifyEndpoint(v string) *GetWebofficeUrlShrinkRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetNotifyTopicName(v string) *GetWebofficeUrlShrinkRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetHidecmb(v bool) *GetWebofficeUrlShrinkRequest {
-	s.Hidecmb = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetPermissionShrink(v string) *GetWebofficeUrlShrinkRequest {
-	s.PermissionShrink = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetUserShrink(v string) *GetWebofficeUrlShrinkRequest {
-	s.UserShrink = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetWatermarkShrink(v string) *GetWebofficeUrlShrinkRequest {
-	s.WatermarkShrink = &v
-	return s
-}
-
-func (s *GetWebofficeUrlShrinkRequest) SetAssumeRoleChainShrink(v string) *GetWebofficeUrlShrinkRequest {
-	s.AssumeRoleChainShrink = &v
-	return s
-}
-
-type GetWebofficeUrlResponseBody struct {
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 预览编辑地址
-	WebofficeUrl *string `json:"WebofficeUrl,omitempty" xml:"WebofficeUrl,omitempty"`
-	// access token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// refresh token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// access token 过期时间
-	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	// refresh token 过期时间
-	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-}
-
-func (s GetWebofficeUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWebofficeUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetWebofficeUrlResponseBody) SetRequestId(v string) *GetWebofficeUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetWebofficeUrlResponseBody) SetWebofficeUrl(v string) *GetWebofficeUrlResponseBody {
-	s.WebofficeUrl = &v
-	return s
-}
-
-func (s *GetWebofficeUrlResponseBody) SetAccessToken(v string) *GetWebofficeUrlResponseBody {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *GetWebofficeUrlResponseBody) SetRefreshToken(v string) *GetWebofficeUrlResponseBody {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *GetWebofficeUrlResponseBody) SetAccessTokenExpiredTime(v string) *GetWebofficeUrlResponseBody {
-	s.AccessTokenExpiredTime = &v
-	return s
-}
-
-func (s *GetWebofficeUrlResponseBody) SetRefreshTokenExpiredTime(v string) *GetWebofficeUrlResponseBody {
-	s.RefreshTokenExpiredTime = &v
-	return s
-}
-
-type GetWebofficeUrlResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWebofficeUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetWebofficeUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWebofficeUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetWebofficeUrlResponse) SetHeaders(v map[string]*string) *GetWebofficeUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetWebofficeUrlResponse) SetBody(v *GetWebofficeUrlResponseBody) *GetWebofficeUrlResponse {
-	s.Body = v
-	return s
-}
-
-type IndexFileMetaRequest struct {
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-}
-
-func (s IndexFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IndexFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *IndexFileMetaRequest) SetProjectName(v string) *IndexFileMetaRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *IndexFileMetaRequest) SetDatasetName(v string) *IndexFileMetaRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *IndexFileMetaRequest) SetURI(v string) *IndexFileMetaRequest {
-	s.URI = &v
-	return s
-}
-
-func (s *IndexFileMetaRequest) SetCustomLabels(v map[string]interface{}) *IndexFileMetaRequest {
-	s.CustomLabels = v
-	return s
-}
-
-type IndexFileMetaShrinkRequest struct {
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI                *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-}
-
-func (s IndexFileMetaShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IndexFileMetaShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *IndexFileMetaShrinkRequest) SetProjectName(v string) *IndexFileMetaShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *IndexFileMetaShrinkRequest) SetDatasetName(v string) *IndexFileMetaShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *IndexFileMetaShrinkRequest) SetURI(v string) *IndexFileMetaShrinkRequest {
-	s.URI = &v
-	return s
-}
-
-func (s *IndexFileMetaShrinkRequest) SetCustomLabelsShrink(v string) *IndexFileMetaShrinkRequest {
-	s.CustomLabelsShrink = &v
-	return s
-}
-
-type IndexFileMetaResponseBody struct {
+type BatchIndexFileMetaResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s IndexFileMetaResponseBody) String() string {
+func (s BatchIndexFileMetaResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s IndexFileMetaResponseBody) GoString() string {
+func (s BatchIndexFileMetaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *IndexFileMetaResponseBody) SetRequestId(v string) *IndexFileMetaResponseBody {
+func (s *BatchIndexFileMetaResponseBody) SetRequestId(v string) *BatchIndexFileMetaResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type IndexFileMetaResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IndexFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type BatchIndexFileMetaResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchIndexFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s IndexFileMetaResponse) String() string {
+func (s BatchIndexFileMetaResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s IndexFileMetaResponse) GoString() string {
+func (s BatchIndexFileMetaResponse) GoString() string {
 	return s.String()
 }
 
-func (s *IndexFileMetaResponse) SetHeaders(v map[string]*string) *IndexFileMetaResponse {
+func (s *BatchIndexFileMetaResponse) SetHeaders(v map[string]*string) *BatchIndexFileMetaResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *IndexFileMetaResponse) SetBody(v *IndexFileMetaResponseBody) *IndexFileMetaResponse {
-	s.Body = v
-	return s
-}
-
-type ListBindingsRequest struct {
-	// A short description of struct
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-}
-
-func (s ListBindingsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBindingsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListBindingsRequest) SetProjectName(v string) *ListBindingsRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListBindingsRequest) SetDatasetName(v string) *ListBindingsRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ListBindingsRequest) SetMaxResults(v int64) *ListBindingsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListBindingsRequest) SetNextToken(v string) *ListBindingsRequest {
-	s.NextToken = &v
-	return s
-}
-
-type ListBindingsResponseBody struct {
-	// Id of the request
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	NextToken *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Bindings  []*ListBindingsResponseBodyBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-}
-
-func (s ListBindingsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBindingsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListBindingsResponseBody) SetRequestId(v string) *ListBindingsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListBindingsResponseBody) SetNextToken(v string) *ListBindingsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListBindingsResponseBody) SetBindings(v []*ListBindingsResponseBodyBindings) *ListBindingsResponseBody {
-	s.Bindings = v
-	return s
-}
-
-type ListBindingsResponseBodyBindings struct {
-	Binding *ListBindingsResponseBodyBindingsBinding `json:"Binding,omitempty" xml:"Binding,omitempty" type:"Struct"`
-}
-
-func (s ListBindingsResponseBodyBindings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBindingsResponseBodyBindings) GoString() string {
-	return s.String()
-}
-
-func (s *ListBindingsResponseBodyBindings) SetBinding(v *ListBindingsResponseBodyBindingsBinding) *ListBindingsResponseBodyBindings {
-	s.Binding = v
-	return s
-}
-
-type ListBindingsResponseBodyBindingsBinding struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-	Phase       *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s ListBindingsResponseBodyBindingsBinding) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBindingsResponseBodyBindingsBinding) GoString() string {
-	return s.String()
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetProjectName(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetDatasetName(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetURI(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.URI = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetState(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.State = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetPhase(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetReason(v string) *ListBindingsResponseBodyBindingsBinding {
-	s.Reason = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetCreateTime(v int64) *ListBindingsResponseBodyBindingsBinding {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListBindingsResponseBodyBindingsBinding) SetUpdateTime(v int64) *ListBindingsResponseBodyBindingsBinding {
-	s.UpdateTime = &v
-	return s
-}
-
-type ListBindingsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListBindingsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBindingsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListBindingsResponse) SetHeaders(v map[string]*string) *ListBindingsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBindingsResponse {
-	s.Body = v
-	return s
-}
-
-type ListDatasetsRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 返回最大个数
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-}
-
-func (s ListDatasetsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsRequest) SetProjectName(v string) *ListDatasetsRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListDatasetsRequest) SetMaxResults(v int64) *ListDatasetsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListDatasetsRequest) SetNextToken(v string) *ListDatasetsRequest {
-	s.NextToken = &v
-	return s
-}
-
-type ListDatasetsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Responses
-	Datasets []*ListDatasetsResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-}
-
-func (s ListDatasetsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBody) SetNextToken(v string) *ListDatasetsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBody) SetDatasets(v []*ListDatasetsResponseBodyDatasets) *ListDatasetsResponseBody {
-	s.Datasets = v
-	return s
-}
-
-type ListDatasetsResponseBodyDatasets struct {
-	// ProjectName
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// DatasetName
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Workflow                *string `json:"Workflow,omitempty" xml:"Workflow,omitempty"`
-	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime              *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	BindCount               *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-}
-
-func (s ListDatasetsResponseBodyDatasets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsResponseBodyDatasets) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetProjectName(v string) *ListDatasetsResponseBodyDatasets {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetName(v string) *ListDatasetsResponseBodyDatasets {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetWorkflow(v string) *ListDatasetsResponseBodyDatasets {
-	s.Workflow = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetCreateTime(v int64) *ListDatasetsResponseBodyDatasets {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetUpdateTime(v int64) *ListDatasetsResponseBodyDatasets {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDescription(v string) *ListDatasetsResponseBodyDatasets {
-	s.Description = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetMaxOSSBindCount(v int64) *ListDatasetsResponseBodyDatasets {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetMaxFileCount(v int64) *ListDatasetsResponseBodyDatasets {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetMaxEntityCount(v int64) *ListDatasetsResponseBodyDatasets {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetMaxRelationCount(v int64) *ListDatasetsResponseBodyDatasets {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetDatasetMaxTotalFileSize(v int64) *ListDatasetsResponseBodyDatasets {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *ListDatasetsResponseBodyDatasets) SetBindCount(v int64) *ListDatasetsResponseBodyDatasets {
-	s.BindCount = &v
-	return s
-}
-
-type ListDatasetsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDatasetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDatasetsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsResponse) SetHeaders(v map[string]*string) *ListDatasetsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDatasetsResponse {
-	s.Body = v
-	return s
-}
-
-type ListProjectsRequest struct {
-	// 返回结果的最大个数
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 当总结果个数大于MaxResults时，用于翻页的token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-}
-
-func (s ListProjectsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectsRequest) SetMaxResults(v int64) *ListProjectsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListProjectsRequest) SetNextToken(v string) *ListProjectsRequest {
-	s.NextToken = &v
-	return s
-}
-
-type ListProjectsResponseBody struct {
-	// 当总结果个数大于MaxResults时，用于翻页的token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 由ProjectItem组成的数组
-	Projects []*ListProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	// 本次请求的唯一 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListProjectsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectsResponseBody) SetNextToken(v string) *ListProjectsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListProjectsResponseBody) SetProjects(v []*ListProjectsResponseBodyProjects) *ListProjectsResponseBody {
-	s.Projects = v
-	return s
-}
-
-func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListProjectsResponseBodyProjects struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 服务角色
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// 工作流
-	Workflow *string `json:"Workflow,omitempty" xml:"Workflow,omitempty"`
-	// 项目描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 项目创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 项目上次修改时间
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 项目QPS
-	ProjectQPS *int64 `json:"ProjectQPS,omitempty" xml:"ProjectQPS,omitempty"`
-	// 项目TPS
-	ProjectTPS *int64 `json:"ProjectTPS,omitempty" xml:"ProjectTPS,omitempty"`
-	// 最大媒体集数
-	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// 项目下每个媒体集最多绑定数
-	DatasetMaxOSSBindCount *int64 `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	// 项目下每个媒体集最大文件数量
-	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// 项目下每个媒体集最大实体数
-	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// 项目下每个媒体集最大关系数
-	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// 项目下每个媒体集最大文件总大小
-	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// 媒体集数量
-	DatasetCount *int64 `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
-}
-
-func (s ListProjectsResponseBodyProjects) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectsResponseBodyProjects) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectsResponseBodyProjects) SetProjectName(v string) *ListProjectsResponseBodyProjects {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetServiceRole(v string) *ListProjectsResponseBodyProjects {
-	s.ServiceRole = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetWorkflow(v string) *ListProjectsResponseBodyProjects {
-	s.Workflow = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDescription(v string) *ListProjectsResponseBodyProjects {
-	s.Description = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetCreateTime(v int64) *ListProjectsResponseBodyProjects {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetUpdateTime(v int64) *ListProjectsResponseBodyProjects {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetProjectQPS(v int64) *ListProjectsResponseBodyProjects {
-	s.ProjectQPS = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetProjectTPS(v int64) *ListProjectsResponseBodyProjects {
-	s.ProjectTPS = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetProjectMaxDatasetCount(v int64) *ListProjectsResponseBodyProjects {
-	s.ProjectMaxDatasetCount = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetMaxOSSBindCount(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetMaxFileCount(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetMaxEntityCount(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetMaxRelationCount(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetMaxTotalFileSize(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *ListProjectsResponseBodyProjects) SetDatasetCount(v int64) *ListProjectsResponseBodyProjects {
-	s.DatasetCount = &v
-	return s
-}
-
-type ListProjectsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProjectsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProjectsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
-	s.Body = v
-	return s
-}
-
-type RefreshWebofficeTokenRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// access token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// refresh token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// 链式授权
-	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
-}
-
-func (s RefreshWebofficeTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshWebofficeTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshWebofficeTokenRequest) SetProjectName(v string) *RefreshWebofficeTokenRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenRequest) SetAccessToken(v string) *RefreshWebofficeTokenRequest {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenRequest) SetRefreshToken(v string) *RefreshWebofficeTokenRequest {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenRequest) SetAssumeRoleChain(v *AssumeRoleChain) *RefreshWebofficeTokenRequest {
-	s.AssumeRoleChain = v
-	return s
-}
-
-type RefreshWebofficeTokenShrinkRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// access token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// refresh token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// 链式授权
-	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
-}
-
-func (s RefreshWebofficeTokenShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshWebofficeTokenShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshWebofficeTokenShrinkRequest) SetProjectName(v string) *RefreshWebofficeTokenShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenShrinkRequest) SetAccessToken(v string) *RefreshWebofficeTokenShrinkRequest {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenShrinkRequest) SetRefreshToken(v string) *RefreshWebofficeTokenShrinkRequest {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenShrinkRequest) SetAssumeRoleChainShrink(v string) *RefreshWebofficeTokenShrinkRequest {
-	s.AssumeRoleChainShrink = &v
-	return s
-}
-
-type RefreshWebofficeTokenResponseBody struct {
-	// 请求 Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// refresh token
-	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
-	// access token
-	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// refresh token 过期时间
-	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	// access token 过期时间
-	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-}
-
-func (s RefreshWebofficeTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshWebofficeTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebofficeTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetRefreshToken(v string) *RefreshWebofficeTokenResponseBody {
-	s.RefreshToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetAccessToken(v string) *RefreshWebofficeTokenResponseBody {
-	s.AccessToken = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
-	s.RefreshTokenExpiredTime = &v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
-	s.AccessTokenExpiredTime = &v
-	return s
-}
-
-type RefreshWebofficeTokenResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RefreshWebofficeTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshWebofficeTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshWebofficeTokenResponse) SetHeaders(v map[string]*string) *RefreshWebofficeTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponseBody) *RefreshWebofficeTokenResponse {
-	s.Body = v
-	return s
-}
-
-type ResumeBindingRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s ResumeBindingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingRequest) SetProjectName(v string) *ResumeBindingRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ResumeBindingRequest) SetDatasetName(v string) *ResumeBindingRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ResumeBindingRequest) SetURI(v string) *ResumeBindingRequest {
-	s.URI = &v
-	return s
-}
-
-type ResumeBindingResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ResumeBindingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingResponseBody) SetRequestId(v string) *ResumeBindingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ResumeBindingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResumeBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResumeBindingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeBindingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeBindingResponse) SetHeaders(v map[string]*string) *ResumeBindingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBindingResponse {
+func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) *BatchIndexFileMetaResponse {
 	s.Body = v
 	return s
 }
@@ -4914,6 +2683,1781 @@ func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryRe
 	return s
 }
 
+type GetBindingRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBindingRequest) SetProjectName(v string) *GetBindingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetBindingRequest) SetDatasetName(v string) *GetBindingRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetBindingRequest) SetURI(v string) *GetBindingRequest {
+	s.URI = &v
+	return s
+}
+
+type GetBindingResponseBody struct {
+	// Id of the request
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Binding   *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+}
+
+func (s GetBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBindingResponseBody) SetRequestId(v string) *GetBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBindingResponseBody) SetBinding(v *Binding) *GetBindingResponseBody {
+	s.Binding = v
+	return s
+}
+
+type GetBindingResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBindingResponse) SetHeaders(v map[string]*string) *GetBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBindingResponse) SetBody(v *GetBindingResponseBody) *GetBindingResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectsRequest struct {
+	// 返回结果的最大个数
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 当总结果个数大于MaxResults时，用于翻页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 列出包含某前缀的project
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequest) SetMaxResults(v int64) *ListProjectsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetNextToken(v string) *ListProjectsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPrefix(v string) *ListProjectsRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListProjectsResponseBody struct {
+	// 当总结果个数大于MaxResults时，用于翻页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 由ProjectItem组成的数组
+	Projects []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// 本次请求的唯一 ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBody) SetNextToken(v string) *ListProjectsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetProjects(v []*Project) *ListProjectsResponseBody {
+	s.Projects = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProjectsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetRequest struct {
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName    *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	WithStatistics *bool   `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
+}
+
+func (s GetDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetRequest) SetProjectName(v string) *GetDatasetRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDatasetRequest) SetDatasetName(v string) *GetDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetDatasetRequest) SetWithStatistics(v bool) *GetDatasetRequest {
+	s.WithStatistics = &v
+	return s
+}
+
+type GetDatasetResponseBody struct {
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+}
+
+func (s GetDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetDataset(v *Dataset) *GetDatasetResponseBody {
+	s.Dataset = v
+	return s
+}
+
+type GetDatasetResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponse) SetHeaders(v map[string]*string) *GetDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type BatchUpdateFileMetaRequest struct {
+	ProjectName *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+}
+
+func (s BatchUpdateFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFileMetaRequest) SetProjectName(v string) *BatchUpdateFileMetaRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaRequest) SetDatasetName(v string) *BatchUpdateFileMetaRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaRequest) SetFiles(v []*FileForReq) *BatchUpdateFileMetaRequest {
+	s.Files = v
+	return s
+}
+
+type BatchUpdateFileMetaShrinkRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+}
+
+func (s BatchUpdateFileMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFileMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFileMetaShrinkRequest) SetProjectName(v string) *BatchUpdateFileMetaShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaShrinkRequest) SetDatasetName(v string) *BatchUpdateFileMetaShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaShrinkRequest) SetFilesShrink(v string) *BatchUpdateFileMetaShrinkRequest {
+	s.FilesShrink = &v
+	return s
+}
+
+type BatchUpdateFileMetaResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchUpdateFileMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFileMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFileMetaResponseBody) SetRequestId(v string) *BatchUpdateFileMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchUpdateFileMetaResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchUpdateFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchUpdateFileMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFileMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFileMetaResponse) SetHeaders(v map[string]*string) *BatchUpdateFileMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody) *BatchUpdateFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOfficeConversionTaskRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceUri   *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetUri   *string `json:"TargetUri,omitempty" xml:"TargetUri,omitempty"`
+	TargetType  *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// excel 转换 sheet 的数量，默认转换所有
+	SheetCount *string `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
+	// 开始转换页，如果是 excel 需要指定 SheetIndex
+	StartPage *string `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
+	// 结束转换页，如果是 excel 需要指定 SheetIndex
+	EndPage *string `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
+	// 缩放大小 20~200，默认100，小于100缩放，大于100放大
+	Scale *int64 `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	// 转化质量0~100
+	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// excel 标签页，从 1 开始
+	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
+	// 表格转图片，所有列输出到一张图片
+	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
+	// 表格转图片，所有行输出到一张图片
+	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
+	// 纸张大小 A4, A2, A0，默认 A4
+	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
+	// 水平放置纸张，默认 false
+	IsHorizontal *bool `json:"IsHorizontal,omitempty" xml:"IsHorizontal,omitempty"`
+	// 表格转图片参数，只返回表格的第一张图片，图片包含的行数列数是自动切割的结果。必须在LongPic为true的情况下才有效。默认为false
+	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	// 转图片，合成一个一张产长图，最多20张图片，默认 false
+	LongPic *bool `json:"LongPic,omitempty" xml:"LongPic,omitempty"`
+	// 显示批注
+	ShowComments *bool `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
+	// mns 消息地址
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// mns 消息 topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 用户自定义信息，此信息将在 Task 中回传
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateOfficeConversionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOfficeConversionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetProjectName(v string) *CreateOfficeConversionTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetSourceUri(v string) *CreateOfficeConversionTaskRequest {
+	s.SourceUri = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetSourceType(v string) *CreateOfficeConversionTaskRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetTargetUri(v string) *CreateOfficeConversionTaskRequest {
+	s.TargetUri = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetTargetType(v string) *CreateOfficeConversionTaskRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetPassword(v string) *CreateOfficeConversionTaskRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetSheetCount(v string) *CreateOfficeConversionTaskRequest {
+	s.SheetCount = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetStartPage(v string) *CreateOfficeConversionTaskRequest {
+	s.StartPage = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetEndPage(v string) *CreateOfficeConversionTaskRequest {
+	s.EndPage = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetScale(v int64) *CreateOfficeConversionTaskRequest {
+	s.Scale = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetQuality(v int64) *CreateOfficeConversionTaskRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetSheetIndex(v int64) *CreateOfficeConversionTaskRequest {
+	s.SheetIndex = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetFitToWidth(v bool) *CreateOfficeConversionTaskRequest {
+	s.FitToWidth = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetFitToHeight(v bool) *CreateOfficeConversionTaskRequest {
+	s.FitToHeight = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetPaperSize(v string) *CreateOfficeConversionTaskRequest {
+	s.PaperSize = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetIsHorizontal(v bool) *CreateOfficeConversionTaskRequest {
+	s.IsHorizontal = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetFirstPage(v bool) *CreateOfficeConversionTaskRequest {
+	s.FirstPage = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetLongPic(v bool) *CreateOfficeConversionTaskRequest {
+	s.LongPic = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetShowComments(v bool) *CreateOfficeConversionTaskRequest {
+	s.ShowComments = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetNotifyEndpoint(v string) *CreateOfficeConversionTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetNotifyTopicName(v string) *CreateOfficeConversionTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeConversionTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateOfficeConversionTaskResponseBody struct {
+	// 请求 id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务 id
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateOfficeConversionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOfficeConversionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOfficeConversionTaskResponseBody) SetRequestId(v string) *CreateOfficeConversionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskResponseBody) SetTaskId(v string) *CreateOfficeConversionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateOfficeConversionTaskResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOfficeConversionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOfficeConversionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *CreateOfficeConversionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskResponse) SetBody(v *CreateOfficeConversionTaskResponseBody) *CreateOfficeConversionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetWebofficeURLRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 预览编辑地址
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// 用户自定义数据，在消息通知中返回
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 预览前几页
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// 文件密码
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// 是否支持外部上传
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// mns 消息通知地址
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// mns 消息通知 topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 隐藏工具栏，预览模式下使用
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// 权限
+	Permission *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// 用户
+	User *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
+	// 水印
+	Watermark *WebofficeWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// 链式授权
+	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s GetWebofficeURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeURLRequest) SetProjectName(v string) *GetWebofficeURLRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetSourceURI(v string) *GetWebofficeURLRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetFilename(v string) *GetWebofficeURLRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetUserData(v string) *GetWebofficeURLRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetPreviewPages(v int64) *GetWebofficeURLRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetPassword(v string) *GetWebofficeURLRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetExternalUploaded(v bool) *GetWebofficeURLRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetNotifyEndpoint(v string) *GetWebofficeURLRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetNotifyTopicName(v string) *GetWebofficeURLRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetHidecmb(v bool) *GetWebofficeURLRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetPermission(v *WebofficePermission) *GetWebofficeURLRequest {
+	s.Permission = v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetUser(v *WebofficeUser) *GetWebofficeURLRequest {
+	s.User = v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetWatermark(v *WebofficeWatermark) *GetWebofficeURLRequest {
+	s.Watermark = v
+	return s
+}
+
+func (s *GetWebofficeURLRequest) SetAssumeRoleChain(v *AssumeRoleChain) *GetWebofficeURLRequest {
+	s.AssumeRoleChain = v
+	return s
+}
+
+type GetWebofficeURLShrinkRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 预览编辑地址
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// 用户自定义数据，在消息通知中返回
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 预览前几页
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// 文件密码
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// 是否支持外部上传
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// mns 消息通知地址
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// mns 消息通知 topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 隐藏工具栏，预览模式下使用
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// 权限
+	PermissionShrink *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// 用户
+	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
+	// 水印
+	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// 链式授权
+	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s GetWebofficeURLShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeURLShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetProjectName(v string) *GetWebofficeURLShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetSourceURI(v string) *GetWebofficeURLShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetFilename(v string) *GetWebofficeURLShrinkRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetUserData(v string) *GetWebofficeURLShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetPreviewPages(v int64) *GetWebofficeURLShrinkRequest {
+	s.PreviewPages = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetPassword(v string) *GetWebofficeURLShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetExternalUploaded(v bool) *GetWebofficeURLShrinkRequest {
+	s.ExternalUploaded = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetNotifyEndpoint(v string) *GetWebofficeURLShrinkRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetNotifyTopicName(v string) *GetWebofficeURLShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetHidecmb(v bool) *GetWebofficeURLShrinkRequest {
+	s.Hidecmb = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetPermissionShrink(v string) *GetWebofficeURLShrinkRequest {
+	s.PermissionShrink = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetUserShrink(v string) *GetWebofficeURLShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetWatermarkShrink(v string) *GetWebofficeURLShrinkRequest {
+	s.WatermarkShrink = &v
+	return s
+}
+
+func (s *GetWebofficeURLShrinkRequest) SetAssumeRoleChainShrink(v string) *GetWebofficeURLShrinkRequest {
+	s.AssumeRoleChainShrink = &v
+	return s
+}
+
+type GetWebofficeURLResponseBody struct {
+	// 请求 id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 预览编辑地址
+	WebofficeURL *string `json:"WebofficeURL,omitempty" xml:"WebofficeURL,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// access token 过期时间
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	// refresh token 过期时间
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+}
+
+func (s GetWebofficeURLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeURLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeURLResponseBody) SetRequestId(v string) *GetWebofficeURLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWebofficeURLResponseBody) SetWebofficeURL(v string) *GetWebofficeURLResponseBody {
+	s.WebofficeURL = &v
+	return s
+}
+
+func (s *GetWebofficeURLResponseBody) SetAccessToken(v string) *GetWebofficeURLResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetWebofficeURLResponseBody) SetRefreshToken(v string) *GetWebofficeURLResponseBody {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *GetWebofficeURLResponseBody) SetAccessTokenExpiredTime(v string) *GetWebofficeURLResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+func (s *GetWebofficeURLResponseBody) SetRefreshTokenExpiredTime(v string) *GetWebofficeURLResponseBody {
+	s.RefreshTokenExpiredTime = &v
+	return s
+}
+
+type GetWebofficeURLResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWebofficeURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWebofficeURLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebofficeURLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebofficeURLResponse) SetHeaders(v map[string]*string) *GetWebofficeURLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWebofficeURLResponse) SetBody(v *GetWebofficeURLResponseBody) *GetWebofficeURLResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProjectRequest struct {
+	// 项目名称
+	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	ProjectQueriesPerSecond *int64  `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
+	EngineConcurrency       *int64  `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
+	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDescription(v string) *CreateProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetServiceRole(v string) *CreateProjectRequest {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectQueriesPerSecond(v int64) *CreateProjectRequest {
+	s.ProjectQueriesPerSecond = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEngineConcurrency(v int64) *CreateProjectRequest {
+	s.EngineConcurrency = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectMaxDatasetCount(v int64) *CreateProjectRequest {
+	s.ProjectMaxDatasetCount = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDatasetMaxBindCount(v int64) *CreateProjectRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDatasetMaxFileCount(v int64) *CreateProjectRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDatasetMaxEntityCount(v int64) *CreateProjectRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDatasetMaxRelationCount(v int64) *CreateProjectRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDatasetMaxTotalFileSize(v int64) *CreateProjectRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	// 本次请求的唯一 ID
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetProject(v *Project) *CreateProjectResponseBody {
+	s.Project = v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatasetsRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 返回最大个数
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 当总结果个数大于MaxResults时，用于翻页的token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Prefix    *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListDatasetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsRequest) SetProjectName(v string) *ListDatasetsRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetMaxResults(v int64) *ListDatasetsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetNextToken(v string) *ListDatasetsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetPrefix(v string) *ListDatasetsRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListDatasetsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Datasets
+	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+}
+
+func (s ListDatasetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetNextToken(v string) *ListDatasetsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetDatasets(v []*Dataset) *ListDatasetsResponseBody {
+	s.Datasets = v
+	return s
+}
+
+type ListDatasetsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDatasetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDatasetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponse) SetHeaders(v map[string]*string) *ListDatasetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDatasetsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBindingRequest struct {
+	// A short description of struct
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s DeleteBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindingRequest) SetProjectName(v string) *DeleteBindingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DeleteBindingRequest) SetDatasetName(v string) *DeleteBindingRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DeleteBindingRequest) SetURI(v string) *DeleteBindingRequest {
+	s.URI = &v
+	return s
+}
+
+type DeleteBindingResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindingResponseBody) SetRequestId(v string) *DeleteBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBindingResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindingResponse) SetHeaders(v map[string]*string) *DeleteBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBindingResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshWebofficeTokenRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// 链式授权
+	AssumeRoleChain *AssumeRoleChain `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s RefreshWebofficeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenRequest) SetProjectName(v string) *RefreshWebofficeTokenRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetAccessToken(v string) *RefreshWebofficeTokenRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetRefreshToken(v string) *RefreshWebofficeTokenRequest {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenRequest) SetAssumeRoleChain(v *AssumeRoleChain) *RefreshWebofficeTokenRequest {
+	s.AssumeRoleChain = v
+	return s
+}
+
+type RefreshWebofficeTokenShrinkRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// 链式授权
+	AssumeRoleChainShrink *string `json:"AssumeRoleChain,omitempty" xml:"AssumeRoleChain,omitempty"`
+}
+
+func (s RefreshWebofficeTokenShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetProjectName(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetAccessToken(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetRefreshToken(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenShrinkRequest) SetAssumeRoleChainShrink(v string) *RefreshWebofficeTokenShrinkRequest {
+	s.AssumeRoleChainShrink = &v
+	return s
+}
+
+type RefreshWebofficeTokenResponseBody struct {
+	// 请求 Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// refresh token
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// access token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// refresh token 过期时间
+	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
+	// access token 过期时间
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+}
+
+func (s RefreshWebofficeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebofficeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRefreshToken(v string) *RefreshWebofficeTokenResponseBody {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetAccessToken(v string) *RefreshWebofficeTokenResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetRefreshTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
+	s.RefreshTokenExpiredTime = &v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponseBody) SetAccessTokenExpiredTime(v string) *RefreshWebofficeTokenResponseBody {
+	s.AccessTokenExpiredTime = &v
+	return s
+}
+
+type RefreshWebofficeTokenResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshWebofficeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshWebofficeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshWebofficeTokenResponse) SetHeaders(v map[string]*string) *RefreshWebofficeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponseBody) *RefreshWebofficeTokenResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBindingRequest struct {
+	// ProjectName
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// DatasetName
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// URI
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBindingRequest) SetProjectName(v string) *CreateBindingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateBindingRequest) SetDatasetName(v string) *CreateBindingRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateBindingRequest) SetURI(v string) *CreateBindingRequest {
+	s.URI = &v
+	return s
+}
+
+type CreateBindingResponseBody struct {
+	// Id of the request
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Binding   *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+}
+
+func (s CreateBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBindingResponseBody) SetRequestId(v string) *CreateBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBindingResponseBody) SetBinding(v *Binding) *CreateBindingResponseBody {
+	s.Binding = v
+	return s
+}
+
+type CreateBindingResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBindingResponse) SetHeaders(v map[string]*string) *CreateBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBindingResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+}
+
+func (s DeleteDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetRequest) SetProjectName(v string) *DeleteDatasetRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DeleteDatasetRequest) SetDatasetName(v string) *DeleteDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+type DeleteDatasetResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponseBody) SetRequestId(v string) *DeleteDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponse) SetHeaders(v map[string]*string) *DeleteDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type GetOfficeConversionTaskRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 任务 id
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetOfficeConversionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeConversionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeConversionTaskRequest) SetProjectName(v string) *GetOfficeConversionTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskRequest) SetTaskId(v string) *GetOfficeConversionTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetOfficeConversionTaskResponseBody struct {
+	RequestId            *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OfficeConversionTask *OfficeConversionTask `json:"OfficeConversionTask,omitempty" xml:"OfficeConversionTask,omitempty"`
+}
+
+func (s GetOfficeConversionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeConversionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetRequestId(v string) *GetOfficeConversionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponseBody) SetOfficeConversionTask(v *OfficeConversionTask) *GetOfficeConversionTaskResponseBody {
+	s.OfficeConversionTask = v
+	return s
+}
+
+type GetOfficeConversionTaskResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOfficeConversionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeConversionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *GetOfficeConversionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponse) SetBody(v *GetOfficeConversionTaskResponseBody) *GetOfficeConversionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileMetaRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileMetaRequest) SetProjectName(v string) *GetFileMetaRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetFileMetaRequest) SetDatasetName(v string) *GetFileMetaRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetFileMetaRequest) SetURI(v string) *GetFileMetaRequest {
+	s.URI = &v
+	return s
+}
+
+type GetFileMetaResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// File list.
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+}
+
+func (s GetFileMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileMetaResponseBody) SetRequestId(v string) *GetFileMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileMetaResponseBody) SetFiles(v []*File) *GetFileMetaResponseBody {
+	s.Files = v
+	return s
+}
+
+type GetFileMetaResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileMetaResponse) SetHeaders(v map[string]*string) *GetFileMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileMetaResponse) SetBody(v *GetFileMetaResponseBody) *GetFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type BatchDeleteFileMetaRequest struct {
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+}
+
+func (s BatchDeleteFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteFileMetaRequest) SetProjectName(v string) *BatchDeleteFileMetaRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchDeleteFileMetaRequest) SetDatasetName(v string) *BatchDeleteFileMetaRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchDeleteFileMetaRequest) SetURIs(v []*string) *BatchDeleteFileMetaRequest {
+	s.URIs = v
+	return s
+}
+
+type BatchDeleteFileMetaShrinkRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+}
+
+func (s BatchDeleteFileMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteFileMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteFileMetaShrinkRequest) SetProjectName(v string) *BatchDeleteFileMetaShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchDeleteFileMetaShrinkRequest) SetDatasetName(v string) *BatchDeleteFileMetaShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchDeleteFileMetaShrinkRequest) SetURIsShrink(v string) *BatchDeleteFileMetaShrinkRequest {
+	s.URIsShrink = &v
+	return s
+}
+
+type BatchDeleteFileMetaResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchDeleteFileMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteFileMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteFileMetaResponseBody) SetRequestId(v string) *BatchDeleteFileMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchDeleteFileMetaResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchDeleteFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchDeleteFileMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteFileMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteFileMetaResponse) SetHeaders(v map[string]*string) *BatchDeleteFileMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteFileMetaResponse) SetBody(v *BatchDeleteFileMetaResponseBody) *BatchDeleteFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type BatchGetFileMetaRequest struct {
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFileMetaRequest) SetProjectName(v string) *BatchGetFileMetaRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchGetFileMetaRequest) SetDatasetName(v string) *BatchGetFileMetaRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchGetFileMetaRequest) SetURIs(v []*string) *BatchGetFileMetaRequest {
+	s.URIs = v
+	return s
+}
+
+type BatchGetFileMetaShrinkRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+}
+
+func (s BatchGetFileMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFileMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFileMetaShrinkRequest) SetProjectName(v string) *BatchGetFileMetaShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *BatchGetFileMetaShrinkRequest) SetDatasetName(v string) *BatchGetFileMetaShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *BatchGetFileMetaShrinkRequest) SetURIsShrink(v string) *BatchGetFileMetaShrinkRequest {
+	s.URIsShrink = &v
+	return s
+}
+
+type BatchGetFileMetaResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetFileMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFileMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFileMetaResponseBody) SetRequestId(v string) *BatchGetFileMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetFileMetaResponseBody) SetFiles(v []*File) *BatchGetFileMetaResponseBody {
+	s.Files = v
+	return s
+}
+
+type BatchGetFileMetaResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchGetFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchGetFileMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFileMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFileMetaResponse) SetHeaders(v map[string]*string) *BatchGetFileMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetFileMetaResponse) SetBody(v *BatchGetFileMetaResponseBody) *BatchGetFileMetaResponse {
+	s.Body = v
+	return s
+}
+
 type StopBindingRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -4990,194 +4534,80 @@ func (s *StopBindingResponse) SetBody(v *StopBindingResponseBody) *StopBindingRe
 	return s
 }
 
-type UpdateDatasetRequest struct {
-	ProjectName             *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName             *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateId              *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	DatasetMaxOSSBindCount  *int64    `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64    `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64    `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64    `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64    `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	ResetItems              []*string `json:"ResetItems,omitempty" xml:"ResetItems,omitempty" type:"Repeated"`
+type ResumeBindingRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
-func (s UpdateDatasetRequest) String() string {
+func (s ResumeBindingRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateDatasetRequest) GoString() string {
+func (s ResumeBindingRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDatasetRequest) SetProjectName(v string) *UpdateDatasetRequest {
+func (s *ResumeBindingRequest) SetProjectName(v string) *ResumeBindingRequest {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *UpdateDatasetRequest) SetDatasetName(v string) *UpdateDatasetRequest {
+func (s *ResumeBindingRequest) SetDatasetName(v string) *ResumeBindingRequest {
 	s.DatasetName = &v
 	return s
 }
 
-func (s *UpdateDatasetRequest) SetDescription(v string) *UpdateDatasetRequest {
-	s.Description = &v
+func (s *ResumeBindingRequest) SetURI(v string) *ResumeBindingRequest {
+	s.URI = &v
 	return s
 }
 
-func (s *UpdateDatasetRequest) SetTemplateId(v string) *UpdateDatasetRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetDatasetMaxOSSBindCount(v int64) *UpdateDatasetRequest {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetDatasetMaxFileCount(v int64) *UpdateDatasetRequest {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetDatasetMaxEntityCount(v int64) *UpdateDatasetRequest {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetDatasetMaxRelationCount(v int64) *UpdateDatasetRequest {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateDatasetRequest {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *UpdateDatasetRequest) SetResetItems(v []*string) *UpdateDatasetRequest {
-	s.ResetItems = v
-	return s
-}
-
-type UpdateDatasetShrinkRequest struct {
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	ResetItemsShrink        *string `json:"ResetItems,omitempty" xml:"ResetItems,omitempty"`
-}
-
-func (s UpdateDatasetShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDatasetShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDatasetShrinkRequest) SetProjectName(v string) *UpdateDatasetShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetName(v string) *UpdateDatasetShrinkRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDescription(v string) *UpdateDatasetShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetTemplateId(v string) *UpdateDatasetShrinkRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetMaxOSSBindCount(v int64) *UpdateDatasetShrinkRequest {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetMaxFileCount(v int64) *UpdateDatasetShrinkRequest {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetMaxEntityCount(v int64) *UpdateDatasetShrinkRequest {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetMaxRelationCount(v int64) *UpdateDatasetShrinkRequest {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateDatasetShrinkRequest {
-	s.DatasetMaxTotalFileSize = &v
-	return s
-}
-
-func (s *UpdateDatasetShrinkRequest) SetResetItemsShrink(v string) *UpdateDatasetShrinkRequest {
-	s.ResetItemsShrink = &v
-	return s
-}
-
-type UpdateDatasetResponseBody struct {
+type ResumeBindingResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s UpdateDatasetResponseBody) String() string {
+func (s ResumeBindingResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateDatasetResponseBody) GoString() string {
+func (s ResumeBindingResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDatasetResponseBody) SetRequestId(v string) *UpdateDatasetResponseBody {
+func (s *ResumeBindingResponseBody) SetRequestId(v string) *ResumeBindingResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type UpdateDatasetResponse struct {
+type ResumeBindingResponse struct {
 	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body    *ResumeBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s UpdateDatasetResponse) String() string {
+func (s ResumeBindingResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateDatasetResponse) GoString() string {
+func (s ResumeBindingResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDatasetResponse) SetHeaders(v map[string]*string) *UpdateDatasetResponse {
+func (s *ResumeBindingResponse) SetHeaders(v map[string]*string) *ResumeBindingResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDatasetResponse {
+func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBindingResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateFileMetaRequest struct {
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	ProjectName *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	File        *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
 }
 
 func (s UpdateFileMetaRequest) String() string {
@@ -5198,21 +4628,15 @@ func (s *UpdateFileMetaRequest) SetDatasetName(v string) *UpdateFileMetaRequest 
 	return s
 }
 
-func (s *UpdateFileMetaRequest) SetURI(v string) *UpdateFileMetaRequest {
-	s.URI = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetCustomLabels(v map[string]interface{}) *UpdateFileMetaRequest {
-	s.CustomLabels = v
+func (s *UpdateFileMetaRequest) SetFile(v *FileForReq) *UpdateFileMetaRequest {
+	s.File = v
 	return s
 }
 
 type UpdateFileMetaShrinkRequest struct {
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	URI                *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FileShrink  *string `json:"File,omitempty" xml:"File,omitempty"`
 }
 
 func (s UpdateFileMetaShrinkRequest) String() string {
@@ -5233,13 +4657,8 @@ func (s *UpdateFileMetaShrinkRequest) SetDatasetName(v string) *UpdateFileMetaSh
 	return s
 }
 
-func (s *UpdateFileMetaShrinkRequest) SetURI(v string) *UpdateFileMetaShrinkRequest {
-	s.URI = &v
-	return s
-}
-
-func (s *UpdateFileMetaShrinkRequest) SetCustomLabelsShrink(v string) *UpdateFileMetaShrinkRequest {
-	s.CustomLabelsShrink = &v
+func (s *UpdateFileMetaShrinkRequest) SetFileShrink(v string) *UpdateFileMetaShrinkRequest {
+	s.FileShrink = &v
 	return s
 }
 
@@ -5284,22 +4703,533 @@ func (s *UpdateFileMetaResponse) SetBody(v *UpdateFileMetaResponseBody) *UpdateF
 	return s
 }
 
+type IndexFileMetaRequest struct {
+	ProjectName *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	File        *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
+}
+
+func (s IndexFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IndexFileMetaRequest) SetProjectName(v string) *IndexFileMetaRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *IndexFileMetaRequest) SetDatasetName(v string) *IndexFileMetaRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *IndexFileMetaRequest) SetFile(v *FileForReq) *IndexFileMetaRequest {
+	s.File = v
+	return s
+}
+
+type IndexFileMetaShrinkRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FileShrink  *string `json:"File,omitempty" xml:"File,omitempty"`
+}
+
+func (s IndexFileMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexFileMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IndexFileMetaShrinkRequest) SetProjectName(v string) *IndexFileMetaShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *IndexFileMetaShrinkRequest) SetDatasetName(v string) *IndexFileMetaShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *IndexFileMetaShrinkRequest) SetFileShrink(v string) *IndexFileMetaShrinkRequest {
+	s.FileShrink = &v
+	return s
+}
+
+type IndexFileMetaResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s IndexFileMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexFileMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IndexFileMetaResponseBody) SetRequestId(v string) *IndexFileMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type IndexFileMetaResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *IndexFileMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IndexFileMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IndexFileMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IndexFileMetaResponse) SetHeaders(v map[string]*string) *IndexFileMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IndexFileMetaResponse) SetBody(v *IndexFileMetaResponseBody) *IndexFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type DetectImageLabelsRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// Threshold
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DetectImageLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageLabelsRequest) SetProjectName(v string) *DetectImageLabelsRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DetectImageLabelsRequest) SetSourceURI(v string) *DetectImageLabelsRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *DetectImageLabelsRequest) SetThreshold(v float32) *DetectImageLabelsRequest {
+	s.Threshold = &v
+	return s
+}
+
+type DetectImageLabelsResponseBody struct {
+	// 内容标签列表
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// 请求唯一ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectImageLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageLabelsResponseBody) SetLabels(v []*Label) *DetectImageLabelsResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *DetectImageLabelsResponseBody) SetRequestId(v string) *DetectImageLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectImageLabelsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetectImageLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectImageLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageLabelsResponse) SetHeaders(v map[string]*string) *DetectImageLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectImageLabelsResponse) SetBody(v *DetectImageLabelsResponseBody) *DetectImageLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type GetProjectRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 是否获取详细信息
+	WithStatistics *bool `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
+}
+
+func (s GetProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRequest) SetProjectName(v string) *GetProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetProjectRequest) SetWithStatistics(v bool) *GetProjectRequest {
+	s.WithStatistics = &v
+	return s
+}
+
+type GetProjectResponseBody struct {
+	// RequestId
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+}
+
+func (s GetProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProjectResponseBody) SetProject(v *Project) *GetProjectResponseBody {
+	s.Project = v
+	return s
+}
+
+type GetProjectResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatasetRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 对数据集的描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 媒体集最多帮定数
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// 媒体集最多文件数
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// 媒体集最多实体数
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// 媒体集最多关系数
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// 媒体集最大文件总大小
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+}
+
+func (s CreateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequest) SetProjectName(v string) *CreateDatasetRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetName(v string) *CreateDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetTemplateId(v string) *CreateDatasetRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetMaxBindCount(v int64) *CreateDatasetRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetMaxFileCount(v int64) *CreateDatasetRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetMaxEntityCount(v int64) *CreateDatasetRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetMaxRelationCount(v int64) *CreateDatasetRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetMaxTotalFileSize(v int64) *CreateDatasetRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+type CreateDatasetResponseBody struct {
+	// 请求 ID
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+}
+
+func (s CreateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetDataset(v *Dataset) *CreateDatasetResponseBody {
+	s.Dataset = v
+	return s
+}
+
+type CreateDatasetResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponse) SetHeaders(v map[string]*string) *CreateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProjectRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DeleteProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectRequest) SetProjectName(v string) *DeleteProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DeleteProjectResponseBody struct {
+	// 本次请求的唯一 ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteProjectResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileSignedURIRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetFileSignedURIRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileSignedURIRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileSignedURIRequest) SetProjectName(v string) *GetFileSignedURIRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetFileSignedURIRequest) SetURI(v string) *GetFileSignedURIRequest {
+	s.URI = &v
+	return s
+}
+
+type GetFileSignedURIResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 签名地址
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetFileSignedURIResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileSignedURIResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileSignedURIResponseBody) SetRequestId(v string) *GetFileSignedURIResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileSignedURIResponseBody) SetURI(v string) *GetFileSignedURIResponseBody {
+	s.URI = &v
+	return s
+}
+
+type GetFileSignedURIResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFileSignedURIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileSignedURIResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileSignedURIResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileSignedURIResponse) SetHeaders(v map[string]*string) *GetFileSignedURIResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileSignedURIResponse) SetBody(v *GetFileSignedURIResponseBody) *GetFileSignedURIResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateProjectRequest struct {
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// 服务角色
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	// 项目描述
-	Description             *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateId              *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ProjectQPS              *int64    `json:"ProjectQPS,omitempty" xml:"ProjectQPS,omitempty"`
-	ProjectTPS              *int64    `json:"ProjectTPS,omitempty" xml:"ProjectTPS,omitempty"`
-	ProjectMaxDatasetCount  *int64    `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	DatasetMaxOSSBindCount  *int64    `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64    `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64    `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64    `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	ResetItems              []*string `json:"ResetItems,omitempty" xml:"ResetItems,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 项目QPS
+	ProjectQueriesPerSecond *int64 `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
+	// 项目并发数
+	EngineConcurrency *int64 `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
+	// 项目最多媒体集数
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// 媒体集最多绑定数
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// 媒体集最多文件数
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// 媒体集最多实体数
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// 媒体集最多关系数
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// 媒体集最大文件总大小
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -5330,13 +5260,13 @@ func (s *UpdateProjectRequest) SetTemplateId(v string) *UpdateProjectRequest {
 	return s
 }
 
-func (s *UpdateProjectRequest) SetProjectQPS(v int64) *UpdateProjectRequest {
-	s.ProjectQPS = &v
+func (s *UpdateProjectRequest) SetProjectQueriesPerSecond(v int64) *UpdateProjectRequest {
+	s.ProjectQueriesPerSecond = &v
 	return s
 }
 
-func (s *UpdateProjectRequest) SetProjectTPS(v int64) *UpdateProjectRequest {
-	s.ProjectTPS = &v
+func (s *UpdateProjectRequest) SetEngineConcurrency(v int64) *UpdateProjectRequest {
+	s.EngineConcurrency = &v
 	return s
 }
 
@@ -5345,8 +5275,8 @@ func (s *UpdateProjectRequest) SetProjectMaxDatasetCount(v int64) *UpdateProject
 	return s
 }
 
-func (s *UpdateProjectRequest) SetDatasetMaxOSSBindCount(v int64) *UpdateProjectRequest {
-	s.DatasetMaxOSSBindCount = &v
+func (s *UpdateProjectRequest) SetDatasetMaxBindCount(v int64) *UpdateProjectRequest {
+	s.DatasetMaxBindCount = &v
 	return s
 }
 
@@ -5365,100 +5295,15 @@ func (s *UpdateProjectRequest) SetDatasetMaxRelationCount(v int64) *UpdateProjec
 	return s
 }
 
-func (s *UpdateProjectRequest) SetResetItems(v []*string) *UpdateProjectRequest {
-	s.ResetItems = v
-	return s
-}
-
-type UpdateProjectShrinkRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 服务角色
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	// 项目描述
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ProjectQPS              *int64  `json:"ProjectQPS,omitempty" xml:"ProjectQPS,omitempty"`
-	ProjectTPS              *int64  `json:"ProjectTPS,omitempty" xml:"ProjectTPS,omitempty"`
-	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	DatasetMaxOSSBindCount  *int64  `json:"DatasetMaxOSSBindCount,omitempty" xml:"DatasetMaxOSSBindCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	ResetItemsShrink        *string `json:"ResetItems,omitempty" xml:"ResetItems,omitempty"`
-}
-
-func (s UpdateProjectShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateProjectShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateProjectShrinkRequest) SetProjectName(v string) *UpdateProjectShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetServiceRole(v string) *UpdateProjectShrinkRequest {
-	s.ServiceRole = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetDescription(v string) *UpdateProjectShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetTemplateId(v string) *UpdateProjectShrinkRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetProjectQPS(v int64) *UpdateProjectShrinkRequest {
-	s.ProjectQPS = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetProjectTPS(v int64) *UpdateProjectShrinkRequest {
-	s.ProjectTPS = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetProjectMaxDatasetCount(v int64) *UpdateProjectShrinkRequest {
-	s.ProjectMaxDatasetCount = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetDatasetMaxOSSBindCount(v int64) *UpdateProjectShrinkRequest {
-	s.DatasetMaxOSSBindCount = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetDatasetMaxFileCount(v int64) *UpdateProjectShrinkRequest {
-	s.DatasetMaxFileCount = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetDatasetMaxEntityCount(v int64) *UpdateProjectShrinkRequest {
-	s.DatasetMaxEntityCount = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetDatasetMaxRelationCount(v int64) *UpdateProjectShrinkRequest {
-	s.DatasetMaxRelationCount = &v
-	return s
-}
-
-func (s *UpdateProjectShrinkRequest) SetResetItemsShrink(v string) *UpdateProjectShrinkRequest {
-	s.ResetItemsShrink = &v
+func (s *UpdateProjectRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateProjectRequest {
+	s.DatasetMaxTotalFileSize = &v
 	return s
 }
 
 type UpdateProjectResponseBody struct {
 	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
 func (s UpdateProjectResponseBody) String() string {
@@ -5471,6 +5316,11 @@ func (s UpdateProjectResponseBody) GoString() string {
 
 func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetProject(v *Project) *UpdateProjectResponseBody {
+	s.Project = v
 	return s
 }
 
@@ -5493,6 +5343,311 @@ func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectR
 }
 
 func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDatasetRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 媒体集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 媒体集最多绑定数
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// 媒体集最多文件数
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// 媒体集最多实体数
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// 媒体集最多关系数
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// 媒体集最大文件总大小
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+}
+
+func (s UpdateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequest) SetProjectName(v string) *UpdateDatasetRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetName(v string) *UpdateDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDescription(v string) *UpdateDatasetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetTemplateId(v string) *UpdateDatasetRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetMaxBindCount(v int64) *UpdateDatasetRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetMaxFileCount(v int64) *UpdateDatasetRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetMaxEntityCount(v int64) *UpdateDatasetRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetMaxRelationCount(v int64) *UpdateDatasetRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateDatasetRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+type UpdateDatasetResponseBody struct {
+	// Id of the request
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+}
+
+func (s UpdateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBody) SetRequestId(v string) *UpdateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetDataset(v *Dataset) *UpdateDatasetResponseBody {
+	s.Dataset = v
+	return s
+}
+
+type UpdateDatasetResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponse) SetHeaders(v map[string]*string) *UpdateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type FuzzyQueryRequest struct {
+	// 标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次读取的最大数据记录数量
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Dataset 名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 用于搜索的字符串
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s FuzzyQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FuzzyQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FuzzyQueryRequest) SetNextToken(v string) *FuzzyQueryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetMaxResults(v int64) *FuzzyQueryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetProjectName(v string) *FuzzyQueryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetDatasetName(v string) *FuzzyQueryRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetQuery(v string) *FuzzyQueryRequest {
+	s.Query = &v
+	return s
+}
+
+type FuzzyQueryResponseBody struct {
+	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次请求的唯一 Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+}
+
+func (s FuzzyQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FuzzyQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FuzzyQueryResponseBody) SetNextToken(v string) *FuzzyQueryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *FuzzyQueryResponseBody) SetRequestId(v string) *FuzzyQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FuzzyQueryResponseBody) SetFiles(v []*File) *FuzzyQueryResponseBody {
+	s.Files = v
+	return s
+}
+
+type FuzzyQueryResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *FuzzyQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FuzzyQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FuzzyQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FuzzyQueryResponse) SetHeaders(v map[string]*string) *FuzzyQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryResponse {
+	s.Body = v
+	return s
+}
+
+type ListOfficeConversionTaskRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 最大结果数
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 下一条记录开始标记
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListOfficeConversionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOfficeConversionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOfficeConversionTaskRequest) SetProjectName(v string) *ListOfficeConversionTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListOfficeConversionTaskRequest) SetMaxResults(v int64) *ListOfficeConversionTaskRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListOfficeConversionTaskRequest) SetNextToken(v string) *ListOfficeConversionTaskRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListOfficeConversionTaskResponseBody struct {
+	NextToken             *string                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeConversionTasks []*OfficeConversionTask `json:"OfficeConversionTasks,omitempty" xml:"OfficeConversionTasks,omitempty" type:"Repeated"`
+	RequestId             *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListOfficeConversionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOfficeConversionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOfficeConversionTaskResponseBody) SetNextToken(v string) *ListOfficeConversionTaskResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOfficeConversionTaskResponseBody) SetOfficeConversionTasks(v []*OfficeConversionTask) *ListOfficeConversionTaskResponseBody {
+	s.OfficeConversionTasks = v
+	return s
+}
+
+func (s *ListOfficeConversionTaskResponseBody) SetRequestId(v string) *ListOfficeConversionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListOfficeConversionTaskResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOfficeConversionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOfficeConversionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *ListOfficeConversionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOfficeConversionTaskResponse) SetBody(v *ListOfficeConversionTaskResponseBody) *ListOfficeConversionTaskResponse {
 	s.Body = v
 	return s
 }
@@ -5540,6 +5695,556 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runtime *util.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListBindingsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListBindings"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListBindingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBindingsResponse{}
+	_body, _err := client.ListBindingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, runtime *util.RuntimeOptions) (_result *DeleteFileMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteFileMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *DeleteFileMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFileMetaResponse{}
+	_body, _err := client.DeleteFileMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchIndexFileMetaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchIndexFileMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BatchIndexFileMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BatchIndexFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchIndexFileMeta(request *BatchIndexFileMetaRequest) (_result *BatchIndexFileMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchIndexFileMetaResponse{}
+	_body, _err := client.BatchIndexFileMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime *util.RuntimeOptions) (_result *SimpleQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SimpleQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Query))) {
+		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Query), tea.String("Query"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Aggregations)) {
+		request.AggregationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Aggregations, tea.String("Aggregations"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SimpleQueryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SimpleQuery"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SimpleQueryResponse{}
+	_body, _err := client.SimpleQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime *util.RuntimeOptions) (_result *GetBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetBindingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBindingResponse{}
+	_body, _err := client.GetBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProjects"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateFileMetaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchUpdateFileMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BatchUpdateFileMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BatchUpdateFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (_result *BatchUpdateFileMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchUpdateFileMetaResponse{}
+	_body, _err := client.BatchUpdateFileMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOfficeConversionTaskWithOptions(request *CreateOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateOfficeConversionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateOfficeConversionTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateOfficeConversionTask"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversionTaskRequest) (_result *CreateOfficeConversionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOfficeConversionTaskResponse{}
+	_body, _err := client.CreateOfficeConversionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWebofficeURLWithOptions(tmpReq *GetWebofficeURLRequest, runtime *util.RuntimeOptions) (_result *GetWebofficeURLResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetWebofficeURLShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Permission))) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Permission), tea.String("Permission"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.User))) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.User), tea.String("User"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Watermark))) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Watermark), tea.String("Watermark"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
+		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetWebofficeURLResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetWebofficeURL"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWebofficeURL(request *GetWebofficeURLRequest) (_result *GetWebofficeURLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWebofficeURLResponse{}
+	_body, _err := client.GetWebofficeURLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDatasets"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteBindingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *DeleteBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBindingResponse{}
+	_body, _err := client.DeleteBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RefreshWebofficeTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
+		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RefreshWebofficeTokenResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RefreshWebofficeToken"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenRequest) (_result *RefreshWebofficeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshWebofficeTokenResponse{}
+	_body, _err := client.RefreshWebofficeTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateBindingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *CreateBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBindingResponse{}
+	_body, _err := client.CreateBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOfficeConversionTaskWithOptions(request *GetOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *GetOfficeConversionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetOfficeConversionTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetOfficeConversionTask"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOfficeConversionTask(request *GetOfficeConversionTaskRequest) (_result *GetOfficeConversionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOfficeConversionTaskResponse{}
+	_body, _err := client.GetOfficeConversionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetFileMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFileMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileMetaResponse{}
+	_body, _err := client.GetFileMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5615,75 +6320,7 @@ func (client *Client) BatchGetFileMeta(request *BatchGetFileMetaRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchIndexFileMetaResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BatchIndexFileMetaShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
-		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &BatchIndexFileMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchIndexFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchIndexFileMeta(request *BatchIndexFileMetaRequest) (_result *BatchIndexFileMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchIndexFileMetaResponse{}
-	_body, _err := client.BatchIndexFileMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateFileMetaResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BatchUpdateFileMetaShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
-		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &BatchUpdateFileMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchUpdateFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (_result *BatchUpdateFileMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchUpdateFileMetaResponse{}
-	_body, _err := client.BatchUpdateFileMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
+func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtime *util.RuntimeOptions) (_result *StopBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -5691,8 +6328,8 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	_result = &CreateBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &StopBindingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5700,544 +6337,10 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 	return _result, _err
 }
 
-func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *CreateBindingResponse, _err error) {
+func (client *Client) StopBinding(request *StopBindingRequest) (_result *StopBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CreateBindingResponse{}
-	_body, _err := client.CreateBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDatasetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDatasetResponse{}
-	_body, _err := client.CreateDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *DeleteBindingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteBindingResponse{}
-	_body, _err := client.DeleteBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDatasetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDatasetResponse{}
-	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, runtime *util.RuntimeOptions) (_result *DeleteFileMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteFileMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *DeleteFileMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFileMetaResponse{}
-	_body, _err := client.DeleteFileMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime *util.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &FuzzyQueryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FuzzyQuery"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &FuzzyQueryResponse{}
-	_body, _err := client.FuzzyQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime *util.RuntimeOptions) (_result *GetBindingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetBindingResponse{}
-	_body, _err := client.GetBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDatasetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDatasetResponse{}
-	_body, _err := client.GetDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetFileMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFileMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetFileMetaResponse{}
-	_body, _err := client.GetFileMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetFileSignedURIWithOptions(request *GetFileSignedURIRequest, runtime *util.RuntimeOptions) (_result *GetFileSignedURIResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetFileSignedURIResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetFileSignedURI"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetFileSignedURI(request *GetFileSignedURIRequest) (_result *GetFileSignedURIResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetFileSignedURIResponse{}
-	_body, _err := client.GetFileSignedURIWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetWebofficeUrlWithOptions(tmpReq *GetWebofficeUrlRequest, runtime *util.RuntimeOptions) (_result *GetWebofficeUrlResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &GetWebofficeUrlShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Permission))) {
-		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Permission), tea.String("Permission"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.User))) {
-		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.User), tea.String("User"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Watermark))) {
-		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Watermark), tea.String("Watermark"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
-		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetWebofficeUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetWebofficeUrl"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetWebofficeUrl(request *GetWebofficeUrlRequest) (_result *GetWebofficeUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetWebofficeUrlResponse{}
-	_body, _err := client.GetWebofficeUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *IndexFileMetaResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &IndexFileMetaShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
-		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &IndexFileMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("IndexFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) IndexFileMeta(request *IndexFileMetaRequest) (_result *IndexFileMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &IndexFileMetaResponse{}
-	_body, _err := client.IndexFileMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runtime *util.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListBindingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBindings"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListBindingsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListBindingsResponse{}
-	_body, _err := client.ListBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDatasetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDatasets"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDatasetsResponse{}
-	_body, _err := client.ListDatasetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListProjectsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListProjects"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListProjectsResponse{}
-	_body, _err := client.ListProjectsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &RefreshWebofficeTokenShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AssumeRoleChain))) {
-		request.AssumeRoleChainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AssumeRoleChain), tea.String("AssumeRoleChain"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RefreshWebofficeTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshWebofficeToken"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenRequest) (_result *RefreshWebofficeTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RefreshWebofficeTokenResponse{}
-	_body, _err := client.RefreshWebofficeTokenWithOptions(request, runtime)
+	_result = &StopBindingResponse{}
+	_body, _err := client.StopBindingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6273,106 +6376,6 @@ func (client *Client) ResumeBinding(request *ResumeBindingRequest) (_result *Res
 	return _result, _err
 }
 
-func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime *util.RuntimeOptions) (_result *SimpleQueryResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &SimpleQueryShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Query))) {
-		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Query), tea.String("Query"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Aggregations)) {
-		request.AggregationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Aggregations, tea.String("Aggregations"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SimpleQueryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SimpleQuery"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SimpleQueryResponse{}
-	_body, _err := client.SimpleQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtime *util.RuntimeOptions) (_result *StopBindingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StopBindingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopBinding"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopBinding(request *StopBindingRequest) (_result *StopBindingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopBindingResponse{}
-	_body, _err := client.StopBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &UpdateDatasetShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ResetItems)) {
-		request.ResetItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResetItems, tea.String("ResetItems"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDatasetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDatasetResponse{}
-	_body, _err := client.UpdateDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *UpdateFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6380,8 +6383,8 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 	}
 	request := &UpdateFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
-		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.File))) {
+		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.File), tea.String("File"), tea.String("json"))
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6407,17 +6410,185 @@ func (client *Client) UpdateFileMeta(request *UpdateFileMetaRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UpdateProjectWithOptions(tmpReq *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *IndexFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &UpdateProjectShrinkRequest{}
+	request := &IndexFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ResetItems)) {
-		request.ResetItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResetItems, tea.String("ResetItems"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.File))) {
+		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.File), tea.String("File"), tea.String("json"))
 	}
 
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &IndexFileMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("IndexFileMeta"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IndexFileMeta(request *IndexFileMetaRequest) (_result *IndexFileMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &IndexFileMetaResponse{}
+	_body, _err := client.IndexFileMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectImageLabelsWithOptions(request *DetectImageLabelsRequest, runtime *util.RuntimeOptions) (_result *DetectImageLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DetectImageLabelsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DetectImageLabels"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectImageLabels(request *DetectImageLabelsRequest) (_result *DetectImageLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectImageLabelsResponse{}
+	_body, _err := client.DetectImageLabelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProjectResponse{}
+	_body, _err := client.GetProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteProject"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFileSignedURIWithOptions(request *GetFileSignedURIRequest, runtime *util.RuntimeOptions) (_result *GetFileSignedURIResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetFileSignedURIResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetFileSignedURI"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFileSignedURI(request *GetFileSignedURIRequest) (_result *GetFileSignedURIResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileSignedURIResponse{}
+	_body, _err := client.GetFileSignedURIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
@@ -6434,6 +6605,90 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateProjectResponse{}
 	_body, _err := client.UpdateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateDataset"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime *util.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &FuzzyQueryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("FuzzyQuery"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FuzzyQueryResponse{}
+	_body, _err := client.FuzzyQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOfficeConversionTaskWithOptions(request *ListOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *ListOfficeConversionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListOfficeConversionTaskResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListOfficeConversionTask"), tea.String("2020-09-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOfficeConversionTask(request *ListOfficeConversionTaskRequest) (_result *ListOfficeConversionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOfficeConversionTaskResponse{}
+	_body, _err := client.ListOfficeConversionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
