@@ -12,7 +12,6 @@ import (
 )
 
 type AddHostsToGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
@@ -25,11 +24,6 @@ func (s AddHostsToGroupRequest) String() string {
 
 func (s AddHostsToGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddHostsToGroupRequest) SetSourceIp(v string) *AddHostsToGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AddHostsToGroupRequest) SetInstanceId(v string) *AddHostsToGroupRequest {
@@ -134,7 +128,6 @@ func (s *AddHostsToGroupResponse) SetBody(v *AddHostsToGroupResponseBody) *AddHo
 }
 
 type AddUsersToGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -147,11 +140,6 @@ func (s AddUsersToGroupRequest) String() string {
 
 func (s AddUsersToGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddUsersToGroupRequest) SetSourceIp(v string) *AddUsersToGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AddUsersToGroupRequest) SetInstanceId(v string) *AddUsersToGroupRequest {
@@ -198,10 +186,10 @@ func (s *AddUsersToGroupResponseBody) SetResults(v []*AddUsersToGroupResponseBod
 }
 
 type AddUsersToGroupResponseBodyResults struct {
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddUsersToGroupResponseBodyResults) String() string {
@@ -212,16 +200,6 @@ func (s AddUsersToGroupResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *AddUsersToGroupResponseBodyResults) SetUserGroupId(v string) *AddUsersToGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
-}
-
-func (s *AddUsersToGroupResponseBodyResults) SetUserId(v string) *AddUsersToGroupResponseBodyResults {
-	s.UserId = &v
-	return s
-}
-
 func (s *AddUsersToGroupResponseBodyResults) SetCode(v string) *AddUsersToGroupResponseBodyResults {
 	s.Code = &v
 	return s
@@ -229,6 +207,16 @@ func (s *AddUsersToGroupResponseBodyResults) SetCode(v string) *AddUsersToGroupR
 
 func (s *AddUsersToGroupResponseBodyResults) SetMessage(v string) *AddUsersToGroupResponseBodyResults {
 	s.Message = &v
+	return s
+}
+
+func (s *AddUsersToGroupResponseBodyResults) SetUserGroupId(v string) *AddUsersToGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *AddUsersToGroupResponseBodyResults) SetUserId(v string) *AddUsersToGroupResponseBodyResults {
+	s.UserId = &v
 	return s
 }
 
@@ -256,7 +244,6 @@ func (s *AddUsersToGroupResponse) SetBody(v *AddUsersToGroupResponseBody) *AddUs
 }
 
 type AttachHostAccountsToUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -269,11 +256,6 @@ func (s AttachHostAccountsToUserRequest) String() string {
 
 func (s AttachHostAccountsToUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostAccountsToUserRequest) SetSourceIp(v string) *AttachHostAccountsToUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AttachHostAccountsToUserRequest) SetInstanceId(v string) *AttachHostAccountsToUserRequest {
@@ -320,11 +302,11 @@ func (s *AttachHostAccountsToUserResponseBody) SetResults(v []*AttachHostAccount
 }
 
 type AttachHostAccountsToUserResponseBodyResults struct {
-	HostAccounts []*AttachHostAccountsToUserResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	UserId       *string                                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code         *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostId       *string                                                    `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	UserId       *string                                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	HostAccounts []*AttachHostAccountsToUserResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 }
 
 func (s AttachHostAccountsToUserResponseBodyResults) String() string {
@@ -333,16 +315,6 @@ func (s AttachHostAccountsToUserResponseBodyResults) String() string {
 
 func (s AttachHostAccountsToUserResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostAccountsToUserResponseBodyResults) SetHostAccounts(v []*AttachHostAccountsToUserResponseBodyResultsHostAccounts) *AttachHostAccountsToUserResponseBodyResults {
-	s.HostAccounts = v
-	return s
-}
-
-func (s *AttachHostAccountsToUserResponseBodyResults) SetUserId(v string) *AttachHostAccountsToUserResponseBodyResults {
-	s.UserId = &v
-	return s
 }
 
 func (s *AttachHostAccountsToUserResponseBodyResults) SetCode(v string) *AttachHostAccountsToUserResponseBodyResults {
@@ -357,6 +329,16 @@ func (s *AttachHostAccountsToUserResponseBodyResults) SetMessage(v string) *Atta
 
 func (s *AttachHostAccountsToUserResponseBodyResults) SetHostId(v string) *AttachHostAccountsToUserResponseBodyResults {
 	s.HostId = &v
+	return s
+}
+
+func (s *AttachHostAccountsToUserResponseBodyResults) SetUserId(v string) *AttachHostAccountsToUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+func (s *AttachHostAccountsToUserResponseBodyResults) SetHostAccounts(v []*AttachHostAccountsToUserResponseBodyResultsHostAccounts) *AttachHostAccountsToUserResponseBodyResults {
+	s.HostAccounts = v
 	return s
 }
 
@@ -413,7 +395,6 @@ func (s *AttachHostAccountsToUserResponse) SetBody(v *AttachHostAccountsToUserRe
 }
 
 type AttachHostAccountsToUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -426,11 +407,6 @@ func (s AttachHostAccountsToUserGroupRequest) String() string {
 
 func (s AttachHostAccountsToUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostAccountsToUserGroupRequest) SetSourceIp(v string) *AttachHostAccountsToUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AttachHostAccountsToUserGroupRequest) SetInstanceId(v string) *AttachHostAccountsToUserGroupRequest {
@@ -477,11 +453,11 @@ func (s *AttachHostAccountsToUserGroupResponseBody) SetResults(v []*AttachHostAc
 }
 
 type AttachHostAccountsToUserGroupResponseBodyResults struct {
-	UserGroupId  *string                                                         `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	HostAccounts []*AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	Code         *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostId       *string                                                         `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	UserGroupId  *string                                                         `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	HostAccounts []*AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 }
 
 func (s AttachHostAccountsToUserGroupResponseBodyResults) String() string {
@@ -490,16 +466,6 @@ func (s AttachHostAccountsToUserGroupResponseBodyResults) String() string {
 
 func (s AttachHostAccountsToUserGroupResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetUserGroupId(v string) *AttachHostAccountsToUserGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
-}
-
-func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetHostAccounts(v []*AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts) *AttachHostAccountsToUserGroupResponseBodyResults {
-	s.HostAccounts = v
-	return s
 }
 
 func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetCode(v string) *AttachHostAccountsToUserGroupResponseBodyResults {
@@ -514,6 +480,16 @@ func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetMessage(v string) 
 
 func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetHostId(v string) *AttachHostAccountsToUserGroupResponseBodyResults {
 	s.HostId = &v
+	return s
+}
+
+func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetUserGroupId(v string) *AttachHostAccountsToUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *AttachHostAccountsToUserGroupResponseBodyResults) SetHostAccounts(v []*AttachHostAccountsToUserGroupResponseBodyResultsHostAccounts) *AttachHostAccountsToUserGroupResponseBodyResults {
+	s.HostAccounts = v
 	return s
 }
 
@@ -570,7 +546,6 @@ func (s *AttachHostAccountsToUserGroupResponse) SetBody(v *AttachHostAccountsToU
 }
 
 type AttachHostGroupAccountsToUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -583,11 +558,6 @@ func (s AttachHostGroupAccountsToUserRequest) String() string {
 
 func (s AttachHostGroupAccountsToUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostGroupAccountsToUserRequest) SetSourceIp(v string) *AttachHostGroupAccountsToUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AttachHostGroupAccountsToUserRequest) SetInstanceId(v string) *AttachHostGroupAccountsToUserRequest {
@@ -634,11 +604,11 @@ func (s *AttachHostGroupAccountsToUserResponseBody) SetResults(v []*AttachHostGr
 }
 
 type AttachHostGroupAccountsToUserResponseBodyResults struct {
-	HostAccountNames []*AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	UserId           *string                                                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code             *string                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostGroupId      *string                                                             `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	UserId           *string                                                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	HostAccountNames []*AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 }
 
 func (s AttachHostGroupAccountsToUserResponseBodyResults) String() string {
@@ -647,16 +617,6 @@ func (s AttachHostGroupAccountsToUserResponseBodyResults) String() string {
 
 func (s AttachHostGroupAccountsToUserResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetHostAccountNames(v []*AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames) *AttachHostGroupAccountsToUserResponseBodyResults {
-	s.HostAccountNames = v
-	return s
-}
-
-func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetUserId(v string) *AttachHostGroupAccountsToUserResponseBodyResults {
-	s.UserId = &v
-	return s
 }
 
 func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetCode(v string) *AttachHostGroupAccountsToUserResponseBodyResults {
@@ -671,6 +631,16 @@ func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetMessage(v string) 
 
 func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetHostGroupId(v string) *AttachHostGroupAccountsToUserResponseBodyResults {
 	s.HostGroupId = &v
+	return s
+}
+
+func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetUserId(v string) *AttachHostGroupAccountsToUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+func (s *AttachHostGroupAccountsToUserResponseBodyResults) SetHostAccountNames(v []*AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames) *AttachHostGroupAccountsToUserResponseBodyResults {
+	s.HostAccountNames = v
 	return s
 }
 
@@ -727,7 +697,6 @@ func (s *AttachHostGroupAccountsToUserResponse) SetBody(v *AttachHostGroupAccoun
 }
 
 type AttachHostGroupAccountsToUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -740,11 +709,6 @@ func (s AttachHostGroupAccountsToUserGroupRequest) String() string {
 
 func (s AttachHostGroupAccountsToUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostGroupAccountsToUserGroupRequest) SetSourceIp(v string) *AttachHostGroupAccountsToUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *AttachHostGroupAccountsToUserGroupRequest) SetInstanceId(v string) *AttachHostGroupAccountsToUserGroupRequest {
@@ -791,11 +755,11 @@ func (s *AttachHostGroupAccountsToUserGroupResponseBody) SetResults(v []*AttachH
 }
 
 type AttachHostGroupAccountsToUserGroupResponseBodyResults struct {
-	HostAccountNames []*AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	UserGroupId      *string                                                                  `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	Code             *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostGroupId      *string                                                                  `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	UserGroupId      *string                                                                  `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	HostAccountNames []*AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 }
 
 func (s AttachHostGroupAccountsToUserGroupResponseBodyResults) String() string {
@@ -804,16 +768,6 @@ func (s AttachHostGroupAccountsToUserGroupResponseBodyResults) String() string {
 
 func (s AttachHostGroupAccountsToUserGroupResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetHostAccountNames(v []*AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
-	s.HostAccountNames = v
-	return s
-}
-
-func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetUserGroupId(v string) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
 }
 
 func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetCode(v string) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
@@ -828,6 +782,16 @@ func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetMessage(v str
 
 func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetHostGroupId(v string) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
 	s.HostGroupId = &v
+	return s
+}
+
+func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetUserGroupId(v string) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *AttachHostGroupAccountsToUserGroupResponseBodyResults) SetHostAccountNames(v []*AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames) *AttachHostGroupAccountsToUserGroupResponseBodyResults {
+	s.HostAccountNames = v
 	return s
 }
 
@@ -884,11 +848,10 @@ func (s *AttachHostGroupAccountsToUserGroupResponse) SetBody(v *AttachHostGroupA
 }
 
 type ConfigInstanceSecurityGroupsRequest struct {
-	SourceIp                 *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Lang                     *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
 	InstanceId               *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
 }
 
 func (s ConfigInstanceSecurityGroupsRequest) String() string {
@@ -899,18 +862,8 @@ func (s ConfigInstanceSecurityGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ConfigInstanceSecurityGroupsRequest) SetSourceIp(v string) *ConfigInstanceSecurityGroupsRequest {
-	s.SourceIp = &v
-	return s
-}
-
 func (s *ConfigInstanceSecurityGroupsRequest) SetLang(v string) *ConfigInstanceSecurityGroupsRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *ConfigInstanceSecurityGroupsRequest) SetAuthorizedSecurityGroups(v []*string) *ConfigInstanceSecurityGroupsRequest {
-	s.AuthorizedSecurityGroups = v
 	return s
 }
 
@@ -924,9 +877,14 @@ func (s *ConfigInstanceSecurityGroupsRequest) SetRegionId(v string) *ConfigInsta
 	return s
 }
 
+func (s *ConfigInstanceSecurityGroupsRequest) SetAuthorizedSecurityGroups(v []*string) *ConfigInstanceSecurityGroupsRequest {
+	s.AuthorizedSecurityGroups = v
+	return s
+}
+
 type ConfigInstanceSecurityGroupsResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConfigInstanceSecurityGroupsResponseBody) String() string {
@@ -937,13 +895,13 @@ func (s ConfigInstanceSecurityGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ConfigInstanceSecurityGroupsResponseBody) SetRequestId(v string) *ConfigInstanceSecurityGroupsResponseBody {
-	s.RequestId = &v
+func (s *ConfigInstanceSecurityGroupsResponseBody) SetInstanceId(v string) *ConfigInstanceSecurityGroupsResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *ConfigInstanceSecurityGroupsResponseBody) SetInstanceId(v string) *ConfigInstanceSecurityGroupsResponseBody {
-	s.InstanceId = &v
+func (s *ConfigInstanceSecurityGroupsResponseBody) SetRequestId(v string) *ConfigInstanceSecurityGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -971,8 +929,6 @@ func (s *ConfigInstanceSecurityGroupsResponse) SetBody(v *ConfigInstanceSecurity
 }
 
 type ConfigInstanceWhiteListRequest struct {
-	SourceIp   *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	WhiteList  []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
@@ -984,16 +940,6 @@ func (s ConfigInstanceWhiteListRequest) String() string {
 
 func (s ConfigInstanceWhiteListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ConfigInstanceWhiteListRequest) SetSourceIp(v string) *ConfigInstanceWhiteListRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ConfigInstanceWhiteListRequest) SetLang(v string) *ConfigInstanceWhiteListRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ConfigInstanceWhiteListRequest) SetInstanceId(v string) *ConfigInstanceWhiteListRequest {
@@ -1012,8 +958,8 @@ func (s *ConfigInstanceWhiteListRequest) SetWhiteList(v []*string) *ConfigInstan
 }
 
 type ConfigInstanceWhiteListResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConfigInstanceWhiteListResponseBody) String() string {
@@ -1024,13 +970,13 @@ func (s ConfigInstanceWhiteListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ConfigInstanceWhiteListResponseBody) SetRequestId(v string) *ConfigInstanceWhiteListResponseBody {
-	s.RequestId = &v
+func (s *ConfigInstanceWhiteListResponseBody) SetInstanceId(v string) *ConfigInstanceWhiteListResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *ConfigInstanceWhiteListResponseBody) SetInstanceId(v string) *ConfigInstanceWhiteListResponseBody {
-	s.InstanceId = &v
+func (s *ConfigInstanceWhiteListResponseBody) SetRequestId(v string) *ConfigInstanceWhiteListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1058,7 +1004,6 @@ func (s *ConfigInstanceWhiteListResponse) SetBody(v *ConfigInstanceWhiteListResp
 }
 
 type CreateHostRequest struct {
-	SourceIp           *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
@@ -1078,11 +1023,6 @@ func (s CreateHostRequest) String() string {
 
 func (s CreateHostRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateHostRequest) SetSourceIp(v string) *CreateHostRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateHostRequest) SetInstanceId(v string) *CreateHostRequest {
@@ -1141,8 +1081,8 @@ func (s *CreateHostRequest) SetInstanceRegionId(v string) *CreateHostRequest {
 }
 
 type CreateHostResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateHostResponseBody) String() string {
@@ -1153,13 +1093,13 @@ func (s CreateHostResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateHostResponseBody) SetRequestId(v string) *CreateHostResponseBody {
-	s.RequestId = &v
+func (s *CreateHostResponseBody) SetHostId(v string) *CreateHostResponseBody {
+	s.HostId = &v
 	return s
 }
 
-func (s *CreateHostResponseBody) SetHostId(v string) *CreateHostResponseBody {
-	s.HostId = &v
+func (s *CreateHostResponseBody) SetRequestId(v string) *CreateHostResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1187,7 +1127,6 @@ func (s *CreateHostResponse) SetBody(v *CreateHostResponseBody) *CreateHostRespo
 }
 
 type CreateHostAccountRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostId          *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
@@ -1204,11 +1143,6 @@ func (s CreateHostAccountRequest) String() string {
 
 func (s CreateHostAccountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateHostAccountRequest) SetSourceIp(v string) *CreateHostAccountRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateHostAccountRequest) SetInstanceId(v string) *CreateHostAccountRequest {
@@ -1252,8 +1186,8 @@ func (s *CreateHostAccountRequest) SetPassPhrase(v string) *CreateHostAccountReq
 }
 
 type CreateHostAccountResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateHostAccountResponseBody) String() string {
@@ -1264,13 +1198,13 @@ func (s CreateHostAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateHostAccountResponseBody) SetRequestId(v string) *CreateHostAccountResponseBody {
-	s.RequestId = &v
+func (s *CreateHostAccountResponseBody) SetHostAccountId(v string) *CreateHostAccountResponseBody {
+	s.HostAccountId = &v
 	return s
 }
 
-func (s *CreateHostAccountResponseBody) SetHostAccountId(v string) *CreateHostAccountResponseBody {
-	s.HostAccountId = &v
+func (s *CreateHostAccountResponseBody) SetRequestId(v string) *CreateHostAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1298,7 +1232,6 @@ func (s *CreateHostAccountResponse) SetBody(v *CreateHostAccountResponseBody) *C
 }
 
 type CreateHostGroupRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
@@ -1311,11 +1244,6 @@ func (s CreateHostGroupRequest) String() string {
 
 func (s CreateHostGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateHostGroupRequest) SetSourceIp(v string) *CreateHostGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateHostGroupRequest) SetInstanceId(v string) *CreateHostGroupRequest {
@@ -1385,7 +1313,6 @@ func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *Creat
 }
 
 type CreateUserRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -1405,11 +1332,6 @@ func (s CreateUserRequest) String() string {
 
 func (s CreateUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateUserRequest) SetSourceIp(v string) *CreateUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateUserRequest) SetInstanceId(v string) *CreateUserRequest {
@@ -1468,8 +1390,8 @@ func (s *CreateUserRequest) SetMobileCountryCode(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -1480,13 +1402,13 @@ func (s CreateUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody {
-	s.RequestId = &v
+func (s *CreateUserResponseBody) SetUserId(v string) *CreateUserResponseBody {
+	s.UserId = &v
 	return s
 }
 
-func (s *CreateUserResponseBody) SetUserId(v string) *CreateUserResponseBody {
-	s.UserId = &v
+func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1514,7 +1436,6 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CreateUserGroupRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
@@ -1527,11 +1448,6 @@ func (s CreateUserGroupRequest) String() string {
 
 func (s CreateUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateUserGroupRequest) SetSourceIp(v string) *CreateUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *CreateUserGroupRequest) SetInstanceId(v string) *CreateUserGroupRequest {
@@ -1555,8 +1471,8 @@ func (s *CreateUserGroupRequest) SetComment(v string) *CreateUserGroupRequest {
 }
 
 type CreateUserGroupResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateUserGroupResponseBody) String() string {
@@ -1567,13 +1483,13 @@ func (s CreateUserGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateUserGroupResponseBody) SetRequestId(v string) *CreateUserGroupResponseBody {
-	s.RequestId = &v
+func (s *CreateUserGroupResponseBody) SetUserGroupId(v string) *CreateUserGroupResponseBody {
+	s.UserGroupId = &v
 	return s
 }
 
-func (s *CreateUserGroupResponseBody) SetUserGroupId(v string) *CreateUserGroupResponseBody {
-	s.UserGroupId = &v
+func (s *CreateUserGroupResponseBody) SetRequestId(v string) *CreateUserGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1601,7 +1517,6 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 }
 
 type DeleteHostRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
@@ -1613,11 +1528,6 @@ func (s DeleteHostRequest) String() string {
 
 func (s DeleteHostRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteHostRequest) SetSourceIp(v string) *DeleteHostRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteHostRequest) SetInstanceId(v string) *DeleteHostRequest {
@@ -1676,7 +1586,6 @@ func (s *DeleteHostResponse) SetBody(v *DeleteHostResponseBody) *DeleteHostRespo
 }
 
 type DeleteHostAccountRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
@@ -1688,11 +1597,6 @@ func (s DeleteHostAccountRequest) String() string {
 
 func (s DeleteHostAccountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteHostAccountRequest) SetSourceIp(v string) *DeleteHostAccountRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteHostAccountRequest) SetInstanceId(v string) *DeleteHostAccountRequest {
@@ -1751,7 +1655,6 @@ func (s *DeleteHostAccountResponse) SetBody(v *DeleteHostAccountResponseBody) *D
 }
 
 type DeleteHostGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
@@ -1763,11 +1666,6 @@ func (s DeleteHostGroupRequest) String() string {
 
 func (s DeleteHostGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteHostGroupRequest) SetSourceIp(v string) *DeleteHostGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteHostGroupRequest) SetInstanceId(v string) *DeleteHostGroupRequest {
@@ -1826,7 +1724,6 @@ func (s *DeleteHostGroupResponse) SetBody(v *DeleteHostGroupResponseBody) *Delet
 }
 
 type DeleteUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -1838,11 +1735,6 @@ func (s DeleteUserRequest) String() string {
 
 func (s DeleteUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteUserRequest) SetSourceIp(v string) *DeleteUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteUserRequest) SetInstanceId(v string) *DeleteUserRequest {
@@ -1901,7 +1793,6 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -1913,11 +1804,6 @@ func (s DeleteUserGroupRequest) String() string {
 
 func (s DeleteUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteUserGroupRequest) SetSourceIp(v string) *DeleteUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DeleteUserGroupRequest) SetInstanceId(v string) *DeleteUserGroupRequest {
@@ -1976,8 +1862,6 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 }
 
 type DescribeInstanceAttributeRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -1988,16 +1872,6 @@ func (s DescribeInstanceAttributeRequest) String() string {
 
 func (s DescribeInstanceAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceAttributeRequest) SetSourceIp(v string) *DescribeInstanceAttributeRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceAttributeRequest) SetLang(v string) *DescribeInstanceAttributeRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeInstanceAttributeRequest) SetRegionId(v string) *DescribeInstanceAttributeRequest {
@@ -2036,28 +1910,30 @@ func (s *DescribeInstanceAttributeResponseBody) SetInstanceAttribute(v *Describe
 type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
 	VpcId                    *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId                *string                                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	Ports                    []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	AuthorizedSecurityGroups []*string                                                      `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
 	Description              *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	PrivateExportIps         []*string                                                      `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
-	PrivateWhiteList         []*string                                                      `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
 	ExpireTime               *int64                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	EniInstanceId            *string                                                        `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
 	ModifyPasswordModule     *string                                                        `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
-	InternetEndpoint         *string                                                        `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	EniInstanceId            *string                                                        `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
 	InstanceId               *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityGroupIds         []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InternetEndpoint         *string                                                        `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
 	RegionId                 *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	IntranetEndpoint         *string                                                        `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	PublicExportIps          []*string                                                      `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
 	StartTime                *int64                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	PublicWhiteList          []*string                                                      `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
+	ResourceGroupId          *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	NetworkProxyModule       *string                                                        `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
 	WebTerminalModule        *string                                                        `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
 	InstanceStatus           *string                                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	LicenseCode              *string                                                        `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	PublicIps                []*string                                                      `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
 	PublicNetworkAccess      *bool                                                          `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
 	Storage                  *int64                                                         `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Ports                    []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	PublicExportIps          []*string                                                      `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
+	PublicWhiteList          []*string                                                      `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
+	AuthorizedSecurityGroups []*string                                                      `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
+	PrivateExportIps         []*string                                                      `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
+	PublicIps                []*string                                                      `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
+	SecurityGroupIds         []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	PrivateWhiteList         []*string                                                      `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) String() string {
@@ -2078,28 +1954,8 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetVswitchId(v 
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPorts(v []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.Ports = v
-	return s
-}
-
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAuthorizedSecurityGroups(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.AuthorizedSecurityGroups = v
-	return s
-}
-
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetDescription(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.Description = &v
-	return s
-}
-
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPrivateExportIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.PrivateExportIps = v
-	return s
-}
-
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPrivateWhiteList(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.PrivateWhiteList = v
 	return s
 }
 
@@ -2108,18 +1964,13 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetExpireTime(v
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetEniInstanceId(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.EniInstanceId = &v
-	return s
-}
-
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetModifyPasswordModule(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.ModifyPasswordModule = &v
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetInternetEndpoint(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.InternetEndpoint = &v
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetEniInstanceId(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.EniInstanceId = &v
 	return s
 }
 
@@ -2128,8 +1979,8 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetInstanceId(v
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetSecurityGroupIds(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.SecurityGroupIds = v
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetInternetEndpoint(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.InternetEndpoint = &v
 	return s
 }
 
@@ -2143,18 +1994,18 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetIntranetEndp
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicExportIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.PublicExportIps = v
-	return s
-}
-
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetStartTime(v int64) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicWhiteList(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.PublicWhiteList = v
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetResourceGroupId(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetNetworkProxyModule(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.NetworkProxyModule = &v
 	return s
 }
 
@@ -2173,11 +2024,6 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetLicenseCode(
 	return s
 }
 
-func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
-	s.PublicIps = v
-	return s
-}
-
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicNetworkAccess(v bool) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.PublicNetworkAccess = &v
 	return s
@@ -2185,6 +2031,46 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicNetwor
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetStorage(v int64) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.Storage = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPorts(v []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.Ports = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicExportIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.PublicExportIps = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicWhiteList(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.PublicWhiteList = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAuthorizedSecurityGroups(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.AuthorizedSecurityGroups = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPrivateExportIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.PrivateExportIps = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPublicIps(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.PublicIps = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetSecurityGroupIds(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetPrivateWhiteList(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.PrivateWhiteList = v
 	return s
 }
 
@@ -2235,8 +2121,6 @@ func (s *DescribeInstanceAttributeResponse) SetBody(v *DescribeInstanceAttribute
 }
 
 type DescribeInstancesRequest struct {
-	SourceIp        *string                        `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string                        `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageNumber      *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2252,16 +2136,6 @@ func (s DescribeInstancesRequest) String() string {
 
 func (s DescribeInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstancesRequest) SetSourceIp(v string) *DescribeInstancesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstancesRequest) SetLang(v string) *DescribeInstancesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeInstancesRequest) SetPageNumber(v int32) *DescribeInstancesRequest {
@@ -2323,9 +2197,9 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 }
 
 type DescribeInstancesResponseBody struct {
-	Instances  []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Instances  []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -2334,11 +2208,6 @@ func (s DescribeInstancesResponseBody) String() string {
 
 func (s DescribeInstancesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstancesResponseBody) SetInstances(v []*DescribeInstancesResponseBodyInstances) *DescribeInstancesResponseBody {
-	s.Instances = v
-	return s
 }
 
 func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstancesResponseBody {
@@ -2351,6 +2220,11 @@ func (s *DescribeInstancesResponseBody) SetRequestId(v string) *DescribeInstance
 	return s
 }
 
+func (s *DescribeInstancesResponseBody) SetInstances(v []*DescribeInstancesResponseBodyInstances) *DescribeInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
 type DescribeInstancesResponseBodyInstances struct {
 	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -2359,11 +2233,12 @@ type DescribeInstancesResponseBodyInstances struct {
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpireTime          *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	Legacy              *bool   `json:"Legacy,omitempty" xml:"Legacy,omitempty"`
-	InternetEndpoint    *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InternetEndpoint    *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	IntranetEndpoint    *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
 	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	InstanceStatus      *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	LicenseCode         *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 	PublicNetworkAccess *bool   `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
@@ -2412,13 +2287,13 @@ func (s *DescribeInstancesResponseBodyInstances) SetLegacy(v bool) *DescribeInst
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetInternetEndpoint(v string) *DescribeInstancesResponseBodyInstances {
-	s.InternetEndpoint = &v
+func (s *DescribeInstancesResponseBodyInstances) SetInstanceId(v string) *DescribeInstancesResponseBodyInstances {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetInstanceId(v string) *DescribeInstancesResponseBodyInstances {
-	s.InstanceId = &v
+func (s *DescribeInstancesResponseBodyInstances) SetInternetEndpoint(v string) *DescribeInstancesResponseBodyInstances {
+	s.InternetEndpoint = &v
 	return s
 }
 
@@ -2434,6 +2309,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetIntranetEndpoint(v string) *
 
 func (s *DescribeInstancesResponseBodyInstances) SetStartTime(v int64) *DescribeInstancesResponseBodyInstances {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetResourceGroupId(v string) *DescribeInstancesResponseBodyInstances {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2476,8 +2356,6 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -2487,16 +2365,6 @@ func (s DescribeRegionsRequest) String() string {
 
 func (s DescribeRegionsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRegionsRequest) SetSourceIp(v string) *DescribeRegionsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeRegionsRequest) SetLang(v string) *DescribeRegionsRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
@@ -2528,8 +2396,8 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2541,13 +2409,13 @@ func (s DescribeRegionsResponseBodyRegions) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
+	s.LocalName = &v
 	return s
 }
 
@@ -2580,7 +2448,6 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DetachHostAccountsFromUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -2593,11 +2460,6 @@ func (s DetachHostAccountsFromUserRequest) String() string {
 
 func (s DetachHostAccountsFromUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostAccountsFromUserRequest) SetSourceIp(v string) *DetachHostAccountsFromUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DetachHostAccountsFromUserRequest) SetInstanceId(v string) *DetachHostAccountsFromUserRequest {
@@ -2644,11 +2506,11 @@ func (s *DetachHostAccountsFromUserResponseBody) SetResults(v []*DetachHostAccou
 }
 
 type DetachHostAccountsFromUserResponseBodyResults struct {
-	HostAccounts []*DetachHostAccountsFromUserResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	UserId       *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code         *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostId       *string                                                      `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	UserId       *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	HostAccounts []*DetachHostAccountsFromUserResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 }
 
 func (s DetachHostAccountsFromUserResponseBodyResults) String() string {
@@ -2657,16 +2519,6 @@ func (s DetachHostAccountsFromUserResponseBodyResults) String() string {
 
 func (s DetachHostAccountsFromUserResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostAccountsFromUserResponseBodyResults) SetHostAccounts(v []*DetachHostAccountsFromUserResponseBodyResultsHostAccounts) *DetachHostAccountsFromUserResponseBodyResults {
-	s.HostAccounts = v
-	return s
-}
-
-func (s *DetachHostAccountsFromUserResponseBodyResults) SetUserId(v string) *DetachHostAccountsFromUserResponseBodyResults {
-	s.UserId = &v
-	return s
 }
 
 func (s *DetachHostAccountsFromUserResponseBodyResults) SetCode(v string) *DetachHostAccountsFromUserResponseBodyResults {
@@ -2681,6 +2533,16 @@ func (s *DetachHostAccountsFromUserResponseBodyResults) SetMessage(v string) *De
 
 func (s *DetachHostAccountsFromUserResponseBodyResults) SetHostId(v string) *DetachHostAccountsFromUserResponseBodyResults {
 	s.HostId = &v
+	return s
+}
+
+func (s *DetachHostAccountsFromUserResponseBodyResults) SetUserId(v string) *DetachHostAccountsFromUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+func (s *DetachHostAccountsFromUserResponseBodyResults) SetHostAccounts(v []*DetachHostAccountsFromUserResponseBodyResultsHostAccounts) *DetachHostAccountsFromUserResponseBodyResults {
+	s.HostAccounts = v
 	return s
 }
 
@@ -2737,7 +2599,6 @@ func (s *DetachHostAccountsFromUserResponse) SetBody(v *DetachHostAccountsFromUs
 }
 
 type DetachHostAccountsFromUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -2750,11 +2611,6 @@ func (s DetachHostAccountsFromUserGroupRequest) String() string {
 
 func (s DetachHostAccountsFromUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostAccountsFromUserGroupRequest) SetSourceIp(v string) *DetachHostAccountsFromUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DetachHostAccountsFromUserGroupRequest) SetInstanceId(v string) *DetachHostAccountsFromUserGroupRequest {
@@ -2801,11 +2657,11 @@ func (s *DetachHostAccountsFromUserGroupResponseBody) SetResults(v []*DetachHost
 }
 
 type DetachHostAccountsFromUserGroupResponseBodyResults struct {
-	UserGroupId  *string                                                           `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	HostAccounts []*DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	Code         *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostId       *string                                                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	UserGroupId  *string                                                           `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	HostAccounts []*DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 }
 
 func (s DetachHostAccountsFromUserGroupResponseBodyResults) String() string {
@@ -2814,16 +2670,6 @@ func (s DetachHostAccountsFromUserGroupResponseBodyResults) String() string {
 
 func (s DetachHostAccountsFromUserGroupResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetUserGroupId(v string) *DetachHostAccountsFromUserGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
-}
-
-func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetHostAccounts(v []*DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts) *DetachHostAccountsFromUserGroupResponseBodyResults {
-	s.HostAccounts = v
-	return s
 }
 
 func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetCode(v string) *DetachHostAccountsFromUserGroupResponseBodyResults {
@@ -2838,6 +2684,16 @@ func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetMessage(v string
 
 func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetHostId(v string) *DetachHostAccountsFromUserGroupResponseBodyResults {
 	s.HostId = &v
+	return s
+}
+
+func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetUserGroupId(v string) *DetachHostAccountsFromUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *DetachHostAccountsFromUserGroupResponseBodyResults) SetHostAccounts(v []*DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts) *DetachHostAccountsFromUserGroupResponseBodyResults {
+	s.HostAccounts = v
 	return s
 }
 
@@ -2894,7 +2750,6 @@ func (s *DetachHostAccountsFromUserGroupResponse) SetBody(v *DetachHostAccountsF
 }
 
 type DetachHostGroupAccountsFromUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -2907,11 +2762,6 @@ func (s DetachHostGroupAccountsFromUserRequest) String() string {
 
 func (s DetachHostGroupAccountsFromUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostGroupAccountsFromUserRequest) SetSourceIp(v string) *DetachHostGroupAccountsFromUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DetachHostGroupAccountsFromUserRequest) SetInstanceId(v string) *DetachHostGroupAccountsFromUserRequest {
@@ -2958,11 +2808,11 @@ func (s *DetachHostGroupAccountsFromUserResponseBody) SetResults(v []*DetachHost
 }
 
 type DetachHostGroupAccountsFromUserResponseBodyResults struct {
-	HostAccountNames []*DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	UserId           *string                                                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code             *string                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostGroupId      *string                                                               `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	UserId           *string                                                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	HostAccountNames []*DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 }
 
 func (s DetachHostGroupAccountsFromUserResponseBodyResults) String() string {
@@ -2971,16 +2821,6 @@ func (s DetachHostGroupAccountsFromUserResponseBodyResults) String() string {
 
 func (s DetachHostGroupAccountsFromUserResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetHostAccountNames(v []*DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames) *DetachHostGroupAccountsFromUserResponseBodyResults {
-	s.HostAccountNames = v
-	return s
-}
-
-func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetUserId(v string) *DetachHostGroupAccountsFromUserResponseBodyResults {
-	s.UserId = &v
-	return s
 }
 
 func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetCode(v string) *DetachHostGroupAccountsFromUserResponseBodyResults {
@@ -2995,6 +2835,16 @@ func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetMessage(v string
 
 func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetHostGroupId(v string) *DetachHostGroupAccountsFromUserResponseBodyResults {
 	s.HostGroupId = &v
+	return s
+}
+
+func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetUserId(v string) *DetachHostGroupAccountsFromUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+func (s *DetachHostGroupAccountsFromUserResponseBodyResults) SetHostAccountNames(v []*DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames) *DetachHostGroupAccountsFromUserResponseBodyResults {
+	s.HostAccountNames = v
 	return s
 }
 
@@ -3051,7 +2901,6 @@ func (s *DetachHostGroupAccountsFromUserResponse) SetBody(v *DetachHostGroupAcco
 }
 
 type DetachHostGroupAccountsFromUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -3064,11 +2913,6 @@ func (s DetachHostGroupAccountsFromUserGroupRequest) String() string {
 
 func (s DetachHostGroupAccountsFromUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostGroupAccountsFromUserGroupRequest) SetSourceIp(v string) *DetachHostGroupAccountsFromUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *DetachHostGroupAccountsFromUserGroupRequest) SetInstanceId(v string) *DetachHostGroupAccountsFromUserGroupRequest {
@@ -3115,11 +2959,11 @@ func (s *DetachHostGroupAccountsFromUserGroupResponseBody) SetResults(v []*Detac
 }
 
 type DetachHostGroupAccountsFromUserGroupResponseBodyResults struct {
-	HostAccountNames []*DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	UserGroupId      *string                                                                    `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	Code             *string                                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message          *string                                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	HostGroupId      *string                                                                    `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	UserGroupId      *string                                                                    `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	HostAccountNames []*DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 }
 
 func (s DetachHostGroupAccountsFromUserGroupResponseBodyResults) String() string {
@@ -3128,16 +2972,6 @@ func (s DetachHostGroupAccountsFromUserGroupResponseBodyResults) String() string
 
 func (s DetachHostGroupAccountsFromUserGroupResponseBodyResults) GoString() string {
 	return s.String()
-}
-
-func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetHostAccountNames(v []*DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
-	s.HostAccountNames = v
-	return s
-}
-
-func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetUserGroupId(v string) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
 }
 
 func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetCode(v string) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
@@ -3152,6 +2986,16 @@ func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetMessage(v s
 
 func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetHostGroupId(v string) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
 	s.HostGroupId = &v
+	return s
+}
+
+func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetUserGroupId(v string) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *DetachHostGroupAccountsFromUserGroupResponseBodyResults) SetHostAccountNames(v []*DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames) *DetachHostGroupAccountsFromUserGroupResponseBodyResults {
+	s.HostAccountNames = v
 	return s
 }
 
@@ -3208,8 +3052,6 @@ func (s *DetachHostGroupAccountsFromUserGroupResponse) SetBody(v *DetachHostGrou
 }
 
 type DisableInstancePublicAccessRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -3220,16 +3062,6 @@ func (s DisableInstancePublicAccessRequest) String() string {
 
 func (s DisableInstancePublicAccessRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DisableInstancePublicAccessRequest) SetSourceIp(v string) *DisableInstancePublicAccessRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DisableInstancePublicAccessRequest) SetLang(v string) *DisableInstancePublicAccessRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DisableInstancePublicAccessRequest) SetInstanceId(v string) *DisableInstancePublicAccessRequest {
@@ -3243,8 +3075,8 @@ func (s *DisableInstancePublicAccessRequest) SetRegionId(v string) *DisableInsta
 }
 
 type DisableInstancePublicAccessResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisableInstancePublicAccessResponseBody) String() string {
@@ -3255,13 +3087,13 @@ func (s DisableInstancePublicAccessResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DisableInstancePublicAccessResponseBody) SetRequestId(v string) *DisableInstancePublicAccessResponseBody {
-	s.RequestId = &v
+func (s *DisableInstancePublicAccessResponseBody) SetInstanceId(v string) *DisableInstancePublicAccessResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *DisableInstancePublicAccessResponseBody) SetInstanceId(v string) *DisableInstancePublicAccessResponseBody {
-	s.InstanceId = &v
+func (s *DisableInstancePublicAccessResponseBody) SetRequestId(v string) *DisableInstancePublicAccessResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3289,8 +3121,6 @@ func (s *DisableInstancePublicAccessResponse) SetBody(v *DisableInstancePublicAc
 }
 
 type EnableInstancePublicAccessRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -3301,16 +3131,6 @@ func (s EnableInstancePublicAccessRequest) String() string {
 
 func (s EnableInstancePublicAccessRequest) GoString() string {
 	return s.String()
-}
-
-func (s *EnableInstancePublicAccessRequest) SetSourceIp(v string) *EnableInstancePublicAccessRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *EnableInstancePublicAccessRequest) SetLang(v string) *EnableInstancePublicAccessRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *EnableInstancePublicAccessRequest) SetInstanceId(v string) *EnableInstancePublicAccessRequest {
@@ -3324,8 +3144,8 @@ func (s *EnableInstancePublicAccessRequest) SetRegionId(v string) *EnableInstanc
 }
 
 type EnableInstancePublicAccessResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableInstancePublicAccessResponseBody) String() string {
@@ -3336,13 +3156,13 @@ func (s EnableInstancePublicAccessResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableInstancePublicAccessResponseBody) SetRequestId(v string) *EnableInstancePublicAccessResponseBody {
-	s.RequestId = &v
+func (s *EnableInstancePublicAccessResponseBody) SetInstanceId(v string) *EnableInstancePublicAccessResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *EnableInstancePublicAccessResponseBody) SetInstanceId(v string) *EnableInstancePublicAccessResponseBody {
-	s.InstanceId = &v
+func (s *EnableInstancePublicAccessResponseBody) SetRequestId(v string) *EnableInstancePublicAccessResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3370,7 +3190,6 @@ func (s *EnableInstancePublicAccessResponse) SetBody(v *EnableInstancePublicAcce
 }
 
 type GetHostRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
@@ -3382,11 +3201,6 @@ func (s GetHostRequest) String() string {
 
 func (s GetHostRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHostRequest) SetSourceIp(v string) *GetHostRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetHostRequest) SetInstanceId(v string) *GetHostRequest {
@@ -3431,7 +3245,6 @@ type GetHostResponseBodyHost struct {
 	Comment             *string                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ActiveAddressType   *string                             `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
 	HostPublicAddress   *string                             `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	Protocols           []*GetHostResponseBodyHostProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 	HostName            *string                             `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	Source              *string                             `json:"Source,omitempty" xml:"Source,omitempty"`
 	HostPrivateAddress  *string                             `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
@@ -3439,6 +3252,7 @@ type GetHostResponseBodyHost struct {
 	HostId              *string                             `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	SourceInstanceState *string                             `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
 	SourceInstanceId    *string                             `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	Protocols           []*GetHostResponseBodyHostProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
 }
 
 func (s GetHostResponseBodyHost) String() string {
@@ -3461,11 +3275,6 @@ func (s *GetHostResponseBodyHost) SetActiveAddressType(v string) *GetHostRespons
 
 func (s *GetHostResponseBodyHost) SetHostPublicAddress(v string) *GetHostResponseBodyHost {
 	s.HostPublicAddress = &v
-	return s
-}
-
-func (s *GetHostResponseBodyHost) SetProtocols(v []*GetHostResponseBodyHostProtocols) *GetHostResponseBodyHost {
-	s.Protocols = v
 	return s
 }
 
@@ -3504,10 +3313,15 @@ func (s *GetHostResponseBodyHost) SetSourceInstanceId(v string) *GetHostResponse
 	return s
 }
 
+func (s *GetHostResponseBodyHost) SetProtocols(v []*GetHostResponseBodyHostProtocols) *GetHostResponseBodyHost {
+	s.Protocols = v
+	return s
+}
+
 type GetHostResponseBodyHostProtocols struct {
-	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	HostFingerPrint *string `json:"HostFingerPrint,omitempty" xml:"HostFingerPrint,omitempty"`
 	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
 func (s GetHostResponseBodyHostProtocols) String() string {
@@ -3518,11 +3332,6 @@ func (s GetHostResponseBodyHostProtocols) GoString() string {
 	return s.String()
 }
 
-func (s *GetHostResponseBodyHostProtocols) SetProtocolName(v string) *GetHostResponseBodyHostProtocols {
-	s.ProtocolName = &v
-	return s
-}
-
 func (s *GetHostResponseBodyHostProtocols) SetHostFingerPrint(v string) *GetHostResponseBodyHostProtocols {
 	s.HostFingerPrint = &v
 	return s
@@ -3530,6 +3339,11 @@ func (s *GetHostResponseBodyHostProtocols) SetHostFingerPrint(v string) *GetHost
 
 func (s *GetHostResponseBodyHostProtocols) SetPort(v int32) *GetHostResponseBodyHostProtocols {
 	s.Port = &v
+	return s
+}
+
+func (s *GetHostResponseBodyHostProtocols) SetProtocolName(v string) *GetHostResponseBodyHostProtocols {
+	s.ProtocolName = &v
 	return s
 }
 
@@ -3557,7 +3371,6 @@ func (s *GetHostResponse) SetBody(v *GetHostResponseBody) *GetHostResponse {
 }
 
 type GetHostAccountRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
@@ -3569,11 +3382,6 @@ func (s GetHostAccountRequest) String() string {
 
 func (s GetHostAccountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHostAccountRequest) SetSourceIp(v string) *GetHostAccountRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetHostAccountRequest) SetInstanceId(v string) *GetHostAccountRequest {
@@ -3685,7 +3493,6 @@ func (s *GetHostAccountResponse) SetBody(v *GetHostAccountResponseBody) *GetHost
 }
 
 type GetHostGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
@@ -3697,11 +3504,6 @@ func (s GetHostGroupRequest) String() string {
 
 func (s GetHostGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetHostGroupRequest) SetSourceIp(v string) *GetHostGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetHostGroupRequest) SetInstanceId(v string) *GetHostGroupRequest {
@@ -3743,8 +3545,8 @@ func (s *GetHostGroupResponseBody) SetHostGroup(v *GetHostGroupResponseBodyHostG
 }
 
 type GetHostGroupResponseBodyHostGroup struct {
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -3756,13 +3558,13 @@ func (s GetHostGroupResponseBodyHostGroup) GoString() string {
 	return s.String()
 }
 
-func (s *GetHostGroupResponseBodyHostGroup) SetComment(v string) *GetHostGroupResponseBodyHostGroup {
-	s.Comment = &v
+func (s *GetHostGroupResponseBodyHostGroup) SetHostGroupId(v string) *GetHostGroupResponseBodyHostGroup {
+	s.HostGroupId = &v
 	return s
 }
 
-func (s *GetHostGroupResponseBodyHostGroup) SetHostGroupId(v string) *GetHostGroupResponseBodyHostGroup {
-	s.HostGroupId = &v
+func (s *GetHostGroupResponseBodyHostGroup) SetComment(v string) *GetHostGroupResponseBodyHostGroup {
+	s.Comment = &v
 	return s
 }
 
@@ -3794,8 +3596,205 @@ func (s *GetHostGroupResponse) SetBody(v *GetHostGroupResponseBody) *GetHostGrou
 	return s
 }
 
+type GetInstanceUpgradeInfoRequest struct {
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetInstanceUpgradeInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoRequest) SetLang(v string) *GetInstanceUpgradeInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoRequest) SetInstanceId(v string) *GetInstanceUpgradeInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoRequest) SetRegionId(v string) *GetInstanceUpgradeInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetInstanceUpgradeInfoResponseBody struct {
+	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceUpgradeInfo *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo `json:"InstanceUpgradeInfo,omitempty" xml:"InstanceUpgradeInfo,omitempty" type:"Struct"`
+}
+
+func (s GetInstanceUpgradeInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoResponseBody) SetRequestId(v string) *GetInstanceUpgradeInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBody) SetInstanceUpgradeInfo(v *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) *GetInstanceUpgradeInfoResponseBody {
+	s.InstanceUpgradeInfo = v
+	return s
+}
+
+type GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo struct {
+	UpgradeMode         *string                                                                     `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	Operable            *bool                                                                       `json:"Operable,omitempty" xml:"Operable,omitempty"`
+	AliUid              *int64                                                                      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	LatestStartTime     *int64                                                                      `json:"LatestStartTime,omitempty" xml:"LatestStartTime,omitempty"`
+	ImageVersion        *string                                                                     `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	InstanceId          *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PeriodInterval      *int32                                                                      `json:"PeriodInterval,omitempty" xml:"PeriodInterval,omitempty"`
+	UpgradeStartTime    *int64                                                                      `json:"UpgradeStartTime,omitempty" xml:"UpgradeStartTime,omitempty"`
+	UpgradeEndTime      *int64                                                                      `json:"UpgradeEndTime,omitempty" xml:"UpgradeEndTime,omitempty"`
+	CandidatePeriodList []*GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList `json:"CandidatePeriodList,omitempty" xml:"CandidatePeriodList,omitempty" type:"Repeated"`
+	InvalidPeriodList   []*GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList   `json:"InvalidPeriodList,omitempty" xml:"InvalidPeriodList,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetUpgradeMode(v string) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.UpgradeMode = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetOperable(v bool) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.Operable = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetAliUid(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetLatestStartTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.LatestStartTime = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetImageVersion(v string) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.ImageVersion = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetInstanceId(v string) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetPeriodInterval(v int32) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.PeriodInterval = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetUpgradeStartTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.UpgradeStartTime = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetUpgradeEndTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.UpgradeEndTime = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetCandidatePeriodList(v []*GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.CandidatePeriodList = v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo) SetInvalidPeriodList(v []*GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfo {
+	s.InvalidPeriodList = v
+	return s
+}
+
+type GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList struct {
+	CandidateStartTime *int64 `json:"CandidateStartTime,omitempty" xml:"CandidateStartTime,omitempty"`
+	CandidateEndTime   *int64 `json:"CandidateEndTime,omitempty" xml:"CandidateEndTime,omitempty"`
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList) SetCandidateStartTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList {
+	s.CandidateStartTime = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList) SetCandidateEndTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoCandidatePeriodList {
+	s.CandidateEndTime = &v
+	return s
+}
+
+type GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList struct {
+	InvalidEndTime   *int64 `json:"InvalidEndTime,omitempty" xml:"InvalidEndTime,omitempty"`
+	InvalidStartTime *int64 `json:"InvalidStartTime,omitempty" xml:"InvalidStartTime,omitempty"`
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList) SetInvalidEndTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList {
+	s.InvalidEndTime = &v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList) SetInvalidStartTime(v int64) *GetInstanceUpgradeInfoResponseBodyInstanceUpgradeInfoInvalidPeriodList {
+	s.InvalidStartTime = &v
+	return s
+}
+
+type GetInstanceUpgradeInfoResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInstanceUpgradeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceUpgradeInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceUpgradeInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceUpgradeInfoResponse) SetHeaders(v map[string]*string) *GetInstanceUpgradeInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceUpgradeInfoResponse) SetBody(v *GetInstanceUpgradeInfoResponseBody) *GetInstanceUpgradeInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -3807,11 +3806,6 @@ func (s GetUserRequest) String() string {
 
 func (s GetUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetUserRequest) SetSourceIp(v string) *GetUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetUserRequest) SetInstanceId(v string) *GetUserRequest {
@@ -3830,8 +3824,8 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -3842,13 +3836,13 @@ func (s GetUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserResponseBody {
-	s.User = v
+func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
-	s.RequestId = &v
+func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserResponseBody {
+	s.User = v
 	return s
 }
 
@@ -3861,8 +3855,8 @@ type GetUserResponseBodyUser struct {
 	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Source            *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	UserName          *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserState         []*string `json:"UserState,omitempty" xml:"UserState,omitempty" type:"Repeated"`
 	SourceUserId      *string   `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	UserState         []*string `json:"UserState,omitempty" xml:"UserState,omitempty" type:"Repeated"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -3913,13 +3907,13 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 	return s
 }
 
-func (s *GetUserResponseBodyUser) SetUserState(v []*string) *GetUserResponseBodyUser {
-	s.UserState = v
+func (s *GetUserResponseBodyUser) SetSourceUserId(v string) *GetUserResponseBodyUser {
+	s.SourceUserId = &v
 	return s
 }
 
-func (s *GetUserResponseBodyUser) SetSourceUserId(v string) *GetUserResponseBodyUser {
-	s.SourceUserId = &v
+func (s *GetUserResponseBodyUser) SetUserState(v []*string) *GetUserResponseBodyUser {
+	s.UserState = v
 	return s
 }
 
@@ -3947,7 +3941,6 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -3959,11 +3952,6 @@ func (s GetUserGroupRequest) String() string {
 
 func (s GetUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetUserGroupRequest) SetSourceIp(v string) *GetUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *GetUserGroupRequest) SetInstanceId(v string) *GetUserGroupRequest {
@@ -4005,9 +3993,9 @@ func (s *GetUserGroupResponseBody) SetUserGroup(v *GetUserGroupResponseBodyUserG
 }
 
 type GetUserGroupResponseBodyUserGroup struct {
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	UserGroupId   *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
 func (s GetUserGroupResponseBodyUserGroup) String() string {
@@ -4018,6 +4006,11 @@ func (s GetUserGroupResponseBodyUserGroup) GoString() string {
 	return s.String()
 }
 
+func (s *GetUserGroupResponseBodyUserGroup) SetUserGroupName(v string) *GetUserGroupResponseBodyUserGroup {
+	s.UserGroupName = &v
+	return s
+}
+
 func (s *GetUserGroupResponseBodyUserGroup) SetComment(v string) *GetUserGroupResponseBodyUserGroup {
 	s.Comment = &v
 	return s
@@ -4025,11 +4018,6 @@ func (s *GetUserGroupResponseBodyUserGroup) SetComment(v string) *GetUserGroupRe
 
 func (s *GetUserGroupResponseBodyUserGroup) SetUserGroupId(v string) *GetUserGroupResponseBodyUserGroup {
 	s.UserGroupId = &v
-	return s
-}
-
-func (s *GetUserGroupResponseBodyUserGroup) SetUserGroupName(v string) *GetUserGroupResponseBodyUserGroup {
-	s.UserGroupName = &v
 	return s
 }
 
@@ -4057,7 +4045,6 @@ func (s *GetUserGroupResponse) SetBody(v *GetUserGroupResponseBody) *GetUserGrou
 }
 
 type ListHostAccountsRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostId          *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
@@ -4073,11 +4060,6 @@ func (s ListHostAccountsRequest) String() string {
 
 func (s ListHostAccountsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostAccountsRequest) SetSourceIp(v string) *ListHostAccountsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostAccountsRequest) SetInstanceId(v string) *ListHostAccountsRequest {
@@ -4215,7 +4197,6 @@ func (s *ListHostAccountsResponse) SetBody(v *ListHostAccountsResponseBody) *Lis
 }
 
 type ListHostAccountsForUserRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -4231,11 +4212,6 @@ func (s ListHostAccountsForUserRequest) String() string {
 
 func (s ListHostAccountsForUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostAccountsForUserRequest) SetSourceIp(v string) *ListHostAccountsForUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostAccountsForUserRequest) SetInstanceId(v string) *ListHostAccountsForUserRequest {
@@ -4303,10 +4279,10 @@ func (s *ListHostAccountsForUserResponseBody) SetHostAccounts(v []*ListHostAccou
 }
 
 type ListHostAccountsForUserResponseBodyHostAccounts struct {
-	IsAuthorized    *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
 	HostAccountId   *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	IsAuthorized    *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	HostId          *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 
@@ -4318,16 +4294,6 @@ func (s ListHostAccountsForUserResponseBodyHostAccounts) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetIsAuthorized(v bool) *ListHostAccountsForUserResponseBodyHostAccounts {
-	s.IsAuthorized = &v
-	return s
-}
-
-func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetProtocolName(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
-	s.ProtocolName = &v
-	return s
-}
-
 func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountName(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
 	s.HostAccountName = &v
 	return s
@@ -4335,6 +4301,16 @@ func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountName(v s
 
 func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetHostAccountId(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
 	s.HostAccountId = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetIsAuthorized(v bool) *ListHostAccountsForUserResponseBodyHostAccounts {
+	s.IsAuthorized = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserResponseBodyHostAccounts) SetProtocolName(v string) *ListHostAccountsForUserResponseBodyHostAccounts {
+	s.ProtocolName = &v
 	return s
 }
 
@@ -4367,7 +4343,6 @@ func (s *ListHostAccountsForUserResponse) SetBody(v *ListHostAccountsForUserResp
 }
 
 type ListHostAccountsForUserGroupRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId     *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -4383,11 +4358,6 @@ func (s ListHostAccountsForUserGroupRequest) String() string {
 
 func (s ListHostAccountsForUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostAccountsForUserGroupRequest) SetSourceIp(v string) *ListHostAccountsForUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostAccountsForUserGroupRequest) SetInstanceId(v string) *ListHostAccountsForUserGroupRequest {
@@ -4455,10 +4425,10 @@ func (s *ListHostAccountsForUserGroupResponseBody) SetHostAccounts(v []*ListHost
 }
 
 type ListHostAccountsForUserGroupResponseBodyHostAccounts struct {
-	IsAuthorized    *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
 	HostAccountId   *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	IsAuthorized    *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	ProtocolName    *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	HostId          *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 
@@ -4470,16 +4440,6 @@ func (s ListHostAccountsForUserGroupResponseBodyHostAccounts) GoString() string 
 	return s.String()
 }
 
-func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetIsAuthorized(v bool) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
-	s.IsAuthorized = &v
-	return s
-}
-
-func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetProtocolName(v string) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
-	s.ProtocolName = &v
-	return s
-}
-
 func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetHostAccountName(v string) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
 	s.HostAccountName = &v
 	return s
@@ -4487,6 +4447,16 @@ func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetHostAccountNam
 
 func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetHostAccountId(v string) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
 	s.HostAccountId = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetIsAuthorized(v bool) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
+	s.IsAuthorized = &v
+	return s
+}
+
+func (s *ListHostAccountsForUserGroupResponseBodyHostAccounts) SetProtocolName(v string) *ListHostAccountsForUserGroupResponseBodyHostAccounts {
+	s.ProtocolName = &v
 	return s
 }
 
@@ -4519,7 +4489,6 @@ func (s *ListHostAccountsForUserGroupResponse) SetBody(v *ListHostAccountsForUse
 }
 
 type ListHostGroupAccountNamesForUserRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -4532,11 +4501,6 @@ func (s ListHostGroupAccountNamesForUserRequest) String() string {
 
 func (s ListHostGroupAccountNamesForUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostGroupAccountNamesForUserRequest) SetSourceIp(v string) *ListHostGroupAccountNamesForUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostGroupAccountNamesForUserRequest) SetInstanceId(v string) *ListHostGroupAccountNamesForUserRequest {
@@ -4606,7 +4570,6 @@ func (s *ListHostGroupAccountNamesForUserResponse) SetBody(v *ListHostGroupAccou
 }
 
 type ListHostGroupAccountNamesForUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -4619,11 +4582,6 @@ func (s ListHostGroupAccountNamesForUserGroupRequest) String() string {
 
 func (s ListHostGroupAccountNamesForUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostGroupAccountNamesForUserGroupRequest) SetSourceIp(v string) *ListHostGroupAccountNamesForUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostGroupAccountNamesForUserGroupRequest) SetInstanceId(v string) *ListHostGroupAccountNamesForUserGroupRequest {
@@ -4693,7 +4651,6 @@ func (s *ListHostGroupAccountNamesForUserGroupResponse) SetBody(v *ListHostGroup
 }
 
 type ListHostGroupsRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber    *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -4707,11 +4664,6 @@ func (s ListHostGroupsRequest) String() string {
 
 func (s ListHostGroupsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostGroupsRequest) SetSourceIp(v string) *ListHostGroupsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostGroupsRequest) SetInstanceId(v string) *ListHostGroupsRequest {
@@ -4770,8 +4722,8 @@ func (s *ListHostGroupsResponseBody) SetHostGroups(v []*ListHostGroupsResponseBo
 
 type ListHostGroupsResponseBodyHostGroups struct {
 	MemberCount   *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -4788,13 +4740,13 @@ func (s *ListHostGroupsResponseBodyHostGroups) SetMemberCount(v int32) *ListHost
 	return s
 }
 
-func (s *ListHostGroupsResponseBodyHostGroups) SetComment(v string) *ListHostGroupsResponseBodyHostGroups {
-	s.Comment = &v
+func (s *ListHostGroupsResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsResponseBodyHostGroups {
+	s.HostGroupId = &v
 	return s
 }
 
-func (s *ListHostGroupsResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsResponseBodyHostGroups {
-	s.HostGroupId = &v
+func (s *ListHostGroupsResponseBodyHostGroups) SetComment(v string) *ListHostGroupsResponseBodyHostGroups {
+	s.Comment = &v
 	return s
 }
 
@@ -4827,7 +4779,6 @@ func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHos
 }
 
 type ListHostGroupsForUserRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -4843,11 +4794,6 @@ func (s ListHostGroupsForUserRequest) String() string {
 
 func (s ListHostGroupsForUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostGroupsForUserRequest) SetSourceIp(v string) *ListHostGroupsForUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostGroupsForUserRequest) SetInstanceId(v string) *ListHostGroupsForUserRequest {
@@ -4915,8 +4861,8 @@ func (s *ListHostGroupsForUserResponseBody) SetHostGroups(v []*ListHostGroupsFor
 }
 
 type ListHostGroupsForUserResponseBodyHostGroups struct {
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -4928,13 +4874,13 @@ func (s ListHostGroupsForUserResponseBodyHostGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostGroupsForUserResponseBodyHostGroups) SetComment(v string) *ListHostGroupsForUserResponseBodyHostGroups {
-	s.Comment = &v
+func (s *ListHostGroupsForUserResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsForUserResponseBodyHostGroups {
+	s.HostGroupId = &v
 	return s
 }
 
-func (s *ListHostGroupsForUserResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsForUserResponseBodyHostGroups {
-	s.HostGroupId = &v
+func (s *ListHostGroupsForUserResponseBodyHostGroups) SetComment(v string) *ListHostGroupsForUserResponseBodyHostGroups {
+	s.Comment = &v
 	return s
 }
 
@@ -4967,7 +4913,6 @@ func (s *ListHostGroupsForUserResponse) SetBody(v *ListHostGroupsForUserResponse
 }
 
 type ListHostGroupsForUserGroupRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -4983,11 +4928,6 @@ func (s ListHostGroupsForUserGroupRequest) String() string {
 
 func (s ListHostGroupsForUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostGroupsForUserGroupRequest) SetSourceIp(v string) *ListHostGroupsForUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostGroupsForUserGroupRequest) SetInstanceId(v string) *ListHostGroupsForUserGroupRequest {
@@ -5055,8 +4995,8 @@ func (s *ListHostGroupsForUserGroupResponseBody) SetHostGroups(v []*ListHostGrou
 }
 
 type ListHostGroupsForUserGroupResponseBodyHostGroups struct {
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -5068,13 +5008,13 @@ func (s ListHostGroupsForUserGroupResponseBodyHostGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostGroupsForUserGroupResponseBodyHostGroups) SetComment(v string) *ListHostGroupsForUserGroupResponseBodyHostGroups {
-	s.Comment = &v
+func (s *ListHostGroupsForUserGroupResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsForUserGroupResponseBodyHostGroups {
+	s.HostGroupId = &v
 	return s
 }
 
-func (s *ListHostGroupsForUserGroupResponseBodyHostGroups) SetHostGroupId(v string) *ListHostGroupsForUserGroupResponseBodyHostGroups {
-	s.HostGroupId = &v
+func (s *ListHostGroupsForUserGroupResponseBodyHostGroups) SetComment(v string) *ListHostGroupsForUserGroupResponseBodyHostGroups {
+	s.Comment = &v
 	return s
 }
 
@@ -5107,7 +5047,6 @@ func (s *ListHostGroupsForUserGroupResponse) SetBody(v *ListHostGroupsForUserGro
 }
 
 type ListHostsRequest struct {
-	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5127,11 +5066,6 @@ func (s ListHostsRequest) String() string {
 
 func (s ListHostsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostsRequest) SetSourceIp(v string) *ListHostsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostsRequest) SetInstanceId(v string) *ListHostsRequest {
@@ -5190,9 +5124,9 @@ func (s *ListHostsRequest) SetHostGroupId(v string) *ListHostsRequest {
 }
 
 type ListHostsResponseBody struct {
-	Hosts      []*ListHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Hosts      []*ListHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
 func (s ListHostsResponseBody) String() string {
@@ -5203,11 +5137,6 @@ func (s ListHostsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostsResponseBody) SetHosts(v []*ListHostsResponseBodyHosts) *ListHostsResponseBody {
-	s.Hosts = v
-	return s
-}
-
 func (s *ListHostsResponseBody) SetTotalCount(v int32) *ListHostsResponseBody {
 	s.TotalCount = &v
 	return s
@@ -5215,6 +5144,11 @@ func (s *ListHostsResponseBody) SetTotalCount(v int32) *ListHostsResponseBody {
 
 func (s *ListHostsResponseBody) SetRequestId(v string) *ListHostsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListHostsResponseBody) SetHosts(v []*ListHostsResponseBodyHosts) *ListHostsResponseBody {
+	s.Hosts = v
 	return s
 }
 
@@ -5319,7 +5253,6 @@ func (s *ListHostsResponse) SetBody(v *ListHostsResponseBody) *ListHostsResponse
 }
 
 type ListHostsForUserRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -5337,11 +5270,6 @@ func (s ListHostsForUserRequest) String() string {
 
 func (s ListHostsForUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostsForUserRequest) SetSourceIp(v string) *ListHostsForUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostsForUserRequest) SetInstanceId(v string) *ListHostsForUserRequest {
@@ -5390,9 +5318,9 @@ func (s *ListHostsForUserRequest) SetOSType(v string) *ListHostsForUserRequest {
 }
 
 type ListHostsForUserResponseBody struct {
-	Hosts      []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Hosts      []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
 func (s ListHostsForUserResponseBody) String() string {
@@ -5403,11 +5331,6 @@ func (s ListHostsForUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostsForUserResponseBody) SetHosts(v []*ListHostsForUserResponseBodyHosts) *ListHostsForUserResponseBody {
-	s.Hosts = v
-	return s
-}
-
 func (s *ListHostsForUserResponseBody) SetTotalCount(v int32) *ListHostsForUserResponseBody {
 	s.TotalCount = &v
 	return s
@@ -5415,6 +5338,11 @@ func (s *ListHostsForUserResponseBody) SetTotalCount(v int32) *ListHostsForUserR
 
 func (s *ListHostsForUserResponseBody) SetRequestId(v string) *ListHostsForUserResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListHostsForUserResponseBody) SetHosts(v []*ListHostsForUserResponseBodyHosts) *ListHostsForUserResponseBody {
+	s.Hosts = v
 	return s
 }
 
@@ -5495,7 +5423,6 @@ func (s *ListHostsForUserResponse) SetBody(v *ListHostsForUserResponseBody) *Lis
 }
 
 type ListHostsForUserGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -5513,11 +5440,6 @@ func (s ListHostsForUserGroupRequest) String() string {
 
 func (s ListHostsForUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListHostsForUserGroupRequest) SetSourceIp(v string) *ListHostsForUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListHostsForUserGroupRequest) SetInstanceId(v string) *ListHostsForUserGroupRequest {
@@ -5566,9 +5488,9 @@ func (s *ListHostsForUserGroupRequest) SetOSType(v string) *ListHostsForUserGrou
 }
 
 type ListHostsForUserGroupResponseBody struct {
-	Hosts      []*ListHostsForUserGroupResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Hosts      []*ListHostsForUserGroupResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
 func (s ListHostsForUserGroupResponseBody) String() string {
@@ -5579,11 +5501,6 @@ func (s ListHostsForUserGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListHostsForUserGroupResponseBody) SetHosts(v []*ListHostsForUserGroupResponseBodyHosts) *ListHostsForUserGroupResponseBody {
-	s.Hosts = v
-	return s
-}
-
 func (s *ListHostsForUserGroupResponseBody) SetTotalCount(v int32) *ListHostsForUserGroupResponseBody {
 	s.TotalCount = &v
 	return s
@@ -5591,6 +5508,11 @@ func (s *ListHostsForUserGroupResponseBody) SetTotalCount(v int32) *ListHostsFor
 
 func (s *ListHostsForUserGroupResponseBody) SetRequestId(v string) *ListHostsForUserGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListHostsForUserGroupResponseBody) SetHosts(v []*ListHostsForUserGroupResponseBodyHosts) *ListHostsForUserGroupResponseBody {
+	s.Hosts = v
 	return s
 }
 
@@ -5671,8 +5593,6 @@ func (s *ListHostsForUserGroupResponse) SetBody(v *ListHostsForUserGroupResponse
 }
 
 type ListTagKeysRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -5685,16 +5605,6 @@ func (s ListTagKeysRequest) String() string {
 
 func (s ListTagKeysRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListTagKeysRequest) SetSourceIp(v string) *ListTagKeysRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ListTagKeysRequest) SetLang(v string) *ListTagKeysRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ListTagKeysRequest) SetRegionId(v string) *ListTagKeysRequest {
@@ -5718,10 +5628,10 @@ func (s *ListTagKeysRequest) SetPageNumber(v int32) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TagKeys    []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
@@ -5733,13 +5643,13 @@ func (s ListTagKeysResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBody {
-	s.TotalCount = &v
+func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBody {
-	s.RequestId = &v
+func (s *ListTagKeysResponseBody) SetPageNumber(v int32) *ListTagKeysResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5748,8 +5658,8 @@ func (s *ListTagKeysResponseBody) SetPageSize(v int32) *ListTagKeysResponseBody 
 	return s
 }
 
-func (s *ListTagKeysResponseBody) SetPageNumber(v int32) *ListTagKeysResponseBody {
-	s.PageNumber = &v
+func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5805,8 +5715,6 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	SourceIp     *string                       `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -5820,16 +5728,6 @@ func (s ListTagResourcesRequest) String() string {
 
 func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListTagResourcesRequest) SetSourceIp(v string) *ListTagResourcesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetLang(v string) *ListTagResourcesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
@@ -5910,8 +5808,8 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -5924,13 +5822,13 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceType = &v
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
 	return s
 }
 
@@ -5968,7 +5866,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserGroupsRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber    *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5982,11 +5879,6 @@ func (s ListUserGroupsRequest) String() string {
 
 func (s ListUserGroupsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListUserGroupsRequest) SetSourceIp(v string) *ListUserGroupsRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListUserGroupsRequest) SetInstanceId(v string) *ListUserGroupsRequest {
@@ -6044,10 +5936,10 @@ func (s *ListUserGroupsResponseBody) SetUserGroups(v []*ListUserGroupsResponseBo
 }
 
 type ListUserGroupsResponseBodyUserGroups struct {
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 	MemberCount   *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
 	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	UserGroupId   *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
 func (s ListUserGroupsResponseBodyUserGroups) String() string {
@@ -6056,6 +5948,11 @@ func (s ListUserGroupsResponseBodyUserGroups) String() string {
 
 func (s ListUserGroupsResponseBodyUserGroups) GoString() string {
 	return s.String()
+}
+
+func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupName(v string) *ListUserGroupsResponseBodyUserGroups {
+	s.UserGroupName = &v
+	return s
 }
 
 func (s *ListUserGroupsResponseBodyUserGroups) SetMemberCount(v int32) *ListUserGroupsResponseBodyUserGroups {
@@ -6070,11 +5967,6 @@ func (s *ListUserGroupsResponseBodyUserGroups) SetComment(v string) *ListUserGro
 
 func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupId(v string) *ListUserGroupsResponseBodyUserGroups {
 	s.UserGroupId = &v
-	return s
-}
-
-func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupName(v string) *ListUserGroupsResponseBodyUserGroups {
-	s.UserGroupName = &v
 	return s
 }
 
@@ -6102,7 +5994,6 @@ func (s *ListUserGroupsResponse) SetBody(v *ListUserGroupsResponseBody) *ListUse
 }
 
 type ListUsersRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -6122,11 +6013,6 @@ func (s ListUsersRequest) String() string {
 
 func (s ListUsersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListUsersRequest) SetSourceIp(v string) *ListUsersRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ListUsersRequest) SetInstanceId(v string) *ListUsersRequest {
@@ -6222,8 +6108,8 @@ type ListUsersResponseBodyUsers struct {
 	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Source            *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	UserName          *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserState         []*string `json:"UserState,omitempty" xml:"UserState,omitempty" type:"Repeated"`
 	SourceUserId      *string   `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	UserState         []*string `json:"UserState,omitempty" xml:"UserState,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -6274,13 +6160,13 @@ func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBod
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetUserState(v []*string) *ListUsersResponseBodyUsers {
-	s.UserState = v
+func (s *ListUsersResponseBodyUsers) SetSourceUserId(v string) *ListUsersResponseBodyUsers {
+	s.SourceUserId = &v
 	return s
 }
 
-func (s *ListUsersResponseBodyUsers) SetSourceUserId(v string) *ListUsersResponseBodyUsers {
-	s.SourceUserId = &v
+func (s *ListUsersResponseBodyUsers) SetUserState(v []*string) *ListUsersResponseBodyUsers {
+	s.UserState = v
 	return s
 }
 
@@ -6308,7 +6194,6 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type LockUsersRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserIds    *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
@@ -6320,11 +6205,6 @@ func (s LockUsersRequest) String() string {
 
 func (s LockUsersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *LockUsersRequest) SetSourceIp(v string) *LockUsersRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *LockUsersRequest) SetInstanceId(v string) *LockUsersRequest {
@@ -6366,9 +6246,9 @@ func (s *LockUsersResponseBody) SetResults(v []*LockUsersResponseBodyResults) *L
 }
 
 type LockUsersResponseBodyResults struct {
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s LockUsersResponseBodyResults) String() string {
@@ -6379,11 +6259,6 @@ func (s LockUsersResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *LockUsersResponseBodyResults) SetUserId(v string) *LockUsersResponseBodyResults {
-	s.UserId = &v
-	return s
-}
-
 func (s *LockUsersResponseBodyResults) SetCode(v string) *LockUsersResponseBodyResults {
 	s.Code = &v
 	return s
@@ -6391,6 +6266,11 @@ func (s *LockUsersResponseBodyResults) SetCode(v string) *LockUsersResponseBodyR
 
 func (s *LockUsersResponseBodyResults) SetMessage(v string) *LockUsersResponseBodyResults {
 	s.Message = &v
+	return s
+}
+
+func (s *LockUsersResponseBodyResults) SetUserId(v string) *LockUsersResponseBodyResults {
+	s.UserId = &v
 	return s
 }
 
@@ -6418,7 +6298,6 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 }
 
 type ModifyHostRequest struct {
-	SourceIp           *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostId             *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
@@ -6435,11 +6314,6 @@ func (s ModifyHostRequest) String() string {
 
 func (s ModifyHostRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyHostRequest) SetSourceIp(v string) *ModifyHostRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyHostRequest) SetInstanceId(v string) *ModifyHostRequest {
@@ -6523,7 +6397,6 @@ func (s *ModifyHostResponse) SetBody(v *ModifyHostResponseBody) *ModifyHostRespo
 }
 
 type ModifyHostAccountRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostAccountId   *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
@@ -6539,11 +6412,6 @@ func (s ModifyHostAccountRequest) String() string {
 
 func (s ModifyHostAccountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyHostAccountRequest) SetSourceIp(v string) *ModifyHostAccountRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyHostAccountRequest) SetInstanceId(v string) *ModifyHostAccountRequest {
@@ -6622,7 +6490,6 @@ func (s *ModifyHostAccountResponse) SetBody(v *ModifyHostAccountResponseBody) *M
 }
 
 type ModifyHostGroupRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
@@ -6636,11 +6503,6 @@ func (s ModifyHostGroupRequest) String() string {
 
 func (s ModifyHostGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyHostGroupRequest) SetSourceIp(v string) *ModifyHostGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyHostGroupRequest) SetInstanceId(v string) *ModifyHostGroupRequest {
@@ -6709,7 +6571,6 @@ func (s *ModifyHostGroupResponse) SetBody(v *ModifyHostGroupResponseBody) *Modif
 }
 
 type ModifyHostsActiveAddressTypeRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostIds           *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
@@ -6722,11 +6583,6 @@ func (s ModifyHostsActiveAddressTypeRequest) String() string {
 
 func (s ModifyHostsActiveAddressTypeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyHostsActiveAddressTypeRequest) SetSourceIp(v string) *ModifyHostsActiveAddressTypeRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyHostsActiveAddressTypeRequest) SetInstanceId(v string) *ModifyHostsActiveAddressTypeRequest {
@@ -6825,7 +6681,6 @@ func (s *ModifyHostsActiveAddressTypeResponse) SetBody(v *ModifyHostsActiveAddre
 }
 
 type ModifyHostsPortRequest struct {
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostIds      *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
@@ -6839,11 +6694,6 @@ func (s ModifyHostsPortRequest) String() string {
 
 func (s ModifyHostsPortRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyHostsPortRequest) SetSourceIp(v string) *ModifyHostsPortRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyHostsPortRequest) SetInstanceId(v string) *ModifyHostsPortRequest {
@@ -6947,8 +6797,6 @@ func (s *ModifyHostsPortResponse) SetBody(v *ModifyHostsPortResponseBody) *Modif
 }
 
 type ModifyInstanceAttributeRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -6960,16 +6808,6 @@ func (s ModifyInstanceAttributeRequest) String() string {
 
 func (s ModifyInstanceAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyInstanceAttributeRequest) SetSourceIp(v string) *ModifyInstanceAttributeRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyInstanceAttributeRequest) SetLang(v string) *ModifyInstanceAttributeRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyInstanceAttributeRequest) SetInstanceId(v string) *ModifyInstanceAttributeRequest {
@@ -7027,8 +6865,88 @@ func (s *ModifyInstanceAttributeResponse) SetBody(v *ModifyInstanceAttributeResp
 	return s
 }
 
+type ModifyInstanceUpgradePeriodRequest struct {
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpgradeStartTime *string `json:"UpgradeStartTime,omitempty" xml:"UpgradeStartTime,omitempty"`
+	UpgradeMode      *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+}
+
+func (s ModifyInstanceUpgradePeriodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceUpgradePeriodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceUpgradePeriodRequest) SetLang(v string) *ModifyInstanceUpgradePeriodRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyInstanceUpgradePeriodRequest) SetInstanceId(v string) *ModifyInstanceUpgradePeriodRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceUpgradePeriodRequest) SetRegionId(v string) *ModifyInstanceUpgradePeriodRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyInstanceUpgradePeriodRequest) SetUpgradeStartTime(v string) *ModifyInstanceUpgradePeriodRequest {
+	s.UpgradeStartTime = &v
+	return s
+}
+
+func (s *ModifyInstanceUpgradePeriodRequest) SetUpgradeMode(v string) *ModifyInstanceUpgradePeriodRequest {
+	s.UpgradeMode = &v
+	return s
+}
+
+type ModifyInstanceUpgradePeriodResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceUpgradePeriodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceUpgradePeriodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceUpgradePeriodResponseBody) SetRequestId(v string) *ModifyInstanceUpgradePeriodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceUpgradePeriodResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyInstanceUpgradePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceUpgradePeriodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceUpgradePeriodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceUpgradePeriodResponse) SetHeaders(v map[string]*string) *ModifyInstanceUpgradePeriodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceUpgradePeriodResponse) SetBody(v *ModifyInstanceUpgradePeriodResponseBody) *ModifyInstanceUpgradePeriodResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyUserRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -7046,11 +6964,6 @@ func (s ModifyUserRequest) String() string {
 
 func (s ModifyUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyUserRequest) SetSourceIp(v string) *ModifyUserRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyUserRequest) SetInstanceId(v string) *ModifyUserRequest {
@@ -7139,7 +7052,6 @@ func (s *ModifyUserResponse) SetBody(v *ModifyUserResponseBody) *ModifyUserRespo
 }
 
 type ModifyUserGroupRequest struct {
-	SourceIp      *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId   *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -7153,11 +7065,6 @@ func (s ModifyUserGroupRequest) String() string {
 
 func (s ModifyUserGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyUserGroupRequest) SetSourceIp(v string) *ModifyUserGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ModifyUserGroupRequest) SetInstanceId(v string) *ModifyUserGroupRequest {
@@ -7226,8 +7133,6 @@ func (s *ModifyUserGroupResponse) SetBody(v *ModifyUserGroupResponseBody) *Modif
 }
 
 type MoveResourceGroupRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -7240,16 +7145,6 @@ func (s MoveResourceGroupRequest) String() string {
 
 func (s MoveResourceGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *MoveResourceGroupRequest) SetSourceIp(v string) *MoveResourceGroupRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *MoveResourceGroupRequest) SetLang(v string) *MoveResourceGroupRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupRequest {
@@ -7313,7 +7208,6 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RemoveHostsFromGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
@@ -7326,11 +7220,6 @@ func (s RemoveHostsFromGroupRequest) String() string {
 
 func (s RemoveHostsFromGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RemoveHostsFromGroupRequest) SetSourceIp(v string) *RemoveHostsFromGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *RemoveHostsFromGroupRequest) SetInstanceId(v string) *RemoveHostsFromGroupRequest {
@@ -7435,7 +7324,6 @@ func (s *RemoveHostsFromGroupResponse) SetBody(v *RemoveHostsFromGroupResponseBo
 }
 
 type RemoveUsersFromGroupRequest struct {
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
@@ -7448,11 +7336,6 @@ func (s RemoveUsersFromGroupRequest) String() string {
 
 func (s RemoveUsersFromGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RemoveUsersFromGroupRequest) SetSourceIp(v string) *RemoveUsersFromGroupRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *RemoveUsersFromGroupRequest) SetInstanceId(v string) *RemoveUsersFromGroupRequest {
@@ -7499,10 +7382,10 @@ func (s *RemoveUsersFromGroupResponseBody) SetResults(v []*RemoveUsersFromGroupR
 }
 
 type RemoveUsersFromGroupResponseBodyResults struct {
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RemoveUsersFromGroupResponseBodyResults) String() string {
@@ -7513,16 +7396,6 @@ func (s RemoveUsersFromGroupResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveUsersFromGroupResponseBodyResults) SetUserGroupId(v string) *RemoveUsersFromGroupResponseBodyResults {
-	s.UserGroupId = &v
-	return s
-}
-
-func (s *RemoveUsersFromGroupResponseBodyResults) SetUserId(v string) *RemoveUsersFromGroupResponseBodyResults {
-	s.UserId = &v
-	return s
-}
-
 func (s *RemoveUsersFromGroupResponseBodyResults) SetCode(v string) *RemoveUsersFromGroupResponseBodyResults {
 	s.Code = &v
 	return s
@@ -7530,6 +7403,16 @@ func (s *RemoveUsersFromGroupResponseBodyResults) SetCode(v string) *RemoveUsers
 
 func (s *RemoveUsersFromGroupResponseBodyResults) SetMessage(v string) *RemoveUsersFromGroupResponseBodyResults {
 	s.Message = &v
+	return s
+}
+
+func (s *RemoveUsersFromGroupResponseBodyResults) SetUserGroupId(v string) *RemoveUsersFromGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+func (s *RemoveUsersFromGroupResponseBodyResults) SetUserId(v string) *RemoveUsersFromGroupResponseBodyResults {
+	s.UserId = &v
 	return s
 }
 
@@ -7557,7 +7440,6 @@ func (s *RemoveUsersFromGroupResponse) SetBody(v *RemoveUsersFromGroupResponseBo
 }
 
 type ResetHostAccountCredentialRequest struct {
-	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	HostAccountId  *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
@@ -7570,11 +7452,6 @@ func (s ResetHostAccountCredentialRequest) String() string {
 
 func (s ResetHostAccountCredentialRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ResetHostAccountCredentialRequest) SetSourceIp(v string) *ResetHostAccountCredentialRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *ResetHostAccountCredentialRequest) SetInstanceId(v string) *ResetHostAccountCredentialRequest {
@@ -7638,13 +7515,10 @@ func (s *ResetHostAccountCredentialResponse) SetBody(v *ResetHostAccountCredenti
 }
 
 type StartInstanceRequest struct {
-	SourceIp               *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VswitchId              *string   `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	InstanceSecurityGroups []*string `json:"InstanceSecurityGroups,omitempty" xml:"InstanceSecurityGroups,omitempty" type:"Repeated"`
-	SecurityGroupIds       []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VswitchId        *string   `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s StartInstanceRequest) String() string {
@@ -7653,16 +7527,6 @@ func (s StartInstanceRequest) String() string {
 
 func (s StartInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StartInstanceRequest) SetSourceIp(v string) *StartInstanceRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *StartInstanceRequest) SetLang(v string) *StartInstanceRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *StartInstanceRequest) SetInstanceId(v string) *StartInstanceRequest {
@@ -7680,19 +7544,14 @@ func (s *StartInstanceRequest) SetRegionId(v string) *StartInstanceRequest {
 	return s
 }
 
-func (s *StartInstanceRequest) SetInstanceSecurityGroups(v []*string) *StartInstanceRequest {
-	s.InstanceSecurityGroups = v
-	return s
-}
-
 func (s *StartInstanceRequest) SetSecurityGroupIds(v []*string) *StartInstanceRequest {
 	s.SecurityGroupIds = v
 	return s
 }
 
 type StartInstanceResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartInstanceResponseBody) String() string {
@@ -7703,13 +7562,13 @@ func (s StartInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *StartInstanceResponseBody) SetRequestId(v string) *StartInstanceResponseBody {
-	s.RequestId = &v
+func (s *StartInstanceResponseBody) SetInstanceId(v string) *StartInstanceResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *StartInstanceResponseBody) SetInstanceId(v string) *StartInstanceResponseBody {
-	s.InstanceId = &v
+func (s *StartInstanceResponseBody) SetRequestId(v string) *StartInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7737,8 +7596,6 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 }
 
 type TagResourcesRequest struct {
-	SourceIp     *string                   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -7751,16 +7608,6 @@ func (s TagResourcesRequest) String() string {
 
 func (s TagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *TagResourcesRequest) SetSourceIp(v string) *TagResourcesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetLang(v string) *TagResourcesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
@@ -7847,7 +7694,6 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnlockUsersRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserIds    *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
@@ -7859,11 +7705,6 @@ func (s UnlockUsersRequest) String() string {
 
 func (s UnlockUsersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UnlockUsersRequest) SetSourceIp(v string) *UnlockUsersRequest {
-	s.SourceIp = &v
-	return s
 }
 
 func (s *UnlockUsersRequest) SetInstanceId(v string) *UnlockUsersRequest {
@@ -7905,9 +7746,9 @@ func (s *UnlockUsersResponseBody) SetResults(v []*UnlockUsersResponseBodyResults
 }
 
 type UnlockUsersResponseBodyResults struct {
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UnlockUsersResponseBodyResults) String() string {
@@ -7918,11 +7759,6 @@ func (s UnlockUsersResponseBodyResults) GoString() string {
 	return s.String()
 }
 
-func (s *UnlockUsersResponseBodyResults) SetUserId(v string) *UnlockUsersResponseBodyResults {
-	s.UserId = &v
-	return s
-}
-
 func (s *UnlockUsersResponseBodyResults) SetCode(v string) *UnlockUsersResponseBodyResults {
 	s.Code = &v
 	return s
@@ -7930,6 +7766,11 @@ func (s *UnlockUsersResponseBodyResults) SetCode(v string) *UnlockUsersResponseB
 
 func (s *UnlockUsersResponseBodyResults) SetMessage(v string) *UnlockUsersResponseBodyResults {
 	s.Message = &v
+	return s
+}
+
+func (s *UnlockUsersResponseBodyResults) SetUserId(v string) *UnlockUsersResponseBodyResults {
+	s.UserId = &v
 	return s
 }
 
@@ -7957,8 +7798,6 @@ func (s *UnlockUsersResponse) SetBody(v *UnlockUsersResponseBody) *UnlockUsersRe
 }
 
 type UntagResourcesRequest struct {
-	SourceIp     *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
@@ -7972,16 +7811,6 @@ func (s UntagResourcesRequest) String() string {
 
 func (s UntagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UntagResourcesRequest) SetSourceIp(v string) *UntagResourcesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetLang(v string) *UntagResourcesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
@@ -8045,6 +7874,75 @@ func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResource
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeInstanceImageVersionRequest struct {
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpgradeInstanceImageVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceImageVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceImageVersionRequest) SetLang(v string) *UpgradeInstanceImageVersionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *UpgradeInstanceImageVersionRequest) SetInstanceId(v string) *UpgradeInstanceImageVersionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpgradeInstanceImageVersionRequest) SetRegionId(v string) *UpgradeInstanceImageVersionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpgradeInstanceImageVersionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeInstanceImageVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceImageVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceImageVersionResponseBody) SetRequestId(v string) *UpgradeInstanceImageVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeInstanceImageVersionResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpgradeInstanceImageVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeInstanceImageVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeInstanceImageVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeInstanceImageVersionResponse) SetHeaders(v map[string]*string) *UpgradeInstanceImageVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeInstanceImageVersionResponse) SetBody(v *UpgradeInstanceImageVersionResponseBody) *UpgradeInstanceImageVersionResponse {
 	s.Body = v
 	return s
 }
@@ -8936,6 +8834,34 @@ func (client *Client) GetHostGroup(request *GetHostGroupRequest) (_result *GetHo
 	return _result, _err
 }
 
+func (client *Client) GetInstanceUpgradeInfoWithOptions(request *GetInstanceUpgradeInfoRequest, runtime *util.RuntimeOptions) (_result *GetInstanceUpgradeInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetInstanceUpgradeInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetInstanceUpgradeInfo"), tea.String("2019-12-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceUpgradeInfo(request *GetInstanceUpgradeInfoRequest) (_result *GetInstanceUpgradeInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInstanceUpgradeInfoResponse{}
+	_body, _err := client.GetInstanceUpgradeInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9608,6 +9534,34 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 	return _result, _err
 }
 
+func (client *Client) ModifyInstanceUpgradePeriodWithOptions(request *ModifyInstanceUpgradePeriodRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceUpgradePeriodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyInstanceUpgradePeriodResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceUpgradePeriod"), tea.String("2019-12-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceUpgradePeriod(request *ModifyInstanceUpgradePeriodRequest) (_result *ModifyInstanceUpgradePeriodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceUpgradePeriodResponse{}
+	_body, _err := client.ModifyInstanceUpgradePeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime *util.RuntimeOptions) (_result *ModifyUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9881,6 +9835,34 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeInstanceImageVersionWithOptions(request *UpgradeInstanceImageVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceImageVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpgradeInstanceImageVersionResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpgradeInstanceImageVersion"), tea.String("2019-12-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeInstanceImageVersion(request *UpgradeInstanceImageVersionRequest) (_result *UpgradeInstanceImageVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeInstanceImageVersionResponse{}
+	_body, _err := client.UpgradeInstanceImageVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
