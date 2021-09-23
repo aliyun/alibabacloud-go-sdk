@@ -93,6 +93,7 @@ type ContinueCreateStackRequest struct {
 	TemplateVersion     *string                                 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	RecreatingResources []*string                               `json:"RecreatingResources,omitempty" xml:"RecreatingResources,omitempty" type:"Repeated"`
 	Parameters          []*ContinueCreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Parallelism         *int64                                  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 }
 
 func (s ContinueCreateStackRequest) String() string {
@@ -155,6 +156,11 @@ func (s *ContinueCreateStackRequest) SetRecreatingResources(v []*string) *Contin
 
 func (s *ContinueCreateStackRequest) SetParameters(v []*ContinueCreateStackRequestParameters) *ContinueCreateStackRequest {
 	s.Parameters = v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetParallelism(v int64) *ContinueCreateStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -499,6 +505,7 @@ type CreateStackRequest struct {
 	NotificationURLs   []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	Tags               []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	ResourceGroupId    *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Parallelism        *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 }
 
 func (s CreateStackRequest) String() string {
@@ -596,6 +603,11 @@ func (s *CreateStackRequest) SetTags(v []*CreateStackRequestTags) *CreateStackRe
 
 func (s *CreateStackRequest) SetResourceGroupId(v string) *CreateStackRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetParallelism(v int64) *CreateStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -7368,6 +7380,7 @@ type PreviewStackRequest struct {
 	TemplateId       *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateVersion  *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters       []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Parallelism      *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 }
 
 func (s PreviewStackRequest) String() string {
@@ -7435,6 +7448,11 @@ func (s *PreviewStackRequest) SetTemplateVersion(v string) *PreviewStackRequest 
 
 func (s *PreviewStackRequest) SetParameters(v []*PreviewStackRequestParameters) *PreviewStackRequest {
 	s.Parameters = v
+	return s
+}
+
+func (s *PreviewStackRequest) SetParallelism(v int64) *PreviewStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -8215,6 +8233,7 @@ type UpdateStackRequest struct {
 	TemplateVersion             *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters                  []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	Tags                        []*UpdateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Parallelism                 *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 }
 
 func (s UpdateStackRequest) String() string {
@@ -8312,6 +8331,11 @@ func (s *UpdateStackRequest) SetParameters(v []*UpdateStackRequestParameters) *U
 
 func (s *UpdateStackRequest) SetTags(v []*UpdateStackRequestTags) *UpdateStackRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *UpdateStackRequest) SetParallelism(v int64) *UpdateStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
