@@ -2199,6 +2199,195 @@ func (s *SkipPipelineJobRunResponse) SetBody(v *SkipPipelineJobRunResponseBody) 
 	return s
 }
 
+type GetOrganizationMemberResponseBody struct {
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 成员
+	Member *GetOrganizationMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetOrganizationMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationMemberResponseBody) SetRequestId(v string) *GetOrganizationMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBody) SetErrorMessage(v string) *GetOrganizationMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBody) SetMember(v *GetOrganizationMemberResponseBodyMember) *GetOrganizationMemberResponseBody {
+	s.Member = v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBody) SetErrorCode(v string) *GetOrganizationMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBody) SetSuccess(v bool) *GetOrganizationMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOrganizationMemberResponseBodyMember struct {
+	// 阿里云用户PK
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// 生日
+	Birthday *int64 `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// 部门名称列表
+	DeptLists []*string `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
+	// 邮箱
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// 入职时间
+	HiredDate *int64 `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
+	// 第三方信息
+	Identities *GetOrganizationMemberResponseBodyMemberIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	// 加入云效企业时间
+	JoinTime *int64 `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
+	// 最近一次访问时间
+	LastVisitTime *int64 `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
+	// 手机号
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// 企业成员名
+	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
+	// 企业角色
+	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+	// 用户状态
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s GetOrganizationMemberResponseBodyMember) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationMemberResponseBodyMember) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetAccountId(v string) *GetOrganizationMemberResponseBodyMember {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetBirthday(v int64) *GetOrganizationMemberResponseBodyMember {
+	s.Birthday = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetDeptLists(v []*string) *GetOrganizationMemberResponseBodyMember {
+	s.DeptLists = v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetEmail(v string) *GetOrganizationMemberResponseBodyMember {
+	s.Email = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetHiredDate(v int64) *GetOrganizationMemberResponseBodyMember {
+	s.HiredDate = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetIdentities(v *GetOrganizationMemberResponseBodyMemberIdentities) *GetOrganizationMemberResponseBodyMember {
+	s.Identities = v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetJoinTime(v int64) *GetOrganizationMemberResponseBodyMember {
+	s.JoinTime = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetLastVisitTime(v int64) *GetOrganizationMemberResponseBodyMember {
+	s.LastVisitTime = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetMobile(v string) *GetOrganizationMemberResponseBodyMember {
+	s.Mobile = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationMemberName(v string) *GetOrganizationMemberResponseBodyMember {
+	s.OrganizationMemberName = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationRole(v string) *GetOrganizationMemberResponseBodyMember {
+	s.OrganizationRole = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetState(v string) *GetOrganizationMemberResponseBodyMember {
+	s.State = &v
+	return s
+}
+
+type GetOrganizationMemberResponseBodyMemberIdentities struct {
+	// 第三方系统的用户 id
+	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	// 第三方系统
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+}
+
+func (s GetOrganizationMemberResponseBodyMemberIdentities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationMemberResponseBodyMemberIdentities) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationMemberResponseBodyMemberIdentities) SetExternUid(v string) *GetOrganizationMemberResponseBodyMemberIdentities {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMemberIdentities) SetProvider(v string) *GetOrganizationMemberResponseBodyMemberIdentities {
+	s.Provider = &v
+	return s
+}
+
+type GetOrganizationMemberResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetOrganizationMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrganizationMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrganizationMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrganizationMemberResponse) SetHeaders(v map[string]*string) *GetOrganizationMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrganizationMemberResponse) SetBody(v *GetOrganizationMemberResponseBody) *GetOrganizationMemberResponse {
+	s.Body = v
+	return s
+}
+
 type StopPipelineJobRunResponseBody struct {
 	// 请求id，每次请求都是唯一值，便于后续排查问题
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
@@ -3821,6 +4010,268 @@ func (s *ReleaseWorkspaceResponse) SetBody(v *ReleaseWorkspaceResponseBody) *Rel
 	return s
 }
 
+type ListOrganizationMembersRequest struct {
+	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
+	Provider               *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	ExternUid              *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	State                  *string `json:"state,omitempty" xml:"state,omitempty"`
+	NextToken              *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	MaxResults             *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	JoinTimeFrom           *int64  `json:"joinTimeFrom,omitempty" xml:"joinTimeFrom,omitempty"`
+	JoinTimeTo             *int64  `json:"joinTimeTo,omitempty" xml:"joinTimeTo,omitempty"`
+}
+
+func (s ListOrganizationMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersRequest) SetOrganizationMemberName(v string) *ListOrganizationMembersRequest {
+	s.OrganizationMemberName = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetProvider(v string) *ListOrganizationMembersRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetExternUid(v string) *ListOrganizationMembersRequest {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetState(v string) *ListOrganizationMembersRequest {
+	s.State = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetNextToken(v string) *ListOrganizationMembersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetMaxResults(v int64) *ListOrganizationMembersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetJoinTimeFrom(v int64) *ListOrganizationMembersRequest {
+	s.JoinTimeFrom = &v
+	return s
+}
+
+func (s *ListOrganizationMembersRequest) SetJoinTimeTo(v int64) *ListOrganizationMembersRequest {
+	s.JoinTimeTo = &v
+	return s
+}
+
+type ListOrganizationMembersResponseBody struct {
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 分页Token
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 总数
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// 成员列表
+	Members []*ListOrganizationMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+}
+
+func (s ListOrganizationMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBody) SetRequestId(v string) *ListOrganizationMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetErrorMessage(v string) *ListOrganizationMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetSuccess(v bool) *ListOrganizationMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetErrorCode(v string) *ListOrganizationMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetNextToken(v string) *ListOrganizationMembersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetTotalCount(v int64) *ListOrganizationMembersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBody) SetMembers(v []*ListOrganizationMembersResponseBodyMembers) *ListOrganizationMembersResponseBody {
+	s.Members = v
+	return s
+}
+
+type ListOrganizationMembersResponseBodyMembers struct {
+	// 阿里云用户ID
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// 生日
+	Birthday *int64 `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// 部门名称列表
+	DeptLists []*string `json:"deptLists,omitempty" xml:"deptLists,omitempty" type:"Repeated"`
+	// 邮箱
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// 入职时间
+	HiredDate *int64 `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
+	// 第三方信息
+	Identities *ListOrganizationMembersResponseBodyMembersIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	// 加入云效企业时间
+	JoinTime *int64 `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
+	// 最近一次访问时间
+	LastVisitTime *int64 `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
+	// 手机号
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// 企业成员名
+	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
+	// 企业角色
+	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+	// 用户状态
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListOrganizationMembersResponseBodyMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBodyMembers) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetAccountId(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetBirthday(v int64) *ListOrganizationMembersResponseBodyMembers {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetDeptLists(v []*string) *ListOrganizationMembersResponseBodyMembers {
+	s.DeptLists = v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetEmail(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetHiredDate(v int64) *ListOrganizationMembersResponseBodyMembers {
+	s.HiredDate = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetIdentities(v *ListOrganizationMembersResponseBodyMembersIdentities) *ListOrganizationMembersResponseBodyMembers {
+	s.Identities = v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetJoinTime(v int64) *ListOrganizationMembersResponseBodyMembers {
+	s.JoinTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetLastVisitTime(v int64) *ListOrganizationMembersResponseBodyMembers {
+	s.LastVisitTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetMobile(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationMemberName(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.OrganizationMemberName = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationRole(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.OrganizationRole = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetState(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.State = &v
+	return s
+}
+
+type ListOrganizationMembersResponseBodyMembersIdentities struct {
+	// 第三方系统的用户Id
+	ExternUid *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	// 第三方系统
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+}
+
+func (s ListOrganizationMembersResponseBodyMembersIdentities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBodyMembersIdentities) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBodyMembersIdentities) SetExternUid(v string) *ListOrganizationMembersResponseBodyMembersIdentities {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembersIdentities) SetProvider(v string) *ListOrganizationMembersResponseBodyMembersIdentities {
+	s.Provider = &v
+	return s
+}
+
+type ListOrganizationMembersResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOrganizationMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponse) SetHeaders(v map[string]*string) *ListOrganizationMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOrganizationMembersResponse) SetBody(v *ListOrganizationMembersResponseBody) *ListOrganizationMembersResponse {
+	s.Body = v
+	return s
+}
+
 type ListVariableGroupsRequest struct {
 	// 排序条件
 	PageSort *string `json:"pageSort,omitempty" xml:"pageSort,omitempty"`
@@ -4454,6 +4905,10 @@ func (client *Client) RetryPipelineJobRun(organizationId *string, pipelineId *st
 }
 
 func (client *Client) RetryPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryPipelineJobRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
+	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4479,6 +4934,9 @@ func (client *Client) ListResourceMembers(organizationId *string, resourceType *
 }
 
 func (client *Client) ListResourceMembersWithOptions(organizationId *string, resourceType *string, resourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceMembersResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	resourceType = openapiutil.GetEncodeParam(resourceType)
+	resourceId = openapiutil.GetEncodeParam(resourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4504,6 +4962,8 @@ func (client *Client) GetHostGroup(organizationId *string, id *string) (_result 
 }
 
 func (client *Client) GetHostGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHostGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4529,6 +4989,8 @@ func (client *Client) GetVariableGroup(organizationId *string, id *string) (_res
 }
 
 func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVariableGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4558,6 +5020,7 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PipelineName)) {
 		query["pipelineName"] = request.PipelineName
@@ -4629,6 +5092,10 @@ func (client *Client) UpdateResourceMemberWithOptions(organizationId *string, re
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	resourceType = openapiutil.GetEncodeParam(resourceType)
+	resourceId = openapiutil.GetEncodeParam(resourceId)
+	accountId = openapiutil.GetEncodeParam(accountId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
 		body["roleName"] = request.RoleName
@@ -4664,6 +5131,8 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
@@ -4703,6 +5172,10 @@ func (client *Client) DeleteResourceMember(organizationId *string, resourceType 
 }
 
 func (client *Client) DeleteResourceMemberWithOptions(organizationId *string, resourceType *string, resourceId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceMemberResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	resourceType = openapiutil.GetEncodeParam(resourceType)
+	resourceId = openapiutil.GetEncodeParam(resourceId)
+	accountId = openapiutil.GetEncodeParam(accountId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4732,6 +5205,7 @@ func (client *Client) ListHostGroupsWithOptions(organizationId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ids)) {
 		query["ids"] = request.Ids
@@ -4795,6 +5269,7 @@ func (client *Client) ResetSshKey(organizationId *string) (_result *ResetSshKeyR
 }
 
 func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResetSshKeyResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4887,6 +5362,7 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SericeConnectionType)) {
 		query["sericeConnectionType"] = request.SericeConnectionType
@@ -4922,6 +5398,7 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
@@ -4989,6 +5466,9 @@ func (client *Client) StopPipelineRun(organizationId *string, pipelineId *string
 }
 
 func (client *Client) StopPipelineRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopPipelineRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5018,6 +5498,8 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
@@ -5089,6 +5571,9 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	resourceType = openapiutil.GetEncodeParam(resourceType)
+	resourceId = openapiutil.GetEncodeParam(resourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		body["accountId"] = request.AccountId
@@ -5124,11 +5609,42 @@ func (client *Client) SkipPipelineJobRun(organizationId *string, pipelineId *str
 }
 
 func (client *Client) SkipPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SkipPipelineJobRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
+	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	_result = &SkipPipelineJobRunResponse{}
 	_body, _err := client.DoROARequest(tea.String("SkipPipelineJobRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)+"/skip"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrganizationMember(organizationId *string, accountId *string) (_result *GetOrganizationMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOrganizationMemberResponse{}
+	_body, _err := client.GetOrganizationMemberWithOptions(organizationId, accountId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrganizationMemberResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	accountId = openapiutil.GetEncodeParam(accountId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetOrganizationMemberResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetOrganizationMember"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/members/"+tea.StringValue(accountId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5149,6 +5665,10 @@ func (client *Client) StopPipelineJobRun(organizationId *string, pipelineId *str
 }
 
 func (client *Client) StopPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopPipelineJobRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
+	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5178,6 +5698,8 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Params)) {
 		body["params"] = request.Params
@@ -5266,6 +5788,9 @@ func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string,
 }
 
 func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5291,6 +5816,8 @@ func (client *Client) GetPipeline(organizationId *string, pipelineId *string) (_
 }
 
 func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5320,6 +5847,7 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
@@ -5359,6 +5887,8 @@ func (client *Client) DeleteVariableGroup(organizationId *string, id *string) (_
 }
 
 func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVariableGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5384,6 +5914,7 @@ func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceRe
 }
 
 func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5409,6 +5940,7 @@ func (client *Client) CreateSshKey(organizationId *string) (_result *CreateSshKe
 }
 
 func (client *Client) CreateSshKeyWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSshKeyResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5434,6 +5966,8 @@ func (client *Client) DeleteHostGroup(organizationId *string, id *string) (_resu
 }
 
 func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHostGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5459,11 +5993,76 @@ func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWor
 }
 
 func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseWorkspaceResponse, _err error) {
+	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	_result = &ReleaseWorkspaceResponse{}
 	_body, _err := client.DoROARequest(tea.String("ReleaseWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)+"/release"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationMembers(organizationId *string, request *ListOrganizationMembersRequest) (_result *ListOrganizationMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOrganizationMembersResponse{}
+	_body, _err := client.ListOrganizationMembersWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationMembersWithOptions(organizationId *string, request *ListOrganizationMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOrganizationMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationMemberName)) {
+		query["organizationMemberName"] = request.OrganizationMemberName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternUid)) {
+		query["externUid"] = request.ExternUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["state"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinTimeFrom)) {
+		query["joinTimeFrom"] = request.JoinTimeFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinTimeTo)) {
+		query["joinTimeTo"] = request.JoinTimeTo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListOrganizationMembersResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListOrganizationMembers"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/members"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5488,6 +6087,7 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageSort)) {
 		query["pageSort"] = request.PageSort
@@ -5531,6 +6131,8 @@ func (client *Client) DeletePipeline(organizationId *string, pipelineId *string)
 }
 
 func (client *Client) DeletePipelineWithOptions(organizationId *string, pipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5556,6 +6158,7 @@ func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorks
 }
 
 func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FrozenWorkspaceResponse, _err error) {
+	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5585,6 +6188,8 @@ func (client *Client) ListPipelineRunsWithOptions(organizationId *string, pipeli
 	if _err != nil {
 		return _result, _err
 	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["startTime"] = request.StartTime
