@@ -329,8 +329,8 @@ func (s *CancelDirQuotaRequest) SetUserId(v string) *CancelDirQuotaRequest {
 }
 
 type CancelDirQuotaResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelDirQuotaResponseBody) String() string {
@@ -341,13 +341,13 @@ func (s CancelDirQuotaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CancelDirQuotaResponseBody) SetRequestId(v string) *CancelDirQuotaResponseBody {
-	s.RequestId = &v
+func (s *CancelDirQuotaResponseBody) SetSuccess(v bool) *CancelDirQuotaResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *CancelDirQuotaResponseBody) SetSuccess(v bool) *CancelDirQuotaResponseBody {
-	s.Success = &v
+func (s *CancelDirQuotaResponseBody) SetRequestId(v string) *CancelDirQuotaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -370,6 +370,121 @@ func (s *CancelDirQuotaResponse) SetHeaders(v map[string]*string) *CancelDirQuot
 }
 
 func (s *CancelDirQuotaResponse) SetBody(v *CancelDirQuotaResponseBody) *CancelDirQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type CancelLifecycleRetrieveJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CancelLifecycleRetrieveJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelLifecycleRetrieveJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelLifecycleRetrieveJobRequest) SetJobId(v string) *CancelLifecycleRetrieveJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type CancelLifecycleRetrieveJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelLifecycleRetrieveJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelLifecycleRetrieveJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelLifecycleRetrieveJobResponseBody) SetRequestId(v string) *CancelLifecycleRetrieveJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelLifecycleRetrieveJobResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelLifecycleRetrieveJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelLifecycleRetrieveJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelLifecycleRetrieveJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelLifecycleRetrieveJobResponse) SetHeaders(v map[string]*string) *CancelLifecycleRetrieveJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelLifecycleRetrieveJobResponse) SetBody(v *CancelLifecycleRetrieveJobResponseBody) *CancelLifecycleRetrieveJobResponse {
+	s.Body = v
+	return s
+}
+
+type CancelRecycleBinJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CancelRecycleBinJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRecycleBinJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRecycleBinJobRequest) SetJobId(v string) *CancelRecycleBinJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type CancelRecycleBinJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelRecycleBinJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRecycleBinJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRecycleBinJobResponseBody) SetRequestId(v string) *CancelRecycleBinJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelRecycleBinJobResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelRecycleBinJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelRecycleBinJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRecycleBinJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRecycleBinJobResponse) SetHeaders(v map[string]*string) *CancelRecycleBinJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelRecycleBinJobResponse) SetBody(v *CancelRecycleBinJobResponseBody) *CancelRecycleBinJobResponse {
 	s.Body = v
 	return s
 }
@@ -410,8 +525,8 @@ func (s *CreateAccessGroupRequest) SetFileSystemType(v string) *CreateAccessGrou
 }
 
 type CreateAccessGroupResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessGroupResponseBody) String() string {
@@ -422,13 +537,13 @@ func (s CreateAccessGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAccessGroupResponseBody) SetRequestId(v string) *CreateAccessGroupResponseBody {
-	s.RequestId = &v
+func (s *CreateAccessGroupResponseBody) SetAccessGroupName(v string) *CreateAccessGroupResponseBody {
+	s.AccessGroupName = &v
 	return s
 }
 
-func (s *CreateAccessGroupResponseBody) SetAccessGroupName(v string) *CreateAccessGroupResponseBody {
-	s.AccessGroupName = &v
+func (s *CreateAccessGroupResponseBody) SetRequestId(v string) *CreateAccessGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -509,8 +624,8 @@ func (s *CreateAccessRuleRequest) SetIpv6SourceCidrIp(v string) *CreateAccessRul
 }
 
 type CreateAccessRuleResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AccessRuleId *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessRuleResponseBody) String() string {
@@ -521,13 +636,13 @@ func (s CreateAccessRuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAccessRuleResponseBody) SetRequestId(v string) *CreateAccessRuleResponseBody {
-	s.RequestId = &v
+func (s *CreateAccessRuleResponseBody) SetAccessRuleId(v string) *CreateAccessRuleResponseBody {
+	s.AccessRuleId = &v
 	return s
 }
 
-func (s *CreateAccessRuleResponseBody) SetAccessRuleId(v string) *CreateAccessRuleResponseBody {
-	s.AccessRuleId = &v
+func (s *CreateAccessRuleResponseBody) SetRequestId(v string) *CreateAccessRuleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -596,8 +711,8 @@ func (s *CreateAutoSnapshotPolicyRequest) SetFileSystemType(v string) *CreateAut
 }
 
 type CreateAutoSnapshotPolicyResponseBody struct {
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAutoSnapshotPolicyResponseBody) String() string {
@@ -608,13 +723,13 @@ func (s CreateAutoSnapshotPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CreateAutoSnapshotPolicyResponseBody {
-	s.RequestId = &v
+func (s *CreateAutoSnapshotPolicyResponseBody) SetAutoSnapshotPolicyId(v string) *CreateAutoSnapshotPolicyResponseBody {
+	s.AutoSnapshotPolicyId = &v
 	return s
 }
 
-func (s *CreateAutoSnapshotPolicyResponseBody) SetAutoSnapshotPolicyId(v string) *CreateAutoSnapshotPolicyResponseBody {
-	s.AutoSnapshotPolicyId = &v
+func (s *CreateAutoSnapshotPolicyResponseBody) SetRequestId(v string) *CreateAutoSnapshotPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -870,11 +985,12 @@ func (s *CreateLDAPConfigResponse) SetBody(v *CreateLDAPConfigResponseBody) *Cre
 }
 
 type CreateLifecyclePolicyRequest struct {
-	FileSystemId        *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
-	Path                *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	LifecycleRuleName   *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
-	StorageType         *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	FileSystemId        *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	LifecyclePolicyName *string   `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
+	Path                *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	LifecycleRuleName   *string   `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
+	StorageType         *string   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Paths               []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 }
 
 func (s CreateLifecyclePolicyRequest) String() string {
@@ -907,6 +1023,11 @@ func (s *CreateLifecyclePolicyRequest) SetLifecycleRuleName(v string) *CreateLif
 
 func (s *CreateLifecyclePolicyRequest) SetStorageType(v string) *CreateLifecyclePolicyRequest {
 	s.StorageType = &v
+	return s
+}
+
+func (s *CreateLifecyclePolicyRequest) SetPaths(v []*string) *CreateLifecyclePolicyRequest {
+	s.Paths = v
 	return s
 }
 
@@ -952,6 +1073,75 @@ func (s *CreateLifecyclePolicyResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateLifecyclePolicyResponse) SetBody(v *CreateLifecyclePolicyResponseBody) *CreateLifecyclePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLifecycleRetrieveJobRequest struct {
+	FileSystemId *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Paths        []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+}
+
+func (s CreateLifecycleRetrieveJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLifecycleRetrieveJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLifecycleRetrieveJobRequest) SetFileSystemId(v string) *CreateLifecycleRetrieveJobRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateLifecycleRetrieveJobRequest) SetPaths(v []*string) *CreateLifecycleRetrieveJobRequest {
+	s.Paths = v
+	return s
+}
+
+type CreateLifecycleRetrieveJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateLifecycleRetrieveJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLifecycleRetrieveJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLifecycleRetrieveJobResponseBody) SetRequestId(v string) *CreateLifecycleRetrieveJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLifecycleRetrieveJobResponseBody) SetJobId(v string) *CreateLifecycleRetrieveJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type CreateLifecycleRetrieveJobResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLifecycleRetrieveJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLifecycleRetrieveJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLifecycleRetrieveJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLifecycleRetrieveJobResponse) SetHeaders(v map[string]*string) *CreateLifecycleRetrieveJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLifecycleRetrieveJobResponse) SetBody(v *CreateLifecycleRetrieveJobResponseBody) *CreateLifecycleRetrieveJobResponse {
 	s.Body = v
 	return s
 }
@@ -1080,6 +1270,164 @@ func (s *CreateMountTargetResponse) SetHeaders(v map[string]*string) *CreateMoun
 }
 
 func (s *CreateMountTargetResponse) SetBody(v *CreateMountTargetResponseBody) *CreateMountTargetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRecycleBinDeleteJobRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateRecycleBinDeleteJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinDeleteJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinDeleteJobRequest) SetFileSystemId(v string) *CreateRecycleBinDeleteJobRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateRecycleBinDeleteJobRequest) SetFileId(v string) *CreateRecycleBinDeleteJobRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateRecycleBinDeleteJobRequest) SetClientToken(v string) *CreateRecycleBinDeleteJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateRecycleBinDeleteJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateRecycleBinDeleteJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinDeleteJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinDeleteJobResponseBody) SetRequestId(v string) *CreateRecycleBinDeleteJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRecycleBinDeleteJobResponseBody) SetJobId(v string) *CreateRecycleBinDeleteJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type CreateRecycleBinDeleteJobResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRecycleBinDeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRecycleBinDeleteJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinDeleteJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinDeleteJobResponse) SetHeaders(v map[string]*string) *CreateRecycleBinDeleteJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRecycleBinDeleteJobResponse) SetBody(v *CreateRecycleBinDeleteJobResponseBody) *CreateRecycleBinDeleteJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRecycleBinRestoreJobRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	TargetFileId *string `json:"TargetFileId,omitempty" xml:"TargetFileId,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s CreateRecycleBinRestoreJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinRestoreJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinRestoreJobRequest) SetFileSystemId(v string) *CreateRecycleBinRestoreJobRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateRecycleBinRestoreJobRequest) SetFileId(v string) *CreateRecycleBinRestoreJobRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateRecycleBinRestoreJobRequest) SetTargetFileId(v string) *CreateRecycleBinRestoreJobRequest {
+	s.TargetFileId = &v
+	return s
+}
+
+func (s *CreateRecycleBinRestoreJobRequest) SetClientToken(v string) *CreateRecycleBinRestoreJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type CreateRecycleBinRestoreJobResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s CreateRecycleBinRestoreJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinRestoreJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinRestoreJobResponseBody) SetRequestId(v string) *CreateRecycleBinRestoreJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRecycleBinRestoreJobResponseBody) SetJobId(v string) *CreateRecycleBinRestoreJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+type CreateRecycleBinRestoreJobResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRecycleBinRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRecycleBinRestoreJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecycleBinRestoreJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecycleBinRestoreJobResponse) SetHeaders(v map[string]*string) *CreateRecycleBinRestoreJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRecycleBinRestoreJobResponse) SetBody(v *CreateRecycleBinRestoreJobResponseBody) *CreateRecycleBinRestoreJobResponse {
 	s.Body = v
 	return s
 }
@@ -1492,8 +1840,8 @@ func (s *DeleteLifecyclePolicyRequest) SetLifecyclePolicyName(v string) *DeleteL
 }
 
 type DeleteLifecyclePolicyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteLifecyclePolicyResponseBody) String() string {
@@ -1504,13 +1852,13 @@ func (s DeleteLifecyclePolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteLifecyclePolicyResponseBody) SetRequestId(v string) *DeleteLifecyclePolicyResponseBody {
-	s.RequestId = &v
+func (s *DeleteLifecyclePolicyResponseBody) SetSuccess(v bool) *DeleteLifecyclePolicyResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *DeleteLifecyclePolicyResponseBody) SetSuccess(v bool) *DeleteLifecyclePolicyResponseBody {
-	s.Success = &v
+func (s *DeleteLifecyclePolicyResponseBody) SetRequestId(v string) *DeleteLifecyclePolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1699,11 +2047,11 @@ func (s *DescribeAccessGroupsRequest) SetFileSystemType(v string) *DescribeAcces
 }
 
 type DescribeAccessGroupsResponseBody struct {
-	AccessGroups *DescribeAccessGroupsResponseBodyAccessGroups `json:"AccessGroups,omitempty" xml:"AccessGroups,omitempty" type:"Struct"`
-	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	AccessGroups *DescribeAccessGroupsResponseBodyAccessGroups `json:"AccessGroups,omitempty" xml:"AccessGroups,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccessGroupsResponseBody) String() string {
@@ -1714,13 +2062,8 @@ func (s DescribeAccessGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccessGroupsResponseBody) SetAccessGroups(v *DescribeAccessGroupsResponseBodyAccessGroups) *DescribeAccessGroupsResponseBody {
-	s.AccessGroups = v
-	return s
-}
-
-func (s *DescribeAccessGroupsResponseBody) SetTotalCount(v int32) *DescribeAccessGroupsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAccessGroupsResponseBody) SetPageNumber(v int32) *DescribeAccessGroupsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1734,8 +2077,13 @@ func (s *DescribeAccessGroupsResponseBody) SetPageSize(v int32) *DescribeAccessG
 	return s
 }
 
-func (s *DescribeAccessGroupsResponseBody) SetPageNumber(v int32) *DescribeAccessGroupsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeAccessGroupsResponseBody) SetTotalCount(v int32) *DescribeAccessGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeAccessGroupsResponseBody) SetAccessGroups(v *DescribeAccessGroupsResponseBodyAccessGroups) *DescribeAccessGroupsResponseBody {
+	s.AccessGroups = v
 	return s
 }
 
@@ -1821,13 +2169,11 @@ func (s *DescribeAccessGroupsResponse) SetBody(v *DescribeAccessGroupsResponseBo
 }
 
 type DescribeAccessRulesRequest struct {
-	AccessGroupName    *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	AccessRuleId       *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
-	SourceCidrIp       *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	FileSystemType     *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	SourceCidrIpFilter *string `json:"SourceCidrIpFilter,omitempty" xml:"SourceCidrIpFilter,omitempty"`
+	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
+	AccessRuleId    *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	FileSystemType  *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 }
 
 func (s DescribeAccessRulesRequest) String() string {
@@ -1848,11 +2194,6 @@ func (s *DescribeAccessRulesRequest) SetAccessRuleId(v string) *DescribeAccessRu
 	return s
 }
 
-func (s *DescribeAccessRulesRequest) SetSourceCidrIp(v string) *DescribeAccessRulesRequest {
-	s.SourceCidrIp = &v
-	return s
-}
-
 func (s *DescribeAccessRulesRequest) SetPageSize(v int32) *DescribeAccessRulesRequest {
 	s.PageSize = &v
 	return s
@@ -1868,16 +2209,11 @@ func (s *DescribeAccessRulesRequest) SetFileSystemType(v string) *DescribeAccess
 	return s
 }
 
-func (s *DescribeAccessRulesRequest) SetSourceCidrIpFilter(v string) *DescribeAccessRulesRequest {
-	s.SourceCidrIpFilter = &v
-	return s
-}
-
 type DescribeAccessRulesResponseBody struct {
-	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AccessRules *DescribeAccessRulesResponseBodyAccessRules `json:"AccessRules,omitempty" xml:"AccessRules,omitempty" type:"Struct"`
 }
 
@@ -1889,8 +2225,8 @@ func (s DescribeAccessRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAccessRulesResponseBody) SetTotalCount(v int32) *DescribeAccessRulesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAccessRulesResponseBody) SetPageNumber(v int32) *DescribeAccessRulesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1904,8 +2240,8 @@ func (s *DescribeAccessRulesResponseBody) SetPageSize(v int32) *DescribeAccessRu
 	return s
 }
 
-func (s *DescribeAccessRulesResponseBody) SetPageNumber(v int32) *DescribeAccessRulesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeAccessRulesResponseBody) SetTotalCount(v int32) *DescribeAccessRulesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2037,10 +2373,10 @@ func (s *DescribeAutoSnapshotPoliciesRequest) SetFileSystemType(v string) *Descr
 }
 
 type DescribeAutoSnapshotPoliciesResponseBody struct {
-	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AutoSnapshotPolicies *DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies `json:"AutoSnapshotPolicies,omitempty" xml:"AutoSnapshotPolicies,omitempty" type:"Struct"`
 }
 
@@ -2052,8 +2388,8 @@ func (s DescribeAutoSnapshotPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAutoSnapshotPoliciesResponseBody) SetTotalCount(v int32) *DescribeAutoSnapshotPoliciesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAutoSnapshotPoliciesResponseBody) SetPageNumber(v int32) *DescribeAutoSnapshotPoliciesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2067,8 +2403,8 @@ func (s *DescribeAutoSnapshotPoliciesResponseBody) SetPageSize(v int32) *Describ
 	return s
 }
 
-func (s *DescribeAutoSnapshotPoliciesResponseBody) SetPageNumber(v int32) *DescribeAutoSnapshotPoliciesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeAutoSnapshotPoliciesResponseBody) SetTotalCount(v int32) *DescribeAutoSnapshotPoliciesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2224,10 +2560,10 @@ func (s *DescribeAutoSnapshotTasksRequest) SetPageNumber(v int32) *DescribeAutoS
 }
 
 type DescribeAutoSnapshotTasksResponseBody struct {
-	TotalCount        *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber        *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize          *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber        *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount        *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AutoSnapshotTasks *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks `json:"AutoSnapshotTasks,omitempty" xml:"AutoSnapshotTasks,omitempty" type:"Struct"`
 }
 
@@ -2239,8 +2575,8 @@ func (s DescribeAutoSnapshotTasksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAutoSnapshotTasksResponseBody) SetTotalCount(v int32) *DescribeAutoSnapshotTasksResponseBody {
-	s.TotalCount = &v
+func (s *DescribeAutoSnapshotTasksResponseBody) SetPageNumber(v int32) *DescribeAutoSnapshotTasksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2254,8 +2590,8 @@ func (s *DescribeAutoSnapshotTasksResponseBody) SetPageSize(v int32) *DescribeAu
 	return s
 }
 
-func (s *DescribeAutoSnapshotTasksResponseBody) SetPageNumber(v int32) *DescribeAutoSnapshotTasksResponseBody {
-	s.PageNumber = &v
+func (s *DescribeAutoSnapshotTasksResponseBody) SetTotalCount(v int32) *DescribeAutoSnapshotTasksResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2282,8 +2618,8 @@ func (s *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks) SetAutoSnapshot
 }
 
 type DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask struct {
-	SourceFileSystemId   *string `json:"SourceFileSystemId,omitempty" xml:"SourceFileSystemId,omitempty"`
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	SourceFileSystemId   *string `json:"SourceFileSystemId,omitempty" xml:"SourceFileSystemId,omitempty"`
 }
 
 func (s DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) String() string {
@@ -2294,13 +2630,13 @@ func (s DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) 
 	return s.String()
 }
 
-func (s *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) SetSourceFileSystemId(v string) *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask {
-	s.SourceFileSystemId = &v
+func (s *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) SetAutoSnapshotPolicyId(v string) *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask {
+	s.AutoSnapshotPolicyId = &v
 	return s
 }
 
-func (s *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) SetAutoSnapshotPolicyId(v string) *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask {
-	s.AutoSnapshotPolicyId = &v
+func (s *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask) SetSourceFileSystemId(v string) *DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask {
+	s.SourceFileSystemId = &v
 	return s
 }
 
@@ -2357,8 +2693,8 @@ func (s *DescribeBlackListClientsRequest) SetClientIP(v string) *DescribeBlackLi
 }
 
 type DescribeBlackListClientsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Clients   *string `json:"Clients,omitempty" xml:"Clients,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBlackListClientsResponseBody) String() string {
@@ -2369,13 +2705,13 @@ func (s DescribeBlackListClientsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBlackListClientsResponseBody) SetRequestId(v string) *DescribeBlackListClientsResponseBody {
-	s.RequestId = &v
+func (s *DescribeBlackListClientsResponseBody) SetClients(v string) *DescribeBlackListClientsResponseBody {
+	s.Clients = &v
 	return s
 }
 
-func (s *DescribeBlackListClientsResponseBody) SetClients(v string) *DescribeBlackListClientsResponseBody {
-	s.Clients = &v
+func (s *DescribeBlackListClientsResponseBody) SetRequestId(v string) *DescribeBlackListClientsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2438,11 +2774,11 @@ func (s *DescribeDirQuotasRequest) SetPageNumber(v int32) *DescribeDirQuotasRequ
 }
 
 type DescribeDirQuotasResponseBody struct {
-	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	DirQuotaInfos []*DescribeDirQuotasResponseBodyDirQuotaInfos `json:"DirQuotaInfos,omitempty" xml:"DirQuotaInfos,omitempty" type:"Repeated"`
+	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DirQuotaInfos []*DescribeDirQuotasResponseBodyDirQuotaInfos `json:"DirQuotaInfos,omitempty" xml:"DirQuotaInfos,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDirQuotasResponseBody) String() string {
@@ -2453,13 +2789,8 @@ func (s DescribeDirQuotasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDirQuotasResponseBody) SetTotalCount(v int32) *DescribeDirQuotasResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeDirQuotasResponseBody) SetDirQuotaInfos(v []*DescribeDirQuotasResponseBodyDirQuotaInfos) *DescribeDirQuotasResponseBody {
-	s.DirQuotaInfos = v
+func (s *DescribeDirQuotasResponseBody) SetPageNumber(v int32) *DescribeDirQuotasResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2473,14 +2804,19 @@ func (s *DescribeDirQuotasResponseBody) SetPageSize(v int32) *DescribeDirQuotasR
 	return s
 }
 
-func (s *DescribeDirQuotasResponseBody) SetPageNumber(v int32) *DescribeDirQuotasResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDirQuotasResponseBody) SetTotalCount(v int32) *DescribeDirQuotasResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDirQuotasResponseBody) SetDirQuotaInfos(v []*DescribeDirQuotasResponseBodyDirQuotaInfos) *DescribeDirQuotasResponseBody {
+	s.DirQuotaInfos = v
 	return s
 }
 
 type DescribeDirQuotasResponseBodyDirQuotaInfos struct {
-	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	Path           *string                                                     `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	DirInode       *string                                                     `json:"DirInode,omitempty" xml:"DirInode,omitempty"`
 	UserQuotaInfos []*DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos `json:"UserQuotaInfos,omitempty" xml:"UserQuotaInfos,omitempty" type:"Repeated"`
 }
@@ -2493,13 +2829,13 @@ func (s DescribeDirQuotasResponseBodyDirQuotaInfos) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDirQuotasResponseBodyDirQuotaInfos) SetStatus(v string) *DescribeDirQuotasResponseBodyDirQuotaInfos {
-	s.Status = &v
+func (s *DescribeDirQuotasResponseBodyDirQuotaInfos) SetPath(v string) *DescribeDirQuotasResponseBodyDirQuotaInfos {
+	s.Path = &v
 	return s
 }
 
-func (s *DescribeDirQuotasResponseBodyDirQuotaInfos) SetPath(v string) *DescribeDirQuotasResponseBodyDirQuotaInfos {
-	s.Path = &v
+func (s *DescribeDirQuotasResponseBodyDirQuotaInfos) SetStatus(v string) *DescribeDirQuotasResponseBodyDirQuotaInfos {
+	s.Status = &v
 	return s
 }
 
@@ -2591,18 +2927,10 @@ func (s *DescribeDirQuotasResponse) SetBody(v *DescribeDirQuotasResponseBody) *D
 
 type DescribeFileSystemsRequest struct {
 	FileSystemId   *string                          `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Description    *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	FileSystemType *string                          `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	VpcId          *string                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	PageSize       *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	UseUTCDateTime *bool                            `json:"UseUTCDateTime,omitempty" xml:"UseUTCDateTime,omitempty"`
-	StorageType    *string                          `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	PackageIds     *string                          `json:"PackageIds,omitempty" xml:"PackageIds,omitempty"`
-	FileSystemIds  *string                          `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty"`
-	OrderByField   *string                          `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
-	SortOrder      *string                          `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	ChargeType     *string                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Tag            []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -2616,11 +2944,6 @@ func (s DescribeFileSystemsRequest) GoString() string {
 
 func (s *DescribeFileSystemsRequest) SetFileSystemId(v string) *DescribeFileSystemsRequest {
 	s.FileSystemId = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetDescription(v string) *DescribeFileSystemsRequest {
-	s.Description = &v
 	return s
 }
 
@@ -2641,41 +2964,6 @@ func (s *DescribeFileSystemsRequest) SetPageSize(v int32) *DescribeFileSystemsRe
 
 func (s *DescribeFileSystemsRequest) SetPageNumber(v int32) *DescribeFileSystemsRequest {
 	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetUseUTCDateTime(v bool) *DescribeFileSystemsRequest {
-	s.UseUTCDateTime = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetStorageType(v string) *DescribeFileSystemsRequest {
-	s.StorageType = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetPackageIds(v string) *DescribeFileSystemsRequest {
-	s.PackageIds = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetFileSystemIds(v string) *DescribeFileSystemsRequest {
-	s.FileSystemIds = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetOrderByField(v string) *DescribeFileSystemsRequest {
-	s.OrderByField = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetSortOrder(v string) *DescribeFileSystemsRequest {
-	s.SortOrder = &v
-	return s
-}
-
-func (s *DescribeFileSystemsRequest) SetChargeType(v string) *DescribeFileSystemsRequest {
-	s.ChargeType = &v
 	return s
 }
 
@@ -2708,11 +2996,11 @@ func (s *DescribeFileSystemsRequestTag) SetValue(v string) *DescribeFileSystemsR
 }
 
 type DescribeFileSystemsResponseBody struct {
-	FileSystems *DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
-	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	FileSystems *DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
 }
 
 func (s DescribeFileSystemsResponseBody) String() string {
@@ -2723,13 +3011,8 @@ func (s DescribeFileSystemsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeFileSystemsResponseBody) SetFileSystems(v *DescribeFileSystemsResponseBodyFileSystems) *DescribeFileSystemsResponseBody {
-	s.FileSystems = v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBody) SetTotalCount(v int32) *DescribeFileSystemsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeFileSystemsResponseBody) SetPageNumber(v int32) *DescribeFileSystemsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2743,8 +3026,13 @@ func (s *DescribeFileSystemsResponseBody) SetPageSize(v int32) *DescribeFileSyst
 	return s
 }
 
-func (s *DescribeFileSystemsResponseBody) SetPageNumber(v int32) *DescribeFileSystemsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeFileSystemsResponseBody) SetTotalCount(v int32) *DescribeFileSystemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBody) SetFileSystems(v *DescribeFileSystemsResponseBodyFileSystems) *DescribeFileSystemsResponseBody {
+	s.FileSystems = v
 	return s
 }
 
@@ -2767,28 +3055,28 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) SetFileSystem(v []*Describe
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	Status            *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	MeteredIASize     *int64                                                                 `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
 	Capacity          *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	MeteredIASize     *int64                                                                 `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
 	CreateTime        *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ChargeType        *string                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Tags              *DescribeFileSystemsResponseBodyFileSystemsFileSystemTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	StorageType       *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	MeteredSize       *int64                                                                 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	Description       *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Bandwidth         *int64                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	SupportedFeatures *DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty" type:"Struct"`
-	Version           *string                                                                `json:"Version,omitempty" xml:"Version,omitempty"`
-	ProtocolType      *string                                                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	MountTargets      *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets      `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
-	KMSKeyId          *string                                                                `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	RegionId          *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	FileSystemType    *string                                                                `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	FileSystemId      *string                                                                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MeteredSize       *int64                                                                 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
 	EncryptType       *int32                                                                 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	Ldap              *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap              `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
+	Bandwidth         *int64                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Description       *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Version           *string                                                                `json:"Version,omitempty" xml:"Version,omitempty"`
 	ExpiredTime       *string                                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	ZoneId            *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ProtocolType      *string                                                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	KMSKeyId          *string                                                                `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	MountTargets      *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets      `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
 	Packages          *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages          `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
+	Tags              *DescribeFileSystemsResponseBodyFileSystemsFileSystemTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SupportedFeatures *DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty" type:"Struct"`
+	Ldap              *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap              `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
 }
 
 func (s DescribeFileSystemsResponseBodyFileSystemsFileSystem) String() string {
@@ -2804,13 +3092,13 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetStatus(v strin
 	return s
 }
 
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredIASize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.MeteredIASize = &v
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetCapacity(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Capacity = &v
 	return s
 }
 
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetCapacity(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Capacity = &v
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredIASize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.MeteredIASize = &v
 	return s
 }
 
@@ -2824,53 +3112,8 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetChargeType(v s
 	return s
 }
 
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetTags(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemTags) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Tags = v
-	return s
-}
-
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetStorageType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.StorageType = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredSize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.MeteredSize = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetDescription(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetBandwidth(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetSupportedFeatures(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.SupportedFeatures = v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetVersion(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetProtocolType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.ProtocolType = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMountTargets(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.MountTargets = v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetKMSKeyId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.KMSKeyId = &v
 	return s
 }
 
@@ -2889,13 +3132,28 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetFileSystemId(v
 	return s
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredSize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.MeteredSize = &v
+	return s
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetEncryptType(v int32) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.EncryptType = &v
 	return s
 }
 
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetLdap(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
-	s.Ldap = v
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetBandwidth(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetDescription(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetVersion(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Version = &v
 	return s
 }
 
@@ -2909,8 +3167,264 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetZoneId(v strin
 	return s
 }
 
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetProtocolType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetKMSKeyId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.KMSKeyId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMountTargets(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.MountTargets = v
+	return s
+}
+
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetPackages(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.Packages = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetTags(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemTags) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetSupportedFeatures(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.SupportedFeatures = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetLdap(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Ldap = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets struct {
+	MountTarget []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget `json:"MountTarget,omitempty" xml:"MountTarget,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) SetMountTarget(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets {
+	s.MountTarget = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget struct {
+	VpcId                      *string                                                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Status                     *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	MountTargetDomain          *string                                                                                       `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	AccessGroupName            *string                                                                                       `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
+	DualStackMountTargetDomain *string                                                                                       `json:"DualStackMountTargetDomain,omitempty" xml:"DualStackMountTargetDomain,omitempty"`
+	VswId                      *string                                                                                       `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	NetworkType                *string                                                                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ClientMasterNodes          *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes `json:"ClientMasterNodes,omitempty" xml:"ClientMasterNodes,omitempty" type:"Struct"`
+	Tags                       *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetVpcId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetStatus(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetMountTargetDomain(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.MountTargetDomain = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetAccessGroupName(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.AccessGroupName = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetDualStackMountTargetDomain(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.DualStackMountTargetDomain = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetVswId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.VswId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetNetworkType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetClientMasterNodes(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.ClientMasterNodes = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetTags(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
+	s.Tags = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes struct {
+	ClientMasterNode []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode `json:"ClientMasterNode,omitempty" xml:"ClientMasterNode,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) SetClientMasterNode(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes {
+	s.ClientMasterNode = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode struct {
+	EcsIp         *string `json:"EcsIp,omitempty" xml:"EcsIp,omitempty"`
+	EcsId         *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+	DefaultPasswd *string `json:"DefaultPasswd,omitempty" xml:"DefaultPasswd,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsIp(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
+	s.EcsIp = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
+	s.EcsId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetDefaultPasswd(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
+	s.DefaultPasswd = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags struct {
+	Tag []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) SetTag(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) SetKey(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) SetValue(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages struct {
+	Package []*DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage `json:"Package,omitempty" xml:"Package,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) SetPackage(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages {
+	s.Package = v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage struct {
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	PackageId   *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetStartTime(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.PackageId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetExpiredTime(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetSize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.PackageType = &v
 	return s
 }
 
@@ -2971,178 +3485,10 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures) 
 	return s
 }
 
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets struct {
-	MountTarget []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget `json:"MountTarget,omitempty" xml:"MountTarget,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) SetMountTarget(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets {
-	s.MountTarget = v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget struct {
-	VpcId                      *string                                                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Status                     *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	ClientMasterNodes          *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes `json:"ClientMasterNodes,omitempty" xml:"ClientMasterNodes,omitempty" type:"Struct"`
-	MountTargetDomain          *string                                                                                       `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	AccessGroupName            *string                                                                                       `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	DualStackMountTargetDomain *string                                                                                       `json:"DualStackMountTargetDomain,omitempty" xml:"DualStackMountTargetDomain,omitempty"`
-	VswId                      *string                                                                                       `json:"VswId,omitempty" xml:"VswId,omitempty"`
-	Tags                       *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	NetworkType                *string                                                                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetVpcId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetStatus(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetClientMasterNodes(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.ClientMasterNodes = v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetMountTargetDomain(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.MountTargetDomain = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetAccessGroupName(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.AccessGroupName = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetDualStackMountTargetDomain(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.DualStackMountTargetDomain = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetVswId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.VswId = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetTags(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget) SetNetworkType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarget {
-	s.NetworkType = &v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes struct {
-	ClientMasterNode []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode `json:"ClientMasterNode,omitempty" xml:"ClientMasterNode,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes) SetClientMasterNode(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes {
-	s.ClientMasterNode = v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode struct {
-	EcsId         *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	DefaultPasswd *string `json:"DefaultPasswd,omitempty" xml:"DefaultPasswd,omitempty"`
-	EcsIp         *string `json:"EcsIp,omitempty" xml:"EcsIp,omitempty"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
-	s.EcsId = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetDefaultPasswd(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
-	s.DefaultPasswd = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsIp(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode {
-	s.EcsIp = &v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags struct {
-	Tag []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags) SetTag(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTags {
-	s.Tag = v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) SetKey(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) SetValue(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag {
-	s.Value = &v
-	return s
-}
-
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap struct {
-	BindDN     *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
 	SearchBase *string `json:"SearchBase,omitempty" xml:"SearchBase,omitempty"`
 	URI        *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	BindDN     *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
 }
 
 func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) String() string {
@@ -3151,11 +3497,6 @@ func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) String() strin
 
 func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) SetBindDN(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap {
-	s.BindDN = &v
-	return s
 }
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) SetSearchBase(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap {
@@ -3168,61 +3509,8 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) SetURI(v stri
 	return s
 }
 
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages struct {
-	Package []*DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage `json:"Package,omitempty" xml:"Package,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages) SetPackage(v []*DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages {
-	s.Package = v
-	return s
-}
-
-type DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage struct {
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	PackageId   *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetStartTime(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetExpiredTime(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetSize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.PackageId = &v
-	return s
-}
-
-func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageType(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.PackageType = &v
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) SetBindDN(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap {
+	s.BindDN = &v
 	return s
 }
 
@@ -3273,12 +3561,12 @@ func (s *DescribeFileSystemStatisticsRequest) SetPageNumber(v int32) *DescribeFi
 }
 
 type DescribeFileSystemStatisticsResponseBody struct {
-	FileSystems          *DescribeFileSystemStatisticsResponseBodyFileSystems          `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
-	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	FileSystemStatistics *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics `json:"FileSystemStatistics,omitempty" xml:"FileSystemStatistics,omitempty" type:"Struct"`
+	FileSystems          *DescribeFileSystemStatisticsResponseBodyFileSystems          `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Struct"`
 }
 
 func (s DescribeFileSystemStatisticsResponseBody) String() string {
@@ -3287,16 +3575,6 @@ func (s DescribeFileSystemStatisticsResponseBody) String() string {
 
 func (s DescribeFileSystemStatisticsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeFileSystemStatisticsResponseBody) SetFileSystems(v *DescribeFileSystemStatisticsResponseBodyFileSystems) *DescribeFileSystemStatisticsResponseBody {
-	s.FileSystems = v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBody) SetTotalCount(v int32) *DescribeFileSystemStatisticsResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeFileSystemStatisticsResponseBody) SetRequestId(v string) *DescribeFileSystemStatisticsResponseBody {
@@ -3314,8 +3592,76 @@ func (s *DescribeFileSystemStatisticsResponseBody) SetPageNumber(v int32) *Descr
 	return s
 }
 
+func (s *DescribeFileSystemStatisticsResponseBody) SetTotalCount(v int32) *DescribeFileSystemStatisticsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *DescribeFileSystemStatisticsResponseBody) SetFileSystemStatistics(v *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) *DescribeFileSystemStatisticsResponseBody {
 	s.FileSystemStatistics = v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBody) SetFileSystems(v *DescribeFileSystemStatisticsResponseBodyFileSystems) *DescribeFileSystemStatisticsResponseBody {
+	s.FileSystems = v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystemStatistics struct {
+	FileSystemStatistic []*DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic `json:"FileSystemStatistic,omitempty" xml:"FileSystemStatistic,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) SetFileSystemStatistic(v []*DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics {
+	s.FileSystemStatistic = v
+	return s
+}
+
+type DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic struct {
+	ExpiringCount  *int32  `json:"ExpiringCount,omitempty" xml:"ExpiringCount,omitempty"`
+	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
+	MeteredSize    *int64  `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
+	TotalCount     *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ExpiredCount   *int32  `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetExpiringCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
+	s.ExpiringCount = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetFileSystemType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
+	s.FileSystemType = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetMeteredSize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
+	s.MeteredSize = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetTotalCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetExpiredCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
+	s.ExpiredCount = &v
 	return s
 }
 
@@ -3338,20 +3684,20 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystems) SetFileSystem(v []
 
 type DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem struct {
 	Status         *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Capacity       *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	MeteredIASize  *int64                                                                 `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
+	Capacity       *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	CreateTime     *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ChargeType     *string                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	StorageType    *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	RegionId       *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	FileSystemType *string                                                                `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	FileSystemId   *string                                                                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemType *string                                                                `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	MeteredSize    *int64                                                                 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
 	Description    *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpiredTime    *string                                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	ZoneId         *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Packages       *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
 	ProtocolType   *string                                                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	Packages       *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
 }
 
 func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) String() string {
@@ -3367,13 +3713,13 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetStatu
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetCapacity(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.Capacity = &v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetMeteredIASize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.MeteredIASize = &v
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetMeteredIASize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.MeteredIASize = &v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetCapacity(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Capacity = &v
 	return s
 }
 
@@ -3397,13 +3743,13 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetRegio
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.FileSystemType = &v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.FileSystemId = &v
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.FileSystemId = &v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetFileSystemType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.FileSystemType = &v
 	return s
 }
 
@@ -3427,13 +3773,13 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetZoneI
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetPackages(v *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.Packages = v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetProtocolType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.ProtocolType = &v
 	return s
 }
 
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetProtocolType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
-	s.ProtocolType = &v
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem) SetPackages(v *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem {
+	s.Packages = v
 	return s
 }
 
@@ -3456,9 +3802,9 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackages) 
 
 type DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage struct {
 	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	PackageId   *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	PackageId   *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
 }
 
 func (s DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) String() string {
@@ -3474,6 +3820,11 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPa
 	return s
 }
 
+func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
+	s.PackageId = &v
+	return s
+}
+
 func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetExpiredTime(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
 	s.ExpiredTime = &v
 	return s
@@ -3481,69 +3832,6 @@ func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPa
 
 func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetSize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
 	s.Size = &v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage) SetPackageId(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystemPackagesPackage {
-	s.PackageId = &v
-	return s
-}
-
-type DescribeFileSystemStatisticsResponseBodyFileSystemStatistics struct {
-	FileSystemStatistic []*DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic `json:"FileSystemStatistic,omitempty" xml:"FileSystemStatistic,omitempty" type:"Repeated"`
-}
-
-func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics) SetFileSystemStatistic(v []*DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) *DescribeFileSystemStatisticsResponseBodyFileSystemStatistics {
-	s.FileSystemStatistic = v
-	return s
-}
-
-type DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic struct {
-	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	MeteredSize    *int64  `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	ExpiringCount  *int32  `json:"ExpiringCount,omitempty" xml:"ExpiringCount,omitempty"`
-	TotalCount     *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	ExpiredCount   *int32  `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
-}
-
-func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetFileSystemType(v string) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
-	s.FileSystemType = &v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetMeteredSize(v int64) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
-	s.MeteredSize = &v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetExpiringCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
-	s.ExpiringCount = &v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetTotalCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic) SetExpiredCount(v int32) *DescribeFileSystemStatisticsResponseBodyFileSystemStatisticsFileSystemStatistic {
-	s.ExpiredCount = &v
 	return s
 }
 
@@ -3588,8 +3876,8 @@ func (s *DescribeLDAPConfigRequest) SetFileSystemId(v string) *DescribeLDAPConfi
 }
 
 type DescribeLDAPConfigResponseBody struct {
-	Ldap      *DescribeLDAPConfigResponseBodyLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Ldap      *DescribeLDAPConfigResponseBodyLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
 }
 
 func (s DescribeLDAPConfigResponseBody) String() string {
@@ -3600,20 +3888,20 @@ func (s DescribeLDAPConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLDAPConfigResponseBody) SetLdap(v *DescribeLDAPConfigResponseBodyLdap) *DescribeLDAPConfigResponseBody {
-	s.Ldap = v
-	return s
-}
-
 func (s *DescribeLDAPConfigResponseBody) SetRequestId(v string) *DescribeLDAPConfigResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeLDAPConfigResponseBody) SetLdap(v *DescribeLDAPConfigResponseBodyLdap) *DescribeLDAPConfigResponseBody {
+	s.Ldap = v
+	return s
+}
+
 type DescribeLDAPConfigResponseBodyLdap struct {
-	BindDN     *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
 	SearchBase *string `json:"SearchBase,omitempty" xml:"SearchBase,omitempty"`
 	URI        *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	BindDN     *string `json:"BindDN,omitempty" xml:"BindDN,omitempty"`
 }
 
 func (s DescribeLDAPConfigResponseBodyLdap) String() string {
@@ -3624,11 +3912,6 @@ func (s DescribeLDAPConfigResponseBodyLdap) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLDAPConfigResponseBodyLdap) SetBindDN(v string) *DescribeLDAPConfigResponseBodyLdap {
-	s.BindDN = &v
-	return s
-}
-
 func (s *DescribeLDAPConfigResponseBodyLdap) SetSearchBase(v string) *DescribeLDAPConfigResponseBodyLdap {
 	s.SearchBase = &v
 	return s
@@ -3636,6 +3919,11 @@ func (s *DescribeLDAPConfigResponseBodyLdap) SetSearchBase(v string) *DescribeLD
 
 func (s *DescribeLDAPConfigResponseBodyLdap) SetURI(v string) *DescribeLDAPConfigResponseBodyLdap {
 	s.URI = &v
+	return s
+}
+
+func (s *DescribeLDAPConfigResponseBodyLdap) SetBindDN(v string) *DescribeLDAPConfigResponseBodyLdap {
+	s.BindDN = &v
 	return s
 }
 
@@ -3733,12 +4021,13 @@ func (s *DescribeLifecyclePoliciesResponseBody) SetLifecyclePolicies(v []*Descri
 }
 
 type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
-	FileSystemId        *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	LifecycleRuleName   *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Path                *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	StorageType         *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
+	FileSystemId        *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	LifecycleRuleName   *string   `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
+	CreateTime          *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Path                *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	StorageType         *string   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	LifecyclePolicyName *string   `json:"LifecyclePolicyName,omitempty" xml:"LifecyclePolicyName,omitempty"`
+	Paths               []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) String() string {
@@ -3776,6 +4065,11 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetStorageType(
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecyclePolicyName(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.LifecyclePolicyName = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetPaths(v []*string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.Paths = v
 	return s
 }
 
@@ -3832,12 +4126,12 @@ func (s *DescribeLogAnalysisRequest) SetPageNumber(v int32) *DescribeLogAnalysis
 }
 
 type DescribeLogAnalysisResponseBody struct {
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Analyses   *DescribeLogAnalysisResponseBodyAnalyses `json:"Analyses,omitempty" xml:"Analyses,omitempty" type:"Struct"`
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DescribeLogAnalysisResponseBody) String() string {
@@ -3848,8 +4142,13 @@ func (s DescribeLogAnalysisResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLogAnalysisResponseBody) SetTotalCount(v int32) *DescribeLogAnalysisResponseBody {
-	s.TotalCount = &v
+func (s *DescribeLogAnalysisResponseBody) SetCode(v string) *DescribeLogAnalysisResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeLogAnalysisResponseBody) SetPageNumber(v int32) *DescribeLogAnalysisResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -3863,18 +4162,13 @@ func (s *DescribeLogAnalysisResponseBody) SetRequestId(v string) *DescribeLogAna
 	return s
 }
 
-func (s *DescribeLogAnalysisResponseBody) SetPageNumber(v int32) *DescribeLogAnalysisResponseBody {
-	s.PageNumber = &v
+func (s *DescribeLogAnalysisResponseBody) SetTotalCount(v int32) *DescribeLogAnalysisResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 func (s *DescribeLogAnalysisResponseBody) SetAnalyses(v *DescribeLogAnalysisResponseBodyAnalyses) *DescribeLogAnalysisResponseBody {
 	s.Analyses = v
-	return s
-}
-
-func (s *DescribeLogAnalysisResponseBody) SetCode(v string) *DescribeLogAnalysisResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3919,10 +4213,10 @@ func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysis) SetMetaValue(v *Descri
 }
 
 type DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue struct {
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) String() string {
@@ -3933,23 +4227,23 @@ func (s DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) GoString() str
 	return s.String()
 }
 
-func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetRoleArn(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetRegion(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetLogstore(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
 	s.Logstore = &v
 	return s
 }
 
+func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetRoleArn(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
+	s.RoleArn = &v
+	return s
+}
+
 func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetProject(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
 	s.Project = &v
+	return s
+}
+
+func (s *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue) SetRegion(v string) *DescribeLogAnalysisResponseBodyAnalysesAnalysisMetaValue {
+	s.Region = &v
 	return s
 }
 
@@ -4024,10 +4318,10 @@ func (s *DescribeMountedClientsRequest) SetPageNumber(v int32) *DescribeMountedC
 }
 
 type DescribeMountedClientsResponseBody struct {
-	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Clients    *DescribeMountedClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Struct"`
 }
 
@@ -4039,8 +4333,8 @@ func (s DescribeMountedClientsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMountedClientsResponseBody) SetTotalCount(v int32) *DescribeMountedClientsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeMountedClientsResponseBody) SetPageNumber(v int32) *DescribeMountedClientsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4054,8 +4348,8 @@ func (s *DescribeMountedClientsResponseBody) SetPageSize(v int32) *DescribeMount
 	return s
 }
 
-func (s *DescribeMountedClientsResponseBody) SetPageNumber(v int32) *DescribeMountedClientsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeMountedClientsResponseBody) SetTotalCount(v int32) *DescribeMountedClientsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4163,10 +4457,10 @@ func (s *DescribeMountTargetsRequest) SetDualStackMountTargetDomain(v string) *D
 }
 
 type DescribeMountTargetsResponseBody struct {
-	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	MountTargets *DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
 }
 
@@ -4178,8 +4472,8 @@ func (s DescribeMountTargetsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMountTargetsResponseBody) SetTotalCount(v int32) *DescribeMountTargetsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeMountTargetsResponseBody) SetPageNumber(v int32) *DescribeMountTargetsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4193,8 +4487,8 @@ func (s *DescribeMountTargetsResponseBody) SetPageSize(v int32) *DescribeMountTa
 	return s
 }
 
-func (s *DescribeMountTargetsResponseBody) SetPageNumber(v int32) *DescribeMountTargetsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeMountTargetsResponseBody) SetTotalCount(v int32) *DescribeMountTargetsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4223,12 +4517,12 @@ func (s *DescribeMountTargetsResponseBodyMountTargets) SetMountTarget(v []*Descr
 type DescribeMountTargetsResponseBodyMountTargetsMountTarget struct {
 	VpcId                      *string                                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	Status                     *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	ClientMasterNodes          *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes `json:"ClientMasterNodes,omitempty" xml:"ClientMasterNodes,omitempty" type:"Struct"`
 	MountTargetDomain          *string                                                                   `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
 	AccessGroup                *string                                                                   `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
 	DualStackMountTargetDomain *string                                                                   `json:"DualStackMountTargetDomain,omitempty" xml:"DualStackMountTargetDomain,omitempty"`
 	VswId                      *string                                                                   `json:"VswId,omitempty" xml:"VswId,omitempty"`
 	NetworkType                *string                                                                   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ClientMasterNodes          *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes `json:"ClientMasterNodes,omitempty" xml:"ClientMasterNodes,omitempty" type:"Struct"`
 }
 
 func (s DescribeMountTargetsResponseBodyMountTargetsMountTarget) String() string {
@@ -4246,11 +4540,6 @@ func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetVpcId(v str
 
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetStatus(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTarget {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetClientMasterNodes(v *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes) *DescribeMountTargetsResponseBodyMountTargetsMountTarget {
-	s.ClientMasterNodes = v
 	return s
 }
 
@@ -4279,6 +4568,11 @@ func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetNetworkType
 	return s
 }
 
+func (s *DescribeMountTargetsResponseBodyMountTargetsMountTarget) SetClientMasterNodes(v *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes) *DescribeMountTargetsResponseBodyMountTargetsMountTarget {
+	s.ClientMasterNodes = v
+	return s
+}
+
 type DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes struct {
 	ClientMasterNode []*DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode `json:"ClientMasterNode,omitempty" xml:"ClientMasterNode,omitempty" type:"Repeated"`
 }
@@ -4297,9 +4591,9 @@ func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNode
 }
 
 type DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode struct {
+	EcsIp         *string `json:"EcsIp,omitempty" xml:"EcsIp,omitempty"`
 	EcsId         *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
 	DefaultPasswd *string `json:"DefaultPasswd,omitempty" xml:"DefaultPasswd,omitempty"`
-	EcsIp         *string `json:"EcsIp,omitempty" xml:"EcsIp,omitempty"`
 }
 
 func (s DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode) String() string {
@@ -4310,6 +4604,11 @@ func (s DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodes
 	return s.String()
 }
 
+func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsIp(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode {
+	s.EcsIp = &v
+	return s
+}
+
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsId(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode {
 	s.EcsId = &v
 	return s
@@ -4317,11 +4616,6 @@ func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNode
 
 func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode) SetDefaultPasswd(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode {
 	s.DefaultPasswd = &v
-	return s
-}
-
-func (s *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode) SetEcsIp(v string) *DescribeMountTargetsResponseBodyMountTargetsMountTargetClientMasterNodesClientMasterNode {
-	s.EcsIp = &v
 	return s
 }
 
@@ -4378,10 +4672,10 @@ func (s *DescribeRegionsRequest) SetFileSystemType(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Regions    *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 }
 
@@ -4393,8 +4687,8 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetTotalCount(v int32) *DescribeRegionsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeRegionsResponseBody) SetPageNumber(v int32) *DescribeRegionsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4408,8 +4702,8 @@ func (s *DescribeRegionsResponseBody) SetPageSize(v int32) *DescribeRegionsRespo
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetPageNumber(v int32) *DescribeRegionsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeRegionsResponseBody) SetTotalCount(v int32) *DescribeRegionsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4436,8 +4730,8 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4449,13 +4743,13 @@ func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.RegionEndpoint = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegionsRegion {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
+	s.LocalName = &v
 	return s
 }
 
@@ -4547,10 +4841,10 @@ func (s *DescribeSnapshotsRequest) SetPageNumber(v int32) *DescribeSnapshotsRequ
 }
 
 type DescribeSnapshotsResponseBody struct {
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Snapshots  *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 }
 
@@ -4562,8 +4856,8 @@ func (s DescribeSnapshotsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSnapshotsResponseBody) SetTotalCount(v int32) *DescribeSnapshotsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeSnapshotsResponseBody) SetPageNumber(v int32) *DescribeSnapshotsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4577,8 +4871,8 @@ func (s *DescribeSnapshotsResponseBody) SetPageSize(v int32) *DescribeSnapshotsR
 	return s
 }
 
-func (s *DescribeSnapshotsResponseBody) SetPageNumber(v int32) *DescribeSnapshotsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSnapshotsResponseBody) SetTotalCount(v int32) *DescribeSnapshotsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4609,11 +4903,11 @@ type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
 	Progress                *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SourceFileSystemId      *string `json:"SourceFileSystemId,omitempty" xml:"SourceFileSystemId,omitempty"`
-	RetentionDays           *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	RemainTime              *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RetentionDays           *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
 	SourceFileSystemSize    *int64  `json:"SourceFileSystemSize,omitempty" xml:"SourceFileSystemSize,omitempty"`
-	SourceFileSystemVersion *string `json:"SourceFileSystemVersion,omitempty" xml:"SourceFileSystemVersion,omitempty"`
 	SnapshotName            *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	SourceFileSystemVersion *string `json:"SourceFileSystemVersion,omitempty" xml:"SourceFileSystemVersion,omitempty"`
 	EncryptType             *int32  `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SnapshotId              *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
@@ -4647,13 +4941,13 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSourceFileSystemId(v
 	return s
 }
 
-func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetRetentionDays(v int32) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
-	s.RetentionDays = &v
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetRemainTime(v int32) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.RemainTime = &v
 	return s
 }
 
-func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetRemainTime(v int32) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
-	s.RemainTime = &v
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetRetentionDays(v int32) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.RetentionDays = &v
 	return s
 }
 
@@ -4662,13 +4956,13 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSourceFileSystemSize
 	return s
 }
 
-func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSourceFileSystemVersion(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
-	s.SourceFileSystemVersion = &v
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.SnapshotName = &v
 	return s
 }
 
-func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
-	s.SnapshotName = &v
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetSourceFileSystemVersion(v string) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.SourceFileSystemVersion = &v
 	return s
 }
 
@@ -4746,10 +5040,10 @@ func (s *DescribeStoragePackagesRequest) SetPageNumber(v int32) *DescribeStorage
 }
 
 type DescribeStoragePackagesResponseBody struct {
-	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Packages   *DescribeStoragePackagesResponseBodyPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
 }
 
@@ -4761,8 +5055,8 @@ func (s DescribeStoragePackagesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeStoragePackagesResponseBody) SetTotalCount(v int32) *DescribeStoragePackagesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeStoragePackagesResponseBody) SetPageNumber(v int32) *DescribeStoragePackagesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4776,8 +5070,8 @@ func (s *DescribeStoragePackagesResponseBody) SetPageSize(v int32) *DescribeStor
 	return s
 }
 
-func (s *DescribeStoragePackagesResponseBody) SetPageNumber(v int32) *DescribeStoragePackagesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeStoragePackagesResponseBody) SetTotalCount(v int32) *DescribeStoragePackagesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4938,10 +5232,10 @@ func (s *DescribeTagsRequestTag) SetValue(v string) *DescribeTagsRequestTag {
 }
 
 type DescribeTagsResponseBody struct {
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageSize   *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Tags       *DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
@@ -4953,8 +5247,8 @@ func (s DescribeTagsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeTagsResponseBody) SetPageNumber(v int32) *DescribeTagsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4968,8 +5262,8 @@ func (s *DescribeTagsResponseBody) SetPageSize(v int32) *DescribeTagsResponseBod
 	return s
 }
 
-func (s *DescribeTagsResponseBody) SetPageNumber(v int32) *DescribeTagsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5065,7 +5359,8 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeZonesRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 }
 
 func (s DescribeZonesRequest) String() string {
@@ -5078,6 +5373,11 @@ func (s DescribeZonesRequest) GoString() string {
 
 func (s *DescribeZonesRequest) SetRegionId(v string) *DescribeZonesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeZonesRequest) SetFileSystemType(v string) *DescribeZonesRequest {
+	s.FileSystemType = &v
 	return s
 }
 
@@ -5122,9 +5422,10 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	Performance *DescribeZonesResponseBodyZonesZonePerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
-	Capacity    *DescribeZonesResponseBodyZonesZoneCapacity    `json:"Capacity,omitempty" xml:"Capacity,omitempty" type:"Struct"`
-	ZoneId      *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Performance   *DescribeZonesResponseBodyZonesZonePerformance   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	Capacity      *DescribeZonesResponseBodyZonesZoneCapacity      `json:"Capacity,omitempty" xml:"Capacity,omitempty" type:"Struct"`
+	ZoneId        *string                                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	InstanceTypes *DescribeZonesResponseBodyZonesZoneInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {
@@ -5147,6 +5448,11 @@ func (s *DescribeZonesResponseBodyZonesZone) SetCapacity(v *DescribeZonesRespons
 
 func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesResponseBodyZonesZone {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZone) SetInstanceTypes(v *DescribeZonesResponseBodyZonesZoneInstanceTypes) *DescribeZonesResponseBodyZonesZone {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -5184,6 +5490,46 @@ func (s *DescribeZonesResponseBodyZonesZoneCapacity) SetProtocol(v []*string) *D
 	return s
 }
 
+type DescribeZonesResponseBodyZonesZoneInstanceTypes struct {
+	InstanceType []*DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeZonesResponseBodyZonesZoneInstanceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZonesResponseBodyZonesZoneInstanceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZonesResponseBodyZonesZoneInstanceTypes) SetInstanceType(v []*DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType) *DescribeZonesResponseBodyZonesZoneInstanceTypes {
+	s.InstanceType = v
+	return s
+}
+
+type DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType struct {
+	StorageType  *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+}
+
+func (s DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType) SetStorageType(v string) *DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType) SetProtocolType(v string) *DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType {
+	s.ProtocolType = &v
+	return s
+}
+
 type DescribeZonesResponse struct {
 	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -5203,6 +5549,1144 @@ func (s *DescribeZonesResponse) SetHeaders(v map[string]*string) *DescribeZonesR
 }
 
 func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZonesResponse {
+	s.Body = v
+	return s
+}
+
+type DisableAndCleanRecycleBinRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s DisableAndCleanRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAndCleanRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAndCleanRecycleBinRequest) SetFileSystemId(v string) *DisableAndCleanRecycleBinRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type DisableAndCleanRecycleBinResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableAndCleanRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAndCleanRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAndCleanRecycleBinResponseBody) SetRequestId(v string) *DisableAndCleanRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableAndCleanRecycleBinResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DisableAndCleanRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAndCleanRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAndCleanRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAndCleanRecycleBinResponse) SetHeaders(v map[string]*string) *DisableAndCleanRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAndCleanRecycleBinResponse) SetBody(v *DisableAndCleanRecycleBinResponseBody) *DisableAndCleanRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
+type EnableRecycleBinRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	ReservedDays *int64  `json:"ReservedDays,omitempty" xml:"ReservedDays,omitempty"`
+}
+
+func (s EnableRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRecycleBinRequest) SetFileSystemId(v string) *EnableRecycleBinRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *EnableRecycleBinRequest) SetReservedDays(v int64) *EnableRecycleBinRequest {
+	s.ReservedDays = &v
+	return s
+}
+
+type EnableRecycleBinResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRecycleBinResponseBody) SetRequestId(v string) *EnableRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableRecycleBinResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRecycleBinResponse) SetHeaders(v map[string]*string) *EnableRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableRecycleBinResponse) SetBody(v *EnableRecycleBinResponseBody) *EnableRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
+type GetDirectoryOrFilePropertiesRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s GetDirectoryOrFilePropertiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDirectoryOrFilePropertiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDirectoryOrFilePropertiesRequest) SetFileSystemId(v string) *GetDirectoryOrFilePropertiesRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesRequest) SetPath(v string) *GetDirectoryOrFilePropertiesRequest {
+	s.Path = &v
+	return s
+}
+
+type GetDirectoryOrFilePropertiesResponseBody struct {
+	Entry     *GetDirectoryOrFilePropertiesResponseBodyEntry `json:"Entry,omitempty" xml:"Entry,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDirectoryOrFilePropertiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDirectoryOrFilePropertiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBody) SetEntry(v *GetDirectoryOrFilePropertiesResponseBodyEntry) *GetDirectoryOrFilePropertiesResponseBody {
+	s.Entry = v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBody) SetRequestId(v string) *GetDirectoryOrFilePropertiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	HasInfrequentAccessFile *bool   `json:"HasInfrequentAccessFile,omitempty" xml:"HasInfrequentAccessFile,omitempty"`
+	MTime                   *string `json:"MTime,omitempty" xml:"MTime,omitempty"`
+	ATime                   *string `json:"ATime,omitempty" xml:"ATime,omitempty"`
+	Size                    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	CTime                   *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
+	StorageType             *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RetrieveTime            *string `json:"RetrieveTime,omitempty" xml:"RetrieveTime,omitempty"`
+	Inode                   *string `json:"Inode,omitempty" xml:"Inode,omitempty"`
+}
+
+func (s GetDirectoryOrFilePropertiesResponseBodyEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDirectoryOrFilePropertiesResponseBodyEntry) GoString() string {
+	return s.String()
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetType(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.Type = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetHasInfrequentAccessFile(v bool) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.HasInfrequentAccessFile = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetMTime(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.MTime = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetATime(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.ATime = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetSize(v int64) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.Size = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetCTime(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.CTime = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetStorageType(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.StorageType = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetName(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetRetrieveTime(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.RetrieveTime = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetInode(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.Inode = &v
+	return s
+}
+
+type GetDirectoryOrFilePropertiesResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDirectoryOrFilePropertiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDirectoryOrFilePropertiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDirectoryOrFilePropertiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDirectoryOrFilePropertiesResponse) SetHeaders(v map[string]*string) *GetDirectoryOrFilePropertiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponse) SetBody(v *GetDirectoryOrFilePropertiesResponseBody) *GetDirectoryOrFilePropertiesResponse {
+	s.Body = v
+	return s
+}
+
+type GetRecycleBinAttributeRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s GetRecycleBinAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRecycleBinAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRecycleBinAttributeRequest) SetFileSystemId(v string) *GetRecycleBinAttributeRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type GetRecycleBinAttributeResponseBody struct {
+	// Id of the request
+	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RecycleBinAttribute *GetRecycleBinAttributeResponseBodyRecycleBinAttribute `json:"RecycleBinAttribute,omitempty" xml:"RecycleBinAttribute,omitempty" type:"Struct"`
+}
+
+func (s GetRecycleBinAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRecycleBinAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRecycleBinAttributeResponseBody) SetRequestId(v string) *GetRecycleBinAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRecycleBinAttributeResponseBody) SetRecycleBinAttribute(v *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) *GetRecycleBinAttributeResponseBody {
+	s.RecycleBinAttribute = v
+	return s
+}
+
+type GetRecycleBinAttributeResponseBodyRecycleBinAttribute struct {
+	Size         *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ReservedDays *int64  `json:"ReservedDays,omitempty" xml:"ReservedDays,omitempty"`
+	EnableTime   *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
+}
+
+func (s GetRecycleBinAttributeResponseBodyRecycleBinAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRecycleBinAttributeResponseBodyRecycleBinAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetSize(v int64) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
+	s.Size = &v
+	return s
+}
+
+func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetStatus(v string) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
+	s.Status = &v
+	return s
+}
+
+func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetReservedDays(v int64) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
+	s.ReservedDays = &v
+	return s
+}
+
+func (s *GetRecycleBinAttributeResponseBodyRecycleBinAttribute) SetEnableTime(v string) *GetRecycleBinAttributeResponseBodyRecycleBinAttribute {
+	s.EnableTime = &v
+	return s
+}
+
+type GetRecycleBinAttributeResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRecycleBinAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRecycleBinAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRecycleBinAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRecycleBinAttributeResponse) SetHeaders(v map[string]*string) *GetRecycleBinAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRecycleBinAttributeResponse) SetBody(v *GetRecycleBinAttributeResponseBody) *GetRecycleBinAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ListDirectoriesAndFilesRequest struct {
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	StorageType   *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	DirectoryOnly *bool   `json:"DirectoryOnly,omitempty" xml:"DirectoryOnly,omitempty"`
+	MaxResults    *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+}
+
+func (s ListDirectoriesAndFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectoriesAndFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetFileSystemId(v string) *ListDirectoriesAndFilesRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetPath(v string) *ListDirectoriesAndFilesRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetNextToken(v string) *ListDirectoriesAndFilesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetStorageType(v string) *ListDirectoriesAndFilesRequest {
+	s.StorageType = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetDirectoryOnly(v bool) *ListDirectoriesAndFilesRequest {
+	s.DirectoryOnly = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesRequest) SetMaxResults(v int64) *ListDirectoriesAndFilesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+type ListDirectoriesAndFilesResponseBody struct {
+	NextToken *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Entries   []*ListDirectoriesAndFilesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+}
+
+func (s ListDirectoriesAndFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectoriesAndFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectoriesAndFilesResponseBody) SetNextToken(v string) *ListDirectoriesAndFilesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBody) SetRequestId(v string) *ListDirectoriesAndFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBody) SetEntries(v []*ListDirectoriesAndFilesResponseBodyEntries) *ListDirectoriesAndFilesResponseBody {
+	s.Entries = v
+	return s
+}
+
+type ListDirectoriesAndFilesResponseBodyEntries struct {
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	HasInfrequentAccessFile *bool   `json:"HasInfrequentAccessFile,omitempty" xml:"HasInfrequentAccessFile,omitempty"`
+	Ctime                   *string `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
+	Mtime                   *string `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
+	Size                    *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StorageType             *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Atime                   *string `json:"Atime,omitempty" xml:"Atime,omitempty"`
+	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RetrieveTime            *string `json:"RetrieveTime,omitempty" xml:"RetrieveTime,omitempty"`
+	Inode                   *string `json:"Inode,omitempty" xml:"Inode,omitempty"`
+	FileId                  *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s ListDirectoriesAndFilesResponseBodyEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectoriesAndFilesResponseBodyEntries) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetType(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetHasInfrequentAccessFile(v bool) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.HasInfrequentAccessFile = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetCtime(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Ctime = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetMtime(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Mtime = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetSize(v int64) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Size = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetStorageType(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.StorageType = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetAtime(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Atime = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetName(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetRetrieveTime(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.RetrieveTime = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetInode(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.Inode = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetFileId(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.FileId = &v
+	return s
+}
+
+type ListDirectoriesAndFilesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDirectoriesAndFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectoriesAndFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectoriesAndFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectoriesAndFilesResponse) SetHeaders(v map[string]*string) *ListDirectoriesAndFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponse) SetBody(v *ListDirectoriesAndFilesResponseBody) *ListDirectoriesAndFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListLifecycleRetrieveJobsRequest struct {
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLifecycleRetrieveJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLifecycleRetrieveJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLifecycleRetrieveJobsRequest) SetPageSize(v int32) *ListLifecycleRetrieveJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsRequest) SetPageNumber(v int32) *ListLifecycleRetrieveJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsRequest) SetFileSystemId(v string) *ListLifecycleRetrieveJobsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsRequest) SetStatus(v string) *ListLifecycleRetrieveJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListLifecycleRetrieveJobsResponseBody struct {
+	TotalCount            *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageSize              *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber            *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	LifecycleRetrieveJobs []*ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs `json:"LifecycleRetrieveJobs,omitempty" xml:"LifecycleRetrieveJobs,omitempty" type:"Repeated"`
+}
+
+func (s ListLifecycleRetrieveJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLifecycleRetrieveJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBody) SetTotalCount(v int32) *ListLifecycleRetrieveJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBody) SetRequestId(v string) *ListLifecycleRetrieveJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBody) SetPageSize(v int32) *ListLifecycleRetrieveJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBody) SetPageNumber(v int32) *ListLifecycleRetrieveJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBody) SetLifecycleRetrieveJobs(v []*ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) *ListLifecycleRetrieveJobsResponseBody {
+	s.LifecycleRetrieveJobs = v
+	return s
+}
+
+type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
+	FileSystemId        *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	DiscoveredFileCount *int64    `json:"DiscoveredFileCount,omitempty" xml:"DiscoveredFileCount,omitempty"`
+	UpdateTime          *string   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Paths               []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	RetrievedFileCount  *int64    `json:"RetrievedFileCount,omitempty" xml:"RetrievedFileCount,omitempty"`
+	JobId               *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	CreateTime          *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetFileSystemId(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetStatus(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetDiscoveredFileCount(v int64) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.DiscoveredFileCount = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetUpdateTime(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetPaths(v []*string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.Paths = v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetRetrievedFileCount(v int64) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.RetrievedFileCount = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetJobId(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetCreateTime(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.CreateTime = &v
+	return s
+}
+
+type ListLifecycleRetrieveJobsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListLifecycleRetrieveJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLifecycleRetrieveJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLifecycleRetrieveJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLifecycleRetrieveJobsResponse) SetHeaders(v map[string]*string) *ListLifecycleRetrieveJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponse) SetBody(v *ListLifecycleRetrieveJobsResponseBody) *ListLifecycleRetrieveJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecentlyRecycledDirectoriesRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+}
+
+func (s ListRecentlyRecycledDirectoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentlyRecycledDirectoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentlyRecycledDirectoriesRequest) SetFileSystemId(v string) *ListRecentlyRecycledDirectoriesRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesRequest) SetNextToken(v string) *ListRecentlyRecycledDirectoriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesRequest) SetMaxResults(v int64) *ListRecentlyRecycledDirectoriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+type ListRecentlyRecycledDirectoriesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	NextToken *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Entries   []*ListRecentlyRecycledDirectoriesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+}
+
+func (s ListRecentlyRecycledDirectoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentlyRecycledDirectoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBody) SetRequestId(v string) *ListRecentlyRecycledDirectoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBody) SetNextToken(v string) *ListRecentlyRecycledDirectoriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBody) SetEntries(v []*ListRecentlyRecycledDirectoriesResponseBodyEntries) *ListRecentlyRecycledDirectoriesResponseBody {
+	s.Entries = v
+	return s
+}
+
+type ListRecentlyRecycledDirectoriesResponseBodyEntries struct {
+	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	LastDeleteTime *string `json:"LastDeleteTime,omitempty" xml:"LastDeleteTime,omitempty"`
+}
+
+func (s ListRecentlyRecycledDirectoriesResponseBodyEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentlyRecycledDirectoriesResponseBodyEntries) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBodyEntries) SetFileId(v string) *ListRecentlyRecycledDirectoriesResponseBodyEntries {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBodyEntries) SetPath(v string) *ListRecentlyRecycledDirectoriesResponseBodyEntries {
+	s.Path = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBodyEntries) SetName(v string) *ListRecentlyRecycledDirectoriesResponseBodyEntries {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponseBodyEntries) SetLastDeleteTime(v string) *ListRecentlyRecycledDirectoriesResponseBodyEntries {
+	s.LastDeleteTime = &v
+	return s
+}
+
+type ListRecentlyRecycledDirectoriesResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRecentlyRecycledDirectoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRecentlyRecycledDirectoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentlyRecycledDirectoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponse) SetHeaders(v map[string]*string) *ListRecentlyRecycledDirectoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecentlyRecycledDirectoriesResponse) SetBody(v *ListRecentlyRecycledDirectoriesResponseBody) *ListRecentlyRecycledDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecycleBinJobsRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListRecycleBinJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycleBinJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycleBinJobsRequest) SetFileSystemId(v string) *ListRecycleBinJobsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsRequest) SetJobId(v string) *ListRecycleBinJobsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsRequest) SetPageSize(v int64) *ListRecycleBinJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsRequest) SetPageNumber(v int64) *ListRecycleBinJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsRequest) SetStatus(v string) *ListRecycleBinJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListRecycleBinJobsResponseBody struct {
+	// Id of the request
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Jobs       []*ListRecycleBinJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+}
+
+func (s ListRecycleBinJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycleBinJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycleBinJobsResponseBody) SetRequestId(v string) *ListRecycleBinJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBody) SetTotalCount(v int64) *ListRecycleBinJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBody) SetPageNumber(v int64) *ListRecycleBinJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBody) SetPageSize(v int64) *ListRecycleBinJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBody) SetJobs(v []*ListRecycleBinJobsResponseBodyJobs) *ListRecycleBinJobsResponseBody {
+	s.Jobs = v
+	return s
+}
+
+type ListRecycleBinJobsResponseBodyJobs struct {
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListRecycleBinJobsResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycleBinJobsResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetId(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetType(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetFileId(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetStatus(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetErrorCode(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetProgress(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetCreateTime(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetFileName(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponseBodyJobs) SetErrorMessage(v string) *ListRecycleBinJobsResponseBodyJobs {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListRecycleBinJobsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRecycleBinJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRecycleBinJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycleBinJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycleBinJobsResponse) SetHeaders(v map[string]*string) *ListRecycleBinJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecycleBinJobsResponse) SetBody(v *ListRecycleBinJobsResponseBody) *ListRecycleBinJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecycledDirectoriesAndFilesRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+}
+
+func (s ListRecycledDirectoriesAndFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycledDirectoriesAndFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycledDirectoriesAndFilesRequest) SetFileSystemId(v string) *ListRecycledDirectoriesAndFilesRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesRequest) SetFileId(v string) *ListRecycledDirectoriesAndFilesRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesRequest) SetNextToken(v string) *ListRecycledDirectoriesAndFilesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesRequest) SetMaxResults(v int64) *ListRecycledDirectoriesAndFilesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+type ListRecycledDirectoriesAndFilesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Id of the request
+	NextToken *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Entries   []*ListRecycledDirectoriesAndFilesResponseBodyEntries `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+}
+
+func (s ListRecycledDirectoriesAndFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycledDirectoriesAndFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBody) SetRequestId(v string) *ListRecycledDirectoriesAndFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBody) SetNextToken(v string) *ListRecycledDirectoriesAndFilesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBody) SetEntries(v []*ListRecycledDirectoriesAndFilesResponseBodyEntries) *ListRecycledDirectoriesAndFilesResponseBody {
+	s.Entries = v
+	return s
+}
+
+type ListRecycledDirectoriesAndFilesResponseBodyEntries struct {
+	FileId     *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	Inode      *string `json:"Inode,omitempty" xml:"Inode,omitempty"`
+	ATime      *string `json:"ATime,omitempty" xml:"ATime,omitempty"`
+	MTime      *string `json:"MTime,omitempty" xml:"MTime,omitempty"`
+	CTime      *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
+	Size       *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListRecycledDirectoriesAndFilesResponseBodyEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycledDirectoriesAndFilesResponseBodyEntries) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetFileId(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetType(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetName(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetDeleteTime(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.DeleteTime = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetInode(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.Inode = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetATime(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.ATime = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetMTime(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.MTime = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetCTime(v string) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.CTime = &v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponseBodyEntries) SetSize(v int64) *ListRecycledDirectoriesAndFilesResponseBodyEntries {
+	s.Size = &v
+	return s
+}
+
+type ListRecycledDirectoriesAndFilesResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRecycledDirectoriesAndFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRecycledDirectoriesAndFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecycledDirectoriesAndFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponse) SetHeaders(v map[string]*string) *ListRecycledDirectoriesAndFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecycledDirectoriesAndFilesResponse) SetBody(v *ListRecycledDirectoriesAndFilesResponseBody) *ListRecycledDirectoriesAndFilesResponse {
 	s.Body = v
 	return s
 }
@@ -5312,8 +6796,8 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
@@ -5326,13 +6810,13 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -5925,8 +7409,8 @@ func (s *ModifyMountTargetResponse) SetBody(v *ModifyMountTargetResponseBody) *M
 }
 
 type OpenNASServiceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenNASServiceResponseBody) String() string {
@@ -5937,13 +7421,13 @@ func (s OpenNASServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *OpenNASServiceResponseBody) SetRequestId(v string) *OpenNASServiceResponseBody {
-	s.RequestId = &v
+func (s *OpenNASServiceResponseBody) SetOrderId(v string) *OpenNASServiceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *OpenNASServiceResponseBody) SetOrderId(v string) *OpenNASServiceResponseBody {
-	s.OrderId = &v
+func (s *OpenNASServiceResponseBody) SetRequestId(v string) *OpenNASServiceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6194,6 +7678,63 @@ func (s *ResetFileSystemResponse) SetBody(v *ResetFileSystemResponseBody) *Reset
 	return s
 }
 
+type RetryLifecycleRetrieveJobRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s RetryLifecycleRetrieveJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryLifecycleRetrieveJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryLifecycleRetrieveJobRequest) SetJobId(v string) *RetryLifecycleRetrieveJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type RetryLifecycleRetrieveJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryLifecycleRetrieveJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryLifecycleRetrieveJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryLifecycleRetrieveJobResponseBody) SetRequestId(v string) *RetryLifecycleRetrieveJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryLifecycleRetrieveJobResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RetryLifecycleRetrieveJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryLifecycleRetrieveJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryLifecycleRetrieveJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryLifecycleRetrieveJobResponse) SetHeaders(v map[string]*string) *RetryLifecycleRetrieveJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryLifecycleRetrieveJobResponse) SetBody(v *RetryLifecycleRetrieveJobResponseBody) *RetryLifecycleRetrieveJobResponse {
+	s.Body = v
+	return s
+}
+
 type SetDirQuotaRequest struct {
 	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -6248,8 +7789,8 @@ func (s *SetDirQuotaRequest) SetFileCountLimit(v int64) *SetDirQuotaRequest {
 }
 
 type SetDirQuotaResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetDirQuotaResponseBody) String() string {
@@ -6260,13 +7801,13 @@ func (s SetDirQuotaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetDirQuotaResponseBody) SetRequestId(v string) *SetDirQuotaResponseBody {
-	s.RequestId = &v
+func (s *SetDirQuotaResponseBody) SetSuccess(v bool) *SetDirQuotaResponseBody {
+	s.Success = &v
 	return s
 }
 
-func (s *SetDirQuotaResponseBody) SetSuccess(v bool) *SetDirQuotaResponseBody {
-	s.Success = &v
+func (s *SetDirQuotaResponseBody) SetRequestId(v string) *SetDirQuotaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6456,6 +7997,70 @@ func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResource
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRecycleBinAttributeRequest struct {
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	ReservedDays *int64  `json:"ReservedDays,omitempty" xml:"ReservedDays,omitempty"`
+}
+
+func (s UpdateRecycleBinAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRecycleBinAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRecycleBinAttributeRequest) SetFileSystemId(v string) *UpdateRecycleBinAttributeRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *UpdateRecycleBinAttributeRequest) SetReservedDays(v int64) *UpdateRecycleBinAttributeRequest {
+	s.ReservedDays = &v
+	return s
+}
+
+type UpdateRecycleBinAttributeResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRecycleBinAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRecycleBinAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRecycleBinAttributeResponseBody) SetRequestId(v string) *UpdateRecycleBinAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRecycleBinAttributeResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateRecycleBinAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRecycleBinAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRecycleBinAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRecycleBinAttributeResponse) SetHeaders(v map[string]*string) *UpdateRecycleBinAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRecycleBinAttributeResponse) SetBody(v *UpdateRecycleBinAttributeResponseBody) *UpdateRecycleBinAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -6727,6 +8332,63 @@ func (client *Client) CancelDirQuota(request *CancelDirQuotaRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CancelLifecycleRetrieveJobWithOptions(request *CancelLifecycleRetrieveJobRequest, runtime *util.RuntimeOptions) (_result *CancelLifecycleRetrieveJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CancelLifecycleRetrieveJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelLifecycleRetrieveJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelLifecycleRetrieveJob(request *CancelLifecycleRetrieveJobRequest) (_result *CancelLifecycleRetrieveJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelLifecycleRetrieveJobResponse{}
+	_body, _err := client.CancelLifecycleRetrieveJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelRecycleBinJobWithOptions(request *CancelRecycleBinJobRequest, runtime *util.RuntimeOptions) (_result *CancelRecycleBinJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &CancelRecycleBinJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelRecycleBinJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelRecycleBinJob(request *CancelRecycleBinJobRequest) (_result *CancelRecycleBinJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelRecycleBinJobResponse{}
+	_body, _err := client.CancelRecycleBinJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAccessGroupWithOptions(request *CreateAccessGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAccessGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6895,6 +8557,34 @@ func (client *Client) CreateLifecyclePolicy(request *CreateLifecyclePolicyReques
 	return _result, _err
 }
 
+func (client *Client) CreateLifecycleRetrieveJobWithOptions(request *CreateLifecycleRetrieveJobRequest, runtime *util.RuntimeOptions) (_result *CreateLifecycleRetrieveJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLifecycleRetrieveJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLifecycleRetrieveJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLifecycleRetrieveJob(request *CreateLifecycleRetrieveJobRequest) (_result *CreateLifecycleRetrieveJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLifecycleRetrieveJobResponse{}
+	_body, _err := client.CreateLifecycleRetrieveJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetRequest, runtime *util.RuntimeOptions) (_result *CreateMountTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6916,6 +8606,64 @@ func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMountTargetResponse{}
 	_body, _err := client.CreateMountTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRecycleBinDeleteJobWithOptions(request *CreateRecycleBinDeleteJobRequest, runtime *util.RuntimeOptions) (_result *CreateRecycleBinDeleteJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &CreateRecycleBinDeleteJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRecycleBinDeleteJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRecycleBinDeleteJob(request *CreateRecycleBinDeleteJobRequest) (_result *CreateRecycleBinDeleteJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRecycleBinDeleteJobResponse{}
+	_body, _err := client.CreateRecycleBinDeleteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRecycleBinRestoreJobWithOptions(request *CreateRecycleBinRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRecycleBinRestoreJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &CreateRecycleBinRestoreJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateRecycleBinRestoreJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRecycleBinRestoreJob(request *CreateRecycleBinRestoreJobRequest) (_result *CreateRecycleBinRestoreJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRecycleBinRestoreJobResponse{}
+	_body, _err := client.CreateRecycleBinRestoreJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7680,6 +9428,263 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+func (client *Client) DisableAndCleanRecycleBinWithOptions(request *DisableAndCleanRecycleBinRequest, runtime *util.RuntimeOptions) (_result *DisableAndCleanRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DisableAndCleanRecycleBinResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DisableAndCleanRecycleBin"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAndCleanRecycleBin(request *DisableAndCleanRecycleBinRequest) (_result *DisableAndCleanRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAndCleanRecycleBinResponse{}
+	_body, _err := client.DisableAndCleanRecycleBinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableRecycleBinWithOptions(request *EnableRecycleBinRequest, runtime *util.RuntimeOptions) (_result *EnableRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EnableRecycleBinResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EnableRecycleBin"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableRecycleBin(request *EnableRecycleBinRequest) (_result *EnableRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableRecycleBinResponse{}
+	_body, _err := client.EnableRecycleBinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDirectoryOrFilePropertiesWithOptions(request *GetDirectoryOrFilePropertiesRequest, runtime *util.RuntimeOptions) (_result *GetDirectoryOrFilePropertiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDirectoryOrFilePropertiesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDirectoryOrFileProperties"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDirectoryOrFileProperties(request *GetDirectoryOrFilePropertiesRequest) (_result *GetDirectoryOrFilePropertiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDirectoryOrFilePropertiesResponse{}
+	_body, _err := client.GetDirectoryOrFilePropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRecycleBinAttributeWithOptions(request *GetRecycleBinAttributeRequest, runtime *util.RuntimeOptions) (_result *GetRecycleBinAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetRecycleBinAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetRecycleBinAttribute"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRecycleBinAttribute(request *GetRecycleBinAttributeRequest) (_result *GetRecycleBinAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRecycleBinAttributeResponse{}
+	_body, _err := client.GetRecycleBinAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDirectoriesAndFilesWithOptions(request *ListDirectoriesAndFilesRequest, runtime *util.RuntimeOptions) (_result *ListDirectoriesAndFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDirectoriesAndFilesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDirectoriesAndFiles"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDirectoriesAndFiles(request *ListDirectoriesAndFilesRequest) (_result *ListDirectoriesAndFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDirectoriesAndFilesResponse{}
+	_body, _err := client.ListDirectoriesAndFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLifecycleRetrieveJobsWithOptions(request *ListLifecycleRetrieveJobsRequest, runtime *util.RuntimeOptions) (_result *ListLifecycleRetrieveJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListLifecycleRetrieveJobsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListLifecycleRetrieveJobs"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLifecycleRetrieveJobs(request *ListLifecycleRetrieveJobsRequest) (_result *ListLifecycleRetrieveJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLifecycleRetrieveJobsResponse{}
+	_body, _err := client.ListLifecycleRetrieveJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRecentlyRecycledDirectoriesWithOptions(request *ListRecentlyRecycledDirectoriesRequest, runtime *util.RuntimeOptions) (_result *ListRecentlyRecycledDirectoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListRecentlyRecycledDirectoriesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListRecentlyRecycledDirectories"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRecentlyRecycledDirectories(request *ListRecentlyRecycledDirectoriesRequest) (_result *ListRecentlyRecycledDirectoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecentlyRecycledDirectoriesResponse{}
+	_body, _err := client.ListRecentlyRecycledDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRecycleBinJobsWithOptions(request *ListRecycleBinJobsRequest, runtime *util.RuntimeOptions) (_result *ListRecycleBinJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListRecycleBinJobsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListRecycleBinJobs"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRecycleBinJobs(request *ListRecycleBinJobsRequest) (_result *ListRecycleBinJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecycleBinJobsResponse{}
+	_body, _err := client.ListRecycleBinJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRecycledDirectoriesAndFilesWithOptions(request *ListRecycledDirectoriesAndFilesRequest, runtime *util.RuntimeOptions) (_result *ListRecycledDirectoriesAndFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &ListRecycledDirectoriesAndFilesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListRecycledDirectoriesAndFiles"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRecycledDirectoriesAndFiles(request *ListRecycledDirectoriesAndFilesRequest) (_result *ListRecycledDirectoriesAndFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecycledDirectoriesAndFilesResponse{}
+	_body, _err := client.ListRecycledDirectoriesAndFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8010,6 +10015,34 @@ func (client *Client) ResetFileSystem(request *ResetFileSystemRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) RetryLifecycleRetrieveJobWithOptions(request *RetryLifecycleRetrieveJobRequest, runtime *util.RuntimeOptions) (_result *RetryLifecycleRetrieveJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RetryLifecycleRetrieveJobResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RetryLifecycleRetrieveJob"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryLifecycleRetrieveJob(request *RetryLifecycleRetrieveJobRequest) (_result *RetryLifecycleRetrieveJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryLifecycleRetrieveJobResponse{}
+	_body, _err := client.RetryLifecycleRetrieveJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetDirQuotaWithOptions(request *SetDirQuotaRequest, runtime *util.RuntimeOptions) (_result *SetDirQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8087,6 +10120,35 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRecycleBinAttributeWithOptions(request *UpdateRecycleBinAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateRecycleBinAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &UpdateRecycleBinAttributeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateRecycleBinAttribute"), tea.String("2017-06-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRecycleBinAttribute(request *UpdateRecycleBinAttributeRequest) (_result *UpdateRecycleBinAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRecycleBinAttributeResponse{}
+	_body, _err := client.UpdateRecycleBinAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
