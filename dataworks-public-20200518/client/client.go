@@ -7344,6 +7344,244 @@ func (s *ExportDISyncTasksResponse) SetBody(v *ExportDISyncTasksResponseBody) *E
 	return s
 }
 
+type GenerateDISyncTaskConfigForCreatingRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s GenerateDISyncTaskConfigForCreatingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForCreatingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingRequest) SetProjectId(v int64) *GenerateDISyncTaskConfigForCreatingRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingRequest) SetTaskType(v string) *GenerateDISyncTaskConfigForCreatingRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingRequest) SetTaskParam(v string) *GenerateDISyncTaskConfigForCreatingRequest {
+	s.TaskParam = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingRequest) SetClientToken(v string) *GenerateDISyncTaskConfigForCreatingRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type GenerateDISyncTaskConfigForCreatingResponseBody struct {
+	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GenerateDISyncTaskConfigForCreatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBody) SetSuccess(v bool) *GenerateDISyncTaskConfigForCreatingResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBody) SetRequestId(v string) *GenerateDISyncTaskConfigForCreatingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBody) SetData(v *GenerateDISyncTaskConfigForCreatingResponseBodyData) *GenerateDISyncTaskConfigForCreatingResponseBody {
+	s.Data = v
+	return s
+}
+
+type GenerateDISyncTaskConfigForCreatingResponseBodyData struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ProcessId *int64  `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBodyData) SetStatus(v string) *GenerateDISyncTaskConfigForCreatingResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBodyData) SetProcessId(v int64) *GenerateDISyncTaskConfigForCreatingResponseBodyData {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponseBodyData) SetMessage(v string) *GenerateDISyncTaskConfigForCreatingResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+type GenerateDISyncTaskConfigForCreatingResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateDISyncTaskConfigForCreatingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForCreatingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponse) SetHeaders(v map[string]*string) *GenerateDISyncTaskConfigForCreatingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForCreatingResponse) SetBody(v *GenerateDISyncTaskConfigForCreatingResponseBody) *GenerateDISyncTaskConfigForCreatingResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateDISyncTaskConfigForUpdatingRequest struct {
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	TaskId      *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetProjectId(v int64) *GenerateDISyncTaskConfigForUpdatingRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetTaskType(v string) *GenerateDISyncTaskConfigForUpdatingRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetTaskParam(v string) *GenerateDISyncTaskConfigForUpdatingRequest {
+	s.TaskParam = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetClientToken(v string) *GenerateDISyncTaskConfigForUpdatingRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingRequest) SetTaskId(v int64) *GenerateDISyncTaskConfigForUpdatingRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GenerateDISyncTaskConfigForUpdatingResponseBody struct {
+	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GenerateDISyncTaskConfigForUpdatingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBody) SetSuccess(v bool) *GenerateDISyncTaskConfigForUpdatingResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBody) SetRequestId(v string) *GenerateDISyncTaskConfigForUpdatingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBody) SetData(v *GenerateDISyncTaskConfigForUpdatingResponseBodyData) *GenerateDISyncTaskConfigForUpdatingResponseBody {
+	s.Data = v
+	return s
+}
+
+type GenerateDISyncTaskConfigForUpdatingResponseBodyData struct {
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ProcessId *int64  `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBodyData) SetStatus(v string) *GenerateDISyncTaskConfigForUpdatingResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBodyData) SetProcessId(v int64) *GenerateDISyncTaskConfigForUpdatingResponseBodyData {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponseBodyData) SetMessage(v string) *GenerateDISyncTaskConfigForUpdatingResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+type GenerateDISyncTaskConfigForUpdatingResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateDISyncTaskConfigForUpdatingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDISyncTaskConfigForUpdatingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponse) SetHeaders(v map[string]*string) *GenerateDISyncTaskConfigForUpdatingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateDISyncTaskConfigForUpdatingResponse) SetBody(v *GenerateDISyncTaskConfigForUpdatingResponseBody) *GenerateDISyncTaskConfigForUpdatingResponse {
+	s.Body = v
+	return s
+}
+
 type GetBaselineConfigRequest struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 }
@@ -10996,9 +11234,10 @@ func (s *GetDISyncInstanceInfoResponseBody) SetData(v *GetDISyncInstanceInfoResp
 }
 
 type GetDISyncInstanceInfoResponseBodyData struct {
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Message      *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name         *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SolutionInfo *GetDISyncInstanceInfoResponseBodyDataSolutionInfo `json:"SolutionInfo,omitempty" xml:"SolutionInfo,omitempty" type:"Struct"`
 }
 
 func (s GetDISyncInstanceInfoResponseBodyData) String() string {
@@ -11021,6 +11260,75 @@ func (s *GetDISyncInstanceInfoResponseBodyData) SetMessage(v string) *GetDISyncI
 
 func (s *GetDISyncInstanceInfoResponseBodyData) SetName(v string) *GetDISyncInstanceInfoResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyData) SetSolutionInfo(v *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) *GetDISyncInstanceInfoResponseBodyData {
+	s.SolutionInfo = v
+	return s
+}
+
+type GetDISyncInstanceInfoResponseBodyDataSolutionInfo struct {
+	Status      *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Id          *int64                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	CreatorName *string                                                        `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	StepDetail  []*GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail `json:"StepDetail,omitempty" xml:"StepDetail,omitempty" type:"Repeated"`
+}
+
+func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetStatus(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetId(v int64) *GetDISyncInstanceInfoResponseBodyDataSolutionInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetCreatorName(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfo {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetStepDetail(v []*GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) *GetDISyncInstanceInfoResponseBodyDataSolutionInfo {
+	s.StepDetail = v
+	return s
+}
+
+type GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail struct {
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepId   *int64  `json:"StepId,omitempty" xml:"StepId,omitempty"`
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+}
+
+func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) SetStatus(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) SetStepId(v int64) *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail {
+	s.StepId = &v
+	return s
+}
+
+func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail) SetStepName(v string) *GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail {
+	s.StepName = &v
 	return s
 }
 
@@ -11106,9 +11414,10 @@ func (s *GetDISyncTaskResponseBody) SetData(v *GetDISyncTaskResponseBodyData) *G
 }
 
 type GetDISyncTaskResponseBodyData struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Status         *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	SolutionDetail *GetDISyncTaskResponseBodyDataSolutionDetail `json:"SolutionDetail,omitempty" xml:"SolutionDetail,omitempty" type:"Struct"`
 }
 
 func (s GetDISyncTaskResponseBodyData) String() string {
@@ -11131,6 +11440,88 @@ func (s *GetDISyncTaskResponseBodyData) SetStatus(v string) *GetDISyncTaskRespon
 
 func (s *GetDISyncTaskResponseBodyData) SetMessage(v string) *GetDISyncTaskResponseBodyData {
 	s.Message = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyData) SetSolutionDetail(v *GetDISyncTaskResponseBodyDataSolutionDetail) *GetDISyncTaskResponseBodyData {
+	s.SolutionDetail = v
+	return s
+}
+
+type GetDISyncTaskResponseBodyDataSolutionDetail struct {
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CreatorName    *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	ProcessContent *string `json:"ProcessContent,omitempty" xml:"ProcessContent,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProcessExtra   *string `json:"ProcessExtra,omitempty" xml:"ProcessExtra,omitempty"`
+	SubmitTime     *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDISyncTaskResponseBodyDataSolutionDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskResponseBodyDataSolutionDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetStatus(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetType(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.Type = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetStartTime(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetCreatorName(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetProjectId(v int64) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetSourceType(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetProcessContent(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.ProcessContent = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetName(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetProcessExtra(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.ProcessExtra = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetSubmitTime(v string) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.SubmitTime = &v
+	return s
+}
+
+func (s *GetDISyncTaskResponseBodyDataSolutionDetail) SetId(v int64) *GetDISyncTaskResponseBodyDataSolutionDetail {
+	s.Id = &v
 	return s
 }
 
@@ -30895,6 +31286,116 @@ func (s *PublishDataServiceApiResponse) SetBody(v *PublishDataServiceApiResponse
 	return s
 }
 
+type QueryDISyncTaskConfigProcessResultRequest struct {
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	AsyncProcessId *int64  `json:"AsyncProcessId,omitempty" xml:"AsyncProcessId,omitempty"`
+}
+
+func (s QueryDISyncTaskConfigProcessResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDISyncTaskConfigProcessResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDISyncTaskConfigProcessResultRequest) SetProjectId(v int64) *QueryDISyncTaskConfigProcessResultRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultRequest) SetTaskType(v string) *QueryDISyncTaskConfigProcessResultRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultRequest) SetAsyncProcessId(v int64) *QueryDISyncTaskConfigProcessResultRequest {
+	s.AsyncProcessId = &v
+	return s
+}
+
+type QueryDISyncTaskConfigProcessResultResponseBody struct {
+	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryDISyncTaskConfigProcessResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBody) SetSuccess(v bool) *QueryDISyncTaskConfigProcessResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBody) SetRequestId(v string) *QueryDISyncTaskConfigProcessResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBody) SetData(v *QueryDISyncTaskConfigProcessResultResponseBodyData) *QueryDISyncTaskConfigProcessResultResponseBody {
+	s.Data = v
+	return s
+}
+
+type QueryDISyncTaskConfigProcessResultResponseBodyData struct {
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBodyData) SetStatus(v string) *QueryDISyncTaskConfigProcessResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBodyData) SetMessage(v string) *QueryDISyncTaskConfigProcessResultResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponseBodyData) SetTaskContent(v string) *QueryDISyncTaskConfigProcessResultResponseBodyData {
+	s.TaskContent = &v
+	return s
+}
+
+type QueryDISyncTaskConfigProcessResultResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDISyncTaskConfigProcessResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDISyncTaskConfigProcessResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponse) SetHeaders(v map[string]*string) *QueryDISyncTaskConfigProcessResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDISyncTaskConfigProcessResultResponse) SetBody(v *QueryDISyncTaskConfigProcessResultResponseBody) *QueryDISyncTaskConfigProcessResultResponse {
+	s.Body = v
+	return s
+}
+
 type QueryPublicModelEngineRequest struct {
 	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -38407,6 +38908,62 @@ func (client *Client) ExportDISyncTasks(request *ExportDISyncTasksRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GenerateDISyncTaskConfigForCreatingWithOptions(request *GenerateDISyncTaskConfigForCreatingRequest, runtime *util.RuntimeOptions) (_result *GenerateDISyncTaskConfigForCreatingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GenerateDISyncTaskConfigForCreatingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GenerateDISyncTaskConfigForCreating"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateDISyncTaskConfigForCreating(request *GenerateDISyncTaskConfigForCreatingRequest) (_result *GenerateDISyncTaskConfigForCreatingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateDISyncTaskConfigForCreatingResponse{}
+	_body, _err := client.GenerateDISyncTaskConfigForCreatingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateDISyncTaskConfigForUpdatingWithOptions(request *GenerateDISyncTaskConfigForUpdatingRequest, runtime *util.RuntimeOptions) (_result *GenerateDISyncTaskConfigForUpdatingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GenerateDISyncTaskConfigForUpdatingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GenerateDISyncTaskConfigForUpdating"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateDISyncTaskConfigForUpdating(request *GenerateDISyncTaskConfigForUpdatingRequest) (_result *GenerateDISyncTaskConfigForUpdatingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateDISyncTaskConfigForUpdatingResponse{}
+	_body, _err := client.GenerateDISyncTaskConfigForUpdatingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBaselineConfigWithOptions(request *GetBaselineConfigRequest, runtime *util.RuntimeOptions) (_result *GetBaselineConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41523,6 +42080,34 @@ func (client *Client) PublishDataServiceApi(request *PublishDataServiceApiReques
 	runtime := &util.RuntimeOptions{}
 	_result = &PublishDataServiceApiResponse{}
 	_body, _err := client.PublishDataServiceApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDISyncTaskConfigProcessResultWithOptions(request *QueryDISyncTaskConfigProcessResultRequest, runtime *util.RuntimeOptions) (_result *QueryDISyncTaskConfigProcessResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryDISyncTaskConfigProcessResultResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryDISyncTaskConfigProcessResult"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDISyncTaskConfigProcessResult(request *QueryDISyncTaskConfigProcessResultRequest) (_result *QueryDISyncTaskConfigProcessResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDISyncTaskConfigProcessResultResponse{}
+	_body, _err := client.QueryDISyncTaskConfigProcessResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
