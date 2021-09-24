@@ -3888,6 +3888,8 @@ type GetConferenceResponseBodyResult struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 会议创建时间戳，单位：毫秒。
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 录制回放地址，m3u8格式，会议结束后10秒才会生成。
+	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
 }
 
 func (s GetConferenceResponseBodyResult) String() string {
@@ -3930,6 +3932,11 @@ func (s *GetConferenceResponseBodyResult) SetAppId(v string) *GetConferenceRespo
 
 func (s *GetConferenceResponseBodyResult) SetCreateTime(v int64) *GetConferenceResponseBodyResult {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetConferenceResponseBodyResult) SetPlaybackUrl(v string) *GetConferenceResponseBodyResult {
+	s.PlaybackUrl = &v
 	return s
 }
 
