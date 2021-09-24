@@ -253,6 +253,128 @@ func (s *ExtractPedestrianFeatureAttrResponse) SetBody(v *ExtractPedestrianFeatu
 	return s
 }
 
+type RetouchSkinRequest struct {
+	ImageURL        *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	RetouchDegree   *float32 `json:"RetouchDegree,omitempty" xml:"RetouchDegree,omitempty"`
+	WhiteningDegree *float32 `json:"WhiteningDegree,omitempty" xml:"WhiteningDegree,omitempty"`
+}
+
+func (s RetouchSkinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetouchSkinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetouchSkinRequest) SetImageURL(v string) *RetouchSkinRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *RetouchSkinRequest) SetRetouchDegree(v float32) *RetouchSkinRequest {
+	s.RetouchDegree = &v
+	return s
+}
+
+func (s *RetouchSkinRequest) SetWhiteningDegree(v float32) *RetouchSkinRequest {
+	s.WhiteningDegree = &v
+	return s
+}
+
+type RetouchSkinAdvanceRequest struct {
+	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	RetouchDegree   *float32  `json:"RetouchDegree,omitempty" xml:"RetouchDegree,omitempty"`
+	WhiteningDegree *float32  `json:"WhiteningDegree,omitempty" xml:"WhiteningDegree,omitempty"`
+}
+
+func (s RetouchSkinAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetouchSkinAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetouchSkinAdvanceRequest) SetImageURLObject(v io.Reader) *RetouchSkinAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *RetouchSkinAdvanceRequest) SetRetouchDegree(v float32) *RetouchSkinAdvanceRequest {
+	s.RetouchDegree = &v
+	return s
+}
+
+func (s *RetouchSkinAdvanceRequest) SetWhiteningDegree(v float32) *RetouchSkinAdvanceRequest {
+	s.WhiteningDegree = &v
+	return s
+}
+
+type RetouchSkinResponseBody struct {
+	// Id of the request
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *RetouchSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s RetouchSkinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetouchSkinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetouchSkinResponseBody) SetRequestId(v string) *RetouchSkinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetouchSkinResponseBody) SetData(v *RetouchSkinResponseBodyData) *RetouchSkinResponseBody {
+	s.Data = v
+	return s
+}
+
+type RetouchSkinResponseBodyData struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s RetouchSkinResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetouchSkinResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RetouchSkinResponseBodyData) SetImageURL(v string) *RetouchSkinResponseBodyData {
+	s.ImageURL = &v
+	return s
+}
+
+type RetouchSkinResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RetouchSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetouchSkinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetouchSkinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetouchSkinResponse) SetHeaders(v map[string]*string) *RetouchSkinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetouchSkinResponse) SetBody(v *RetouchSkinResponseBody) *RetouchSkinResponse {
+	s.Body = v
+	return s
+}
+
 type DetectBodyCountRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
@@ -3558,6 +3680,116 @@ func (s *DeleteFaceResponse) SetHeaders(v map[string]*string) *DeleteFaceRespons
 }
 
 func (s *DeleteFaceResponse) SetBody(v *DeleteFaceResponseBody) *DeleteFaceResponse {
+	s.Body = v
+	return s
+}
+
+type LiquifyFaceRequest struct {
+	ImageURL   *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	SlimDegree *float32 `json:"SlimDegree,omitempty" xml:"SlimDegree,omitempty"`
+}
+
+func (s LiquifyFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiquifyFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LiquifyFaceRequest) SetImageURL(v string) *LiquifyFaceRequest {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *LiquifyFaceRequest) SetSlimDegree(v float32) *LiquifyFaceRequest {
+	s.SlimDegree = &v
+	return s
+}
+
+type LiquifyFaceAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	SlimDegree     *float32  `json:"SlimDegree,omitempty" xml:"SlimDegree,omitempty"`
+}
+
+func (s LiquifyFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiquifyFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LiquifyFaceAdvanceRequest) SetImageURLObject(v io.Reader) *LiquifyFaceAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *LiquifyFaceAdvanceRequest) SetSlimDegree(v float32) *LiquifyFaceAdvanceRequest {
+	s.SlimDegree = &v
+	return s
+}
+
+type LiquifyFaceResponseBody struct {
+	// Id of the request
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *LiquifyFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s LiquifyFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiquifyFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LiquifyFaceResponseBody) SetRequestId(v string) *LiquifyFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LiquifyFaceResponseBody) SetData(v *LiquifyFaceResponseBodyData) *LiquifyFaceResponseBody {
+	s.Data = v
+	return s
+}
+
+type LiquifyFaceResponseBodyData struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s LiquifyFaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiquifyFaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *LiquifyFaceResponseBodyData) SetImageURL(v string) *LiquifyFaceResponseBodyData {
+	s.ImageURL = &v
+	return s
+}
+
+type LiquifyFaceResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *LiquifyFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LiquifyFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiquifyFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LiquifyFaceResponse) SetHeaders(v map[string]*string) *LiquifyFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LiquifyFaceResponse) SetBody(v *LiquifyFaceResponseBody) *LiquifyFaceResponse {
 	s.Body = v
 	return s
 }
@@ -9909,6 +10141,140 @@ func (client *Client) ExtractPedestrianFeatureAttrAdvance(request *ExtractPedest
 	return _result, _err
 }
 
+func (client *Client) RetouchSkinWithOptions(request *RetouchSkinRequest, runtime *util.RuntimeOptions) (_result *RetouchSkinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RetouchSkinResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RetouchSkin"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetouchSkin(request *RetouchSkinRequest) (_result *RetouchSkinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetouchSkinResponse{}
+	_body, _err := client.RetouchSkinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetouchSkinAdvance(request *RetouchSkinAdvanceRequest, runtime *util.RuntimeOptions) (_result *RetouchSkinResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	retouchSkinReq := &RetouchSkinRequest{}
+	openapiutil.Convert(request, retouchSkinReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		retouchSkinReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	retouchSkinResp, _err := client.RetouchSkinWithOptions(retouchSkinReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = retouchSkinResp
+	return _result, _err
+}
+
 func (client *Client) DetectBodyCountWithOptions(request *DetectBodyCountRequest, runtime *util.RuntimeOptions) (_result *DetectBodyCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11789,6 +12155,140 @@ func (client *Client) DeleteFace(request *DeleteFaceRequest) (_result *DeleteFac
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LiquifyFaceWithOptions(request *LiquifyFaceRequest, runtime *util.RuntimeOptions) (_result *LiquifyFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &LiquifyFaceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("LiquifyFace"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LiquifyFace(request *LiquifyFaceRequest) (_result *LiquifyFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LiquifyFaceResponse{}
+	_body, _err := client.LiquifyFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LiquifyFaceAdvance(request *LiquifyFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *LiquifyFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	liquifyFaceReq := &LiquifyFaceRequest{}
+	openapiutil.Convert(request, liquifyFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		liquifyFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	liquifyFaceResp, _err := client.LiquifyFaceWithOptions(liquifyFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = liquifyFaceResp
 	return _result, _err
 }
 
