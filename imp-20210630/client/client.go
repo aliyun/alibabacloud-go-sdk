@@ -540,6 +540,164 @@ func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
 	return s
 }
 
+type GetLiveRoomUserStatisticsRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 查询页码，从1开始，传空默认查询第1页。
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetLiveRoomUserStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomUserStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsRequest) SetAppId(v string) *GetLiveRoomUserStatisticsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsRequest) SetLiveId(v string) *GetLiveRoomUserStatisticsRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsRequest) SetPageNumber(v string) *GetLiveRoomUserStatisticsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsRequest) SetPageSize(v string) *GetLiveRoomUserStatisticsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetLiveRoomUserStatisticsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建场景化直播返回的结果。
+	Result *GetLiveRoomUserStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetLiveRoomUserStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomUserStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBody) SetRequestId(v string) *GetLiveRoomUserStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBody) SetResult(v *GetLiveRoomUserStatisticsResponseBodyResult) *GetLiveRoomUserStatisticsResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetLiveRoomUserStatisticsResponseBodyResult struct {
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 用户总数
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 用户总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	// 是否还有下一页。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 用户观看数据列表。
+	UserStatisticsList []*GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList `json:"UserStatisticsList,omitempty" xml:"UserStatisticsList,omitempty" type:"Repeated"`
+}
+
+func (s GetLiveRoomUserStatisticsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomUserStatisticsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetLiveId(v string) *GetLiveRoomUserStatisticsResponseBodyResult {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetTotalCount(v int32) *GetLiveRoomUserStatisticsResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetPageTotal(v int32) *GetLiveRoomUserStatisticsResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetHasMore(v bool) *GetLiveRoomUserStatisticsResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetUserStatisticsList(v []*GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) *GetLiveRoomUserStatisticsResponseBodyResult {
+	s.UserStatisticsList = v
+	return s
+}
+
+type GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList struct {
+	// 用户ID。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 观看时长，单位：毫秒。
+	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+}
+
+func (s GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) SetUserId(v string) *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) SetWatchLiveTime(v int64) *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList {
+	s.WatchLiveTime = &v
+	return s
+}
+
+type GetLiveRoomUserStatisticsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveRoomUserStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveRoomUserStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomUserStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsResponse) SetHeaders(v map[string]*string) *GetLiveRoomUserStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponse) SetBody(v *GetLiveRoomUserStatisticsResponseBody) *GetLiveRoomUserStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type BanCommentRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -5118,6 +5276,322 @@ func (s *UpdateLiveResponse) SetBody(v *UpdateLiveResponseBody) *UpdateLiveRespo
 	return s
 }
 
+type CreateLiveRoomRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 标题，支持中英文，最大长度32位。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 公告，支持中英文，最大长度256位。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 封面，支持图片地址链接格式
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 拓展字段，按需传递，需要额外记录的房间属性。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 主播id，仅支持英文和数字，最大长度36位。
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 主播昵称。
+	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+}
+
+func (s CreateLiveRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomRequest) SetAppId(v string) *CreateLiveRoomRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetTitle(v string) *CreateLiveRoomRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetNotice(v string) *CreateLiveRoomRequest {
+	s.Notice = &v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetCoverUrl(v string) *CreateLiveRoomRequest {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetExtension(v map[string]*string) *CreateLiveRoomRequest {
+	s.Extension = v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetAnchorId(v string) *CreateLiveRoomRequest {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *CreateLiveRoomRequest) SetAnchorNick(v string) *CreateLiveRoomRequest {
+	s.AnchorNick = &v
+	return s
+}
+
+type CreateLiveRoomShrinkRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 标题，支持中英文，最大长度32位。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 公告，支持中英文，最大长度256位。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 封面，支持图片地址链接格式
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 拓展字段，按需传递，需要额外记录的房间属性。
+	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 主播id，仅支持英文和数字，最大长度36位。
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 主播昵称。
+	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+}
+
+func (s CreateLiveRoomShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetAppId(v string) *CreateLiveRoomShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetTitle(v string) *CreateLiveRoomShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetNotice(v string) *CreateLiveRoomShrinkRequest {
+	s.Notice = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetCoverUrl(v string) *CreateLiveRoomShrinkRequest {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetExtensionShrink(v string) *CreateLiveRoomShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetAnchorId(v string) *CreateLiveRoomShrinkRequest {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetAnchorNick(v string) *CreateLiveRoomShrinkRequest {
+	s.AnchorNick = &v
+	return s
+}
+
+type CreateLiveRoomResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建场景化直播返回的结果。
+	Result *CreateLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CreateLiveRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomResponseBody) SetRequestId(v string) *CreateLiveRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBody) SetResult(v *CreateLiveRoomResponseBodyResult) *CreateLiveRoomResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateLiveRoomResponseBodyResult struct {
+	// 应用ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 聊天ID。
+	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// 标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 公告。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 封面。
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 主播ID。
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 直播回放地址。
+	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	// 直播推流地址。
+	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	// 直播拉流地址。
+	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	// 活跃插件列表。
+	PluginInstanceInfoList []*CreateLiveRoomResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
+	// 直播拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 主播昵称。
+	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+}
+
+func (s CreateLiveRoomResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetAppId(v string) *CreateLiveRoomResponseBodyResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetRoomId(v string) *CreateLiveRoomResponseBodyResult {
+	s.RoomId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetLiveId(v string) *CreateLiveRoomResponseBodyResult {
+	s.LiveId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetChatId(v string) *CreateLiveRoomResponseBodyResult {
+	s.ChatId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetTitle(v string) *CreateLiveRoomResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetNotice(v string) *CreateLiveRoomResponseBodyResult {
+	s.Notice = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetCoverUrl(v string) *CreateLiveRoomResponseBodyResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetAnchorId(v string) *CreateLiveRoomResponseBodyResult {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetPlaybackUrl(v string) *CreateLiveRoomResponseBodyResult {
+	s.PlaybackUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetPushUrl(v string) *CreateLiveRoomResponseBodyResult {
+	s.PushUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetLiveUrl(v string) *CreateLiveRoomResponseBodyResult {
+	s.LiveUrl = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetPluginInstanceInfoList(v []*CreateLiveRoomResponseBodyResultPluginInstanceInfoList) *CreateLiveRoomResponseBodyResult {
+	s.PluginInstanceInfoList = v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetExtension(v map[string]*string) *CreateLiveRoomResponseBodyResult {
+	s.Extension = v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResult) SetAnchorNick(v string) *CreateLiveRoomResponseBodyResult {
+	s.AnchorNick = &v
+	return s
+}
+
+type CreateLiveRoomResponseBodyResultPluginInstanceInfoList struct {
+	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// 插件实例唯一标识。
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 插件实例创建时间戳，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 插件拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s CreateLiveRoomResponseBodyResultPluginInstanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomResponseBodyResultPluginInstanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomResponseBodyResultPluginInstanceInfoList) SetPluginType(v string) *CreateLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.PluginType = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResultPluginInstanceInfoList) SetPluginId(v string) *CreateLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.PluginId = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResultPluginInstanceInfoList) SetCreateTime(v int64) *CreateLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateLiveRoomResponseBodyResultPluginInstanceInfoList) SetExtension(v map[string]*string) *CreateLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.Extension = v
+	return s
+}
+
+type CreateLiveRoomResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLiveRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLiveRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLiveRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLiveRoomResponse) SetHeaders(v map[string]*string) *CreateLiveRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLiveRoomResponse) SetBody(v *CreateLiveRoomResponseBody) *CreateLiveRoomResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyLinkMicRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
@@ -5393,6 +5867,440 @@ func (s *GetAppResponse) SetHeaders(v map[string]*string) *GetAppResponse {
 }
 
 func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
+	s.Body = v
+	return s
+}
+
+type ListLiveRoomsRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播状态，0-在播 1-下播，不传则返回所有直播。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 查询页码，从1开始，传空默认查询第1页。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListLiveRoomsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRoomsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRoomsRequest) SetAppId(v string) *ListLiveRoomsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListLiveRoomsRequest) SetStatus(v int32) *ListLiveRoomsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLiveRoomsRequest) SetPageNumber(v int32) *ListLiveRoomsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLiveRoomsRequest) SetPageSize(v int32) *ListLiveRoomsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListLiveRoomsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建场景化直播返回的结果。
+	Result *ListLiveRoomsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListLiveRoomsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRoomsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRoomsResponseBody) SetRequestId(v string) *ListLiveRoomsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBody) SetResult(v *ListLiveRoomsResponseBodyResult) *ListLiveRoomsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListLiveRoomsResponseBodyResult struct {
+	// 直播总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 直播总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	// 是否还有下一页。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 直播列表信息。
+	LiveList []*ListLiveRoomsResponseBodyResultLiveList `json:"LiveList,omitempty" xml:"LiveList,omitempty" type:"Repeated"`
+}
+
+func (s ListLiveRoomsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRoomsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRoomsResponseBodyResult) SetTotalCount(v int32) *ListLiveRoomsResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResult) SetPageTotal(v int32) *ListLiveRoomsResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResult) SetHasMore(v bool) *ListLiveRoomsResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResult) SetLiveList(v []*ListLiveRoomsResponseBodyResultLiveList) *ListLiveRoomsResponseBodyResult {
+	s.LiveList = v
+	return s
+}
+
+type ListLiveRoomsResponseBodyResultLiveList struct {
+	// 应用ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 直播状态，0-在播 1-下播。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 聊天ID。
+	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// 标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 公告。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 封面。
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 主播ID。
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 访问用户数。
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 直播拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 主播昵称。
+	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+}
+
+func (s ListLiveRoomsResponseBodyResultLiveList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRoomsResponseBodyResultLiveList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetAppId(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetLiveId(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.LiveId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetStatus(v int32) *ListLiveRoomsResponseBodyResultLiveList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetRoomId(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetChatId(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetTitle(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetNotice(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.Notice = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetCoverUrl(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetAnchorId(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetUv(v int64) *ListLiveRoomsResponseBodyResultLiveList {
+	s.Uv = &v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetExtension(v map[string]*string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.Extension = v
+	return s
+}
+
+func (s *ListLiveRoomsResponseBodyResultLiveList) SetAnchorNick(v string) *ListLiveRoomsResponseBodyResultLiveList {
+	s.AnchorNick = &v
+	return s
+}
+
+type ListLiveRoomsResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListLiveRoomsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLiveRoomsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLiveRoomsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLiveRoomsResponse) SetHeaders(v map[string]*string) *ListLiveRoomsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLiveRoomsResponse) SetBody(v *ListLiveRoomsResponseBody) *ListLiveRoomsResponse {
+	s.Body = v
+	return s
+}
+
+type StopLiveRoomRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 操作人ID。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s StopLiveRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveRoomRequest) SetAppId(v string) *StopLiveRoomRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopLiveRoomRequest) SetLiveId(v string) *StopLiveRoomRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *StopLiveRoomRequest) SetUserId(v string) *StopLiveRoomRequest {
+	s.UserId = &v
+	return s
+}
+
+type StopLiveRoomResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopLiveRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveRoomResponseBody) SetRequestId(v string) *StopLiveRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopLiveRoomResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopLiveRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopLiveRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLiveRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopLiveRoomResponse) SetHeaders(v map[string]*string) *StopLiveRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopLiveRoomResponse) SetBody(v *StopLiveRoomResponseBody) *StopLiveRoomResponse {
+	s.Body = v
+	return s
+}
+
+type GetLiveRoomStatisticsRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s GetLiveRoomStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomStatisticsRequest) SetAppId(v string) *GetLiveRoomStatisticsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsRequest) SetLiveId(v string) *GetLiveRoomStatisticsRequest {
+	s.LiveId = &v
+	return s
+}
+
+type GetLiveRoomStatisticsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建场景化直播返回的结果。
+	Result *GetLiveRoomStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetLiveRoomStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomStatisticsResponseBody) SetRequestId(v string) *GetLiveRoomStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBody) SetResult(v *GetLiveRoomStatisticsResponseBodyResult) *GetLiveRoomStatisticsResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetLiveRoomStatisticsResponseBodyResult struct {
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 直播状态，0-已创建 1-直播中 2-已关闭。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 访问用户数。
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 访问用户人次。
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// 互动消息数。
+	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// 直播开始时间，单位：毫秒。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 直播结束时间，单位：毫秒。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 总观看时长，单位：毫秒。
+	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+}
+
+func (s GetLiveRoomStatisticsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomStatisticsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetLiveId(v string) *GetLiveRoomStatisticsResponseBodyResult {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetStatus(v int32) *GetLiveRoomStatisticsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetUv(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.Uv = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetPv(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.Pv = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetMessageCount(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.MessageCount = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetStartTime(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetEndTime(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetWatchLiveTime(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.WatchLiveTime = &v
+	return s
+}
+
+type GetLiveRoomStatisticsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveRoomStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveRoomStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomStatisticsResponse) SetHeaders(v map[string]*string) *GetLiveRoomStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponse) SetBody(v *GetLiveRoomStatisticsResponseBody) *GetLiveRoomStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -6166,6 +7074,269 @@ func (s *UpdateConferenceResponse) SetBody(v *UpdateConferenceResponseBody) *Upd
 	return s
 }
 
+type GetLiveRoomRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s GetLiveRoomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomRequest) SetAppId(v string) *GetLiveRoomRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveRoomRequest) SetLiveId(v string) *GetLiveRoomRequest {
+	s.LiveId = &v
+	return s
+}
+
+type GetLiveRoomResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建场景化直播返回的结果。
+	Result *GetLiveRoomResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetLiveRoomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomResponseBody) SetRequestId(v string) *GetLiveRoomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBody) SetResult(v *GetLiveRoomResponseBodyResult) *GetLiveRoomResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetLiveRoomResponseBodyResult struct {
+	// 应用ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 直播ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 直播状态，0-在播 1-下播。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 聊天ID。
+	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
+	// 标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 公告。
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// 封面。
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 主播ID。
+	AnchorId *string `json:"AnchorId,omitempty" xml:"AnchorId,omitempty"`
+	// 访问用户数。
+	Uv *int64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	// 在线用户数。
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
+	// 直播回放地址。
+	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	// 直播创建时间，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 直播结束时间，单位：毫秒。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 直播推流地址。
+	PushUrl *string `json:"PushUrl,omitempty" xml:"PushUrl,omitempty"`
+	// 直播拉流地址。
+	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	// 活跃插件列表。
+	PluginInstanceInfoList []*GetLiveRoomResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
+	// 直播拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 访问用户人次。
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// 主播昵称
+	AnchorNick *string `json:"AnchorNick,omitempty" xml:"AnchorNick,omitempty"`
+}
+
+func (s GetLiveRoomResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetAppId(v string) *GetLiveRoomResponseBodyResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetLiveId(v string) *GetLiveRoomResponseBodyResult {
+	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetStatus(v int32) *GetLiveRoomResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetRoomId(v string) *GetLiveRoomResponseBodyResult {
+	s.RoomId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetChatId(v string) *GetLiveRoomResponseBodyResult {
+	s.ChatId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetTitle(v string) *GetLiveRoomResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetNotice(v string) *GetLiveRoomResponseBodyResult {
+	s.Notice = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetCoverUrl(v string) *GetLiveRoomResponseBodyResult {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetAnchorId(v string) *GetLiveRoomResponseBodyResult {
+	s.AnchorId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetUv(v int64) *GetLiveRoomResponseBodyResult {
+	s.Uv = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetOnlineCount(v int64) *GetLiveRoomResponseBodyResult {
+	s.OnlineCount = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetPlaybackUrl(v string) *GetLiveRoomResponseBodyResult {
+	s.PlaybackUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetCreateTime(v int64) *GetLiveRoomResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetEndTime(v int64) *GetLiveRoomResponseBodyResult {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetPushUrl(v string) *GetLiveRoomResponseBodyResult {
+	s.PushUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetLiveUrl(v string) *GetLiveRoomResponseBodyResult {
+	s.LiveUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetPluginInstanceInfoList(v []*GetLiveRoomResponseBodyResultPluginInstanceInfoList) *GetLiveRoomResponseBodyResult {
+	s.PluginInstanceInfoList = v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetExtension(v map[string]*string) *GetLiveRoomResponseBodyResult {
+	s.Extension = v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetPv(v int64) *GetLiveRoomResponseBodyResult {
+	s.Pv = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetAnchorNick(v string) *GetLiveRoomResponseBodyResult {
+	s.AnchorNick = &v
+	return s
+}
+
+type GetLiveRoomResponseBodyResultPluginInstanceInfoList struct {
+	// 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// 插件实例唯一标识。
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// 插件实例创建时间戳，单位：毫秒。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 插件拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s GetLiveRoomResponseBodyResultPluginInstanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomResponseBodyResultPluginInstanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomResponseBodyResultPluginInstanceInfoList) SetPluginType(v string) *GetLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.PluginType = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResultPluginInstanceInfoList) SetPluginId(v string) *GetLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.PluginId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResultPluginInstanceInfoList) SetCreateTime(v int64) *GetLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResultPluginInstanceInfoList) SetExtension(v map[string]*string) *GetLiveRoomResponseBodyResultPluginInstanceInfoList {
+	s.Extension = v
+	return s
+}
+
+type GetLiveRoomResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLiveRoomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLiveRoomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveRoomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveRoomResponse) SetHeaders(v map[string]*string) *GetLiveRoomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLiveRoomResponse) SetBody(v *GetLiveRoomResponseBody) *GetLiveRoomResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -6318,6 +7489,34 @@ func (client *Client) GetRoom(request *GetRoomRequest) (_result *GetRoomResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRoomResponse{}
 	_body, _err := client.GetRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoomUserStatisticsWithOptions(request *GetLiveRoomUserStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetLiveRoomUserStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLiveRoomUserStatisticsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoomUserStatistics"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoomUserStatistics(request *GetLiveRoomUserStatisticsRequest) (_result *GetLiveRoomUserStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveRoomUserStatisticsResponse{}
+	_body, _err := client.GetLiveRoomUserStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7419,6 +8618,40 @@ func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiv
 	return _result, _err
 }
 
+func (client *Client) CreateLiveRoomWithOptions(tmpReq *CreateLiveRoomRequest, runtime *util.RuntimeOptions) (_result *CreateLiveRoomResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLiveRoomShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLiveRoomResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLiveRoom(request *CreateLiveRoomRequest) (_result *CreateLiveRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLiveRoomResponse{}
+	_body, _err := client.CreateLiveRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ApplyLinkMicWithOptions(request *ApplyLinkMicRequest, runtime *util.RuntimeOptions) (_result *ApplyLinkMicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7496,6 +8729,90 @@ func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppResponse{}
 	_body, _err := client.GetAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLiveRoomsWithOptions(request *ListLiveRoomsRequest, runtime *util.RuntimeOptions) (_result *ListLiveRoomsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListLiveRoomsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListLiveRooms"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLiveRooms(request *ListLiveRoomsRequest) (_result *ListLiveRoomsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLiveRoomsResponse{}
+	_body, _err := client.ListLiveRoomsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopLiveRoomWithOptions(request *StopLiveRoomRequest, runtime *util.RuntimeOptions) (_result *StopLiveRoomResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &StopLiveRoomResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("StopLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopLiveRoom(request *StopLiveRoomRequest) (_result *StopLiveRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopLiveRoomResponse{}
+	_body, _err := client.StopLiveRoomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoomStatisticsWithOptions(request *GetLiveRoomStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetLiveRoomStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLiveRoomStatisticsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoomStatistics"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoomStatistics(request *GetLiveRoomStatisticsRequest) (_result *GetLiveRoomStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveRoomStatisticsResponse{}
+	_body, _err := client.GetLiveRoomStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7670,6 +8987,34 @@ func (client *Client) UpdateConference(request *UpdateConferenceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConferenceResponse{}
 	_body, _err := client.UpdateConferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoomWithOptions(request *GetLiveRoomRequest, runtime *util.RuntimeOptions) (_result *GetLiveRoomResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetLiveRoomResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLiveRoom(request *GetLiveRoomRequest) (_result *GetLiveRoomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLiveRoomResponse{}
+	_body, _err := client.GetLiveRoomWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
