@@ -2266,8 +2266,10 @@ type GetOrganizationMemberResponseBodyMember struct {
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 企业成员名
 	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
-	// 企业角色
-	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+	// 企业角色名字
+	OrganizationRoleName *string `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
+	// 企业角色Id
+	OrganizationRoleId *string `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
 	// 用户状态
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
@@ -2330,8 +2332,13 @@ func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationMemberName(v st
 	return s
 }
 
-func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationRole(v string) *GetOrganizationMemberResponseBodyMember {
-	s.OrganizationRole = &v
+func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationRoleName(v string) *GetOrganizationMemberResponseBodyMember {
+	s.OrganizationRoleName = &v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetOrganizationRoleId(v string) *GetOrganizationMemberResponseBodyMember {
+	s.OrganizationRoleId = &v
 	return s
 }
 
@@ -4150,8 +4157,10 @@ type ListOrganizationMembersResponseBodyMembers struct {
 	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 	// 企业成员名
 	OrganizationMemberName *string `json:"organizationMemberName,omitempty" xml:"organizationMemberName,omitempty"`
-	// 企业角色
-	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+	// 企业角色名字
+	OrganizationRoleName *string `json:"organizationRoleName,omitempty" xml:"organizationRoleName,omitempty"`
+	// 企业角色Id
+	OrganizationRoleId *string `json:"organizationRoleId,omitempty" xml:"organizationRoleId,omitempty"`
 	// 用户状态
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
@@ -4214,8 +4223,13 @@ func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationMemberName(v
 	return s
 }
 
-func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationRole(v string) *ListOrganizationMembersResponseBodyMembers {
-	s.OrganizationRole = &v
+func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationRoleName(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.OrganizationRoleName = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyMembers) SetOrganizationRoleId(v string) *ListOrganizationMembersResponseBodyMembers {
+	s.OrganizationRoleId = &v
 	return s
 }
 
