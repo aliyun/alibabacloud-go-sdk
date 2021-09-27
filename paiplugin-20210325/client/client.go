@@ -2313,7 +2313,7 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &UploadMediaByURLResponse{}
-	_body, _err := client.DoROARequest(tea.String("UploadMediaByURL"), tea.String("2021-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/media/api/v1/video/upload"), tea.String("json"), req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UploadMediaByURL"), tea.String("2021-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/media/api/v1/video/upload"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
