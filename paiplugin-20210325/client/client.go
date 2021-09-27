@@ -1521,6 +1521,235 @@ func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSched
 	return s
 }
 
+type UploadMediaByURLRequest struct {
+	UploadMetadatas []*UploadMediaByURLRequestUploadMetadatas `json:"UploadMetadatas,omitempty" xml:"UploadMetadatas,omitempty" type:"Repeated"`
+	UploadURLs      *string                                   `json:"UploadURLs,omitempty" xml:"UploadURLs,omitempty"`
+	UserData        *UploadMediaByURLRequestUserData          `json:"UserData,omitempty" xml:"UserData,omitempty" type:"Struct"`
+}
+
+func (s UploadMediaByURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLRequest) SetUploadMetadatas(v []*UploadMediaByURLRequestUploadMetadatas) *UploadMediaByURLRequest {
+	s.UploadMetadatas = v
+	return s
+}
+
+func (s *UploadMediaByURLRequest) SetUploadURLs(v string) *UploadMediaByURLRequest {
+	s.UploadURLs = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequest) SetUserData(v *UploadMediaByURLRequestUserData) *UploadMediaByURLRequest {
+	s.UserData = v
+	return s
+}
+
+type UploadMediaByURLRequestUploadMetadatas struct {
+	FileExtension *string                                             `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	S3UploadInfo  *UploadMediaByURLRequestUploadMetadatasS3UploadInfo `json:"S3UploadInfo,omitempty" xml:"S3UploadInfo,omitempty" type:"Struct"`
+	SourceURL     *string                                             `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
+	Title         *string                                             `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UploadMediaByURLRequestUploadMetadatas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLRequestUploadMetadatas) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatas) SetFileExtension(v string) *UploadMediaByURLRequestUploadMetadatas {
+	s.FileExtension = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatas) SetS3UploadInfo(v *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) *UploadMediaByURLRequestUploadMetadatas {
+	s.S3UploadInfo = v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatas) SetSourceURL(v string) *UploadMediaByURLRequestUploadMetadatas {
+	s.SourceURL = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatas) SetTitle(v string) *UploadMediaByURLRequestUploadMetadatas {
+	s.Title = &v
+	return s
+}
+
+type UploadMediaByURLRequestUploadMetadatasS3UploadInfo struct {
+	// 上传的临时AK
+	S3AccessKey *string `json:"S3AccessKey,omitempty" xml:"S3AccessKey,omitempty"`
+	// Bucket
+	S3Bucket *string `json:"S3Bucket,omitempty" xml:"S3Bucket,omitempty"`
+	// Endpoint
+	S3Endpoint *string `json:"S3Endpoint,omitempty" xml:"S3Endpoint,omitempty"`
+	// 上传的FileKey
+	S3FileKey *string `json:"S3FileKey,omitempty" xml:"S3FileKey,omitempty"`
+	// 供应商名称
+	S3Provider *string `json:"S3Provider,omitempty" xml:"S3Provider,omitempty"`
+	// 上传的临时SK
+	S3SecretKey *string `json:"S3SecretKey,omitempty" xml:"S3SecretKey,omitempty"`
+	// 上传的临时Token
+	S3Token *string `json:"S3Token,omitempty" xml:"S3Token,omitempty"`
+	Id      *int    `json:"id,omitempty" xml:"id,omitempty"`
+	// Job Id
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+}
+
+func (s UploadMediaByURLRequestUploadMetadatasS3UploadInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLRequestUploadMetadatasS3UploadInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3AccessKey(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3AccessKey = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3Bucket(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3Bucket = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3Endpoint(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3Endpoint = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3FileKey(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3FileKey = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3Provider(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3Provider = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3SecretKey(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3SecretKey = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetS3Token(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.S3Token = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetId(v int) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUploadMetadatasS3UploadInfo) SetJobId(v string) *UploadMediaByURLRequestUploadMetadatasS3UploadInfo {
+	s.JobId = &v
+	return s
+}
+
+type UploadMediaByURLRequestUserData struct {
+	Extend          map[string]interface{} `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	MessageCallback *string                `json:"MessageCallback,omitempty" xml:"MessageCallback,omitempty"`
+}
+
+func (s UploadMediaByURLRequestUserData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLRequestUserData) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLRequestUserData) SetExtend(v map[string]interface{}) *UploadMediaByURLRequestUserData {
+	s.Extend = v
+	return s
+}
+
+func (s *UploadMediaByURLRequestUserData) SetMessageCallback(v string) *UploadMediaByURLRequestUserData {
+	s.MessageCallback = &v
+	return s
+}
+
+type UploadMediaByURLResponseBody struct {
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UploadJobs []*UploadMediaByURLResponseBodyUploadJobs `json:"UploadJobs,omitempty" xml:"UploadJobs,omitempty" type:"Repeated"`
+}
+
+func (s UploadMediaByURLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLResponseBody) SetRequestId(v string) *UploadMediaByURLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadMediaByURLResponseBody) SetUploadJobs(v []*UploadMediaByURLResponseBodyUploadJobs) *UploadMediaByURLResponseBody {
+	s.UploadJobs = v
+	return s
+}
+
+type UploadMediaByURLResponseBodyUploadJobs struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SourceURL *string `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
+}
+
+func (s UploadMediaByURLResponseBodyUploadJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLResponseBodyUploadJobs) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLResponseBodyUploadJobs) SetJobId(v string) *UploadMediaByURLResponseBodyUploadJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *UploadMediaByURLResponseBodyUploadJobs) SetSourceURL(v string) *UploadMediaByURLResponseBodyUploadJobs {
+	s.SourceURL = &v
+	return s
+}
+
+type UploadMediaByURLResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UploadMediaByURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadMediaByURLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadMediaByURLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadMediaByURLResponse) SetHeaders(v map[string]*string) *UploadMediaByURLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadMediaByURLResponse) SetBody(v *UploadMediaByURLResponseBody) *UploadMediaByURLResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSignatureResponseBody struct {
 	// 返回数据
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -1687,6 +1916,7 @@ func (client *Client) DeleteTemplate(ID *string) (_result *DeleteTemplateRespons
 }
 
 func (client *Client) DeleteTemplateWithOptions(ID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	ID = openapiutil.GetEncodeParam(ID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1814,6 +2044,7 @@ func (client *Client) DeleteSchedule(ID *string) (_result *DeleteScheduleRespons
 }
 
 func (client *Client) DeleteScheduleWithOptions(ID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteScheduleResponse, _err error) {
+	ID = openapiutil.GetEncodeParam(ID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1839,6 +2070,7 @@ func (client *Client) GetTemplate(ID *string) (_result *GetTemplateResponse, _er
 }
 
 func (client *Client) GetTemplateWithOptions(ID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+	ID = openapiutil.GetEncodeParam(ID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1911,6 +2143,7 @@ func (client *Client) GetSignature(ID *string) (_result *GetSignatureResponse, _
 }
 
 func (client *Client) GetSignatureWithOptions(ID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSignatureResponse, _err error) {
+	ID = openapiutil.GetEncodeParam(ID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2045,6 +2278,49 @@ func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, he
 	return _result, _err
 }
 
+func (client *Client) UploadMediaByURL(request *UploadMediaByURLRequest) (_result *UploadMediaByURLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadMediaByURLResponse{}
+	_body, _err := client.UploadMediaByURLWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadMediaByURLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UploadMetadatas)) {
+		body["UploadMetadatas"] = request.UploadMetadatas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadURLs)) {
+		body["UploadURLs"] = request.UploadURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserData))) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	_result = &UploadMediaByURLResponse{}
+	_body, _err := client.DoROARequest(tea.String("UploadMediaByURL"), tea.String("2021-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/media/api/v1/video/upload"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteSignature(ID *string) (_result *DeleteSignatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2058,6 +2334,7 @@ func (client *Client) DeleteSignature(ID *string) (_result *DeleteSignatureRespo
 }
 
 func (client *Client) DeleteSignatureWithOptions(ID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSignatureResponse, _err error) {
+	ID = openapiutil.GetEncodeParam(ID)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
