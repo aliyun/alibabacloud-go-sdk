@@ -1,3 +1,6 @@
+2021-09-28 Version: v1.0.4
+- Supported Java for ResourceManager.
+
 2021-09-28 Version: v1.0.3
 - Generated golang 2020-03-31 for ResourceManager.
 
