@@ -585,8 +585,8 @@ func (s *CreateCloudAccountRequest) SetPayerAccountId(v string) *CreateCloudAcco
 }
 
 type CreateCloudAccountResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Account   *CreateCloudAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCloudAccountResponseBody) String() string {
@@ -597,13 +597,13 @@ func (s CreateCloudAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCloudAccountResponseBody) SetRequestId(v string) *CreateCloudAccountResponseBody {
-	s.RequestId = &v
+func (s *CreateCloudAccountResponseBody) SetAccount(v *CreateCloudAccountResponseBodyAccount) *CreateCloudAccountResponseBody {
+	s.Account = v
 	return s
 }
 
-func (s *CreateCloudAccountResponseBody) SetAccount(v *CreateCloudAccountResponseBodyAccount) *CreateCloudAccountResponseBody {
-	s.Account = v
+func (s *CreateCloudAccountResponseBody) SetRequestId(v string) *CreateCloudAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1893,6 +1893,63 @@ func (s *DeclineHandshakeResponse) SetBody(v *DeclineHandshakeResponseBody) *Dec
 	return s
 }
 
+type DeleteAccountRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s DeleteAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountRequest) SetAccountId(v string) *DeleteAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteAccountResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccountResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteControlPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
@@ -2783,17 +2840,18 @@ func (s *GetAccountResponseBody) SetRequestId(v string) *GetAccountResponseBody 
 }
 
 type GetAccountResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	ResourceDirectoryId   *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	IdentityInformation   *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
+	JoinTime              *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	ModifyTime            *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	AccountName           *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 }
 
 func (s GetAccountResponseBodyAccount) String() string {
@@ -2856,6 +2914,11 @@ func (s *GetAccountResponseBodyAccount) SetModifyTime(v string) *GetAccountRespo
 
 func (s *GetAccountResponseBodyAccount) SetAccountName(v string) *GetAccountResponseBodyAccount {
 	s.AccountName = &v
+	return s
+}
+
+func (s *GetAccountResponseBodyAccount) SetResourceDirectoryPath(v string) *GetAccountResponseBodyAccount {
+	s.ResourceDirectoryPath = &v
 	return s
 }
 
@@ -3103,10 +3166,11 @@ func (s *GetFolderResponseBody) SetFolder(v *GetFolderResponseBodyFolder) *GetFo
 }
 
 type GetFolderResponseBodyFolder struct {
-	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ParentFolderId        *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	FolderName            *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 }
 
 func (s GetFolderResponseBodyFolder) String() string {
@@ -3127,13 +3191,18 @@ func (s *GetFolderResponseBodyFolder) SetCreateTime(v string) *GetFolderResponse
 	return s
 }
 
+func (s *GetFolderResponseBodyFolder) SetParentFolderId(v string) *GetFolderResponseBodyFolder {
+	s.ParentFolderId = &v
+	return s
+}
+
 func (s *GetFolderResponseBodyFolder) SetFolderName(v string) *GetFolderResponseBodyFolder {
 	s.FolderName = &v
 	return s
 }
 
-func (s *GetFolderResponseBodyFolder) SetParentFolderId(v string) *GetFolderResponseBodyFolder {
-	s.ParentFolderId = &v
+func (s *GetFolderResponseBodyFolder) SetResourceDirectoryPath(v string) *GetFolderResponseBodyFolder {
+	s.ResourceDirectoryPath = &v
 	return s
 }
 
@@ -3649,12 +3718,13 @@ func (s *GetResourceDirectoryResponseBody) SetResourceDirectory(v *GetResourceDi
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {
-	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	ControlPolicyStatus *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
+	RootFolderId         *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
+	ResourceDirectoryId  *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MasterAccountId      *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName    *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ControlPolicyStatus  *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
+	MemberDeletionStatus *string `json:"MemberDeletionStatus,omitempty" xml:"MemberDeletionStatus,omitempty"`
 }
 
 func (s GetResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -3692,6 +3762,11 @@ func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName
 
 func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetControlPolicyStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
 	s.ControlPolicyStatus = &v
+	return s
+}
+
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMemberDeletionStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.MemberDeletionStatus = &v
 	return s
 }
 
@@ -4217,10 +4292,10 @@ func (s *InitResourceDirectoryResponseBody) SetResourceDirectory(v *InitResource
 
 type InitResourceDirectoryResponseBodyResourceDirectory struct {
 	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
-	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 }
 
 func (s InitResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -4236,16 +4311,6 @@ func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v s
 	return s
 }
 
-func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
-	s.MasterAccountId = &v
-	return s
-}
-
-func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
-	s.MasterAccountName = &v
-	return s
-}
-
 func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
 	s.ResourceDirectoryId = &v
 	return s
@@ -4253,6 +4318,16 @@ func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetResourceDirector
 
 func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetCreateTime(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
+	s.MasterAccountId = &v
+	return s
+}
+
+func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
+	s.MasterAccountName = &v
 	return s
 }
 
@@ -6571,7 +6646,6 @@ type ListResourcesRequest struct {
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceIds     *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -6614,11 +6688,6 @@ func (s *ListResourcesRequest) SetPageNumber(v int32) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListResourcesRequest) SetResourceIds(v string) *ListResourcesRequest {
-	s.ResourceIds = &v
 	return s
 }
 
@@ -7295,6 +7364,170 @@ func (s *MoveAccountResponse) SetBody(v *MoveAccountResponseBody) *MoveAccountRe
 	return s
 }
 
+type MoveResourcesRequest struct {
+	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Resources       []*MoveResourcesRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s MoveResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourcesRequest) SetResourceGroupId(v string) *MoveResourcesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *MoveResourcesRequest) SetResources(v []*MoveResourcesRequestResources) *MoveResourcesRequest {
+	s.Resources = v
+	return s
+}
+
+type MoveResourcesRequestResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s MoveResourcesRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourcesRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourcesRequestResources) SetResourceId(v string) *MoveResourcesRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourcesRequestResources) SetResourceType(v string) *MoveResourcesRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *MoveResourcesRequestResources) SetRegionId(v string) *MoveResourcesRequestResources {
+	s.RegionId = &v
+	return s
+}
+
+func (s *MoveResourcesRequestResources) SetService(v string) *MoveResourcesRequestResources {
+	s.Service = &v
+	return s
+}
+
+type MoveResourcesResponseBody struct {
+	// Id of the request
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Responses []*MoveResourcesResponseBodyResponses `json:"Responses,omitempty" xml:"Responses,omitempty" type:"Repeated"`
+}
+
+func (s MoveResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourcesResponseBody) SetRequestId(v string) *MoveResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBody) SetResponses(v []*MoveResourcesResponseBodyResponses) *MoveResourcesResponseBody {
+	s.Responses = v
+	return s
+}
+
+type MoveResourcesResponseBodyResponses struct {
+	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s MoveResourcesResponseBodyResponses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourcesResponseBodyResponses) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetService(v string) *MoveResourcesResponseBodyResponses {
+	s.Service = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetResourceId(v string) *MoveResourcesResponseBodyResponses {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetResourceType(v string) *MoveResourcesResponseBodyResponses {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetRequestId(v string) *MoveResourcesResponseBodyResponses {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetStatus(v string) *MoveResourcesResponseBodyResponses {
+	s.Status = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetErrorCode(v string) *MoveResourcesResponseBodyResponses {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetErrorMsg(v string) *MoveResourcesResponseBodyResponses {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetRegionId(v string) *MoveResourcesResponseBodyResponses {
+	s.RegionId = &v
+	return s
+}
+
+type MoveResourcesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MoveResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourcesResponse) SetHeaders(v map[string]*string) *MoveResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveResourcesResponse) SetBody(v *MoveResourcesResponseBody) *MoveResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type PromoteResourceAccountRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
@@ -7319,8 +7552,8 @@ func (s *PromoteResourceAccountRequest) SetEmail(v string) *PromoteResourceAccou
 }
 
 type PromoteResourceAccountResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Account   *PromoteResourceAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PromoteResourceAccountResponseBody) String() string {
@@ -7331,13 +7564,13 @@ func (s PromoteResourceAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PromoteResourceAccountResponseBody) SetRequestId(v string) *PromoteResourceAccountResponseBody {
-	s.RequestId = &v
+func (s *PromoteResourceAccountResponseBody) SetAccount(v *PromoteResourceAccountResponseBodyAccount) *PromoteResourceAccountResponseBody {
+	s.Account = v
 	return s
 }
 
-func (s *PromoteResourceAccountResponseBody) SetAccount(v *PromoteResourceAccountResponseBodyAccount) *PromoteResourceAccountResponseBody {
-	s.Account = v
+func (s *PromoteResourceAccountResponseBody) SetRequestId(v string) *PromoteResourceAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7579,8 +7812,8 @@ func (s *ResendCreateCloudAccountEmailRequest) SetRecordId(v string) *ResendCrea
 }
 
 type ResendCreateCloudAccountEmailResponseBody struct {
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Account   *ResendCreateCloudAccountEmailResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResendCreateCloudAccountEmailResponseBody) String() string {
@@ -7591,13 +7824,13 @@ func (s ResendCreateCloudAccountEmailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBody) SetRequestId(v string) *ResendCreateCloudAccountEmailResponseBody {
-	s.RequestId = &v
+func (s *ResendCreateCloudAccountEmailResponseBody) SetAccount(v *ResendCreateCloudAccountEmailResponseBodyAccount) *ResendCreateCloudAccountEmailResponseBody {
+	s.Account = v
 	return s
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBody) SetAccount(v *ResendCreateCloudAccountEmailResponseBodyAccount) *ResendCreateCloudAccountEmailResponseBody {
-	s.Account = v
+func (s *ResendCreateCloudAccountEmailResponseBody) SetRequestId(v string) *ResendCreateCloudAccountEmailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7719,8 +7952,8 @@ func (s *ResendPromoteResourceAccountEmailRequest) SetRecordId(v string) *Resend
 }
 
 type ResendPromoteResourceAccountEmailResponseBody struct {
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Account   *ResendPromoteResourceAccountEmailResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResendPromoteResourceAccountEmailResponseBody) String() string {
@@ -7731,13 +7964,13 @@ func (s ResendPromoteResourceAccountEmailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBody) SetRequestId(v string) *ResendPromoteResourceAccountEmailResponseBody {
-	s.RequestId = &v
+func (s *ResendPromoteResourceAccountEmailResponseBody) SetAccount(v *ResendPromoteResourceAccountEmailResponseBodyAccount) *ResendPromoteResourceAccountEmailResponseBody {
+	s.Account = v
 	return s
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBody) SetAccount(v *ResendPromoteResourceAccountEmailResponseBodyAccount) *ResendPromoteResourceAccountEmailResponseBody {
-	s.Account = v
+func (s *ResendPromoteResourceAccountEmailResponseBody) SetRequestId(v string) *ResendPromoteResourceAccountEmailResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9045,6 +9278,34 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10290,6 +10551,34 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveAccountResponse{}
 	_body, _err := client.MoveAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MoveResourcesWithOptions(request *MoveResourcesRequest, runtime *util.RuntimeOptions) (_result *MoveResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &MoveResourcesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("MoveResources"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveResources(request *MoveResourcesRequest) (_result *MoveResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveResourcesResponse{}
+	_body, _err := client.MoveResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
