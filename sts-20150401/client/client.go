@@ -156,6 +156,204 @@ func (s *AssumeRoleResponse) SetBody(v *AssumeRoleResponseBody) *AssumeRoleRespo
 	return s
 }
 
+type AssumeRoleWithOIDCRequest struct {
+	// OIDC Provider的ARN
+	OIDCProviderArn *string `json:"OIDCProviderArn,omitempty" xml:"OIDCProviderArn,omitempty"`
+	// 需要扮演的角色的ARN
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// OIDC的ID Token，需输入原始Token，无需Base64解码
+	OIDCToken *string `json:"OIDCToken,omitempty" xml:"OIDCToken,omitempty"`
+	// 权限策略。 生成STS Token时可以指定一个额外的权限策略，以进一步限制STS Token的权限。若不指定则返回的Token拥有指定角色的所有权限。
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Session过期时间，单位为秒。
+	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	// 用户自定义参数。此参数用来区分不同的令牌，可用于用户级别的访问审计。
+	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
+}
+
+func (s AssumeRoleWithOIDCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetOIDCProviderArn(v string) *AssumeRoleWithOIDCRequest {
+	s.OIDCProviderArn = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetRoleArn(v string) *AssumeRoleWithOIDCRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetOIDCToken(v string) *AssumeRoleWithOIDCRequest {
+	s.OIDCToken = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetPolicy(v string) *AssumeRoleWithOIDCRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetDurationSeconds(v int64) *AssumeRoleWithOIDCRequest {
+	s.DurationSeconds = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCRequest) SetRoleSessionName(v string) *AssumeRoleWithOIDCRequest {
+	s.RoleSessionName = &v
+	return s
+}
+
+type AssumeRoleWithOIDCResponseBody struct {
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OIDCTokenInfo   *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo   `json:"OIDCTokenInfo,omitempty" xml:"OIDCTokenInfo,omitempty" type:"Struct"`
+	AssumedRoleUser *AssumeRoleWithOIDCResponseBodyAssumedRoleUser `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
+	Credentials     *AssumeRoleWithOIDCResponseBodyCredentials     `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+}
+
+func (s AssumeRoleWithOIDCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponseBody) SetRequestId(v string) *AssumeRoleWithOIDCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBody) SetOIDCTokenInfo(v *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) *AssumeRoleWithOIDCResponseBody {
+	s.OIDCTokenInfo = v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBody) SetAssumedRoleUser(v *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) *AssumeRoleWithOIDCResponseBody {
+	s.AssumedRoleUser = v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBody) SetCredentials(v *AssumeRoleWithOIDCResponseBodyCredentials) *AssumeRoleWithOIDCResponseBody {
+	s.Credentials = v
+	return s
+}
+
+type AssumeRoleWithOIDCResponseBodyOIDCTokenInfo struct {
+	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Issuer    *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+}
+
+func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetSubject(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.Subject = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetIssuer(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.Issuer = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetClientIds(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.ClientIds = &v
+	return s
+}
+
+type AssumeRoleWithOIDCResponseBodyAssumedRoleUser struct {
+	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s AssumeRoleWithOIDCResponseBodyAssumedRoleUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponseBodyAssumedRoleUser) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleWithOIDCResponseBodyAssumedRoleUser {
+	s.AssumedRoleId = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetArn(v string) *AssumeRoleWithOIDCResponseBodyAssumedRoleUser {
+	s.Arn = &v
+	return s
+}
+
+type AssumeRoleWithOIDCResponseBodyCredentials struct {
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+}
+
+func (s AssumeRoleWithOIDCResponseBodyCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponseBodyCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetExpiration(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.Expiration = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetAccessKeySecret(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.AccessKeyId = &v
+	return s
+}
+
+type AssumeRoleWithOIDCResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AssumeRoleWithOIDCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssumeRoleWithOIDCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponse) SetHeaders(v map[string]*string) *AssumeRoleWithOIDCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponse) SetBody(v *AssumeRoleWithOIDCResponseBody) *AssumeRoleWithOIDCResponse {
+	s.Body = v
+	return s
+}
+
 type AssumeRoleWithSAMLRequest struct {
 	SAMLProviderArn *string `json:"SAMLProviderArn,omitempty" xml:"SAMLProviderArn,omitempty"`
 	RoleArn         *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
@@ -464,12 +662,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shanghai-et2-b01":         tea.String("sts.aliyuncs.com"),
 		"cn-shanghai-inner":           tea.String("sts.aliyuncs.com"),
 		"cn-shanghai-internal-test-1": tea.String("sts.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("sts.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("sts-vpc.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-shenzhen-inner":           tea.String("sts.aliyuncs.com"),
 		"cn-shenzhen-st4-d01":         tea.String("sts.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("sts.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("sts.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("sts.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("sts.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("sts.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("sts.aliyuncs.com"),
 		"cn-zhengzhou-nebula-1":       tea.String("sts.aliyuncs.com"),
@@ -528,6 +727,34 @@ func (client *Client) AssumeRole(request *AssumeRoleRequest) (_result *AssumeRol
 	runtime := &util.RuntimeOptions{}
 	_result = &AssumeRoleResponse{}
 	_body, _err := client.AssumeRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AssumeRoleWithOIDCWithOptions(request *AssumeRoleWithOIDCRequest, runtime *util.RuntimeOptions) (_result *AssumeRoleWithOIDCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AssumeRoleWithOIDCResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AssumeRoleWithOIDC"), tea.String("2015-04-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssumeRoleWithOIDC(request *AssumeRoleWithOIDCRequest) (_result *AssumeRoleWithOIDCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssumeRoleWithOIDCResponse{}
+	_body, _err := client.AssumeRoleWithOIDCWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
