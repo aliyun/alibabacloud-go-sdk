@@ -2277,6 +2277,10 @@ func (s *UpdateAggregateCompliancePackRequest) SetAggregatorId(v string) *Update
 type UpdateAggregateCompliancePackRequestConfigRules struct {
 	ManagedRuleIdentifier *string                                                                `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	ConfigRuleParameters  []*UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	ConfigRuleId          *string                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ConfigRuleName        *string                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Description           *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackRequestConfigRules) String() string {
@@ -2294,6 +2298,26 @@ func (s *UpdateAggregateCompliancePackRequestConfigRules) SetManagedRuleIdentifi
 
 func (s *UpdateAggregateCompliancePackRequestConfigRules) SetConfigRuleParameters(v []*UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) *UpdateAggregateCompliancePackRequestConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestConfigRules) SetConfigRuleId(v string) *UpdateAggregateCompliancePackRequestConfigRules {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestConfigRules) SetConfigRuleName(v string) *UpdateAggregateCompliancePackRequestConfigRules {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestConfigRules) SetDescription(v string) *UpdateAggregateCompliancePackRequestConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *UpdateAggregateCompliancePackRequestConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -2535,6 +2559,8 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ConfigRuleName        *string                                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleId          *string                                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	ConfigRuleParameters  []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	Description           *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) String() string {
@@ -2562,6 +2588,16 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) SetCon
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) SetConfigRuleParameters(v []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) SetDescription(v string) *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) SetRiskLevel(v int32) *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -4706,6 +4742,8 @@ type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ConfigRuleName        *string                                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleId          *string                                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	ConfigRuleParameters  []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	Description           *string                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePackConfigRules) String() string {
@@ -4733,6 +4771,16 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRules) SetConfigRuleId
 
 func (s *GetCompliancePackResponseBodyCompliancePackConfigRules) SetConfigRuleParameters(v []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) *GetCompliancePackResponseBodyCompliancePackConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackConfigRules) SetDescription(v string) *GetCompliancePackResponseBodyCompliancePackConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackConfigRules) SetRiskLevel(v int32) *GetCompliancePackResponseBodyCompliancePackConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -6726,6 +6774,10 @@ func (s *UpdateCompliancePackRequest) SetClientToken(v string) *UpdateCompliance
 type UpdateCompliancePackRequestConfigRules struct {
 	ManagedRuleIdentifier *string                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	ConfigRuleParameters  []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	ConfigRuleId          *string                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ConfigRuleName        *string                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Description           *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateCompliancePackRequestConfigRules) String() string {
@@ -6743,6 +6795,26 @@ func (s *UpdateCompliancePackRequestConfigRules) SetManagedRuleIdentifier(v stri
 
 func (s *UpdateCompliancePackRequestConfigRules) SetConfigRuleParameters(v []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters) *UpdateCompliancePackRequestConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestConfigRules) SetConfigRuleId(v string) *UpdateCompliancePackRequestConfigRules {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestConfigRules) SetConfigRuleName(v string) *UpdateCompliancePackRequestConfigRules {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestConfigRules) SetDescription(v string) *UpdateCompliancePackRequestConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *UpdateCompliancePackRequestConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -7297,10 +7369,9 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetConfigRuleTriggerTypes(v string
 }
 
 type GetConfigRuleResponseBodyConfigRuleSource struct {
-	SourceDetails    []*GetConfigRuleResponseBodyConfigRuleSourceSourceDetails    `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
-	Owner            *string                                                      `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SourceConditions []*GetConfigRuleResponseBodyConfigRuleSourceSourceConditions `json:"SourceConditions,omitempty" xml:"SourceConditions,omitempty" type:"Repeated"`
-	Identifier       *string                                                      `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	SourceDetails []*GetConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	Owner         *string                                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Identifier    *string                                                   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleSource) String() string {
@@ -7318,11 +7389,6 @@ func (s *GetConfigRuleResponseBodyConfigRuleSource) SetSourceDetails(v []*GetCon
 
 func (s *GetConfigRuleResponseBodyConfigRuleSource) SetOwner(v string) *GetConfigRuleResponseBodyConfigRuleSource {
 	s.Owner = &v
-	return s
-}
-
-func (s *GetConfigRuleResponseBodyConfigRuleSource) SetSourceConditions(v []*GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) *GetConfigRuleResponseBodyConfigRuleSource {
-	s.SourceConditions = v
 	return s
 }
 
@@ -7357,41 +7423,6 @@ func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetEventSource(
 
 func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMaximumExecutionFrequency(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails {
 	s.MaximumExecutionFrequency = &v
-	return s
-}
-
-type GetConfigRuleResponseBodyConfigRuleSourceSourceConditions struct {
-	DesiredValue *string `json:"DesiredValue,omitempty" xml:"DesiredValue,omitempty"`
-	Tips         *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) GoString() string {
-	return s.String()
-}
-
-func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetDesiredValue(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.DesiredValue = &v
-	return s
-}
-
-func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetTips(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Tips = &v
-	return s
-}
-
-func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetOperator(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Operator = &v
-	return s
-}
-
-func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetName(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Name = &v
 	return s
 }
 
@@ -7754,6 +7785,9 @@ type CreateCompliancePackRequestConfigRules struct {
 	ManagedRuleIdentifier *string                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	ConfigRuleName        *string                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleParameters  []*CreateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	ConfigRuleId          *string                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Description           *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s CreateCompliancePackRequestConfigRules) String() string {
@@ -7776,6 +7810,21 @@ func (s *CreateCompliancePackRequestConfigRules) SetConfigRuleName(v string) *Cr
 
 func (s *CreateCompliancePackRequestConfigRules) SetConfigRuleParameters(v []*CreateCompliancePackRequestConfigRulesConfigRuleParameters) *CreateCompliancePackRequestConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *CreateCompliancePackRequestConfigRules) SetConfigRuleId(v string) *CreateCompliancePackRequestConfigRules {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequestConfigRules) SetDescription(v string) *CreateCompliancePackRequestConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *CreateCompliancePackRequestConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -9275,6 +9324,9 @@ type CreateAggregateCompliancePackRequestConfigRules struct {
 	ManagedRuleIdentifier *string                                                                `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	ConfigRuleName        *string                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleParameters  []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	ConfigRuleId          *string                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Description           *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel             *int32                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackRequestConfigRules) String() string {
@@ -9297,6 +9349,21 @@ func (s *CreateAggregateCompliancePackRequestConfigRules) SetConfigRuleName(v st
 
 func (s *CreateAggregateCompliancePackRequestConfigRules) SetConfigRuleParameters(v []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) *CreateAggregateCompliancePackRequestConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestConfigRules) SetConfigRuleId(v string) *CreateAggregateCompliancePackRequestConfigRules {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestConfigRules) SetDescription(v string) *CreateAggregateCompliancePackRequestConfigRules {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *CreateAggregateCompliancePackRequestConfigRules {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -9698,10 +9765,9 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetConfigRuleTriggerTypes
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleSource struct {
-	SourceDetails    []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails    `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
-	Owner            *string                                                               `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SourceConditions []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions `json:"SourceConditions,omitempty" xml:"SourceConditions,omitempty" type:"Repeated"`
-	Identifier       *string                                                               `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	SourceDetails []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	Owner         *string                                                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Identifier    *string                                                            `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleSource) String() string {
@@ -9719,11 +9785,6 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSource) SetSourceDetails(v 
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRuleSource) SetOwner(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSource {
 	s.Owner = &v
-	return s
-}
-
-func (s *GetAggregateConfigRuleResponseBodyConfigRuleSource) SetSourceConditions(v []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) *GetAggregateConfigRuleResponseBodyConfigRuleSource {
-	s.SourceConditions = v
 	return s
 }
 
@@ -9758,41 +9819,6 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetEve
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMaximumExecutionFrequency(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails {
 	s.MaximumExecutionFrequency = &v
-	return s
-}
-
-type GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions struct {
-	DesiredValue *string `json:"DesiredValue,omitempty" xml:"DesiredValue,omitempty"`
-	Tips         *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) GoString() string {
-	return s.String()
-}
-
-func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetDesiredValue(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.DesiredValue = &v
-	return s
-}
-
-func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetTips(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Tips = &v
-	return s
-}
-
-func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetOperator(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Operator = &v
-	return s
-}
-
-func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions) SetName(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceConditions {
-	s.Name = &v
 	return s
 }
 
@@ -12275,12 +12301,11 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Body: util.ToMap(request),
 	}
 	_result = &GetConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12707,12 +12732,11 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Body: util.ToMap(request),
 	}
 	_result = &GetAggregateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
