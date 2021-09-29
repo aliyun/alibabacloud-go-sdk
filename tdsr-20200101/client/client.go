@@ -252,6 +252,8 @@ type LinkImageRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// 相机高度 单位 cm
 	CameraHeight *int32 `json:"CameraHeight,omitempty" xml:"CameraHeight,omitempty"`
+	// 平台标识，默认PC
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s LinkImageRequest) String() string {
@@ -274,6 +276,11 @@ func (s *LinkImageRequest) SetFileName(v string) *LinkImageRequest {
 
 func (s *LinkImageRequest) SetCameraHeight(v int32) *LinkImageRequest {
 	s.CameraHeight = &v
+	return s
+}
+
+func (s *LinkImageRequest) SetPlatform(v string) *LinkImageRequest {
+	s.Platform = &v
 	return s
 }
 
@@ -3037,6 +3044,10 @@ type ListSubSceneResponseBodyList struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// 切图的路径
 	CubemapPath *string `json:"CubemapPath,omitempty" xml:"CubemapPath,omitempty"`
+	// 是否删除
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// 原图地址
+	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
 }
 
 func (s ListSubSceneResponseBodyList) String() string {
@@ -3094,6 +3105,16 @@ func (s *ListSubSceneResponseBodyList) SetResourceName(v string) *ListSubSceneRe
 
 func (s *ListSubSceneResponseBodyList) SetCubemapPath(v string) *ListSubSceneResponseBodyList {
 	s.CubemapPath = &v
+	return s
+}
+
+func (s *ListSubSceneResponseBodyList) SetDeleted(v bool) *ListSubSceneResponseBodyList {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListSubSceneResponseBodyList) SetOriginUrl(v string) *ListSubSceneResponseBodyList {
+	s.OriginUrl = &v
 	return s
 }
 
@@ -3870,6 +3891,100 @@ func (s *TempPreviewResponse) SetHeaders(v map[string]*string) *TempPreviewRespo
 }
 
 func (s *TempPreviewResponse) SetBody(v *TempPreviewResponseBody) *TempPreviewResponse {
+	s.Body = v
+	return s
+}
+
+type PublishSceneRequest struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s PublishSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishSceneRequest) SetSceneId(v string) *PublishSceneRequest {
+	s.SceneId = &v
+	return s
+}
+
+type PublishSceneResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 预览链接
+	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	// 任务实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s PublishSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishSceneResponseBody) SetRequestId(v string) *PublishSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishSceneResponseBody) SetCode(v int64) *PublishSceneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PublishSceneResponseBody) SetSuccess(v bool) *PublishSceneResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PublishSceneResponseBody) SetMessage(v string) *PublishSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PublishSceneResponseBody) SetPreviewUrl(v string) *PublishSceneResponseBody {
+	s.PreviewUrl = &v
+	return s
+}
+
+func (s *PublishSceneResponseBody) SetInstanceId(v string) *PublishSceneResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+type PublishSceneResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PublishSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishSceneResponse) SetHeaders(v map[string]*string) *PublishSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishSceneResponse) SetBody(v *PublishSceneResponseBody) *PublishSceneResponse {
 	s.Body = v
 	return s
 }
@@ -6762,6 +6877,34 @@ func (client *Client) TempPreview(request *TempPreviewRequest) (_result *TempPre
 	runtime := &util.RuntimeOptions{}
 	_result = &TempPreviewResponse{}
 	_body, _err := client.TempPreviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runtime *util.RuntimeOptions) (_result *PublishSceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PublishSceneResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PublishScene"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishScene(request *PublishSceneRequest) (_result *PublishSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishSceneResponse{}
+	_body, _err := client.PublishSceneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
