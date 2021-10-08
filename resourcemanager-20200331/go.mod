@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/resourcemanager-20200331
+module github.com/alibabacloud-go/resourcemanager-20200331/v2
 
 go 1.15
 
