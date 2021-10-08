@@ -2430,7 +2430,11 @@ func (s *QueryFaceImageTemplateResponse) SetBody(v *QueryFaceImageTemplateRespon
 }
 
 type DetectFaceRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL      *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Landmark      *bool   `json:"Landmark,omitempty" xml:"Landmark,omitempty"`
+	Quality       *bool   `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	Pose          *bool   `json:"Pose,omitempty" xml:"Pose,omitempty"`
+	MaxFaceNumber *int64  `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 }
 
 func (s DetectFaceRequest) String() string {
@@ -2446,8 +2450,32 @@ func (s *DetectFaceRequest) SetImageURL(v string) *DetectFaceRequest {
 	return s
 }
 
+func (s *DetectFaceRequest) SetLandmark(v bool) *DetectFaceRequest {
+	s.Landmark = &v
+	return s
+}
+
+func (s *DetectFaceRequest) SetQuality(v bool) *DetectFaceRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *DetectFaceRequest) SetPose(v bool) *DetectFaceRequest {
+	s.Pose = &v
+	return s
+}
+
+func (s *DetectFaceRequest) SetMaxFaceNumber(v int64) *DetectFaceRequest {
+	s.MaxFaceNumber = &v
+	return s
+}
+
 type DetectFaceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	Landmark       *bool     `json:"Landmark,omitempty" xml:"Landmark,omitempty"`
+	Quality        *bool     `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	Pose           *bool     `json:"Pose,omitempty" xml:"Pose,omitempty"`
+	MaxFaceNumber  *int64    `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 }
 
 func (s DetectFaceAdvanceRequest) String() string {
@@ -2460,6 +2488,26 @@ func (s DetectFaceAdvanceRequest) GoString() string {
 
 func (s *DetectFaceAdvanceRequest) SetImageURLObject(v io.Reader) *DetectFaceAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *DetectFaceAdvanceRequest) SetLandmark(v bool) *DetectFaceAdvanceRequest {
+	s.Landmark = &v
+	return s
+}
+
+func (s *DetectFaceAdvanceRequest) SetQuality(v bool) *DetectFaceAdvanceRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *DetectFaceAdvanceRequest) SetPose(v bool) *DetectFaceAdvanceRequest {
+	s.Pose = &v
+	return s
+}
+
+func (s *DetectFaceAdvanceRequest) SetMaxFaceNumber(v int64) *DetectFaceAdvanceRequest {
+	s.MaxFaceNumber = &v
 	return s
 }
 
@@ -4839,6 +4887,7 @@ type SearchFaceRequest struct {
 	Limit                 *int32   `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	DbNames               *string  `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	MaxFaceNum            *int64   `json:"MaxFaceNum,omitempty" xml:"MaxFaceNum,omitempty"`
 }
 
 func (s SearchFaceRequest) String() string {
@@ -4874,12 +4923,18 @@ func (s *SearchFaceRequest) SetQualityScoreThreshold(v float32) *SearchFaceReque
 	return s
 }
 
+func (s *SearchFaceRequest) SetMaxFaceNum(v int64) *SearchFaceRequest {
+	s.MaxFaceNum = &v
+	return s
+}
+
 type SearchFaceAdvanceRequest struct {
 	ImageUrlObject        io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DbName                *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	Limit                 *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	DbNames               *string   `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+	MaxFaceNum            *int64    `json:"MaxFaceNum,omitempty" xml:"MaxFaceNum,omitempty"`
 }
 
 func (s SearchFaceAdvanceRequest) String() string {
@@ -4912,6 +4967,11 @@ func (s *SearchFaceAdvanceRequest) SetDbNames(v string) *SearchFaceAdvanceReques
 
 func (s *SearchFaceAdvanceRequest) SetQualityScoreThreshold(v float32) *SearchFaceAdvanceRequest {
 	s.QualityScoreThreshold = &v
+	return s
+}
+
+func (s *SearchFaceAdvanceRequest) SetMaxFaceNum(v int64) *SearchFaceAdvanceRequest {
+	s.MaxFaceNum = &v
 	return s
 }
 
@@ -9956,6 +10016,245 @@ func (s *CreateBodyDbResponse) SetHeaders(v map[string]*string) *CreateBodyDbRes
 }
 
 func (s *CreateBodyDbResponse) SetBody(v *CreateBodyDbResponseBody) *CreateBodyDbResponse {
+	s.Body = v
+	return s
+}
+
+type BatchAddFacesRequest struct {
+	DbName                                *string                      `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EntityId                              *string                      `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	SimilarityScoreThresholdInEntity      *float32                     `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
+	SimilarityScoreThresholdBetweenEntity *float32                     `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
+	Faces                                 []*BatchAddFacesRequestFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	QualityScoreThreshold                 *float32                     `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+}
+
+func (s BatchAddFacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesRequest) SetDbName(v string) *BatchAddFacesRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *BatchAddFacesRequest) SetEntityId(v string) *BatchAddFacesRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *BatchAddFacesRequest) SetSimilarityScoreThresholdInEntity(v float32) *BatchAddFacesRequest {
+	s.SimilarityScoreThresholdInEntity = &v
+	return s
+}
+
+func (s *BatchAddFacesRequest) SetSimilarityScoreThresholdBetweenEntity(v float32) *BatchAddFacesRequest {
+	s.SimilarityScoreThresholdBetweenEntity = &v
+	return s
+}
+
+func (s *BatchAddFacesRequest) SetFaces(v []*BatchAddFacesRequestFaces) *BatchAddFacesRequest {
+	s.Faces = v
+	return s
+}
+
+func (s *BatchAddFacesRequest) SetQualityScoreThreshold(v float32) *BatchAddFacesRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+type BatchAddFacesRequestFaces struct {
+	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s BatchAddFacesRequestFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesRequestFaces) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesRequestFaces) SetExtraData(v string) *BatchAddFacesRequestFaces {
+	s.ExtraData = &v
+	return s
+}
+
+func (s *BatchAddFacesRequestFaces) SetImageURL(v string) *BatchAddFacesRequestFaces {
+	s.ImageURL = &v
+	return s
+}
+
+type BatchAddFacesShrinkRequest struct {
+	DbName                                *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EntityId                              *string  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	SimilarityScoreThresholdInEntity      *float32 `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
+	SimilarityScoreThresholdBetweenEntity *float32 `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
+	FacesShrink                           *string  `json:"Faces,omitempty" xml:"Faces,omitempty"`
+	QualityScoreThreshold                 *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+}
+
+func (s BatchAddFacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesShrinkRequest) SetDbName(v string) *BatchAddFacesShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *BatchAddFacesShrinkRequest) SetEntityId(v string) *BatchAddFacesShrinkRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *BatchAddFacesShrinkRequest) SetSimilarityScoreThresholdInEntity(v float32) *BatchAddFacesShrinkRequest {
+	s.SimilarityScoreThresholdInEntity = &v
+	return s
+}
+
+func (s *BatchAddFacesShrinkRequest) SetSimilarityScoreThresholdBetweenEntity(v float32) *BatchAddFacesShrinkRequest {
+	s.SimilarityScoreThresholdBetweenEntity = &v
+	return s
+}
+
+func (s *BatchAddFacesShrinkRequest) SetFacesShrink(v string) *BatchAddFacesShrinkRequest {
+	s.FacesShrink = &v
+	return s
+}
+
+func (s *BatchAddFacesShrinkRequest) SetQualityScoreThreshold(v float32) *BatchAddFacesShrinkRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
+type BatchAddFacesResponseBody struct {
+	// Id of the request
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *BatchAddFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+}
+
+func (s BatchAddFacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesResponseBody) SetRequestId(v string) *BatchAddFacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchAddFacesResponseBody) SetData(v *BatchAddFacesResponseBodyData) *BatchAddFacesResponseBody {
+	s.Data = v
+	return s
+}
+
+type BatchAddFacesResponseBodyData struct {
+	InsertedFaces []*BatchAddFacesResponseBodyDataInsertedFaces `json:"InsertedFaces,omitempty" xml:"InsertedFaces,omitempty" type:"Repeated"`
+	FailedFaces   []*BatchAddFacesResponseBodyDataFailedFaces   `json:"FailedFaces,omitempty" xml:"FailedFaces,omitempty" type:"Repeated"`
+}
+
+func (s BatchAddFacesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesResponseBodyData) SetInsertedFaces(v []*BatchAddFacesResponseBodyDataInsertedFaces) *BatchAddFacesResponseBodyData {
+	s.InsertedFaces = v
+	return s
+}
+
+func (s *BatchAddFacesResponseBodyData) SetFailedFaces(v []*BatchAddFacesResponseBodyDataFailedFaces) *BatchAddFacesResponseBodyData {
+	s.FailedFaces = v
+	return s
+}
+
+type BatchAddFacesResponseBodyDataInsertedFaces struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	FaceId   *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+}
+
+func (s BatchAddFacesResponseBodyDataInsertedFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesResponseBodyDataInsertedFaces) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetImageURL(v string) *BatchAddFacesResponseBodyDataInsertedFaces {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetFaceId(v string) *BatchAddFacesResponseBodyDataInsertedFaces {
+	s.FaceId = &v
+	return s
+}
+
+type BatchAddFacesResponseBodyDataFailedFaces struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s BatchAddFacesResponseBodyDataFailedFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesResponseBodyDataFailedFaces) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesResponseBodyDataFailedFaces) SetImageURL(v string) *BatchAddFacesResponseBodyDataFailedFaces {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *BatchAddFacesResponseBodyDataFailedFaces) SetCode(v string) *BatchAddFacesResponseBodyDataFailedFaces {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddFacesResponseBodyDataFailedFaces) SetMessage(v string) *BatchAddFacesResponseBodyDataFailedFaces {
+	s.Message = &v
+	return s
+}
+
+type BatchAddFacesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchAddFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddFacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddFacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddFacesResponse) SetHeaders(v map[string]*string) *BatchAddFacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddFacesResponse) SetBody(v *BatchAddFacesResponseBody) *BatchAddFacesResponse {
 	s.Body = v
 	return s
 }
@@ -15536,6 +15835,40 @@ func (client *Client) CreateBodyDb(request *CreateBodyDbRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBodyDbResponse{}
 	_body, _err := client.CreateBodyDbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddFacesWithOptions(tmpReq *BatchAddFacesRequest, runtime *util.RuntimeOptions) (_result *BatchAddFacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchAddFacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Faces)) {
+		request.FacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Faces, tea.String("Faces"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BatchAddFacesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BatchAddFaces"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddFaces(request *BatchAddFacesRequest) (_result *BatchAddFacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchAddFacesResponse{}
+	_body, _err := client.BatchAddFacesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
