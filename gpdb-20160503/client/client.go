@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -543,6 +544,7 @@ type CreateECSDBInstanceRequest struct {
 	MasterNodeNum         *int32  `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	SrcDbInstanceName     *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
 	BackupId              *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	DBInstanceCategory    *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 }
 
 func (s CreateECSDBInstanceRequest) String() string {
@@ -670,6 +672,11 @@ func (s *CreateECSDBInstanceRequest) SetSrcDbInstanceName(v string) *CreateECSDB
 
 func (s *CreateECSDBInstanceRequest) SetBackupId(v string) *CreateECSDBInstanceRequest {
 	s.BackupId = &v
+	return s
+}
+
+func (s *CreateECSDBInstanceRequest) SetDBInstanceCategory(v string) *CreateECSDBInstanceRequest {
+	s.DBInstanceCategory = &v
 	return s
 }
 
@@ -1836,12 +1843,13 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceMemory      *int64                                                               `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	HostType              *string                                                              `json:"HostType,omitempty" xml:"HostType,omitempty"`
 	PayType               *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Tags                  *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	StorageType           *string                                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	CpuCoresPerNode       *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
 	AvailabilityValue     *string                                                              `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	ReadDelayTime         *string                                                              `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	ConnectionMode        *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	CpuCoresPerNode       *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
 	Port                  *string                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	ConnectionMode        *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	LockMode              *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	EngineVersion         *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	StorageUnit           *string                                                              `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
@@ -1867,7 +1875,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceId          *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBInstanceClass       *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	Engine                *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	Tags                  *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	DBInstanceCategory    *string                                                              `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -1918,13 +1926,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPay
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetStorageType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.StorageType = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTags(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.Tags = v
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCpuCoresPerNode(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.CpuCoresPerNode = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetStorageType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.StorageType = &v
 	return s
 }
 
@@ -1938,13 +1946,18 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetRea
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.ConnectionMode = &v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCpuCoresPerNode(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CpuCoresPerNode = &v
 	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ConnectionMode = &v
 	return s
 }
 
@@ -2073,8 +2086,8 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetEng
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetTags(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
-	s.Tags = v
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceCategory(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceCategory = &v
 	return s
 }
 
@@ -2489,6 +2502,7 @@ type DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute struct
 	SupportRestore        *bool                                                                     `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
 	MinorVersion          *string                                                                   `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	MasterNodeNum         *int32                                                                    `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	DBInstanceCategory    *string                                                                   `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 }
 
 func (s DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -2646,6 +2660,11 @@ func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) S
 
 func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetMasterNodeNum(v int32) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MasterNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceCategory(v string) *DescribeDBInstanceOnECSAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceCategory = &v
 	return s
 }
 
@@ -2826,6 +2845,9 @@ type DescribeDBInstancesRequest struct {
 	PageSize              *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber            *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Tag                   []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	InstanceDeployTypes   []*string                        `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty" type:"Repeated"`
+	DBInstanceStatuses    []*string                        `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty" type:"Repeated"`
+	DBInstanceCategories  []*string                        `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -2876,6 +2898,21 @@ func (s *DescribeDBInstancesRequest) SetTag(v []*DescribeDBInstancesRequestTag) 
 	return s
 }
 
+func (s *DescribeDBInstancesRequest) SetInstanceDeployTypes(v []*string) *DescribeDBInstancesRequest {
+	s.InstanceDeployTypes = v
+	return s
+}
+
+func (s *DescribeDBInstancesRequest) SetDBInstanceStatuses(v []*string) *DescribeDBInstancesRequest {
+	s.DBInstanceStatuses = v
+	return s
+}
+
+func (s *DescribeDBInstancesRequest) SetDBInstanceCategories(v []*string) *DescribeDBInstancesRequest {
+	s.DBInstanceCategories = v
+	return s
+}
+
 type DescribeDBInstancesRequestTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2895,6 +2932,106 @@ func (s *DescribeDBInstancesRequestTag) SetKey(v string) *DescribeDBInstancesReq
 }
 
 func (s *DescribeDBInstancesRequestTag) SetValue(v string) *DescribeDBInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeDBInstancesShrinkRequest struct {
+	OwnerId                    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                   *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DBInstanceDescription      *string                                `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	InstanceNetworkType        *string                                `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	DBInstanceIds              *string                                `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	PageSize                   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber                 *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	Tag                        []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	InstanceDeployTypesShrink  *string                                `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty"`
+	DBInstanceStatusesShrink   *string                                `json:"DBInstanceStatuses,omitempty" xml:"DBInstanceStatuses,omitempty"`
+	DBInstanceCategoriesShrink *string                                `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty"`
+}
+
+func (s DescribeDBInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetOwnerId(v int64) *DescribeDBInstancesShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetRegionId(v string) *DescribeDBInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceDescription(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetInstanceNetworkType(v string) *DescribeDBInstancesShrinkRequest {
+	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceIds(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceIds = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetPageSize(v int32) *DescribeDBInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetPageNumber(v int32) *DescribeDBInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetTag(v []*DescribeDBInstancesShrinkRequestTag) *DescribeDBInstancesShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetInstanceDeployTypesShrink(v string) *DescribeDBInstancesShrinkRequest {
+	s.InstanceDeployTypesShrink = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceStatusesShrink(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceStatusesShrink = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequest) SetDBInstanceCategoriesShrink(v string) *DescribeDBInstancesShrinkRequest {
+	s.DBInstanceCategoriesShrink = &v
+	return s
+}
+
+type DescribeDBInstancesShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBInstancesShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesShrinkRequestTag) SetKey(v string) *DescribeDBInstancesShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancesShrinkRequestTag) SetValue(v string) *DescribeDBInstancesShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -2981,6 +3118,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	SegNodeNum            *string                                             `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	StorageSize           *string                                             `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	MasterNodeNum         *int32                                              `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	DBInstanceCategory    *string                                             `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyItemsDBInstance) String() string {
@@ -3103,6 +3241,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetStorageSize(v string
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetMasterNodeNum(v int32) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.MasterNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceCategory(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.DBInstanceCategory = &v
 	return s
 }
 
@@ -8825,11 +8968,25 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 	return _result, _err
 }
 
-func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeDBInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceDeployTypes)) {
+		request.InstanceDeployTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceDeployTypes, tea.String("InstanceDeployTypes"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DBInstanceStatuses)) {
+		request.DBInstanceStatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBInstanceStatuses, tea.String("DBInstanceStatuses"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DBInstanceCategories)) {
+		request.DBInstanceCategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBInstanceCategories, tea.String("DBInstanceCategories"), tea.String("simple"))
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
