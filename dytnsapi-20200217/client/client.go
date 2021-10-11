@@ -395,6 +395,128 @@ func (s *DescribePhoneNumberResaleResponse) SetBody(v *DescribePhoneNumberResale
 	return s
 }
 
+type DescribeEmptyNumberDetectRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Phone                *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	EncryptType          *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+}
+
+func (s DescribeEmptyNumberDetectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberDetectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberDetectRequest) SetOwnerId(v int64) *DescribeEmptyNumberDetectRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectRequest) SetResourceOwnerAccount(v string) *DescribeEmptyNumberDetectRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectRequest) SetResourceOwnerId(v int64) *DescribeEmptyNumberDetectRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectRequest) SetPhone(v string) *DescribeEmptyNumberDetectRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectRequest) SetEncryptType(v string) *DescribeEmptyNumberDetectRequest {
+	s.EncryptType = &v
+	return s
+}
+
+type DescribeEmptyNumberDetectResponseBody struct {
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      []*DescribeEmptyNumberDetectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEmptyNumberDetectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberDetectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberDetectResponseBody) SetRequestId(v string) *DescribeEmptyNumberDetectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponseBody) SetCode(v string) *DescribeEmptyNumberDetectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponseBody) SetMessage(v string) *DescribeEmptyNumberDetectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponseBody) SetData(v []*DescribeEmptyNumberDetectResponseBodyData) *DescribeEmptyNumberDetectResponseBody {
+	s.Data = v
+	return s
+}
+
+type DescribeEmptyNumberDetectResponseBodyData struct {
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEmptyNumberDetectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberDetectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberDetectResponseBodyData) SetNumber(v string) *DescribeEmptyNumberDetectResponseBodyData {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponseBodyData) SetStatus(v string) *DescribeEmptyNumberDetectResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeEmptyNumberDetectResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEmptyNumberDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEmptyNumberDetectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEmptyNumberDetectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEmptyNumberDetectResponse) SetHeaders(v map[string]*string) *DescribeEmptyNumberDetectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponse) SetBody(v *DescribeEmptyNumberDetectResponseBody) *DescribeEmptyNumberDetectResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -519,6 +641,34 @@ func (client *Client) DescribePhoneNumberResale(request *DescribePhoneNumberResa
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberResaleResponse{}
 	_body, _err := client.DescribePhoneNumberResaleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEmptyNumberDetectWithOptions(request *DescribeEmptyNumberDetectRequest, runtime *util.RuntimeOptions) (_result *DescribeEmptyNumberDetectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeEmptyNumberDetectResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEmptyNumberDetect"), tea.String("2020-02-17"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEmptyNumberDetect(request *DescribeEmptyNumberDetectRequest) (_result *DescribeEmptyNumberDetectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEmptyNumberDetectResponse{}
+	_body, _err := client.DescribeEmptyNumberDetectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
