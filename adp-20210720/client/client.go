@@ -2506,6 +2506,93 @@ func (s *PutEnvironmentTunnelResponse) SetBody(v *PutEnvironmentTunnelResponseBo
 	return s
 }
 
+type ListFoundationComponentVersionsResponseBody struct {
+	Data *ListFoundationComponentVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                                          `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListFoundationComponentVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationComponentVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationComponentVersionsResponseBody) SetData(v *ListFoundationComponentVersionsResponseBodyData) *ListFoundationComponentVersionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponseBody) SetCode(v string) *ListFoundationComponentVersionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponseBody) SetMsg(v string) *ListFoundationComponentVersionsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListFoundationComponentVersionsResponseBodyData struct {
+	List     []*ComponentVersion `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32              `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32              `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListFoundationComponentVersionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationComponentVersionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationComponentVersionsResponseBodyData) SetList(v []*ComponentVersion) *ListFoundationComponentVersionsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponseBodyData) SetPageNum(v int32) *ListFoundationComponentVersionsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponseBodyData) SetPageSize(v int32) *ListFoundationComponentVersionsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponseBodyData) SetTotal(v int32) *ListFoundationComponentVersionsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListFoundationComponentVersionsResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFoundationComponentVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFoundationComponentVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationComponentVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationComponentVersionsResponse) SetHeaders(v map[string]*string) *ListFoundationComponentVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFoundationComponentVersionsResponse) SetBody(v *ListFoundationComponentVersionsResponseBody) *ListFoundationComponentVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListProductEnvironmentsRequest struct {
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
 	// 兼容版本产品版本id
@@ -2644,8 +2731,6 @@ type ListProductEnvironmentsResponseBodyData struct {
 	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
 	VendorType           *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 	InstanceStatus       *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	PlatformStatus       *string `json:"platformStatus,omitempty" xml:"platformStatus,omitempty"`
-	VendorConfig         *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 }
 
 func (s ListProductEnvironmentsResponseBodyData) String() string {
@@ -2718,16 +2803,6 @@ func (s *ListProductEnvironmentsResponseBodyData) SetVendorType(v string) *ListP
 
 func (s *ListProductEnvironmentsResponseBodyData) SetInstanceStatus(v string) *ListProductEnvironmentsResponseBodyData {
 	s.InstanceStatus = &v
-	return s
-}
-
-func (s *ListProductEnvironmentsResponseBodyData) SetPlatformStatus(v string) *ListProductEnvironmentsResponseBodyData {
-	s.PlatformStatus = &v
-	return s
-}
-
-func (s *ListProductEnvironmentsResponseBodyData) SetVendorConfig(v string) *ListProductEnvironmentsResponseBodyData {
-	s.VendorConfig = &v
 	return s
 }
 
@@ -2905,6 +2980,58 @@ func (s *UpdateProductComponentVersionResponse) SetBody(v *UpdateProductComponen
 	return s
 }
 
+type GetFoundationVersionResponseBody struct {
+	Data []*FoundationVersion `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Code *string              `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string              `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetFoundationVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationVersionResponseBody) SetData(v []*FoundationVersion) *GetFoundationVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBody) SetCode(v string) *GetFoundationVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBody) SetMsg(v string) *GetFoundationVersionResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetFoundationVersionResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFoundationVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFoundationVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationVersionResponse) SetHeaders(v map[string]*string) *GetFoundationVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFoundationVersionResponse) SetBody(v *GetFoundationVersionResponseBody) *GetFoundationVersionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteProductResponseBody struct {
 	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
@@ -2947,6 +3074,228 @@ func (s *DeleteProductResponse) SetHeaders(v map[string]*string) *DeleteProductR
 }
 
 func (s *DeleteProductResponse) SetBody(v *DeleteProductResponseBody) *DeleteProductResponse {
+	s.Body = v
+	return s
+}
+
+type ListComponentsRequest struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	PageNum  *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Fuzzy    *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	Public   *bool   `json:"public,omitempty" xml:"public,omitempty"`
+}
+
+func (s ListComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsRequest) SetName(v string) *ListComponentsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetCategory(v string) *ListComponentsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPageNum(v int32) *ListComponentsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPageSize(v int32) *ListComponentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetFuzzy(v string) *ListComponentsRequest {
+	s.Fuzzy = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetPublic(v bool) *ListComponentsRequest {
+	s.Public = &v
+	return s
+}
+
+type ListComponentsResponseBody struct {
+	Data *ListComponentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                         `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBody) SetData(v *ListComponentsResponseBodyData) *ListComponentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetCode(v string) *ListComponentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListComponentsResponseBody) SetMsg(v string) *ListComponentsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListComponentsResponseBodyData struct {
+	List     []*ListComponentsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListComponentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyData) SetList(v []*ListComponentsResponseBodyDataList) *ListComponentsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetPageNum(v int32) *ListComponentsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetPageSize(v int32) *ListComponentsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyData) SetTotal(v int32) *ListComponentsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListComponentsResponseBodyDataList struct {
+	Annotations *ListComponentsResponseBodyDataListAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Struct"`
+	Category    *string                                        `json:"category,omitempty" xml:"category,omitempty"`
+	Description *string                                        `json:"description,omitempty" xml:"description,omitempty"`
+	Documents   *string                                        `json:"documents,omitempty" xml:"documents,omitempty"`
+	Name        *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Provider    *string                                        `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public      *bool                                          `json:"public,omitempty" xml:"public,omitempty"`
+	Singleton   *bool                                          `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source      *string                                        `json:"source,omitempty" xml:"source,omitempty"`
+	Uid         *string                                        `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListComponentsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyDataList) SetAnnotations(v *ListComponentsResponseBodyDataListAnnotations) *ListComponentsResponseBodyDataList {
+	s.Annotations = v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetCategory(v string) *ListComponentsResponseBodyDataList {
+	s.Category = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetDescription(v string) *ListComponentsResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetDocuments(v string) *ListComponentsResponseBodyDataList {
+	s.Documents = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetName(v string) *ListComponentsResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetProvider(v string) *ListComponentsResponseBodyDataList {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetPublic(v bool) *ListComponentsResponseBodyDataList {
+	s.Public = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetSingleton(v bool) *ListComponentsResponseBodyDataList {
+	s.Singleton = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetSource(v string) *ListComponentsResponseBodyDataList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListComponentsResponseBodyDataList) SetUid(v string) *ListComponentsResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type ListComponentsResponseBodyDataListAnnotations struct {
+	Annotations *string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+}
+
+func (s ListComponentsResponseBodyDataListAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponseBodyDataListAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponseBodyDataListAnnotations) SetAnnotations(v string) *ListComponentsResponseBodyDataListAnnotations {
+	s.Annotations = &v
+	return s
+}
+
+type ListComponentsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentsResponse) SetHeaders(v map[string]*string) *ListComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
 	s.Body = v
 	return s
 }
@@ -3168,6 +3517,269 @@ func (s *InitEnvironmentResourceResponse) SetHeaders(v map[string]*string) *Init
 }
 
 func (s *InitEnvironmentResourceResponse) SetBody(v *InitEnvironmentResourceResponseBody) *InitEnvironmentResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ListComponentVersionsRequest struct {
+	PageNum   *int32                                   `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize  *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Platforms []*ListComponentVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+}
+
+func (s ListComponentVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsRequest) SetPageNum(v int32) *ListComponentVersionsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentVersionsRequest) SetPageSize(v int32) *ListComponentVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentVersionsRequest) SetPlatforms(v []*ListComponentVersionsRequestPlatforms) *ListComponentVersionsRequest {
+	s.Platforms = v
+	return s
+}
+
+type ListComponentVersionsRequestPlatforms struct {
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	Os           *string `json:"os,omitempty" xml:"os,omitempty"`
+}
+
+func (s ListComponentVersionsRequestPlatforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsRequestPlatforms) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsRequestPlatforms) SetArchitecture(v string) *ListComponentVersionsRequestPlatforms {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ListComponentVersionsRequestPlatforms) SetOs(v string) *ListComponentVersionsRequestPlatforms {
+	s.Os = &v
+	return s
+}
+
+type ListComponentVersionsShrinkRequest struct {
+	PageNum         *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PlatformsShrink *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
+}
+
+func (s ListComponentVersionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsShrinkRequest) SetPageNum(v int32) *ListComponentVersionsShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentVersionsShrinkRequest) SetPageSize(v int32) *ListComponentVersionsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentVersionsShrinkRequest) SetPlatformsShrink(v string) *ListComponentVersionsShrinkRequest {
+	s.PlatformsShrink = &v
+	return s
+}
+
+type ListComponentVersionsResponseBody struct {
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListComponentVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Msg       *string                                `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListComponentVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsResponseBody) SetRequestId(v string) *ListComponentVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBody) SetData(v *ListComponentVersionsResponseBodyData) *ListComponentVersionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBody) SetCode(v string) *ListComponentVersionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBody) SetMsg(v string) *ListComponentVersionsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListComponentVersionsResponseBodyData struct {
+	List     []*ListComponentVersionsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                       `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                       `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListComponentVersionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsResponseBodyData) SetList(v []*ListComponentVersionsResponseBodyDataList) *ListComponentVersionsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyData) SetPageNum(v int32) *ListComponentVersionsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyData) SetPageSize(v int32) *ListComponentVersionsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyData) SetTotal(v int32) *ListComponentVersionsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListComponentVersionsResponseBodyDataList struct {
+	AppVersion          *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	ComponentName       *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentUID        *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
+	Documents           *string `json:"documents,omitempty" xml:"documents,omitempty"`
+	ImagesMapping       *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	OrchestrationValues *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	PackageURL          *string `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	ParentComponent     *bool   `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	Readme              *string `json:"readme,omitempty" xml:"readme,omitempty"`
+	Resources           *string `json:"resources,omitempty" xml:"resources,omitempty"`
+	Uid                 *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version             *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListComponentVersionsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetAppVersion(v string) *ListComponentVersionsResponseBodyDataList {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetComponentName(v string) *ListComponentVersionsResponseBodyDataList {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetComponentUID(v string) *ListComponentVersionsResponseBodyDataList {
+	s.ComponentUID = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetDescription(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetDocuments(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Documents = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetImagesMapping(v string) *ListComponentVersionsResponseBodyDataList {
+	s.ImagesMapping = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetOrchestrationValues(v string) *ListComponentVersionsResponseBodyDataList {
+	s.OrchestrationValues = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetPackageURL(v string) *ListComponentVersionsResponseBodyDataList {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetParentComponent(v bool) *ListComponentVersionsResponseBodyDataList {
+	s.ParentComponent = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetReadme(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Readme = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetResources(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Resources = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetUid(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListComponentVersionsResponseBodyDataList) SetVersion(v string) *ListComponentVersionsResponseBodyDataList {
+	s.Version = &v
+	return s
+}
+
+type ListComponentVersionsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListComponentVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListComponentVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentVersionsResponse) SetHeaders(v map[string]*string) *ListComponentVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentVersionsResponse) SetBody(v *ListComponentVersionsResponseBody) *ListComponentVersionsResponse {
 	s.Body = v
 	return s
 }
@@ -3412,6 +4024,117 @@ func (s *CreateEnvironmentResponse) SetHeaders(v map[string]*string) *CreateEnvi
 }
 
 func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetComponentResponseBody struct {
+	Data *GetComponentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                       `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetComponentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentResponseBody) SetData(v *GetComponentResponseBodyData) *GetComponentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetComponentResponseBody) SetCode(v string) *GetComponentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetComponentResponseBody) SetMsg(v string) *GetComponentResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetComponentResponseBodyData struct {
+	Category    *string `json:"category,omitempty" xml:"category,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Documents   *string `json:"documents,omitempty" xml:"documents,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Public      *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	Singleton   *bool   `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
+	Uid         *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetComponentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentResponseBodyData) SetCategory(v string) *GetComponentResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetDescription(v string) *GetComponentResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetDocuments(v string) *GetComponentResponseBodyData {
+	s.Documents = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetName(v string) *GetComponentResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetPublic(v bool) *GetComponentResponseBodyData {
+	s.Public = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetSingleton(v bool) *GetComponentResponseBodyData {
+	s.Singleton = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetSource(v string) *GetComponentResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *GetComponentResponseBodyData) SetUid(v string) *GetComponentResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetComponentResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetComponentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetComponentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentResponse) SetHeaders(v map[string]*string) *GetComponentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetComponentResponse) SetBody(v *GetComponentResponseBody) *GetComponentResponse {
 	s.Body = v
 	return s
 }
@@ -4807,6 +5530,147 @@ func (s *DeleteProductVersionConfigResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DeleteProductVersionConfigResponse) SetBody(v *DeleteProductVersionConfigResponseBody) *DeleteProductVersionConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetComponentVersionResponseBody struct {
+	Data []*GetComponentVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                                `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetComponentVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentVersionResponseBody) SetData(v []*GetComponentVersionResponseBodyData) *GetComponentVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetComponentVersionResponseBody) SetCode(v string) *GetComponentVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBody) SetMsg(v string) *GetComponentVersionResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetComponentVersionResponseBodyData struct {
+	ComponentName              *string   `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentUID               *string   `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	Description                *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Documents                  []*string `json:"documents,omitempty" xml:"documents,omitempty" type:"Repeated"`
+	OrchestrationValues        *string   `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	PackageURL                 *string   `json:"packageURL,omitempty" xml:"packageURL,omitempty"`
+	ParentComponent            *bool     `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	ProductComponentVersionUID *string   `json:"productComponentVersionUID,omitempty" xml:"productComponentVersionUID,omitempty"`
+	Provider                   *string   `json:"provider,omitempty" xml:"provider,omitempty"`
+	Readme                     *string   `json:"readme,omitempty" xml:"readme,omitempty"`
+	Resources                  *string   `json:"resources,omitempty" xml:"resources,omitempty"`
+	Uid                        *string   `json:"uid,omitempty" xml:"uid,omitempty"`
+	Version                    *string   `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetComponentVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentVersionResponseBodyData) SetComponentName(v string) *GetComponentVersionResponseBodyData {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetComponentUID(v string) *GetComponentVersionResponseBodyData {
+	s.ComponentUID = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetDescription(v string) *GetComponentVersionResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetDocuments(v []*string) *GetComponentVersionResponseBodyData {
+	s.Documents = v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetOrchestrationValues(v string) *GetComponentVersionResponseBodyData {
+	s.OrchestrationValues = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetPackageURL(v string) *GetComponentVersionResponseBodyData {
+	s.PackageURL = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetParentComponent(v bool) *GetComponentVersionResponseBodyData {
+	s.ParentComponent = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetProductComponentVersionUID(v string) *GetComponentVersionResponseBodyData {
+	s.ProductComponentVersionUID = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetProvider(v string) *GetComponentVersionResponseBodyData {
+	s.Provider = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetReadme(v string) *GetComponentVersionResponseBodyData {
+	s.Readme = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetResources(v string) *GetComponentVersionResponseBodyData {
+	s.Resources = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetUid(v string) *GetComponentVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetComponentVersionResponseBodyData) SetVersion(v string) *GetComponentVersionResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetComponentVersionResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetComponentVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetComponentVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetComponentVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetComponentVersionResponse) SetHeaders(v map[string]*string) *GetComponentVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetComponentVersionResponse) SetBody(v *GetComponentVersionResponseBody) *GetComponentVersionResponse {
 	s.Body = v
 	return s
 }
@@ -6813,6 +7677,75 @@ func (s *GetProductResponse) SetBody(v *GetProductResponseBody) *GetProductRespo
 	return s
 }
 
+type ListFoundationVersionsResponseBody struct {
+	Data *ListFoundationVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                                 `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListFoundationVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionsResponseBody) SetData(v *ListFoundationVersionsResponseBodyData) *ListFoundationVersionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFoundationVersionsResponseBody) SetCode(v string) *ListFoundationVersionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFoundationVersionsResponseBody) SetMsg(v string) *ListFoundationVersionsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListFoundationVersionsResponseBodyData struct {
+	List []*FoundationVersion `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s ListFoundationVersionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionsResponseBodyData) SetList(v []*FoundationVersion) *ListFoundationVersionsResponseBodyData {
+	s.List = v
+	return s
+}
+
+type ListFoundationVersionsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFoundationVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFoundationVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoundationVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoundationVersionsResponse) SetHeaders(v map[string]*string) *ListFoundationVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFoundationVersionsResponse) SetBody(v *ListFoundationVersionsResponseBody) *ListFoundationVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateProductVersionConfigRequest struct {
 	// 配置信息key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -6976,19 +7909,8 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, headers map[string]
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnvironment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetEnvironment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7043,19 +7965,8 @@ func (client *Client) GetProductVersionPackageWithOptions(uid *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductVersionPackage"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(uid) + "/packages"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductVersionPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionPackage"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/hosting/product-versions/"+tea.StringValue(uid)+"/packages"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7101,19 +8012,8 @@ func (client *Client) ListProductDeploymentsWithOptions(request *ListProductDepl
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductDeployments"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/deployments"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductDeploymentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductDeployments"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-instances/deployments"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7152,19 +8052,8 @@ func (client *Client) ListEnvironmentNodesWithOptions(uid *string, request *List
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEnvironmentNodes"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListEnvironmentNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListEnvironmentNodes"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/nodes"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7200,19 +8089,8 @@ func (client *Client) AddProductComponentVersionWithOptions(uid *string, compone
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AddProductComponentVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(uid) + "/component-versions/{componentVersionUID}"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &AddProductComponentVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("AddProductComponentVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v2/product-versions/"+tea.StringValue(uid)+"/component-versions/"+tea.StringValue(componentVersionUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7272,19 +8150,8 @@ func (client *Client) UpdateEnvironmentNodeWithOptions(uid *string, nodeUID *str
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEnvironmentNode"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/{nodeUID}"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateEnvironmentNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateEnvironmentNode"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/nodes/"+tea.StringValue(nodeUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7309,19 +8176,8 @@ func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProductVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid) + "/versions"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteProductVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/products/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7372,19 +8228,8 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProduct"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateProduct"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v2/products"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7423,19 +8268,8 @@ func (client *Client) ValidateEnvironmentTunnelWithOptions(uid *string, request 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ValidateEnvironmentTunnel"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels/validation"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ValidateEnvironmentTunnelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ValidateEnvironmentTunnel"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/tunnels/validation"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7481,19 +8315,8 @@ func (client *Client) CreateProductDeploymentWithOptions(request *CreateProductD
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProductDeployment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/deployments"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateProductDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateProductDeployment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/product-instances/deployments"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7519,19 +8342,8 @@ func (client *Client) DeleteProductComponentVersionWithOptions(uid *string, rela
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProductComponentVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/{relationUID}"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteProductComponentVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteProductComponentVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7556,19 +8368,8 @@ func (client *Client) DeleteEnvironmentWithOptions(uid *string, headers map[stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteEnvironment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteEnvironment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7593,19 +8394,8 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProductVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid) + "/versions"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateProductVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integration/api/v2/products/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7644,19 +8434,34 @@ func (client *Client) PutEnvironmentTunnelWithOptions(uid *string, request *PutE
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PutEnvironmentTunnel"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PutEnvironmentTunnelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PutEnvironmentTunnel"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/tunnels"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFoundationComponentVersions(uid *string) (_result *ListFoundationComponentVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFoundationComponentVersionsResponse{}
+	_body, _err := client.ListFoundationComponentVersionsWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationComponentVersionsResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListFoundationComponentVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListFoundationComponentVersions"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/foundation/versions/"+tea.StringValue(uid)+"/component-versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7709,19 +8514,8 @@ func (client *Client) ListProductEnvironmentsWithOptions(uid *string, tmpReq *Li
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductEnvironments"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/products/" + tea.StringValue(uid) + "/environments"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductEnvironmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductEnvironments"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/hosting/products/"+tea.StringValue(uid)+"/environments"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7747,19 +8541,8 @@ func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, nodeUID *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteEnvironmentNode"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/{nodeUID}"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteEnvironmentNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteEnvironmentNode"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/nodes/"+tea.StringValue(nodeUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7807,19 +8590,34 @@ func (client *Client) UpdateProductComponentVersionWithOptions(uid *string, rela
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProductComponentVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/{relationUID}"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateProductComponentVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateProductComponentVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFoundationVersion(uid *string) (_result *GetFoundationVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFoundationVersionResponse{}
+	_body, _err := client.GetFoundationVersionWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFoundationVersionWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationVersionResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetFoundationVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetFoundationVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/foundation/versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7844,19 +8642,63 @@ func (client *Client) DeleteProductWithOptions(uid *string, headers map[string]*
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProduct"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteProduct"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/integration/api/v2/products/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponents(request *ListComponentsRequest) (_result *ListComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.ListComponentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Public)) {
+		query["public"] = request.Public
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListComponents"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/components"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7907,19 +8749,8 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AddProductVersionConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &AddProductVersionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("AddProductVersionConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7962,19 +8793,58 @@ func (client *Client) InitEnvironmentResourceWithOptions(uid *string, request *I
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InitEnvironmentResource"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/resources"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &InitEnvironmentResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("InitEnvironmentResource"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/resources"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponentVersions(uid *string, request *ListComponentVersionsRequest) (_result *ListComponentVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComponentVersionsResponse{}
+	_body, _err := client.ListComponentVersionsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentVersionsWithOptions(uid *string, tmpReq *ListComponentVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentVersionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	request := &ListComponentVersionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Platforms)) {
+		request.PlatformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Platforms, tea.String("platforms"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformsShrink)) {
+		query["platforms"] = request.PlatformsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListComponentVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListComponentVersions"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/components/"+tea.StringValue(uid)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8013,19 +8883,8 @@ func (client *Client) DeleteProductInstanceConfigWithOptions(configUID *string, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProductInstanceConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/configs/" + tea.StringValue(configUID)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteProductInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteProductInstanceConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/product-instances/configs/"+tea.StringValue(configUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8092,19 +8951,34 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEnvironment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateEnvironment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/environments"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetComponent(uid *string) (_result *GetComponentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetComponentResponse{}
+	_body, _err := client.GetComponentWithOptions(uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetComponentWithOptions(uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetComponentResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetComponentResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetComponent"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/components/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8147,19 +9021,8 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductVersionConfigs"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductVersionConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductVersionConfigs"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8250,19 +9113,8 @@ func (client *Client) AddEnvironmentNodesWithOptions(uid *string, request *AddEn
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AddEnvironmentNodes"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &AddEnvironmentNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("AddEnvironmentNodes"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/nodes"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8318,19 +9170,8 @@ func (client *Client) CreateProductVersionPackageWithOptions(uid *string, reques
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProductVersionPackage"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/hosting/product-versions/" + tea.StringValue(uid) + "/packages"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateProductVersionPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateProductVersionPackage"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/hosting/product-versions/"+tea.StringValue(uid)+"/packages"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8380,19 +9221,8 @@ func (client *Client) ListProductInstanceConfigsWithOptions(request *ListProduct
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductInstanceConfigs"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/configs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductInstanceConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductInstanceConfigs"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-instances/configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8431,19 +9261,8 @@ func (client *Client) UpdateProductVersionWithOptions(uid *string, request *Upda
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProductVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateProductVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8469,19 +9288,8 @@ func (client *Client) GetProductComponentVersionWithOptions(relationUID *string,
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductComponentVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/product-versions/" + tea.StringValue(uid) + "/relations/{relationUID}"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductComponentVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProductComponentVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v2/product-versions/"+tea.StringValue(uid)+"/relations/"+tea.StringValue(relationUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8539,19 +9347,8 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEnvironments"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListEnvironments"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/environments"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8586,19 +9383,8 @@ func (client *Client) UpdateProductWithOptions(uid *string, request *UpdateProdu
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProduct"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateProduct"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/products/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8624,19 +9410,35 @@ func (client *Client) DeleteProductVersionConfigWithOptions(uid *string, configU
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProductVersionConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs/{configUID}"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DeleteProductVersionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteProductVersionConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/configs/"+tea.StringValue(configUID)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetComponentVersion(uid *string, versionUID *string) (_result *GetComponentVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetComponentVersionResponse{}
+	_body, _err := client.GetComponentVersionWithOptions(uid, versionUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetComponentVersionWithOptions(uid *string, versionUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetComponentVersionResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	versionUID = openapiutil.GetEncodeParam(versionUID)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &GetComponentVersionResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetComponentVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v2/components/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8687,19 +9489,8 @@ func (client *Client) ListProductComponentVersionsWithOptions(uid *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductComponentVersions"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/component-versions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductComponentVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductComponentVersions"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/component-versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8725,19 +9516,8 @@ func (client *Client) GetEnvironmentNodeWithOptions(uid *string, nodeUID *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEnvironmentNode"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/nodes/{nodeUID}"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetEnvironmentNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetEnvironmentNode"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/nodes/"+tea.StringValue(nodeUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8783,19 +9563,8 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProducts"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProducts"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/products"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8833,19 +9602,8 @@ func (client *Client) GenerateProductInstanceDeploymentConfigWithOptions(request
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GenerateProductInstanceDeploymentConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/package-configs"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GenerateProductInstanceDeploymentConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GenerateProductInstanceDeploymentConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/product-instances/package-configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8888,19 +9646,8 @@ func (client *Client) GetProductDeploymentWithOptions(deploymentUID *string, req
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductDeployment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/deployments/" + tea.StringValue(deploymentUID)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProductDeployment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-instances/deployments/"+tea.StringValue(deploymentUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8942,19 +9689,8 @@ func (client *Client) ListFoundationReferenceComponentsWithOptions(request *List
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFoundationReferenceComponents"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/foundation-references/component-versions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListFoundationReferenceComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListFoundationReferenceComponents"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/foundation-references/component-versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8990,19 +9726,8 @@ func (client *Client) GetProductVersionDifferencesWithOptions(uid *string, versi
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductVersionDifferences"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/integration/api/v2/products/" + tea.StringValue(uid) + "/versions/{versionUID}/differences"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductVersionDifferencesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProductVersionDifferences"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/integration/api/v2/products/"+tea.StringValue(uid)+"/versions/"+tea.StringValue(versionUID)+"/differences"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9045,19 +9770,8 @@ func (client *Client) UpdateEnvironmentWithOptions(uid *string, request *UpdateE
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEnvironment"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateEnvironment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9082,19 +9796,8 @@ func (client *Client) ListEnvironmentTunnelsWithOptions(uid *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEnvironmentTunnels"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/tunnels"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListEnvironmentTunnelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListEnvironmentTunnels"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/tunnels"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9166,19 +9869,8 @@ func (client *Client) ListProductVersionsWithOptions(tmpReq *ListProductVersions
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProductVersions"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProductVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProductVersions"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9256,19 +9948,8 @@ func (client *Client) PutProductInstanceConfigWithOptions(request *PutProductIns
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PutProductInstanceConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-instances/configs"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PutProductInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PutProductInstanceConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/product-instances/configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9303,19 +9984,8 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEnvironmentProductVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/product-versions"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateEnvironmentProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateEnvironmentProductVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/environments/"+tea.StringValue(uid)+"/product-versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9340,19 +10010,8 @@ func (client *Client) GetProductVersionWithOptions(uid *string, headers map[stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProductVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProductVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9387,19 +10046,8 @@ func (client *Client) UpdateProductFoundationVersionWithOptions(uid *string, req
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProductFoundationVersion"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/foundation"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateProductFoundationVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateProductFoundationVersion"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/foundation"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9424,19 +10072,33 @@ func (client *Client) GetProductWithOptions(uid *string, headers map[string]*str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProduct"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProduct"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/products/"+tea.StringValue(uid)), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFoundationVersions() (_result *ListFoundationVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFoundationVersionsResponse{}
+	_body, _err := client.ListFoundationVersionsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFoundationVersionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFoundationVersionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListFoundationVersionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListFoundationVersions"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/foundation/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9488,19 +10150,8 @@ func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, configU
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProductVersionConfig"),
-		Version:     tea.String("2021-07-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/configs/{configUID}"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateProductVersionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateProductVersionConfig"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/product-versions/"+tea.StringValue(uid)+"/configs/"+tea.StringValue(configUID)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
