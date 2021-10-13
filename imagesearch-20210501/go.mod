@@ -3,9 +3,9 @@ module github.com/alibabacloud-go/imagesearch-20210501
 go 1.15
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi v0.1.4
+	github.com/alibabacloud-go/darabonba-openapi v0.1.7
 	github.com/alibabacloud-go/endpoint-util v1.1.0
-	github.com/alibabacloud-go/openapi-util v0.0.7
+	github.com/alibabacloud-go/openapi-util v0.0.8
 	github.com/alibabacloud-go/openplatform-20191219 v1.1.7
 	github.com/alibabacloud-go/tea v1.1.15
 	github.com/alibabacloud-go/tea-fileform v1.1.1

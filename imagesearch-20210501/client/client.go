@@ -18,16 +18,364 @@ import (
 	"io"
 )
 
+type GetProductInfoByIdsRequest struct {
+	Fields  *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	ItemIds *string `json:"ItemIds,omitempty" xml:"ItemIds,omitempty"`
+	Pid     *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s GetProductInfoByIdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsRequest) SetFields(v string) *GetProductInfoByIdsRequest {
+	s.Fields = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsRequest) SetItemIds(v string) *GetProductInfoByIdsRequest {
+	s.ItemIds = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsRequest) SetPid(v string) *GetProductInfoByIdsRequest {
+	s.Pid = &v
+	return s
+}
+
+type GetProductInfoByIdsResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetProductInfoByIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetProductInfoByIdsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponseBody) SetCode(v int32) *GetProductInfoByIdsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBody) SetData(v *GetProductInfoByIdsResponseBodyData) *GetProductInfoByIdsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBody) SetMessage(v string) *GetProductInfoByIdsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBody) SetRequestId(v string) *GetProductInfoByIdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBody) SetSuccess(v bool) *GetProductInfoByIdsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProductInfoByIdsResponseBodyData struct {
+	Auctions []*GetProductInfoByIdsResponseBodyDataAuctions `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+}
+
+func (s GetProductInfoByIdsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponseBodyData) SetAuctions(v []*GetProductInfoByIdsResponseBodyDataAuctions) *GetProductInfoByIdsResponseBodyData {
+	s.Auctions = v
+	return s
+}
+
+type GetProductInfoByIdsResponseBodyDataAuctions struct {
+	Result    *GetProductInfoByIdsResponseBodyDataAuctionsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RankScore *float32                                           `json:"RankScore,omitempty" xml:"RankScore,omitempty"`
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctions) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctions) SetResult(v *GetProductInfoByIdsResponseBodyDataAuctionsResult) *GetProductInfoByIdsResponseBodyDataAuctions {
+	s.Result = v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctions) SetRankScore(v float32) *GetProductInfoByIdsResponseBodyDataAuctions {
+	s.RankScore = &v
+	return s
+}
+
+type GetProductInfoByIdsResponseBodyDataAuctionsResult struct {
+	ItemId                 *string                                                         `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Title                  *string                                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+	ShortTitle             *string                                                         `json:"ShortTitle,omitempty" xml:"ShortTitle,omitempty"`
+	SubTitle               *string                                                         `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
+	PicUrl                 *string                                                         `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	ReservePrice           *string                                                         `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	ZkFinalPrice           *string                                                         `json:"ZkFinalPrice,omitempty" xml:"ZkFinalPrice,omitempty"`
+	PriceAfterCoupon       *string                                                         `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
+	UserType               *int32                                                          `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Provcity               *string                                                         `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
+	Nick                   *string                                                         `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	SellerId               *string                                                         `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	Volume                 *int32                                                          `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	LevelOneCategoryName   *string                                                         `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
+	CategoryName           *string                                                         `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	CouponTotalCount       *string                                                         `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
+	CouponRemainCount      *int32                                                          `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
+	CouponStartTime        *string                                                         `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
+	CouponEndTime          *string                                                         `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
+	CouponStartFee         *string                                                         `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
+	CouponAmount           *int32                                                          `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
+	CouponInfo             *string                                                         `json:"CouponInfo,omitempty" xml:"CouponInfo,omitempty"`
+	CommissionRate         *string                                                         `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
+	CouponShareUrl         *string                                                         `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
+	DeeplinkCouponShareUrl *string                                                         `json:"DeeplinkCouponShareUrl,omitempty" xml:"DeeplinkCouponShareUrl,omitempty"`
+	Url                    *string                                                         `json:"Url,omitempty" xml:"Url,omitempty"`
+	DeeplinkUrl            *string                                                         `json:"DeeplinkUrl,omitempty" xml:"DeeplinkUrl,omitempty"`
+	ShopTitle              *string                                                         `json:"ShopTitle,omitempty" xml:"ShopTitle,omitempty"`
+	MaxCommission          *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctionsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctionsResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetItemId(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetTitle(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.Title = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetShortTitle(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.ShortTitle = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetSubTitle(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetPicUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.PicUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetReservePrice(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetZkFinalPrice(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.ZkFinalPrice = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetPriceAfterCoupon(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.PriceAfterCoupon = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetUserType(v int32) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.UserType = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetProvcity(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.Provcity = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetNick(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.Nick = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetSellerId(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.SellerId = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetVolume(v int32) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.Volume = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetLevelOneCategoryName(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.LevelOneCategoryName = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCategoryName(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponTotalCount(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponTotalCount = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponRemainCount(v int32) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponRemainCount = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponStartTime(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponStartTime = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponEndTime(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponEndTime = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponStartFee(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponStartFee = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponAmount(v int32) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponAmount = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponInfo(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponInfo = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCommissionRate(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CommissionRate = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetCouponShareUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.CouponShareUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetDeeplinkCouponShareUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.DeeplinkCouponShareUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.Url = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetDeeplinkUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.DeeplinkUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetShopTitle(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.ShopTitle = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetMaxCommission(v *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.MaxCommission = v
+	return s
+}
+
+type GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission struct {
+	MaxCommissionRate           *string `json:"MaxCommissionRate,omitempty" xml:"MaxCommissionRate,omitempty"`
+	MaxCommissionClickUrl       *string `json:"MaxCommissionClickUrl,omitempty" xml:"MaxCommissionClickUrl,omitempty"`
+	MaxCommissionCouponShareUrl *string `json:"MaxCommissionCouponShareUrl,omitempty" xml:"MaxCommissionCouponShareUrl,omitempty"`
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) SetMaxCommissionRate(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission {
+	s.MaxCommissionRate = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) SetMaxCommissionClickUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission {
+	s.MaxCommissionClickUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) SetMaxCommissionCouponShareUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission {
+	s.MaxCommissionCouponShareUrl = &v
+	return s
+}
+
+type GetProductInfoByIdsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProductInfoByIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProductInfoByIdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProductInfoByIdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProductInfoByIdsResponse) SetHeaders(v map[string]*string) *GetProductInfoByIdsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponse) SetBody(v *GetProductInfoByIdsResponseBody) *GetProductInfoByIdsResponse {
+	s.Body = v
+	return s
+}
+
 type SearchByPicRequest struct {
-	PicContent *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	CategoryId *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop       *bool   `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Start      *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
-	Num        *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
 	Fields     *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Num        *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
+	PicContent *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	Pid        *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Start      *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+	UserType   *int64  `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s SearchByPicRequest) String() string {
@@ -36,11 +384,6 @@ func (s SearchByPicRequest) String() string {
 
 func (s SearchByPicRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SearchByPicRequest) SetPicContent(v string) *SearchByPicRequest {
-	s.PicContent = &v
-	return s
 }
 
 func (s *SearchByPicRequest) SetCategoryId(v int32) *SearchByPicRequest {
@@ -53,13 +396,8 @@ func (s *SearchByPicRequest) SetCrop(v bool) *SearchByPicRequest {
 	return s
 }
 
-func (s *SearchByPicRequest) SetRegion(v string) *SearchByPicRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *SearchByPicRequest) SetStart(v int32) *SearchByPicRequest {
-	s.Start = &v
+func (s *SearchByPicRequest) SetFields(v string) *SearchByPicRequest {
+	s.Fields = &v
 	return s
 }
 
@@ -68,13 +406,8 @@ func (s *SearchByPicRequest) SetNum(v int32) *SearchByPicRequest {
 	return s
 }
 
-func (s *SearchByPicRequest) SetFields(v string) *SearchByPicRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *SearchByPicRequest) SetRelationId(v int64) *SearchByPicRequest {
-	s.RelationId = &v
+func (s *SearchByPicRequest) SetPicContent(v string) *SearchByPicRequest {
+	s.PicContent = &v
 	return s
 }
 
@@ -83,16 +416,37 @@ func (s *SearchByPicRequest) SetPid(v string) *SearchByPicRequest {
 	return s
 }
 
+func (s *SearchByPicRequest) SetRegion(v string) *SearchByPicRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *SearchByPicRequest) SetRelationId(v int64) *SearchByPicRequest {
+	s.RelationId = &v
+	return s
+}
+
+func (s *SearchByPicRequest) SetStart(v int32) *SearchByPicRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *SearchByPicRequest) SetUserType(v int64) *SearchByPicRequest {
+	s.UserType = &v
+	return s
+}
+
 type SearchByPicAdvanceRequest struct {
 	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	Start            *int32    `json:"Start,omitempty" xml:"Start,omitempty"`
-	Num              *int32    `json:"Num,omitempty" xml:"Num,omitempty"`
 	Fields           *string   `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	RelationId       *int64    `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Num              *int32    `json:"Num,omitempty" xml:"Num,omitempty"`
 	Pid              *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelationId       *int64    `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Start            *int32    `json:"Start,omitempty" xml:"Start,omitempty"`
+	UserType         *int64    `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s SearchByPicAdvanceRequest) String() string {
@@ -118,13 +472,8 @@ func (s *SearchByPicAdvanceRequest) SetCrop(v bool) *SearchByPicAdvanceRequest {
 	return s
 }
 
-func (s *SearchByPicAdvanceRequest) SetRegion(v string) *SearchByPicAdvanceRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *SearchByPicAdvanceRequest) SetStart(v int32) *SearchByPicAdvanceRequest {
-	s.Start = &v
+func (s *SearchByPicAdvanceRequest) SetFields(v string) *SearchByPicAdvanceRequest {
+	s.Fields = &v
 	return s
 }
 
@@ -133,8 +482,13 @@ func (s *SearchByPicAdvanceRequest) SetNum(v int32) *SearchByPicAdvanceRequest {
 	return s
 }
 
-func (s *SearchByPicAdvanceRequest) SetFields(v string) *SearchByPicAdvanceRequest {
-	s.Fields = &v
+func (s *SearchByPicAdvanceRequest) SetPid(v string) *SearchByPicAdvanceRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *SearchByPicAdvanceRequest) SetRegion(v string) *SearchByPicAdvanceRequest {
+	s.Region = &v
 	return s
 }
 
@@ -143,18 +497,23 @@ func (s *SearchByPicAdvanceRequest) SetRelationId(v int64) *SearchByPicAdvanceRe
 	return s
 }
 
-func (s *SearchByPicAdvanceRequest) SetPid(v string) *SearchByPicAdvanceRequest {
-	s.Pid = &v
+func (s *SearchByPicAdvanceRequest) SetStart(v int32) *SearchByPicAdvanceRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *SearchByPicAdvanceRequest) SetUserType(v int64) *SearchByPicAdvanceRequest {
+	s.UserType = &v
 	return s
 }
 
 type SearchByPicResponseBody struct {
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *SearchByPicResponseBodyData    `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	PicInfo   *SearchByPicResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SearchByPicResponseBody) String() string {
@@ -165,18 +524,8 @@ func (s SearchByPicResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SearchByPicResponseBody) SetSuccess(v bool) *SearchByPicResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *SearchByPicResponseBody) SetCode(v int32) *SearchByPicResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *SearchByPicResponseBody) SetMessage(v string) *SearchByPicResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -185,13 +534,23 @@ func (s *SearchByPicResponseBody) SetData(v *SearchByPicResponseBodyData) *Searc
 	return s
 }
 
-func (s *SearchByPicResponseBody) SetRequestId(v string) *SearchByPicResponseBody {
-	s.RequestId = &v
+func (s *SearchByPicResponseBody) SetMessage(v string) *SearchByPicResponseBody {
+	s.Message = &v
 	return s
 }
 
 func (s *SearchByPicResponseBody) SetPicInfo(v *SearchByPicResponseBodyPicInfo) *SearchByPicResponseBody {
 	s.PicInfo = v
+	return s
+}
+
+func (s *SearchByPicResponseBody) SetRequestId(v string) *SearchByPicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchByPicResponseBody) SetSuccess(v bool) *SearchByPicResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -236,45 +595,35 @@ func (s *SearchByPicResponseBodyDataAuctions) SetRankScore(v float32) *SearchByP
 }
 
 type SearchByPicResponseBodyDataAuctionsResult struct {
-	ItemId               *string                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemName             *string                                                 `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	Title                *string                                                 `json:"Title,omitempty" xml:"Title,omitempty"`
-	Pic                  *string                                                 `json:"Pic,omitempty" xml:"Pic,omitempty"`
-	PicUrl               *string                                                 `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
-	Price                *string                                                 `json:"Price,omitempty" xml:"Price,omitempty"`
-	ReservePrice         *string                                                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	PromotionPrice       *string                                                 `json:"PromotionPrice,omitempty" xml:"PromotionPrice,omitempty"`
-	ZkFinalPrice         *string                                                 `json:"ZkFinalPrice,omitempty" xml:"ZkFinalPrice,omitempty"`
-	PriceAfterCoupon     *string                                                 `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
-	UserType             *int32                                                  `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	Provcity             *string                                                 `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
-	SellerNickName       *string                                                 `json:"SellerNickName,omitempty" xml:"SellerNickName,omitempty"`
-	Nick                 *string                                                 `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	SellerId             *string                                                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	MonthSellCount       *int32                                                  `json:"MonthSellCount,omitempty" xml:"MonthSellCount,omitempty"`
-	Volume               *int32                                                  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	LevelOneCategoryName *string                                                 `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
-	CategoryName         *string                                                 `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	CouponActivityId     *string                                                 `json:"CouponActivityId,omitempty" xml:"CouponActivityId,omitempty"`
-	CouponTotalCount     *string                                                 `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
-	CouponSendCount      *string                                                 `json:"CouponSendCount,omitempty" xml:"CouponSendCount,omitempty"`
-	CouponRemainCount    *int32                                                  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
-	CouponStartTime      *string                                                 `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
-	CouponEndTime        *string                                                 `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
-	CouponStartFee       *string                                                 `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
-	CouponAmount         *int32                                                  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
-	CouponSaleTextInfo   *string                                                 `json:"CouponSaleTextInfo,omitempty" xml:"CouponSaleTextInfo,omitempty"`
-	CouponInfo           *string                                                 `json:"CouponInfo,omitempty" xml:"CouponInfo,omitempty"`
-	TkMktRate            *int32                                                  `json:"TkMktRate,omitempty" xml:"TkMktRate,omitempty"`
-	TkRate               *int32                                                  `json:"TkRate,omitempty" xml:"TkRate,omitempty"`
-	CommissionRate       *string                                                 `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
-	CouponShareUrl       *string                                                 `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
-	ClickUrl             *string                                                 `json:"ClickUrl,omitempty" xml:"ClickUrl,omitempty"`
-	Url                  *string                                                 `json:"Url,omitempty" xml:"Url,omitempty"`
-	ShortUrl             *string                                                 `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	Key                  *string                                                 `json:"Key,omitempty" xml:"Key,omitempty"`
-	ShopTitle            *string                                                 `json:"ShopTitle,omitempty" xml:"ShopTitle,omitempty"`
-	MaxCommission        *SearchByPicResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
+	ItemId                 *string                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Title                  *string                                                 `json:"Title,omitempty" xml:"Title,omitempty"`
+	ShortTitle             *string                                                 `json:"ShortTitle,omitempty" xml:"ShortTitle,omitempty"`
+	SubTitle               *string                                                 `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
+	PicUrl                 *string                                                 `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	ReservePrice           *string                                                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	ZkFinalPrice           *string                                                 `json:"ZkFinalPrice,omitempty" xml:"ZkFinalPrice,omitempty"`
+	PriceAfterCoupon       *string                                                 `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
+	UserType               *int32                                                  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Provcity               *string                                                 `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
+	Nick                   *string                                                 `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	SellerId               *string                                                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	Volume                 *int32                                                  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	LevelOneCategoryName   *string                                                 `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
+	CategoryName           *string                                                 `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	CouponTotalCount       *string                                                 `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
+	CouponRemainCount      *int32                                                  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
+	CouponStartTime        *string                                                 `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
+	CouponEndTime          *string                                                 `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
+	CouponStartFee         *string                                                 `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
+	CouponAmount           *int32                                                  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
+	CouponInfo             *string                                                 `json:"CouponInfo,omitempty" xml:"CouponInfo,omitempty"`
+	CommissionRate         *string                                                 `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
+	CouponShareUrl         *string                                                 `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
+	DeeplinkCouponShareUrl *string                                                 `json:"DeeplinkCouponShareUrl,omitempty" xml:"DeeplinkCouponShareUrl,omitempty"`
+	Url                    *string                                                 `json:"Url,omitempty" xml:"Url,omitempty"`
+	DeeplinkUrl            *string                                                 `json:"DeeplinkUrl,omitempty" xml:"DeeplinkUrl,omitempty"`
+	ShopTitle              *string                                                 `json:"ShopTitle,omitempty" xml:"ShopTitle,omitempty"`
+	MaxCommission          *SearchByPicResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
 }
 
 func (s SearchByPicResponseBodyDataAuctionsResult) String() string {
@@ -290,18 +639,18 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetItemId(v string) *SearchB
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetItemName(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.ItemName = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetTitle(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.Title = &v
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetPic(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.Pic = &v
+func (s *SearchByPicResponseBodyDataAuctionsResult) SetShortTitle(v string) *SearchByPicResponseBodyDataAuctionsResult {
+	s.ShortTitle = &v
+	return s
+}
+
+func (s *SearchByPicResponseBodyDataAuctionsResult) SetSubTitle(v string) *SearchByPicResponseBodyDataAuctionsResult {
+	s.SubTitle = &v
 	return s
 }
 
@@ -310,18 +659,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetPicUrl(v string) *SearchB
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetPrice(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.Price = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetReservePrice(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.ReservePrice = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetPromotionPrice(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.PromotionPrice = &v
 	return s
 }
 
@@ -345,11 +684,6 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetProvcity(v string) *Searc
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetSellerNickName(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.SellerNickName = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetNick(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.Nick = &v
 	return s
@@ -357,11 +691,6 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetNick(v string) *SearchByP
 
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetSellerId(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.SellerId = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetMonthSellCount(v int32) *SearchByPicResponseBodyDataAuctionsResult {
-	s.MonthSellCount = &v
 	return s
 }
 
@@ -380,18 +709,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCategoryName(v string) *S
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponActivityId(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CouponActivityId = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponTotalCount(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.CouponTotalCount = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponSendCount(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CouponSendCount = &v
 	return s
 }
 
@@ -420,23 +739,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponAmount(v int32) *Se
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponSaleTextInfo(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.CouponSaleTextInfo = &v
-	return s
-}
-
 func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponInfo(v string) *SearchByPicResponseBodyDataAuctionsResult {
 	s.CouponInfo = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetTkMktRate(v int32) *SearchByPicResponseBodyDataAuctionsResult {
-	s.TkMktRate = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetTkRate(v int32) *SearchByPicResponseBodyDataAuctionsResult {
-	s.TkRate = &v
 	return s
 }
 
@@ -450,8 +754,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetCouponShareUrl(v string) 
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetClickUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.ClickUrl = &v
+func (s *SearchByPicResponseBodyDataAuctionsResult) SetDeeplinkCouponShareUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
+	s.DeeplinkCouponShareUrl = &v
 	return s
 }
 
@@ -460,13 +764,8 @@ func (s *SearchByPicResponseBodyDataAuctionsResult) SetUrl(v string) *SearchByPi
 	return s
 }
 
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetShortUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.ShortUrl = &v
-	return s
-}
-
-func (s *SearchByPicResponseBodyDataAuctionsResult) SetKey(v string) *SearchByPicResponseBodyDataAuctionsResult {
-	s.Key = &v
+func (s *SearchByPicResponseBodyDataAuctionsResult) SetDeeplinkUrl(v string) *SearchByPicResponseBodyDataAuctionsResult {
+	s.DeeplinkUrl = &v
 	return s
 }
 
@@ -533,8 +832,8 @@ func (s *SearchByPicResponseBodyPicInfo) SetMultiRegion(v []*SearchByPicResponse
 }
 
 type SearchByPicResponseBodyPicInfoMainRegion struct {
-	Region          *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
 	MultiCategoryId []*SearchByPicResponseBodyPicInfoMainRegionMultiCategoryId `json:"MultiCategoryId,omitempty" xml:"MultiCategoryId,omitempty" type:"Repeated"`
+	Region          *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SearchByPicResponseBodyPicInfoMainRegion) String() string {
@@ -545,13 +844,13 @@ func (s SearchByPicResponseBodyPicInfoMainRegion) GoString() string {
 	return s.String()
 }
 
-func (s *SearchByPicResponseBodyPicInfoMainRegion) SetRegion(v string) *SearchByPicResponseBodyPicInfoMainRegion {
-	s.Region = &v
+func (s *SearchByPicResponseBodyPicInfoMainRegion) SetMultiCategoryId(v []*SearchByPicResponseBodyPicInfoMainRegionMultiCategoryId) *SearchByPicResponseBodyPicInfoMainRegion {
+	s.MultiCategoryId = v
 	return s
 }
 
-func (s *SearchByPicResponseBodyPicInfoMainRegion) SetMultiCategoryId(v []*SearchByPicResponseBodyPicInfoMainRegionMultiCategoryId) *SearchByPicResponseBodyPicInfoMainRegion {
-	s.MultiCategoryId = v
+func (s *SearchByPicResponseBodyPicInfoMainRegion) SetRegion(v string) *SearchByPicResponseBodyPicInfoMainRegion {
+	s.Region = &v
 	return s
 }
 
@@ -619,15 +918,16 @@ func (s *SearchByPicResponse) SetBody(v *SearchByPicResponseBody) *SearchByPicRe
 }
 
 type SearchByUrlRequest struct {
-	PicUrl     *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
 	CategoryId *int32  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop       *bool   `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Start      *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
-	Num        *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
 	Fields     *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Num        *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
+	PicUrl     *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
 	Pid        *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	Start      *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+	UserType   *int64  `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s SearchByUrlRequest) String() string {
@@ -636,11 +936,6 @@ func (s SearchByUrlRequest) String() string {
 
 func (s SearchByUrlRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SearchByUrlRequest) SetPicUrl(v string) *SearchByUrlRequest {
-	s.PicUrl = &v
-	return s
 }
 
 func (s *SearchByUrlRequest) SetCategoryId(v int32) *SearchByUrlRequest {
@@ -653,13 +948,8 @@ func (s *SearchByUrlRequest) SetCrop(v bool) *SearchByUrlRequest {
 	return s
 }
 
-func (s *SearchByUrlRequest) SetRegion(v string) *SearchByUrlRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *SearchByUrlRequest) SetStart(v int32) *SearchByUrlRequest {
-	s.Start = &v
+func (s *SearchByUrlRequest) SetFields(v string) *SearchByUrlRequest {
+	s.Fields = &v
 	return s
 }
 
@@ -668,13 +958,8 @@ func (s *SearchByUrlRequest) SetNum(v int32) *SearchByUrlRequest {
 	return s
 }
 
-func (s *SearchByUrlRequest) SetFields(v string) *SearchByUrlRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *SearchByUrlRequest) SetRelationId(v int64) *SearchByUrlRequest {
-	s.RelationId = &v
+func (s *SearchByUrlRequest) SetPicUrl(v string) *SearchByUrlRequest {
+	s.PicUrl = &v
 	return s
 }
 
@@ -683,13 +968,33 @@ func (s *SearchByUrlRequest) SetPid(v string) *SearchByUrlRequest {
 	return s
 }
 
+func (s *SearchByUrlRequest) SetRegion(v string) *SearchByUrlRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *SearchByUrlRequest) SetRelationId(v int64) *SearchByUrlRequest {
+	s.RelationId = &v
+	return s
+}
+
+func (s *SearchByUrlRequest) SetStart(v int32) *SearchByUrlRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *SearchByUrlRequest) SetUserType(v int64) *SearchByUrlRequest {
+	s.UserType = &v
+	return s
+}
+
 type SearchByUrlResponseBody struct {
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *SearchByUrlResponseBodyData    `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	PicInfo   *SearchByUrlResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SearchByUrlResponseBody) String() string {
@@ -700,18 +1005,8 @@ func (s SearchByUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SearchByUrlResponseBody) SetSuccess(v bool) *SearchByUrlResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBody) SetCode(v int32) *SearchByUrlResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBody) SetMessage(v string) *SearchByUrlResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -720,13 +1015,23 @@ func (s *SearchByUrlResponseBody) SetData(v *SearchByUrlResponseBodyData) *Searc
 	return s
 }
 
-func (s *SearchByUrlResponseBody) SetRequestId(v string) *SearchByUrlResponseBody {
-	s.RequestId = &v
+func (s *SearchByUrlResponseBody) SetMessage(v string) *SearchByUrlResponseBody {
+	s.Message = &v
 	return s
 }
 
 func (s *SearchByUrlResponseBody) SetPicInfo(v *SearchByUrlResponseBodyPicInfo) *SearchByUrlResponseBody {
 	s.PicInfo = v
+	return s
+}
+
+func (s *SearchByUrlResponseBody) SetRequestId(v string) *SearchByUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchByUrlResponseBody) SetSuccess(v bool) *SearchByUrlResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -771,45 +1076,35 @@ func (s *SearchByUrlResponseBodyDataAuctions) SetRankScore(v float32) *SearchByU
 }
 
 type SearchByUrlResponseBodyDataAuctionsResult struct {
-	ItemId               *string                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ItemName             *string                                                 `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	Title                *string                                                 `json:"Title,omitempty" xml:"Title,omitempty"`
-	Pic                  *string                                                 `json:"Pic,omitempty" xml:"Pic,omitempty"`
-	PicUrl               *string                                                 `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
-	Price                *string                                                 `json:"Price,omitempty" xml:"Price,omitempty"`
-	ReservePrice         *string                                                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	PromotionPrice       *string                                                 `json:"PromotionPrice,omitempty" xml:"PromotionPrice,omitempty"`
-	ZkFinalPrice         *string                                                 `json:"ZkFinalPrice,omitempty" xml:"ZkFinalPrice,omitempty"`
-	PriceAfterCoupon     *string                                                 `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
-	UserType             *int32                                                  `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	Provcity             *string                                                 `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
-	SellerNickName       *string                                                 `json:"SellerNickName,omitempty" xml:"SellerNickName,omitempty"`
-	Nick                 *string                                                 `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	SellerId             *string                                                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	MonthSellCount       *int32                                                  `json:"MonthSellCount,omitempty" xml:"MonthSellCount,omitempty"`
-	Volume               *int32                                                  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	LevelOneCategoryName *string                                                 `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
-	CategoryName         *string                                                 `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	CouponActivityId     *string                                                 `json:"CouponActivityId,omitempty" xml:"CouponActivityId,omitempty"`
-	CouponTotalCount     *string                                                 `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
-	CouponSendCount      *string                                                 `json:"CouponSendCount,omitempty" xml:"CouponSendCount,omitempty"`
-	CouponRemainCount    *int32                                                  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
-	CouponStartTime      *string                                                 `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
-	CouponEndTime        *string                                                 `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
-	CouponStartFee       *string                                                 `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
-	CouponAmount         *int32                                                  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
-	CouponSaleTextInfo   *string                                                 `json:"CouponSaleTextInfo,omitempty" xml:"CouponSaleTextInfo,omitempty"`
-	CouponInfo           *string                                                 `json:"CouponInfo,omitempty" xml:"CouponInfo,omitempty"`
-	TkMktRate            *int32                                                  `json:"TkMktRate,omitempty" xml:"TkMktRate,omitempty"`
-	TkRate               *int32                                                  `json:"TkRate,omitempty" xml:"TkRate,omitempty"`
-	CommissionRate       *string                                                 `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
-	CouponShareUrl       *string                                                 `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
-	ClickUrl             *string                                                 `json:"ClickUrl,omitempty" xml:"ClickUrl,omitempty"`
-	Url                  *string                                                 `json:"Url,omitempty" xml:"Url,omitempty"`
-	ShortUrl             *string                                                 `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	Key                  *string                                                 `json:"Key,omitempty" xml:"Key,omitempty"`
-	ShopTitle            *string                                                 `json:"ShopTitle,omitempty" xml:"ShopTitle,omitempty"`
-	MaxCommission        *SearchByUrlResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
+	ItemId                 *string                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Title                  *string                                                 `json:"Title,omitempty" xml:"Title,omitempty"`
+	ShortTitle             *string                                                 `json:"ShortTitle,omitempty" xml:"ShortTitle,omitempty"`
+	SubTitle               *string                                                 `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
+	PicUrl                 *string                                                 `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	ReservePrice           *string                                                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	ZkFinalPrice           *string                                                 `json:"ZkFinalPrice,omitempty" xml:"ZkFinalPrice,omitempty"`
+	PriceAfterCoupon       *string                                                 `json:"PriceAfterCoupon,omitempty" xml:"PriceAfterCoupon,omitempty"`
+	UserType               *int32                                                  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Provcity               *string                                                 `json:"Provcity,omitempty" xml:"Provcity,omitempty"`
+	Nick                   *string                                                 `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	SellerId               *string                                                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	Volume                 *int32                                                  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	LevelOneCategoryName   *string                                                 `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
+	CategoryName           *string                                                 `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	CouponTotalCount       *string                                                 `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
+	CouponRemainCount      *int32                                                  `json:"CouponRemainCount,omitempty" xml:"CouponRemainCount,omitempty"`
+	CouponStartTime        *string                                                 `json:"CouponStartTime,omitempty" xml:"CouponStartTime,omitempty"`
+	CouponEndTime          *string                                                 `json:"CouponEndTime,omitempty" xml:"CouponEndTime,omitempty"`
+	CouponStartFee         *string                                                 `json:"CouponStartFee,omitempty" xml:"CouponStartFee,omitempty"`
+	CouponAmount           *int32                                                  `json:"CouponAmount,omitempty" xml:"CouponAmount,omitempty"`
+	CouponInfo             *string                                                 `json:"CouponInfo,omitempty" xml:"CouponInfo,omitempty"`
+	CommissionRate         *string                                                 `json:"CommissionRate,omitempty" xml:"CommissionRate,omitempty"`
+	CouponShareUrl         *string                                                 `json:"CouponShareUrl,omitempty" xml:"CouponShareUrl,omitempty"`
+	DeeplinkCouponShareUrl *string                                                 `json:"DeeplinkCouponShareUrl,omitempty" xml:"DeeplinkCouponShareUrl,omitempty"`
+	Url                    *string                                                 `json:"Url,omitempty" xml:"Url,omitempty"`
+	DeeplinkUrl            *string                                                 `json:"DeeplinkUrl,omitempty" xml:"DeeplinkUrl,omitempty"`
+	ShopTitle              *string                                                 `json:"ShopTitle,omitempty" xml:"ShopTitle,omitempty"`
+	MaxCommission          *SearchByUrlResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
 }
 
 func (s SearchByUrlResponseBodyDataAuctionsResult) String() string {
@@ -825,18 +1120,18 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetItemId(v string) *SearchB
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetItemName(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.ItemName = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetTitle(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.Title = &v
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPic(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.Pic = &v
+func (s *SearchByUrlResponseBodyDataAuctionsResult) SetShortTitle(v string) *SearchByUrlResponseBodyDataAuctionsResult {
+	s.ShortTitle = &v
+	return s
+}
+
+func (s *SearchByUrlResponseBodyDataAuctionsResult) SetSubTitle(v string) *SearchByUrlResponseBodyDataAuctionsResult {
+	s.SubTitle = &v
 	return s
 }
 
@@ -845,18 +1140,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPicUrl(v string) *SearchB
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPrice(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.Price = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetReservePrice(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.ReservePrice = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetPromotionPrice(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.PromotionPrice = &v
 	return s
 }
 
@@ -880,11 +1165,6 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetProvcity(v string) *Searc
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetSellerNickName(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.SellerNickName = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetNick(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.Nick = &v
 	return s
@@ -892,11 +1172,6 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetNick(v string) *SearchByU
 
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetSellerId(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.SellerId = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetMonthSellCount(v int32) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.MonthSellCount = &v
 	return s
 }
 
@@ -915,18 +1190,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCategoryName(v string) *S
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponActivityId(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CouponActivityId = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponTotalCount(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.CouponTotalCount = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponSendCount(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CouponSendCount = &v
 	return s
 }
 
@@ -955,23 +1220,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponAmount(v int32) *Se
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponSaleTextInfo(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.CouponSaleTextInfo = &v
-	return s
-}
-
 func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponInfo(v string) *SearchByUrlResponseBodyDataAuctionsResult {
 	s.CouponInfo = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetTkMktRate(v int32) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.TkMktRate = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetTkRate(v int32) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.TkRate = &v
 	return s
 }
 
@@ -985,8 +1235,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetCouponShareUrl(v string) 
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetClickUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.ClickUrl = &v
+func (s *SearchByUrlResponseBodyDataAuctionsResult) SetDeeplinkCouponShareUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
+	s.DeeplinkCouponShareUrl = &v
 	return s
 }
 
@@ -995,13 +1245,8 @@ func (s *SearchByUrlResponseBodyDataAuctionsResult) SetUrl(v string) *SearchByUr
 	return s
 }
 
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetShortUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.ShortUrl = &v
-	return s
-}
-
-func (s *SearchByUrlResponseBodyDataAuctionsResult) SetKey(v string) *SearchByUrlResponseBodyDataAuctionsResult {
-	s.Key = &v
+func (s *SearchByUrlResponseBodyDataAuctionsResult) SetDeeplinkUrl(v string) *SearchByUrlResponseBodyDataAuctionsResult {
+	s.DeeplinkUrl = &v
 	return s
 }
 
@@ -1068,8 +1313,8 @@ func (s *SearchByUrlResponseBodyPicInfo) SetMultiRegion(v []*SearchByUrlResponse
 }
 
 type SearchByUrlResponseBodyPicInfoMainRegion struct {
-	Region          *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
 	MultiCategoryId []*SearchByUrlResponseBodyPicInfoMainRegionMultiCategoryId `json:"MultiCategoryId,omitempty" xml:"MultiCategoryId,omitempty" type:"Repeated"`
+	Region          *string                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s SearchByUrlResponseBodyPicInfoMainRegion) String() string {
@@ -1080,13 +1325,13 @@ func (s SearchByUrlResponseBodyPicInfoMainRegion) GoString() string {
 	return s.String()
 }
 
-func (s *SearchByUrlResponseBodyPicInfoMainRegion) SetRegion(v string) *SearchByUrlResponseBodyPicInfoMainRegion {
-	s.Region = &v
+func (s *SearchByUrlResponseBodyPicInfoMainRegion) SetMultiCategoryId(v []*SearchByUrlResponseBodyPicInfoMainRegionMultiCategoryId) *SearchByUrlResponseBodyPicInfoMainRegion {
+	s.MultiCategoryId = v
 	return s
 }
 
-func (s *SearchByUrlResponseBodyPicInfoMainRegion) SetMultiCategoryId(v []*SearchByUrlResponseBodyPicInfoMainRegionMultiCategoryId) *SearchByUrlResponseBodyPicInfoMainRegion {
-	s.MultiCategoryId = v
+func (s *SearchByUrlResponseBodyPicInfoMainRegion) SetRegion(v string) *SearchByUrlResponseBodyPicInfoMainRegion {
+	s.Region = &v
 	return s
 }
 
@@ -1200,7 +1445,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) SearchByPicWithOptions(request *SearchByPicRequest, runtime *util.RuntimeOptions) (_result *SearchByPicResponse, _err error) {
+func (client *Client) GetProductInfoByIdsWithOptions(request *GetProductInfoByIdsRequest, runtime *util.RuntimeOptions) (_result *GetProductInfoByIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -1208,8 +1453,61 @@ func (client *Client) SearchByPicWithOptions(request *SearchByPicRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProductInfoByIds"),
+		Version:     tea.String("2021-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProductInfoByIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProductInfoByIds(request *GetProductInfoByIdsRequest) (_result *GetProductInfoByIdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProductInfoByIdsResponse{}
+	_body, _err := client.GetProductInfoByIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchByPicWithOptions(request *SearchByPicRequest, runtime *util.RuntimeOptions) (_result *SearchByPicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["UserType"] = request.UserType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchByPic"),
+		Version:     tea.String("2021-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SearchByPicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchByPic"), tea.String("2021-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1339,11 +1637,25 @@ func (client *Client) SearchByUrlWithOptions(request *SearchByUrlRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UserType"] = request.UserType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchByUrl"),
+		Version:     tea.String("2021-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchByUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchByUrl"), tea.String("2021-05-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
