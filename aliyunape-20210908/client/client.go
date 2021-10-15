@@ -136,7 +136,7 @@ type ExecuteResponseBody struct {
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
@@ -160,8 +160,8 @@ func (s *ExecuteResponseBody) SetCode(v string) *ExecuteResponseBody {
 	return s
 }
 
-func (s *ExecuteResponseBody) SetData(v string) *ExecuteResponseBody {
-	s.Data = &v
+func (s *ExecuteResponseBody) SetData(v []map[string]interface{}) *ExecuteResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -204,6 +204,202 @@ func (s *ExecuteResponse) SetHeaders(v map[string]*string) *ExecuteResponse {
 }
 
 func (s *ExecuteResponse) SetBody(v *ExecuteResponseBody) *ExecuteResponse {
+	s.Body = v
+	return s
+}
+
+type WeathermonitorProvinceHourRequest struct {
+	// appName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 渠道名称
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// 扩展参数
+	ExtendParam map[string]*string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// orderId
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求参数
+	ServiceParam map[string]*string `json:"ServiceParam,omitempty" xml:"ServiceParam,omitempty"`
+	// UserId
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s WeathermonitorProvinceHourRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WeathermonitorProvinceHourRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetAppName(v string) *WeathermonitorProvinceHourRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetChannel(v string) *WeathermonitorProvinceHourRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetExtendParam(v map[string]*string) *WeathermonitorProvinceHourRequest {
+	s.ExtendParam = v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetOrderId(v string) *WeathermonitorProvinceHourRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetRequestId(v string) *WeathermonitorProvinceHourRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetServiceParam(v map[string]*string) *WeathermonitorProvinceHourRequest {
+	s.ServiceParam = v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourRequest) SetUserId(v int64) *WeathermonitorProvinceHourRequest {
+	s.UserId = &v
+	return s
+}
+
+type WeathermonitorProvinceHourShrinkRequest struct {
+	// appName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 渠道名称
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// 扩展参数
+	ExtendParamShrink *string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// orderId
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求参数
+	ServiceParamShrink *string `json:"ServiceParam,omitempty" xml:"ServiceParam,omitempty"`
+	// UserId
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s WeathermonitorProvinceHourShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WeathermonitorProvinceHourShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetAppName(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetChannel(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetExtendParamShrink(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.ExtendParamShrink = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetOrderId(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetRequestId(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetServiceParamShrink(v string) *WeathermonitorProvinceHourShrinkRequest {
+	s.ServiceParamShrink = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourShrinkRequest) SetUserId(v int64) *WeathermonitorProvinceHourShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type WeathermonitorProvinceHourResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// rt
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WeathermonitorProvinceHourResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WeathermonitorProvinceHourResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetCode(v string) *WeathermonitorProvinceHourResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetData(v []map[string]interface{}) *WeathermonitorProvinceHourResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetMessage(v string) *WeathermonitorProvinceHourResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetRequestId(v string) *WeathermonitorProvinceHourResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetRt(v int64) *WeathermonitorProvinceHourResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponseBody) SetSuccess(v bool) *WeathermonitorProvinceHourResponseBody {
+	s.Success = &v
+	return s
+}
+
+type WeathermonitorProvinceHourResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *WeathermonitorProvinceHourResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s WeathermonitorProvinceHourResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WeathermonitorProvinceHourResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WeathermonitorProvinceHourResponse) SetHeaders(v map[string]*string) *WeathermonitorProvinceHourResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WeathermonitorProvinceHourResponse) SetBody(v *WeathermonitorProvinceHourResponseBody) *WeathermonitorProvinceHourResponse {
 	s.Body = v
 	return s
 }
@@ -306,6 +502,64 @@ func (client *Client) Execute(request *ExecuteRequest) (_result *ExecuteResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteResponse{}
 	_body, _err := client.ExecuteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) WeathermonitorProvinceHourWithOptions(tmpReq *WeathermonitorProvinceHourRequest, runtime *util.RuntimeOptions) (_result *WeathermonitorProvinceHourResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &WeathermonitorProvinceHourShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtendParam)) {
+		request.ExtendParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtendParam, tea.String("ExtendParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServiceParam)) {
+		request.ServiceParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceParam, tea.String("ServiceParam"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	query["AppName"] = request.AppName
+	query["Channel"] = request.Channel
+	query["ExtendParam"] = request.ExtendParamShrink
+	query["OrderId"] = request.OrderId
+	query["RequestId"] = request.RequestId
+	query["ServiceParam"] = request.ServiceParamShrink
+	query["UserId"] = request.UserId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WeathermonitorProvinceHour"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &WeathermonitorProvinceHourResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) WeathermonitorProvinceHour(request *WeathermonitorProvinceHourRequest) (_result *WeathermonitorProvinceHourResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &WeathermonitorProvinceHourResponse{}
+	_body, _err := client.WeathermonitorProvinceHourWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
