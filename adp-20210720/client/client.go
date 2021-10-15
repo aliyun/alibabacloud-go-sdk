@@ -256,9 +256,9 @@ type FoundationVersion struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// documents
 	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	// name
+	// name，目前仅能是 “ADP 底座“
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// status
+	// status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// uid
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
@@ -266,6 +266,8 @@ type FoundationVersion struct {
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// platforms
 	Platforms []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	// the type of foundation version,ENUM:["trident","ack"]
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FoundationVersion) String() string {
@@ -308,6 +310,11 @@ func (s *FoundationVersion) SetVersion(v string) *FoundationVersion {
 
 func (s *FoundationVersion) SetPlatforms(v []*Platform) *FoundationVersion {
 	s.Platforms = v
+	return s
+}
+
+func (s *FoundationVersion) SetType(v string) *FoundationVersion {
+	s.Type = &v
 	return s
 }
 
@@ -2731,6 +2738,8 @@ type ListProductEnvironmentsResponseBodyData struct {
 	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
 	VendorType           *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 	InstanceStatus       *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
+	PlatformStatus       *string `json:"platformStatus,omitempty" xml:"platformStatus,omitempty"`
+	VendorConfig         *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 }
 
 func (s ListProductEnvironmentsResponseBodyData) String() string {
@@ -2803,6 +2812,16 @@ func (s *ListProductEnvironmentsResponseBodyData) SetVendorType(v string) *ListP
 
 func (s *ListProductEnvironmentsResponseBodyData) SetInstanceStatus(v string) *ListProductEnvironmentsResponseBodyData {
 	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListProductEnvironmentsResponseBodyData) SetPlatformStatus(v string) *ListProductEnvironmentsResponseBodyData {
+	s.PlatformStatus = &v
+	return s
+}
+
+func (s *ListProductEnvironmentsResponseBodyData) SetVendorConfig(v string) *ListProductEnvironmentsResponseBodyData {
+	s.VendorConfig = &v
 	return s
 }
 
@@ -3296,6 +3315,138 @@ func (s *ListComponentsResponse) SetHeaders(v map[string]*string) *ListComponent
 }
 
 func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkflowTaskLogsRequest struct {
+	Xuid *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
+	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
+	PageNum      *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// 每一页的行数，最大值 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// log 的顺序，positive 代表最新的数据在最后，reverse 代表最新的数据在最前
+	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+}
+
+func (s ListWorkflowTaskLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowTaskLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetXuid(v string) *ListWorkflowTaskLogsRequest {
+	s.Xuid = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetWorkflowType(v string) *ListWorkflowTaskLogsRequest {
+	s.WorkflowType = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetPageNum(v int64) *ListWorkflowTaskLogsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetPageSize(v int64) *ListWorkflowTaskLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetOrderType(v string) *ListWorkflowTaskLogsRequest {
+	s.OrderType = &v
+	return s
+}
+
+type ListWorkflowTaskLogsResponseBody struct {
+	Data *ListWorkflowTaskLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListWorkflowTaskLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowTaskLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsResponseBody) SetData(v *ListWorkflowTaskLogsResponseBodyData) *ListWorkflowTaskLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponseBody) SetCode(v string) *ListWorkflowTaskLogsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponseBody) SetMsg(v string) *ListWorkflowTaskLogsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListWorkflowTaskLogsResponseBodyData struct {
+	Total    *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	PageNum  *int64 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 日志数据
+	List []*string `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkflowTaskLogsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowTaskLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsResponseBodyData) SetTotal(v int64) *ListWorkflowTaskLogsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponseBodyData) SetPageNum(v int64) *ListWorkflowTaskLogsResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponseBodyData) SetPageSize(v int64) *ListWorkflowTaskLogsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponseBodyData) SetList(v []*string) *ListWorkflowTaskLogsResponseBodyData {
+	s.List = v
+	return s
+}
+
+type ListWorkflowTaskLogsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkflowTaskLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkflowTaskLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowTaskLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsResponse) SetHeaders(v map[string]*string) *ListWorkflowTaskLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsResponse) SetBody(v *ListWorkflowTaskLogsResponseBody) *ListWorkflowTaskLogsResponse {
 	s.Body = v
 	return s
 }
@@ -4024,6 +4175,162 @@ func (s *CreateEnvironmentResponse) SetHeaders(v map[string]*string) *CreateEnvi
 }
 
 func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkflowStatusRequest struct {
+	// xuid，根据场景传递env_uid/package_uid/deploy_uid
+	Xuid *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
+	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
+}
+
+func (s GetWorkflowStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusRequest) SetXuid(v string) *GetWorkflowStatusRequest {
+	s.Xuid = &v
+	return s
+}
+
+func (s *GetWorkflowStatusRequest) SetWorkflowType(v string) *GetWorkflowStatusRequest {
+	s.WorkflowType = &v
+	return s
+}
+
+type GetWorkflowStatusResponseBody struct {
+	Data *GetWorkflowStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetWorkflowStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusResponseBody) SetData(v *GetWorkflowStatusResponseBodyData) *GetWorkflowStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBody) SetCode(v string) *GetWorkflowStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBody) SetMsg(v string) *GetWorkflowStatusResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetWorkflowStatusResponseBodyData struct {
+	Status     *string                                        `json:"status,omitempty" xml:"status,omitempty"`
+	StepStatus []*GetWorkflowStatusResponseBodyDataStepStatus `json:"stepStatus,omitempty" xml:"stepStatus,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkflowStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusResponseBodyData) SetStatus(v string) *GetWorkflowStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBodyData) SetStepStatus(v []*GetWorkflowStatusResponseBodyDataStepStatus) *GetWorkflowStatusResponseBodyData {
+	s.StepStatus = v
+	return s
+}
+
+type GetWorkflowStatusResponseBodyDataStepStatus struct {
+	// step name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// step status
+	Status        *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
+	WorkflowTasks []*GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks `json:"workflowTasks,omitempty" xml:"workflowTasks,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkflowStatusResponseBodyDataStepStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusResponseBodyDataStepStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusResponseBodyDataStepStatus) SetName(v string) *GetWorkflowStatusResponseBodyDataStepStatus {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBodyDataStepStatus) SetStatus(v string) *GetWorkflowStatusResponseBodyDataStepStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBodyDataStepStatus) SetWorkflowTasks(v []*GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks) *GetWorkflowStatusResponseBodyDataStepStatus {
+	s.WorkflowTasks = v
+	return s
+}
+
+type GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks struct {
+	// task name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// task status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks) SetName(v string) *GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks) SetStatus(v string) *GetWorkflowStatusResponseBodyDataStepStatusWorkflowTasks {
+	s.Status = &v
+	return s
+}
+
+type GetWorkflowStatusResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWorkflowStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkflowStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkflowStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowStatusResponse) SetHeaders(v map[string]*string) *GetWorkflowStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkflowStatusResponse) SetBody(v *GetWorkflowStatusResponseBody) *GetWorkflowStatusResponse {
 	s.Body = v
 	return s
 }
@@ -7353,7 +7660,8 @@ func (s *PutProductInstanceConfigResponse) SetBody(v *PutProductInstanceConfigRe
 }
 
 type UpdateEnvironmentProductVersionRequest struct {
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	OldProductVersionUID *string `json:"oldProductVersionUID,omitempty" xml:"oldProductVersionUID,omitempty"`
 }
 
 func (s UpdateEnvironmentProductVersionRequest) String() string {
@@ -7366,6 +7674,11 @@ func (s UpdateEnvironmentProductVersionRequest) GoString() string {
 
 func (s *UpdateEnvironmentProductVersionRequest) SetProductVersionUID(v string) *UpdateEnvironmentProductVersionRequest {
 	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *UpdateEnvironmentProductVersionRequest) SetOldProductVersionUID(v string) *UpdateEnvironmentProductVersionRequest {
+	s.OldProductVersionUID = &v
 	return s
 }
 
@@ -8706,6 +9019,59 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
+func (client *Client) ListWorkflowTaskLogs(stepName *string, taskName *string, request *ListWorkflowTaskLogsRequest) (_result *ListWorkflowTaskLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkflowTaskLogsResponse{}
+	_body, _err := client.ListWorkflowTaskLogsWithOptions(stepName, taskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName *string, request *ListWorkflowTaskLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkflowTaskLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	stepName = openapiutil.GetEncodeParam(stepName)
+	taskName = openapiutil.GetEncodeParam(taskName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Xuid)) {
+		query["xuid"] = request.Xuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowType)) {
+		query["workflowType"] = request.WorkflowType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["orderType"] = request.OrderType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListWorkflowTaskLogsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListWorkflowTaskLogs"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/workflows/steps/"+tea.StringValue(stepName)+"/tasks/"+tea.StringValue(taskName)+"/logs"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) AddProductVersionConfig(uid *string, request *AddProductVersionConfigRequest) (_result *AddProductVersionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8953,6 +9319,45 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 	}
 	_result = &CreateEnvironmentResponse{}
 	_body, _err := client.DoROARequest(tea.String("CreateEnvironment"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/environments"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkflowStatus(request *GetWorkflowStatusRequest) (_result *GetWorkflowStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkflowStatusResponse{}
+	_body, _err := client.GetWorkflowStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkflowStatusWithOptions(request *GetWorkflowStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkflowStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Xuid)) {
+		query["xuid"] = request.Xuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowType)) {
+		query["workflowType"] = request.WorkflowType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetWorkflowStatusResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetWorkflowStatus"), tea.String("2021-07-20"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/workflows/status"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9978,6 +10383,10 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
 		body["productVersionUID"] = request.ProductVersionUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldProductVersionUID)) {
+		body["oldProductVersionUID"] = request.OldProductVersionUID
 	}
 
 	req := &openapi.OpenApiRequest{
