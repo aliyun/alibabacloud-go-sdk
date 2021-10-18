@@ -7355,6 +7355,10 @@ type GetLiveResponseBodyResult struct {
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	// 用户自定义数据存储
 	UserDefineField *string `json:"UserDefineField,omitempty" xml:"UserDefineField,omitempty"`
+	// hls播放地址
+	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	// rts播流信息
+	ArtcInfo *GetLiveResponseBodyResultArtcInfo `json:"ArtcInfo,omitempty" xml:"ArtcInfo,omitempty" type:"Struct"`
 }
 
 func (s GetLiveResponseBodyResult) String() string {
@@ -7455,6 +7459,16 @@ func (s *GetLiveResponseBodyResult) SetUserDefineField(v string) *GetLiveRespons
 	return s
 }
 
+func (s *GetLiveResponseBodyResult) SetHlsUrl(v string) *GetLiveResponseBodyResult {
+	s.HlsUrl = &v
+	return s
+}
+
+func (s *GetLiveResponseBodyResult) SetArtcInfo(v *GetLiveResponseBodyResultArtcInfo) *GetLiveResponseBodyResult {
+	s.ArtcInfo = v
+	return s
+}
+
 type GetLiveResponseBodyResultPlayUrlInfoList struct {
 	// 直播拉取分辨率 -1:lld 1:lsd 2:lhd 3:lud
 	CodeLevel *int32 `json:"CodeLevel,omitempty" xml:"CodeLevel,omitempty"`
@@ -7491,6 +7505,31 @@ func (s *GetLiveResponseBodyResultPlayUrlInfoList) SetHlsUrl(v string) *GetLiveR
 
 func (s *GetLiveResponseBodyResultPlayUrlInfoList) SetRtmpUrl(v string) *GetLiveResponseBodyResultPlayUrlInfoList {
 	s.RtmpUrl = &v
+	return s
+}
+
+type GetLiveResponseBodyResultArtcInfo struct {
+	// 源码地址
+	ArtcUrl *string `json:"ArtcUrl,omitempty" xml:"ArtcUrl,omitempty"`
+	// 原画转码地址
+	ArtcH5Url *string `json:"ArtcH5Url,omitempty" xml:"ArtcH5Url,omitempty"`
+}
+
+func (s GetLiveResponseBodyResultArtcInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLiveResponseBodyResultArtcInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetLiveResponseBodyResultArtcInfo) SetArtcUrl(v string) *GetLiveResponseBodyResultArtcInfo {
+	s.ArtcUrl = &v
+	return s
+}
+
+func (s *GetLiveResponseBodyResultArtcInfo) SetArtcH5Url(v string) *GetLiveResponseBodyResultArtcInfo {
+	s.ArtcH5Url = &v
 	return s
 }
 
