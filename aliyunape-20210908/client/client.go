@@ -542,9 +542,9 @@ type WeatherforecastTimeRequest struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 经度，范围为（70°E~139.96°E）
 	Lon *string `json:"Lon,omitempty" xml:"Lon,omitempty"`
-	// yyyymmddhh0000
+	// 20210809090000
 	CurHour *string `json:"CurHour,omitempty" xml:"CurHour,omitempty"`
-	// 纬度，范围为（15°N~59.95°N）
+	// 纬度，范围为（15°N~59.95°N
 	Lat *string `json:"Lat,omitempty" xml:"Lat,omitempty"`
 }
 
@@ -920,15 +920,15 @@ type HistoricalRequest struct {
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// requestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// station全国（入参单一站点）
+	// 全国（入参单一站点）
 	Station *string `json:"Station,omitempty" xml:"Station,omitempty"`
-	// pageSize是	页面条数
+	// pageSize
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// startTimeyyyymmddhh0000（当startTime为空时无数据产出，确认是否入参）
-	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// endTimeyyyymmddhh0000 （当endTime为空时无数据产出，确认是否入参）
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// pageNum页码数
+	// startTime
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// endTime
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// pageNum
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 }
 
@@ -965,12 +965,12 @@ func (s *HistoricalRequest) SetPageSize(v int32) *HistoricalRequest {
 	return s
 }
 
-func (s *HistoricalRequest) SetStartTime(v int32) *HistoricalRequest {
+func (s *HistoricalRequest) SetStartTime(v string) *HistoricalRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *HistoricalRequest) SetEndTime(v int32) *HistoricalRequest {
+func (s *HistoricalRequest) SetEndTime(v string) *HistoricalRequest {
 	s.EndTime = &v
 	return s
 }
