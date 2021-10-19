@@ -1,3 +1,6 @@
+2021-10-19 Version: v2.1.0
+- Generated golang 2017-12-07 for Cloudfw.
+
 2021-05-06 Version: v2.0.1
 - Generated golang 2017-12-07 for Cloudfw.
 

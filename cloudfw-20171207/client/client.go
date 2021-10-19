@@ -305,9 +305,7 @@ func (s *AddControlPolicyResponse) SetBody(v *AddControlPolicyResponseBody) *Add
 }
 
 type AddInstanceMembersRequest struct {
-	SourceIp *string                             `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string                             `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Members  []*AddInstanceMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	Members []*AddInstanceMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 }
 
 func (s AddInstanceMembersRequest) String() string {
@@ -316,16 +314,6 @@ func (s AddInstanceMembersRequest) String() string {
 
 func (s AddInstanceMembersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddInstanceMembersRequest) SetSourceIp(v string) *AddInstanceMembersRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *AddInstanceMembersRequest) SetLang(v string) *AddInstanceMembersRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *AddInstanceMembersRequest) SetMembers(v []*AddInstanceMembersRequestMembers) *AddInstanceMembersRequest {
@@ -682,9 +670,7 @@ func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody
 }
 
 type DeleteInstanceMembersRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MemberUids []*int  `json:"MemberUids,omitempty" xml:"MemberUids,omitempty" type:"Repeated"`
+	MemberUids []*int64 `json:"MemberUids,omitempty" xml:"MemberUids,omitempty" type:"Repeated"`
 }
 
 func (s DeleteInstanceMembersRequest) String() string {
@@ -695,17 +681,7 @@ func (s DeleteInstanceMembersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteInstanceMembersRequest) SetSourceIp(v string) *DeleteInstanceMembersRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DeleteInstanceMembersRequest) SetLang(v string) *DeleteInstanceMembersRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DeleteInstanceMembersRequest) SetMemberUids(v []*int) *DeleteInstanceMembersRequest {
+func (s *DeleteInstanceMembersRequest) SetMemberUids(v []*int64) *DeleteInstanceMembersRequest {
 	s.MemberUids = v
 	return s
 }
@@ -1049,6 +1025,7 @@ type DescribeAssetListRequest struct {
 	SgStatus     *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
 	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	MemberUid    *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	UserType     *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s DescribeAssetListRequest) String() string {
@@ -1119,6 +1096,11 @@ func (s *DescribeAssetListRequest) SetMemberUid(v int64) *DescribeAssetListReque
 	return s
 }
 
+func (s *DescribeAssetListRequest) SetUserType(v string) *DescribeAssetListRequest {
+	s.UserType = &v
+	return s
+}
+
 type DescribeAssetListResponseBody struct {
 	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1149,6 +1131,7 @@ func (s *DescribeAssetListResponseBody) SetAssets(v []*DescribeAssetListResponse
 }
 
 type DescribeAssetListResponseBodyAssets struct {
+	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	BindInstanceName   *string `json:"BindInstanceName,omitempty" xml:"BindInstanceName,omitempty"`
 	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	SgStatusTime       *int64  `json:"SgStatusTime,omitempty" xml:"SgStatusTime,omitempty"`
@@ -1175,6 +1158,11 @@ func (s DescribeAssetListResponseBodyAssets) String() string {
 
 func (s DescribeAssetListResponseBodyAssets) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAssetListResponseBodyAssets) SetRiskLevel(v string) *DescribeAssetListResponseBodyAssets {
+	s.RiskLevel = &v
+	return s
 }
 
 func (s *DescribeAssetListResponseBodyAssets) SetBindInstanceName(v string) *DescribeAssetListResponseBodyAssets {
@@ -1422,28 +1410,28 @@ func (s *DescribeControlPolicyResponseBody) SetPolicys(v []*DescribeControlPolic
 
 type DescribeControlPolicyResponseBodyPolicys struct {
 	Direction             *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	DestinationGroupType  *string   `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
-	HitLastTime           *int64    `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
-	Destination           *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	Order                 *int32    `json:"Order,omitempty" xml:"Order,omitempty"`
-	DestPortGroup         *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	ApplicationName       *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	SourceType            *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	ApplicationName       *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	HitTimes              *int64    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
+	Description           *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
+	DnsResultTime         *int64    `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
+	DnsResult             *string   `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
+	Proto                 *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
+	DestinationGroupType  *string   `json:"DestinationGroupType,omitempty" xml:"DestinationGroupType,omitempty"`
+	Destination           *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	HitLastTime           *int64    `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
+	DestPortGroup         *string   `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
 	AclUuid               *string   `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	DestPortType          *string   `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	Source                *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	DestinationType       *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	HitTimes              *int64    `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	DestPort              *string   `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	IpVersion             *int32    `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	SourceGroupType       *string   `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	Description           *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnsResultTime         *int64    `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
 	AclAction             *string   `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
 	Release               *string   `json:"Release,omitempty" xml:"Release,omitempty"`
-	DnsResult             *string   `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
 	ApplicationId         *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Proto                 *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
 	DestPortGroupPorts    []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
 	SourceGroupCidrs      []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
@@ -1462,28 +1450,13 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetDirection(v string) *Descr
 	return s
 }
 
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDestinationGroupType(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.DestinationGroupType = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
-	s.HitLastTime = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDestination(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.Destination = &v
-	return s
-}
-
 func (s *DescribeControlPolicyResponseBodyPolicys) SetOrder(v int32) *DescribeControlPolicyResponseBodyPolicys {
 	s.Order = &v
 	return s
 }
 
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDestPortGroup(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.DestPortGroup = &v
+func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceType(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.SourceType = &v
 	return s
 }
 
@@ -1492,8 +1465,53 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetApplicationName(v string) 
 	return s
 }
 
-func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceType(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.SourceType = &v
+func (s *DescribeControlPolicyResponseBodyPolicys) SetHitTimes(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.HitTimes = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDescription(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceGroupType(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.SourceGroupType = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDnsResultTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.DnsResultTime = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDnsResult(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.DnsResult = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetProto(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.Proto = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDestinationGroupType(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.DestinationGroupType = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDestination(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.Destination = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetHitLastTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
+	s.HitLastTime = &v
+	return s
+}
+
+func (s *DescribeControlPolicyResponseBodyPolicys) SetDestPortGroup(v string) *DescribeControlPolicyResponseBodyPolicys {
+	s.DestPortGroup = &v
 	return s
 }
 
@@ -1517,11 +1535,6 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetDestinationType(v string) 
 	return s
 }
 
-func (s *DescribeControlPolicyResponseBodyPolicys) SetHitTimes(v int64) *DescribeControlPolicyResponseBodyPolicys {
-	s.HitTimes = &v
-	return s
-}
-
 func (s *DescribeControlPolicyResponseBodyPolicys) SetDestPort(v string) *DescribeControlPolicyResponseBodyPolicys {
 	s.DestPort = &v
 	return s
@@ -1529,21 +1542,6 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetDestPort(v string) *Descri
 
 func (s *DescribeControlPolicyResponseBodyPolicys) SetIpVersion(v int32) *DescribeControlPolicyResponseBodyPolicys {
 	s.IpVersion = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceGroupType(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.SourceGroupType = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDescription(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDnsResultTime(v int64) *DescribeControlPolicyResponseBodyPolicys {
-	s.DnsResultTime = &v
 	return s
 }
 
@@ -1557,18 +1555,8 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetRelease(v string) *Describ
 	return s
 }
 
-func (s *DescribeControlPolicyResponseBodyPolicys) SetDnsResult(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.DnsResult = &v
-	return s
-}
-
 func (s *DescribeControlPolicyResponseBodyPolicys) SetApplicationId(v string) *DescribeControlPolicyResponseBodyPolicys {
 	s.ApplicationId = &v
-	return s
-}
-
-func (s *DescribeControlPolicyResponseBodyPolicys) SetProto(v string) *DescribeControlPolicyResponseBodyPolicys {
-	s.Proto = &v
 	return s
 }
 
@@ -1715,8 +1703,6 @@ func (s *DescribeDomainResolveResponse) SetBody(v *DescribeDomainResolveResponse
 }
 
 type DescribeInstanceMembersRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	CurrentPage       *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize          *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	MemberUid         *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
@@ -1730,16 +1716,6 @@ func (s DescribeInstanceMembersRequest) String() string {
 
 func (s DescribeInstanceMembersRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstanceMembersRequest) SetSourceIp(v string) *DescribeInstanceMembersRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceMembersRequest) SetLang(v string) *DescribeInstanceMembersRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeInstanceMembersRequest) SetCurrentPage(v string) *DescribeInstanceMembersRequest {
@@ -1891,128 +1867,6 @@ func (s *DescribeInstanceMembersResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResponseBody) *DescribeInstanceMembersResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeInstanceRdAccountsRequest struct {
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	CurrentPage       *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize          *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	MemberUid         *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	MemberDesc        *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-}
-
-func (s DescribeInstanceRdAccountsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceRdAccountsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetSourceIp(v string) *DescribeInstanceRdAccountsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetLang(v string) *DescribeInstanceRdAccountsRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetCurrentPage(v string) *DescribeInstanceRdAccountsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetPageSize(v string) *DescribeInstanceRdAccountsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetMemberUid(v string) *DescribeInstanceRdAccountsRequest {
-	s.MemberUid = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetMemberDisplayName(v string) *DescribeInstanceRdAccountsRequest {
-	s.MemberDisplayName = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsRequest) SetMemberDesc(v string) *DescribeInstanceRdAccountsRequest {
-	s.MemberDesc = &v
-	return s
-}
-
-type DescribeInstanceRdAccountsResponseBody struct {
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Accounts  []*DescribeInstanceRdAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-}
-
-func (s DescribeInstanceRdAccountsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceRdAccountsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceRdAccountsResponseBody) SetRequestId(v string) *DescribeInstanceRdAccountsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsResponseBody) SetAccounts(v []*DescribeInstanceRdAccountsResponseBodyAccounts) *DescribeInstanceRdAccountsResponseBody {
-	s.Accounts = v
-	return s
-}
-
-type DescribeInstanceRdAccountsResponseBodyAccounts struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-}
-
-func (s DescribeInstanceRdAccountsResponseBodyAccounts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceRdAccountsResponseBodyAccounts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceRdAccountsResponseBodyAccounts) SetDisplayName(v string) *DescribeInstanceRdAccountsResponseBodyAccounts {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsResponseBodyAccounts) SetAccountId(v string) *DescribeInstanceRdAccountsResponseBodyAccounts {
-	s.AccountId = &v
-	return s
-}
-
-type DescribeInstanceRdAccountsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceRdAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeInstanceRdAccountsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceRdAccountsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceRdAccountsResponse) SetHeaders(v map[string]*string) *DescribeInstanceRdAccountsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeInstanceRdAccountsResponse) SetBody(v *DescribeInstanceRdAccountsResponseBody) *DescribeInstanceRdAccountsResponse {
 	s.Body = v
 	return s
 }
@@ -2169,6 +2023,472 @@ func (s *DescribePolicyPriorUsedResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribePolicyPriorUsedResponse) SetBody(v *DescribePolicyPriorUsedResponseBody) *DescribePolicyPriorUsedResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRiskEventGroupRequest struct {
+	Lang                 *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	StartTime            *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime              *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Direction            *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage          *string   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DataType             *string   `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	RuleSource           *string   `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
+	RuleResult           *string   `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
+	SrcIP                *string   `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	DstIP                *string   `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	VulLevel             *string   `json:"VulLevel,omitempty" xml:"VulLevel,omitempty"`
+	FirewallType         *string   `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
+	SrcNetworkInstanceId *string   `json:"SrcNetworkInstanceId,omitempty" xml:"SrcNetworkInstanceId,omitempty"`
+	DstNetworkInstanceId *string   `json:"DstNetworkInstanceId,omitempty" xml:"DstNetworkInstanceId,omitempty"`
+	AttackType           *string   `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	NoLocation           *string   `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
+	AttackApp            []*string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRiskEventGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupRequest) SetLang(v string) *DescribeRiskEventGroupRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetStartTime(v string) *DescribeRiskEventGroupRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetEndTime(v string) *DescribeRiskEventGroupRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetDirection(v string) *DescribeRiskEventGroupRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetPageSize(v string) *DescribeRiskEventGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetCurrentPage(v string) *DescribeRiskEventGroupRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetDataType(v string) *DescribeRiskEventGroupRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetRuleSource(v string) *DescribeRiskEventGroupRequest {
+	s.RuleSource = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetRuleResult(v string) *DescribeRiskEventGroupRequest {
+	s.RuleResult = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetSrcIP(v string) *DescribeRiskEventGroupRequest {
+	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetDstIP(v string) *DescribeRiskEventGroupRequest {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetVulLevel(v string) *DescribeRiskEventGroupRequest {
+	s.VulLevel = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetFirewallType(v string) *DescribeRiskEventGroupRequest {
+	s.FirewallType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetSrcNetworkInstanceId(v string) *DescribeRiskEventGroupRequest {
+	s.SrcNetworkInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetDstNetworkInstanceId(v string) *DescribeRiskEventGroupRequest {
+	s.DstNetworkInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetAttackType(v string) *DescribeRiskEventGroupRequest {
+	s.AttackType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetNoLocation(v string) *DescribeRiskEventGroupRequest {
+	s.NoLocation = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetAttackApp(v []*string) *DescribeRiskEventGroupRequest {
+	s.AttackApp = v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBody struct {
+	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DataList   []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRiskEventGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBody) SetTotalCount(v int32) *DescribeRiskEventGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBody) SetRequestId(v string) *DescribeRiskEventGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBody) SetDataList(v []*DescribeRiskEventGroupResponseBodyDataList) *DescribeRiskEventGroupResponseBody {
+	s.DataList = v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBodyDataList struct {
+	Direction             *string                                                            `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EventName             *string                                                            `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	DstIP                 *string                                                            `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	AttackType            *int32                                                             `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	Tag                   *string                                                            `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	RuleId                *string                                                            `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	EventId               *string                                                            `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	ResourceType          *string                                                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	FirstEventTime        *int32                                                             `json:"FirstEventTime,omitempty" xml:"FirstEventTime,omitempty"`
+	Description           *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventCount            *int32                                                             `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
+	VulLevel              *int32                                                             `json:"VulLevel,omitempty" xml:"VulLevel,omitempty"`
+	AttackApp             *string                                                            `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
+	RuleSource            *int32                                                             `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
+	RuleResult            *int32                                                             `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
+	SrcIP                 *string                                                            `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	LastEventTime         *int32                                                             `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
+	ResourcePrivateIPList []*DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList `json:"ResourcePrivateIPList,omitempty" xml:"ResourcePrivateIPList,omitempty" type:"Repeated"`
+	SrcPrivateIPList      []*string                                                          `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
+	VpcSrcInfo            *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo              `json:"VpcSrcInfo,omitempty" xml:"VpcSrcInfo,omitempty" type:"Struct"`
+	VpcDstInfo            *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo              `json:"VpcDstInfo,omitempty" xml:"VpcDstInfo,omitempty" type:"Struct"`
+	IPLocationInfo        *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo          `json:"IPLocationInfo,omitempty" xml:"IPLocationInfo,omitempty" type:"Struct"`
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetDirection(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetEventName(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetDstIP(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetAttackType(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.AttackType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetTag(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetRuleId(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetEventId(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetResourceType(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetFirstEventTime(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.FirstEventTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetDescription(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetEventCount(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.EventCount = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetVulLevel(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.VulLevel = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetAttackApp(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.AttackApp = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetRuleSource(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.RuleSource = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetRuleResult(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.RuleResult = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcIP(v string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetLastEventTime(v int32) *DescribeRiskEventGroupResponseBodyDataList {
+	s.LastEventTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetResourcePrivateIPList(v []*DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) *DescribeRiskEventGroupResponseBodyDataList {
+	s.ResourcePrivateIPList = v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcPrivateIPList(v []*string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.SrcPrivateIPList = v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetVpcSrcInfo(v *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) *DescribeRiskEventGroupResponseBodyDataList {
+	s.VpcSrcInfo = v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetVpcDstInfo(v *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) *DescribeRiskEventGroupResponseBodyDataList {
+	s.VpcDstInfo = v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetIPLocationInfo(v *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) *DescribeRiskEventGroupResponseBodyDataList {
+	s.IPLocationInfo = v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList struct {
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	ResourcePrivateIP    *string `json:"ResourcePrivateIP,omitempty" xml:"ResourcePrivateIP,omitempty"`
+	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetResourceInstanceName(v string) *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList {
+	s.ResourceInstanceName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetResourcePrivateIP(v string) *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList {
+	s.ResourcePrivateIP = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetResourceInstanceId(v string) *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetRegionNo(v string) *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList {
+	s.RegionNo = &v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo struct {
+	EcsInstanceName     *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
+	NetworkInstanceId   *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	EcsInstanceId       *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	RegionNo            *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetEcsInstanceName(v string) *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo {
+	s.EcsInstanceName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetNetworkInstanceName(v string) *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo {
+	s.NetworkInstanceName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetNetworkInstanceId(v string) *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo {
+	s.NetworkInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetEcsInstanceId(v string) *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetRegionNo(v string) *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo {
+	s.RegionNo = &v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBodyDataListVpcDstInfo struct {
+	EcsInstanceName     *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
+	NetworkInstanceName *string `json:"NetworkInstanceName,omitempty" xml:"NetworkInstanceName,omitempty"`
+	NetworkInstanceId   *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
+	EcsInstanceId       *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	RegionNo            *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetEcsInstanceName(v string) *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo {
+	s.EcsInstanceName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetNetworkInstanceName(v string) *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo {
+	s.NetworkInstanceName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetNetworkInstanceId(v string) *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo {
+	s.NetworkInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetEcsInstanceId(v string) *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetRegionNo(v string) *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo {
+	s.RegionNo = &v
+	return s
+}
+
+type DescribeRiskEventGroupResponseBodyDataListIPLocationInfo struct {
+	CityId      *string `json:"CityId,omitempty" xml:"CityId,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	CountryId   *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) SetCityId(v string) *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo {
+	s.CityId = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) SetCountryName(v string) *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo {
+	s.CountryName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) SetCityName(v string) *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo) SetCountryId(v string) *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo {
+	s.CountryId = &v
+	return s
+}
+
+type DescribeRiskEventGroupResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRiskEventGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRiskEventGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskEventGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskEventGroupResponse) SetHeaders(v map[string]*string) *DescribeRiskEventGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupResponseBody) *DescribeRiskEventGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2956,85 +3276,8 @@ func (s *ModifyControlPolicyPositionResponse) SetBody(v *ModifyControlPolicyPosi
 	return s
 }
 
-type ModifyControlPolicyPriorityRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	AclUuid  *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	Order    *string `json:"Order,omitempty" xml:"Order,omitempty"`
-}
-
-func (s ModifyControlPolicyPriorityRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyControlPolicyPriorityRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyControlPolicyPriorityRequest) SetSourceIp(v string) *ModifyControlPolicyPriorityRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyControlPolicyPriorityRequest) SetLang(v string) *ModifyControlPolicyPriorityRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *ModifyControlPolicyPriorityRequest) SetAclUuid(v string) *ModifyControlPolicyPriorityRequest {
-	s.AclUuid = &v
-	return s
-}
-
-func (s *ModifyControlPolicyPriorityRequest) SetOrder(v string) *ModifyControlPolicyPriorityRequest {
-	s.Order = &v
-	return s
-}
-
-type ModifyControlPolicyPriorityResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyControlPolicyPriorityResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyControlPolicyPriorityResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyControlPolicyPriorityResponseBody) SetRequestId(v string) *ModifyControlPolicyPriorityResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyControlPolicyPriorityResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyControlPolicyPriorityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyControlPolicyPriorityResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyControlPolicyPriorityResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyControlPolicyPriorityResponse) SetHeaders(v map[string]*string) *ModifyControlPolicyPriorityResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyControlPolicyPriorityResponse) SetBody(v *ModifyControlPolicyPriorityResponseBody) *ModifyControlPolicyPriorityResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyInstanceMemberAttributesRequest struct {
-	SourceIp *string                                         `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang     *string                                         `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Members  []*ModifyInstanceMemberAttributesRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	Members []*ModifyInstanceMemberAttributesRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 }
 
 func (s ModifyInstanceMemberAttributesRequest) String() string {
@@ -3043,16 +3286,6 @@ func (s ModifyInstanceMemberAttributesRequest) String() string {
 
 func (s ModifyInstanceMemberAttributesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyInstanceMemberAttributesRequest) SetSourceIp(v string) *ModifyInstanceMemberAttributesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyInstanceMemberAttributesRequest) SetLang(v string) *ModifyInstanceMemberAttributesRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *ModifyInstanceMemberAttributesRequest) SetMembers(v []*ModifyInstanceMemberAttributesRequestMembers) *ModifyInstanceMemberAttributesRequest {
@@ -4180,34 +4413,6 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	return _result, _err
 }
 
-func (client *Client) DescribeInstanceRdAccountsWithOptions(request *DescribeInstanceRdAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceRdAccountsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeInstanceRdAccountsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceRdAccounts"), tea.String("2017-12-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeInstanceRdAccounts(request *DescribeInstanceRdAccountsRequest) (_result *DescribeInstanceRdAccountsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstanceRdAccountsResponse{}
-	_body, _err := client.DescribeInstanceRdAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribePolicyAdvancedConfigWithOptions(request *DescribePolicyAdvancedConfigRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyAdvancedConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4257,6 +4462,34 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyPriorUsedResponse{}
 	_body, _err := client.DescribePolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEventGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskEventGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeRiskEventGroupResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskEventGroup"), tea.String("2017-12-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskEventGroup(request *DescribeRiskEventGroupRequest) (_result *DescribeRiskEventGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRiskEventGroupResponse{}
+	_body, _err := client.DescribeRiskEventGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4425,34 +4658,6 @@ func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPo
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyControlPolicyPositionResponse{}
 	_body, _err := client.ModifyControlPolicyPositionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyControlPolicyPriorityWithOptions(request *ModifyControlPolicyPriorityRequest, runtime *util.RuntimeOptions) (_result *ModifyControlPolicyPriorityResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyControlPolicyPriorityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyControlPolicyPriority"), tea.String("2017-12-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyControlPolicyPriority(request *ModifyControlPolicyPriorityRequest) (_result *ModifyControlPolicyPriorityResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyControlPolicyPriorityResponse{}
-	_body, _err := client.ModifyControlPolicyPriorityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
