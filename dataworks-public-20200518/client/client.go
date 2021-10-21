@@ -7276,9 +7276,9 @@ func (s *ExportDISyncTasksRequest) SetTaskParam(v string) *ExportDISyncTasksRequ
 }
 
 type ExportDISyncTasksResponseBody struct {
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskDetail *ExportDISyncTasksResponseBodyTaskDetail `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty" type:"Struct"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ExportDISyncTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s ExportDISyncTasksResponseBody) String() string {
@@ -7299,24 +7299,24 @@ func (s *ExportDISyncTasksResponseBody) SetRequestId(v string) *ExportDISyncTask
 	return s
 }
 
-func (s *ExportDISyncTasksResponseBody) SetTaskDetail(v *ExportDISyncTasksResponseBodyTaskDetail) *ExportDISyncTasksResponseBody {
-	s.TaskDetail = v
+func (s *ExportDISyncTasksResponseBody) SetData(v *ExportDISyncTasksResponseBodyData) *ExportDISyncTasksResponseBody {
+	s.Data = v
 	return s
 }
 
-type ExportDISyncTasksResponseBodyTaskDetail struct {
-	RealTimeSolution *string `json:"RealTimeSolution,omitempty" xml:"RealTimeSolution,omitempty"`
+type ExportDISyncTasksResponseBodyData struct {
+	RealTimeSolution *string `json:"realTimeSolution,omitempty" xml:"realTimeSolution,omitempty"`
 }
 
-func (s ExportDISyncTasksResponseBodyTaskDetail) String() string {
+func (s ExportDISyncTasksResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ExportDISyncTasksResponseBodyTaskDetail) GoString() string {
+func (s ExportDISyncTasksResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ExportDISyncTasksResponseBodyTaskDetail) SetRealTimeSolution(v string) *ExportDISyncTasksResponseBodyTaskDetail {
+func (s *ExportDISyncTasksResponseBodyData) SetRealTimeSolution(v string) *ExportDISyncTasksResponseBodyData {
 	s.RealTimeSolution = &v
 	return s
 }
@@ -11544,6 +11544,166 @@ func (s *GetDISyncTaskResponse) SetHeaders(v map[string]*string) *GetDISyncTaskR
 }
 
 func (s *GetDISyncTaskResponse) SetBody(v *GetDISyncTaskResponseBody) *GetDISyncTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetDISyncTaskMetricInfoRequest struct {
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	FileId    *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	EndDate   *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+}
+
+func (s GetDISyncTaskMetricInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskMetricInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskMetricInfoRequest) SetProjectId(v int64) *GetDISyncTaskMetricInfoRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoRequest) SetFileId(v int64) *GetDISyncTaskMetricInfoRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoRequest) SetStartDate(v int64) *GetDISyncTaskMetricInfoRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoRequest) SetEndDate(v int64) *GetDISyncTaskMetricInfoRequest {
+	s.EndDate = &v
+	return s
+}
+
+type GetDISyncTaskMetricInfoResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// isSuccess
+	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	MetricInfo *GetDISyncTaskMetricInfoResponseBodyMetricInfo `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty" type:"Struct"`
+}
+
+func (s GetDISyncTaskMetricInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskMetricInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBody) SetRequestId(v string) *GetDISyncTaskMetricInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBody) SetSuccess(v bool) *GetDISyncTaskMetricInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBody) SetMetricInfo(v *GetDISyncTaskMetricInfoResponseBodyMetricInfo) *GetDISyncTaskMetricInfoResponseBody {
+	s.MetricInfo = v
+	return s
+}
+
+type GetDISyncTaskMetricInfoResponseBodyMetricInfo struct {
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	SumReaderRecords    *int64  `json:"SumReaderRecords,omitempty" xml:"SumReaderRecords,omitempty"`
+	SumWriterRecords    *int64  `json:"SumWriterRecords,omitempty" xml:"SumWriterRecords,omitempty"`
+	LastTaskDelay       *int64  `json:"LastTaskDelay,omitempty" xml:"LastTaskDelay,omitempty"`
+	InsertReaderRecords *int64  `json:"InsertReaderRecords,omitempty" xml:"InsertReaderRecords,omitempty"`
+	UpdateReaderRecords *int64  `json:"UpdateReaderRecords,omitempty" xml:"UpdateReaderRecords,omitempty"`
+	DeleteReaderRecords *int64  `json:"DeleteReaderRecords,omitempty" xml:"DeleteReaderRecords,omitempty"`
+	InsertWriterRecords *int64  `json:"InsertWriterRecords,omitempty" xml:"InsertWriterRecords,omitempty"`
+	UpdateWriterRecords *int64  `json:"UpdateWriterRecords,omitempty" xml:"UpdateWriterRecords,omitempty"`
+	DeleteWriterRecords *int64  `json:"DeleteWriterRecords,omitempty" xml:"DeleteWriterRecords,omitempty"`
+}
+
+func (s GetDISyncTaskMetricInfoResponseBodyMetricInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskMetricInfoResponseBodyMetricInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetMessage(v string) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetSumReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.SumReaderRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetSumWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.SumWriterRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetLastTaskDelay(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.LastTaskDelay = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetInsertReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.InsertReaderRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetUpdateReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.UpdateReaderRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetDeleteReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.DeleteReaderRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetInsertWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.InsertWriterRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetUpdateWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.UpdateWriterRecords = &v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetDeleteWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
+	s.DeleteWriterRecords = &v
+	return s
+}
+
+type GetDISyncTaskMetricInfoResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDISyncTaskMetricInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDISyncTaskMetricInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDISyncTaskMetricInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDISyncTaskMetricInfoResponse) SetHeaders(v map[string]*string) *GetDISyncTaskMetricInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDISyncTaskMetricInfoResponse) SetBody(v *GetDISyncTaskMetricInfoResponseBody) *GetDISyncTaskMetricInfoResponse {
 	s.Body = v
 	return s
 }
@@ -20147,10 +20307,10 @@ func (s *ImportDataSourcesResponse) SetBody(v *ImportDataSourcesResponseBody) *I
 }
 
 type ImportDISyncTasksRequest struct {
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
-	TaskParam   *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Body      *string `json:"body,omitempty" xml:"body,omitempty"`
+	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 }
 
 func (s ImportDISyncTasksRequest) String() string {
@@ -20171,8 +20331,8 @@ func (s *ImportDISyncTasksRequest) SetTaskType(v string) *ImportDISyncTasksReque
 	return s
 }
 
-func (s *ImportDISyncTasksRequest) SetTaskContent(v string) *ImportDISyncTasksRequest {
-	s.TaskContent = &v
+func (s *ImportDISyncTasksRequest) SetBody(v string) *ImportDISyncTasksRequest {
+	s.Body = &v
 	return s
 }
 
@@ -39406,6 +39566,35 @@ func (client *Client) GetDISyncTask(request *GetDISyncTaskRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDISyncTaskResponse{}
 	_body, _err := client.GetDISyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDISyncTaskMetricInfoWithOptions(request *GetDISyncTaskMetricInfoRequest, runtime *util.RuntimeOptions) (_result *GetDISyncTaskMetricInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetDISyncTaskMetricInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDISyncTaskMetricInfo"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDISyncTaskMetricInfo(request *GetDISyncTaskMetricInfoRequest) (_result *GetDISyncTaskMetricInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDISyncTaskMetricInfoResponse{}
+	_body, _err := client.GetDISyncTaskMetricInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
