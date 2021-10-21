@@ -599,7 +599,16 @@ func (s *DetectVideoLivingFaceResponse) SetBody(v *DetectVideoLivingFaceResponse
 }
 
 type RecognizeFaceRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageURL      *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Age           *bool   `json:"Age,omitempty" xml:"Age,omitempty"`
+	Gender        *bool   `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Hat           *bool   `json:"Hat,omitempty" xml:"Hat,omitempty"`
+	Glass         *bool   `json:"Glass,omitempty" xml:"Glass,omitempty"`
+	Beauty        *bool   `json:"Beauty,omitempty" xml:"Beauty,omitempty"`
+	Expression    *bool   `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Mask          *bool   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Quality       *bool   `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	MaxFaceNumber *int64  `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 }
 
 func (s RecognizeFaceRequest) String() string {
@@ -615,8 +624,62 @@ func (s *RecognizeFaceRequest) SetImageURL(v string) *RecognizeFaceRequest {
 	return s
 }
 
+func (s *RecognizeFaceRequest) SetAge(v bool) *RecognizeFaceRequest {
+	s.Age = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetGender(v bool) *RecognizeFaceRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetHat(v bool) *RecognizeFaceRequest {
+	s.Hat = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetGlass(v bool) *RecognizeFaceRequest {
+	s.Glass = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetBeauty(v bool) *RecognizeFaceRequest {
+	s.Beauty = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetExpression(v bool) *RecognizeFaceRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetMask(v bool) *RecognizeFaceRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetQuality(v bool) *RecognizeFaceRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *RecognizeFaceRequest) SetMaxFaceNumber(v int64) *RecognizeFaceRequest {
+	s.MaxFaceNumber = &v
+	return s
+}
+
 type RecognizeFaceAdvanceRequest struct {
 	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	Age            *bool     `json:"Age,omitempty" xml:"Age,omitempty"`
+	Gender         *bool     `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	Hat            *bool     `json:"Hat,omitempty" xml:"Hat,omitempty"`
+	Glass          *bool     `json:"Glass,omitempty" xml:"Glass,omitempty"`
+	Beauty         *bool     `json:"Beauty,omitempty" xml:"Beauty,omitempty"`
+	Expression     *bool     `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Mask           *bool     `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Quality        *bool     `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	MaxFaceNumber  *int64    `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 }
 
 func (s RecognizeFaceAdvanceRequest) String() string {
@@ -629,6 +692,51 @@ func (s RecognizeFaceAdvanceRequest) GoString() string {
 
 func (s *RecognizeFaceAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeFaceAdvanceRequest {
 	s.ImageURLObject = v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetAge(v bool) *RecognizeFaceAdvanceRequest {
+	s.Age = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetGender(v bool) *RecognizeFaceAdvanceRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetHat(v bool) *RecognizeFaceAdvanceRequest {
+	s.Hat = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetGlass(v bool) *RecognizeFaceAdvanceRequest {
+	s.Glass = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetBeauty(v bool) *RecognizeFaceAdvanceRequest {
+	s.Beauty = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetExpression(v bool) *RecognizeFaceAdvanceRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetMask(v bool) *RecognizeFaceAdvanceRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetQuality(v bool) *RecognizeFaceAdvanceRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetMaxFaceNumber(v int64) *RecognizeFaceAdvanceRequest {
+	s.MaxFaceNumber = &v
 	return s
 }
 
@@ -5016,8 +5124,9 @@ func (s *SearchFaceResponseBodyData) SetMatchList(v []*SearchFaceResponseBodyDat
 }
 
 type SearchFaceResponseBodyDataMatchList struct {
-	FaceItems []*SearchFaceResponseBodyDataMatchListFaceItems `json:"FaceItems,omitempty" xml:"FaceItems,omitempty" type:"Repeated"`
-	Location  *SearchFaceResponseBodyDataMatchListLocation    `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	FaceItems     []*SearchFaceResponseBodyDataMatchListFaceItems `json:"FaceItems,omitempty" xml:"FaceItems,omitempty" type:"Repeated"`
+	Location      *SearchFaceResponseBodyDataMatchListLocation    `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	QualitieScore *float32                                        `json:"QualitieScore,omitempty" xml:"QualitieScore,omitempty"`
 }
 
 func (s SearchFaceResponseBodyDataMatchList) String() string {
@@ -5035,6 +5144,11 @@ func (s *SearchFaceResponseBodyDataMatchList) SetFaceItems(v []*SearchFaceRespon
 
 func (s *SearchFaceResponseBodyDataMatchList) SetLocation(v *SearchFaceResponseBodyDataMatchListLocation) *SearchFaceResponseBodyDataMatchList {
 	s.Location = v
+	return s
+}
+
+func (s *SearchFaceResponseBodyDataMatchList) SetQualitieScore(v float32) *SearchFaceResponseBodyDataMatchList {
+	s.QualitieScore = &v
 	return s
 }
 
@@ -5662,7 +5776,8 @@ func (s *AddFaceResponseBody) SetData(v *AddFaceResponseBodyData) *AddFaceRespon
 }
 
 type AddFaceResponseBodyData struct {
-	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	FaceId        *string  `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	QualitieScore *float32 `json:"QualitieScore,omitempty" xml:"QualitieScore,omitempty"`
 }
 
 func (s AddFaceResponseBodyData) String() string {
@@ -5675,6 +5790,11 @@ func (s AddFaceResponseBodyData) GoString() string {
 
 func (s *AddFaceResponseBodyData) SetFaceId(v string) *AddFaceResponseBodyData {
 	s.FaceId = &v
+	return s
+}
+
+func (s *AddFaceResponseBodyData) SetQualitieScore(v float32) *AddFaceResponseBodyData {
+	s.QualitieScore = &v
 	return s
 }
 
@@ -10185,8 +10305,9 @@ func (s *BatchAddFacesResponseBodyData) SetFailedFaces(v []*BatchAddFacesRespons
 }
 
 type BatchAddFacesResponseBodyDataInsertedFaces struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	FaceId   *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	ImageURL      *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	FaceId        *string  `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	QualitieScore *float32 `json:"QualitieScore,omitempty" xml:"QualitieScore,omitempty"`
 }
 
 func (s BatchAddFacesResponseBodyDataInsertedFaces) String() string {
@@ -10204,6 +10325,11 @@ func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetImageURL(v string) *Batc
 
 func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetFaceId(v string) *BatchAddFacesResponseBodyDataInsertedFaces {
 	s.FaceId = &v
+	return s
+}
+
+func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetQualitieScore(v float32) *BatchAddFacesResponseBodyDataInsertedFaces {
+	s.QualitieScore = &v
 	return s
 }
 
