@@ -584,6 +584,133 @@ func (s *ImportMessageResponse) SetBody(v *ImportMessageResponseBody) *ImportMes
 	return s
 }
 
+type UnbindInterconnectionUidRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 解绑用户请求体
+	RequestParams *UnbindInterconnectionUidRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s UnbindInterconnectionUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindInterconnectionUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindInterconnectionUidRequest) SetAppId(v string) *UnbindInterconnectionUidRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UnbindInterconnectionUidRequest) SetRequestParams(v *UnbindInterconnectionUidRequestRequestParams) *UnbindInterconnectionUidRequest {
+	s.RequestParams = v
+	return s
+}
+
+type UnbindInterconnectionUidRequestRequestParams struct {
+	// AIM 用户ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 钉钉 用户ID
+	DingTalkUid *string `json:"DingTalkUid,omitempty" xml:"DingTalkUid,omitempty"`
+}
+
+func (s UnbindInterconnectionUidRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindInterconnectionUidRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindInterconnectionUidRequestRequestParams) SetAppUid(v string) *UnbindInterconnectionUidRequestRequestParams {
+	s.AppUid = &v
+	return s
+}
+
+func (s *UnbindInterconnectionUidRequestRequestParams) SetDingTalkUid(v string) *UnbindInterconnectionUidRequestRequestParams {
+	s.DingTalkUid = &v
+	return s
+}
+
+type UnbindInterconnectionUidShrinkRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 解绑用户请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s UnbindInterconnectionUidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindInterconnectionUidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindInterconnectionUidShrinkRequest) SetAppId(v string) *UnbindInterconnectionUidShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UnbindInterconnectionUidShrinkRequest) SetRequestParamsShrink(v string) *UnbindInterconnectionUidShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type UnbindInterconnectionUidResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s UnbindInterconnectionUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindInterconnectionUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindInterconnectionUidResponseBody) SetRequestId(v string) *UnbindInterconnectionUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnbindInterconnectionUidResponseBody) SetCode(v string) *UnbindInterconnectionUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnbindInterconnectionUidResponseBody) SetMessage(v string) *UnbindInterconnectionUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+type UnbindInterconnectionUidResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnbindInterconnectionUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindInterconnectionUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindInterconnectionUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindInterconnectionUidResponse) SetHeaders(v map[string]*string) *UnbindInterconnectionUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindInterconnectionUidResponse) SetBody(v *UnbindInterconnectionUidResponseBody) *UnbindInterconnectionUidResponse {
+	s.Body = v
+	return s
+}
+
 type SilenceAllGroupMembersRequest struct {
 	// AppId
 	AppId         *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -5936,6 +6063,133 @@ func (s *GetMediaUploadUrlResponse) SetBody(v *GetMediaUploadUrlResponseBody) *G
 	return s
 }
 
+type BindInterconnectionUidRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 绑定用户请求体
+	RequestParams *BindInterconnectionUidRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s BindInterconnectionUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionUidRequest) SetAppId(v string) *BindInterconnectionUidRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindInterconnectionUidRequest) SetRequestParams(v *BindInterconnectionUidRequestRequestParams) *BindInterconnectionUidRequest {
+	s.RequestParams = v
+	return s
+}
+
+type BindInterconnectionUidRequestRequestParams struct {
+	// AIM用户ID
+	AppUid *string `json:"AppUid,omitempty" xml:"AppUid,omitempty"`
+	// 钉钉用户ID
+	DingTalkUid *string `json:"DingTalkUid,omitempty" xml:"DingTalkUid,omitempty"`
+}
+
+func (s BindInterconnectionUidRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionUidRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionUidRequestRequestParams) SetAppUid(v string) *BindInterconnectionUidRequestRequestParams {
+	s.AppUid = &v
+	return s
+}
+
+func (s *BindInterconnectionUidRequestRequestParams) SetDingTalkUid(v string) *BindInterconnectionUidRequestRequestParams {
+	s.DingTalkUid = &v
+	return s
+}
+
+type BindInterconnectionUidShrinkRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 绑定用户请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s BindInterconnectionUidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionUidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionUidShrinkRequest) SetAppId(v string) *BindInterconnectionUidShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindInterconnectionUidShrinkRequest) SetRequestParamsShrink(v string) *BindInterconnectionUidShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type BindInterconnectionUidResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s BindInterconnectionUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionUidResponseBody) SetRequestId(v string) *BindInterconnectionUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindInterconnectionUidResponseBody) SetCode(v string) *BindInterconnectionUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindInterconnectionUidResponseBody) SetMessage(v string) *BindInterconnectionUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+type BindInterconnectionUidResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BindInterconnectionUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindInterconnectionUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionUidResponse) SetHeaders(v map[string]*string) *BindInterconnectionUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindInterconnectionUidResponse) SetBody(v *BindInterconnectionUidResponseBody) *BindInterconnectionUidResponse {
+	s.Body = v
+	return s
+}
+
 type GetMediaUrlRequest struct {
 	// AppId
 	AppId         *string                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -6521,6 +6775,133 @@ func (s *UpdateCallbackConfigResponse) SetHeaders(v map[string]*string) *UpdateC
 }
 
 func (s *UpdateCallbackConfigResponse) SetBody(v *UpdateCallbackConfigResponseBody) *UpdateCallbackConfigResponse {
+	s.Body = v
+	return s
+}
+
+type BindInterconnectionCidRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 绑定会话ID请求体
+	RequestParams *BindInterconnectionCidRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s BindInterconnectionCidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionCidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionCidRequest) SetAppId(v string) *BindInterconnectionCidRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindInterconnectionCidRequest) SetRequestParams(v *BindInterconnectionCidRequestRequestParams) *BindInterconnectionCidRequest {
+	s.RequestParams = v
+	return s
+}
+
+type BindInterconnectionCidRequestRequestParams struct {
+	// AIM 群会话ID
+	AimAppCid *string `json:"AimAppCid,omitempty" xml:"AimAppCid,omitempty"`
+	// 钉钉 群会话ID
+	DingTalkCid *string `json:"DingTalkCid,omitempty" xml:"DingTalkCid,omitempty"`
+}
+
+func (s BindInterconnectionCidRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionCidRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionCidRequestRequestParams) SetAimAppCid(v string) *BindInterconnectionCidRequestRequestParams {
+	s.AimAppCid = &v
+	return s
+}
+
+func (s *BindInterconnectionCidRequestRequestParams) SetDingTalkCid(v string) *BindInterconnectionCidRequestRequestParams {
+	s.DingTalkCid = &v
+	return s
+}
+
+type BindInterconnectionCidShrinkRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 绑定会话ID请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s BindInterconnectionCidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionCidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionCidShrinkRequest) SetAppId(v string) *BindInterconnectionCidShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindInterconnectionCidShrinkRequest) SetRequestParamsShrink(v string) *BindInterconnectionCidShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type BindInterconnectionCidResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s BindInterconnectionCidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionCidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionCidResponseBody) SetRequestId(v string) *BindInterconnectionCidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindInterconnectionCidResponseBody) SetCode(v string) *BindInterconnectionCidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindInterconnectionCidResponseBody) SetMessage(v string) *BindInterconnectionCidResponseBody {
+	s.Message = &v
+	return s
+}
+
+type BindInterconnectionCidResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BindInterconnectionCidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindInterconnectionCidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindInterconnectionCidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindInterconnectionCidResponse) SetHeaders(v map[string]*string) *BindInterconnectionCidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindInterconnectionCidResponse) SetBody(v *BindInterconnectionCidResponseBody) *BindInterconnectionCidResponse {
 	s.Body = v
 	return s
 }
@@ -8753,6 +9134,156 @@ func (s *GetLoginTokenResponse) SetBody(v *GetLoginTokenResponseBody) *GetLoginT
 	return s
 }
 
+type QueryInterconnectionCidMappingRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 查询请求体
+	RequestParams *QueryInterconnectionCidMappingRequestRequestParams `json:"RequestParams,omitempty" xml:"RequestParams,omitempty" type:"Struct"`
+}
+
+func (s QueryInterconnectionCidMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingRequest) SetAppId(v string) *QueryInterconnectionCidMappingRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingRequest) SetRequestParams(v *QueryInterconnectionCidMappingRequestRequestParams) *QueryInterconnectionCidMappingRequest {
+	s.RequestParams = v
+	return s
+}
+
+type QueryInterconnectionCidMappingRequestRequestParams struct {
+	// 会话ID
+	SrcCid *string `json:"SrcCid,omitempty" xml:"SrcCid,omitempty"`
+	// 会话ID类型; 1: AIM会话ID 2: 钉钉会话ID
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryInterconnectionCidMappingRequestRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingRequestRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingRequestRequestParams) SetSrcCid(v string) *QueryInterconnectionCidMappingRequestRequestParams {
+	s.SrcCid = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingRequestRequestParams) SetType(v int64) *QueryInterconnectionCidMappingRequestRequestParams {
+	s.Type = &v
+	return s
+}
+
+type QueryInterconnectionCidMappingShrinkRequest struct {
+	// AppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 查询请求体
+	RequestParamsShrink *string `json:"RequestParams,omitempty" xml:"RequestParams,omitempty"`
+}
+
+func (s QueryInterconnectionCidMappingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingShrinkRequest) SetAppId(v string) *QueryInterconnectionCidMappingShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingShrinkRequest) SetRequestParamsShrink(v string) *QueryInterconnectionCidMappingShrinkRequest {
+	s.RequestParamsShrink = &v
+	return s
+}
+
+type QueryInterconnectionCidMappingResponseBody struct {
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result    *QueryInterconnectionCidMappingResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s QueryInterconnectionCidMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingResponseBody) SetRequestId(v string) *QueryInterconnectionCidMappingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingResponseBody) SetCode(v string) *QueryInterconnectionCidMappingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingResponseBody) SetMessage(v string) *QueryInterconnectionCidMappingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingResponseBody) SetResult(v *QueryInterconnectionCidMappingResponseBodyResult) *QueryInterconnectionCidMappingResponseBody {
+	s.Result = v
+	return s
+}
+
+type QueryInterconnectionCidMappingResponseBodyResult struct {
+	DstCid *string `json:"DstCid,omitempty" xml:"DstCid,omitempty"`
+}
+
+func (s QueryInterconnectionCidMappingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingResponseBodyResult) SetDstCid(v string) *QueryInterconnectionCidMappingResponseBodyResult {
+	s.DstCid = &v
+	return s
+}
+
+type QueryInterconnectionCidMappingResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryInterconnectionCidMappingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryInterconnectionCidMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryInterconnectionCidMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryInterconnectionCidMappingResponse) SetHeaders(v map[string]*string) *QueryInterconnectionCidMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryInterconnectionCidMappingResponse) SetBody(v *QueryInterconnectionCidMappingResponseBody) *QueryInterconnectionCidMappingResponse {
+	s.Body = v
+	return s
+}
+
 type DismissGroupRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 解散群聊请求实体
@@ -9743,6 +10274,40 @@ func (client *Client) ImportMessage(request *ImportMessageRequest) (_result *Imp
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportMessageResponse{}
 	_body, _err := client.ImportMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindInterconnectionUidWithOptions(tmpReq *UnbindInterconnectionUidRequest, runtime *util.RuntimeOptions) (_result *UnbindInterconnectionUidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnbindInterconnectionUidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UnbindInterconnectionUidResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UnbindInterconnectionUid"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindInterconnectionUid(request *UnbindInterconnectionUidRequest) (_result *UnbindInterconnectionUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindInterconnectionUidResponse{}
+	_body, _err := client.UnbindInterconnectionUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10892,6 +11457,40 @@ func (client *Client) GetMediaUploadUrl(request *GetMediaUploadUrlRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) BindInterconnectionUidWithOptions(tmpReq *BindInterconnectionUidRequest, runtime *util.RuntimeOptions) (_result *BindInterconnectionUidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindInterconnectionUidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BindInterconnectionUidResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BindInterconnectionUid"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindInterconnectionUid(request *BindInterconnectionUidRequest) (_result *BindInterconnectionUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindInterconnectionUidResponse{}
+	_body, _err := client.BindInterconnectionUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMediaUrlWithOptions(tmpReq *GetMediaUrlRequest, runtime *util.RuntimeOptions) (_result *GetMediaUrlResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10987,6 +11586,40 @@ func (client *Client) UpdateCallbackConfig(request *UpdateCallbackConfigRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCallbackConfigResponse{}
 	_body, _err := client.UpdateCallbackConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BindInterconnectionCidWithOptions(tmpReq *BindInterconnectionCidRequest, runtime *util.RuntimeOptions) (_result *BindInterconnectionCidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindInterconnectionCidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &BindInterconnectionCidResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("BindInterconnectionCid"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindInterconnectionCid(request *BindInterconnectionCidRequest) (_result *BindInterconnectionCidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindInterconnectionCidResponse{}
+	_body, _err := client.BindInterconnectionCidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11467,6 +12100,40 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoginTokenResponse{}
 	_body, _err := client.GetLoginTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryInterconnectionCidMappingWithOptions(tmpReq *QueryInterconnectionCidMappingRequest, runtime *util.RuntimeOptions) (_result *QueryInterconnectionCidMappingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryInterconnectionCidMappingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RequestParams))) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RequestParams), tea.String("RequestParams"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryInterconnectionCidMappingResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryInterconnectionCidMapping"), tea.String("2020-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryInterconnectionCidMapping(request *QueryInterconnectionCidMappingRequest) (_result *QueryInterconnectionCidMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryInterconnectionCidMappingResponse{}
+	_body, _err := client.QueryInterconnectionCidMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
