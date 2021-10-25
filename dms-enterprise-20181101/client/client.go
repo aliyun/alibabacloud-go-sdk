@@ -413,6 +413,8 @@ type ListSensitiveColumnsRequest struct {
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DbId          *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic         *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
 func (s ListSensitiveColumnsRequest) String() string {
@@ -455,6 +457,16 @@ func (s *ListSensitiveColumnsRequest) SetPageNumber(v int32) *ListSensitiveColum
 
 func (s *ListSensitiveColumnsRequest) SetPageSize(v int32) *ListSensitiveColumnsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListSensitiveColumnsRequest) SetDbId(v int64) *ListSensitiveColumnsRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnsRequest) SetLogic(v bool) *ListSensitiveColumnsRequest {
+	s.Logic = &v
 	return s
 }
 
@@ -934,6 +946,7 @@ type GrantUserPermissionRequest struct {
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	DsType     *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DbId       *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	TableId    *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -962,6 +975,11 @@ func (s *GrantUserPermissionRequest) SetUserId(v string) *GrantUserPermissionReq
 
 func (s *GrantUserPermissionRequest) SetDsType(v string) *GrantUserPermissionRequest {
 	s.DsType = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetInstanceId(v int64) *GrantUserPermissionRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1275,94 +1293,6 @@ func (s *GetMetaTableDetailInfoResponse) SetBody(v *GetMetaTableDetailInfoRespon
 	return s
 }
 
-type GetDataCorrectSQLFileRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetDataCorrectSQLFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectSQLFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectSQLFileRequest) SetOrderId(v int64) *GetDataCorrectSQLFileRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileRequest) SetTid(v int64) *GetDataCorrectSQLFileRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetDataCorrectSQLFileResponseBody struct {
-	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-}
-
-func (s GetDataCorrectSQLFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectSQLFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectSQLFileResponseBody) SetRequestId(v string) *GetDataCorrectSQLFileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileResponseBody) SetSuccess(v bool) *GetDataCorrectSQLFileResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileResponseBody) SetErrorMessage(v string) *GetDataCorrectSQLFileResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileResponseBody) SetErrorCode(v string) *GetDataCorrectSQLFileResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileResponseBody) SetFileUrl(v string) *GetDataCorrectSQLFileResponseBody {
-	s.FileUrl = &v
-	return s
-}
-
-type GetDataCorrectSQLFileResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDataCorrectSQLFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDataCorrectSQLFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectSQLFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectSQLFileResponse) SetHeaders(v map[string]*string) *GetDataCorrectSQLFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileResponse) SetBody(v *GetDataCorrectSQLFileResponseBody) *GetDataCorrectSQLFileResponse {
-	s.Body = v
-	return s
-}
-
 type CreateFreeLockCorrectOrderRequest struct {
 	Comment         *string                                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	RelatedUserList []*int64                                `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
@@ -1588,6 +1518,6166 @@ func (s *CreateFreeLockCorrectOrderResponse) SetHeaders(v map[string]*string) *C
 }
 
 func (s *CreateFreeLockCorrectOrderResponse) SetBody(v *CreateFreeLockCorrectOrderResponseBody) *CreateFreeLockCorrectOrderResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserPermissionsRequest struct {
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsRequest) SetTid(v int64) *ListUserPermissionsRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetPermType(v string) *ListUserPermissionsRequest {
+	s.PermType = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetUserId(v string) *ListUserPermissionsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetDatabaseName(v string) *ListUserPermissionsRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetSearchKey(v string) *ListUserPermissionsRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetLogic(v bool) *ListUserPermissionsRequest {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetEnvType(v string) *ListUserPermissionsRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetDbType(v string) *ListUserPermissionsRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetPageNumber(v int32) *ListUserPermissionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserPermissionsRequest) SetPageSize(v int32) *ListUserPermissionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListUserPermissionsResponseBody struct {
+	TotalCount      *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode       *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	UserPermissions *ListUserPermissionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
+	Success         *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListUserPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponseBody) SetTotalCount(v int64) *ListUserPermissionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBody) SetRequestId(v string) *ListUserPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBody) SetErrorCode(v string) *ListUserPermissionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBody) SetErrorMessage(v string) *ListUserPermissionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBody) SetUserPermissions(v *ListUserPermissionsResponseBodyUserPermissions) *ListUserPermissionsResponseBody {
+	s.UserPermissions = v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBody) SetSuccess(v bool) *ListUserPermissionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListUserPermissionsResponseBodyUserPermissions struct {
+	UserPermission []*ListUserPermissionsResponseBodyUserPermissionsUserPermission `json:"UserPermission,omitempty" xml:"UserPermission,omitempty" type:"Repeated"`
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissions) SetUserPermission(v []*ListUserPermissionsResponseBodyUserPermissionsUserPermission) *ListUserPermissionsResponseBodyUserPermissions {
+	s.UserPermission = v
+	return s
+}
+
+type ListUserPermissionsResponseBodyUserPermissionsUserPermission struct {
+	DbId         *string                                                                  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	TableName    *string                                                                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	UserId       *string                                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	SchemaName   *string                                                                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Logic        *bool                                                                    `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	UserNickName *string                                                                  `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	InstanceId   *string                                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermDetails  *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
+	EnvType      *string                                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ColumnName   *string                                                                  `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbType       *string                                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DsType       *string                                                                  `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	TableId      *string                                                                  `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	SearchName   *string                                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Alias        *string                                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Host         *string                                                                  `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port         *int64                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermission) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDbId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetTableName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetSchemaName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetLogic(v bool) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserNickName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.UserNickName = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetInstanceId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetPermDetails(v *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.PermDetails = v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetEnvType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetColumnName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDbType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDsType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.DsType = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetTableId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.TableId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetSearchName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetAlias(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetHost(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.Host = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetPort(v int64) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.Port = &v
+	return s
+}
+
+type ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails struct {
+	PermDetail []*ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail `json:"PermDetail,omitempty" xml:"PermDetail,omitempty" type:"Repeated"`
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) SetPermDetail(v []*ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails {
+	s.PermDetail = v
+	return s
+}
+
+type ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
+	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
+	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
+	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetOriginFrom(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.OriginFrom = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetPermType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.PermType = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExpireDate(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetCreateDate(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetUserAccessId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.UserAccessId = &v
+	return s
+}
+
+func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExtraData(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.ExtraData = &v
+	return s
+}
+
+type ListUserPermissionsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserPermissionsResponse) SetHeaders(v map[string]*string) *ListUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserPermissionsResponse) SetBody(v *ListUserPermissionsResponseBody) *ListUserPermissionsResponse {
+	s.Body = v
+	return s
+}
+
+type GetProxyRequest struct {
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProxyId    *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetProxyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyRequest) SetInstanceId(v int64) *GetProxyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetProxyRequest) SetProxyId(v int64) *GetProxyRequest {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *GetProxyRequest) SetTid(v int64) *GetProxyRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetProxyResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
+	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
+	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
+	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+}
+
+func (s GetProxyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyResponseBody) SetRequestId(v string) *GetProxyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetSuccess(v bool) *GetProxyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetErrorMessage(v string) *GetProxyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetErrorCode(v string) *GetProxyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetProxyId(v int64) *GetProxyResponseBody {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetCreatorId(v int64) *GetProxyResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetCreatorName(v string) *GetProxyResponseBody {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetInstanceId(v int64) *GetProxyResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPrivateEnable(v bool) *GetProxyResponseBody {
+	s.PrivateEnable = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPrivateHost(v string) *GetProxyResponseBody {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPublicEnable(v bool) *GetProxyResponseBody {
+	s.PublicEnable = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetPublicHost(v string) *GetProxyResponseBody {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetMysqlPort(v int32) *GetProxyResponseBody {
+	s.MysqlPort = &v
+	return s
+}
+
+func (s *GetProxyResponseBody) SetHttpsPort(v int32) *GetProxyResponseBody {
+	s.HttpsPort = &v
+	return s
+}
+
+type GetProxyResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProxyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProxyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProxyResponse) SetHeaders(v map[string]*string) *GetProxyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLogicDatabaseRequest struct {
+	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteLogicDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogicDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogicDatabaseRequest) SetLogicDbId(v int64) *DeleteLogicDatabaseRequest {
+	s.LogicDbId = &v
+	return s
+}
+
+func (s *DeleteLogicDatabaseRequest) SetTid(v int64) *DeleteLogicDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteLogicDatabaseResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteLogicDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogicDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogicDatabaseResponseBody) SetRequestId(v string) *DeleteLogicDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLogicDatabaseResponseBody) SetSuccess(v bool) *DeleteLogicDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteLogicDatabaseResponseBody) SetErrorMessage(v string) *DeleteLogicDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteLogicDatabaseResponseBody) SetErrorCode(v string) *DeleteLogicDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteLogicDatabaseResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteLogicDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLogicDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogicDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogicDatabaseResponse) SetHeaders(v map[string]*string) *DeleteLogicDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLogicDatabaseResponse) SetBody(v *DeleteLogicDatabaseResponseBody) *DeleteLogicDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type ListDDLPublishRecordsRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDDLPublishRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsRequest) SetOrderId(v int64) *ListDDLPublishRecordsRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsRequest) SetTid(v int64) *ListDDLPublishRecordsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBody struct {
+	// Id of the request
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DDLPublishRecordList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList `json:"DDLPublishRecordList,omitempty" xml:"DDLPublishRecordList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetRequestId(v string) *ListDDLPublishRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetSuccess(v bool) *ListDDLPublishRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetErrorMessage(v string) *ListDDLPublishRecordsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetErrorCode(v string) *ListDDLPublishRecordsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBody) SetDDLPublishRecordList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList) *ListDDLPublishRecordsResponseBody {
+	s.DDLPublishRecordList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
+	AuditStatus         *string                                                                     `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AuditExpireTime     *string                                                                     `json:"AuditExpireTime,omitempty" xml:"AuditExpireTime,omitempty"`
+	CreatorId           *int64                                                                      `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Finality            *bool                                                                       `json:"Finality,omitempty" xml:"Finality,omitempty"`
+	FinalityReason      *string                                                                     `json:"FinalityReason,omitempty" xml:"FinalityReason,omitempty"`
+	PublishStatus       *string                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	RiskLevel           *string                                                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	StatusDesc          *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	WorkflowInstanceId  *int64                                                                      `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	PublishTaskInfoList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList `json:"PublishTaskInfoList,omitempty" xml:"PublishTaskInfoList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditExpireTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.AuditExpireTime = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetCreatorId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinality(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.Finality = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinalityReason(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.FinalityReason = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.PublishStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetRiskLevel(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetWorkflowInstanceId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishTaskInfoList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.PublishTaskInfoList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList struct {
+	DbId            *int64                                                                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic           *bool                                                                                     `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	PlanTime        *string                                                                                   `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PublishStrategy *string                                                                                   `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
+	StatusDesc      *string                                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TaskJobStatus   *string                                                                                   `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
+	PublishJobList  []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList `json:"PublishJobList,omitempty" xml:"PublishJobList,omitempty" type:"Repeated"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetDbId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetLogic(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPlanTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PlanTime = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishStrategy(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PublishStrategy = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.TaskJobStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishJobList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
+	s.PublishJobList = v
+	return s
+}
+
+type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList struct {
+	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	Scripts       *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
+	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	StatusDesc    *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TaskJobStatus *string `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
+	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetExecuteCount(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.ExecuteCount = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetScripts(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.Scripts = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTableName(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.TaskJobStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetDBTaskGroupId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+type ListDDLPublishRecordsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDDLPublishRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDDLPublishRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDDLPublishRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDDLPublishRecordsResponse) SetHeaders(v map[string]*string) *ListDDLPublishRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponse) SetBody(v *ListDDLPublishRecordsResponseBody) *ListDDLPublishRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type GetStructSyncJobDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetStructSyncJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncJobDetailRequest) SetOrderId(v int64) *GetStructSyncJobDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailRequest) SetTid(v int64) *GetStructSyncJobDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetStructSyncJobDetailResponseBody struct {
+	// Id of the request
+	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage        *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode           *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	StructSyncJobDetail *GetStructSyncJobDetailResponseBodyStructSyncJobDetail `json:"StructSyncJobDetail,omitempty" xml:"StructSyncJobDetail,omitempty" type:"Struct"`
+}
+
+func (s GetStructSyncJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncJobDetailResponseBody) SetRequestId(v string) *GetStructSyncJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBody) SetSuccess(v bool) *GetStructSyncJobDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBody) SetErrorMessage(v string) *GetStructSyncJobDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBody) SetErrorCode(v string) *GetStructSyncJobDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBody) SetStructSyncJobDetail(v *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) *GetStructSyncJobDetailResponseBody {
+	s.StructSyncJobDetail = v
+	return s
+}
+
+type GetStructSyncJobDetailResponseBodyStructSyncJobDetail struct {
+	JobStatus     *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	TableAnalyzed *int64  `json:"TableAnalyzed,omitempty" xml:"TableAnalyzed,omitempty"`
+	TableCount    *int64  `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	SqlCount      *int64  `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
+	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	SecurityRule  *string `json:"SecurityRule,omitempty" xml:"SecurityRule,omitempty"`
+	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+}
+
+func (s GetStructSyncJobDetailResponseBodyStructSyncJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncJobDetailResponseBodyStructSyncJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetJobStatus(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetMessage(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetTableAnalyzed(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.TableAnalyzed = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetTableCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.TableCount = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetSqlCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.SqlCount = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetExecuteCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.ExecuteCount = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetSecurityRule(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.SecurityRule = &v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetDBTaskGroupId(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+type GetStructSyncJobDetailResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetStructSyncJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStructSyncJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncJobDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailResponseBody) *GetStructSyncJobDetailResponse {
+	s.Body = v
+	return s
+}
+
+type SearchDatabaseRequest struct {
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
+	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+}
+
+func (s SearchDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseRequest) SetTid(v int64) *SearchDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetSearchKey(v string) *SearchDatabaseRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetPageNumber(v int32) *SearchDatabaseRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetPageSize(v int32) *SearchDatabaseRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetEnvType(v string) *SearchDatabaseRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetSearchRange(v string) *SearchDatabaseRequest {
+	s.SearchRange = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetSearchTarget(v string) *SearchDatabaseRequest {
+	s.SearchTarget = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetDbType(v string) *SearchDatabaseRequest {
+	s.DbType = &v
+	return s
+}
+
+type SearchDatabaseResponseBody struct {
+	TotalCount         *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchDatabaseList *SearchDatabaseResponseBodySearchDatabaseList `json:"SearchDatabaseList,omitempty" xml:"SearchDatabaseList,omitempty" type:"Struct"`
+	ErrorCode          *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage       *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success            *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponseBody) SetTotalCount(v int64) *SearchDatabaseResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBody) SetRequestId(v string) *SearchDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBody) SetSearchDatabaseList(v *SearchDatabaseResponseBodySearchDatabaseList) *SearchDatabaseResponseBody {
+	s.SearchDatabaseList = v
+	return s
+}
+
+func (s *SearchDatabaseResponseBody) SetErrorCode(v string) *SearchDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBody) SetErrorMessage(v string) *SearchDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBody) SetSuccess(v bool) *SearchDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchDatabaseResponseBodySearchDatabaseList struct {
+	SearchDatabase []*SearchDatabaseResponseBodySearchDatabaseListSearchDatabase `json:"SearchDatabase,omitempty" xml:"SearchDatabase,omitempty" type:"Repeated"`
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseList) SetSearchDatabase(v []*SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) *SearchDatabaseResponseBodySearchDatabaseList {
+	s.SearchDatabase = v
+	return s
+}
+
+type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
+	DatabaseId    *string                                                                  `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Host          *string                                                                  `json:"Host,omitempty" xml:"Host,omitempty"`
+	DbaId         *string                                                                  `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	SchemaName    *string                                                                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Logic         *bool                                                                    `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	DatalinkName  *string                                                                  `json:"DatalinkName,omitempty" xml:"DatalinkName,omitempty"`
+	Port          *int32                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
+	EnvType       *string                                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Sid           *string                                                                  `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	OwnerIdList   *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	Encoding      *string                                                                  `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	DbType        *string                                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerNameList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	SearchName    *string                                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Alias         *string                                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDatabaseId(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetHost(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Host = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDbaId(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.DbaId = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSchemaName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetLogic(v bool) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Logic = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDatalinkName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.DatalinkName = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetPort(v int32) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Port = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetEnvType(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSid(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Sid = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetOwnerIdList(v *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetEncoding(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Encoding = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDbType(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.DbType = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetOwnerNameList(v *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSearchName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.SearchName = &v
+	return s
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetAlias(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
+	s.Alias = &v
+	return s
+}
+
+type SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) SetOwnerIds(v []*string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) SetOwnerNames(v []*string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type SearchDatabaseResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SearchDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatabaseResponse) SetHeaders(v map[string]*string) *SearchDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchDatabaseResponse) SetBody(v *SearchDatabaseResponseBody) *SearchDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type SyncDatabaseMetaRequest struct {
+	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s SyncDatabaseMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDatabaseMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDatabaseMetaRequest) SetTid(v int64) *SyncDatabaseMetaRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *SyncDatabaseMetaRequest) SetDbId(v string) *SyncDatabaseMetaRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *SyncDatabaseMetaRequest) SetLogic(v bool) *SyncDatabaseMetaRequest {
+	s.Logic = &v
+	return s
+}
+
+type SyncDatabaseMetaResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SyncDatabaseMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDatabaseMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDatabaseMetaResponseBody) SetRequestId(v string) *SyncDatabaseMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncDatabaseMetaResponseBody) SetErrorCode(v string) *SyncDatabaseMetaResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SyncDatabaseMetaResponseBody) SetErrorMessage(v string) *SyncDatabaseMetaResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SyncDatabaseMetaResponseBody) SetSuccess(v bool) *SyncDatabaseMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SyncDatabaseMetaResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SyncDatabaseMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncDatabaseMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDatabaseMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDatabaseMetaResponse) SetHeaders(v map[string]*string) *SyncDatabaseMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDatabaseMetaResponse) SetBody(v *SyncDatabaseMetaResponseBody) *SyncDatabaseMetaResponse {
+	s.Body = v
+	return s
+}
+
+type GetMetaTableColumnRequest struct {
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s GetMetaTableColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableColumnRequest) SetTid(v int64) *GetMetaTableColumnRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetMetaTableColumnRequest) SetTableGuid(v string) *GetMetaTableColumnRequest {
+	s.TableGuid = &v
+	return s
+}
+
+type GetMetaTableColumnResponseBody struct {
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ColumnList   []*GetMetaTableColumnResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMetaTableColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableColumnResponseBody) SetRequestId(v string) *GetMetaTableColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBody) SetErrorCode(v string) *GetMetaTableColumnResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBody) SetColumnList(v []*GetMetaTableColumnResponseBodyColumnList) *GetMetaTableColumnResponseBody {
+	s.ColumnList = v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBody) SetErrorMessage(v string) *GetMetaTableColumnResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMetaTableColumnResponseBodyColumnList struct {
+	ColumnType    *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	AutoIncrement *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	ColumnId      *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
+	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	PrimaryKey    *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DataPrecision *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale     *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	Position      *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+}
+
+func (s GetMetaTableColumnResponseBodyColumnList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableColumnResponseBodyColumnList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnType(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetAutoIncrement(v bool) *GetMetaTableColumnResponseBodyColumnList {
+	s.AutoIncrement = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnId(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.ColumnId = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnName(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetSecurityLevel(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.SecurityLevel = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetPrimaryKey(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetDescription(v string) *GetMetaTableColumnResponseBodyColumnList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetDataPrecision(v int32) *GetMetaTableColumnResponseBodyColumnList {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetDataScale(v int32) *GetMetaTableColumnResponseBodyColumnList {
+	s.DataScale = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetPosition(v int32) *GetMetaTableColumnResponseBodyColumnList {
+	s.Position = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetNullable(v bool) *GetMetaTableColumnResponseBodyColumnList {
+	s.Nullable = &v
+	return s
+}
+
+func (s *GetMetaTableColumnResponseBodyColumnList) SetDataLength(v int64) *GetMetaTableColumnResponseBodyColumnList {
+	s.DataLength = &v
+	return s
+}
+
+type GetMetaTableColumnResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMetaTableColumnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMetaTableColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaTableColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaTableColumnResponse) SetHeaders(v map[string]*string) *GetMetaTableColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) *GetMetaTableColumnResponse {
+	s.Body = v
+	return s
+}
+
+type ChangeColumnSecLevelRequest struct {
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	IsLogic    *bool   `json:"IsLogic,omitempty" xml:"IsLogic,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// 新的敏感等级
+	NewLevel *string `json:"NewLevel,omitempty" xml:"NewLevel,omitempty"`
+}
+
+func (s ChangeColumnSecLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecLevelRequest) SetTid(v int64) *ChangeColumnSecLevelRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetDbId(v int64) *ChangeColumnSecLevelRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetIsLogic(v bool) *ChangeColumnSecLevelRequest {
+	s.IsLogic = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetSchemaName(v string) *ChangeColumnSecLevelRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetTableName(v string) *ChangeColumnSecLevelRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetColumnName(v string) *ChangeColumnSecLevelRequest {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelRequest) SetNewLevel(v string) *ChangeColumnSecLevelRequest {
+	s.NewLevel = &v
+	return s
+}
+
+type ChangeColumnSecLevelResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeColumnSecLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecLevelResponseBody) SetRequestId(v string) *ChangeColumnSecLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelResponseBody) SetErrorCode(v string) *ChangeColumnSecLevelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelResponseBody) SetErrorMessage(v string) *ChangeColumnSecLevelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ChangeColumnSecLevelResponseBody) SetSuccess(v bool) *ChangeColumnSecLevelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeColumnSecLevelResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ChangeColumnSecLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeColumnSecLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeColumnSecLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeColumnSecLevelResponse) SetHeaders(v map[string]*string) *ChangeColumnSecLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeColumnSecLevelResponse) SetBody(v *ChangeColumnSecLevelResponseBody) *ChangeColumnSecLevelResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteScriptRequest struct {
+	DbId   *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	Logic  *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ExecuteScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteScriptRequest) SetDbId(v int32) *ExecuteScriptRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ExecuteScriptRequest) SetScript(v string) *ExecuteScriptRequest {
+	s.Script = &v
+	return s
+}
+
+func (s *ExecuteScriptRequest) SetLogic(v bool) *ExecuteScriptRequest {
+	s.Logic = &v
+	return s
+}
+
+func (s *ExecuteScriptRequest) SetTid(v int64) *ExecuteScriptRequest {
+	s.Tid = &v
+	return s
+}
+
+type ExecuteScriptResponseBody struct {
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results      []*ExecuteScriptResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExecuteScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteScriptResponseBody) SetRequestId(v string) *ExecuteScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteScriptResponseBody) SetResults(v []*ExecuteScriptResponseBodyResults) *ExecuteScriptResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ExecuteScriptResponseBody) SetErrorCode(v string) *ExecuteScriptResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ExecuteScriptResponseBody) SetErrorMessage(v string) *ExecuteScriptResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ExecuteScriptResponseBody) SetSuccess(v bool) *ExecuteScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteScriptResponseBodyResults struct {
+	ColumnNames []*string                `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	Rows        []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	Success     *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message     *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RowCount    *int64                   `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+}
+
+func (s ExecuteScriptResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteScriptResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteScriptResponseBodyResults) SetColumnNames(v []*string) *ExecuteScriptResponseBodyResults {
+	s.ColumnNames = v
+	return s
+}
+
+func (s *ExecuteScriptResponseBodyResults) SetRows(v []map[string]interface{}) *ExecuteScriptResponseBodyResults {
+	s.Rows = v
+	return s
+}
+
+func (s *ExecuteScriptResponseBodyResults) SetSuccess(v bool) *ExecuteScriptResponseBodyResults {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecuteScriptResponseBodyResults) SetMessage(v string) *ExecuteScriptResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteScriptResponseBodyResults) SetRowCount(v int64) *ExecuteScriptResponseBodyResults {
+	s.RowCount = &v
+	return s
+}
+
+type ExecuteScriptResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExecuteScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteScriptResponse) SetHeaders(v map[string]*string) *ExecuteScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteScriptResponse) SetBody(v *ExecuteScriptResponseBody) *ExecuteScriptResponse {
+	s.Body = v
+	return s
+}
+
+type ListDBTaskSQLJobDetailRequest struct {
+	JobId      *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDBTaskSQLJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDBTaskSQLJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDBTaskSQLJobDetailRequest) SetJobId(v int64) *ListDBTaskSQLJobDetailRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailRequest) SetPageNumber(v int64) *ListDBTaskSQLJobDetailRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailRequest) SetPageSize(v int64) *ListDBTaskSQLJobDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailRequest) SetTid(v int64) *ListDBTaskSQLJobDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDBTaskSQLJobDetailResponseBody struct {
+	// Id of the request
+	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage           *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode              *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DBTaskSQLJobDetailList []*ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList `json:"DBTaskSQLJobDetailList,omitempty" xml:"DBTaskSQLJobDetailList,omitempty" type:"Repeated"`
+	TotalCount             *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDBTaskSQLJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDBTaskSQLJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetRequestId(v string) *ListDBTaskSQLJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetSuccess(v bool) *ListDBTaskSQLJobDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetErrorMessage(v string) *ListDBTaskSQLJobDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetErrorCode(v string) *ListDBTaskSQLJobDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetDBTaskSQLJobDetailList(v []*ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) *ListDBTaskSQLJobDetailResponseBody {
+	s.DBTaskSQLJobDetailList = v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBody) SetTotalCount(v int64) *ListDBTaskSQLJobDetailResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList struct {
+	JobDetailId  *int64  `json:"JobDetailId,omitempty" xml:"JobDetailId,omitempty"`
+	CurrentSql   *string `json:"CurrentSql,omitempty" xml:"CurrentSql,omitempty"`
+	ExecuteCount *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Skip         *bool   `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	SqlType      *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetJobDetailId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.JobDetailId = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetCurrentSql(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.CurrentSql = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetExecuteCount(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.ExecuteCount = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetJobId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetDbId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetLogic(v bool) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSkip(v bool) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSqlType(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetStatus(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.Status = &v
+	return s
+}
+
+type ListDBTaskSQLJobDetailResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDBTaskSQLJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDBTaskSQLJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDBTaskSQLJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDBTaskSQLJobDetailResponse) SetHeaders(v map[string]*string) *ListDBTaskSQLJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponse) SetBody(v *ListDBTaskSQLJobDetailResponseBody) *ListDBTaskSQLJobDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserActiveTenantRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetUserActiveTenantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserActiveTenantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserActiveTenantRequest) SetTid(v int64) *GetUserActiveTenantRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetUserActiveTenantResponseBody struct {
+	Tenant       *GetUserActiveTenantResponseBodyTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty" type:"Struct"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetUserActiveTenantResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserActiveTenantResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserActiveTenantResponseBody) SetTenant(v *GetUserActiveTenantResponseBodyTenant) *GetUserActiveTenantResponseBody {
+	s.Tenant = v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBody) SetRequestId(v string) *GetUserActiveTenantResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBody) SetErrorCode(v string) *GetUserActiveTenantResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBody) SetErrorMessage(v string) *GetUserActiveTenantResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBody) SetSuccess(v bool) *GetUserActiveTenantResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUserActiveTenantResponseBodyTenant struct {
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+}
+
+func (s GetUserActiveTenantResponseBodyTenant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserActiveTenantResponseBodyTenant) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserActiveTenantResponseBodyTenant) SetStatus(v string) *GetUserActiveTenantResponseBodyTenant {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBodyTenant) SetTid(v int64) *GetUserActiveTenantResponseBodyTenant {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetUserActiveTenantResponseBodyTenant) SetTenantName(v string) *GetUserActiveTenantResponseBodyTenant {
+	s.TenantName = &v
+	return s
+}
+
+type GetUserActiveTenantResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserActiveTenantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserActiveTenantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserActiveTenantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserActiveTenantResponse) SetHeaders(v map[string]*string) *GetUserActiveTenantResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserActiveTenantResponse) SetBody(v *GetUserActiveTenantResponseBody) *GetUserActiveTenantResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterUserRequest struct {
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UserNick  *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	RoleNames *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+}
+
+func (s RegisterUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserRequest) SetTid(v int64) *RegisterUserRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *RegisterUserRequest) SetUid(v string) *RegisterUserRequest {
+	s.Uid = &v
+	return s
+}
+
+func (s *RegisterUserRequest) SetUserNick(v string) *RegisterUserRequest {
+	s.UserNick = &v
+	return s
+}
+
+func (s *RegisterUserRequest) SetRoleNames(v string) *RegisterUserRequest {
+	s.RoleNames = &v
+	return s
+}
+
+func (s *RegisterUserRequest) SetMobile(v string) *RegisterUserRequest {
+	s.Mobile = &v
+	return s
+}
+
+type RegisterUserResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RegisterUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserResponseBody) SetRequestId(v string) *RegisterUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterUserResponseBody) SetErrorCode(v string) *RegisterUserResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RegisterUserResponseBody) SetErrorMessage(v string) *RegisterUserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RegisterUserResponseBody) SetSuccess(v bool) *RegisterUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RegisterUserResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserResponse) SetHeaders(v map[string]*string) *RegisterUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterUserResponse) SetBody(v *RegisterUserResponseBody) *RegisterUserResponse {
+	s.Body = v
+	return s
+}
+
+type GetPermApplyOrderDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailRequest) SetOrderId(v int64) *GetPermApplyOrderDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailRequest) SetTid(v int64) *GetPermApplyOrderDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBody struct {
+	// Id of the request
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
+}
+
+func (s GetPermApplyOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBody) SetRequestId(v string) *GetPermApplyOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBody) SetSuccess(v bool) *GetPermApplyOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBody) SetErrorMessage(v string) *GetPermApplyOrderDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBody) SetErrorCode(v string) *GetPermApplyOrderDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBody) SetPermApplyOrderDetail(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) *GetPermApplyOrderDetailResponseBody {
+	s.PermApplyOrderDetail = v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
+	Resources []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	PermType  *int64                                                              `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	Seconds   *int64                                                              `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
+	ApplyType *string                                                             `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetResources(v []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
+	s.Resources = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetPermType(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
+	s.PermType = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
+	s.Seconds = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetApplyType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
+	s.ApplyType = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
+	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
+	TableInfo    *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo    `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
+	ColumnInfo   *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo   `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
+	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetDatabaseInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.DatabaseInfo = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTableInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.TableInfo = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetColumnInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.ColumnInfo = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetInstanceInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.InstanceInfo = v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo struct {
+	DbId           *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic          *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	DbType         *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	SearchName     *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
+	EnvType        *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetDbId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetLogic(v bool) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.Logic = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetDbType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetSearchName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetOwnerIds(v []*int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.OwnerIds = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetOwnerNickNames(v []*string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.OwnerNickNames = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetEnvType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
+	s.EnvType = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo struct {
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) SetTableName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo {
+	s.TableName = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) SetTableName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) SetColumnName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo {
+	s.ColumnName = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo struct {
+	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	DbType        *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType       *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Host          *string   `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port          *int64    `json:"Port,omitempty" xml:"Port,omitempty"`
+	OwnerIds      []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
+	DbaId         *int64    `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DbaNickName   *string   `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetInstanceId(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetSearchName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetEnvType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetHost(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetPort(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetOwnerIds(v []*int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.OwnerIds = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetOwnerNickName(v []*string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.OwnerNickName = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbaId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.DbaId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbaNickName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
+	s.DbaNickName = &v
+	return s
+}
+
+type GetPermApplyOrderDetailResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPermApplyOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPermApplyOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponse) SetHeaders(v map[string]*string) *GetPermApplyOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponse) SetBody(v *GetPermApplyOrderDetailResponseBody) *GetPermApplyOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
+type ListLogicTablesRequest struct {
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	ReturnGuid *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
+}
+
+func (s ListLogicTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesRequest) SetTid(v int64) *ListLogicTablesRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListLogicTablesRequest) SetDatabaseId(v string) *ListLogicTablesRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListLogicTablesRequest) SetPageNumber(v int32) *ListLogicTablesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLogicTablesRequest) SetPageSize(v int32) *ListLogicTablesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLogicTablesRequest) SetSearchName(v string) *ListLogicTablesRequest {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListLogicTablesRequest) SetReturnGuid(v bool) *ListLogicTablesRequest {
+	s.ReturnGuid = &v
+	return s
+}
+
+type ListLogicTablesResponseBody struct {
+	TotalCount     *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	LogicTableList *ListLogicTablesResponseBodyLogicTableList `json:"LogicTableList,omitempty" xml:"LogicTableList,omitempty" type:"Struct"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListLogicTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponseBody) SetTotalCount(v int64) *ListLogicTablesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBody) SetLogicTableList(v *ListLogicTablesResponseBodyLogicTableList) *ListLogicTablesResponseBody {
+	s.LogicTableList = v
+	return s
+}
+
+func (s *ListLogicTablesResponseBody) SetRequestId(v string) *ListLogicTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBody) SetErrorCode(v string) *ListLogicTablesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBody) SetErrorMessage(v string) *ListLogicTablesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBody) SetSuccess(v bool) *ListLogicTablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListLogicTablesResponseBodyLogicTableList struct {
+	LogicTable []*ListLogicTablesResponseBodyLogicTableListLogicTable `json:"LogicTable,omitempty" xml:"LogicTable,omitempty" type:"Repeated"`
+}
+
+func (s ListLogicTablesResponseBodyLogicTableList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponseBodyLogicTableList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableList) SetLogicTable(v []*ListLogicTablesResponseBodyLogicTableListLogicTable) *ListLogicTablesResponseBodyLogicTableList {
+	s.LogicTable = v
+	return s
+}
+
+type ListLogicTablesResponseBodyLogicTableListLogicTable struct {
+	DatabaseId    *string                                                           `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	TableName     *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableCount    *string                                                           `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	OwnerIdList   *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	OwnerNameList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	SchemaName    *string                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Logic         *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	TableExpr     *string                                                           `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
+	TableGuid     *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableId       *string                                                           `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTable) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetDatabaseId(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableName(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableCount(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.TableCount = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetOwnerIdList(v *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetOwnerNameList(v *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetSchemaName(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetLogic(v bool) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableExpr(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.TableExpr = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableGuid(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableId(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
+	s.TableId = &v
+	return s
+}
+
+type ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) SetOwnerIds(v []*string) *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) SetOwnerNames(v []*string) *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type ListLogicTablesResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListLogicTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLogicTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogicTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogicTablesResponse) SetHeaders(v map[string]*string) *ListLogicTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLogicTablesResponse) SetBody(v *ListLogicTablesResponseBody) *ListLogicTablesResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataExportDownloadURLRequest struct {
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s GetDataExportDownloadURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataExportDownloadURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataExportDownloadURLRequest) SetTid(v int64) *GetDataExportDownloadURLRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLRequest) SetOrderId(v int64) *GetDataExportDownloadURLRequest {
+	s.OrderId = &v
+	return s
+}
+
+type GetDataExportDownloadURLResponseBody struct {
+	DownloadURLResult *GetDataExportDownloadURLResponseBodyDownloadURLResult `json:"DownloadURLResult,omitempty" xml:"DownloadURLResult,omitempty" type:"Struct"`
+	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode         *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success           *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataExportDownloadURLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataExportDownloadURLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataExportDownloadURLResponseBody) SetDownloadURLResult(v *GetDataExportDownloadURLResponseBodyDownloadURLResult) *GetDataExportDownloadURLResponseBody {
+	s.DownloadURLResult = v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBody) SetRequestId(v string) *GetDataExportDownloadURLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBody) SetErrorCode(v string) *GetDataExportDownloadURLResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBody) SetErrorMessage(v string) *GetDataExportDownloadURLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBody) SetSuccess(v bool) *GetDataExportDownloadURLResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataExportDownloadURLResponseBodyDownloadURLResult struct {
+	HasResult  *bool   `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
+	TipMessage *string `json:"TipMessage,omitempty" xml:"TipMessage,omitempty"`
+	URL        *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s GetDataExportDownloadURLResponseBodyDownloadURLResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataExportDownloadURLResponseBodyDownloadURLResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetHasResult(v bool) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
+	s.HasResult = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetTipMessage(v string) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
+	s.TipMessage = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetURL(v string) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
+	s.URL = &v
+	return s
+}
+
+type GetDataExportDownloadURLResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDataExportDownloadURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataExportDownloadURLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataExportDownloadURLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataExportDownloadURLResponse) SetHeaders(v map[string]*string) *GetDataExportDownloadURLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLResponseBody) *GetDataExportDownloadURLResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabaseRequest struct {
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sid        *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s GetDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseRequest) SetTid(v int64) *GetDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetHost(v string) *GetDatabaseRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetPort(v int32) *GetDatabaseRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetSid(v string) *GetDatabaseRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetSchemaName(v string) *GetDatabaseRequest {
+	s.SchemaName = &v
+	return s
+}
+
+type GetDatabaseResponseBody struct {
+	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Database     *GetDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	ErrorCode    *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBody) SetRequestId(v string) *GetDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetDatabase(v *GetDatabaseResponseBodyDatabase) *GetDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetErrorCode(v string) *GetDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetErrorMessage(v string) *GetDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatabaseResponseBodyDatabase struct {
+	DatabaseId    *string                                       `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Host          *string                                       `json:"Host,omitempty" xml:"Host,omitempty"`
+	CatalogName   *string                                       `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DbaName       *string                                       `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	State         *string                                       `json:"State,omitempty" xml:"State,omitempty"`
+	DbaId         *string                                       `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	SchemaName    *string                                       `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	InstanceId    *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port          *int32                                        `json:"Port,omitempty" xml:"Port,omitempty"`
+	EnvType       *string                                       `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Sid           *string                                       `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	OwnerIdList   *GetDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	Encoding      *string                                       `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	DbType        *string                                       `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerNameList *GetDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	SearchName    *string                                       `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s GetDatabaseResponseBodyDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBodyDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetHost(v string) *GetDatabaseResponseBodyDatabase {
+	s.Host = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetCatalogName(v string) *GetDatabaseResponseBodyDatabase {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDbaName(v string) *GetDatabaseResponseBodyDatabase {
+	s.DbaName = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetState(v string) *GetDatabaseResponseBodyDatabase {
+	s.State = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDbaId(v string) *GetDatabaseResponseBodyDatabase {
+	s.DbaId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSchemaName(v string) *GetDatabaseResponseBodyDatabase {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetInstanceId(v string) *GetDatabaseResponseBodyDatabase {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetPort(v int32) *GetDatabaseResponseBodyDatabase {
+	s.Port = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetEnvType(v string) *GetDatabaseResponseBodyDatabase {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSid(v string) *GetDatabaseResponseBodyDatabase {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetOwnerIdList(v *GetDatabaseResponseBodyDatabaseOwnerIdList) *GetDatabaseResponseBodyDatabase {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetEncoding(v string) *GetDatabaseResponseBodyDatabase {
+	s.Encoding = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDbType(v string) *GetDatabaseResponseBodyDatabase {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetOwnerNameList(v *GetDatabaseResponseBodyDatabaseOwnerNameList) *GetDatabaseResponseBodyDatabase {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSearchName(v string) *GetDatabaseResponseBodyDatabase {
+	s.SearchName = &v
+	return s
+}
+
+type GetDatabaseResponseBodyDatabaseOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseResponseBodyDatabaseOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBodyDatabaseOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBodyDatabaseOwnerIdList) SetOwnerIds(v []*string) *GetDatabaseResponseBodyDatabaseOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type GetDatabaseResponseBodyDatabaseOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseResponseBodyDatabaseOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBodyDatabaseOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBodyDatabaseOwnerNameList) SetOwnerNames(v []*string) *GetDatabaseResponseBodyDatabaseOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type GetDatabaseResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponse) SetHeaders(v map[string]*string) *GetDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type SearchTableRequest struct {
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
+	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	ReturnGuid   *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
+}
+
+func (s SearchTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableRequest) SetTid(v int64) *SearchTableRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetSearchKey(v string) *SearchTableRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetPageNumber(v int32) *SearchTableRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetPageSize(v int32) *SearchTableRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetEnvType(v string) *SearchTableRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetSearchRange(v string) *SearchTableRequest {
+	s.SearchRange = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetSearchTarget(v string) *SearchTableRequest {
+	s.SearchTarget = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetDbType(v string) *SearchTableRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *SearchTableRequest) SetReturnGuid(v bool) *SearchTableRequest {
+	s.ReturnGuid = &v
+	return s
+}
+
+type SearchTableResponseBody struct {
+	SearchTableList *SearchTableResponseBodySearchTableList `json:"SearchTableList,omitempty" xml:"SearchTableList,omitempty" type:"Struct"`
+	TotalCount      *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode       *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success         *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponseBody) SetSearchTableList(v *SearchTableResponseBodySearchTableList) *SearchTableResponseBody {
+	s.SearchTableList = v
+	return s
+}
+
+func (s *SearchTableResponseBody) SetTotalCount(v int64) *SearchTableResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchTableResponseBody) SetRequestId(v string) *SearchTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchTableResponseBody) SetErrorCode(v string) *SearchTableResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchTableResponseBody) SetErrorMessage(v string) *SearchTableResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SearchTableResponseBody) SetSuccess(v bool) *SearchTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchTableResponseBodySearchTableList struct {
+	SearchTable []*SearchTableResponseBodySearchTableListSearchTable `json:"SearchTable,omitempty" xml:"SearchTable,omitempty" type:"Repeated"`
+}
+
+func (s SearchTableResponseBodySearchTableList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponseBodySearchTableList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponseBodySearchTableList) SetSearchTable(v []*SearchTableResponseBodySearchTableListSearchTable) *SearchTableResponseBodySearchTableList {
+	s.SearchTable = v
+	return s
+}
+
+type SearchTableResponseBodySearchTableListSearchTable struct {
+	DatabaseId      *string                                                         `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	TableName       *string                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	DBSearchName    *string                                                         `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
+	Logic           *bool                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	EnvType         *string                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	DbName          *string                                                         `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	OwnerIdList     *SearchTableResponseBodySearchTableListSearchTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	Description     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Encoding        *string                                                         `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	DbType          *string                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerNameList   *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	TableSchemaName *string                                                         `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+	TableGuid       *string                                                         `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	Engine          *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	TableId         *string                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTable) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetDatabaseId(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableName(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.TableName = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetDBSearchName(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.DBSearchName = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetLogic(v bool) *SearchTableResponseBodySearchTableListSearchTable {
+	s.Logic = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetEnvType(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.EnvType = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetDbName(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.DbName = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetOwnerIdList(v *SearchTableResponseBodySearchTableListSearchTableOwnerIdList) *SearchTableResponseBodySearchTableListSearchTable {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetDescription(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.Description = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetEncoding(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.Encoding = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetDbType(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.DbType = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetOwnerNameList(v *SearchTableResponseBodySearchTableListSearchTableOwnerNameList) *SearchTableResponseBodySearchTableListSearchTable {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableSchemaName(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.TableSchemaName = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableGuid(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetEngine(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.Engine = &v
+	return s
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableId(v string) *SearchTableResponseBodySearchTableListSearchTable {
+	s.TableId = &v
+	return s
+}
+
+type SearchTableResponseBodySearchTableListSearchTableOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTableOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTableOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTableOwnerIdList) SetOwnerIds(v []*string) *SearchTableResponseBodySearchTableListSearchTableOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type SearchTableResponseBodySearchTableListSearchTableOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTableOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponseBodySearchTableListSearchTableOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponseBodySearchTableListSearchTableOwnerNameList) SetOwnerNames(v []*string) *SearchTableResponseBodySearchTableListSearchTableOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type SearchTableResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SearchTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchTableResponse) SetHeaders(v map[string]*string) *SearchTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchTableResponse) SetBody(v *SearchTableResponseBody) *SearchTableResponse {
+	s.Body = v
+	return s
+}
+
+type ApproveOrderRequest struct {
+	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	ApprovalType       *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+}
+
+func (s ApproveOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOrderRequest) SetTid(v int64) *ApproveOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetWorkflowInstanceId(v int64) *ApproveOrderRequest {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetApprovalType(v string) *ApproveOrderRequest {
+	s.ApprovalType = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetComment(v string) *ApproveOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+type ApproveOrderResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ApproveOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOrderResponseBody) SetRequestId(v string) *ApproveOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApproveOrderResponseBody) SetErrorCode(v string) *ApproveOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ApproveOrderResponseBody) SetErrorMessage(v string) *ApproveOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ApproveOrderResponseBody) SetSuccess(v bool) *ApproveOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApproveOrderResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApproveOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApproveOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOrderResponse) SetHeaders(v map[string]*string) *ApproveOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApproveOrderResponse) SetBody(v *ApproveOrderResponseBody) *ApproveOrderResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteProxyAccessRequest struct {
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteProxyAccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessRequest) SetProxyAccessId(v int64) *DeleteProxyAccessRequest {
+	s.ProxyAccessId = &v
+	return s
+}
+
+func (s *DeleteProxyAccessRequest) SetTid(v int64) *DeleteProxyAccessRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteProxyAccessResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s DeleteProxyAccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessResponseBody) SetRequestId(v string) *DeleteProxyAccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetSuccess(v bool) *DeleteProxyAccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetErrorMessage(v string) *DeleteProxyAccessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteProxyAccessResponseBody) SetErrorCode(v string) *DeleteProxyAccessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type DeleteProxyAccessResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProxyAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProxyAccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProxyAccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProxyAccessResponse) SetHeaders(v map[string]*string) *DeleteProxyAccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *DeleteProxyAccessResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataCorrectTaskDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCorrectTaskDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailRequest) SetOrderId(v int64) *GetDataCorrectTaskDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailRequest) SetTid(v int64) *GetDataCorrectTaskDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponseBody struct {
+	// Id of the request
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	DataCorrectTaskDetail *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail `json:"DataCorrectTaskDetail,omitempty" xml:"DataCorrectTaskDetail,omitempty" type:"Struct"`
+}
+
+func (s GetDataCorrectTaskDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetRequestId(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetSuccess(v bool) *GetDataCorrectTaskDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetErrorMessage(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetErrorCode(v string) *GetDataCorrectTaskDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBody) SetDataCorrectTaskDetail(v *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) *GetDataCorrectTaskDetailResponseBody {
+	s.DataCorrectTaskDetail = v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail struct {
+	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetDBTaskGroupId(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.DBTaskGroupId = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetJobStatus(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetActualAffectRows(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.ActualAffectRows = &v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetCreateTime(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
+	s.CreateTime = &v
+	return s
+}
+
+type GetDataCorrectTaskDetailResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDataCorrectTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCorrectTaskDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectTaskDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectTaskDetailResponse) SetHeaders(v map[string]*string) *GetDataCorrectTaskDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailResponseBody) *GetDataCorrectTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
+type CloseOrderRequest struct {
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	CloseReason *string `json:"CloseReason,omitempty" xml:"CloseReason,omitempty"`
+}
+
+func (s CloseOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseOrderRequest) SetTid(v int64) *CloseOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CloseOrderRequest) SetOrderId(v int64) *CloseOrderRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CloseOrderRequest) SetCloseReason(v string) *CloseOrderRequest {
+	s.CloseReason = &v
+	return s
+}
+
+type CloseOrderResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CloseOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseOrderResponseBody) SetRequestId(v string) *CloseOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseOrderResponseBody) SetErrorCode(v string) *CloseOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CloseOrderResponseBody) SetErrorMessage(v string) *CloseOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CloseOrderResponseBody) SetSuccess(v bool) *CloseOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CloseOrderResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CloseOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseOrderResponse) SetHeaders(v map[string]*string) *CloseOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseOrderResponse) SetBody(v *CloseOrderResponseBody) *CloseOrderResponse {
+	s.Body = v
+	return s
+}
+
+type SyncInstanceMetaRequest struct {
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IgnoreTable *bool   `json:"IgnoreTable,omitempty" xml:"IgnoreTable,omitempty"`
+}
+
+func (s SyncInstanceMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncInstanceMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncInstanceMetaRequest) SetTid(v int64) *SyncInstanceMetaRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *SyncInstanceMetaRequest) SetInstanceId(v string) *SyncInstanceMetaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SyncInstanceMetaRequest) SetIgnoreTable(v bool) *SyncInstanceMetaRequest {
+	s.IgnoreTable = &v
+	return s
+}
+
+type SyncInstanceMetaResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SyncInstanceMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncInstanceMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncInstanceMetaResponseBody) SetRequestId(v string) *SyncInstanceMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncInstanceMetaResponseBody) SetErrorCode(v string) *SyncInstanceMetaResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SyncInstanceMetaResponseBody) SetErrorMessage(v string) *SyncInstanceMetaResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SyncInstanceMetaResponseBody) SetSuccess(v bool) *SyncInstanceMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SyncInstanceMetaResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SyncInstanceMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncInstanceMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncInstanceMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncInstanceMetaResponse) SetHeaders(v map[string]*string) *SyncInstanceMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncInstanceMetaResponse) SetBody(v *SyncInstanceMetaResponseBody) *SyncInstanceMetaResponse {
+	s.Body = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailRequest struct {
+	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
+	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailRequest) SetSQLReviewQueryKey(v string) *GetSQLReviewOptimizeDetailRequest {
+	s.SQLReviewQueryKey = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailRequest) SetTid(v int64) *GetSQLReviewOptimizeDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBody struct {
+	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode      *string                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success        *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	OptimizeDetail *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail `json:"OptimizeDetail,omitempty" xml:"OptimizeDetail,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetRequestId(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorCode(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetSuccess(v bool) *GetSQLReviewOptimizeDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBody) SetOptimizeDetail(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) *GetSQLReviewOptimizeDetailResponseBody {
+	s.OptimizeDetail = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail struct {
+	QueryKey      *string                                                            `json:"QueryKey,omitempty" xml:"QueryKey,omitempty"`
+	InstanceId    *int32                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	DbId          *int32                                                             `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SqlType       *string                                                            `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	QualityResult *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult `json:"QualityResult,omitempty" xml:"QualityResult,omitempty" type:"Struct"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQueryKey(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.QueryKey = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetInstanceId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetDbId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetSqlType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQualityResult(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
+	s.QualityResult = v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult struct {
+	ErrorMessage *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Results      []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	OccurError   *bool                                                                       `json:"OccurError,omitempty" xml:"OccurError,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetResults(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.Results = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetOccurError(v bool) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
+	s.OccurError = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults struct {
+	RuleName *string                                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Feedback *string                                                                            `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Comments *string                                                                            `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	Messages []*string                                                                          `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	Scripts  []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	RuleType *string                                                                            `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetFeedback(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Feedback = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetComments(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Comments = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetMessages(v []*string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Messages = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetScripts(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.Scripts = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
+	s.RuleType = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts struct {
+	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetOpType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.OpType = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetContent(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.Content = &v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetTableName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
+	s.TableName = &v
+	return s
+}
+
+type GetSQLReviewOptimizeDetailResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSQLReviewOptimizeDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSQLReviewOptimizeDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSQLReviewOptimizeDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSQLReviewOptimizeDetailResponse) SetHeaders(v map[string]*string) *GetSQLReviewOptimizeDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDetailResponseBody) *GetSQLReviewOptimizeDetailResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterInstanceRequest struct {
+	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceSource   *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	DatabaseUser     *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	InstanceAlias    *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	DbaUid           *int64  `json:"DbaUid,omitempty" xml:"DbaUid,omitempty"`
+	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
+	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
+	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
+	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
+	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
+	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
+}
+
+func (s RegisterInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterInstanceRequest) SetTid(v int64) *RegisterInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetInstanceType(v string) *RegisterInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetInstanceSource(v string) *RegisterInstanceRequest {
+	s.InstanceSource = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetNetworkType(v string) *RegisterInstanceRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetEnvType(v string) *RegisterInstanceRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetEcsInstanceId(v string) *RegisterInstanceRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetVpcId(v string) *RegisterInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetEcsRegion(v string) *RegisterInstanceRequest {
+	s.EcsRegion = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetHost(v string) *RegisterInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetPort(v int32) *RegisterInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetSid(v string) *RegisterInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetDatabaseUser(v string) *RegisterInstanceRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetDatabasePassword(v string) *RegisterInstanceRequest {
+	s.DatabasePassword = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetInstanceAlias(v string) *RegisterInstanceRequest {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetDbaUid(v int64) *RegisterInstanceRequest {
+	s.DbaUid = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetSafeRule(v string) *RegisterInstanceRequest {
+	s.SafeRule = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetQueryTimeout(v int32) *RegisterInstanceRequest {
+	s.QueryTimeout = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetExportTimeout(v int32) *RegisterInstanceRequest {
+	s.ExportTimeout = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetDataLinkName(v string) *RegisterInstanceRequest {
+	s.DataLinkName = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetDdlOnline(v int32) *RegisterInstanceRequest {
+	s.DdlOnline = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetUseDsql(v int32) *RegisterInstanceRequest {
+	s.UseDsql = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetSkipTest(v bool) *RegisterInstanceRequest {
+	s.SkipTest = &v
+	return s
+}
+
+type RegisterInstanceResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RegisterInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterInstanceResponseBody) SetRequestId(v string) *RegisterInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterInstanceResponseBody) SetErrorCode(v string) *RegisterInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RegisterInstanceResponseBody) SetErrorMessage(v string) *RegisterInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RegisterInstanceResponseBody) SetSuccess(v bool) *RegisterInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RegisterInstanceResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterInstanceResponse) SetHeaders(v map[string]*string) *RegisterInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterInstanceResponse) SetBody(v *RegisterInstanceResponseBody) *RegisterInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStructSyncOrderRequest struct {
+	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Param           *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateStructSyncOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderRequest) SetComment(v string) *CreateStructSyncOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetRelatedUserList(v []*int64) *CreateStructSyncOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetParam(v *CreateStructSyncOrderRequestParam) *CreateStructSyncOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetAttachmentKey(v string) *CreateStructSyncOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequest) SetTid(v int64) *CreateStructSyncOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateStructSyncOrderRequestParam struct {
+	Source        *CreateStructSyncOrderRequestParamSource          `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	Target        *CreateStructSyncOrderRequestParamTarget          `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	IgnoreError   *bool                                             `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	TableInfoList []*CreateStructSyncOrderRequestParamTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
+}
+
+func (s CreateStructSyncOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderRequestParam) SetSource(v *CreateStructSyncOrderRequestParamSource) *CreateStructSyncOrderRequestParam {
+	s.Source = v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParam) SetTarget(v *CreateStructSyncOrderRequestParamTarget) *CreateStructSyncOrderRequestParam {
+	s.Target = v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParam) SetIgnoreError(v bool) *CreateStructSyncOrderRequestParam {
+	s.IgnoreError = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParam) SetTableInfoList(v []*CreateStructSyncOrderRequestParamTableInfoList) *CreateStructSyncOrderRequestParam {
+	s.TableInfoList = v
+	return s
+}
+
+type CreateStructSyncOrderRequestParamSource struct {
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s CreateStructSyncOrderRequestParamSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderRequestParamSource) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderRequestParamSource) SetDbId(v int64) *CreateStructSyncOrderRequestParamSource {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamSource) SetDbSearchName(v string) *CreateStructSyncOrderRequestParamSource {
+	s.DbSearchName = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamSource) SetLogic(v bool) *CreateStructSyncOrderRequestParamSource {
+	s.Logic = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamSource) SetVersionId(v string) *CreateStructSyncOrderRequestParamSource {
+	s.VersionId = &v
+	return s
+}
+
+type CreateStructSyncOrderRequestParamTarget struct {
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s CreateStructSyncOrderRequestParamTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderRequestParamTarget) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderRequestParamTarget) SetDbId(v int64) *CreateStructSyncOrderRequestParamTarget {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamTarget) SetDbSearchName(v string) *CreateStructSyncOrderRequestParamTarget {
+	s.DbSearchName = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamTarget) SetLogic(v bool) *CreateStructSyncOrderRequestParamTarget {
+	s.Logic = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamTarget) SetVersionId(v string) *CreateStructSyncOrderRequestParamTarget {
+	s.VersionId = &v
+	return s
+}
+
+type CreateStructSyncOrderRequestParamTableInfoList struct {
+	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+}
+
+func (s CreateStructSyncOrderRequestParamTableInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderRequestParamTableInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderRequestParamTableInfoList) SetSourceTableName(v string) *CreateStructSyncOrderRequestParamTableInfoList {
+	s.SourceTableName = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderRequestParamTableInfoList) SetTargetTableName(v string) *CreateStructSyncOrderRequestParamTableInfoList {
+	s.TargetTableName = &v
+	return s
+}
+
+type CreateStructSyncOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateStructSyncOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetComment(v string) *CreateStructSyncOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateStructSyncOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetParamShrink(v string) *CreateStructSyncOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetAttachmentKey(v string) *CreateStructSyncOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderShrinkRequest) SetTid(v int64) *CreateStructSyncOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateStructSyncOrderResponseBody struct {
+	// Id of the request
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateStructSyncOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderResponseBody) SetRequestId(v string) *CreateStructSyncOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderResponseBody) SetSuccess(v bool) *CreateStructSyncOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderResponseBody) SetErrorMessage(v string) *CreateStructSyncOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderResponseBody) SetErrorCode(v string) *CreateStructSyncOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateStructSyncOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateStructSyncOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateStructSyncOrderResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateStructSyncOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStructSyncOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStructSyncOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStructSyncOrderResponse) SetHeaders(v map[string]*string) *CreateStructSyncOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponseBody) *CreateStructSyncOrderResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteDataExportRequest struct {
+	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
+}
+
+func (s ExecuteDataExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteDataExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ExecuteDataExportRequest) SetOrderId(v int64) *ExecuteDataExportRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataExportRequest) SetActionDetail(v map[string]interface{}) *ExecuteDataExportRequest {
+	s.ActionDetail = v
+	return s
+}
+
+type ExecuteDataExportShrinkRequest struct {
+	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
+}
+
+func (s ExecuteDataExportShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteDataExportShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteDataExportShrinkRequest) SetTid(v int64) *ExecuteDataExportShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ExecuteDataExportShrinkRequest) SetOrderId(v int64) *ExecuteDataExportShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataExportShrinkRequest) SetActionDetailShrink(v string) *ExecuteDataExportShrinkRequest {
+	s.ActionDetailShrink = &v
+	return s
+}
+
+type ExecuteDataExportResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExecuteDataExportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteDataExportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteDataExportResponseBody) SetRequestId(v string) *ExecuteDataExportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteDataExportResponseBody) SetErrorCode(v string) *ExecuteDataExportResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ExecuteDataExportResponseBody) SetErrorMessage(v string) *ExecuteDataExportResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ExecuteDataExportResponseBody) SetSuccess(v bool) *ExecuteDataExportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteDataExportResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExecuteDataExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteDataExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteDataExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteDataExportResponse) SetHeaders(v map[string]*string) *ExecuteDataExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteDataExportResponse) SetBody(v *ExecuteDataExportResponseBody) *ExecuteDataExportResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkFlowNodesRequest struct {
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s ListWorkFlowNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesRequest) SetTid(v int64) *ListWorkFlowNodesRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesRequest) SetSearchName(v string) *ListWorkFlowNodesRequest {
+	s.SearchName = &v
+	return s
+}
+
+type ListWorkFlowNodesResponseBody struct {
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode     *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	WorkflowNodes *ListWorkFlowNodesResponseBodyWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
+	Success       *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWorkFlowNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponseBody) SetRequestId(v string) *ListWorkFlowNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBody) SetErrorCode(v string) *ListWorkFlowNodesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBody) SetErrorMessage(v string) *ListWorkFlowNodesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBody) SetWorkflowNodes(v *ListWorkFlowNodesResponseBodyWorkflowNodes) *ListWorkFlowNodesResponseBody {
+	s.WorkflowNodes = v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBody) SetSuccess(v bool) *ListWorkFlowNodesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkFlowNodesResponseBodyWorkflowNodes struct {
+	WorkflowNode []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode `json:"WorkflowNode,omitempty" xml:"WorkflowNode,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) SetWorkflowNode(v []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) *ListWorkFlowNodesResponseBodyWorkflowNodes {
+	s.WorkflowNode = v
+	return s
+}
+
+type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode struct {
+	Comment            *string                                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateUserNickName *string                                                           `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
+	NodeType           *string                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NodeName           *string                                                           `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	AuditUsers         *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
+	CreateUserId       *int64                                                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	NodeId             *int64                                                            `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetComment(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetCreateUserNickName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.CreateUserNickName = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeType(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetAuditUsers(v *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.AuditUsers = v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetCreateUserId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
+	s.NodeId = &v
+	return s
+}
+
+type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers struct {
+	AuditUser []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser `json:"AuditUser,omitempty" xml:"AuditUser,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) SetAuditUser(v []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers {
+	s.AuditUser = v
+	return s
+}
+
+type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser struct {
+	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetRealName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
+	s.RealName = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetUserId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetNickName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
+	s.NickName = &v
+	return s
+}
+
+type ListWorkFlowNodesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkFlowNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkFlowNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkFlowNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkFlowNodesResponse) SetHeaders(v map[string]*string) *ListWorkFlowNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkFlowNodesResponse) SetBody(v *ListWorkFlowNodesResponseBody) *ListWorkFlowNodesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProxiesRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListProxiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesRequest) SetTid(v int64) *ListProxiesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListProxiesResponseBody struct {
+	// Id of the request
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ProxyList    []*ListProxiesResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
+}
+
+func (s ListProxiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponseBody) SetRequestId(v string) *ListProxiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetSuccess(v bool) *ListProxiesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetErrorMessage(v string) *ListProxiesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetErrorCode(v string) *ListProxiesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProxiesResponseBody) SetProxyList(v []*ListProxiesResponseBodyProxyList) *ListProxiesResponseBody {
+	s.ProxyList = v
+	return s
+}
+
+type ListProxiesResponseBodyProxyList struct {
+	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
+	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
+	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
+	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+}
+
+func (s ListProxiesResponseBodyProxyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponseBodyProxyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetProxyId(v int64) *ListProxiesResponseBodyProxyList {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetCreatorId(v int64) *ListProxiesResponseBodyProxyList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetCreatorName(v string) *ListProxiesResponseBodyProxyList {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetInstanceId(v int64) *ListProxiesResponseBodyProxyList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPrivateEnable(v bool) *ListProxiesResponseBodyProxyList {
+	s.PrivateEnable = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPrivateHost(v string) *ListProxiesResponseBodyProxyList {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPublicEnable(v bool) *ListProxiesResponseBodyProxyList {
+	s.PublicEnable = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetPublicHost(v string) *ListProxiesResponseBodyProxyList {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetMysqlPort(v int32) *ListProxiesResponseBodyProxyList {
+	s.MysqlPort = &v
+	return s
+}
+
+func (s *ListProxiesResponseBodyProxyList) SetHttpsPort(v int32) *ListProxiesResponseBodyProxyList {
+	s.HttpsPort = &v
+	return s
+}
+
+type ListProxiesResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProxiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProxiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxiesResponse) SetHeaders(v map[string]*string) *ListProxiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProxiesResponse) SetBody(v *ListProxiesResponseBody) *ListProxiesResponse {
+	s.Body = v
+	return s
+}
+
+type GetStructSyncOrderDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailRequest) SetOrderId(v int64) *GetStructSyncOrderDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailRequest) SetTid(v int64) *GetStructSyncOrderDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBody struct {
+	// Id of the request
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	StructSyncOrderDetail *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail `json:"StructSyncOrderDetail,omitempty" xml:"StructSyncOrderDetail,omitempty" type:"Struct"`
+}
+
+func (s GetStructSyncOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBody) SetRequestId(v string) *GetStructSyncOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBody) SetSuccess(v bool) *GetStructSyncOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBody) SetErrorMessage(v string) *GetStructSyncOrderDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBody) SetErrorCode(v string) *GetStructSyncOrderDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBody) SetStructSyncOrderDetail(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) *GetStructSyncOrderDetailResponseBody {
+	s.StructSyncOrderDetail = v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail struct {
+	SourceDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo `json:"SourceDatabaseInfo,omitempty" xml:"SourceDatabaseInfo,omitempty" type:"Struct"`
+	TargetDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo `json:"TargetDatabaseInfo,omitempty" xml:"TargetDatabaseInfo,omitempty" type:"Struct"`
+	SourceType         *string                                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo  `json:"SourceVersionInfo,omitempty" xml:"SourceVersionInfo,omitempty" type:"Struct"`
+	TargetType         *string                                                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TargetVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo  `json:"TargetVersionInfo,omitempty" xml:"TargetVersionInfo,omitempty" type:"Struct"`
+	TableInfoList      []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList    `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
+	IgnoreError        *bool                                                                        `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceDatabaseInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.SourceDatabaseInfo = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetDatabaseInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.TargetDatabaseInfo = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceVersionInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.SourceVersionInfo = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.TargetType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetVersionInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.TargetVersionInfo = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTableInfoList(v []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.TableInfoList = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetIgnoreError(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
+	s.IgnoreError = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo struct {
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetDbId(v int64) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetSearchName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetDbType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetEnvType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetLogic(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
+	s.Logic = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo struct {
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetDbId(v int64) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetSearchName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetDbType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetEnvType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetLogic(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
+	s.Logic = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo struct {
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) SetVersionId(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo {
+	s.VersionId = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo struct {
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) SetVersionId(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo {
+	s.VersionId = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList struct {
+	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) SetSourceTableName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList {
+	s.SourceTableName = &v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) SetTargetTableName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList {
+	s.TargetTableName = &v
+	return s
+}
+
+type GetStructSyncOrderDetailResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetStructSyncOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStructSyncOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncOrderDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStructSyncOrderDetailResponse) SetBody(v *GetStructSyncOrderDetailResponseBody) *GetStructSyncOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUserRequest struct {
+	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid             *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UserNick        *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	RoleNames       *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
+	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	MaxExecuteCount *int64  `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
+	MaxResultCount  *int64  `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
+}
+
+func (s UpdateUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserRequest) SetTid(v int64) *UpdateUserRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetUid(v int64) *UpdateUserRequest {
+	s.Uid = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetUserNick(v string) *UpdateUserRequest {
+	s.UserNick = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetRoleNames(v string) *UpdateUserRequest {
+	s.RoleNames = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetMobile(v string) *UpdateUserRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetMaxExecuteCount(v int64) *UpdateUserRequest {
+	s.MaxExecuteCount = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetMaxResultCount(v int64) *UpdateUserRequest {
+	s.MaxResultCount = &v
+	return s
+}
+
+type UpdateUserResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUserResponseBody) SetErrorCode(v string) *UpdateUserResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateUserResponseBody) SetErrorMessage(v string) *UpdateUserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateUserResponseBody) SetSuccess(v bool) *UpdateUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateUserResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserResponse {
+	s.Body = v
+	return s
+}
+
+type GetPhysicalDatabaseRequest struct {
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetPhysicalDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseRequest) SetDbId(v int64) *GetPhysicalDatabaseRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseRequest) SetTid(v int64) *GetPhysicalDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBody struct {
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Database     *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPhysicalDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetRequestId(v string) *GetPhysicalDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetDatabase(v *GetPhysicalDatabaseResponseBodyDatabase) *GetPhysicalDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetErrorCode(v string) *GetPhysicalDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetErrorMessage(v string) *GetPhysicalDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabase struct {
+	DatabaseId    *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Host          *string                                               `json:"Host,omitempty" xml:"Host,omitempty"`
+	CatalogName   *string                                               `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DbaName       *string                                               `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	State         *string                                               `json:"State,omitempty" xml:"State,omitempty"`
+	DbaId         *string                                               `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	SchemaName    *string                                               `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Port          *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
+	EnvType       *string                                               `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Sid           *string                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	Encoding      *string                                               `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	DbType        *string                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	SearchName    *string                                               `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetHost(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Host = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetCatalogName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbaName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetState(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.State = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbaId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSchemaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetInstanceId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetPort(v int32) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Port = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEnvType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSid(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerIdList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.OwnerIdList = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEncoding(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.Encoding = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerNameList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.OwnerNameList = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSearchName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.SearchName = &v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList struct {
+	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) SetOwnerIds(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList {
+	s.OwnerIds = v
+	return s
+}
+
+type GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList struct {
+	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) SetOwnerNames(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList {
+	s.OwnerNames = v
+	return s
+}
+
+type GetPhysicalDatabaseResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPhysicalDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhysicalDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhysicalDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhysicalDatabaseResponse) SetHeaders(v map[string]*string) *GetPhysicalDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponse) SetBody(v *GetPhysicalDatabaseResponseBody) *GetPhysicalDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type GetStructSyncExecSqlDetailRequest struct {
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetStructSyncExecSqlDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncExecSqlDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncExecSqlDetailRequest) SetOrderId(v int64) *GetStructSyncExecSqlDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailRequest) SetPageNumber(v int64) *GetStructSyncExecSqlDetailRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailRequest) SetPageSize(v int64) *GetStructSyncExecSqlDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailRequest) SetTid(v int64) *GetStructSyncExecSqlDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetStructSyncExecSqlDetailResponseBody struct {
+	// Id of the request
+	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                 *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage            *string                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode               *string                                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	StructSyncExecSqlDetail *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail `json:"StructSyncExecSqlDetail,omitempty" xml:"StructSyncExecSqlDetail,omitempty" type:"Struct"`
+}
+
+func (s GetStructSyncExecSqlDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncExecSqlDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBody) SetRequestId(v string) *GetStructSyncExecSqlDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBody) SetSuccess(v bool) *GetStructSyncExecSqlDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBody) SetErrorMessage(v string) *GetStructSyncExecSqlDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBody) SetErrorCode(v string) *GetStructSyncExecSqlDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBody) SetStructSyncExecSqlDetail(v *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) *GetStructSyncExecSqlDetailResponseBody {
+	s.StructSyncExecSqlDetail = v
+	return s
+}
+
+type GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail struct {
+	TotalSqlCount *int64  `json:"TotalSqlCount,omitempty" xml:"TotalSqlCount,omitempty"`
+	ExecSql       *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
+}
+
+func (s GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) SetTotalSqlCount(v int64) *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail {
+	s.TotalSqlCount = &v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) SetExecSql(v string) *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail {
+	s.ExecSql = &v
+	return s
+}
+
+type GetStructSyncExecSqlDetailResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetStructSyncExecSqlDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStructSyncExecSqlDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStructSyncExecSqlDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStructSyncExecSqlDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncExecSqlDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStructSyncExecSqlDetailResponse) SetBody(v *GetStructSyncExecSqlDetailResponseBody) *GetStructSyncExecSqlDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceRequest struct {
+	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sid  *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+}
+
+func (s DeleteInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceRequest) SetTid(v int64) *DeleteInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *DeleteInstanceRequest) SetHost(v string) *DeleteInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DeleteInstanceRequest) SetPort(v int32) *DeleteInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DeleteInstanceRequest) SetSid(v string) *DeleteInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+type DeleteInstanceResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetErrorCode(v string) *DeleteInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetErrorMessage(v string) *DeleteInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInstanceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableDBTopologyRequest struct {
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s GetTableDBTopologyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyRequest) SetTid(v int64) *GetTableDBTopologyRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GetTableDBTopologyRequest) SetTableGuid(v string) *GetTableDBTopologyRequest {
+	s.TableGuid = &v
+	return s
+}
+
+type GetTableDBTopologyResponseBody struct {
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBTopology   *GetTableDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
+	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTableDBTopologyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponseBody) SetRequestId(v string) *GetTableDBTopologyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBody) SetDBTopology(v *GetTableDBTopologyResponseBodyDBTopology) *GetTableDBTopologyResponseBody {
+	s.DBTopology = v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBody) SetErrorCode(v string) *GetTableDBTopologyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBody) SetErrorMessage(v string) *GetTableDBTopologyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBody) SetSuccess(v bool) *GetTableDBTopologyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTableDBTopologyResponseBodyDBTopology struct {
+	TableName      *string                                                   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	DataSourceList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceList `json:"DataSourceList,omitempty" xml:"DataSourceList,omitempty" type:"Repeated"`
+	TableGuid      *string                                                   `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopology) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopology) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableName(v string) *GetTableDBTopologyResponseBodyDBTopology {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopology) SetDataSourceList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceList) *GetTableDBTopologyResponseBodyDBTopology {
+	s.DataSourceList = v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableGuid(v string) *GetTableDBTopologyResponseBodyDBTopology {
+	s.TableGuid = &v
+	return s
+}
+
+type GetTableDBTopologyResponseBodyDBTopologyDataSourceList struct {
+	Sid          *string                                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	Host         *string                                                               `json:"Host,omitempty" xml:"Host,omitempty"`
+	DbType       *string                                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DatabaseList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
+	Port         *int32                                                                `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetSid(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
+	s.Sid = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetHost(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
+	s.Host = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetDbType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetDatabaseList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
+	s.DatabaseList = v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetPort(v int32) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
+	s.Port = &v
+	return s
+}
+
+type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList struct {
+	DbId      *string                                                                        `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbName    *string                                                                        `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbType    *string                                                                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	TableList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
+	EnvType   *string                                                                        `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbId(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbName(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetTableList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
+	s.TableList = v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetEnvType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
+	s.EnvType = &v
+	return s
+}
+
+type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList struct {
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	TableId   *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableName(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
+	s.TableType = &v
+	return s
+}
+
+func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableId(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
+	s.TableId = &v
+	return s
+}
+
+type GetTableDBTopologyResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTableDBTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTableDBTopologyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDBTopologyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDBTopologyResponse) SetHeaders(v map[string]*string) *GetTableDBTopologyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) *GetTableDBTopologyResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataCorrectSQLFileRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataCorrectSQLFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectSQLFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectSQLFileRequest) SetOrderId(v int64) *GetDataCorrectSQLFileRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileRequest) SetTid(v int64) *GetDataCorrectSQLFileRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataCorrectSQLFileResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s GetDataCorrectSQLFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectSQLFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectSQLFileResponseBody) SetRequestId(v string) *GetDataCorrectSQLFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileResponseBody) SetSuccess(v bool) *GetDataCorrectSQLFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileResponseBody) SetErrorMessage(v string) *GetDataCorrectSQLFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileResponseBody) SetErrorCode(v string) *GetDataCorrectSQLFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileResponseBody) SetFileUrl(v string) *GetDataCorrectSQLFileResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+type GetDataCorrectSQLFileResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDataCorrectSQLFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataCorrectSQLFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectSQLFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectSQLFileResponse) SetHeaders(v map[string]*string) *GetDataCorrectSQLFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataCorrectSQLFileResponse) SetBody(v *GetDataCorrectSQLFileResponseBody) *GetDataCorrectSQLFileResponse {
 	s.Body = v
 	return s
 }
@@ -2136,323 +8226,6 @@ func (s *CreateProxyAccessResponse) SetBody(v *CreateProxyAccessResponseBody) *C
 	return s
 }
 
-type ListUserPermissionsRequest struct {
-	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListUserPermissionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsRequest) SetTid(v int64) *ListUserPermissionsRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetPermType(v string) *ListUserPermissionsRequest {
-	s.PermType = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetUserId(v string) *ListUserPermissionsRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetDatabaseName(v string) *ListUserPermissionsRequest {
-	s.DatabaseName = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetLogic(v bool) *ListUserPermissionsRequest {
-	s.Logic = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetEnvType(v string) *ListUserPermissionsRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetDbType(v string) *ListUserPermissionsRequest {
-	s.DbType = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetPageNumber(v int32) *ListUserPermissionsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetPageSize(v int32) *ListUserPermissionsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListUserPermissionsResponseBody struct {
-	TotalCount      *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode       *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage    *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	UserPermissions *ListUserPermissionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
-	Success         *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListUserPermissionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponseBody) SetTotalCount(v int64) *ListUserPermissionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBody) SetRequestId(v string) *ListUserPermissionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBody) SetErrorCode(v string) *ListUserPermissionsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBody) SetErrorMessage(v string) *ListUserPermissionsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBody) SetUserPermissions(v *ListUserPermissionsResponseBodyUserPermissions) *ListUserPermissionsResponseBody {
-	s.UserPermissions = v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBody) SetSuccess(v bool) *ListUserPermissionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListUserPermissionsResponseBodyUserPermissions struct {
-	UserPermission []*ListUserPermissionsResponseBodyUserPermissionsUserPermission `json:"UserPermission,omitempty" xml:"UserPermission,omitempty" type:"Repeated"`
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissions) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissions) SetUserPermission(v []*ListUserPermissionsResponseBodyUserPermissionsUserPermission) *ListUserPermissionsResponseBodyUserPermissions {
-	s.UserPermission = v
-	return s
-}
-
-type ListUserPermissionsResponseBodyUserPermissionsUserPermission struct {
-	DbId         *string                                                                  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	TableName    *string                                                                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UserId       *string                                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	SchemaName   *string                                                                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Logic        *bool                                                                    `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	UserNickName *string                                                                  `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
-	InstanceId   *string                                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PermDetails  *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
-	EnvType      *string                                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	ColumnName   *string                                                                  `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DbType       *string                                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DsType       *string                                                                  `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	TableId      *string                                                                  `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	SearchName   *string                                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Alias        *string                                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermission) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermission) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDbId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.DbId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetTableName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.TableName = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetSchemaName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetLogic(v bool) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.Logic = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserNickName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.UserNickName = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetInstanceId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetPermDetails(v *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.PermDetails = v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetEnvType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.EnvType = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetColumnName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.ColumnName = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDbType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.DbType = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetDsType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.DsType = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetTableId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.TableId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetSearchName(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.SearchName = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermission) SetAlias(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermission {
-	s.Alias = &v
-	return s
-}
-
-type ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails struct {
-	PermDetail []*ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail `json:"PermDetail,omitempty" xml:"PermDetail,omitempty" type:"Repeated"`
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) SetPermDetail(v []*ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails {
-	s.PermDetail = v
-	return s
-}
-
-type ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
-	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
-	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
-	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetOriginFrom(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.OriginFrom = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetPermType(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.PermType = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExpireDate(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.ExpireDate = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetCreateDate(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetUserAccessId(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.UserAccessId = &v
-	return s
-}
-
-func (s *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExtraData(v string) *ListUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
-	s.ExtraData = &v
-	return s
-}
-
-type ListUserPermissionsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUserPermissionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserPermissionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserPermissionsResponse) SetHeaders(v map[string]*string) *ListUserPermissionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserPermissionsResponse) SetBody(v *ListUserPermissionsResponseBody) *ListUserPermissionsResponse {
-	s.Body = v
-	return s
-}
-
 type ListWorkFlowTemplatesRequest struct {
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
@@ -2676,154 +8449,6 @@ func (s *ListWorkFlowTemplatesResponse) SetHeaders(v map[string]*string) *ListWo
 }
 
 func (s *ListWorkFlowTemplatesResponse) SetBody(v *ListWorkFlowTemplatesResponseBody) *ListWorkFlowTemplatesResponse {
-	s.Body = v
-	return s
-}
-
-type GetProxyRequest struct {
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProxyId    *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetProxyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProxyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProxyRequest) SetInstanceId(v int64) *GetProxyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetProxyRequest) SetProxyId(v int64) *GetProxyRequest {
-	s.ProxyId = &v
-	return s
-}
-
-func (s *GetProxyRequest) SetTid(v int64) *GetProxyRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetProxyResponseBody struct {
-	// Id of the request
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
-	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
-	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
-	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
-	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
-	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-}
-
-func (s GetProxyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProxyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetProxyResponseBody) SetRequestId(v string) *GetProxyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetSuccess(v bool) *GetProxyResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetErrorMessage(v string) *GetProxyResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetErrorCode(v string) *GetProxyResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetProxyId(v int64) *GetProxyResponseBody {
-	s.ProxyId = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetCreatorId(v int64) *GetProxyResponseBody {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetCreatorName(v string) *GetProxyResponseBody {
-	s.CreatorName = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetInstanceId(v int64) *GetProxyResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetPrivateEnable(v bool) *GetProxyResponseBody {
-	s.PrivateEnable = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetPrivateHost(v string) *GetProxyResponseBody {
-	s.PrivateHost = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetPublicEnable(v bool) *GetProxyResponseBody {
-	s.PublicEnable = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetPublicHost(v string) *GetProxyResponseBody {
-	s.PublicHost = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetMysqlPort(v int32) *GetProxyResponseBody {
-	s.MysqlPort = &v
-	return s
-}
-
-func (s *GetProxyResponseBody) SetHttpsPort(v int32) *GetProxyResponseBody {
-	s.HttpsPort = &v
-	return s
-}
-
-type GetProxyResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetProxyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProxyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetProxyResponse) SetHeaders(v map[string]*string) *GetProxyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
 	s.Body = v
 	return s
 }
@@ -3180,6 +8805,7 @@ type ListInstancesResponseBodyInstanceListInstance struct {
 	InstanceAlias    *string                                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	DdlOnline        *int32                                                      `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
 	EcsRegion        *string                                                     `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	StandardGroup    *ListInstancesResponseBodyInstanceListInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 }
 
 func (s ListInstancesResponseBodyInstanceListInstance) String() string {
@@ -3310,6 +8936,11 @@ func (s *ListInstancesResponseBodyInstanceListInstance) SetEcsRegion(v string) *
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstanceListInstance) SetStandardGroup(v *ListInstancesResponseBodyInstanceListInstanceStandardGroup) *ListInstancesResponseBodyInstanceListInstance {
+	s.StandardGroup = v
+	return s
+}
+
 type ListInstancesResponseBodyInstanceListInstanceOwnerIdList struct {
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
 }
@@ -3341,6 +8972,29 @@ func (s ListInstancesResponseBodyInstanceListInstanceOwnerNameList) GoString() s
 
 func (s *ListInstancesResponseBodyInstanceListInstanceOwnerNameList) SetOwnerNames(v []*string) *ListInstancesResponseBodyInstanceListInstanceOwnerNameList {
 	s.OwnerNames = v
+	return s
+}
+
+type ListInstancesResponseBodyInstanceListInstanceStandardGroup struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupMode *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstanceListInstanceStandardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstanceListInstanceStandardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstanceListInstanceStandardGroup) SetGroupName(v string) *ListInstancesResponseBodyInstanceListInstanceStandardGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceListInstanceStandardGroup) SetGroupMode(v string) *ListInstancesResponseBodyInstanceListInstanceStandardGroup {
+	s.GroupMode = &v
 	return s
 }
 
@@ -3557,412 +9211,6 @@ func (s *GetUserUploadFileJobResponse) SetHeaders(v map[string]*string) *GetUser
 }
 
 func (s *GetUserUploadFileJobResponse) SetBody(v *GetUserUploadFileJobResponseBody) *GetUserUploadFileJobResponse {
-	s.Body = v
-	return s
-}
-
-type ListDDLPublishRecordsRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s ListDDLPublishRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsRequest) SetOrderId(v int64) *ListDDLPublishRecordsRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsRequest) SetTid(v int64) *ListDDLPublishRecordsRequest {
-	s.Tid = &v
-	return s
-}
-
-type ListDDLPublishRecordsResponseBody struct {
-	// Id of the request
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DDLPublishRecordList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList `json:"DDLPublishRecordList,omitempty" xml:"DDLPublishRecordList,omitempty" type:"Repeated"`
-}
-
-func (s ListDDLPublishRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsResponseBody) SetRequestId(v string) *ListDDLPublishRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBody) SetSuccess(v bool) *ListDDLPublishRecordsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBody) SetErrorMessage(v string) *ListDDLPublishRecordsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBody) SetErrorCode(v string) *ListDDLPublishRecordsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBody) SetDDLPublishRecordList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList) *ListDDLPublishRecordsResponseBody {
-	s.DDLPublishRecordList = v
-	return s
-}
-
-type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
-	AuditStatus         *string                                                                     `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuditExpireTime     *string                                                                     `json:"AuditExpireTime,omitempty" xml:"AuditExpireTime,omitempty"`
-	CreatorId           *int64                                                                      `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Finality            *bool                                                                       `json:"Finality,omitempty" xml:"Finality,omitempty"`
-	FinalityReason      *string                                                                     `json:"FinalityReason,omitempty" xml:"FinalityReason,omitempty"`
-	PublishStatus       *string                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	RiskLevel           *string                                                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	StatusDesc          *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	WorkflowInstanceId  *int64                                                                      `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	PublishTaskInfoList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList `json:"PublishTaskInfoList,omitempty" xml:"PublishTaskInfoList,omitempty" type:"Repeated"`
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.AuditStatus = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditExpireTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.AuditExpireTime = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetCreatorId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinality(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.Finality = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetFinalityReason(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.FinalityReason = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.PublishStatus = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetRiskLevel(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.RiskLevel = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetWorkflowInstanceId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.WorkflowInstanceId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetPublishTaskInfoList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
-	s.PublishTaskInfoList = v
-	return s
-}
-
-type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList struct {
-	DbId            *int64                                                                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic           *bool                                                                                     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	PlanTime        *string                                                                                   `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
-	PublishStrategy *string                                                                                   `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
-	StatusDesc      *string                                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TaskJobStatus   *string                                                                                   `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
-	PublishJobList  []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList `json:"PublishJobList,omitempty" xml:"PublishJobList,omitempty" type:"Repeated"`
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetDbId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.DbId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetLogic(v bool) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.Logic = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPlanTime(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.PlanTime = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishStrategy(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.PublishStrategy = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.TaskJobStatus = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) SetPublishJobList(v []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList {
-	s.PublishJobList = v
-	return s
-}
-
-type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList struct {
-	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
-	Scripts       *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	StatusDesc    *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TaskJobStatus *string `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
-	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetExecuteCount(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.ExecuteCount = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetScripts(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.Scripts = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTableName(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.TableName = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetStatusDesc(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetTaskJobStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.TaskJobStatus = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList) SetDBTaskGroupId(v int64) *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList {
-	s.DBTaskGroupId = &v
-	return s
-}
-
-type ListDDLPublishRecordsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDDLPublishRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDDLPublishRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDDLPublishRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDDLPublishRecordsResponse) SetHeaders(v map[string]*string) *ListDDLPublishRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDDLPublishRecordsResponse) SetBody(v *ListDDLPublishRecordsResponseBody) *ListDDLPublishRecordsResponse {
-	s.Body = v
-	return s
-}
-
-type GetStructSyncJobDetailRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetStructSyncJobDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncJobDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncJobDetailRequest) SetOrderId(v int64) *GetStructSyncJobDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailRequest) SetTid(v int64) *GetStructSyncJobDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetStructSyncJobDetailResponseBody struct {
-	// Id of the request
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage        *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode           *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	StructSyncJobDetail *GetStructSyncJobDetailResponseBodyStructSyncJobDetail `json:"StructSyncJobDetail,omitempty" xml:"StructSyncJobDetail,omitempty" type:"Struct"`
-}
-
-func (s GetStructSyncJobDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncJobDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncJobDetailResponseBody) SetRequestId(v string) *GetStructSyncJobDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBody) SetSuccess(v bool) *GetStructSyncJobDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBody) SetErrorMessage(v string) *GetStructSyncJobDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBody) SetErrorCode(v string) *GetStructSyncJobDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBody) SetStructSyncJobDetail(v *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) *GetStructSyncJobDetailResponseBody {
-	s.StructSyncJobDetail = v
-	return s
-}
-
-type GetStructSyncJobDetailResponseBodyStructSyncJobDetail struct {
-	JobStatus     *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	TableAnalyzed *int64  `json:"TableAnalyzed,omitempty" xml:"TableAnalyzed,omitempty"`
-	TableCount    *int64  `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	SqlCount      *int64  `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
-	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
-	SecurityRule  *string `json:"SecurityRule,omitempty" xml:"SecurityRule,omitempty"`
-	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-}
-
-func (s GetStructSyncJobDetailResponseBodyStructSyncJobDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncJobDetailResponseBodyStructSyncJobDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetJobStatus(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.JobStatus = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetMessage(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.Message = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetTableAnalyzed(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.TableAnalyzed = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetTableCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.TableCount = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetSqlCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.SqlCount = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetExecuteCount(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.ExecuteCount = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetSecurityRule(v string) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.SecurityRule = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponseBodyStructSyncJobDetail) SetDBTaskGroupId(v int64) *GetStructSyncJobDetailResponseBodyStructSyncJobDetail {
-	s.DBTaskGroupId = &v
-	return s
-}
-
-type GetStructSyncJobDetailResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetStructSyncJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetStructSyncJobDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncJobDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncJobDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncJobDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailResponseBody) *GetStructSyncJobDetailResponse {
 	s.Body = v
 	return s
 }
@@ -4227,287 +9475,6 @@ func (s *CreateUploadOSSFileJobResponse) SetHeaders(v map[string]*string) *Creat
 }
 
 func (s *CreateUploadOSSFileJobResponse) SetBody(v *CreateUploadOSSFileJobResponseBody) *CreateUploadOSSFileJobResponse {
-	s.Body = v
-	return s
-}
-
-type SearchDatabaseRequest struct {
-	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
-	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-}
-
-func (s SearchDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseRequest) SetTid(v int64) *SearchDatabaseRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetSearchKey(v string) *SearchDatabaseRequest {
-	s.SearchKey = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetPageNumber(v int32) *SearchDatabaseRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetPageSize(v int32) *SearchDatabaseRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetEnvType(v string) *SearchDatabaseRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetSearchRange(v string) *SearchDatabaseRequest {
-	s.SearchRange = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetSearchTarget(v string) *SearchDatabaseRequest {
-	s.SearchTarget = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetDbType(v string) *SearchDatabaseRequest {
-	s.DbType = &v
-	return s
-}
-
-type SearchDatabaseResponseBody struct {
-	TotalCount         *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SearchDatabaseList *SearchDatabaseResponseBodySearchDatabaseList `json:"SearchDatabaseList,omitempty" xml:"SearchDatabaseList,omitempty" type:"Struct"`
-	ErrorCode          *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage       *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success            *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SearchDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponseBody) SetTotalCount(v int64) *SearchDatabaseResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBody) SetRequestId(v string) *SearchDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBody) SetSearchDatabaseList(v *SearchDatabaseResponseBodySearchDatabaseList) *SearchDatabaseResponseBody {
-	s.SearchDatabaseList = v
-	return s
-}
-
-func (s *SearchDatabaseResponseBody) SetErrorCode(v string) *SearchDatabaseResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBody) SetErrorMessage(v string) *SearchDatabaseResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBody) SetSuccess(v bool) *SearchDatabaseResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SearchDatabaseResponseBodySearchDatabaseList struct {
-	SearchDatabase []*SearchDatabaseResponseBodySearchDatabaseListSearchDatabase `json:"SearchDatabase,omitempty" xml:"SearchDatabase,omitempty" type:"Repeated"`
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseList) SetSearchDatabase(v []*SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) *SearchDatabaseResponseBodySearchDatabaseList {
-	s.SearchDatabase = v
-	return s
-}
-
-type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
-	DatabaseId    *string                                                                  `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	Host          *string                                                                  `json:"Host,omitempty" xml:"Host,omitempty"`
-	DbaId         *string                                                                  `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	SchemaName    *string                                                                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Logic         *bool                                                                    `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	DatalinkName  *string                                                                  `json:"DatalinkName,omitempty" xml:"DatalinkName,omitempty"`
-	Port          *int32                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
-	EnvType       *string                                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Sid           *string                                                                  `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	OwnerIdList   *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	Encoding      *string                                                                  `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	DbType        *string                                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	OwnerNameList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	SearchName    *string                                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Alias         *string                                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDatabaseId(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetHost(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Host = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDbaId(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.DbaId = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSchemaName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetLogic(v bool) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Logic = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDatalinkName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.DatalinkName = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetPort(v int32) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Port = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetEnvType(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.EnvType = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSid(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Sid = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetOwnerIdList(v *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.OwnerIdList = v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetEncoding(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Encoding = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetDbType(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.DbType = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetOwnerNameList(v *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.OwnerNameList = v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetSearchName(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.SearchName = &v
-	return s
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) SetAlias(v string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabase {
-	s.Alias = &v
-	return s
-}
-
-type SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList struct {
-	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList) SetOwnerIds(v []*string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList {
-	s.OwnerIds = v
-	return s
-}
-
-type SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList struct {
-	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList) SetOwnerNames(v []*string) *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList {
-	s.OwnerNames = v
-	return s
-}
-
-type SearchDatabaseResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchDatabaseResponse) SetHeaders(v map[string]*string) *SearchDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchDatabaseResponse) SetBody(v *SearchDatabaseResponseBody) *SearchDatabaseResponse {
 	s.Body = v
 	return s
 }
@@ -4936,93 +9903,6 @@ func (s *GetSQLReviewCheckResultStatusResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *GetSQLReviewCheckResultStatusResponse) SetBody(v *GetSQLReviewCheckResultStatusResponseBody) *GetSQLReviewCheckResultStatusResponse {
-	s.Body = v
-	return s
-}
-
-type SyncDatabaseMetaRequest struct {
-	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-}
-
-func (s SyncDatabaseMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDatabaseMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDatabaseMetaRequest) SetTid(v int64) *SyncDatabaseMetaRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaRequest) SetDbId(v string) *SyncDatabaseMetaRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaRequest) SetLogic(v bool) *SyncDatabaseMetaRequest {
-	s.Logic = &v
-	return s
-}
-
-type SyncDatabaseMetaResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SyncDatabaseMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDatabaseMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDatabaseMetaResponseBody) SetRequestId(v string) *SyncDatabaseMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaResponseBody) SetErrorCode(v string) *SyncDatabaseMetaResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaResponseBody) SetErrorMessage(v string) *SyncDatabaseMetaResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaResponseBody) SetSuccess(v bool) *SyncDatabaseMetaResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SyncDatabaseMetaResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SyncDatabaseMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SyncDatabaseMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDatabaseMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDatabaseMetaResponse) SetHeaders(v map[string]*string) *SyncDatabaseMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SyncDatabaseMetaResponse) SetBody(v *SyncDatabaseMetaResponseBody) *SyncDatabaseMetaResponse {
 	s.Body = v
 	return s
 }
@@ -5831,6 +10711,7 @@ type RevokeUserPermissionRequest struct {
 	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	DsType       *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DbId         *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	TableId      *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -5859,6 +10740,11 @@ func (s *RevokeUserPermissionRequest) SetUserId(v string) *RevokeUserPermissionR
 
 func (s *RevokeUserPermissionRequest) SetDsType(v string) *RevokeUserPermissionRequest {
 	s.DsType = &v
+	return s
+}
+
+func (s *RevokeUserPermissionRequest) SetInstanceId(v int64) *RevokeUserPermissionRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -5950,176 +10836,6 @@ func (s *RevokeUserPermissionResponse) SetBody(v *RevokeUserPermissionResponseBo
 	return s
 }
 
-type GetMetaTableColumnRequest struct {
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-}
-
-func (s GetMetaTableColumnRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMetaTableColumnRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMetaTableColumnRequest) SetTid(v int64) *GetMetaTableColumnRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetMetaTableColumnRequest) SetTableGuid(v string) *GetMetaTableColumnRequest {
-	s.TableGuid = &v
-	return s
-}
-
-type GetMetaTableColumnResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ColumnList   []*GetMetaTableColumnResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetMetaTableColumnResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMetaTableColumnResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMetaTableColumnResponseBody) SetRequestId(v string) *GetMetaTableColumnResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBody) SetErrorCode(v string) *GetMetaTableColumnResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBody) SetColumnList(v []*GetMetaTableColumnResponseBodyColumnList) *GetMetaTableColumnResponseBody {
-	s.ColumnList = v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBody) SetErrorMessage(v string) *GetMetaTableColumnResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetMetaTableColumnResponseBodyColumnList struct {
-	ColumnType    *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	AutoIncrement *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	ColumnId      *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	PrimaryKey    *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DataPrecision *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	DataScale     *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	Position      *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
-	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-}
-
-func (s GetMetaTableColumnResponseBodyColumnList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMetaTableColumnResponseBodyColumnList) GoString() string {
-	return s.String()
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnType(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.ColumnType = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetAutoIncrement(v bool) *GetMetaTableColumnResponseBodyColumnList {
-	s.AutoIncrement = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnId(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.ColumnId = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetColumnName(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.ColumnName = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetSecurityLevel(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.SecurityLevel = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetPrimaryKey(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.PrimaryKey = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetDescription(v string) *GetMetaTableColumnResponseBodyColumnList {
-	s.Description = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetDataPrecision(v int32) *GetMetaTableColumnResponseBodyColumnList {
-	s.DataPrecision = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetDataScale(v int32) *GetMetaTableColumnResponseBodyColumnList {
-	s.DataScale = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetPosition(v int32) *GetMetaTableColumnResponseBodyColumnList {
-	s.Position = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetNullable(v bool) *GetMetaTableColumnResponseBodyColumnList {
-	s.Nullable = &v
-	return s
-}
-
-func (s *GetMetaTableColumnResponseBodyColumnList) SetDataLength(v int64) *GetMetaTableColumnResponseBodyColumnList {
-	s.DataLength = &v
-	return s
-}
-
-type GetMetaTableColumnResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMetaTableColumnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMetaTableColumnResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMetaTableColumnResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMetaTableColumnResponse) SetHeaders(v map[string]*string) *GetMetaTableColumnResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) *GetMetaTableColumnResponse {
-	s.Body = v
-	return s
-}
-
 type EnableUserRequest struct {
 	Tid *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -6197,6 +10913,135 @@ func (s *EnableUserResponse) SetHeaders(v map[string]*string) *EnableUserRespons
 }
 
 func (s *EnableUserResponse) SetBody(v *EnableUserResponseBody) *EnableUserResponse {
+	s.Body = v
+	return s
+}
+
+type EditLogicDatabaseRequest struct {
+	Alias       *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	LogicDbId   *int64   `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+	Tid         *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s EditLogicDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditLogicDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditLogicDatabaseRequest) SetAlias(v string) *EditLogicDatabaseRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *EditLogicDatabaseRequest) SetLogicDbId(v int64) *EditLogicDatabaseRequest {
+	s.LogicDbId = &v
+	return s
+}
+
+func (s *EditLogicDatabaseRequest) SetDatabaseIds(v []*int64) *EditLogicDatabaseRequest {
+	s.DatabaseIds = v
+	return s
+}
+
+func (s *EditLogicDatabaseRequest) SetTid(v int64) *EditLogicDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type EditLogicDatabaseShrinkRequest struct {
+	Alias             *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	LogicDbId         *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	DatabaseIdsShrink *string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty"`
+	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s EditLogicDatabaseShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditLogicDatabaseShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditLogicDatabaseShrinkRequest) SetAlias(v string) *EditLogicDatabaseShrinkRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *EditLogicDatabaseShrinkRequest) SetLogicDbId(v int64) *EditLogicDatabaseShrinkRequest {
+	s.LogicDbId = &v
+	return s
+}
+
+func (s *EditLogicDatabaseShrinkRequest) SetDatabaseIdsShrink(v string) *EditLogicDatabaseShrinkRequest {
+	s.DatabaseIdsShrink = &v
+	return s
+}
+
+func (s *EditLogicDatabaseShrinkRequest) SetTid(v int64) *EditLogicDatabaseShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type EditLogicDatabaseResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+}
+
+func (s EditLogicDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditLogicDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditLogicDatabaseResponseBody) SetRequestId(v string) *EditLogicDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EditLogicDatabaseResponseBody) SetSuccess(v bool) *EditLogicDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *EditLogicDatabaseResponseBody) SetErrorMessage(v string) *EditLogicDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EditLogicDatabaseResponseBody) SetErrorCode(v string) *EditLogicDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+type EditLogicDatabaseResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EditLogicDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EditLogicDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditLogicDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditLogicDatabaseResponse) SetHeaders(v map[string]*string) *EditLogicDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditLogicDatabaseResponse) SetBody(v *EditLogicDatabaseResponseBody) *EditLogicDatabaseResponse {
 	s.Body = v
 	return s
 }
@@ -6398,317 +11243,6 @@ func (s *UpdateInstanceResponse) SetHeaders(v map[string]*string) *UpdateInstanc
 }
 
 func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type ExecuteScriptRequest struct {
-	DbId   *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	Logic  *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s ExecuteScriptRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteScriptRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteScriptRequest) SetDbId(v int32) *ExecuteScriptRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *ExecuteScriptRequest) SetScript(v string) *ExecuteScriptRequest {
-	s.Script = &v
-	return s
-}
-
-func (s *ExecuteScriptRequest) SetLogic(v bool) *ExecuteScriptRequest {
-	s.Logic = &v
-	return s
-}
-
-func (s *ExecuteScriptRequest) SetTid(v int64) *ExecuteScriptRequest {
-	s.Tid = &v
-	return s
-}
-
-type ExecuteScriptResponseBody struct {
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results      []*ExecuteScriptResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ExecuteScriptResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteScriptResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteScriptResponseBody) SetRequestId(v string) *ExecuteScriptResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExecuteScriptResponseBody) SetResults(v []*ExecuteScriptResponseBodyResults) *ExecuteScriptResponseBody {
-	s.Results = v
-	return s
-}
-
-func (s *ExecuteScriptResponseBody) SetErrorCode(v string) *ExecuteScriptResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ExecuteScriptResponseBody) SetErrorMessage(v string) *ExecuteScriptResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ExecuteScriptResponseBody) SetSuccess(v bool) *ExecuteScriptResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ExecuteScriptResponseBodyResults struct {
-	ColumnNames []*string                `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	Rows        []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	Success     *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Message     *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RowCount    *int64                   `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-}
-
-func (s ExecuteScriptResponseBodyResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteScriptResponseBodyResults) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteScriptResponseBodyResults) SetColumnNames(v []*string) *ExecuteScriptResponseBodyResults {
-	s.ColumnNames = v
-	return s
-}
-
-func (s *ExecuteScriptResponseBodyResults) SetRows(v []map[string]interface{}) *ExecuteScriptResponseBodyResults {
-	s.Rows = v
-	return s
-}
-
-func (s *ExecuteScriptResponseBodyResults) SetSuccess(v bool) *ExecuteScriptResponseBodyResults {
-	s.Success = &v
-	return s
-}
-
-func (s *ExecuteScriptResponseBodyResults) SetMessage(v string) *ExecuteScriptResponseBodyResults {
-	s.Message = &v
-	return s
-}
-
-func (s *ExecuteScriptResponseBodyResults) SetRowCount(v int64) *ExecuteScriptResponseBodyResults {
-	s.RowCount = &v
-	return s
-}
-
-type ExecuteScriptResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecuteScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExecuteScriptResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteScriptResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteScriptResponse) SetHeaders(v map[string]*string) *ExecuteScriptResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExecuteScriptResponse) SetBody(v *ExecuteScriptResponseBody) *ExecuteScriptResponse {
-	s.Body = v
-	return s
-}
-
-type ListDBTaskSQLJobDetailRequest struct {
-	JobId      *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s ListDBTaskSQLJobDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDBTaskSQLJobDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDBTaskSQLJobDetailRequest) SetJobId(v int64) *ListDBTaskSQLJobDetailRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailRequest) SetPageNumber(v int64) *ListDBTaskSQLJobDetailRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailRequest) SetPageSize(v int64) *ListDBTaskSQLJobDetailRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailRequest) SetTid(v int64) *ListDBTaskSQLJobDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type ListDBTaskSQLJobDetailResponseBody struct {
-	// Id of the request
-	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage           *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode              *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DBTaskSQLJobDetailList []*ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList `json:"DBTaskSQLJobDetailList,omitempty" xml:"DBTaskSQLJobDetailList,omitempty" type:"Repeated"`
-	TotalCount             *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDBTaskSQLJobDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDBTaskSQLJobDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetRequestId(v string) *ListDBTaskSQLJobDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetSuccess(v bool) *ListDBTaskSQLJobDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetErrorMessage(v string) *ListDBTaskSQLJobDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetErrorCode(v string) *ListDBTaskSQLJobDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetDBTaskSQLJobDetailList(v []*ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) *ListDBTaskSQLJobDetailResponseBody {
-	s.DBTaskSQLJobDetailList = v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBody) SetTotalCount(v int64) *ListDBTaskSQLJobDetailResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList struct {
-	JobDetailId  *int64  `json:"JobDetailId,omitempty" xml:"JobDetailId,omitempty"`
-	CurrentSql   *string `json:"CurrentSql,omitempty" xml:"CurrentSql,omitempty"`
-	ExecuteCount *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
-	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	Skip         *bool   `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	SqlType      *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetJobDetailId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.JobDetailId = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetCurrentSql(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.CurrentSql = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetExecuteCount(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.ExecuteCount = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetJobId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetDbId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.DbId = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetLogic(v bool) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.Logic = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSkip(v bool) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.Skip = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSqlType(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.SqlType = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetStatus(v string) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
-	s.Status = &v
-	return s
-}
-
-type ListDBTaskSQLJobDetailResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDBTaskSQLJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDBTaskSQLJobDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDBTaskSQLJobDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDBTaskSQLJobDetailResponse) SetHeaders(v map[string]*string) *ListDBTaskSQLJobDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailResponse) SetBody(v *ListDBTaskSQLJobDetailResponseBody) *ListDBTaskSQLJobDetailResponse {
 	s.Body = v
 	return s
 }
@@ -7341,215 +11875,6 @@ func (s *ListSQLReviewOriginSQLResponse) SetBody(v *ListSQLReviewOriginSQLRespon
 	return s
 }
 
-type GetUserActiveTenantRequest struct {
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetUserActiveTenantRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserActiveTenantRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserActiveTenantRequest) SetTid(v int64) *GetUserActiveTenantRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetUserActiveTenantResponseBody struct {
-	Tenant       *GetUserActiveTenantResponseBodyTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty" type:"Struct"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetUserActiveTenantResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserActiveTenantResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserActiveTenantResponseBody) SetTenant(v *GetUserActiveTenantResponseBodyTenant) *GetUserActiveTenantResponseBody {
-	s.Tenant = v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBody) SetRequestId(v string) *GetUserActiveTenantResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBody) SetErrorCode(v string) *GetUserActiveTenantResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBody) SetErrorMessage(v string) *GetUserActiveTenantResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBody) SetSuccess(v bool) *GetUserActiveTenantResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetUserActiveTenantResponseBodyTenant struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-}
-
-func (s GetUserActiveTenantResponseBodyTenant) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserActiveTenantResponseBodyTenant) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserActiveTenantResponseBodyTenant) SetStatus(v string) *GetUserActiveTenantResponseBodyTenant {
-	s.Status = &v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBodyTenant) SetTid(v int64) *GetUserActiveTenantResponseBodyTenant {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetUserActiveTenantResponseBodyTenant) SetTenantName(v string) *GetUserActiveTenantResponseBodyTenant {
-	s.TenantName = &v
-	return s
-}
-
-type GetUserActiveTenantResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserActiveTenantResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserActiveTenantResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserActiveTenantResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserActiveTenantResponse) SetHeaders(v map[string]*string) *GetUserActiveTenantResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserActiveTenantResponse) SetBody(v *GetUserActiveTenantResponseBody) *GetUserActiveTenantResponse {
-	s.Body = v
-	return s
-}
-
-type RegisterUserRequest struct {
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	UserNick  *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
-	RoleNames *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
-	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-}
-
-func (s RegisterUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterUserRequest) SetTid(v int64) *RegisterUserRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *RegisterUserRequest) SetUid(v string) *RegisterUserRequest {
-	s.Uid = &v
-	return s
-}
-
-func (s *RegisterUserRequest) SetUserNick(v string) *RegisterUserRequest {
-	s.UserNick = &v
-	return s
-}
-
-func (s *RegisterUserRequest) SetRoleNames(v string) *RegisterUserRequest {
-	s.RoleNames = &v
-	return s
-}
-
-func (s *RegisterUserRequest) SetMobile(v string) *RegisterUserRequest {
-	s.Mobile = &v
-	return s
-}
-
-type RegisterUserResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RegisterUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterUserResponseBody) SetRequestId(v string) *RegisterUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RegisterUserResponseBody) SetErrorCode(v string) *RegisterUserResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *RegisterUserResponseBody) SetErrorMessage(v string) *RegisterUserResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *RegisterUserResponseBody) SetSuccess(v bool) *RegisterUserResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RegisterUserResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RegisterUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterUserResponse) SetHeaders(v map[string]*string) *RegisterUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RegisterUserResponse) SetBody(v *RegisterUserResponseBody) *RegisterUserResponse {
-	s.Body = v
-	return s
-}
-
 type GetInstanceRequest struct {
 	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -7651,6 +11976,7 @@ type GetInstanceResponseBodyInstance struct {
 	InstanceAlias    *string                                       `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	DdlOnline        *int32                                        `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
 	EcsRegion        *string                                       `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	StandardGroup    *GetInstanceResponseBodyInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 }
 
 func (s GetInstanceResponseBodyInstance) String() string {
@@ -7781,6 +12107,11 @@ func (s *GetInstanceResponseBodyInstance) SetEcsRegion(v string) *GetInstanceRes
 	return s
 }
 
+func (s *GetInstanceResponseBodyInstance) SetStandardGroup(v *GetInstanceResponseBodyInstanceStandardGroup) *GetInstanceResponseBodyInstance {
+	s.StandardGroup = v
+	return s
+}
+
 type GetInstanceResponseBodyInstanceOwnerIdList struct {
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
 }
@@ -7815,6 +12146,29 @@ func (s *GetInstanceResponseBodyInstanceOwnerNameList) SetOwnerNames(v []*string
 	return s
 }
 
+type GetInstanceResponseBodyInstanceStandardGroup struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupMode *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+}
+
+func (s GetInstanceResponseBodyInstanceStandardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyInstanceStandardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyInstanceStandardGroup) SetGroupName(v string) *GetInstanceResponseBodyInstanceStandardGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstanceStandardGroup) SetGroupMode(v string) *GetInstanceResponseBodyInstanceStandardGroup {
+	s.GroupMode = &v
+	return s
+}
+
 type GetInstanceResponse struct {
 	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -7834,328 +12188,6 @@ func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceRespo
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type GetPermApplyOrderDetailRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailRequest) SetOrderId(v int64) *GetPermApplyOrderDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailRequest) SetTid(v int64) *GetPermApplyOrderDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBody struct {
-	// Id of the request
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
-}
-
-func (s GetPermApplyOrderDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBody) SetRequestId(v string) *GetPermApplyOrderDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBody) SetSuccess(v bool) *GetPermApplyOrderDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBody) SetErrorMessage(v string) *GetPermApplyOrderDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBody) SetErrorCode(v string) *GetPermApplyOrderDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBody) SetPermApplyOrderDetail(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) *GetPermApplyOrderDetailResponseBody {
-	s.PermApplyOrderDetail = v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
-	Resources []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	PermType  *int64                                                              `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	Seconds   *int64                                                              `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
-	ApplyType *string                                                             `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetResources(v []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
-	s.Resources = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetPermType(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
-	s.PermType = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
-	s.Seconds = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetApplyType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail {
-	s.ApplyType = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
-	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
-	TableInfo    *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo    `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
-	ColumnInfo   *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo   `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
-	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetDatabaseInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
-	s.DatabaseInfo = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTableInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
-	s.TableInfo = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetColumnInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
-	s.ColumnInfo = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetInstanceInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
-	s.InstanceInfo = v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo struct {
-	DbId           *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic          *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	DbType         *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	SearchName     *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
-	EnvType        *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetDbId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetLogic(v bool) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.Logic = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetDbType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetSearchName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.SearchName = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetOwnerIds(v []*int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.OwnerIds = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetOwnerNickNames(v []*string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.OwnerNickNames = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) SetEnvType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo {
-	s.EnvType = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo struct {
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo) SetTableName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo {
-	s.TableName = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) SetTableName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo {
-	s.TableName = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) SetColumnName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo {
-	s.ColumnName = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo struct {
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	DbType        *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType       *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Host          *string   `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port          *int64    `json:"Port,omitempty" xml:"Port,omitempty"`
-	OwnerIds      []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
-	DbaId         *int64    `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	DbaNickName   *string   `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetInstanceId(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetSearchName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.SearchName = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetEnvType(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetHost(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.Host = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetPort(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.Port = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetOwnerIds(v []*int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.OwnerIds = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetOwnerNickName(v []*string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.OwnerNickName = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbaId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.DbaId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) SetDbaNickName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo {
-	s.DbaNickName = &v
-	return s
-}
-
-type GetPermApplyOrderDetailResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPermApplyOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPermApplyOrderDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPermApplyOrderDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPermApplyOrderDetailResponse) SetHeaders(v map[string]*string) *GetPermApplyOrderDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailResponse) SetBody(v *GetPermApplyOrderDetailResponseBody) *GetPermApplyOrderDetailResponse {
 	s.Body = v
 	return s
 }
@@ -8307,245 +12339,6 @@ func (s *ListIndexesResponse) SetHeaders(v map[string]*string) *ListIndexesRespo
 }
 
 func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesResponse {
-	s.Body = v
-	return s
-}
-
-type ListLogicTablesRequest struct {
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	ReturnGuid *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
-}
-
-func (s ListLogicTablesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesRequest) SetTid(v int64) *ListLogicTablesRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetDatabaseId(v string) *ListLogicTablesRequest {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetPageNumber(v int32) *ListLogicTablesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetPageSize(v int32) *ListLogicTablesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetSearchName(v string) *ListLogicTablesRequest {
-	s.SearchName = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetReturnGuid(v bool) *ListLogicTablesRequest {
-	s.ReturnGuid = &v
-	return s
-}
-
-type ListLogicTablesResponseBody struct {
-	TotalCount     *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	LogicTableList *ListLogicTablesResponseBodyLogicTableList `json:"LogicTableList,omitempty" xml:"LogicTableList,omitempty" type:"Struct"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListLogicTablesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponseBody) SetTotalCount(v int64) *ListLogicTablesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBody) SetLogicTableList(v *ListLogicTablesResponseBodyLogicTableList) *ListLogicTablesResponseBody {
-	s.LogicTableList = v
-	return s
-}
-
-func (s *ListLogicTablesResponseBody) SetRequestId(v string) *ListLogicTablesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBody) SetErrorCode(v string) *ListLogicTablesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBody) SetErrorMessage(v string) *ListLogicTablesResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBody) SetSuccess(v bool) *ListLogicTablesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListLogicTablesResponseBodyLogicTableList struct {
-	LogicTable []*ListLogicTablesResponseBodyLogicTableListLogicTable `json:"LogicTable,omitempty" xml:"LogicTable,omitempty" type:"Repeated"`
-}
-
-func (s ListLogicTablesResponseBodyLogicTableList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponseBodyLogicTableList) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableList) SetLogicTable(v []*ListLogicTablesResponseBodyLogicTableListLogicTable) *ListLogicTablesResponseBodyLogicTableList {
-	s.LogicTable = v
-	return s
-}
-
-type ListLogicTablesResponseBodyLogicTableListLogicTable struct {
-	DatabaseId    *string                                                           `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	TableName     *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableCount    *string                                                           `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	OwnerIdList   *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	OwnerNameList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	SchemaName    *string                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Logic         *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	TableExpr     *string                                                           `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
-	TableGuid     *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableId       *string                                                           `json:"TableId,omitempty" xml:"TableId,omitempty"`
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTable) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTable) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetDatabaseId(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableName(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.TableName = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableCount(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.TableCount = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetOwnerIdList(v *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.OwnerIdList = v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetOwnerNameList(v *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.OwnerNameList = v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetSchemaName(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetLogic(v bool) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.Logic = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableExpr(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.TableExpr = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableGuid(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.TableGuid = &v
-	return s
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTable) SetTableId(v string) *ListLogicTablesResponseBodyLogicTableListLogicTable {
-	s.TableId = &v
-	return s
-}
-
-type ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList struct {
-	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList) SetOwnerIds(v []*string) *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList {
-	s.OwnerIds = v
-	return s
-}
-
-type ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList struct {
-	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList) SetOwnerNames(v []*string) *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList {
-	s.OwnerNames = v
-	return s
-}
-
-type ListLogicTablesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListLogicTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLogicTablesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLogicTablesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLogicTablesResponse) SetHeaders(v map[string]*string) *ListLogicTablesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLogicTablesResponse) SetBody(v *ListLogicTablesResponseBody) *ListLogicTablesResponse {
 	s.Body = v
 	return s
 }
@@ -8746,122 +12539,6 @@ func (s *GetTableTopologyResponse) SetHeaders(v map[string]*string) *GetTableTop
 }
 
 func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *GetTableTopologyResponse {
-	s.Body = v
-	return s
-}
-
-type GetDataExportDownloadURLRequest struct {
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-}
-
-func (s GetDataExportDownloadURLRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataExportDownloadURLRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataExportDownloadURLRequest) SetTid(v int64) *GetDataExportDownloadURLRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLRequest) SetOrderId(v int64) *GetDataExportDownloadURLRequest {
-	s.OrderId = &v
-	return s
-}
-
-type GetDataExportDownloadURLResponseBody struct {
-	DownloadURLResult *GetDataExportDownloadURLResponseBodyDownloadURLResult `json:"DownloadURLResult,omitempty" xml:"DownloadURLResult,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode         *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success           *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetDataExportDownloadURLResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataExportDownloadURLResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataExportDownloadURLResponseBody) SetDownloadURLResult(v *GetDataExportDownloadURLResponseBodyDownloadURLResult) *GetDataExportDownloadURLResponseBody {
-	s.DownloadURLResult = v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBody) SetRequestId(v string) *GetDataExportDownloadURLResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBody) SetErrorCode(v string) *GetDataExportDownloadURLResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBody) SetErrorMessage(v string) *GetDataExportDownloadURLResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBody) SetSuccess(v bool) *GetDataExportDownloadURLResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetDataExportDownloadURLResponseBodyDownloadURLResult struct {
-	HasResult  *bool   `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
-	TipMessage *string `json:"TipMessage,omitempty" xml:"TipMessage,omitempty"`
-	URL        *string `json:"URL,omitempty" xml:"URL,omitempty"`
-}
-
-func (s GetDataExportDownloadURLResponseBodyDownloadURLResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataExportDownloadURLResponseBodyDownloadURLResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetHasResult(v bool) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
-	s.HasResult = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetTipMessage(v string) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
-	s.TipMessage = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponseBodyDownloadURLResult) SetURL(v string) *GetDataExportDownloadURLResponseBodyDownloadURLResult {
-	s.URL = &v
-	return s
-}
-
-type GetDataExportDownloadURLResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDataExportDownloadURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDataExportDownloadURLResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataExportDownloadURLResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataExportDownloadURLResponse) SetHeaders(v map[string]*string) *GetDataExportDownloadURLResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLResponseBody) *GetDataExportDownloadURLResponse {
 	s.Body = v
 	return s
 }
@@ -9394,252 +13071,6 @@ func (s *CreatePublishGroupTaskResponse) SetBody(v *CreatePublishGroupTaskRespon
 	return s
 }
 
-type GetDatabaseRequest struct {
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Sid        *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-}
-
-func (s GetDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseRequest) SetTid(v int64) *GetDatabaseRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetDatabaseRequest) SetHost(v string) *GetDatabaseRequest {
-	s.Host = &v
-	return s
-}
-
-func (s *GetDatabaseRequest) SetPort(v int32) *GetDatabaseRequest {
-	s.Port = &v
-	return s
-}
-
-func (s *GetDatabaseRequest) SetSid(v string) *GetDatabaseRequest {
-	s.Sid = &v
-	return s
-}
-
-func (s *GetDatabaseRequest) SetSchemaName(v string) *GetDatabaseRequest {
-	s.SchemaName = &v
-	return s
-}
-
-type GetDatabaseResponseBody struct {
-	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Database     *GetDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
-	ErrorCode    *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseResponseBody) SetRequestId(v string) *GetDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBody) SetDatabase(v *GetDatabaseResponseBodyDatabase) *GetDatabaseResponseBody {
-	s.Database = v
-	return s
-}
-
-func (s *GetDatabaseResponseBody) SetErrorCode(v string) *GetDatabaseResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBody) SetErrorMessage(v string) *GetDatabaseResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetDatabaseResponseBodyDatabase struct {
-	DatabaseId    *string                                       `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	Host          *string                                       `json:"Host,omitempty" xml:"Host,omitempty"`
-	CatalogName   *string                                       `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DbaName       *string                                       `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	State         *string                                       `json:"State,omitempty" xml:"State,omitempty"`
-	DbaId         *string                                       `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	SchemaName    *string                                       `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	InstanceId    *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Port          *int32                                        `json:"Port,omitempty" xml:"Port,omitempty"`
-	EnvType       *string                                       `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Sid           *string                                       `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	OwnerIdList   *GetDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	Encoding      *string                                       `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	DbType        *string                                       `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	OwnerNameList *GetDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	SearchName    *string                                       `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s GetDatabaseResponseBodyDatabase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseResponseBodyDatabase) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetDatabaseResponseBodyDatabase {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetHost(v string) *GetDatabaseResponseBodyDatabase {
-	s.Host = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetCatalogName(v string) *GetDatabaseResponseBodyDatabase {
-	s.CatalogName = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetDbaName(v string) *GetDatabaseResponseBodyDatabase {
-	s.DbaName = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetState(v string) *GetDatabaseResponseBodyDatabase {
-	s.State = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetDbaId(v string) *GetDatabaseResponseBodyDatabase {
-	s.DbaId = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetSchemaName(v string) *GetDatabaseResponseBodyDatabase {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetInstanceId(v string) *GetDatabaseResponseBodyDatabase {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetPort(v int32) *GetDatabaseResponseBodyDatabase {
-	s.Port = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetEnvType(v string) *GetDatabaseResponseBodyDatabase {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetSid(v string) *GetDatabaseResponseBodyDatabase {
-	s.Sid = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetOwnerIdList(v *GetDatabaseResponseBodyDatabaseOwnerIdList) *GetDatabaseResponseBodyDatabase {
-	s.OwnerIdList = v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetEncoding(v string) *GetDatabaseResponseBodyDatabase {
-	s.Encoding = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetDbType(v string) *GetDatabaseResponseBodyDatabase {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetOwnerNameList(v *GetDatabaseResponseBodyDatabaseOwnerNameList) *GetDatabaseResponseBodyDatabase {
-	s.OwnerNameList = v
-	return s
-}
-
-func (s *GetDatabaseResponseBodyDatabase) SetSearchName(v string) *GetDatabaseResponseBodyDatabase {
-	s.SearchName = &v
-	return s
-}
-
-type GetDatabaseResponseBodyDatabaseOwnerIdList struct {
-	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-}
-
-func (s GetDatabaseResponseBodyDatabaseOwnerIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseResponseBodyDatabaseOwnerIdList) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseResponseBodyDatabaseOwnerIdList) SetOwnerIds(v []*string) *GetDatabaseResponseBodyDatabaseOwnerIdList {
-	s.OwnerIds = v
-	return s
-}
-
-type GetDatabaseResponseBodyDatabaseOwnerNameList struct {
-	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
-}
-
-func (s GetDatabaseResponseBodyDatabaseOwnerNameList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseResponseBodyDatabaseOwnerNameList) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseResponseBodyDatabaseOwnerNameList) SetOwnerNames(v []*string) *GetDatabaseResponseBodyDatabaseOwnerNameList {
-	s.OwnerNames = v
-	return s
-}
-
-type GetDatabaseResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDatabaseResponse) SetHeaders(v map[string]*string) *GetDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
-	s.Body = v
-	return s
-}
-
 type InspectProxyAccessSecretRequest struct {
 	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
 	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -9915,6 +13346,233 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 	return s
 }
 
+type ListInstanceUserPermissionsRequest struct {
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInstanceUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsRequest) SetTid(v int64) *ListInstanceUserPermissionsRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsRequest) SetInstanceId(v string) *ListInstanceUserPermissionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsRequest) SetUserName(v string) *ListInstanceUserPermissionsRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsRequest) SetPageNumber(v int32) *ListInstanceUserPermissionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsRequest) SetPageSize(v int32) *ListInstanceUserPermissionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInstanceUserPermissionsResponseBody struct {
+	TotalCount      *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode       *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	UserPermissions *ListInstanceUserPermissionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
+	Success         *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInstanceUserPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetTotalCount(v int64) *ListInstanceUserPermissionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetRequestId(v string) *ListInstanceUserPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetErrorCode(v string) *ListInstanceUserPermissionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetErrorMessage(v string) *ListInstanceUserPermissionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetUserPermissions(v *ListInstanceUserPermissionsResponseBodyUserPermissions) *ListInstanceUserPermissionsResponseBody {
+	s.UserPermissions = v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBody) SetSuccess(v bool) *ListInstanceUserPermissionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInstanceUserPermissionsResponseBodyUserPermissions struct {
+	UserPermission []*ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission `json:"UserPermission,omitempty" xml:"UserPermission,omitempty" type:"Repeated"`
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissions) SetUserPermission(v []*ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) *ListInstanceUserPermissionsResponseBodyUserPermissions {
+	s.UserPermission = v
+	return s
+}
+
+type ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission struct {
+	UserId       *string                                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNickName *string                                                                          `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	InstanceId   *string                                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermDetails  *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserId(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) SetUserNickName(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.UserNickName = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) SetInstanceId(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) SetPermDetails(v *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission {
+	s.PermDetails = v
+	return s
+}
+
+type ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails struct {
+	PermDetail []*ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail `json:"PermDetail,omitempty" xml:"PermDetail,omitempty" type:"Repeated"`
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails) SetPermDetail(v []*ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails {
+	s.PermDetail = v
+	return s
+}
+
+type ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
+	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
+	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
+	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetOriginFrom(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.OriginFrom = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetPermType(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.PermType = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExpireDate(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetCreateDate(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetUserAccessId(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.UserAccessId = &v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail) SetExtraData(v string) *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail {
+	s.ExtraData = &v
+	return s
+}
+
+type ListInstanceUserPermissionsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInstanceUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceUserPermissionsResponse) SetHeaders(v map[string]*string) *ListInstanceUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceUserPermissionsResponse) SetBody(v *ListInstanceUserPermissionsResponseBody) *ListInstanceUserPermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type GetOpLogRequest struct {
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
@@ -10029,7 +13687,7 @@ func (s *GetOpLogResponseBodyOpLogDetails) SetOpLogDetail(v []*GetOpLogResponseB
 type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {
 	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	Database  *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	UserId    *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	OpContent *string `json:"OpContent,omitempty" xml:"OpContent,omitempty"`
 	UserNick  *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -10054,7 +13712,7 @@ func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetDatabase(v string) *Get
 	return s
 }
 
-func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetUserId(v int64) *GetOpLogResponseBodyOpLogDetailsOpLogDetail {
+func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetUserId(v string) *GetOpLogResponseBodyOpLogDetailsOpLogDetail {
 	s.UserId = &v
 	return s
 }
@@ -10098,293 +13756,6 @@ func (s *GetOpLogResponse) SetHeaders(v map[string]*string) *GetOpLogResponse {
 }
 
 func (s *GetOpLogResponse) SetBody(v *GetOpLogResponseBody) *GetOpLogResponse {
-	s.Body = v
-	return s
-}
-
-type SearchTableRequest struct {
-	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
-	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	ReturnGuid   *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
-}
-
-func (s SearchTableRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableRequest) SetTid(v int64) *SearchTableRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetSearchKey(v string) *SearchTableRequest {
-	s.SearchKey = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetPageNumber(v int32) *SearchTableRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetPageSize(v int32) *SearchTableRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetEnvType(v string) *SearchTableRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetSearchRange(v string) *SearchTableRequest {
-	s.SearchRange = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetSearchTarget(v string) *SearchTableRequest {
-	s.SearchTarget = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetDbType(v string) *SearchTableRequest {
-	s.DbType = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetReturnGuid(v bool) *SearchTableRequest {
-	s.ReturnGuid = &v
-	return s
-}
-
-type SearchTableResponseBody struct {
-	SearchTableList *SearchTableResponseBodySearchTableList `json:"SearchTableList,omitempty" xml:"SearchTableList,omitempty" type:"Struct"`
-	TotalCount      *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode       *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage    *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success         *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SearchTableResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponseBody) SetSearchTableList(v *SearchTableResponseBodySearchTableList) *SearchTableResponseBody {
-	s.SearchTableList = v
-	return s
-}
-
-func (s *SearchTableResponseBody) SetTotalCount(v int64) *SearchTableResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *SearchTableResponseBody) SetRequestId(v string) *SearchTableResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SearchTableResponseBody) SetErrorCode(v string) *SearchTableResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SearchTableResponseBody) SetErrorMessage(v string) *SearchTableResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SearchTableResponseBody) SetSuccess(v bool) *SearchTableResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SearchTableResponseBodySearchTableList struct {
-	SearchTable []*SearchTableResponseBodySearchTableListSearchTable `json:"SearchTable,omitempty" xml:"SearchTable,omitempty" type:"Repeated"`
-}
-
-func (s SearchTableResponseBodySearchTableList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponseBodySearchTableList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponseBodySearchTableList) SetSearchTable(v []*SearchTableResponseBodySearchTableListSearchTable) *SearchTableResponseBodySearchTableList {
-	s.SearchTable = v
-	return s
-}
-
-type SearchTableResponseBodySearchTableListSearchTable struct {
-	DatabaseId      *string                                                         `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	TableName       *string                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	DBSearchName    *string                                                         `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
-	Logic           *bool                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	EnvType         *string                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	DbName          *string                                                         `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	OwnerIdList     *SearchTableResponseBodySearchTableListSearchTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	Description     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Encoding        *string                                                         `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	DbType          *string                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	OwnerNameList   *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	TableSchemaName *string                                                         `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
-	TableGuid       *string                                                         `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	Engine          *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	TableId         *string                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTable) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTable) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetDatabaseId(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableName(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.TableName = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetDBSearchName(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.DBSearchName = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetLogic(v bool) *SearchTableResponseBodySearchTableListSearchTable {
-	s.Logic = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetEnvType(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.EnvType = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetDbName(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.DbName = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetOwnerIdList(v *SearchTableResponseBodySearchTableListSearchTableOwnerIdList) *SearchTableResponseBodySearchTableListSearchTable {
-	s.OwnerIdList = v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetDescription(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.Description = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetEncoding(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.Encoding = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetDbType(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.DbType = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetOwnerNameList(v *SearchTableResponseBodySearchTableListSearchTableOwnerNameList) *SearchTableResponseBodySearchTableListSearchTable {
-	s.OwnerNameList = v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableSchemaName(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.TableSchemaName = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableGuid(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.TableGuid = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetEngine(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.Engine = &v
-	return s
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTable) SetTableId(v string) *SearchTableResponseBodySearchTableListSearchTable {
-	s.TableId = &v
-	return s
-}
-
-type SearchTableResponseBodySearchTableListSearchTableOwnerIdList struct {
-	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTableOwnerIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTableOwnerIdList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTableOwnerIdList) SetOwnerIds(v []*string) *SearchTableResponseBodySearchTableListSearchTableOwnerIdList {
-	s.OwnerIds = v
-	return s
-}
-
-type SearchTableResponseBodySearchTableListSearchTableOwnerNameList struct {
-	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTableOwnerNameList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponseBodySearchTableListSearchTableOwnerNameList) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponseBodySearchTableListSearchTableOwnerNameList) SetOwnerNames(v []*string) *SearchTableResponseBodySearchTableListSearchTableOwnerNameList {
-	s.OwnerNames = v
-	return s
-}
-
-type SearchTableResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchTableResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchTableResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchTableResponse) SetHeaders(v map[string]*string) *SearchTableResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchTableResponse) SetBody(v *SearchTableResponseBody) *SearchTableResponse {
 	s.Body = v
 	return s
 }
@@ -10971,304 +14342,6 @@ func (s *GetStructSyncJobAnalyzeResultResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *GetStructSyncJobAnalyzeResultResponse) SetBody(v *GetStructSyncJobAnalyzeResultResponseBody) *GetStructSyncJobAnalyzeResultResponse {
-	s.Body = v
-	return s
-}
-
-type ApproveOrderRequest struct {
-	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	ApprovalType       *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-}
-
-func (s ApproveOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApproveOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ApproveOrderRequest) SetTid(v int64) *ApproveOrderRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ApproveOrderRequest) SetWorkflowInstanceId(v int64) *ApproveOrderRequest {
-	s.WorkflowInstanceId = &v
-	return s
-}
-
-func (s *ApproveOrderRequest) SetApprovalType(v string) *ApproveOrderRequest {
-	s.ApprovalType = &v
-	return s
-}
-
-func (s *ApproveOrderRequest) SetComment(v string) *ApproveOrderRequest {
-	s.Comment = &v
-	return s
-}
-
-type ApproveOrderResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ApproveOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApproveOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ApproveOrderResponseBody) SetRequestId(v string) *ApproveOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ApproveOrderResponseBody) SetErrorCode(v string) *ApproveOrderResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ApproveOrderResponseBody) SetErrorMessage(v string) *ApproveOrderResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ApproveOrderResponseBody) SetSuccess(v bool) *ApproveOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ApproveOrderResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ApproveOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ApproveOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ApproveOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ApproveOrderResponse) SetHeaders(v map[string]*string) *ApproveOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ApproveOrderResponse) SetBody(v *ApproveOrderResponseBody) *ApproveOrderResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteProxyAccessRequest struct {
-	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s DeleteProxyAccessRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProxyAccessRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProxyAccessRequest) SetProxyAccessId(v int64) *DeleteProxyAccessRequest {
-	s.ProxyAccessId = &v
-	return s
-}
-
-func (s *DeleteProxyAccessRequest) SetTid(v int64) *DeleteProxyAccessRequest {
-	s.Tid = &v
-	return s
-}
-
-type DeleteProxyAccessResponseBody struct {
-	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-}
-
-func (s DeleteProxyAccessResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProxyAccessResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProxyAccessResponseBody) SetRequestId(v string) *DeleteProxyAccessResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteProxyAccessResponseBody) SetSuccess(v bool) *DeleteProxyAccessResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *DeleteProxyAccessResponseBody) SetErrorMessage(v string) *DeleteProxyAccessResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteProxyAccessResponseBody) SetErrorCode(v string) *DeleteProxyAccessResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-type DeleteProxyAccessResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProxyAccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteProxyAccessResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProxyAccessResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProxyAccessResponse) SetHeaders(v map[string]*string) *DeleteProxyAccessResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *DeleteProxyAccessResponse {
-	s.Body = v
-	return s
-}
-
-type GetDataCorrectTaskDetailRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetDataCorrectTaskDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectTaskDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectTaskDetailRequest) SetOrderId(v int64) *GetDataCorrectTaskDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailRequest) SetTid(v int64) *GetDataCorrectTaskDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetDataCorrectTaskDetailResponseBody struct {
-	// Id of the request
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	DataCorrectTaskDetail *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail `json:"DataCorrectTaskDetail,omitempty" xml:"DataCorrectTaskDetail,omitempty" type:"Struct"`
-}
-
-func (s GetDataCorrectTaskDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectTaskDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectTaskDetailResponseBody) SetRequestId(v string) *GetDataCorrectTaskDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBody) SetSuccess(v bool) *GetDataCorrectTaskDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBody) SetErrorMessage(v string) *GetDataCorrectTaskDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBody) SetErrorCode(v string) *GetDataCorrectTaskDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBody) SetDataCorrectTaskDetail(v *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) *GetDataCorrectTaskDetailResponseBody {
-	s.DataCorrectTaskDetail = v
-	return s
-}
-
-type GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail struct {
-	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
-	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-}
-
-func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetDBTaskGroupId(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
-	s.DBTaskGroupId = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetJobStatus(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
-	s.JobStatus = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetActualAffectRows(v int64) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
-	s.ActualAffectRows = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) SetCreateTime(v string) *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail {
-	s.CreateTime = &v
-	return s
-}
-
-type GetDataCorrectTaskDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDataCorrectTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDataCorrectTaskDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDataCorrectTaskDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDataCorrectTaskDetailResponse) SetHeaders(v map[string]*string) *GetDataCorrectTaskDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailResponseBody) *GetDataCorrectTaskDetailResponse {
 	s.Body = v
 	return s
 }
@@ -11923,180 +14996,6 @@ func (s *CreateDataImportOrderResponse) SetBody(v *CreateDataImportOrderResponse
 	return s
 }
 
-type CloseOrderRequest struct {
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	CloseReason *string `json:"CloseReason,omitempty" xml:"CloseReason,omitempty"`
-}
-
-func (s CloseOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CloseOrderRequest) SetTid(v int64) *CloseOrderRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *CloseOrderRequest) SetOrderId(v int64) *CloseOrderRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CloseOrderRequest) SetCloseReason(v string) *CloseOrderRequest {
-	s.CloseReason = &v
-	return s
-}
-
-type CloseOrderResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CloseOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CloseOrderResponseBody) SetRequestId(v string) *CloseOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CloseOrderResponseBody) SetErrorCode(v string) *CloseOrderResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CloseOrderResponseBody) SetErrorMessage(v string) *CloseOrderResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CloseOrderResponseBody) SetSuccess(v bool) *CloseOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CloseOrderResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CloseOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CloseOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CloseOrderResponse) SetHeaders(v map[string]*string) *CloseOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CloseOrderResponse) SetBody(v *CloseOrderResponseBody) *CloseOrderResponse {
-	s.Body = v
-	return s
-}
-
-type SyncInstanceMetaRequest struct {
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IgnoreTable *bool   `json:"IgnoreTable,omitempty" xml:"IgnoreTable,omitempty"`
-}
-
-func (s SyncInstanceMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncInstanceMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SyncInstanceMetaRequest) SetTid(v int64) *SyncInstanceMetaRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *SyncInstanceMetaRequest) SetInstanceId(v string) *SyncInstanceMetaRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SyncInstanceMetaRequest) SetIgnoreTable(v bool) *SyncInstanceMetaRequest {
-	s.IgnoreTable = &v
-	return s
-}
-
-type SyncInstanceMetaResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SyncInstanceMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncInstanceMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SyncInstanceMetaResponseBody) SetRequestId(v string) *SyncInstanceMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SyncInstanceMetaResponseBody) SetErrorCode(v string) *SyncInstanceMetaResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SyncInstanceMetaResponseBody) SetErrorMessage(v string) *SyncInstanceMetaResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SyncInstanceMetaResponseBody) SetSuccess(v bool) *SyncInstanceMetaResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SyncInstanceMetaResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SyncInstanceMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SyncInstanceMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncInstanceMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SyncInstanceMetaResponse) SetHeaders(v map[string]*string) *SyncInstanceMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SyncInstanceMetaResponse) SetBody(v *SyncInstanceMetaResponseBody) *SyncInstanceMetaResponse {
-	s.Body = v
-	return s
-}
-
 type ListOrdersRequest struct {
 	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	PluginType      *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
@@ -12690,239 +15589,6 @@ func (s *GetOrderBaseInfoResponse) SetHeaders(v map[string]*string) *GetOrderBas
 }
 
 func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *GetOrderBaseInfoResponse {
-	s.Body = v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailRequest struct {
-	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
-	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetSQLReviewOptimizeDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailRequest) SetSQLReviewQueryKey(v string) *GetSQLReviewOptimizeDetailRequest {
-	s.SQLReviewQueryKey = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailRequest) SetTid(v int64) *GetSQLReviewOptimizeDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponseBody struct {
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode      *string                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success        *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	OptimizeDetail *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail `json:"OptimizeDetail,omitempty" xml:"OptimizeDetail,omitempty" type:"Struct"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBody) SetRequestId(v string) *GetSQLReviewOptimizeDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorCode(v string) *GetSQLReviewOptimizeDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBody) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBody) SetSuccess(v bool) *GetSQLReviewOptimizeDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBody) SetOptimizeDetail(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) *GetSQLReviewOptimizeDetailResponseBody {
-	s.OptimizeDetail = v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail struct {
-	QueryKey      *string                                                            `json:"QueryKey,omitempty" xml:"QueryKey,omitempty"`
-	InstanceId    *int32                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DbId          *int32                                                             `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	SqlType       *string                                                            `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	QualityResult *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult `json:"QualityResult,omitempty" xml:"QualityResult,omitempty" type:"Struct"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQueryKey(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
-	s.QueryKey = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetInstanceId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetDbId(v int32) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetSqlType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
-	s.SqlType = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail) SetQualityResult(v *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetail {
-	s.QualityResult = v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult struct {
-	ErrorMessage *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Results      []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	OccurError   *bool                                                                       `json:"OccurError,omitempty" xml:"OccurError,omitempty"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetErrorMessage(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetResults(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
-	s.Results = v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult) SetOccurError(v bool) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResult {
-	s.OccurError = &v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults struct {
-	RuleName *string                                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Feedback *string                                                                            `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	Comments *string                                                                            `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	Messages []*string                                                                          `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	Scripts  []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	RuleType *string                                                                            `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.RuleName = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetFeedback(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.Feedback = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetComments(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.Comments = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetMessages(v []*string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.Messages = v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetScripts(v []*GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.Scripts = v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults) SetRuleType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults {
-	s.RuleType = &v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts struct {
-	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetOpType(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
-	s.OpType = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetContent(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
-	s.Content = &v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts) SetTableName(v string) *GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts {
-	s.TableName = &v
-	return s
-}
-
-type GetSQLReviewOptimizeDetailResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSQLReviewOptimizeDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSQLReviewOptimizeDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSQLReviewOptimizeDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailResponse) SetHeaders(v map[string]*string) *GetSQLReviewOptimizeDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDetailResponseBody) *GetSQLReviewOptimizeDetailResponse {
 	s.Body = v
 	return s
 }
@@ -13837,598 +16503,6 @@ func (s *ListDataCorrectPreCheckSQLResponse) SetBody(v *ListDataCorrectPreCheckS
 	return s
 }
 
-type RegisterInstanceRequest struct {
-	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceSource   *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
-	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	DatabaseUser     *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
-	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
-	InstanceAlias    *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	DbaUid           *int64  `json:"DbaUid,omitempty" xml:"DbaUid,omitempty"`
-	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
-	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
-	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
-	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
-	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
-	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
-	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
-}
-
-func (s RegisterInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterInstanceRequest) SetTid(v int64) *RegisterInstanceRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetInstanceType(v string) *RegisterInstanceRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetInstanceSource(v string) *RegisterInstanceRequest {
-	s.InstanceSource = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetNetworkType(v string) *RegisterInstanceRequest {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetEnvType(v string) *RegisterInstanceRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetEcsInstanceId(v string) *RegisterInstanceRequest {
-	s.EcsInstanceId = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetVpcId(v string) *RegisterInstanceRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetEcsRegion(v string) *RegisterInstanceRequest {
-	s.EcsRegion = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetHost(v string) *RegisterInstanceRequest {
-	s.Host = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetPort(v int32) *RegisterInstanceRequest {
-	s.Port = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetSid(v string) *RegisterInstanceRequest {
-	s.Sid = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetDatabaseUser(v string) *RegisterInstanceRequest {
-	s.DatabaseUser = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetDatabasePassword(v string) *RegisterInstanceRequest {
-	s.DatabasePassword = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetInstanceAlias(v string) *RegisterInstanceRequest {
-	s.InstanceAlias = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetDbaUid(v int64) *RegisterInstanceRequest {
-	s.DbaUid = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetSafeRule(v string) *RegisterInstanceRequest {
-	s.SafeRule = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetQueryTimeout(v int32) *RegisterInstanceRequest {
-	s.QueryTimeout = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetExportTimeout(v int32) *RegisterInstanceRequest {
-	s.ExportTimeout = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetDataLinkName(v string) *RegisterInstanceRequest {
-	s.DataLinkName = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetDdlOnline(v int32) *RegisterInstanceRequest {
-	s.DdlOnline = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetUseDsql(v int32) *RegisterInstanceRequest {
-	s.UseDsql = &v
-	return s
-}
-
-func (s *RegisterInstanceRequest) SetSkipTest(v bool) *RegisterInstanceRequest {
-	s.SkipTest = &v
-	return s
-}
-
-type RegisterInstanceResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RegisterInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterInstanceResponseBody) SetRequestId(v string) *RegisterInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RegisterInstanceResponseBody) SetErrorCode(v string) *RegisterInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *RegisterInstanceResponseBody) SetErrorMessage(v string) *RegisterInstanceResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *RegisterInstanceResponseBody) SetSuccess(v bool) *RegisterInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RegisterInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RegisterInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RegisterInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RegisterInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RegisterInstanceResponse) SetHeaders(v map[string]*string) *RegisterInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RegisterInstanceResponse) SetBody(v *RegisterInstanceResponseBody) *RegisterInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateStructSyncOrderRequest struct {
-	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Param           *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s CreateStructSyncOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderRequest) SetComment(v string) *CreateStructSyncOrderRequest {
-	s.Comment = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequest) SetRelatedUserList(v []*int64) *CreateStructSyncOrderRequest {
-	s.RelatedUserList = v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequest) SetParam(v *CreateStructSyncOrderRequestParam) *CreateStructSyncOrderRequest {
-	s.Param = v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequest) SetAttachmentKey(v string) *CreateStructSyncOrderRequest {
-	s.AttachmentKey = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequest) SetTid(v int64) *CreateStructSyncOrderRequest {
-	s.Tid = &v
-	return s
-}
-
-type CreateStructSyncOrderRequestParam struct {
-	Source        *CreateStructSyncOrderRequestParamSource          `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	Target        *CreateStructSyncOrderRequestParamTarget          `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	IgnoreError   *bool                                             `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
-	TableInfoList []*CreateStructSyncOrderRequestParamTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
-}
-
-func (s CreateStructSyncOrderRequestParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderRequestParam) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderRequestParam) SetSource(v *CreateStructSyncOrderRequestParamSource) *CreateStructSyncOrderRequestParam {
-	s.Source = v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParam) SetTarget(v *CreateStructSyncOrderRequestParamTarget) *CreateStructSyncOrderRequestParam {
-	s.Target = v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParam) SetIgnoreError(v bool) *CreateStructSyncOrderRequestParam {
-	s.IgnoreError = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParam) SetTableInfoList(v []*CreateStructSyncOrderRequestParamTableInfoList) *CreateStructSyncOrderRequestParam {
-	s.TableInfoList = v
-	return s
-}
-
-type CreateStructSyncOrderRequestParamSource struct {
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s CreateStructSyncOrderRequestParamSource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderRequestParamSource) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderRequestParamSource) SetDbId(v int64) *CreateStructSyncOrderRequestParamSource {
-	s.DbId = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamSource) SetDbSearchName(v string) *CreateStructSyncOrderRequestParamSource {
-	s.DbSearchName = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamSource) SetLogic(v bool) *CreateStructSyncOrderRequestParamSource {
-	s.Logic = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamSource) SetVersionId(v string) *CreateStructSyncOrderRequestParamSource {
-	s.VersionId = &v
-	return s
-}
-
-type CreateStructSyncOrderRequestParamTarget struct {
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s CreateStructSyncOrderRequestParamTarget) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderRequestParamTarget) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderRequestParamTarget) SetDbId(v int64) *CreateStructSyncOrderRequestParamTarget {
-	s.DbId = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamTarget) SetDbSearchName(v string) *CreateStructSyncOrderRequestParamTarget {
-	s.DbSearchName = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamTarget) SetLogic(v bool) *CreateStructSyncOrderRequestParamTarget {
-	s.Logic = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamTarget) SetVersionId(v string) *CreateStructSyncOrderRequestParamTarget {
-	s.VersionId = &v
-	return s
-}
-
-type CreateStructSyncOrderRequestParamTableInfoList struct {
-	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
-	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-}
-
-func (s CreateStructSyncOrderRequestParamTableInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderRequestParamTableInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderRequestParamTableInfoList) SetSourceTableName(v string) *CreateStructSyncOrderRequestParamTableInfoList {
-	s.SourceTableName = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequestParamTableInfoList) SetTargetTableName(v string) *CreateStructSyncOrderRequestParamTableInfoList {
-	s.TargetTableName = &v
-	return s
-}
-
-type CreateStructSyncOrderShrinkRequest struct {
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s CreateStructSyncOrderShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetComment(v string) *CreateStructSyncOrderShrinkRequest {
-	s.Comment = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateStructSyncOrderShrinkRequest {
-	s.RelatedUserListShrink = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetParamShrink(v string) *CreateStructSyncOrderShrinkRequest {
-	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetAttachmentKey(v string) *CreateStructSyncOrderShrinkRequest {
-	s.AttachmentKey = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetTid(v int64) *CreateStructSyncOrderShrinkRequest {
-	s.Tid = &v
-	return s
-}
-
-type CreateStructSyncOrderResponseBody struct {
-	// Id of the request
-	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-}
-
-func (s CreateStructSyncOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderResponseBody) SetRequestId(v string) *CreateStructSyncOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderResponseBody) SetSuccess(v bool) *CreateStructSyncOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderResponseBody) SetErrorMessage(v string) *CreateStructSyncOrderResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderResponseBody) SetErrorCode(v string) *CreateStructSyncOrderResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateStructSyncOrderResponseBody {
-	s.CreateOrderResult = v
-	return s
-}
-
-type CreateStructSyncOrderResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateStructSyncOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateStructSyncOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStructSyncOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStructSyncOrderResponse) SetHeaders(v map[string]*string) *CreateStructSyncOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponseBody) *CreateStructSyncOrderResponse {
-	s.Body = v
-	return s
-}
-
-type ExecuteDataExportRequest struct {
-	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
-}
-
-func (s ExecuteDataExportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteDataExportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ExecuteDataExportRequest) SetOrderId(v int64) *ExecuteDataExportRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataExportRequest) SetActionDetail(v map[string]interface{}) *ExecuteDataExportRequest {
-	s.ActionDetail = v
-	return s
-}
-
-type ExecuteDataExportShrinkRequest struct {
-	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
-}
-
-func (s ExecuteDataExportShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteDataExportShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteDataExportShrinkRequest) SetTid(v int64) *ExecuteDataExportShrinkRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ExecuteDataExportShrinkRequest) SetOrderId(v int64) *ExecuteDataExportShrinkRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataExportShrinkRequest) SetActionDetailShrink(v string) *ExecuteDataExportShrinkRequest {
-	s.ActionDetailShrink = &v
-	return s
-}
-
-type ExecuteDataExportResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ExecuteDataExportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteDataExportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteDataExportResponseBody) SetRequestId(v string) *ExecuteDataExportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExecuteDataExportResponseBody) SetErrorCode(v string) *ExecuteDataExportResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ExecuteDataExportResponseBody) SetErrorMessage(v string) *ExecuteDataExportResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ExecuteDataExportResponseBody) SetSuccess(v bool) *ExecuteDataExportResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ExecuteDataExportResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecuteDataExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExecuteDataExportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteDataExportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteDataExportResponse) SetHeaders(v map[string]*string) *ExecuteDataExportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExecuteDataExportResponse) SetBody(v *ExecuteDataExportResponseBody) *ExecuteDataExportResponse {
-	s.Body = v
-	return s
-}
-
 type ExecuteDataCorrectRequest struct {
 	Tid          *string                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -14670,6 +16744,129 @@ func (s *ListDataCorrectPreCheckDBResponse) SetHeaders(v map[string]*string) *Li
 }
 
 func (s *ListDataCorrectPreCheckDBResponse) SetBody(v *ListDataCorrectPreCheckDBResponseBody) *ListDataCorrectPreCheckDBResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLogicDatabaseRequest struct {
+	Alias       *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+	Tid         *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateLogicDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogicDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogicDatabaseRequest) SetAlias(v string) *CreateLogicDatabaseRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseRequest) SetDatabaseIds(v []*int64) *CreateLogicDatabaseRequest {
+	s.DatabaseIds = v
+	return s
+}
+
+func (s *CreateLogicDatabaseRequest) SetTid(v int64) *CreateLogicDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateLogicDatabaseShrinkRequest struct {
+	Alias             *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DatabaseIdsShrink *string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty"`
+	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateLogicDatabaseShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogicDatabaseShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogicDatabaseShrinkRequest) SetAlias(v string) *CreateLogicDatabaseShrinkRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseShrinkRequest) SetDatabaseIdsShrink(v string) *CreateLogicDatabaseShrinkRequest {
+	s.DatabaseIdsShrink = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseShrinkRequest) SetTid(v int64) *CreateLogicDatabaseShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateLogicDatabaseResponseBody struct {
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	LogicDbId    *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+}
+
+func (s CreateLogicDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogicDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogicDatabaseResponseBody) SetRequestId(v string) *CreateLogicDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseResponseBody) SetSuccess(v bool) *CreateLogicDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseResponseBody) SetErrorMessage(v string) *CreateLogicDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseResponseBody) SetErrorCode(v string) *CreateLogicDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateLogicDatabaseResponseBody) SetLogicDbId(v int64) *CreateLogicDatabaseResponseBody {
+	s.LogicDbId = &v
+	return s
+}
+
+type CreateLogicDatabaseResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLogicDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLogicDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLogicDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLogicDatabaseResponse) SetHeaders(v map[string]*string) *CreateLogicDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLogicDatabaseResponse) SetBody(v *CreateLogicDatabaseResponseBody) *CreateLogicDatabaseResponse {
 	s.Body = v
 	return s
 }
@@ -14931,653 +17128,13 @@ func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesRespo
 	return s
 }
 
-type ListWorkFlowNodesRequest struct {
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s ListWorkFlowNodesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesRequest) SetTid(v int64) *ListWorkFlowNodesRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesRequest) SetSearchName(v string) *ListWorkFlowNodesRequest {
-	s.SearchName = &v
-	return s
-}
-
-type ListWorkFlowNodesResponseBody struct {
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode     *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	WorkflowNodes *ListWorkFlowNodesResponseBodyWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
-	Success       *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListWorkFlowNodesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponseBody) SetRequestId(v string) *ListWorkFlowNodesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBody) SetErrorCode(v string) *ListWorkFlowNodesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBody) SetErrorMessage(v string) *ListWorkFlowNodesResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBody) SetWorkflowNodes(v *ListWorkFlowNodesResponseBodyWorkflowNodes) *ListWorkFlowNodesResponseBody {
-	s.WorkflowNodes = v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBody) SetSuccess(v bool) *ListWorkFlowNodesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListWorkFlowNodesResponseBodyWorkflowNodes struct {
-	WorkflowNode []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode `json:"WorkflowNode,omitempty" xml:"WorkflowNode,omitempty" type:"Repeated"`
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodes) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) SetWorkflowNode(v []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) *ListWorkFlowNodesResponseBodyWorkflowNodes {
-	s.WorkflowNode = v
-	return s
-}
-
-type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode struct {
-	Comment            *string                                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateUserNickName *string                                                           `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
-	NodeType           *string                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	NodeName           *string                                                           `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	AuditUsers         *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
-	CreateUserId       *int64                                                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	NodeId             *int64                                                            `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetComment(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.Comment = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetCreateUserNickName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.CreateUserNickName = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeType(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.NodeType = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.NodeName = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetAuditUsers(v *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.AuditUsers = v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetCreateUserId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.CreateUserId = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) SetNodeId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode {
-	s.NodeId = &v
-	return s
-}
-
-type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers struct {
-	AuditUser []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser `json:"AuditUser,omitempty" xml:"AuditUser,omitempty" type:"Repeated"`
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) SetAuditUser(v []*ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers {
-	s.AuditUser = v
-	return s
-}
-
-type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser struct {
-	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetRealName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
-	s.RealName = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetUserId(v int64) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
-	s.UserId = &v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) SetNickName(v string) *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser {
-	s.NickName = &v
-	return s
-}
-
-type ListWorkFlowNodesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListWorkFlowNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListWorkFlowNodesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWorkFlowNodesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListWorkFlowNodesResponse) SetHeaders(v map[string]*string) *ListWorkFlowNodesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListWorkFlowNodesResponse) SetBody(v *ListWorkFlowNodesResponseBody) *ListWorkFlowNodesResponse {
-	s.Body = v
-	return s
-}
-
-type ListProxiesRequest struct {
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s ListProxiesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProxiesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListProxiesRequest) SetTid(v int64) *ListProxiesRequest {
-	s.Tid = &v
-	return s
-}
-
-type ListProxiesResponseBody struct {
-	// Id of the request
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode    *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ProxyList    []*ListProxiesResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
-}
-
-func (s ListProxiesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProxiesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListProxiesResponseBody) SetRequestId(v string) *ListProxiesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListProxiesResponseBody) SetSuccess(v bool) *ListProxiesResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListProxiesResponseBody) SetErrorMessage(v string) *ListProxiesResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListProxiesResponseBody) SetErrorCode(v string) *ListProxiesResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListProxiesResponseBody) SetProxyList(v []*ListProxiesResponseBodyProxyList) *ListProxiesResponseBody {
-	s.ProxyList = v
-	return s
-}
-
-type ListProxiesResponseBodyProxyList struct {
-	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	CreatorId     *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName   *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PrivateEnable *bool   `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
-	PrivateHost   *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
-	PublicEnable  *bool   `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
-	PublicHost    *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
-	MysqlPort     *int32  `json:"MysqlPort,omitempty" xml:"MysqlPort,omitempty"`
-	HttpsPort     *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-}
-
-func (s ListProxiesResponseBodyProxyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProxiesResponseBodyProxyList) GoString() string {
-	return s.String()
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetProxyId(v int64) *ListProxiesResponseBodyProxyList {
-	s.ProxyId = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetCreatorId(v int64) *ListProxiesResponseBodyProxyList {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetCreatorName(v string) *ListProxiesResponseBodyProxyList {
-	s.CreatorName = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetInstanceId(v int64) *ListProxiesResponseBodyProxyList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetPrivateEnable(v bool) *ListProxiesResponseBodyProxyList {
-	s.PrivateEnable = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetPrivateHost(v string) *ListProxiesResponseBodyProxyList {
-	s.PrivateHost = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetPublicEnable(v bool) *ListProxiesResponseBodyProxyList {
-	s.PublicEnable = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetPublicHost(v string) *ListProxiesResponseBodyProxyList {
-	s.PublicHost = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetMysqlPort(v int32) *ListProxiesResponseBodyProxyList {
-	s.MysqlPort = &v
-	return s
-}
-
-func (s *ListProxiesResponseBodyProxyList) SetHttpsPort(v int32) *ListProxiesResponseBodyProxyList {
-	s.HttpsPort = &v
-	return s
-}
-
-type ListProxiesResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProxiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListProxiesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListProxiesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListProxiesResponse) SetHeaders(v map[string]*string) *ListProxiesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListProxiesResponse) SetBody(v *ListProxiesResponseBody) *ListProxiesResponse {
-	s.Body = v
-	return s
-}
-
-type GetStructSyncOrderDetailRequest struct {
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailRequest) SetOrderId(v int64) *GetStructSyncOrderDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailRequest) SetTid(v int64) *GetStructSyncOrderDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBody struct {
-	// Id of the request
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	StructSyncOrderDetail *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail `json:"StructSyncOrderDetail,omitempty" xml:"StructSyncOrderDetail,omitempty" type:"Struct"`
-}
-
-func (s GetStructSyncOrderDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBody) SetRequestId(v string) *GetStructSyncOrderDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBody) SetSuccess(v bool) *GetStructSyncOrderDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBody) SetErrorMessage(v string) *GetStructSyncOrderDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBody) SetErrorCode(v string) *GetStructSyncOrderDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBody) SetStructSyncOrderDetail(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) *GetStructSyncOrderDetailResponseBody {
-	s.StructSyncOrderDetail = v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail struct {
-	SourceDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo `json:"SourceDatabaseInfo,omitempty" xml:"SourceDatabaseInfo,omitempty" type:"Struct"`
-	TargetDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo `json:"TargetDatabaseInfo,omitempty" xml:"TargetDatabaseInfo,omitempty" type:"Struct"`
-	SourceType         *string                                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo  `json:"SourceVersionInfo,omitempty" xml:"SourceVersionInfo,omitempty" type:"Struct"`
-	TargetType         *string                                                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TargetVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo  `json:"TargetVersionInfo,omitempty" xml:"TargetVersionInfo,omitempty" type:"Struct"`
-	TableInfoList      []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList    `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
-	IgnoreError        *bool                                                                        `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceDatabaseInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.SourceDatabaseInfo = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetDatabaseInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.TargetDatabaseInfo = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.SourceType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetSourceVersionInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.SourceVersionInfo = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.TargetType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetVersionInfo(v *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.TargetVersionInfo = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTableInfoList(v []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.TableInfoList = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetIgnoreError(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail {
-	s.IgnoreError = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetDbId(v int64) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetSearchName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
-	s.SearchName = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetDbType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetEnvType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo) SetLogic(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo {
-	s.Logic = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetDbId(v int64) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetSearchName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
-	s.SearchName = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetDbType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetEnvType(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo) SetLogic(v bool) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo {
-	s.Logic = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo struct {
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo) SetVersionId(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo {
-	s.VersionId = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo struct {
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo) SetVersionId(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo {
-	s.VersionId = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList struct {
-	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
-	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) SetSourceTableName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList {
-	s.SourceTableName = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList) SetTargetTableName(v string) *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList {
-	s.TargetTableName = &v
-	return s
-}
-
-type GetStructSyncOrderDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetStructSyncOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetStructSyncOrderDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncOrderDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncOrderDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncOrderDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailResponse) SetBody(v *GetStructSyncOrderDetailResponseBody) *GetStructSyncOrderDetailResponse {
-	s.Body = v
-	return s
-}
-
 type ListSensitiveColumnsDetailRequest struct {
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
 func (s ListSensitiveColumnsDetailRequest) String() string {
@@ -15605,6 +17162,16 @@ func (s *ListSensitiveColumnsDetailRequest) SetTableName(v string) *ListSensitiv
 
 func (s *ListSensitiveColumnsDetailRequest) SetColumnName(v string) *ListSensitiveColumnsDetailRequest {
 	s.ColumnName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnsDetailRequest) SetDbId(v int64) *ListSensitiveColumnsDetailRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnsDetailRequest) SetLogic(v bool) *ListSensitiveColumnsDetailRequest {
+	s.Logic = &v
 	return s
 }
 
@@ -15756,788 +17323,6 @@ func (s *ListSensitiveColumnsDetailResponse) SetHeaders(v map[string]*string) *L
 }
 
 func (s *ListSensitiveColumnsDetailResponse) SetBody(v *ListSensitiveColumnsDetailResponseBody) *ListSensitiveColumnsDetailResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateUserRequest struct {
-	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid             *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	UserNick        *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
-	RoleNames       *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	MaxExecuteCount *int64  `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
-	MaxResultCount  *int64  `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
-}
-
-func (s UpdateUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserRequest) SetTid(v int64) *UpdateUserRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetUid(v int64) *UpdateUserRequest {
-	s.Uid = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetUserNick(v string) *UpdateUserRequest {
-	s.UserNick = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetRoleNames(v string) *UpdateUserRequest {
-	s.RoleNames = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetMobile(v string) *UpdateUserRequest {
-	s.Mobile = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetMaxExecuteCount(v int64) *UpdateUserRequest {
-	s.MaxExecuteCount = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetMaxResultCount(v int64) *UpdateUserRequest {
-	s.MaxResultCount = &v
-	return s
-}
-
-type UpdateUserResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateUserResponseBody) SetErrorCode(v string) *UpdateUserResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdateUserResponseBody) SetErrorMessage(v string) *UpdateUserResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdateUserResponseBody) SetSuccess(v bool) *UpdateUserResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserResponse {
-	s.Body = v
-	return s
-}
-
-type GetPhysicalDatabaseRequest struct {
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetPhysicalDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseRequest) SetDbId(v int64) *GetPhysicalDatabaseRequest {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseRequest) SetTid(v int64) *GetPhysicalDatabaseRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetPhysicalDatabaseResponseBody struct {
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Database     *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
-	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPhysicalDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseResponseBody) SetRequestId(v string) *GetPhysicalDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBody) SetDatabase(v *GetPhysicalDatabaseResponseBodyDatabase) *GetPhysicalDatabaseResponseBody {
-	s.Database = v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBody) SetErrorCode(v string) *GetPhysicalDatabaseResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBody) SetErrorMessage(v string) *GetPhysicalDatabaseResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabaseResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPhysicalDatabaseResponseBodyDatabase struct {
-	DatabaseId    *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	Host          *string                                               `json:"Host,omitempty" xml:"Host,omitempty"`
-	CatalogName   *string                                               `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DbaName       *string                                               `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	State         *string                                               `json:"State,omitempty" xml:"State,omitempty"`
-	DbaId         *string                                               `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	SchemaName    *string                                               `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Port          *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
-	EnvType       *string                                               `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Sid           *string                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	Encoding      *string                                               `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	DbType        *string                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	SearchName    *string                                               `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabase) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.DatabaseId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetHost(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.Host = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetCatalogName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.CatalogName = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.DbaName = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetState(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.State = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbaId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.DbaId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSchemaName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetInstanceId(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetPort(v int32) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.Port = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEnvType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSid(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.Sid = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerIdList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.OwnerIdList = v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEncoding(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.Encoding = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetDbType(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetOwnerNameList(v *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.OwnerNameList = v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabase) SetSearchName(v string) *GetPhysicalDatabaseResponseBodyDatabase {
-	s.SearchName = &v
-	return s
-}
-
-type GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList struct {
-	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList) SetOwnerIds(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList {
-	s.OwnerIds = v
-	return s
-}
-
-type GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList struct {
-	OwnerNames []*string `json:"OwnerNames,omitempty" xml:"OwnerNames,omitempty" type:"Repeated"`
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList) SetOwnerNames(v []*string) *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList {
-	s.OwnerNames = v
-	return s
-}
-
-type GetPhysicalDatabaseResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPhysicalDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPhysicalDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhysicalDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhysicalDatabaseResponse) SetHeaders(v map[string]*string) *GetPhysicalDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPhysicalDatabaseResponse) SetBody(v *GetPhysicalDatabaseResponseBody) *GetPhysicalDatabaseResponse {
-	s.Body = v
-	return s
-}
-
-type GetStructSyncExecSqlDetailRequest struct {
-	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetStructSyncExecSqlDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncExecSqlDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncExecSqlDetailRequest) SetOrderId(v int64) *GetStructSyncExecSqlDetailRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailRequest) SetPageNumber(v int64) *GetStructSyncExecSqlDetailRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailRequest) SetPageSize(v int64) *GetStructSyncExecSqlDetailRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailRequest) SetTid(v int64) *GetStructSyncExecSqlDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetStructSyncExecSqlDetailResponseBody struct {
-	// Id of the request
-	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                 *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	ErrorMessage            *string                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorCode               *string                                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	StructSyncExecSqlDetail *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail `json:"StructSyncExecSqlDetail,omitempty" xml:"StructSyncExecSqlDetail,omitempty" type:"Struct"`
-}
-
-func (s GetStructSyncExecSqlDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncExecSqlDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBody) SetRequestId(v string) *GetStructSyncExecSqlDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBody) SetSuccess(v bool) *GetStructSyncExecSqlDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBody) SetErrorMessage(v string) *GetStructSyncExecSqlDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBody) SetErrorCode(v string) *GetStructSyncExecSqlDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBody) SetStructSyncExecSqlDetail(v *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) *GetStructSyncExecSqlDetailResponseBody {
-	s.StructSyncExecSqlDetail = v
-	return s
-}
-
-type GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail struct {
-	TotalSqlCount *int64  `json:"TotalSqlCount,omitempty" xml:"TotalSqlCount,omitempty"`
-	ExecSql       *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
-}
-
-func (s GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) SetTotalSqlCount(v int64) *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail {
-	s.TotalSqlCount = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) SetExecSql(v string) *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail {
-	s.ExecSql = &v
-	return s
-}
-
-type GetStructSyncExecSqlDetailResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetStructSyncExecSqlDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetStructSyncExecSqlDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStructSyncExecSqlDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetStructSyncExecSqlDetailResponse) SetHeaders(v map[string]*string) *GetStructSyncExecSqlDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailResponse) SetBody(v *GetStructSyncExecSqlDetailResponseBody) *GetStructSyncExecSqlDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteInstanceRequest struct {
-	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Sid  *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-}
-
-func (s DeleteInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceRequest) SetTid(v int64) *DeleteInstanceRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetHost(v string) *DeleteInstanceRequest {
-	s.Host = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetPort(v int32) *DeleteInstanceRequest {
-	s.Port = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetSid(v string) *DeleteInstanceRequest {
-	s.Sid = &v
-	return s
-}
-
-type DeleteInstanceResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteInstanceResponseBody) SetErrorCode(v string) *DeleteInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DeleteInstanceResponseBody) SetErrorMessage(v string) *DeleteInstanceResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type GetTableDBTopologyRequest struct {
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-}
-
-func (s GetTableDBTopologyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyRequest) SetTid(v int64) *GetTableDBTopologyRequest {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetTableDBTopologyRequest) SetTableGuid(v string) *GetTableDBTopologyRequest {
-	s.TableGuid = &v
-	return s
-}
-
-type GetTableDBTopologyResponseBody struct {
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DBTopology   *GetTableDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
-	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetTableDBTopologyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponseBody) SetRequestId(v string) *GetTableDBTopologyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBody) SetDBTopology(v *GetTableDBTopologyResponseBodyDBTopology) *GetTableDBTopologyResponseBody {
-	s.DBTopology = v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBody) SetErrorCode(v string) *GetTableDBTopologyResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBody) SetErrorMessage(v string) *GetTableDBTopologyResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBody) SetSuccess(v bool) *GetTableDBTopologyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetTableDBTopologyResponseBodyDBTopology struct {
-	TableName      *string                                                   `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	DataSourceList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceList `json:"DataSourceList,omitempty" xml:"DataSourceList,omitempty" type:"Repeated"`
-	TableGuid      *string                                                   `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopology) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopology) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableName(v string) *GetTableDBTopologyResponseBodyDBTopology {
-	s.TableName = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopology) SetDataSourceList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceList) *GetTableDBTopologyResponseBodyDBTopology {
-	s.DataSourceList = v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableGuid(v string) *GetTableDBTopologyResponseBodyDBTopology {
-	s.TableGuid = &v
-	return s
-}
-
-type GetTableDBTopologyResponseBodyDBTopologyDataSourceList struct {
-	Sid          *string                                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	Host         *string                                                               `json:"Host,omitempty" xml:"Host,omitempty"`
-	DbType       *string                                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DatabaseList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
-	Port         *int32                                                                `json:"Port,omitempty" xml:"Port,omitempty"`
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetSid(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
-	s.Sid = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetHost(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
-	s.Host = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetDbType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetDatabaseList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
-	s.DatabaseList = v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetPort(v int32) *GetTableDBTopologyResponseBodyDBTopologyDataSourceList {
-	s.Port = &v
-	return s
-}
-
-type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList struct {
-	DbId      *string                                                                        `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbName    *string                                                                        `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbType    *string                                                                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	TableList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
-	EnvType   *string                                                                        `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbId(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
-	s.DbId = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbName(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
-	s.DbName = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetDbType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
-	s.DbType = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetTableList(v []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
-	s.TableList = v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) SetEnvType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList {
-	s.EnvType = &v
-	return s
-}
-
-type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList struct {
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TableId   *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableName(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
-	s.TableName = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableType(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
-	s.TableType = &v
-	return s
-}
-
-func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList) SetTableId(v string) *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList {
-	s.TableId = &v
-	return s
-}
-
-type GetTableDBTopologyResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTableDBTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTableDBTopologyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableDBTopologyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableDBTopologyResponse) SetHeaders(v map[string]*string) *GetTableDBTopologyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) *GetTableDBTopologyResponse {
 	s.Body = v
 	return s
 }
@@ -16785,34 +17570,6 @@ func (client *Client) GetMetaTableDetailInfo(request *GetMetaTableDetailInfoRequ
 	return _result, _err
 }
 
-func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQLFileRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectSQLFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDataCorrectSQLFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDataCorrectSQLFile"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDataCorrectSQLFile(request *GetDataCorrectSQLFileRequest) (_result *GetDataCorrectSQLFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDataCorrectSQLFileResponse{}
-	_body, _err := client.GetDataCorrectSQLFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLockCorrectOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFreeLockCorrectOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16844,6 +17601,1030 @@ func (client *Client) CreateFreeLockCorrectOrder(request *CreateFreeLockCorrectO
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFreeLockCorrectOrderResponse{}
 	_body, _err := client.CreateFreeLockCorrectOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListUserPermissionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListUserPermissions"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserPermissions(request *ListUserPermissionsRequest) (_result *ListUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserPermissionsResponse{}
+	_body, _err := client.ListUserPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *util.RuntimeOptions) (_result *GetProxyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetProxyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetProxy"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProxy(request *GetProxyRequest) (_result *GetProxyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetProxyResponse{}
+	_body, _err := client.GetProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLogicDatabaseWithOptions(request *DeleteLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *DeleteLogicDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteLogicDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteLogicDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLogicDatabase(request *DeleteLogicDatabaseRequest) (_result *DeleteLogicDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLogicDatabaseResponse{}
+	_body, _err := client.DeleteLogicDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDDLPublishRecordsWithOptions(request *ListDDLPublishRecordsRequest, runtime *util.RuntimeOptions) (_result *ListDDLPublishRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDDLPublishRecordsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDDLPublishRecords"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDDLPublishRecords(request *ListDDLPublishRecordsRequest) (_result *ListDDLPublishRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDDLPublishRecordsResponse{}
+	_body, _err := client.ListDDLPublishRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncJobDetailWithOptions(request *GetStructSyncJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetStructSyncJobDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncJobDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncJobDetail(request *GetStructSyncJobDetailRequest) (_result *GetStructSyncJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStructSyncJobDetailResponse{}
+	_body, _err := client.GetStructSyncJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchDatabaseWithOptions(request *SearchDatabaseRequest, runtime *util.RuntimeOptions) (_result *SearchDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SearchDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SearchDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *SearchDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchDatabaseResponse{}
+	_body, _err := client.SearchDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncDatabaseMetaWithOptions(request *SyncDatabaseMetaRequest, runtime *util.RuntimeOptions) (_result *SyncDatabaseMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SyncDatabaseMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SyncDatabaseMeta"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncDatabaseMeta(request *SyncDatabaseMetaRequest) (_result *SyncDatabaseMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncDatabaseMetaResponse{}
+	_body, _err := client.SyncDatabaseMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetMetaTableColumnResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMetaTableColumn"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_result *GetMetaTableColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMetaTableColumnResponse{}
+	_body, _err := client.GetMetaTableColumnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeColumnSecLevelWithOptions(request *ChangeColumnSecLevelRequest, runtime *util.RuntimeOptions) (_result *ChangeColumnSecLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ChangeColumnSecLevelResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ChangeColumnSecLevel"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeColumnSecLevel(request *ChangeColumnSecLevelRequest) (_result *ChangeColumnSecLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeColumnSecLevelResponse{}
+	_body, _err := client.ChangeColumnSecLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteScriptWithOptions(request *ExecuteScriptRequest, runtime *util.RuntimeOptions) (_result *ExecuteScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExecuteScriptResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExecuteScript"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteScript(request *ExecuteScriptRequest) (_result *ExecuteScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteScriptResponse{}
+	_body, _err := client.ExecuteScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDBTaskSQLJobDetailWithOptions(request *ListDBTaskSQLJobDetailRequest, runtime *util.RuntimeOptions) (_result *ListDBTaskSQLJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDBTaskSQLJobDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDBTaskSQLJobDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDBTaskSQLJobDetail(request *ListDBTaskSQLJobDetailRequest) (_result *ListDBTaskSQLJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDBTaskSQLJobDetailResponse{}
+	_body, _err := client.ListDBTaskSQLJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserActiveTenantWithOptions(request *GetUserActiveTenantRequest, runtime *util.RuntimeOptions) (_result *GetUserActiveTenantResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetUserActiveTenantResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetUserActiveTenant"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserActiveTenant(request *GetUserActiveTenantRequest) (_result *GetUserActiveTenantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserActiveTenantResponse{}
+	_body, _err := client.GetUserActiveTenantWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterUserWithOptions(request *RegisterUserRequest, runtime *util.RuntimeOptions) (_result *RegisterUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RegisterUserResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterUser"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *RegisterUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterUserResponse{}
+	_body, _err := client.RegisterUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetPermApplyOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPermApplyOrderDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPermApplyOrderDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPermApplyOrderDetail(request *GetPermApplyOrderDetailRequest) (_result *GetPermApplyOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPermApplyOrderDetailResponse{}
+	_body, _err := client.GetPermApplyOrderDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLogicTablesWithOptions(request *ListLogicTablesRequest, runtime *util.RuntimeOptions) (_result *ListLogicTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListLogicTablesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListLogicTables"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLogicTables(request *ListLogicTablesRequest) (_result *ListLogicTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLogicTablesResponse{}
+	_body, _err := client.ListLogicTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExportDownloadURLRequest, runtime *util.RuntimeOptions) (_result *GetDataExportDownloadURLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDataExportDownloadURLResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataExportDownloadURL"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataExportDownloadURL(request *GetDataExportDownloadURLRequest) (_result *GetDataExportDownloadURLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataExportDownloadURLResponse{}
+	_body, _err := client.GetDataExportDownloadURLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtime *util.RuntimeOptions) (_result *SearchTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SearchTableResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SearchTable"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchTable(request *SearchTableRequest) (_result *SearchTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchTableResponse{}
+	_body, _err := client.SearchTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runtime *util.RuntimeOptions) (_result *ApproveOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ApproveOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ApproveOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *ApproveOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApproveOrderResponse{}
+	_body, _err := client.ApproveOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessRequest, runtime *util.RuntimeOptions) (_result *DeleteProxyAccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteProxyAccessResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteProxyAccess"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_result *DeleteProxyAccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProxyAccessResponse{}
+	_body, _err := client.DeleteProxyAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrectTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectTaskDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDataCorrectTaskDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataCorrectTaskDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectTaskDetail(request *GetDataCorrectTaskDetailRequest) (_result *GetDataCorrectTaskDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCorrectTaskDetailResponse{}
+	_body, _err := client.GetDataCorrectTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime *util.RuntimeOptions) (_result *CloseOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CloseOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CloseOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseOrderResponse{}
+	_body, _err := client.CloseOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaRequest, runtime *util.RuntimeOptions) (_result *SyncInstanceMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &SyncInstanceMetaResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("SyncInstanceMeta"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_result *SyncInstanceMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncInstanceMetaResponse{}
+	_body, _err := client.SyncInstanceMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLReviewOptimizeDetailRequest, runtime *util.RuntimeOptions) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetSQLReviewOptimizeDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetSQLReviewOptimizeDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDetailRequest) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSQLReviewOptimizeDetailResponse{}
+	_body, _err := client.GetSQLReviewOptimizeDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *util.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RegisterInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RegisterInstance"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterInstance(request *RegisterInstanceRequest) (_result *RegisterInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterInstanceResponse{}
+	_body, _err := client.RegisterInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncOrderRequest, runtime *util.RuntimeOptions) (_result *CreateStructSyncOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateStructSyncOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateStructSyncOrderResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateStructSyncOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateStructSyncOrder(request *CreateStructSyncOrderRequest) (_result *CreateStructSyncOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStructSyncOrderResponse{}
+	_body, _err := client.CreateStructSyncOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteDataExportWithOptions(tmpReq *ExecuteDataExportRequest, runtime *util.RuntimeOptions) (_result *ExecuteDataExportResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExecuteDataExportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ActionDetail)) {
+		request.ActionDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionDetail, tea.String("ActionDetail"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExecuteDataExportResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExecuteDataExport"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteDataExport(request *ExecuteDataExportRequest) (_result *ExecuteDataExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteDataExportResponse{}
+	_body, _err := client.ExecuteDataExportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkFlowNodesWithOptions(request *ListWorkFlowNodesRequest, runtime *util.RuntimeOptions) (_result *ListWorkFlowNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListWorkFlowNodesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListWorkFlowNodes"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkFlowNodes(request *ListWorkFlowNodesRequest) (_result *ListWorkFlowNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkFlowNodesResponse{}
+	_body, _err := client.ListWorkFlowNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProxiesWithOptions(request *ListProxiesRequest, runtime *util.RuntimeOptions) (_result *ListProxiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListProxiesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProxies"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProxies(request *ListProxiesRequest) (_result *ListProxiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProxiesResponse{}
+	_body, _err := client.ListProxiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncOrderDetailWithOptions(request *GetStructSyncOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetStructSyncOrderDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncOrderDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncOrderDetail(request *GetStructSyncOrderDetailRequest) (_result *GetStructSyncOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStructSyncOrderDetailResponse{}
+	_body, _err := client.GetStructSyncOrderDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateUserResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateUser"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserResponse{}
+	_body, _err := client.UpdateUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPhysicalDatabaseWithOptions(request *GetPhysicalDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetPhysicalDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetPhysicalDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetPhysicalDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPhysicalDatabase(request *GetPhysicalDatabaseRequest) (_result *GetPhysicalDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPhysicalDatabaseResponse{}
+	_body, _err := client.GetPhysicalDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncExecSqlDetailWithOptions(request *GetStructSyncExecSqlDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetStructSyncExecSqlDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncExecSqlDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStructSyncExecSqlDetail(request *GetStructSyncExecSqlDetailRequest) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStructSyncExecSqlDetailResponse{}
+	_body, _err := client.GetStructSyncExecSqlDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTableDBTopologyWithOptions(request *GetTableDBTopologyRequest, runtime *util.RuntimeOptions) (_result *GetTableDBTopologyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTableDBTopologyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTableDBTopology"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableDBTopology(request *GetTableDBTopologyRequest) (_result *GetTableDBTopologyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableDBTopologyResponse{}
+	_body, _err := client.GetTableDBTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQLFileRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectSQLFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetDataCorrectSQLFileResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetDataCorrectSQLFile"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataCorrectSQLFile(request *GetDataCorrectSQLFileRequest) (_result *GetDataCorrectSQLFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataCorrectSQLFileResponse{}
+	_body, _err := client.GetDataCorrectSQLFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16941,34 +18722,6 @@ func (client *Client) CreateProxyAccess(request *CreateProxyAccessRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListUserPermissionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListUserPermissionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUserPermissions"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUserPermissions(request *ListUserPermissionsRequest) (_result *ListUserPermissionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUserPermissionsResponse{}
-	_body, _err := client.ListUserPermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListWorkFlowTemplatesWithOptions(request *ListWorkFlowTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListWorkFlowTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16990,34 +18743,6 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkFlowTemplatesResponse{}
 	_body, _err := client.ListWorkFlowTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *util.RuntimeOptions) (_result *GetProxyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetProxyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetProxy"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetProxy(request *GetProxyRequest) (_result *GetProxyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetProxyResponse{}
-	_body, _err := client.GetProxyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17109,62 +18834,6 @@ func (client *Client) GetUserUploadFileJob(request *GetUserUploadFileJobRequest)
 	return _result, _err
 }
 
-func (client *Client) ListDDLPublishRecordsWithOptions(request *ListDDLPublishRecordsRequest, runtime *util.RuntimeOptions) (_result *ListDDLPublishRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDDLPublishRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDDLPublishRecords"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDDLPublishRecords(request *ListDDLPublishRecordsRequest) (_result *ListDDLPublishRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDDLPublishRecordsResponse{}
-	_body, _err := client.ListDDLPublishRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncJobDetailWithOptions(request *GetStructSyncJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncJobDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetStructSyncJobDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncJobDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncJobDetail(request *GetStructSyncJobDetailRequest) (_result *GetStructSyncJobDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetStructSyncJobDetailResponse{}
-	_body, _err := client.GetStructSyncJobDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateProxyWithOptions(request *CreateProxyRequest, runtime *util.RuntimeOptions) (_result *CreateProxyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17227,34 +18896,6 @@ func (client *Client) CreateUploadOSSFileJob(request *CreateUploadOSSFileJobRequ
 	return _result, _err
 }
 
-func (client *Client) SearchDatabaseWithOptions(request *SearchDatabaseRequest, runtime *util.RuntimeOptions) (_result *SearchDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SearchDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *SearchDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SearchDatabaseResponse{}
-	_body, _err := client.SearchDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetDBTopologyWithOptions(request *GetDBTopologyRequest, runtime *util.RuntimeOptions) (_result *GetDBTopologyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17304,34 +18945,6 @@ func (client *Client) GetSQLReviewCheckResultStatus(request *GetSQLReviewCheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSQLReviewCheckResultStatusResponse{}
 	_body, _err := client.GetSQLReviewCheckResultStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SyncDatabaseMetaWithOptions(request *SyncDatabaseMetaRequest, runtime *util.RuntimeOptions) (_result *SyncDatabaseMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SyncDatabaseMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SyncDatabaseMeta"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SyncDatabaseMeta(request *SyncDatabaseMetaRequest) (_result *SyncDatabaseMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SyncDatabaseMetaResponse{}
-	_body, _err := client.SyncDatabaseMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17479,34 +19092,6 @@ func (client *Client) RevokeUserPermission(request *RevokeUserPermissionRequest)
 	return _result, _err
 }
 
-func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableColumnResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetMetaTableColumnResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMetaTableColumn"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_result *GetMetaTableColumnResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMetaTableColumnResponse{}
-	_body, _err := client.GetMetaTableColumnWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime *util.RuntimeOptions) (_result *EnableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17535,6 +19120,40 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 	return _result, _err
 }
 
+func (client *Client) EditLogicDatabaseWithOptions(tmpReq *EditLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *EditLogicDatabaseResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &EditLogicDatabaseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DatabaseIds)) {
+		request.DatabaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatabaseIds, tea.String("DatabaseIds"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EditLogicDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EditLogicDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EditLogicDatabase(request *EditLogicDatabaseRequest) (_result *EditLogicDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EditLogicDatabaseResponse{}
+	_body, _err := client.EditLogicDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17556,62 +19175,6 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceResponse{}
 	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ExecuteScriptWithOptions(request *ExecuteScriptRequest, runtime *util.RuntimeOptions) (_result *ExecuteScriptResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ExecuteScriptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteScript"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExecuteScript(request *ExecuteScriptRequest) (_result *ExecuteScriptResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExecuteScriptResponse{}
-	_body, _err := client.ExecuteScriptWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDBTaskSQLJobDetailWithOptions(request *ListDBTaskSQLJobDetailRequest, runtime *util.RuntimeOptions) (_result *ListDBTaskSQLJobDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListDBTaskSQLJobDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDBTaskSQLJobDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDBTaskSQLJobDetail(request *ListDBTaskSQLJobDetailRequest) (_result *ListDBTaskSQLJobDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDBTaskSQLJobDetailResponse{}
-	_body, _err := client.ListDBTaskSQLJobDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17709,62 +19272,6 @@ func (client *Client) ListSQLReviewOriginSQL(request *ListSQLReviewOriginSQLRequ
 	return _result, _err
 }
 
-func (client *Client) GetUserActiveTenantWithOptions(request *GetUserActiveTenantRequest, runtime *util.RuntimeOptions) (_result *GetUserActiveTenantResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetUserActiveTenantResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserActiveTenant"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserActiveTenant(request *GetUserActiveTenantRequest) (_result *GetUserActiveTenantResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserActiveTenantResponse{}
-	_body, _err := client.GetUserActiveTenantWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RegisterUserWithOptions(request *RegisterUserRequest, runtime *util.RuntimeOptions) (_result *RegisterUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RegisterUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterUser"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *RegisterUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RegisterUserResponse{}
-	_body, _err := client.RegisterUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17786,34 +19293,6 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceResponse{}
 	_body, _err := client.GetInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetPermApplyOrderDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetPermApplyOrderDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPermApplyOrderDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPermApplyOrderDetail(request *GetPermApplyOrderDetailRequest) (_result *GetPermApplyOrderDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPermApplyOrderDetailResponse{}
-	_body, _err := client.GetPermApplyOrderDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17849,34 +19328,6 @@ func (client *Client) ListIndexes(request *ListIndexesRequest) (_result *ListInd
 	return _result, _err
 }
 
-func (client *Client) ListLogicTablesWithOptions(request *ListLogicTablesRequest, runtime *util.RuntimeOptions) (_result *ListLogicTablesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListLogicTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListLogicTables"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLogicTables(request *ListLogicTablesRequest) (_result *ListLogicTablesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLogicTablesResponse{}
-	_body, _err := client.ListLogicTablesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetTableTopologyWithOptions(request *GetTableTopologyRequest, runtime *util.RuntimeOptions) (_result *GetTableTopologyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17898,34 +19349,6 @@ func (client *Client) GetTableTopology(request *GetTableTopologyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableTopologyResponse{}
 	_body, _err := client.GetTableTopologyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExportDownloadURLRequest, runtime *util.RuntimeOptions) (_result *GetDataExportDownloadURLResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDataExportDownloadURLResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDataExportDownloadURL"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDataExportDownloadURL(request *GetDataExportDownloadURLRequest) (_result *GetDataExportDownloadURLResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDataExportDownloadURLResponse{}
-	_body, _err := client.GetDataExportDownloadURLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18027,34 +19450,6 @@ func (client *Client) CreatePublishGroupTask(request *CreatePublishGroupTaskRequ
 	return _result, _err
 }
 
-func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDatabaseResponse{}
-	_body, _err := client.GetDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) InspectProxyAccessSecretWithOptions(request *InspectProxyAccessSecretRequest, runtime *util.RuntimeOptions) (_result *InspectProxyAccessSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18111,6 +19506,34 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 	return _result, _err
 }
 
+func (client *Client) ListInstanceUserPermissionsWithOptions(request *ListInstanceUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListInstanceUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListInstanceUserPermissionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListInstanceUserPermissions"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceUserPermissions(request *ListInstanceUserPermissionsRequest) (_result *ListInstanceUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceUserPermissionsResponse{}
+	_body, _err := client.ListInstanceUserPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOpLogWithOptions(request *GetOpLogRequest, runtime *util.RuntimeOptions) (_result *GetOpLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18132,34 +19555,6 @@ func (client *Client) GetOpLog(request *GetOpLogRequest) (_result *GetOpLogRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpLogResponse{}
 	_body, _err := client.GetOpLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtime *util.RuntimeOptions) (_result *SearchTableResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SearchTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchTable"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SearchTable(request *SearchTableRequest) (_result *SearchTableResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SearchTableResponse{}
-	_body, _err := client.SearchTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18272,90 +19667,6 @@ func (client *Client) GetStructSyncJobAnalyzeResult(request *GetStructSyncJobAna
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStructSyncJobAnalyzeResultResponse{}
 	_body, _err := client.GetStructSyncJobAnalyzeResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runtime *util.RuntimeOptions) (_result *ApproveOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ApproveOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ApproveOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *ApproveOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ApproveOrderResponse{}
-	_body, _err := client.ApproveOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessRequest, runtime *util.RuntimeOptions) (_result *DeleteProxyAccessResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteProxyAccessResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteProxyAccess"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_result *DeleteProxyAccessResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteProxyAccessResponse{}
-	_body, _err := client.DeleteProxyAccessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrectTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetDataCorrectTaskDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetDataCorrectTaskDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDataCorrectTaskDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDataCorrectTaskDetail(request *GetDataCorrectTaskDetailRequest) (_result *GetDataCorrectTaskDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDataCorrectTaskDetailResponse{}
-	_body, _err := client.GetDataCorrectTaskDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18485,62 +19796,6 @@ func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderReques
 	return _result, _err
 }
 
-func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime *util.RuntimeOptions) (_result *CloseOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CloseOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CloseOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CloseOrderResponse{}
-	_body, _err := client.CloseOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaRequest, runtime *util.RuntimeOptions) (_result *SyncInstanceMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SyncInstanceMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SyncInstanceMeta"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_result *SyncInstanceMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SyncInstanceMetaResponse{}
-	_body, _err := client.SyncInstanceMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListOrdersWithOptions(request *ListOrdersRequest, runtime *util.RuntimeOptions) (_result *ListOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18628,34 +19883,6 @@ func (client *Client) GetOrderBaseInfo(request *GetOrderBaseInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderBaseInfoResponse{}
 	_body, _err := client.GetOrderBaseInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLReviewOptimizeDetailRequest, runtime *util.RuntimeOptions) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetSQLReviewOptimizeDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSQLReviewOptimizeDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDetailRequest) (_result *GetSQLReviewOptimizeDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSQLReviewOptimizeDetailResponse{}
-	_body, _err := client.GetSQLReviewOptimizeDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18847,106 +20074,6 @@ func (client *Client) ListDataCorrectPreCheckSQL(request *ListDataCorrectPreChec
 	return _result, _err
 }
 
-func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *util.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RegisterInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterInstance"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RegisterInstance(request *RegisterInstanceRequest) (_result *RegisterInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RegisterInstanceResponse{}
-	_body, _err := client.RegisterInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncOrderRequest, runtime *util.RuntimeOptions) (_result *CreateStructSyncOrderResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateStructSyncOrderShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
-		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateStructSyncOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStructSyncOrder"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateStructSyncOrder(request *CreateStructSyncOrderRequest) (_result *CreateStructSyncOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateStructSyncOrderResponse{}
-	_body, _err := client.CreateStructSyncOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ExecuteDataExportWithOptions(tmpReq *ExecuteDataExportRequest, runtime *util.RuntimeOptions) (_result *ExecuteDataExportResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ExecuteDataExportShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ActionDetail)) {
-		request.ActionDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionDetail, tea.String("ActionDetail"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ExecuteDataExportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteDataExport"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExecuteDataExport(request *ExecuteDataExportRequest) (_result *ExecuteDataExportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExecuteDataExportResponse{}
-	_body, _err := client.ExecuteDataExportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ExecuteDataCorrectWithOptions(tmpReq *ExecuteDataCorrectRequest, runtime *util.RuntimeOptions) (_result *ExecuteDataCorrectResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19009,6 +20136,40 @@ func (client *Client) ListDataCorrectPreCheckDB(request *ListDataCorrectPreCheck
 	return _result, _err
 }
 
+func (client *Client) CreateLogicDatabaseWithOptions(tmpReq *CreateLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *CreateLogicDatabaseResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLogicDatabaseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DatabaseIds)) {
+		request.DatabaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatabaseIds, tea.String("DatabaseIds"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateLogicDatabaseResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateLogicDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLogicDatabase(request *CreateLogicDatabaseRequest) (_result *CreateLogicDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLogicDatabaseResponse{}
+	_body, _err := client.CreateLogicDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19037,90 +20198,6 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 	return _result, _err
 }
 
-func (client *Client) ListWorkFlowNodesWithOptions(request *ListWorkFlowNodesRequest, runtime *util.RuntimeOptions) (_result *ListWorkFlowNodesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListWorkFlowNodesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListWorkFlowNodes"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListWorkFlowNodes(request *ListWorkFlowNodesRequest) (_result *ListWorkFlowNodesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListWorkFlowNodesResponse{}
-	_body, _err := client.ListWorkFlowNodesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListProxiesWithOptions(request *ListProxiesRequest, runtime *util.RuntimeOptions) (_result *ListProxiesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListProxiesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListProxies"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListProxies(request *ListProxiesRequest) (_result *ListProxiesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListProxiesResponse{}
-	_body, _err := client.ListProxiesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncOrderDetailWithOptions(request *GetStructSyncOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncOrderDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetStructSyncOrderDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncOrderDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncOrderDetail(request *GetStructSyncOrderDetailRequest) (_result *GetStructSyncOrderDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetStructSyncOrderDetailResponse{}
-	_body, _err := client.GetStructSyncOrderDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListSensitiveColumnsDetailWithOptions(request *ListSensitiveColumnsDetailRequest, runtime *util.RuntimeOptions) (_result *ListSensitiveColumnsDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19142,146 +20219,6 @@ func (client *Client) ListSensitiveColumnsDetail(request *ListSensitiveColumnsDe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSensitiveColumnsDetailResponse{}
 	_body, _err := client.ListSensitiveColumnsDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateUser"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateUserResponse{}
-	_body, _err := client.UpdateUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetPhysicalDatabaseWithOptions(request *GetPhysicalDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetPhysicalDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetPhysicalDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPhysicalDatabase"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPhysicalDatabase(request *GetPhysicalDatabaseRequest) (_result *GetPhysicalDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPhysicalDatabaseResponse{}
-	_body, _err := client.GetPhysicalDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncExecSqlDetailWithOptions(request *GetStructSyncExecSqlDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetStructSyncExecSqlDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStructSyncExecSqlDetail"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetStructSyncExecSqlDetail(request *GetStructSyncExecSqlDetailRequest) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetStructSyncExecSqlDetailResponse{}
-	_body, _err := client.GetStructSyncExecSqlDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTableDBTopologyWithOptions(request *GetTableDBTopologyRequest, runtime *util.RuntimeOptions) (_result *GetTableDBTopologyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetTableDBTopologyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTableDBTopology"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTableDBTopology(request *GetTableDBTopologyRequest) (_result *GetTableDBTopologyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTableDBTopologyResponse{}
-	_body, _err := client.GetTableDBTopologyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
