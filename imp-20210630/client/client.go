@@ -2291,6 +2291,213 @@ func (s *DeleteLiveResponse) SetBody(v *DeleteLiveResponseBody) *DeleteLiveRespo
 	return s
 }
 
+type ListCommentsRequest struct {
+	// 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间的唯一标识，在调用CreateRoom时返回。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 操作人用户ID，表示谁执行了查询弹幕消息列表的操作。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 查询弹幕消息列表的分页页数。应该从1开始，每次分页拉取时递增。
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// 查询弹幕消息列表的分页大小。最小不得小于1，最大不得超过100。如果超过100，会被截断为前100条。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 查询弹幕消息列表的排序方式。取值仅限0和1，其中0表示按照弹幕消息创建时间递增的顺序拉取，1表示按照弹幕消息创建时间递减的时间拉取。
+	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
+}
+
+func (s ListCommentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommentsRequest) SetAppId(v string) *ListCommentsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetRoomId(v string) *ListCommentsRequest {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetUserId(v string) *ListCommentsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetPageNum(v int32) *ListCommentsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetPageSize(v int32) *ListCommentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetSortType(v int32) *ListCommentsRequest {
+	s.SortType = &v
+	return s
+}
+
+type ListCommentsResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 调用查询弹幕消息列表的返回结果。
+	Result *ListCommentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListCommentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommentsResponseBody) SetRequestId(v string) *ListCommentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCommentsResponseBody) SetResult(v *ListCommentsResponseBodyResult) *ListCommentsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListCommentsResponseBodyResult struct {
+	// 弹幕消息列表。
+	CommentVOList []*ListCommentsResponseBodyResultCommentVOList `json:"CommentVOList,omitempty" xml:"CommentVOList,omitempty" type:"Repeated"`
+	// 是否还有下一页数据。true表示还有，false表示没有。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 弹幕消息的总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 分页查询弹幕消息列表的总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+}
+
+func (s ListCommentsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommentsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommentsResponseBodyResult) SetCommentVOList(v []*ListCommentsResponseBodyResultCommentVOList) *ListCommentsResponseBodyResult {
+	s.CommentVOList = v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResult) SetHasMore(v bool) *ListCommentsResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResult) SetTotalCount(v int32) *ListCommentsResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResult) SetPageTotal(v int32) *ListCommentsResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+type ListCommentsResponseBodyResultCommentVOList struct {
+	// 应用ID。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 弹幕消息的唯一ID标识。
+	CommentId *string `json:"CommentId,omitempty" xml:"CommentId,omitempty"`
+	// 弹幕消息的发送者ID标识。
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 弹幕消息发送者的昵称。
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	// 弹幕消息的创建时间，Unix时间戳，单位：毫秒。
+	CreateAt *int64 `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
+	// 弹幕消息的内容。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 扩展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+}
+
+func (s ListCommentsResponseBodyResultCommentVOList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommentsResponseBodyResultCommentVOList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetAppId(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetRoomId(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetCommentId(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.CommentId = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetSenderId(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.SenderId = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetSenderNick(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.SenderNick = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetCreateAt(v int64) *ListCommentsResponseBodyResultCommentVOList {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetContent(v string) *ListCommentsResponseBodyResultCommentVOList {
+	s.Content = &v
+	return s
+}
+
+func (s *ListCommentsResponseBodyResultCommentVOList) SetExtension(v map[string]*string) *ListCommentsResponseBodyResultCommentVOList {
+	s.Extension = v
+	return s
+}
+
+type ListCommentsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListCommentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCommentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommentsResponse) SetHeaders(v map[string]*string) *ListCommentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCommentsResponse) SetBody(v *ListCommentsResponseBody) *ListCommentsResponse {
+	s.Body = v
+	return s
+}
+
 type GetLiveDomainStatusRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -8819,6 +9026,34 @@ func (client *Client) DeleteLive(request *DeleteLiveRequest) (_result *DeleteLiv
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLiveResponse{}
 	_body, _err := client.DeleteLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCommentsWithOptions(request *ListCommentsRequest, runtime *util.RuntimeOptions) (_result *ListCommentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListCommentsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListComments"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComments(request *ListCommentsRequest) (_result *ListCommentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCommentsResponse{}
+	_body, _err := client.ListCommentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
