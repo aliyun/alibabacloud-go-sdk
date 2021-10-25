@@ -1547,6 +1547,7 @@ type CreateDbfsRequest struct {
 	KMSKeyId             *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	Encryption           *bool   `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
 	UsedScene            *string `json:"UsedScene,omitempty" xml:"UsedScene,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s CreateDbfsRequest) String() string {
@@ -1624,6 +1625,11 @@ func (s *CreateDbfsRequest) SetEncryption(v bool) *CreateDbfsRequest {
 
 func (s *CreateDbfsRequest) SetUsedScene(v string) *CreateDbfsRequest {
 	s.UsedScene = &v
+	return s
+}
+
+func (s *CreateDbfsRequest) SetInstanceType(v string) *CreateDbfsRequest {
+	s.InstanceType = &v
 	return s
 }
 
