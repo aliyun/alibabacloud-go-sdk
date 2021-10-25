@@ -18,6 +18,139 @@ import (
 	"io"
 )
 
+type ImageCategoryRequest struct {
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicUrl       *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+}
+
+func (s ImageCategoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageCategoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImageCategoryRequest) SetInstanceName(v string) *ImageCategoryRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ImageCategoryRequest) SetPicUrl(v string) *ImageCategoryRequest {
+	s.PicUrl = &v
+	return s
+}
+
+type ImageCategoryResponseBody struct {
+	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *ImageCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageCategoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageCategoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageCategoryResponseBody) SetCode(v int32) *ImageCategoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImageCategoryResponseBody) SetMessage(v string) *ImageCategoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImageCategoryResponseBody) SetData(v *ImageCategoryResponseBodyData) *ImageCategoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImageCategoryResponseBody) SetSuccess(v bool) *ImageCategoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ImageCategoryResponseBody) SetRequestId(v string) *ImageCategoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImageCategoryResponseBodyData struct {
+	CateResult []*ImageCategoryResponseBodyDataCateResult `json:"CateResult,omitempty" xml:"CateResult,omitempty" type:"Repeated"`
+}
+
+func (s ImageCategoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageCategoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageCategoryResponseBodyData) SetCateResult(v []*ImageCategoryResponseBodyDataCateResult) *ImageCategoryResponseBodyData {
+	s.CateResult = v
+	return s
+}
+
+type ImageCategoryResponseBodyDataCateResult struct {
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id    *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ImageCategoryResponseBodyDataCateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageCategoryResponseBodyDataCateResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageCategoryResponseBodyDataCateResult) SetScore(v float32) *ImageCategoryResponseBodyDataCateResult {
+	s.Score = &v
+	return s
+}
+
+func (s *ImageCategoryResponseBodyDataCateResult) SetName(v string) *ImageCategoryResponseBodyDataCateResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ImageCategoryResponseBodyDataCateResult) SetId(v int64) *ImageCategoryResponseBodyDataCateResult {
+	s.Id = &v
+	return s
+}
+
+type ImageCategoryResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImageCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImageCategoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageCategoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageCategoryResponse) SetHeaders(v map[string]*string) *ImageCategoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImageCategoryResponse) SetBody(v *ImageCategoryResponseBody) *ImageCategoryResponse {
+	s.Body = v
+	return s
+}
+
 type GeneralRecognitionRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	PicContent   *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
@@ -170,6 +303,168 @@ func (s *GeneralRecognitionResponse) SetHeaders(v map[string]*string) *GeneralRe
 }
 
 func (s *GeneralRecognitionResponse) SetBody(v *GeneralRecognitionResponseBody) *GeneralRecognitionResponse {
+	s.Body = v
+	return s
+}
+
+type ImagePropertyRequest struct {
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PicUrl       *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+}
+
+func (s ImagePropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyRequest) SetInstanceName(v string) *ImagePropertyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ImagePropertyRequest) SetPicUrl(v string) *ImagePropertyRequest {
+	s.PicUrl = &v
+	return s
+}
+
+type ImagePropertyResponseBody struct {
+	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data      *ImagePropertyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImagePropertyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyResponseBody) SetCode(v int32) *ImagePropertyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBody) SetMessage(v string) *ImagePropertyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBody) SetData(v *ImagePropertyResponseBodyData) *ImagePropertyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImagePropertyResponseBody) SetSuccess(v bool) *ImagePropertyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBody) SetRequestId(v string) *ImagePropertyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImagePropertyResponseBodyData struct {
+	PropertyResults []*ImagePropertyResponseBodyDataPropertyResults `json:"PropertyResults,omitempty" xml:"PropertyResults,omitempty" type:"Repeated"`
+}
+
+func (s ImagePropertyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyResponseBodyData) SetPropertyResults(v []*ImagePropertyResponseBodyDataPropertyResults) *ImagePropertyResponseBodyData {
+	s.PropertyResults = v
+	return s
+}
+
+type ImagePropertyResponseBodyDataPropertyResults struct {
+	PropertyName *string                                               `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	PropertyId   *string                                               `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
+	Values       []*ImagePropertyResponseBodyDataPropertyResultsValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ImagePropertyResponseBodyDataPropertyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyResponseBodyDataPropertyResults) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResults) SetPropertyName(v string) *ImagePropertyResponseBodyDataPropertyResults {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResults) SetPropertyId(v string) *ImagePropertyResponseBodyDataPropertyResults {
+	s.PropertyId = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResults) SetValues(v []*ImagePropertyResponseBodyDataPropertyResultsValues) *ImagePropertyResponseBodyDataPropertyResults {
+	s.Values = v
+	return s
+}
+
+type ImagePropertyResponseBodyDataPropertyResultsValues struct {
+	ValueId     *string  `json:"ValueId,omitempty" xml:"ValueId,omitempty"`
+	Probability *float32 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	ValueName   *string  `json:"ValueName,omitempty" xml:"ValueName,omitempty"`
+}
+
+func (s ImagePropertyResponseBodyDataPropertyResultsValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyResponseBodyDataPropertyResultsValues) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResultsValues) SetValueId(v string) *ImagePropertyResponseBodyDataPropertyResultsValues {
+	s.ValueId = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResultsValues) SetProbability(v float32) *ImagePropertyResponseBodyDataPropertyResultsValues {
+	s.Probability = &v
+	return s
+}
+
+func (s *ImagePropertyResponseBodyDataPropertyResultsValues) SetValueName(v string) *ImagePropertyResponseBodyDataPropertyResultsValues {
+	s.ValueName = &v
+	return s
+}
+
+type ImagePropertyResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImagePropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImagePropertyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImagePropertyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImagePropertyResponse) SetHeaders(v map[string]*string) *ImagePropertyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImagePropertyResponse) SetBody(v *ImagePropertyResponseBody) *ImagePropertyResponse {
 	s.Body = v
 	return s
 }
@@ -622,6 +917,34 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ImageCategoryWithOptions(request *ImageCategoryRequest, runtime *util.RuntimeOptions) (_result *ImageCategoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ImageCategoryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ImageCategory"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImageCategory(request *ImageCategoryRequest) (_result *ImageCategoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImageCategoryResponse{}
+	_body, _err := client.ImageCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GeneralRecognitionWithOptions(request *GeneralRecognitionRequest, runtime *util.RuntimeOptions) (_result *GeneralRecognitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -753,6 +1076,34 @@ func (client *Client) GeneralRecognitionAdvance(request *GeneralRecognitionAdvan
 	}
 
 	_result = generalRecognitionResp
+	return _result, _err
+}
+
+func (client *Client) ImagePropertyWithOptions(request *ImagePropertyRequest, runtime *util.RuntimeOptions) (_result *ImagePropertyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ImagePropertyResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ImageProperty"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImageProperty(request *ImagePropertyRequest) (_result *ImagePropertyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImagePropertyResponse{}
+	_body, _err := client.ImagePropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
