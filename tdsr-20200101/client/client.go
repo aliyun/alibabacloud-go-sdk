@@ -2053,6 +2053,86 @@ func (s *SaveHotspotTagResponse) SetBody(v *SaveHotspotTagResponseBody) *SaveHot
 	return s
 }
 
+type RecoveryOriginImageRequest struct {
+	// 子场景ID
+	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+}
+
+func (s RecoveryOriginImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoveryOriginImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecoveryOriginImageRequest) SetSubSceneId(v string) *RecoveryOriginImageRequest {
+	s.SubSceneId = &v
+	return s
+}
+
+type RecoveryOriginImageResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s RecoveryOriginImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoveryOriginImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecoveryOriginImageResponseBody) SetRequestId(v string) *RecoveryOriginImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecoveryOriginImageResponseBody) SetCode(v int64) *RecoveryOriginImageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecoveryOriginImageResponseBody) SetSuccess(v bool) *RecoveryOriginImageResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RecoveryOriginImageResponseBody) SetMessage(v string) *RecoveryOriginImageResponseBody {
+	s.Message = &v
+	return s
+}
+
+type RecoveryOriginImageResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecoveryOriginImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecoveryOriginImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoveryOriginImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecoveryOriginImageResponse) SetHeaders(v map[string]*string) *RecoveryOriginImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecoveryOriginImageResponse) SetBody(v *RecoveryOriginImageResponseBody) *RecoveryOriginImageResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
@@ -2593,6 +2673,86 @@ func (s *GetConnDataResponse) SetBody(v *GetConnDataResponseBody) *GetConnDataRe
 	return s
 }
 
+type RollbackSubSceneRequest struct {
+	// 子场景ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s RollbackSubSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackSubSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackSubSceneRequest) SetId(v string) *RollbackSubSceneRequest {
+	s.Id = &v
+	return s
+}
+
+type RollbackSubSceneResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s RollbackSubSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackSubSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackSubSceneResponseBody) SetRequestId(v string) *RollbackSubSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RollbackSubSceneResponseBody) SetCode(v int64) *RollbackSubSceneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RollbackSubSceneResponseBody) SetSuccess(v bool) *RollbackSubSceneResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RollbackSubSceneResponseBody) SetMessage(v string) *RollbackSubSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+type RollbackSubSceneResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RollbackSubSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RollbackSubSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackSubSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackSubSceneResponse) SetHeaders(v map[string]*string) *RollbackSubSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RollbackSubSceneResponse) SetBody(v *RollbackSubSceneResponseBody) *RollbackSubSceneResponse {
+	s.Body = v
+	return s
+}
+
 type TempPreviewStatusRequest struct {
 	// 任务ID
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -3048,6 +3208,8 @@ type ListSubSceneResponseBodyList struct {
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// 原图地址
 	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
+	// 2k基准图路径
+	BaseImageUrl *string `json:"BaseImageUrl,omitempty" xml:"BaseImageUrl,omitempty"`
 }
 
 func (s ListSubSceneResponseBodyList) String() string {
@@ -3115,6 +3277,11 @@ func (s *ListSubSceneResponseBodyList) SetDeleted(v bool) *ListSubSceneResponseB
 
 func (s *ListSubSceneResponseBodyList) SetOriginUrl(v string) *ListSubSceneResponseBodyList {
 	s.OriginUrl = &v
+	return s
+}
+
+func (s *ListSubSceneResponseBodyList) SetBaseImageUrl(v string) *ListSubSceneResponseBodyList {
+	s.BaseImageUrl = &v
 	return s
 }
 
@@ -4903,6 +5070,100 @@ func (s *GetHotspotSceneDataResponse) SetBody(v *GetHotspotSceneDataResponseBody
 	return s
 }
 
+type AddMosaicsRequest struct {
+	// 子场景ID
+	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	// 马赛克位置数据
+	MarkPosition *string `json:"MarkPosition,omitempty" xml:"MarkPosition,omitempty"`
+}
+
+func (s AddMosaicsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMosaicsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMosaicsRequest) SetSubSceneId(v string) *AddMosaicsRequest {
+	s.SubSceneId = &v
+	return s
+}
+
+func (s *AddMosaicsRequest) SetMarkPosition(v string) *AddMosaicsRequest {
+	s.MarkPosition = &v
+	return s
+}
+
+type AddMosaicsResponseBody struct {
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s AddMosaicsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMosaicsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMosaicsResponseBody) SetRequestId(v string) *AddMosaicsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMosaicsResponseBody) SetCode(v int64) *AddMosaicsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddMosaicsResponseBody) SetSuccess(v bool) *AddMosaicsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddMosaicsResponseBody) SetMessage(v string) *AddMosaicsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddMosaicsResponseBody) SetTaskId(v string) *AddMosaicsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type AddMosaicsResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddMosaicsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddMosaicsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMosaicsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMosaicsResponse) SetHeaders(v map[string]*string) *AddMosaicsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMosaicsResponse) SetBody(v *AddMosaicsResponseBody) *AddMosaicsResponse {
+	s.Body = v
+	return s
+}
+
 type ScenePublishRequest struct {
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
@@ -6408,6 +6669,34 @@ func (client *Client) SaveHotspotTag(request *SaveHotspotTagRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) RecoveryOriginImageWithOptions(request *RecoveryOriginImageRequest, runtime *util.RuntimeOptions) (_result *RecoveryOriginImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RecoveryOriginImageResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RecoveryOriginImage"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecoveryOriginImage(request *RecoveryOriginImageRequest) (_result *RecoveryOriginImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecoveryOriginImageResponse{}
+	_body, _err := client.RecoveryOriginImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6541,6 +6830,34 @@ func (client *Client) GetConnData(request *GetConnDataRequest) (_result *GetConn
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnDataResponse{}
 	_body, _err := client.GetConnDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RollbackSubSceneWithOptions(request *RollbackSubSceneRequest, runtime *util.RuntimeOptions) (_result *RollbackSubSceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &RollbackSubSceneResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("RollbackSubScene"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RollbackSubScene(request *RollbackSubSceneRequest) (_result *RollbackSubSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RollbackSubSceneResponse{}
+	_body, _err := client.RollbackSubSceneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7129,6 +7446,34 @@ func (client *Client) GetHotspotSceneData(request *GetHotspotSceneDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotspotSceneDataResponse{}
 	_body, _err := client.GetHotspotSceneDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime *util.RuntimeOptions) (_result *AddMosaicsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &AddMosaicsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("AddMosaics"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddMosaics(request *AddMosaicsRequest) (_result *AddMosaicsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddMosaicsResponse{}
+	_body, _err := client.AddMosaicsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
