@@ -12,10 +12,10 @@ import (
 )
 
 type AddRtcAccountRequest struct {
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s AddRtcAccountRequest) String() string {
@@ -24,6 +24,11 @@ func (s AddRtcAccountRequest) String() string {
 
 func (s AddRtcAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddRtcAccountRequest) SetDeviceId(v string) *AddRtcAccountRequest {
+	s.DeviceId = &v
+	return s
 }
 
 func (s *AddRtcAccountRequest) SetOwnerId(v int64) *AddRtcAccountRequest {
@@ -38,11 +43,6 @@ func (s *AddRtcAccountRequest) SetResourceOwnerAccount(v string) *AddRtcAccountR
 
 func (s *AddRtcAccountRequest) SetResourceOwnerId(v int64) *AddRtcAccountRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *AddRtcAccountRequest) SetDeviceId(v string) *AddRtcAccountRequest {
-	s.DeviceId = &v
 	return s
 }
 
@@ -105,14 +105,14 @@ func (s *AddRtcAccountResponse) SetBody(v *AddRtcAccountResponseBody) *AddRtcAcc
 }
 
 type AddVirtualNumberRelationRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	CorpNameList         *string `json:"CorpNameList,omitempty" xml:"CorpNameList,omitempty"`
 	NumberList           *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
-	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhoneNum             *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s AddVirtualNumberRelationRequest) String() string {
@@ -123,8 +123,28 @@ func (s AddVirtualNumberRelationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddVirtualNumberRelationRequest) SetCorpNameList(v string) *AddVirtualNumberRelationRequest {
+	s.CorpNameList = &v
+	return s
+}
+
+func (s *AddVirtualNumberRelationRequest) SetNumberList(v string) *AddVirtualNumberRelationRequest {
+	s.NumberList = &v
+	return s
+}
+
 func (s *AddVirtualNumberRelationRequest) SetOwnerId(v int64) *AddVirtualNumberRelationRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *AddVirtualNumberRelationRequest) SetPhoneNum(v string) *AddVirtualNumberRelationRequest {
+	s.PhoneNum = &v
+	return s
+}
+
+func (s *AddVirtualNumberRelationRequest) SetProdCode(v string) *AddVirtualNumberRelationRequest {
+	s.ProdCode = &v
 	return s
 }
 
@@ -138,35 +158,15 @@ func (s *AddVirtualNumberRelationRequest) SetResourceOwnerId(v int64) *AddVirtua
 	return s
 }
 
-func (s *AddVirtualNumberRelationRequest) SetProdCode(v string) *AddVirtualNumberRelationRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *AddVirtualNumberRelationRequest) SetCorpNameList(v string) *AddVirtualNumberRelationRequest {
-	s.CorpNameList = &v
-	return s
-}
-
-func (s *AddVirtualNumberRelationRequest) SetNumberList(v string) *AddVirtualNumberRelationRequest {
-	s.NumberList = &v
-	return s
-}
-
 func (s *AddVirtualNumberRelationRequest) SetRouteType(v int32) *AddVirtualNumberRelationRequest {
 	s.RouteType = &v
 	return s
 }
 
-func (s *AddVirtualNumberRelationRequest) SetPhoneNum(v string) *AddVirtualNumberRelationRequest {
-	s.PhoneNum = &v
-	return s
-}
-
 type AddVirtualNumberRelationResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -183,13 +183,13 @@ func (s *AddVirtualNumberRelationResponseBody) SetCode(v string) *AddVirtualNumb
 	return s
 }
 
-func (s *AddVirtualNumberRelationResponseBody) SetMessage(v string) *AddVirtualNumberRelationResponseBody {
-	s.Message = &v
+func (s *AddVirtualNumberRelationResponseBody) SetData(v string) *AddVirtualNumberRelationResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *AddVirtualNumberRelationResponseBody) SetData(v string) *AddVirtualNumberRelationResponseBody {
-	s.Data = &v
+func (s *AddVirtualNumberRelationResponseBody) SetMessage(v string) *AddVirtualNumberRelationResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -222,20 +222,20 @@ func (s *AddVirtualNumberRelationResponse) SetBody(v *AddVirtualNumberRelationRe
 }
 
 type BatchRobotSmartCallRequest struct {
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	DialogId             *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	DialogId             *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	ScheduleTime         *int64  `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
 	ScheduleCall         *bool   `json:"ScheduleCall,omitempty" xml:"ScheduleCall,omitempty"`
+	ScheduleTime         *int64  `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
 	TtsParamHead         *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
-	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 }
 
 func (s BatchRobotSmartCallRequest) String() string {
@@ -244,6 +244,36 @@ func (s BatchRobotSmartCallRequest) String() string {
 
 func (s BatchRobotSmartCallRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BatchRobotSmartCallRequest) SetCalledNumber(v string) *BatchRobotSmartCallRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *BatchRobotSmartCallRequest) SetCalledShowNumber(v string) *BatchRobotSmartCallRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *BatchRobotSmartCallRequest) SetCorpName(v string) *BatchRobotSmartCallRequest {
+	s.CorpName = &v
+	return s
+}
+
+func (s *BatchRobotSmartCallRequest) SetDialogId(v string) *BatchRobotSmartCallRequest {
+	s.DialogId = &v
+	return s
+}
+
+func (s *BatchRobotSmartCallRequest) SetEarlyMediaAsr(v bool) *BatchRobotSmartCallRequest {
+	s.EarlyMediaAsr = &v
+	return s
+}
+
+func (s *BatchRobotSmartCallRequest) SetIsSelfLine(v bool) *BatchRobotSmartCallRequest {
+	s.IsSelfLine = &v
+	return s
 }
 
 func (s *BatchRobotSmartCallRequest) SetOwnerId(v int64) *BatchRobotSmartCallRequest {
@@ -261,33 +291,8 @@ func (s *BatchRobotSmartCallRequest) SetResourceOwnerId(v int64) *BatchRobotSmar
 	return s
 }
 
-func (s *BatchRobotSmartCallRequest) SetCalledShowNumber(v string) *BatchRobotSmartCallRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetCorpName(v string) *BatchRobotSmartCallRequest {
-	s.CorpName = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetCalledNumber(v string) *BatchRobotSmartCallRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetDialogId(v string) *BatchRobotSmartCallRequest {
-	s.DialogId = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetEarlyMediaAsr(v bool) *BatchRobotSmartCallRequest {
-	s.EarlyMediaAsr = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetTaskName(v string) *BatchRobotSmartCallRequest {
-	s.TaskName = &v
+func (s *BatchRobotSmartCallRequest) SetScheduleCall(v bool) *BatchRobotSmartCallRequest {
+	s.ScheduleCall = &v
 	return s
 }
 
@@ -296,8 +301,8 @@ func (s *BatchRobotSmartCallRequest) SetScheduleTime(v int64) *BatchRobotSmartCa
 	return s
 }
 
-func (s *BatchRobotSmartCallRequest) SetScheduleCall(v bool) *BatchRobotSmartCallRequest {
-	s.ScheduleCall = &v
+func (s *BatchRobotSmartCallRequest) SetTaskName(v string) *BatchRobotSmartCallRequest {
+	s.TaskName = &v
 	return s
 }
 
@@ -308,11 +313,6 @@ func (s *BatchRobotSmartCallRequest) SetTtsParam(v string) *BatchRobotSmartCallR
 
 func (s *BatchRobotSmartCallRequest) SetTtsParamHead(v string) *BatchRobotSmartCallRequest {
 	s.TtsParamHead = &v
-	return s
-}
-
-func (s *BatchRobotSmartCallRequest) SetIsSelfLine(v bool) *BatchRobotSmartCallRequest {
-	s.IsSelfLine = &v
 	return s
 }
 
@@ -376,9 +376,9 @@ func (s *BatchRobotSmartCallResponse) SetBody(v *BatchRobotSmartCallResponseBody
 
 type BindNumberAndVoipIdRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 }
 
@@ -395,6 +395,11 @@ func (s *BindNumberAndVoipIdRequest) SetOwnerId(v int64) *BindNumberAndVoipIdReq
 	return s
 }
 
+func (s *BindNumberAndVoipIdRequest) SetPhoneNumber(v string) *BindNumberAndVoipIdRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *BindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *BindNumberAndVoipIdRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -402,11 +407,6 @@ func (s *BindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *BindNumb
 
 func (s *BindNumberAndVoipIdRequest) SetResourceOwnerId(v int64) *BindNumberAndVoipIdRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdRequest) SetPhoneNumber(v string) *BindNumberAndVoipIdRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -474,10 +474,10 @@ func (s *BindNumberAndVoipIdResponse) SetBody(v *BindNumberAndVoipIdResponseBody
 }
 
 type CancelCallRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s CancelCallRequest) String() string {
@@ -486,6 +486,11 @@ func (s CancelCallRequest) String() string {
 
 func (s CancelCallRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CancelCallRequest) SetCallId(v string) *CancelCallRequest {
+	s.CallId = &v
+	return s
 }
 
 func (s *CancelCallRequest) SetOwnerId(v int64) *CancelCallRequest {
@@ -503,16 +508,11 @@ func (s *CancelCallRequest) SetResourceOwnerId(v int64) *CancelCallRequest {
 	return s
 }
 
-func (s *CancelCallRequest) SetCallId(v string) *CancelCallRequest {
-	s.CallId = &v
-	return s
-}
-
 type CancelCallResponseBody struct {
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelCallResponseBody) String() string {
@@ -521,11 +521,6 @@ func (s CancelCallResponseBody) String() string {
 
 func (s CancelCallResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CancelCallResponseBody) SetStatus(v bool) *CancelCallResponseBody {
-	s.Status = &v
-	return s
 }
 
 func (s *CancelCallResponseBody) SetCode(v string) *CancelCallResponseBody {
@@ -540,6 +535,11 @@ func (s *CancelCallResponseBody) SetMessage(v string) *CancelCallResponseBody {
 
 func (s *CancelCallResponseBody) SetRequestId(v string) *CancelCallResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CancelCallResponseBody) SetStatus(v bool) *CancelCallResponseBody {
+	s.Status = &v
 	return s
 }
 
@@ -603,8 +603,8 @@ func (s *CancelOrderRobotTaskRequest) SetTaskId(v int64) *CancelOrderRobotTaskRe
 
 type CancelOrderRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -621,13 +621,13 @@ func (s *CancelOrderRobotTaskResponseBody) SetCode(v string) *CancelOrderRobotTa
 	return s
 }
 
-func (s *CancelOrderRobotTaskResponseBody) SetMessage(v string) *CancelOrderRobotTaskResponseBody {
-	s.Message = &v
+func (s *CancelOrderRobotTaskResponseBody) SetData(v string) *CancelOrderRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CancelOrderRobotTaskResponseBody) SetData(v string) *CancelOrderRobotTaskResponseBody {
-	s.Data = &v
+func (s *CancelOrderRobotTaskResponseBody) SetMessage(v string) *CancelOrderRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -696,8 +696,8 @@ func (s *CancelRobotTaskRequest) SetTaskId(v int64) *CancelRobotTaskRequest {
 
 type CancelRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -714,13 +714,13 @@ func (s *CancelRobotTaskResponseBody) SetCode(v string) *CancelRobotTaskResponse
 	return s
 }
 
-func (s *CancelRobotTaskResponseBody) SetMessage(v string) *CancelRobotTaskResponseBody {
-	s.Message = &v
+func (s *CancelRobotTaskResponseBody) SetData(v string) *CancelRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CancelRobotTaskResponseBody) SetData(v string) *CancelRobotTaskResponseBody {
-	s.Data = &v
+func (s *CancelRobotTaskResponseBody) SetMessage(v string) *CancelRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -753,18 +753,18 @@ func (s *CancelRobotTaskResponse) SetBody(v *CancelRobotTaskResponseBody) *Cance
 }
 
 type ClickToDialRequest struct {
+	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
+	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
-	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
-	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
 	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 }
 
 func (s ClickToDialRequest) String() string {
@@ -775,8 +775,48 @@ func (s ClickToDialRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ClickToDialRequest) SetAsrFlag(v bool) *ClickToDialRequest {
+	s.AsrFlag = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetAsrModelId(v string) *ClickToDialRequest {
+	s.AsrModelId = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetCalledNumber(v string) *ClickToDialRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetCalledShowNumber(v string) *ClickToDialRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetCallerNumber(v string) *ClickToDialRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetCallerShowNumber(v string) *ClickToDialRequest {
+	s.CallerShowNumber = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetOutId(v string) *ClickToDialRequest {
+	s.OutId = &v
+	return s
+}
+
 func (s *ClickToDialRequest) SetOwnerId(v int64) *ClickToDialRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ClickToDialRequest) SetRecordFlag(v bool) *ClickToDialRequest {
+	s.RecordFlag = &v
 	return s
 }
 
@@ -790,56 +830,16 @@ func (s *ClickToDialRequest) SetResourceOwnerId(v int64) *ClickToDialRequest {
 	return s
 }
 
-func (s *ClickToDialRequest) SetCallerShowNumber(v string) *ClickToDialRequest {
-	s.CallerShowNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCallerNumber(v string) *ClickToDialRequest {
-	s.CallerNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCalledShowNumber(v string) *ClickToDialRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCalledNumber(v string) *ClickToDialRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetRecordFlag(v bool) *ClickToDialRequest {
-	s.RecordFlag = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetAsrFlag(v bool) *ClickToDialRequest {
-	s.AsrFlag = &v
-	return s
-}
-
 func (s *ClickToDialRequest) SetSessionTimeout(v int32) *ClickToDialRequest {
 	s.SessionTimeout = &v
 	return s
 }
 
-func (s *ClickToDialRequest) SetAsrModelId(v string) *ClickToDialRequest {
-	s.AsrModelId = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetOutId(v string) *ClickToDialRequest {
-	s.OutId = &v
-	return s
-}
-
 type ClickToDialResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s ClickToDialResponseBody) String() string {
@@ -848,6 +848,11 @@ func (s ClickToDialResponseBody) String() string {
 
 func (s ClickToDialResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ClickToDialResponseBody) SetCallId(v string) *ClickToDialResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *ClickToDialResponseBody) SetCode(v string) *ClickToDialResponseBody {
@@ -862,11 +867,6 @@ func (s *ClickToDialResponseBody) SetMessage(v string) *ClickToDialResponseBody 
 
 func (s *ClickToDialResponseBody) SetRequestId(v string) *ClickToDialResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ClickToDialResponseBody) SetCallId(v string) *ClickToDialResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -895,9 +895,9 @@ func (s *ClickToDialResponse) SetBody(v *ClickToDialResponseBody) *ClickToDialRe
 
 type CloseSipAccountRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
 	SipAccountID         *string `json:"SipAccountID,omitempty" xml:"SipAccountID,omitempty"`
 }
 
@@ -914,6 +914,11 @@ func (s *CloseSipAccountRequest) SetOwnerId(v int64) *CloseSipAccountRequest {
 	return s
 }
 
+func (s *CloseSipAccountRequest) SetPartnerId(v int64) *CloseSipAccountRequest {
+	s.PartnerId = &v
+	return s
+}
+
 func (s *CloseSipAccountRequest) SetResourceOwnerAccount(v string) *CloseSipAccountRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -924,11 +929,6 @@ func (s *CloseSipAccountRequest) SetResourceOwnerId(v int64) *CloseSipAccountReq
 	return s
 }
 
-func (s *CloseSipAccountRequest) SetPartnerId(v int64) *CloseSipAccountRequest {
-	s.PartnerId = &v
-	return s
-}
-
 func (s *CloseSipAccountRequest) SetSipAccountID(v string) *CloseSipAccountRequest {
 	s.SipAccountID = &v
 	return s
@@ -936,8 +936,8 @@ func (s *CloseSipAccountRequest) SetSipAccountID(v string) *CloseSipAccountReque
 
 type CloseSipAccountResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -954,13 +954,13 @@ func (s *CloseSipAccountResponseBody) SetCode(v string) *CloseSipAccountResponse
 	return s
 }
 
-func (s *CloseSipAccountResponseBody) SetMessage(v string) *CloseSipAccountResponseBody {
-	s.Message = &v
+func (s *CloseSipAccountResponseBody) SetData(v bool) *CloseSipAccountResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CloseSipAccountResponseBody) SetData(v bool) *CloseSipAccountResponseBody {
-	s.Data = &v
+func (s *CloseSipAccountResponseBody) SetMessage(v string) *CloseSipAccountResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -993,20 +993,20 @@ func (s *CloseSipAccountResponse) SetBody(v *CloseSipAccountResponseBody) *Close
 }
 
 type CreateCallTaskRequest struct {
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	Data                 *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	DataType             *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Resource             *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ScheduleType         *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	StopTime             *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Resource             *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	DataType             *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Data                 *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
-	StopTime             *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	ScheduleType         *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 }
 
 func (s CreateCallTaskRequest) String() string {
@@ -1017,8 +1017,33 @@ func (s CreateCallTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCallTaskRequest) SetBizType(v string) *CreateCallTaskRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetData(v string) *CreateCallTaskRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetDataType(v string) *CreateCallTaskRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetFireTime(v string) *CreateCallTaskRequest {
+	s.FireTime = &v
+	return s
+}
+
 func (s *CreateCallTaskRequest) SetOwnerId(v int64) *CreateCallTaskRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetResource(v string) *CreateCallTaskRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -1032,13 +1057,23 @@ func (s *CreateCallTaskRequest) SetResourceOwnerId(v int64) *CreateCallTaskReque
 	return s
 }
 
-func (s *CreateCallTaskRequest) SetTaskName(v string) *CreateCallTaskRequest {
-	s.TaskName = &v
+func (s *CreateCallTaskRequest) SetResourceType(v string) *CreateCallTaskRequest {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *CreateCallTaskRequest) SetBizType(v string) *CreateCallTaskRequest {
-	s.BizType = &v
+func (s *CreateCallTaskRequest) SetScheduleType(v string) *CreateCallTaskRequest {
+	s.ScheduleType = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetStopTime(v string) *CreateCallTaskRequest {
+	s.StopTime = &v
+	return s
+}
+
+func (s *CreateCallTaskRequest) SetTaskName(v string) *CreateCallTaskRequest {
+	s.TaskName = &v
 	return s
 }
 
@@ -1049,41 +1084,6 @@ func (s *CreateCallTaskRequest) SetTemplateCode(v string) *CreateCallTaskRequest
 
 func (s *CreateCallTaskRequest) SetTemplateName(v string) *CreateCallTaskRequest {
 	s.TemplateName = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetResourceType(v string) *CreateCallTaskRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetResource(v string) *CreateCallTaskRequest {
-	s.Resource = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetDataType(v string) *CreateCallTaskRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetData(v string) *CreateCallTaskRequest {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetFireTime(v string) *CreateCallTaskRequest {
-	s.FireTime = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetStopTime(v string) *CreateCallTaskRequest {
-	s.StopTime = &v
-	return s
-}
-
-func (s *CreateCallTaskRequest) SetScheduleType(v string) *CreateCallTaskRequest {
-	s.ScheduleType = &v
 	return s
 }
 
@@ -1140,19 +1140,19 @@ func (s *CreateCallTaskResponse) SetBody(v *CreateCallTaskResponseBody) *CreateC
 }
 
 type CreateRobotTaskRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	DialogId             *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	Caller               *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	CorpName             *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	DialogId             *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
 	NumberStatusIdent    *bool   `json:"NumberStatusIdent,omitempty" xml:"NumberStatusIdent,omitempty"`
-	RetryType            *int32  `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallInterval       *int32  `json:"RecallInterval,omitempty" xml:"RecallInterval,omitempty"`
 	RecallStateCodes     *string `json:"RecallStateCodes,omitempty" xml:"RecallStateCodes,omitempty"`
 	RecallTimes          *int32  `json:"RecallTimes,omitempty" xml:"RecallTimes,omitempty"`
-	RecallInterval       *int32  `json:"RecallInterval,omitempty" xml:"RecallInterval,omitempty"`
-	IsSelfLine           *bool   `json:"IsSelfLine,omitempty" xml:"IsSelfLine,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RetryType            *int32  `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateRobotTaskRequest) String() string {
@@ -1163,28 +1163,8 @@ func (s CreateRobotTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRobotTaskRequest) SetOwnerId(v int64) *CreateRobotTaskRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateRobotTaskRequest) SetResourceOwnerAccount(v string) *CreateRobotTaskRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateRobotTaskRequest) SetResourceOwnerId(v int64) *CreateRobotTaskRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateRobotTaskRequest) SetTaskName(v string) *CreateRobotTaskRequest {
-	s.TaskName = &v
-	return s
-}
-
-func (s *CreateRobotTaskRequest) SetDialogId(v int64) *CreateRobotTaskRequest {
-	s.DialogId = &v
+func (s *CreateRobotTaskRequest) SetCaller(v string) *CreateRobotTaskRequest {
+	s.Caller = &v
 	return s
 }
 
@@ -1193,8 +1173,13 @@ func (s *CreateRobotTaskRequest) SetCorpName(v string) *CreateRobotTaskRequest {
 	return s
 }
 
-func (s *CreateRobotTaskRequest) SetCaller(v string) *CreateRobotTaskRequest {
-	s.Caller = &v
+func (s *CreateRobotTaskRequest) SetDialogId(v int64) *CreateRobotTaskRequest {
+	s.DialogId = &v
+	return s
+}
+
+func (s *CreateRobotTaskRequest) SetIsSelfLine(v bool) *CreateRobotTaskRequest {
+	s.IsSelfLine = &v
 	return s
 }
 
@@ -1203,8 +1188,13 @@ func (s *CreateRobotTaskRequest) SetNumberStatusIdent(v bool) *CreateRobotTaskRe
 	return s
 }
 
-func (s *CreateRobotTaskRequest) SetRetryType(v int32) *CreateRobotTaskRequest {
-	s.RetryType = &v
+func (s *CreateRobotTaskRequest) SetOwnerId(v int64) *CreateRobotTaskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRobotTaskRequest) SetRecallInterval(v int32) *CreateRobotTaskRequest {
+	s.RecallInterval = &v
 	return s
 }
 
@@ -1218,20 +1208,30 @@ func (s *CreateRobotTaskRequest) SetRecallTimes(v int32) *CreateRobotTaskRequest
 	return s
 }
 
-func (s *CreateRobotTaskRequest) SetRecallInterval(v int32) *CreateRobotTaskRequest {
-	s.RecallInterval = &v
+func (s *CreateRobotTaskRequest) SetResourceOwnerAccount(v string) *CreateRobotTaskRequest {
+	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *CreateRobotTaskRequest) SetIsSelfLine(v bool) *CreateRobotTaskRequest {
-	s.IsSelfLine = &v
+func (s *CreateRobotTaskRequest) SetResourceOwnerId(v int64) *CreateRobotTaskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateRobotTaskRequest) SetRetryType(v int32) *CreateRobotTaskRequest {
+	s.RetryType = &v
+	return s
+}
+
+func (s *CreateRobotTaskRequest) SetTaskName(v string) *CreateRobotTaskRequest {
+	s.TaskName = &v
 	return s
 }
 
 type CreateRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1248,13 +1248,13 @@ func (s *CreateRobotTaskResponseBody) SetCode(v string) *CreateRobotTaskResponse
 	return s
 }
 
-func (s *CreateRobotTaskResponseBody) SetMessage(v string) *CreateRobotTaskResponseBody {
-	s.Message = &v
+func (s *CreateRobotTaskResponseBody) SetData(v string) *CreateRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateRobotTaskResponseBody) SetData(v string) *CreateRobotTaskResponseBody {
-	s.Data = &v
+func (s *CreateRobotTaskResponseBody) SetMessage(v string) *CreateRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1287,11 +1287,11 @@ func (s *CreateRobotTaskResponse) SetBody(v *CreateRobotTaskResponseBody) *Creat
 }
 
 type CreateSipAccountRequest struct {
+	BusinessKey          *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	BusinessKey          *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
 }
 
 func (s CreateSipAccountRequest) String() string {
@@ -1302,8 +1302,18 @@ func (s CreateSipAccountRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSipAccountRequest) SetBusinessKey(v string) *CreateSipAccountRequest {
+	s.BusinessKey = &v
+	return s
+}
+
 func (s *CreateSipAccountRequest) SetOwnerId(v int64) *CreateSipAccountRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSipAccountRequest) SetPartnerId(v int64) *CreateSipAccountRequest {
+	s.PartnerId = &v
 	return s
 }
 
@@ -1317,21 +1327,11 @@ func (s *CreateSipAccountRequest) SetResourceOwnerId(v int64) *CreateSipAccountR
 	return s
 }
 
-func (s *CreateSipAccountRequest) SetPartnerId(v int64) *CreateSipAccountRequest {
-	s.PartnerId = &v
-	return s
-}
-
-func (s *CreateSipAccountRequest) SetBusinessKey(v string) *CreateSipAccountRequest {
-	s.BusinessKey = &v
-	return s
-}
-
 type CreateSipAccountResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateSipAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *CreateSipAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateSipAccountResponseBody) String() string {
@@ -1347,6 +1347,11 @@ func (s *CreateSipAccountResponseBody) SetCode(v string) *CreateSipAccountRespon
 	return s
 }
 
+func (s *CreateSipAccountResponseBody) SetData(v *CreateSipAccountResponseBodyData) *CreateSipAccountResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CreateSipAccountResponseBody) SetMessage(v string) *CreateSipAccountResponseBody {
 	s.Message = &v
 	return s
@@ -1354,11 +1359,6 @@ func (s *CreateSipAccountResponseBody) SetMessage(v string) *CreateSipAccountRes
 
 func (s *CreateSipAccountResponseBody) SetRequestId(v string) *CreateSipAccountResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateSipAccountResponseBody) SetData(v *CreateSipAccountResponseBodyData) *CreateSipAccountResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -1451,8 +1451,8 @@ func (s *DeleteRobotTaskRequest) SetTaskId(v int64) *DeleteRobotTaskRequest {
 
 type DeleteRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1469,13 +1469,13 @@ func (s *DeleteRobotTaskResponseBody) SetCode(v string) *DeleteRobotTaskResponse
 	return s
 }
 
-func (s *DeleteRobotTaskResponseBody) SetMessage(v string) *DeleteRobotTaskResponseBody {
-	s.Message = &v
+func (s *DeleteRobotTaskResponseBody) SetData(v string) *DeleteRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *DeleteRobotTaskResponseBody) SetData(v string) *DeleteRobotTaskResponseBody {
-	s.Data = &v
+func (s *DeleteRobotTaskResponseBody) SetMessage(v string) *DeleteRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1508,13 +1508,13 @@ func (s *DeleteRobotTaskResponse) SetBody(v *DeleteRobotTaskResponseBody) *Delet
 }
 
 type DescribeRecordDataRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Acid                 *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Acid                 *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
 	SecLevel             *int32  `json:"SecLevel,omitempty" xml:"SecLevel,omitempty"`
 }
 
@@ -1526,8 +1526,28 @@ func (s DescribeRecordDataRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRecordDataRequest) SetAccountId(v string) *DescribeRecordDataRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeRecordDataRequest) SetAccountType(v string) *DescribeRecordDataRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *DescribeRecordDataRequest) SetAcid(v string) *DescribeRecordDataRequest {
+	s.Acid = &v
+	return s
+}
+
 func (s *DescribeRecordDataRequest) SetOwnerId(v int64) *DescribeRecordDataRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRecordDataRequest) SetProdCode(v string) *DescribeRecordDataRequest {
+	s.ProdCode = &v
 	return s
 }
 
@@ -1541,38 +1561,18 @@ func (s *DescribeRecordDataRequest) SetResourceOwnerId(v int64) *DescribeRecordD
 	return s
 }
 
-func (s *DescribeRecordDataRequest) SetProdCode(v string) *DescribeRecordDataRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetAccountType(v string) *DescribeRecordDataRequest {
-	s.AccountType = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetAccountId(v string) *DescribeRecordDataRequest {
-	s.AccountId = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetAcid(v string) *DescribeRecordDataRequest {
-	s.Acid = &v
-	return s
-}
-
 func (s *DescribeRecordDataRequest) SetSecLevel(v int32) *DescribeRecordDataRequest {
 	s.SecLevel = &v
 	return s
 }
 
 type DescribeRecordDataResponseBody struct {
-	OssLink   *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	Acid      *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OssLink   *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRecordDataResponseBody) String() string {
@@ -1583,23 +1583,13 @@ func (s DescribeRecordDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRecordDataResponseBody) SetOssLink(v string) *DescribeRecordDataResponseBody {
-	s.OssLink = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetRequestId(v string) *DescribeRecordDataResponseBody {
-	s.RequestId = &v
+func (s *DescribeRecordDataResponseBody) SetAcid(v string) *DescribeRecordDataResponseBody {
+	s.Acid = &v
 	return s
 }
 
 func (s *DescribeRecordDataResponseBody) SetAgentId(v string) *DescribeRecordDataResponseBody {
 	s.AgentId = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetAcid(v string) *DescribeRecordDataResponseBody {
-	s.Acid = &v
 	return s
 }
 
@@ -1610,6 +1600,16 @@ func (s *DescribeRecordDataResponseBody) SetCode(v string) *DescribeRecordDataRe
 
 func (s *DescribeRecordDataResponseBody) SetMessage(v string) *DescribeRecordDataResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *DescribeRecordDataResponseBody) SetOssLink(v string) *DescribeRecordDataResponseBody {
+	s.OssLink = &v
+	return s
+}
+
+func (s *DescribeRecordDataResponseBody) SetRequestId(v string) *DescribeRecordDataResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1638,9 +1638,9 @@ func (s *DescribeRecordDataResponse) SetBody(v *DescribeRecordDataResponseBody) 
 
 type DoRtcNumberAuthRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
 func (s DoRtcNumberAuthRequest) String() string {
@@ -1656,6 +1656,11 @@ func (s *DoRtcNumberAuthRequest) SetOwnerId(v int64) *DoRtcNumberAuthRequest {
 	return s
 }
 
+func (s *DoRtcNumberAuthRequest) SetPhoneNumber(v string) *DoRtcNumberAuthRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *DoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *DoRtcNumberAuthRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -1663,11 +1668,6 @@ func (s *DoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *DoRtcNumberA
 
 func (s *DoRtcNumberAuthRequest) SetResourceOwnerId(v int64) *DoRtcNumberAuthRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthRequest) SetPhoneNumber(v string) *DoRtcNumberAuthRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -1730,20 +1730,20 @@ func (s *DoRtcNumberAuthResponse) SetBody(v *DoRtcNumberAuthResponseBody) *DoRtc
 }
 
 type DoubleCallSeatRequest struct {
+	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
+	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	CallType             *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
+	RecordPoint          *int32  `json:"RecordPoint,omitempty" xml:"RecordPoint,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
-	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
-	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
 	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	CallType             *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	RecordPoint          *int32  `json:"RecordPoint,omitempty" xml:"RecordPoint,omitempty"`
 	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
 }
 
@@ -1755,8 +1755,58 @@ func (s DoubleCallSeatRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DoubleCallSeatRequest) SetAsrFlag(v bool) *DoubleCallSeatRequest {
+	s.AsrFlag = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetAsrModelId(v string) *DoubleCallSeatRequest {
+	s.AsrModelId = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetCallType(v string) *DoubleCallSeatRequest {
+	s.CallType = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetCalledNumber(v string) *DoubleCallSeatRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetCalledShowNumber(v string) *DoubleCallSeatRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetCallerNumber(v string) *DoubleCallSeatRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetCallerShowNumber(v string) *DoubleCallSeatRequest {
+	s.CallerShowNumber = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetOutId(v string) *DoubleCallSeatRequest {
+	s.OutId = &v
+	return s
+}
+
 func (s *DoubleCallSeatRequest) SetOwnerId(v int64) *DoubleCallSeatRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetRecordFlag(v bool) *DoubleCallSeatRequest {
+	s.RecordFlag = &v
+	return s
+}
+
+func (s *DoubleCallSeatRequest) SetRecordPoint(v int32) *DoubleCallSeatRequest {
+	s.RecordPoint = &v
 	return s
 }
 
@@ -1770,58 +1820,8 @@ func (s *DoubleCallSeatRequest) SetResourceOwnerId(v int64) *DoubleCallSeatReque
 	return s
 }
 
-func (s *DoubleCallSeatRequest) SetCallerShowNumber(v string) *DoubleCallSeatRequest {
-	s.CallerShowNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCallerNumber(v string) *DoubleCallSeatRequest {
-	s.CallerNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCalledShowNumber(v string) *DoubleCallSeatRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCalledNumber(v string) *DoubleCallSeatRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetRecordFlag(v bool) *DoubleCallSeatRequest {
-	s.RecordFlag = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetAsrFlag(v bool) *DoubleCallSeatRequest {
-	s.AsrFlag = &v
-	return s
-}
-
 func (s *DoubleCallSeatRequest) SetSessionTimeout(v int32) *DoubleCallSeatRequest {
 	s.SessionTimeout = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetAsrModelId(v string) *DoubleCallSeatRequest {
-	s.AsrModelId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetOutId(v string) *DoubleCallSeatRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCallType(v string) *DoubleCallSeatRequest {
-	s.CallType = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetRecordPoint(v int32) *DoubleCallSeatRequest {
-	s.RecordPoint = &v
 	return s
 }
 
@@ -1831,10 +1831,10 @@ func (s *DoubleCallSeatRequest) SetVoiceCode(v string) *DoubleCallSeatRequest {
 }
 
 type DoubleCallSeatResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s DoubleCallSeatResponseBody) String() string {
@@ -1843,6 +1843,11 @@ func (s DoubleCallSeatResponseBody) String() string {
 
 func (s DoubleCallSeatResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoubleCallSeatResponseBody) SetCallId(v string) *DoubleCallSeatResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *DoubleCallSeatResponseBody) SetCode(v string) *DoubleCallSeatResponseBody {
@@ -1857,11 +1862,6 @@ func (s *DoubleCallSeatResponseBody) SetMessage(v string) *DoubleCallSeatRespons
 
 func (s *DoubleCallSeatResponseBody) SetRequestId(v string) *DoubleCallSeatResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoubleCallSeatResponseBody) SetCallId(v string) *DoubleCallSeatResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -1889,12 +1889,12 @@ func (s *DoubleCallSeatResponse) SetBody(v *DoubleCallSeatResponseBody) *DoubleC
 }
 
 type ExecuteCallTaskRequest struct {
+	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	FireTime             *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
+	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ExecuteCallTaskRequest) String() string {
@@ -1903,6 +1903,11 @@ func (s ExecuteCallTaskRequest) String() string {
 
 func (s ExecuteCallTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ExecuteCallTaskRequest) SetFireTime(v string) *ExecuteCallTaskRequest {
+	s.FireTime = &v
+	return s
 }
 
 func (s *ExecuteCallTaskRequest) SetOwnerId(v int64) *ExecuteCallTaskRequest {
@@ -1920,18 +1925,13 @@ func (s *ExecuteCallTaskRequest) SetResourceOwnerId(v int64) *ExecuteCallTaskReq
 	return s
 }
 
-func (s *ExecuteCallTaskRequest) SetTaskId(v int64) *ExecuteCallTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
 func (s *ExecuteCallTaskRequest) SetStatus(v string) *ExecuteCallTaskRequest {
 	s.Status = &v
 	return s
 }
 
-func (s *ExecuteCallTaskRequest) SetFireTime(v string) *ExecuteCallTaskRequest {
-	s.FireTime = &v
+func (s *ExecuteCallTaskRequest) SetTaskId(v int64) *ExecuteCallTaskRequest {
+	s.TaskId = &v
 	return s
 }
 
@@ -1987,11 +1987,127 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 	return s
 }
 
-type GetHotlineQualificationByOrderRequest struct {
+type GetCallInfoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RtcId                *string `json:"RtcId,omitempty" xml:"RtcId,omitempty"`
+}
+
+func (s GetCallInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallInfoRequest) SetOwnerId(v int64) *GetCallInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetCallInfoRequest) SetResourceOwnerAccount(v string) *GetCallInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetCallInfoRequest) SetResourceOwnerId(v int64) *GetCallInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetCallInfoRequest) SetRtcId(v string) *GetCallInfoRequest {
+	s.RtcId = &v
+	return s
+}
+
+type GetCallInfoResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetCallInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCallInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallInfoResponseBody) SetCode(v string) *GetCallInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCallInfoResponseBody) SetData(v *GetCallInfoResponseBodyData) *GetCallInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCallInfoResponseBody) SetMessage(v string) *GetCallInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCallInfoResponseBody) SetRequestId(v string) *GetCallInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCallInfoResponseBodyData struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCallInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallInfoResponseBodyData) SetChannelId(v string) *GetCallInfoResponseBodyData {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *GetCallInfoResponseBodyData) SetStatus(v string) *GetCallInfoResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCallInfoResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCallInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallInfoResponse) SetHeaders(v map[string]*string) *GetCallInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCallInfoResponse) SetBody(v *GetCallInfoResponseBody) *GetCallInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotlineQualificationByOrderRequest struct {
 	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetHotlineQualificationByOrderRequest) String() string {
@@ -2000,6 +2116,11 @@ func (s GetHotlineQualificationByOrderRequest) String() string {
 
 func (s GetHotlineQualificationByOrderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHotlineQualificationByOrderRequest) SetOrderId(v string) *GetHotlineQualificationByOrderRequest {
+	s.OrderId = &v
+	return s
 }
 
 func (s *GetHotlineQualificationByOrderRequest) SetOwnerId(v int64) *GetHotlineQualificationByOrderRequest {
@@ -2017,16 +2138,11 @@ func (s *GetHotlineQualificationByOrderRequest) SetResourceOwnerId(v int64) *Get
 	return s
 }
 
-func (s *GetHotlineQualificationByOrderRequest) SetOrderId(v string) *GetHotlineQualificationByOrderRequest {
-	s.OrderId = &v
-	return s
-}
-
 type GetHotlineQualificationByOrderResponseBody struct {
 	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *GetHotlineQualificationByOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetHotlineQualificationByOrderResponseBody) String() string {
@@ -2042,6 +2158,11 @@ func (s *GetHotlineQualificationByOrderResponseBody) SetCode(v string) *GetHotli
 	return s
 }
 
+func (s *GetHotlineQualificationByOrderResponseBody) SetData(v *GetHotlineQualificationByOrderResponseBodyData) *GetHotlineQualificationByOrderResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *GetHotlineQualificationByOrderResponseBody) SetMessage(v string) *GetHotlineQualificationByOrderResponseBody {
 	s.Message = &v
 	return s
@@ -2052,15 +2173,10 @@ func (s *GetHotlineQualificationByOrderResponseBody) SetRequestId(v string) *Get
 	return s
 }
 
-func (s *GetHotlineQualificationByOrderResponseBody) SetData(v *GetHotlineQualificationByOrderResponseBodyData) *GetHotlineQualificationByOrderResponseBody {
-	s.Data = v
-	return s
-}
-
 type GetHotlineQualificationByOrderResponseBodyData struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetHotlineQualificationByOrderResponseBodyData) String() string {
@@ -2071,8 +2187,8 @@ func (s GetHotlineQualificationByOrderResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetHotlineQualificationByOrderResponseBodyData) SetStatus(v string) *GetHotlineQualificationByOrderResponseBodyData {
-	s.Status = &v
+func (s *GetHotlineQualificationByOrderResponseBodyData) SetOrderId(v string) *GetHotlineQualificationByOrderResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -2081,8 +2197,8 @@ func (s *GetHotlineQualificationByOrderResponseBodyData) SetQualificationId(v st
 	return s
 }
 
-func (s *GetHotlineQualificationByOrderResponseBodyData) SetOrderId(v string) *GetHotlineQualificationByOrderResponseBodyData {
-	s.OrderId = &v
+func (s *GetHotlineQualificationByOrderResponseBodyData) SetStatus(v string) *GetHotlineQualificationByOrderResponseBodyData {
+	s.Status = &v
 	return s
 }
 
@@ -2110,12 +2226,12 @@ func (s *GetHotlineQualificationByOrderResponse) SetBody(v *GetHotlineQualificat
 }
 
 type GetRtcTokenRequest struct {
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
 }
 
 func (s GetRtcTokenRequest) String() string {
@@ -2124,6 +2240,16 @@ func (s GetRtcTokenRequest) String() string {
 
 func (s GetRtcTokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetRtcTokenRequest) SetDeviceId(v string) *GetRtcTokenRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *GetRtcTokenRequest) SetIsCustomAccount(v bool) *GetRtcTokenRequest {
+	s.IsCustomAccount = &v
+	return s
 }
 
 func (s *GetRtcTokenRequest) SetOwnerId(v int64) *GetRtcTokenRequest {
@@ -2143,16 +2269,6 @@ func (s *GetRtcTokenRequest) SetResourceOwnerId(v int64) *GetRtcTokenRequest {
 
 func (s *GetRtcTokenRequest) SetUserId(v string) *GetRtcTokenRequest {
 	s.UserId = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetDeviceId(v string) *GetRtcTokenRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *GetRtcTokenRequest) SetIsCustomAccount(v bool) *GetRtcTokenRequest {
-	s.IsCustomAccount = &v
 	return s
 }
 
@@ -2252,9 +2368,9 @@ func (s *GetTokenRequest) SetTokenType(v string) *GetTokenRequest {
 type GetTokenResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetTokenResponseBody) String() string {
@@ -2275,11 +2391,6 @@ func (s *GetTokenResponseBody) SetMessage(v string) *GetTokenResponseBody {
 	return s
 }
 
-func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
-	s.Token = &v
-	return s
-}
-
 func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
 	s.RequestId = &v
 	return s
@@ -2287,6 +2398,11 @@ func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
 
 func (s *GetTokenResponseBody) SetSuccess(v bool) *GetTokenResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetTokenResponseBody) SetToken(v string) *GetTokenResponseBody {
+	s.Token = &v
 	return s
 }
 
@@ -2314,19 +2430,19 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type IvrCallRequest struct {
-	OwnerId              *int64                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CalledShowNumber     *string                     `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string                     `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	StartCode            *string                     `json:"StartCode,omitempty" xml:"StartCode,omitempty"`
-	StartTtsParams       *string                     `json:"StartTtsParams,omitempty" xml:"StartTtsParams,omitempty"`
-	PlayTimes            *int64                      `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ByeCode              *string                     `json:"ByeCode,omitempty" xml:"ByeCode,omitempty"`
 	ByeTtsParams         *string                     `json:"ByeTtsParams,omitempty" xml:"ByeTtsParams,omitempty"`
-	Timeout              *int32                      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	OutId                *string                     `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	CalledNumber         *string                     `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string                     `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	MenuKeyMap           []*IvrCallRequestMenuKeyMap `json:"MenuKeyMap,omitempty" xml:"MenuKeyMap,omitempty" type:"Repeated"`
+	OutId                *string                     `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlayTimes            *int64                      `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
+	ResourceOwnerAccount *string                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartCode            *string                     `json:"StartCode,omitempty" xml:"StartCode,omitempty"`
+	StartTtsParams       *string                     `json:"StartTtsParams,omitempty" xml:"StartTtsParams,omitempty"`
+	Timeout              *int32                      `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s IvrCallRequest) String() string {
@@ -2337,8 +2453,43 @@ func (s IvrCallRequest) GoString() string {
 	return s.String()
 }
 
+func (s *IvrCallRequest) SetByeCode(v string) *IvrCallRequest {
+	s.ByeCode = &v
+	return s
+}
+
+func (s *IvrCallRequest) SetByeTtsParams(v string) *IvrCallRequest {
+	s.ByeTtsParams = &v
+	return s
+}
+
+func (s *IvrCallRequest) SetCalledNumber(v string) *IvrCallRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *IvrCallRequest) SetCalledShowNumber(v string) *IvrCallRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *IvrCallRequest) SetMenuKeyMap(v []*IvrCallRequestMenuKeyMap) *IvrCallRequest {
+	s.MenuKeyMap = v
+	return s
+}
+
+func (s *IvrCallRequest) SetOutId(v string) *IvrCallRequest {
+	s.OutId = &v
+	return s
+}
+
 func (s *IvrCallRequest) SetOwnerId(v int64) *IvrCallRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *IvrCallRequest) SetPlayTimes(v int64) *IvrCallRequest {
+	s.PlayTimes = &v
 	return s
 }
 
@@ -2352,16 +2503,6 @@ func (s *IvrCallRequest) SetResourceOwnerId(v int64) *IvrCallRequest {
 	return s
 }
 
-func (s *IvrCallRequest) SetCalledShowNumber(v string) *IvrCallRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *IvrCallRequest) SetCalledNumber(v string) *IvrCallRequest {
-	s.CalledNumber = &v
-	return s
-}
-
 func (s *IvrCallRequest) SetStartCode(v string) *IvrCallRequest {
 	s.StartCode = &v
 	return s
@@ -2372,40 +2513,15 @@ func (s *IvrCallRequest) SetStartTtsParams(v string) *IvrCallRequest {
 	return s
 }
 
-func (s *IvrCallRequest) SetPlayTimes(v int64) *IvrCallRequest {
-	s.PlayTimes = &v
-	return s
-}
-
-func (s *IvrCallRequest) SetByeCode(v string) *IvrCallRequest {
-	s.ByeCode = &v
-	return s
-}
-
-func (s *IvrCallRequest) SetByeTtsParams(v string) *IvrCallRequest {
-	s.ByeTtsParams = &v
-	return s
-}
-
 func (s *IvrCallRequest) SetTimeout(v int32) *IvrCallRequest {
 	s.Timeout = &v
 	return s
 }
 
-func (s *IvrCallRequest) SetOutId(v string) *IvrCallRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *IvrCallRequest) SetMenuKeyMap(v []*IvrCallRequestMenuKeyMap) *IvrCallRequest {
-	s.MenuKeyMap = v
-	return s
-}
-
 type IvrCallRequestMenuKeyMap struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	TtsParams *string `json:"TtsParams,omitempty" xml:"TtsParams,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s IvrCallRequestMenuKeyMap) String() string {
@@ -2414,6 +2530,11 @@ func (s IvrCallRequestMenuKeyMap) String() string {
 
 func (s IvrCallRequestMenuKeyMap) GoString() string {
 	return s.String()
+}
+
+func (s *IvrCallRequestMenuKeyMap) SetCode(v string) *IvrCallRequestMenuKeyMap {
+	s.Code = &v
+	return s
 }
 
 func (s *IvrCallRequestMenuKeyMap) SetKey(v string) *IvrCallRequestMenuKeyMap {
@@ -2426,16 +2547,11 @@ func (s *IvrCallRequestMenuKeyMap) SetTtsParams(v string) *IvrCallRequestMenuKey
 	return s
 }
 
-func (s *IvrCallRequestMenuKeyMap) SetCode(v string) *IvrCallRequestMenuKeyMap {
-	s.Code = &v
-	return s
-}
-
 type IvrCallResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s IvrCallResponseBody) String() string {
@@ -2444,6 +2560,11 @@ func (s IvrCallResponseBody) String() string {
 
 func (s IvrCallResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *IvrCallResponseBody) SetCallId(v string) *IvrCallResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *IvrCallResponseBody) SetCode(v string) *IvrCallResponseBody {
@@ -2458,11 +2579,6 @@ func (s *IvrCallResponseBody) SetMessage(v string) *IvrCallResponseBody {
 
 func (s *IvrCallResponseBody) SetRequestId(v string) *IvrCallResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *IvrCallResponseBody) SetCallId(v string) *IvrCallResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -2490,16 +2606,16 @@ func (s *IvrCallResponse) SetBody(v *IvrCallResponseBody) *IvrCallResponse {
 }
 
 type ListCallTaskRequest struct {
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListCallTaskRequest) String() string {
@@ -2510,18 +2626,13 @@ func (s ListCallTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCallTaskRequest) SetBizType(v string) *ListCallTaskRequest {
+	s.BizType = &v
+	return s
+}
+
 func (s *ListCallTaskRequest) SetOwnerId(v int64) *ListCallTaskRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ListCallTaskRequest) SetResourceOwnerAccount(v string) *ListCallTaskRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListCallTaskRequest) SetResourceOwnerId(v int64) *ListCallTaskRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2535,8 +2646,13 @@ func (s *ListCallTaskRequest) SetPageSize(v int32) *ListCallTaskRequest {
 	return s
 }
 
-func (s *ListCallTaskRequest) SetTemplateName(v string) *ListCallTaskRequest {
-	s.TemplateName = &v
+func (s *ListCallTaskRequest) SetResourceOwnerAccount(v string) *ListCallTaskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListCallTaskRequest) SetResourceOwnerId(v int64) *ListCallTaskRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2545,28 +2661,28 @@ func (s *ListCallTaskRequest) SetStatus(v string) *ListCallTaskRequest {
 	return s
 }
 
-func (s *ListCallTaskRequest) SetTaskName(v string) *ListCallTaskRequest {
-	s.TaskName = &v
-	return s
-}
-
 func (s *ListCallTaskRequest) SetTaskId(v string) *ListCallTaskRequest {
 	s.TaskId = &v
 	return s
 }
 
-func (s *ListCallTaskRequest) SetBizType(v string) *ListCallTaskRequest {
-	s.BizType = &v
+func (s *ListCallTaskRequest) SetTaskName(v string) *ListCallTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListCallTaskRequest) SetTemplateName(v string) *ListCallTaskRequest {
+	s.TemplateName = &v
 	return s
 }
 
 type ListCallTaskResponseBody struct {
 	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Data       []*ListCallTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	PageNumber *int64                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total      *int64                          `json:"Total,omitempty" xml:"Total,omitempty"`
-	Data       []*ListCallTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
 func (s ListCallTaskResponseBody) String() string {
@@ -2582,13 +2698,18 @@ func (s *ListCallTaskResponseBody) SetCode(v string) *ListCallTaskResponseBody {
 	return s
 }
 
-func (s *ListCallTaskResponseBody) SetPageSize(v int64) *ListCallTaskResponseBody {
-	s.PageSize = &v
+func (s *ListCallTaskResponseBody) SetData(v []*ListCallTaskResponseBodyData) *ListCallTaskResponseBody {
+	s.Data = v
 	return s
 }
 
 func (s *ListCallTaskResponseBody) SetPageNumber(v int64) *ListCallTaskResponseBody {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBody) SetPageSize(v int64) *ListCallTaskResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -2602,27 +2723,22 @@ func (s *ListCallTaskResponseBody) SetTotal(v int64) *ListCallTaskResponseBody {
 	return s
 }
 
-func (s *ListCallTaskResponseBody) SetData(v []*ListCallTaskResponseBodyData) *ListCallTaskResponseBody {
-	s.Data = v
-	return s
-}
-
 type ListCallTaskResponseBodyData struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CompleteTime   *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CompletedCount *int64  `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	CompletedRate  *int32  `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
 	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	CompletedCount *int64  `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
-	TotalCount     *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	StopTime       *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	TemplateCode   *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	FireTime       *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
-	CompleteTime   *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CompletedRate  *int32  `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
 	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopTime       *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateCode   *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TotalCount     *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCallTaskResponseBodyData) String() string {
@@ -2633,8 +2749,23 @@ func (s ListCallTaskResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListCallTaskResponseBodyData) SetStatus(v string) *ListCallTaskResponseBodyData {
-	s.Status = &v
+func (s *ListCallTaskResponseBodyData) SetBizType(v string) *ListCallTaskResponseBodyData {
+	s.BizType = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBodyData) SetCompleteTime(v string) *ListCallTaskResponseBodyData {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBodyData) SetCompletedCount(v int64) *ListCallTaskResponseBodyData {
+	s.CompletedCount = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBodyData) SetCompletedRate(v int32) *ListCallTaskResponseBodyData {
+	s.CompletedRate = &v
 	return s
 }
 
@@ -2648,33 +2779,13 @@ func (s *ListCallTaskResponseBodyData) SetDataType(v string) *ListCallTaskRespon
 	return s
 }
 
-func (s *ListCallTaskResponseBodyData) SetTaskName(v string) *ListCallTaskResponseBodyData {
-	s.TaskName = &v
+func (s *ListCallTaskResponseBodyData) SetFireTime(v string) *ListCallTaskResponseBodyData {
+	s.FireTime = &v
 	return s
 }
 
-func (s *ListCallTaskResponseBodyData) SetCompletedCount(v int64) *ListCallTaskResponseBodyData {
-	s.CompletedCount = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetTotalCount(v int64) *ListCallTaskResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetTemplateName(v string) *ListCallTaskResponseBodyData {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetStopTime(v string) *ListCallTaskResponseBodyData {
-	s.StopTime = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetBizType(v string) *ListCallTaskResponseBodyData {
-	s.BizType = &v
+func (s *ListCallTaskResponseBodyData) SetId(v int64) *ListCallTaskResponseBodyData {
+	s.Id = &v
 	return s
 }
 
@@ -2683,28 +2794,33 @@ func (s *ListCallTaskResponseBodyData) SetResource(v string) *ListCallTaskRespon
 	return s
 }
 
+func (s *ListCallTaskResponseBodyData) SetStatus(v string) *ListCallTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBodyData) SetStopTime(v string) *ListCallTaskResponseBodyData {
+	s.StopTime = &v
+	return s
+}
+
+func (s *ListCallTaskResponseBodyData) SetTaskName(v string) *ListCallTaskResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
 func (s *ListCallTaskResponseBodyData) SetTemplateCode(v string) *ListCallTaskResponseBodyData {
 	s.TemplateCode = &v
 	return s
 }
 
-func (s *ListCallTaskResponseBodyData) SetFireTime(v string) *ListCallTaskResponseBodyData {
-	s.FireTime = &v
+func (s *ListCallTaskResponseBodyData) SetTemplateName(v string) *ListCallTaskResponseBodyData {
+	s.TemplateName = &v
 	return s
 }
 
-func (s *ListCallTaskResponseBodyData) SetCompleteTime(v string) *ListCallTaskResponseBodyData {
-	s.CompleteTime = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetCompletedRate(v int32) *ListCallTaskResponseBodyData {
-	s.CompletedRate = &v
-	return s
-}
-
-func (s *ListCallTaskResponseBodyData) SetId(v int64) *ListCallTaskResponseBodyData {
-	s.Id = &v
+func (s *ListCallTaskResponseBodyData) SetTotalCount(v int64) *ListCallTaskResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2732,14 +2848,14 @@ func (s *ListCallTaskResponse) SetBody(v *ListCallTaskResponseBody) *ListCallTas
 }
 
 type ListCallTaskDetailRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListCallTaskDetailRequest) String() string {
@@ -2750,33 +2866,13 @@ func (s ListCallTaskDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListCallTaskDetailRequest) SetOwnerId(v int64) *ListCallTaskDetailRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListCallTaskDetailRequest) SetResourceOwnerAccount(v string) *ListCallTaskDetailRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListCallTaskDetailRequest) SetResourceOwnerId(v int64) *ListCallTaskDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListCallTaskDetailRequest) SetTaskId(v int64) *ListCallTaskDetailRequest {
-	s.TaskId = &v
-	return s
-}
-
 func (s *ListCallTaskDetailRequest) SetCalledNum(v string) *ListCallTaskDetailRequest {
 	s.CalledNum = &v
 	return s
 }
 
-func (s *ListCallTaskDetailRequest) SetStatus(v string) *ListCallTaskDetailRequest {
-	s.Status = &v
+func (s *ListCallTaskDetailRequest) SetOwnerId(v int64) *ListCallTaskDetailRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -2790,14 +2886,34 @@ func (s *ListCallTaskDetailRequest) SetPageSize(v int32) *ListCallTaskDetailRequ
 	return s
 }
 
+func (s *ListCallTaskDetailRequest) SetResourceOwnerAccount(v string) *ListCallTaskDetailRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListCallTaskDetailRequest) SetResourceOwnerId(v int64) *ListCallTaskDetailRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListCallTaskDetailRequest) SetStatus(v string) *ListCallTaskDetailRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCallTaskDetailRequest) SetTaskId(v int64) *ListCallTaskDetailRequest {
+	s.TaskId = &v
+	return s
+}
+
 type ListCallTaskDetailResponseBody struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	TotalPage  *int64                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Total      *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
 	Data       []*ListCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPage  *int64                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCallTaskDetailResponseBody) String() string {
@@ -2808,33 +2924,8 @@ func (s ListCallTaskDetailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCallTaskDetailResponseBody) SetRequestId(v string) *ListCallTaskDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListCallTaskDetailResponseBody) SetCode(v string) *ListCallTaskDetailResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *ListCallTaskDetailResponseBody) SetTotalPage(v int64) *ListCallTaskDetailResponseBody {
-	s.TotalPage = &v
-	return s
-}
-
-func (s *ListCallTaskDetailResponseBody) SetPageSize(v int64) *ListCallTaskDetailResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListCallTaskDetailResponseBody) SetPageNumber(v int64) *ListCallTaskDetailResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListCallTaskDetailResponseBody) SetTotal(v int64) *ListCallTaskDetailResponseBody {
-	s.Total = &v
 	return s
 }
 
@@ -2843,12 +2934,37 @@ func (s *ListCallTaskDetailResponseBody) SetData(v []*ListCallTaskDetailResponse
 	return s
 }
 
+func (s *ListCallTaskDetailResponseBody) SetPageNumber(v int64) *ListCallTaskDetailResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCallTaskDetailResponseBody) SetPageSize(v int64) *ListCallTaskDetailResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCallTaskDetailResponseBody) SetRequestId(v string) *ListCallTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCallTaskDetailResponseBody) SetTotal(v int64) *ListCallTaskDetailResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *ListCallTaskDetailResponseBody) SetTotalPage(v int64) *ListCallTaskDetailResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
 type ListCallTaskDetailResponseBodyData struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	CalledNum *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
 	Caller    *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCallTaskDetailResponseBodyData) String() string {
@@ -2857,16 +2973,6 @@ func (s ListCallTaskDetailResponseBodyData) String() string {
 
 func (s ListCallTaskDetailResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *ListCallTaskDetailResponseBodyData) SetStatus(v string) *ListCallTaskDetailResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *ListCallTaskDetailResponseBodyData) SetDuration(v int64) *ListCallTaskDetailResponseBodyData {
-	s.Duration = &v
-	return s
 }
 
 func (s *ListCallTaskDetailResponseBodyData) SetCalledNum(v string) *ListCallTaskDetailResponseBodyData {
@@ -2879,8 +2985,18 @@ func (s *ListCallTaskDetailResponseBodyData) SetCaller(v string) *ListCallTaskDe
 	return s
 }
 
+func (s *ListCallTaskDetailResponseBodyData) SetDuration(v int64) *ListCallTaskDetailResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
 func (s *ListCallTaskDetailResponseBodyData) SetId(v int64) *ListCallTaskDetailResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *ListCallTaskDetailResponseBodyData) SetStatus(v string) *ListCallTaskDetailResponseBodyData {
+	s.Status = &v
 	return s
 }
 
@@ -2908,13 +3024,13 @@ func (s *ListCallTaskDetailResponse) SetBody(v *ListCallTaskDetailResponseBody) 
 }
 
 type ListHotlineTransferNumberRequest struct {
+	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ListHotlineTransferNumberRequest) String() string {
@@ -2925,23 +3041,13 @@ func (s ListHotlineTransferNumberRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListHotlineTransferNumberRequest) SetHotlineNumber(v string) *ListHotlineTransferNumberRequest {
+	s.HotlineNumber = &v
+	return s
+}
+
 func (s *ListHotlineTransferNumberRequest) SetOwnerId(v int64) *ListHotlineTransferNumberRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferNumberRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberRequest) SetResourceOwnerId(v int64) *ListHotlineTransferNumberRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberRequest) SetQualificationId(v string) *ListHotlineTransferNumberRequest {
-	s.QualificationId = &v
 	return s
 }
 
@@ -2955,16 +3061,26 @@ func (s *ListHotlineTransferNumberRequest) SetPageSize(v int32) *ListHotlineTran
 	return s
 }
 
-func (s *ListHotlineTransferNumberRequest) SetHotlineNumber(v string) *ListHotlineTransferNumberRequest {
-	s.HotlineNumber = &v
+func (s *ListHotlineTransferNumberRequest) SetQualificationId(v string) *ListHotlineTransferNumberRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberRequest) SetResourceOwnerId(v int64) *ListHotlineTransferNumberRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
 type ListHotlineTransferNumberResponseBody struct {
 	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListHotlineTransferNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ListHotlineTransferNumberResponseBody) String() string {
@@ -2980,6 +3096,11 @@ func (s *ListHotlineTransferNumberResponseBody) SetCode(v string) *ListHotlineTr
 	return s
 }
 
+func (s *ListHotlineTransferNumberResponseBody) SetData(v *ListHotlineTransferNumberResponseBodyData) *ListHotlineTransferNumberResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ListHotlineTransferNumberResponseBody) SetMessage(v string) *ListHotlineTransferNumberResponseBody {
 	s.Message = &v
 	return s
@@ -2987,11 +3108,6 @@ func (s *ListHotlineTransferNumberResponseBody) SetMessage(v string) *ListHotlin
 
 func (s *ListHotlineTransferNumberResponseBody) SetRequestId(v string) *ListHotlineTransferNumberResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberResponseBody) SetData(v *ListHotlineTransferNumberResponseBodyData) *ListHotlineTransferNumberResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -3031,11 +3147,11 @@ func (s *ListHotlineTransferNumberResponseBodyData) SetValues(v []*ListHotlineTr
 }
 
 type ListHotlineTransferNumberResponseBodyDataValues struct {
-	PhoneNumber     *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	NumberOwnerName *string `json:"NumberOwnerName,omitempty" xml:"NumberOwnerName,omitempty"`
-	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	HotlineNumber   *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	IdentityCard    *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
+	NumberOwnerName *string `json:"NumberOwnerName,omitempty" xml:"NumberOwnerName,omitempty"`
+	PhoneNumber     *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QualificationId *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResUniqueCode   *string `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
 
@@ -3047,8 +3163,13 @@ func (s ListHotlineTransferNumberResponseBodyDataValues) GoString() string {
 	return s.String()
 }
 
-func (s *ListHotlineTransferNumberResponseBodyDataValues) SetPhoneNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
-	s.PhoneNumber = &v
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.HotlineNumber = &v
+	return s
+}
+
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetIdentityCard(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.IdentityCard = &v
 	return s
 }
 
@@ -3057,18 +3178,13 @@ func (s *ListHotlineTransferNumberResponseBodyDataValues) SetNumberOwnerName(v s
 	return s
 }
 
+func (s *ListHotlineTransferNumberResponseBodyDataValues) SetPhoneNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *ListHotlineTransferNumberResponseBodyDataValues) SetQualificationId(v string) *ListHotlineTransferNumberResponseBodyDataValues {
 	s.QualificationId = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferNumberResponseBodyDataValues {
-	s.HotlineNumber = &v
-	return s
-}
-
-func (s *ListHotlineTransferNumberResponseBodyDataValues) SetIdentityCard(v string) *ListHotlineTransferNumberResponseBodyDataValues {
-	s.IdentityCard = &v
 	return s
 }
 
@@ -3101,13 +3217,13 @@ func (s *ListHotlineTransferNumberResponse) SetBody(v *ListHotlineTransferNumber
 }
 
 type ListHotlineTransferRegisterFileRequest struct {
+	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	HotlineNumber        *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	QualificationId      *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ListHotlineTransferRegisterFileRequest) String() string {
@@ -3118,23 +3234,13 @@ func (s ListHotlineTransferRegisterFileRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListHotlineTransferRegisterFileRequest) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileRequest {
+	s.HotlineNumber = &v
+	return s
+}
+
 func (s *ListHotlineTransferRegisterFileRequest) SetOwnerId(v int64) *ListHotlineTransferRegisterFileRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferRegisterFileRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerId(v int64) *ListHotlineTransferRegisterFileRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileRequest) SetQualificationId(v string) *ListHotlineTransferRegisterFileRequest {
-	s.QualificationId = &v
 	return s
 }
 
@@ -3148,16 +3254,26 @@ func (s *ListHotlineTransferRegisterFileRequest) SetPageSize(v int32) *ListHotli
 	return s
 }
 
-func (s *ListHotlineTransferRegisterFileRequest) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileRequest {
-	s.HotlineNumber = &v
+func (s *ListHotlineTransferRegisterFileRequest) SetQualificationId(v string) *ListHotlineTransferRegisterFileRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerAccount(v string) *ListHotlineTransferRegisterFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileRequest) SetResourceOwnerId(v int64) *ListHotlineTransferRegisterFileRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
 type ListHotlineTransferRegisterFileResponseBody struct {
 	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListHotlineTransferRegisterFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ListHotlineTransferRegisterFileResponseBody) String() string {
@@ -3173,6 +3289,11 @@ func (s *ListHotlineTransferRegisterFileResponseBody) SetCode(v string) *ListHot
 	return s
 }
 
+func (s *ListHotlineTransferRegisterFileResponseBody) SetData(v *ListHotlineTransferRegisterFileResponseBodyData) *ListHotlineTransferRegisterFileResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ListHotlineTransferRegisterFileResponseBody) SetMessage(v string) *ListHotlineTransferRegisterFileResponseBody {
 	s.Message = &v
 	return s
@@ -3180,11 +3301,6 @@ func (s *ListHotlineTransferRegisterFileResponseBody) SetMessage(v string) *List
 
 func (s *ListHotlineTransferRegisterFileResponseBody) SetRequestId(v string) *ListHotlineTransferRegisterFileResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileResponseBody) SetData(v *ListHotlineTransferRegisterFileResponseBodyData) *ListHotlineTransferRegisterFileResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -3224,13 +3340,13 @@ func (s *ListHotlineTransferRegisterFileResponseBodyData) SetValues(v []*ListHot
 }
 
 type ListHotlineTransferRegisterFileResponseBodyDataValues struct {
-	MngOpMail         *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
-	MngOpName         *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
-	CorpName          *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	Agree             *string `json:"Agree,omitempty" xml:"Agree,omitempty"`
-	MngOpMobile       *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
-	MngOpIdentityCard *string `json:"MngOpIdentityCard,omitempty" xml:"MngOpIdentityCard,omitempty"`
+	CorpName          *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	HotlineNumber     *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	MngOpIdentityCard *string `json:"MngOpIdentityCard,omitempty" xml:"MngOpIdentityCard,omitempty"`
+	MngOpMail         *string `json:"MngOpMail,omitempty" xml:"MngOpMail,omitempty"`
+	MngOpMobile       *string `json:"MngOpMobile,omitempty" xml:"MngOpMobile,omitempty"`
+	MngOpName         *string `json:"MngOpName,omitempty" xml:"MngOpName,omitempty"`
 	QualificationId   *string `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResUniqueCode     *int64  `json:"ResUniqueCode,omitempty" xml:"ResUniqueCode,omitempty"`
 }
@@ -3243,13 +3359,8 @@ func (s ListHotlineTransferRegisterFileResponseBodyDataValues) GoString() string
 	return s.String()
 }
 
-func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMail(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
-	s.MngOpMail = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpName(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
-	s.MngOpName = &v
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetAgree(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.Agree = &v
 	return s
 }
 
@@ -3258,13 +3369,8 @@ func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetCorpName(v st
 	return s
 }
 
-func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetAgree(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
-	s.Agree = &v
-	return s
-}
-
-func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMobile(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
-	s.MngOpMobile = &v
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.HotlineNumber = &v
 	return s
 }
 
@@ -3273,8 +3379,18 @@ func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpIdentity
 	return s
 }
 
-func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetHotlineNumber(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
-	s.HotlineNumber = &v
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMail(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpMail = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpMobile(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpMobile = &v
+	return s
+}
+
+func (s *ListHotlineTransferRegisterFileResponseBodyDataValues) SetMngOpName(v string) *ListHotlineTransferRegisterFileResponseBodyDataValues {
+	s.MngOpName = &v
 	return s
 }
 
@@ -3313,9 +3429,9 @@ func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransfer
 
 type ListOrderedNumbersRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 }
 
 func (s ListOrderedNumbersRequest) String() string {
@@ -3331,6 +3447,11 @@ func (s *ListOrderedNumbersRequest) SetOwnerId(v int64) *ListOrderedNumbersReque
 	return s
 }
 
+func (s *ListOrderedNumbersRequest) SetProdCode(v string) *ListOrderedNumbersRequest {
+	s.ProdCode = &v
+	return s
+}
+
 func (s *ListOrderedNumbersRequest) SetResourceOwnerAccount(v string) *ListOrderedNumbersRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -3341,16 +3462,11 @@ func (s *ListOrderedNumbersRequest) SetResourceOwnerId(v int64) *ListOrderedNumb
 	return s
 }
 
-func (s *ListOrderedNumbersRequest) SetProdCode(v string) *ListOrderedNumbersRequest {
-	s.ProdCode = &v
-	return s
-}
-
 type ListOrderedNumbersResponseBody struct {
 	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Numbers   []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOrderedNumbersResponseBody) String() string {
@@ -3371,13 +3487,13 @@ func (s *ListOrderedNumbersResponseBody) SetMessage(v string) *ListOrderedNumber
 	return s
 }
 
-func (s *ListOrderedNumbersResponseBody) SetRequestId(v string) *ListOrderedNumbersResponseBody {
-	s.RequestId = &v
+func (s *ListOrderedNumbersResponseBody) SetNumbers(v []*string) *ListOrderedNumbersResponseBody {
+	s.Numbers = v
 	return s
 }
 
-func (s *ListOrderedNumbersResponseBody) SetNumbers(v []*string) *ListOrderedNumbersResponseBody {
-	s.Numbers = v
+func (s *ListOrderedNumbersResponseBody) SetRequestId(v string) *ListOrderedNumbersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3405,12 +3521,12 @@ func (s *ListOrderedNumbersResponse) SetBody(v *ListOrderedNumbersResponseBody) 
 }
 
 type ListOutboundStrategiesRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	BuId                 *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
 	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ListOutboundStrategiesRequest) String() string {
@@ -3421,8 +3537,23 @@ func (s ListOutboundStrategiesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListOutboundStrategiesRequest) SetBuId(v int64) *ListOutboundStrategiesRequest {
+	s.BuId = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesRequest) SetKeyword(v string) *ListOutboundStrategiesRequest {
+	s.Keyword = &v
+	return s
+}
+
 func (s *ListOutboundStrategiesRequest) SetOwnerId(v int64) *ListOutboundStrategiesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesRequest) SetProdCode(v string) *ListOutboundStrategiesRequest {
+	s.ProdCode = &v
 	return s
 }
 
@@ -3436,26 +3567,11 @@ func (s *ListOutboundStrategiesRequest) SetResourceOwnerId(v int64) *ListOutboun
 	return s
 }
 
-func (s *ListOutboundStrategiesRequest) SetProdCode(v string) *ListOutboundStrategiesRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetBuId(v int64) *ListOutboundStrategiesRequest {
-	s.BuId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetKeyword(v string) *ListOutboundStrategiesRequest {
-	s.Keyword = &v
-	return s
-}
-
 type ListOutboundStrategiesResponseBody struct {
 	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OutboundStrategies []*ListOutboundStrategiesResponseBodyOutboundStrategies `json:"OutboundStrategies,omitempty" xml:"OutboundStrategies,omitempty" type:"Repeated"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOutboundStrategiesResponseBody) String() string {
@@ -3476,39 +3592,39 @@ func (s *ListOutboundStrategiesResponseBody) SetMessage(v string) *ListOutboundS
 	return s
 }
 
-func (s *ListOutboundStrategiesResponseBody) SetRequestId(v string) *ListOutboundStrategiesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListOutboundStrategiesResponseBody) SetOutboundStrategies(v []*ListOutboundStrategiesResponseBodyOutboundStrategies) *ListOutboundStrategiesResponseBody {
 	s.OutboundStrategies = v
 	return s
 }
 
+func (s *ListOutboundStrategiesResponseBody) SetRequestId(v string) *ListOutboundStrategiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListOutboundStrategiesResponseBodyOutboundStrategies struct {
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuccessRate        *int32  `json:"SuccessRate,omitempty" xml:"SuccessRate,omitempty"`
-	Process            *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
-	GmtModifiedStr     *string `json:"GmtModifiedStr,omitempty" xml:"GmtModifiedStr,omitempty"`
-	OutboundNum        *string `json:"OutboundNum,omitempty" xml:"OutboundNum,omitempty"`
-	ModifierId         *int64  `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	SceneName          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	CreatorId          *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	RobotName          *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	ModifierName       *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
-	ResourceAllocation *int32  `json:"ResourceAllocation,omitempty" xml:"ResourceAllocation,omitempty"`
-	ExtAttr            *string `json:"ExtAttr,omitempty" xml:"ExtAttr,omitempty"`
-	NumType            *int32  `json:"NumType,omitempty" xml:"NumType,omitempty"`
 	BuId               *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	RobotId            *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	CreatorId          *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	CreatorName        *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	DepartmentId       *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	ExtAttr            *string `json:"ExtAttr,omitempty" xml:"ExtAttr,omitempty"`
+	GmtCreateStr       *string `json:"GmtCreateStr,omitempty" xml:"GmtCreateStr,omitempty"`
+	GmtModifiedStr     *string `json:"GmtModifiedStr,omitempty" xml:"GmtModifiedStr,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifierId         *int64  `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	ModifierName       *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
+	NumType            *int32  `json:"NumType,omitempty" xml:"NumType,omitempty"`
+	OutboundNum        *string `json:"OutboundNum,omitempty" xml:"OutboundNum,omitempty"`
+	Process            *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
+	ResourceAllocation *int32  `json:"ResourceAllocation,omitempty" xml:"ResourceAllocation,omitempty"`
+	RobotId            *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	RobotName          *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	RobotType          *int32  `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 	RuleCode           *int64  `json:"RuleCode,omitempty" xml:"RuleCode,omitempty"`
+	SceneName          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuccessRate        *int32  `json:"SuccessRate,omitempty" xml:"SuccessRate,omitempty"`
 	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	GmtCreateStr       *string `json:"GmtCreateStr,omitempty" xml:"GmtCreateStr,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s ListOutboundStrategiesResponseBodyOutboundStrategies) String() string {
@@ -3519,78 +3635,13 @@ func (s ListOutboundStrategiesResponseBodyOutboundStrategies) GoString() string 
 	return s.String()
 }
 
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetStatus(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Status = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSuccessRate(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.SuccessRate = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetProcess(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Process = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtModifiedStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.GmtModifiedStr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetOutboundNum(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.OutboundNum = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ModifierId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSceneName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.SceneName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetCreatorId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RobotName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ModifierName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetResourceAllocation(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ResourceAllocation = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetExtAttr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ExtAttr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetNumType(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.NumType = &v
-	return s
-}
-
 func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetBuId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
 	s.BuId = &v
 	return s
 }
 
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotId(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RobotId = &v
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetCreatorId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.CreatorId = &v
 	return s
 }
 
@@ -3604,6 +3655,66 @@ func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetDepartmentId(v
 	return s
 }
 
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetExtAttr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.ExtAttr = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtCreateStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.GmtCreateStr = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtModifiedStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.GmtModifiedStr = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetNumType(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.NumType = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetOutboundNum(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.OutboundNum = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetProcess(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.Process = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetResourceAllocation(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.ResourceAllocation = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotId(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.RobotId = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.RobotName = &v
+	return s
+}
+
 func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotType(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
 	s.RobotType = &v
 	return s
@@ -3614,18 +3725,23 @@ func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRuleCode(v int
 	return s
 }
 
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSceneName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.SceneName = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetStatus(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSuccessRate(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
+	s.SuccessRate = &v
+	return s
+}
+
 func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
 	s.Name = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtCreateStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.GmtCreateStr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Id = &v
 	return s
 }
 
@@ -3653,19 +3769,19 @@ func (s *ListOutboundStrategiesResponse) SetBody(v *ListOutboundStrategiesRespon
 }
 
 type ListRobotTaskCallsRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
-	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
-	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
-	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
-	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
 	CallResult           *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
 	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
+	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
+	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
+	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
+	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListRobotTaskCallsRequest) String() string {
@@ -3676,43 +3792,13 @@ func (s ListRobotTaskCallsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListRobotTaskCallsRequest) SetOwnerId(v int64) *ListRobotTaskCallsRequest {
-	s.OwnerId = &v
+func (s *ListRobotTaskCallsRequest) SetCallResult(v string) *ListRobotTaskCallsRequest {
+	s.CallResult = &v
 	return s
 }
 
-func (s *ListRobotTaskCallsRequest) SetResourceOwnerAccount(v string) *ListRobotTaskCallsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetResourceOwnerId(v int64) *ListRobotTaskCallsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetPageNo(v int32) *ListRobotTaskCallsRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetPageSize(v int32) *ListRobotTaskCallsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetTaskId(v string) *ListRobotTaskCallsRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDurationFrom(v string) *ListRobotTaskCallsRequest {
-	s.DurationFrom = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDurationTo(v string) *ListRobotTaskCallsRequest {
-	s.DurationTo = &v
+func (s *ListRobotTaskCallsRequest) SetCalled(v string) *ListRobotTaskCallsRequest {
+	s.Called = &v
 	return s
 }
 
@@ -3726,28 +3812,58 @@ func (s *ListRobotTaskCallsRequest) SetDialogCountTo(v string) *ListRobotTaskCal
 	return s
 }
 
+func (s *ListRobotTaskCallsRequest) SetDurationFrom(v string) *ListRobotTaskCallsRequest {
+	s.DurationFrom = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsRequest) SetDurationTo(v string) *ListRobotTaskCallsRequest {
+	s.DurationTo = &v
+	return s
+}
+
 func (s *ListRobotTaskCallsRequest) SetHangupDirection(v string) *ListRobotTaskCallsRequest {
 	s.HangupDirection = &v
 	return s
 }
 
-func (s *ListRobotTaskCallsRequest) SetCallResult(v string) *ListRobotTaskCallsRequest {
-	s.CallResult = &v
+func (s *ListRobotTaskCallsRequest) SetOwnerId(v int64) *ListRobotTaskCallsRequest {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *ListRobotTaskCallsRequest) SetCalled(v string) *ListRobotTaskCallsRequest {
-	s.Called = &v
+func (s *ListRobotTaskCallsRequest) SetPageNo(v int32) *ListRobotTaskCallsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsRequest) SetPageSize(v int32) *ListRobotTaskCallsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsRequest) SetResourceOwnerAccount(v string) *ListRobotTaskCallsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsRequest) SetResourceOwnerId(v int64) *ListRobotTaskCallsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsRequest) SetTaskId(v string) *ListRobotTaskCallsRequest {
+	s.TaskId = &v
 	return s
 }
 
 type ListRobotTaskCallsResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3759,23 +3875,13 @@ func (s ListRobotTaskCallsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRobotTaskCallsResponseBody) SetData(v string) *ListRobotTaskCallsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetRequestId(v string) *ListRobotTaskCallsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetPageNo(v string) *ListRobotTaskCallsResponseBody {
-	s.PageNo = &v
-	return s
-}
-
 func (s *ListRobotTaskCallsResponseBody) SetCode(v string) *ListRobotTaskCallsResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsResponseBody) SetData(v string) *ListRobotTaskCallsResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -3784,8 +3890,18 @@ func (s *ListRobotTaskCallsResponseBody) SetMessage(v string) *ListRobotTaskCall
 	return s
 }
 
+func (s *ListRobotTaskCallsResponseBody) SetPageNo(v string) *ListRobotTaskCallsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
 func (s *ListRobotTaskCallsResponseBody) SetPageSize(v string) *ListRobotTaskCallsResponseBody {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRobotTaskCallsResponseBody) SetRequestId(v string) *ListRobotTaskCallsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3818,12 +3934,12 @@ func (s *ListRobotTaskCallsResponse) SetBody(v *ListRobotTaskCallsResponseBody) 
 }
 
 type QueryCallDetailByCallIdRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProdId               *int64  `json:"ProdId,omitempty" xml:"ProdId,omitempty"`
 	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryCallDetailByCallIdRequest) String() string {
@@ -3834,23 +3950,13 @@ func (s QueryCallDetailByCallIdRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCallDetailByCallIdRequest) SetOwnerId(v int64) *QueryCallDetailByCallIdRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerAccount(v string) *QueryCallDetailByCallIdRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerId(v int64) *QueryCallDetailByCallIdRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
 func (s *QueryCallDetailByCallIdRequest) SetCallId(v string) *QueryCallDetailByCallIdRequest {
 	s.CallId = &v
+	return s
+}
+
+func (s *QueryCallDetailByCallIdRequest) SetOwnerId(v int64) *QueryCallDetailByCallIdRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -3864,10 +3970,20 @@ func (s *QueryCallDetailByCallIdRequest) SetQueryDate(v int64) *QueryCallDetailB
 	return s
 }
 
+func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerAccount(v string) *QueryCallDetailByCallIdRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCallDetailByCallIdRequest) SetResourceOwnerId(v int64) *QueryCallDetailByCallIdRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type QueryCallDetailByCallIdResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3884,13 +4000,13 @@ func (s *QueryCallDetailByCallIdResponseBody) SetCode(v string) *QueryCallDetail
 	return s
 }
 
-func (s *QueryCallDetailByCallIdResponseBody) SetMessage(v string) *QueryCallDetailByCallIdResponseBody {
-	s.Message = &v
+func (s *QueryCallDetailByCallIdResponseBody) SetData(v string) *QueryCallDetailByCallIdResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryCallDetailByCallIdResponseBody) SetData(v string) *QueryCallDetailByCallIdResponseBody {
-	s.Data = &v
+func (s *QueryCallDetailByCallIdResponseBody) SetMessage(v string) *QueryCallDetailByCallIdResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -3923,12 +4039,12 @@ func (s *QueryCallDetailByCallIdResponse) SetBody(v *QueryCallDetailByCallIdResp
 }
 
 type QueryCallDetailByTaskIdRequest struct {
+	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
-	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 }
 
 func (s QueryCallDetailByTaskIdRequest) String() string {
@@ -3939,8 +4055,18 @@ func (s QueryCallDetailByTaskIdRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryCallDetailByTaskIdRequest) SetCallee(v string) *QueryCallDetailByTaskIdRequest {
+	s.Callee = &v
+	return s
+}
+
 func (s *QueryCallDetailByTaskIdRequest) SetOwnerId(v int64) *QueryCallDetailByTaskIdRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCallDetailByTaskIdRequest) SetQueryDate(v int64) *QueryCallDetailByTaskIdRequest {
+	s.QueryDate = &v
 	return s
 }
 
@@ -3959,20 +4085,10 @@ func (s *QueryCallDetailByTaskIdRequest) SetTaskId(v string) *QueryCallDetailByT
 	return s
 }
 
-func (s *QueryCallDetailByTaskIdRequest) SetQueryDate(v int64) *QueryCallDetailByTaskIdRequest {
-	s.QueryDate = &v
-	return s
-}
-
-func (s *QueryCallDetailByTaskIdRequest) SetCallee(v string) *QueryCallDetailByTaskIdRequest {
-	s.Callee = &v
-	return s
-}
-
 type QueryCallDetailByTaskIdResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3989,13 +4105,13 @@ func (s *QueryCallDetailByTaskIdResponseBody) SetCode(v string) *QueryCallDetail
 	return s
 }
 
-func (s *QueryCallDetailByTaskIdResponseBody) SetMessage(v string) *QueryCallDetailByTaskIdResponseBody {
-	s.Message = &v
+func (s *QueryCallDetailByTaskIdResponseBody) SetData(v string) *QueryCallDetailByTaskIdResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryCallDetailByTaskIdResponseBody) SetData(v string) *QueryCallDetailByTaskIdResponseBody {
-	s.Data = &v
+func (s *QueryCallDetailByTaskIdResponseBody) SetMessage(v string) *QueryCallDetailByTaskIdResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4029,9 +4145,9 @@ func (s *QueryCallDetailByTaskIdResponse) SetBody(v *QueryCallDetailByTaskIdResp
 
 type QueryCallInPoolTransferConfigRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
 func (s QueryCallInPoolTransferConfigRequest) String() string {
@@ -4047,6 +4163,11 @@ func (s *QueryCallInPoolTransferConfigRequest) SetOwnerId(v int64) *QueryCallInP
 	return s
 }
 
+func (s *QueryCallInPoolTransferConfigRequest) SetPhoneNumber(v string) *QueryCallInPoolTransferConfigRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerAccount(v string) *QueryCallInPoolTransferConfigRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -4057,16 +4178,11 @@ func (s *QueryCallInPoolTransferConfigRequest) SetResourceOwnerId(v int64) *Quer
 	return s
 }
 
-func (s *QueryCallInPoolTransferConfigRequest) SetPhoneNumber(v string) *QueryCallInPoolTransferConfigRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
 type QueryCallInPoolTransferConfigResponseBody struct {
 	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *QueryCallInPoolTransferConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCallInPoolTransferConfigResponseBody) String() string {
@@ -4082,6 +4198,11 @@ func (s *QueryCallInPoolTransferConfigResponseBody) SetCode(v string) *QueryCall
 	return s
 }
 
+func (s *QueryCallInPoolTransferConfigResponseBody) SetData(v *QueryCallInPoolTransferConfigResponseBodyData) *QueryCallInPoolTransferConfigResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryCallInPoolTransferConfigResponseBody) SetMessage(v string) *QueryCallInPoolTransferConfigResponseBody {
 	s.Message = &v
 	return s
@@ -4092,16 +4213,11 @@ func (s *QueryCallInPoolTransferConfigResponseBody) SetRequestId(v string) *Quer
 	return s
 }
 
-func (s *QueryCallInPoolTransferConfigResponseBody) SetData(v *QueryCallInPoolTransferConfigResponseBodyData) *QueryCallInPoolTransferConfigResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryCallInPoolTransferConfigResponseBodyData struct {
-	GmtCreate       *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	CalledRouteMode *string                                                 `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
-	TransferTimeout *string                                                 `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
 	Details         []*QueryCallInPoolTransferConfigResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	GmtCreate       *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	TransferTimeout *string                                                 `json:"TransferTimeout,omitempty" xml:"TransferTimeout,omitempty"`
 }
 
 func (s QueryCallInPoolTransferConfigResponseBodyData) String() string {
@@ -4112,23 +4228,23 @@ func (s QueryCallInPoolTransferConfigResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCallInPoolTransferConfigResponseBodyData) SetGmtCreate(v int64) *QueryCallInPoolTransferConfigResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
 func (s *QueryCallInPoolTransferConfigResponseBodyData) SetCalledRouteMode(v string) *QueryCallInPoolTransferConfigResponseBodyData {
 	s.CalledRouteMode = &v
 	return s
 }
 
-func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v string) *QueryCallInPoolTransferConfigResponseBodyData {
-	s.TransferTimeout = &v
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetDetails(v []*QueryCallInPoolTransferConfigResponseBodyDataDetails) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.Details = v
 	return s
 }
 
-func (s *QueryCallInPoolTransferConfigResponseBodyData) SetDetails(v []*QueryCallInPoolTransferConfigResponseBodyDataDetails) *QueryCallInPoolTransferConfigResponseBodyData {
-	s.Details = v
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetGmtCreate(v int64) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCallInPoolTransferConfigResponseBodyData) SetTransferTimeout(v string) *QueryCallInPoolTransferConfigResponseBodyData {
+	s.TransferTimeout = &v
 	return s
 }
 
@@ -4173,14 +4289,14 @@ func (s *QueryCallInPoolTransferConfigResponse) SetBody(v *QueryCallInPoolTransf
 }
 
 type QueryCallInTransferRecordRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	CallInCaller         *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
-	QueryDate            *string `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QueryDate            *string `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryCallInTransferRecordRequest) String() string {
@@ -4191,33 +4307,13 @@ func (s QueryCallInTransferRecordRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCallInTransferRecordRequest) SetOwnerId(v int64) *QueryCallInTransferRecordRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordRequest) SetResourceOwnerAccount(v string) *QueryCallInTransferRecordRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordRequest) SetResourceOwnerId(v int64) *QueryCallInTransferRecordRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordRequest) SetPhoneNumber(v string) *QueryCallInTransferRecordRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
 func (s *QueryCallInTransferRecordRequest) SetCallInCaller(v string) *QueryCallInTransferRecordRequest {
 	s.CallInCaller = &v
 	return s
 }
 
-func (s *QueryCallInTransferRecordRequest) SetQueryDate(v string) *QueryCallInTransferRecordRequest {
-	s.QueryDate = &v
+func (s *QueryCallInTransferRecordRequest) SetOwnerId(v int64) *QueryCallInTransferRecordRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -4231,11 +4327,31 @@ func (s *QueryCallInTransferRecordRequest) SetPageSize(v int64) *QueryCallInTran
 	return s
 }
 
+func (s *QueryCallInTransferRecordRequest) SetPhoneNumber(v string) *QueryCallInTransferRecordRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetQueryDate(v string) *QueryCallInTransferRecordRequest {
+	s.QueryDate = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetResourceOwnerAccount(v string) *QueryCallInTransferRecordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordRequest) SetResourceOwnerId(v int64) *QueryCallInTransferRecordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type QueryCallInTransferRecordResponseBody struct {
 	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *QueryCallInTransferRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCallInTransferRecordResponseBody) String() string {
@@ -4251,6 +4367,11 @@ func (s *QueryCallInTransferRecordResponseBody) SetCode(v string) *QueryCallInTr
 	return s
 }
 
+func (s *QueryCallInTransferRecordResponseBody) SetData(v *QueryCallInTransferRecordResponseBodyData) *QueryCallInTransferRecordResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryCallInTransferRecordResponseBody) SetMessage(v string) *QueryCallInTransferRecordResponseBody {
 	s.Message = &v
 	return s
@@ -4258,11 +4379,6 @@ func (s *QueryCallInTransferRecordResponseBody) SetMessage(v string) *QueryCallI
 
 func (s *QueryCallInTransferRecordResponseBody) SetRequestId(v string) *QueryCallInTransferRecordResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordResponseBody) SetData(v *QueryCallInTransferRecordResponseBodyData) *QueryCallInTransferRecordResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -4303,11 +4419,11 @@ func (s *QueryCallInTransferRecordResponseBodyData) SetValues(v []*QueryCallInTr
 
 type QueryCallInTransferRecordResponseBodyDataValues struct {
 	CallInCalled   *string `json:"CallInCalled,omitempty" xml:"CallInCalled,omitempty"`
-	TransferCalled *string `json:"TransferCalled,omitempty" xml:"TransferCalled,omitempty"`
-	RecordUrl      *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
-	TransferCaller *string `json:"TransferCaller,omitempty" xml:"TransferCaller,omitempty"`
-	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	CallInCaller   *string `json:"CallInCaller,omitempty" xml:"CallInCaller,omitempty"`
+	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	RecordUrl      *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	TransferCalled *string `json:"TransferCalled,omitempty" xml:"TransferCalled,omitempty"`
+	TransferCaller *string `json:"TransferCaller,omitempty" xml:"TransferCaller,omitempty"`
 }
 
 func (s QueryCallInTransferRecordResponseBodyDataValues) String() string {
@@ -4323,18 +4439,8 @@ func (s *QueryCallInTransferRecordResponseBodyDataValues) SetCallInCalled(v stri
 	return s
 }
 
-func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCalled(v string) *QueryCallInTransferRecordResponseBodyDataValues {
-	s.TransferCalled = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordResponseBodyDataValues) SetRecordUrl(v string) *QueryCallInTransferRecordResponseBodyDataValues {
-	s.RecordUrl = &v
-	return s
-}
-
-func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
-	s.TransferCaller = &v
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetCallInCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.CallInCaller = &v
 	return s
 }
 
@@ -4343,8 +4449,18 @@ func (s *QueryCallInTransferRecordResponseBodyDataValues) SetGmtCreate(v int64) 
 	return s
 }
 
-func (s *QueryCallInTransferRecordResponseBodyDataValues) SetCallInCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
-	s.CallInCaller = &v
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetRecordUrl(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.RecordUrl = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCalled(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.TransferCalled = &v
+	return s
+}
+
+func (s *QueryCallInTransferRecordResponseBodyDataValues) SetTransferCaller(v string) *QueryCallInTransferRecordResponseBodyDataValues {
+	s.TransferCaller = &v
 	return s
 }
 
@@ -4372,10 +4488,10 @@ func (s *QueryCallInTransferRecordResponse) SetBody(v *QueryCallInTransferRecord
 }
 
 type QueryRobotInfoListRequest struct {
+	AuditStatus          *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	AuditStatus          *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 }
 
 func (s QueryRobotInfoListRequest) String() string {
@@ -4384,6 +4500,11 @@ func (s QueryRobotInfoListRequest) String() string {
 
 func (s QueryRobotInfoListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRobotInfoListRequest) SetAuditStatus(v string) *QueryRobotInfoListRequest {
+	s.AuditStatus = &v
+	return s
 }
 
 func (s *QueryRobotInfoListRequest) SetOwnerId(v int64) *QueryRobotInfoListRequest {
@@ -4401,15 +4522,10 @@ func (s *QueryRobotInfoListRequest) SetResourceOwnerId(v int64) *QueryRobotInfoL
 	return s
 }
 
-func (s *QueryRobotInfoListRequest) SetAuditStatus(v string) *QueryRobotInfoListRequest {
-	s.AuditStatus = &v
-	return s
-}
-
 type QueryRobotInfoListResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4426,13 +4542,13 @@ func (s *QueryRobotInfoListResponseBody) SetCode(v string) *QueryRobotInfoListRe
 	return s
 }
 
-func (s *QueryRobotInfoListResponseBody) SetMessage(v string) *QueryRobotInfoListResponseBody {
-	s.Message = &v
+func (s *QueryRobotInfoListResponseBody) SetData(v string) *QueryRobotInfoListResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryRobotInfoListResponseBody) SetData(v string) *QueryRobotInfoListResponseBody {
-	s.Data = &v
+func (s *QueryRobotInfoListResponseBody) SetMessage(v string) *QueryRobotInfoListResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4465,12 +4581,12 @@ func (s *QueryRobotInfoListResponse) SetBody(v *QueryRobotInfoListResponseBody) 
 }
 
 type QueryRobotTaskCallDetailRequest struct {
+	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Callee               *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	QueryDate            *int64  `json:"QueryDate,omitempty" xml:"QueryDate,omitempty"`
 }
 
 func (s QueryRobotTaskCallDetailRequest) String() string {
@@ -4481,8 +4597,18 @@ func (s QueryRobotTaskCallDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryRobotTaskCallDetailRequest) SetCallee(v string) *QueryRobotTaskCallDetailRequest {
+	s.Callee = &v
+	return s
+}
+
 func (s *QueryRobotTaskCallDetailRequest) SetOwnerId(v int64) *QueryRobotTaskCallDetailRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallDetailRequest) SetQueryDate(v int64) *QueryRobotTaskCallDetailRequest {
+	s.QueryDate = &v
 	return s
 }
 
@@ -4501,20 +4627,10 @@ func (s *QueryRobotTaskCallDetailRequest) SetTaskId(v int64) *QueryRobotTaskCall
 	return s
 }
 
-func (s *QueryRobotTaskCallDetailRequest) SetCallee(v string) *QueryRobotTaskCallDetailRequest {
-	s.Callee = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallDetailRequest) SetQueryDate(v int64) *QueryRobotTaskCallDetailRequest {
-	s.QueryDate = &v
-	return s
-}
-
 type QueryRobotTaskCallDetailResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4531,13 +4647,13 @@ func (s *QueryRobotTaskCallDetailResponseBody) SetCode(v string) *QueryRobotTask
 	return s
 }
 
-func (s *QueryRobotTaskCallDetailResponseBody) SetMessage(v string) *QueryRobotTaskCallDetailResponseBody {
-	s.Message = &v
+func (s *QueryRobotTaskCallDetailResponseBody) SetData(v string) *QueryRobotTaskCallDetailResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryRobotTaskCallDetailResponseBody) SetData(v string) *QueryRobotTaskCallDetailResponseBody {
-	s.Data = &v
+func (s *QueryRobotTaskCallDetailResponseBody) SetMessage(v string) *QueryRobotTaskCallDetailResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4570,19 +4686,19 @@ func (s *QueryRobotTaskCallDetailResponse) SetBody(v *QueryRobotTaskCallDetailRe
 }
 
 type QueryRobotTaskCallListRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
-	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
-	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
-	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
-	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
 	CallResult           *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
 	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
+	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
+	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
+	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
+	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s QueryRobotTaskCallListRequest) String() string {
@@ -4593,43 +4709,13 @@ func (s QueryRobotTaskCallListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryRobotTaskCallListRequest) SetOwnerId(v int64) *QueryRobotTaskCallListRequest {
-	s.OwnerId = &v
+func (s *QueryRobotTaskCallListRequest) SetCallResult(v string) *QueryRobotTaskCallListRequest {
+	s.CallResult = &v
 	return s
 }
 
-func (s *QueryRobotTaskCallListRequest) SetResourceOwnerAccount(v string) *QueryRobotTaskCallListRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetResourceOwnerId(v int64) *QueryRobotTaskCallListRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetPageNo(v int32) *QueryRobotTaskCallListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetPageSize(v int32) *QueryRobotTaskCallListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetTaskId(v string) *QueryRobotTaskCallListRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetDurationFrom(v string) *QueryRobotTaskCallListRequest {
-	s.DurationFrom = &v
-	return s
-}
-
-func (s *QueryRobotTaskCallListRequest) SetDurationTo(v string) *QueryRobotTaskCallListRequest {
-	s.DurationTo = &v
+func (s *QueryRobotTaskCallListRequest) SetCalled(v string) *QueryRobotTaskCallListRequest {
+	s.Called = &v
 	return s
 }
 
@@ -4643,25 +4729,55 @@ func (s *QueryRobotTaskCallListRequest) SetDialogCountTo(v string) *QueryRobotTa
 	return s
 }
 
+func (s *QueryRobotTaskCallListRequest) SetDurationFrom(v string) *QueryRobotTaskCallListRequest {
+	s.DurationFrom = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallListRequest) SetDurationTo(v string) *QueryRobotTaskCallListRequest {
+	s.DurationTo = &v
+	return s
+}
+
 func (s *QueryRobotTaskCallListRequest) SetHangupDirection(v string) *QueryRobotTaskCallListRequest {
 	s.HangupDirection = &v
 	return s
 }
 
-func (s *QueryRobotTaskCallListRequest) SetCallResult(v string) *QueryRobotTaskCallListRequest {
-	s.CallResult = &v
+func (s *QueryRobotTaskCallListRequest) SetOwnerId(v int64) *QueryRobotTaskCallListRequest {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *QueryRobotTaskCallListRequest) SetCalled(v string) *QueryRobotTaskCallListRequest {
-	s.Called = &v
+func (s *QueryRobotTaskCallListRequest) SetPageNo(v int32) *QueryRobotTaskCallListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallListRequest) SetPageSize(v int32) *QueryRobotTaskCallListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallListRequest) SetResourceOwnerAccount(v string) *QueryRobotTaskCallListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallListRequest) SetResourceOwnerId(v int64) *QueryRobotTaskCallListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryRobotTaskCallListRequest) SetTaskId(v string) *QueryRobotTaskCallListRequest {
+	s.TaskId = &v
 	return s
 }
 
 type QueryRobotTaskCallListResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4678,13 +4794,13 @@ func (s *QueryRobotTaskCallListResponseBody) SetCode(v string) *QueryRobotTaskCa
 	return s
 }
 
-func (s *QueryRobotTaskCallListResponseBody) SetMessage(v string) *QueryRobotTaskCallListResponseBody {
-	s.Message = &v
+func (s *QueryRobotTaskCallListResponseBody) SetData(v string) *QueryRobotTaskCallListResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryRobotTaskCallListResponseBody) SetData(v string) *QueryRobotTaskCallListResponseBody {
-	s.Data = &v
+func (s *QueryRobotTaskCallListResponseBody) SetMessage(v string) *QueryRobotTaskCallListResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4717,10 +4833,10 @@ func (s *QueryRobotTaskCallListResponse) SetBody(v *QueryRobotTaskCallListRespon
 }
 
 type QueryRobotTaskDetailRequest struct {
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s QueryRobotTaskDetailRequest) String() string {
@@ -4729,6 +4845,11 @@ func (s QueryRobotTaskDetailRequest) String() string {
 
 func (s QueryRobotTaskDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRobotTaskDetailRequest) SetId(v int64) *QueryRobotTaskDetailRequest {
+	s.Id = &v
+	return s
 }
 
 func (s *QueryRobotTaskDetailRequest) SetOwnerId(v int64) *QueryRobotTaskDetailRequest {
@@ -4746,15 +4867,10 @@ func (s *QueryRobotTaskDetailRequest) SetResourceOwnerId(v int64) *QueryRobotTas
 	return s
 }
 
-func (s *QueryRobotTaskDetailRequest) SetId(v int64) *QueryRobotTaskDetailRequest {
-	s.Id = &v
-	return s
-}
-
 type QueryRobotTaskDetailResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4771,13 +4887,13 @@ func (s *QueryRobotTaskDetailResponseBody) SetCode(v string) *QueryRobotTaskDeta
 	return s
 }
 
-func (s *QueryRobotTaskDetailResponseBody) SetMessage(v string) *QueryRobotTaskDetailResponseBody {
-	s.Message = &v
+func (s *QueryRobotTaskDetailResponseBody) SetData(v string) *QueryRobotTaskDetailResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryRobotTaskDetailResponseBody) SetData(v string) *QueryRobotTaskDetailResponseBody {
-	s.Data = &v
+func (s *QueryRobotTaskDetailResponseBody) SetMessage(v string) *QueryRobotTaskDetailResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4811,13 +4927,13 @@ func (s *QueryRobotTaskDetailResponse) SetBody(v *QueryRobotTaskDetailResponseBo
 
 type QueryRobotTaskListRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	Time                 *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 }
 
 func (s QueryRobotTaskListRequest) String() string {
@@ -4833,6 +4949,16 @@ func (s *QueryRobotTaskListRequest) SetOwnerId(v int64) *QueryRobotTaskListReque
 	return s
 }
 
+func (s *QueryRobotTaskListRequest) SetPageNo(v int32) *QueryRobotTaskListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryRobotTaskListRequest) SetPageSize(v int32) *QueryRobotTaskListRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *QueryRobotTaskListRequest) SetResourceOwnerAccount(v string) *QueryRobotTaskListRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -4843,13 +4969,13 @@ func (s *QueryRobotTaskListRequest) SetResourceOwnerId(v int64) *QueryRobotTaskL
 	return s
 }
 
-func (s *QueryRobotTaskListRequest) SetTaskName(v string) *QueryRobotTaskListRequest {
-	s.TaskName = &v
+func (s *QueryRobotTaskListRequest) SetStatus(v string) *QueryRobotTaskListRequest {
+	s.Status = &v
 	return s
 }
 
-func (s *QueryRobotTaskListRequest) SetStatus(v string) *QueryRobotTaskListRequest {
-	s.Status = &v
+func (s *QueryRobotTaskListRequest) SetTaskName(v string) *QueryRobotTaskListRequest {
+	s.TaskName = &v
 	return s
 }
 
@@ -4858,23 +4984,13 @@ func (s *QueryRobotTaskListRequest) SetTime(v string) *QueryRobotTaskListRequest
 	return s
 }
 
-func (s *QueryRobotTaskListRequest) SetPageSize(v int32) *QueryRobotTaskListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryRobotTaskListRequest) SetPageNo(v int32) *QueryRobotTaskListRequest {
-	s.PageNo = &v
-	return s
-}
-
 type QueryRobotTaskListResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4886,23 +5002,13 @@ func (s QueryRobotTaskListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryRobotTaskListResponseBody) SetData(v string) *QueryRobotTaskListResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *QueryRobotTaskListResponseBody) SetRequestId(v string) *QueryRobotTaskListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryRobotTaskListResponseBody) SetPageNo(v string) *QueryRobotTaskListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
 func (s *QueryRobotTaskListResponseBody) SetCode(v string) *QueryRobotTaskListResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryRobotTaskListResponseBody) SetData(v string) *QueryRobotTaskListResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -4911,8 +5017,18 @@ func (s *QueryRobotTaskListResponseBody) SetMessage(v string) *QueryRobotTaskLis
 	return s
 }
 
+func (s *QueryRobotTaskListResponseBody) SetPageNo(v string) *QueryRobotTaskListResponseBody {
+	s.PageNo = &v
+	return s
+}
+
 func (s *QueryRobotTaskListResponseBody) SetPageSize(v string) *QueryRobotTaskListResponseBody {
 	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRobotTaskListResponseBody) SetRequestId(v string) *QueryRobotTaskListResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4975,8 +5091,8 @@ func (s *QueryRobotv2AllListRequest) SetResourceOwnerId(v int64) *QueryRobotv2Al
 
 type QueryRobotv2AllListResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4993,13 +5109,13 @@ func (s *QueryRobotv2AllListResponseBody) SetCode(v string) *QueryRobotv2AllList
 	return s
 }
 
-func (s *QueryRobotv2AllListResponseBody) SetMessage(v string) *QueryRobotv2AllListResponseBody {
-	s.Message = &v
+func (s *QueryRobotv2AllListResponseBody) SetData(v string) *QueryRobotv2AllListResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryRobotv2AllListResponseBody) SetData(v string) *QueryRobotv2AllListResponseBody {
-	s.Data = &v
+func (s *QueryRobotv2AllListResponseBody) SetMessage(v string) *QueryRobotv2AllListResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -5033,9 +5149,9 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 
 type QueryRtcNumberAuthStatusRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
 func (s QueryRtcNumberAuthStatusRequest) String() string {
@@ -5051,6 +5167,11 @@ func (s *QueryRtcNumberAuthStatusRequest) SetOwnerId(v int64) *QueryRtcNumberAut
 	return s
 }
 
+func (s *QueryRtcNumberAuthStatusRequest) SetPhoneNumber(v string) *QueryRtcNumberAuthStatusRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *QueryRtcNumberAuthStatusRequest) SetResourceOwnerAccount(v string) *QueryRtcNumberAuthStatusRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -5058,11 +5179,6 @@ func (s *QueryRtcNumberAuthStatusRequest) SetResourceOwnerAccount(v string) *Que
 
 func (s *QueryRtcNumberAuthStatusRequest) SetResourceOwnerId(v int64) *QueryRtcNumberAuthStatusRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusRequest) SetPhoneNumber(v string) *QueryRtcNumberAuthStatusRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -5126,11 +5242,11 @@ func (s *QueryRtcNumberAuthStatusResponse) SetBody(v *QueryRtcNumberAuthStatusRe
 
 type QueryVirtualNumberRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
@@ -5147,13 +5263,13 @@ func (s *QueryVirtualNumberRequest) SetOwnerId(v int64) *QueryVirtualNumberReque
 	return s
 }
 
-func (s *QueryVirtualNumberRequest) SetResourceOwnerAccount(v string) *QueryVirtualNumberRequest {
-	s.ResourceOwnerAccount = &v
+func (s *QueryVirtualNumberRequest) SetPageNo(v int32) *QueryVirtualNumberRequest {
+	s.PageNo = &v
 	return s
 }
 
-func (s *QueryVirtualNumberRequest) SetResourceOwnerId(v int64) *QueryVirtualNumberRequest {
-	s.ResourceOwnerId = &v
+func (s *QueryVirtualNumberRequest) SetPageSize(v int32) *QueryVirtualNumberRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -5162,13 +5278,13 @@ func (s *QueryVirtualNumberRequest) SetProdCode(v string) *QueryVirtualNumberReq
 	return s
 }
 
-func (s *QueryVirtualNumberRequest) SetPageNo(v int32) *QueryVirtualNumberRequest {
-	s.PageNo = &v
+func (s *QueryVirtualNumberRequest) SetResourceOwnerAccount(v string) *QueryVirtualNumberRequest {
+	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *QueryVirtualNumberRequest) SetPageSize(v int32) *QueryVirtualNumberRequest {
-	s.PageSize = &v
+func (s *QueryVirtualNumberRequest) SetResourceOwnerId(v int64) *QueryVirtualNumberRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -5231,17 +5347,17 @@ func (s *QueryVirtualNumberResponse) SetBody(v *QueryVirtualNumberResponseBody) 
 
 type QueryVirtualNumberRelationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	PhoneNum             *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	RegionNameCity       *string `json:"RegionNameCity,omitempty" xml:"RegionNameCity,omitempty"`
-	SpecId               *int64  `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 	RelatedNum           *string `json:"RelatedNum,omitempty" xml:"RelatedNum,omitempty"`
-	PhoneNum             *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteType            *int32  `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	SpecId               *int64  `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 }
 
 func (s QueryVirtualNumberRelationRequest) String() string {
@@ -5257,21 +5373,6 @@ func (s *QueryVirtualNumberRelationRequest) SetOwnerId(v int64) *QueryVirtualNum
 	return s
 }
 
-func (s *QueryVirtualNumberRelationRequest) SetResourceOwnerAccount(v string) *QueryVirtualNumberRelationRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryVirtualNumberRelationRequest) SetResourceOwnerId(v int64) *QueryVirtualNumberRelationRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryVirtualNumberRelationRequest) SetProdCode(v string) *QueryVirtualNumberRelationRequest {
-	s.ProdCode = &v
-	return s
-}
-
 func (s *QueryVirtualNumberRelationRequest) SetPageNo(v int32) *QueryVirtualNumberRelationRequest {
 	s.PageNo = &v
 	return s
@@ -5282,8 +5383,13 @@ func (s *QueryVirtualNumberRelationRequest) SetPageSize(v int32) *QueryVirtualNu
 	return s
 }
 
-func (s *QueryVirtualNumberRelationRequest) SetRouteType(v int32) *QueryVirtualNumberRelationRequest {
-	s.RouteType = &v
+func (s *QueryVirtualNumberRelationRequest) SetPhoneNum(v string) *QueryVirtualNumberRelationRequest {
+	s.PhoneNum = &v
+	return s
+}
+
+func (s *QueryVirtualNumberRelationRequest) SetProdCode(v string) *QueryVirtualNumberRelationRequest {
+	s.ProdCode = &v
 	return s
 }
 
@@ -5297,18 +5403,28 @@ func (s *QueryVirtualNumberRelationRequest) SetRegionNameCity(v string) *QueryVi
 	return s
 }
 
-func (s *QueryVirtualNumberRelationRequest) SetSpecId(v int64) *QueryVirtualNumberRelationRequest {
-	s.SpecId = &v
-	return s
-}
-
 func (s *QueryVirtualNumberRelationRequest) SetRelatedNum(v string) *QueryVirtualNumberRelationRequest {
 	s.RelatedNum = &v
 	return s
 }
 
-func (s *QueryVirtualNumberRelationRequest) SetPhoneNum(v string) *QueryVirtualNumberRelationRequest {
-	s.PhoneNum = &v
+func (s *QueryVirtualNumberRelationRequest) SetResourceOwnerAccount(v string) *QueryVirtualNumberRelationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryVirtualNumberRelationRequest) SetResourceOwnerId(v int64) *QueryVirtualNumberRelationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryVirtualNumberRelationRequest) SetRouteType(v int32) *QueryVirtualNumberRelationRequest {
+	s.RouteType = &v
+	return s
+}
+
+func (s *QueryVirtualNumberRelationRequest) SetSpecId(v int64) *QueryVirtualNumberRelationRequest {
+	s.SpecId = &v
 	return s
 }
 
@@ -5366,9 +5482,9 @@ func (s *QueryVirtualNumberRelationResponse) SetBody(v *QueryVirtualNumberRelati
 
 type QueryVoipNumberBindInfosRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 }
 
@@ -5385,6 +5501,11 @@ func (s *QueryVoipNumberBindInfosRequest) SetOwnerId(v int64) *QueryVoipNumberBi
 	return s
 }
 
+func (s *QueryVoipNumberBindInfosRequest) SetPhoneNumber(v string) *QueryVoipNumberBindInfosRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *QueryVoipNumberBindInfosRequest) SetResourceOwnerAccount(v string) *QueryVoipNumberBindInfosRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -5392,11 +5513,6 @@ func (s *QueryVoipNumberBindInfosRequest) SetResourceOwnerAccount(v string) *Que
 
 func (s *QueryVoipNumberBindInfosRequest) SetResourceOwnerId(v int64) *QueryVoipNumberBindInfosRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryVoipNumberBindInfosRequest) SetPhoneNumber(v string) *QueryVoipNumberBindInfosRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -5464,13 +5580,13 @@ func (s *QueryVoipNumberBindInfosResponse) SetBody(v *QueryVoipNumberBindInfosRe
 }
 
 type ReportVoipProblemsRequest struct {
+	ChannelId            *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Desc                 *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ChannelId            *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Desc                 *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 }
 
 func (s ReportVoipProblemsRequest) String() string {
@@ -5479,6 +5595,16 @@ func (s ReportVoipProblemsRequest) String() string {
 
 func (s ReportVoipProblemsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReportVoipProblemsRequest) SetChannelId(v string) *ReportVoipProblemsRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ReportVoipProblemsRequest) SetDesc(v string) *ReportVoipProblemsRequest {
+	s.Desc = &v
+	return s
 }
 
 func (s *ReportVoipProblemsRequest) SetOwnerId(v int64) *ReportVoipProblemsRequest {
@@ -5496,23 +5622,13 @@ func (s *ReportVoipProblemsRequest) SetResourceOwnerId(v int64) *ReportVoipProbl
 	return s
 }
 
-func (s *ReportVoipProblemsRequest) SetChannelId(v string) *ReportVoipProblemsRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetVoipId(v string) *ReportVoipProblemsRequest {
-	s.VoipId = &v
-	return s
-}
-
 func (s *ReportVoipProblemsRequest) SetTitle(v string) *ReportVoipProblemsRequest {
 	s.Title = &v
 	return s
 }
 
-func (s *ReportVoipProblemsRequest) SetDesc(v string) *ReportVoipProblemsRequest {
-	s.Desc = &v
+func (s *ReportVoipProblemsRequest) SetVoipId(v string) *ReportVoipProblemsRequest {
+	s.VoipId = &v
 	return s
 }
 
@@ -5575,12 +5691,12 @@ func (s *ReportVoipProblemsResponse) SetBody(v *ReportVoipProblemsResponseBody) 
 }
 
 type SendVerificationRequest struct {
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VerifyType           *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	Target               *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	VerifyType           *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s SendVerificationRequest) String() string {
@@ -5589,6 +5705,11 @@ func (s SendVerificationRequest) String() string {
 
 func (s SendVerificationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendVerificationRequest) SetBizType(v string) *SendVerificationRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *SendVerificationRequest) SetOwnerId(v int64) *SendVerificationRequest {
@@ -5606,25 +5727,20 @@ func (s *SendVerificationRequest) SetResourceOwnerId(v int64) *SendVerificationR
 	return s
 }
 
-func (s *SendVerificationRequest) SetVerifyType(v string) *SendVerificationRequest {
-	s.VerifyType = &v
-	return s
-}
-
-func (s *SendVerificationRequest) SetBizType(v string) *SendVerificationRequest {
-	s.BizType = &v
-	return s
-}
-
 func (s *SendVerificationRequest) SetTarget(v string) *SendVerificationRequest {
 	s.Target = &v
 	return s
 }
 
+func (s *SendVerificationRequest) SetVerifyType(v string) *SendVerificationRequest {
+	s.VerifyType = &v
+	return s
+}
+
 type SendVerificationResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5641,13 +5757,13 @@ func (s *SendVerificationResponseBody) SetCode(v string) *SendVerificationRespon
 	return s
 }
 
-func (s *SendVerificationResponseBody) SetMessage(v string) *SendVerificationResponseBody {
-	s.Message = &v
+func (s *SendVerificationResponseBody) SetData(v bool) *SendVerificationResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SendVerificationResponseBody) SetData(v bool) *SendVerificationResponseBody {
-	s.Data = &v
+func (s *SendVerificationResponseBody) SetMessage(v string) *SendVerificationResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -5680,13 +5796,13 @@ func (s *SendVerificationResponse) SetBody(v *SendVerificationResponseBody) *Sen
 }
 
 type SetTransferCalleePoolConfigRequest struct {
-	OwnerId              *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string                                      `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	QualificationId      *string                                      `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	CalledRouteMode      *string                                      `json:"CalledRouteMode,omitempty" xml:"CalledRouteMode,omitempty"`
 	Details              []*SetTransferCalleePoolConfigRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	OwnerId              *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string                                      `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QualificationId      *string                                      `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s SetTransferCalleePoolConfigRequest) String() string {
@@ -5697,18 +5813,18 @@ func (s SetTransferCalleePoolConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetTransferCalleePoolConfigRequest) SetCalledRouteMode(v string) *SetTransferCalleePoolConfigRequest {
+	s.CalledRouteMode = &v
+	return s
+}
+
+func (s *SetTransferCalleePoolConfigRequest) SetDetails(v []*SetTransferCalleePoolConfigRequestDetails) *SetTransferCalleePoolConfigRequest {
+	s.Details = v
+	return s
+}
+
 func (s *SetTransferCalleePoolConfigRequest) SetOwnerId(v int64) *SetTransferCalleePoolConfigRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerAccount(v string) *SetTransferCalleePoolConfigRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerId(v int64) *SetTransferCalleePoolConfigRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -5722,19 +5838,19 @@ func (s *SetTransferCalleePoolConfigRequest) SetQualificationId(v string) *SetTr
 	return s
 }
 
-func (s *SetTransferCalleePoolConfigRequest) SetCalledRouteMode(v string) *SetTransferCalleePoolConfigRequest {
-	s.CalledRouteMode = &v
+func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerAccount(v string) *SetTransferCalleePoolConfigRequest {
+	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *SetTransferCalleePoolConfigRequest) SetDetails(v []*SetTransferCalleePoolConfigRequestDetails) *SetTransferCalleePoolConfigRequest {
-	s.Details = v
+func (s *SetTransferCalleePoolConfigRequest) SetResourceOwnerId(v int64) *SetTransferCalleePoolConfigRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
 type SetTransferCalleePoolConfigRequestDetails struct {
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 }
 
 func (s SetTransferCalleePoolConfigRequestDetails) String() string {
@@ -5745,20 +5861,20 @@ func (s SetTransferCalleePoolConfigRequestDetails) GoString() string {
 	return s.String()
 }
 
-func (s *SetTransferCalleePoolConfigRequestDetails) SetCaller(v string) *SetTransferCalleePoolConfigRequestDetails {
-	s.Caller = &v
-	return s
-}
-
 func (s *SetTransferCalleePoolConfigRequestDetails) SetCalled(v string) *SetTransferCalleePoolConfigRequestDetails {
 	s.Called = &v
 	return s
 }
 
+func (s *SetTransferCalleePoolConfigRequestDetails) SetCaller(v string) *SetTransferCalleePoolConfigRequestDetails {
+	s.Caller = &v
+	return s
+}
+
 type SetTransferCalleePoolConfigResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5775,13 +5891,13 @@ func (s *SetTransferCalleePoolConfigResponseBody) SetCode(v string) *SetTransfer
 	return s
 }
 
-func (s *SetTransferCalleePoolConfigResponseBody) SetMessage(v string) *SetTransferCalleePoolConfigResponseBody {
-	s.Message = &v
+func (s *SetTransferCalleePoolConfigResponseBody) SetData(v bool) *SetTransferCalleePoolConfigResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetTransferCalleePoolConfigResponseBody) SetData(v bool) *SetTransferCalleePoolConfigResponseBody {
-	s.Data = &v
+func (s *SetTransferCalleePoolConfigResponseBody) SetMessage(v string) *SetTransferCalleePoolConfigResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -5814,17 +5930,17 @@ func (s *SetTransferCalleePoolConfigResponse) SetBody(v *SetTransferCalleePoolCo
 }
 
 type SingleCallByTtsRequest struct {
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	TtsCode              *string `json:"TtsCode,omitempty" xml:"TtsCode,omitempty"`
 	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
-	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 }
 
 func (s SingleCallByTtsRequest) String() string {
@@ -5835,8 +5951,28 @@ func (s SingleCallByTtsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SingleCallByTtsRequest) SetCalledNumber(v string) *SingleCallByTtsRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SingleCallByTtsRequest) SetCalledShowNumber(v string) *SingleCallByTtsRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *SingleCallByTtsRequest) SetOutId(v string) *SingleCallByTtsRequest {
+	s.OutId = &v
+	return s
+}
+
 func (s *SingleCallByTtsRequest) SetOwnerId(v int64) *SingleCallByTtsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleCallByTtsRequest) SetPlayTimes(v int32) *SingleCallByTtsRequest {
+	s.PlayTimes = &v
 	return s
 }
 
@@ -5850,13 +5986,8 @@ func (s *SingleCallByTtsRequest) SetResourceOwnerId(v int64) *SingleCallByTtsReq
 	return s
 }
 
-func (s *SingleCallByTtsRequest) SetCalledShowNumber(v string) *SingleCallByTtsRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *SingleCallByTtsRequest) SetCalledNumber(v string) *SingleCallByTtsRequest {
-	s.CalledNumber = &v
+func (s *SingleCallByTtsRequest) SetSpeed(v int32) *SingleCallByTtsRequest {
+	s.Speed = &v
 	return s
 }
 
@@ -5870,31 +6001,16 @@ func (s *SingleCallByTtsRequest) SetTtsParam(v string) *SingleCallByTtsRequest {
 	return s
 }
 
-func (s *SingleCallByTtsRequest) SetPlayTimes(v int32) *SingleCallByTtsRequest {
-	s.PlayTimes = &v
-	return s
-}
-
 func (s *SingleCallByTtsRequest) SetVolume(v int32) *SingleCallByTtsRequest {
 	s.Volume = &v
 	return s
 }
 
-func (s *SingleCallByTtsRequest) SetSpeed(v int32) *SingleCallByTtsRequest {
-	s.Speed = &v
-	return s
-}
-
-func (s *SingleCallByTtsRequest) SetOutId(v string) *SingleCallByTtsRequest {
-	s.OutId = &v
-	return s
-}
-
 type SingleCallByTtsResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s SingleCallByTtsResponseBody) String() string {
@@ -5903,6 +6019,11 @@ func (s SingleCallByTtsResponseBody) String() string {
 
 func (s SingleCallByTtsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SingleCallByTtsResponseBody) SetCallId(v string) *SingleCallByTtsResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *SingleCallByTtsResponseBody) SetCode(v string) *SingleCallByTtsResponseBody {
@@ -5917,11 +6038,6 @@ func (s *SingleCallByTtsResponseBody) SetMessage(v string) *SingleCallByTtsRespo
 
 func (s *SingleCallByTtsResponseBody) SetRequestId(v string) *SingleCallByTtsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SingleCallByTtsResponseBody) SetCallId(v string) *SingleCallByTtsResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -5949,16 +6065,16 @@ func (s *SingleCallByTtsResponse) SetBody(v *SingleCallByTtsResponseBody) *Singl
 }
 
 type SingleCallByVoiceRequest struct {
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SingleCallByVoiceRequest) String() string {
@@ -5969,8 +6085,28 @@ func (s SingleCallByVoiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SingleCallByVoiceRequest) SetCalledNumber(v string) *SingleCallByVoiceRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SingleCallByVoiceRequest) SetCalledShowNumber(v string) *SingleCallByVoiceRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *SingleCallByVoiceRequest) SetOutId(v string) *SingleCallByVoiceRequest {
+	s.OutId = &v
+	return s
+}
+
 func (s *SingleCallByVoiceRequest) SetOwnerId(v int64) *SingleCallByVoiceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleCallByVoiceRequest) SetPlayTimes(v int32) *SingleCallByVoiceRequest {
+	s.PlayTimes = &v
 	return s
 }
 
@@ -5984,13 +6120,8 @@ func (s *SingleCallByVoiceRequest) SetResourceOwnerId(v int64) *SingleCallByVoic
 	return s
 }
 
-func (s *SingleCallByVoiceRequest) SetCalledShowNumber(v string) *SingleCallByVoiceRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *SingleCallByVoiceRequest) SetCalledNumber(v string) *SingleCallByVoiceRequest {
-	s.CalledNumber = &v
+func (s *SingleCallByVoiceRequest) SetSpeed(v int32) *SingleCallByVoiceRequest {
+	s.Speed = &v
 	return s
 }
 
@@ -5999,31 +6130,16 @@ func (s *SingleCallByVoiceRequest) SetVoiceCode(v string) *SingleCallByVoiceRequ
 	return s
 }
 
-func (s *SingleCallByVoiceRequest) SetPlayTimes(v int32) *SingleCallByVoiceRequest {
-	s.PlayTimes = &v
-	return s
-}
-
 func (s *SingleCallByVoiceRequest) SetVolume(v int32) *SingleCallByVoiceRequest {
 	s.Volume = &v
 	return s
 }
 
-func (s *SingleCallByVoiceRequest) SetSpeed(v int32) *SingleCallByVoiceRequest {
-	s.Speed = &v
-	return s
-}
-
-func (s *SingleCallByVoiceRequest) SetOutId(v string) *SingleCallByVoiceRequest {
-	s.OutId = &v
-	return s
-}
-
 type SingleCallByVoiceResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s SingleCallByVoiceResponseBody) String() string {
@@ -6032,6 +6148,11 @@ func (s SingleCallByVoiceResponseBody) String() string {
 
 func (s SingleCallByVoiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SingleCallByVoiceResponseBody) SetCallId(v string) *SingleCallByVoiceResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *SingleCallByVoiceResponseBody) SetCode(v string) *SingleCallByVoiceResponseBody {
@@ -6046,11 +6167,6 @@ func (s *SingleCallByVoiceResponseBody) SetMessage(v string) *SingleCallByVoiceR
 
 func (s *SingleCallByVoiceResponseBody) SetRequestId(v string) *SingleCallByVoiceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SingleCallByVoiceResponseBody) SetCallId(v string) *SingleCallByVoiceResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -6078,31 +6194,35 @@ func (s *SingleCallByVoiceResponse) SetBody(v *SingleCallByVoiceResponseBody) *S
 }
 
 type SmartCallRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	PauseTime            *int32  `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
-	MuteTime             *int32  `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
 	ActionCodeBreak      *bool   `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	ActionCodeTimeBreak  *int32  `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
+	AsrBaseId            *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
+	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	BackgroundFileCode   *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
+	BackgroundSpeed      *int32  `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
+	BackgroundVolume     *int32  `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
 	DynamicId            *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
 	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	VoiceCodeParam       *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
+	EnableITN            *bool   `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
+	MuteTime             *int32  `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PauseTime            *int32  `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	ActionCodeTimeBreak  *int32  `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
+	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StreamAsr            *int32  `json:"StreamAsr,omitempty" xml:"StreamAsr,omitempty"`
+	TtsConf              *bool   `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
+	TtsSpeed             *int32  `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
 	TtsStyle             *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
 	TtsVolume            *int32  `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	TtsSpeed             *int32  `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	TtsConf              *bool   `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
-	AsrBaseId            *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
-	StreamAsr            *int32  `json:"StreamAsr,omitempty" xml:"StreamAsr,omitempty"`
+	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	VoiceCodeParam       *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
+	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SmartCallRequest) String() string {
@@ -6113,48 +6233,18 @@ func (s SmartCallRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SmartCallRequest) SetOwnerId(v int64) *SmartCallRequest {
-	s.OwnerId = &v
+func (s *SmartCallRequest) SetActionCodeBreak(v bool) *SmartCallRequest {
+	s.ActionCodeBreak = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetResourceOwnerAccount(v string) *SmartCallRequest {
-	s.ResourceOwnerAccount = &v
+func (s *SmartCallRequest) SetActionCodeTimeBreak(v int32) *SmartCallRequest {
+	s.ActionCodeTimeBreak = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetResourceOwnerId(v int64) *SmartCallRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetCalledShowNumber(v string) *SmartCallRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetCalledNumber(v string) *SmartCallRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetVoiceCode(v string) *SmartCallRequest {
-	s.VoiceCode = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetRecordFlag(v bool) *SmartCallRequest {
-	s.RecordFlag = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetVolume(v int32) *SmartCallRequest {
-	s.Volume = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetSpeed(v int32) *SmartCallRequest {
-	s.Speed = &v
+func (s *SmartCallRequest) SetAsrBaseId(v string) *SmartCallRequest {
+	s.AsrBaseId = &v
 	return s
 }
 
@@ -6163,23 +6253,28 @@ func (s *SmartCallRequest) SetAsrModelId(v string) *SmartCallRequest {
 	return s
 }
 
-func (s *SmartCallRequest) SetPauseTime(v int32) *SmartCallRequest {
-	s.PauseTime = &v
+func (s *SmartCallRequest) SetBackgroundFileCode(v string) *SmartCallRequest {
+	s.BackgroundFileCode = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetMuteTime(v int32) *SmartCallRequest {
-	s.MuteTime = &v
+func (s *SmartCallRequest) SetBackgroundSpeed(v int32) *SmartCallRequest {
+	s.BackgroundSpeed = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetActionCodeBreak(v bool) *SmartCallRequest {
-	s.ActionCodeBreak = &v
+func (s *SmartCallRequest) SetBackgroundVolume(v int32) *SmartCallRequest {
+	s.BackgroundVolume = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetOutId(v string) *SmartCallRequest {
-	s.OutId = &v
+func (s *SmartCallRequest) SetCalledNumber(v string) *SmartCallRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetCalledShowNumber(v string) *SmartCallRequest {
+	s.CalledShowNumber = &v
 	return s
 }
 
@@ -6193,8 +6288,43 @@ func (s *SmartCallRequest) SetEarlyMediaAsr(v bool) *SmartCallRequest {
 	return s
 }
 
-func (s *SmartCallRequest) SetVoiceCodeParam(v string) *SmartCallRequest {
-	s.VoiceCodeParam = &v
+func (s *SmartCallRequest) SetEnableITN(v bool) *SmartCallRequest {
+	s.EnableITN = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetMuteTime(v int32) *SmartCallRequest {
+	s.MuteTime = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetOutId(v string) *SmartCallRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetOwnerId(v int64) *SmartCallRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetPauseTime(v int32) *SmartCallRequest {
+	s.PauseTime = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetRecordFlag(v bool) *SmartCallRequest {
+	s.RecordFlag = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetResourceOwnerAccount(v string) *SmartCallRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetResourceOwnerId(v int64) *SmartCallRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -6203,8 +6333,23 @@ func (s *SmartCallRequest) SetSessionTimeout(v int32) *SmartCallRequest {
 	return s
 }
 
-func (s *SmartCallRequest) SetActionCodeTimeBreak(v int32) *SmartCallRequest {
-	s.ActionCodeTimeBreak = &v
+func (s *SmartCallRequest) SetSpeed(v int32) *SmartCallRequest {
+	s.Speed = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetStreamAsr(v int32) *SmartCallRequest {
+	s.StreamAsr = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetTtsConf(v bool) *SmartCallRequest {
+	s.TtsConf = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetTtsSpeed(v int32) *SmartCallRequest {
+	s.TtsSpeed = &v
 	return s
 }
 
@@ -6218,31 +6363,26 @@ func (s *SmartCallRequest) SetTtsVolume(v int32) *SmartCallRequest {
 	return s
 }
 
-func (s *SmartCallRequest) SetTtsSpeed(v int32) *SmartCallRequest {
-	s.TtsSpeed = &v
+func (s *SmartCallRequest) SetVoiceCode(v string) *SmartCallRequest {
+	s.VoiceCode = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetTtsConf(v bool) *SmartCallRequest {
-	s.TtsConf = &v
+func (s *SmartCallRequest) SetVoiceCodeParam(v string) *SmartCallRequest {
+	s.VoiceCodeParam = &v
 	return s
 }
 
-func (s *SmartCallRequest) SetAsrBaseId(v string) *SmartCallRequest {
-	s.AsrBaseId = &v
-	return s
-}
-
-func (s *SmartCallRequest) SetStreamAsr(v int32) *SmartCallRequest {
-	s.StreamAsr = &v
+func (s *SmartCallRequest) SetVolume(v int32) *SmartCallRequest {
+	s.Volume = &v
 	return s
 }
 
 type SmartCallResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 }
 
 func (s SmartCallResponseBody) String() string {
@@ -6251,6 +6391,11 @@ func (s SmartCallResponseBody) String() string {
 
 func (s SmartCallResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SmartCallResponseBody) SetCallId(v string) *SmartCallResponseBody {
+	s.CallId = &v
+	return s
 }
 
 func (s *SmartCallResponseBody) SetCode(v string) *SmartCallResponseBody {
@@ -6265,11 +6410,6 @@ func (s *SmartCallResponseBody) SetMessage(v string) *SmartCallResponseBody {
 
 func (s *SmartCallResponseBody) SetRequestId(v string) *SmartCallResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SmartCallResponseBody) SetCallId(v string) *SmartCallResponseBody {
-	s.CallId = &v
 	return s
 }
 
@@ -6297,12 +6437,12 @@ func (s *SmartCallResponse) SetBody(v *SmartCallResponseBody) *SmartCallResponse
 }
 
 type SmartCallOperateRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s SmartCallOperateRequest) String() string {
@@ -6313,8 +6453,23 @@ func (s SmartCallOperateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SmartCallOperateRequest) SetCallId(v string) *SmartCallOperateRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *SmartCallOperateRequest) SetCommand(v string) *SmartCallOperateRequest {
+	s.Command = &v
+	return s
+}
+
 func (s *SmartCallOperateRequest) SetOwnerId(v int64) *SmartCallOperateRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *SmartCallOperateRequest) SetParam(v string) *SmartCallOperateRequest {
+	s.Param = &v
 	return s
 }
 
@@ -6328,26 +6483,11 @@ func (s *SmartCallOperateRequest) SetResourceOwnerId(v int64) *SmartCallOperateR
 	return s
 }
 
-func (s *SmartCallOperateRequest) SetCallId(v string) *SmartCallOperateRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *SmartCallOperateRequest) SetCommand(v string) *SmartCallOperateRequest {
-	s.Command = &v
-	return s
-}
-
-func (s *SmartCallOperateRequest) SetParam(v string) *SmartCallOperateRequest {
-	s.Param = &v
-	return s
-}
-
 type SmartCallOperateResponseBody struct {
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SmartCallOperateResponseBody) String() string {
@@ -6356,11 +6496,6 @@ func (s SmartCallOperateResponseBody) String() string {
 
 func (s SmartCallOperateResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *SmartCallOperateResponseBody) SetStatus(v bool) *SmartCallOperateResponseBody {
-	s.Status = &v
-	return s
 }
 
 func (s *SmartCallOperateResponseBody) SetCode(v string) *SmartCallOperateResponseBody {
@@ -6375,6 +6510,11 @@ func (s *SmartCallOperateResponseBody) SetMessage(v string) *SmartCallOperateRes
 
 func (s *SmartCallOperateResponseBody) SetRequestId(v string) *SmartCallOperateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SmartCallOperateResponseBody) SetStatus(v bool) *SmartCallOperateResponseBody {
+	s.Status = &v
 	return s
 }
 
@@ -6402,17 +6542,17 @@ func (s *SmartCallOperateResponse) SetBody(v *SmartCallOperateResponseBody) *Sma
 }
 
 type StartMicroOutboundRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	CommandCode          *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
+	ExtInfo              *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CommandCode          *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	ExtInfo              *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
 func (s StartMicroOutboundRequest) String() string {
@@ -6423,8 +6563,48 @@ func (s StartMicroOutboundRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartMicroOutboundRequest) SetAccountId(v string) *StartMicroOutboundRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetAccountType(v string) *StartMicroOutboundRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetAppName(v string) *StartMicroOutboundRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetCalledNumber(v string) *StartMicroOutboundRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetCallingNumber(v string) *StartMicroOutboundRequest {
+	s.CallingNumber = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetCommandCode(v string) *StartMicroOutboundRequest {
+	s.CommandCode = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetExtInfo(v string) *StartMicroOutboundRequest {
+	s.ExtInfo = &v
+	return s
+}
+
 func (s *StartMicroOutboundRequest) SetOwnerId(v int64) *StartMicroOutboundRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *StartMicroOutboundRequest) SetProdCode(v string) *StartMicroOutboundRequest {
+	s.ProdCode = &v
 	return s
 }
 
@@ -6438,53 +6618,13 @@ func (s *StartMicroOutboundRequest) SetResourceOwnerId(v int64) *StartMicroOutbo
 	return s
 }
 
-func (s *StartMicroOutboundRequest) SetProdCode(v string) *StartMicroOutboundRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetAccountType(v string) *StartMicroOutboundRequest {
-	s.AccountType = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetAccountId(v string) *StartMicroOutboundRequest {
-	s.AccountId = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCommandCode(v string) *StartMicroOutboundRequest {
-	s.CommandCode = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCallingNumber(v string) *StartMicroOutboundRequest {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCalledNumber(v string) *StartMicroOutboundRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetExtInfo(v string) *StartMicroOutboundRequest {
-	s.ExtInfo = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetAppName(v string) *StartMicroOutboundRequest {
-	s.AppName = &v
-	return s
-}
-
 type StartMicroOutboundResponseBody struct {
-	CustomerInfo     *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InvokeCmdId      *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
 	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CustomerInfo     *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
+	InvokeCmdId      *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
 	InvokeCreateTime *string `json:"InvokeCreateTime,omitempty" xml:"InvokeCreateTime,omitempty"`
 	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartMicroOutboundResponseBody) String() string {
@@ -6495,23 +6635,18 @@ func (s StartMicroOutboundResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StartMicroOutboundResponseBody) SetCode(v string) *StartMicroOutboundResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *StartMicroOutboundResponseBody) SetCustomerInfo(v string) *StartMicroOutboundResponseBody {
 	s.CustomerInfo = &v
 	return s
 }
 
-func (s *StartMicroOutboundResponseBody) SetRequestId(v string) *StartMicroOutboundResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *StartMicroOutboundResponseBody) SetInvokeCmdId(v string) *StartMicroOutboundResponseBody {
 	s.InvokeCmdId = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetCode(v string) *StartMicroOutboundResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -6522,6 +6657,11 @@ func (s *StartMicroOutboundResponseBody) SetInvokeCreateTime(v string) *StartMic
 
 func (s *StartMicroOutboundResponseBody) SetMessage(v string) *StartMicroOutboundResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *StartMicroOutboundResponseBody) SetRequestId(v string) *StartMicroOutboundResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6552,8 +6692,8 @@ type StartRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	ScheduleTime         *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartRobotTaskRequest) String() string {
@@ -6579,20 +6719,20 @@ func (s *StartRobotTaskRequest) SetResourceOwnerId(v int64) *StartRobotTaskReque
 	return s
 }
 
-func (s *StartRobotTaskRequest) SetTaskId(v int64) *StartRobotTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
 func (s *StartRobotTaskRequest) SetScheduleTime(v string) *StartRobotTaskRequest {
 	s.ScheduleTime = &v
 	return s
 }
 
+func (s *StartRobotTaskRequest) SetTaskId(v int64) *StartRobotTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
 type StartRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6609,13 +6749,13 @@ func (s *StartRobotTaskResponseBody) SetCode(v string) *StartRobotTaskResponseBo
 	return s
 }
 
-func (s *StartRobotTaskResponseBody) SetMessage(v string) *StartRobotTaskResponseBody {
-	s.Message = &v
+func (s *StartRobotTaskResponseBody) SetData(v string) *StartRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *StartRobotTaskResponseBody) SetData(v string) *StartRobotTaskResponseBody {
-	s.Data = &v
+func (s *StartRobotTaskResponseBody) SetMessage(v string) *StartRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -6684,8 +6824,8 @@ func (s *StopRobotTaskRequest) SetTaskId(v int64) *StopRobotTaskRequest {
 
 type StopRobotTaskResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6702,13 +6842,13 @@ func (s *StopRobotTaskResponseBody) SetCode(v string) *StopRobotTaskResponseBody
 	return s
 }
 
-func (s *StopRobotTaskResponseBody) SetMessage(v string) *StopRobotTaskResponseBody {
-	s.Message = &v
+func (s *StopRobotTaskResponseBody) SetData(v string) *StopRobotTaskResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *StopRobotTaskResponseBody) SetData(v string) *StopRobotTaskResponseBody {
-	s.Data = &v
+func (s *StopRobotTaskResponseBody) SetMessage(v string) *StopRobotTaskResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -6741,18 +6881,18 @@ func (s *StopRobotTaskResponse) SetBody(v *StopRobotTaskResponseBody) *StopRobot
 }
 
 type SubmitHotlineTransferRegisterRequest struct {
-	OwnerId                  *int64                                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount     *string                                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64                                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	QualificationId          *string                                                         `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	OperatorName             *string                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	Agreement                *string                                                         `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
+	HotlineNumber            *string                                                         `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	OperatorIdentityCard     *string                                                         `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
 	OperatorMail             *string                                                         `json:"OperatorMail,omitempty" xml:"OperatorMail,omitempty"`
 	OperatorMailVerifyCode   *string                                                         `json:"OperatorMailVerifyCode,omitempty" xml:"OperatorMailVerifyCode,omitempty"`
 	OperatorMobile           *string                                                         `json:"OperatorMobile,omitempty" xml:"OperatorMobile,omitempty"`
 	OperatorMobileVerifyCode *string                                                         `json:"OperatorMobileVerifyCode,omitempty" xml:"OperatorMobileVerifyCode,omitempty"`
-	OperatorIdentityCard     *string                                                         `json:"OperatorIdentityCard,omitempty" xml:"OperatorIdentityCard,omitempty"`
-	Agreement                *string                                                         `json:"Agreement,omitempty" xml:"Agreement,omitempty"`
-	HotlineNumber            *string                                                         `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	OperatorName             *string                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	OwnerId                  *int64                                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QualificationId          *string                                                         `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount     *string                                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64                                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransferPhoneNumberInfos []*SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos `json:"TransferPhoneNumberInfos,omitempty" xml:"TransferPhoneNumberInfos,omitempty" type:"Repeated"`
 }
 
@@ -6764,28 +6904,18 @@ func (s SubmitHotlineTransferRegisterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
-	s.OwnerId = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetAgreement(v string) *SubmitHotlineTransferRegisterRequest {
+	s.Agreement = &v
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerAccount(v string) *SubmitHotlineTransferRegisterRequest {
-	s.ResourceOwnerAccount = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetHotlineNumber(v string) *SubmitHotlineTransferRegisterRequest {
+	s.HotlineNumber = &v
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *SubmitHotlineTransferRegisterRequest) SetQualificationId(v string) *SubmitHotlineTransferRegisterRequest {
-	s.QualificationId = &v
-	return s
-}
-
-func (s *SubmitHotlineTransferRegisterRequest) SetOperatorName(v string) *SubmitHotlineTransferRegisterRequest {
-	s.OperatorName = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorIdentityCard(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorIdentityCard = &v
 	return s
 }
 
@@ -6809,18 +6939,28 @@ func (s *SubmitHotlineTransferRegisterRequest) SetOperatorMobileVerifyCode(v str
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetOperatorIdentityCard(v string) *SubmitHotlineTransferRegisterRequest {
-	s.OperatorIdentityCard = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetOperatorName(v string) *SubmitHotlineTransferRegisterRequest {
+	s.OperatorName = &v
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetAgreement(v string) *SubmitHotlineTransferRegisterRequest {
-	s.Agreement = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequest) SetHotlineNumber(v string) *SubmitHotlineTransferRegisterRequest {
-	s.HotlineNumber = &v
+func (s *SubmitHotlineTransferRegisterRequest) SetQualificationId(v string) *SubmitHotlineTransferRegisterRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerAccount(v string) *SubmitHotlineTransferRegisterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitHotlineTransferRegisterRequest) SetResourceOwnerId(v int64) *SubmitHotlineTransferRegisterRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -6830,9 +6970,9 @@ func (s *SubmitHotlineTransferRegisterRequest) SetTransferPhoneNumberInfos(v []*
 }
 
 type SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos struct {
+	IdentityCard         *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	PhoneNumberOwnerName *string `json:"PhoneNumberOwnerName,omitempty" xml:"PhoneNumberOwnerName,omitempty"`
-	IdentityCard         *string `json:"IdentityCard,omitempty" xml:"IdentityCard,omitempty"`
 }
 
 func (s SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) String() string {
@@ -6841,6 +6981,11 @@ func (s SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) String() s
 
 func (s SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetIdentityCard(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
+	s.IdentityCard = &v
+	return s
 }
 
 func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneNumber(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
@@ -6853,15 +6998,10 @@ func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetPhoneN
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos) SetIdentityCard(v string) *SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos {
-	s.IdentityCard = &v
-	return s
-}
-
 type SubmitHotlineTransferRegisterResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6878,13 +7018,13 @@ func (s *SubmitHotlineTransferRegisterResponseBody) SetCode(v string) *SubmitHot
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterResponseBody) SetMessage(v string) *SubmitHotlineTransferRegisterResponseBody {
-	s.Message = &v
+func (s *SubmitHotlineTransferRegisterResponseBody) SetData(v int64) *SubmitHotlineTransferRegisterResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SubmitHotlineTransferRegisterResponseBody) SetData(v int64) *SubmitHotlineTransferRegisterResponseBody {
-	s.Data = &v
+func (s *SubmitHotlineTransferRegisterResponseBody) SetMessage(v string) *SubmitHotlineTransferRegisterResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -6918,9 +7058,9 @@ func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransfer
 
 type UnbindNumberAndVoipIdRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 }
 
@@ -6937,6 +7077,11 @@ func (s *UnbindNumberAndVoipIdRequest) SetOwnerId(v int64) *UnbindNumberAndVoipI
 	return s
 }
 
+func (s *UnbindNumberAndVoipIdRequest) SetPhoneNumber(v string) *UnbindNumberAndVoipIdRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *UnbindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *UnbindNumberAndVoipIdRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -6944,11 +7089,6 @@ func (s *UnbindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *Unbind
 
 func (s *UnbindNumberAndVoipIdRequest) SetResourceOwnerId(v int64) *UnbindNumberAndVoipIdRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetPhoneNumber(v string) *UnbindNumberAndVoipIdRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -7017,9 +7157,9 @@ func (s *UnbindNumberAndVoipIdResponse) SetBody(v *UnbindNumberAndVoipIdResponse
 
 type UndoRtcNumberAuthRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
 func (s UndoRtcNumberAuthRequest) String() string {
@@ -7035,6 +7175,11 @@ func (s *UndoRtcNumberAuthRequest) SetOwnerId(v int64) *UndoRtcNumberAuthRequest
 	return s
 }
 
+func (s *UndoRtcNumberAuthRequest) SetPhoneNumber(v string) *UndoRtcNumberAuthRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *UndoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *UndoRtcNumberAuthRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -7042,11 +7187,6 @@ func (s *UndoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *UndoRtcNum
 
 func (s *UndoRtcNumberAuthRequest) SetResourceOwnerId(v int64) *UndoRtcNumberAuthRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthRequest) SetPhoneNumber(v string) *UndoRtcNumberAuthRequest {
-	s.PhoneNumber = &v
 	return s
 }
 
@@ -7109,11 +7249,11 @@ func (s *UndoRtcNumberAuthResponse) SetBody(v *UndoRtcNumberAuthResponseBody) *U
 }
 
 type UploadRobotTaskCalledFileRequest struct {
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	TtsParam             *string `json:"TtsParam,omitempty" xml:"TtsParam,omitempty"`
 	TtsParamHead         *string `json:"TtsParamHead,omitempty" xml:"TtsParamHead,omitempty"`
 }
@@ -7124,6 +7264,16 @@ func (s UploadRobotTaskCalledFileRequest) String() string {
 
 func (s UploadRobotTaskCalledFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UploadRobotTaskCalledFileRequest) SetCalledNumber(v string) *UploadRobotTaskCalledFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *UploadRobotTaskCalledFileRequest) SetId(v int64) *UploadRobotTaskCalledFileRequest {
+	s.Id = &v
+	return s
 }
 
 func (s *UploadRobotTaskCalledFileRequest) SetOwnerId(v int64) *UploadRobotTaskCalledFileRequest {
@@ -7141,16 +7291,6 @@ func (s *UploadRobotTaskCalledFileRequest) SetResourceOwnerId(v int64) *UploadRo
 	return s
 }
 
-func (s *UploadRobotTaskCalledFileRequest) SetId(v int64) *UploadRobotTaskCalledFileRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UploadRobotTaskCalledFileRequest) SetCalledNumber(v string) *UploadRobotTaskCalledFileRequest {
-	s.CalledNumber = &v
-	return s
-}
-
 func (s *UploadRobotTaskCalledFileRequest) SetTtsParam(v string) *UploadRobotTaskCalledFileRequest {
 	s.TtsParam = &v
 	return s
@@ -7163,8 +7303,8 @@ func (s *UploadRobotTaskCalledFileRequest) SetTtsParamHead(v string) *UploadRobo
 
 type UploadRobotTaskCalledFileResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7181,13 +7321,13 @@ func (s *UploadRobotTaskCalledFileResponseBody) SetCode(v string) *UploadRobotTa
 	return s
 }
 
-func (s *UploadRobotTaskCalledFileResponseBody) SetMessage(v string) *UploadRobotTaskCalledFileResponseBody {
-	s.Message = &v
+func (s *UploadRobotTaskCalledFileResponseBody) SetData(v string) *UploadRobotTaskCalledFileResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *UploadRobotTaskCalledFileResponseBody) SetData(v string) *UploadRobotTaskCalledFileResponseBody {
-	s.Data = &v
+func (s *UploadRobotTaskCalledFileResponseBody) SetMessage(v string) *UploadRobotTaskCalledFileResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -7220,10 +7360,10 @@ func (s *UploadRobotTaskCalledFileResponse) SetBody(v *UploadRobotTaskCalledFile
 }
 
 type VoipAddAccountRequest struct {
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s VoipAddAccountRequest) String() string {
@@ -7232,6 +7372,11 @@ func (s VoipAddAccountRequest) String() string {
 
 func (s VoipAddAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *VoipAddAccountRequest) SetDeviceId(v string) *VoipAddAccountRequest {
+	s.DeviceId = &v
+	return s
 }
 
 func (s *VoipAddAccountRequest) SetOwnerId(v int64) *VoipAddAccountRequest {
@@ -7246,11 +7391,6 @@ func (s *VoipAddAccountRequest) SetResourceOwnerAccount(v string) *VoipAddAccoun
 
 func (s *VoipAddAccountRequest) SetResourceOwnerId(v int64) *VoipAddAccountRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *VoipAddAccountRequest) SetDeviceId(v string) *VoipAddAccountRequest {
-	s.DeviceId = &v
 	return s
 }
 
@@ -7313,12 +7453,12 @@ func (s *VoipAddAccountResponse) SetBody(v *VoipAddAccountResponseBody) *VoipAdd
 }
 
 type VoipGetTokenRequest struct {
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
 }
 
 func (s VoipGetTokenRequest) String() string {
@@ -7327,6 +7467,16 @@ func (s VoipGetTokenRequest) String() string {
 
 func (s VoipGetTokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *VoipGetTokenRequest) SetDeviceId(v string) *VoipGetTokenRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *VoipGetTokenRequest) SetIsCustomAccount(v bool) *VoipGetTokenRequest {
+	s.IsCustomAccount = &v
+	return s
 }
 
 func (s *VoipGetTokenRequest) SetOwnerId(v int64) *VoipGetTokenRequest {
@@ -7346,16 +7496,6 @@ func (s *VoipGetTokenRequest) SetResourceOwnerId(v int64) *VoipGetTokenRequest {
 
 func (s *VoipGetTokenRequest) SetVoipId(v string) *VoipGetTokenRequest {
 	s.VoipId = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetDeviceId(v string) *VoipGetTokenRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetIsCustomAccount(v bool) *VoipGetTokenRequest {
-	s.IsCustomAccount = &v
 	return s
 }
 
@@ -7933,6 +8073,34 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteCallTaskResponse{}
 	_body, _err := client.ExecuteCallTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCallInfoWithOptions(request *GetCallInfoRequest, runtime *util.RuntimeOptions) (_result *GetCallInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetCallInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetCallInfo"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCallInfo(request *GetCallInfoRequest) (_result *GetCallInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCallInfoResponse{}
+	_body, _err := client.GetCallInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
