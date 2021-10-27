@@ -35,8 +35,8 @@ func (s *CloneFlowRequest) SetVersionId(v string) *CloneFlowRequest {
 }
 
 type CloneFlowResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CloneFlowResponseBody) String() string {
@@ -47,13 +47,13 @@ func (s CloneFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CloneFlowResponseBody) SetRequestId(v string) *CloneFlowResponseBody {
-	s.RequestId = &v
+func (s *CloneFlowResponseBody) SetFlowId(v string) *CloneFlowResponseBody {
+	s.FlowId = &v
 	return s
 }
 
-func (s *CloneFlowResponseBody) SetFlowId(v string) *CloneFlowResponseBody {
-	s.FlowId = &v
+func (s *CloneFlowResponseBody) SetRequestId(v string) *CloneFlowResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -81,11 +81,11 @@ func (s *CloneFlowResponse) SetBody(v *CloneFlowResponseBody) *CloneFlowResponse
 }
 
 type CreateFlowRequest struct {
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
 	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
+	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	FlowSource      *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateFlowRequest) String() string {
@@ -96,8 +96,8 @@ func (s CreateFlowRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFlowRequest) SetFlowName(v string) *CreateFlowRequest {
-	s.FlowName = &v
+func (s *CreateFlowRequest) SetDefinition(v string) *CreateFlowRequest {
+	s.Definition = &v
 	return s
 }
 
@@ -106,13 +106,8 @@ func (s *CreateFlowRequest) SetFlowDescription(v string) *CreateFlowRequest {
 	return s
 }
 
-func (s *CreateFlowRequest) SetDefinition(v string) *CreateFlowRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *CreateFlowRequest) SetTemplateId(v string) *CreateFlowRequest {
-	s.TemplateId = &v
+func (s *CreateFlowRequest) SetFlowName(v string) *CreateFlowRequest {
+	s.FlowName = &v
 	return s
 }
 
@@ -121,9 +116,14 @@ func (s *CreateFlowRequest) SetFlowSource(v string) *CreateFlowRequest {
 	return s
 }
 
+func (s *CreateFlowRequest) SetTemplateId(v string) *CreateFlowRequest {
+	s.TemplateId = &v
+	return s
+}
+
 type CreateFlowResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFlowResponseBody) String() string {
@@ -134,13 +134,13 @@ func (s CreateFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFlowResponseBody) SetRequestId(v string) *CreateFlowResponseBody {
-	s.RequestId = &v
+func (s *CreateFlowResponseBody) SetFlowId(v string) *CreateFlowResponseBody {
+	s.FlowId = &v
 	return s
 }
 
-func (s *CreateFlowResponseBody) SetFlowId(v string) *CreateFlowResponseBody {
-	s.FlowId = &v
+func (s *CreateFlowResponseBody) SetRequestId(v string) *CreateFlowResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -248,9 +248,9 @@ func (s *DisableFlowRequest) SetFlowId(v string) *DisableFlowRequest {
 }
 
 type DisableFlowResponseBody struct {
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 }
 
 func (s DisableFlowResponseBody) String() string {
@@ -261,6 +261,11 @@ func (s DisableFlowResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DisableFlowResponseBody) SetFlowStatus(v string) *DisableFlowResponseBody {
+	s.FlowStatus = &v
+	return s
+}
+
 func (s *DisableFlowResponseBody) SetRequestId(v string) *DisableFlowResponseBody {
 	s.RequestId = &v
 	return s
@@ -268,11 +273,6 @@ func (s *DisableFlowResponseBody) SetRequestId(v string) *DisableFlowResponseBod
 
 func (s *DisableFlowResponseBody) SetSuccess(v bool) *DisableFlowResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DisableFlowResponseBody) SetFlowStatus(v string) *DisableFlowResponseBody {
-	s.FlowStatus = &v
 	return s
 }
 
@@ -317,9 +317,9 @@ func (s *EnableFlowRequest) SetFlowId(v string) *EnableFlowRequest {
 }
 
 type EnableFlowResponseBody struct {
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 }
 
 func (s EnableFlowResponseBody) String() string {
@@ -330,6 +330,11 @@ func (s EnableFlowResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *EnableFlowResponseBody) SetFlowStatus(v string) *EnableFlowResponseBody {
+	s.FlowStatus = &v
+	return s
+}
+
 func (s *EnableFlowResponseBody) SetRequestId(v string) *EnableFlowResponseBody {
 	s.RequestId = &v
 	return s
@@ -337,11 +342,6 @@ func (s *EnableFlowResponseBody) SetRequestId(v string) *EnableFlowResponseBody 
 
 func (s *EnableFlowResponseBody) SetSuccess(v bool) *EnableFlowResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *EnableFlowResponseBody) SetFlowStatus(v string) *EnableFlowResponseBody {
-	s.FlowStatus = &v
 	return s
 }
 
@@ -386,19 +386,19 @@ func (s *GetFlowRequest) SetFlowId(v string) *GetFlowRequest {
 }
 
 type GetFlowResponseBody struct {
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowDescription  *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
 	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	CurrentVersionId *int32  `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
-	FlowStatus       *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	TemplateId       *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	FlowSource       *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	FlowDescription  *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
 	FlowEditMode     *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
+	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	FlowSource       *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	FlowStatus       *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId       *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetFlowResponseBody) String() string {
@@ -409,38 +409,8 @@ func (s GetFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetFlowResponseBody) SetFlowId(v string) *GetFlowResponseBody {
-	s.FlowId = &v
-	return s
-}
-
-func (s *GetFlowResponseBody) SetRegionId(v string) *GetFlowResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetFlowResponseBody) SetFlowName(v string) *GetFlowResponseBody {
-	s.FlowName = &v
-	return s
-}
-
-func (s *GetFlowResponseBody) SetFlowDescription(v string) *GetFlowResponseBody {
-	s.FlowDescription = &v
-	return s
-}
-
 func (s *GetFlowResponseBody) SetCreateTime(v string) *GetFlowResponseBody {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *GetFlowResponseBody) SetUpdateTime(v string) *GetFlowResponseBody {
-	s.UpdateTime = &v
 	return s
 }
 
@@ -449,18 +419,28 @@ func (s *GetFlowResponseBody) SetCurrentVersionId(v int32) *GetFlowResponseBody 
 	return s
 }
 
-func (s *GetFlowResponseBody) SetFlowStatus(v string) *GetFlowResponseBody {
-	s.FlowStatus = &v
-	return s
-}
-
 func (s *GetFlowResponseBody) SetDefinition(v string) *GetFlowResponseBody {
 	s.Definition = &v
 	return s
 }
 
-func (s *GetFlowResponseBody) SetTemplateId(v string) *GetFlowResponseBody {
-	s.TemplateId = &v
+func (s *GetFlowResponseBody) SetFlowDescription(v string) *GetFlowResponseBody {
+	s.FlowDescription = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetFlowEditMode(v string) *GetFlowResponseBody {
+	s.FlowEditMode = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetFlowId(v string) *GetFlowResponseBody {
+	s.FlowId = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetFlowName(v string) *GetFlowResponseBody {
+	s.FlowName = &v
 	return s
 }
 
@@ -469,8 +449,28 @@ func (s *GetFlowResponseBody) SetFlowSource(v string) *GetFlowResponseBody {
 	return s
 }
 
-func (s *GetFlowResponseBody) SetFlowEditMode(v string) *GetFlowResponseBody {
-	s.FlowEditMode = &v
+func (s *GetFlowResponseBody) SetFlowStatus(v string) *GetFlowResponseBody {
+	s.FlowStatus = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetRegionId(v string) *GetFlowResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetTemplateId(v string) *GetFlowResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetUpdateTime(v string) *GetFlowResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -515,22 +515,22 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
-	Definition          *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Definition          *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateConnector   *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
+	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
 	TemplateSummary     *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
 	TemplateSummaryEn   *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
-	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
 	TemplateVersion     *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
-	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -541,33 +541,8 @@ func (s GetTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetRegionId(v string) *GetTemplateResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateId(v string) *GetTemplateResponseBody {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateName(v string) *GetTemplateResponseBody {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateDescription(v string) *GetTemplateResponseBody {
-	s.TemplateDescription = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateTag(v string) *GetTemplateResponseBody {
-	s.TemplateTag = &v
+func (s *GetTemplateResponseBody) SetCreateTime(v string) *GetTemplateResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -576,18 +551,48 @@ func (s *GetTemplateResponseBody) SetDefinition(v string) *GetTemplateResponseBo
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetCreateTime(v string) *GetTemplateResponseBody {
-	s.CreateTime = &v
+func (s *GetTemplateResponseBody) SetRegionId(v string) *GetTemplateResponseBody {
+	s.RegionId = &v
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBody {
-	s.UpdateTime = &v
+func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *GetTemplateResponseBody) SetTemplateConnector(v string) *GetTemplateResponseBody {
 	s.TemplateConnector = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateCreator(v string) *GetTemplateResponseBody {
+	s.TemplateCreator = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateDescription(v string) *GetTemplateResponseBody {
+	s.TemplateDescription = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateId(v string) *GetTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateLocale(v string) *GetTemplateResponseBody {
+	s.TemplateLocale = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateName(v string) *GetTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateOverview(v string) *GetTemplateResponseBody {
+	s.TemplateOverview = &v
 	return s
 }
 
@@ -601,8 +606,8 @@ func (s *GetTemplateResponseBody) SetTemplateSummaryEn(v string) *GetTemplateRes
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetTemplateLocale(v string) *GetTemplateResponseBody {
-	s.TemplateLocale = &v
+func (s *GetTemplateResponseBody) SetTemplateTag(v string) *GetTemplateResponseBody {
+	s.TemplateTag = &v
 	return s
 }
 
@@ -611,13 +616,8 @@ func (s *GetTemplateResponseBody) SetTemplateVersion(v int32) *GetTemplateRespon
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetTemplateOverview(v string) *GetTemplateResponseBody {
-	s.TemplateOverview = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateCreator(v string) *GetTemplateResponseBody {
-	s.TemplateCreator = &v
+func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -645,9 +645,7 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetVersionRequest struct {
-	// 工作流 ID
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// 工作流版本 ID
+	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -670,26 +668,16 @@ func (s *GetVersionRequest) SetVersionId(v string) *GetVersionRequest {
 }
 
 type GetVersionResponseBody struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 工作流定义
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// 工作流 ID
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// 地域 ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 版本描述
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Definition         *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	FlowId             *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	// 版本 ID
-	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// 版本名称
-	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// 版本状态
-	VersionStatus *string `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
+	VersionId          *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionName        *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	VersionStatus      *string `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
 }
 
 func (s GetVersionResponseBody) String() string {
@@ -774,18 +762,12 @@ func (s *GetVersionResponse) SetBody(v *GetVersionResponseBody) *GetVersionRespo
 }
 
 type GroupInvokeFlowRequest struct {
-	// FlowId
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// GroupKey
-	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	// Data
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// ClientToken
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// TotalCount
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Tags
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	GroupKey    *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GroupInvokeFlowRequest) String() string {
@@ -794,6 +776,16 @@ func (s GroupInvokeFlowRequest) String() string {
 
 func (s GroupInvokeFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GroupInvokeFlowRequest) SetClientToken(v string) *GroupInvokeFlowRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GroupInvokeFlowRequest) SetData(v string) *GroupInvokeFlowRequest {
+	s.Data = &v
+	return s
 }
 
 func (s *GroupInvokeFlowRequest) SetFlowId(v string) *GroupInvokeFlowRequest {
@@ -806,13 +798,8 @@ func (s *GroupInvokeFlowRequest) SetGroupKey(v string) *GroupInvokeFlowRequest {
 	return s
 }
 
-func (s *GroupInvokeFlowRequest) SetData(v string) *GroupInvokeFlowRequest {
-	s.Data = &v
-	return s
-}
-
-func (s *GroupInvokeFlowRequest) SetClientToken(v string) *GroupInvokeFlowRequest {
-	s.ClientToken = &v
+func (s *GroupInvokeFlowRequest) SetTags(v string) *GroupInvokeFlowRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -821,22 +808,12 @@ func (s *GroupInvokeFlowRequest) SetTotalCount(v int32) *GroupInvokeFlowRequest 
 	return s
 }
 
-func (s *GroupInvokeFlowRequest) SetTags(v string) *GroupInvokeFlowRequest {
-	s.Tags = &v
-	return s
-}
-
 type GroupInvokeFlowResponseBody struct {
-	// 当前批次
-	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
-	// 执行 ID
+	CurrentCount      *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
 	GroupInvocationId *string `json:"GroupInvocationId,omitempty" xml:"GroupInvocationId,omitempty"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 调用是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GroupInvokeFlowResponseBody) String() string {
@@ -896,10 +873,10 @@ func (s *GroupInvokeFlowResponse) SetBody(v *GroupInvokeFlowResponseBody) *Group
 }
 
 type InvokeFlowRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	Parameters  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s InvokeFlowRequest) String() string {
@@ -908,6 +885,16 @@ func (s InvokeFlowRequest) String() string {
 
 func (s InvokeFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeFlowRequest) SetClientToken(v string) *InvokeFlowRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *InvokeFlowRequest) SetData(v string) *InvokeFlowRequest {
+	s.Data = &v
+	return s
 }
 
 func (s *InvokeFlowRequest) SetFlowId(v string) *InvokeFlowRequest {
@@ -920,19 +907,9 @@ func (s *InvokeFlowRequest) SetParameters(v string) *InvokeFlowRequest {
 	return s
 }
 
-func (s *InvokeFlowRequest) SetData(v string) *InvokeFlowRequest {
-	s.Data = &v
-	return s
-}
-
-func (s *InvokeFlowRequest) SetClientToken(v string) *InvokeFlowRequest {
-	s.ClientToken = &v
-	return s
-}
-
 type InvokeFlowResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InvocationId *string `json:"InvocationId,omitempty" xml:"InvocationId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -944,13 +921,13 @@ func (s InvokeFlowResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeFlowResponseBody) SetRequestId(v string) *InvokeFlowResponseBody {
-	s.RequestId = &v
+func (s *InvokeFlowResponseBody) SetInvocationId(v string) *InvokeFlowResponseBody {
+	s.InvocationId = &v
 	return s
 }
 
-func (s *InvokeFlowResponseBody) SetInvocationId(v string) *InvokeFlowResponseBody {
-	s.InvocationId = &v
+func (s *InvokeFlowResponseBody) SetRequestId(v string) *InvokeFlowResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -983,10 +960,10 @@ func (s *InvokeFlowResponse) SetBody(v *InvokeFlowResponseBody) *InvokeFlowRespo
 }
 
 type ListFlowsRequest struct {
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	FlowName   *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	FlowName   *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListFlowsRequest) String() string {
@@ -997,13 +974,8 @@ func (s ListFlowsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListFlowsRequest) SetPageSize(v int32) *ListFlowsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetPageNumber(v int32) *ListFlowsRequest {
-	s.PageNumber = &v
+func (s *ListFlowsRequest) SetFilter(v string) *ListFlowsRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -1012,15 +984,20 @@ func (s *ListFlowsRequest) SetFlowName(v string) *ListFlowsRequest {
 	return s
 }
 
-func (s *ListFlowsRequest) SetFilter(v string) *ListFlowsRequest {
-	s.Filter = &v
+func (s *ListFlowsRequest) SetPageNumber(v int32) *ListFlowsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFlowsRequest) SetPageSize(v int32) *ListFlowsRequest {
+	s.PageSize = &v
 	return s
 }
 
 type ListFlowsResponseBody struct {
+	Flows      []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
 	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Flows      []*ListFlowsResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
 }
 
 func (s ListFlowsResponseBody) String() string {
@@ -1029,6 +1006,11 @@ func (s ListFlowsResponseBody) String() string {
 
 func (s ListFlowsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListFlowsResponseBody) SetFlows(v []*ListFlowsResponseBodyFlows) *ListFlowsResponseBody {
+	s.Flows = v
+	return s
 }
 
 func (s *ListFlowsResponseBody) SetRequestId(v string) *ListFlowsResponseBody {
@@ -1041,23 +1023,18 @@ func (s *ListFlowsResponseBody) SetTotalCount(v int32) *ListFlowsResponseBody {
 	return s
 }
 
-func (s *ListFlowsResponseBody) SetFlows(v []*ListFlowsResponseBodyFlows) *ListFlowsResponseBody {
-	s.Flows = v
-	return s
-}
-
 type ListFlowsResponseBodyFlows struct {
-	FlowId          *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	VersionId       *int32  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	FlowStatus      *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	FlowSource      *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
 	FlowEditMode    *string `json:"FlowEditMode,omitempty" xml:"FlowEditMode,omitempty"`
+	FlowId          *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	FlowSource      *string `json:"FlowSource,omitempty" xml:"FlowSource,omitempty"`
+	FlowStatus      *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VersionId       *int32  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListFlowsResponseBodyFlows) String() string {
@@ -1068,18 +1045,8 @@ func (s ListFlowsResponseBodyFlows) GoString() string {
 	return s.String()
 }
 
-func (s *ListFlowsResponseBodyFlows) SetFlowId(v string) *ListFlowsResponseBodyFlows {
-	s.FlowId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlows) SetRegionId(v string) *ListFlowsResponseBodyFlows {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlows) SetFlowName(v string) *ListFlowsResponseBodyFlows {
-	s.FlowName = &v
+func (s *ListFlowsResponseBodyFlows) SetCreateTime(v string) *ListFlowsResponseBodyFlows {
+	s.CreateTime = &v
 	return s
 }
 
@@ -1088,28 +1055,18 @@ func (s *ListFlowsResponseBodyFlows) SetFlowDescription(v string) *ListFlowsResp
 	return s
 }
 
-func (s *ListFlowsResponseBodyFlows) SetVersionId(v int32) *ListFlowsResponseBodyFlows {
-	s.VersionId = &v
+func (s *ListFlowsResponseBodyFlows) SetFlowEditMode(v string) *ListFlowsResponseBodyFlows {
+	s.FlowEditMode = &v
 	return s
 }
 
-func (s *ListFlowsResponseBodyFlows) SetCreateTime(v string) *ListFlowsResponseBodyFlows {
-	s.CreateTime = &v
+func (s *ListFlowsResponseBodyFlows) SetFlowId(v string) *ListFlowsResponseBodyFlows {
+	s.FlowId = &v
 	return s
 }
 
-func (s *ListFlowsResponseBodyFlows) SetUpdateTime(v string) *ListFlowsResponseBodyFlows {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlows) SetFlowStatus(v string) *ListFlowsResponseBodyFlows {
-	s.FlowStatus = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlows) SetTemplateId(v string) *ListFlowsResponseBodyFlows {
-	s.TemplateId = &v
+func (s *ListFlowsResponseBodyFlows) SetFlowName(v string) *ListFlowsResponseBodyFlows {
+	s.FlowName = &v
 	return s
 }
 
@@ -1118,8 +1075,28 @@ func (s *ListFlowsResponseBodyFlows) SetFlowSource(v string) *ListFlowsResponseB
 	return s
 }
 
-func (s *ListFlowsResponseBodyFlows) SetFlowEditMode(v string) *ListFlowsResponseBodyFlows {
-	s.FlowEditMode = &v
+func (s *ListFlowsResponseBodyFlows) SetFlowStatus(v string) *ListFlowsResponseBodyFlows {
+	s.FlowStatus = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetRegionId(v string) *ListFlowsResponseBodyFlows {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetTemplateId(v string) *ListFlowsResponseBodyFlows {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetUpdateTime(v string) *ListFlowsResponseBodyFlows {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListFlowsResponseBodyFlows) SetVersionId(v int32) *ListFlowsResponseBodyFlows {
+	s.VersionId = &v
 	return s
 }
 
@@ -1147,11 +1124,11 @@ func (s *ListFlowsResponse) SetBody(v *ListFlowsResponseBody) *ListFlowsResponse
 }
 
 type ListTagResourcesRequest struct {
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults   *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -1162,18 +1139,8 @@ func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
-	s.Tag = v
+func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -1182,8 +1149,18 @@ func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesReques
 	return s
 }
 
-func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesRequest {
-	s.MaxResults = &v
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1211,10 +1188,10 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -1225,18 +1202,13 @@ func (s ListTagResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
 	s.NextToken = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesResponseBody {
-	s.TotalCount = &v
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1245,11 +1217,16 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 	return s
 }
 
+func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListTagResourcesResponseBodyTagResources struct {
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -1260,16 +1237,6 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagValue = &v
-	return s
-}
-
 func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
 	s.ResourceId = &v
 	return s
@@ -1277,6 +1244,16 @@ func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *List
 
 func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
 	return s
 }
 
@@ -1304,11 +1281,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTemplatesRequest struct {
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -1317,6 +1294,16 @@ func (s ListTemplatesRequest) String() string {
 
 func (s ListTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTemplatesRequest) SetLang(v string) *ListTemplatesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetName(v string) *ListTemplatesRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListTemplatesRequest) SetPageNumber(v int32) *ListTemplatesRequest {
@@ -1329,25 +1316,15 @@ func (s *ListTemplatesRequest) SetPageSize(v int32) *ListTemplatesRequest {
 	return s
 }
 
-func (s *ListTemplatesRequest) SetName(v string) *ListTemplatesRequest {
-	s.Name = &v
-	return s
-}
-
 func (s *ListTemplatesRequest) SetTag(v string) *ListTemplatesRequest {
 	s.Tag = &v
 	return s
 }
 
-func (s *ListTemplatesRequest) SetLang(v string) *ListTemplatesRequest {
-	s.Lang = &v
-	return s
-}
-
 type ListTemplatesResponseBody struct {
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -1363,30 +1340,30 @@ func (s *ListTemplatesResponseBody) SetRequestId(v string) *ListTemplatesRespons
 	return s
 }
 
-func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyTemplates) *ListTemplatesResponseBody {
 	s.Templates = v
 	return s
 }
 
+func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListTemplatesResponseBodyTemplates struct {
-	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	TemplateConnector   *string `json:"TemplateConnector,omitempty" xml:"TemplateConnector,omitempty"`
+	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
+	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	TemplateName        *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
 	TemplateSummary     *string `json:"TemplateSummary,omitempty" xml:"TemplateSummary,omitempty"`
 	TemplateSummaryEn   *string `json:"TemplateSummaryEn,omitempty" xml:"TemplateSummaryEn,omitempty"`
-	TemplateLocale      *string `json:"TemplateLocale,omitempty" xml:"TemplateLocale,omitempty"`
+	TemplateTag         *string `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
 	TemplateVersion     *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateCreator     *string `json:"TemplateCreator,omitempty" xml:"TemplateCreator,omitempty"`
-	TemplateOverview    *string `json:"TemplateOverview,omitempty" xml:"TemplateOverview,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -1397,13 +1374,18 @@ func (s ListTemplatesResponseBodyTemplates) GoString() string {
 	return s.String()
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateId = &v
+func (s *ListTemplatesResponseBodyTemplates) SetCreateTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateName(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateName = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateConnector(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateConnector = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateCreator(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateCreator = &v
 	return s
 }
 
@@ -1412,23 +1394,23 @@ func (s *ListTemplatesResponseBodyTemplates) SetTemplateDescription(v string) *L
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateTag(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateTag = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetCreateTime(v string) *ListTemplatesResponseBodyTemplates {
-	s.CreateTime = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateLocale(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateLocale = &v
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTemplatesResponseBodyTemplates {
-	s.UpdateTime = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateName(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateName = &v
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateConnector(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateConnector = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateOverview(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateOverview = &v
 	return s
 }
 
@@ -1442,8 +1424,8 @@ func (s *ListTemplatesResponseBodyTemplates) SetTemplateSummaryEn(v string) *Lis
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateLocale(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateLocale = &v
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateTag(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateTag = &v
 	return s
 }
 
@@ -1452,13 +1434,8 @@ func (s *ListTemplatesResponseBodyTemplates) SetTemplateVersion(v int32) *ListTe
 	return s
 }
 
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateCreator(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateCreator = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateOverview(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateOverview = &v
+func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -1544,12 +1521,12 @@ func (s *ListVersionsResponseBody) SetVersions(v []*ListVersionsResponseBodyVers
 }
 
 type ListVersionsResponseBodyVersions struct {
-	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FlowId        *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VersionId     *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	VersionName   *int32  `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 	VersionStatus *int32  `json:"VersionStatus,omitempty" xml:"VersionStatus,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListVersionsResponseBodyVersions) String() string {
@@ -1560,13 +1537,23 @@ func (s ListVersionsResponseBodyVersions) GoString() string {
 	return s.String()
 }
 
-func (s *ListVersionsResponseBodyVersions) SetVersionId(v string) *ListVersionsResponseBodyVersions {
-	s.VersionId = &v
+func (s *ListVersionsResponseBodyVersions) SetCreateTime(v string) *ListVersionsResponseBodyVersions {
+	s.CreateTime = &v
 	return s
 }
 
 func (s *ListVersionsResponseBodyVersions) SetFlowId(v string) *ListVersionsResponseBodyVersions {
 	s.FlowId = &v
+	return s
+}
+
+func (s *ListVersionsResponseBodyVersions) SetUpdateTime(v string) *ListVersionsResponseBodyVersions {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListVersionsResponseBodyVersions) SetVersionId(v string) *ListVersionsResponseBodyVersions {
+	s.VersionId = &v
 	return s
 }
 
@@ -1577,16 +1564,6 @@ func (s *ListVersionsResponseBodyVersions) SetVersionName(v int32) *ListVersions
 
 func (s *ListVersionsResponseBodyVersions) SetVersionStatus(v int32) *ListVersionsResponseBodyVersions {
 	s.VersionStatus = &v
-	return s
-}
-
-func (s *ListVersionsResponseBodyVersions) SetCreateTime(v string) *ListVersionsResponseBodyVersions {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListVersionsResponseBodyVersions) SetUpdateTime(v string) *ListVersionsResponseBodyVersions {
-	s.UpdateTime = &v
 	return s
 }
 
@@ -1614,8 +1591,8 @@ func (s *ListVersionsResponse) SetBody(v *ListVersionsResponseBody) *ListVersion
 }
 
 type TagResourcesRequest struct {
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1627,13 +1604,13 @@ func (s TagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -1712,10 +1689,10 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -1726,8 +1703,8 @@ func (s UntagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
 	return s
 }
 
@@ -1736,13 +1713,13 @@ func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesReques
 	return s
 }
 
-func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
-	s.TagKey = v
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
-	s.All = &v
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
 	return s
 }
 
@@ -1793,10 +1770,10 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateFlowRequest struct {
+	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
 	FlowId          *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	FlowName        *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowDescription *string `json:"FlowDescription,omitempty" xml:"FlowDescription,omitempty"`
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 }
 
 func (s UpdateFlowRequest) String() string {
@@ -1805,6 +1782,16 @@ func (s UpdateFlowRequest) String() string {
 
 func (s UpdateFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateFlowRequest) SetDefinition(v string) *UpdateFlowRequest {
+	s.Definition = &v
+	return s
+}
+
+func (s *UpdateFlowRequest) SetFlowDescription(v string) *UpdateFlowRequest {
+	s.FlowDescription = &v
+	return s
 }
 
 func (s *UpdateFlowRequest) SetFlowId(v string) *UpdateFlowRequest {
@@ -1817,20 +1804,10 @@ func (s *UpdateFlowRequest) SetFlowName(v string) *UpdateFlowRequest {
 	return s
 }
 
-func (s *UpdateFlowRequest) SetFlowDescription(v string) *UpdateFlowRequest {
-	s.FlowDescription = &v
-	return s
-}
-
-func (s *UpdateFlowRequest) SetDefinition(v string) *UpdateFlowRequest {
-	s.Definition = &v
-	return s
-}
-
 type UpdateFlowResponseBody struct {
+	CurrentVersionId *int32  `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	CurrentVersionId *int32  `json:"CurrentVersionId,omitempty" xml:"CurrentVersionId,omitempty"`
 }
 
 func (s UpdateFlowResponseBody) String() string {
@@ -1841,6 +1818,11 @@ func (s UpdateFlowResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateFlowResponseBody) SetCurrentVersionId(v int32) *UpdateFlowResponseBody {
+	s.CurrentVersionId = &v
+	return s
+}
+
 func (s *UpdateFlowResponseBody) SetRequestId(v string) *UpdateFlowResponseBody {
 	s.RequestId = &v
 	return s
@@ -1848,11 +1830,6 @@ func (s *UpdateFlowResponseBody) SetRequestId(v string) *UpdateFlowResponseBody 
 
 func (s *UpdateFlowResponseBody) SetSuccess(v bool) *UpdateFlowResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *UpdateFlowResponseBody) SetCurrentVersionId(v int32) *UpdateFlowResponseBody {
-	s.CurrentVersionId = &v
 	return s
 }
 
