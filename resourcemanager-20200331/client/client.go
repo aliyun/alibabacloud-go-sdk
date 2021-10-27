@@ -29,8 +29,8 @@ func (s *AcceptHandshakeRequest) SetHandshakeId(v string) *AcceptHandshakeReques
 }
 
 type AcceptHandshakeResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Handshake *AcceptHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AcceptHandshakeResponseBody) String() string {
@@ -41,28 +41,28 @@ func (s AcceptHandshakeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AcceptHandshakeResponseBody) SetRequestId(v string) *AcceptHandshakeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *AcceptHandshakeResponseBody) SetHandshake(v *AcceptHandshakeResponseBodyHandshake) *AcceptHandshakeResponseBody {
 	s.Handshake = v
 	return s
 }
 
+func (s *AcceptHandshakeResponseBody) SetRequestId(v string) *AcceptHandshakeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AcceptHandshakeResponseBodyHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s AcceptHandshakeResponseBodyHandshake) String() string {
@@ -73,8 +73,8 @@ func (s AcceptHandshakeResponseBodyHandshake) GoString() string {
 	return s.String()
 }
 
-func (s *AcceptHandshakeResponseBodyHandshake) SetStatus(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.Status = &v
+func (s *AcceptHandshakeResponseBodyHandshake) SetCreateTime(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -83,23 +83,8 @@ func (s *AcceptHandshakeResponseBodyHandshake) SetExpireTime(v string) *AcceptHa
 	return s
 }
 
-func (s *AcceptHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *AcceptHandshakeResponseBodyHandshake) SetCreateTime(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *AcceptHandshakeResponseBodyHandshake) SetNote(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *AcceptHandshakeResponseBodyHandshake) SetTargetEntity(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.TargetEntity = &v
+func (s *AcceptHandshakeResponseBodyHandshake) SetHandshakeId(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -118,13 +103,28 @@ func (s *AcceptHandshakeResponseBodyHandshake) SetModifyTime(v string) *AcceptHa
 	return s
 }
 
-func (s *AcceptHandshakeResponseBodyHandshake) SetTargetType(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.TargetType = &v
+func (s *AcceptHandshakeResponseBodyHandshake) SetNote(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *AcceptHandshakeResponseBodyHandshake) SetHandshakeId(v string) *AcceptHandshakeResponseBodyHandshake {
-	s.HandshakeId = &v
+func (s *AcceptHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *AcceptHandshakeResponseBodyHandshake) SetStatus(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *AcceptHandshakeResponseBodyHandshake) SetTargetEntity(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *AcceptHandshakeResponseBodyHandshake) SetTargetType(v string) *AcceptHandshakeResponseBodyHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -215,11 +215,11 @@ func (s *AttachControlPolicyResponse) SetBody(v *AttachControlPolicyResponseBody
 }
 
 type AttachPolicyRequest struct {
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s AttachPolicyRequest) String() string {
@@ -230,8 +230,8 @@ func (s AttachPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachPolicyRequest) SetResourceGroupId(v string) *AttachPolicyRequest {
-	s.ResourceGroupId = &v
+func (s *AttachPolicyRequest) SetPolicyName(v string) *AttachPolicyRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -240,8 +240,8 @@ func (s *AttachPolicyRequest) SetPolicyType(v string) *AttachPolicyRequest {
 	return s
 }
 
-func (s *AttachPolicyRequest) SetPolicyName(v string) *AttachPolicyRequest {
-	s.PolicyName = &v
+func (s *AttachPolicyRequest) SetPrincipalName(v string) *AttachPolicyRequest {
+	s.PrincipalName = &v
 	return s
 }
 
@@ -250,8 +250,8 @@ func (s *AttachPolicyRequest) SetPrincipalType(v string) *AttachPolicyRequest {
 	return s
 }
 
-func (s *AttachPolicyRequest) SetPrincipalName(v string) *AttachPolicyRequest {
-	s.PrincipalName = &v
+func (s *AttachPolicyRequest) SetResourceGroupId(v string) *AttachPolicyRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -370,8 +370,8 @@ func (s *CancelHandshakeRequest) SetHandshakeId(v string) *CancelHandshakeReques
 }
 
 type CancelHandshakeResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Handshake *CancelHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelHandshakeResponseBody) String() string {
@@ -382,28 +382,28 @@ func (s CancelHandshakeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CancelHandshakeResponseBody) SetRequestId(v string) *CancelHandshakeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CancelHandshakeResponseBody) SetHandshake(v *CancelHandshakeResponseBodyHandshake) *CancelHandshakeResponseBody {
 	s.Handshake = v
 	return s
 }
 
+func (s *CancelHandshakeResponseBody) SetRequestId(v string) *CancelHandshakeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CancelHandshakeResponseBodyHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s CancelHandshakeResponseBodyHandshake) String() string {
@@ -414,8 +414,8 @@ func (s CancelHandshakeResponseBodyHandshake) GoString() string {
 	return s.String()
 }
 
-func (s *CancelHandshakeResponseBodyHandshake) SetStatus(v string) *CancelHandshakeResponseBodyHandshake {
-	s.Status = &v
+func (s *CancelHandshakeResponseBodyHandshake) SetCreateTime(v string) *CancelHandshakeResponseBodyHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -424,23 +424,8 @@ func (s *CancelHandshakeResponseBodyHandshake) SetExpireTime(v string) *CancelHa
 	return s
 }
 
-func (s *CancelHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *CancelHandshakeResponseBodyHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *CancelHandshakeResponseBodyHandshake) SetCreateTime(v string) *CancelHandshakeResponseBodyHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *CancelHandshakeResponseBodyHandshake) SetNote(v string) *CancelHandshakeResponseBodyHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *CancelHandshakeResponseBodyHandshake) SetTargetEntity(v string) *CancelHandshakeResponseBodyHandshake {
-	s.TargetEntity = &v
+func (s *CancelHandshakeResponseBodyHandshake) SetHandshakeId(v string) *CancelHandshakeResponseBodyHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -459,13 +444,28 @@ func (s *CancelHandshakeResponseBodyHandshake) SetModifyTime(v string) *CancelHa
 	return s
 }
 
-func (s *CancelHandshakeResponseBodyHandshake) SetTargetType(v string) *CancelHandshakeResponseBodyHandshake {
-	s.TargetType = &v
+func (s *CancelHandshakeResponseBodyHandshake) SetNote(v string) *CancelHandshakeResponseBodyHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *CancelHandshakeResponseBodyHandshake) SetHandshakeId(v string) *CancelHandshakeResponseBodyHandshake {
-	s.HandshakeId = &v
+func (s *CancelHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *CancelHandshakeResponseBodyHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *CancelHandshakeResponseBodyHandshake) SetStatus(v string) *CancelHandshakeResponseBodyHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *CancelHandshakeResponseBodyHandshake) SetTargetEntity(v string) *CancelHandshakeResponseBodyHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *CancelHandshakeResponseBodyHandshake) SetTargetType(v string) *CancelHandshakeResponseBodyHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -551,8 +551,8 @@ func (s *CancelPromoteResourceAccountResponse) SetBody(v *CancelPromoteResourceA
 
 type CreateCloudAccountRequest struct {
 	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	PayerAccountId *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
 }
 
@@ -569,13 +569,13 @@ func (s *CreateCloudAccountRequest) SetDisplayName(v string) *CreateCloudAccount
 	return s
 }
 
-func (s *CreateCloudAccountRequest) SetParentFolderId(v string) *CreateCloudAccountRequest {
-	s.ParentFolderId = &v
+func (s *CreateCloudAccountRequest) SetEmail(v string) *CreateCloudAccountRequest {
+	s.Email = &v
 	return s
 }
 
-func (s *CreateCloudAccountRequest) SetEmail(v string) *CreateCloudAccountRequest {
-	s.Email = &v
+func (s *CreateCloudAccountRequest) SetParentFolderId(v string) *CreateCloudAccountRequest {
+	s.ParentFolderId = &v
 	return s
 }
 
@@ -608,16 +608,16 @@ func (s *CreateCloudAccountResponseBody) SetRequestId(v string) *CreateCloudAcco
 }
 
 type CreateCloudAccountResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateCloudAccountResponseBodyAccount) String() string {
@@ -628,13 +628,13 @@ func (s CreateCloudAccountResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCloudAccountResponseBodyAccount) SetStatus(v string) *CreateCloudAccountResponseBodyAccount {
-	s.Status = &v
+func (s *CreateCloudAccountResponseBodyAccount) SetAccountId(v string) *CreateCloudAccountResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *CreateCloudAccountResponseBodyAccount) SetType(v string) *CreateCloudAccountResponseBodyAccount {
-	s.Type = &v
+func (s *CreateCloudAccountResponseBodyAccount) SetAccountName(v string) *CreateCloudAccountResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -648,21 +648,6 @@ func (s *CreateCloudAccountResponseBodyAccount) SetFolderId(v string) *CreateClo
 	return s
 }
 
-func (s *CreateCloudAccountResponseBodyAccount) SetResourceDirectoryId(v string) *CreateCloudAccountResponseBodyAccount {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *CreateCloudAccountResponseBodyAccount) SetRecordId(v string) *CreateCloudAccountResponseBodyAccount {
-	s.RecordId = &v
-	return s
-}
-
-func (s *CreateCloudAccountResponseBodyAccount) SetAccountId(v string) *CreateCloudAccountResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
 func (s *CreateCloudAccountResponseBodyAccount) SetJoinMethod(v string) *CreateCloudAccountResponseBodyAccount {
 	s.JoinMethod = &v
 	return s
@@ -673,8 +658,23 @@ func (s *CreateCloudAccountResponseBodyAccount) SetModifyTime(v string) *CreateC
 	return s
 }
 
-func (s *CreateCloudAccountResponseBodyAccount) SetAccountName(v string) *CreateCloudAccountResponseBodyAccount {
-	s.AccountName = &v
+func (s *CreateCloudAccountResponseBodyAccount) SetRecordId(v string) *CreateCloudAccountResponseBodyAccount {
+	s.RecordId = &v
+	return s
+}
+
+func (s *CreateCloudAccountResponseBodyAccount) SetResourceDirectoryId(v string) *CreateCloudAccountResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *CreateCloudAccountResponseBodyAccount) SetStatus(v string) *CreateCloudAccountResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateCloudAccountResponseBodyAccount) SetType(v string) *CreateCloudAccountResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -702,10 +702,10 @@ func (s *CreateCloudAccountResponse) SetBody(v *CreateCloudAccountResponseBody) 
 }
 
 type CreateControlPolicyRequest struct {
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope    *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s CreateControlPolicyRequest) String() string {
@@ -714,11 +714,6 @@ func (s CreateControlPolicyRequest) String() string {
 
 func (s CreateControlPolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateControlPolicyRequest) SetPolicyName(v string) *CreateControlPolicyRequest {
-	s.PolicyName = &v
-	return s
 }
 
 func (s *CreateControlPolicyRequest) SetDescription(v string) *CreateControlPolicyRequest {
@@ -733,6 +728,11 @@ func (s *CreateControlPolicyRequest) SetEffectScope(v string) *CreateControlPoli
 
 func (s *CreateControlPolicyRequest) SetPolicyDocument(v string) *CreateControlPolicyRequest {
 	s.PolicyDocument = &v
+	return s
+}
+
+func (s *CreateControlPolicyRequest) SetPolicyName(v string) *CreateControlPolicyRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -760,14 +760,14 @@ func (s *CreateControlPolicyResponseBody) SetRequestId(v string) *CreateControlP
 }
 
 type CreateControlPolicyResponseBodyControlPolicy struct {
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateControlPolicyResponseBodyControlPolicy) String() string {
@@ -778,8 +778,13 @@ func (s CreateControlPolicyResponseBodyControlPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *CreateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
-	s.UpdateDate = &v
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
 	return s
 }
 
@@ -793,8 +798,8 @@ func (s *CreateControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) 
 	return s
 }
 
-func (s *CreateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *CreateControlPolicyResponseBodyControlPolicy {
-	s.AttachmentCount = &v
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.PolicyId = &v
 	return s
 }
 
@@ -803,18 +808,13 @@ func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *
 	return s
 }
 
-func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *CreateControlPolicyResponseBodyControlPolicy {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *CreateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *CreateControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *CreateControlPolicyResponseBodyControlPolicy {
 	s.PolicyType = &v
+	return s
+}
+
+func (s *CreateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *CreateControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -842,8 +842,8 @@ func (s *CreateControlPolicyResponse) SetBody(v *CreateControlPolicyResponseBody
 }
 
 type CreateFolderRequest struct {
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
 func (s CreateFolderRequest) String() string {
@@ -854,19 +854,19 @@ func (s CreateFolderRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFolderRequest) SetParentFolderId(v string) *CreateFolderRequest {
-	s.ParentFolderId = &v
-	return s
-}
-
 func (s *CreateFolderRequest) SetFolderName(v string) *CreateFolderRequest {
 	s.FolderName = &v
 	return s
 }
 
+func (s *CreateFolderRequest) SetParentFolderId(v string) *CreateFolderRequest {
+	s.ParentFolderId = &v
+	return s
+}
+
 type CreateFolderResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Folder    *CreateFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFolderResponseBody) String() string {
@@ -877,21 +877,21 @@ func (s CreateFolderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateFolderResponseBody) SetFolder(v *CreateFolderResponseBodyFolder) *CreateFolderResponseBody {
 	s.Folder = v
 	return s
 }
 
+func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateFolderResponseBodyFolder struct {
-	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
 func (s CreateFolderResponseBodyFolder) String() string {
@@ -902,23 +902,23 @@ func (s CreateFolderResponseBodyFolder) GoString() string {
 	return s.String()
 }
 
-func (s *CreateFolderResponseBodyFolder) SetFolderId(v string) *CreateFolderResponseBodyFolder {
-	s.FolderId = &v
-	return s
-}
-
 func (s *CreateFolderResponseBodyFolder) SetCreateTime(v string) *CreateFolderResponseBodyFolder {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *CreateFolderResponseBodyFolder) SetParentFolderId(v string) *CreateFolderResponseBodyFolder {
-	s.ParentFolderId = &v
+func (s *CreateFolderResponseBodyFolder) SetFolderId(v string) *CreateFolderResponseBodyFolder {
+	s.FolderId = &v
 	return s
 }
 
 func (s *CreateFolderResponseBodyFolder) SetFolderName(v string) *CreateFolderResponseBodyFolder {
 	s.FolderName = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyFolder) SetParentFolderId(v string) *CreateFolderResponseBodyFolder {
+	s.ParentFolderId = &v
 	return s
 }
 
@@ -946,9 +946,9 @@ func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolde
 }
 
 type CreatePolicyRequest struct {
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s CreatePolicyRequest) String() string {
@@ -959,11 +959,6 @@ func (s CreatePolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
-	s.PolicyName = &v
-	return s
-}
-
 func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
 	s.Description = &v
 	return s
@@ -971,6 +966,11 @@ func (s *CreatePolicyRequest) SetDescription(v string) *CreatePolicyRequest {
 
 func (s *CreatePolicyRequest) SetPolicyDocument(v string) *CreatePolicyRequest {
 	s.PolicyDocument = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -998,10 +998,10 @@ func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponseBodyPolicy struct {
+	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -1011,6 +1011,11 @@ func (s CreatePolicyResponseBodyPolicy) String() string {
 
 func (s CreatePolicyResponseBodyPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyResponseBodyPolicy) SetCreateDate(v string) *CreatePolicyResponseBodyPolicy {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *CreatePolicyResponseBodyPolicy) SetDefaultVersion(v string) *CreatePolicyResponseBodyPolicy {
@@ -1025,11 +1030,6 @@ func (s *CreatePolicyResponseBodyPolicy) SetDescription(v string) *CreatePolicyR
 
 func (s *CreatePolicyResponseBodyPolicy) SetPolicyName(v string) *CreatePolicyResponseBodyPolicy {
 	s.PolicyName = &v
-	return s
-}
-
-func (s *CreatePolicyResponseBodyPolicy) SetCreateDate(v string) *CreatePolicyResponseBodyPolicy {
-	s.CreateDate = &v
 	return s
 }
 
@@ -1062,8 +1062,8 @@ func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolic
 }
 
 type CreatePolicyVersionRequest struct {
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	SetAsDefault   *bool   `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
 }
 
@@ -1075,13 +1075,13 @@ func (s CreatePolicyVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePolicyVersionRequest) SetPolicyName(v string) *CreatePolicyVersionRequest {
-	s.PolicyName = &v
+func (s *CreatePolicyVersionRequest) SetPolicyDocument(v string) *CreatePolicyVersionRequest {
+	s.PolicyDocument = &v
 	return s
 }
 
-func (s *CreatePolicyVersionRequest) SetPolicyDocument(v string) *CreatePolicyVersionRequest {
-	s.PolicyDocument = &v
+func (s *CreatePolicyVersionRequest) SetPolicyName(v string) *CreatePolicyVersionRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -1114,9 +1114,9 @@ func (s *CreatePolicyVersionResponseBody) SetRequestId(v string) *CreatePolicyVe
 }
 
 type CreatePolicyVersionResponseBodyPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s CreatePolicyVersionResponseBodyPolicyVersion) String() string {
@@ -1127,6 +1127,11 @@ func (s CreatePolicyVersionResponseBodyPolicyVersion) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *CreatePolicyVersionResponseBodyPolicyVersion {
+	s.CreateDate = &v
+	return s
+}
+
 func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetIsDefaultVersion(v bool) *CreatePolicyVersionResponseBodyPolicyVersion {
 	s.IsDefaultVersion = &v
 	return s
@@ -1134,11 +1139,6 @@ func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetIsDefaultVersion(v boo
 
 func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *CreatePolicyVersionResponseBodyPolicyVersion {
 	s.VersionId = &v
-	return s
-}
-
-func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *CreatePolicyVersionResponseBodyPolicyVersion {
-	s.CreateDate = &v
 	return s
 }
 
@@ -1166,10 +1166,10 @@ func (s *CreatePolicyVersionResponse) SetBody(v *CreatePolicyVersionResponseBody
 }
 
 type CreateResourceAccountRequest struct {
+	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
 	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	ParentFolderId    *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	PayerAccountId    *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
-	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
 }
 
 func (s CreateResourceAccountRequest) String() string {
@@ -1178,6 +1178,11 @@ func (s CreateResourceAccountRequest) String() string {
 
 func (s CreateResourceAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateResourceAccountRequest) SetAccountNamePrefix(v string) *CreateResourceAccountRequest {
+	s.AccountNamePrefix = &v
+	return s
 }
 
 func (s *CreateResourceAccountRequest) SetDisplayName(v string) *CreateResourceAccountRequest {
@@ -1192,11 +1197,6 @@ func (s *CreateResourceAccountRequest) SetParentFolderId(v string) *CreateResour
 
 func (s *CreateResourceAccountRequest) SetPayerAccountId(v string) *CreateResourceAccountRequest {
 	s.PayerAccountId = &v
-	return s
-}
-
-func (s *CreateResourceAccountRequest) SetAccountNamePrefix(v string) *CreateResourceAccountRequest {
-	s.AccountNamePrefix = &v
 	return s
 }
 
@@ -1224,16 +1224,16 @@ func (s *CreateResourceAccountResponseBody) SetRequestId(v string) *CreateResour
 }
 
 type CreateResourceAccountResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateResourceAccountResponseBodyAccount) String() string {
@@ -1244,13 +1244,13 @@ func (s CreateResourceAccountResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceAccountResponseBodyAccount) SetStatus(v string) *CreateResourceAccountResponseBodyAccount {
-	s.Status = &v
+func (s *CreateResourceAccountResponseBodyAccount) SetAccountId(v string) *CreateResourceAccountResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *CreateResourceAccountResponseBodyAccount) SetType(v string) *CreateResourceAccountResponseBodyAccount {
-	s.Type = &v
+func (s *CreateResourceAccountResponseBodyAccount) SetAccountName(v string) *CreateResourceAccountResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -1264,8 +1264,8 @@ func (s *CreateResourceAccountResponseBodyAccount) SetFolderId(v string) *Create
 	return s
 }
 
-func (s *CreateResourceAccountResponseBodyAccount) SetResourceDirectoryId(v string) *CreateResourceAccountResponseBodyAccount {
-	s.ResourceDirectoryId = &v
+func (s *CreateResourceAccountResponseBodyAccount) SetJoinMethod(v string) *CreateResourceAccountResponseBodyAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -1274,23 +1274,23 @@ func (s *CreateResourceAccountResponseBodyAccount) SetJoinTime(v string) *Create
 	return s
 }
 
-func (s *CreateResourceAccountResponseBodyAccount) SetAccountId(v string) *CreateResourceAccountResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *CreateResourceAccountResponseBodyAccount) SetJoinMethod(v string) *CreateResourceAccountResponseBodyAccount {
-	s.JoinMethod = &v
-	return s
-}
-
 func (s *CreateResourceAccountResponseBodyAccount) SetModifyTime(v string) *CreateResourceAccountResponseBodyAccount {
 	s.ModifyTime = &v
 	return s
 }
 
-func (s *CreateResourceAccountResponseBodyAccount) SetAccountName(v string) *CreateResourceAccountResponseBodyAccount {
-	s.AccountName = &v
+func (s *CreateResourceAccountResponseBodyAccount) SetResourceDirectoryId(v string) *CreateResourceAccountResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *CreateResourceAccountResponseBodyAccount) SetStatus(v string) *CreateResourceAccountResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateResourceAccountResponseBodyAccount) SetType(v string) *CreateResourceAccountResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -1318,8 +1318,8 @@ func (s *CreateResourceAccountResponse) SetBody(v *CreateResourceAccountResponse
 }
 
 type CreateResourceGroupRequest struct {
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateResourceGroupRequest) String() string {
@@ -1330,13 +1330,13 @@ func (s CreateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceGroupRequest) SetName(v string) *CreateResourceGroupRequest {
-	s.Name = &v
+func (s *CreateResourceGroupRequest) SetDisplayName(v string) *CreateResourceGroupRequest {
+	s.DisplayName = &v
 	return s
 }
 
-func (s *CreateResourceGroupRequest) SetDisplayName(v string) *CreateResourceGroupRequest {
-	s.DisplayName = &v
+func (s *CreateResourceGroupRequest) SetName(v string) *CreateResourceGroupRequest {
+	s.Name = &v
 	return s
 }
 
@@ -1364,13 +1364,13 @@ func (s *CreateResourceGroupResponseBody) SetResourceGroup(v *CreateResourceGrou
 }
 
 type CreateResourceGroupResponseBodyResourceGroup struct {
-	DisplayName    *string                                                     `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	RegionStatuses *CreateResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	AccountId      *string                                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreateDate     *string                                                     `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName    *string                                                     `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Id             *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionStatuses *CreateResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
+	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateResourceGroupResponseBodyResourceGroup) String() string {
@@ -1381,28 +1381,8 @@ func (s CreateResourceGroupResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *CreateResourceGroupResponseBodyResourceGroup {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *CreateResourceGroupResponseBodyResourceGroup) SetStatus(v string) *CreateResourceGroupResponseBodyResourceGroup {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *CreateResourceGroupResponseBodyResourceGroupRegionStatuses) *CreateResourceGroupResponseBodyResourceGroup {
-	s.RegionStatuses = v
-	return s
-}
-
 func (s *CreateResourceGroupResponseBodyResourceGroup) SetAccountId(v string) *CreateResourceGroupResponseBodyResourceGroup {
 	s.AccountId = &v
-	return s
-}
-
-func (s *CreateResourceGroupResponseBodyResourceGroup) SetName(v string) *CreateResourceGroupResponseBodyResourceGroup {
-	s.Name = &v
 	return s
 }
 
@@ -1411,8 +1391,28 @@ func (s *CreateResourceGroupResponseBodyResourceGroup) SetCreateDate(v string) *
 	return s
 }
 
+func (s *CreateResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *CreateResourceGroupResponseBodyResourceGroup {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *CreateResourceGroupResponseBodyResourceGroup) SetId(v string) *CreateResourceGroupResponseBodyResourceGroup {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateResourceGroupResponseBodyResourceGroup) SetName(v string) *CreateResourceGroupResponseBodyResourceGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *CreateResourceGroupResponseBodyResourceGroupRegionStatuses) *CreateResourceGroupResponseBodyResourceGroup {
+	s.RegionStatuses = v
+	return s
+}
+
+func (s *CreateResourceGroupResponseBodyResourceGroup) SetStatus(v string) *CreateResourceGroupResponseBodyResourceGroup {
+	s.Status = &v
 	return s
 }
 
@@ -1434,8 +1434,8 @@ func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatuses) SetRegionSt
 }
 
 type CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {
@@ -1446,13 +1446,13 @@ func (s CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) 
 	return s.String()
 }
 
-func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.Status = &v
+func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.RegionId = &v
 	return s
 }
 
-func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.RegionId = &v
+func (s *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.Status = &v
 	return s
 }
 
@@ -1480,10 +1480,10 @@ func (s *CreateResourceGroupResponse) SetBody(v *CreateResourceGroupResponseBody
 }
 
 type CreateRoleRequest struct {
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateRoleRequest) String() string {
@@ -1494,8 +1494,8 @@ func (s CreateRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
-	s.RoleName = &v
+func (s *CreateRoleRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleRequest {
+	s.AssumeRolePolicyDocument = &v
 	return s
 }
 
@@ -1504,19 +1504,19 @@ func (s *CreateRoleRequest) SetDescription(v string) *CreateRoleRequest {
 	return s
 }
 
-func (s *CreateRoleRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleRequest {
-	s.AssumeRolePolicyDocument = &v
-	return s
-}
-
 func (s *CreateRoleRequest) SetMaxSessionDuration(v int64) *CreateRoleRequest {
 	s.MaxSessionDuration = &v
 	return s
 }
 
+func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
 type CreateRoleResponseBody struct {
-	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s CreateRoleResponseBody) String() string {
@@ -1527,25 +1527,25 @@ func (s CreateRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *CreateRoleResponseBody) SetRequestId(v string) *CreateRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type CreateRoleResponseBodyRole struct {
+	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
 }
 
 func (s CreateRoleResponseBodyRole) String() string {
@@ -1556,13 +1556,18 @@ func (s CreateRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRoleResponseBodyRole) SetArn(v string) *CreateRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *CreateRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *CreateRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
 	return s
 }
 
-func (s *CreateRoleResponseBodyRole) SetRolePrincipalName(v string) *CreateRoleResponseBodyRole {
-	s.RolePrincipalName = &v
+func (s *CreateRoleResponseBodyRole) SetCreateDate(v string) *CreateRoleResponseBodyRole {
+	s.CreateDate = &v
 	return s
 }
 
@@ -1576,23 +1581,18 @@ func (s *CreateRoleResponseBodyRole) SetMaxSessionDuration(v int64) *CreateRoleR
 	return s
 }
 
+func (s *CreateRoleResponseBodyRole) SetRoleId(v string) *CreateRoleResponseBodyRole {
+	s.RoleId = &v
+	return s
+}
+
 func (s *CreateRoleResponseBodyRole) SetRoleName(v string) *CreateRoleResponseBodyRole {
 	s.RoleName = &v
 	return s
 }
 
-func (s *CreateRoleResponseBodyRole) SetCreateDate(v string) *CreateRoleResponseBodyRole {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *CreateRoleResponseBodyRole) SetArn(v string) *CreateRoleResponseBodyRole {
-	s.Arn = &v
-	return s
-}
-
-func (s *CreateRoleResponseBodyRole) SetRoleId(v string) *CreateRoleResponseBodyRole {
-	s.RoleId = &v
+func (s *CreateRoleResponseBodyRole) SetRolePrincipalName(v string) *CreateRoleResponseBodyRole {
+	s.RolePrincipalName = &v
 	return s
 }
 
@@ -1620,9 +1620,9 @@ func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleRespo
 }
 
 type CreateServiceLinkedRoleRequest struct {
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	CustomSuffix *string `json:"CustomSuffix,omitempty" xml:"CustomSuffix,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleRequest) String() string {
@@ -1631,11 +1631,6 @@ func (s CreateServiceLinkedRoleRequest) String() string {
 
 func (s CreateServiceLinkedRoleRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateServiceLinkedRoleRequest) SetServiceName(v string) *CreateServiceLinkedRoleRequest {
-	s.ServiceName = &v
-	return s
 }
 
 func (s *CreateServiceLinkedRoleRequest) SetCustomSuffix(v string) *CreateServiceLinkedRoleRequest {
@@ -1648,9 +1643,14 @@ func (s *CreateServiceLinkedRoleRequest) SetDescription(v string) *CreateService
 	return s
 }
 
+func (s *CreateServiceLinkedRoleRequest) SetServiceName(v string) *CreateServiceLinkedRoleRequest {
+	s.ServiceName = &v
+	return s
+}
+
 type CreateServiceLinkedRoleResponseBody struct {
-	Role      *CreateServiceLinkedRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *CreateServiceLinkedRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s CreateServiceLinkedRoleResponseBody) String() string {
@@ -1661,25 +1661,25 @@ func (s CreateServiceLinkedRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceLinkedRoleResponseBody) SetRole(v *CreateServiceLinkedRoleResponseBodyRole) *CreateServiceLinkedRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *CreateServiceLinkedRoleResponseBody) SetRequestId(v string) *CreateServiceLinkedRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *CreateServiceLinkedRoleResponseBody) SetRole(v *CreateServiceLinkedRoleResponseBodyRole) *CreateServiceLinkedRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type CreateServiceLinkedRoleResponseBodyRole struct {
-	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsServiceLinkedRole      *bool   `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
+	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleResponseBodyRole) String() string {
@@ -1690,23 +1690,13 @@ func (s CreateServiceLinkedRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *CreateServiceLinkedRoleResponseBodyRole) SetArn(v string) *CreateServiceLinkedRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *CreateServiceLinkedRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *CreateServiceLinkedRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
-	return s
-}
-
-func (s *CreateServiceLinkedRoleResponseBodyRole) SetRolePrincipalName(v string) *CreateServiceLinkedRoleResponseBodyRole {
-	s.RolePrincipalName = &v
-	return s
-}
-
-func (s *CreateServiceLinkedRoleResponseBodyRole) SetDescription(v string) *CreateServiceLinkedRoleResponseBodyRole {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateServiceLinkedRoleResponseBodyRole) SetRoleName(v string) *CreateServiceLinkedRoleResponseBodyRole {
-	s.RoleName = &v
 	return s
 }
 
@@ -1715,8 +1705,13 @@ func (s *CreateServiceLinkedRoleResponseBodyRole) SetCreateDate(v string) *Creat
 	return s
 }
 
-func (s *CreateServiceLinkedRoleResponseBodyRole) SetArn(v string) *CreateServiceLinkedRoleResponseBodyRole {
-	s.Arn = &v
+func (s *CreateServiceLinkedRoleResponseBodyRole) SetDescription(v string) *CreateServiceLinkedRoleResponseBodyRole {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleResponseBodyRole) SetIsServiceLinkedRole(v bool) *CreateServiceLinkedRoleResponseBodyRole {
+	s.IsServiceLinkedRole = &v
 	return s
 }
 
@@ -1725,8 +1720,13 @@ func (s *CreateServiceLinkedRoleResponseBodyRole) SetRoleId(v string) *CreateSer
 	return s
 }
 
-func (s *CreateServiceLinkedRoleResponseBodyRole) SetIsServiceLinkedRole(v bool) *CreateServiceLinkedRoleResponseBodyRole {
-	s.IsServiceLinkedRole = &v
+func (s *CreateServiceLinkedRoleResponseBodyRole) SetRoleName(v string) *CreateServiceLinkedRoleResponseBodyRole {
+	s.RoleName = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleResponseBodyRole) SetRolePrincipalName(v string) *CreateServiceLinkedRoleResponseBodyRole {
+	s.RolePrincipalName = &v
 	return s
 }
 
@@ -1771,8 +1771,8 @@ func (s *DeclineHandshakeRequest) SetHandshakeId(v string) *DeclineHandshakeRequ
 }
 
 type DeclineHandshakeResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Handshake *DeclineHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeclineHandshakeResponseBody) String() string {
@@ -1783,28 +1783,28 @@ func (s DeclineHandshakeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeclineHandshakeResponseBody) SetRequestId(v string) *DeclineHandshakeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DeclineHandshakeResponseBody) SetHandshake(v *DeclineHandshakeResponseBodyHandshake) *DeclineHandshakeResponseBody {
 	s.Handshake = v
 	return s
 }
 
+func (s *DeclineHandshakeResponseBody) SetRequestId(v string) *DeclineHandshakeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DeclineHandshakeResponseBodyHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s DeclineHandshakeResponseBodyHandshake) String() string {
@@ -1815,8 +1815,8 @@ func (s DeclineHandshakeResponseBodyHandshake) GoString() string {
 	return s.String()
 }
 
-func (s *DeclineHandshakeResponseBodyHandshake) SetStatus(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.Status = &v
+func (s *DeclineHandshakeResponseBodyHandshake) SetCreateTime(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -1825,23 +1825,8 @@ func (s *DeclineHandshakeResponseBodyHandshake) SetExpireTime(v string) *Decline
 	return s
 }
 
-func (s *DeclineHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *DeclineHandshakeResponseBodyHandshake) SetCreateTime(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DeclineHandshakeResponseBodyHandshake) SetNote(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *DeclineHandshakeResponseBodyHandshake) SetTargetEntity(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.TargetEntity = &v
+func (s *DeclineHandshakeResponseBodyHandshake) SetHandshakeId(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -1860,13 +1845,28 @@ func (s *DeclineHandshakeResponseBodyHandshake) SetModifyTime(v string) *Decline
 	return s
 }
 
-func (s *DeclineHandshakeResponseBodyHandshake) SetTargetType(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.TargetType = &v
+func (s *DeclineHandshakeResponseBodyHandshake) SetNote(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *DeclineHandshakeResponseBodyHandshake) SetHandshakeId(v string) *DeclineHandshakeResponseBodyHandshake {
-	s.HandshakeId = &v
+func (s *DeclineHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *DeclineHandshakeResponseBodyHandshake) SetStatus(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *DeclineHandshakeResponseBodyHandshake) SetTargetEntity(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *DeclineHandshakeResponseBodyHandshake) SetTargetType(v string) *DeclineHandshakeResponseBodyHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -2225,13 +2225,13 @@ func (s *DeleteResourceGroupResponseBody) SetResourceGroup(v *DeleteResourceGrou
 }
 
 type DeleteResourceGroupResponseBodyResourceGroup struct {
-	DisplayName    *string                                                     `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	RegionStatuses *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	AccountId      *string                                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreateDate     *string                                                     `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName    *string                                                     `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Id             *string                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionStatuses *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
+	Status         *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteResourceGroupResponseBodyResourceGroup) String() string {
@@ -2242,28 +2242,8 @@ func (s DeleteResourceGroupResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *DeleteResourceGroupResponseBodyResourceGroup {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *DeleteResourceGroupResponseBodyResourceGroup) SetStatus(v string) *DeleteResourceGroupResponseBodyResourceGroup {
-	s.Status = &v
-	return s
-}
-
-func (s *DeleteResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses) *DeleteResourceGroupResponseBodyResourceGroup {
-	s.RegionStatuses = v
-	return s
-}
-
 func (s *DeleteResourceGroupResponseBodyResourceGroup) SetAccountId(v string) *DeleteResourceGroupResponseBodyResourceGroup {
 	s.AccountId = &v
-	return s
-}
-
-func (s *DeleteResourceGroupResponseBodyResourceGroup) SetName(v string) *DeleteResourceGroupResponseBodyResourceGroup {
-	s.Name = &v
 	return s
 }
 
@@ -2272,8 +2252,28 @@ func (s *DeleteResourceGroupResponseBodyResourceGroup) SetCreateDate(v string) *
 	return s
 }
 
+func (s *DeleteResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *DeleteResourceGroupResponseBodyResourceGroup {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *DeleteResourceGroupResponseBodyResourceGroup) SetId(v string) *DeleteResourceGroupResponseBodyResourceGroup {
 	s.Id = &v
+	return s
+}
+
+func (s *DeleteResourceGroupResponseBodyResourceGroup) SetName(v string) *DeleteResourceGroupResponseBodyResourceGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses) *DeleteResourceGroupResponseBodyResourceGroup {
+	s.RegionStatuses = v
+	return s
+}
+
+func (s *DeleteResourceGroupResponseBodyResourceGroup) SetStatus(v string) *DeleteResourceGroupResponseBodyResourceGroup {
+	s.Status = &v
 	return s
 }
 
@@ -2295,8 +2295,8 @@ func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatuses) SetRegionSt
 }
 
 type DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {
@@ -2307,13 +2307,13 @@ func (s DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) 
 	return s.String()
 }
 
-func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.Status = &v
+func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.RegionId = &v
+func (s *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *DeleteResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.Status = &v
 	return s
 }
 
@@ -2415,8 +2415,8 @@ func (s *DeleteServiceLinkedRoleRequest) SetRoleName(v string) *DeleteServiceLin
 }
 
 type DeleteServiceLinkedRoleResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteServiceLinkedRoleResponseBody) String() string {
@@ -2427,13 +2427,13 @@ func (s DeleteServiceLinkedRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteServiceLinkedRoleResponseBody) SetRequestId(v string) *DeleteServiceLinkedRoleResponseBody {
-	s.RequestId = &v
+func (s *DeleteServiceLinkedRoleResponseBody) SetDeletionTaskId(v string) *DeleteServiceLinkedRoleResponseBody {
+	s.DeletionTaskId = &v
 	return s
 }
 
-func (s *DeleteServiceLinkedRoleResponseBody) SetDeletionTaskId(v string) *DeleteServiceLinkedRoleResponseBody {
-	s.DeletionTaskId = &v
+func (s *DeleteServiceLinkedRoleResponseBody) SetRequestId(v string) *DeleteServiceLinkedRoleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2627,11 +2627,11 @@ func (s *DetachControlPolicyResponse) SetBody(v *DetachControlPolicyResponseBody
 }
 
 type DetachPolicyRequest struct {
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DetachPolicyRequest) String() string {
@@ -2642,8 +2642,8 @@ func (s DetachPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetachPolicyRequest) SetResourceGroupId(v string) *DetachPolicyRequest {
-	s.ResourceGroupId = &v
+func (s *DetachPolicyRequest) SetPolicyName(v string) *DetachPolicyRequest {
+	s.PolicyName = &v
 	return s
 }
 
@@ -2652,8 +2652,8 @@ func (s *DetachPolicyRequest) SetPolicyType(v string) *DetachPolicyRequest {
 	return s
 }
 
-func (s *DetachPolicyRequest) SetPolicyName(v string) *DetachPolicyRequest {
-	s.PolicyName = &v
+func (s *DetachPolicyRequest) SetPrincipalName(v string) *DetachPolicyRequest {
+	s.PrincipalName = &v
 	return s
 }
 
@@ -2662,8 +2662,8 @@ func (s *DetachPolicyRequest) SetPrincipalType(v string) *DetachPolicyRequest {
 	return s
 }
 
-func (s *DetachPolicyRequest) SetPrincipalName(v string) *DetachPolicyRequest {
-	s.PrincipalName = &v
+func (s *DetachPolicyRequest) SetResourceGroupId(v string) *DetachPolicyRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2840,18 +2840,18 @@ func (s *GetAccountResponseBody) SetRequestId(v string) *GetAccountResponseBody 
 }
 
 type GetAccountResponseBodyAccount struct {
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName           *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId   *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	IdentityInformation   *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
-	JoinTime              *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime              *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime            *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	AccountName           *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ResourceDirectoryId   *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAccountResponseBodyAccount) String() string {
@@ -2862,13 +2862,13 @@ func (s GetAccountResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *GetAccountResponseBodyAccount) SetStatus(v string) *GetAccountResponseBodyAccount {
-	s.Status = &v
+func (s *GetAccountResponseBodyAccount) SetAccountId(v string) *GetAccountResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *GetAccountResponseBodyAccount) SetType(v string) *GetAccountResponseBodyAccount {
-	s.Type = &v
+func (s *GetAccountResponseBodyAccount) SetAccountName(v string) *GetAccountResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -2882,23 +2882,8 @@ func (s *GetAccountResponseBodyAccount) SetFolderId(v string) *GetAccountRespons
 	return s
 }
 
-func (s *GetAccountResponseBodyAccount) SetResourceDirectoryId(v string) *GetAccountResponseBodyAccount {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
 func (s *GetAccountResponseBodyAccount) SetIdentityInformation(v string) *GetAccountResponseBodyAccount {
 	s.IdentityInformation = &v
-	return s
-}
-
-func (s *GetAccountResponseBodyAccount) SetJoinTime(v string) *GetAccountResponseBodyAccount {
-	s.JoinTime = &v
-	return s
-}
-
-func (s *GetAccountResponseBodyAccount) SetAccountId(v string) *GetAccountResponseBodyAccount {
-	s.AccountId = &v
 	return s
 }
 
@@ -2907,18 +2892,33 @@ func (s *GetAccountResponseBodyAccount) SetJoinMethod(v string) *GetAccountRespo
 	return s
 }
 
+func (s *GetAccountResponseBodyAccount) SetJoinTime(v string) *GetAccountResponseBodyAccount {
+	s.JoinTime = &v
+	return s
+}
+
 func (s *GetAccountResponseBodyAccount) SetModifyTime(v string) *GetAccountResponseBodyAccount {
 	s.ModifyTime = &v
 	return s
 }
 
-func (s *GetAccountResponseBodyAccount) SetAccountName(v string) *GetAccountResponseBodyAccount {
-	s.AccountName = &v
+func (s *GetAccountResponseBodyAccount) SetResourceDirectoryId(v string) *GetAccountResponseBodyAccount {
+	s.ResourceDirectoryId = &v
 	return s
 }
 
 func (s *GetAccountResponseBodyAccount) SetResourceDirectoryPath(v string) *GetAccountResponseBodyAccount {
 	s.ResourceDirectoryPath = &v
+	return s
+}
+
+func (s *GetAccountResponseBodyAccount) SetStatus(v string) *GetAccountResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAccountResponseBodyAccount) SetType(v string) *GetAccountResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -2946,8 +2946,8 @@ func (s *GetAccountResponse) SetBody(v *GetAccountResponseBody) *GetAccountRespo
 }
 
 type GetControlPolicyRequest struct {
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s GetControlPolicyRequest) String() string {
@@ -2958,13 +2958,13 @@ func (s GetControlPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetControlPolicyRequest) SetPolicyId(v string) *GetControlPolicyRequest {
-	s.PolicyId = &v
+func (s *GetControlPolicyRequest) SetLanguage(v string) *GetControlPolicyRequest {
+	s.Language = &v
 	return s
 }
 
-func (s *GetControlPolicyRequest) SetLanguage(v string) *GetControlPolicyRequest {
-	s.Language = &v
+func (s *GetControlPolicyRequest) SetPolicyId(v string) *GetControlPolicyRequest {
+	s.PolicyId = &v
 	return s
 }
 
@@ -2992,15 +2992,15 @@ func (s *GetControlPolicyResponseBody) SetRequestId(v string) *GetControlPolicyR
 }
 
 type GetControlPolicyResponseBodyControlPolicy struct {
-	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetControlPolicyResponseBodyControlPolicy) String() string {
@@ -3011,13 +3011,13 @@ func (s GetControlPolicyResponseBodyControlPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyDocument(v string) *GetControlPolicyResponseBodyControlPolicy {
-	s.PolicyDocument = &v
+func (s *GetControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
 	return s
 }
 
-func (s *GetControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
-	s.UpdateDate = &v
+func (s *GetControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
 	return s
 }
 
@@ -3031,13 +3031,8 @@ func (s *GetControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) *Ge
 	return s
 }
 
-func (s *GetControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *GetControlPolicyResponseBodyControlPolicy {
-	s.AttachmentCount = &v
-	return s
-}
-
-func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *GetControlPolicyResponseBodyControlPolicy {
-	s.PolicyName = &v
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyDocument(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyDocument = &v
 	return s
 }
 
@@ -3046,13 +3041,18 @@ func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *GetCo
 	return s
 }
 
-func (s *GetControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
-	s.CreateDate = &v
+func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.PolicyName = &v
 	return s
 }
 
 func (s *GetControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *GetControlPolicyResponseBodyControlPolicy {
 	s.PolicyType = &v
+	return s
+}
+
+func (s *GetControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *GetControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -3143,8 +3143,8 @@ func (s *GetFolderRequest) SetFolderId(v string) *GetFolderRequest {
 }
 
 type GetFolderResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Folder    *GetFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetFolderResponseBody) String() string {
@@ -3155,21 +3155,21 @@ func (s GetFolderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetFolderResponseBody) SetRequestId(v string) *GetFolderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetFolderResponseBody) SetFolder(v *GetFolderResponseBodyFolder) *GetFolderResponseBody {
 	s.Folder = v
 	return s
 }
 
+func (s *GetFolderResponseBody) SetRequestId(v string) *GetFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetFolderResponseBodyFolder struct {
-	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ParentFolderId        *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName            *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId        *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 }
 
@@ -3181,23 +3181,23 @@ func (s GetFolderResponseBodyFolder) GoString() string {
 	return s.String()
 }
 
-func (s *GetFolderResponseBodyFolder) SetFolderId(v string) *GetFolderResponseBodyFolder {
-	s.FolderId = &v
-	return s
-}
-
 func (s *GetFolderResponseBodyFolder) SetCreateTime(v string) *GetFolderResponseBodyFolder {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *GetFolderResponseBodyFolder) SetParentFolderId(v string) *GetFolderResponseBodyFolder {
-	s.ParentFolderId = &v
+func (s *GetFolderResponseBodyFolder) SetFolderId(v string) *GetFolderResponseBodyFolder {
+	s.FolderId = &v
 	return s
 }
 
 func (s *GetFolderResponseBodyFolder) SetFolderName(v string) *GetFolderResponseBodyFolder {
 	s.FolderName = &v
+	return s
+}
+
+func (s *GetFolderResponseBodyFolder) SetParentFolderId(v string) *GetFolderResponseBodyFolder {
+	s.ParentFolderId = &v
 	return s
 }
 
@@ -3247,8 +3247,8 @@ func (s *GetHandshakeRequest) SetHandshakeId(v string) *GetHandshakeRequest {
 }
 
 type GetHandshakeResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Handshake *GetHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHandshakeResponseBody) String() string {
@@ -3259,30 +3259,30 @@ func (s GetHandshakeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetHandshakeResponseBody) SetRequestId(v string) *GetHandshakeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetHandshakeResponseBody) SetHandshake(v *GetHandshakeResponseBodyHandshake) *GetHandshakeResponseBody {
 	s.Handshake = v
 	return s
 }
 
+func (s *GetHandshakeResponseBody) SetRequestId(v string) *GetHandshakeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetHandshakeResponseBodyHandshake struct {
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime             *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TargetEntity           *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	MasterAccountId        *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	ExpireTime             *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	HandshakeId            *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	MasterAccountRealName  *string `json:"MasterAccountRealName,omitempty" xml:"MasterAccountRealName,omitempty"`
-	ResourceDirectoryId    *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	InvitedAccountRealName *string `json:"InvitedAccountRealName,omitempty" xml:"InvitedAccountRealName,omitempty"`
-	Note                   *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	MasterAccountId        *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName      *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	TargetType             *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	MasterAccountRealName  *string `json:"MasterAccountRealName,omitempty" xml:"MasterAccountRealName,omitempty"`
 	ModifyTime             *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                   *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId    *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity           *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType             *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s GetHandshakeResponseBodyHandshake) String() string {
@@ -3293,8 +3293,8 @@ func (s GetHandshakeResponseBodyHandshake) GoString() string {
 	return s.String()
 }
 
-func (s *GetHandshakeResponseBodyHandshake) SetStatus(v string) *GetHandshakeResponseBodyHandshake {
-	s.Status = &v
+func (s *GetHandshakeResponseBodyHandshake) SetCreateTime(v string) *GetHandshakeResponseBodyHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -3303,33 +3303,8 @@ func (s *GetHandshakeResponseBodyHandshake) SetExpireTime(v string) *GetHandshak
 	return s
 }
 
-func (s *GetHandshakeResponseBodyHandshake) SetCreateTime(v string) *GetHandshakeResponseBodyHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetHandshakeResponseBodyHandshake) SetTargetEntity(v string) *GetHandshakeResponseBodyHandshake {
-	s.TargetEntity = &v
-	return s
-}
-
-func (s *GetHandshakeResponseBodyHandshake) SetMasterAccountId(v string) *GetHandshakeResponseBodyHandshake {
-	s.MasterAccountId = &v
-	return s
-}
-
 func (s *GetHandshakeResponseBodyHandshake) SetHandshakeId(v string) *GetHandshakeResponseBodyHandshake {
 	s.HandshakeId = &v
-	return s
-}
-
-func (s *GetHandshakeResponseBodyHandshake) SetMasterAccountRealName(v string) *GetHandshakeResponseBodyHandshake {
-	s.MasterAccountRealName = &v
-	return s
-}
-
-func (s *GetHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *GetHandshakeResponseBodyHandshake {
-	s.ResourceDirectoryId = &v
 	return s
 }
 
@@ -3338,8 +3313,8 @@ func (s *GetHandshakeResponseBodyHandshake) SetInvitedAccountRealName(v string) 
 	return s
 }
 
-func (s *GetHandshakeResponseBodyHandshake) SetNote(v string) *GetHandshakeResponseBodyHandshake {
-	s.Note = &v
+func (s *GetHandshakeResponseBodyHandshake) SetMasterAccountId(v string) *GetHandshakeResponseBodyHandshake {
+	s.MasterAccountId = &v
 	return s
 }
 
@@ -3348,13 +3323,38 @@ func (s *GetHandshakeResponseBodyHandshake) SetMasterAccountName(v string) *GetH
 	return s
 }
 
-func (s *GetHandshakeResponseBodyHandshake) SetTargetType(v string) *GetHandshakeResponseBodyHandshake {
-	s.TargetType = &v
+func (s *GetHandshakeResponseBodyHandshake) SetMasterAccountRealName(v string) *GetHandshakeResponseBodyHandshake {
+	s.MasterAccountRealName = &v
 	return s
 }
 
 func (s *GetHandshakeResponseBodyHandshake) SetModifyTime(v string) *GetHandshakeResponseBodyHandshake {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetHandshakeResponseBodyHandshake) SetNote(v string) *GetHandshakeResponseBodyHandshake {
+	s.Note = &v
+	return s
+}
+
+func (s *GetHandshakeResponseBodyHandshake) SetResourceDirectoryId(v string) *GetHandshakeResponseBodyHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *GetHandshakeResponseBodyHandshake) SetStatus(v string) *GetHandshakeResponseBodyHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *GetHandshakeResponseBodyHandshake) SetTargetEntity(v string) *GetHandshakeResponseBodyHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *GetHandshakeResponseBodyHandshake) SetTargetType(v string) *GetHandshakeResponseBodyHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -3399,9 +3399,9 @@ func (s *GetPayerForAccountRequest) SetAccountId(v string) *GetPayerForAccountRe
 }
 
 type GetPayerForAccountResponseBody struct {
+	PayerAccountId   *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
 	PayerAccountName *string `json:"PayerAccountName,omitempty" xml:"PayerAccountName,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PayerAccountId   *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
 }
 
 func (s GetPayerForAccountResponseBody) String() string {
@@ -3412,6 +3412,11 @@ func (s GetPayerForAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetPayerForAccountResponseBody) SetPayerAccountId(v string) *GetPayerForAccountResponseBody {
+	s.PayerAccountId = &v
+	return s
+}
+
 func (s *GetPayerForAccountResponseBody) SetPayerAccountName(v string) *GetPayerForAccountResponseBody {
 	s.PayerAccountName = &v
 	return s
@@ -3419,11 +3424,6 @@ func (s *GetPayerForAccountResponseBody) SetPayerAccountName(v string) *GetPayer
 
 func (s *GetPayerForAccountResponseBody) SetRequestId(v string) *GetPayerForAccountResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetPayerForAccountResponseBody) SetPayerAccountId(v string) *GetPayerForAccountResponseBody {
-	s.PayerAccountId = &v
 	return s
 }
 
@@ -3451,9 +3451,9 @@ func (s *GetPayerForAccountResponse) SetBody(v *GetPayerForAccountResponseBody) 
 }
 
 type GetPolicyRequest struct {
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
 func (s GetPolicyRequest) String() string {
@@ -3464,6 +3464,11 @@ func (s GetPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetPolicyRequest) SetLanguage(v string) *GetPolicyRequest {
+	s.Language = &v
+	return s
+}
+
 func (s *GetPolicyRequest) SetPolicyName(v string) *GetPolicyRequest {
 	s.PolicyName = &v
 	return s
@@ -3471,11 +3476,6 @@ func (s *GetPolicyRequest) SetPolicyName(v string) *GetPolicyRequest {
 
 func (s *GetPolicyRequest) SetPolicyType(v string) *GetPolicyRequest {
 	s.PolicyType = &v
-	return s
-}
-
-func (s *GetPolicyRequest) SetLanguage(v string) *GetPolicyRequest {
-	s.Language = &v
 	return s
 }
 
@@ -3503,14 +3503,14 @@ func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
 }
 
 type GetPolicyResponseBodyPolicy struct {
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
 	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetPolicyResponseBodyPolicy) String() string {
@@ -3521,13 +3521,18 @@ func (s GetPolicyResponseBodyPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *GetPolicyResponseBodyPolicy) SetDefaultVersion(v string) *GetPolicyResponseBodyPolicy {
-	s.DefaultVersion = &v
+func (s *GetPolicyResponseBodyPolicy) SetAttachmentCount(v int32) *GetPolicyResponseBodyPolicy {
+	s.AttachmentCount = &v
 	return s
 }
 
-func (s *GetPolicyResponseBodyPolicy) SetUpdateDate(v string) *GetPolicyResponseBodyPolicy {
-	s.UpdateDate = &v
+func (s *GetPolicyResponseBodyPolicy) SetCreateDate(v string) *GetPolicyResponseBodyPolicy {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetDefaultVersion(v string) *GetPolicyResponseBodyPolicy {
+	s.DefaultVersion = &v
 	return s
 }
 
@@ -3541,23 +3546,18 @@ func (s *GetPolicyResponseBodyPolicy) SetPolicyDocument(v string) *GetPolicyResp
 	return s
 }
 
-func (s *GetPolicyResponseBodyPolicy) SetAttachmentCount(v int32) *GetPolicyResponseBodyPolicy {
-	s.AttachmentCount = &v
-	return s
-}
-
 func (s *GetPolicyResponseBodyPolicy) SetPolicyName(v string) *GetPolicyResponseBodyPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *GetPolicyResponseBodyPolicy) SetCreateDate(v string) *GetPolicyResponseBodyPolicy {
-	s.CreateDate = &v
+func (s *GetPolicyResponseBodyPolicy) SetPolicyType(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyType = &v
 	return s
 }
 
-func (s *GetPolicyResponseBodyPolicy) SetPolicyType(v string) *GetPolicyResponseBodyPolicy {
-	s.PolicyType = &v
+func (s *GetPolicyResponseBodyPolicy) SetUpdateDate(v string) *GetPolicyResponseBodyPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -3585,8 +3585,8 @@ func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse
 }
 
 type GetPolicyVersionRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -3598,13 +3598,13 @@ func (s GetPolicyVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetPolicyVersionRequest) SetPolicyType(v string) *GetPolicyVersionRequest {
-	s.PolicyType = &v
+func (s *GetPolicyVersionRequest) SetPolicyName(v string) *GetPolicyVersionRequest {
+	s.PolicyName = &v
 	return s
 }
 
-func (s *GetPolicyVersionRequest) SetPolicyName(v string) *GetPolicyVersionRequest {
-	s.PolicyName = &v
+func (s *GetPolicyVersionRequest) SetPolicyType(v string) *GetPolicyVersionRequest {
+	s.PolicyType = &v
 	return s
 }
 
@@ -3637,10 +3637,10 @@ func (s *GetPolicyVersionResponseBody) SetRequestId(v string) *GetPolicyVersionR
 }
 
 type GetPolicyVersionResponseBodyPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s GetPolicyVersionResponseBodyPolicyVersion) String() string {
@@ -3649,6 +3649,11 @@ func (s GetPolicyVersionResponseBodyPolicyVersion) String() string {
 
 func (s GetPolicyVersionResponseBodyPolicyVersion) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *GetPolicyVersionResponseBodyPolicyVersion {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *GetPolicyVersionResponseBodyPolicyVersion) SetIsDefaultVersion(v bool) *GetPolicyVersionResponseBodyPolicyVersion {
@@ -3663,11 +3668,6 @@ func (s *GetPolicyVersionResponseBodyPolicyVersion) SetPolicyDocument(v string) 
 
 func (s *GetPolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *GetPolicyVersionResponseBodyPolicyVersion {
 	s.VersionId = &v
-	return s
-}
-
-func (s *GetPolicyVersionResponseBodyPolicyVersion) SetCreateDate(v string) *GetPolicyVersionResponseBodyPolicyVersion {
-	s.CreateDate = &v
 	return s
 }
 
@@ -3718,13 +3718,13 @@ func (s *GetResourceDirectoryResponseBody) SetResourceDirectory(v *GetResourceDi
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {
-	RootFolderId         *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
-	ResourceDirectoryId  *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	ControlPolicyStatus  *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	MasterAccountId      *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName    *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	ControlPolicyStatus  *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
 	MemberDeletionStatus *string `json:"MemberDeletionStatus,omitempty" xml:"MemberDeletionStatus,omitempty"`
+	ResourceDirectoryId  *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	RootFolderId         *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
 }
 
 func (s GetResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -3735,13 +3735,8 @@ func (s GetResourceDirectoryResponseBodyResourceDirectory) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
-	s.RootFolderId = &v
-	return s
-}
-
-func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
-	s.ResourceDirectoryId = &v
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetControlPolicyStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.ControlPolicyStatus = &v
 	return s
 }
 
@@ -3760,13 +3755,18 @@ func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName
 	return s
 }
 
-func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetControlPolicyStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
-	s.ControlPolicyStatus = &v
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMemberDeletionStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.MemberDeletionStatus = &v
 	return s
 }
 
-func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetMemberDeletionStatus(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
-	s.MemberDeletionStatus = &v
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *GetResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v string) *GetResourceDirectoryResponseBodyResourceDirectory {
+	s.RootFolderId = &v
 	return s
 }
 
@@ -3834,13 +3834,13 @@ func (s *GetResourceGroupResponseBody) SetResourceGroup(v *GetResourceGroupRespo
 }
 
 type GetResourceGroupResponseBodyResourceGroup struct {
-	DisplayName    *string                                                  `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status         *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	RegionStatuses *GetResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
 	AccountId      *string                                                  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Name           *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreateDate     *string                                                  `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName    *string                                                  `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Id             *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionStatuses *GetResourceGroupResponseBodyResourceGroupRegionStatuses `json:"RegionStatuses,omitempty" xml:"RegionStatuses,omitempty" type:"Struct"`
+	Status         *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetResourceGroupResponseBodyResourceGroup) String() string {
@@ -3851,28 +3851,8 @@ func (s GetResourceGroupResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *GetResourceGroupResponseBodyResourceGroup {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *GetResourceGroupResponseBodyResourceGroup) SetStatus(v string) *GetResourceGroupResponseBodyResourceGroup {
-	s.Status = &v
-	return s
-}
-
-func (s *GetResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *GetResourceGroupResponseBodyResourceGroupRegionStatuses) *GetResourceGroupResponseBodyResourceGroup {
-	s.RegionStatuses = v
-	return s
-}
-
 func (s *GetResourceGroupResponseBodyResourceGroup) SetAccountId(v string) *GetResourceGroupResponseBodyResourceGroup {
 	s.AccountId = &v
-	return s
-}
-
-func (s *GetResourceGroupResponseBodyResourceGroup) SetName(v string) *GetResourceGroupResponseBodyResourceGroup {
-	s.Name = &v
 	return s
 }
 
@@ -3881,8 +3861,28 @@ func (s *GetResourceGroupResponseBodyResourceGroup) SetCreateDate(v string) *Get
 	return s
 }
 
+func (s *GetResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *GetResourceGroupResponseBodyResourceGroup {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *GetResourceGroupResponseBodyResourceGroup) SetId(v string) *GetResourceGroupResponseBodyResourceGroup {
 	s.Id = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroup) SetName(v string) *GetResourceGroupResponseBodyResourceGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroup) SetRegionStatuses(v *GetResourceGroupResponseBodyResourceGroupRegionStatuses) *GetResourceGroupResponseBodyResourceGroup {
+	s.RegionStatuses = v
+	return s
+}
+
+func (s *GetResourceGroupResponseBodyResourceGroup) SetStatus(v string) *GetResourceGroupResponseBodyResourceGroup {
+	s.Status = &v
 	return s
 }
 
@@ -3904,8 +3904,8 @@ func (s *GetResourceGroupResponseBodyResourceGroupRegionStatuses) SetRegionStatu
 }
 
 type GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus struct {
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) String() string {
@@ -3916,13 +3916,13 @@ func (s GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) GoS
 	return s.String()
 }
 
-func (s *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.Status = &v
+func (s *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.RegionId = &v
 	return s
 }
 
-func (s *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetRegionId(v string) *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
-	s.RegionId = &v
+func (s *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus) SetStatus(v string) *GetResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus {
+	s.Status = &v
 	return s
 }
 
@@ -3950,8 +3950,8 @@ func (s *GetResourceGroupResponse) SetBody(v *GetResourceGroupResponseBody) *Get
 }
 
 type GetRoleRequest struct {
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s GetRoleRequest) String() string {
@@ -3962,19 +3962,19 @@ func (s GetRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
-	s.RoleName = &v
-	return s
-}
-
 func (s *GetRoleRequest) SetLanguage(v string) *GetRoleRequest {
 	s.Language = &v
 	return s
 }
 
+func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
 type GetRoleResponseBody struct {
-	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s GetRoleResponseBody) String() string {
@@ -3985,28 +3985,28 @@ func (s GetRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRoleResponseBody) SetRole(v *GetRoleResponseBodyRole) *GetRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *GetRoleResponseBody) SetRequestId(v string) *GetRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetRoleResponseBody) SetRole(v *GetRoleResponseBodyRole) *GetRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type GetRoleResponseBodyRole struct {
+	Arn                      *string                                    `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AssumeRolePolicyDocument *string                                    `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	CreateDate               *string                                    `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description              *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsServiceLinkedRole      *bool                                      `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
+	LatestDeletionTask       *GetRoleResponseBodyRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
+	MaxSessionDuration       *int64                                     `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleId                   *string                                    `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName                 *string                                    `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	RolePrincipalName        *string                                    `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
 	UpdateDate               *string                                    `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	Description              *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration       *int64                                     `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	LatestDeletionTask       *GetRoleResponseBodyRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
-	RoleName                 *string                                    `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string                                    `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	RoleId                   *string                                    `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                      *string                                    `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	IsServiceLinkedRole      *bool                                      `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
 }
 
 func (s GetRoleResponseBodyRole) String() string {
@@ -4017,8 +4017,48 @@ func (s GetRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *GetRoleResponseBodyRole) SetArn(v string) *GetRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *GetRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *GetRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetCreateDate(v string) *GetRoleResponseBodyRole {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetDescription(v string) *GetRoleResponseBodyRole {
+	s.Description = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetIsServiceLinkedRole(v bool) *GetRoleResponseBodyRole {
+	s.IsServiceLinkedRole = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetLatestDeletionTask(v *GetRoleResponseBodyRoleLatestDeletionTask) *GetRoleResponseBodyRole {
+	s.LatestDeletionTask = v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetMaxSessionDuration(v int64) *GetRoleResponseBodyRole {
+	s.MaxSessionDuration = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetRoleId(v string) *GetRoleResponseBodyRole {
+	s.RoleId = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetRoleName(v string) *GetRoleResponseBodyRole {
+	s.RoleName = &v
 	return s
 }
 
@@ -4032,49 +4072,9 @@ func (s *GetRoleResponseBodyRole) SetUpdateDate(v string) *GetRoleResponseBodyRo
 	return s
 }
 
-func (s *GetRoleResponseBodyRole) SetDescription(v string) *GetRoleResponseBodyRole {
-	s.Description = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetMaxSessionDuration(v int64) *GetRoleResponseBodyRole {
-	s.MaxSessionDuration = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetLatestDeletionTask(v *GetRoleResponseBodyRoleLatestDeletionTask) *GetRoleResponseBodyRole {
-	s.LatestDeletionTask = v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetRoleName(v string) *GetRoleResponseBodyRole {
-	s.RoleName = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetCreateDate(v string) *GetRoleResponseBodyRole {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetRoleId(v string) *GetRoleResponseBodyRole {
-	s.RoleId = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetArn(v string) *GetRoleResponseBodyRole {
-	s.Arn = &v
-	return s
-}
-
-func (s *GetRoleResponseBodyRole) SetIsServiceLinkedRole(v bool) *GetRoleResponseBodyRole {
-	s.IsServiceLinkedRole = &v
-	return s
-}
-
 type GetRoleResponseBodyRoleLatestDeletionTask struct {
-	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
 	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
 }
 
 func (s GetRoleResponseBodyRoleLatestDeletionTask) String() string {
@@ -4085,13 +4085,13 @@ func (s GetRoleResponseBodyRoleLatestDeletionTask) GoString() string {
 	return s.String()
 }
 
-func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetDeletionTaskId(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
-	s.DeletionTaskId = &v
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetCreateDate(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
+	s.CreateDate = &v
 	return s
 }
 
-func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetCreateDate(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
-	s.CreateDate = &v
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetDeletionTaskId(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
+	s.DeletionTaskId = &v
 	return s
 }
 
@@ -4136,9 +4136,9 @@ func (s *GetServiceLinkedRoleDeletionStatusRequest) SetDeletionTaskId(v string) 
 }
 
 type GetServiceLinkedRoleDeletionStatusResponseBody struct {
-	Status    *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Reason    *GetServiceLinkedRoleDeletionStatusResponseBodyReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetServiceLinkedRoleDeletionStatusResponseBody) String() string {
@@ -4149,8 +4149,8 @@ func (s GetServiceLinkedRoleDeletionStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetServiceLinkedRoleDeletionStatusResponseBody) SetStatus(v string) *GetServiceLinkedRoleDeletionStatusResponseBody {
-	s.Status = &v
+func (s *GetServiceLinkedRoleDeletionStatusResponseBody) SetReason(v *GetServiceLinkedRoleDeletionStatusResponseBodyReason) *GetServiceLinkedRoleDeletionStatusResponseBody {
+	s.Reason = v
 	return s
 }
 
@@ -4159,8 +4159,8 @@ func (s *GetServiceLinkedRoleDeletionStatusResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *GetServiceLinkedRoleDeletionStatusResponseBody) SetReason(v *GetServiceLinkedRoleDeletionStatusResponseBodyReason) *GetServiceLinkedRoleDeletionStatusResponseBody {
-	s.Reason = v
+func (s *GetServiceLinkedRoleDeletionStatusResponseBody) SetStatus(v string) *GetServiceLinkedRoleDeletionStatusResponseBody {
+	s.Status = &v
 	return s
 }
 
@@ -4291,11 +4291,11 @@ func (s *InitResourceDirectoryResponseBody) SetResourceDirectory(v *InitResource
 }
 
 type InitResourceDirectoryResponseBodyResourceDirectory struct {
-	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
 }
 
 func (s InitResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -4304,16 +4304,6 @@ func (s InitResourceDirectoryResponseBodyResourceDirectory) String() string {
 
 func (s InitResourceDirectoryResponseBodyResourceDirectory) GoString() string {
 	return s.String()
-}
-
-func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
-	s.RootFolderId = &v
-	return s
-}
-
-func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
-	s.ResourceDirectoryId = &v
-	return s
 }
 
 func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetCreateTime(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
@@ -4328,6 +4318,16 @@ func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountId(
 
 func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
 	s.MasterAccountName = &v
+	return s
+}
+
+func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *InitResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v string) *InitResourceDirectoryResponseBodyResourceDirectory {
+	s.RootFolderId = &v
 	return s
 }
 
@@ -4355,9 +4355,9 @@ func (s *InitResourceDirectoryResponse) SetBody(v *InitResourceDirectoryResponse
 }
 
 type InviteAccountToResourceDirectoryRequest struct {
+	Note         *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Note         *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryRequest) String() string {
@@ -4366,6 +4366,11 @@ func (s InviteAccountToResourceDirectoryRequest) String() string {
 
 func (s InviteAccountToResourceDirectoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InviteAccountToResourceDirectoryRequest) SetNote(v string) *InviteAccountToResourceDirectoryRequest {
+	s.Note = &v
+	return s
 }
 
 func (s *InviteAccountToResourceDirectoryRequest) SetTargetEntity(v string) *InviteAccountToResourceDirectoryRequest {
@@ -4378,14 +4383,9 @@ func (s *InviteAccountToResourceDirectoryRequest) SetTargetType(v string) *Invit
 	return s
 }
 
-func (s *InviteAccountToResourceDirectoryRequest) SetNote(v string) *InviteAccountToResourceDirectoryRequest {
-	s.Note = &v
-	return s
-}
-
 type InviteAccountToResourceDirectoryResponseBody struct {
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Handshake *InviteAccountToResourceDirectoryResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryResponseBody) String() string {
@@ -4396,28 +4396,28 @@ func (s InviteAccountToResourceDirectoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InviteAccountToResourceDirectoryResponseBody) SetRequestId(v string) *InviteAccountToResourceDirectoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *InviteAccountToResourceDirectoryResponseBody) SetHandshake(v *InviteAccountToResourceDirectoryResponseBodyHandshake) *InviteAccountToResourceDirectoryResponseBody {
 	s.Handshake = v
 	return s
 }
 
+func (s *InviteAccountToResourceDirectoryResponseBody) SetRequestId(v string) *InviteAccountToResourceDirectoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryResponseBodyHandshake) String() string {
@@ -4428,8 +4428,8 @@ func (s InviteAccountToResourceDirectoryResponseBodyHandshake) GoString() string
 	return s.String()
 }
 
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetStatus(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.Status = &v
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetCreateTime(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -4438,23 +4438,8 @@ func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetExpireTime(v 
 	return s
 }
 
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetResourceDirectoryId(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetCreateTime(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetNote(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetTargetEntity(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.TargetEntity = &v
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetHandshakeId(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -4473,13 +4458,28 @@ func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetModifyTime(v 
 	return s
 }
 
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetTargetType(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.TargetType = &v
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetNote(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetHandshakeId(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
-	s.HandshakeId = &v
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetResourceDirectoryId(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetStatus(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetTargetEntity(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *InviteAccountToResourceDirectoryResponseBodyHandshake) SetTargetType(v string) *InviteAccountToResourceDirectoryResponseBodyHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -4530,11 +4530,11 @@ func (s *ListAccountsRequest) SetPageSize(v int32) *ListAccountsRequest {
 }
 
 type ListAccountsResponseBody struct {
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Accounts   *ListAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAccountsResponseBody) String() string {
@@ -4545,18 +4545,8 @@ func (s ListAccountsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccountsResponseBody) SetTotalCount(v int32) *ListAccountsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListAccountsResponseBody) SetRequestId(v string) *ListAccountsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAccountsResponseBody) SetPageSize(v int32) *ListAccountsResponseBody {
-	s.PageSize = &v
+func (s *ListAccountsResponseBody) SetAccounts(v *ListAccountsResponseBodyAccounts) *ListAccountsResponseBody {
+	s.Accounts = v
 	return s
 }
 
@@ -4565,8 +4555,18 @@ func (s *ListAccountsResponseBody) SetPageNumber(v int32) *ListAccountsResponseB
 	return s
 }
 
-func (s *ListAccountsResponseBody) SetAccounts(v *ListAccountsResponseBodyAccounts) *ListAccountsResponseBody {
-	s.Accounts = v
+func (s *ListAccountsResponseBody) SetPageSize(v int32) *ListAccountsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetRequestId(v string) *ListAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetTotalCount(v int32) *ListAccountsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4588,15 +4588,15 @@ func (s *ListAccountsResponseBodyAccounts) SetAccount(v []*ListAccountsResponseB
 }
 
 type ListAccountsResponseBodyAccountsAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAccountsResponseBodyAccountsAccount) String() string {
@@ -4607,13 +4607,8 @@ func (s ListAccountsResponseBodyAccountsAccount) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccountsResponseBodyAccountsAccount) SetStatus(v string) *ListAccountsResponseBodyAccountsAccount {
-	s.Status = &v
-	return s
-}
-
-func (s *ListAccountsResponseBodyAccountsAccount) SetType(v string) *ListAccountsResponseBodyAccountsAccount {
-	s.Type = &v
+func (s *ListAccountsResponseBodyAccountsAccount) SetAccountId(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.AccountId = &v
 	return s
 }
 
@@ -4627,8 +4622,8 @@ func (s *ListAccountsResponseBodyAccountsAccount) SetFolderId(v string) *ListAcc
 	return s
 }
 
-func (s *ListAccountsResponseBodyAccountsAccount) SetResourceDirectoryId(v string) *ListAccountsResponseBodyAccountsAccount {
-	s.ResourceDirectoryId = &v
+func (s *ListAccountsResponseBodyAccountsAccount) SetJoinMethod(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -4637,18 +4632,23 @@ func (s *ListAccountsResponseBodyAccountsAccount) SetJoinTime(v string) *ListAcc
 	return s
 }
 
-func (s *ListAccountsResponseBodyAccountsAccount) SetAccountId(v string) *ListAccountsResponseBodyAccountsAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListAccountsResponseBodyAccountsAccount) SetJoinMethod(v string) *ListAccountsResponseBodyAccountsAccount {
-	s.JoinMethod = &v
-	return s
-}
-
 func (s *ListAccountsResponseBodyAccountsAccount) SetModifyTime(v string) *ListAccountsResponseBodyAccountsAccount {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListAccountsResponseBodyAccountsAccount) SetResourceDirectoryId(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ListAccountsResponseBodyAccountsAccount) SetStatus(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAccountsResponseBodyAccountsAccount) SetType(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.Type = &v
 	return s
 }
 
@@ -4676,10 +4676,10 @@ func (s *ListAccountsResponse) SetBody(v *ListAccountsResponseBody) *ListAccount
 }
 
 type ListAccountsForParentRequest struct {
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	QueryKeyword   *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	QueryKeyword   *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 }
 
 func (s ListAccountsForParentRequest) String() string {
@@ -4688,16 +4688,6 @@ func (s ListAccountsForParentRequest) String() string {
 
 func (s ListAccountsForParentRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAccountsForParentRequest) SetParentFolderId(v string) *ListAccountsForParentRequest {
-	s.ParentFolderId = &v
-	return s
-}
-
-func (s *ListAccountsForParentRequest) SetQueryKeyword(v string) *ListAccountsForParentRequest {
-	s.QueryKeyword = &v
-	return s
 }
 
 func (s *ListAccountsForParentRequest) SetPageNumber(v int32) *ListAccountsForParentRequest {
@@ -4710,12 +4700,22 @@ func (s *ListAccountsForParentRequest) SetPageSize(v int32) *ListAccountsForPare
 	return s
 }
 
+func (s *ListAccountsForParentRequest) SetParentFolderId(v string) *ListAccountsForParentRequest {
+	s.ParentFolderId = &v
+	return s
+}
+
+func (s *ListAccountsForParentRequest) SetQueryKeyword(v string) *ListAccountsForParentRequest {
+	s.QueryKeyword = &v
+	return s
+}
+
 type ListAccountsForParentResponseBody struct {
-	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Accounts   *ListAccountsForParentResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAccountsForParentResponseBody) String() string {
@@ -4726,18 +4726,8 @@ func (s ListAccountsForParentResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccountsForParentResponseBody) SetTotalCount(v int32) *ListAccountsForParentResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListAccountsForParentResponseBody) SetRequestId(v string) *ListAccountsForParentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAccountsForParentResponseBody) SetPageSize(v int32) *ListAccountsForParentResponseBody {
-	s.PageSize = &v
+func (s *ListAccountsForParentResponseBody) SetAccounts(v *ListAccountsForParentResponseBodyAccounts) *ListAccountsForParentResponseBody {
+	s.Accounts = v
 	return s
 }
 
@@ -4746,8 +4736,18 @@ func (s *ListAccountsForParentResponseBody) SetPageNumber(v int32) *ListAccounts
 	return s
 }
 
-func (s *ListAccountsForParentResponseBody) SetAccounts(v *ListAccountsForParentResponseBodyAccounts) *ListAccountsForParentResponseBody {
-	s.Accounts = v
+func (s *ListAccountsForParentResponseBody) SetPageSize(v int32) *ListAccountsForParentResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAccountsForParentResponseBody) SetRequestId(v string) *ListAccountsForParentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccountsForParentResponseBody) SetTotalCount(v int32) *ListAccountsForParentResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4769,15 +4769,15 @@ func (s *ListAccountsForParentResponseBodyAccounts) SetAccount(v []*ListAccounts
 }
 
 type ListAccountsForParentResponseBodyAccountsAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAccountsForParentResponseBodyAccountsAccount) String() string {
@@ -4788,13 +4788,8 @@ func (s ListAccountsForParentResponseBodyAccountsAccount) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccountsForParentResponseBodyAccountsAccount) SetStatus(v string) *ListAccountsForParentResponseBodyAccountsAccount {
-	s.Status = &v
-	return s
-}
-
-func (s *ListAccountsForParentResponseBodyAccountsAccount) SetType(v string) *ListAccountsForParentResponseBodyAccountsAccount {
-	s.Type = &v
+func (s *ListAccountsForParentResponseBodyAccountsAccount) SetAccountId(v string) *ListAccountsForParentResponseBodyAccountsAccount {
+	s.AccountId = &v
 	return s
 }
 
@@ -4808,8 +4803,8 @@ func (s *ListAccountsForParentResponseBodyAccountsAccount) SetFolderId(v string)
 	return s
 }
 
-func (s *ListAccountsForParentResponseBodyAccountsAccount) SetResourceDirectoryId(v string) *ListAccountsForParentResponseBodyAccountsAccount {
-	s.ResourceDirectoryId = &v
+func (s *ListAccountsForParentResponseBodyAccountsAccount) SetJoinMethod(v string) *ListAccountsForParentResponseBodyAccountsAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -4818,18 +4813,23 @@ func (s *ListAccountsForParentResponseBodyAccountsAccount) SetJoinTime(v string)
 	return s
 }
 
-func (s *ListAccountsForParentResponseBodyAccountsAccount) SetAccountId(v string) *ListAccountsForParentResponseBodyAccountsAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListAccountsForParentResponseBodyAccountsAccount) SetJoinMethod(v string) *ListAccountsForParentResponseBodyAccountsAccount {
-	s.JoinMethod = &v
-	return s
-}
-
 func (s *ListAccountsForParentResponseBodyAccountsAccount) SetModifyTime(v string) *ListAccountsForParentResponseBodyAccountsAccount {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListAccountsForParentResponseBodyAccountsAccount) SetResourceDirectoryId(v string) *ListAccountsForParentResponseBodyAccountsAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ListAccountsForParentResponseBodyAccountsAccount) SetStatus(v string) *ListAccountsForParentResponseBodyAccountsAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAccountsForParentResponseBodyAccountsAccount) SetType(v string) *ListAccountsForParentResponseBodyAccountsAccount {
+	s.Type = &v
 	return s
 }
 
@@ -4874,8 +4874,8 @@ func (s *ListAncestorsRequest) SetChildId(v string) *ListAncestorsRequest {
 }
 
 type ListAncestorsResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Folders   *ListAncestorsResponseBodyFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAncestorsResponseBody) String() string {
@@ -4886,13 +4886,13 @@ func (s ListAncestorsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAncestorsResponseBody) SetRequestId(v string) *ListAncestorsResponseBody {
-	s.RequestId = &v
+func (s *ListAncestorsResponseBody) SetFolders(v *ListAncestorsResponseBodyFolders) *ListAncestorsResponseBody {
+	s.Folders = v
 	return s
 }
 
-func (s *ListAncestorsResponseBody) SetFolders(v *ListAncestorsResponseBodyFolders) *ListAncestorsResponseBody {
-	s.Folders = v
+func (s *ListAncestorsResponseBody) SetRequestId(v string) *ListAncestorsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4914,8 +4914,8 @@ func (s *ListAncestorsResponseBodyFolders) SetFolder(v []*ListAncestorsResponseB
 }
 
 type ListAncestorsResponseBodyFoldersFolder struct {
-	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 }
 
@@ -4927,13 +4927,13 @@ func (s ListAncestorsResponseBodyFoldersFolder) GoString() string {
 	return s.String()
 }
 
-func (s *ListAncestorsResponseBodyFoldersFolder) SetFolderId(v string) *ListAncestorsResponseBodyFoldersFolder {
-	s.FolderId = &v
+func (s *ListAncestorsResponseBodyFoldersFolder) SetCreateTime(v string) *ListAncestorsResponseBodyFoldersFolder {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *ListAncestorsResponseBodyFoldersFolder) SetCreateTime(v string) *ListAncestorsResponseBodyFoldersFolder {
-	s.CreateTime = &v
+func (s *ListAncestorsResponseBodyFoldersFolder) SetFolderId(v string) *ListAncestorsResponseBodyFoldersFolder {
+	s.FolderId = &v
 	return s
 }
 
@@ -4966,10 +4966,10 @@ func (s *ListAncestorsResponse) SetBody(v *ListAncestorsResponseBody) *ListAnces
 }
 
 type ListControlPoliciesRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListControlPoliciesRequest) String() string {
@@ -4980,8 +4980,8 @@ func (s ListControlPoliciesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListControlPoliciesRequest) SetPolicyType(v string) *ListControlPoliciesRequest {
-	s.PolicyType = &v
+func (s *ListControlPoliciesRequest) SetLanguage(v string) *ListControlPoliciesRequest {
+	s.Language = &v
 	return s
 }
 
@@ -4995,17 +4995,17 @@ func (s *ListControlPoliciesRequest) SetPageSize(v int32) *ListControlPoliciesRe
 	return s
 }
 
-func (s *ListControlPoliciesRequest) SetLanguage(v string) *ListControlPoliciesRequest {
-	s.Language = &v
+func (s *ListControlPoliciesRequest) SetPolicyType(v string) *ListControlPoliciesRequest {
+	s.PolicyType = &v
 	return s
 }
 
 type ListControlPoliciesResponseBody struct {
-	TotalCount      *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize        *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber      *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	ControlPolicies *ListControlPoliciesResponseBodyControlPolicies `json:"ControlPolicies,omitempty" xml:"ControlPolicies,omitempty" type:"Struct"`
+	PageNumber      *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListControlPoliciesResponseBody) String() string {
@@ -5016,18 +5016,8 @@ func (s ListControlPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListControlPoliciesResponseBody) SetTotalCount(v int32) *ListControlPoliciesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListControlPoliciesResponseBody) SetRequestId(v string) *ListControlPoliciesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListControlPoliciesResponseBody) SetPageSize(v int32) *ListControlPoliciesResponseBody {
-	s.PageSize = &v
+func (s *ListControlPoliciesResponseBody) SetControlPolicies(v *ListControlPoliciesResponseBodyControlPolicies) *ListControlPoliciesResponseBody {
+	s.ControlPolicies = v
 	return s
 }
 
@@ -5036,8 +5026,18 @@ func (s *ListControlPoliciesResponseBody) SetPageNumber(v int32) *ListControlPol
 	return s
 }
 
-func (s *ListControlPoliciesResponseBody) SetControlPolicies(v *ListControlPoliciesResponseBodyControlPolicies) *ListControlPoliciesResponseBody {
-	s.ControlPolicies = v
+func (s *ListControlPoliciesResponseBody) SetPageSize(v int32) *ListControlPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetRequestId(v string) *ListControlPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBody) SetTotalCount(v int32) *ListControlPoliciesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5059,14 +5059,14 @@ func (s *ListControlPoliciesResponseBodyControlPolicies) SetControlPolicy(v []*L
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicy struct {
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListControlPoliciesResponseBodyControlPoliciesControlPolicy) String() string {
@@ -5077,8 +5077,13 @@ func (s ListControlPoliciesResponseBodyControlPoliciesControlPolicy) GoString() 
 	return s.String()
 }
 
-func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetUpdateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
-	s.UpdateDate = &v
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetAttachmentCount(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetCreateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.CreateDate = &v
 	return s
 }
 
@@ -5092,8 +5097,8 @@ func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetEffectS
 	return s
 }
 
-func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetAttachmentCount(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
-	s.AttachmentCount = &v
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyId(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.PolicyId = &v
 	return s
 }
 
@@ -5102,18 +5107,13 @@ func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyN
 	return s
 }
 
-func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyId(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetCreateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetPolicyType(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
 	s.PolicyType = &v
+	return s
+}
+
+func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicy) SetUpdateDate(v string) *ListControlPoliciesResponseBodyControlPoliciesControlPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -5141,8 +5141,8 @@ func (s *ListControlPoliciesResponse) SetBody(v *ListControlPoliciesResponseBody
 }
 
 type ListControlPolicyAttachmentsForTargetRequest struct {
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
 func (s ListControlPolicyAttachmentsForTargetRequest) String() string {
@@ -5153,19 +5153,19 @@ func (s ListControlPolicyAttachmentsForTargetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListControlPolicyAttachmentsForTargetRequest) SetTargetId(v string) *ListControlPolicyAttachmentsForTargetRequest {
-	s.TargetId = &v
-	return s
-}
-
 func (s *ListControlPolicyAttachmentsForTargetRequest) SetLanguage(v string) *ListControlPolicyAttachmentsForTargetRequest {
 	s.Language = &v
 	return s
 }
 
+func (s *ListControlPolicyAttachmentsForTargetRequest) SetTargetId(v string) *ListControlPolicyAttachmentsForTargetRequest {
+	s.TargetId = &v
+	return s
+}
+
 type ListControlPolicyAttachmentsForTargetResponseBody struct {
-	RequestId                *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ControlPolicyAttachments *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments `json:"ControlPolicyAttachments,omitempty" xml:"ControlPolicyAttachments,omitempty" type:"Struct"`
+	RequestId                *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListControlPolicyAttachmentsForTargetResponseBody) String() string {
@@ -5176,13 +5176,13 @@ func (s ListControlPolicyAttachmentsForTargetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetRequestId(v string) *ListControlPolicyAttachmentsForTargetResponseBody {
-	s.RequestId = &v
+func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetControlPolicyAttachments(v *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) *ListControlPolicyAttachmentsForTargetResponseBody {
+	s.ControlPolicyAttachments = v
 	return s
 }
 
-func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetControlPolicyAttachments(v *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments) *ListControlPolicyAttachmentsForTargetResponseBody {
-	s.ControlPolicyAttachments = v
+func (s *ListControlPolicyAttachmentsForTargetResponseBody) SetRequestId(v string) *ListControlPolicyAttachmentsForTargetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5204,11 +5204,11 @@ func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmen
 }
 
 type ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment struct {
+	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	PolicyName  *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	PolicyName  *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -5218,6 +5218,11 @@ func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachment
 
 func (s ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) GoString() string {
 	return s.String()
+}
+
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetAttachDate(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.AttachDate = &v
+	return s
 }
 
 func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetDescription(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
@@ -5230,18 +5235,13 @@ func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmen
 	return s
 }
 
-func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyName(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
-	s.PolicyName = &v
-	return s
-}
-
 func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyId(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
 	s.PolicyId = &v
 	return s
 }
 
-func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetAttachDate(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
-	s.AttachDate = &v
+func (s *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment) SetPolicyName(v string) *ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment {
+	s.PolicyName = &v
 	return s
 }
 
@@ -5274,6 +5274,8 @@ func (s *ListControlPolicyAttachmentsForTargetResponse) SetBody(v *ListControlPo
 }
 
 type ListDelegatedAdministratorsRequest struct {
+	PageNumber       *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
@@ -5285,14 +5287,27 @@ func (s ListDelegatedAdministratorsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDelegatedAdministratorsRequest) SetPageNumber(v int64) *ListDelegatedAdministratorsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsRequest) SetPageSize(v int64) *ListDelegatedAdministratorsRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListDelegatedAdministratorsRequest) SetServicePrincipal(v string) *ListDelegatedAdministratorsRequest {
 	s.ServicePrincipal = &v
 	return s
 }
 
 type ListDelegatedAdministratorsResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Accounts  *ListDelegatedAdministratorsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	Accounts   *ListDelegatedAdministratorsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDelegatedAdministratorsResponseBody) String() string {
@@ -5303,13 +5318,28 @@ func (s ListDelegatedAdministratorsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListDelegatedAdministratorsResponseBody) SetAccounts(v *ListDelegatedAdministratorsResponseBodyAccounts) *ListDelegatedAdministratorsResponseBody {
+	s.Accounts = v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBody) SetPageNumber(v int64) *ListDelegatedAdministratorsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDelegatedAdministratorsResponseBody) SetPageSize(v int64) *ListDelegatedAdministratorsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListDelegatedAdministratorsResponseBody) SetRequestId(v string) *ListDelegatedAdministratorsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListDelegatedAdministratorsResponseBody) SetAccounts(v *ListDelegatedAdministratorsResponseBodyAccounts) *ListDelegatedAdministratorsResponseBody {
-	s.Accounts = v
+func (s *ListDelegatedAdministratorsResponseBody) SetTotalCount(v int64) *ListDelegatedAdministratorsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5332,10 +5362,10 @@ func (s *ListDelegatedAdministratorsResponseBodyAccounts) SetAccount(v []*ListDe
 
 type ListDelegatedAdministratorsResponseBodyAccountsAccount struct {
 	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
 	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
 	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
-	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
 }
 
 func (s ListDelegatedAdministratorsResponseBodyAccountsAccount) String() string {
@@ -5351,6 +5381,11 @@ func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetAccountId(v 
 	return s
 }
 
+func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetDelegationEnabledTime(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
+	s.DelegationEnabledTime = &v
+	return s
+}
+
 func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetDisplayName(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
 	s.DisplayName = &v
 	return s
@@ -5363,11 +5398,6 @@ func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetJoinMethod(v
 
 func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetServicePrincipal(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
 	s.ServicePrincipal = &v
-	return s
-}
-
-func (s *ListDelegatedAdministratorsResponseBodyAccountsAccount) SetDelegationEnabledTime(v string) *ListDelegatedAdministratorsResponseBodyAccountsAccount {
-	s.DelegationEnabledTime = &v
 	return s
 }
 
@@ -5412,8 +5442,8 @@ func (s *ListDelegatedServicesForAccountRequest) SetAccountId(v string) *ListDel
 }
 
 type ListDelegatedServicesForAccountResponseBody struct {
-	RequestId         *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DelegatedServices *ListDelegatedServicesForAccountResponseBodyDelegatedServices `json:"DelegatedServices,omitempty" xml:"DelegatedServices,omitempty" type:"Struct"`
+	RequestId         *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDelegatedServicesForAccountResponseBody) String() string {
@@ -5424,13 +5454,13 @@ func (s ListDelegatedServicesForAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDelegatedServicesForAccountResponseBody) SetRequestId(v string) *ListDelegatedServicesForAccountResponseBody {
-	s.RequestId = &v
+func (s *ListDelegatedServicesForAccountResponseBody) SetDelegatedServices(v *ListDelegatedServicesForAccountResponseBodyDelegatedServices) *ListDelegatedServicesForAccountResponseBody {
+	s.DelegatedServices = v
 	return s
 }
 
-func (s *ListDelegatedServicesForAccountResponseBody) SetDelegatedServices(v *ListDelegatedServicesForAccountResponseBodyDelegatedServices) *ListDelegatedServicesForAccountResponseBody {
-	s.DelegatedServices = v
+func (s *ListDelegatedServicesForAccountResponseBody) SetRequestId(v string) *ListDelegatedServicesForAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5498,10 +5528,10 @@ func (s *ListDelegatedServicesForAccountResponse) SetBody(v *ListDelegatedServic
 }
 
 type ListFoldersForParentRequest struct {
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	QueryKeyword   *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	QueryKeyword   *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 }
 
 func (s ListFoldersForParentRequest) String() string {
@@ -5510,16 +5540,6 @@ func (s ListFoldersForParentRequest) String() string {
 
 func (s ListFoldersForParentRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListFoldersForParentRequest) SetParentFolderId(v string) *ListFoldersForParentRequest {
-	s.ParentFolderId = &v
-	return s
-}
-
-func (s *ListFoldersForParentRequest) SetQueryKeyword(v string) *ListFoldersForParentRequest {
-	s.QueryKeyword = &v
-	return s
 }
 
 func (s *ListFoldersForParentRequest) SetPageNumber(v int32) *ListFoldersForParentRequest {
@@ -5532,12 +5552,22 @@ func (s *ListFoldersForParentRequest) SetPageSize(v int32) *ListFoldersForParent
 	return s
 }
 
+func (s *ListFoldersForParentRequest) SetParentFolderId(v string) *ListFoldersForParentRequest {
+	s.ParentFolderId = &v
+	return s
+}
+
+func (s *ListFoldersForParentRequest) SetQueryKeyword(v string) *ListFoldersForParentRequest {
+	s.QueryKeyword = &v
+	return s
+}
+
 type ListFoldersForParentResponseBody struct {
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Folders    *ListFoldersForParentResponseBodyFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Struct"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFoldersForParentResponseBody) String() string {
@@ -5548,18 +5578,8 @@ func (s ListFoldersForParentResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListFoldersForParentResponseBody) SetTotalCount(v int32) *ListFoldersForParentResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListFoldersForParentResponseBody) SetRequestId(v string) *ListFoldersForParentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListFoldersForParentResponseBody) SetPageSize(v int32) *ListFoldersForParentResponseBody {
-	s.PageSize = &v
+func (s *ListFoldersForParentResponseBody) SetFolders(v *ListFoldersForParentResponseBodyFolders) *ListFoldersForParentResponseBody {
+	s.Folders = v
 	return s
 }
 
@@ -5568,8 +5588,18 @@ func (s *ListFoldersForParentResponseBody) SetPageNumber(v int32) *ListFoldersFo
 	return s
 }
 
-func (s *ListFoldersForParentResponseBody) SetFolders(v *ListFoldersForParentResponseBodyFolders) *ListFoldersForParentResponseBody {
-	s.Folders = v
+func (s *ListFoldersForParentResponseBody) SetPageSize(v int32) *ListFoldersForParentResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFoldersForParentResponseBody) SetRequestId(v string) *ListFoldersForParentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFoldersForParentResponseBody) SetTotalCount(v int32) *ListFoldersForParentResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5591,8 +5621,8 @@ func (s *ListFoldersForParentResponseBodyFolders) SetFolder(v []*ListFoldersForP
 }
 
 type ListFoldersForParentResponseBodyFoldersFolder struct {
-	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FolderId   *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 }
 
@@ -5604,13 +5634,13 @@ func (s ListFoldersForParentResponseBodyFoldersFolder) GoString() string {
 	return s.String()
 }
 
-func (s *ListFoldersForParentResponseBodyFoldersFolder) SetFolderId(v string) *ListFoldersForParentResponseBodyFoldersFolder {
-	s.FolderId = &v
+func (s *ListFoldersForParentResponseBodyFoldersFolder) SetCreateTime(v string) *ListFoldersForParentResponseBodyFoldersFolder {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *ListFoldersForParentResponseBodyFoldersFolder) SetCreateTime(v string) *ListFoldersForParentResponseBodyFoldersFolder {
-	s.CreateTime = &v
+func (s *ListFoldersForParentResponseBodyFoldersFolder) SetFolderId(v string) *ListFoldersForParentResponseBodyFoldersFolder {
+	s.FolderId = &v
 	return s
 }
 
@@ -5666,11 +5696,11 @@ func (s *ListHandshakesForAccountRequest) SetPageSize(v int32) *ListHandshakesFo
 }
 
 type ListHandshakesForAccountResponseBody struct {
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Handshakes *ListHandshakesForAccountResponseBodyHandshakes `json:"Handshakes,omitempty" xml:"Handshakes,omitempty" type:"Struct"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHandshakesForAccountResponseBody) String() string {
@@ -5681,18 +5711,8 @@ func (s ListHandshakesForAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListHandshakesForAccountResponseBody) SetTotalCount(v int32) *ListHandshakesForAccountResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListHandshakesForAccountResponseBody) SetRequestId(v string) *ListHandshakesForAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListHandshakesForAccountResponseBody) SetPageSize(v int32) *ListHandshakesForAccountResponseBody {
-	s.PageSize = &v
+func (s *ListHandshakesForAccountResponseBody) SetHandshakes(v *ListHandshakesForAccountResponseBodyHandshakes) *ListHandshakesForAccountResponseBody {
+	s.Handshakes = v
 	return s
 }
 
@@ -5701,8 +5721,18 @@ func (s *ListHandshakesForAccountResponseBody) SetPageNumber(v int32) *ListHands
 	return s
 }
 
-func (s *ListHandshakesForAccountResponseBody) SetHandshakes(v *ListHandshakesForAccountResponseBodyHandshakes) *ListHandshakesForAccountResponseBody {
-	s.Handshakes = v
+func (s *ListHandshakesForAccountResponseBody) SetPageSize(v int32) *ListHandshakesForAccountResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHandshakesForAccountResponseBody) SetRequestId(v string) *ListHandshakesForAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHandshakesForAccountResponseBody) SetTotalCount(v int32) *ListHandshakesForAccountResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5724,17 +5754,17 @@ func (s *ListHandshakesForAccountResponseBodyHandshakes) SetHandshake(v []*ListH
 }
 
 type ListHandshakesForAccountResponseBodyHandshakesHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s ListHandshakesForAccountResponseBodyHandshakesHandshake) String() string {
@@ -5745,8 +5775,8 @@ func (s ListHandshakesForAccountResponseBodyHandshakesHandshake) GoString() stri
 	return s.String()
 }
 
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetStatus(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.Status = &v
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetCreateTime(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -5755,23 +5785,8 @@ func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetExpireTime(
 	return s
 }
 
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetResourceDirectoryId(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetCreateTime(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetNote(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetTargetEntity(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.TargetEntity = &v
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetHandshakeId(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -5790,13 +5805,28 @@ func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetModifyTime(
 	return s
 }
 
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetTargetType(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.TargetType = &v
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetNote(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetHandshakeId(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
-	s.HandshakeId = &v
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetResourceDirectoryId(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetStatus(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetTargetEntity(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *ListHandshakesForAccountResponseBodyHandshakesHandshake) SetTargetType(v string) *ListHandshakesForAccountResponseBodyHandshakesHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -5847,11 +5877,11 @@ func (s *ListHandshakesForResourceDirectoryRequest) SetPageSize(v int32) *ListHa
 }
 
 type ListHandshakesForResourceDirectoryResponseBody struct {
-	TotalCount *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Handshakes *ListHandshakesForResourceDirectoryResponseBodyHandshakes `json:"Handshakes,omitempty" xml:"Handshakes,omitempty" type:"Struct"`
+	PageNumber *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHandshakesForResourceDirectoryResponseBody) String() string {
@@ -5862,18 +5892,8 @@ func (s ListHandshakesForResourceDirectoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBody) SetTotalCount(v int32) *ListHandshakesForResourceDirectoryResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListHandshakesForResourceDirectoryResponseBody) SetRequestId(v string) *ListHandshakesForResourceDirectoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListHandshakesForResourceDirectoryResponseBody) SetPageSize(v int32) *ListHandshakesForResourceDirectoryResponseBody {
-	s.PageSize = &v
+func (s *ListHandshakesForResourceDirectoryResponseBody) SetHandshakes(v *ListHandshakesForResourceDirectoryResponseBodyHandshakes) *ListHandshakesForResourceDirectoryResponseBody {
+	s.Handshakes = v
 	return s
 }
 
@@ -5882,8 +5902,18 @@ func (s *ListHandshakesForResourceDirectoryResponseBody) SetPageNumber(v int32) 
 	return s
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBody) SetHandshakes(v *ListHandshakesForResourceDirectoryResponseBodyHandshakes) *ListHandshakesForResourceDirectoryResponseBody {
-	s.Handshakes = v
+func (s *ListHandshakesForResourceDirectoryResponseBody) SetPageSize(v int32) *ListHandshakesForResourceDirectoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHandshakesForResourceDirectoryResponseBody) SetRequestId(v string) *ListHandshakesForResourceDirectoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHandshakesForResourceDirectoryResponseBody) SetTotalCount(v int32) *ListHandshakesForResourceDirectoryResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5905,17 +5935,17 @@ func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakes) SetHandshake(
 }
 
 type ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
 	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
 func (s ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) String() string {
@@ -5926,8 +5956,8 @@ func (s ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) GoStr
 	return s.String()
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetStatus(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.Status = &v
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetCreateTime(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.CreateTime = &v
 	return s
 }
 
@@ -5936,23 +5966,8 @@ func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetE
 	return s
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetResourceDirectoryId(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetCreateTime(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetNote(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.Note = &v
-	return s
-}
-
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetTargetEntity(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.TargetEntity = &v
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetHandshakeId(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.HandshakeId = &v
 	return s
 }
 
@@ -5971,13 +5986,28 @@ func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetM
 	return s
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetTargetType(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.TargetType = &v
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetNote(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.Note = &v
 	return s
 }
 
-func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetHandshakeId(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
-	s.HandshakeId = &v
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetResourceDirectoryId(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetStatus(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetTargetEntity(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake) SetTargetType(v string) *ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake {
+	s.TargetType = &v
 	return s
 }
 
@@ -6005,10 +6035,10 @@ func (s *ListHandshakesForResourceDirectoryResponse) SetBody(v *ListHandshakesFo
 }
 
 type ListPoliciesRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPoliciesRequest) String() string {
@@ -6019,8 +6049,8 @@ func (s ListPoliciesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
-	s.PolicyType = &v
+func (s *ListPoliciesRequest) SetLanguage(v string) *ListPoliciesRequest {
+	s.Language = &v
 	return s
 }
 
@@ -6034,17 +6064,17 @@ func (s *ListPoliciesRequest) SetPageSize(v int32) *ListPoliciesRequest {
 	return s
 }
 
-func (s *ListPoliciesRequest) SetLanguage(v string) *ListPoliciesRequest {
-	s.Language = &v
+func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
+	s.PolicyType = &v
 	return s
 }
 
 type ListPoliciesResponseBody struct {
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Policies   *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
 	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -6055,8 +6085,13 @@ func (s ListPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPoliciesResponseBody) SetTotalCount(v int32) *ListPoliciesResponseBody {
-	s.TotalCount = &v
+func (s *ListPoliciesResponseBody) SetPageNumber(v int32) *ListPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetPageSize(v int32) *ListPoliciesResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -6070,13 +6105,8 @@ func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseB
 	return s
 }
 
-func (s *ListPoliciesResponseBody) SetPageSize(v int32) *ListPoliciesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPoliciesResponseBody) SetPageNumber(v int32) *ListPoliciesResponseBody {
-	s.PageNumber = &v
+func (s *ListPoliciesResponseBody) SetTotalCount(v int32) *ListPoliciesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6098,13 +6128,13 @@ func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBo
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
+	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
 	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
@@ -6113,6 +6143,16 @@ func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetCreateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.CreateDate = &v
+	return s
 }
 
 func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDefaultVersion(v string) *ListPoliciesResponseBodyPoliciesPolicy {
@@ -6125,28 +6165,18 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetDescription(v string) *ListP
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetAttachmentCount(v int32) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.AttachmentCount = &v
-	return s
-}
-
 func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyName(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.PolicyName = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetCreateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.CreateDate = &v
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.PolicyType = &v
 	return s
 }
 
-func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPoliciesResponseBodyPoliciesPolicy {
-	s.PolicyType = &v
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -6174,14 +6204,14 @@ func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPolicie
 }
 
 type ListPolicyAttachmentsRequest struct {
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListPolicyAttachmentsRequest) String() string {
@@ -6192,28 +6222,8 @@ func (s ListPolicyAttachmentsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyAttachmentsRequest) SetResourceGroupId(v string) *ListPolicyAttachmentsRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsRequest) SetPolicyType(v string) *ListPolicyAttachmentsRequest {
-	s.PolicyType = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsRequest) SetPolicyName(v string) *ListPolicyAttachmentsRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsRequest) SetPrincipalType(v string) *ListPolicyAttachmentsRequest {
-	s.PrincipalType = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsRequest) SetPrincipalName(v string) *ListPolicyAttachmentsRequest {
-	s.PrincipalName = &v
+func (s *ListPolicyAttachmentsRequest) SetLanguage(v string) *ListPolicyAttachmentsRequest {
+	s.Language = &v
 	return s
 }
 
@@ -6227,17 +6237,37 @@ func (s *ListPolicyAttachmentsRequest) SetPageSize(v int32) *ListPolicyAttachmen
 	return s
 }
 
-func (s *ListPolicyAttachmentsRequest) SetLanguage(v string) *ListPolicyAttachmentsRequest {
-	s.Language = &v
+func (s *ListPolicyAttachmentsRequest) SetPolicyName(v string) *ListPolicyAttachmentsRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsRequest) SetPolicyType(v string) *ListPolicyAttachmentsRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsRequest) SetPrincipalName(v string) *ListPolicyAttachmentsRequest {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsRequest) SetPrincipalType(v string) *ListPolicyAttachmentsRequest {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsRequest) SetResourceGroupId(v string) *ListPolicyAttachmentsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
 type ListPolicyAttachmentsResponseBody struct {
-	TotalCount        *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber        *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PolicyAttachments *ListPolicyAttachmentsResponseBodyPolicyAttachments `json:"PolicyAttachments,omitempty" xml:"PolicyAttachments,omitempty" type:"Struct"`
 	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize          *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber        *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount        *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPolicyAttachmentsResponseBody) String() string {
@@ -6248,8 +6278,13 @@ func (s ListPolicyAttachmentsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyAttachmentsResponseBody) SetTotalCount(v int32) *ListPolicyAttachmentsResponseBody {
-	s.TotalCount = &v
+func (s *ListPolicyAttachmentsResponseBody) SetPageNumber(v int32) *ListPolicyAttachmentsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsResponseBody) SetPageSize(v int32) *ListPolicyAttachmentsResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -6263,13 +6298,8 @@ func (s *ListPolicyAttachmentsResponseBody) SetRequestId(v string) *ListPolicyAt
 	return s
 }
 
-func (s *ListPolicyAttachmentsResponseBody) SetPageSize(v int32) *ListPolicyAttachmentsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsResponseBody) SetPageNumber(v int32) *ListPolicyAttachmentsResponseBody {
-	s.PageNumber = &v
+func (s *ListPolicyAttachmentsResponseBody) SetTotalCount(v int32) *ListPolicyAttachmentsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6291,13 +6321,13 @@ func (s *ListPolicyAttachmentsResponseBodyPolicyAttachments) SetPolicyAttachment
 }
 
 type ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	AttachDate      *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	PrincipalType   *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) String() string {
@@ -6308,13 +6338,13 @@ func (s ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) GoSt
 	return s.String()
 }
 
-func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetDescription(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
-	s.Description = &v
+func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetAttachDate(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
+	s.AttachDate = &v
 	return s
 }
 
-func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetResourceGroupId(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
-	s.ResourceGroupId = &v
+func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetDescription(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
+	s.Description = &v
 	return s
 }
 
@@ -6323,23 +6353,23 @@ func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) Set
 	return s
 }
 
-func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetPrincipalName(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
-	s.PrincipalName = &v
-	return s
-}
-
-func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetAttachDate(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
-	s.AttachDate = &v
-	return s
-}
-
 func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetPolicyType(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
 	s.PolicyType = &v
 	return s
 }
 
+func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetPrincipalName(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
+	s.PrincipalName = &v
+	return s
+}
+
 func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetPrincipalType(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
 	s.PrincipalType = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment) SetResourceGroupId(v string) *ListPolicyAttachmentsResponseBodyPolicyAttachmentsPolicyAttachment {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6367,8 +6397,8 @@ func (s *ListPolicyAttachmentsResponse) SetBody(v *ListPolicyAttachmentsResponse
 }
 
 type ListPolicyVersionsRequest struct {
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPolicyVersionsRequest) String() string {
@@ -6379,19 +6409,19 @@ func (s ListPolicyVersionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsRequest {
-	s.PolicyType = &v
-	return s
-}
-
 func (s *ListPolicyVersionsRequest) SetPolicyName(v string) *ListPolicyVersionsRequest {
 	s.PolicyName = &v
 	return s
 }
 
+func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsRequest {
+	s.PolicyType = &v
+	return s
+}
+
 type ListPolicyVersionsResponseBody struct {
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBody) String() string {
@@ -6402,13 +6432,13 @@ func (s ListPolicyVersionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListPolicyVersionsResponseBody) SetRequestId(v string) *ListPolicyVersionsResponseBody {
-	s.RequestId = &v
+func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v *ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
+	s.PolicyVersions = v
 	return s
 }
 
-func (s *ListPolicyVersionsResponseBody) SetPolicyVersions(v *ListPolicyVersionsResponseBodyPolicyVersions) *ListPolicyVersionsResponseBody {
-	s.PolicyVersions = v
+func (s *ListPolicyVersionsResponseBody) SetRequestId(v string) *ListPolicyVersionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6430,9 +6460,9 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetPolicyVersion(v []*Lis
 }
 
 type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
 	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() string {
@@ -6443,6 +6473,11 @@ func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) GoString() st
 	return s.String()
 }
 
+func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
+	s.CreateDate = &v
+	return s
+}
+
 func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetIsDefaultVersion(v bool) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.IsDefaultVersion = &v
 	return s
@@ -6450,11 +6485,6 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetIsDefault
 
 func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetVersionId(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
 	s.VersionId = &v
-	return s
-}
-
-func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetCreateDate(v string) *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion {
-	s.CreateDate = &v
 	return s
 }
 
@@ -6482,9 +6512,9 @@ func (s *ListPolicyVersionsResponse) SetBody(v *ListPolicyVersionsResponseBody) 
 }
 
 type ListResourceGroupsRequest struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -6493,11 +6523,6 @@ func (s ListResourceGroupsRequest) String() string {
 
 func (s ListResourceGroupsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListResourceGroupsRequest) SetStatus(v string) *ListResourceGroupsRequest {
-	s.Status = &v
-	return s
 }
 
 func (s *ListResourceGroupsRequest) SetPageNumber(v int32) *ListResourceGroupsRequest {
@@ -6510,12 +6535,17 @@ func (s *ListResourceGroupsRequest) SetPageSize(v int32) *ListResourceGroupsRequ
 	return s
 }
 
+func (s *ListResourceGroupsRequest) SetStatus(v string) *ListResourceGroupsRequest {
+	s.Status = &v
+	return s
+}
+
 type ListResourceGroupsResponseBody struct {
-	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroups *ListResourceGroupsResponseBodyResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Struct"`
+	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceGroupsResponseBody) String() string {
@@ -6526,13 +6556,8 @@ func (s ListResourceGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceGroupsResponseBody) SetTotalCount(v int32) *ListResourceGroupsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListResourceGroupsResponseBody) SetRequestId(v string) *ListResourceGroupsResponseBody {
-	s.RequestId = &v
+func (s *ListResourceGroupsResponseBody) SetPageNumber(v int32) *ListResourceGroupsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6541,13 +6566,18 @@ func (s *ListResourceGroupsResponseBody) SetPageSize(v int32) *ListResourceGroup
 	return s
 }
 
-func (s *ListResourceGroupsResponseBody) SetPageNumber(v int32) *ListResourceGroupsResponseBody {
-	s.PageNumber = &v
+func (s *ListResourceGroupsResponseBody) SetRequestId(v string) *ListResourceGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *ListResourceGroupsResponseBody) SetResourceGroups(v *ListResourceGroupsResponseBodyResourceGroups) *ListResourceGroupsResponseBody {
 	s.ResourceGroups = v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBody) SetTotalCount(v int32) *ListResourceGroupsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6569,12 +6599,12 @@ func (s *ListResourceGroupsResponseBodyResourceGroups) SetResourceGroup(v []*Lis
 }
 
 type ListResourceGroupsResponseBodyResourceGroupsResourceGroup struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceGroupsResponseBodyResourceGroupsResourceGroup) String() string {
@@ -6585,23 +6615,8 @@ func (s ListResourceGroupsResponseBodyResourceGroupsResourceGroup) GoString() st
 	return s.String()
 }
 
-func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetDisplayName(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetStatus(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
-	s.Status = &v
-	return s
-}
-
 func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetAccountId(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
 	s.AccountId = &v
-	return s
-}
-
-func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetName(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
-	s.Name = &v
 	return s
 }
 
@@ -6610,8 +6625,23 @@ func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetCreateDat
 	return s
 }
 
+func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetDisplayName(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetId(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
 	s.Id = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetName(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyResourceGroupsResourceGroup) SetStatus(v string) *ListResourceGroupsResponseBodyResourceGroupsResourceGroup {
+	s.Status = &v
 	return s
 }
 
@@ -6639,13 +6669,13 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 }
 
 type ListResourcesRequest struct {
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Service         *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Service         *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -6654,31 +6684,6 @@ func (s ListResourcesRequest) String() string {
 
 func (s ListResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListResourcesRequest) SetResourceGroupId(v string) *ListResourcesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *ListResourcesRequest) SetService(v string) *ListResourcesRequest {
-	s.Service = &v
-	return s
-}
-
-func (s *ListResourcesRequest) SetRegion(v string) *ListResourcesRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListResourcesRequest) SetResourceId(v string) *ListResourcesRequest {
-	s.ResourceId = &v
-	return s
 }
 
 func (s *ListResourcesRequest) SetPageNumber(v int32) *ListResourcesRequest {
@@ -6691,12 +6696,37 @@ func (s *ListResourcesRequest) SetPageSize(v int32) *ListResourcesRequest {
 	return s
 }
 
+func (s *ListResourcesRequest) SetRegion(v string) *ListResourcesRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceGroupId(v string) *ListResourcesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceId(v string) *ListResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetService(v string) *ListResourcesRequest {
+	s.Service = &v
+	return s
+}
+
 type ListResourcesResponseBody struct {
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources  *ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourcesResponseBody) String() string {
@@ -6707,13 +6737,8 @@ func (s ListResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourcesResponseBody) SetTotalCount(v int32) *ListResourcesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListResourcesResponseBody) SetRequestId(v string) *ListResourcesResponseBody {
-	s.RequestId = &v
+func (s *ListResourcesResponseBody) SetPageNumber(v int32) *ListResourcesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6722,13 +6747,18 @@ func (s *ListResourcesResponseBody) SetPageSize(v int32) *ListResourcesResponseB
 	return s
 }
 
-func (s *ListResourcesResponseBody) SetPageNumber(v int32) *ListResourcesResponseBody {
-	s.PageNumber = &v
+func (s *ListResourcesResponseBody) SetRequestId(v string) *ListResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *ListResourcesResponseBody) SetResources(v *ListResourcesResponseBodyResources) *ListResourcesResponseBody {
 	s.Resources = v
+	return s
+}
+
+func (s *ListResourcesResponseBody) SetTotalCount(v int32) *ListResourcesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6750,12 +6780,12 @@ func (s *ListResourcesResponseBodyResources) SetResource(v []*ListResourcesRespo
 }
 
 type ListResourcesResponseBodyResourcesResource struct {
-	Service         *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Service         *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s ListResourcesResponseBodyResourcesResource) String() string {
@@ -6766,13 +6796,13 @@ func (s ListResourcesResponseBodyResourcesResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourcesResponseBodyResourcesResource) SetService(v string) *ListResourcesResponseBodyResourcesResource {
-	s.Service = &v
+func (s *ListResourcesResponseBodyResourcesResource) SetCreateDate(v string) *ListResourcesResponseBodyResourcesResource {
+	s.CreateDate = &v
 	return s
 }
 
-func (s *ListResourcesResponseBodyResourcesResource) SetResourceType(v string) *ListResourcesResponseBodyResourcesResource {
-	s.ResourceType = &v
+func (s *ListResourcesResponseBodyResourcesResource) SetRegionId(v string) *ListResourcesResponseBodyResourcesResource {
+	s.RegionId = &v
 	return s
 }
 
@@ -6786,13 +6816,13 @@ func (s *ListResourcesResponseBodyResourcesResource) SetResourceId(v string) *Li
 	return s
 }
 
-func (s *ListResourcesResponseBodyResourcesResource) SetCreateDate(v string) *ListResourcesResponseBodyResourcesResource {
-	s.CreateDate = &v
+func (s *ListResourcesResponseBodyResourcesResource) SetResourceType(v string) *ListResourcesResponseBodyResourcesResource {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *ListResourcesResponseBodyResourcesResource) SetRegionId(v string) *ListResourcesResponseBodyResourcesResource {
-	s.RegionId = &v
+func (s *ListResourcesResponseBodyResourcesResource) SetService(v string) *ListResourcesResponseBodyResourcesResource {
+	s.Service = &v
 	return s
 }
 
@@ -6820,9 +6850,9 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListRolesRequest struct {
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
 func (s ListRolesRequest) String() string {
@@ -6831,6 +6861,11 @@ func (s ListRolesRequest) String() string {
 
 func (s ListRolesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRolesRequest) SetLanguage(v string) *ListRolesRequest {
+	s.Language = &v
+	return s
 }
 
 func (s *ListRolesRequest) SetPageNumber(v int32) *ListRolesRequest {
@@ -6843,17 +6878,12 @@ func (s *ListRolesRequest) SetPageSize(v int32) *ListRolesRequest {
 	return s
 }
 
-func (s *ListRolesRequest) SetLanguage(v string) *ListRolesRequest {
-	s.Language = &v
-	return s
-}
-
 type ListRolesResponseBody struct {
-	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Roles      *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -6864,13 +6894,8 @@ func (s ListRolesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRolesResponseBody) SetTotalCount(v int32) *ListRolesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListRolesResponseBody) SetRequestId(v string) *ListRolesResponseBody {
-	s.RequestId = &v
+func (s *ListRolesResponseBody) SetPageNumber(v int32) *ListRolesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6879,13 +6904,18 @@ func (s *ListRolesResponseBody) SetPageSize(v int32) *ListRolesResponseBody {
 	return s
 }
 
-func (s *ListRolesResponseBody) SetPageNumber(v int32) *ListRolesResponseBody {
-	s.PageNumber = &v
+func (s *ListRolesResponseBody) SetRequestId(v string) *ListRolesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *ListRolesResponseBody) SetRoles(v *ListRolesResponseBodyRoles) *ListRolesResponseBody {
 	s.Roles = v
+	return s
+}
+
+func (s *ListRolesResponseBody) SetTotalCount(v int32) *ListRolesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -6907,16 +6937,16 @@ func (s *ListRolesResponseBodyRoles) SetRole(v []*ListRolesResponseBodyRolesRole
 }
 
 type ListRolesResponseBodyRolesRole struct {
+	Arn                 *string                                           `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	CreateDate          *string                                           `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description         *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsServiceLinkedRole *bool                                             `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
+	LatestDeletionTask  *ListRolesResponseBodyRolesRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
+	MaxSessionDuration  *int64                                            `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleId              *string                                           `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName            *string                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	RolePrincipalName   *string                                           `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
 	UpdateDate          *string                                           `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	Description         *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration  *int64                                            `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	LatestDeletionTask  *ListRolesResponseBodyRolesRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
-	RoleName            *string                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate          *string                                           `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	RoleId              *string                                           `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Arn                 *string                                           `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	IsServiceLinkedRole *bool                                             `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
 }
 
 func (s ListRolesResponseBodyRolesRole) String() string {
@@ -6925,6 +6955,46 @@ func (s ListRolesResponseBodyRolesRole) String() string {
 
 func (s ListRolesResponseBodyRolesRole) GoString() string {
 	return s.String()
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {
+	s.Arn = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetCreateDate(v string) *ListRolesResponseBodyRolesRole {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetDescription(v string) *ListRolesResponseBodyRolesRole {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetIsServiceLinkedRole(v bool) *ListRolesResponseBodyRolesRole {
+	s.IsServiceLinkedRole = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetLatestDeletionTask(v *ListRolesResponseBodyRolesRoleLatestDeletionTask) *ListRolesResponseBodyRolesRole {
+	s.LatestDeletionTask = v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRolesRole {
+	s.MaxSessionDuration = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetRoleId(v string) *ListRolesResponseBodyRolesRole {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesResponseBodyRolesRole {
+	s.RoleName = &v
+	return s
 }
 
 func (s *ListRolesResponseBodyRolesRole) SetRolePrincipalName(v string) *ListRolesResponseBodyRolesRole {
@@ -6937,49 +7007,9 @@ func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesRespo
 	return s
 }
 
-func (s *ListRolesResponseBodyRolesRole) SetDescription(v string) *ListRolesResponseBodyRolesRole {
-	s.Description = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetMaxSessionDuration(v int64) *ListRolesResponseBodyRolesRole {
-	s.MaxSessionDuration = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetLatestDeletionTask(v *ListRolesResponseBodyRolesRoleLatestDeletionTask) *ListRolesResponseBodyRolesRole {
-	s.LatestDeletionTask = v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesResponseBodyRolesRole {
-	s.RoleName = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetCreateDate(v string) *ListRolesResponseBodyRolesRole {
-	s.CreateDate = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetRoleId(v string) *ListRolesResponseBodyRolesRole {
-	s.RoleId = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {
-	s.Arn = &v
-	return s
-}
-
-func (s *ListRolesResponseBodyRolesRole) SetIsServiceLinkedRole(v bool) *ListRolesResponseBodyRolesRole {
-	s.IsServiceLinkedRole = &v
-	return s
-}
-
 type ListRolesResponseBodyRolesRoleLatestDeletionTask struct {
-	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
 	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
 }
 
 func (s ListRolesResponseBodyRolesRoleLatestDeletionTask) String() string {
@@ -6990,13 +7020,13 @@ func (s ListRolesResponseBodyRolesRoleLatestDeletionTask) GoString() string {
 	return s.String()
 }
 
-func (s *ListRolesResponseBodyRolesRoleLatestDeletionTask) SetDeletionTaskId(v string) *ListRolesResponseBodyRolesRoleLatestDeletionTask {
-	s.DeletionTaskId = &v
+func (s *ListRolesResponseBodyRolesRoleLatestDeletionTask) SetCreateDate(v string) *ListRolesResponseBodyRolesRoleLatestDeletionTask {
+	s.CreateDate = &v
 	return s
 }
 
-func (s *ListRolesResponseBodyRolesRoleLatestDeletionTask) SetCreateDate(v string) *ListRolesResponseBodyRolesRoleLatestDeletionTask {
-	s.CreateDate = &v
+func (s *ListRolesResponseBodyRolesRoleLatestDeletionTask) SetDeletionTaskId(v string) *ListRolesResponseBodyRolesRoleLatestDeletionTask {
+	s.DeletionTaskId = &v
 	return s
 }
 
@@ -7024,9 +7054,9 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 }
 
 type ListTargetAttachmentsForControlPolicyRequest struct {
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s ListTargetAttachmentsForControlPolicyRequest) String() string {
@@ -7035,11 +7065,6 @@ func (s ListTargetAttachmentsForControlPolicyRequest) String() string {
 
 func (s ListTargetAttachmentsForControlPolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListTargetAttachmentsForControlPolicyRequest) SetPolicyId(v string) *ListTargetAttachmentsForControlPolicyRequest {
-	s.PolicyId = &v
-	return s
 }
 
 func (s *ListTargetAttachmentsForControlPolicyRequest) SetPageNumber(v int32) *ListTargetAttachmentsForControlPolicyRequest {
@@ -7052,12 +7077,17 @@ func (s *ListTargetAttachmentsForControlPolicyRequest) SetPageSize(v int32) *Lis
 	return s
 }
 
+func (s *ListTargetAttachmentsForControlPolicyRequest) SetPolicyId(v string) *ListTargetAttachmentsForControlPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
 type ListTargetAttachmentsForControlPolicyResponseBody struct {
-	TotalCount        *int32                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize          *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber        *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TargetAttachments *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments `json:"TargetAttachments,omitempty" xml:"TargetAttachments,omitempty" type:"Struct"`
+	TotalCount        *int32                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTargetAttachmentsForControlPolicyResponseBody) String() string {
@@ -7068,13 +7098,8 @@ func (s ListTargetAttachmentsForControlPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTotalCount(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetRequestId(v string) *ListTargetAttachmentsForControlPolicyResponseBody {
-	s.RequestId = &v
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetPageNumber(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -7083,13 +7108,18 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetPageSize(v int32)
 	return s
 }
 
-func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetPageNumber(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
-	s.PageNumber = &v
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetRequestId(v string) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTargetAttachments(v *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) *ListTargetAttachmentsForControlPolicyResponseBody {
 	s.TargetAttachments = v
+	return s
+}
+
+func (s *ListTargetAttachmentsForControlPolicyResponseBody) SetTotalCount(v int32) *ListTargetAttachmentsForControlPolicyResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7111,9 +7141,9 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments) Set
 }
 
 type ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment struct {
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -7125,6 +7155,11 @@ func (s ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTarget
 	return s.String()
 }
 
+func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetAttachDate(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
+	s.AttachDate = &v
+	return s
+}
+
 func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetTargetId(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
 	s.TargetId = &v
 	return s
@@ -7132,11 +7167,6 @@ func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTarge
 
 func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetTargetName(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
 	s.TargetName = &v
-	return s
-}
-
-func (s *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment) SetAttachDate(v string) *ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment {
-	s.AttachDate = &v
 	return s
 }
 
@@ -7169,9 +7199,9 @@ func (s *ListTargetAttachmentsForControlPolicyResponse) SetBody(v *ListTargetAtt
 }
 
 type ListTrustedServiceStatusRequest struct {
+	AdminAccountId *string `json:"AdminAccountId,omitempty" xml:"AdminAccountId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	AdminAccountId *string `json:"AdminAccountId,omitempty" xml:"AdminAccountId,omitempty"`
 }
 
 func (s ListTrustedServiceStatusRequest) String() string {
@@ -7180,6 +7210,11 @@ func (s ListTrustedServiceStatusRequest) String() string {
 
 func (s ListTrustedServiceStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTrustedServiceStatusRequest) SetAdminAccountId(v string) *ListTrustedServiceStatusRequest {
+	s.AdminAccountId = &v
+	return s
 }
 
 func (s *ListTrustedServiceStatusRequest) SetPageNumber(v int32) *ListTrustedServiceStatusRequest {
@@ -7192,17 +7227,12 @@ func (s *ListTrustedServiceStatusRequest) SetPageSize(v int32) *ListTrustedServi
 	return s
 }
 
-func (s *ListTrustedServiceStatusRequest) SetAdminAccountId(v string) *ListTrustedServiceStatusRequest {
-	s.AdminAccountId = &v
-	return s
-}
-
 type ListTrustedServiceStatusResponseBody struct {
-	TotalCount               *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize                 *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber               *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	EnabledServicePrincipals *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals `json:"EnabledServicePrincipals,omitempty" xml:"EnabledServicePrincipals,omitempty" type:"Struct"`
+	PageNumber               *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                 *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount               *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTrustedServiceStatusResponseBody) String() string {
@@ -7213,18 +7243,8 @@ func (s ListTrustedServiceStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTrustedServiceStatusResponseBody) SetTotalCount(v int32) *ListTrustedServiceStatusResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListTrustedServiceStatusResponseBody) SetRequestId(v string) *ListTrustedServiceStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTrustedServiceStatusResponseBody) SetPageSize(v int32) *ListTrustedServiceStatusResponseBody {
-	s.PageSize = &v
+func (s *ListTrustedServiceStatusResponseBody) SetEnabledServicePrincipals(v *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) *ListTrustedServiceStatusResponseBody {
+	s.EnabledServicePrincipals = v
 	return s
 }
 
@@ -7233,8 +7253,18 @@ func (s *ListTrustedServiceStatusResponseBody) SetPageNumber(v int32) *ListTrust
 	return s
 }
 
-func (s *ListTrustedServiceStatusResponseBody) SetEnabledServicePrincipals(v *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) *ListTrustedServiceStatusResponseBody {
-	s.EnabledServicePrincipals = v
+func (s *ListTrustedServiceStatusResponseBody) SetPageSize(v int32) *ListTrustedServiceStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrustedServiceStatusResponseBody) SetRequestId(v string) *ListTrustedServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrustedServiceStatusResponseBody) SetTotalCount(v int32) *ListTrustedServiceStatusResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7256,8 +7286,8 @@ func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) SetEnable
 }
 
 type ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal struct {
-	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 	EnableTime       *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
+	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
 func (s ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal) String() string {
@@ -7268,13 +7298,13 @@ func (s ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServi
 	return s.String()
 }
 
-func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal) SetServicePrincipal(v string) *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal {
-	s.ServicePrincipal = &v
+func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal) SetEnableTime(v string) *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal {
+	s.EnableTime = &v
 	return s
 }
 
-func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal) SetEnableTime(v string) *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal {
-	s.EnableTime = &v
+func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal) SetServicePrincipal(v string) *ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal {
+	s.ServicePrincipal = &v
 	return s
 }
 
@@ -7388,9 +7418,9 @@ func (s *MoveResourcesRequest) SetResources(v []*MoveResourcesRequestResources) 
 }
 
 type MoveResourcesRequestResources struct {
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
@@ -7402,6 +7432,11 @@ func (s MoveResourcesRequestResources) GoString() string {
 	return s.String()
 }
 
+func (s *MoveResourcesRequestResources) SetRegionId(v string) *MoveResourcesRequestResources {
+	s.RegionId = &v
+	return s
+}
+
 func (s *MoveResourcesRequestResources) SetResourceId(v string) *MoveResourcesRequestResources {
 	s.ResourceId = &v
 	return s
@@ -7409,11 +7444,6 @@ func (s *MoveResourcesRequestResources) SetResourceId(v string) *MoveResourcesRe
 
 func (s *MoveResourcesRequestResources) SetResourceType(v string) *MoveResourcesRequestResources {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *MoveResourcesRequestResources) SetRegionId(v string) *MoveResourcesRequestResources {
-	s.RegionId = &v
 	return s
 }
 
@@ -7447,14 +7477,14 @@ func (s *MoveResourcesResponseBody) SetResponses(v []*MoveResourcesResponseBodyR
 }
 
 type MoveResourcesResponseBodyResponses struct {
-	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s MoveResourcesResponseBodyResponses) String() string {
@@ -7463,31 +7493,6 @@ func (s MoveResourcesResponseBodyResponses) String() string {
 
 func (s MoveResourcesResponseBodyResponses) GoString() string {
 	return s.String()
-}
-
-func (s *MoveResourcesResponseBodyResponses) SetService(v string) *MoveResourcesResponseBodyResponses {
-	s.Service = &v
-	return s
-}
-
-func (s *MoveResourcesResponseBodyResponses) SetResourceId(v string) *MoveResourcesResponseBodyResponses {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *MoveResourcesResponseBodyResponses) SetResourceType(v string) *MoveResourcesResponseBodyResponses {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *MoveResourcesResponseBodyResponses) SetRequestId(v string) *MoveResourcesResponseBodyResponses {
-	s.RequestId = &v
-	return s
-}
-
-func (s *MoveResourcesResponseBodyResponses) SetStatus(v string) *MoveResourcesResponseBodyResponses {
-	s.Status = &v
-	return s
 }
 
 func (s *MoveResourcesResponseBodyResponses) SetErrorCode(v string) *MoveResourcesResponseBodyResponses {
@@ -7502,6 +7507,31 @@ func (s *MoveResourcesResponseBodyResponses) SetErrorMsg(v string) *MoveResource
 
 func (s *MoveResourcesResponseBodyResponses) SetRegionId(v string) *MoveResourcesResponseBodyResponses {
 	s.RegionId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetRequestId(v string) *MoveResourcesResponseBodyResponses {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetResourceId(v string) *MoveResourcesResponseBodyResponses {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetResourceType(v string) *MoveResourcesResponseBodyResponses {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetService(v string) *MoveResourcesResponseBodyResponses {
+	s.Service = &v
+	return s
+}
+
+func (s *MoveResourcesResponseBodyResponses) SetStatus(v string) *MoveResourcesResponseBodyResponses {
+	s.Status = &v
 	return s
 }
 
@@ -7575,17 +7605,17 @@ func (s *PromoteResourceAccountResponseBody) SetRequestId(v string) *PromoteReso
 }
 
 type PromoteResourceAccountResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PromoteResourceAccountResponseBodyAccount) String() string {
@@ -7596,13 +7626,13 @@ func (s PromoteResourceAccountResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *PromoteResourceAccountResponseBodyAccount) SetStatus(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.Status = &v
+func (s *PromoteResourceAccountResponseBodyAccount) SetAccountId(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *PromoteResourceAccountResponseBodyAccount) SetType(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.Type = &v
+func (s *PromoteResourceAccountResponseBodyAccount) SetAccountName(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -7616,13 +7646,8 @@ func (s *PromoteResourceAccountResponseBodyAccount) SetFolderId(v string) *Promo
 	return s
 }
 
-func (s *PromoteResourceAccountResponseBodyAccount) SetResourceDirectoryId(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *PromoteResourceAccountResponseBodyAccount) SetRecordId(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.RecordId = &v
+func (s *PromoteResourceAccountResponseBodyAccount) SetJoinMethod(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -7631,23 +7656,28 @@ func (s *PromoteResourceAccountResponseBodyAccount) SetJoinTime(v string) *Promo
 	return s
 }
 
-func (s *PromoteResourceAccountResponseBodyAccount) SetAccountId(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *PromoteResourceAccountResponseBodyAccount) SetJoinMethod(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.JoinMethod = &v
-	return s
-}
-
-func (s *PromoteResourceAccountResponseBodyAccount) SetAccountName(v string) *PromoteResourceAccountResponseBodyAccount {
-	s.AccountName = &v
-	return s
-}
-
 func (s *PromoteResourceAccountResponseBodyAccount) SetModifyTime(v string) *PromoteResourceAccountResponseBodyAccount {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *PromoteResourceAccountResponseBodyAccount) SetRecordId(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.RecordId = &v
+	return s
+}
+
+func (s *PromoteResourceAccountResponseBodyAccount) SetResourceDirectoryId(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *PromoteResourceAccountResponseBodyAccount) SetStatus(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *PromoteResourceAccountResponseBodyAccount) SetType(v string) *PromoteResourceAccountResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -7835,17 +7865,17 @@ func (s *ResendCreateCloudAccountEmailResponseBody) SetRequestId(v string) *Rese
 }
 
 type ResendCreateCloudAccountEmailResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ResendCreateCloudAccountEmailResponseBodyAccount) String() string {
@@ -7856,13 +7886,13 @@ func (s ResendCreateCloudAccountEmailResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetStatus(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.Status = &v
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetAccountId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetType(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.Type = &v
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetAccountName(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -7876,13 +7906,8 @@ func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetFolderId(v string)
 	return s
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetResourceDirectoryId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetRecordId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.RecordId = &v
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetJoinMethod(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -7891,23 +7916,28 @@ func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetJoinTime(v string)
 	return s
 }
 
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetAccountId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetJoinMethod(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.JoinMethod = &v
-	return s
-}
-
-func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetAccountName(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
-	s.AccountName = &v
-	return s
-}
-
 func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetModifyTime(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetRecordId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.RecordId = &v
+	return s
+}
+
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetResourceDirectoryId(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetStatus(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *ResendCreateCloudAccountEmailResponseBodyAccount) SetType(v string) *ResendCreateCloudAccountEmailResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -7975,17 +8005,17 @@ func (s *ResendPromoteResourceAccountEmailResponseBody) SetRequestId(v string) *
 }
 
 type ResendPromoteResourceAccountEmailResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ResendPromoteResourceAccountEmailResponseBodyAccount) String() string {
@@ -7996,13 +8026,13 @@ func (s ResendPromoteResourceAccountEmailResponseBodyAccount) GoString() string 
 	return s.String()
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetStatus(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.Status = &v
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetAccountId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetType(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.Type = &v
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetAccountName(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -8016,13 +8046,8 @@ func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetFolderId(v str
 	return s
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetResourceDirectoryId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.ResourceDirectoryId = &v
-	return s
-}
-
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetRecordId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.RecordId = &v
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetJoinMethod(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -8031,23 +8056,28 @@ func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetJoinTime(v str
 	return s
 }
 
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetAccountId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetJoinMethod(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.JoinMethod = &v
-	return s
-}
-
-func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetAccountName(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
-	s.AccountName = &v
-	return s
-}
-
 func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetModifyTime(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetRecordId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.RecordId = &v
+	return s
+}
+
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetResourceDirectoryId(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetStatus(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *ResendPromoteResourceAccountEmailResponseBodyAccount) SetType(v string) *ResendPromoteResourceAccountEmailResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -8138,9 +8168,9 @@ func (s *SetDefaultPolicyVersionResponse) SetBody(v *SetDefaultPolicyVersionResp
 }
 
 type UpdateAccountRequest struct {
-	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewAccountType *string `json:"NewAccountType,omitempty" xml:"NewAccountType,omitempty"`
 	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	NewAccountType *string `json:"NewAccountType,omitempty" xml:"NewAccountType,omitempty"`
+	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 }
 
 func (s UpdateAccountRequest) String() string {
@@ -8151,8 +8181,8 @@ func (s UpdateAccountRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAccountRequest) SetNewDisplayName(v string) *UpdateAccountRequest {
-	s.NewDisplayName = &v
+func (s *UpdateAccountRequest) SetAccountId(v string) *UpdateAccountRequest {
+	s.AccountId = &v
 	return s
 }
 
@@ -8161,8 +8191,8 @@ func (s *UpdateAccountRequest) SetNewAccountType(v string) *UpdateAccountRequest
 	return s
 }
 
-func (s *UpdateAccountRequest) SetAccountId(v string) *UpdateAccountRequest {
-	s.AccountId = &v
+func (s *UpdateAccountRequest) SetNewDisplayName(v string) *UpdateAccountRequest {
+	s.NewDisplayName = &v
 	return s
 }
 
@@ -8190,16 +8220,16 @@ func (s *UpdateAccountResponseBody) SetRequestId(v string) *UpdateAccountRespons
 }
 
 type UpdateAccountResponseBodyAccount struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateAccountResponseBodyAccount) String() string {
@@ -8210,13 +8240,13 @@ func (s UpdateAccountResponseBodyAccount) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAccountResponseBodyAccount) SetStatus(v string) *UpdateAccountResponseBodyAccount {
-	s.Status = &v
+func (s *UpdateAccountResponseBodyAccount) SetAccountId(v string) *UpdateAccountResponseBodyAccount {
+	s.AccountId = &v
 	return s
 }
 
-func (s *UpdateAccountResponseBodyAccount) SetType(v string) *UpdateAccountResponseBodyAccount {
-	s.Type = &v
+func (s *UpdateAccountResponseBodyAccount) SetAccountName(v string) *UpdateAccountResponseBodyAccount {
+	s.AccountName = &v
 	return s
 }
 
@@ -8230,8 +8260,8 @@ func (s *UpdateAccountResponseBodyAccount) SetFolderId(v string) *UpdateAccountR
 	return s
 }
 
-func (s *UpdateAccountResponseBodyAccount) SetResourceDirectoryId(v string) *UpdateAccountResponseBodyAccount {
-	s.ResourceDirectoryId = &v
+func (s *UpdateAccountResponseBodyAccount) SetJoinMethod(v string) *UpdateAccountResponseBodyAccount {
+	s.JoinMethod = &v
 	return s
 }
 
@@ -8240,23 +8270,23 @@ func (s *UpdateAccountResponseBodyAccount) SetJoinTime(v string) *UpdateAccountR
 	return s
 }
 
-func (s *UpdateAccountResponseBodyAccount) SetAccountId(v string) *UpdateAccountResponseBodyAccount {
-	s.AccountId = &v
-	return s
-}
-
-func (s *UpdateAccountResponseBodyAccount) SetJoinMethod(v string) *UpdateAccountResponseBodyAccount {
-	s.JoinMethod = &v
-	return s
-}
-
 func (s *UpdateAccountResponseBodyAccount) SetModifyTime(v string) *UpdateAccountResponseBodyAccount {
 	s.ModifyTime = &v
 	return s
 }
 
-func (s *UpdateAccountResponseBodyAccount) SetAccountName(v string) *UpdateAccountResponseBodyAccount {
-	s.AccountName = &v
+func (s *UpdateAccountResponseBodyAccount) SetResourceDirectoryId(v string) *UpdateAccountResponseBodyAccount {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *UpdateAccountResponseBodyAccount) SetStatus(v string) *UpdateAccountResponseBodyAccount {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateAccountResponseBodyAccount) SetType(v string) *UpdateAccountResponseBodyAccount {
+	s.Type = &v
 	return s
 }
 
@@ -8284,10 +8314,10 @@ func (s *UpdateAccountResponse) SetBody(v *UpdateAccountResponseBody) *UpdateAcc
 }
 
 type UpdateControlPolicyRequest struct {
-	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	NewPolicyName     *string `json:"NewPolicyName,omitempty" xml:"NewPolicyName,omitempty"`
 	NewDescription    *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	NewPolicyDocument *string `json:"NewPolicyDocument,omitempty" xml:"NewPolicyDocument,omitempty"`
+	NewPolicyName     *string `json:"NewPolicyName,omitempty" xml:"NewPolicyName,omitempty"`
+	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s UpdateControlPolicyRequest) String() string {
@@ -8298,8 +8328,13 @@ func (s UpdateControlPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateControlPolicyRequest) SetPolicyId(v string) *UpdateControlPolicyRequest {
-	s.PolicyId = &v
+func (s *UpdateControlPolicyRequest) SetNewDescription(v string) *UpdateControlPolicyRequest {
+	s.NewDescription = &v
+	return s
+}
+
+func (s *UpdateControlPolicyRequest) SetNewPolicyDocument(v string) *UpdateControlPolicyRequest {
+	s.NewPolicyDocument = &v
 	return s
 }
 
@@ -8308,13 +8343,8 @@ func (s *UpdateControlPolicyRequest) SetNewPolicyName(v string) *UpdateControlPo
 	return s
 }
 
-func (s *UpdateControlPolicyRequest) SetNewDescription(v string) *UpdateControlPolicyRequest {
-	s.NewDescription = &v
-	return s
-}
-
-func (s *UpdateControlPolicyRequest) SetNewPolicyDocument(v string) *UpdateControlPolicyRequest {
-	s.NewPolicyDocument = &v
+func (s *UpdateControlPolicyRequest) SetPolicyId(v string) *UpdateControlPolicyRequest {
+	s.PolicyId = &v
 	return s
 }
 
@@ -8342,14 +8372,14 @@ func (s *UpdateControlPolicyResponseBody) SetRequestId(v string) *UpdateControlP
 }
 
 type UpdateControlPolicyResponseBodyControlPolicy struct {
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateControlPolicyResponseBodyControlPolicy) String() string {
@@ -8360,8 +8390,13 @@ func (s UpdateControlPolicyResponseBodyControlPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
-	s.UpdateDate = &v
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.AttachmentCount = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.CreateDate = &v
 	return s
 }
 
@@ -8375,8 +8410,8 @@ func (s *UpdateControlPolicyResponseBodyControlPolicy) SetEffectScope(v string) 
 	return s
 }
 
-func (s *UpdateControlPolicyResponseBodyControlPolicy) SetAttachmentCount(v string) *UpdateControlPolicyResponseBodyControlPolicy {
-	s.AttachmentCount = &v
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.PolicyId = &v
 	return s
 }
 
@@ -8385,18 +8420,13 @@ func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyName(v string) *
 	return s
 }
 
-func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyId(v string) *UpdateControlPolicyResponseBodyControlPolicy {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *UpdateControlPolicyResponseBodyControlPolicy) SetCreateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
-	s.CreateDate = &v
-	return s
-}
-
 func (s *UpdateControlPolicyResponseBodyControlPolicy) SetPolicyType(v string) *UpdateControlPolicyResponseBodyControlPolicy {
 	s.PolicyType = &v
+	return s
+}
+
+func (s *UpdateControlPolicyResponseBodyControlPolicy) SetUpdateDate(v string) *UpdateControlPolicyResponseBodyControlPolicy {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -8447,8 +8477,8 @@ func (s *UpdateFolderRequest) SetNewFolderName(v string) *UpdateFolderRequest {
 }
 
 type UpdateFolderResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Folder    *UpdateFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateFolderResponseBody) String() string {
@@ -8459,21 +8489,21 @@ func (s UpdateFolderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFolderResponseBody) SetRequestId(v string) *UpdateFolderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *UpdateFolderResponseBody) SetFolder(v *UpdateFolderResponseBodyFolder) *UpdateFolderResponseBody {
 	s.Folder = v
 	return s
 }
 
+func (s *UpdateFolderResponseBody) SetRequestId(v string) *UpdateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type UpdateFolderResponseBodyFolder struct {
-	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
 func (s UpdateFolderResponseBodyFolder) String() string {
@@ -8484,23 +8514,23 @@ func (s UpdateFolderResponseBodyFolder) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateFolderResponseBodyFolder) SetFolderId(v string) *UpdateFolderResponseBodyFolder {
-	s.FolderId = &v
-	return s
-}
-
 func (s *UpdateFolderResponseBodyFolder) SetCreateTime(v string) *UpdateFolderResponseBodyFolder {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *UpdateFolderResponseBodyFolder) SetParentFolderId(v string) *UpdateFolderResponseBodyFolder {
-	s.ParentFolderId = &v
+func (s *UpdateFolderResponseBodyFolder) SetFolderId(v string) *UpdateFolderResponseBodyFolder {
+	s.FolderId = &v
 	return s
 }
 
 func (s *UpdateFolderResponseBodyFolder) SetFolderName(v string) *UpdateFolderResponseBodyFolder {
 	s.FolderName = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBodyFolder) SetParentFolderId(v string) *UpdateFolderResponseBodyFolder {
+	s.ParentFolderId = &v
 	return s
 }
 
@@ -8528,8 +8558,8 @@ func (s *UpdateFolderResponse) SetBody(v *UpdateFolderResponseBody) *UpdateFolde
 }
 
 type UpdateResourceGroupRequest struct {
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	NewDisplayName  *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s UpdateResourceGroupRequest) String() string {
@@ -8540,13 +8570,13 @@ func (s UpdateResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceGroupRequest) SetResourceGroupId(v string) *UpdateResourceGroupRequest {
-	s.ResourceGroupId = &v
+func (s *UpdateResourceGroupRequest) SetNewDisplayName(v string) *UpdateResourceGroupRequest {
+	s.NewDisplayName = &v
 	return s
 }
 
-func (s *UpdateResourceGroupRequest) SetNewDisplayName(v string) *UpdateResourceGroupRequest {
-	s.NewDisplayName = &v
+func (s *UpdateResourceGroupRequest) SetResourceGroupId(v string) *UpdateResourceGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8574,11 +8604,11 @@ func (s *UpdateResourceGroupResponseBody) SetResourceGroup(v *UpdateResourceGrou
 }
 
 type UpdateResourceGroupResponseBodyResourceGroup struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateResourceGroupResponseBodyResourceGroup) String() string {
@@ -8589,18 +8619,8 @@ func (s UpdateResourceGroupResponseBodyResourceGroup) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *UpdateResourceGroupResponseBodyResourceGroup {
-	s.DisplayName = &v
-	return s
-}
-
 func (s *UpdateResourceGroupResponseBodyResourceGroup) SetAccountId(v string) *UpdateResourceGroupResponseBodyResourceGroup {
 	s.AccountId = &v
-	return s
-}
-
-func (s *UpdateResourceGroupResponseBodyResourceGroup) SetName(v string) *UpdateResourceGroupResponseBodyResourceGroup {
-	s.Name = &v
 	return s
 }
 
@@ -8609,8 +8629,18 @@ func (s *UpdateResourceGroupResponseBodyResourceGroup) SetCreateDate(v string) *
 	return s
 }
 
+func (s *UpdateResourceGroupResponseBodyResourceGroup) SetDisplayName(v string) *UpdateResourceGroupResponseBodyResourceGroup {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *UpdateResourceGroupResponseBodyResourceGroup) SetId(v string) *UpdateResourceGroupResponseBodyResourceGroup {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateResourceGroupResponseBodyResourceGroup) SetName(v string) *UpdateResourceGroupResponseBodyResourceGroup {
+	s.Name = &v
 	return s
 }
 
@@ -8638,10 +8668,10 @@ func (s *UpdateResourceGroupResponse) SetBody(v *UpdateResourceGroupResponseBody
 }
 
 type UpdateRoleRequest struct {
-	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
-	NewMaxSessionDuration       *int64  `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
 	NewDescription              *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	NewMaxSessionDuration       *int64  `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
+	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s UpdateRoleRequest) String() string {
@@ -8652,18 +8682,8 @@ func (s UpdateRoleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
-	s.RoleName = &v
-	return s
-}
-
 func (s *UpdateRoleRequest) SetNewAssumeRolePolicyDocument(v string) *UpdateRoleRequest {
 	s.NewAssumeRolePolicyDocument = &v
-	return s
-}
-
-func (s *UpdateRoleRequest) SetNewMaxSessionDuration(v int64) *UpdateRoleRequest {
-	s.NewMaxSessionDuration = &v
 	return s
 }
 
@@ -8672,9 +8692,19 @@ func (s *UpdateRoleRequest) SetNewDescription(v string) *UpdateRoleRequest {
 	return s
 }
 
+func (s *UpdateRoleRequest) SetNewMaxSessionDuration(v int64) *UpdateRoleRequest {
+	s.NewMaxSessionDuration = &v
+	return s
+}
+
+func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
 type UpdateRoleResponseBody struct {
-	Role      *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role      *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s UpdateRoleResponseBody) String() string {
@@ -8685,26 +8715,26 @@ func (s UpdateRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateRoleResponseBody {
-	s.Role = v
-	return s
-}
-
 func (s *UpdateRoleResponseBody) SetRequestId(v string) *UpdateRoleResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateRoleResponseBody {
+	s.Role = v
+	return s
+}
+
 type UpdateRoleResponseBodyRole struct {
-	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RolePrincipalName        *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
+	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateRoleResponseBodyRole) String() string {
@@ -8715,33 +8745,13 @@ func (s UpdateRoleResponseBodyRole) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateRoleResponseBodyRole) SetArn(v string) *UpdateRoleResponseBodyRole {
+	s.Arn = &v
+	return s
+}
+
 func (s *UpdateRoleResponseBodyRole) SetAssumeRolePolicyDocument(v string) *UpdateRoleResponseBodyRole {
 	s.AssumeRolePolicyDocument = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetRolePrincipalName(v string) *UpdateRoleResponseBodyRole {
-	s.RolePrincipalName = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetDescription(v string) *UpdateRoleResponseBodyRole {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetUpdateDate(v string) *UpdateRoleResponseBodyRole {
-	s.UpdateDate = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetMaxSessionDuration(v int64) *UpdateRoleResponseBodyRole {
-	s.MaxSessionDuration = &v
-	return s
-}
-
-func (s *UpdateRoleResponseBodyRole) SetRoleName(v string) *UpdateRoleResponseBodyRole {
-	s.RoleName = &v
 	return s
 }
 
@@ -8750,13 +8760,33 @@ func (s *UpdateRoleResponseBodyRole) SetCreateDate(v string) *UpdateRoleResponse
 	return s
 }
 
+func (s *UpdateRoleResponseBodyRole) SetDescription(v string) *UpdateRoleResponseBodyRole {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateRoleResponseBodyRole) SetMaxSessionDuration(v int64) *UpdateRoleResponseBodyRole {
+	s.MaxSessionDuration = &v
+	return s
+}
+
 func (s *UpdateRoleResponseBodyRole) SetRoleId(v string) *UpdateRoleResponseBodyRole {
 	s.RoleId = &v
 	return s
 }
 
-func (s *UpdateRoleResponseBodyRole) SetArn(v string) *UpdateRoleResponseBodyRole {
-	s.Arn = &v
+func (s *UpdateRoleResponseBodyRole) SetRoleName(v string) *UpdateRoleResponseBodyRole {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateRoleResponseBodyRole) SetRolePrincipalName(v string) *UpdateRoleResponseBodyRole {
+	s.RolePrincipalName = &v
+	return s
+}
+
+func (s *UpdateRoleResponseBodyRole) SetUpdateDate(v string) *UpdateRoleResponseBodyRole {
+	s.UpdateDate = &v
 	return s
 }
 

@@ -1,3 +1,6 @@
+2021-10-27 Version: v2.0.3
+- Supported New SDK for ResourceManager.
+
 2021-10-08 Version: v2.0.2
 - Generated golang 2020-03-31 for ResourceManager.
 
