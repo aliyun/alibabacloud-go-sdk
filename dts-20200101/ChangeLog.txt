@@ -1,3 +1,6 @@
+2021-10-28 Version: v0.0.1
+- DescribteDtsJObs api, delay filed change from in to long.
+
 2021-09-16 Version: v1.0.1
 - AMP version.
 
