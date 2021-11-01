@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/tdsr-20200101/v2
+module github.com/alibabacloud-go/tdsr-20200101/v3
 
 go 1.15
 
