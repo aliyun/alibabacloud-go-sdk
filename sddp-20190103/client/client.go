@@ -7,7 +7,6 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -612,6 +611,188 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 	return s
 }
 
+type DescribeCategoryTemplateRuleListRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CustomType  *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeCategoryTemplateRuleListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateRuleListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetCurrentPage(v int32) *DescribeCategoryTemplateRuleListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetCustomType(v int32) *DescribeCategoryTemplateRuleListRequest {
+	s.CustomType = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetLang(v string) *DescribeCategoryTemplateRuleListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetPageSize(v int32) *DescribeCategoryTemplateRuleListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetRiskLevelId(v int64) *DescribeCategoryTemplateRuleListRequest {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetStatus(v int32) *DescribeCategoryTemplateRuleListRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListRequest) SetTemplateId(v int64) *DescribeCategoryTemplateRuleListRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeCategoryTemplateRuleListResponseBody struct {
+	CurrentPage *int32                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeCategoryTemplateRuleListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCategoryTemplateRuleListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateRuleListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBody) SetCurrentPage(v int32) *DescribeCategoryTemplateRuleListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBody) SetItems(v []*DescribeCategoryTemplateRuleListResponseBodyItems) *DescribeCategoryTemplateRuleListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBody) SetPageSize(v int32) *DescribeCategoryTemplateRuleListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBody) SetRequestId(v string) *DescribeCategoryTemplateRuleListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBody) SetTotalCount(v int32) *DescribeCategoryTemplateRuleListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCategoryTemplateRuleListResponseBodyItems struct {
+	CustomType            *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdentificationRuleIds *string `json:"IdentificationRuleIds,omitempty" xml:"IdentificationRuleIds,omitempty"`
+	IdentificationScope   *string `json:"IdentificationScope,omitempty" xml:"IdentificationScope,omitempty"`
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RiskLevelId           *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId            *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeCategoryTemplateRuleListResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateRuleListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetCustomType(v int32) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.CustomType = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetDescription(v string) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetId(v int64) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetIdentificationRuleIds(v string) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.IdentificationRuleIds = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetIdentificationScope(v string) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.IdentificationScope = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetName(v string) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetRiskLevelId(v int64) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetStatus(v int32) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetTemplateId(v int64) *DescribeCategoryTemplateRuleListResponseBodyItems {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeCategoryTemplateRuleListResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeCategoryTemplateRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCategoryTemplateRuleListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCategoryTemplateRuleListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCategoryTemplateRuleListResponse) SetHeaders(v map[string]*string) *DescribeCategoryTemplateRuleListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCategoryTemplateRuleListResponse) SetBody(v *DescribeCategoryTemplateRuleListResponseBody) *DescribeCategoryTemplateRuleListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeColumnsRequest struct {
 	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -744,24 +925,24 @@ func (s *DescribeColumnsResponseBody) SetTotalCount(v int32) *DescribeColumnsRes
 
 type DescribeColumnsResponseBodyItems struct {
 	CreationTime       *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	DataType           *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	OdpsRiskLevelValue *int32  `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
-	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RiskLevelId        *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleId             *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Sensitive          *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	SensLevelName      *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RiskLevelName      *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	OdpsRiskLevelName  *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TableId            *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OdpsRiskLevelName  *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	OdpsRiskLevelValue *int32  `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
 	ProductCode        *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RevisionStatus     *int64  `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
 	RevisionId         *int64  `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	RevisionStatus     *int64  `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
+	RiskLevelId        *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName      *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleId             *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SensLevelName      *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	Sensitive          *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	TableId            *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeColumnsResponseBodyItems) String() string {
@@ -777,73 +958,8 @@ func (s *DescribeColumnsResponseBodyItems) SetCreationTime(v int64) *DescribeCol
 	return s
 }
 
-func (s *DescribeColumnsResponseBodyItems) SetTableName(v string) *DescribeColumnsResponseBodyItems {
-	s.TableName = &v
-	return s
-}
-
 func (s *DescribeColumnsResponseBodyItems) SetDataType(v string) *DescribeColumnsResponseBodyItems {
 	s.DataType = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetOdpsRiskLevelValue(v int32) *DescribeColumnsResponseBodyItems {
-	s.OdpsRiskLevelValue = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetInstanceId(v int64) *DescribeColumnsResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetRiskLevelId(v int64) *DescribeColumnsResponseBodyItems {
-	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetRuleName(v string) *DescribeColumnsResponseBodyItems {
-	s.RuleName = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetRuleId(v int64) *DescribeColumnsResponseBodyItems {
-	s.RuleId = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetSensitive(v bool) *DescribeColumnsResponseBodyItems {
-	s.Sensitive = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetSensLevelName(v string) *DescribeColumnsResponseBodyItems {
-	s.SensLevelName = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetInstanceName(v string) *DescribeColumnsResponseBodyItems {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetRiskLevelName(v string) *DescribeColumnsResponseBodyItems {
-	s.RiskLevelName = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeColumnsResponseBodyItems {
-	s.OdpsRiskLevelName = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetName(v string) *DescribeColumnsResponseBodyItems {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeColumnsResponseBodyItems) SetTableId(v int64) *DescribeColumnsResponseBodyItems {
-	s.TableId = &v
 	return s
 }
 
@@ -852,8 +968,38 @@ func (s *DescribeColumnsResponseBodyItems) SetId(v string) *DescribeColumnsRespo
 	return s
 }
 
+func (s *DescribeColumnsResponseBodyItems) SetInstanceId(v int64) *DescribeColumnsResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetInstanceName(v string) *DescribeColumnsResponseBodyItems {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetName(v string) *DescribeColumnsResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeColumnsResponseBodyItems {
+	s.OdpsRiskLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetOdpsRiskLevelValue(v int32) *DescribeColumnsResponseBodyItems {
+	s.OdpsRiskLevelValue = &v
+	return s
+}
+
 func (s *DescribeColumnsResponseBodyItems) SetProductCode(v string) *DescribeColumnsResponseBodyItems {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetRevisionId(v int64) *DescribeColumnsResponseBodyItems {
+	s.RevisionId = &v
 	return s
 }
 
@@ -862,8 +1008,43 @@ func (s *DescribeColumnsResponseBodyItems) SetRevisionStatus(v int64) *DescribeC
 	return s
 }
 
-func (s *DescribeColumnsResponseBodyItems) SetRevisionId(v int64) *DescribeColumnsResponseBodyItems {
-	s.RevisionId = &v
+func (s *DescribeColumnsResponseBodyItems) SetRiskLevelId(v int64) *DescribeColumnsResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetRiskLevelName(v string) *DescribeColumnsResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetRuleId(v int64) *DescribeColumnsResponseBodyItems {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetRuleName(v string) *DescribeColumnsResponseBodyItems {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetSensLevelName(v string) *DescribeColumnsResponseBodyItems {
+	s.SensLevelName = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetSensitive(v bool) *DescribeColumnsResponseBodyItems {
+	s.Sensitive = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetTableId(v int64) *DescribeColumnsResponseBodyItems {
+	s.TableId = &v
+	return s
+}
+
+func (s *DescribeColumnsResponseBodyItems) SetTableName(v string) *DescribeColumnsResponseBodyItems {
+	s.TableName = &v
 	return s
 }
 
@@ -932,10 +1113,10 @@ func (s *DescribeConfigsResponseBody) SetRequestId(v string) *DescribeConfigsRes
 
 type DescribeConfigsResponseBodyConfigList struct {
 	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeConfigsResponseBodyConfigList) String() string {
@@ -951,11 +1132,6 @@ func (s *DescribeConfigsResponseBodyConfigList) SetCode(v string) *DescribeConfi
 	return s
 }
 
-func (s *DescribeConfigsResponseBodyConfigList) SetValue(v string) *DescribeConfigsResponseBodyConfigList {
-	s.Value = &v
-	return s
-}
-
 func (s *DescribeConfigsResponseBodyConfigList) SetDefaultValue(v string) *DescribeConfigsResponseBodyConfigList {
 	s.DefaultValue = &v
 	return s
@@ -968,6 +1144,11 @@ func (s *DescribeConfigsResponseBodyConfigList) SetDescription(v string) *Descri
 
 func (s *DescribeConfigsResponseBodyConfigList) SetId(v int64) *DescribeConfigsResponseBodyConfigList {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeConfigsResponseBodyConfigList) SetValue(v string) *DescribeConfigsResponseBodyConfigList {
+	s.Value = &v
 	return s
 }
 
@@ -1092,22 +1273,22 @@ type DescribeDataAssetsResponseBodyItems struct {
 	Acl               *string `json:"Acl,omitempty" xml:"Acl,omitempty"`
 	CreationTime      *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DataType          *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SensitiveRatio    *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
-	Protection        *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Labelsec          *bool   `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	TotalCount        *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId         *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Protection        *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
 	RiskLevelId       *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName     *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	Sensitive         *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	ObjectKey         *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	RiskLevelName     *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
-	ProductId         *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	SensitiveCount    *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SensitiveRatio    *string `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
+	TotalCount        *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataAssetsResponseBodyItems) String() string {
@@ -1133,18 +1314,8 @@ func (s *DescribeDataAssetsResponseBodyItems) SetDataType(v string) *DescribeDat
 	return s
 }
 
-func (s *DescribeDataAssetsResponseBodyItems) SetOwner(v string) *DescribeDataAssetsResponseBodyItems {
-	s.Owner = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetSensitiveRatio(v string) *DescribeDataAssetsResponseBodyItems {
-	s.SensitiveRatio = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetProtection(v bool) *DescribeDataAssetsResponseBodyItems {
-	s.Protection = &v
+func (s *DescribeDataAssetsResponseBodyItems) SetId(v string) *DescribeDataAssetsResponseBodyItems {
+	s.Id = &v
 	return s
 }
 
@@ -1153,13 +1324,48 @@ func (s *DescribeDataAssetsResponseBodyItems) SetLabelsec(v bool) *DescribeDataA
 	return s
 }
 
-func (s *DescribeDataAssetsResponseBodyItems) SetTotalCount(v int32) *DescribeDataAssetsResponseBodyItems {
-	s.TotalCount = &v
+func (s *DescribeDataAssetsResponseBodyItems) SetName(v string) *DescribeDataAssetsResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetObjectKey(v string) *DescribeDataAssetsResponseBodyItems {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeDataAssetsResponseBodyItems {
+	s.OdpsRiskLevelName = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetOwner(v string) *DescribeDataAssetsResponseBodyItems {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetProductCode(v string) *DescribeDataAssetsResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetProductId(v string) *DescribeDataAssetsResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetProtection(v bool) *DescribeDataAssetsResponseBodyItems {
+	s.Protection = &v
 	return s
 }
 
 func (s *DescribeDataAssetsResponseBodyItems) SetRiskLevelId(v int64) *DescribeDataAssetsResponseBodyItems {
 	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeDataAssetsResponseBodyItems) SetRiskLevelName(v string) *DescribeDataAssetsResponseBodyItems {
+	s.RiskLevelName = &v
 	return s
 }
 
@@ -1173,43 +1379,18 @@ func (s *DescribeDataAssetsResponseBodyItems) SetSensitive(v bool) *DescribeData
 	return s
 }
 
-func (s *DescribeDataAssetsResponseBodyItems) SetObjectKey(v string) *DescribeDataAssetsResponseBodyItems {
-	s.ObjectKey = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetRiskLevelName(v string) *DescribeDataAssetsResponseBodyItems {
-	s.RiskLevelName = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeDataAssetsResponseBodyItems {
-	s.OdpsRiskLevelName = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetProductId(v string) *DescribeDataAssetsResponseBodyItems {
-	s.ProductId = &v
-	return s
-}
-
-func (s *DescribeDataAssetsResponseBodyItems) SetName(v string) *DescribeDataAssetsResponseBodyItems {
-	s.Name = &v
-	return s
-}
-
 func (s *DescribeDataAssetsResponseBodyItems) SetSensitiveCount(v int32) *DescribeDataAssetsResponseBodyItems {
 	s.SensitiveCount = &v
 	return s
 }
 
-func (s *DescribeDataAssetsResponseBodyItems) SetId(v string) *DescribeDataAssetsResponseBodyItems {
-	s.Id = &v
+func (s *DescribeDataAssetsResponseBodyItems) SetSensitiveRatio(v string) *DescribeDataAssetsResponseBodyItems {
+	s.SensitiveRatio = &v
 	return s
 }
 
-func (s *DescribeDataAssetsResponseBodyItems) SetProductCode(v string) *DescribeDataAssetsResponseBodyItems {
-	s.ProductCode = &v
+func (s *DescribeDataAssetsResponseBodyItems) SetTotalCount(v int32) *DescribeDataAssetsResponseBodyItems {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1488,17 +1669,17 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSet) SetTotalCount(v int32) *D
 }
 
 type DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList struct {
-	LocalName        *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	CheckStatus      *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	Connector        *string `json:"Connector,omitempty" xml:"Connector,omitempty"`
 	CheckStatusName  *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ParentId         *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Connector        *string `json:"Connector,omitempty" xml:"Connector,omitempty"`
 	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LocalName        *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ParentId         *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceTypeCode *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
 	UserName         *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) String() string {
@@ -1509,18 +1690,8 @@ func (s DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) GoString() st
 	return s.String()
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetLocalName(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.LocalName = &v
-	return s
-}
-
 func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetCheckStatus(v int32) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
 	s.CheckStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetConnector(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.Connector = &v
 	return s
 }
 
@@ -1529,8 +1700,23 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetCheckStat
 	return s
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.RegionId = &v
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetConnector(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.Connector = &v
+	return s
+}
+
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetGmtCreate(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetId(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetLocalName(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.LocalName = &v
 	return s
 }
 
@@ -1539,13 +1725,13 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetParentId(
 	return s
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetResourceType(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.ResourceType = &v
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetGmtCreate(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.GmtCreate = &v
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetResourceType(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
+	s.ResourceType = &v
 	return s
 }
 
@@ -1559,14 +1745,9 @@ func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetUserName(
 	return s
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList) SetId(v int64) *DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList {
-	s.Id = &v
-	return s
-}
-
 type DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) String() string {
@@ -1577,19 +1758,19 @@ func (s DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) GoString() st
 	return s.String()
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) SetBucketName(v string) *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList {
 	s.BucketName = &v
 	return s
 }
 
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeDataLimitSetResponseBodyDataLimitSetRegionList struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDataLimitSetResponseBodyDataLimitSetRegionList) String() string {
@@ -1600,13 +1781,13 @@ func (s DescribeDataLimitSetResponseBodyDataLimitSetRegionList) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetRegionList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetRegionList {
-	s.RegionId = &v
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetRegionList) SetLocalName(v string) *DescribeDataLimitSetResponseBodyDataLimitSetRegionList {
+	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeDataLimitSetResponseBodyDataLimitSetRegionList) SetLocalName(v string) *DescribeDataLimitSetResponseBodyDataLimitSetRegionList {
-	s.LocalName = &v
+func (s *DescribeDataLimitSetResponseBodyDataLimitSetRegionList) SetRegionId(v string) *DescribeDataLimitSetResponseBodyDataLimitSetRegionList {
+	s.RegionId = &v
 	return s
 }
 
@@ -1764,42 +1945,42 @@ func (s *DescribeDataLimitsResponseBody) SetTotalCount(v int32) *DescribeDataLim
 }
 
 type DescribeDataLimitsResponseBodyItems struct {
-	SupportEvent        *bool   `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	CheckStatus         *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	LocalName           *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	NextStartTime       *int64  `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
-	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	CheckStatusName     *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
-	SamplingSize        *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	ParentId            *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	DatamaskStatus      *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	ProcessTotalCount   *int32  `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
-	ResourceType        *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	OcrStatus           *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	EventStatus         *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	SupportScan         *bool   `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
-	LastFinishedTime    *int64  `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	AuditStatus         *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	SupportOcr          *bool   `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
-	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	DbVersion           *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SupportAudit        *bool   `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
 	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	ResourceTypeCode    *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
-	SupportDatamask     *bool   `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
-	ProcessStatus       *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	CheckStatus         *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	CheckStatusName     *string `json:"CheckStatusName,omitempty" xml:"CheckStatusName,omitempty"`
+	DatamaskStatus      *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
+	DbVersion           *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
 	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EventStatus         *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastFinishedTime    *int64  `json:"LastFinishedTime,omitempty" xml:"LastFinishedTime,omitempty"`
+	LocalName           *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	NextStartTime       *int64  `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	OcrStatus           *int32  `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
+	ParentId            *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProcessStatus       *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	ProcessTotalCount   *int32  `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType        *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceTypeCode    *string `json:"ResourceTypeCode,omitempty" xml:"ResourceTypeCode,omitempty"`
+	SamplingSize        *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
+	SupportAudit        *bool   `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
+	SupportDatamask     *bool   `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
+	SupportEvent        *bool   `json:"SupportEvent,omitempty" xml:"SupportEvent,omitempty"`
+	SupportOcr          *bool   `json:"SupportOcr,omitempty" xml:"SupportOcr,omitempty"`
+	SupportScan         *bool   `json:"SupportScan,omitempty" xml:"SupportScan,omitempty"`
+	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeDataLimitsResponseBodyItems) String() string {
@@ -1810,153 +1991,8 @@ func (s DescribeDataLimitsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDataLimitsResponseBodyItems) SetSupportEvent(v bool) *DescribeDataLimitsResponseBodyItems {
-	s.SupportEvent = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetErrorMessage(v string) *DescribeDataLimitsResponseBodyItems {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetCheckStatus(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.CheckStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetLocalName(v string) *DescribeDataLimitsResponseBodyItems {
-	s.LocalName = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetTenantName(v string) *DescribeDataLimitsResponseBodyItems {
-	s.TenantName = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetNextStartTime(v int64) *DescribeDataLimitsResponseBodyItems {
-	s.NextStartTime = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetPort(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetCheckStatusName(v string) *DescribeDataLimitsResponseBodyItems {
-	s.CheckStatusName = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetSamplingSize(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.SamplingSize = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetParentId(v string) *DescribeDataLimitsResponseBodyItems {
-	s.ParentId = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetDatamaskStatus(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.DatamaskStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetProcessTotalCount(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.ProcessTotalCount = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetResourceType(v int64) *DescribeDataLimitsResponseBodyItems {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetErrorCode(v string) *DescribeDataLimitsResponseBodyItems {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetOcrStatus(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.OcrStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetLogStoreDay(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.LogStoreDay = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetEventStatus(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.EventStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetSupportScan(v bool) *DescribeDataLimitsResponseBodyItems {
-	s.SupportScan = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetLastFinishedTime(v int64) *DescribeDataLimitsResponseBodyItems {
-	s.LastFinishedTime = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetUserName(v string) *DescribeDataLimitsResponseBodyItems {
-	s.UserName = &v
-	return s
-}
-
 func (s *DescribeDataLimitsResponseBodyItems) SetAuditStatus(v int32) *DescribeDataLimitsResponseBodyItems {
 	s.AuditStatus = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetSupportOcr(v bool) *DescribeDataLimitsResponseBodyItems {
-	s.SupportOcr = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetEngineType(v string) *DescribeDataLimitsResponseBodyItems {
-	s.EngineType = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetInstanceId(v string) *DescribeDataLimitsResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetTotalCount(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetInstanceDescription(v string) *DescribeDataLimitsResponseBodyItems {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetDbVersion(v string) *DescribeDataLimitsResponseBodyItems {
-	s.DbVersion = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetRegionId(v string) *DescribeDataLimitsResponseBodyItems {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetGmtCreate(v int64) *DescribeDataLimitsResponseBodyItems {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeDataLimitsResponseBodyItems) SetSupportAudit(v bool) *DescribeDataLimitsResponseBodyItems {
-	s.SupportAudit = &v
 	return s
 }
 
@@ -1965,18 +2001,53 @@ func (s *DescribeDataLimitsResponseBodyItems) SetAutoScan(v int32) *DescribeData
 	return s
 }
 
-func (s *DescribeDataLimitsResponseBodyItems) SetResourceTypeCode(v string) *DescribeDataLimitsResponseBodyItems {
-	s.ResourceTypeCode = &v
+func (s *DescribeDataLimitsResponseBodyItems) SetCheckStatus(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.CheckStatus = &v
 	return s
 }
 
-func (s *DescribeDataLimitsResponseBodyItems) SetSupportDatamask(v bool) *DescribeDataLimitsResponseBodyItems {
-	s.SupportDatamask = &v
+func (s *DescribeDataLimitsResponseBodyItems) SetCheckStatusName(v string) *DescribeDataLimitsResponseBodyItems {
+	s.CheckStatusName = &v
 	return s
 }
 
-func (s *DescribeDataLimitsResponseBodyItems) SetProcessStatus(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.ProcessStatus = &v
+func (s *DescribeDataLimitsResponseBodyItems) SetDatamaskStatus(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.DatamaskStatus = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetDbVersion(v string) *DescribeDataLimitsResponseBodyItems {
+	s.DbVersion = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetEnable(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.Enable = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetEngineType(v string) *DescribeDataLimitsResponseBodyItems {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetErrorCode(v string) *DescribeDataLimitsResponseBodyItems {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetErrorMessage(v string) *DescribeDataLimitsResponseBodyItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetEventStatus(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.EventStatus = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetGmtCreate(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -1985,8 +2056,118 @@ func (s *DescribeDataLimitsResponseBodyItems) SetId(v int64) *DescribeDataLimits
 	return s
 }
 
-func (s *DescribeDataLimitsResponseBodyItems) SetEnable(v int32) *DescribeDataLimitsResponseBodyItems {
-	s.Enable = &v
+func (s *DescribeDataLimitsResponseBodyItems) SetInstanceDescription(v string) *DescribeDataLimitsResponseBodyItems {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetInstanceId(v string) *DescribeDataLimitsResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetLastFinishedTime(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.LastFinishedTime = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetLocalName(v string) *DescribeDataLimitsResponseBodyItems {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetLogStoreDay(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.LogStoreDay = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetNextStartTime(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.NextStartTime = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetOcrStatus(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.OcrStatus = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetParentId(v string) *DescribeDataLimitsResponseBodyItems {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetPort(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetProcessStatus(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetProcessTotalCount(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.ProcessTotalCount = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetRegionId(v string) *DescribeDataLimitsResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetResourceType(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetResourceTypeCode(v string) *DescribeDataLimitsResponseBodyItems {
+	s.ResourceTypeCode = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSamplingSize(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.SamplingSize = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSupportAudit(v bool) *DescribeDataLimitsResponseBodyItems {
+	s.SupportAudit = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSupportDatamask(v bool) *DescribeDataLimitsResponseBodyItems {
+	s.SupportDatamask = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSupportEvent(v bool) *DescribeDataLimitsResponseBodyItems {
+	s.SupportEvent = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSupportOcr(v bool) *DescribeDataLimitsResponseBodyItems {
+	s.SupportOcr = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetSupportScan(v bool) *DescribeDataLimitsResponseBodyItems {
+	s.SupportScan = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetTenantName(v string) *DescribeDataLimitsResponseBodyItems {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetTotalCount(v int32) *DescribeDataLimitsResponseBodyItems {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetUserName(v string) *DescribeDataLimitsResponseBodyItems {
+	s.UserName = &v
 	return s
 }
 
@@ -2132,25 +2313,25 @@ func (s *DescribeDataMaskingRunHistoryResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeDataMaskingRunHistoryResponseBodyItems struct {
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	SrcType         *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	SrcTableName    *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
-	MaskingCount    *int64  `json:"MaskingCount,omitempty" xml:"MaskingCount,omitempty"`
-	Percentage      *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	DstType         *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	FailMsg         *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
-	FailCode        *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
 	ConflictCount   *int64  `json:"ConflictCount,omitempty" xml:"ConflictCount,omitempty"`
+	DstType         *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
 	DstTypeCode     *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
 	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RunIndex        *int32  `json:"RunIndex,omitempty" xml:"RunIndex,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	HasSubProcess   *int32  `json:"HasSubProcess,omitempty" xml:"HasSubProcess,omitempty"`
+	FailCode        *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailMsg         *string `json:"FailMsg,omitempty" xml:"FailMsg,omitempty"`
 	HasDownloadFile *int32  `json:"HasDownloadFile,omitempty" xml:"HasDownloadFile,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	SrcTypeCode     *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	HasSubProcess   *int32  `json:"HasSubProcess,omitempty" xml:"HasSubProcess,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaskingCount    *int64  `json:"MaskingCount,omitempty" xml:"MaskingCount,omitempty"`
+	Percentage      *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	RunIndex        *int32  `json:"RunIndex,omitempty" xml:"RunIndex,omitempty"`
+	SrcTableName    *string `json:"SrcTableName,omitempty" xml:"SrcTableName,omitempty"`
+	SrcType         *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	SrcTypeCode     *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDataMaskingRunHistoryResponseBodyItems) String() string {
@@ -2161,53 +2342,13 @@ func (s DescribeDataMaskingRunHistoryResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetStatus(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetType(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetSrcType(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.SrcType = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetSrcTableName(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.SrcTableName = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetMaskingCount(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.MaskingCount = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetPercentage(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.Percentage = &v
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetConflictCount(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.ConflictCount = &v
 	return s
 }
 
 func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetDstType(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
 	s.DstType = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetFailMsg(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.FailMsg = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetFailCode(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.FailCode = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetConflictCount(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.ConflictCount = &v
 	return s
 }
 
@@ -2221,18 +2362,13 @@ func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetEndTime(v int64) *De
 	return s
 }
 
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetRunIndex(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.RunIndex = &v
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetFailCode(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.FailCode = &v
 	return s
 }
 
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetStartTime(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetHasSubProcess(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.HasSubProcess = &v
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetFailMsg(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.FailMsg = &v
 	return s
 }
 
@@ -2241,8 +2377,38 @@ func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetHasDownloadFile(v in
 	return s
 }
 
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetTaskId(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.TaskId = &v
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetHasSubProcess(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.HasSubProcess = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetId(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetMaskingCount(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.MaskingCount = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetPercentage(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.Percentage = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetRunIndex(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.RunIndex = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetSrcTableName(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.SrcTableName = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetSrcType(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.SrcType = &v
 	return s
 }
 
@@ -2251,8 +2417,23 @@ func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetSrcTypeCode(v string
 	return s
 }
 
-func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetId(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
-	s.Id = &v
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetStartTime(v int64) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetStatus(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetTaskId(v string) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeDataMaskingRunHistoryResponseBodyItems) SetType(v int32) *DescribeDataMaskingRunHistoryResponseBodyItems {
+	s.Type = &v
 	return s
 }
 
@@ -2374,22 +2555,22 @@ func (s *DescribeDataMaskingTasksResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Owner              *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	SrcType            *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	DstType            *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	HasUnfinishProcess *bool   `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
-	OriginalTable      *bool   `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
-	TriggerType        *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	DstTypeCode        *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	RunCount           *int32  `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
-	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	DstPath            *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
-	SrcTypeCode        *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	DstType            *int32  `json:"DstType,omitempty" xml:"DstType,omitempty"`
+	DstTypeCode        *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	HasUnfinishProcess *bool   `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginalTable      *bool   `json:"OriginalTable,omitempty" xml:"OriginalTable,omitempty"`
+	Owner              *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RunCount           *int32  `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
 	SrcPath            *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
+	SrcType            *int32  `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	SrcTypeCode        *string `json:"SrcTypeCode,omitempty" xml:"SrcTypeCode,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TriggerType        *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s DescribeDataMaskingTasksResponseBodyItems) String() string {
@@ -2400,23 +2581,8 @@ func (s DescribeDataMaskingTasksResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetStatus(v int32) *DescribeDataMaskingTasksResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetOwner(v string) *DescribeDataMaskingTasksResponseBodyItems {
-	s.Owner = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetTaskName(v string) *DescribeDataMaskingTasksResponseBodyItems {
-	s.TaskName = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcType(v int32) *DescribeDataMaskingTasksResponseBodyItems {
-	s.SrcType = &v
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstPath(v string) *DescribeDataMaskingTasksResponseBodyItems {
+	s.DstPath = &v
 	return s
 }
 
@@ -2425,28 +2591,8 @@ func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstType(v int32) *Describ
 	return s
 }
 
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetHasUnfinishProcess(v bool) *DescribeDataMaskingTasksResponseBodyItems {
-	s.HasUnfinishProcess = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetOriginalTable(v bool) *DescribeDataMaskingTasksResponseBodyItems {
-	s.OriginalTable = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetTriggerType(v int32) *DescribeDataMaskingTasksResponseBodyItems {
-	s.TriggerType = &v
-	return s
-}
-
 func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstTypeCode(v string) *DescribeDataMaskingTasksResponseBodyItems {
 	s.DstTypeCode = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetRunCount(v int32) *DescribeDataMaskingTasksResponseBodyItems {
-	s.RunCount = &v
 	return s
 }
 
@@ -2455,18 +2601,8 @@ func (s *DescribeDataMaskingTasksResponseBodyItems) SetGmtCreate(v int64) *Descr
 	return s
 }
 
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetTaskId(v string) *DescribeDataMaskingTasksResponseBodyItems {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstPath(v string) *DescribeDataMaskingTasksResponseBodyItems {
-	s.DstPath = &v
-	return s
-}
-
-func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcTypeCode(v string) *DescribeDataMaskingTasksResponseBodyItems {
-	s.SrcTypeCode = &v
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetHasUnfinishProcess(v bool) *DescribeDataMaskingTasksResponseBodyItems {
+	s.HasUnfinishProcess = &v
 	return s
 }
 
@@ -2475,8 +2611,53 @@ func (s *DescribeDataMaskingTasksResponseBodyItems) SetId(v int64) *DescribeData
 	return s
 }
 
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetOriginalTable(v bool) *DescribeDataMaskingTasksResponseBodyItems {
+	s.OriginalTable = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetOwner(v string) *DescribeDataMaskingTasksResponseBodyItems {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetRunCount(v int32) *DescribeDataMaskingTasksResponseBodyItems {
+	s.RunCount = &v
+	return s
+}
+
 func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcPath(v string) *DescribeDataMaskingTasksResponseBodyItems {
 	s.SrcPath = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcType(v int32) *DescribeDataMaskingTasksResponseBodyItems {
+	s.SrcType = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcTypeCode(v string) *DescribeDataMaskingTasksResponseBodyItems {
+	s.SrcTypeCode = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetStatus(v int32) *DescribeDataMaskingTasksResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetTaskId(v string) *DescribeDataMaskingTasksResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetTaskName(v string) *DescribeDataMaskingTasksResponseBodyItems {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetTriggerType(v int32) *DescribeDataMaskingTasksResponseBodyItems {
+	s.TriggerType = &v
 	return s
 }
 
@@ -2728,11 +2909,11 @@ func (s *DescribeEventDetailResponseBodyEventDetail) SetResourceInfo(v []*Descri
 }
 
 type DescribeEventDetailResponseBodyEventDetailChart struct {
-	Type   *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	Data   *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Label  *string                                              `json:"Label,omitempty" xml:"Label,omitempty"`
+	Type   *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 	XLabel *string                                              `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
 	YLabel *string                                              `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
-	Data   *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChart) String() string {
@@ -2743,13 +2924,18 @@ func (s DescribeEventDetailResponseBodyEventDetailChart) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChart) SetType(v string) *DescribeEventDetailResponseBodyEventDetailChart {
-	s.Type = &v
+func (s *DescribeEventDetailResponseBodyEventDetailChart) SetData(v *DescribeEventDetailResponseBodyEventDetailChartData) *DescribeEventDetailResponseBodyEventDetailChart {
+	s.Data = v
 	return s
 }
 
 func (s *DescribeEventDetailResponseBodyEventDetailChart) SetLabel(v string) *DescribeEventDetailResponseBodyEventDetailChart {
 	s.Label = &v
+	return s
+}
+
+func (s *DescribeEventDetailResponseBodyEventDetailChart) SetType(v string) *DescribeEventDetailResponseBodyEventDetailChart {
+	s.Type = &v
 	return s
 }
 
@@ -2763,14 +2949,9 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetYLabel(v string) *D
 	return s
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChart) SetData(v *DescribeEventDetailResponseBodyEventDetailChartData) *DescribeEventDetailResponseBodyEventDetailChart {
-	s.Data = v
-	return s
-}
-
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChartData) String() string {
@@ -2781,13 +2962,13 @@ func (s DescribeEventDetailResponseBodyEventDetailChartData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
-	s.Y = &v
+func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetX(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
+	s.X = &v
 	return s
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetX(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
-	s.X = &v
+func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
+	s.Y = &v
 	return s
 }
 
@@ -2838,14 +3019,14 @@ func (s *DescribeEventDetailResponseBodyEventDetailResourceInfo) SetValue(v stri
 }
 
 type DescribeEventDetailResponseBodyEventHandleInfoList struct {
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	EnableTime   *int64  `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
-	HandlerValue *int32  `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
+	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
 	DisableTime  *int64  `json:"DisableTime,omitempty" xml:"DisableTime,omitempty"`
+	EnableTime   *int64  `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
 	HandlerName  *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
 	HandlerType  *string `json:"HandlerType,omitempty" xml:"HandlerType,omitempty"`
-	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
+	HandlerValue *int32  `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
 	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEventHandleInfoList) String() string {
@@ -2856,23 +3037,18 @@ func (s DescribeEventDetailResponseBodyEventHandleInfoList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetStatus(v int32) *DescribeEventDetailResponseBodyEventHandleInfoList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetEnableTime(v int64) *DescribeEventDetailResponseBodyEventHandleInfoList {
-	s.EnableTime = &v
-	return s
-}
-
-func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetHandlerValue(v int32) *DescribeEventDetailResponseBodyEventHandleInfoList {
-	s.HandlerValue = &v
+func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetCurrentValue(v string) *DescribeEventDetailResponseBodyEventHandleInfoList {
+	s.CurrentValue = &v
 	return s
 }
 
 func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetDisableTime(v int64) *DescribeEventDetailResponseBodyEventHandleInfoList {
 	s.DisableTime = &v
+	return s
+}
+
+func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetEnableTime(v int64) *DescribeEventDetailResponseBodyEventHandleInfoList {
+	s.EnableTime = &v
 	return s
 }
 
@@ -2886,13 +3062,18 @@ func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetHandlerType(v st
 	return s
 }
 
-func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetCurrentValue(v string) *DescribeEventDetailResponseBodyEventHandleInfoList {
-	s.CurrentValue = &v
+func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetHandlerValue(v int32) *DescribeEventDetailResponseBodyEventHandleInfoList {
+	s.HandlerValue = &v
 	return s
 }
 
 func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetId(v int64) *DescribeEventDetailResponseBodyEventHandleInfoList {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeEventDetailResponseBodyEventHandleInfoList) SetStatus(v int32) *DescribeEventDetailResponseBodyEventHandleInfoList {
+	s.Status = &v
 	return s
 }
 
@@ -2980,8 +3161,8 @@ func (s *DescribeEventTypesResponseBody) SetRequestId(v string) *DescribeEventTy
 type DescribeEventTypesResponseBodyEventTypeList struct {
 	Code        *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id          *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	SubTypeList []*DescribeEventTypesResponseBodyEventTypeListSubTypeList `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
 }
 
@@ -3003,13 +3184,13 @@ func (s *DescribeEventTypesResponseBodyEventTypeList) SetDescription(v string) *
 	return s
 }
 
-func (s *DescribeEventTypesResponseBodyEventTypeList) SetName(v string) *DescribeEventTypesResponseBodyEventTypeList {
-	s.Name = &v
+func (s *DescribeEventTypesResponseBodyEventTypeList) SetId(v int64) *DescribeEventTypesResponseBodyEventTypeList {
+	s.Id = &v
 	return s
 }
 
-func (s *DescribeEventTypesResponseBodyEventTypeList) SetId(v int64) *DescribeEventTypesResponseBodyEventTypeList {
-	s.Id = &v
+func (s *DescribeEventTypesResponseBodyEventTypeList) SetName(v string) *DescribeEventTypesResponseBodyEventTypeList {
+	s.Name = &v
 	return s
 }
 
@@ -3019,17 +3200,17 @@ func (s *DescribeEventTypesResponseBodyEventTypeList) SetSubTypeList(v []*Descri
 }
 
 type DescribeEventTypesResponseBodyEventTypeListSubTypeList struct {
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ConfigContentType *int32  `json:"ConfigContentType,omitempty" xml:"ConfigContentType,omitempty"`
-	EventHitCount     *int32  `json:"EventHitCount,omitempty" xml:"EventHitCount,omitempty"`
-	ConfigValue       *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	ConfigCode        *string `json:"ConfigCode,omitempty" xml:"ConfigCode,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	AdaptedProduct    *string `json:"AdaptedProduct,omitempty" xml:"AdaptedProduct,omitempty"`
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ConfigCode        *string `json:"ConfigCode,omitempty" xml:"ConfigCode,omitempty"`
+	ConfigContentType *int32  `json:"ConfigContentType,omitempty" xml:"ConfigContentType,omitempty"`
+	ConfigDescription *string `json:"ConfigDescription,omitempty" xml:"ConfigDescription,omitempty"`
+	ConfigValue       *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventHitCount     *int32  `json:"EventHitCount,omitempty" xml:"EventHitCount,omitempty"`
 	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventTypesResponseBodyEventTypeListSubTypeList) String() string {
@@ -3040,33 +3221,8 @@ func (s DescribeEventTypesResponseBodyEventTypeListSubTypeList) GoString() strin
 	return s.String()
 }
 
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetStatus(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetDescription(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigContentType(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.ConfigContentType = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetEventHitCount(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.EventHitCount = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigValue(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.ConfigValue = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigCode(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.ConfigCode = &v
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetAdaptedProduct(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.AdaptedProduct = &v
 	return s
 }
 
@@ -3075,8 +3231,38 @@ func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetCode(v strin
 	return s
 }
 
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigCode(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.ConfigCode = &v
+	return s
+}
+
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigContentType(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.ConfigContentType = &v
+	return s
+}
+
 func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigDescription(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
 	s.ConfigDescription = &v
+	return s
+}
+
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetConfigValue(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetDescription(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetEventHitCount(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.EventHitCount = &v
+	return s
+}
+
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetId(v int64) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.Id = &v
 	return s
 }
 
@@ -3085,13 +3271,8 @@ func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetName(v strin
 	return s
 }
 
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetAdaptedProduct(v string) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.AdaptedProduct = &v
-	return s
-}
-
-func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetId(v int64) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
-	s.Id = &v
+func (s *DescribeEventTypesResponseBodyEventTypeListSubTypeList) SetStatus(v int32) *DescribeEventTypesResponseBodyEventTypeListSubTypeList {
+	s.Status = &v
 	return s
 }
 
@@ -3261,26 +3442,26 @@ func (s *DescribeEventsResponseBody) SetTotalCount(v int32) *DescribeEventsRespo
 }
 
 type DescribeEventsResponseBodyItems struct {
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WarnLevel         *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
-	UserId            *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	StatusName        *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	DealTime          *int64  `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	DealLoginName     *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
-	SubTypeName       *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
+	AlertTime         *int64  `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
 	Backed            *bool   `json:"Backed,omitempty" xml:"Backed,omitempty"`
+	DealDisplayName   *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
+	DealLoginName     *string `json:"DealLoginName,omitempty" xml:"DealLoginName,omitempty"`
+	DealTime          *int64  `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	DealUserId        *int64  `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	EventTime         *int64  `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	LoginName         *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName        *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	SubTypeCode       *string `json:"SubTypeCode,omitempty" xml:"SubTypeCode,omitempty"`
+	SubTypeName       *string `json:"SubTypeName,omitempty" xml:"SubTypeName,omitempty"`
 	TargetProductCode *string `json:"TargetProductCode,omitempty" xml:"TargetProductCode,omitempty"`
 	TypeCode          *string `json:"TypeCode,omitempty" xml:"TypeCode,omitempty"`
-	AlertTime         *int64  `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	DealUserId        *int64  `json:"DealUserId,omitempty" xml:"DealUserId,omitempty"`
 	TypeName          *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	DealDisplayName   *string `json:"DealDisplayName,omitempty" xml:"DealDisplayName,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	UserId            *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WarnLevel         *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeEventsResponseBodyItems) String() string {
@@ -3291,43 +3472,8 @@ func (s DescribeEventsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventsResponseBodyItems) SetDisplayName(v string) *DescribeEventsResponseBodyItems {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetStatus(v int32) *DescribeEventsResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetWarnLevel(v int32) *DescribeEventsResponseBodyItems {
-	s.WarnLevel = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetUserId(v int64) *DescribeEventsResponseBodyItems {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetStatusName(v string) *DescribeEventsResponseBodyItems {
-	s.StatusName = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetDealTime(v int64) *DescribeEventsResponseBodyItems {
-	s.DealTime = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetDealLoginName(v string) *DescribeEventsResponseBodyItems {
-	s.DealLoginName = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetSubTypeName(v string) *DescribeEventsResponseBodyItems {
-	s.SubTypeName = &v
+func (s *DescribeEventsResponseBodyItems) SetAlertTime(v int64) *DescribeEventsResponseBodyItems {
+	s.AlertTime = &v
 	return s
 }
 
@@ -3336,8 +3482,38 @@ func (s *DescribeEventsResponseBodyItems) SetBacked(v bool) *DescribeEventsRespo
 	return s
 }
 
+func (s *DescribeEventsResponseBodyItems) SetDealDisplayName(v string) *DescribeEventsResponseBodyItems {
+	s.DealDisplayName = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetDealLoginName(v string) *DescribeEventsResponseBodyItems {
+	s.DealLoginName = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetDealTime(v int64) *DescribeEventsResponseBodyItems {
+	s.DealTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetDealUserId(v int64) *DescribeEventsResponseBodyItems {
+	s.DealUserId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetDisplayName(v string) *DescribeEventsResponseBodyItems {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *DescribeEventsResponseBodyItems) SetEventTime(v int64) *DescribeEventsResponseBodyItems {
 	s.EventTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetId(v int64) *DescribeEventsResponseBodyItems {
+	s.Id = &v
 	return s
 }
 
@@ -3346,8 +3522,28 @@ func (s *DescribeEventsResponseBodyItems) SetLoginName(v string) *DescribeEvents
 	return s
 }
 
+func (s *DescribeEventsResponseBodyItems) SetProductCode(v string) *DescribeEventsResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetStatus(v int32) *DescribeEventsResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetStatusName(v string) *DescribeEventsResponseBodyItems {
+	s.StatusName = &v
+	return s
+}
+
 func (s *DescribeEventsResponseBodyItems) SetSubTypeCode(v string) *DescribeEventsResponseBodyItems {
 	s.SubTypeCode = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyItems) SetSubTypeName(v string) *DescribeEventsResponseBodyItems {
+	s.SubTypeName = &v
 	return s
 }
 
@@ -3361,33 +3557,18 @@ func (s *DescribeEventsResponseBodyItems) SetTypeCode(v string) *DescribeEventsR
 	return s
 }
 
-func (s *DescribeEventsResponseBodyItems) SetAlertTime(v int64) *DescribeEventsResponseBodyItems {
-	s.AlertTime = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetDealUserId(v int64) *DescribeEventsResponseBodyItems {
-	s.DealUserId = &v
-	return s
-}
-
 func (s *DescribeEventsResponseBodyItems) SetTypeName(v string) *DescribeEventsResponseBodyItems {
 	s.TypeName = &v
 	return s
 }
 
-func (s *DescribeEventsResponseBodyItems) SetDealDisplayName(v string) *DescribeEventsResponseBodyItems {
-	s.DealDisplayName = &v
+func (s *DescribeEventsResponseBodyItems) SetUserId(v int64) *DescribeEventsResponseBodyItems {
+	s.UserId = &v
 	return s
 }
 
-func (s *DescribeEventsResponseBodyItems) SetId(v int64) *DescribeEventsResponseBodyItems {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeEventsResponseBodyItems) SetProductCode(v string) *DescribeEventsResponseBodyItems {
-	s.ProductCode = &v
+func (s *DescribeEventsResponseBodyItems) SetWarnLevel(v int32) *DescribeEventsResponseBodyItems {
+	s.WarnLevel = &v
 	return s
 }
 
@@ -3509,27 +3690,27 @@ func (s *DescribeInstanceSourcesResponseBody) SetTotalCount(v int32) *DescribeIn
 }
 
 type DescribeInstanceSourcesResponseBodyItems struct {
-	LastModifyUserId    *string `json:"LastModifyUserId,omitempty" xml:"LastModifyUserId,omitempty"`
-	PasswordStatus      *int32  `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DbName              *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	LastModifyTime      *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	RegionName          *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	CanModifyUserName   *bool   `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
-	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
-	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
-	ProductId           *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	InstanceSize        *int64  `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	AuditStatus         *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	CanModifyUserName   *bool   `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
+	DbName              *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSize        *int64  `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
+	LastModifyTime      *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	LastModifyUserId    *string `json:"LastModifyUserId,omitempty" xml:"LastModifyUserId,omitempty"`
+	LogStoreDay         *int32  `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	PasswordStatus      *int32  `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
+	ProductId           *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName          *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeInstanceSourcesResponseBodyItems) String() string {
@@ -3540,68 +3721,8 @@ func (s DescribeInstanceSourcesResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetLastModifyUserId(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.LastModifyUserId = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetPasswordStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
-	s.PasswordStatus = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetEngineType(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.EngineType = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetTenantName(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.TenantName = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceId(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceDescription(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionId(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetDbName(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.DbName = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetLastModifyTime(v int64) *DescribeInstanceSourcesResponseBodyItems {
-	s.LastModifyTime = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionName(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.RegionName = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetCanModifyUserName(v bool) *DescribeInstanceSourcesResponseBodyItems {
-	s.CanModifyUserName = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetLogStoreDay(v int32) *DescribeInstanceSourcesResponseBodyItems {
-	s.LogStoreDay = &v
-	return s
-}
-
-func (s *DescribeInstanceSourcesResponseBodyItems) SetGmtCreate(v int64) *DescribeInstanceSourcesResponseBodyItems {
-	s.GmtCreate = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetAuditStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.AuditStatus = &v
 	return s
 }
 
@@ -3610,23 +3731,28 @@ func (s *DescribeInstanceSourcesResponseBodyItems) SetAutoScan(v int32) *Describ
 	return s
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetProductId(v int64) *DescribeInstanceSourcesResponseBodyItems {
-	s.ProductId = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetCanModifyUserName(v bool) *DescribeInstanceSourcesResponseBodyItems {
+	s.CanModifyUserName = &v
 	return s
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceSize(v int64) *DescribeInstanceSourcesResponseBodyItems {
-	s.InstanceSize = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetDbName(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.DbName = &v
 	return s
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetUserName(v string) *DescribeInstanceSourcesResponseBodyItems {
-	s.UserName = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetEnable(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.Enable = &v
 	return s
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetAuditStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
-	s.AuditStatus = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetEngineType(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetGmtCreate(v int64) *DescribeInstanceSourcesResponseBodyItems {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -3635,13 +3761,68 @@ func (s *DescribeInstanceSourcesResponseBodyItems) SetId(v int64) *DescribeInsta
 	return s
 }
 
+func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceDescription(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceId(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetInstanceSize(v int64) *DescribeInstanceSourcesResponseBodyItems {
+	s.InstanceSize = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetLastModifyTime(v int64) *DescribeInstanceSourcesResponseBodyItems {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetLastModifyUserId(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.LastModifyUserId = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetLogStoreDay(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.LogStoreDay = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetPasswordStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.PasswordStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetProductId(v int64) *DescribeInstanceSourcesResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionId(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionName(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.RegionName = &v
+	return s
+}
+
 func (s *DescribeInstanceSourcesResponseBodyItems) SetTenantId(v string) *DescribeInstanceSourcesResponseBodyItems {
 	s.TenantId = &v
 	return s
 }
 
-func (s *DescribeInstanceSourcesResponseBodyItems) SetEnable(v int32) *DescribeInstanceSourcesResponseBodyItems {
-	s.Enable = &v
+func (s *DescribeInstanceSourcesResponseBodyItems) SetTenantName(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetUserName(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.UserName = &v
 	return s
 }
 
@@ -3782,25 +3963,24 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 
 type DescribeInstancesResponseBodyItems struct {
 	CreationTime        *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Acl                 *string `json:"Acl,omitempty" xml:"Acl,omitempty"`
-	LastFinishTime      *int64  `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
-	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	Protection          *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
 	DepartName          *string `json:"DepartName,omitempty" xml:"DepartName,omitempty"`
-	Labelsec            *bool   `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
-	RiskLevelId         *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	ProductId           *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	Labelsec            *bool   `json:"Labelsec,omitempty" xml:"Labelsec,omitempty"`
+	LastFinishTime      *int64  `json:"LastFinishTime,omitempty" xml:"LastFinishTime,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OdpsRiskLevelName   *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId           *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Protection          *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	RiskLevelId         *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName       *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	Sensitive           *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	RiskLevelName       *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	OdpsRiskLevelName   *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
 	SensitiveCount      *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TotalCount          *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyItems) String() string {
@@ -3816,33 +3996,18 @@ func (s *DescribeInstancesResponseBodyItems) SetCreationTime(v int64) *DescribeI
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetAcl(v string) *DescribeInstancesResponseBodyItems {
-	s.Acl = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetLastFinishTime(v int64) *DescribeInstancesResponseBodyItems {
-	s.LastFinishTime = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetOwner(v string) *DescribeInstancesResponseBodyItems {
-	s.Owner = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetTenantName(v string) *DescribeInstancesResponseBodyItems {
-	s.TenantName = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetProtection(v bool) *DescribeInstancesResponseBodyItems {
-	s.Protection = &v
-	return s
-}
-
 func (s *DescribeInstancesResponseBodyItems) SetDepartName(v string) *DescribeInstancesResponseBodyItems {
 	s.DepartName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetId(v int64) *DescribeInstancesResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetInstanceDescription(v string) *DescribeInstancesResponseBodyItems {
+	s.InstanceDescription = &v
 	return s
 }
 
@@ -3851,13 +4016,8 @@ func (s *DescribeInstancesResponseBodyItems) SetLabelsec(v bool) *DescribeInstan
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetRiskLevelId(v int64) *DescribeInstancesResponseBodyItems {
-	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetProductId(v string) *DescribeInstancesResponseBodyItems {
-	s.ProductId = &v
+func (s *DescribeInstancesResponseBodyItems) SetLastFinishTime(v int64) *DescribeInstancesResponseBodyItems {
+	s.LastFinishTime = &v
 	return s
 }
 
@@ -3866,13 +4026,38 @@ func (s *DescribeInstancesResponseBodyItems) SetName(v string) *DescribeInstance
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetTotalCount(v int32) *DescribeInstancesResponseBodyItems {
-	s.TotalCount = &v
+func (s *DescribeInstancesResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeInstancesResponseBodyItems {
+	s.OdpsRiskLevelName = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetInstanceDescription(v string) *DescribeInstancesResponseBodyItems {
-	s.InstanceDescription = &v
+func (s *DescribeInstancesResponseBodyItems) SetOwner(v string) *DescribeInstancesResponseBodyItems {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetProductCode(v string) *DescribeInstancesResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetProductId(v string) *DescribeInstancesResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetProtection(v bool) *DescribeInstancesResponseBodyItems {
+	s.Protection = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetRiskLevelId(v int64) *DescribeInstancesResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyItems) SetRiskLevelName(v string) *DescribeInstancesResponseBodyItems {
+	s.RiskLevelName = &v
 	return s
 }
 
@@ -3886,28 +4071,18 @@ func (s *DescribeInstancesResponseBodyItems) SetSensitive(v bool) *DescribeInsta
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetRiskLevelName(v string) *DescribeInstancesResponseBodyItems {
-	s.RiskLevelName = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyItems) SetOdpsRiskLevelName(v string) *DescribeInstancesResponseBodyItems {
-	s.OdpsRiskLevelName = &v
-	return s
-}
-
 func (s *DescribeInstancesResponseBodyItems) SetSensitiveCount(v int32) *DescribeInstancesResponseBodyItems {
 	s.SensitiveCount = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetId(v int64) *DescribeInstancesResponseBodyItems {
-	s.Id = &v
+func (s *DescribeInstancesResponseBodyItems) SetTenantName(v string) *DescribeInstancesResponseBodyItems {
+	s.TenantName = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyItems) SetProductCode(v string) *DescribeInstancesResponseBodyItems {
-	s.ProductCode = &v
+func (s *DescribeInstancesResponseBodyItems) SetTotalCount(v int32) *DescribeInstancesResponseBodyItems {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4028,10 +4203,10 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetail) SetRuleList(v []*De
 }
 
 type DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList struct {
-	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	CategoryName  *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	Count         *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	RiskLevelId   *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -4043,13 +4218,13 @@ func (s DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) GoString() s
 	return s.String()
 }
 
-func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRiskLevelName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
-	s.RiskLevelName = &v
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetCategoryName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
+	s.CategoryName = &v
 	return s
 }
 
-func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetCategoryName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
-	s.CategoryName = &v
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetCount(v int64) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
+	s.Count = &v
 	return s
 }
 
@@ -4058,8 +4233,8 @@ func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRiskLeve
 	return s
 }
 
-func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetCount(v int64) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
-	s.Count = &v
+func (s *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList) SetRiskLevelName(v string) *DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList {
+	s.RiskLevelName = &v
 	return s
 }
 
@@ -4204,20 +4379,20 @@ func (s *DescribeOssObjectsResponseBody) SetTotalCount(v int32) *DescribeOssObje
 }
 
 type DescribeOssObjectsResponseBodyItems struct {
-	InstanceId     *int64                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CategoryName   *string                                        `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	RiskLevelId    *int64                                         `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	FileId         *string                                        `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Size           *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
 	BucketName     *string                                        `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	RiskLevelName  *string                                        `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
 	Category       *int64                                         `json:"Category,omitempty" xml:"Category,omitempty"`
-	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleCount      *int32                                         `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	SensitiveCount *int32                                         `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	CategoryName   *string                                        `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	FileId         *string                                        `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Id             *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId     *int64                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RiskLevelId    *int64                                         `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName  *string                                        `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleCount      *int32                                         `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 	RuleList       []*DescribeOssObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	SensitiveCount *int32                                         `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	Size           *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBodyItems) String() string {
@@ -4228,43 +4403,8 @@ func (s DescribeOssObjectsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOssObjectsResponseBodyItems) SetInstanceId(v int64) *DescribeOssObjectsResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetCategoryName(v string) *DescribeOssObjectsResponseBodyItems {
-	s.CategoryName = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetRiskLevelId(v int64) *DescribeOssObjectsResponseBodyItems {
-	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetRegionId(v string) *DescribeOssObjectsResponseBodyItems {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetFileId(v string) *DescribeOssObjectsResponseBodyItems {
-	s.FileId = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetSize(v int64) *DescribeOssObjectsResponseBodyItems {
-	s.Size = &v
-	return s
-}
-
 func (s *DescribeOssObjectsResponseBodyItems) SetBucketName(v string) *DescribeOssObjectsResponseBodyItems {
 	s.BucketName = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetRiskLevelName(v string) *DescribeOssObjectsResponseBodyItems {
-	s.RiskLevelName = &v
 	return s
 }
 
@@ -4273,18 +4413,13 @@ func (s *DescribeOssObjectsResponseBodyItems) SetCategory(v int64) *DescribeOssO
 	return s
 }
 
-func (s *DescribeOssObjectsResponseBodyItems) SetName(v string) *DescribeOssObjectsResponseBodyItems {
-	s.Name = &v
+func (s *DescribeOssObjectsResponseBodyItems) SetCategoryName(v string) *DescribeOssObjectsResponseBodyItems {
+	s.CategoryName = &v
 	return s
 }
 
-func (s *DescribeOssObjectsResponseBodyItems) SetRuleCount(v int32) *DescribeOssObjectsResponseBodyItems {
-	s.RuleCount = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItems) SetSensitiveCount(v int32) *DescribeOssObjectsResponseBodyItems {
-	s.SensitiveCount = &v
+func (s *DescribeOssObjectsResponseBodyItems) SetFileId(v string) *DescribeOssObjectsResponseBodyItems {
+	s.FileId = &v
 	return s
 }
 
@@ -4293,15 +4428,55 @@ func (s *DescribeOssObjectsResponseBodyItems) SetId(v string) *DescribeOssObject
 	return s
 }
 
+func (s *DescribeOssObjectsResponseBodyItems) SetInstanceId(v int64) *DescribeOssObjectsResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetName(v string) *DescribeOssObjectsResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetRegionId(v string) *DescribeOssObjectsResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetRiskLevelId(v int64) *DescribeOssObjectsResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetRiskLevelName(v string) *DescribeOssObjectsResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetRuleCount(v int32) *DescribeOssObjectsResponseBodyItems {
+	s.RuleCount = &v
+	return s
+}
+
 func (s *DescribeOssObjectsResponseBodyItems) SetRuleList(v []*DescribeOssObjectsResponseBodyItemsRuleList) *DescribeOssObjectsResponseBodyItems {
 	s.RuleList = v
 	return s
 }
 
+func (s *DescribeOssObjectsResponseBodyItems) SetSensitiveCount(v int32) *DescribeOssObjectsResponseBodyItems {
+	s.SensitiveCount = &v
+	return s
+}
+
+func (s *DescribeOssObjectsResponseBodyItems) SetSize(v int64) *DescribeOssObjectsResponseBodyItems {
+	s.Size = &v
+	return s
+}
+
 type DescribeOssObjectsResponseBodyItemsRuleList struct {
+	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeOssObjectsResponseBodyItemsRuleList) String() string {
@@ -4312,6 +4487,11 @@ func (s DescribeOssObjectsResponseBodyItemsRuleList) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeOssObjectsResponseBodyItemsRuleList) SetCount(v int64) *DescribeOssObjectsResponseBodyItemsRuleList {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeOssObjectsResponseBodyItemsRuleList) SetName(v string) *DescribeOssObjectsResponseBodyItemsRuleList {
 	s.Name = &v
 	return s
@@ -4319,11 +4499,6 @@ func (s *DescribeOssObjectsResponseBodyItemsRuleList) SetName(v string) *Describ
 
 func (s *DescribeOssObjectsResponseBodyItemsRuleList) SetRiskLevelId(v int64) *DescribeOssObjectsResponseBodyItemsRuleList {
 	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeOssObjectsResponseBodyItemsRuleList) SetCount(v int64) *DescribeOssObjectsResponseBodyItemsRuleList {
-	s.Count = &v
 	return s
 }
 
@@ -4452,15 +4627,15 @@ func (s *DescribePackagesResponseBody) SetTotalCount(v int32) *DescribePackagesR
 
 type DescribePackagesResponseBodyItems struct {
 	CreationTime   *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Sensitive      *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	Owner          *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RiskLevelName  *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TotalCount     *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SensitiveCount *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	RiskLevelId    *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner          *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RiskLevelId    *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName  *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	Sensitive      *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	SensitiveCount *int32  `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
+	TotalCount     *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePackagesResponseBodyItems) String() string {
@@ -4476,18 +4651,8 @@ func (s *DescribePackagesResponseBodyItems) SetCreationTime(v int64) *DescribePa
 	return s
 }
 
-func (s *DescribePackagesResponseBodyItems) SetSensitive(v bool) *DescribePackagesResponseBodyItems {
-	s.Sensitive = &v
-	return s
-}
-
-func (s *DescribePackagesResponseBodyItems) SetOwner(v string) *DescribePackagesResponseBodyItems {
-	s.Owner = &v
-	return s
-}
-
-func (s *DescribePackagesResponseBodyItems) SetRiskLevelName(v string) *DescribePackagesResponseBodyItems {
-	s.RiskLevelName = &v
+func (s *DescribePackagesResponseBodyItems) SetId(v int64) *DescribePackagesResponseBodyItems {
+	s.Id = &v
 	return s
 }
 
@@ -4496,18 +4661,13 @@ func (s *DescribePackagesResponseBodyItems) SetInstanceId(v int64) *DescribePack
 	return s
 }
 
-func (s *DescribePackagesResponseBodyItems) SetTotalCount(v int32) *DescribePackagesResponseBodyItems {
-	s.TotalCount = &v
-	return s
-}
-
 func (s *DescribePackagesResponseBodyItems) SetName(v string) *DescribePackagesResponseBodyItems {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribePackagesResponseBodyItems) SetSensitiveCount(v int32) *DescribePackagesResponseBodyItems {
-	s.SensitiveCount = &v
+func (s *DescribePackagesResponseBodyItems) SetOwner(v string) *DescribePackagesResponseBodyItems {
+	s.Owner = &v
 	return s
 }
 
@@ -4516,8 +4676,23 @@ func (s *DescribePackagesResponseBodyItems) SetRiskLevelId(v int64) *DescribePac
 	return s
 }
 
-func (s *DescribePackagesResponseBodyItems) SetId(v int64) *DescribePackagesResponseBodyItems {
-	s.Id = &v
+func (s *DescribePackagesResponseBodyItems) SetRiskLevelName(v string) *DescribePackagesResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribePackagesResponseBodyItems) SetSensitive(v bool) *DescribePackagesResponseBodyItems {
+	s.Sensitive = &v
+	return s
+}
+
+func (s *DescribePackagesResponseBodyItems) SetSensitiveCount(v int32) *DescribePackagesResponseBodyItems {
+	s.SensitiveCount = &v
+	return s
+}
+
+func (s *DescribePackagesResponseBodyItems) SetTotalCount(v int32) *DescribePackagesResponseBodyItems {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4585,9 +4760,9 @@ func (s *DescribeRiskLevelsResponseBody) SetRiskLevelList(v []*DescribeRiskLevel
 }
 
 type DescribeRiskLevelsResponseBodyRiskLevelList struct {
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ReferenceNum *int32  `json:"ReferenceNum,omitempty" xml:"ReferenceNum,omitempty"`
 }
 
@@ -4599,11 +4774,6 @@ func (s DescribeRiskLevelsResponseBodyRiskLevelList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRiskLevelsResponseBodyRiskLevelList) SetName(v string) *DescribeRiskLevelsResponseBodyRiskLevelList {
-	s.Name = &v
-	return s
-}
-
 func (s *DescribeRiskLevelsResponseBodyRiskLevelList) SetDescription(v string) *DescribeRiskLevelsResponseBodyRiskLevelList {
 	s.Description = &v
 	return s
@@ -4611,6 +4781,11 @@ func (s *DescribeRiskLevelsResponseBodyRiskLevelList) SetDescription(v string) *
 
 func (s *DescribeRiskLevelsResponseBodyRiskLevelList) SetId(v int64) *DescribeRiskLevelsResponseBodyRiskLevelList {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeRiskLevelsResponseBodyRiskLevelList) SetName(v string) *DescribeRiskLevelsResponseBodyRiskLevelList {
+	s.Name = &v
 	return s
 }
 
@@ -4785,30 +4960,30 @@ func (s *DescribeRulesResponseBody) SetTotalCount(v int32) *DescribeRulesRespons
 }
 
 type DescribeRulesResponseBodyItems struct {
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WarnLevel       *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
-	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	StatExpress     *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
-	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	LoginName       *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	CategoryName    *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	ContentCategory *string `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
-	HitTotalCount   *int32  `json:"HitTotalCount,omitempty" xml:"HitTotalCount,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	CustomType      *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	RiskLevelName   *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	GmtCreate       *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Category        *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	MajorKey        *string `json:"MajorKey,omitempty" xml:"MajorKey,omitempty"`
+	CategoryName    *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentCategory *string `json:"ContentCategory,omitempty" xml:"ContentCategory,omitempty"`
+	CustomType      *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	GmtCreate       *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HitTotalCount   *int32  `json:"HitTotalCount,omitempty" xml:"HitTotalCount,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LoginName       *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	MajorKey        *string `json:"MajorKey,omitempty" xml:"MajorKey,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RiskLevelId     *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName   *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	StatExpress     *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WarnLevel       *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
 func (s DescribeRulesResponseBodyItems) String() string {
@@ -4819,68 +4994,8 @@ func (s DescribeRulesResponseBodyItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRulesResponseBodyItems) SetDisplayName(v string) *DescribeRulesResponseBodyItems {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetStatus(v int32) *DescribeRulesResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetWarnLevel(v int32) *DescribeRulesResponseBodyItems {
-	s.WarnLevel = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetUserId(v int64) *DescribeRulesResponseBodyItems {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetStatExpress(v string) *DescribeRulesResponseBodyItems {
-	s.StatExpress = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetGmtModified(v int64) *DescribeRulesResponseBodyItems {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetRiskLevelId(v int64) *DescribeRulesResponseBodyItems {
-	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetDescription(v string) *DescribeRulesResponseBodyItems {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetProductId(v int64) *DescribeRulesResponseBodyItems {
-	s.ProductId = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetName(v string) *DescribeRulesResponseBodyItems {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetContent(v string) *DescribeRulesResponseBodyItems {
-	s.Content = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetTarget(v string) *DescribeRulesResponseBodyItems {
-	s.Target = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetLoginName(v string) *DescribeRulesResponseBodyItems {
-	s.LoginName = &v
+func (s *DescribeRulesResponseBodyItems) SetCategory(v int32) *DescribeRulesResponseBodyItems {
+	s.Category = &v
 	return s
 }
 
@@ -4889,18 +5004,13 @@ func (s *DescribeRulesResponseBodyItems) SetCategoryName(v string) *DescribeRule
 	return s
 }
 
+func (s *DescribeRulesResponseBodyItems) SetContent(v string) *DescribeRulesResponseBodyItems {
+	s.Content = &v
+	return s
+}
+
 func (s *DescribeRulesResponseBodyItems) SetContentCategory(v string) *DescribeRulesResponseBodyItems {
 	s.ContentCategory = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetHitTotalCount(v int32) *DescribeRulesResponseBodyItems {
-	s.HitTotalCount = &v
-	return s
-}
-
-func (s *DescribeRulesResponseBodyItems) SetGroupId(v string) *DescribeRulesResponseBodyItems {
-	s.GroupId = &v
 	return s
 }
 
@@ -4909,8 +5019,13 @@ func (s *DescribeRulesResponseBodyItems) SetCustomType(v int32) *DescribeRulesRe
 	return s
 }
 
-func (s *DescribeRulesResponseBodyItems) SetRiskLevelName(v string) *DescribeRulesResponseBodyItems {
-	s.RiskLevelName = &v
+func (s *DescribeRulesResponseBodyItems) SetDescription(v string) *DescribeRulesResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetDisplayName(v string) *DescribeRulesResponseBodyItems {
+	s.DisplayName = &v
 	return s
 }
 
@@ -4919,13 +5034,18 @@ func (s *DescribeRulesResponseBodyItems) SetGmtCreate(v int64) *DescribeRulesRes
 	return s
 }
 
-func (s *DescribeRulesResponseBodyItems) SetCategory(v int32) *DescribeRulesResponseBodyItems {
-	s.Category = &v
+func (s *DescribeRulesResponseBodyItems) SetGmtModified(v int64) *DescribeRulesResponseBodyItems {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *DescribeRulesResponseBodyItems) SetMajorKey(v string) *DescribeRulesResponseBodyItems {
-	s.MajorKey = &v
+func (s *DescribeRulesResponseBodyItems) SetGroupId(v string) *DescribeRulesResponseBodyItems {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetHitTotalCount(v int32) *DescribeRulesResponseBodyItems {
+	s.HitTotalCount = &v
 	return s
 }
 
@@ -4934,8 +5054,63 @@ func (s *DescribeRulesResponseBodyItems) SetId(v int64) *DescribeRulesResponseBo
 	return s
 }
 
+func (s *DescribeRulesResponseBodyItems) SetLoginName(v string) *DescribeRulesResponseBodyItems {
+	s.LoginName = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetMajorKey(v string) *DescribeRulesResponseBodyItems {
+	s.MajorKey = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetName(v string) *DescribeRulesResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeRulesResponseBodyItems) SetProductCode(v string) *DescribeRulesResponseBodyItems {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetProductId(v int64) *DescribeRulesResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetRiskLevelId(v int64) *DescribeRulesResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetRiskLevelName(v string) *DescribeRulesResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetStatExpress(v string) *DescribeRulesResponseBodyItems {
+	s.StatExpress = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetStatus(v int32) *DescribeRulesResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetTarget(v string) *DescribeRulesResponseBodyItems {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetUserId(v int64) *DescribeRulesResponseBodyItems {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyItems) SetWarnLevel(v int32) *DescribeRulesResponseBodyItems {
+	s.WarnLevel = &v
 	return s
 }
 
@@ -5082,22 +5257,22 @@ func (s *DescribeTablesResponseBody) SetTotalCount(v int32) *DescribeTablesRespo
 
 type DescribeTablesResponseBodyItems struct {
 	CreationTime        *int64                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Id                  *int64                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceDescription *string                                    `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	InstanceId          *int64                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName        *string                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Name                *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	Owner               *string                                    `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProductCode         *string                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductId           *string                                    `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RiskLevelId         *int64                                     `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	RiskLevelName       *string                                    `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	RuleList            []*DescribeTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	Sensitive           *bool                                      `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	SensitiveCount      *int32                                     `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
 	SensitiveRatio      *string                                    `json:"SensitiveRatio,omitempty" xml:"SensitiveRatio,omitempty"`
 	TenantName          *string                                    `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	RiskLevelId         *int64                                     `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	InstanceName        *string                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ProductId           *string                                    `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Name                *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	InstanceId          *int64                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TotalCount          *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	InstanceDescription *string                                    `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	Sensitive           *bool                                      `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	RiskLevelName       *string                                    `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
-	SensitiveCount      *int32                                     `json:"SensitiveCount,omitempty" xml:"SensitiveCount,omitempty"`
-	Id                  *int64                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	ProductCode         *string                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RuleList            []*DescribeTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTablesResponseBodyItems) String() string {
@@ -5113,8 +5288,68 @@ func (s *DescribeTablesResponseBodyItems) SetCreationTime(v int64) *DescribeTabl
 	return s
 }
 
+func (s *DescribeTablesResponseBodyItems) SetId(v int64) *DescribeTablesResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetInstanceDescription(v string) *DescribeTablesResponseBodyItems {
+	s.InstanceDescription = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetInstanceId(v int64) *DescribeTablesResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetInstanceName(v string) *DescribeTablesResponseBodyItems {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetName(v string) *DescribeTablesResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeTablesResponseBodyItems) SetOwner(v string) *DescribeTablesResponseBodyItems {
 	s.Owner = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetProductCode(v string) *DescribeTablesResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetProductId(v string) *DescribeTablesResponseBodyItems {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetRiskLevelId(v int64) *DescribeTablesResponseBodyItems {
+	s.RiskLevelId = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetRiskLevelName(v string) *DescribeTablesResponseBodyItems {
+	s.RiskLevelName = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetRuleList(v []*DescribeTablesResponseBodyItemsRuleList) *DescribeTablesResponseBodyItems {
+	s.RuleList = v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetSensitive(v bool) *DescribeTablesResponseBodyItems {
+	s.Sensitive = &v
+	return s
+}
+
+func (s *DescribeTablesResponseBodyItems) SetSensitiveCount(v int32) *DescribeTablesResponseBodyItems {
+	s.SensitiveCount = &v
 	return s
 }
 
@@ -5128,75 +5363,15 @@ func (s *DescribeTablesResponseBodyItems) SetTenantName(v string) *DescribeTable
 	return s
 }
 
-func (s *DescribeTablesResponseBodyItems) SetRiskLevelId(v int64) *DescribeTablesResponseBodyItems {
-	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetInstanceName(v string) *DescribeTablesResponseBodyItems {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetProductId(v string) *DescribeTablesResponseBodyItems {
-	s.ProductId = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetName(v string) *DescribeTablesResponseBodyItems {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetInstanceId(v int64) *DescribeTablesResponseBodyItems {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeTablesResponseBodyItems) SetTotalCount(v int32) *DescribeTablesResponseBodyItems {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *DescribeTablesResponseBodyItems) SetInstanceDescription(v string) *DescribeTablesResponseBodyItems {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetSensitive(v bool) *DescribeTablesResponseBodyItems {
-	s.Sensitive = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetRiskLevelName(v string) *DescribeTablesResponseBodyItems {
-	s.RiskLevelName = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetSensitiveCount(v int32) *DescribeTablesResponseBodyItems {
-	s.SensitiveCount = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetId(v int64) *DescribeTablesResponseBodyItems {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetProductCode(v string) *DescribeTablesResponseBodyItems {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItems) SetRuleList(v []*DescribeTablesResponseBodyItemsRuleList) *DescribeTablesResponseBodyItems {
-	s.RuleList = v
-	return s
-}
-
 type DescribeTablesResponseBodyItemsRuleList struct {
+	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeTablesResponseBodyItemsRuleList) String() string {
@@ -5207,6 +5382,11 @@ func (s DescribeTablesResponseBodyItemsRuleList) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTablesResponseBodyItemsRuleList) SetCount(v int64) *DescribeTablesResponseBodyItemsRuleList {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeTablesResponseBodyItemsRuleList) SetName(v string) *DescribeTablesResponseBodyItemsRuleList {
 	s.Name = &v
 	return s
@@ -5214,11 +5394,6 @@ func (s *DescribeTablesResponseBodyItemsRuleList) SetName(v string) *DescribeTab
 
 func (s *DescribeTablesResponseBodyItemsRuleList) SetRiskLevelId(v int64) *DescribeTablesResponseBodyItemsRuleList {
 	s.RiskLevelId = &v
-	return s
-}
-
-func (s *DescribeTablesResponseBodyItemsRuleList) SetCount(v int64) *DescribeTablesResponseBodyItemsRuleList {
-	s.Count = &v
 	return s
 }
 
@@ -5997,7 +6172,6 @@ func (s *ModifyEventTypeStatusResponse) SetBody(v *ModifyEventTypeStatusResponse
 type ModifyRuleRequest struct {
 	Category    *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CustomType  *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6005,7 +6179,6 @@ type ModifyRuleRequest struct {
 	ProductId   *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
 	WarnLevel   *int32  `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 }
 
@@ -6024,11 +6197,6 @@ func (s *ModifyRuleRequest) SetCategory(v int32) *ModifyRuleRequest {
 
 func (s *ModifyRuleRequest) SetContent(v string) *ModifyRuleRequest {
 	s.Content = &v
-	return s
-}
-
-func (s *ModifyRuleRequest) SetCustomType(v int32) *ModifyRuleRequest {
-	s.CustomType = &v
 	return s
 }
 
@@ -6064,11 +6232,6 @@ func (s *ModifyRuleRequest) SetRiskLevelId(v int64) *ModifyRuleRequest {
 
 func (s *ModifyRuleRequest) SetRuleType(v int32) *ModifyRuleRequest {
 	s.RuleType = &v
-	return s
-}
-
-func (s *ModifyRuleRequest) SetStatExpress(v string) *ModifyRuleRequest {
-	s.StatExpress = &v
 	return s
 }
 
@@ -6316,28 +6479,11 @@ func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Code"] = request.Code
-	query["Description"] = request.Description
-	query["Lang"] = request.Lang
-	query["Value"] = request.Value
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateConfig"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateConfig"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6361,37 +6507,11 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AuditStatus"] = request.AuditStatus
-	query["AutoScan"] = request.AutoScan
-	query["EngineType"] = request.EngineType
-	query["EventStatus"] = request.EventStatus
-	query["Lang"] = request.Lang
-	query["LogStoreDay"] = request.LogStoreDay
-	query["OcrStatus"] = request.OcrStatus
-	query["ParentId"] = request.ParentId
-	query["Password"] = request.Password
-	query["Port"] = request.Port
-	query["ResourceType"] = request.ResourceType
-	query["ServiceRegionId"] = request.ServiceRegionId
-	query["UserName"] = request.UserName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDataLimit"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateDataLimit"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6415,38 +6535,11 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["Content"] = request.Content
-	query["ContentCategory"] = request.ContentCategory
-	query["Description"] = request.Description
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["ProductCode"] = request.ProductCode
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleType"] = request.RuleType
-	query["StatExpress"] = request.StatExpress
-	query["Status"] = request.Status
-	query["Target"] = request.Target
-	query["WarnLevel"] = request.WarnLevel
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRule"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateRule"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6470,34 +6563,11 @@ func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DataLimitId"] = request.DataLimitId
-	query["IntervalDay"] = request.IntervalDay
-	query["OssScanPath"] = request.OssScanPath
-	query["ResourceType"] = request.ResourceType
-	query["RunHour"] = request.RunHour
-	query["RunMinute"] = request.RunMinute
-	query["ScanRange"] = request.ScanRange
-	query["ScanRangeContent"] = request.ScanRangeContent
-	query["TaskName"] = request.TaskName
-	query["TaskUserName"] = request.TaskUserName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateScanTask"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateScanTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateScanTask"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6521,26 +6591,11 @@ func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteDataLimit"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteDataLimit"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6564,26 +6619,11 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteRule"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteRule"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6602,42 +6642,44 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 	return _result, _err
 }
 
+func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *DescribeCategoryTemplateRuleListRequest, runtime *util.RuntimeOptions) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeCategoryTemplateRuleListResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeCategoryTemplateRuleList"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategoryTemplateRuleListRequest) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCategoryTemplateRuleListResponse{}
+	_body, _err := client.DescribeCategoryTemplateRuleListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest, runtime *util.RuntimeOptions) (_result *DescribeColumnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["InstanceId"] = request.InstanceId
-	query["InstanceName"] = request.InstanceName
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleId"] = request.RuleId
-	query["RuleName"] = request.RuleName
-	query["SensLevelName"] = request.SensLevelName
-	query["TableId"] = request.TableId
-	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeColumns"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeColumnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeColumns"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6661,25 +6703,11 @@ func (client *Client) DescribeConfigsWithOptions(request *DescribeConfigsRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeConfigs"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeConfigs"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6703,31 +6731,11 @@ func (client *Client) DescribeDataAssetsWithOptions(request *DescribeDataAssetsR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["RangeId"] = request.RangeId
-	query["RiskLevels"] = request.RiskLevels
-	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataAssets"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataAssets"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6751,27 +6759,11 @@ func (client *Client) DescribeDataLimitDetailWithOptions(request *DescribeDataLi
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
-	query["NetworkType"] = request.NetworkType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataLimitDetail"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataLimitDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataLimitDetail"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6795,27 +6787,11 @@ func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimit
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
-	query["ParentId"] = request.ParentId
-	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataLimitSet"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataLimitSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataLimitSet"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6839,37 +6815,11 @@ func (client *Client) DescribeDataLimitsWithOptions(request *DescribeDataLimitsR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AuditStatus"] = request.AuditStatus
-	query["CheckStatus"] = request.CheckStatus
-	query["CurrentPage"] = request.CurrentPage
-	query["DatamaskStatus"] = request.DatamaskStatus
-	query["Enable"] = request.Enable
-	query["EndTime"] = request.EndTime
-	query["EngineType"] = request.EngineType
-	query["Lang"] = request.Lang
-	query["PageSize"] = request.PageSize
-	query["ParentId"] = request.ParentId
-	query["ResourceType"] = request.ResourceType
-	query["ServiceRegionId"] = request.ServiceRegionId
-	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataLimits"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataLimitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataLimits"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6893,35 +6843,11 @@ func (client *Client) DescribeDataMaskingRunHistoryWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DstType"] = request.DstType
-	query["EndTime"] = request.EndTime
-	query["Lang"] = request.Lang
-	query["MainProcessId"] = request.MainProcessId
-	query["PageSize"] = request.PageSize
-	query["SrcTableName"] = request.SrcTableName
-	query["SrcType"] = request.SrcType
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataMaskingRunHistory"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataMaskingRunHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataMaskingRunHistory"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6945,31 +6871,11 @@ func (client *Client) DescribeDataMaskingTasksWithOptions(request *DescribeDataM
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DstType"] = request.DstType
-	query["EndTime"] = request.EndTime
-	query["Lang"] = request.Lang
-	query["PageSize"] = request.PageSize
-	query["SearchKey"] = request.SearchKey
-	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataMaskingTasks"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeDataMaskingTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDataMaskingTasks"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6993,26 +6899,11 @@ func (client *Client) DescribeEventDetailWithOptions(request *DescribeEventDetai
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeEventDetail"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeEventDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEventDetail"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7036,28 +6927,11 @@ func (client *Client) DescribeEventTypesWithOptions(request *DescribeEventTypesR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
-	query["ParentTypeId"] = request.ParentTypeId
-	query["ResourceId"] = request.ResourceId
-	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeEventTypes"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeEventTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEventTypes"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7081,39 +6955,11 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DealUserId"] = request.DealUserId
-	query["EndTime"] = request.EndTime
-	query["Id"] = request.Id
-	query["InstanceName"] = request.InstanceName
-	query["Lang"] = request.Lang
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["SubTypeCode"] = request.SubTypeCode
-	query["TargetProductCode"] = request.TargetProductCode
-	query["TypeCode"] = request.TypeCode
-	query["UserId"] = request.UserId
-	query["UserName"] = request.UserName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeEvents"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEvents"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7137,31 +6983,11 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["EngineType"] = request.EngineType
-	query["InstanceId"] = request.InstanceId
-	query["Lang"] = request.Lang
-	query["PageSize"] = request.PageSize
-	query["ProductId"] = request.ProductId
-	query["ServiceRegionId"] = request.ServiceRegionId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstanceSources"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeInstanceSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceSources"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7185,34 +7011,11 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["FeatureType"] = request.FeatureType
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleId"] = request.RuleId
-	query["ServiceRegionId"] = request.ServiceRegionId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstances"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeInstances"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7236,26 +7039,11 @@ func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObj
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeOssObjectDetail"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeOssObjectDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeOssObjectDetail"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7279,34 +7067,11 @@ func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["InstanceId"] = request.InstanceId
-	query["Lang"] = request.Lang
-	query["LastScanTimeEnd"] = request.LastScanTimeEnd
-	query["LastScanTimeStart"] = request.LastScanTimeStart
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleId"] = request.RuleId
-	query["ServiceRegionId"] = request.ServiceRegionId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeOssObjects"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeOssObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeOssObjects"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7330,32 +7095,11 @@ func (client *Client) DescribePackagesWithOptions(request *DescribePackagesReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["InstanceId"] = request.InstanceId
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePackages"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribePackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribePackages"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7379,25 +7123,11 @@ func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRiskLevels"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeRiskLevelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskLevels"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7421,39 +7151,11 @@ func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["ContentCategory"] = request.ContentCategory
-	query["CurrentPage"] = request.CurrentPage
-	query["CustomType"] = request.CustomType
-	query["GroupId"] = request.GroupId
-	query["KeywordCompatible"] = request.KeywordCompatible
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleType"] = request.RuleType
-	query["Status"] = request.Status
-	query["WarnLevel"] = request.WarnLevel
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRules"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRules"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7477,35 +7179,11 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["InstanceId"] = request.InstanceId
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["PackageId"] = request.PackageId
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleId"] = request.RuleId
-	query["ServiceRegionId"] = request.ServiceRegionId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeTables"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeTables"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7529,25 +7207,11 @@ func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeUserStatus"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeUserStatus"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7571,26 +7235,11 @@ func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Code"] = request.Code
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DisableUserConfig"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DisableUserConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DisableUserConfig"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7614,26 +7263,11 @@ func (client *Client) ExecDatamaskWithOptions(request *ExecDatamaskRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ExecDatamask"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ExecDatamaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ExecDatamask"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7657,26 +7291,11 @@ func (client *Client) ManualTriggerMaskingProcessWithOptions(request *ManualTrig
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ManualTriggerMaskingProcess"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ManualTriggerMaskingProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ManualTriggerMaskingProcess"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7700,36 +7319,11 @@ func (client *Client) ModifyDataLimitWithOptions(request *ModifyDataLimitRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AuditStatus"] = request.AuditStatus
-	query["AutoScan"] = request.AutoScan
-	query["EngineType"] = request.EngineType
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
-	query["LogStoreDay"] = request.LogStoreDay
-	query["ModifyPassword"] = request.ModifyPassword
-	query["Password"] = request.Password
-	query["Port"] = request.Port
-	query["ResourceType"] = request.ResourceType
-	query["ServiceRegionId"] = request.ServiceRegionId
-	query["UserName"] = request.UserName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDataLimit"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyDataLimit"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7753,27 +7347,11 @@ func (client *Client) ModifyDefaultLevelWithOptions(request *ModifyDefaultLevelR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DefaultId"] = request.DefaultId
-	query["Lang"] = request.Lang
-	query["SensitiveIds"] = request.SensitiveIds
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDefaultLevel"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyDefaultLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyDefaultLevel"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7797,29 +7375,11 @@ func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Backed"] = request.Backed
-	query["DealReason"] = request.DealReason
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
-	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyEventStatus"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyEventStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyEventStatus"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7843,26 +7403,11 @@ func (client *Client) ModifyEventTypeStatusWithOptions(request *ModifyEventTypeS
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
-	query["SubTypeIds"] = request.SubTypeIds
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyEventTypeStatus"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyEventTypeStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyEventTypeStatus"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7886,36 +7431,11 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["Content"] = request.Content
-	query["CustomType"] = request.CustomType
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
-	query["Name"] = request.Name
-	query["ProductCode"] = request.ProductCode
-	query["ProductId"] = request.ProductId
-	query["RiskLevelId"] = request.RiskLevelId
-	query["RuleType"] = request.RuleType
-	query["StatExpress"] = request.StatExpress
-	query["WarnLevel"] = request.WarnLevel
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyRule"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyRule"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7939,28 +7459,11 @@ func (client *Client) ModifyRuleStatusWithOptions(request *ModifyRuleStatusReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Ids"] = request.Ids
-	query["Lang"] = request.Lang
-	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyRuleStatus"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyRuleStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyRuleStatus"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7984,26 +7487,11 @@ func (client *Client) StopMaskingProcessWithOptions(request *StopMaskingProcessR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopMaskingProcess"),
-		Version:     tea.String("2019-01-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &StopMaskingProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("StopMaskingProcess"), tea.String("2019-01-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
