@@ -7419,6 +7419,8 @@ type SendCommentRequest struct {
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 弹幕发送者的用户ID，最大长度不超过32个字节。
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 弹幕消息发送者的昵称。
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s SendCommentRequest) String() string {
@@ -7454,6 +7456,11 @@ func (s *SendCommentRequest) SetSenderId(v string) *SendCommentRequest {
 	return s
 }
 
+func (s *SendCommentRequest) SetSenderNick(v string) *SendCommentRequest {
+	s.SenderNick = &v
+	return s
+}
+
 type SendCommentShrinkRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -7465,6 +7472,8 @@ type SendCommentShrinkRequest struct {
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 弹幕发送者的用户ID，最大长度不超过32个字节。
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// 弹幕消息发送者的昵称。
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 }
 
 func (s SendCommentShrinkRequest) String() string {
@@ -7497,6 +7506,11 @@ func (s *SendCommentShrinkRequest) SetRoomId(v string) *SendCommentShrinkRequest
 
 func (s *SendCommentShrinkRequest) SetSenderId(v string) *SendCommentShrinkRequest {
 	s.SenderId = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetSenderNick(v string) *SendCommentShrinkRequest {
+	s.SenderNick = &v
 	return s
 }
 
