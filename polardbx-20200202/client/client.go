@@ -2425,10 +2425,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetZoneId(v string) 
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port             *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcInstanceId    *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) String() string {
@@ -2444,7 +2445,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetConnecti
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetPort(v int64) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
 	s.Port = &v
 	return s
 }
@@ -2461,6 +2462,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVPCId(v 
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVpcInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
+	s.VpcInstanceId = &v
 	return s
 }
 
