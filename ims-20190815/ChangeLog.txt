@@ -1,3 +1,6 @@
+2021-11-03 Version: v2.0.3
+- Fix the exception when setting verification types.
+
 2021-11-01 Version: v2.0.2
 - For update.
 

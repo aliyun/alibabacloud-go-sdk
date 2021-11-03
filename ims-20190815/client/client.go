@@ -3915,7 +3915,7 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
-	VerificationTypes *string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty"`
+	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
@@ -3926,8 +3926,8 @@ func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreferenc
 	return s.String()
 }
 
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v string) *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
-	s.VerificationTypes = &v
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
+	s.VerificationTypes = v
 	return s
 }
 
@@ -6795,7 +6795,7 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
-	VerificationTypes *string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty"`
+	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
@@ -6806,8 +6806,8 @@ func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreferenc
 	return s.String()
 }
 
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v string) *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
-	s.VerificationTypes = &v
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
+	s.VerificationTypes = v
 	return s
 }
 
