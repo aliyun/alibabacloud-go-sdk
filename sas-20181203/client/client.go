@@ -12139,41 +12139,6 @@ func (s *DescribeInstallCaptchaResponse) SetBody(v *DescribeInstallCaptchaRespon
 	return s
 }
 
-type DescribeInstallCodesRequest struct {
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubAccountName *string `json:"SubAccountName,omitempty" xml:"SubAccountName,omitempty"`
-}
-
-func (s DescribeInstallCodesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstallCodesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstallCodesRequest) SetCurrentPage(v int32) *DescribeInstallCodesRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeInstallCodesRequest) SetPageSize(v int32) *DescribeInstallCodesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeInstallCodesRequest) SetStatus(v int32) *DescribeInstallCodesRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstallCodesRequest) SetSubAccountName(v string) *DescribeInstallCodesRequest {
-	s.SubAccountName = &v
-	return s
-}
-
 type DescribeInstallCodesResponseBody struct {
 	InstallCodes []*DescribeInstallCodesResponseBodyInstallCodes `json:"InstallCodes,omitempty" xml:"InstallCodes,omitempty" type:"Repeated"`
 	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -12204,8 +12169,6 @@ type DescribeInstallCodesResponseBodyInstallCodes struct {
 	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	OnlyImage   *bool   `json:"OnlyImage,omitempty" xml:"OnlyImage,omitempty"`
 	Os          *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Vendor      *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	VendorName  *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 
@@ -12244,16 +12207,6 @@ func (s *DescribeInstallCodesResponseBodyInstallCodes) SetOnlyImage(v bool) *Des
 
 func (s *DescribeInstallCodesResponseBodyInstallCodes) SetOs(v string) *DescribeInstallCodesResponseBodyInstallCodes {
 	s.Os = &v
-	return s
-}
-
-func (s *DescribeInstallCodesResponseBodyInstallCodes) SetTag(v string) *DescribeInstallCodesResponseBodyInstallCodes {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeInstallCodesResponseBodyInstallCodes) SetVendor(v int32) *DescribeInstallCodesResponseBodyInstallCodes {
-	s.Vendor = &v
 	return s
 }
 
@@ -23405,6 +23358,7 @@ type DescribeVulListResponseBodyVulRecords struct {
 	Online            *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
 	OsVersion         *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	PrimaryId         *int64                                                  `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	RegionId          *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Related           *string                                                 `json:"Related,omitempty" xml:"Related,omitempty"`
 	RepairTs          *int64                                                  `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
 	ResultCode        *string                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -23498,6 +23452,11 @@ func (s *DescribeVulListResponseBodyVulRecords) SetPrimaryId(v int64) *DescribeV
 	return s
 }
 
+func (s *DescribeVulListResponseBodyVulRecords) SetRegionId(v string) *DescribeVulListResponseBodyVulRecords {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeVulListResponseBodyVulRecords) SetRelated(v string) *DescribeVulListResponseBodyVulRecords {
 	s.Related = &v
 	return s
@@ -23541,6 +23500,7 @@ func (s *DescribeVulListResponseBodyVulRecords) SetUuid(v string) *DescribeVulLi
 type DescribeVulListResponseBodyVulRecordsExtendContentJson struct {
 	AbsolutePath  *string                                                                `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
 	AliasName     *string                                                                `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Description   *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	Ip            *string                                                                `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	LastTs        *int64                                                                 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	Necessity     *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity       `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
@@ -23568,6 +23528,11 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetAbsolutePath
 
 func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetAliasName(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetDescription(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJson {
+	s.Description = &v
 	return s
 }
 
@@ -24606,6 +24571,129 @@ func (s *ExportRecordResponse) SetHeaders(v map[string]*string) *ExportRecordRes
 }
 
 func (s *ExportRecordResponse) SetBody(v *ExportRecordResponseBody) *ExportRecordResponse {
+	s.Body = v
+	return s
+}
+
+type ExportVulRequest struct {
+	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AttachTypes    *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
+	Dealed         *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Necessity      *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	SearchTags     *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuids          *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+}
+
+func (s ExportVulRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportVulRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportVulRequest) SetAliasName(v string) *ExportVulRequest {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetAttachTypes(v string) *ExportVulRequest {
+	s.AttachTypes = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetDealed(v string) *ExportVulRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetGroupId(v string) *ExportVulRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetLang(v string) *ExportVulRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetNecessity(v string) *ExportVulRequest {
+	s.Necessity = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetSearchTags(v string) *ExportVulRequest {
+	s.SearchTags = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetType(v string) *ExportVulRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetUuids(v string) *ExportVulRequest {
+	s.Uuids = &v
+	return s
+}
+
+func (s *ExportVulRequest) SetVpcInstanceIds(v string) *ExportVulRequest {
+	s.VpcInstanceIds = &v
+	return s
+}
+
+type ExportVulResponseBody struct {
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportVulResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportVulResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportVulResponseBody) SetFileName(v string) *ExportVulResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *ExportVulResponseBody) SetId(v int64) *ExportVulResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportVulResponseBody) SetRequestId(v string) *ExportVulResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportVulResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExportVulResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportVulResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportVulResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportVulResponse) SetHeaders(v map[string]*string) *ExportVulResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportVulResponse) SetBody(v *ExportVulResponseBody) *ExportVulResponse {
 	s.Body = v
 	return s
 }
@@ -28824,6 +28912,75 @@ func (s *QueryDiscoverDatabaseResponse) SetBody(v *QueryDiscoverDatabaseResponse
 	return s
 }
 
+type QueryGroupIdByGroupNameRequest struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s QueryGroupIdByGroupNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupIdByGroupNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupIdByGroupNameRequest) SetGroupName(v string) *QueryGroupIdByGroupNameRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *QueryGroupIdByGroupNameRequest) SetSourceIp(v string) *QueryGroupIdByGroupNameRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type QueryGroupIdByGroupNameResponseBody struct {
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryGroupIdByGroupNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupIdByGroupNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupIdByGroupNameResponseBody) SetGroupId(v int64) *QueryGroupIdByGroupNameResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QueryGroupIdByGroupNameResponseBody) SetRequestId(v string) *QueryGroupIdByGroupNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryGroupIdByGroupNameResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryGroupIdByGroupNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGroupIdByGroupNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupIdByGroupNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupIdByGroupNameResponse) SetHeaders(v map[string]*string) *QueryGroupIdByGroupNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResponseBody) *QueryGroupIdByGroupNameResponse {
+	s.Body = v
+	return s
+}
+
 type QueryPreCheckDatabaseRequest struct {
 	InstanceUuid    *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -32327,14 +32484,8 @@ func (client *Client) DescribeInstallCaptcha(request *DescribeInstallCaptchaRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeInstallCodesWithOptions(request *DescribeInstallCodesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstallCodesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
+func (client *Client) DescribeInstallCodesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeInstallCodesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	_result = &DescribeInstallCodesResponse{}
 	_body, _err := client.DoRPCRequest(tea.String("DescribeInstallCodes"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
@@ -32344,10 +32495,10 @@ func (client *Client) DescribeInstallCodesWithOptions(request *DescribeInstallCo
 	return _result, _err
 }
 
-func (client *Client) DescribeInstallCodes(request *DescribeInstallCodesRequest) (_result *DescribeInstallCodesResponse, _err error) {
+func (client *Client) DescribeInstallCodes() (_result *DescribeInstallCodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstallCodesResponse{}
-	_body, _err := client.DescribeInstallCodesWithOptions(request, runtime)
+	_body, _err := client.DescribeInstallCodesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34295,6 +34446,34 @@ func (client *Client) ExportRecord(request *ExportRecordRequest) (_result *Expor
 	return _result, _err
 }
 
+func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *util.RuntimeOptions) (_result *ExportVulResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ExportVulResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ExportVul"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportVulResponse{}
+	_body, _err := client.ExportVulWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FixCheckWarningsWithOptions(request *FixCheckWarningsRequest, runtime *util.RuntimeOptions) (_result *FixCheckWarningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35670,6 +35849,34 @@ func (client *Client) QueryDiscoverDatabase(request *QueryDiscoverDatabaseReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDiscoverDatabaseResponse{}
 	_body, _err := client.QueryDiscoverDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryGroupIdByGroupNameWithOptions(request *QueryGroupIdByGroupNameRequest, runtime *util.RuntimeOptions) (_result *QueryGroupIdByGroupNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &QueryGroupIdByGroupNameResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("QueryGroupIdByGroupName"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGroupIdByGroupName(request *QueryGroupIdByGroupNameRequest) (_result *QueryGroupIdByGroupNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGroupIdByGroupNameResponse{}
+	_body, _err := client.QueryGroupIdByGroupNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
