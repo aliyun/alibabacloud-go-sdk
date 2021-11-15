@@ -1056,10 +1056,8 @@ func (s *DetectVehicleResponse) SetBody(v *DetectVehicleResponseBody) *DetectVeh
 type DetectVehicleICongestionRequest struct {
 	// A short description of struct
 	ImageURL                   *string                                                      `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	OriginRequestId            *string                                                      `json:"OriginRequestId,omitempty" xml:"OriginRequestId,omitempty"`
 	PreRegionIntersectFeatures []*DetectVehicleICongestionRequestPreRegionIntersectFeatures `json:"PreRegionIntersectFeatures,omitempty" xml:"PreRegionIntersectFeatures,omitempty" type:"Repeated"`
 	RoadRegions                []*DetectVehicleICongestionRequestRoadRegions                `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
-	StreamArn                  *string                                                      `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
 }
 
 func (s DetectVehicleICongestionRequest) String() string {
@@ -1075,11 +1073,6 @@ func (s *DetectVehicleICongestionRequest) SetImageURL(v string) *DetectVehicleIC
 	return s
 }
 
-func (s *DetectVehicleICongestionRequest) SetOriginRequestId(v string) *DetectVehicleICongestionRequest {
-	s.OriginRequestId = &v
-	return s
-}
-
 func (s *DetectVehicleICongestionRequest) SetPreRegionIntersectFeatures(v []*DetectVehicleICongestionRequestPreRegionIntersectFeatures) *DetectVehicleICongestionRequest {
 	s.PreRegionIntersectFeatures = v
 	return s
@@ -1087,11 +1080,6 @@ func (s *DetectVehicleICongestionRequest) SetPreRegionIntersectFeatures(v []*Det
 
 func (s *DetectVehicleICongestionRequest) SetRoadRegions(v []*DetectVehicleICongestionRequestRoadRegions) *DetectVehicleICongestionRequest {
 	s.RoadRegions = v
-	return s
-}
-
-func (s *DetectVehicleICongestionRequest) SetStreamArn(v string) *DetectVehicleICongestionRequest {
-	s.StreamArn = &v
 	return s
 }
 
@@ -1172,10 +1160,8 @@ func (s *DetectVehicleICongestionRequestRoadRegionsRoadRegionPoint) SetY(v int64
 type DetectVehicleICongestionShrinkRequest struct {
 	// A short description of struct
 	ImageURL                         *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	OriginRequestId                  *string `json:"OriginRequestId,omitempty" xml:"OriginRequestId,omitempty"`
 	PreRegionIntersectFeaturesShrink *string `json:"PreRegionIntersectFeatures,omitempty" xml:"PreRegionIntersectFeatures,omitempty"`
 	RoadRegionsShrink                *string `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty"`
-	StreamArn                        *string `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
 }
 
 func (s DetectVehicleICongestionShrinkRequest) String() string {
@@ -1191,11 +1177,6 @@ func (s *DetectVehicleICongestionShrinkRequest) SetImageURL(v string) *DetectVeh
 	return s
 }
 
-func (s *DetectVehicleICongestionShrinkRequest) SetOriginRequestId(v string) *DetectVehicleICongestionShrinkRequest {
-	s.OriginRequestId = &v
-	return s
-}
-
 func (s *DetectVehicleICongestionShrinkRequest) SetPreRegionIntersectFeaturesShrink(v string) *DetectVehicleICongestionShrinkRequest {
 	s.PreRegionIntersectFeaturesShrink = &v
 	return s
@@ -1203,11 +1184,6 @@ func (s *DetectVehicleICongestionShrinkRequest) SetPreRegionIntersectFeaturesShr
 
 func (s *DetectVehicleICongestionShrinkRequest) SetRoadRegionsShrink(v string) *DetectVehicleICongestionShrinkRequest {
 	s.RoadRegionsShrink = &v
-	return s
-}
-
-func (s *DetectVehicleICongestionShrinkRequest) SetStreamArn(v string) *DetectVehicleICongestionShrinkRequest {
-	s.StreamArn = &v
 	return s
 }
 
@@ -1272,6 +1248,7 @@ func (s *DetectVehicleICongestionResponseBodyData) SetRegionIntersects(v []*Dete
 
 type DetectVehicleICongestionResponseBodyDataElements struct {
 	Boxes    []*DetectVehicleICongestionResponseBodyDataElementsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Id       *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
 	Score    *float32                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
 	TypeName *string                                                  `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
@@ -1286,6 +1263,11 @@ func (s DetectVehicleICongestionResponseBodyDataElements) GoString() string {
 
 func (s *DetectVehicleICongestionResponseBodyDataElements) SetBoxes(v []*DetectVehicleICongestionResponseBodyDataElementsBoxes) *DetectVehicleICongestionResponseBodyDataElements {
 	s.Boxes = v
+	return s
+}
+
+func (s *DetectVehicleICongestionResponseBodyDataElements) SetId(v int64) *DetectVehicleICongestionResponseBodyDataElements {
+	s.Id = &v
 	return s
 }
 
@@ -1410,10 +1392,8 @@ func (s *DetectVehicleICongestionResponse) SetBody(v *DetectVehicleICongestionRe
 
 type DetectVehicleIllegalParkingRequest struct {
 	// A short description of struct
-	ImageURL        *string                                          `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	OriginRequestId *string                                          `json:"OriginRequestId,omitempty" xml:"OriginRequestId,omitempty"`
-	RoadRegions     []*DetectVehicleIllegalParkingRequestRoadRegions `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
-	StreamArn       *string                                          `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
+	ImageURL    *string                                          `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	RoadRegions []*DetectVehicleIllegalParkingRequestRoadRegions `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
 }
 
 func (s DetectVehicleIllegalParkingRequest) String() string {
@@ -1429,18 +1409,8 @@ func (s *DetectVehicleIllegalParkingRequest) SetImageURL(v string) *DetectVehicl
 	return s
 }
 
-func (s *DetectVehicleIllegalParkingRequest) SetOriginRequestId(v string) *DetectVehicleIllegalParkingRequest {
-	s.OriginRequestId = &v
-	return s
-}
-
 func (s *DetectVehicleIllegalParkingRequest) SetRoadRegions(v []*DetectVehicleIllegalParkingRequestRoadRegions) *DetectVehicleIllegalParkingRequest {
 	s.RoadRegions = v
-	return s
-}
-
-func (s *DetectVehicleIllegalParkingRequest) SetStreamArn(v string) *DetectVehicleIllegalParkingRequest {
-	s.StreamArn = &v
 	return s
 }
 
@@ -1504,9 +1474,7 @@ func (s *DetectVehicleIllegalParkingRequestRoadRegionsRoadRegionPoint) SetY(v in
 type DetectVehicleIllegalParkingShrinkRequest struct {
 	// A short description of struct
 	ImageURL          *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	OriginRequestId   *string `json:"OriginRequestId,omitempty" xml:"OriginRequestId,omitempty"`
 	RoadRegionsShrink *string `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty"`
-	StreamArn         *string `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
 }
 
 func (s DetectVehicleIllegalParkingShrinkRequest) String() string {
@@ -1522,18 +1490,8 @@ func (s *DetectVehicleIllegalParkingShrinkRequest) SetImageURL(v string) *Detect
 	return s
 }
 
-func (s *DetectVehicleIllegalParkingShrinkRequest) SetOriginRequestId(v string) *DetectVehicleIllegalParkingShrinkRequest {
-	s.OriginRequestId = &v
-	return s
-}
-
 func (s *DetectVehicleIllegalParkingShrinkRequest) SetRoadRegionsShrink(v string) *DetectVehicleIllegalParkingShrinkRequest {
 	s.RoadRegionsShrink = &v
-	return s
-}
-
-func (s *DetectVehicleIllegalParkingShrinkRequest) SetStreamArn(v string) *DetectVehicleIllegalParkingShrinkRequest {
-	s.StreamArn = &v
 	return s
 }
 
@@ -1586,6 +1544,7 @@ func (s *DetectVehicleIllegalParkingResponseBodyData) SetRegionIntersects(v []*D
 
 type DetectVehicleIllegalParkingResponseBodyDataElements struct {
 	Boxes    []*DetectVehicleIllegalParkingResponseBodyDataElementsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Id       *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
 	Score    *float32                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
 	TypeName *string                                                     `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
@@ -1600,6 +1559,11 @@ func (s DetectVehicleIllegalParkingResponseBodyDataElements) GoString() string {
 
 func (s *DetectVehicleIllegalParkingResponseBodyDataElements) SetBoxes(v []*DetectVehicleIllegalParkingResponseBodyDataElementsBoxes) *DetectVehicleIllegalParkingResponseBodyDataElements {
 	s.Boxes = v
+	return s
+}
+
+func (s *DetectVehicleIllegalParkingResponseBodyDataElements) SetId(v int64) *DetectVehicleIllegalParkingResponseBodyDataElements {
+	s.Id = &v
 	return s
 }
 
