@@ -4184,10 +4184,14 @@ func (s *GetLiveRoomStatisticsResponseBody) SetResult(v *GetLiveRoomStatisticsRe
 type GetLiveRoomStatisticsResponseBodyResult struct {
 	// 直播结束时间，单位：毫秒。
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 点赞数。
+	LikeCount *int64 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
 	// 直播ID。
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// 互动消息数。
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// 在线用户数。
+	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
 	// 访问用户人次。
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
 	// 直播开始时间，单位：毫秒。
@@ -4213,6 +4217,11 @@ func (s *GetLiveRoomStatisticsResponseBodyResult) SetEndTime(v int64) *GetLiveRo
 	return s
 }
 
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetLikeCount(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.LikeCount = &v
+	return s
+}
+
 func (s *GetLiveRoomStatisticsResponseBodyResult) SetLiveId(v string) *GetLiveRoomStatisticsResponseBodyResult {
 	s.LiveId = &v
 	return s
@@ -4220,6 +4229,11 @@ func (s *GetLiveRoomStatisticsResponseBodyResult) SetLiveId(v string) *GetLiveRo
 
 func (s *GetLiveRoomStatisticsResponseBodyResult) SetMessageCount(v int64) *GetLiveRoomStatisticsResponseBodyResult {
 	s.MessageCount = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsResponseBodyResult) SetOnlineCount(v int64) *GetLiveRoomStatisticsResponseBodyResult {
+	s.OnlineCount = &v
 	return s
 }
 
