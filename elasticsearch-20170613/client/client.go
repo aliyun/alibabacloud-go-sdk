@@ -2529,25 +2529,26 @@ func (s *DescribeApmResponseBody) SetResult(v *DescribeApmResponseBodyResult) *D
 }
 
 type DescribeApmResponseBodyResult struct {
-	CreatedAt           *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	DeployedReplica     *int64  `json:"DeployedReplica,omitempty" xml:"DeployedReplica,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeAmount          *int64  `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	OutputES            *string `json:"OutputES,omitempty" xml:"OutputES,omitempty"`
-	OutputESUserName    *string `json:"OutputESUserName,omitempty" xml:"OutputESUserName,omitempty"`
-	OutputEsDescription *string `json:"OutputEsDescription,omitempty" xml:"OutputEsDescription,omitempty"`
-	OwnerId             *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Replica             *int64  `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	ResourceSpec        *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VsArea              *string `json:"VsArea,omitempty" xml:"VsArea,omitempty"`
-	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ApmServerDomain     *string `json:"apmServerDomain,omitempty" xml:"apmServerDomain,omitempty"`
+	CreatedAt           *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DeployedReplica     *int64  `json:"deployedReplica,omitempty" xml:"deployedReplica,omitempty"`
+	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndTime             *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	InstanceId          *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeAmount          *int64  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	OutputES            *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	OutputESUserName    *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
+	OutputEsDescription *string `json:"outputEsDescription,omitempty" xml:"outputEsDescription,omitempty"`
+	OwnerId             *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	PaymentType         *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Region              *string `json:"region,omitempty" xml:"region,omitempty"`
+	Replica             *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+	ResourceSpec        *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
+	Version             *string `json:"version,omitempty" xml:"version,omitempty"`
+	VpcId               *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea              *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VswitchId           *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
 func (s DescribeApmResponseBodyResult) String() string {
@@ -2556,6 +2557,11 @@ func (s DescribeApmResponseBodyResult) String() string {
 
 func (s DescribeApmResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApmResponseBodyResult) SetApmServerDomain(v string) *DescribeApmResponseBodyResult {
+	s.ApmServerDomain = &v
+	return s
 }
 
 func (s *DescribeApmResponseBodyResult) SetCreatedAt(v string) *DescribeApmResponseBodyResult {
@@ -2618,7 +2624,7 @@ func (s *DescribeApmResponseBodyResult) SetRegion(v string) *DescribeApmResponse
 	return s
 }
 
-func (s *DescribeApmResponseBodyResult) SetReplica(v int64) *DescribeApmResponseBodyResult {
+func (s *DescribeApmResponseBodyResult) SetReplica(v int32) *DescribeApmResponseBodyResult {
 	s.Replica = &v
 	return s
 }
@@ -7977,6 +7983,229 @@ func (s *ListAlternativeSnapshotReposResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *ListAlternativeSnapshotReposResponse) SetBody(v *ListAlternativeSnapshotReposResponseBody) *ListAlternativeSnapshotReposResponse {
+	s.Body = v
+	return s
+}
+
+type ListApmRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Output      *string `json:"output,omitempty" xml:"output,omitempty"`
+	Page        *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	Size        *int64  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListApmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmRequest) SetDescription(v string) *ListApmRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApmRequest) SetInstanceId(v string) *ListApmRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListApmRequest) SetOutput(v string) *ListApmRequest {
+	s.Output = &v
+	return s
+}
+
+func (s *ListApmRequest) SetPage(v int64) *ListApmRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListApmRequest) SetSize(v int64) *ListApmRequest {
+	s.Size = &v
+	return s
+}
+
+type ListApmResponseBody struct {
+	Headers   *ListApmResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListApmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListApmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmResponseBody) SetHeaders(v *ListApmResponseBodyHeaders) *ListApmResponseBody {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApmResponseBody) SetRequestId(v string) *ListApmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApmResponseBody) SetResult(v []*ListApmResponseBodyResult) *ListApmResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListApmResponseBodyHeaders struct {
+	XTotalCount *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+}
+
+func (s ListApmResponseBodyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmResponseBodyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmResponseBodyHeaders) SetXTotalCount(v int64) *ListApmResponseBodyHeaders {
+	s.XTotalCount = &v
+	return s
+}
+
+type ListApmResponseBodyResult struct {
+	CreatedAt        *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DeployedReplica  *int64  `json:"deployedReplica,omitempty" xml:"deployedReplica,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeAmount       *int64  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	OutputES         *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	OutputESUserName *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
+	OwnerId          *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	PaymentType      *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Region           *string `json:"region,omitempty" xml:"region,omitempty"`
+	Replica          *int64  `json:"replica,omitempty" xml:"replica,omitempty"`
+	ResourceSpec     *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	Version          *string `json:"version,omitempty" xml:"version,omitempty"`
+	VpcId            *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea           *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VswitchId        *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+}
+
+func (s ListApmResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmResponseBodyResult) SetCreatedAt(v string) *ListApmResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetDeployedReplica(v int64) *ListApmResponseBodyResult {
+	s.DeployedReplica = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetDescription(v string) *ListApmResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetInstanceId(v string) *ListApmResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetNodeAmount(v int64) *ListApmResponseBodyResult {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetOutputES(v string) *ListApmResponseBodyResult {
+	s.OutputES = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetOutputESUserName(v string) *ListApmResponseBodyResult {
+	s.OutputESUserName = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetOwnerId(v string) *ListApmResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetPaymentType(v string) *ListApmResponseBodyResult {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetRegion(v string) *ListApmResponseBodyResult {
+	s.Region = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetReplica(v int64) *ListApmResponseBodyResult {
+	s.Replica = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetResourceSpec(v string) *ListApmResponseBodyResult {
+	s.ResourceSpec = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetStatus(v string) *ListApmResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetVersion(v string) *ListApmResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetVpcId(v string) *ListApmResponseBodyResult {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetVsArea(v string) *ListApmResponseBodyResult {
+	s.VsArea = &v
+	return s
+}
+
+func (s *ListApmResponseBodyResult) SetVswitchId(v string) *ListApmResponseBodyResult {
+	s.VswitchId = &v
+	return s
+}
+
+type ListApmResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListApmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApmResponse) SetHeaders(v map[string]*string) *ListApmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApmResponse) SetBody(v *ListApmResponseBody) *ListApmResponse {
 	s.Body = v
 	return s
 }
@@ -14331,8 +14560,8 @@ func (s *ReinstallCollectorResponse) SetBody(v *ReinstallCollectorResponseBody) 
 }
 
 type RemoveApmResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RemoveApmResponseBody) String() string {
@@ -14345,6 +14574,11 @@ func (s RemoveApmResponseBody) GoString() string {
 
 func (s *RemoveApmResponseBody) SetRequestId(v string) *RemoveApmResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveApmResponseBody) SetResult(v bool) *RemoveApmResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -15361,8 +15595,8 @@ func (s *ShrinkNodeResponse) SetBody(v *ShrinkNodeResponseBody) *ShrinkNodeRespo
 }
 
 type StartApmResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StartApmResponseBody) String() string {
@@ -15375,6 +15609,11 @@ func (s StartApmResponseBody) GoString() string {
 
 func (s *StartApmResponseBody) SetRequestId(v string) *StartApmResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *StartApmResponseBody) SetResult(v bool) *StartApmResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -15465,8 +15704,8 @@ func (s *StartCollectorResponse) SetBody(v *StartCollectorResponseBody) *StartCo
 }
 
 type StopApmResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StopApmResponseBody) String() string {
@@ -15479,6 +15718,11 @@ func (s StopApmResponseBody) GoString() string {
 
 func (s *StopApmResponseBody) SetRequestId(v string) *StopApmResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *StopApmResponseBody) SetResult(v bool) *StopApmResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -16310,11 +16554,16 @@ func (s *UpdateAliwsDictResponse) SetBody(v *UpdateAliwsDictResponseBody) *Updat
 }
 
 type UpdateApmRequest struct {
-	OutputES         *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	// apm实例名
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// es实例id
+	OutputES *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	// es实例密码
 	OutputESPassword *string `json:"outputESPassword,omitempty" xml:"outputESPassword,omitempty"`
+	// es实例用户名
 	OutputESUserName *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
-	Token            *string `json:"token,omitempty" xml:"token,omitempty"`
-	Yml              *string `json:"yml,omitempty" xml:"yml,omitempty"`
+	// apm server密码
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s UpdateApmRequest) String() string {
@@ -16323,6 +16572,11 @@ func (s UpdateApmRequest) String() string {
 
 func (s UpdateApmRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateApmRequest) SetDescription(v string) *UpdateApmRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *UpdateApmRequest) SetOutputES(v string) *UpdateApmRequest {
@@ -16345,14 +16599,9 @@ func (s *UpdateApmRequest) SetToken(v string) *UpdateApmRequest {
 	return s
 }
 
-func (s *UpdateApmRequest) SetYml(v string) *UpdateApmRequest {
-	s.Yml = &v
-	return s
-}
-
 type UpdateApmResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateApmResponseBody) String() string {
@@ -16365,6 +16614,11 @@ func (s UpdateApmResponseBody) GoString() string {
 
 func (s *UpdateApmResponseBody) SetRequestId(v string) *UpdateApmResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateApmResponseBody) SetResult(v bool) *UpdateApmResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -22503,6 +22757,57 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 	return _result, _err
 }
 
+func (client *Client) ListApm(request *ListApmRequest) (_result *ListApmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApmResponse{}
+	_body, _err := client.ListApmWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApmWithOptions(request *ListApmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListApmResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/apm"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListAvailableEsInstanceIds(InstanceId *string) (_result *ListAvailableEsInstanceIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25226,30 +25531,30 @@ func (client *Client) UpdateApmWithOptions(instanceId *string, request *UpdateAp
 		return _result, _err
 	}
 	instanceId = openapiutil.GetEncodeParam(instanceId)
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OutputES)) {
-		query["outputES"] = request.OutputES
+		body["outputES"] = request.OutputES
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutputESPassword)) {
-		query["outputESPassword"] = request.OutputESPassword
+		body["outputESPassword"] = request.OutputESPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutputESUserName)) {
-		query["outputESUserName"] = request.OutputESUserName
+		body["outputESUserName"] = request.OutputESUserName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
-		query["token"] = request.Token
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Yml)) {
-		query["yml"] = request.Yml
+		body["token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	_result = &UpdateApmResponse{}
 	_body, _err := client.DoROARequest(tea.String("UpdateApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)), tea.String("json"), req, runtime)
