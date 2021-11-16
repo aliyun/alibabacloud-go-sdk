@@ -951,6 +951,8 @@ func (s *BatchGetMediaInfosResponse) SetBody(v *BatchGetMediaInfosResponseBody) 
 type CreateEditingProjectRequest struct {
 	// 工程业务配置。如果是直播剪辑工程必填OutputMediaConfig.StorageLocation,   Path 不填默认合成的直播片段存储在根路径下 OutputMediaTarget 不填默认oss-object，可以填vod-media 表示存储到vod  OutputMediaTarget 为vod-media 时，Path不生效。
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// 模板素材参数
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// 云剪辑工程封面
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// 云剪辑工程描述
@@ -959,6 +961,8 @@ type CreateEditingProjectRequest struct {
 	MaterialMaps *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
 	// 剪辑工程类型，EditingProject: 普通剪辑工程；LiveEditingProject: 直播剪辑工程
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 云剪辑工程时间线，Json格式
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// 云剪辑工程标题
@@ -975,6 +979,11 @@ func (s CreateEditingProjectRequest) GoString() string {
 
 func (s *CreateEditingProjectRequest) SetBusinessConfig(v string) *CreateEditingProjectRequest {
 	s.BusinessConfig = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetClipsParam(v string) *CreateEditingProjectRequest {
+	s.ClipsParam = &v
 	return s
 }
 
@@ -995,6 +1004,11 @@ func (s *CreateEditingProjectRequest) SetMaterialMaps(v string) *CreateEditingPr
 
 func (s *CreateEditingProjectRequest) SetProjectType(v string) *CreateEditingProjectRequest {
 	s.ProjectType = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetTemplateId(v string) *CreateEditingProjectRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1037,6 +1051,8 @@ type CreateEditingProjectResponseBodyProject struct {
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	// 业务状态，业务状态 /** 预约中 **/ RESERVING(0, "Reserving"), /** 预约取消 **/ RESERVATION_CANCELED(1, "ReservationCanceled"), /** 直播中 **/ BROADCASTING(3, "BroadCasting"), /** 加载失败 **/ LOADING_FAILED(4, "LoadingFailed"), /** 直播结束 **/ LIVE_FINISHED(5, "LiveFinished");
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// 模板素材参数
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// 云剪辑工程封面。
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// 云剪辑工程创建方式  -OpenAPI  -AliyunConsole  -WebSDK -LiveEditingOpenAPI -LiveEditingConsole
@@ -1058,7 +1074,9 @@ type CreateEditingProjectResponseBodyProject struct {
 	// 云剪辑工程状态。  所有云剪辑工程状态列表：  -1:Draft  -2:Editing  -3:Producing  -4:Produced  -5:ProduceFailed  -7:Deleted
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 云剪辑状态名称，对应状态列表中状态名称。
-	StatusName   *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// 模板Id
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// 云剪辑工程时间线，Json格式
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
@@ -1081,6 +1099,11 @@ func (s *CreateEditingProjectResponseBodyProject) SetBusinessConfig(v string) *C
 
 func (s *CreateEditingProjectResponseBodyProject) SetBusinessStatus(v string) *CreateEditingProjectResponseBodyProject {
 	s.BusinessStatus = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetClipsParam(v string) *CreateEditingProjectResponseBodyProject {
+	s.ClipsParam = &v
 	return s
 }
 
@@ -1136,6 +1159,11 @@ func (s *CreateEditingProjectResponseBodyProject) SetStatus(v int64) *CreateEdit
 
 func (s *CreateEditingProjectResponseBodyProject) SetStatusName(v string) *CreateEditingProjectResponseBodyProject {
 	s.StatusName = &v
+	return s
+}
+
+func (s *CreateEditingProjectResponseBodyProject) SetTemplateId(v string) *CreateEditingProjectResponseBodyProject {
+	s.TemplateId = &v
 	return s
 }
 
@@ -1737,6 +1765,8 @@ func (s *GetEditingProjectResponseBody) SetRequestId(v string) *GetEditingProjec
 type GetEditingProjectResponseBodyProject struct {
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// 模板素材参数
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// 云剪辑工程封面
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// 云剪辑工程创建来源
@@ -1756,6 +1786,8 @@ type GetEditingProjectResponseBodyProject struct {
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 	// 云剪辑工程状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 云剪辑工程模板类型
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// 云剪辑工程时间线
@@ -1779,6 +1811,11 @@ func (s *GetEditingProjectResponseBodyProject) SetBusinessConfig(v string) *GetE
 
 func (s *GetEditingProjectResponseBodyProject) SetBusinessStatus(v string) *GetEditingProjectResponseBodyProject {
 	s.BusinessStatus = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetClipsParam(v string) *GetEditingProjectResponseBodyProject {
+	s.ClipsParam = &v
 	return s
 }
 
@@ -1829,6 +1866,11 @@ func (s *GetEditingProjectResponseBodyProject) SetProjectType(v string) *GetEdit
 
 func (s *GetEditingProjectResponseBodyProject) SetStatus(v string) *GetEditingProjectResponseBodyProject {
 	s.Status = &v
+	return s
+}
+
+func (s *GetEditingProjectResponseBodyProject) SetTemplateId(v string) *GetEditingProjectResponseBodyProject {
+	s.TemplateId = &v
 	return s
 }
 
@@ -4043,6 +4085,79 @@ func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateRespo
 }
 
 func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetTemplateMaterialsRequest struct {
+	// 所需文件列表
+	FileList *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetTemplateMaterialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateMaterialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateMaterialsRequest) SetFileList(v string) *GetTemplateMaterialsRequest {
+	s.FileList = &v
+	return s
+}
+
+func (s *GetTemplateMaterialsRequest) SetTemplateId(v string) *GetTemplateMaterialsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetTemplateMaterialsResponseBody struct {
+	// 关联素材地址
+	MaterialUrls *string `json:"MaterialUrls,omitempty" xml:"MaterialUrls,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTemplateMaterialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateMaterialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateMaterialsResponseBody) SetMaterialUrls(v string) *GetTemplateMaterialsResponseBody {
+	s.MaterialUrls = &v
+	return s
+}
+
+func (s *GetTemplateMaterialsResponseBody) SetRequestId(v string) *GetTemplateMaterialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTemplateMaterialsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTemplateMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTemplateMaterialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateMaterialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateMaterialsResponse) SetHeaders(v map[string]*string) *GetTemplateMaterialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBody) *GetTemplateMaterialsResponse {
 	s.Body = v
 	return s
 }
@@ -7084,16 +7199,17 @@ func (s *SubmitMattingJobResponse) SetBody(v *SubmitMattingJobResponseBody) *Sub
 }
 
 type SubmitMediaProducingJobRequest struct {
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClipsParam        *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	OutputMediaConfig *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
-	OutputMediaTarget *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
-	ProjectId         *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMetadata   *string `json:"ProjectMetadata,omitempty" xml:"ProjectMetadata,omitempty"`
-	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TemplateId        *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Timeline          *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	UserData          *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClipsParam           *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	EditingProduceConfig *string `json:"EditingProduceConfig,omitempty" xml:"EditingProduceConfig,omitempty"`
+	OutputMediaConfig    *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
+	OutputMediaTarget    *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
+	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectMetadata      *string `json:"ProjectMetadata,omitempty" xml:"ProjectMetadata,omitempty"`
+	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Timeline             *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaProducingJobRequest) String() string {
@@ -7111,6 +7227,11 @@ func (s *SubmitMediaProducingJobRequest) SetClientToken(v string) *SubmitMediaPr
 
 func (s *SubmitMediaProducingJobRequest) SetClipsParam(v string) *SubmitMediaProducingJobRequest {
 	s.ClipsParam = &v
+	return s
+}
+
+func (s *SubmitMediaProducingJobRequest) SetEditingProduceConfig(v string) *SubmitMediaProducingJobRequest {
+	s.EditingProduceConfig = &v
 	return s
 }
 
@@ -7157,12 +7278,14 @@ func (s *SubmitMediaProducingJobRequest) SetUserData(v string) *SubmitMediaProdu
 type SubmitMediaProducingJobResponseBody struct {
 	// 合成作业Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 合成媒资Id
+	// 合成ICE媒资Id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// 剪辑工程Id
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// vod媒资id
+	VodMediaId *string `json:"VodMediaId,omitempty" xml:"VodMediaId,omitempty"`
 }
 
 func (s SubmitMediaProducingJobResponseBody) String() string {
@@ -7190,6 +7313,11 @@ func (s *SubmitMediaProducingJobResponseBody) SetProjectId(v string) *SubmitMedi
 
 func (s *SubmitMediaProducingJobResponseBody) SetRequestId(v string) *SubmitMediaProducingJobResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitMediaProducingJobResponseBody) SetVodMediaId(v string) *SubmitMediaProducingJobResponseBody {
+	s.VodMediaId = &v
 	return s
 }
 
@@ -7424,12 +7552,16 @@ func (s *SubmitSubtitleProduceJobResponse) SetBody(v *SubmitSubtitleProduceJobRe
 
 type UpdateEditingProjectRequest struct {
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// 模板对应的素材参数
+	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// 云剪辑工程封面
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// 云剪辑工程描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 云剪辑工程ID
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 云剪辑工程时间线，Json格式
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	// 云剪辑工程标题
@@ -7449,6 +7581,11 @@ func (s *UpdateEditingProjectRequest) SetBusinessStatus(v string) *UpdateEditing
 	return s
 }
 
+func (s *UpdateEditingProjectRequest) SetClipsParam(v string) *UpdateEditingProjectRequest {
+	s.ClipsParam = &v
+	return s
+}
+
 func (s *UpdateEditingProjectRequest) SetCoverURL(v string) *UpdateEditingProjectRequest {
 	s.CoverURL = &v
 	return s
@@ -7461,6 +7598,11 @@ func (s *UpdateEditingProjectRequest) SetDescription(v string) *UpdateEditingPro
 
 func (s *UpdateEditingProjectRequest) SetProjectId(v string) *UpdateEditingProjectRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateEditingProjectRequest) SetTemplateId(v string) *UpdateEditingProjectRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -7735,7 +7877,7 @@ func (s *UpdateSmartJobResponse) SetBody(v *UpdateSmartJobResponseBody) *UpdateS
 }
 
 type UpdateTemplateRequest struct {
-	// 参见Timeline模板Config文档
+	// 参见模板Config文档
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// 模板封面
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
@@ -7743,6 +7885,8 @@ type UpdateTemplateRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// 预览视频媒资id
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
+	// 模板相关素材，模板编辑器使用
+	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 	// 修改来源，默认OpenAPI
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// 模板状态
@@ -7776,6 +7920,11 @@ func (s *UpdateTemplateRequest) SetName(v string) *UpdateTemplateRequest {
 
 func (s *UpdateTemplateRequest) SetPreviewMedia(v string) *UpdateTemplateRequest {
 	s.PreviewMedia = &v
+	return s
+}
+
+func (s *UpdateTemplateRequest) SetRelatedMediaids(v string) *UpdateTemplateRequest {
+	s.RelatedMediaids = &v
 	return s
 }
 
@@ -8505,6 +8654,35 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateResponse{}
 	_body, _err := client.GetTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTemplateMaterialsWithOptions(request *GetTemplateMaterialsRequest, runtime *util.RuntimeOptions) (_result *GetTemplateMaterialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &GetTemplateMaterialsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTemplateMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemplateMaterials(request *GetTemplateMaterialsRequest) (_result *GetTemplateMaterialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateMaterialsResponse{}
+	_body, _err := client.GetTemplateMaterialsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
