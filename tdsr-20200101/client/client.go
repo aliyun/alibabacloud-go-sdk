@@ -4704,8 +4704,6 @@ func (s *PublishSceneRequest) SetSceneId(v string) *PublishSceneRequest {
 type PublishSceneResponseBody struct {
 	// 返回码
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 预览链接
@@ -4726,11 +4724,6 @@ func (s PublishSceneResponseBody) GoString() string {
 
 func (s *PublishSceneResponseBody) SetCode(v int64) *PublishSceneResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *PublishSceneResponseBody) SetInstanceId(v string) *PublishSceneResponseBody {
-	s.InstanceId = &v
 	return s
 }
 
