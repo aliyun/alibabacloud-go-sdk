@@ -12505,19 +12505,21 @@ type GetMezzanineInfoResponseBodyMezzanineVideoStreamList struct {
 	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
 	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames     *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// 视频流HDR类型
+	HDRType    *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height     *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index      *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NumFrames  *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt     *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate     *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar        *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase   *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width      *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetMezzanineInfoResponseBodyMezzanineVideoStreamList) String() string {
@@ -12575,6 +12577,11 @@ func (s *GetMezzanineInfoResponseBodyMezzanineVideoStreamList) SetDuration(v str
 
 func (s *GetMezzanineInfoResponseBodyMezzanineVideoStreamList) SetFps(v string) *GetMezzanineInfoResponseBodyMezzanineVideoStreamList {
 	s.Fps = &v
+	return s
+}
+
+func (s *GetMezzanineInfoResponseBodyMezzanineVideoStreamList) SetHDRType(v string) *GetMezzanineInfoResponseBodyMezzanineVideoStreamList {
+	s.HDRType = &v
 	return s
 }
 
@@ -12784,14 +12791,16 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetPlayInfo(v []*GetPlayInfoRespon
 }
 
 type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
-	Bitrate          *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Encrypt          *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	EncryptType      *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Fps              *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Definition   *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encrypt      *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	EncryptType  *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	Format       *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps          *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// 视频流HDR类型
+	HDRType          *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
 	Height           *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
@@ -12850,6 +12859,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetFormat(v string) *GetPl
 
 func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetFps(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
 	s.Fps = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetHDRType(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.HDRType = &v
 	return s
 }
 
@@ -14674,6 +14688,7 @@ func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoLis
 }
 
 type GetVideoPlayAuthRequest struct {
+	ApiVersion      *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
 	AuthInfoTimeout *int64  `json:"AuthInfoTimeout,omitempty" xml:"AuthInfoTimeout,omitempty"`
 	VideoId         *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
@@ -14684,6 +14699,11 @@ func (s GetVideoPlayAuthRequest) String() string {
 
 func (s GetVideoPlayAuthRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetVideoPlayAuthRequest) SetApiVersion(v string) *GetVideoPlayAuthRequest {
+	s.ApiVersion = &v
+	return s
 }
 
 func (s *GetVideoPlayAuthRequest) SetAuthInfoTimeout(v int64) *GetVideoPlayAuthRequest {
@@ -22254,6 +22274,71 @@ func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *Upd
 	return s
 }
 
+type UpdateStreamInfoRequest struct {
+	// 视频流ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 视频ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s UpdateStreamInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamInfoRequest) SetJobId(v string) *UpdateStreamInfoRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateStreamInfoRequest) SetMediaId(v string) *UpdateStreamInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+type UpdateStreamInfoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateStreamInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamInfoResponseBody) SetRequestId(v string) *UpdateStreamInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateStreamInfoResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateStreamInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateStreamInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamInfoResponse) SetHeaders(v map[string]*string) *UpdateStreamInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStreamInfoResponse) SetBody(v *UpdateStreamInfoResponseBody) *UpdateStreamInfoResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTranscodeTemplateGroupRequest struct {
 	Locked                   *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -22900,9 +22985,11 @@ func (s *UploadMediaByURLResponse) SetBody(v *UploadMediaByURLResponseBody) *Upl
 type UploadStreamByURLRequest struct {
 	Definition    *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
-	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	StreamURL     *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
-	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 视频流HDR类型
+	HDRType   *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UploadStreamByURLRequest) String() string {
@@ -22920,6 +23007,11 @@ func (s *UploadStreamByURLRequest) SetDefinition(v string) *UploadStreamByURLReq
 
 func (s *UploadStreamByURLRequest) SetFileExtension(v string) *UploadStreamByURLRequest {
 	s.FileExtension = &v
+	return s
+}
+
+func (s *UploadStreamByURLRequest) SetHDRType(v string) *UploadStreamByURLRequest {
+	s.HDRType = &v
 	return s
 }
 
@@ -27558,6 +27650,34 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageInfosResponse{}
 	_body, _err := client.UpdateImageInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateStreamInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &UpdateStreamInfoResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("UpdateStreamInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateStreamInfo(request *UpdateStreamInfoRequest) (_result *UpdateStreamInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateStreamInfoResponse{}
+	_body, _err := client.UpdateStreamInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
