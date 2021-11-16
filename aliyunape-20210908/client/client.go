@@ -371,8 +371,7 @@ type WeatherforecastTimeRequest struct {
 	// 经度，范围为（70°E~139.96°E）
 	Lon *string `json:"Lon,omitempty" xml:"Lon,omitempty"`
 	// 用户中心--我的订单--订单请求--实例名称：aliyunape_meteor12_public_cn-0ju2d2hh90b
-	OrderId  *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s WeatherforecastTimeRequest) String() string {
@@ -400,11 +399,6 @@ func (s *WeatherforecastTimeRequest) SetLon(v string) *WeatherforecastTimeReques
 
 func (s *WeatherforecastTimeRequest) SetOrderId(v string) *WeatherforecastTimeRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *WeatherforecastTimeRequest) SetSourceIp(v string) *WeatherforecastTimeRequest {
-	s.SourceIp = &v
 	return s
 }
 
