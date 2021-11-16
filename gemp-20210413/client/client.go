@@ -10241,12 +10241,16 @@ type ListAlertsRequest struct {
 	AlertName *string `json:"alertName,omitempty" xml:"alertName,omitempty"`
 	// 报警来源
 	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
+	// 结束时间
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 当前页
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// 页大小
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// 服务id
 	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// 开始时间
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListAlertsRequest) String() string {
@@ -10272,6 +10276,11 @@ func (s *ListAlertsRequest) SetAlertSourceName(v string) *ListAlertsRequest {
 	return s
 }
 
+func (s *ListAlertsRequest) SetEndTime(v string) *ListAlertsRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListAlertsRequest) SetPageNumber(v int64) *ListAlertsRequest {
 	s.PageNumber = &v
 	return s
@@ -10284,6 +10293,11 @@ func (s *ListAlertsRequest) SetPageSize(v int64) *ListAlertsRequest {
 
 func (s *ListAlertsRequest) SetRelatedServiceId(v int64) *ListAlertsRequest {
 	s.RelatedServiceId = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetStartTime(v string) *ListAlertsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -14527,6 +14541,8 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 type ListSourceEventsRequest struct {
 	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// 结束时间
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 报警或者事件ID
 	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// INCIDENT 事件、ALERT 报警、PROBLEM 故障
@@ -14537,6 +14553,8 @@ type ListSourceEventsRequest struct {
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// startRowKey 用来查询下一页的数据
 	StartRowKey *string `json:"startRowKey,omitempty" xml:"startRowKey,omitempty"`
+	// 开始时间
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// stopRowKey 用来查询上一页的数据
 	StopRowKey *string `json:"stopRowKey,omitempty" xml:"stopRowKey,omitempty"`
 }
@@ -14551,6 +14569,11 @@ func (s ListSourceEventsRequest) GoString() string {
 
 func (s *ListSourceEventsRequest) SetClientToken(v string) *ListSourceEventsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListSourceEventsRequest) SetEndTime(v string) *ListSourceEventsRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -14576,6 +14599,11 @@ func (s *ListSourceEventsRequest) SetPageSize(v int64) *ListSourceEventsRequest 
 
 func (s *ListSourceEventsRequest) SetStartRowKey(v string) *ListSourceEventsRequest {
 	s.StartRowKey = &v
+	return s
+}
+
+func (s *ListSourceEventsRequest) SetStartTime(v string) *ListSourceEventsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -21852,6 +21880,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 		body["alertSourceName"] = request.AlertSourceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["endTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		body["pageNumber"] = request.PageNumber
 	}
@@ -21862,6 +21894,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.RelatedServiceId)) {
 		body["relatedServiceId"] = request.RelatedServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23011,6 +23047,10 @@ func (client *Client) ListSourceEventsWithOptions(request *ListSourceEventsReque
 		body["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["endTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["instanceId"] = request.InstanceId
 	}
@@ -23029,6 +23069,10 @@ func (client *Client) ListSourceEventsWithOptions(request *ListSourceEventsReque
 
 	if !tea.BoolValue(util.IsUnset(request.StartRowKey)) {
 		body["startRowKey"] = request.StartRowKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StopRowKey)) {
