@@ -2178,93 +2178,6 @@ func (s *GetHotspotTagResponse) SetBody(v *GetHotspotTagResponseBody) *GetHotspo
 	return s
 }
 
-type GetJobRequest struct {
-	// 任务实例ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s GetJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobRequest) SetInstanceId(v string) *GetJobRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type GetJobResponseBody struct {
-	// 返回码
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误消息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID，与入参requestId对应
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务运行状态
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 是否请求成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBody) SetCode(v int64) *GetJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetMessage(v string) *GetJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetStatus(v int64) *GetJobResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetSuccess(v bool) *GetJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
-	s.Body = v
-	return s
-}
-
 type GetLayoutDataRequest struct {
 	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
@@ -2767,20 +2680,16 @@ type GetSceneBuildTaskStatusResponseBody struct {
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// 任务失败错误消息
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// 任务ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 请求ID，与入参requestId对应
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 未开始  init 处理中 失败     failure   processing  完成     succeed 取消     canceled
+	// 未开始  init 处理中 失败     failed   processing  完成     succeed 取消     canceled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 是否请求成功
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 墙线预测: wall_line  切图: cut_image  重建: build  直角优化：right_angle_optimization 其他：other
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetSceneBuildTaskStatusResponseBody) String() string {
@@ -2806,11 +2715,6 @@ func (s *GetSceneBuildTaskStatusResponseBody) SetErrorMsg(v string) *GetSceneBui
 	return s
 }
 
-func (s *GetSceneBuildTaskStatusResponseBody) SetId(v string) *GetSceneBuildTaskStatusResponseBody {
-	s.Id = &v
-	return s
-}
-
 func (s *GetSceneBuildTaskStatusResponseBody) SetMessage(v string) *GetSceneBuildTaskStatusResponseBody {
 	s.Message = &v
 	return s
@@ -2833,11 +2737,6 @@ func (s *GetSceneBuildTaskStatusResponseBody) SetStatus(v string) *GetSceneBuild
 
 func (s *GetSceneBuildTaskStatusResponseBody) SetSuccess(v bool) *GetSceneBuildTaskStatusResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *GetSceneBuildTaskStatusResponseBody) SetType(v string) *GetSceneBuildTaskStatusResponseBody {
-	s.Type = &v
 	return s
 }
 
@@ -4878,6 +4777,93 @@ func (s *PublishSceneResponse) SetBody(v *PublishSceneResponseBody) *PublishScen
 	return s
 }
 
+type PublishStatusRequest struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s PublishStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishStatusRequest) SetSceneId(v string) *PublishStatusRequest {
+	s.SceneId = &v
+	return s
+}
+
+type PublishStatusResponseBody struct {
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PublishStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishStatusResponseBody) SetCode(v int64) *PublishStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PublishStatusResponseBody) SetMessage(v string) *PublishStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PublishStatusResponseBody) SetRequestId(v string) *PublishStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishStatusResponseBody) SetStatus(v string) *PublishStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *PublishStatusResponseBody) SetSuccess(v bool) *PublishStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PublishStatusResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PublishStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishStatusResponse) SetHeaders(v map[string]*string) *PublishStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishStatusResponse) SetBody(v *PublishStatusResponseBody) *PublishStatusResponse {
+	s.Body = v
+	return s
+}
+
 type RecoveryOriginImageRequest struct {
 	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
@@ -5498,14 +5484,14 @@ func (s *TempPreviewRequest) SetSceneId(v string) *TempPreviewRequest {
 type TempPreviewResponseBody struct {
 	// 返回码
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务ID
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 预览链接
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	// 请求ID，与入参requestId对应
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// 是否请求成功
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -5523,11 +5509,6 @@ func (s *TempPreviewResponseBody) SetCode(v int64) *TempPreviewResponseBody {
 	return s
 }
 
-func (s *TempPreviewResponseBody) SetKey(v string) *TempPreviewResponseBody {
-	s.Key = &v
-	return s
-}
-
 func (s *TempPreviewResponseBody) SetMessage(v string) *TempPreviewResponseBody {
 	s.Message = &v
 	return s
@@ -5540,6 +5521,11 @@ func (s *TempPreviewResponseBody) SetPreviewUrl(v string) *TempPreviewResponseBo
 
 func (s *TempPreviewResponseBody) SetRequestId(v string) *TempPreviewResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *TempPreviewResponseBody) SetSceneId(v string) *TempPreviewResponseBody {
+	s.SceneId = &v
 	return s
 }
 
@@ -5573,7 +5559,7 @@ func (s *TempPreviewResponse) SetBody(v *TempPreviewResponseBody) *TempPreviewRe
 
 type TempPreviewStatusRequest struct {
 	// 任务ID
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s TempPreviewStatusRequest) String() string {
@@ -5584,8 +5570,8 @@ func (s TempPreviewStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TempPreviewStatusRequest) SetKey(v string) *TempPreviewStatusRequest {
-	s.Key = &v
+func (s *TempPreviewStatusRequest) SetSceneId(v string) *TempPreviewStatusRequest {
+	s.SceneId = &v
 	return s
 }
 
@@ -5596,7 +5582,7 @@ type TempPreviewStatusResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 请求ID，与入参requestId对应
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// processing：处理中 success：成功 failed：失败
+	// 状态标识
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 是否请求成功
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -6710,34 +6696,6 @@ func (client *Client) GetHotspotTag(request *GetHotspotTagRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJob"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetLayoutDataWithOptions(request *GetLayoutDataRequest, runtime *util.RuntimeOptions) (_result *GetLayoutDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7347,6 +7305,34 @@ func (client *Client) PublishScene(request *PublishSceneRequest) (_result *Publi
 	runtime := &util.RuntimeOptions{}
 	_result = &PublishSceneResponse{}
 	_body, _err := client.PublishSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishStatusWithOptions(request *PublishStatusRequest, runtime *util.RuntimeOptions) (_result *PublishStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &PublishStatusResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("PublishStatus"), tea.String("2020-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishStatus(request *PublishStatusRequest) (_result *PublishStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishStatusResponse{}
+	_body, _err := client.PublishStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
