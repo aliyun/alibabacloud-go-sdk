@@ -12,6 +12,108 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Cluster struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// 集群配置
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 集群名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// nas文件id
+	Nas *string `json:"Nas,omitempty" xml:"Nas,omitempty"`
+	// 集群owner
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// 个人nas挂载到容器路径
+	PrivateContainerPath *string `json:"PrivateContainerPath,omitempty" xml:"PrivateContainerPath,omitempty"`
+	// 个人nas挂载路径
+	PrivateNasPath *string `json:"PrivateNasPath,omitempty" xml:"PrivateNasPath,omitempty"`
+	// 公共nas挂载到容器的路径
+	PublicContainerPath *string `json:"PublicContainerPath,omitempty" xml:"PublicContainerPath,omitempty"`
+	// 公共nas挂载路径
+	PublicNasPath *string `json:"PublicNasPath,omitempty" xml:"PublicNasPath,omitempty"`
+	// 集群状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 集群vSwitch
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// 集群vpc
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s Cluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Cluster) GoString() string {
+	return s.String()
+}
+
+func (s *Cluster) SetClusterId(v string) *Cluster {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *Cluster) SetClusterType(v string) *Cluster {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *Cluster) SetConfig(v string) *Cluster {
+	s.Config = &v
+	return s
+}
+
+func (s *Cluster) SetName(v string) *Cluster {
+	s.Name = &v
+	return s
+}
+
+func (s *Cluster) SetNas(v string) *Cluster {
+	s.Nas = &v
+	return s
+}
+
+func (s *Cluster) SetOwner(v string) *Cluster {
+	s.Owner = &v
+	return s
+}
+
+func (s *Cluster) SetPrivateContainerPath(v string) *Cluster {
+	s.PrivateContainerPath = &v
+	return s
+}
+
+func (s *Cluster) SetPrivateNasPath(v string) *Cluster {
+	s.PrivateNasPath = &v
+	return s
+}
+
+func (s *Cluster) SetPublicContainerPath(v string) *Cluster {
+	s.PublicContainerPath = &v
+	return s
+}
+
+func (s *Cluster) SetPublicNasPath(v string) *Cluster {
+	s.PublicNasPath = &v
+	return s
+}
+
+func (s *Cluster) SetState(v string) *Cluster {
+	s.State = &v
+	return s
+}
+
+func (s *Cluster) SetVSwitchId(v string) *Cluster {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *Cluster) SetVpcId(v string) *Cluster {
+	s.VpcId = &v
+	return s
+}
+
 type Config struct {
 	// 配置名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1081,6 +1183,84 @@ func (s *Nas) SetStatus(v string) *Nas {
 	return s
 }
 
+type Region struct {
+	// 城市
+	RegionCity *string `json:"RegionCity,omitempty" xml:"RegionCity,omitempty"`
+	// id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 名称
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// 州省
+	RegionState *string `json:"RegionState,omitempty" xml:"RegionState,omitempty"`
+	// 服务地址
+	ServiceUrl *string `json:"ServiceUrl,omitempty" xml:"ServiceUrl,omitempty"`
+}
+
+func (s Region) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Region) GoString() string {
+	return s.String()
+}
+
+func (s *Region) SetRegionCity(v string) *Region {
+	s.RegionCity = &v
+	return s
+}
+
+func (s *Region) SetRegionId(v string) *Region {
+	s.RegionId = &v
+	return s
+}
+
+func (s *Region) SetRegionName(v string) *Region {
+	s.RegionName = &v
+	return s
+}
+
+func (s *Region) SetRegionState(v string) *Region {
+	s.RegionState = &v
+	return s
+}
+
+func (s *Region) SetServiceUrl(v string) *Region {
+	s.ServiceUrl = &v
+	return s
+}
+
+type ResourceInfo struct {
+	// 显卡类型
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 支付类型
+	PayType *int64 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// 资源类型
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceInfo) SetName(v string) *ResourceInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ResourceInfo) SetPayType(v int64) *ResourceInfo {
+	s.PayType = &v
+	return s
+}
+
+func (s *ResourceInfo) SetResourceType(v int64) *ResourceInfo {
+	s.ResourceType = &v
+	return s
+}
+
 type SecurityGroup struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -1124,6 +1304,58 @@ func (s *SecurityGroup) SetSecurityGroupName(v string) *SecurityGroup {
 
 func (s *SecurityGroup) SetVpcId(v string) *SecurityGroup {
 	s.VpcId = &v
+	return s
+}
+
+type Status struct {
+	// 累计运行时间（分钟）
+	AccumulativeRunningTimeInMinutes *int64 `json:"AccumulativeRunningTimeInMinutes,omitempty" xml:"AccumulativeRunningTimeInMinutes,omitempty"`
+	// 实例ID
+	InstanceId            *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceShutdownTimer *InstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty"`
+	// 实例状态
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// 实例消息
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// 实例类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s Status) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Status) GoString() string {
+	return s.String()
+}
+
+func (s *Status) SetAccumulativeRunningTimeInMinutes(v int64) *Status {
+	s.AccumulativeRunningTimeInMinutes = &v
+	return s
+}
+
+func (s *Status) SetInstanceId(v string) *Status {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *Status) SetInstanceShutdownTimer(v *InstanceShutdownTimer) *Status {
+	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *Status) SetInstanceStatus(v string) *Status {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *Status) SetMsg(v string) *Status {
+	s.Msg = &v
+	return s
+}
+
+func (s *Status) SetType(v string) *Status {
+	s.Type = &v
 	return s
 }
 
@@ -1405,6 +1637,8 @@ type CreateInstanceRequest struct {
 	DatasetList []*Dataset `json:"DatasetList,omitempty" xml:"DatasetList,omitempty" type:"Repeated"`
 	// 实例规格
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// 环境参数
+	Environments map[string]interface{} `json:"Environments,omitempty" xml:"Environments,omitempty"`
 	// 镜像id
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 镜像地址
@@ -1436,6 +1670,11 @@ func (s *CreateInstanceRequest) SetDatasetList(v []*Dataset) *CreateInstanceRequ
 
 func (s *CreateInstanceRequest) SetEcsSpec(v string) *CreateInstanceRequest {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetEnvironments(v map[string]interface{}) *CreateInstanceRequest {
+	s.Environments = v
 	return s
 }
 
@@ -3051,6 +3290,83 @@ func (s *GetUserResourceStatusResponse) SetBody(v *GetUserResourceStatusResponse
 	return s
 }
 
+type GetUserSpecialVersionGpuResourceInfoRequest struct {
+	// 付费类型
+	PayType *int64 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoRequest) SetPayType(v int64) *GetUserSpecialVersionGpuResourceInfoRequest {
+	s.PayType = &v
+	return s
+}
+
+type GetUserSpecialVersionGpuResourceInfoResponseBody struct {
+	GpuAvailableQuota *int64 `json:"GpuAvailableQuota,omitempty" xml:"GpuAvailableQuota,omitempty"`
+	GpuTotalQuota     *int64 `json:"GpuTotalQuota,omitempty" xml:"GpuTotalQuota,omitempty"`
+	// Id of the request
+	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*ResourceInfo `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetGpuAvailableQuota(v int64) *GetUserSpecialVersionGpuResourceInfoResponseBody {
+	s.GpuAvailableQuota = &v
+	return s
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetGpuTotalQuota(v int64) *GetUserSpecialVersionGpuResourceInfoResponseBody {
+	s.GpuTotalQuota = &v
+	return s
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetRequestId(v string) *GetUserSpecialVersionGpuResourceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetResources(v []*ResourceInfo) *GetUserSpecialVersionGpuResourceInfoResponseBody {
+	s.Resources = v
+	return s
+}
+
+type GetUserSpecialVersionGpuResourceInfoResponse struct {
+	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserSpecialVersionGpuResourceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserSpecialVersionGpuResourceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponse) SetHeaders(v map[string]*string) *GetUserSpecialVersionGpuResourceInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserSpecialVersionGpuResourceInfoResponse) SetBody(v *GetUserSpecialVersionGpuResourceInfoResponseBody) *GetUserSpecialVersionGpuResourceInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListConfigsResponseBody struct {
 	Configs []*Config `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 	// Id of the request
@@ -3883,6 +4199,53 @@ func (s *ListNetworkVpcsResponse) SetBody(v *ListNetworkVpcsResponseBody) *ListN
 	return s
 }
 
+type ListRegionsResponseBody struct {
+	Regions []*Region `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponseBody) SetRegions(v []*Region) *ListRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRegionsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListRepositoriesResponseBody struct {
 	Repositories []*ImageRepository `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 	// Id of the request
@@ -3926,6 +4289,112 @@ func (s *ListRepositoriesResponse) SetHeaders(v map[string]*string) *ListReposit
 }
 
 func (s *ListRepositoriesResponse) SetBody(v *ListRepositoriesResponseBody) *ListRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserClustersResponseBody struct {
+	Clusters []*Cluster `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUserClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserClustersResponseBody) SetClusters(v []*Cluster) *ListUserClustersResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *ListUserClustersResponseBody) SetRequestId(v string) *ListUserClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUserClustersResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserClustersResponse) SetHeaders(v map[string]*string) *ListUserClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserClustersResponse) SetBody(v *ListUserClustersResponseBody) *ListUserClustersResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserWorkNodesRequest struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s ListUserWorkNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserWorkNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserWorkNodesRequest) SetClusterId(v string) *ListUserWorkNodesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type ListUserWorkNodesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUserWorkNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserWorkNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserWorkNodesResponseBody) SetRequestId(v string) *ListUserWorkNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUserWorkNodesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserWorkNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserWorkNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserWorkNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserWorkNodesResponse) SetHeaders(v map[string]*string) *ListUserWorkNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserWorkNodesResponse) SetBody(v *ListUserWorkNodesResponseBody) *ListUserWorkNodesResponse {
 	s.Body = v
 	return s
 }
@@ -4301,6 +4770,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environments)) {
+		body["Environments"] = request.Environments
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
@@ -4838,6 +5311,41 @@ func (client *Client) GetUserResourceStatusWithOptions(headers map[string]*strin
 	return _result, _err
 }
 
+func (client *Client) GetUserSpecialVersionGpuResourceInfo(request *GetUserSpecialVersionGpuResourceInfoRequest) (_result *GetUserSpecialVersionGpuResourceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetUserSpecialVersionGpuResourceInfoResponse{}
+	_body, _err := client.GetUserSpecialVersionGpuResourceInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserSpecialVersionGpuResourceInfoWithOptions(request *GetUserSpecialVersionGpuResourceInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserSpecialVersionGpuResourceInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &GetUserSpecialVersionGpuResourceInfoResponse{}
+	_body, _err := client.DoROARequest(tea.String("GetUserSpecialVersionGpuResourceInfo"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/specialVersionGpuResourceInfo"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListConfigs() (_result *ListConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5270,6 +5778,31 @@ func (client *Client) ListNetworkVpcsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
+func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRegionsResponse{}
+	_body, _err := client.ListRegionsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListRegionsResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListRegions"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/configs/regions"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListRepositories(Namespace *string) (_result *ListRepositoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5289,6 +5822,66 @@ func (client *Client) ListRepositoriesWithOptions(Namespace *string, headers map
 	}
 	_result = &ListRepositoriesResponse{}
 	_body, _err := client.DoROARequest(tea.String("ListRepositories"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/imageRegistry/namespaces/"+tea.StringValue(Namespace)+"/repositories"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserClusters() (_result *ListUserClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserClustersResponse{}
+	_body, _err := client.ListUserClustersWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserClustersWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserClustersResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	_result = &ListUserClustersResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListUserClusters"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/clusters"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserWorkNodes(request *ListUserWorkNodesRequest) (_result *ListUserWorkNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserWorkNodesResponse{}
+	_body, _err := client.ListUserWorkNodesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserWorkNodesWithOptions(request *ListUserWorkNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserWorkNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	_result = &ListUserWorkNodesResponse{}
+	_body, _err := client.DoROARequest(tea.String("ListUserWorkNodes"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/workerNodes"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
