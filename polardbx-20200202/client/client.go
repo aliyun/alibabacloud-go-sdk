@@ -775,211 +775,6 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 	return s
 }
 
-type CreatePolarxInstanceRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration       *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	IsAutoRenew    *bool   `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	MasterInstId   *string `json:"MasterInstId,omitempty" xml:"MasterInstId,omitempty"`
-	MySQLVersion   *int32  `json:"MySQLVersion,omitempty" xml:"MySQLVersion,omitempty"`
-	PayType        *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle   *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Quantity       *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Specification  *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId      *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	IsHa           *bool   `json:"isHa,omitempty" xml:"isHa,omitempty"`
-}
-
-func (s CreatePolarxInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolarxInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolarxInstanceRequest) SetClientToken(v string) *CreatePolarxInstanceRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetDescription(v string) *CreatePolarxInstanceRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetDuration(v int32) *CreatePolarxInstanceRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetInstanceSeries(v string) *CreatePolarxInstanceRequest {
-	s.InstanceSeries = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetIsAutoRenew(v bool) *CreatePolarxInstanceRequest {
-	s.IsAutoRenew = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetMasterInstId(v string) *CreatePolarxInstanceRequest {
-	s.MasterInstId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetMySQLVersion(v int32) *CreatePolarxInstanceRequest {
-	s.MySQLVersion = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetPayType(v string) *CreatePolarxInstanceRequest {
-	s.PayType = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetPricingCycle(v string) *CreatePolarxInstanceRequest {
-	s.PricingCycle = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetQuantity(v int32) *CreatePolarxInstanceRequest {
-	s.Quantity = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetRegionId(v string) *CreatePolarxInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetSpecification(v string) *CreatePolarxInstanceRequest {
-	s.Specification = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetType(v string) *CreatePolarxInstanceRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetVpcId(v string) *CreatePolarxInstanceRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetVswitchId(v string) *CreatePolarxInstanceRequest {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetZoneId(v string) *CreatePolarxInstanceRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceRequest) SetIsHa(v bool) *CreatePolarxInstanceRequest {
-	s.IsHa = &v
-	return s
-}
-
-type CreatePolarxInstanceResponseBody struct {
-	Data      *CreatePolarxInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreatePolarxInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolarxInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolarxInstanceResponseBody) SetData(v *CreatePolarxInstanceResponseBodyData) *CreatePolarxInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreatePolarxInstanceResponseBody) SetRequestId(v string) *CreatePolarxInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreatePolarxInstanceResponseBody) SetSuccess(v bool) *CreatePolarxInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreatePolarxInstanceResponseBodyData struct {
-	DrdsInstanceIdList *CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
-	OrderId            *int64                                                  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-}
-
-func (s CreatePolarxInstanceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolarxInstanceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolarxInstanceResponseBodyData) SetDrdsInstanceIdList(v *CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList) *CreatePolarxInstanceResponseBodyData {
-	s.DrdsInstanceIdList = v
-	return s
-}
-
-func (s *CreatePolarxInstanceResponseBodyData) SetOrderId(v int64) *CreatePolarxInstanceResponseBodyData {
-	s.OrderId = &v
-	return s
-}
-
-type CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList struct {
-	DrdsInstanceIdList []*string `json:"drdsInstanceIdList,omitempty" xml:"drdsInstanceIdList,omitempty" type:"Repeated"`
-}
-
-func (s CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList) SetDrdsInstanceIdList(v []*string) *CreatePolarxInstanceResponseBodyDataDrdsInstanceIdList {
-	s.DrdsInstanceIdList = v
-	return s
-}
-
-type CreatePolarxInstanceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePolarxInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreatePolarxInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePolarxInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePolarxInstanceResponse) SetHeaders(v map[string]*string) *CreatePolarxInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreatePolarxInstanceResponse) SetBody(v *CreatePolarxInstanceResponseBody) *CreatePolarxInstanceResponse {
-	s.Body = v
-	return s
-}
-
 type CreatePolarxOrderRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	NodeCount      *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
@@ -2429,7 +2224,6 @@ type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
 	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcInstanceId    *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) String() string {
@@ -2462,11 +2256,6 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVPCId(v 
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
 	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVpcInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs {
-	s.VpcInstanceId = &v
 	return s
 }
 
@@ -3450,6 +3239,7 @@ type DescribeDBNodePerformanceRequest struct {
 	CharacterType  *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DBNodeIds      *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	DBNodeRole     *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3476,6 +3266,11 @@ func (s *DescribeDBNodePerformanceRequest) SetDBInstanceName(v string) *Describe
 
 func (s *DescribeDBNodePerformanceRequest) SetDBNodeIds(v string) *DescribeDBNodePerformanceRequest {
 	s.DBNodeIds = &v
+	return s
+}
+
+func (s *DescribeDBNodePerformanceRequest) SetDBNodeRole(v string) *DescribeDBNodePerformanceRequest {
+	s.DBNodeRole = &v
 	return s
 }
 
@@ -4639,236 +4434,6 @@ func (s *DescribePolarxDbInstancesResponse) SetBody(v *DescribePolarxDbInstances
 	return s
 }
 
-type DescribePolarxPgInstancesRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s DescribePolarxPgInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePolarxPgInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolarxPgInstancesRequest) SetPageNumber(v int32) *DescribePolarxPgInstancesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesRequest) SetPageSize(v int32) *DescribePolarxPgInstancesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesRequest) SetRegionId(v string) *DescribePolarxPgInstancesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesRequest) SetResourceGroupId(v string) *DescribePolarxPgInstancesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type DescribePolarxPgInstancesResponseBody struct {
-	DBInstances []*DescribePolarxPgInstancesResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	ExpireDate  *string                                             `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	PageNumber  *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribePolarxPgInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePolarxPgInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolarxPgInstancesResponseBody) SetDBInstances(v []*DescribePolarxPgInstancesResponseBodyDBInstances) *DescribePolarxPgInstancesResponseBody {
-	s.DBInstances = v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBody) SetExpireDate(v string) *DescribePolarxPgInstancesResponseBody {
-	s.ExpireDate = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBody) SetPageNumber(v int32) *DescribePolarxPgInstancesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBody) SetPageSize(v int32) *DescribePolarxPgInstancesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBody) SetRequestId(v string) *DescribePolarxPgInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePolarxPgInstancesResponseBodyDBInstances struct {
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBType        *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion     *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Expired       *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LockMode      *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason    *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	Network       *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodeClass     *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	NodeCount     *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed   *int32  `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	VPCId         *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribePolarxPgInstancesResponseBodyDBInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePolarxPgInstancesResponseBodyDBInstances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetCommodityCode(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetCreateTime(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetDBType(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.DBType = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetDBVersion(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.DBVersion = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetDescription(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetEngine(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetExpireTime(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetExpired(v bool) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Expired = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetId(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetLockMode(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.LockMode = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetLockReason(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.LockReason = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetNetwork(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetNodeClass(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.NodeClass = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetNodeCount(v int32) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.NodeCount = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetPayType(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetRegionId(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetStatus(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetStorageUsed(v int32) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.StorageUsed = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetVPCId(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.VPCId = &v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponseBodyDBInstances) SetZoneId(v string) *DescribePolarxPgInstancesResponseBodyDBInstances {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribePolarxPgInstancesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePolarxPgInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePolarxPgInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePolarxPgInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePolarxPgInstancesResponse) SetHeaders(v map[string]*string) *DescribePolarxPgInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePolarxPgInstancesResponse) SetBody(v *DescribePolarxPgInstancesResponseBody) *DescribePolarxPgInstancesResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRegionsResponseBody struct {
 	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrorCode *int32                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -5245,6 +4810,151 @@ func (s *DescribeSecurityIpsResponse) SetBody(v *DescribeSecurityIpsResponseBody
 	return s
 }
 
+type DescribeTableDetailRequest struct {
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeTableDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailRequest) SetDBInstanceName(v string) *DescribeTableDetailRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetDbName(v string) *DescribeTableDetailRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetRegionId(v string) *DescribeTableDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetTableName(v string) *DescribeTableDetailRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeTableDetailResponseBody struct {
+	Data      *DescribeTableDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeTableDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBody) SetData(v *DescribeTableDetailResponseBodyData) *DescribeTableDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetMessage(v string) *DescribeTableDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetRequestId(v string) *DescribeTableDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetSuccess(v bool) *DescribeTableDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeTableDetailResponseBodyData struct {
+	Fields []*DescribeTableDetailResponseBodyDataFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTableDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBodyData) SetFields(v []*DescribeTableDetailResponseBodyDataFields) *DescribeTableDetailResponseBodyData {
+	s.Fields = v
+	return s
+}
+
+type DescribeTableDetailResponseBodyDataFields struct {
+	Column   *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s DescribeTableDetailResponseBodyDataFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBodyDataFields) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBodyDataFields) SetColumn(v string) *DescribeTableDetailResponseBodyDataFields {
+	s.Column = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBodyDataFields) SetDataType(v string) *DescribeTableDetailResponseBodyDataFields {
+	s.DataType = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBodyDataFields) SetExtra(v string) *DescribeTableDetailResponseBodyDataFields {
+	s.Extra = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBodyDataFields) SetKey(v string) *DescribeTableDetailResponseBodyDataFields {
+	s.Key = &v
+	return s
+}
+
+type DescribeTableDetailResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeTableDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTableDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponse) SetHeaders(v map[string]*string) *DescribeTableDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTableDetailResponse) SetBody(v *DescribeTableDetailResponseBody) *DescribeTableDetailResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTasksRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -5256,8 +4966,6 @@ type DescribeTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskAction           *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 }
 
 func (s DescribeTasksRequest) String() string {
@@ -5315,16 +5023,6 @@ func (s *DescribeTasksRequest) SetResourceOwnerId(v int64) *DescribeTasksRequest
 
 func (s *DescribeTasksRequest) SetStartTime(v string) *DescribeTasksRequest {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetStatus(v string) *DescribeTasksRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetTaskAction(v string) *DescribeTasksRequest {
-	s.TaskAction = &v
 	return s
 }
 
@@ -5551,6 +5249,204 @@ func (s *DescribeUserEncryptionKeyListResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptionKeyListResponseBody) *DescribeUserEncryptionKeyListResponse {
+	s.Body = v
+	return s
+}
+
+type DisableRightsSeparationRequest struct {
+	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DbaAccountName     *string `json:"DbaAccountName,omitempty" xml:"DbaAccountName,omitempty"`
+	DbaAccountPassword *string `json:"DbaAccountPassword,omitempty" xml:"DbaAccountPassword,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DisableRightsSeparationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRightsSeparationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRightsSeparationRequest) SetDBInstanceName(v string) *DisableRightsSeparationRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DisableRightsSeparationRequest) SetDbaAccountName(v string) *DisableRightsSeparationRequest {
+	s.DbaAccountName = &v
+	return s
+}
+
+func (s *DisableRightsSeparationRequest) SetDbaAccountPassword(v string) *DisableRightsSeparationRequest {
+	s.DbaAccountPassword = &v
+	return s
+}
+
+func (s *DisableRightsSeparationRequest) SetRegionId(v string) *DisableRightsSeparationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DisableRightsSeparationResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableRightsSeparationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRightsSeparationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRightsSeparationResponseBody) SetMessage(v string) *DisableRightsSeparationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableRightsSeparationResponseBody) SetRequestId(v string) *DisableRightsSeparationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableRightsSeparationResponseBody) SetSuccess(v bool) *DisableRightsSeparationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableRightsSeparationResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DisableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableRightsSeparationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRightsSeparationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRightsSeparationResponse) SetHeaders(v map[string]*string) *DisableRightsSeparationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableRightsSeparationResponse) SetBody(v *DisableRightsSeparationResponseBody) *DisableRightsSeparationResponse {
+	s.Body = v
+	return s
+}
+
+type EnableRightsSeparationRequest struct {
+	AuditAccountDescription    *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
+	AuditAccountName           *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
+	AuditAccountPassword       *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
+	DBInstanceName             *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityAccountDescription *string `json:"SecurityAccountDescription,omitempty" xml:"SecurityAccountDescription,omitempty"`
+	SecurityAccountName        *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	SecurityAccountPassword    *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+}
+
+func (s EnableRightsSeparationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRightsSeparationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRightsSeparationRequest) SetAuditAccountDescription(v string) *EnableRightsSeparationRequest {
+	s.AuditAccountDescription = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetAuditAccountName(v string) *EnableRightsSeparationRequest {
+	s.AuditAccountName = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetAuditAccountPassword(v string) *EnableRightsSeparationRequest {
+	s.AuditAccountPassword = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetDBInstanceName(v string) *EnableRightsSeparationRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetRegionId(v string) *EnableRightsSeparationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetSecurityAccountDescription(v string) *EnableRightsSeparationRequest {
+	s.SecurityAccountDescription = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetSecurityAccountName(v string) *EnableRightsSeparationRequest {
+	s.SecurityAccountName = &v
+	return s
+}
+
+func (s *EnableRightsSeparationRequest) SetSecurityAccountPassword(v string) *EnableRightsSeparationRequest {
+	s.SecurityAccountPassword = &v
+	return s
+}
+
+type EnableRightsSeparationResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableRightsSeparationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRightsSeparationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRightsSeparationResponseBody) SetMessage(v string) *EnableRightsSeparationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableRightsSeparationResponseBody) SetRequestId(v string) *EnableRightsSeparationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableRightsSeparationResponseBody) SetSuccess(v bool) *EnableRightsSeparationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableRightsSeparationResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableRightsSeparationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRightsSeparationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRightsSeparationResponse) SetHeaders(v map[string]*string) *EnableRightsSeparationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableRightsSeparationResponse) SetBody(v *EnableRightsSeparationResponseBody) *EnableRightsSeparationResponse {
 	s.Body = v
 	return s
 }
@@ -6025,6 +5921,111 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 	return s
 }
 
+type ModifyAccountPrivilegeRequest struct {
+	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DbName                  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+}
+
+func (s ModifyAccountPrivilegeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountPrivilegeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetAccountName(v string) *ModifyAccountPrivilegeRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetAccountPrivilege(v string) *ModifyAccountPrivilegeRequest {
+	s.AccountPrivilege = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetDBInstanceName(v string) *ModifyAccountPrivilegeRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetDbName(v string) *ModifyAccountPrivilegeRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetRegionId(v string) *ModifyAccountPrivilegeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetSecurityAccountName(v string) *ModifyAccountPrivilegeRequest {
+	s.SecurityAccountName = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeRequest) SetSecurityAccountPassword(v string) *ModifyAccountPrivilegeRequest {
+	s.SecurityAccountPassword = &v
+	return s
+}
+
+type ModifyAccountPrivilegeResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAccountPrivilegeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountPrivilegeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountPrivilegeResponseBody) SetMessage(v string) *ModifyAccountPrivilegeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeResponseBody) SetRequestId(v string) *ModifyAccountPrivilegeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeResponseBody) SetSuccess(v bool) *ModifyAccountPrivilegeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAccountPrivilegeResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyAccountPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAccountPrivilegeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountPrivilegeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountPrivilegeResponse) SetHeaders(v map[string]*string) *ModifyAccountPrivilegeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccountPrivilegeResponse) SetBody(v *ModifyAccountPrivilegeResponseBody) *ModifyAccountPrivilegeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceClassRequest struct {
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceName        *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
@@ -6246,6 +6247,81 @@ func (s *ModifyDBInstanceDescriptionResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescriptionResponseBody) *ModifyDBInstanceDescriptionResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceMaintainTimeRequest struct {
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	MaintainTime   *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDBInstanceMaintainTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceMaintainTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceMaintainTimeRequest) SetClientToken(v string) *ModifyDBInstanceMaintainTimeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyDBInstanceMaintainTimeRequest) SetDBInstanceName(v string) *ModifyDBInstanceMaintainTimeRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyDBInstanceMaintainTimeRequest) SetMaintainTime(v string) *ModifyDBInstanceMaintainTimeRequest {
+	s.MaintainTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceMaintainTimeRequest) SetRegionId(v string) *ModifyDBInstanceMaintainTimeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDBInstanceMaintainTimeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceMaintainTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceMaintainTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceMaintainTimeResponseBody) SetRequestId(v string) *ModifyDBInstanceMaintainTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceMaintainTimeResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyDBInstanceMaintainTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDBInstanceMaintainTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceMaintainTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceMaintainTimeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceMaintainTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMaintainTimeResponseBody) *ModifyDBInstanceMaintainTimeResponse {
 	s.Body = v
 	return s
 }
@@ -6600,6 +6676,105 @@ func (s *ReleaseInstancePublicConnectionResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePublicConnectionResponseBody) *ReleaseInstancePublicConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type ResetAccountPasswordRequest struct {
+	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPassword         *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+}
+
+func (s ResetAccountPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAccountPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAccountPasswordRequest) SetAccountName(v string) *ResetAccountPasswordRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetAccountPassword(v string) *ResetAccountPasswordRequest {
+	s.AccountPassword = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetDBInstanceName(v string) *ResetAccountPasswordRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetRegionId(v string) *ResetAccountPasswordRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetSecurityAccountName(v string) *ResetAccountPasswordRequest {
+	s.SecurityAccountName = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetSecurityAccountPassword(v string) *ResetAccountPasswordRequest {
+	s.SecurityAccountPassword = &v
+	return s
+}
+
+type ResetAccountPasswordResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResetAccountPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAccountPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAccountPasswordResponseBody) SetMessage(v string) *ResetAccountPasswordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResetAccountPasswordResponseBody) SetRequestId(v string) *ResetAccountPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetAccountPasswordResponseBody) SetSuccess(v bool) *ResetAccountPasswordResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResetAccountPasswordResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ResetAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetAccountPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAccountPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAccountPasswordResponse) SetHeaders(v map[string]*string) *ResetAccountPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBody) *ResetAccountPasswordResponse {
 	s.Body = v
 	return s
 }
@@ -7171,8 +7346,6 @@ func (s *UpdatePolarDBXInstanceNodeResponse) SetBody(v *UpdatePolarDBXInstanceNo
 type UpgradeDBInstanceKernelVersionRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchTime     *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	UpgradeTime    *string `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionRequest) String() string {
@@ -7190,16 +7363,6 @@ func (s *UpgradeDBInstanceKernelVersionRequest) SetDBInstanceName(v string) *Upg
 
 func (s *UpgradeDBInstanceKernelVersionRequest) SetRegionId(v string) *UpgradeDBInstanceKernelVersionRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *UpgradeDBInstanceKernelVersionRequest) SetSwitchTime(v string) *UpgradeDBInstanceKernelVersionRequest {
-	s.SwitchTime = &v
-	return s
-}
-
-func (s *UpgradeDBInstanceKernelVersionRequest) SetUpgradeTime(v string) *UpgradeDBInstanceKernelVersionRequest {
-	s.UpgradeTime = &v
 	return s
 }
 
@@ -7544,34 +7707,6 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
 	_body, _err := client.CreateDBInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreatePolarxInstanceWithOptions(request *CreatePolarxInstanceRequest, runtime *util.RuntimeOptions) (_result *CreatePolarxInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreatePolarxInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePolarxInstance"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreatePolarxInstance(request *CreatePolarxInstanceRequest) (_result *CreatePolarxInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreatePolarxInstanceResponse{}
-	_body, _err := client.CreatePolarxInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8224,34 +8359,6 @@ func (client *Client) DescribePolarxDbInstances(request *DescribePolarxDbInstanc
 	return _result, _err
 }
 
-func (client *Client) DescribePolarxPgInstancesWithOptions(request *DescribePolarxPgInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribePolarxPgInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribePolarxPgInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePolarxPgInstances"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePolarxPgInstances(request *DescribePolarxPgInstancesRequest) (_result *DescribePolarxPgInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePolarxPgInstancesResponse{}
-	_body, _err := client.DescribePolarxPgInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	_result = &DescribeRegionsResponse{}
@@ -8330,6 +8437,34 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeTableDetailWithOptions(request *DescribeTableDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeTableDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeTableDetailResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeTableDetail"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTableDetail(request *DescribeTableDetailRequest) (_result *DescribeTableDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTableDetailResponse{}
+	_body, _err := client.DescribeTableDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8386,6 +8521,62 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *DisableRightsSeparationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DisableRightsSeparationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DisableRightsSeparation"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableRightsSeparation(request *DisableRightsSeparationRequest) (_result *DisableRightsSeparationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableRightsSeparationResponse{}
+	_body, _err := client.DisableRightsSeparationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *EnableRightsSeparationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &EnableRightsSeparationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("EnableRightsSeparation"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableRightsSeparation(request *EnableRightsSeparationRequest) (_result *EnableRightsSeparationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableRightsSeparationResponse{}
+	_body, _err := client.EnableRightsSeparationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetPolarxCommodityWithOptions(request *GetPolarxCommodityRequest, runtime *util.RuntimeOptions) (_result *GetPolarxCommodityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8435,6 +8626,34 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
 	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPrivilegeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyAccountPrivilegeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountPrivilege"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequest) (_result *ModifyAccountPrivilegeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccountPrivilegeResponse{}
+	_body, _err := client.ModifyAccountPrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8519,6 +8738,34 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
 	_body, _err := client.ModifyDBInstanceDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyDBInstanceMaintainTimeResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyDBInstanceMaintainTime"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMaintainTimeRequest) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceMaintainTimeResponse{}
+	_body, _err := client.ModifyDBInstanceMaintainTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8631,6 +8878,34 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
 	_body, _err := client.ReleaseInstancePublicConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ResetAccountPassword"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
