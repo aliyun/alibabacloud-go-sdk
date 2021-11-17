@@ -7634,6 +7634,459 @@ func (s *DescribeDrdsDbRdsNameListResponse) SetBody(v *DescribeDrdsDbRdsNameList
 	return s
 }
 
+type DescribeDrdsDbSpecAndPriceRequest struct {
+	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceRequest) SetDBName(v string) *DescribeDrdsDbSpecAndPriceRequest {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceRequest) SetDrdsInstanceId(v string) *DescribeDrdsDbSpecAndPriceRequest {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceRequest) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBody struct {
+	Data      *DescribeDrdsDbSpecAndPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBody) SetData(v *DescribeDrdsDbSpecAndPriceResponseBodyData) *DescribeDrdsDbSpecAndPriceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBody) SetRequestId(v string) *DescribeDrdsDbSpecAndPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyData struct {
+	DrdsDbPrice               *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice                 `json:"DrdsDbPrice,omitempty" xml:"DrdsDbPrice,omitempty" type:"Struct"`
+	DrdsInstance              *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance                `json:"DrdsInstance,omitempty" xml:"DrdsInstance,omitempty" type:"Struct"`
+	RdsInstanceSpecsAndPrices []*DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices `json:"RdsInstanceSpecsAndPrices,omitempty" xml:"RdsInstanceSpecsAndPrices,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetDrdsDbPrice(v *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) *DescribeDrdsDbSpecAndPriceResponseBodyData {
+	s.DrdsDbPrice = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetDrdsInstance(v *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) *DescribeDrdsDbSpecAndPriceResponseBodyData {
+	s.DrdsInstance = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetRdsInstanceSpecsAndPrices(v []*DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) *DescribeDrdsDbSpecAndPriceResponseBodyData {
+	s.RdsInstanceSpecsAndPrices = v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice struct {
+	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetCurrency(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetDiscountPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetOriginalPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetTradePrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance struct {
+	DrdsInstanceId     *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	InstRole           *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
+	InstanceSeries     *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
+	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MachineType        *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ProductVersion     *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	ProtocolType       *int32  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VersionAction      *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
+	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetDrdsInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.DrdsInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstRole(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.InstRole = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstanceSeries(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.InstanceSeries = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstanceSpec(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetMachineType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.MachineType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetNetworkType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetProductVersion(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetProtocolType(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetStatus(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVersionAction(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.VersionAction = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVpcCloudInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.VpcCloudInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVpcId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetZoneId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices struct {
+	RdsPrice        *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice        `json:"RdsPrice,omitempty" xml:"RdsPrice,omitempty" type:"Struct"`
+	StorageInstance *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance `json:"StorageInstance,omitempty" xml:"StorageInstance,omitempty" type:"Struct"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) SetRdsPrice(v *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices {
+	s.RdsPrice = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) SetStorageInstance(v *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices {
+	s.StorageInstance = v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice struct {
+	Coupons       *string   `json:"Coupons,omitempty" xml:"Coupons,omitempty"`
+	Currency      *string   `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *float32  `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32  `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	RuleIds       []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	TradePrice    *float32  `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetCoupons(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.Coupons = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetCurrency(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetDiscountPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetOriginalPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetRuleIds(v []*string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.RuleIds = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetTradePrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance struct {
+	ConnectUrl            *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	DBInstType            *string `json:"DBInstType,omitempty" xml:"DBInstType,omitempty"`
+	DBInstanceCPU         *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
+	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClassType   *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory      *int32  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceStatus      *int32  `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage     *int32  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
+	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime            *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RDSInstType           *string `json:"RDSInstType,omitempty" xml:"RDSInstType,omitempty"`
+	ReadWeight            *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemainDays            *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetConnectUrl(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceCPU(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceCPU = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceClass(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceClassType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceClassType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceDescription(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceMemory(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceMemory = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStatus(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceStatus = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStorage(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceStorage = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStorageType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.DBInstanceStorageType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetEngine(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetEngineVersion(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetExpireTime(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetNetworkType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetPayType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetPort(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRDSInstType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.RDSInstType = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetReadWeight(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.ReadWeight = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRemainDays(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.RemainDays = &v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetZoneId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDrdsDbSpecAndPriceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDrdsDbSpecAndPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrdsDbSpecAndPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponse) SetHeaders(v map[string]*string) *DescribeDrdsDbSpecAndPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDrdsDbSpecAndPriceResponse) SetBody(v *DescribeDrdsDbSpecAndPriceResponseBody) *DescribeDrdsDbSpecAndPriceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDrdsDbTasksRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -9497,6 +9950,8 @@ type DescribeDrdsShardingDbsRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DbNamePattern  *string `json:"DbNamePattern,omitempty" xml:"DbNamePattern,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsRequest) String() string {
@@ -9522,10 +9977,23 @@ func (s *DescribeDrdsShardingDbsRequest) SetDrdsInstanceId(v string) *DescribeDr
 	return s
 }
 
+func (s *DescribeDrdsShardingDbsRequest) SetPageNumber(v int64) *DescribeDrdsShardingDbsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDrdsShardingDbsRequest) SetPageSize(v int64) *DescribeDrdsShardingDbsRequest {
+	s.PageSize = &v
+	return s
+}
+
 type DescribeDrdsShardingDbsResponseBody struct {
+	PageNumber  *string                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ShardingDbs *DescribeDrdsShardingDbsResponseBodyShardingDbs `json:"ShardingDbs,omitempty" xml:"ShardingDbs,omitempty" type:"Struct"`
 	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total       *string                                         `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDrdsShardingDbsResponseBody) String() string {
@@ -9534,6 +10002,16 @@ func (s DescribeDrdsShardingDbsResponseBody) String() string {
 
 func (s DescribeDrdsShardingDbsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDrdsShardingDbsResponseBody) SetPageNumber(v string) *DescribeDrdsShardingDbsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDrdsShardingDbsResponseBody) SetPageSize(v string) *DescribeDrdsShardingDbsResponseBody {
+	s.PageSize = &v
+	return s
 }
 
 func (s *DescribeDrdsShardingDbsResponseBody) SetRequestId(v string) *DescribeDrdsShardingDbsResponseBody {
@@ -9548,6 +10026,11 @@ func (s *DescribeDrdsShardingDbsResponseBody) SetShardingDbs(v *DescribeDrdsShar
 
 func (s *DescribeDrdsShardingDbsResponseBody) SetSuccess(v bool) *DescribeDrdsShardingDbsResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DescribeDrdsShardingDbsResponseBody) SetTotal(v string) *DescribeDrdsShardingDbsResponseBody {
+	s.Total = &v
 	return s
 }
 
@@ -24774,6 +25257,34 @@ func (client *Client) DescribeDrdsDbRdsNameList(request *DescribeDrdsDbRdsNameLi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDbRdsNameListResponse{}
 	_body, _err := client.DescribeDrdsDbRdsNameListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDrdsDbSpecAndPriceWithOptions(request *DescribeDrdsDbSpecAndPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbSpecAndPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeDrdsDbSpecAndPriceResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbSpecAndPrice"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDrdsDbSpecAndPrice(request *DescribeDrdsDbSpecAndPriceRequest) (_result *DescribeDrdsDbSpecAndPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDrdsDbSpecAndPriceResponse{}
+	_body, _err := client.DescribeDrdsDbSpecAndPriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
