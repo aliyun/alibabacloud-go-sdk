@@ -4060,7 +4060,7 @@ type ListNetworkSecurityGroupsResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// security groups
-	SecurityGroups [][]*SecurityGroup `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	SecurityGroups []*SecurityGroup `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
 }
 
 func (s ListNetworkSecurityGroupsResponseBody) String() string {
@@ -4076,7 +4076,7 @@ func (s *ListNetworkSecurityGroupsResponseBody) SetRequestId(v string) *ListNetw
 	return s
 }
 
-func (s *ListNetworkSecurityGroupsResponseBody) SetSecurityGroups(v [][]*SecurityGroup) *ListNetworkSecurityGroupsResponseBody {
+func (s *ListNetworkSecurityGroupsResponseBody) SetSecurityGroups(v []*SecurityGroup) *ListNetworkSecurityGroupsResponseBody {
 	s.SecurityGroups = v
 	return s
 }
