@@ -111,6 +111,76 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 	return s
 }
 
+type CancelActiveOperationTasksRequest struct {
+	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CancelActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksRequest) SetIds(v string) *CancelActiveOperationTasksRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetRegionId(v string) *CancelActiveOperationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponseBody struct {
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetIds(v string) *CancelActiveOperationTasksResponseBody {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetRequestId(v string) *CancelActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponse) SetHeaders(v map[string]*string) *CancelActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTasksResponseBody) *CancelActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type CancelPolarxOrderRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1345,6 +1415,221 @@ func (s *DescribeAccountListResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeAccountListResponse) SetBody(v *DescribeAccountListResponseBody) *DescribeAccountListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeActiveOperationMaintainConfRequest struct {
+	// 区域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeActiveOperationMaintainConfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationMaintainConfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationMaintainConfRequest) SetRegionId(v string) *DescribeActiveOperationMaintainConfRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeActiveOperationMaintainConfResponseBody struct {
+	// 配置信息
+	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// 用户是否配置：1:已经配置。 0.未配置
+	HasConfig *int64 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
+	// requestid
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeActiveOperationMaintainConfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationMaintainConfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBody) SetConfig(v *DescribeActiveOperationMaintainConfResponseBodyConfig) *DescribeActiveOperationMaintainConfResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBody) SetHasConfig(v int64) *DescribeActiveOperationMaintainConfResponseBody {
+	s.HasConfig = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBody) SetRequestId(v string) *DescribeActiveOperationMaintainConfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 循环时间
+	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// 循环类型
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// 运维结束时间
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// 运维开始时间
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 状态
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeActiveOperationMaintainConfResponseBodyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationMaintainConfResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetCreatedTime(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetCycleTime(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.CycleTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetCycleType(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.CycleType = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetMaintainEndTime(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetMaintainStartTime(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.MaintainStartTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetModifiedTime(v string) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetStatus(v int64) *DescribeActiveOperationMaintainConfResponseBodyConfig {
+	s.Status = &v
+	return s
+}
+
+type DescribeActiveOperationMaintainConfResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeActiveOperationMaintainConfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationMaintainConfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationMaintainConfResponse) SetHeaders(v map[string]*string) *DescribeActiveOperationMaintainConfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActiveOperationMaintainConfResponse) SetBody(v *DescribeActiveOperationMaintainConfResponseBody) *DescribeActiveOperationMaintainConfResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeActiveOperationTaskCountRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeActiveOperationTaskCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTaskCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTaskCountRequest) SetCategory(v string) *DescribeActiveOperationTaskCountRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskCountRequest) SetProduct(v string) *DescribeActiveOperationTaskCountRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskCountRequest) SetRegionId(v string) *DescribeActiveOperationTaskCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeActiveOperationTaskCountResponseBody struct {
+	NeedPop *int64 `json:"NeedPop,omitempty" xml:"NeedPop,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskCount *int64  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+}
+
+func (s DescribeActiveOperationTaskCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTaskCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTaskCountResponseBody) SetNeedPop(v int64) *DescribeActiveOperationTaskCountResponseBody {
+	s.NeedPop = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskCountResponseBody) SetRequestId(v string) *DescribeActiveOperationTaskCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskCountResponseBody) SetTaskCount(v int64) *DescribeActiveOperationTaskCountResponseBody {
+	s.TaskCount = &v
+	return s
+}
+
+type DescribeActiveOperationTaskCountResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeActiveOperationTaskCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeActiveOperationTaskCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTaskCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTaskCountResponse) SetHeaders(v map[string]*string) *DescribeActiveOperationTaskCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskCountResponse) SetBody(v *DescribeActiveOperationTaskCountResponseBody) *DescribeActiveOperationTaskCountResponse {
 	s.Body = v
 	return s
 }
@@ -3740,6 +4025,209 @@ func (s *DescribeDistributeTableListResponse) SetBody(v *DescribeDistributeTable
 	return s
 }
 
+type DescribeEventsRequest struct {
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 页面下标
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 页面大小
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 区域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsRequest) SetEndTime(v string) *DescribeEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetPageNumber(v int32) *DescribeEventsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetPageSize(v int32) *DescribeEventsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetRegionId(v string) *DescribeEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetStartTime(v string) *DescribeEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeEventsResponseBody struct {
+	// 事件体
+	EventItems []*DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Repeated"`
+	// 页面下标
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总页数
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBody) SetEventItems(v []*DescribeEventsResponseBodyEventItems) *DescribeEventsResponseBody {
+	s.EventItems = v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetPageNumber(v int64) *DescribeEventsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetPageSize(v int64) *DescribeEventsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetRequestId(v string) *DescribeEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetTotalRecordCount(v int64) *DescribeEventsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeEventsResponseBodyEventItems struct {
+	// 事件ID
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// 事件名称
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// 补充信息
+	EventPayload *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
+	// 原因
+	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// 记录时间
+	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
+	// 事件时间
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// 事件类型
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// 事件用户类型
+	EventUserType *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
+	// 区域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源名
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeEventsResponseBodyEventItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBodyEventItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventId(v int64) *DescribeEventsResponseBodyEventItems {
+	s.EventId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventName(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventPayload(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventPayload = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventReason(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventReason = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventRecordTime(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventRecordTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventTime(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventType(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetEventUserType(v string) *DescribeEventsResponseBodyEventItems {
+	s.EventUserType = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetRegionId(v string) *DescribeEventsResponseBodyEventItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetResourceName(v string) *DescribeEventsResponseBodyEventItems {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyEventItems) SetResourceType(v string) *DescribeEventsResponseBodyEventItems {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeEventsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponse) SetHeaders(v map[string]*string) *DescribeEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *DescribeEventsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeParameterTemplatesRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ParamLevel   *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
@@ -4810,151 +5298,6 @@ func (s *DescribeSecurityIpsResponse) SetBody(v *DescribeSecurityIpsResponseBody
 	return s
 }
 
-type DescribeTableDetailRequest struct {
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-}
-
-func (s DescribeTableDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTableDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTableDetailRequest) SetDBInstanceName(v string) *DescribeTableDetailRequest {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *DescribeTableDetailRequest) SetDbName(v string) *DescribeTableDetailRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *DescribeTableDetailRequest) SetRegionId(v string) *DescribeTableDetailRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeTableDetailRequest) SetTableName(v string) *DescribeTableDetailRequest {
-	s.TableName = &v
-	return s
-}
-
-type DescribeTableDetailResponseBody struct {
-	Data      *DescribeTableDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeTableDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTableDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTableDetailResponseBody) SetData(v *DescribeTableDetailResponseBodyData) *DescribeTableDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBody) SetMessage(v string) *DescribeTableDetailResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBody) SetRequestId(v string) *DescribeTableDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBody) SetSuccess(v bool) *DescribeTableDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeTableDetailResponseBodyData struct {
-	Fields []*DescribeTableDetailResponseBodyDataFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-}
-
-func (s DescribeTableDetailResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTableDetailResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTableDetailResponseBodyData) SetFields(v []*DescribeTableDetailResponseBodyDataFields) *DescribeTableDetailResponseBodyData {
-	s.Fields = v
-	return s
-}
-
-type DescribeTableDetailResponseBodyDataFields struct {
-	Column   *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-}
-
-func (s DescribeTableDetailResponseBodyDataFields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTableDetailResponseBodyDataFields) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTableDetailResponseBodyDataFields) SetColumn(v string) *DescribeTableDetailResponseBodyDataFields {
-	s.Column = &v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBodyDataFields) SetDataType(v string) *DescribeTableDetailResponseBodyDataFields {
-	s.DataType = &v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBodyDataFields) SetExtra(v string) *DescribeTableDetailResponseBodyDataFields {
-	s.Extra = &v
-	return s
-}
-
-func (s *DescribeTableDetailResponseBodyDataFields) SetKey(v string) *DescribeTableDetailResponseBodyDataFields {
-	s.Key = &v
-	return s
-}
-
-type DescribeTableDetailResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTableDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeTableDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTableDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTableDetailResponse) SetHeaders(v map[string]*string) *DescribeTableDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeTableDetailResponse) SetBody(v *DescribeTableDetailResponseBody) *DescribeTableDetailResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeTasksRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -5249,204 +5592,6 @@ func (s *DescribeUserEncryptionKeyListResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptionKeyListResponseBody) *DescribeUserEncryptionKeyListResponse {
-	s.Body = v
-	return s
-}
-
-type DisableRightsSeparationRequest struct {
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbaAccountName     *string `json:"DbaAccountName,omitempty" xml:"DbaAccountName,omitempty"`
-	DbaAccountPassword *string `json:"DbaAccountPassword,omitempty" xml:"DbaAccountPassword,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DisableRightsSeparationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableRightsSeparationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DisableRightsSeparationRequest) SetDBInstanceName(v string) *DisableRightsSeparationRequest {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *DisableRightsSeparationRequest) SetDbaAccountName(v string) *DisableRightsSeparationRequest {
-	s.DbaAccountName = &v
-	return s
-}
-
-func (s *DisableRightsSeparationRequest) SetDbaAccountPassword(v string) *DisableRightsSeparationRequest {
-	s.DbaAccountPassword = &v
-	return s
-}
-
-func (s *DisableRightsSeparationRequest) SetRegionId(v string) *DisableRightsSeparationRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DisableRightsSeparationResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DisableRightsSeparationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableRightsSeparationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DisableRightsSeparationResponseBody) SetMessage(v string) *DisableRightsSeparationResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DisableRightsSeparationResponseBody) SetRequestId(v string) *DisableRightsSeparationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DisableRightsSeparationResponseBody) SetSuccess(v bool) *DisableRightsSeparationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DisableRightsSeparationResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DisableRightsSeparationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableRightsSeparationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DisableRightsSeparationResponse) SetHeaders(v map[string]*string) *DisableRightsSeparationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DisableRightsSeparationResponse) SetBody(v *DisableRightsSeparationResponseBody) *DisableRightsSeparationResponse {
-	s.Body = v
-	return s
-}
-
-type EnableRightsSeparationRequest struct {
-	AuditAccountDescription    *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
-	AuditAccountName           *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
-	AuditAccountPassword       *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
-	DBInstanceName             *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountDescription *string `json:"SecurityAccountDescription,omitempty" xml:"SecurityAccountDescription,omitempty"`
-	SecurityAccountName        *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-	SecurityAccountPassword    *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
-}
-
-func (s EnableRightsSeparationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableRightsSeparationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EnableRightsSeparationRequest) SetAuditAccountDescription(v string) *EnableRightsSeparationRequest {
-	s.AuditAccountDescription = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetAuditAccountName(v string) *EnableRightsSeparationRequest {
-	s.AuditAccountName = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetAuditAccountPassword(v string) *EnableRightsSeparationRequest {
-	s.AuditAccountPassword = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetDBInstanceName(v string) *EnableRightsSeparationRequest {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetRegionId(v string) *EnableRightsSeparationRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetSecurityAccountDescription(v string) *EnableRightsSeparationRequest {
-	s.SecurityAccountDescription = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetSecurityAccountName(v string) *EnableRightsSeparationRequest {
-	s.SecurityAccountName = &v
-	return s
-}
-
-func (s *EnableRightsSeparationRequest) SetSecurityAccountPassword(v string) *EnableRightsSeparationRequest {
-	s.SecurityAccountPassword = &v
-	return s
-}
-
-type EnableRightsSeparationResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s EnableRightsSeparationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableRightsSeparationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EnableRightsSeparationResponseBody) SetMessage(v string) *EnableRightsSeparationResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *EnableRightsSeparationResponseBody) SetRequestId(v string) *EnableRightsSeparationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *EnableRightsSeparationResponseBody) SetSuccess(v bool) *EnableRightsSeparationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type EnableRightsSeparationResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EnableRightsSeparationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableRightsSeparationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EnableRightsSeparationResponse) SetHeaders(v map[string]*string) *EnableRightsSeparationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EnableRightsSeparationResponse) SetBody(v *EnableRightsSeparationResponseBody) *EnableRightsSeparationResponse {
 	s.Body = v
 	return s
 }
@@ -5921,107 +6066,172 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 	return s
 }
 
-type ModifyAccountPrivilegeRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbName                  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+type ModifyActiveOperationMaintainConfRequest struct {
+	CycleTime         *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	CycleType         *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s ModifyAccountPrivilegeRequest) String() string {
+func (s ModifyActiveOperationMaintainConfRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyAccountPrivilegeRequest) GoString() string {
+func (s ModifyActiveOperationMaintainConfRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetAccountName(v string) *ModifyAccountPrivilegeRequest {
-	s.AccountName = &v
+func (s *ModifyActiveOperationMaintainConfRequest) SetCycleTime(v string) *ModifyActiveOperationMaintainConfRequest {
+	s.CycleTime = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetAccountPrivilege(v string) *ModifyAccountPrivilegeRequest {
-	s.AccountPrivilege = &v
+func (s *ModifyActiveOperationMaintainConfRequest) SetCycleType(v string) *ModifyActiveOperationMaintainConfRequest {
+	s.CycleType = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetDBInstanceName(v string) *ModifyAccountPrivilegeRequest {
-	s.DBInstanceName = &v
+func (s *ModifyActiveOperationMaintainConfRequest) SetMaintainEndTime(v string) *ModifyActiveOperationMaintainConfRequest {
+	s.MaintainEndTime = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetDbName(v string) *ModifyAccountPrivilegeRequest {
-	s.DbName = &v
+func (s *ModifyActiveOperationMaintainConfRequest) SetMaintainStartTime(v string) *ModifyActiveOperationMaintainConfRequest {
+	s.MaintainStartTime = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetRegionId(v string) *ModifyAccountPrivilegeRequest {
+func (s *ModifyActiveOperationMaintainConfRequest) SetRegionId(v string) *ModifyActiveOperationMaintainConfRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetSecurityAccountName(v string) *ModifyAccountPrivilegeRequest {
-	s.SecurityAccountName = &v
+func (s *ModifyActiveOperationMaintainConfRequest) SetStatus(v int32) *ModifyActiveOperationMaintainConfRequest {
+	s.Status = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeRequest) SetSecurityAccountPassword(v string) *ModifyAccountPrivilegeRequest {
-	s.SecurityAccountPassword = &v
-	return s
-}
-
-type ModifyAccountPrivilegeResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+type ModifyActiveOperationMaintainConfResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
-func (s ModifyAccountPrivilegeResponseBody) String() string {
+func (s ModifyActiveOperationMaintainConfResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyAccountPrivilegeResponseBody) GoString() string {
+func (s ModifyActiveOperationMaintainConfResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyAccountPrivilegeResponseBody) SetMessage(v string) *ModifyAccountPrivilegeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyAccountPrivilegeResponseBody) SetRequestId(v string) *ModifyAccountPrivilegeResponseBody {
+func (s *ModifyActiveOperationMaintainConfResponseBody) SetRequestId(v string) *ModifyActiveOperationMaintainConfResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeResponseBody) SetSuccess(v bool) *ModifyAccountPrivilegeResponseBody {
-	s.Success = &v
-	return s
+type ModifyActiveOperationMaintainConfResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type ModifyAccountPrivilegeResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAccountPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyAccountPrivilegeResponse) String() string {
+func (s ModifyActiveOperationMaintainConfResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyAccountPrivilegeResponse) GoString() string {
+func (s ModifyActiveOperationMaintainConfResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyAccountPrivilegeResponse) SetHeaders(v map[string]*string) *ModifyAccountPrivilegeResponse {
+func (s *ModifyActiveOperationMaintainConfResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationMaintainConfResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ModifyAccountPrivilegeResponse) SetBody(v *ModifyAccountPrivilegeResponseBody) *ModifyAccountPrivilegeResponse {
+func (s *ModifyActiveOperationMaintainConfResponse) SetBody(v *ModifyActiveOperationMaintainConfResponseBody) *ModifyActiveOperationMaintainConfResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyActiveOperationTasksRequest struct {
+	Ids            *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	ImmediateStart *int64  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SwitchTime     *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetIds(v string) *ModifyActiveOperationTasksRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetImmediateStart(v int64) *ModifyActiveOperationTasksRequest {
+	s.ImmediateStart = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetRegionId(v string) *ModifyActiveOperationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiveOperationTasksRequest {
+	s.SwitchTime = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponseBody struct {
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetIds(v string) *ModifyActiveOperationTasksResponseBody {
+	s.Ids = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetRequestId(v string) *ModifyActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTasksResponseBody) *ModifyActiveOperationTasksResponse {
 	s.Body = v
 	return s
 }
@@ -6247,81 +6457,6 @@ func (s *ModifyDBInstanceDescriptionResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescriptionResponseBody) *ModifyDBInstanceDescriptionResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyDBInstanceMaintainTimeRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	MaintainTime   *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ModifyDBInstanceMaintainTimeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceMaintainTimeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceMaintainTimeRequest) SetClientToken(v string) *ModifyDBInstanceMaintainTimeRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ModifyDBInstanceMaintainTimeRequest) SetDBInstanceName(v string) *ModifyDBInstanceMaintainTimeRequest {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *ModifyDBInstanceMaintainTimeRequest) SetMaintainTime(v string) *ModifyDBInstanceMaintainTimeRequest {
-	s.MaintainTime = &v
-	return s
-}
-
-func (s *ModifyDBInstanceMaintainTimeRequest) SetRegionId(v string) *ModifyDBInstanceMaintainTimeRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ModifyDBInstanceMaintainTimeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyDBInstanceMaintainTimeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceMaintainTimeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceMaintainTimeResponseBody) SetRequestId(v string) *ModifyDBInstanceMaintainTimeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyDBInstanceMaintainTimeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDBInstanceMaintainTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyDBInstanceMaintainTimeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDBInstanceMaintainTimeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDBInstanceMaintainTimeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceMaintainTimeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMaintainTimeResponseBody) *ModifyDBInstanceMaintainTimeResponse {
 	s.Body = v
 	return s
 }
@@ -6676,105 +6811,6 @@ func (s *ReleaseInstancePublicConnectionResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePublicConnectionResponseBody) *ReleaseInstancePublicConnectionResponse {
-	s.Body = v
-	return s
-}
-
-type ResetAccountPasswordRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword         *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
-}
-
-func (s ResetAccountPasswordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetAccountPasswordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResetAccountPasswordRequest) SetAccountName(v string) *ResetAccountPasswordRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *ResetAccountPasswordRequest) SetAccountPassword(v string) *ResetAccountPasswordRequest {
-	s.AccountPassword = &v
-	return s
-}
-
-func (s *ResetAccountPasswordRequest) SetDBInstanceName(v string) *ResetAccountPasswordRequest {
-	s.DBInstanceName = &v
-	return s
-}
-
-func (s *ResetAccountPasswordRequest) SetRegionId(v string) *ResetAccountPasswordRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ResetAccountPasswordRequest) SetSecurityAccountName(v string) *ResetAccountPasswordRequest {
-	s.SecurityAccountName = &v
-	return s
-}
-
-func (s *ResetAccountPasswordRequest) SetSecurityAccountPassword(v string) *ResetAccountPasswordRequest {
-	s.SecurityAccountPassword = &v
-	return s
-}
-
-type ResetAccountPasswordResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ResetAccountPasswordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetAccountPasswordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResetAccountPasswordResponseBody) SetMessage(v string) *ResetAccountPasswordResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ResetAccountPasswordResponseBody) SetRequestId(v string) *ResetAccountPasswordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ResetAccountPasswordResponseBody) SetSuccess(v bool) *ResetAccountPasswordResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ResetAccountPasswordResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResetAccountPasswordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetAccountPasswordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResetAccountPasswordResponse) SetHeaders(v map[string]*string) *ResetAccountPasswordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBody) *ResetAccountPasswordResponse {
 	s.Body = v
 	return s
 }
@@ -7546,6 +7582,35 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CancelActiveOperationTasks"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelPolarxOrderWithOptions(request *CancelPolarxOrderRequest, runtime *util.RuntimeOptions) (_result *CancelPolarxOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7875,6 +7940,63 @@ func (client *Client) DescribeAccountList(request *DescribeAccountListRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountListResponse{}
 	_body, _err := client.DescribeAccountListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *DescribeActiveOperationMaintainConfRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeActiveOperationMaintainConf"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiveOperationMaintainConfRequest) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActiveOperationMaintainConfResponse{}
+	_body, _err := client.DescribeActiveOperationMaintainConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveOperationTaskCountWithOptions(request *DescribeActiveOperationTaskCountRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeActiveOperationTaskCountResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeActiveOperationTaskCount"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeActiveOperationTaskCount(request *DescribeActiveOperationTaskCountRequest) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActiveOperationTaskCountResponse{}
+	_body, _err := client.DescribeActiveOperationTaskCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8247,6 +8369,35 @@ func (client *Client) DescribeDistributeTableList(request *DescribeDistributeTab
 	return _result, _err
 }
 
+func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: query,
+	}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("DescribeEvents"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DescribeEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribeParameterTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8437,34 +8588,6 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribeTableDetailWithOptions(request *DescribeTableDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeTableDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeTableDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTableDetail"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeTableDetail(request *DescribeTableDetailRequest) (_result *DescribeTableDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeTableDetailResponse{}
-	_body, _err := client.DescribeTableDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8514,62 +8637,6 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
 	_body, _err := client.DescribeUserEncryptionKeyListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *DisableRightsSeparationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DisableRightsSeparationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableRightsSeparation"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DisableRightsSeparation(request *DisableRightsSeparationRequest) (_result *DisableRightsSeparationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DisableRightsSeparationResponse{}
-	_body, _err := client.DisableRightsSeparationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *EnableRightsSeparationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &EnableRightsSeparationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableRightsSeparation"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EnableRightsSeparation(request *EnableRightsSeparationRequest) (_result *EnableRightsSeparationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EnableRightsSeparationResponse{}
-	_body, _err := client.EnableRightsSeparationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8633,16 +8700,17 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
-func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPrivilegeResponse, _err error) {
+func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *ModifyActiveOperationMaintainConfRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: query,
 	}
-	_result = &ModifyAccountPrivilegeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountPrivilege"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_result = &ModifyActiveOperationMaintainConfResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyActiveOperationMaintainConf"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8650,10 +8718,38 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 	return _result, _err
 }
 
-func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequest) (_result *ModifyAccountPrivilegeResponse, _err error) {
+func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOperationMaintainConfRequest) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ModifyAccountPrivilegeResponse{}
-	_body, _err := client.ModifyAccountPrivilegeWithOptions(request, runtime)
+	_result = &ModifyActiveOperationMaintainConfResponse{}
+	_body, _err := client.ModifyActiveOperationMaintainConfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ModifyActiveOperationTasks"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8738,34 +8834,6 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
 	_body, _err := client.ModifyDBInstanceDescriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyDBInstanceMaintainTimeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDBInstanceMaintainTime"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMaintainTimeRequest) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDBInstanceMaintainTimeResponse{}
-	_body, _err := client.ModifyDBInstanceMaintainTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8878,34 +8946,6 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
 	_body, _err := client.ReleaseInstancePublicConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResetAccountPassword"), tea.String("2020-02-02"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
