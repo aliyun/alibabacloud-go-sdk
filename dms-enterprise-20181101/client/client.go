@@ -6641,6 +6641,7 @@ type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {
 	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	OpContent *string `json:"OpContent,omitempty" xml:"OpContent,omitempty"`
 	OpTime    *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	OpUserId  *int64  `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserNick  *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
@@ -6671,6 +6672,11 @@ func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetOpContent(v string) *Ge
 
 func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetOpTime(v string) *GetOpLogResponseBodyOpLogDetailsOpLogDetail {
 	s.OpTime = &v
+	return s
+}
+
+func (s *GetOpLogResponseBodyOpLogDetailsOpLogDetail) SetOpUserId(v int64) *GetOpLogResponseBodyOpLogDetailsOpLogDetail {
+	s.OpUserId = &v
 	return s
 }
 
@@ -12000,6 +12006,199 @@ func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesRe
 	return s
 }
 
+type ListInstanceLoginAuditLogRequest struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListInstanceLoginAuditLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceLoginAuditLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetEndTime(v string) *ListInstanceLoginAuditLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetOpUserName(v string) *ListInstanceLoginAuditLogRequest {
+	s.OpUserName = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetPageNumber(v int32) *ListInstanceLoginAuditLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetPageSize(v int32) *ListInstanceLoginAuditLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetSearchName(v string) *ListInstanceLoginAuditLogRequest {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetStartTime(v string) *ListInstanceLoginAuditLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogRequest) SetTid(v int64) *ListInstanceLoginAuditLogRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListInstanceLoginAuditLogResponseBody struct {
+	ErrorCode                 *string                                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceLoginAuditLogList *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList `json:"InstanceLoginAuditLogList,omitempty" xml:"InstanceLoginAuditLogList,omitempty" type:"Struct"`
+	RequestId                 *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                   *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount                *int64                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInstanceLoginAuditLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceLoginAuditLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetErrorCode(v string) *ListInstanceLoginAuditLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetErrorMessage(v string) *ListInstanceLoginAuditLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetInstanceLoginAuditLogList(v *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) *ListInstanceLoginAuditLogResponseBody {
+	s.InstanceLoginAuditLogList = v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetRequestId(v string) *ListInstanceLoginAuditLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetSuccess(v bool) *ListInstanceLoginAuditLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBody) SetTotalCount(v int64) *ListInstanceLoginAuditLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList struct {
+	InstanceLoginAuditLog []*ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog `json:"InstanceLoginAuditLog,omitempty" xml:"InstanceLoginAuditLog,omitempty" type:"Repeated"`
+}
+
+func (s ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) SetInstanceLoginAuditLog(v []*ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList {
+	s.InstanceLoginAuditLog = v
+	return s
+}
+
+type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog struct {
+	DbUser       *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OpTime       *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	RequestIp    *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetDbUser(v string) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.DbUser = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetInstanceId(v int64) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetInstanceName(v string) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetOpTime(v string) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.OpTime = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetRequestIp(v string) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.RequestIp = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetUserId(v int64) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) SetUserName(v string) *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog {
+	s.UserName = &v
+	return s
+}
+
+type ListInstanceLoginAuditLogResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInstanceLoginAuditLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceLoginAuditLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceLoginAuditLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceLoginAuditLogResponse) SetHeaders(v map[string]*string) *ListInstanceLoginAuditLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceLoginAuditLogResponse) SetBody(v *ListInstanceLoginAuditLogResponseBody) *ListInstanceLoginAuditLogResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceUserPermissionsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -13576,6 +13775,241 @@ func (s *ListProxyAccessesResponse) SetHeaders(v map[string]*string) *ListProxyA
 }
 
 func (s *ListProxyAccessesResponse) SetBody(v *ListProxyAccessesResponseBody) *ListProxyAccessesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProxySQLExecAuditLogRequest struct {
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecState  *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
+	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SQLType    *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListProxySQLExecAuditLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxySQLExecAuditLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetEndTime(v int64) *ListProxySQLExecAuditLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetExecState(v string) *ListProxySQLExecAuditLogRequest {
+	s.ExecState = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetOpUserName(v string) *ListProxySQLExecAuditLogRequest {
+	s.OpUserName = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetPageNumber(v int32) *ListProxySQLExecAuditLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetPageSize(v int32) *ListProxySQLExecAuditLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetSQLType(v string) *ListProxySQLExecAuditLogRequest {
+	s.SQLType = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetSearchName(v string) *ListProxySQLExecAuditLogRequest {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetStartTime(v int64) *ListProxySQLExecAuditLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogRequest) SetTid(v int64) *ListProxySQLExecAuditLogRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListProxySQLExecAuditLogResponseBody struct {
+	ErrorCode                *string                                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage             *string                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ProxySQLExecAuditLogList *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList `json:"ProxySQLExecAuditLogList,omitempty" xml:"ProxySQLExecAuditLogList,omitempty" type:"Struct"`
+	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                  *bool                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount               *int64                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProxySQLExecAuditLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxySQLExecAuditLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetErrorCode(v string) *ListProxySQLExecAuditLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetErrorMessage(v string) *ListProxySQLExecAuditLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetProxySQLExecAuditLogList(v *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) *ListProxySQLExecAuditLogResponseBody {
+	s.ProxySQLExecAuditLogList = v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetRequestId(v string) *ListProxySQLExecAuditLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetSuccess(v bool) *ListProxySQLExecAuditLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBody) SetTotalCount(v int64) *ListProxySQLExecAuditLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList struct {
+	ProxySQLExecAuditLog []*ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog `json:"ProxySQLExecAuditLog,omitempty" xml:"ProxySQLExecAuditLog,omitempty" type:"Repeated"`
+}
+
+func (s ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) SetProxySQLExecAuditLog(v []*ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList {
+	s.ProxySQLExecAuditLog = v
+	return s
+}
+
+type ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog struct {
+	AffectRows   *int64  `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	ElapsedTime  *int64  `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ExecState    *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OpTime       *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SQL          *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	SQLType      *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetAffectRows(v int64) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.AffectRows = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetElapsedTime(v int64) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetExecState(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.ExecState = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetInstanceId(v int64) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetInstanceName(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetOpTime(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.OpTime = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetRemark(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetSQL(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.SQL = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetSQLType(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.SQLType = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetSchemaName(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetUserId(v int64) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) SetUserName(v string) *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog {
+	s.UserName = &v
+	return s
+}
+
+type ListProxySQLExecAuditLogResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProxySQLExecAuditLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProxySQLExecAuditLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProxySQLExecAuditLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProxySQLExecAuditLogResponse) SetHeaders(v map[string]*string) *ListProxySQLExecAuditLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProxySQLExecAuditLogResponse) SetBody(v *ListProxySQLExecAuditLogResponseBody) *ListProxySQLExecAuditLogResponse {
 	s.Body = v
 	return s
 }
@@ -19755,6 +20189,34 @@ func (client *Client) ListIndexes(request *ListIndexesRequest) (_result *ListInd
 	return _result, _err
 }
 
+func (client *Client) ListInstanceLoginAuditLogWithOptions(request *ListInstanceLoginAuditLogRequest, runtime *util.RuntimeOptions) (_result *ListInstanceLoginAuditLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListInstanceLoginAuditLogResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListInstanceLoginAuditLog"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceLoginAuditLog(request *ListInstanceLoginAuditLogRequest) (_result *ListInstanceLoginAuditLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceLoginAuditLogResponse{}
+	_body, _err := client.ListInstanceLoginAuditLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstanceUserPermissionsWithOptions(request *ListInstanceUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListInstanceUserPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19944,6 +20406,34 @@ func (client *Client) ListProxyAccesses(request *ListProxyAccessesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProxyAccessesResponse{}
 	_body, _err := client.ListProxyAccessesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProxySQLExecAuditLogWithOptions(request *ListProxySQLExecAuditLogRequest, runtime *util.RuntimeOptions) (_result *ListProxySQLExecAuditLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListProxySQLExecAuditLogResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListProxySQLExecAuditLog"), tea.String("2018-11-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProxySQLExecAuditLog(request *ListProxySQLExecAuditLogRequest) (_result *ListProxySQLExecAuditLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProxySQLExecAuditLogResponse{}
+	_body, _err := client.ListProxySQLExecAuditLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
