@@ -575,6 +575,8 @@ type CreateClusterRequest struct {
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
 	// 集群版本
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	// 负载均衡规格
+	LoadBalancerSpec *string `json:"load_balancer_spec,omitempty" xml:"load_balancer_spec,omitempty"`
 	// ASK 集群开启日志服务
 	LoggingType *string `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
 	// SSH登录密码。密码规则为8~30 个字符，且至少同时包含三项（大小写字母、数字和特殊符号），和key_pair二选一。
@@ -818,6 +820,11 @@ func (s *CreateClusterRequest) SetKeyPair(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetKubernetesVersion(v string) *CreateClusterRequest {
 	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetLoadBalancerSpec(v string) *CreateClusterRequest {
+	s.LoadBalancerSpec = &v
 	return s
 }
 
@@ -1200,10 +1207,16 @@ type CreateClusterNodePoolRequest struct {
 	AutoScaling *CreateClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
 	// 节点数量。
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+	InterconnectConfig *CreateClusterNodePoolRequestInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
+	// 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义。
+	InterconnectMode *string `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
 	// 集群配置
 	KubernetesConfig *CreateClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	// 托管节点池配置。
 	Management *CreateClusterNodePoolRequestManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
+	// 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	// 节点池配置
 	NodepoolInfo *CreateClusterNodePoolRequestNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// 伸缩组配置
@@ -1230,6 +1243,16 @@ func (s *CreateClusterNodePoolRequest) SetCount(v int64) *CreateClusterNodePoolR
 	return s
 }
 
+func (s *CreateClusterNodePoolRequest) SetInterconnectConfig(v *CreateClusterNodePoolRequestInterconnectConfig) *CreateClusterNodePoolRequest {
+	s.InterconnectConfig = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetInterconnectMode(v string) *CreateClusterNodePoolRequest {
+	s.InterconnectMode = &v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequest) SetKubernetesConfig(v *CreateClusterNodePoolRequestKubernetesConfig) *CreateClusterNodePoolRequest {
 	s.KubernetesConfig = v
 	return s
@@ -1237,6 +1260,11 @@ func (s *CreateClusterNodePoolRequest) SetKubernetesConfig(v *CreateClusterNodeP
 
 func (s *CreateClusterNodePoolRequest) SetManagement(v *CreateClusterNodePoolRequestManagement) *CreateClusterNodePoolRequest {
 	s.Management = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetMaxNodes(v int64) *CreateClusterNodePoolRequest {
+	s.MaxNodes = &v
 	return s
 }
 
@@ -1312,6 +1340,52 @@ func (s *CreateClusterNodePoolRequestAutoScaling) SetMinInstances(v int64) *Crea
 
 func (s *CreateClusterNodePoolRequestAutoScaling) SetType(v string) *CreateClusterNodePoolRequestAutoScaling {
 	s.Type = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestInterconnectConfig struct {
+	// 边缘增强型节点池的网络带宽，单位M。
+	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例所属的区域
+	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
+	// 边缘增强型节点池绑定的云企业网实例ID(CENID)
+	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
+	// 边缘增强型节点池的购买时长，单位月
+	ImprovedPeriod *string `json:"improved_period,omitempty" xml:"improved_period,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestInterconnectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestInterconnectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestInterconnectConfig) SetBandwidth(v int64) *CreateClusterNodePoolRequestInterconnectConfig {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestInterconnectConfig) SetCcnId(v string) *CreateClusterNodePoolRequestInterconnectConfig {
+	s.CcnId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestInterconnectConfig) SetCcnRegionId(v string) *CreateClusterNodePoolRequestInterconnectConfig {
+	s.CcnRegionId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestInterconnectConfig) SetCenId(v string) *CreateClusterNodePoolRequestInterconnectConfig {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestInterconnectConfig) SetImprovedPeriod(v string) *CreateClusterNodePoolRequestInterconnectConfig {
+	s.ImprovedPeriod = &v
 	return s
 }
 
@@ -1451,6 +1525,8 @@ type CreateClusterNodePoolRequestNodepoolInfo struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 资源组ID。
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	// 节点池类型，对于边缘节点池来说，类型为"edge"
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateClusterNodePoolRequestNodepoolInfo) String() string {
@@ -1468,6 +1544,11 @@ func (s *CreateClusterNodePoolRequestNodepoolInfo) SetName(v string) *CreateClus
 
 func (s *CreateClusterNodePoolRequestNodepoolInfo) SetResourceGroupId(v string) *CreateClusterNodePoolRequestNodepoolInfo {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestNodepoolInfo) SetType(v string) *CreateClusterNodePoolRequestNodepoolInfo {
+	s.Type = &v
 	return s
 }
 
@@ -3353,10 +3434,16 @@ func (s *DescribeClusterNamespacesResponse) SetBody(v []*string) *DescribeCluste
 type DescribeClusterNodePoolDetailResponseBody struct {
 	// 节点池自动伸缩信息。
 	AutoScaling *DescribeClusterNodePoolDetailResponseBodyAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+	InterconnectConfig *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
+	// 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义
+	InterconnectMode *string `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
 	// 节点池所属集群配置。
 	KubernetesConfig *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	// 托管版节点池配置。
 	Management *DescribeClusterNodePoolDetailResponseBodyManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
+	// 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	// 节点池详情。
 	NodepoolInfo *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// 节点池扩容组信息。
@@ -3380,6 +3467,16 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetAutoScaling(v *DescribeCl
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBody) SetInterconnectConfig(v *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) *DescribeClusterNodePoolDetailResponseBody {
+	s.InterconnectConfig = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBody) SetInterconnectMode(v string) *DescribeClusterNodePoolDetailResponseBody {
+	s.InterconnectMode = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBody) SetKubernetesConfig(v *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) *DescribeClusterNodePoolDetailResponseBody {
 	s.KubernetesConfig = v
 	return s
@@ -3387,6 +3484,11 @@ func (s *DescribeClusterNodePoolDetailResponseBody) SetKubernetesConfig(v *Descr
 
 func (s *DescribeClusterNodePoolDetailResponseBody) SetManagement(v *DescribeClusterNodePoolDetailResponseBodyManagement) *DescribeClusterNodePoolDetailResponseBody {
 	s.Management = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBody) SetMaxNodes(v int64) *DescribeClusterNodePoolDetailResponseBody {
+	s.MaxNodes = &v
 	return s
 }
 
@@ -3467,6 +3569,52 @@ func (s *DescribeClusterNodePoolDetailResponseBodyAutoScaling) SetMinInstances(v
 
 func (s *DescribeClusterNodePoolDetailResponseBodyAutoScaling) SetType(v string) *DescribeClusterNodePoolDetailResponseBodyAutoScaling {
 	s.Type = &v
+	return s
+}
+
+type DescribeClusterNodePoolDetailResponseBodyInterconnectConfig struct {
+	// 边缘增强型节点池的网络带宽，单位M
+	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例所属的区域
+	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
+	// 边缘增强型节点池绑定的云企业网实例ID(CENID)
+	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
+	// 边缘增强型节点池的购买时长，单位月
+	ImprovedPeriod *string `json:"improved_period,omitempty" xml:"improved_period,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) SetBandwidth(v int64) *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) SetCcnId(v string) *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig {
+	s.CcnId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) SetCcnRegionId(v string) *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig {
+	s.CcnRegionId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) SetCenId(v string) *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig) SetImprovedPeriod(v string) *DescribeClusterNodePoolDetailResponseBodyInterconnectConfig {
+	s.ImprovedPeriod = &v
 	return s
 }
 
@@ -4057,10 +4205,16 @@ func (s *DescribeClusterNodePoolsResponseBody) SetNodepools(v []*DescribeCluster
 type DescribeClusterNodePoolsResponseBodyNodepools struct {
 	// 自动伸缩配置详情
 	AutoScaling *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	// 边缘节点池网络相关的配置。该值只对edge类型的节点池有意义
+	InterconnectConfig *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig `json:"interconnect_config,omitempty" xml:"interconnect_config,omitempty" type:"Struct"`
+	// 边缘节点池的网络类型。basic：基础型；improved：增强型。该值只对edge类型的节点池有意义
+	InterconnectMode *string `json:"interconnect_mode,omitempty" xml:"interconnect_mode,omitempty"`
 	// 集群配置信息
 	KubernetesConfig *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	// 托管节点池配置
 	Management *DescribeClusterNodePoolsResponseBodyNodepoolsManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
+	// 边缘节点池允许容纳的最大节点数量. 节点池内可以容纳的最大节点数量，该参数大于等于0。0表示无额外限制(仅受限于集群整体可以容纳的节点数，节点池本身无额外限制)。边缘节点池该参数值往往大于0；ess类型节点池和默认的edge类型节点池该参数值为0
+	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	// 节点池配置详情
 	NodepoolInfo *DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// 扩容组配置详情
@@ -4084,6 +4238,16 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetAutoScaling(v *Descri
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetInterconnectConfig(v *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) *DescribeClusterNodePoolsResponseBodyNodepools {
+	s.InterconnectConfig = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetInterconnectMode(v string) *DescribeClusterNodePoolsResponseBodyNodepools {
+	s.InterconnectMode = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetKubernetesConfig(v *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) *DescribeClusterNodePoolsResponseBodyNodepools {
 	s.KubernetesConfig = v
 	return s
@@ -4091,6 +4255,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetKubernetesConfig(v *D
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetManagement(v *DescribeClusterNodePoolsResponseBodyNodepoolsManagement) *DescribeClusterNodePoolsResponseBodyNodepools {
 	s.Management = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepools) SetMaxNodes(v int64) *DescribeClusterNodePoolsResponseBodyNodepools {
+	s.MaxNodes = &v
 	return s
 }
 
@@ -4171,6 +4340,52 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling) SetMinInstanc
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling) SetType(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling {
 	s.Type = &v
+	return s
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig struct {
+	// 边缘增强型节点池的网络带宽，单位M
+	Bandwidth *int64 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例ID(CCNID)
+	CcnId *string `json:"ccn_id,omitempty" xml:"ccn_id,omitempty"`
+	// 边缘增强型节点池绑定的云连接网实例所属的区域
+	CcnRegionId *string `json:"ccn_region_id,omitempty" xml:"ccn_region_id,omitempty"`
+	// 边缘增强型节点池绑定的云企业网实例ID(CENID)
+	CenId *string `json:"cen_id,omitempty" xml:"cen_id,omitempty"`
+	// 边缘增强型节点池的购买时长，单位月
+	ImprovedPeriod *string `json:"improved_period,omitempty" xml:"improved_period,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) SetBandwidth(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) SetCcnId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
+	s.CcnId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) SetCcnRegionId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
+	s.CcnRegionId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) SetCenId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig) SetImprovedPeriod(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig {
+	s.ImprovedPeriod = &v
 	return s
 }
 
@@ -11613,6 +11828,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["kubernetes_version"] = request.KubernetesVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerSpec)) {
+		body["load_balancer_spec"] = request.LoadBalancerSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoggingType)) {
 		body["logging_type"] = request.LoggingType
 	}
@@ -11877,12 +12096,24 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		body["count"] = request.Count
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.InterconnectConfig))) {
+		body["interconnect_config"] = request.InterconnectConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterconnectMode)) {
+		body["interconnect_mode"] = request.InterconnectMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.KubernetesConfig))) {
 		body["kubernetes_config"] = request.KubernetesConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Management))) {
 		body["management"] = request.Management
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxNodes)) {
+		body["max_nodes"] = request.MaxNodes
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.NodepoolInfo))) {
