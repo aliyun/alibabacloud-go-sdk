@@ -613,12 +613,10 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 
 type DescribeCategoryTemplateRuleListRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	CustomType  *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RiskLevelId *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeCategoryTemplateRuleListRequest) String() string {
@@ -631,11 +629,6 @@ func (s DescribeCategoryTemplateRuleListRequest) GoString() string {
 
 func (s *DescribeCategoryTemplateRuleListRequest) SetCurrentPage(v int32) *DescribeCategoryTemplateRuleListRequest {
 	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeCategoryTemplateRuleListRequest) SetCustomType(v int32) *DescribeCategoryTemplateRuleListRequest {
-	s.CustomType = &v
 	return s
 }
 
@@ -656,11 +649,6 @@ func (s *DescribeCategoryTemplateRuleListRequest) SetRiskLevelId(v int64) *Descr
 
 func (s *DescribeCategoryTemplateRuleListRequest) SetStatus(v int32) *DescribeCategoryTemplateRuleListRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeCategoryTemplateRuleListRequest) SetTemplateId(v int64) *DescribeCategoryTemplateRuleListRequest {
-	s.TemplateId = &v
 	return s
 }
 
@@ -706,7 +694,6 @@ func (s *DescribeCategoryTemplateRuleListResponseBody) SetTotalCount(v int32) *D
 }
 
 type DescribeCategoryTemplateRuleListResponseBodyItems struct {
-	CustomType            *int32  `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id                    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IdentificationRuleIds *string `json:"IdentificationRuleIds,omitempty" xml:"IdentificationRuleIds,omitempty"`
@@ -714,7 +701,6 @@ type DescribeCategoryTemplateRuleListResponseBodyItems struct {
 	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RiskLevelId           *int64  `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
 	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId            *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeCategoryTemplateRuleListResponseBodyItems) String() string {
@@ -723,11 +709,6 @@ func (s DescribeCategoryTemplateRuleListResponseBodyItems) String() string {
 
 func (s DescribeCategoryTemplateRuleListResponseBodyItems) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetCustomType(v int32) *DescribeCategoryTemplateRuleListResponseBodyItems {
-	s.CustomType = &v
-	return s
 }
 
 func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetDescription(v string) *DescribeCategoryTemplateRuleListResponseBodyItems {
@@ -762,11 +743,6 @@ func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetRiskLevelId(v int
 
 func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetStatus(v int32) *DescribeCategoryTemplateRuleListResponseBodyItems {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeCategoryTemplateRuleListResponseBodyItems) SetTemplateId(v int64) *DescribeCategoryTemplateRuleListResponseBodyItems {
-	s.TemplateId = &v
 	return s
 }
 
@@ -5461,30 +5437,17 @@ func (s *DescribeUserStatusResponseBody) SetUserStatus(v *DescribeUserStatusResp
 }
 
 type DescribeUserStatusResponseBodyUserStatus struct {
-	AccessKeyId          *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	Authed               *bool   `json:"Authed,omitempty" xml:"Authed,omitempty"`
-	Buyed                *bool   `json:"Buyed,omitempty" xml:"Buyed,omitempty"`
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DataMaskColumns      *int64  `json:"DataMaskColumns,omitempty" xml:"DataMaskColumns,omitempty"`
-	DataMaskTasks        *int64  `json:"DataMaskTasks,omitempty" xml:"DataMaskTasks,omitempty"`
-	DatamaskColumns      *int64  `json:"DatamaskColumns,omitempty" xml:"DatamaskColumns,omitempty"`
-	DivulgeCount         *int64  `json:"DivulgeCount,omitempty" xml:"DivulgeCount,omitempty"`
-	DlpTotalCount        *int64  `json:"DlpTotalCount,omitempty" xml:"DlpTotalCount,omitempty"`
-	IncSensitiveObjects  *int64  `json:"IncSensitiveObjects,omitempty" xml:"IncSensitiveObjects,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceNum          *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	InstanceStatus       *int32  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	LabStatus            *int32  `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
-	OssBucketSet         *bool   `json:"OssBucketSet,omitempty" xml:"OssBucketSet,omitempty"`
-	OssSize              *int64  `json:"OssSize,omitempty" xml:"OssSize,omitempty"`
-	RemainDays           *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	SensitiveObject      *int64  `json:"SensitiveObject,omitempty" xml:"SensitiveObject,omitempty"`
-	SensitiveTable       *int64  `json:"SensitiveTable,omitempty" xml:"SensitiveTable,omitempty"`
-	SensitiveTables      *int64  `json:"SensitiveTables,omitempty" xml:"SensitiveTables,omitempty"`
-	TotalDataMaskColumns *int64  `json:"TotalDataMaskColumns,omitempty" xml:"TotalDataMaskColumns,omitempty"`
-	Trail                *bool   `json:"Trail,omitempty" xml:"Trail,omitempty"`
-	UseInstanceNum       *int32  `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
-	UseOssSize           *int64  `json:"UseOssSize,omitempty" xml:"UseOssSize,omitempty"`
+	AccessKeyId    *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	Authed         *bool   `json:"Authed,omitempty" xml:"Authed,omitempty"`
+	Buyed          *bool   `json:"Buyed,omitempty" xml:"Buyed,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNum    *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	LabStatus      *int32  `json:"LabStatus,omitempty" xml:"LabStatus,omitempty"`
+	RemainDays     *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
+	Trail          *bool   `json:"Trail,omitempty" xml:"Trail,omitempty"`
+	UseInstanceNum *int32  `json:"UseInstanceNum,omitempty" xml:"UseInstanceNum,omitempty"`
+	UseOssSize     *int64  `json:"UseOssSize,omitempty" xml:"UseOssSize,omitempty"`
 }
 
 func (s DescribeUserStatusResponseBodyUserStatus) String() string {
@@ -5515,36 +5478,6 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetChargeType(v string) *Desc
 	return s
 }
 
-func (s *DescribeUserStatusResponseBodyUserStatus) SetDataMaskColumns(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.DataMaskColumns = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetDataMaskTasks(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.DataMaskTasks = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetDatamaskColumns(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.DatamaskColumns = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetDivulgeCount(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.DivulgeCount = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetDlpTotalCount(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.DlpTotalCount = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetIncSensitiveObjects(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.IncSensitiveObjects = &v
-	return s
-}
-
 func (s *DescribeUserStatusResponseBodyUserStatus) SetInstanceId(v string) *DescribeUserStatusResponseBodyUserStatus {
 	s.InstanceId = &v
 	return s
@@ -5555,48 +5488,13 @@ func (s *DescribeUserStatusResponseBodyUserStatus) SetInstanceNum(v int32) *Desc
 	return s
 }
 
-func (s *DescribeUserStatusResponseBodyUserStatus) SetInstanceStatus(v int32) *DescribeUserStatusResponseBodyUserStatus {
-	s.InstanceStatus = &v
-	return s
-}
-
 func (s *DescribeUserStatusResponseBodyUserStatus) SetLabStatus(v int32) *DescribeUserStatusResponseBodyUserStatus {
 	s.LabStatus = &v
 	return s
 }
 
-func (s *DescribeUserStatusResponseBodyUserStatus) SetOssBucketSet(v bool) *DescribeUserStatusResponseBodyUserStatus {
-	s.OssBucketSet = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetOssSize(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.OssSize = &v
-	return s
-}
-
 func (s *DescribeUserStatusResponseBodyUserStatus) SetRemainDays(v int32) *DescribeUserStatusResponseBodyUserStatus {
 	s.RemainDays = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetSensitiveObject(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.SensitiveObject = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetSensitiveTable(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.SensitiveTable = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetSensitiveTables(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.SensitiveTables = &v
-	return s
-}
-
-func (s *DescribeUserStatusResponseBodyUserStatus) SetTotalDataMaskColumns(v int64) *DescribeUserStatusResponseBodyUserStatus {
-	s.TotalDataMaskColumns = &v
 	return s
 }
 
