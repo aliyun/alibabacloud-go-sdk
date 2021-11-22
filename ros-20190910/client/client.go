@@ -13,9 +13,9 @@ import (
 )
 
 type CancelUpdateStackRequest struct {
-	StackId    *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	CancelType *string `json:"CancelType,omitempty" xml:"CancelType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId    *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s CancelUpdateStackRequest) String() string {
@@ -26,8 +26,8 @@ func (s CancelUpdateStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CancelUpdateStackRequest) SetStackId(v string) *CancelUpdateStackRequest {
-	s.StackId = &v
+func (s *CancelUpdateStackRequest) SetCancelType(v string) *CancelUpdateStackRequest {
+	s.CancelType = &v
 	return s
 }
 
@@ -36,8 +36,8 @@ func (s *CancelUpdateStackRequest) SetRegionId(v string) *CancelUpdateStackReque
 	return s
 }
 
-func (s *CancelUpdateStackRequest) SetCancelType(v string) *CancelUpdateStackRequest {
-	s.CancelType = &v
+func (s *CancelUpdateStackRequest) SetStackId(v string) *CancelUpdateStackRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -82,18 +82,18 @@ func (s *CancelUpdateStackResponse) SetBody(v *CancelUpdateStackResponseBody) *C
 }
 
 type ContinueCreateStackRequest struct {
-	StackId             *string                                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId            *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RamRoleName         *string                                 `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	Mode                *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	TemplateBody        *string                                 `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL         *string                                 `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	DryRun              *bool                                   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	TemplateId          *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion     *string                                 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	RecreatingResources []*string                               `json:"RecreatingResources,omitempty" xml:"RecreatingResources,omitempty" type:"Repeated"`
-	Parameters          []*ContinueCreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Mode                *string                                 `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Parallelism         *int64                                  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters          []*ContinueCreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName         *string                                 `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RecreatingResources []*string                               `json:"RecreatingResources,omitempty" xml:"RecreatingResources,omitempty" type:"Repeated"`
+	RegionId            *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId             *string                                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateBody        *string                                 `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId          *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL         *string                                 `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion     *string                                 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s ContinueCreateStackRequest) String() string {
@@ -104,18 +104,8 @@ func (s ContinueCreateStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ContinueCreateStackRequest) SetStackId(v string) *ContinueCreateStackRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetRegionId(v string) *ContinueCreateStackRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetRamRoleName(v string) *ContinueCreateStackRequest {
-	s.RamRoleName = &v
+func (s *ContinueCreateStackRequest) SetDryRun(v bool) *ContinueCreateStackRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -124,33 +114,8 @@ func (s *ContinueCreateStackRequest) SetMode(v string) *ContinueCreateStackReque
 	return s
 }
 
-func (s *ContinueCreateStackRequest) SetTemplateBody(v string) *ContinueCreateStackRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetTemplateURL(v string) *ContinueCreateStackRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetDryRun(v bool) *ContinueCreateStackRequest {
-	s.DryRun = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetTemplateId(v string) *ContinueCreateStackRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetTemplateVersion(v string) *ContinueCreateStackRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *ContinueCreateStackRequest) SetRecreatingResources(v []*string) *ContinueCreateStackRequest {
-	s.RecreatingResources = v
+func (s *ContinueCreateStackRequest) SetParallelism(v int64) *ContinueCreateStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -159,8 +124,43 @@ func (s *ContinueCreateStackRequest) SetParameters(v []*ContinueCreateStackReque
 	return s
 }
 
-func (s *ContinueCreateStackRequest) SetParallelism(v int64) *ContinueCreateStackRequest {
-	s.Parallelism = &v
+func (s *ContinueCreateStackRequest) SetRamRoleName(v string) *ContinueCreateStackRequest {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetRecreatingResources(v []*string) *ContinueCreateStackRequest {
+	s.RecreatingResources = v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetRegionId(v string) *ContinueCreateStackRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetStackId(v string) *ContinueCreateStackRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetTemplateBody(v string) *ContinueCreateStackRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetTemplateId(v string) *ContinueCreateStackRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetTemplateURL(v string) *ContinueCreateStackRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetTemplateVersion(v string) *ContinueCreateStackRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -234,29 +234,31 @@ func (s *ContinueCreateStackResponse) SetBody(v *ContinueCreateStackResponseBody
 }
 
 type CreateChangeSetRequest struct {
-	StackId                     *string                                    `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	StackPolicyURL              *string                                    `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	StackPolicyBody             *string                                    `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackName                   *string                                    `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	UsePreviousParameters       *bool                                      `json:"UsePreviousParameters,omitempty" xml:"UsePreviousParameters,omitempty"`
-	ChangeSetType               *string                                    `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
-	Description                 *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId                    *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken                 *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	TemplateURL                 *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	StackPolicyDuringUpdateURL  *string                                    `json:"StackPolicyDuringUpdateURL,omitempty" xml:"StackPolicyDuringUpdateURL,omitempty"`
-	TemplateBody                *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TimeoutInMinutes            *int64                                     `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	DisableRollback             *bool                                      `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	ChangeSetName               *string                                    `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty"`
-	StackPolicyDuringUpdateBody *string                                    `json:"StackPolicyDuringUpdateBody,omitempty" xml:"StackPolicyDuringUpdateBody,omitempty"`
-	RamRoleName                 *string                                    `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	ReplacementOption           *string                                    `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
-	TemplateId                  *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion             *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters                  []*CreateChangeSetRequestParameters        `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ChangeSetType               *string                                    `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
+	ClientToken                 *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                 *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisableRollback             *bool                                      `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	NotificationURLs            []*string                                  `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Parallelism                 *int64                                     `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters                  []*CreateChangeSetRequestParameters        `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName                 *string                                    `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId                    *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplacementOption           *string                                    `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
 	ResourcesToImport           []*CreateChangeSetRequestResourcesToImport `json:"ResourcesToImport,omitempty" xml:"ResourcesToImport,omitempty" type:"Repeated"`
+	StackId                     *string                                    `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName                   *string                                    `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody             *string                                    `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyDuringUpdateBody *string                                    `json:"StackPolicyDuringUpdateBody,omitempty" xml:"StackPolicyDuringUpdateBody,omitempty"`
+	StackPolicyDuringUpdateURL  *string                                    `json:"StackPolicyDuringUpdateURL,omitempty" xml:"StackPolicyDuringUpdateURL,omitempty"`
+	StackPolicyURL              *string                                    `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody                *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId                  *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId           *string                                    `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateURL                 *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion             *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes            *int64                                     `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	UsePreviousParameters       *bool                                      `json:"UsePreviousParameters,omitempty" xml:"UsePreviousParameters,omitempty"`
 }
 
 func (s CreateChangeSetRequest) String() string {
@@ -267,28 +269,8 @@ func (s CreateChangeSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateChangeSetRequest) SetStackId(v string) *CreateChangeSetRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetStackPolicyURL(v string) *CreateChangeSetRequest {
-	s.StackPolicyURL = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetStackPolicyBody(v string) *CreateChangeSetRequest {
-	s.StackPolicyBody = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetStackName(v string) *CreateChangeSetRequest {
-	s.StackName = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetUsePreviousParameters(v bool) *CreateChangeSetRequest {
-	s.UsePreviousParameters = &v
+func (s *CreateChangeSetRequest) SetChangeSetName(v string) *CreateChangeSetRequest {
+	s.ChangeSetName = &v
 	return s
 }
 
@@ -297,38 +279,13 @@ func (s *CreateChangeSetRequest) SetChangeSetType(v string) *CreateChangeSetRequ
 	return s
 }
 
-func (s *CreateChangeSetRequest) SetDescription(v string) *CreateChangeSetRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetRegionId(v string) *CreateChangeSetRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateChangeSetRequest) SetClientToken(v string) *CreateChangeSetRequest {
 	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateChangeSetRequest) SetTemplateURL(v string) *CreateChangeSetRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetStackPolicyDuringUpdateURL(v string) *CreateChangeSetRequest {
-	s.StackPolicyDuringUpdateURL = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetTemplateBody(v string) *CreateChangeSetRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetTimeoutInMinutes(v int64) *CreateChangeSetRequest {
-	s.TimeoutInMinutes = &v
+func (s *CreateChangeSetRequest) SetDescription(v string) *CreateChangeSetRequest {
+	s.Description = &v
 	return s
 }
 
@@ -337,33 +294,13 @@ func (s *CreateChangeSetRequest) SetDisableRollback(v bool) *CreateChangeSetRequ
 	return s
 }
 
-func (s *CreateChangeSetRequest) SetChangeSetName(v string) *CreateChangeSetRequest {
-	s.ChangeSetName = &v
+func (s *CreateChangeSetRequest) SetNotificationURLs(v []*string) *CreateChangeSetRequest {
+	s.NotificationURLs = v
 	return s
 }
 
-func (s *CreateChangeSetRequest) SetStackPolicyDuringUpdateBody(v string) *CreateChangeSetRequest {
-	s.StackPolicyDuringUpdateBody = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetRamRoleName(v string) *CreateChangeSetRequest {
-	s.RamRoleName = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetReplacementOption(v string) *CreateChangeSetRequest {
-	s.ReplacementOption = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetTemplateId(v string) *CreateChangeSetRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateChangeSetRequest) SetTemplateVersion(v string) *CreateChangeSetRequest {
-	s.TemplateVersion = &v
+func (s *CreateChangeSetRequest) SetParallelism(v int64) *CreateChangeSetRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -372,13 +309,88 @@ func (s *CreateChangeSetRequest) SetParameters(v []*CreateChangeSetRequestParame
 	return s
 }
 
-func (s *CreateChangeSetRequest) SetNotificationURLs(v []*string) *CreateChangeSetRequest {
-	s.NotificationURLs = v
+func (s *CreateChangeSetRequest) SetRamRoleName(v string) *CreateChangeSetRequest {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetRegionId(v string) *CreateChangeSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetReplacementOption(v string) *CreateChangeSetRequest {
+	s.ReplacementOption = &v
 	return s
 }
 
 func (s *CreateChangeSetRequest) SetResourcesToImport(v []*CreateChangeSetRequestResourcesToImport) *CreateChangeSetRequest {
 	s.ResourcesToImport = v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackId(v string) *CreateChangeSetRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackName(v string) *CreateChangeSetRequest {
+	s.StackName = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackPolicyBody(v string) *CreateChangeSetRequest {
+	s.StackPolicyBody = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackPolicyDuringUpdateBody(v string) *CreateChangeSetRequest {
+	s.StackPolicyDuringUpdateBody = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackPolicyDuringUpdateURL(v string) *CreateChangeSetRequest {
+	s.StackPolicyDuringUpdateURL = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetStackPolicyURL(v string) *CreateChangeSetRequest {
+	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTemplateBody(v string) *CreateChangeSetRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTemplateId(v string) *CreateChangeSetRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTemplateScratchId(v string) *CreateChangeSetRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTemplateURL(v string) *CreateChangeSetRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTemplateVersion(v string) *CreateChangeSetRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTimeoutInMinutes(v int64) *CreateChangeSetRequest {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetUsePreviousParameters(v bool) *CreateChangeSetRequest {
+	s.UsePreviousParameters = &v
 	return s
 }
 
@@ -406,8 +418,8 @@ func (s *CreateChangeSetRequestParameters) SetParameterValue(v string) *CreateCh
 }
 
 type CreateChangeSetRequestResourcesToImport struct {
-	ResourceIdentifier *string `json:"ResourceIdentifier,omitempty" xml:"ResourceIdentifier,omitempty"`
 	LogicalResourceId  *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	ResourceIdentifier *string `json:"ResourceIdentifier,omitempty" xml:"ResourceIdentifier,omitempty"`
 	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -419,13 +431,13 @@ func (s CreateChangeSetRequestResourcesToImport) GoString() string {
 	return s.String()
 }
 
-func (s *CreateChangeSetRequestResourcesToImport) SetResourceIdentifier(v string) *CreateChangeSetRequestResourcesToImport {
-	s.ResourceIdentifier = &v
+func (s *CreateChangeSetRequestResourcesToImport) SetLogicalResourceId(v string) *CreateChangeSetRequestResourcesToImport {
+	s.LogicalResourceId = &v
 	return s
 }
 
-func (s *CreateChangeSetRequestResourcesToImport) SetLogicalResourceId(v string) *CreateChangeSetRequestResourcesToImport {
-	s.LogicalResourceId = &v
+func (s *CreateChangeSetRequestResourcesToImport) SetResourceIdentifier(v string) *CreateChangeSetRequestResourcesToImport {
+	s.ResourceIdentifier = &v
 	return s
 }
 
@@ -487,25 +499,26 @@ func (s *CreateChangeSetResponse) SetBody(v *CreateChangeSetResponseBody) *Creat
 }
 
 type CreateStackRequest struct {
-	DisableRollback    *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	TemplateBody       *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	StackPolicyURL     *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TimeoutInMinutes   *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	StackPolicyBody    *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackName          *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	RegionId           *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken        *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	TemplateURL        *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	RamRoleName        *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	DeletionProtection *string                         `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	CreateOption       *string                         `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
-	TemplateId         *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion    *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters         []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	DeletionProtection *string                         `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DisableRollback    *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	NotificationURLs   []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
-	Tags               []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ResourceGroupId    *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Parallelism        *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters         []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName        *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId           *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackName          *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody    *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL     *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	Tags               []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody       *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId         *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId  *string                         `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateURL        *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion    *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes   *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackRequest) String() string {
@@ -516,58 +529,8 @@ func (s CreateStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackRequest) SetDisableRollback(v bool) *CreateStackRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetTemplateBody(v string) *CreateStackRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetStackPolicyURL(v string) *CreateStackRequest {
-	s.StackPolicyURL = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetTimeoutInMinutes(v int64) *CreateStackRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetStackPolicyBody(v string) *CreateStackRequest {
-	s.StackPolicyBody = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetStackName(v string) *CreateStackRequest {
-	s.StackName = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetRegionId(v string) *CreateStackRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateStackRequest) SetClientToken(v string) *CreateStackRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetTemplateURL(v string) *CreateStackRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetRamRoleName(v string) *CreateStackRequest {
-	s.RamRoleName = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetDeletionProtection(v string) *CreateStackRequest {
-	s.DeletionProtection = &v
 	return s
 }
 
@@ -576,18 +539,13 @@ func (s *CreateStackRequest) SetCreateOption(v string) *CreateStackRequest {
 	return s
 }
 
-func (s *CreateStackRequest) SetTemplateId(v string) *CreateStackRequest {
-	s.TemplateId = &v
+func (s *CreateStackRequest) SetDeletionProtection(v string) *CreateStackRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
-func (s *CreateStackRequest) SetTemplateVersion(v string) *CreateStackRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *CreateStackRequest) SetParameters(v []*CreateStackRequestParameters) *CreateStackRequest {
-	s.Parameters = v
+func (s *CreateStackRequest) SetDisableRollback(v bool) *CreateStackRequest {
+	s.DisableRollback = &v
 	return s
 }
 
@@ -596,8 +554,23 @@ func (s *CreateStackRequest) SetNotificationURLs(v []*string) *CreateStackReques
 	return s
 }
 
-func (s *CreateStackRequest) SetTags(v []*CreateStackRequestTags) *CreateStackRequest {
-	s.Tags = v
+func (s *CreateStackRequest) SetParallelism(v int64) *CreateStackRequest {
+	s.Parallelism = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetParameters(v []*CreateStackRequestParameters) *CreateStackRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateStackRequest) SetRamRoleName(v string) *CreateStackRequest {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetRegionId(v string) *CreateStackRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -606,8 +579,53 @@ func (s *CreateStackRequest) SetResourceGroupId(v string) *CreateStackRequest {
 	return s
 }
 
-func (s *CreateStackRequest) SetParallelism(v int64) *CreateStackRequest {
-	s.Parallelism = &v
+func (s *CreateStackRequest) SetStackName(v string) *CreateStackRequest {
+	s.StackName = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetStackPolicyBody(v string) *CreateStackRequest {
+	s.StackPolicyBody = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetStackPolicyURL(v string) *CreateStackRequest {
+	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTags(v []*CreateStackRequestTags) *CreateStackRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateBody(v string) *CreateStackRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateId(v string) *CreateStackRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateScratchId(v string) *CreateStackRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateURL(v string) *CreateStackRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateVersion(v string) *CreateStackRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTimeoutInMinutes(v int64) *CreateStackRequest {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -704,20 +722,20 @@ func (s *CreateStackResponse) SetBody(v *CreateStackResponseBody) *CreateStackRe
 }
 
 type CreateStackGroupRequest struct {
-	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName         *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Description            *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateBody           *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL            *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	ClientToken            *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AdministrationRoleName *string                                `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	ExecutionRoleName      *string                                `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	TemplateId             *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion        *string                                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters             []*CreateStackGroupRequestParameters   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	ResourceGroupId        *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PermissionModel        *string                                `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
 	AutoDeployment         *CreateStackGroupRequestAutoDeployment `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
+	ClientToken            *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description            *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName      *string                                `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	Parameters             []*CreateStackGroupRequestParameters   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel        *string                                `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupName         *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody           *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId             *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL            *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion        *string                                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s CreateStackGroupRequest) String() string {
@@ -728,68 +746,8 @@ func (s CreateStackGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackGroupRequest) SetRegionId(v string) *CreateStackGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetStackGroupName(v string) *CreateStackGroupRequest {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetDescription(v string) *CreateStackGroupRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetTemplateBody(v string) *CreateStackGroupRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetTemplateURL(v string) *CreateStackGroupRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetClientToken(v string) *CreateStackGroupRequest {
-	s.ClientToken = &v
-	return s
-}
-
 func (s *CreateStackGroupRequest) SetAdministrationRoleName(v string) *CreateStackGroupRequest {
 	s.AdministrationRoleName = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetExecutionRoleName(v string) *CreateStackGroupRequest {
-	s.ExecutionRoleName = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetTemplateId(v string) *CreateStackGroupRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetTemplateVersion(v string) *CreateStackGroupRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetParameters(v []*CreateStackGroupRequestParameters) *CreateStackGroupRequest {
-	s.Parameters = v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetResourceGroupId(v string) *CreateStackGroupRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateStackGroupRequest) SetPermissionModel(v string) *CreateStackGroupRequest {
-	s.PermissionModel = &v
 	return s
 }
 
@@ -798,26 +756,63 @@ func (s *CreateStackGroupRequest) SetAutoDeployment(v *CreateStackGroupRequestAu
 	return s
 }
 
-type CreateStackGroupRequestParameters struct {
-	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-}
-
-func (s CreateStackGroupRequestParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStackGroupRequestParameters) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStackGroupRequestParameters) SetParameterKey(v string) *CreateStackGroupRequestParameters {
-	s.ParameterKey = &v
+func (s *CreateStackGroupRequest) SetClientToken(v string) *CreateStackGroupRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateStackGroupRequestParameters) SetParameterValue(v string) *CreateStackGroupRequestParameters {
-	s.ParameterValue = &v
+func (s *CreateStackGroupRequest) SetDescription(v string) *CreateStackGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetExecutionRoleName(v string) *CreateStackGroupRequest {
+	s.ExecutionRoleName = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetParameters(v []*CreateStackGroupRequestParameters) *CreateStackGroupRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetPermissionModel(v string) *CreateStackGroupRequest {
+	s.PermissionModel = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetRegionId(v string) *CreateStackGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetResourceGroupId(v string) *CreateStackGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetStackGroupName(v string) *CreateStackGroupRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetTemplateBody(v string) *CreateStackGroupRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetTemplateId(v string) *CreateStackGroupRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetTemplateURL(v string) *CreateStackGroupRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetTemplateVersion(v string) *CreateStackGroupRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -844,21 +839,44 @@ func (s *CreateStackGroupRequestAutoDeployment) SetRetainStacksOnAccountRemoval(
 	return s
 }
 
+type CreateStackGroupRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s CreateStackGroupRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStackGroupRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStackGroupRequestParameters) SetParameterKey(v string) *CreateStackGroupRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *CreateStackGroupRequestParameters) SetParameterValue(v string) *CreateStackGroupRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
 type CreateStackGroupShrinkRequest struct {
-	RegionId               *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName         *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Description            *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateBody           *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL            *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	ClientToken            *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AdministrationRoleName *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	ExecutionRoleName      *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	TemplateId             *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion        *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters             []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	ResourceGroupId        *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PermissionModel        *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
 	AutoDeploymentShrink   *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
+	ClientToken            *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description            *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName      *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	Parameters             []*CreateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel        *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	RegionId               *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId        *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupName         *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody           *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId             *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL            *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion        *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s CreateStackGroupShrinkRequest) String() string {
@@ -869,28 +887,13 @@ func (s CreateStackGroupShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackGroupShrinkRequest) SetRegionId(v string) *CreateStackGroupShrinkRequest {
-	s.RegionId = &v
+func (s *CreateStackGroupShrinkRequest) SetAdministrationRoleName(v string) *CreateStackGroupShrinkRequest {
+	s.AdministrationRoleName = &v
 	return s
 }
 
-func (s *CreateStackGroupShrinkRequest) SetStackGroupName(v string) *CreateStackGroupShrinkRequest {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *CreateStackGroupShrinkRequest) SetDescription(v string) *CreateStackGroupShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateStackGroupShrinkRequest) SetTemplateBody(v string) *CreateStackGroupShrinkRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *CreateStackGroupShrinkRequest) SetTemplateURL(v string) *CreateStackGroupShrinkRequest {
-	s.TemplateURL = &v
+func (s *CreateStackGroupShrinkRequest) SetAutoDeploymentShrink(v string) *CreateStackGroupShrinkRequest {
+	s.AutoDeploymentShrink = &v
 	return s
 }
 
@@ -899,8 +902,8 @@ func (s *CreateStackGroupShrinkRequest) SetClientToken(v string) *CreateStackGro
 	return s
 }
 
-func (s *CreateStackGroupShrinkRequest) SetAdministrationRoleName(v string) *CreateStackGroupShrinkRequest {
-	s.AdministrationRoleName = &v
+func (s *CreateStackGroupShrinkRequest) SetDescription(v string) *CreateStackGroupShrinkRequest {
+	s.Description = &v
 	return s
 }
 
@@ -909,23 +912,8 @@ func (s *CreateStackGroupShrinkRequest) SetExecutionRoleName(v string) *CreateSt
 	return s
 }
 
-func (s *CreateStackGroupShrinkRequest) SetTemplateId(v string) *CreateStackGroupShrinkRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateStackGroupShrinkRequest) SetTemplateVersion(v string) *CreateStackGroupShrinkRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
 func (s *CreateStackGroupShrinkRequest) SetParameters(v []*CreateStackGroupShrinkRequestParameters) *CreateStackGroupShrinkRequest {
 	s.Parameters = v
-	return s
-}
-
-func (s *CreateStackGroupShrinkRequest) SetResourceGroupId(v string) *CreateStackGroupShrinkRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -934,8 +922,38 @@ func (s *CreateStackGroupShrinkRequest) SetPermissionModel(v string) *CreateStac
 	return s
 }
 
-func (s *CreateStackGroupShrinkRequest) SetAutoDeploymentShrink(v string) *CreateStackGroupShrinkRequest {
-	s.AutoDeploymentShrink = &v
+func (s *CreateStackGroupShrinkRequest) SetRegionId(v string) *CreateStackGroupShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetResourceGroupId(v string) *CreateStackGroupShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetStackGroupName(v string) *CreateStackGroupShrinkRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetTemplateBody(v string) *CreateStackGroupShrinkRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetTemplateId(v string) *CreateStackGroupShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetTemplateURL(v string) *CreateStackGroupShrinkRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequest) SetTemplateVersion(v string) *CreateStackGroupShrinkRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -1009,17 +1027,17 @@ func (s *CreateStackGroupResponse) SetBody(v *CreateStackGroupResponseBody) *Cre
 }
 
 type CreateStackInstancesRequest struct {
-	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIds           []*string                                        `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets    *CreateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	DisableRollback      *bool                                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	OperationDescription *string                                          `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferences map[string]interface{}                           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	DisableRollback      *bool                                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	ParameterOverrides   []*CreateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	DeploymentTargets    *CreateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackInstancesRequest) String() string {
@@ -1030,28 +1048,23 @@ func (s CreateStackInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackInstancesRequest) SetRegionId(v string) *CreateStackInstancesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateStackInstancesRequest) SetStackGroupName(v string) *CreateStackInstancesRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *CreateStackInstancesRequest) SetAccountIds(v []*string) *CreateStackInstancesRequest {
 	s.AccountIds = v
 	return s
 }
 
-func (s *CreateStackInstancesRequest) SetRegionIds(v []*string) *CreateStackInstancesRequest {
-	s.RegionIds = v
+func (s *CreateStackInstancesRequest) SetClientToken(v string) *CreateStackInstancesRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateStackInstancesRequest) SetClientToken(v string) *CreateStackInstancesRequest {
-	s.ClientToken = &v
+func (s *CreateStackInstancesRequest) SetDeploymentTargets(v *CreateStackInstancesRequestDeploymentTargets) *CreateStackInstancesRequest {
+	s.DeploymentTargets = v
+	return s
+}
+
+func (s *CreateStackInstancesRequest) SetDisableRollback(v bool) *CreateStackInstancesRequest {
+	s.DisableRollback = &v
 	return s
 }
 
@@ -1065,23 +1078,45 @@ func (s *CreateStackInstancesRequest) SetOperationPreferences(v map[string]inter
 	return s
 }
 
-func (s *CreateStackInstancesRequest) SetTimeoutInMinutes(v int64) *CreateStackInstancesRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *CreateStackInstancesRequest) SetDisableRollback(v bool) *CreateStackInstancesRequest {
-	s.DisableRollback = &v
-	return s
-}
-
 func (s *CreateStackInstancesRequest) SetParameterOverrides(v []*CreateStackInstancesRequestParameterOverrides) *CreateStackInstancesRequest {
 	s.ParameterOverrides = v
 	return s
 }
 
-func (s *CreateStackInstancesRequest) SetDeploymentTargets(v *CreateStackInstancesRequestDeploymentTargets) *CreateStackInstancesRequest {
-	s.DeploymentTargets = v
+func (s *CreateStackInstancesRequest) SetRegionId(v string) *CreateStackInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStackInstancesRequest) SetRegionIds(v []*string) *CreateStackInstancesRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *CreateStackInstancesRequest) SetStackGroupName(v string) *CreateStackInstancesRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *CreateStackInstancesRequest) SetTimeoutInMinutes(v int64) *CreateStackInstancesRequest {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type CreateStackInstancesRequestDeploymentTargets struct {
+	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateStackInstancesRequestDeploymentTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStackInstancesRequestDeploymentTargets) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*string) *CreateStackInstancesRequestDeploymentTargets {
+	s.RdFolderIds = v
 	return s
 }
 
@@ -1108,35 +1143,18 @@ func (s *CreateStackInstancesRequestParameterOverrides) SetParameterValue(v stri
 	return s
 }
 
-type CreateStackInstancesRequestDeploymentTargets struct {
-	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
-}
-
-func (s CreateStackInstancesRequestDeploymentTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStackInstancesRequestDeploymentTargets) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*string) *CreateStackInstancesRequestDeploymentTargets {
-	s.RdFolderIds = v
-	return s
-}
-
 type CreateStackInstancesShrinkRequest struct {
-	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIdsShrink           *string                                                `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	ClientToken                *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	DisableRollback            *bool                                                  `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	OperationDescription       *string                                                `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferencesShrink *string                                                `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	DisableRollback            *bool                                                  `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	ParameterOverrides         []*CreateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackInstancesShrinkRequest) String() string {
@@ -1147,28 +1165,23 @@ func (s CreateStackInstancesShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackInstancesShrinkRequest) SetRegionId(v string) *CreateStackInstancesShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateStackInstancesShrinkRequest) SetStackGroupName(v string) *CreateStackInstancesShrinkRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *CreateStackInstancesShrinkRequest) SetAccountIdsShrink(v string) *CreateStackInstancesShrinkRequest {
 	s.AccountIdsShrink = &v
 	return s
 }
 
-func (s *CreateStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *CreateStackInstancesShrinkRequest {
-	s.RegionIdsShrink = &v
+func (s *CreateStackInstancesShrinkRequest) SetClientToken(v string) *CreateStackInstancesShrinkRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateStackInstancesShrinkRequest) SetClientToken(v string) *CreateStackInstancesShrinkRequest {
-	s.ClientToken = &v
+func (s *CreateStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *CreateStackInstancesShrinkRequest {
+	s.DeploymentTargetsShrink = &v
+	return s
+}
+
+func (s *CreateStackInstancesShrinkRequest) SetDisableRollback(v bool) *CreateStackInstancesShrinkRequest {
+	s.DisableRollback = &v
 	return s
 }
 
@@ -1182,23 +1195,28 @@ func (s *CreateStackInstancesShrinkRequest) SetOperationPreferencesShrink(v stri
 	return s
 }
 
-func (s *CreateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *CreateStackInstancesShrinkRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *CreateStackInstancesShrinkRequest) SetDisableRollback(v bool) *CreateStackInstancesShrinkRequest {
-	s.DisableRollback = &v
-	return s
-}
-
 func (s *CreateStackInstancesShrinkRequest) SetParameterOverrides(v []*CreateStackInstancesShrinkRequestParameterOverrides) *CreateStackInstancesShrinkRequest {
 	s.ParameterOverrides = v
 	return s
 }
 
-func (s *CreateStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *CreateStackInstancesShrinkRequest {
-	s.DeploymentTargetsShrink = &v
+func (s *CreateStackInstancesShrinkRequest) SetRegionId(v string) *CreateStackInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *CreateStackInstancesShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *CreateStackInstancesShrinkRequest) SetStackGroupName(v string) *CreateStackInstancesShrinkRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *CreateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *CreateStackInstancesShrinkRequest {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -1226,8 +1244,8 @@ func (s *CreateStackInstancesShrinkRequestParameterOverrides) SetParameterValue(
 }
 
 type CreateStackInstancesResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateStackInstancesResponseBody) String() string {
@@ -1238,13 +1256,13 @@ func (s CreateStackInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateStackInstancesResponseBody) SetRequestId(v string) *CreateStackInstancesResponseBody {
-	s.RequestId = &v
+func (s *CreateStackInstancesResponseBody) SetOperationId(v string) *CreateStackInstancesResponseBody {
+	s.OperationId = &v
 	return s
 }
 
-func (s *CreateStackInstancesResponseBody) SetOperationId(v string) *CreateStackInstancesResponseBody {
-	s.OperationId = &v
+func (s *CreateStackInstancesResponseBody) SetRequestId(v string) *CreateStackInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1272,11 +1290,11 @@ func (s *CreateStackInstancesResponse) SetBody(v *CreateStackInstancesResponseBo
 }
 
 type CreateTemplateRequest struct {
-	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -1287,13 +1305,13 @@ func (s CreateTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTemplateRequest) SetTemplateURL(v string) *CreateTemplateRequest {
-	s.TemplateURL = &v
+func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest {
-	s.Description = &v
+func (s *CreateTemplateRequest) SetResourceGroupId(v string) *CreateTemplateRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1307,8 +1325,8 @@ func (s *CreateTemplateRequest) SetTemplateName(v string) *CreateTemplateRequest
 	return s
 }
 
-func (s *CreateTemplateRequest) SetResourceGroupId(v string) *CreateTemplateRequest {
-	s.ResourceGroupId = &v
+func (s *CreateTemplateRequest) SetTemplateURL(v string) *CreateTemplateRequest {
+	s.TemplateURL = &v
 	return s
 }
 
@@ -1359,8 +1377,8 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type DeleteChangeSetRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChangeSetRequest) String() string {
@@ -1371,13 +1389,13 @@ func (s DeleteChangeSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteChangeSetRequest) SetRegionId(v string) *DeleteChangeSetRequest {
-	s.RegionId = &v
+func (s *DeleteChangeSetRequest) SetChangeSetId(v string) *DeleteChangeSetRequest {
+	s.ChangeSetId = &v
 	return s
 }
 
-func (s *DeleteChangeSetRequest) SetChangeSetId(v string) *DeleteChangeSetRequest {
-	s.ChangeSetId = &v
+func (s *DeleteChangeSetRequest) SetRegionId(v string) *DeleteChangeSetRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1422,11 +1440,11 @@ func (s *DeleteChangeSetResponse) SetBody(v *DeleteChangeSetResponseBody) *Delet
 }
 
 type DeleteStackRequest struct {
-	StackId            *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RetainAllResources *bool     `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RamRoleName        *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RetainAllResources *bool     `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
 	RetainResources    []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
+	StackId            *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s DeleteStackRequest) String() string {
@@ -1437,13 +1455,8 @@ func (s DeleteStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteStackRequest) SetStackId(v string) *DeleteStackRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *DeleteStackRequest) SetRetainAllResources(v bool) *DeleteStackRequest {
-	s.RetainAllResources = &v
+func (s *DeleteStackRequest) SetRamRoleName(v string) *DeleteStackRequest {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -1452,13 +1465,18 @@ func (s *DeleteStackRequest) SetRegionId(v string) *DeleteStackRequest {
 	return s
 }
 
-func (s *DeleteStackRequest) SetRamRoleName(v string) *DeleteStackRequest {
-	s.RamRoleName = &v
+func (s *DeleteStackRequest) SetRetainAllResources(v bool) *DeleteStackRequest {
+	s.RetainAllResources = &v
 	return s
 }
 
 func (s *DeleteStackRequest) SetRetainResources(v []*string) *DeleteStackRequest {
 	s.RetainResources = v
+	return s
+}
+
+func (s *DeleteStackRequest) SetStackId(v string) *DeleteStackRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -1566,15 +1584,15 @@ func (s *DeleteStackGroupResponse) SetBody(v *DeleteStackGroupResponseBody) *Del
 }
 
 type DeleteStackInstancesRequest struct {
-	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName       *string                                       `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIds           []*string                                     `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	RegionIds            []*string                                     `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	RetainStacks         *bool                                         `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
 	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets    *DeleteStackInstancesRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
 	OperationDescription *string                                       `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferences map[string]interface{}                        `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	DeploymentTargets    *DeleteStackInstancesRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds            []*string                                     `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	RetainStacks         *bool                                         `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
+	StackGroupName       *string                                       `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 }
 
 func (s DeleteStackInstancesRequest) String() string {
@@ -1585,33 +1603,18 @@ func (s DeleteStackInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteStackInstancesRequest) SetRegionId(v string) *DeleteStackInstancesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteStackInstancesRequest) SetStackGroupName(v string) *DeleteStackInstancesRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *DeleteStackInstancesRequest) SetAccountIds(v []*string) *DeleteStackInstancesRequest {
 	s.AccountIds = v
 	return s
 }
 
-func (s *DeleteStackInstancesRequest) SetRegionIds(v []*string) *DeleteStackInstancesRequest {
-	s.RegionIds = v
-	return s
-}
-
-func (s *DeleteStackInstancesRequest) SetRetainStacks(v bool) *DeleteStackInstancesRequest {
-	s.RetainStacks = &v
-	return s
-}
-
 func (s *DeleteStackInstancesRequest) SetClientToken(v string) *DeleteStackInstancesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteStackInstancesRequest) SetDeploymentTargets(v *DeleteStackInstancesRequestDeploymentTargets) *DeleteStackInstancesRequest {
+	s.DeploymentTargets = v
 	return s
 }
 
@@ -1625,8 +1628,23 @@ func (s *DeleteStackInstancesRequest) SetOperationPreferences(v map[string]inter
 	return s
 }
 
-func (s *DeleteStackInstancesRequest) SetDeploymentTargets(v *DeleteStackInstancesRequestDeploymentTargets) *DeleteStackInstancesRequest {
-	s.DeploymentTargets = v
+func (s *DeleteStackInstancesRequest) SetRegionId(v string) *DeleteStackInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteStackInstancesRequest) SetRegionIds(v []*string) *DeleteStackInstancesRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *DeleteStackInstancesRequest) SetRetainStacks(v bool) *DeleteStackInstancesRequest {
+	s.RetainStacks = &v
+	return s
+}
+
+func (s *DeleteStackInstancesRequest) SetStackGroupName(v string) *DeleteStackInstancesRequest {
+	s.StackGroupName = &v
 	return s
 }
 
@@ -1648,15 +1666,15 @@ func (s *DeleteStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*strin
 }
 
 type DeleteStackInstancesShrinkRequest struct {
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName             *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIdsShrink           *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	RegionIdsShrink            *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	RetainStacks               *bool   `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
 	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
 	OperationDescription       *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	DeploymentTargetsShrink    *string `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink            *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	RetainStacks               *bool   `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
+	StackGroupName             *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 }
 
 func (s DeleteStackInstancesShrinkRequest) String() string {
@@ -1667,33 +1685,18 @@ func (s DeleteStackInstancesShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteStackInstancesShrinkRequest) SetRegionId(v string) *DeleteStackInstancesShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteStackInstancesShrinkRequest) SetStackGroupName(v string) *DeleteStackInstancesShrinkRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *DeleteStackInstancesShrinkRequest) SetAccountIdsShrink(v string) *DeleteStackInstancesShrinkRequest {
 	s.AccountIdsShrink = &v
 	return s
 }
 
-func (s *DeleteStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *DeleteStackInstancesShrinkRequest {
-	s.RegionIdsShrink = &v
-	return s
-}
-
-func (s *DeleteStackInstancesShrinkRequest) SetRetainStacks(v bool) *DeleteStackInstancesShrinkRequest {
-	s.RetainStacks = &v
-	return s
-}
-
 func (s *DeleteStackInstancesShrinkRequest) SetClientToken(v string) *DeleteStackInstancesShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *DeleteStackInstancesShrinkRequest {
+	s.DeploymentTargetsShrink = &v
 	return s
 }
 
@@ -1707,14 +1710,29 @@ func (s *DeleteStackInstancesShrinkRequest) SetOperationPreferencesShrink(v stri
 	return s
 }
 
-func (s *DeleteStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *DeleteStackInstancesShrinkRequest {
-	s.DeploymentTargetsShrink = &v
+func (s *DeleteStackInstancesShrinkRequest) SetRegionId(v string) *DeleteStackInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *DeleteStackInstancesShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *DeleteStackInstancesShrinkRequest) SetRetainStacks(v bool) *DeleteStackInstancesShrinkRequest {
+	s.RetainStacks = &v
+	return s
+}
+
+func (s *DeleteStackInstancesShrinkRequest) SetStackGroupName(v string) *DeleteStackInstancesShrinkRequest {
+	s.StackGroupName = &v
 	return s
 }
 
 type DeleteStackInstancesResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteStackInstancesResponseBody) String() string {
@@ -1725,13 +1743,13 @@ func (s DeleteStackInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteStackInstancesResponseBody) SetRequestId(v string) *DeleteStackInstancesResponseBody {
-	s.RequestId = &v
+func (s *DeleteStackInstancesResponseBody) SetOperationId(v string) *DeleteStackInstancesResponseBody {
+	s.OperationId = &v
 	return s
 }
 
-func (s *DeleteStackInstancesResponseBody) SetOperationId(v string) *DeleteStackInstancesResponseBody {
-	s.OperationId = &v
+func (s *DeleteStackInstancesResponseBody) SetRequestId(v string) *DeleteStackInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1833,8 +1851,8 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1845,19 +1863,19 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
 	s.Regions = v
 	return s
 }
 
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeRegionsResponseBodyRegions struct {
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1869,13 +1887,13 @@ func (s DescribeRegionsResponseBodyRegions) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionEndpoint = &v
+func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
+	s.LocalName = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeRegionsResponseBodyRegions {
-	s.LocalName = &v
+func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionEndpoint = &v
 	return s
 }
 
@@ -1908,10 +1926,10 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DetectStackDriftRequest struct {
-	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	LogicalResourceId []*string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty" type:"Repeated"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s DetectStackDriftRequest) String() string {
@@ -1922,8 +1940,13 @@ func (s DetectStackDriftRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectStackDriftRequest) SetStackId(v string) *DetectStackDriftRequest {
-	s.StackId = &v
+func (s *DetectStackDriftRequest) SetClientToken(v string) *DetectStackDriftRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DetectStackDriftRequest) SetLogicalResourceId(v []*string) *DetectStackDriftRequest {
+	s.LogicalResourceId = v
 	return s
 }
 
@@ -1932,13 +1955,8 @@ func (s *DetectStackDriftRequest) SetRegionId(v string) *DetectStackDriftRequest
 	return s
 }
 
-func (s *DetectStackDriftRequest) SetClientToken(v string) *DetectStackDriftRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *DetectStackDriftRequest) SetLogicalResourceId(v []*string) *DetectStackDriftRequest {
-	s.LogicalResourceId = v
+func (s *DetectStackDriftRequest) SetStackId(v string) *DetectStackDriftRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -1990,9 +2008,9 @@ func (s *DetectStackDriftResponse) SetBody(v *DetectStackDriftResponseBody) *Det
 
 type DetectStackGroupDriftRequest struct {
 	ClientToken          *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OperationPreferences map[string]interface{} `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
 	RegionId             *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName       *string                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	OperationPreferences map[string]interface{} `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
 }
 
 func (s DetectStackGroupDriftRequest) String() string {
@@ -2008,6 +2026,11 @@ func (s *DetectStackGroupDriftRequest) SetClientToken(v string) *DetectStackGrou
 	return s
 }
 
+func (s *DetectStackGroupDriftRequest) SetOperationPreferences(v map[string]interface{}) *DetectStackGroupDriftRequest {
+	s.OperationPreferences = v
+	return s
+}
+
 func (s *DetectStackGroupDriftRequest) SetRegionId(v string) *DetectStackGroupDriftRequest {
 	s.RegionId = &v
 	return s
@@ -2018,16 +2041,11 @@ func (s *DetectStackGroupDriftRequest) SetStackGroupName(v string) *DetectStackG
 	return s
 }
 
-func (s *DetectStackGroupDriftRequest) SetOperationPreferences(v map[string]interface{}) *DetectStackGroupDriftRequest {
-	s.OperationPreferences = v
-	return s
-}
-
 type DetectStackGroupDriftShrinkRequest struct {
 	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
 	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName             *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	OperationPreferencesShrink *string `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
 }
 
 func (s DetectStackGroupDriftShrinkRequest) String() string {
@@ -2043,6 +2061,11 @@ func (s *DetectStackGroupDriftShrinkRequest) SetClientToken(v string) *DetectSta
 	return s
 }
 
+func (s *DetectStackGroupDriftShrinkRequest) SetOperationPreferencesShrink(v string) *DetectStackGroupDriftShrinkRequest {
+	s.OperationPreferencesShrink = &v
+	return s
+}
+
 func (s *DetectStackGroupDriftShrinkRequest) SetRegionId(v string) *DetectStackGroupDriftShrinkRequest {
 	s.RegionId = &v
 	return s
@@ -2050,11 +2073,6 @@ func (s *DetectStackGroupDriftShrinkRequest) SetRegionId(v string) *DetectStackG
 
 func (s *DetectStackGroupDriftShrinkRequest) SetStackGroupName(v string) *DetectStackGroupDriftShrinkRequest {
 	s.StackGroupName = &v
-	return s
-}
-
-func (s *DetectStackGroupDriftShrinkRequest) SetOperationPreferencesShrink(v string) *DetectStackGroupDriftShrinkRequest {
-	s.OperationPreferencesShrink = &v
 	return s
 }
 
@@ -2105,10 +2123,10 @@ func (s *DetectStackGroupDriftResponse) SetBody(v *DetectStackGroupDriftResponse
 }
 
 type DetectStackResourceDriftRequest struct {
-	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s DetectStackResourceDriftRequest) String() string {
@@ -2119,18 +2137,8 @@ func (s DetectStackResourceDriftRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectStackResourceDriftRequest) SetStackId(v string) *DetectStackResourceDriftRequest {
-	s.StackId = &v
-	return s
-}
-
 func (s *DetectStackResourceDriftRequest) SetClientToken(v string) *DetectStackResourceDriftRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *DetectStackResourceDriftRequest) SetRegionId(v string) *DetectStackResourceDriftRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2139,16 +2147,26 @@ func (s *DetectStackResourceDriftRequest) SetLogicalResourceId(v string) *Detect
 	return s
 }
 
+func (s *DetectStackResourceDriftRequest) SetRegionId(v string) *DetectStackResourceDriftRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetectStackResourceDriftRequest) SetStackId(v string) *DetectStackResourceDriftRequest {
+	s.StackId = &v
+	return s
+}
+
 type DetectStackResourceDriftResponseBody struct {
+	ActualProperties    *string                                                    `json:"ActualProperties,omitempty" xml:"ActualProperties,omitempty"`
+	DriftDetectionTime  *string                                                    `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	ExpectedProperties  *string                                                    `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
 	LogicalResourceId   *string                                                    `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	ResourceDriftStatus *string                                                    `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	PhysicalResourceId  *string                                                    `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
 	PropertyDifferences []*DetectStackResourceDriftResponseBodyPropertyDifferences `json:"PropertyDifferences,omitempty" xml:"PropertyDifferences,omitempty" type:"Repeated"`
 	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PhysicalResourceId  *string                                                    `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	ExpectedProperties  *string                                                    `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
-	DriftDetectionTime  *string                                                    `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	ResourceDriftStatus *string                                                    `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
 	ResourceType        *string                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ActualProperties    *string                                                    `json:"ActualProperties,omitempty" xml:"ActualProperties,omitempty"`
 	StackId             *string                                                    `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
@@ -2160,13 +2178,28 @@ func (s DetectStackResourceDriftResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DetectStackResourceDriftResponseBody) SetActualProperties(v string) *DetectStackResourceDriftResponseBody {
+	s.ActualProperties = &v
+	return s
+}
+
+func (s *DetectStackResourceDriftResponseBody) SetDriftDetectionTime(v string) *DetectStackResourceDriftResponseBody {
+	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *DetectStackResourceDriftResponseBody) SetExpectedProperties(v string) *DetectStackResourceDriftResponseBody {
+	s.ExpectedProperties = &v
+	return s
+}
+
 func (s *DetectStackResourceDriftResponseBody) SetLogicalResourceId(v string) *DetectStackResourceDriftResponseBody {
 	s.LogicalResourceId = &v
 	return s
 }
 
-func (s *DetectStackResourceDriftResponseBody) SetResourceDriftStatus(v string) *DetectStackResourceDriftResponseBody {
-	s.ResourceDriftStatus = &v
+func (s *DetectStackResourceDriftResponseBody) SetPhysicalResourceId(v string) *DetectStackResourceDriftResponseBody {
+	s.PhysicalResourceId = &v
 	return s
 }
 
@@ -2180,28 +2213,13 @@ func (s *DetectStackResourceDriftResponseBody) SetRequestId(v string) *DetectSta
 	return s
 }
 
-func (s *DetectStackResourceDriftResponseBody) SetPhysicalResourceId(v string) *DetectStackResourceDriftResponseBody {
-	s.PhysicalResourceId = &v
-	return s
-}
-
-func (s *DetectStackResourceDriftResponseBody) SetExpectedProperties(v string) *DetectStackResourceDriftResponseBody {
-	s.ExpectedProperties = &v
-	return s
-}
-
-func (s *DetectStackResourceDriftResponseBody) SetDriftDetectionTime(v string) *DetectStackResourceDriftResponseBody {
-	s.DriftDetectionTime = &v
+func (s *DetectStackResourceDriftResponseBody) SetResourceDriftStatus(v string) *DetectStackResourceDriftResponseBody {
+	s.ResourceDriftStatus = &v
 	return s
 }
 
 func (s *DetectStackResourceDriftResponseBody) SetResourceType(v string) *DetectStackResourceDriftResponseBody {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *DetectStackResourceDriftResponseBody) SetActualProperties(v string) *DetectStackResourceDriftResponseBody {
-	s.ActualProperties = &v
 	return s
 }
 
@@ -2213,8 +2231,8 @@ func (s *DetectStackResourceDriftResponseBody) SetStackId(v string) *DetectStack
 type DetectStackResourceDriftResponseBodyPropertyDifferences struct {
 	ActualValue    *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
 	DifferenceType *string `json:"DifferenceType,omitempty" xml:"DifferenceType,omitempty"`
-	PropertyPath   *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
 	ExpectedValue  *string `json:"ExpectedValue,omitempty" xml:"ExpectedValue,omitempty"`
+	PropertyPath   *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
 }
 
 func (s DetectStackResourceDriftResponseBodyPropertyDifferences) String() string {
@@ -2235,13 +2253,13 @@ func (s *DetectStackResourceDriftResponseBodyPropertyDifferences) SetDifferenceT
 	return s
 }
 
-func (s *DetectStackResourceDriftResponseBodyPropertyDifferences) SetPropertyPath(v string) *DetectStackResourceDriftResponseBodyPropertyDifferences {
-	s.PropertyPath = &v
+func (s *DetectStackResourceDriftResponseBodyPropertyDifferences) SetExpectedValue(v string) *DetectStackResourceDriftResponseBodyPropertyDifferences {
+	s.ExpectedValue = &v
 	return s
 }
 
-func (s *DetectStackResourceDriftResponseBodyPropertyDifferences) SetExpectedValue(v string) *DetectStackResourceDriftResponseBodyPropertyDifferences {
-	s.ExpectedValue = &v
+func (s *DetectStackResourceDriftResponseBodyPropertyDifferences) SetPropertyPath(v string) *DetectStackResourceDriftResponseBodyPropertyDifferences {
+	s.PropertyPath = &v
 	return s
 }
 
@@ -2269,9 +2287,9 @@ func (s *DetectStackResourceDriftResponse) SetBody(v *DetectStackResourceDriftRe
 }
 
 type ExecuteChangeSetRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ExecuteChangeSetRequest) String() string {
@@ -2282,11 +2300,6 @@ func (s ExecuteChangeSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteChangeSetRequest) SetRegionId(v string) *ExecuteChangeSetRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ExecuteChangeSetRequest) SetChangeSetId(v string) *ExecuteChangeSetRequest {
 	s.ChangeSetId = &v
 	return s
@@ -2294,6 +2307,11 @@ func (s *ExecuteChangeSetRequest) SetChangeSetId(v string) *ExecuteChangeSetRequ
 
 func (s *ExecuteChangeSetRequest) SetClientToken(v string) *ExecuteChangeSetRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ExecuteChangeSetRequest) SetRegionId(v string) *ExecuteChangeSetRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2338,9 +2356,9 @@ func (s *ExecuteChangeSetResponse) SetBody(v *ExecuteChangeSetResponseBody) *Exe
 }
 
 type GenerateTemplatePolicyRequest struct {
-	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2350,11 +2368,6 @@ func (s GenerateTemplatePolicyRequest) String() string {
 
 func (s GenerateTemplatePolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GenerateTemplatePolicyRequest) SetTemplateURL(v string) *GenerateTemplatePolicyRequest {
-	s.TemplateURL = &v
-	return s
 }
 
 func (s *GenerateTemplatePolicyRequest) SetTemplateBody(v string) *GenerateTemplatePolicyRequest {
@@ -2367,14 +2380,19 @@ func (s *GenerateTemplatePolicyRequest) SetTemplateId(v string) *GenerateTemplat
 	return s
 }
 
+func (s *GenerateTemplatePolicyRequest) SetTemplateURL(v string) *GenerateTemplatePolicyRequest {
+	s.TemplateURL = &v
+	return s
+}
+
 func (s *GenerateTemplatePolicyRequest) SetTemplateVersion(v string) *GenerateTemplatePolicyRequest {
 	s.TemplateVersion = &v
 	return s
 }
 
 type GenerateTemplatePolicyResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Policy    *GenerateTemplatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateTemplatePolicyResponseBody) String() string {
@@ -2385,19 +2403,19 @@ func (s GenerateTemplatePolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateTemplatePolicyResponseBody) SetRequestId(v string) *GenerateTemplatePolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GenerateTemplatePolicyResponseBody) SetPolicy(v *GenerateTemplatePolicyResponseBodyPolicy) *GenerateTemplatePolicyResponseBody {
 	s.Policy = v
 	return s
 }
 
+func (s *GenerateTemplatePolicyResponseBody) SetRequestId(v string) *GenerateTemplatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GenerateTemplatePolicyResponseBodyPolicy struct {
-	Version   *string                                              `json:"Version,omitempty" xml:"Version,omitempty"`
 	Statement []*GenerateTemplatePolicyResponseBodyPolicyStatement `json:"Statement,omitempty" xml:"Statement,omitempty" type:"Repeated"`
+	Version   *string                                              `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GenerateTemplatePolicyResponseBodyPolicy) String() string {
@@ -2408,20 +2426,20 @@ func (s GenerateTemplatePolicyResponseBodyPolicy) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateTemplatePolicyResponseBodyPolicy) SetVersion(v string) *GenerateTemplatePolicyResponseBodyPolicy {
-	s.Version = &v
-	return s
-}
-
 func (s *GenerateTemplatePolicyResponseBodyPolicy) SetStatement(v []*GenerateTemplatePolicyResponseBodyPolicyStatement) *GenerateTemplatePolicyResponseBodyPolicy {
 	s.Statement = v
 	return s
 }
 
+func (s *GenerateTemplatePolicyResponseBodyPolicy) SetVersion(v string) *GenerateTemplatePolicyResponseBodyPolicy {
+	s.Version = &v
+	return s
+}
+
 type GenerateTemplatePolicyResponseBodyPolicyStatement struct {
+	Action   []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
 	Effect   *string   `json:"Effect,omitempty" xml:"Effect,omitempty"`
 	Resource *string   `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Action   []*string `json:"Action,omitempty" xml:"Action,omitempty" type:"Repeated"`
 }
 
 func (s GenerateTemplatePolicyResponseBodyPolicyStatement) String() string {
@@ -2432,6 +2450,11 @@ func (s GenerateTemplatePolicyResponseBodyPolicyStatement) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetAction(v []*string) *GenerateTemplatePolicyResponseBodyPolicyStatement {
+	s.Action = v
+	return s
+}
+
 func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetEffect(v string) *GenerateTemplatePolicyResponseBodyPolicyStatement {
 	s.Effect = &v
 	return s
@@ -2439,11 +2462,6 @@ func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetEffect(v string) 
 
 func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetResource(v string) *GenerateTemplatePolicyResponseBodyPolicyStatement {
 	s.Resource = &v
-	return s
-}
-
-func (s *GenerateTemplatePolicyResponseBodyPolicyStatement) SetAction(v []*string) *GenerateTemplatePolicyResponseBodyPolicyStatement {
-	s.Action = v
 	return s
 }
 
@@ -2471,9 +2489,9 @@ func (s *GenerateTemplatePolicyResponse) SetBody(v *GenerateTemplatePolicyRespon
 }
 
 type GetChangeSetRequest struct {
-	ShowTemplate *bool   `json:"ShowTemplate,omitempty" xml:"ShowTemplate,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ChangeSetId  *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShowTemplate *bool   `json:"ShowTemplate,omitempty" xml:"ShowTemplate,omitempty"`
 }
 
 func (s GetChangeSetRequest) String() string {
@@ -2484,8 +2502,8 @@ func (s GetChangeSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetChangeSetRequest) SetShowTemplate(v bool) *GetChangeSetRequest {
-	s.ShowTemplate = &v
+func (s *GetChangeSetRequest) SetChangeSetId(v string) *GetChangeSetRequest {
+	s.ChangeSetId = &v
 	return s
 }
 
@@ -2494,29 +2512,29 @@ func (s *GetChangeSetRequest) SetRegionId(v string) *GetChangeSetRequest {
 	return s
 }
 
-func (s *GetChangeSetRequest) SetChangeSetId(v string) *GetChangeSetRequest {
-	s.ChangeSetId = &v
+func (s *GetChangeSetRequest) SetShowTemplate(v bool) *GetChangeSetRequest {
+	s.ShowTemplate = &v
 	return s
 }
 
 type GetChangeSetResponseBody struct {
-	Status           *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	ChangeSetId      *string                               `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	ChangeSetName    *string                               `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty"`
 	ChangeSetType    *string                               `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
-	StatusReason     *string                               `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Changes          []map[string]interface{}              `json:"Changes,omitempty" xml:"Changes,omitempty" type:"Repeated"`
 	CreateTime       *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback  *bool                                 `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	ExecutionStatus  *string                               `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
-	StackName        *string                               `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	TimeoutInMinutes *int32                                `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	RegionId         *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackId          *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Description      *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	ChangeSetId      *string                               `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	TemplateBody     *string                               `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	Changes          []map[string]interface{}              `json:"Changes,omitempty" xml:"Changes,omitempty" type:"Repeated"`
 	Parameters       []*GetChangeSetResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId         *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackId          *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName        *string                               `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Status           *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason     *string                               `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	TemplateBody     *string                               `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TimeoutInMinutes *int32                                `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s GetChangeSetResponseBody) String() string {
@@ -2527,8 +2545,8 @@ func (s GetChangeSetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetChangeSetResponseBody) SetStatus(v string) *GetChangeSetResponseBody {
-	s.Status = &v
+func (s *GetChangeSetResponseBody) SetChangeSetId(v string) *GetChangeSetResponseBody {
+	s.ChangeSetId = &v
 	return s
 }
 
@@ -2542,13 +2560,18 @@ func (s *GetChangeSetResponseBody) SetChangeSetType(v string) *GetChangeSetRespo
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetStatusReason(v string) *GetChangeSetResponseBody {
-	s.StatusReason = &v
+func (s *GetChangeSetResponseBody) SetChanges(v []map[string]interface{}) *GetChangeSetResponseBody {
+	s.Changes = v
 	return s
 }
 
 func (s *GetChangeSetResponseBody) SetCreateTime(v string) *GetChangeSetResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBody) SetDescription(v string) *GetChangeSetResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -2562,13 +2585,8 @@ func (s *GetChangeSetResponseBody) SetExecutionStatus(v string) *GetChangeSetRes
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetStackName(v string) *GetChangeSetResponseBody {
-	s.StackName = &v
-	return s
-}
-
-func (s *GetChangeSetResponseBody) SetTimeoutInMinutes(v int32) *GetChangeSetResponseBody {
-	s.TimeoutInMinutes = &v
+func (s *GetChangeSetResponseBody) SetParameters(v []*GetChangeSetResponseBodyParameters) *GetChangeSetResponseBody {
+	s.Parameters = v
 	return s
 }
 
@@ -2577,23 +2595,28 @@ func (s *GetChangeSetResponseBody) SetRegionId(v string) *GetChangeSetResponseBo
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetStackId(v string) *GetChangeSetResponseBody {
-	s.StackId = &v
-	return s
-}
-
 func (s *GetChangeSetResponseBody) SetRequestId(v string) *GetChangeSetResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetDescription(v string) *GetChangeSetResponseBody {
-	s.Description = &v
+func (s *GetChangeSetResponseBody) SetStackId(v string) *GetChangeSetResponseBody {
+	s.StackId = &v
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetChangeSetId(v string) *GetChangeSetResponseBody {
-	s.ChangeSetId = &v
+func (s *GetChangeSetResponseBody) SetStackName(v string) *GetChangeSetResponseBody {
+	s.StackName = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBody) SetStatus(v string) *GetChangeSetResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBody) SetStatusReason(v string) *GetChangeSetResponseBody {
+	s.StatusReason = &v
 	return s
 }
 
@@ -2602,13 +2625,8 @@ func (s *GetChangeSetResponseBody) SetTemplateBody(v string) *GetChangeSetRespon
 	return s
 }
 
-func (s *GetChangeSetResponseBody) SetChanges(v []map[string]interface{}) *GetChangeSetResponseBody {
-	s.Changes = v
-	return s
-}
-
-func (s *GetChangeSetResponseBody) SetParameters(v []*GetChangeSetResponseBodyParameters) *GetChangeSetResponseBody {
-	s.Parameters = v
+func (s *GetChangeSetResponseBody) SetTimeoutInMinutes(v int32) *GetChangeSetResponseBody {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -2658,6 +2676,179 @@ func (s *GetChangeSetResponse) SetBody(v *GetChangeSetResponseBody) *GetChangeSe
 	return s
 }
 
+type GetFeatureDetailsRequest struct {
+	Feature  *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetFeatureDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsRequest) SetFeature(v string) *GetFeatureDetailsRequest {
+	s.Feature = &v
+	return s
+}
+
+func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetFeatureDetailsResponseBody struct {
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Terraform *GetFeatureDetailsResponseBodyTerraform `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
+}
+
+func (s GetFeatureDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBody) SetTerraform(v *GetFeatureDetailsResponseBodyTerraform) *GetFeatureDetailsResponseBody {
+	s.Terraform = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTerraform struct {
+	SupportedResourceTypes *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Struct"`
+	SupportedVersions      []*GetFeatureDetailsResponseBodyTerraformSupportedVersions    `json:"SupportedVersions,omitempty" xml:"SupportedVersions,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTerraform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTerraform) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedResourceTypes(v *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) *GetFeatureDetailsResponseBodyTerraform {
+	s.SupportedResourceTypes = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedVersions(v []*GetFeatureDetailsResponseBodyTerraformSupportedVersions) *GetFeatureDetailsResponseBodyTerraform {
+	s.SupportedVersions = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes struct {
+	CustomTag    []*string `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
+	EstimateCost []*string `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
+	SystemTag    []*string `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetCustomTag(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
+	s.CustomTag = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetEstimateCost(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
+	s.EstimateCost = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetSystemTag(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
+	s.SystemTag = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTerraformSupportedVersions struct {
+	ProviderVersions []*GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions `json:"ProviderVersions,omitempty" xml:"ProviderVersions,omitempty" type:"Repeated"`
+	TerraformVersion *string                                                                    `json:"TerraformVersion,omitempty" xml:"TerraformVersion,omitempty"`
+	Transform        *string                                                                    `json:"Transform,omitempty" xml:"Transform,omitempty"`
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedVersions) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetProviderVersions(v []*GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions) *GetFeatureDetailsResponseBodyTerraformSupportedVersions {
+	s.ProviderVersions = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetTerraformVersion(v string) *GetFeatureDetailsResponseBodyTerraformSupportedVersions {
+	s.TerraformVersion = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetTransform(v string) *GetFeatureDetailsResponseBodyTerraformSupportedVersions {
+	s.Transform = &v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions struct {
+	ProviderName      *string   `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	SupportedVersions []*string `json:"SupportedVersions,omitempty" xml:"SupportedVersions,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions) SetProviderName(v string) *GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions {
+	s.ProviderName = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions) SetSupportedVersions(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions {
+	s.SupportedVersions = v
+	return s
+}
+
+type GetFeatureDetailsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFeatureDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFeatureDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponse) SetHeaders(v map[string]*string) *GetFeatureDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponse) SetBody(v *GetFeatureDetailsResponseBody) *GetFeatureDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceTypeRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -2676,11 +2867,11 @@ func (s *GetResourceTypeRequest) SetResourceType(v string) *GetResourceTypeReque
 }
 
 type GetResourceTypeResponseBody struct {
-	SupportDriftDetection *bool                  `json:"SupportDriftDetection,omitempty" xml:"SupportDriftDetection,omitempty"`
-	ResourceType          *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Properties            map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	Attributes            map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Properties            map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType          *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SupportDriftDetection *bool                  `json:"SupportDriftDetection,omitempty" xml:"SupportDriftDetection,omitempty"`
 }
 
 func (s GetResourceTypeResponseBody) String() string {
@@ -2691,18 +2882,8 @@ func (s GetResourceTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceTypeResponseBody) SetSupportDriftDetection(v bool) *GetResourceTypeResponseBody {
-	s.SupportDriftDetection = &v
-	return s
-}
-
-func (s *GetResourceTypeResponseBody) SetResourceType(v string) *GetResourceTypeResponseBody {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *GetResourceTypeResponseBody) SetRequestId(v string) *GetResourceTypeResponseBody {
-	s.RequestId = &v
+func (s *GetResourceTypeResponseBody) SetAttributes(v map[string]interface{}) *GetResourceTypeResponseBody {
+	s.Attributes = v
 	return s
 }
 
@@ -2711,8 +2892,18 @@ func (s *GetResourceTypeResponseBody) SetProperties(v map[string]interface{}) *G
 	return s
 }
 
-func (s *GetResourceTypeResponseBody) SetAttributes(v map[string]interface{}) *GetResourceTypeResponseBody {
-	s.Attributes = v
+func (s *GetResourceTypeResponseBody) SetRequestId(v string) *GetResourceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBody) SetResourceType(v string) *GetResourceTypeResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBody) SetSupportDriftDetection(v bool) *GetResourceTypeResponseBody {
+	s.SupportDriftDetection = &v
 	return s
 }
 
@@ -2757,8 +2948,8 @@ func (s *GetResourceTypeTemplateRequest) SetResourceType(v string) *GetResourceT
 }
 
 type GetResourceTypeTemplateResponseBody struct {
-	TemplateBody map[string]interface{} `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateBody map[string]interface{} `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 }
 
 func (s GetResourceTypeTemplateResponseBody) String() string {
@@ -2769,13 +2960,13 @@ func (s GetResourceTypeTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceTypeTemplateResponseBody) SetTemplateBody(v map[string]interface{}) *GetResourceTypeTemplateResponseBody {
-	s.TemplateBody = v
+func (s *GetResourceTypeTemplateResponseBody) SetRequestId(v string) *GetResourceTypeTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetResourceTypeTemplateResponseBody) SetRequestId(v string) *GetResourceTypeTemplateResponseBody {
-	s.RequestId = &v
+func (s *GetResourceTypeTemplateResponseBody) SetTemplateBody(v map[string]interface{}) *GetResourceTypeTemplateResponseBody {
+	s.TemplateBody = v
 	return s
 }
 
@@ -2802,12 +2993,250 @@ func (s *GetResourceTypeTemplateResponse) SetBody(v *GetResourceTypeTemplateResp
 	return s
 }
 
+type GetServiceProvisionsRequest struct {
+	Parameters      []*GetServiceProvisionsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Services        []*GetServiceProvisionsRequestServices   `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	TemplateBody    *string                                  `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                                  `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion *string                                  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s GetServiceProvisionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsRequest) SetParameters(v []*GetServiceProvisionsRequestParameters) *GetServiceProvisionsRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetRegionId(v string) *GetServiceProvisionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetServices(v []*GetServiceProvisionsRequestServices) *GetServiceProvisionsRequest {
+	s.Services = v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetTemplateBody(v string) *GetServiceProvisionsRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetTemplateId(v string) *GetServiceProvisionsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetTemplateURL(v string) *GetServiceProvisionsRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *GetServiceProvisionsRequest) SetTemplateVersion(v string) *GetServiceProvisionsRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type GetServiceProvisionsRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GetServiceProvisionsRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsRequestParameters) SetParameterKey(v string) *GetServiceProvisionsRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetServiceProvisionsRequestParameters) SetParameterValue(v string) *GetServiceProvisionsRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type GetServiceProvisionsRequestServices struct {
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s GetServiceProvisionsRequestServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsRequestServices) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsRequestServices) SetServiceName(v string) *GetServiceProvisionsRequestServices {
+	s.ServiceName = &v
+	return s
+}
+
+type GetServiceProvisionsResponseBody struct {
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceProvisions []*GetServiceProvisionsResponseBodyServiceProvisions `json:"ServiceProvisions,omitempty" xml:"ServiceProvisions,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceProvisionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBody) SetRequestId(v string) *GetServiceProvisionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBody) SetServiceProvisions(v []*GetServiceProvisionsResponseBodyServiceProvisions) *GetServiceProvisionsResponseBody {
+	s.ServiceProvisions = v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisions struct {
+	AutoEnableService *bool                                                           `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	EnableURL         *string                                                         `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
+	RoleProvision     *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision `json:"RoleProvision,omitempty" xml:"RoleProvision,omitempty" type:"Struct"`
+	ServiceName       *string                                                         `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status            *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason      *string                                                         `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisions) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetAutoEnableService(v bool) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.AutoEnableService = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetEnableURL(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.EnableURL = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetRoleProvision(v *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.RoleProvision = v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetServiceName(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatus(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatusReason(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.StatusReason = &v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision struct {
+	AuthorizationURL *string                                                                `json:"AuthorizationURL,omitempty" xml:"AuthorizationURL,omitempty"`
+	Roles            []*GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) SetAuthorizationURL(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision {
+	s.AuthorizationURL = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) SetRoles(v []*GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision {
+	s.Roles = v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles struct {
+	Created  *bool   `json:"Created,omitempty" xml:"Created,omitempty"`
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetCreated(v bool) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
+	s.Created = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetFunction(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
+	s.Function = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetRoleName(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
+	s.RoleName = &v
+	return s
+}
+
+type GetServiceProvisionsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetServiceProvisionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceProvisionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponse) SetHeaders(v map[string]*string) *GetServiceProvisionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceProvisionsResponse) SetBody(v *GetServiceProvisionsResponseBody) *GetServiceProvisionsResponse {
+	s.Body = v
+	return s
+}
+
 type GetStackRequest struct {
-	StackId              *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OutputOption         *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ShowResourceProgress *string `json:"ShowResourceProgress,omitempty" xml:"ShowResourceProgress,omitempty"`
+	StackId              *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s GetStackRequest) String() string {
@@ -2816,16 +3245,6 @@ func (s GetStackRequest) String() string {
 
 func (s GetStackRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetStackRequest) SetStackId(v string) *GetStackRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *GetStackRequest) SetRegionId(v string) *GetStackRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetStackRequest) SetClientToken(v string) *GetStackRequest {
@@ -2838,37 +3257,47 @@ func (s *GetStackRequest) SetOutputOption(v string) *GetStackRequest {
 	return s
 }
 
+func (s *GetStackRequest) SetRegionId(v string) *GetStackRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *GetStackRequest) SetShowResourceProgress(v string) *GetStackRequest {
 	s.ShowResourceProgress = &v
 	return s
 }
 
+func (s *GetStackRequest) SetStackId(v string) *GetStackRequest {
+	s.StackId = &v
+	return s
+}
+
 type GetStackResponseBody struct {
-	Status              *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Description         *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	Parameters          []*GetStackResponseBodyParameters     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId           *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatusReason        *string                               `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	ParentStackId       *string                               `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
 	CreateTime          *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeletionProtection  *string                               `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	RootStackId         *string                               `json:"RootStackId,omitempty" xml:"RootStackId,omitempty"`
-	TemplateDescription *string                               `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	StackType           *string                               `json:"StackType,omitempty" xml:"StackType,omitempty"`
-	RamRoleName         *string                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	UpdateTime          *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Outputs             []map[string]interface{}              `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	DriftDetectionTime  *string                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	RegionId            *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackDriftStatus    *string                               `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	NotificationURLs    []*string                             `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Description         *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback     *bool                                 `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	StackName           *string                               `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	Tags                []*GetStackResponseBodyTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TimeoutInMinutes    *int32                                `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	StackId             *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	DriftDetectionTime  *string                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	NotificationURLs    []*string                             `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Outputs             []map[string]interface{}              `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	Parameters          []*GetStackResponseBodyParameters     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ParentStackId       *string                               `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
+	RamRoleName         *string                               `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId            *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId           *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId     *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceProgress    *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
+	RootStackId         *string                               `json:"RootStackId,omitempty" xml:"RootStackId,omitempty"`
+	StackDriftStatus    *string                               `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackId             *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName           *string                               `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackType           *string                               `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	Status              *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason        *string                               `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Tags                []*GetStackResponseBodyTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateDescription *string                               `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	TimeoutInMinutes    *int32                                `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	UpdateTime          *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetStackResponseBody) String() string {
@@ -2877,36 +3306,6 @@ func (s GetStackResponseBody) String() string {
 
 func (s GetStackResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetStackResponseBody) SetStatus(v string) *GetStackResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetDescription(v string) *GetStackResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetParameters(v []*GetStackResponseBodyParameters) *GetStackResponseBody {
-	s.Parameters = v
-	return s
-}
-
-func (s *GetStackResponseBody) SetRequestId(v string) *GetStackResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetStatusReason(v string) *GetStackResponseBody {
-	s.StatusReason = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetParentStackId(v string) *GetStackResponseBody {
-	s.ParentStackId = &v
-	return s
 }
 
 func (s *GetStackResponseBody) SetCreateTime(v string) *GetStackResponseBody {
@@ -2919,53 +3318,8 @@ func (s *GetStackResponseBody) SetDeletionProtection(v string) *GetStackResponse
 	return s
 }
 
-func (s *GetStackResponseBody) SetRootStackId(v string) *GetStackResponseBody {
-	s.RootStackId = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetTemplateDescription(v string) *GetStackResponseBody {
-	s.TemplateDescription = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetStackType(v string) *GetStackResponseBody {
-	s.StackType = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetRamRoleName(v string) *GetStackResponseBody {
-	s.RamRoleName = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetOutputs(v []map[string]interface{}) *GetStackResponseBody {
-	s.Outputs = v
-	return s
-}
-
-func (s *GetStackResponseBody) SetDriftDetectionTime(v string) *GetStackResponseBody {
-	s.DriftDetectionTime = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetRegionId(v string) *GetStackResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetStackDriftStatus(v string) *GetStackResponseBody {
-	s.StackDriftStatus = &v
-	return s
-}
-
-func (s *GetStackResponseBody) SetNotificationURLs(v []*string) *GetStackResponseBody {
-	s.NotificationURLs = v
+func (s *GetStackResponseBody) SetDescription(v string) *GetStackResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -2974,23 +3328,43 @@ func (s *GetStackResponseBody) SetDisableRollback(v bool) *GetStackResponseBody 
 	return s
 }
 
-func (s *GetStackResponseBody) SetStackName(v string) *GetStackResponseBody {
-	s.StackName = &v
+func (s *GetStackResponseBody) SetDriftDetectionTime(v string) *GetStackResponseBody {
+	s.DriftDetectionTime = &v
 	return s
 }
 
-func (s *GetStackResponseBody) SetTags(v []*GetStackResponseBodyTags) *GetStackResponseBody {
-	s.Tags = v
+func (s *GetStackResponseBody) SetNotificationURLs(v []*string) *GetStackResponseBody {
+	s.NotificationURLs = v
 	return s
 }
 
-func (s *GetStackResponseBody) SetTimeoutInMinutes(v int32) *GetStackResponseBody {
-	s.TimeoutInMinutes = &v
+func (s *GetStackResponseBody) SetOutputs(v []map[string]interface{}) *GetStackResponseBody {
+	s.Outputs = v
 	return s
 }
 
-func (s *GetStackResponseBody) SetStackId(v string) *GetStackResponseBody {
-	s.StackId = &v
+func (s *GetStackResponseBody) SetParameters(v []*GetStackResponseBodyParameters) *GetStackResponseBody {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetParentStackId(v string) *GetStackResponseBody {
+	s.ParentStackId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetRamRoleName(v string) *GetStackResponseBody {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetRegionId(v string) *GetStackResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetRequestId(v string) *GetStackResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3001,6 +3375,61 @@ func (s *GetStackResponseBody) SetResourceGroupId(v string) *GetStackResponseBod
 
 func (s *GetStackResponseBody) SetResourceProgress(v *GetStackResponseBodyResourceProgress) *GetStackResponseBody {
 	s.ResourceProgress = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetRootStackId(v string) *GetStackResponseBody {
+	s.RootStackId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStackDriftStatus(v string) *GetStackResponseBody {
+	s.StackDriftStatus = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStackId(v string) *GetStackResponseBody {
+	s.StackId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStackName(v string) *GetStackResponseBody {
+	s.StackName = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStackType(v string) *GetStackResponseBody {
+	s.StackType = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStatus(v string) *GetStackResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetStatusReason(v string) *GetStackResponseBody {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTags(v []*GetStackResponseBodyTags) *GetStackResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTemplateDescription(v string) *GetStackResponseBody {
+	s.TemplateDescription = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTimeoutInMinutes(v int32) *GetStackResponseBody {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -3027,6 +3456,88 @@ func (s *GetStackResponseBodyParameters) SetParameterValue(v string) *GetStackRe
 	return s
 }
 
+type GetStackResponseBodyResourceProgress struct {
+	FailedResourceCount       *int32                                                           `json:"FailedResourceCount,omitempty" xml:"FailedResourceCount,omitempty"`
+	InProgressResourceCount   *int32                                                           `json:"InProgressResourceCount,omitempty" xml:"InProgressResourceCount,omitempty"`
+	InProgressResourceDetails []*GetStackResponseBodyResourceProgressInProgressResourceDetails `json:"InProgressResourceDetails,omitempty" xml:"InProgressResourceDetails,omitempty" type:"Repeated"`
+	PendingResourceCount      *int32                                                           `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
+	SuccessResourceCount      *int32                                                           `json:"SuccessResourceCount,omitempty" xml:"SuccessResourceCount,omitempty"`
+	TotalResourceCount        *int32                                                           `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
+}
+
+func (s GetStackResponseBodyResourceProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyResourceProgress) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetFailedResourceCount(v int32) *GetStackResponseBodyResourceProgress {
+	s.FailedResourceCount = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetInProgressResourceCount(v int32) *GetStackResponseBodyResourceProgress {
+	s.InProgressResourceCount = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetInProgressResourceDetails(v []*GetStackResponseBodyResourceProgressInProgressResourceDetails) *GetStackResponseBodyResourceProgress {
+	s.InProgressResourceDetails = v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetPendingResourceCount(v int32) *GetStackResponseBodyResourceProgress {
+	s.PendingResourceCount = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetSuccessResourceCount(v int32) *GetStackResponseBodyResourceProgress {
+	s.SuccessResourceCount = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgress) SetTotalResourceCount(v int32) *GetStackResponseBodyResourceProgress {
+	s.TotalResourceCount = &v
+	return s
+}
+
+type GetStackResponseBodyResourceProgressInProgressResourceDetails struct {
+	ProgressTargetValue *float32 `json:"ProgressTargetValue,omitempty" xml:"ProgressTargetValue,omitempty"`
+	ProgressValue       *float32 `json:"ProgressValue,omitempty" xml:"ProgressValue,omitempty"`
+	ResourceName        *string  `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType        *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetStackResponseBodyResourceProgressInProgressResourceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyResourceProgressInProgressResourceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetProgressTargetValue(v float32) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
+	s.ProgressTargetValue = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetProgressValue(v float32) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
+	s.ProgressValue = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetResourceName(v string) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetResourceType(v string) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
+	s.ResourceType = &v
+	return s
+}
+
 type GetStackResponseBodyTags struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -3047,88 +3558,6 @@ func (s *GetStackResponseBodyTags) SetKey(v string) *GetStackResponseBodyTags {
 
 func (s *GetStackResponseBodyTags) SetValue(v string) *GetStackResponseBodyTags {
 	s.Value = &v
-	return s
-}
-
-type GetStackResponseBodyResourceProgress struct {
-	TotalResourceCount        *int32                                                           `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
-	SuccessResourceCount      *int32                                                           `json:"SuccessResourceCount,omitempty" xml:"SuccessResourceCount,omitempty"`
-	FailedResourceCount       *int32                                                           `json:"FailedResourceCount,omitempty" xml:"FailedResourceCount,omitempty"`
-	InProgressResourceCount   *int32                                                           `json:"InProgressResourceCount,omitempty" xml:"InProgressResourceCount,omitempty"`
-	PendingResourceCount      *int32                                                           `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
-	InProgressResourceDetails []*GetStackResponseBodyResourceProgressInProgressResourceDetails `json:"InProgressResourceDetails,omitempty" xml:"InProgressResourceDetails,omitempty" type:"Repeated"`
-}
-
-func (s GetStackResponseBodyResourceProgress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStackResponseBodyResourceProgress) GoString() string {
-	return s.String()
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetTotalResourceCount(v int32) *GetStackResponseBodyResourceProgress {
-	s.TotalResourceCount = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetSuccessResourceCount(v int32) *GetStackResponseBodyResourceProgress {
-	s.SuccessResourceCount = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetFailedResourceCount(v int32) *GetStackResponseBodyResourceProgress {
-	s.FailedResourceCount = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetInProgressResourceCount(v int32) *GetStackResponseBodyResourceProgress {
-	s.InProgressResourceCount = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetPendingResourceCount(v int32) *GetStackResponseBodyResourceProgress {
-	s.PendingResourceCount = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgress) SetInProgressResourceDetails(v []*GetStackResponseBodyResourceProgressInProgressResourceDetails) *GetStackResponseBodyResourceProgress {
-	s.InProgressResourceDetails = v
-	return s
-}
-
-type GetStackResponseBodyResourceProgressInProgressResourceDetails struct {
-	ResourceName        *string  `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType        *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ProgressValue       *float32 `json:"ProgressValue,omitempty" xml:"ProgressValue,omitempty"`
-	ProgressTargetValue *float32 `json:"ProgressTargetValue,omitempty" xml:"ProgressTargetValue,omitempty"`
-}
-
-func (s GetStackResponseBodyResourceProgressInProgressResourceDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStackResponseBodyResourceProgressInProgressResourceDetails) GoString() string {
-	return s.String()
-}
-
-func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetResourceName(v string) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetResourceType(v string) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetProgressValue(v float32) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
-	s.ProgressValue = &v
-	return s
-}
-
-func (s *GetStackResponseBodyResourceProgressInProgressResourceDetails) SetProgressTargetValue(v float32) *GetStackResponseBodyResourceProgressInProgressResourceDetails {
-	s.ProgressTargetValue = &v
 	return s
 }
 
@@ -3156,8 +3585,8 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 }
 
 type GetStackDriftDetectionStatusRequest struct {
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	DriftDetectionId *string `json:"DriftDetectionId,omitempty" xml:"DriftDetectionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetStackDriftDetectionStatusRequest) String() string {
@@ -3168,25 +3597,25 @@ func (s GetStackDriftDetectionStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackDriftDetectionStatusRequest) SetRegionId(v string) *GetStackDriftDetectionStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetStackDriftDetectionStatusRequest) SetDriftDetectionId(v string) *GetStackDriftDetectionStatusRequest {
 	s.DriftDetectionId = &v
 	return s
 }
 
+func (s *GetStackDriftDetectionStatusRequest) SetRegionId(v string) *GetStackDriftDetectionStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetStackDriftDetectionStatusResponseBody struct {
-	StackId                    *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DriftDetectionTime         *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StackDriftStatus           *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
 	DriftDetectionId           *string `json:"DriftDetectionId,omitempty" xml:"DriftDetectionId,omitempty"`
 	DriftDetectionStatus       *string `json:"DriftDetectionStatus,omitempty" xml:"DriftDetectionStatus,omitempty"`
-	DriftedStackResourceCount  *int32  `json:"DriftedStackResourceCount,omitempty" xml:"DriftedStackResourceCount,omitempty"`
 	DriftDetectionStatusReason *string `json:"DriftDetectionStatusReason,omitempty" xml:"DriftDetectionStatusReason,omitempty"`
+	DriftDetectionTime         *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	DriftedStackResourceCount  *int32  `json:"DriftedStackResourceCount,omitempty" xml:"DriftedStackResourceCount,omitempty"`
+	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackDriftStatus           *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackId                    *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s GetStackDriftDetectionStatusResponseBody) String() string {
@@ -3195,26 +3624,6 @@ func (s GetStackDriftDetectionStatusResponseBody) String() string {
 
 func (s GetStackDriftDetectionStatusResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetStackDriftDetectionStatusResponseBody) SetStackId(v string) *GetStackDriftDetectionStatusResponseBody {
-	s.StackId = &v
-	return s
-}
-
-func (s *GetStackDriftDetectionStatusResponseBody) SetRequestId(v string) *GetStackDriftDetectionStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionTime(v string) *GetStackDriftDetectionStatusResponseBody {
-	s.DriftDetectionTime = &v
-	return s
-}
-
-func (s *GetStackDriftDetectionStatusResponseBody) SetStackDriftStatus(v string) *GetStackDriftDetectionStatusResponseBody {
-	s.StackDriftStatus = &v
-	return s
 }
 
 func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionId(v string) *GetStackDriftDetectionStatusResponseBody {
@@ -3227,13 +3636,33 @@ func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionStatus(v str
 	return s
 }
 
+func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionStatusReason(v string) *GetStackDriftDetectionStatusResponseBody {
+	s.DriftDetectionStatusReason = &v
+	return s
+}
+
+func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionTime(v string) *GetStackDriftDetectionStatusResponseBody {
+	s.DriftDetectionTime = &v
+	return s
+}
+
 func (s *GetStackDriftDetectionStatusResponseBody) SetDriftedStackResourceCount(v int32) *GetStackDriftDetectionStatusResponseBody {
 	s.DriftedStackResourceCount = &v
 	return s
 }
 
-func (s *GetStackDriftDetectionStatusResponseBody) SetDriftDetectionStatusReason(v string) *GetStackDriftDetectionStatusResponseBody {
-	s.DriftDetectionStatusReason = &v
+func (s *GetStackDriftDetectionStatusResponseBody) SetRequestId(v string) *GetStackDriftDetectionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStackDriftDetectionStatusResponseBody) SetStackDriftStatus(v string) *GetStackDriftDetectionStatusResponseBody {
+	s.StackDriftStatus = &v
+	return s
+}
+
+func (s *GetStackDriftDetectionStatusResponseBody) SetStackId(v string) *GetStackDriftDetectionStatusResponseBody {
+	s.StackId = &v
 	return s
 }
 
@@ -3262,8 +3691,8 @@ func (s *GetStackDriftDetectionStatusResponse) SetBody(v *GetStackDriftDetection
 
 type GetStackGroupRequest struct {
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	StackGroupId   *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 }
 
 func (s GetStackGroupRequest) String() string {
@@ -3279,13 +3708,13 @@ func (s *GetStackGroupRequest) SetRegionId(v string) *GetStackGroupRequest {
 	return s
 }
 
-func (s *GetStackGroupRequest) SetStackGroupName(v string) *GetStackGroupRequest {
-	s.StackGroupName = &v
+func (s *GetStackGroupRequest) SetStackGroupId(v string) *GetStackGroupRequest {
+	s.StackGroupId = &v
 	return s
 }
 
-func (s *GetStackGroupRequest) SetStackGroupId(v string) *GetStackGroupRequest {
-	s.StackGroupId = &v
+func (s *GetStackGroupRequest) SetStackGroupName(v string) *GetStackGroupRequest {
+	s.StackGroupName = &v
 	return s
 }
 
@@ -3313,19 +3742,19 @@ func (s *GetStackGroupResponseBody) SetStackGroup(v *GetStackGroupResponseBodySt
 }
 
 type GetStackGroupResponseBodyStackGroup struct {
-	StackGroupId                   *string                                                            `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
-	Status                         *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 	AdministrationRoleName         *string                                                            `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	Parameters                     []*GetStackGroupResponseBodyStackGroupParameters                   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	Description                    *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	StackGroupName                 *string                                                            `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	ExecutionRoleName              *string                                                            `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	TemplateBody                   *string                                                            `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	StackGroupDriftDetectionDetail *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail `json:"StackGroupDriftDetectionDetail,omitempty" xml:"StackGroupDriftDetectionDetail,omitempty" type:"Struct"`
-	ResourceGroupId                *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PermissionModel                *string                                                            `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
 	AutoDeployment                 *GetStackGroupResponseBodyStackGroupAutoDeployment                 `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
+	Description                    *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName              *string                                                            `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
+	Parameters                     []*GetStackGroupResponseBodyStackGroupParameters                   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	PermissionModel                *string                                                            `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
 	RdFolderIds                    []*string                                                          `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
+	ResourceGroupId                *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupDriftDetectionDetail *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail `json:"StackGroupDriftDetectionDetail,omitempty" xml:"StackGroupDriftDetectionDetail,omitempty" type:"Struct"`
+	StackGroupId                   *string                                                            `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName                 *string                                                            `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Status                         *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateBody                   *string                                                            `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 }
 
 func (s GetStackGroupResponseBodyStackGroup) String() string {
@@ -3336,58 +3765,8 @@ func (s GetStackGroupResponseBodyStackGroup) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupId(v string) *GetStackGroupResponseBodyStackGroup {
-	s.StackGroupId = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetStatus(v string) *GetStackGroupResponseBodyStackGroup {
-	s.Status = &v
-	return s
-}
-
 func (s *GetStackGroupResponseBodyStackGroup) SetAdministrationRoleName(v string) *GetStackGroupResponseBodyStackGroup {
 	s.AdministrationRoleName = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetParameters(v []*GetStackGroupResponseBodyStackGroupParameters) *GetStackGroupResponseBodyStackGroup {
-	s.Parameters = v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetDescription(v string) *GetStackGroupResponseBodyStackGroup {
-	s.Description = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupName(v string) *GetStackGroupResponseBodyStackGroup {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetExecutionRoleName(v string) *GetStackGroupResponseBodyStackGroup {
-	s.ExecutionRoleName = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetTemplateBody(v string) *GetStackGroupResponseBodyStackGroup {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupDriftDetectionDetail(v *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) *GetStackGroupResponseBodyStackGroup {
-	s.StackGroupDriftDetectionDetail = v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetResourceGroupId(v string) *GetStackGroupResponseBodyStackGroup {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroup) SetPermissionModel(v string) *GetStackGroupResponseBodyStackGroup {
-	s.PermissionModel = &v
 	return s
 }
 
@@ -3396,8 +3775,81 @@ func (s *GetStackGroupResponseBodyStackGroup) SetAutoDeployment(v *GetStackGroup
 	return s
 }
 
+func (s *GetStackGroupResponseBodyStackGroup) SetDescription(v string) *GetStackGroupResponseBodyStackGroup {
+	s.Description = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetExecutionRoleName(v string) *GetStackGroupResponseBodyStackGroup {
+	s.ExecutionRoleName = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetParameters(v []*GetStackGroupResponseBodyStackGroupParameters) *GetStackGroupResponseBodyStackGroup {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetPermissionModel(v string) *GetStackGroupResponseBodyStackGroup {
+	s.PermissionModel = &v
+	return s
+}
+
 func (s *GetStackGroupResponseBodyStackGroup) SetRdFolderIds(v []*string) *GetStackGroupResponseBodyStackGroup {
 	s.RdFolderIds = v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetResourceGroupId(v string) *GetStackGroupResponseBodyStackGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupDriftDetectionDetail(v *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) *GetStackGroupResponseBodyStackGroup {
+	s.StackGroupDriftDetectionDetail = v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupId(v string) *GetStackGroupResponseBodyStackGroup {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetStackGroupName(v string) *GetStackGroupResponseBodyStackGroup {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetStatus(v string) *GetStackGroupResponseBodyStackGroup {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroup) SetTemplateBody(v string) *GetStackGroupResponseBodyStackGroup {
+	s.TemplateBody = &v
+	return s
+}
+
+type GetStackGroupResponseBodyStackGroupAutoDeployment struct {
+	Enabled                      *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	RetainStacksOnAccountRemoval *bool `json:"RetainStacksOnAccountRemoval,omitempty" xml:"RetainStacksOnAccountRemoval,omitempty"`
+}
+
+func (s GetStackGroupResponseBodyStackGroupAutoDeployment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackGroupResponseBodyStackGroupAutoDeployment) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackGroupResponseBodyStackGroupAutoDeployment) SetEnabled(v bool) *GetStackGroupResponseBodyStackGroupAutoDeployment {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroupAutoDeployment) SetRetainStacksOnAccountRemoval(v bool) *GetStackGroupResponseBodyStackGroupAutoDeployment {
+	s.RetainStacksOnAccountRemoval = &v
 	return s
 }
 
@@ -3425,15 +3877,15 @@ func (s *GetStackGroupResponseBodyStackGroupParameters) SetParameterValue(v stri
 }
 
 type GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail struct {
-	DriftDetectionTime            *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	TotalStackInstancesCount      *int32  `json:"TotalStackInstancesCount,omitempty" xml:"TotalStackInstancesCount,omitempty"`
-	FailedStackInstancesCount     *int32  `json:"FailedStackInstancesCount,omitempty" xml:"FailedStackInstancesCount,omitempty"`
+	CancelledStackInstancesCount  *int32  `json:"CancelledStackInstancesCount,omitempty" xml:"CancelledStackInstancesCount,omitempty"`
 	DriftDetectionStatus          *string `json:"DriftDetectionStatus,omitempty" xml:"DriftDetectionStatus,omitempty"`
-	StackGroupDriftStatus         *string `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
+	DriftDetectionTime            *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	DriftedStackInstancesCount    *int32  `json:"DriftedStackInstancesCount,omitempty" xml:"DriftedStackInstancesCount,omitempty"`
+	FailedStackInstancesCount     *int32  `json:"FailedStackInstancesCount,omitempty" xml:"FailedStackInstancesCount,omitempty"`
 	InProgressStackInstancesCount *int32  `json:"InProgressStackInstancesCount,omitempty" xml:"InProgressStackInstancesCount,omitempty"`
 	InSyncStackInstancesCount     *int32  `json:"InSyncStackInstancesCount,omitempty" xml:"InSyncStackInstancesCount,omitempty"`
-	CancelledStackInstancesCount  *int32  `json:"CancelledStackInstancesCount,omitempty" xml:"CancelledStackInstancesCount,omitempty"`
-	DriftedStackInstancesCount    *int32  `json:"DriftedStackInstancesCount,omitempty" xml:"DriftedStackInstancesCount,omitempty"`
+	StackGroupDriftStatus         *string `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
+	TotalStackInstancesCount      *int32  `json:"TotalStackInstancesCount,omitempty" xml:"TotalStackInstancesCount,omitempty"`
 }
 
 func (s GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) String() string {
@@ -3444,18 +3896,8 @@ func (s GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) GoStr
 	return s.String()
 }
 
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetDriftDetectionTime(v string) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.DriftDetectionTime = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetTotalStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.TotalStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetFailedStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.FailedStackInstancesCount = &v
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetCancelledStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.CancelledStackInstancesCount = &v
 	return s
 }
 
@@ -3464,8 +3906,18 @@ func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetD
 	return s
 }
 
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetStackGroupDriftStatus(v string) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.StackGroupDriftStatus = &v
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetDriftDetectionTime(v string) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetDriftedStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.DriftedStackInstancesCount = &v
+	return s
+}
+
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetFailedStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.FailedStackInstancesCount = &v
 	return s
 }
 
@@ -3479,36 +3931,13 @@ func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetI
 	return s
 }
 
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetCancelledStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.CancelledStackInstancesCount = &v
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetStackGroupDriftStatus(v string) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.StackGroupDriftStatus = &v
 	return s
 }
 
-func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetDriftedStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
-	s.DriftedStackInstancesCount = &v
-	return s
-}
-
-type GetStackGroupResponseBodyStackGroupAutoDeployment struct {
-	Enabled                      *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	RetainStacksOnAccountRemoval *bool `json:"RetainStacksOnAccountRemoval,omitempty" xml:"RetainStacksOnAccountRemoval,omitempty"`
-}
-
-func (s GetStackGroupResponseBodyStackGroupAutoDeployment) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStackGroupResponseBodyStackGroupAutoDeployment) GoString() string {
-	return s.String()
-}
-
-func (s *GetStackGroupResponseBodyStackGroupAutoDeployment) SetEnabled(v bool) *GetStackGroupResponseBodyStackGroupAutoDeployment {
-	s.Enabled = &v
-	return s
-}
-
-func (s *GetStackGroupResponseBodyStackGroupAutoDeployment) SetRetainStacksOnAccountRemoval(v bool) *GetStackGroupResponseBodyStackGroupAutoDeployment {
-	s.RetainStacksOnAccountRemoval = &v
+func (s *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail) SetTotalStackInstancesCount(v int32) *GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail {
+	s.TotalStackInstancesCount = &v
 	return s
 }
 
@@ -3536,8 +3965,8 @@ func (s *GetStackGroupResponse) SetBody(v *GetStackGroupResponseBody) *GetStackG
 }
 
 type GetStackGroupOperationRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetStackGroupOperationRequest) String() string {
@@ -3548,13 +3977,13 @@ func (s GetStackGroupOperationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackGroupOperationRequest) SetRegionId(v string) *GetStackGroupOperationRequest {
-	s.RegionId = &v
+func (s *GetStackGroupOperationRequest) SetOperationId(v string) *GetStackGroupOperationRequest {
+	s.OperationId = &v
 	return s
 }
 
-func (s *GetStackGroupOperationRequest) SetOperationId(v string) *GetStackGroupOperationRequest {
-	s.OperationId = &v
+func (s *GetStackGroupOperationRequest) SetRegionId(v string) *GetStackGroupOperationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3582,20 +4011,20 @@ func (s *GetStackGroupOperationResponseBody) SetStackGroupOperation(v *GetStackG
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperation struct {
-	Status                         *string                                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	StackGroupId                   *string                                                                              `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
 	Action                         *string                                                                              `json:"Action,omitempty" xml:"Action,omitempty"`
+	AdministrationRoleName         *string                                                                              `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
 	CreateTime                     *string                                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RetainStacks                   *bool                                                                                `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
-	StackGroupName                 *string                                                                              `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	OperationId                    *string                                                                              `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	OperationDescription           *string                                                                              `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
-	StackGroupDriftDetectionDetail *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail `json:"StackGroupDriftDetectionDetail,omitempty" xml:"StackGroupDriftDetectionDetail,omitempty" type:"Struct"`
-	OperationPreferences           *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty" type:"Struct"`
+	DeploymentTargets              *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets              `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
 	EndTime                        *string                                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutionRoleName              *string                                                                              `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	AdministrationRoleName         *string                                                                              `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	DeploymentTargets              *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets              `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	OperationDescription           *string                                                                              `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationId                    *string                                                                              `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	OperationPreferences           *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty" type:"Struct"`
+	RetainStacks                   *bool                                                                                `json:"RetainStacks,omitempty" xml:"RetainStacks,omitempty"`
+	StackGroupDriftDetectionDetail *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail `json:"StackGroupDriftDetectionDetail,omitempty" xml:"StackGroupDriftDetectionDetail,omitempty" type:"Struct"`
+	StackGroupId                   *string                                                                              `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName                 *string                                                                              `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Status                         *string                                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetStackGroupOperationResponseBodyStackGroupOperation) String() string {
@@ -3606,18 +4035,13 @@ func (s GetStackGroupOperationResponseBodyStackGroupOperation) GoString() string
 	return s.String()
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.Status = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupId(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.StackGroupId = &v
-	return s
-}
-
 func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetAction(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
 	s.Action = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetAdministrationRoleName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.AdministrationRoleName = &v
 	return s
 }
 
@@ -3626,33 +4050,8 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetCreateTime(v 
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetRetainStacks(v bool) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.RetainStacks = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationId(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.OperationId = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationDescription(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.OperationDescription = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupDriftDetectionDetail(v *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.StackGroupDriftDetectionDetail = v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationPreferences(v *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.OperationPreferences = v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetDeploymentTargets(v *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.DeploymentTargets = v
 	return s
 }
 
@@ -3666,87 +4065,75 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetExecutionRole
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetAdministrationRoleName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.AdministrationRoleName = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationDescription(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.OperationDescription = &v
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetDeploymentTargets(v *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) *GetStackGroupOperationResponseBodyStackGroupOperation {
-	s.DeploymentTargets = v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationId(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.OperationId = &v
 	return s
 }
 
-type GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail struct {
-	DriftDetectionTime            *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	TotalStackInstancesCount      *int32  `json:"TotalStackInstancesCount,omitempty" xml:"TotalStackInstancesCount,omitempty"`
-	FailedStackInstancesCount     *int32  `json:"FailedStackInstancesCount,omitempty" xml:"FailedStackInstancesCount,omitempty"`
-	DriftDetectionStatus          *string `json:"DriftDetectionStatus,omitempty" xml:"DriftDetectionStatus,omitempty"`
-	StackGroupDriftStatus         *string `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
-	InProgressStackInstancesCount *int32  `json:"InProgressStackInstancesCount,omitempty" xml:"InProgressStackInstancesCount,omitempty"`
-	InSyncStackInstancesCount     *int32  `json:"InSyncStackInstancesCount,omitempty" xml:"InSyncStackInstancesCount,omitempty"`
-	CancelledStackInstancesCount  *int32  `json:"CancelledStackInstancesCount,omitempty" xml:"CancelledStackInstancesCount,omitempty"`
-	DriftedStackInstancesCount    *int32  `json:"DriftedStackInstancesCount,omitempty" xml:"DriftedStackInstancesCount,omitempty"`
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetOperationPreferences(v *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.OperationPreferences = v
+	return s
 }
 
-func (s GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) String() string {
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetRetainStacks(v bool) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.RetainStacks = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupDriftDetectionDetail(v *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.StackGroupDriftDetectionDetail = v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupId(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStackGroupName(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperation) SetStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperation {
+	s.Status = &v
+	return s
+}
+
+type GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets struct {
+	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
+}
+
+func (s GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) GoString() string {
+func (s GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftDetectionTime(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.DriftDetectionTime = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) SetAccountIds(v []*string) *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets {
+	s.AccountIds = v
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetTotalStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.TotalStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetFailedStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.FailedStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftDetectionStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.DriftDetectionStatus = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetStackGroupDriftStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.StackGroupDriftStatus = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetInProgressStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.InProgressStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetInSyncStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.InSyncStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetCancelledStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.CancelledStackInstancesCount = &v
-	return s
-}
-
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftedStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
-	s.DriftedStackInstancesCount = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) SetRdFolderIds(v []*string) *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets {
+	s.RdFolderIds = v
 	return s
 }
 
 type GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences struct {
-	MaxConcurrentCount         *int32    `json:"MaxConcurrentCount,omitempty" xml:"MaxConcurrentCount,omitempty"`
 	FailureToleranceCount      *int32    `json:"FailureToleranceCount,omitempty" xml:"FailureToleranceCount,omitempty"`
+	FailureTolerancePercentage *int32    `json:"FailureTolerancePercentage,omitempty" xml:"FailureTolerancePercentage,omitempty"`
+	MaxConcurrentCount         *int32    `json:"MaxConcurrentCount,omitempty" xml:"MaxConcurrentCount,omitempty"`
 	MaxConcurrentPercentage    *int32    `json:"MaxConcurrentPercentage,omitempty" xml:"MaxConcurrentPercentage,omitempty"`
 	RegionIdsOrder             []*string `json:"RegionIdsOrder,omitempty" xml:"RegionIdsOrder,omitempty" type:"Repeated"`
-	FailureTolerancePercentage *int32    `json:"FailureTolerancePercentage,omitempty" xml:"FailureTolerancePercentage,omitempty"`
 }
 
 func (s GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) String() string {
@@ -3757,13 +4144,18 @@ func (s GetStackGroupOperationResponseBodyStackGroupOperationOperationPreference
 	return s.String()
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetMaxConcurrentCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
-	s.MaxConcurrentCount = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetFailureToleranceCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
+	s.FailureToleranceCount = &v
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetFailureToleranceCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
-	s.FailureToleranceCount = &v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetFailureTolerancePercentage(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
+	s.FailureTolerancePercentage = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetMaxConcurrentCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
+	s.MaxConcurrentCount = &v
 	return s
 }
 
@@ -3777,31 +4169,68 @@ func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferenc
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences) SetFailureTolerancePercentage(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences {
-	s.FailureTolerancePercentage = &v
-	return s
+type GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail struct {
+	CancelledStackInstancesCount  *int32  `json:"CancelledStackInstancesCount,omitempty" xml:"CancelledStackInstancesCount,omitempty"`
+	DriftDetectionStatus          *string `json:"DriftDetectionStatus,omitempty" xml:"DriftDetectionStatus,omitempty"`
+	DriftDetectionTime            *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	DriftedStackInstancesCount    *int32  `json:"DriftedStackInstancesCount,omitempty" xml:"DriftedStackInstancesCount,omitempty"`
+	FailedStackInstancesCount     *int32  `json:"FailedStackInstancesCount,omitempty" xml:"FailedStackInstancesCount,omitempty"`
+	InProgressStackInstancesCount *int32  `json:"InProgressStackInstancesCount,omitempty" xml:"InProgressStackInstancesCount,omitempty"`
+	InSyncStackInstancesCount     *int32  `json:"InSyncStackInstancesCount,omitempty" xml:"InSyncStackInstancesCount,omitempty"`
+	StackGroupDriftStatus         *string `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
+	TotalStackInstancesCount      *int32  `json:"TotalStackInstancesCount,omitempty" xml:"TotalStackInstancesCount,omitempty"`
 }
 
-type GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets struct {
-	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
-	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-}
-
-func (s GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) String() string {
+func (s GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) GoString() string {
+func (s GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) SetRdFolderIds(v []*string) *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets {
-	s.RdFolderIds = v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetCancelledStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.CancelledStackInstancesCount = &v
 	return s
 }
 
-func (s *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets) SetAccountIds(v []*string) *GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets {
-	s.AccountIds = v
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftDetectionStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.DriftDetectionStatus = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftDetectionTime(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetDriftedStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.DriftedStackInstancesCount = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetFailedStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.FailedStackInstancesCount = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetInProgressStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.InProgressStackInstancesCount = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetInSyncStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.InSyncStackInstancesCount = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetStackGroupDriftStatus(v string) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.StackGroupDriftStatus = &v
+	return s
+}
+
+func (s *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail) SetTotalStackInstancesCount(v int32) *GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetectionDetail {
+	s.TotalStackInstancesCount = &v
 	return s
 }
 
@@ -3887,17 +4316,17 @@ func (s *GetStackInstanceResponseBody) SetStackInstance(v *GetStackInstanceRespo
 }
 
 type GetStackInstanceResponseBodyStackInstance struct {
-	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	StackGroupId       *string                                                        `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
-	StackId            *string                                                        `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	DriftDetectionTime *string                                                        `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StackDriftStatus   *string                                                        `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	StatusReason       *string                                                        `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	ParameterOverrides []*GetStackInstanceResponseBodyStackInstanceParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	StackGroupName     *string                                                        `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountId          *string                                                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	RegionId           *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DriftDetectionTime *string                                                        `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	ParameterOverrides []*GetStackInstanceResponseBodyStackInstanceParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
 	RdFolderId         *string                                                        `json:"RdFolderId,omitempty" xml:"RdFolderId,omitempty"`
+	RegionId           *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackDriftStatus   *string                                                        `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackGroupId       *string                                                        `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName     *string                                                        `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	StackId            *string                                                        `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason       *string                                                        `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s GetStackInstanceResponseBodyStackInstance) String() string {
@@ -3908,18 +4337,8 @@ func (s GetStackInstanceResponseBodyStackInstance) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackInstanceResponseBodyStackInstance) SetStatus(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.Status = &v
-	return s
-}
-
-func (s *GetStackInstanceResponseBodyStackInstance) SetStackGroupId(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.StackGroupId = &v
-	return s
-}
-
-func (s *GetStackInstanceResponseBodyStackInstance) SetStackId(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.StackId = &v
+func (s *GetStackInstanceResponseBodyStackInstance) SetAccountId(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.AccountId = &v
 	return s
 }
 
@@ -3928,28 +4347,13 @@ func (s *GetStackInstanceResponseBodyStackInstance) SetDriftDetectionTime(v stri
 	return s
 }
 
-func (s *GetStackInstanceResponseBodyStackInstance) SetStackDriftStatus(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.StackDriftStatus = &v
-	return s
-}
-
-func (s *GetStackInstanceResponseBodyStackInstance) SetStatusReason(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.StatusReason = &v
-	return s
-}
-
 func (s *GetStackInstanceResponseBodyStackInstance) SetParameterOverrides(v []*GetStackInstanceResponseBodyStackInstanceParameterOverrides) *GetStackInstanceResponseBodyStackInstance {
 	s.ParameterOverrides = v
 	return s
 }
 
-func (s *GetStackInstanceResponseBodyStackInstance) SetStackGroupName(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *GetStackInstanceResponseBodyStackInstance) SetAccountId(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.AccountId = &v
+func (s *GetStackInstanceResponseBodyStackInstance) SetRdFolderId(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.RdFolderId = &v
 	return s
 }
 
@@ -3958,8 +4362,33 @@ func (s *GetStackInstanceResponseBodyStackInstance) SetRegionId(v string) *GetSt
 	return s
 }
 
-func (s *GetStackInstanceResponseBodyStackInstance) SetRdFolderId(v string) *GetStackInstanceResponseBodyStackInstance {
-	s.RdFolderId = &v
+func (s *GetStackInstanceResponseBodyStackInstance) SetStackDriftStatus(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.StackDriftStatus = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetStackGroupId(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetStackGroupName(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetStackId(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.StackId = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetStatus(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStackInstanceResponseBodyStackInstance) SetStatusReason(v string) *GetStackInstanceResponseBodyStackInstance {
+	s.StatusReason = &v
 	return s
 }
 
@@ -4010,8 +4439,8 @@ func (s *GetStackInstanceResponse) SetBody(v *GetStackInstanceResponseBody) *Get
 }
 
 type GetStackPolicyRequest struct {
-	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s GetStackPolicyRequest) String() string {
@@ -4022,19 +4451,19 @@ func (s GetStackPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackPolicyRequest) SetStackId(v string) *GetStackPolicyRequest {
-	s.StackId = &v
-	return s
-}
-
 func (s *GetStackPolicyRequest) SetRegionId(v string) *GetStackPolicyRequest {
 	s.RegionId = &v
 	return s
 }
 
+func (s *GetStackPolicyRequest) SetStackId(v string) *GetStackPolicyRequest {
+	s.StackId = &v
+	return s
+}
+
 type GetStackPolicyResponseBody struct {
-	StackPolicyBody map[string]interface{} `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 	RequestId       *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackPolicyBody map[string]interface{} `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 }
 
 func (s GetStackPolicyResponseBody) String() string {
@@ -4045,13 +4474,13 @@ func (s GetStackPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackPolicyResponseBody) SetStackPolicyBody(v map[string]interface{}) *GetStackPolicyResponseBody {
-	s.StackPolicyBody = v
+func (s *GetStackPolicyResponseBody) SetRequestId(v string) *GetStackPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *GetStackPolicyResponseBody) SetRequestId(v string) *GetStackPolicyResponseBody {
-	s.RequestId = &v
+func (s *GetStackPolicyResponseBody) SetStackPolicyBody(v map[string]interface{}) *GetStackPolicyResponseBody {
+	s.StackPolicyBody = v
 	return s
 }
 
@@ -4079,11 +4508,11 @@ func (s *GetStackPolicyResponse) SetBody(v *GetStackPolicyResponseBody) *GetStac
 }
 
 type GetStackResourceRequest struct {
-	StackId                *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LogicalResourceId      *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ShowResourceAttributes *bool   `json:"ShowResourceAttributes,omitempty" xml:"ShowResourceAttributes,omitempty"`
-	LogicalResourceId      *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	StackId                *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s GetStackResourceRequest) String() string {
@@ -4094,13 +4523,13 @@ func (s GetStackResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackResourceRequest) SetStackId(v string) *GetStackResourceRequest {
-	s.StackId = &v
+func (s *GetStackResourceRequest) SetClientToken(v string) *GetStackResourceRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *GetStackResourceRequest) SetClientToken(v string) *GetStackResourceRequest {
-	s.ClientToken = &v
+func (s *GetStackResourceRequest) SetLogicalResourceId(v string) *GetStackResourceRequest {
+	s.LogicalResourceId = &v
 	return s
 }
 
@@ -4114,27 +4543,27 @@ func (s *GetStackResourceRequest) SetShowResourceAttributes(v bool) *GetStackRes
 	return s
 }
 
-func (s *GetStackResourceRequest) SetLogicalResourceId(v string) *GetStackResourceRequest {
-	s.LogicalResourceId = &v
+func (s *GetStackResourceRequest) SetStackId(v string) *GetStackResourceRequest {
+	s.StackId = &v
 	return s
 }
 
 type GetStackResourceResponseBody struct {
-	Status              *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Description         *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId           *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatusReason        *string                  `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	PhysicalResourceId  *string                  `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
 	CreateTime          *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Metadata            map[string]interface{}   `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	ResourceType        *string                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceAttributes  []map[string]interface{} `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Repeated"`
-	LogicalResourceId   *string                  `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	ResourceDriftStatus *string                  `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
-	UpdateTime          *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Description         *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	DriftDetectionTime  *string                  `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StackName           *string                  `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	LogicalResourceId   *string                  `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	Metadata            map[string]interface{}   `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	PhysicalResourceId  *string                  `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
+	RequestId           *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceAttributes  []map[string]interface{} `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Repeated"`
+	ResourceDriftStatus *string                  `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	ResourceType        *string                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	StackId             *string                  `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName           *string                  `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Status              *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason        *string                  `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	UpdateTime          *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetStackResourceResponseBody) String() string {
@@ -4145,8 +4574,8 @@ func (s GetStackResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetStackResourceResponseBody) SetStatus(v string) *GetStackResourceResponseBody {
-	s.Status = &v
+func (s *GetStackResourceResponseBody) SetCreateTime(v string) *GetStackResourceResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -4155,38 +4584,8 @@ func (s *GetStackResourceResponseBody) SetDescription(v string) *GetStackResourc
 	return s
 }
 
-func (s *GetStackResourceResponseBody) SetRequestId(v string) *GetStackResourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetStatusReason(v string) *GetStackResourceResponseBody {
-	s.StatusReason = &v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetPhysicalResourceId(v string) *GetStackResourceResponseBody {
-	s.PhysicalResourceId = &v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetCreateTime(v string) *GetStackResourceResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetMetadata(v map[string]interface{}) *GetStackResourceResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetResourceType(v string) *GetStackResourceResponseBody {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *GetStackResourceResponseBody) SetResourceAttributes(v []map[string]interface{}) *GetStackResourceResponseBody {
-	s.ResourceAttributes = v
+func (s *GetStackResourceResponseBody) SetDriftDetectionTime(v string) *GetStackResourceResponseBody {
+	s.DriftDetectionTime = &v
 	return s
 }
 
@@ -4195,18 +4594,38 @@ func (s *GetStackResourceResponseBody) SetLogicalResourceId(v string) *GetStackR
 	return s
 }
 
+func (s *GetStackResourceResponseBody) SetMetadata(v map[string]interface{}) *GetStackResourceResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetStackResourceResponseBody) SetPhysicalResourceId(v string) *GetStackResourceResponseBody {
+	s.PhysicalResourceId = &v
+	return s
+}
+
+func (s *GetStackResourceResponseBody) SetRequestId(v string) *GetStackResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStackResourceResponseBody) SetResourceAttributes(v []map[string]interface{}) *GetStackResourceResponseBody {
+	s.ResourceAttributes = v
+	return s
+}
+
 func (s *GetStackResourceResponseBody) SetResourceDriftStatus(v string) *GetStackResourceResponseBody {
 	s.ResourceDriftStatus = &v
 	return s
 }
 
-func (s *GetStackResourceResponseBody) SetUpdateTime(v string) *GetStackResourceResponseBody {
-	s.UpdateTime = &v
+func (s *GetStackResourceResponseBody) SetResourceType(v string) *GetStackResourceResponseBody {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *GetStackResourceResponseBody) SetDriftDetectionTime(v string) *GetStackResourceResponseBody {
-	s.DriftDetectionTime = &v
+func (s *GetStackResourceResponseBody) SetStackId(v string) *GetStackResourceResponseBody {
+	s.StackId = &v
 	return s
 }
 
@@ -4215,8 +4634,18 @@ func (s *GetStackResourceResponseBody) SetStackName(v string) *GetStackResourceR
 	return s
 }
 
-func (s *GetStackResourceResponseBody) SetStackId(v string) *GetStackResourceResponseBody {
-	s.StackId = &v
+func (s *GetStackResourceResponseBody) SetStatus(v string) *GetStackResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStackResourceResponseBody) SetStatusReason(v string) *GetStackResourceResponseBody {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *GetStackResourceResponseBody) SetUpdateTime(v string) *GetStackResourceResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -4244,14 +4673,14 @@ func (s *GetStackResourceResponse) SetBody(v *GetStackResourceResponseBody) *Get
 }
 
 type GetTemplateRequest struct {
-	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ChangeSetId       *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	TemplateId        *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion   *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateStage     *string `json:"TemplateStage,omitempty" xml:"TemplateStage,omitempty"`
 	IncludePermission *string `json:"IncludePermission,omitempty" xml:"IncludePermission,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName    *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateId        *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateStage     *string `json:"TemplateStage,omitempty" xml:"TemplateStage,omitempty"`
+	TemplateVersion   *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s GetTemplateRequest) String() string {
@@ -4262,33 +4691,8 @@ func (s GetTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateRequest) SetStackId(v string) *GetTemplateRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *GetTemplateRequest) SetRegionId(v string) *GetTemplateRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetTemplateRequest) SetChangeSetId(v string) *GetTemplateRequest {
 	s.ChangeSetId = &v
-	return s
-}
-
-func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *GetTemplateRequest) SetTemplateStage(v string) *GetTemplateRequest {
-	s.TemplateStage = &v
 	return s
 }
 
@@ -4297,29 +4701,54 @@ func (s *GetTemplateRequest) SetIncludePermission(v string) *GetTemplateRequest 
 	return s
 }
 
+func (s *GetTemplateRequest) SetRegionId(v string) *GetTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *GetTemplateRequest) SetStackGroupName(v string) *GetTemplateRequest {
 	s.StackGroupName = &v
 	return s
 }
 
+func (s *GetTemplateRequest) SetStackId(v string) *GetTemplateRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetTemplateStage(v string) *GetTemplateRequest {
+	s.TemplateStage = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
 type GetTemplateResponseBody struct {
-	TemplateARN     *string                               `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	Description     *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CreateTime      *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	StackGroupName  *string                               `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	TemplateVersion *string                               `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateBody    *string                               `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	ChangeSetId     *string                               `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	CreateTime      *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description     *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerId         *string                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	UpdateTime      *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Permissions     []*GetTemplateResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	TemplateName    *string                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	RegionId        *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateId      *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	StackId         *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	ShareType       *string                               `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType       *string                               `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	StackGroupName  *string                               `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	StackId         *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateARN     *string                               `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
+	TemplateBody    *string                               `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId      *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateVersion *string                               `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdateTime      *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -4330,18 +4759,8 @@ func (s GetTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateResponseBody) SetTemplateARN(v string) *GetTemplateResponseBody {
-	s.TemplateARN = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetDescription(v string) *GetTemplateResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
-	s.RequestId = &v
+func (s *GetTemplateResponseBody) SetChangeSetId(v string) *GetTemplateResponseBody {
+	s.ChangeSetId = &v
 	return s
 }
 
@@ -4350,23 +4769,8 @@ func (s *GetTemplateResponseBody) SetCreateTime(v string) *GetTemplateResponseBo
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetStackGroupName(v string) *GetTemplateResponseBody {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateVersion(v string) *GetTemplateResponseBody {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateBody(v string) *GetTemplateResponseBody {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetChangeSetId(v string) *GetTemplateResponseBody {
-	s.ChangeSetId = &v
+func (s *GetTemplateResponseBody) SetDescription(v string) *GetTemplateResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -4375,18 +4779,8 @@ func (s *GetTemplateResponseBody) SetOwnerId(v string) *GetTemplateResponseBody 
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
 func (s *GetTemplateResponseBody) SetPermissions(v []*GetTemplateResponseBodyPermissions) *GetTemplateResponseBody {
 	s.Permissions = v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetTemplateName(v string) *GetTemplateResponseBody {
-	s.TemplateName = &v
 	return s
 }
 
@@ -4395,18 +4789,8 @@ func (s *GetTemplateResponseBody) SetRegionId(v string) *GetTemplateResponseBody
 	return s
 }
 
-func (s *GetTemplateResponseBody) SetTemplateId(v string) *GetTemplateResponseBody {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetStackId(v string) *GetTemplateResponseBody {
-	s.StackId = &v
-	return s
-}
-
-func (s *GetTemplateResponseBody) SetShareType(v string) *GetTemplateResponseBody {
-	s.ShareType = &v
+func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4415,11 +4799,56 @@ func (s *GetTemplateResponseBody) SetResourceGroupId(v string) *GetTemplateRespo
 	return s
 }
 
+func (s *GetTemplateResponseBody) SetShareType(v string) *GetTemplateResponseBody {
+	s.ShareType = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetStackGroupName(v string) *GetTemplateResponseBody {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetStackId(v string) *GetTemplateResponseBody {
+	s.StackId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateARN(v string) *GetTemplateResponseBody {
+	s.TemplateARN = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateBody(v string) *GetTemplateResponseBody {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateId(v string) *GetTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateName(v string) *GetTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateVersion(v string) *GetTemplateResponseBody {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
 type GetTemplateResponseBodyPermissions struct {
-	VersionOption   *string `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ShareOption     *string `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	VersionOption   *string `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 }
 
 func (s GetTemplateResponseBodyPermissions) String() string {
@@ -4428,11 +4857,6 @@ func (s GetTemplateResponseBodyPermissions) String() string {
 
 func (s GetTemplateResponseBodyPermissions) GoString() string {
 	return s.String()
-}
-
-func (s *GetTemplateResponseBodyPermissions) SetVersionOption(v string) *GetTemplateResponseBodyPermissions {
-	s.VersionOption = &v
-	return s
 }
 
 func (s *GetTemplateResponseBodyPermissions) SetAccountId(v string) *GetTemplateResponseBodyPermissions {
@@ -4447,6 +4871,11 @@ func (s *GetTemplateResponseBodyPermissions) SetShareOption(v string) *GetTempla
 
 func (s *GetTemplateResponseBodyPermissions) SetTemplateVersion(v string) *GetTemplateResponseBodyPermissions {
 	s.TemplateVersion = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyPermissions) SetVersionOption(v string) *GetTemplateResponseBodyPermissions {
+	s.VersionOption = &v
 	return s
 }
 
@@ -4474,13 +4903,13 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateEstimateCostRequest struct {
-	TemplateURL     *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	ClientToken     *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters      []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateBody    *string                                     `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	ClientToken     *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	TemplateId      *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL     *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	TemplateVersion *string                                     `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters      []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s GetTemplateEstimateCostRequest) String() string {
@@ -4491,8 +4920,13 @@ func (s GetTemplateEstimateCostRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateEstimateCostRequest) SetTemplateURL(v string) *GetTemplateEstimateCostRequest {
-	s.TemplateURL = &v
+func (s *GetTemplateEstimateCostRequest) SetClientToken(v string) *GetTemplateEstimateCostRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetTemplateEstimateCostRequest) SetParameters(v []*GetTemplateEstimateCostRequestParameters) *GetTemplateEstimateCostRequest {
+	s.Parameters = v
 	return s
 }
 
@@ -4506,23 +4940,18 @@ func (s *GetTemplateEstimateCostRequest) SetTemplateBody(v string) *GetTemplateE
 	return s
 }
 
-func (s *GetTemplateEstimateCostRequest) SetClientToken(v string) *GetTemplateEstimateCostRequest {
-	s.ClientToken = &v
-	return s
-}
-
 func (s *GetTemplateEstimateCostRequest) SetTemplateId(v string) *GetTemplateEstimateCostRequest {
 	s.TemplateId = &v
 	return s
 }
 
-func (s *GetTemplateEstimateCostRequest) SetTemplateVersion(v string) *GetTemplateEstimateCostRequest {
-	s.TemplateVersion = &v
+func (s *GetTemplateEstimateCostRequest) SetTemplateURL(v string) *GetTemplateEstimateCostRequest {
+	s.TemplateURL = &v
 	return s
 }
 
-func (s *GetTemplateEstimateCostRequest) SetParameters(v []*GetTemplateEstimateCostRequestParameters) *GetTemplateEstimateCostRequest {
-	s.Parameters = v
+func (s *GetTemplateEstimateCostRequest) SetTemplateVersion(v string) *GetTemplateEstimateCostRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -4595,15 +5024,272 @@ func (s *GetTemplateEstimateCostResponse) SetBody(v *GetTemplateEstimateCostResp
 	return s
 }
 
+type GetTemplateParameterConstraintsRequest struct {
+	ClientToken         *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters          []*GetTemplateParameterConstraintsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ParametersKeyFilter []*string                                           `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty" type:"Repeated"`
+	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateBody        *string                                             `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId          *string                                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL         *string                                             `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion     *string                                             `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetClientToken(v string) *GetTemplateParameterConstraintsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetParameters(v []*GetTemplateParameterConstraintsRequestParameters) *GetTemplateParameterConstraintsRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetParametersKeyFilter(v []*string) *GetTemplateParameterConstraintsRequest {
+	s.ParametersKeyFilter = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetRegionId(v string) *GetTemplateParameterConstraintsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateBody(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateId(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateURL(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateVersion(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsRequestParameters) SetParameterKey(v string) *GetTemplateParameterConstraintsRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequestParameters) SetParameterValue(v string) *GetTemplateParameterConstraintsRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsShrinkRequest struct {
+	ClientToken               *string                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters                []*GetTemplateParameterConstraintsShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	ParametersKeyFilterShrink *string                                                   `json:"ParametersKeyFilter,omitempty" xml:"ParametersKeyFilter,omitempty"`
+	RegionId                  *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateBody              *string                                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId                *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL               *string                                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion           *string                                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetClientToken(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetParameters(v []*GetTemplateParameterConstraintsShrinkRequestParameters) *GetTemplateParameterConstraintsShrinkRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetParametersKeyFilterShrink(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.ParametersKeyFilterShrink = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetRegionId(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetTemplateBody(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetTemplateId(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetTemplateURL(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequest) SetTemplateVersion(v string) *GetTemplateParameterConstraintsShrinkRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsShrinkRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsShrinkRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsShrinkRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequestParameters) SetParameterKey(v string) *GetTemplateParameterConstraintsShrinkRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsShrinkRequestParameters) SetParameterValue(v string) *GetTemplateParameterConstraintsShrinkRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBody struct {
+	ParameterConstraints []*GetTemplateParameterConstraintsResponseBodyParameterConstraints `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty" type:"Repeated"`
+	RequestId            *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBody) SetParameterConstraints(v []*GetTemplateParameterConstraintsResponseBodyParameterConstraints) *GetTemplateParameterConstraintsResponseBody {
+	s.ParameterConstraints = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBody) SetRequestId(v string) *GetTemplateParameterConstraintsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
+	AllowedValues             []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	AssociationParameterNames []*string `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
+	Behavior                  *string   `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	BehaviorReason            *string   `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	ParameterKey              *string   `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	Type                      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBodyParameterConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetAllowedValues(v []*string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.AllowedValues = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetAssociationParameterNames(v []*string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.AssociationParameterNames = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetBehavior(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.Behavior = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetBehaviorReason(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.BehaviorReason = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetParameterKey(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetType(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.Type = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTemplateParameterConstraintsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTemplateParameterConstraintsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponse) SetHeaders(v map[string]*string) *GetTemplateParameterConstraintsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponse) SetBody(v *GetTemplateParameterConstraintsResponseBody) *GetTemplateParameterConstraintsResponse {
+	s.Body = v
+	return s
+}
+
 type GetTemplateSummaryRequest struct {
+	ChangeSetId     *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackGroupName  *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	ChangeSetId     *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	StackGroupName  *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 }
 
 func (s GetTemplateSummaryRequest) String() string {
@@ -4614,6 +5300,21 @@ func (s GetTemplateSummaryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTemplateSummaryRequest) SetChangeSetId(v string) *GetTemplateSummaryRequest {
+	s.ChangeSetId = &v
+	return s
+}
+
+func (s *GetTemplateSummaryRequest) SetRegionId(v string) *GetTemplateSummaryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateSummaryRequest) SetStackGroupName(v string) *GetTemplateSummaryRequest {
+	s.StackGroupName = &v
+	return s
+}
+
 func (s *GetTemplateSummaryRequest) SetStackId(v string) *GetTemplateSummaryRequest {
 	s.StackId = &v
 	return s
@@ -4621,11 +5322,6 @@ func (s *GetTemplateSummaryRequest) SetStackId(v string) *GetTemplateSummaryRequ
 
 func (s *GetTemplateSummaryRequest) SetTemplateBody(v string) *GetTemplateSummaryRequest {
 	s.TemplateBody = &v
-	return s
-}
-
-func (s *GetTemplateSummaryRequest) SetRegionId(v string) *GetTemplateSummaryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4639,29 +5335,19 @@ func (s *GetTemplateSummaryRequest) SetTemplateURL(v string) *GetTemplateSummary
 	return s
 }
 
-func (s *GetTemplateSummaryRequest) SetChangeSetId(v string) *GetTemplateSummaryRequest {
-	s.ChangeSetId = &v
-	return s
-}
-
 func (s *GetTemplateSummaryRequest) SetTemplateVersion(v string) *GetTemplateSummaryRequest {
 	s.TemplateVersion = &v
 	return s
 }
 
-func (s *GetTemplateSummaryRequest) SetStackGroupName(v string) *GetTemplateSummaryRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 type GetTemplateSummaryResponseBody struct {
-	RequestId                   *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Description                 *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Version                     *string                                                      `json:"Version,omitempty" xml:"Version,omitempty"`
 	Metadata                    map[string]interface{}                                       `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	ResourceTypes               []*string                                                    `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	Parameters                  []map[string]interface{}                                     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RequestId                   *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceIdentifierSummaries []*GetTemplateSummaryResponseBodyResourceIdentifierSummaries `json:"ResourceIdentifierSummaries,omitempty" xml:"ResourceIdentifierSummaries,omitempty" type:"Repeated"`
+	ResourceTypes               []*string                                                    `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	Version                     *string                                                      `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetTemplateSummaryResponseBody) String() string {
@@ -4672,18 +5358,8 @@ func (s GetTemplateSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateSummaryResponseBody) SetRequestId(v string) *GetTemplateSummaryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetTemplateSummaryResponseBody) SetDescription(v string) *GetTemplateSummaryResponseBody {
 	s.Description = &v
-	return s
-}
-
-func (s *GetTemplateSummaryResponseBody) SetVersion(v string) *GetTemplateSummaryResponseBody {
-	s.Version = &v
 	return s
 }
 
@@ -4692,13 +5368,13 @@ func (s *GetTemplateSummaryResponseBody) SetMetadata(v map[string]interface{}) *
 	return s
 }
 
-func (s *GetTemplateSummaryResponseBody) SetResourceTypes(v []*string) *GetTemplateSummaryResponseBody {
-	s.ResourceTypes = v
+func (s *GetTemplateSummaryResponseBody) SetParameters(v []map[string]interface{}) *GetTemplateSummaryResponseBody {
+	s.Parameters = v
 	return s
 }
 
-func (s *GetTemplateSummaryResponseBody) SetParameters(v []map[string]interface{}) *GetTemplateSummaryResponseBody {
-	s.Parameters = v
+func (s *GetTemplateSummaryResponseBody) SetRequestId(v string) *GetTemplateSummaryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4707,10 +5383,20 @@ func (s *GetTemplateSummaryResponseBody) SetResourceIdentifierSummaries(v []*Get
 	return s
 }
 
+func (s *GetTemplateSummaryResponseBody) SetResourceTypes(v []*string) *GetTemplateSummaryResponseBody {
+	s.ResourceTypes = v
+	return s
+}
+
+func (s *GetTemplateSummaryResponseBody) SetVersion(v string) *GetTemplateSummaryResponseBody {
+	s.Version = &v
+	return s
+}
+
 type GetTemplateSummaryResponseBodyResourceIdentifierSummaries struct {
-	ResourceType        *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceIdentifiers []*string `json:"ResourceIdentifiers,omitempty" xml:"ResourceIdentifiers,omitempty" type:"Repeated"`
 	LogicalResourceIds  []*string `json:"LogicalResourceIds,omitempty" xml:"LogicalResourceIds,omitempty" type:"Repeated"`
+	ResourceIdentifiers []*string `json:"ResourceIdentifiers,omitempty" xml:"ResourceIdentifiers,omitempty" type:"Repeated"`
+	ResourceType        *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetTemplateSummaryResponseBodyResourceIdentifierSummaries) String() string {
@@ -4721,8 +5407,8 @@ func (s GetTemplateSummaryResponseBodyResourceIdentifierSummaries) GoString() st
 	return s.String()
 }
 
-func (s *GetTemplateSummaryResponseBodyResourceIdentifierSummaries) SetResourceType(v string) *GetTemplateSummaryResponseBodyResourceIdentifierSummaries {
-	s.ResourceType = &v
+func (s *GetTemplateSummaryResponseBodyResourceIdentifierSummaries) SetLogicalResourceIds(v []*string) *GetTemplateSummaryResponseBodyResourceIdentifierSummaries {
+	s.LogicalResourceIds = v
 	return s
 }
 
@@ -4731,8 +5417,8 @@ func (s *GetTemplateSummaryResponseBodyResourceIdentifierSummaries) SetResourceI
 	return s
 }
 
-func (s *GetTemplateSummaryResponseBodyResourceIdentifierSummaries) SetLogicalResourceIds(v []*string) *GetTemplateSummaryResponseBodyResourceIdentifierSummaries {
-	s.LogicalResourceIds = v
+func (s *GetTemplateSummaryResponseBodyResourceIdentifierSummaries) SetResourceType(v string) *GetTemplateSummaryResponseBodyResourceIdentifierSummaries {
+	s.ResourceType = &v
 	return s
 }
 
@@ -4760,14 +5446,14 @@ func (s *GetTemplateSummaryResponse) SetBody(v *GetTemplateSummaryResponseBody) 
 }
 
 type ListChangeSetsRequest struct {
-	StackId         *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageNumber      *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	ChangeSetId     *string   `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	Status          []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	ChangeSetName   []*string `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty" type:"Repeated"`
 	ExecutionStatus []*string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty" type:"Repeated"`
+	PageNumber      *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId         *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Status          []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s ListChangeSetsRequest) String() string {
@@ -4778,33 +5464,8 @@ func (s ListChangeSetsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListChangeSetsRequest) SetStackId(v string) *ListChangeSetsRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *ListChangeSetsRequest) SetPageSize(v int64) *ListChangeSetsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListChangeSetsRequest) SetRegionId(v string) *ListChangeSetsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListChangeSetsRequest) SetPageNumber(v int64) *ListChangeSetsRequest {
-	s.PageNumber = &v
-	return s
-}
-
 func (s *ListChangeSetsRequest) SetChangeSetId(v string) *ListChangeSetsRequest {
 	s.ChangeSetId = &v
-	return s
-}
-
-func (s *ListChangeSetsRequest) SetStatus(v []*string) *ListChangeSetsRequest {
-	s.Status = v
 	return s
 }
 
@@ -4818,12 +5479,37 @@ func (s *ListChangeSetsRequest) SetExecutionStatus(v []*string) *ListChangeSetsR
 	return s
 }
 
+func (s *ListChangeSetsRequest) SetPageNumber(v int64) *ListChangeSetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListChangeSetsRequest) SetPageSize(v int64) *ListChangeSetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChangeSetsRequest) SetRegionId(v string) *ListChangeSetsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListChangeSetsRequest) SetStackId(v string) *ListChangeSetsRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *ListChangeSetsRequest) SetStatus(v []*string) *ListChangeSetsRequest {
+	s.Status = v
+	return s
+}
+
 type ListChangeSetsResponseBody struct {
+	ChangeSets []*ListChangeSetsResponseBodyChangeSets `json:"ChangeSets,omitempty" xml:"ChangeSets,omitempty" type:"Repeated"`
 	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	ChangeSets []*ListChangeSetsResponseBodyChangeSets `json:"ChangeSets,omitempty" xml:"ChangeSets,omitempty" type:"Repeated"`
 }
 
 func (s ListChangeSetsResponseBody) String() string {
@@ -4832,6 +5518,11 @@ func (s ListChangeSetsResponseBody) String() string {
 
 func (s ListChangeSetsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListChangeSetsResponseBody) SetChangeSets(v []*ListChangeSetsResponseBodyChangeSets) *ListChangeSetsResponseBody {
+	s.ChangeSets = v
+	return s
 }
 
 func (s *ListChangeSetsResponseBody) SetPageNumber(v int32) *ListChangeSetsResponseBody {
@@ -4854,23 +5545,18 @@ func (s *ListChangeSetsResponseBody) SetTotalCount(v int32) *ListChangeSetsRespo
 	return s
 }
 
-func (s *ListChangeSetsResponseBody) SetChangeSets(v []*ListChangeSetsResponseBodyChangeSets) *ListChangeSetsResponseBody {
-	s.ChangeSets = v
-	return s
-}
-
 type ListChangeSetsResponseBodyChangeSets struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	ChangeSetName   *string `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ChangeSetType   *string `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
-	StatusReason    *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ChangeSetId     *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
-	StackName       *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	ChangeSetName   *string `json:"ChangeSetName,omitempty" xml:"ChangeSetName,omitempty"`
+	ChangeSetType   *string `json:"ChangeSetType,omitempty" xml:"ChangeSetType,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName       *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason    *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s ListChangeSetsResponseBodyChangeSets) String() string {
@@ -4881,13 +5567,8 @@ func (s ListChangeSetsResponseBodyChangeSets) GoString() string {
 	return s.String()
 }
 
-func (s *ListChangeSetsResponseBodyChangeSets) SetStatus(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.Status = &v
-	return s
-}
-
-func (s *ListChangeSetsResponseBodyChangeSets) SetStackId(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.StackId = &v
+func (s *ListChangeSetsResponseBodyChangeSets) SetChangeSetId(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.ChangeSetId = &v
 	return s
 }
 
@@ -4896,18 +5577,8 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetChangeSetName(v string) *ListC
 	return s
 }
 
-func (s *ListChangeSetsResponseBodyChangeSets) SetDescription(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.Description = &v
-	return s
-}
-
 func (s *ListChangeSetsResponseBodyChangeSets) SetChangeSetType(v string) *ListChangeSetsResponseBodyChangeSets {
 	s.ChangeSetType = &v
-	return s
-}
-
-func (s *ListChangeSetsResponseBodyChangeSets) SetStatusReason(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.StatusReason = &v
 	return s
 }
 
@@ -4916,13 +5587,8 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetCreateTime(v string) *ListChan
 	return s
 }
 
-func (s *ListChangeSetsResponseBodyChangeSets) SetChangeSetId(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.ChangeSetId = &v
-	return s
-}
-
-func (s *ListChangeSetsResponseBodyChangeSets) SetStackName(v string) *ListChangeSetsResponseBodyChangeSets {
-	s.StackName = &v
+func (s *ListChangeSetsResponseBodyChangeSets) SetDescription(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.Description = &v
 	return s
 }
 
@@ -4933,6 +5599,26 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetExecutionStatus(v string) *Lis
 
 func (s *ListChangeSetsResponseBodyChangeSets) SetRegionId(v string) *ListChangeSetsResponseBodyChangeSets {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSets) SetStackId(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.StackId = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSets) SetStackName(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.StackName = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSets) SetStatus(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.Status = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSets) SetStatusReason(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.StatusReason = &v
 	return s
 }
 
@@ -5006,13 +5692,13 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type ListStackEventsRequest struct {
-	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	LogicalResourceId []*string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty" type:"Repeated"`
+	PageNumber        *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageNumber        *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Status            []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	ResourceType      []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
-	LogicalResourceId []*string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty" type:"Repeated"`
+	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Status            []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s ListStackEventsRequest) String() string {
@@ -5023,8 +5709,13 @@ func (s ListStackEventsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackEventsRequest) SetStackId(v string) *ListStackEventsRequest {
-	s.StackId = &v
+func (s *ListStackEventsRequest) SetLogicalResourceId(v []*string) *ListStackEventsRequest {
+	s.LogicalResourceId = v
+	return s
+}
+
+func (s *ListStackEventsRequest) SetPageNumber(v int64) *ListStackEventsRequest {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5038,8 +5729,13 @@ func (s *ListStackEventsRequest) SetRegionId(v string) *ListStackEventsRequest {
 	return s
 }
 
-func (s *ListStackEventsRequest) SetPageNumber(v int64) *ListStackEventsRequest {
-	s.PageNumber = &v
+func (s *ListStackEventsRequest) SetResourceType(v []*string) *ListStackEventsRequest {
+	s.ResourceType = v
+	return s
+}
+
+func (s *ListStackEventsRequest) SetStackId(v string) *ListStackEventsRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -5048,22 +5744,12 @@ func (s *ListStackEventsRequest) SetStatus(v []*string) *ListStackEventsRequest 
 	return s
 }
 
-func (s *ListStackEventsRequest) SetResourceType(v []*string) *ListStackEventsRequest {
-	s.ResourceType = v
-	return s
-}
-
-func (s *ListStackEventsRequest) SetLogicalResourceId(v []*string) *ListStackEventsRequest {
-	s.LogicalResourceId = v
-	return s
-}
-
 type ListStackEventsResponseBody struct {
+	Events     []*ListStackEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Events     []*ListStackEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 }
 
 func (s ListStackEventsResponseBody) String() string {
@@ -5072,6 +5758,11 @@ func (s ListStackEventsResponseBody) String() string {
 
 func (s ListStackEventsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListStackEventsResponseBody) SetEvents(v []*ListStackEventsResponseBodyEvents) *ListStackEventsResponseBody {
+	s.Events = v
+	return s
 }
 
 func (s *ListStackEventsResponseBody) SetPageNumber(v int32) *ListStackEventsResponseBody {
@@ -5094,21 +5785,16 @@ func (s *ListStackEventsResponseBody) SetTotalCount(v int32) *ListStackEventsRes
 	return s
 }
 
-func (s *ListStackEventsResponseBody) SetEvents(v []*ListStackEventsResponseBodyEvents) *ListStackEventsResponseBody {
-	s.Events = v
-	return s
-}
-
 type ListStackEventsResponseBodyEvents struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EventId            *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	LogicalResourceId  *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
 	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StatusReason       *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackName          *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason       *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s ListStackEventsResponseBodyEvents) String() string {
@@ -5119,8 +5805,8 @@ func (s ListStackEventsResponseBodyEvents) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackEventsResponseBodyEvents) SetStatus(v string) *ListStackEventsResponseBodyEvents {
-	s.Status = &v
+func (s *ListStackEventsResponseBodyEvents) SetCreateTime(v string) *ListStackEventsResponseBodyEvents {
+	s.CreateTime = &v
 	return s
 }
 
@@ -5134,11 +5820,6 @@ func (s *ListStackEventsResponseBodyEvents) SetLogicalResourceId(v string) *List
 	return s
 }
 
-func (s *ListStackEventsResponseBodyEvents) SetStackId(v string) *ListStackEventsResponseBodyEvents {
-	s.StackId = &v
-	return s
-}
-
 func (s *ListStackEventsResponseBodyEvents) SetPhysicalResourceId(v string) *ListStackEventsResponseBodyEvents {
 	s.PhysicalResourceId = &v
 	return s
@@ -5149,18 +5830,23 @@ func (s *ListStackEventsResponseBodyEvents) SetResourceType(v string) *ListStack
 	return s
 }
 
-func (s *ListStackEventsResponseBodyEvents) SetStatusReason(v string) *ListStackEventsResponseBodyEvents {
-	s.StatusReason = &v
-	return s
-}
-
-func (s *ListStackEventsResponseBodyEvents) SetCreateTime(v string) *ListStackEventsResponseBodyEvents {
-	s.CreateTime = &v
+func (s *ListStackEventsResponseBodyEvents) SetStackId(v string) *ListStackEventsResponseBodyEvents {
+	s.StackId = &v
 	return s
 }
 
 func (s *ListStackEventsResponseBodyEvents) SetStackName(v string) *ListStackEventsResponseBodyEvents {
 	s.StackName = &v
+	return s
+}
+
+func (s *ListStackEventsResponseBodyEvents) SetStatus(v string) *ListStackEventsResponseBodyEvents {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStackEventsResponseBodyEvents) SetStatusReason(v string) *ListStackEventsResponseBodyEvents {
+	s.StatusReason = &v
 	return s
 }
 
@@ -5188,10 +5874,10 @@ func (s *ListStackEventsResponse) SetBody(v *ListStackEventsResponseBody) *ListS
 }
 
 type ListStackGroupOperationResultsRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListStackGroupOperationResultsRequest) String() string {
@@ -5202,18 +5888,8 @@ func (s ListStackGroupOperationResultsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackGroupOperationResultsRequest) SetRegionId(v string) *ListStackGroupOperationResultsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ListStackGroupOperationResultsRequest) SetOperationId(v string) *ListStackGroupOperationResultsRequest {
 	s.OperationId = &v
-	return s
-}
-
-func (s *ListStackGroupOperationResultsRequest) SetPageSize(v int64) *ListStackGroupOperationResultsRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -5222,12 +5898,22 @@ func (s *ListStackGroupOperationResultsRequest) SetPageNumber(v int64) *ListStac
 	return s
 }
 
+func (s *ListStackGroupOperationResultsRequest) SetPageSize(v int64) *ListStackGroupOperationResultsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListStackGroupOperationResultsRequest) SetRegionId(v string) *ListStackGroupOperationResultsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListStackGroupOperationResultsResponseBody struct {
-	TotalCount                 *int32                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId                  *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize                   *int32                                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber                 *int32                                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                   *int32                                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId                  *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StackGroupOperationResults []*ListStackGroupOperationResultsResponseBodyStackGroupOperationResults `json:"StackGroupOperationResults,omitempty" xml:"StackGroupOperationResults,omitempty" type:"Repeated"`
+	TotalCount                 *int32                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListStackGroupOperationResultsResponseBody) String() string {
@@ -5238,13 +5924,8 @@ func (s ListStackGroupOperationResultsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackGroupOperationResultsResponseBody) SetTotalCount(v int32) *ListStackGroupOperationResultsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListStackGroupOperationResultsResponseBody) SetRequestId(v string) *ListStackGroupOperationResultsResponseBody {
-	s.RequestId = &v
+func (s *ListStackGroupOperationResultsResponseBody) SetPageNumber(v int32) *ListStackGroupOperationResultsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5253,8 +5934,8 @@ func (s *ListStackGroupOperationResultsResponseBody) SetPageSize(v int32) *ListS
 	return s
 }
 
-func (s *ListStackGroupOperationResultsResponseBody) SetPageNumber(v int32) *ListStackGroupOperationResultsResponseBody {
-	s.PageNumber = &v
+func (s *ListStackGroupOperationResultsResponseBody) SetRequestId(v string) *ListStackGroupOperationResultsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5263,12 +5944,17 @@ func (s *ListStackGroupOperationResultsResponseBody) SetStackGroupOperationResul
 	return s
 }
 
+func (s *ListStackGroupOperationResultsResponseBody) SetTotalCount(v int32) *ListStackGroupOperationResultsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListStackGroupOperationResultsResponseBodyStackGroupOperationResults struct {
+	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	RdFolderId   *string `json:"RdFolderId,omitempty" xml:"RdFolderId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RdFolderId   *string `json:"RdFolderId,omitempty" xml:"RdFolderId,omitempty"`
 }
 
 func (s ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) String() string {
@@ -5279,18 +5965,13 @@ func (s ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) Go
 	return s.String()
 }
 
-func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetStatus(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetStatusReason(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
-	s.StatusReason = &v
-	return s
-}
-
 func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetAccountId(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetRdFolderId(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
+	s.RdFolderId = &v
 	return s
 }
 
@@ -5299,8 +5980,13 @@ func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) S
 	return s
 }
 
-func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetRdFolderId(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
-	s.RdFolderId = &v
+func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetStatus(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults) SetStatusReason(v string) *ListStackGroupOperationResultsResponseBodyStackGroupOperationResults {
+	s.StatusReason = &v
 	return s
 }
 
@@ -5328,10 +6014,10 @@ func (s *ListStackGroupOperationResultsResponse) SetBody(v *ListStackGroupOperat
 }
 
 type ListStackGroupOperationsRequest struct {
+	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 }
 
 func (s ListStackGroupOperationsRequest) String() string {
@@ -5340,6 +6026,16 @@ func (s ListStackGroupOperationsRequest) String() string {
 
 func (s ListStackGroupOperationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListStackGroupOperationsRequest) SetPageNumber(v int64) *ListStackGroupOperationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStackGroupOperationsRequest) SetPageSize(v int64) *ListStackGroupOperationsRequest {
+	s.PageSize = &v
+	return s
 }
 
 func (s *ListStackGroupOperationsRequest) SetRegionId(v string) *ListStackGroupOperationsRequest {
@@ -5352,22 +6048,12 @@ func (s *ListStackGroupOperationsRequest) SetStackGroupName(v string) *ListStack
 	return s
 }
 
-func (s *ListStackGroupOperationsRequest) SetPageSize(v int64) *ListStackGroupOperationsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListStackGroupOperationsRequest) SetPageNumber(v int64) *ListStackGroupOperationsRequest {
-	s.PageNumber = &v
-	return s
-}
-
 type ListStackGroupOperationsResponseBody struct {
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber           *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount           *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StackGroupOperations []*ListStackGroupOperationsResponseBodyStackGroupOperations `json:"StackGroupOperations,omitempty" xml:"StackGroupOperations,omitempty" type:"Repeated"`
+	TotalCount           *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListStackGroupOperationsResponseBody) String() string {
@@ -5376,11 +6062,6 @@ func (s ListStackGroupOperationsResponseBody) String() string {
 
 func (s ListStackGroupOperationsResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ListStackGroupOperationsResponseBody) SetRequestId(v string) *ListStackGroupOperationsResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ListStackGroupOperationsResponseBody) SetPageNumber(v int32) *ListStackGroupOperationsResponseBody {
@@ -5393,8 +6074,8 @@ func (s *ListStackGroupOperationsResponseBody) SetPageSize(v int32) *ListStackGr
 	return s
 }
 
-func (s *ListStackGroupOperationsResponseBody) SetTotalCount(v int32) *ListStackGroupOperationsResponseBody {
-	s.TotalCount = &v
+func (s *ListStackGroupOperationsResponseBody) SetRequestId(v string) *ListStackGroupOperationsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5403,15 +6084,20 @@ func (s *ListStackGroupOperationsResponseBody) SetStackGroupOperations(v []*List
 	return s
 }
 
+func (s *ListStackGroupOperationsResponseBody) SetTotalCount(v int32) *ListStackGroupOperationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListStackGroupOperationsResponseBodyStackGroupOperations struct {
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StackGroupId         *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Action               *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	StackGroupName       *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	OperationId          *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationId          *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	StackGroupId         *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName       *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListStackGroupOperationsResponseBodyStackGroupOperations) String() string {
@@ -5420,21 +6106,6 @@ func (s ListStackGroupOperationsResponseBodyStackGroupOperations) String() strin
 
 func (s ListStackGroupOperationsResponseBodyStackGroupOperations) GoString() string {
 	return s.String()
-}
-
-func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStatus(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStackGroupId(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
-	s.StackGroupId = &v
-	return s
-}
-
-func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetEndTime(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
-	s.EndTime = &v
-	return s
 }
 
 func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetAction(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
@@ -5447,8 +6118,13 @@ func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetCreateTime
 	return s
 }
 
-func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStackGroupName(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
-	s.StackGroupName = &v
+func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetEndTime(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetOperationDescription(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
+	s.OperationDescription = &v
 	return s
 }
 
@@ -5457,8 +6133,18 @@ func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetOperationI
 	return s
 }
 
-func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetOperationDescription(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
-	s.OperationDescription = &v
+func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStackGroupId(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStackGroupName(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *ListStackGroupOperationsResponseBodyStackGroupOperations) SetStatus(v string) *ListStackGroupOperationsResponseBodyStackGroupOperations {
+	s.Status = &v
 	return s
 }
 
@@ -5486,11 +6172,11 @@ func (s *ListStackGroupOperationsResponse) SetBody(v *ListStackGroupOperationsRe
 }
 
 type ListStackGroupsRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListStackGroupsRequest) String() string {
@@ -5501,13 +6187,8 @@ func (s ListStackGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackGroupsRequest) SetRegionId(v string) *ListStackGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListStackGroupsRequest) SetStatus(v string) *ListStackGroupsRequest {
-	s.Status = &v
+func (s *ListStackGroupsRequest) SetPageNumber(v int64) *ListStackGroupsRequest {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5516,8 +6197,8 @@ func (s *ListStackGroupsRequest) SetPageSize(v int64) *ListStackGroupsRequest {
 	return s
 }
 
-func (s *ListStackGroupsRequest) SetPageNumber(v int64) *ListStackGroupsRequest {
-	s.PageNumber = &v
+func (s *ListStackGroupsRequest) SetRegionId(v string) *ListStackGroupsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5526,12 +6207,17 @@ func (s *ListStackGroupsRequest) SetResourceGroupId(v string) *ListStackGroupsRe
 	return s
 }
 
+func (s *ListStackGroupsRequest) SetStatus(v string) *ListStackGroupsRequest {
+	s.Status = &v
+	return s
+}
+
 type ListStackGroupsResponseBody struct {
+	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StackGroups []*ListStackGroupsResponseBodyStackGroups `json:"StackGroups,omitempty" xml:"StackGroups,omitempty" type:"Repeated"`
 	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 }
 
 func (s ListStackGroupsResponseBody) String() string {
@@ -5540,6 +6226,21 @@ func (s ListStackGroupsResponseBody) String() string {
 
 func (s ListStackGroupsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListStackGroupsResponseBody) SetPageNumber(v int32) *ListStackGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBody) SetPageSize(v int32) *ListStackGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBody) SetRequestId(v string) *ListStackGroupsResponseBody {
+	s.RequestId = &v
+	return s
 }
 
 func (s *ListStackGroupsResponseBody) SetStackGroups(v []*ListStackGroupsResponseBodyStackGroups) *ListStackGroupsResponseBody {
@@ -5552,31 +6253,16 @@ func (s *ListStackGroupsResponseBody) SetTotalCount(v int32) *ListStackGroupsRes
 	return s
 }
 
-func (s *ListStackGroupsResponseBody) SetRequestId(v string) *ListStackGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBody) SetPageSize(v int32) *ListStackGroupsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBody) SetPageNumber(v int32) *ListStackGroupsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
 type ListStackGroupsResponseBodyStackGroups struct {
-	StackGroupId          *string                                               `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
-	Status                *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	DriftDetectionTime    *string                                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	Description           *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	StackGroupDriftStatus *string                                               `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
-	StackGroupName        *string                                               `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	ResourceGroupId       *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PermissionModel       *string                                               `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
 	AutoDeployment        *ListStackGroupsResponseBodyStackGroupsAutoDeployment `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
+	Description           *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	DriftDetectionTime    *string                                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	PermissionModel       *string                                               `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	ResourceGroupId       *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackGroupDriftStatus *string                                               `json:"StackGroupDriftStatus,omitempty" xml:"StackGroupDriftStatus,omitempty"`
+	StackGroupId          *string                                               `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName        *string                                               `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Status                *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListStackGroupsResponseBodyStackGroups) String() string {
@@ -5587,18 +6273,8 @@ func (s ListStackGroupsResponseBodyStackGroups) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupId(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.StackGroupId = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBodyStackGroups) SetStatus(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBodyStackGroups) SetDriftDetectionTime(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.DriftDetectionTime = &v
+func (s *ListStackGroupsResponseBodyStackGroups) SetAutoDeployment(v *ListStackGroupsResponseBodyStackGroupsAutoDeployment) *ListStackGroupsResponseBodyStackGroups {
+	s.AutoDeployment = v
 	return s
 }
 
@@ -5607,18 +6283,8 @@ func (s *ListStackGroupsResponseBodyStackGroups) SetDescription(v string) *ListS
 	return s
 }
 
-func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupDriftStatus(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.StackGroupDriftStatus = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupName(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *ListStackGroupsResponseBodyStackGroups) SetResourceGroupId(v string) *ListStackGroupsResponseBodyStackGroups {
-	s.ResourceGroupId = &v
+func (s *ListStackGroupsResponseBodyStackGroups) SetDriftDetectionTime(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.DriftDetectionTime = &v
 	return s
 }
 
@@ -5627,8 +6293,28 @@ func (s *ListStackGroupsResponseBodyStackGroups) SetPermissionModel(v string) *L
 	return s
 }
 
-func (s *ListStackGroupsResponseBodyStackGroups) SetAutoDeployment(v *ListStackGroupsResponseBodyStackGroupsAutoDeployment) *ListStackGroupsResponseBodyStackGroups {
-	s.AutoDeployment = v
+func (s *ListStackGroupsResponseBodyStackGroups) SetResourceGroupId(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupDriftStatus(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.StackGroupDriftStatus = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupId(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBodyStackGroups) SetStackGroupName(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *ListStackGroupsResponseBodyStackGroups) SetStatus(v string) *ListStackGroupsResponseBodyStackGroups {
+	s.Status = &v
 	return s
 }
 
@@ -5679,12 +6365,12 @@ func (s *ListStackGroupsResponse) SetBody(v *ListStackGroupsResponseBody) *ListS
 }
 
 type ListStackInstancesRequest struct {
+	PageNumber             *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName         *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	StackInstanceAccountId *string `json:"StackInstanceAccountId,omitempty" xml:"StackInstanceAccountId,omitempty"`
 	StackInstanceRegionId  *string `json:"StackInstanceRegionId,omitempty" xml:"StackInstanceRegionId,omitempty"`
-	PageSize               *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber             *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 }
 
 func (s ListStackInstancesRequest) String() string {
@@ -5693,6 +6379,16 @@ func (s ListStackInstancesRequest) String() string {
 
 func (s ListStackInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListStackInstancesRequest) SetPageNumber(v int64) *ListStackInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStackInstancesRequest) SetPageSize(v int64) *ListStackInstancesRequest {
+	s.PageSize = &v
+	return s
 }
 
 func (s *ListStackInstancesRequest) SetRegionId(v string) *ListStackInstancesRequest {
@@ -5715,22 +6411,12 @@ func (s *ListStackInstancesRequest) SetStackInstanceRegionId(v string) *ListStac
 	return s
 }
 
-func (s *ListStackInstancesRequest) SetPageSize(v int64) *ListStackInstancesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListStackInstancesRequest) SetPageNumber(v int64) *ListStackInstancesRequest {
-	s.PageNumber = &v
-	return s
-}
-
 type ListStackInstancesResponseBody struct {
-	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize       *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber     *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StackInstances []*ListStackInstancesResponseBodyStackInstances `json:"StackInstances,omitempty" xml:"StackInstances,omitempty" type:"Repeated"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListStackInstancesResponseBody) String() string {
@@ -5741,13 +6427,8 @@ func (s ListStackInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackInstancesResponseBody) SetTotalCount(v int32) *ListStackInstancesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBody) SetRequestId(v string) *ListStackInstancesResponseBody {
-	s.RequestId = &v
+func (s *ListStackInstancesResponseBody) SetPageNumber(v int32) *ListStackInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5756,8 +6437,8 @@ func (s *ListStackInstancesResponseBody) SetPageSize(v int32) *ListStackInstance
 	return s
 }
 
-func (s *ListStackInstancesResponseBody) SetPageNumber(v int32) *ListStackInstancesResponseBody {
-	s.PageNumber = &v
+func (s *ListStackInstancesResponseBody) SetRequestId(v string) *ListStackInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5766,17 +6447,22 @@ func (s *ListStackInstancesResponseBody) SetStackInstances(v []*ListStackInstanc
 	return s
 }
 
+func (s *ListStackInstancesResponseBody) SetTotalCount(v int32) *ListStackInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListStackInstancesResponseBodyStackInstances struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StackGroupId       *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
-	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StackDriftStatus   *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	StatusReason       *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	StackGroupName     *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
 	RdFolderId         *string `json:"RdFolderId,omitempty" xml:"RdFolderId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackDriftStatus   *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackGroupId       *string `json:"StackGroupId,omitempty" xml:"StackGroupId,omitempty"`
+	StackGroupName     *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason       *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s ListStackInstancesResponseBodyStackInstances) String() string {
@@ -5787,18 +6473,8 @@ func (s ListStackInstancesResponseBodyStackInstances) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackInstancesResponseBodyStackInstances) SetStatus(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBodyStackInstances) SetStackGroupId(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.StackGroupId = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBodyStackInstances) SetStackId(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.StackId = &v
+func (s *ListStackInstancesResponseBodyStackInstances) SetAccountId(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.AccountId = &v
 	return s
 }
 
@@ -5807,23 +6483,8 @@ func (s *ListStackInstancesResponseBodyStackInstances) SetDriftDetectionTime(v s
 	return s
 }
 
-func (s *ListStackInstancesResponseBodyStackInstances) SetStackDriftStatus(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.StackDriftStatus = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBodyStackInstances) SetStatusReason(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.StatusReason = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBodyStackInstances) SetStackGroupName(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.StackGroupName = &v
-	return s
-}
-
-func (s *ListStackInstancesResponseBodyStackInstances) SetAccountId(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.AccountId = &v
+func (s *ListStackInstancesResponseBodyStackInstances) SetRdFolderId(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.RdFolderId = &v
 	return s
 }
 
@@ -5832,8 +6493,33 @@ func (s *ListStackInstancesResponseBodyStackInstances) SetRegionId(v string) *Li
 	return s
 }
 
-func (s *ListStackInstancesResponseBodyStackInstances) SetRdFolderId(v string) *ListStackInstancesResponseBodyStackInstances {
-	s.RdFolderId = &v
+func (s *ListStackInstancesResponseBodyStackInstances) SetStackDriftStatus(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.StackDriftStatus = &v
+	return s
+}
+
+func (s *ListStackInstancesResponseBodyStackInstances) SetStackGroupId(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.StackGroupId = &v
+	return s
+}
+
+func (s *ListStackInstancesResponseBodyStackInstances) SetStackGroupName(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *ListStackInstancesResponseBodyStackInstances) SetStackId(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.StackId = &v
+	return s
+}
+
+func (s *ListStackInstancesResponseBodyStackInstances) SetStatus(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStackInstancesResponseBodyStackInstances) SetStatusReason(v string) *ListStackInstancesResponseBodyStackInstances {
+	s.StatusReason = &v
 	return s
 }
 
@@ -5861,13 +6547,13 @@ func (s *ListStackInstancesResponse) SetBody(v *ListStackInstancesResponseBody) 
 }
 
 type ListStackOperationRisksRequest struct {
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackId            *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	OperationType      *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	ClientToken        *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OperationType      *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	RamRoleName        *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RetainAllResources *bool     `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
 	RetainResources    []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
+	StackId            *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s ListStackOperationRisksRequest) String() string {
@@ -5878,13 +6564,8 @@ func (s ListStackOperationRisksRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackOperationRisksRequest) SetRegionId(v string) *ListStackOperationRisksRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListStackOperationRisksRequest) SetStackId(v string) *ListStackOperationRisksRequest {
-	s.StackId = &v
+func (s *ListStackOperationRisksRequest) SetClientToken(v string) *ListStackOperationRisksRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -5893,13 +6574,13 @@ func (s *ListStackOperationRisksRequest) SetOperationType(v string) *ListStackOp
 	return s
 }
 
-func (s *ListStackOperationRisksRequest) SetClientToken(v string) *ListStackOperationRisksRequest {
-	s.ClientToken = &v
+func (s *ListStackOperationRisksRequest) SetRamRoleName(v string) *ListStackOperationRisksRequest {
+	s.RamRoleName = &v
 	return s
 }
 
-func (s *ListStackOperationRisksRequest) SetRamRoleName(v string) *ListStackOperationRisksRequest {
-	s.RamRoleName = &v
+func (s *ListStackOperationRisksRequest) SetRegionId(v string) *ListStackOperationRisksRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5910,6 +6591,11 @@ func (s *ListStackOperationRisksRequest) SetRetainAllResources(v bool) *ListStac
 
 func (s *ListStackOperationRisksRequest) SetRetainResources(v []*string) *ListStackOperationRisksRequest {
 	s.RetainResources = v
+	return s
+}
+
+func (s *ListStackOperationRisksRequest) SetStackId(v string) *ListStackOperationRisksRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -5937,14 +6623,14 @@ func (s *ListStackOperationRisksResponseBody) SetRiskResources(v []*ListStackOpe
 }
 
 type ListStackOperationRisksResponseBodyRiskResources struct {
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	LogicalResourceId  *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	PhysicalResourceId *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
+	Reason             *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RiskType           *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
-	Reason             *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s ListStackOperationRisksResponseBodyRiskResources) String() string {
@@ -5955,13 +6641,28 @@ func (s ListStackOperationRisksResponseBodyRiskResources) GoString() string {
 	return s.String()
 }
 
+func (s *ListStackOperationRisksResponseBodyRiskResources) SetCode(v string) *ListStackOperationRisksResponseBodyRiskResources {
+	s.Code = &v
+	return s
+}
+
 func (s *ListStackOperationRisksResponseBodyRiskResources) SetLogicalResourceId(v string) *ListStackOperationRisksResponseBodyRiskResources {
 	s.LogicalResourceId = &v
 	return s
 }
 
+func (s *ListStackOperationRisksResponseBodyRiskResources) SetMessage(v string) *ListStackOperationRisksResponseBodyRiskResources {
+	s.Message = &v
+	return s
+}
+
 func (s *ListStackOperationRisksResponseBodyRiskResources) SetPhysicalResourceId(v string) *ListStackOperationRisksResponseBodyRiskResources {
 	s.PhysicalResourceId = &v
+	return s
+}
+
+func (s *ListStackOperationRisksResponseBodyRiskResources) SetReason(v string) *ListStackOperationRisksResponseBodyRiskResources {
+	s.Reason = &v
 	return s
 }
 
@@ -5975,23 +6676,8 @@ func (s *ListStackOperationRisksResponseBodyRiskResources) SetResourceType(v str
 	return s
 }
 
-func (s *ListStackOperationRisksResponseBodyRiskResources) SetCode(v string) *ListStackOperationRisksResponseBodyRiskResources {
-	s.Code = &v
-	return s
-}
-
-func (s *ListStackOperationRisksResponseBodyRiskResources) SetMessage(v string) *ListStackOperationRisksResponseBodyRiskResources {
-	s.Message = &v
-	return s
-}
-
 func (s *ListStackOperationRisksResponseBodyRiskResources) SetRiskType(v string) *ListStackOperationRisksResponseBodyRiskResources {
 	s.RiskType = &v
-	return s
-}
-
-func (s *ListStackOperationRisksResponseBodyRiskResources) SetReason(v string) *ListStackOperationRisksResponseBodyRiskResources {
-	s.Reason = &v
 	return s
 }
 
@@ -6019,11 +6705,11 @@ func (s *ListStackOperationRisksResponse) SetBody(v *ListStackOperationRisksResp
 }
 
 type ListStackResourceDriftsRequest struct {
-	StackId             *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	MaxResults          *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken           *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceDriftStatus []*string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty" type:"Repeated"`
+	StackId             *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s ListStackResourceDriftsRequest) String() string {
@@ -6032,16 +6718,6 @@ func (s ListStackResourceDriftsRequest) String() string {
 
 func (s ListStackResourceDriftsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListStackResourceDriftsRequest) SetStackId(v string) *ListStackResourceDriftsRequest {
-	s.StackId = &v
-	return s
-}
-
-func (s *ListStackResourceDriftsRequest) SetRegionId(v string) *ListStackResourceDriftsRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListStackResourceDriftsRequest) SetMaxResults(v int64) *ListStackResourceDriftsRequest {
@@ -6054,8 +6730,18 @@ func (s *ListStackResourceDriftsRequest) SetNextToken(v string) *ListStackResour
 	return s
 }
 
+func (s *ListStackResourceDriftsRequest) SetRegionId(v string) *ListStackResourceDriftsRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListStackResourceDriftsRequest) SetResourceDriftStatus(v []*string) *ListStackResourceDriftsRequest {
 	s.ResourceDriftStatus = v
+	return s
+}
+
+func (s *ListStackResourceDriftsRequest) SetStackId(v string) *ListStackResourceDriftsRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -6089,15 +6775,15 @@ func (s *ListStackResourceDriftsResponseBody) SetResourceDrifts(v []*ListStackRe
 }
 
 type ListStackResourceDriftsResponseBodyResourceDrifts struct {
-	LogicalResourceId   *string                                                                 `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	StackId             *string                                                                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	PhysicalResourceId  *string                                                                 `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	DriftDetectionTime  *string                                                                 `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	ResourceType        *string                                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ExpectedProperties  *string                                                                 `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
-	ResourceDriftStatus *string                                                                 `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
 	ActualProperties    *string                                                                 `json:"ActualProperties,omitempty" xml:"ActualProperties,omitempty"`
+	DriftDetectionTime  *string                                                                 `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	ExpectedProperties  *string                                                                 `json:"ExpectedProperties,omitempty" xml:"ExpectedProperties,omitempty"`
+	LogicalResourceId   *string                                                                 `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	PhysicalResourceId  *string                                                                 `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
 	PropertyDifferences []*ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences `json:"PropertyDifferences,omitempty" xml:"PropertyDifferences,omitempty" type:"Repeated"`
+	ResourceDriftStatus *string                                                                 `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	ResourceType        *string                                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StackId             *string                                                                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s ListStackResourceDriftsResponseBodyResourceDrifts) String() string {
@@ -6108,18 +6794,8 @@ func (s ListStackResourceDriftsResponseBodyResourceDrifts) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetLogicalResourceId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.LogicalResourceId = &v
-	return s
-}
-
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetStackId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.StackId = &v
-	return s
-}
-
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetPhysicalResourceId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.PhysicalResourceId = &v
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetActualProperties(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.ActualProperties = &v
 	return s
 }
 
@@ -6128,23 +6804,18 @@ func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetDriftDetectionTim
 	return s
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetResourceType(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.ResourceType = &v
-	return s
-}
-
 func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetExpectedProperties(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
 	s.ExpectedProperties = &v
 	return s
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetResourceDriftStatus(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.ResourceDriftStatus = &v
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetLogicalResourceId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.LogicalResourceId = &v
 	return s
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetActualProperties(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
-	s.ActualProperties = &v
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetPhysicalResourceId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.PhysicalResourceId = &v
 	return s
 }
 
@@ -6153,11 +6824,26 @@ func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetPropertyDifferenc
 	return s
 }
 
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetResourceDriftStatus(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.ResourceDriftStatus = &v
+	return s
+}
+
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetResourceType(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListStackResourceDriftsResponseBodyResourceDrifts) SetStackId(v string) *ListStackResourceDriftsResponseBodyResourceDrifts {
+	s.StackId = &v
+	return s
+}
+
 type ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences struct {
 	ActualValue    *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
 	DifferenceType *string `json:"DifferenceType,omitempty" xml:"DifferenceType,omitempty"`
-	PropertyPath   *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
 	ExpectedValue  *string `json:"ExpectedValue,omitempty" xml:"ExpectedValue,omitempty"`
+	PropertyPath   *string `json:"PropertyPath,omitempty" xml:"PropertyPath,omitempty"`
 }
 
 func (s ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) String() string {
@@ -6178,13 +6864,13 @@ func (s *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) S
 	return s
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) SetPropertyPath(v string) *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences {
-	s.PropertyPath = &v
+func (s *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) SetExpectedValue(v string) *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences {
+	s.ExpectedValue = &v
 	return s
 }
 
-func (s *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) SetExpectedValue(v string) *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences {
-	s.ExpectedValue = &v
+func (s *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences) SetPropertyPath(v string) *ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences {
+	s.PropertyPath = &v
 	return s
 }
 
@@ -6212,8 +6898,8 @@ func (s *ListStackResourceDriftsResponse) SetBody(v *ListStackResourceDriftsResp
 }
 
 type ListStackResourcesRequest struct {
-	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s ListStackResourcesRequest) String() string {
@@ -6224,13 +6910,13 @@ func (s ListStackResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackResourcesRequest) SetStackId(v string) *ListStackResourcesRequest {
-	s.StackId = &v
+func (s *ListStackResourcesRequest) SetRegionId(v string) *ListStackResourcesRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *ListStackResourcesRequest) SetRegionId(v string) *ListStackResourcesRequest {
-	s.RegionId = &v
+func (s *ListStackResourcesRequest) SetStackId(v string) *ListStackResourcesRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -6258,17 +6944,17 @@ func (s *ListStackResourcesResponseBody) SetResources(v []*ListStackResourcesRes
 }
 
 type ListStackResourcesResponseBodyResources struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	LogicalResourceId   *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	StackId             *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	PhysicalResourceId  *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
-	DriftDetectionTime  *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	ResourceType        *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
-	StatusReason        *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DriftDetectionTime  *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	LogicalResourceId   *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	PhysicalResourceId  *string `json:"PhysicalResourceId,omitempty" xml:"PhysicalResourceId,omitempty"`
+	ResourceDriftStatus *string `json:"ResourceDriftStatus,omitempty" xml:"ResourceDriftStatus,omitempty"`
+	ResourceType        *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StackId             *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackName           *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason        *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListStackResourcesResponseBodyResources) String() string {
@@ -6279,28 +6965,8 @@ func (s ListStackResourcesResponseBodyResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListStackResourcesResponseBodyResources) SetStatus(v string) *ListStackResourcesResponseBodyResources {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStackResourcesResponseBodyResources) SetLogicalResourceId(v string) *ListStackResourcesResponseBodyResources {
-	s.LogicalResourceId = &v
-	return s
-}
-
-func (s *ListStackResourcesResponseBodyResources) SetUpdateTime(v string) *ListStackResourcesResponseBodyResources {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListStackResourcesResponseBodyResources) SetStackId(v string) *ListStackResourcesResponseBodyResources {
-	s.StackId = &v
-	return s
-}
-
-func (s *ListStackResourcesResponseBodyResources) SetPhysicalResourceId(v string) *ListStackResourcesResponseBodyResources {
-	s.PhysicalResourceId = &v
+func (s *ListStackResourcesResponseBodyResources) SetCreateTime(v string) *ListStackResourcesResponseBodyResources {
+	s.CreateTime = &v
 	return s
 }
 
@@ -6309,8 +6975,13 @@ func (s *ListStackResourcesResponseBodyResources) SetDriftDetectionTime(v string
 	return s
 }
 
-func (s *ListStackResourcesResponseBodyResources) SetResourceType(v string) *ListStackResourcesResponseBodyResources {
-	s.ResourceType = &v
+func (s *ListStackResourcesResponseBodyResources) SetLogicalResourceId(v string) *ListStackResourcesResponseBodyResources {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *ListStackResourcesResponseBodyResources) SetPhysicalResourceId(v string) *ListStackResourcesResponseBodyResources {
+	s.PhysicalResourceId = &v
 	return s
 }
 
@@ -6319,18 +6990,33 @@ func (s *ListStackResourcesResponseBodyResources) SetResourceDriftStatus(v strin
 	return s
 }
 
-func (s *ListStackResourcesResponseBodyResources) SetStatusReason(v string) *ListStackResourcesResponseBodyResources {
-	s.StatusReason = &v
+func (s *ListStackResourcesResponseBodyResources) SetResourceType(v string) *ListStackResourcesResponseBodyResources {
+	s.ResourceType = &v
 	return s
 }
 
-func (s *ListStackResourcesResponseBodyResources) SetCreateTime(v string) *ListStackResourcesResponseBodyResources {
-	s.CreateTime = &v
+func (s *ListStackResourcesResponseBodyResources) SetStackId(v string) *ListStackResourcesResponseBodyResources {
+	s.StackId = &v
 	return s
 }
 
 func (s *ListStackResourcesResponseBodyResources) SetStackName(v string) *ListStackResourcesResponseBodyResources {
 	s.StackName = &v
+	return s
+}
+
+func (s *ListStackResourcesResponseBodyResources) SetStatus(v string) *ListStackResourcesResponseBodyResources {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStackResourcesResponseBodyResources) SetStatusReason(v string) *ListStackResourcesResponseBodyResources {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *ListStackResourcesResponseBodyResources) SetUpdateTime(v string) *ListStackResourcesResponseBodyResources {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -6358,16 +7044,17 @@ func (s *ListStackResourcesResponse) SetBody(v *ListStackResourcesResponseBody) 
 }
 
 type ListStacksRequest struct {
+	PageNumber      *int64                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int64                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentStackId   *string                 `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
 	RegionId        *string                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageNumber      *int64                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ResourceGroupId *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ShowNestedStack *bool                   `json:"ShowNestedStack,omitempty" xml:"ShowNestedStack,omitempty"`
 	StackId         *string                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	Status          []*string               `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	StackIds        []*string               `json:"StackIds,omitempty" xml:"StackIds,omitempty" type:"Repeated"`
 	StackName       []*string               `json:"StackName,omitempty" xml:"StackName,omitempty" type:"Repeated"`
+	Status          []*string               `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	Tag             []*ListStacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ResourceGroupId *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListStacksRequest) String() string {
@@ -6376,6 +7063,11 @@ func (s ListStacksRequest) String() string {
 
 func (s ListStacksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListStacksRequest) SetPageNumber(v int64) *ListStacksRequest {
+	s.PageNumber = &v
+	return s
 }
 
 func (s *ListStacksRequest) SetPageSize(v int64) *ListStacksRequest {
@@ -6393,8 +7085,8 @@ func (s *ListStacksRequest) SetRegionId(v string) *ListStacksRequest {
 	return s
 }
 
-func (s *ListStacksRequest) SetPageNumber(v int64) *ListStacksRequest {
-	s.PageNumber = &v
+func (s *ListStacksRequest) SetResourceGroupId(v string) *ListStacksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6408,8 +7100,8 @@ func (s *ListStacksRequest) SetStackId(v string) *ListStacksRequest {
 	return s
 }
 
-func (s *ListStacksRequest) SetStatus(v []*string) *ListStacksRequest {
-	s.Status = v
+func (s *ListStacksRequest) SetStackIds(v []*string) *ListStacksRequest {
+	s.StackIds = v
 	return s
 }
 
@@ -6418,13 +7110,13 @@ func (s *ListStacksRequest) SetStackName(v []*string) *ListStacksRequest {
 	return s
 }
 
-func (s *ListStacksRequest) SetTag(v []*ListStacksRequestTag) *ListStacksRequest {
-	s.Tag = v
+func (s *ListStacksRequest) SetStatus(v []*string) *ListStacksRequest {
+	s.Status = v
 	return s
 }
 
-func (s *ListStacksRequest) SetResourceGroupId(v string) *ListStacksRequest {
-	s.ResourceGroupId = &v
+func (s *ListStacksRequest) SetTag(v []*ListStacksRequestTag) *ListStacksRequest {
+	s.Tag = v
 	return s
 }
 
@@ -6452,11 +7144,11 @@ func (s *ListStacksRequestTag) SetValue(v string) *ListStacksRequestTag {
 }
 
 type ListStacksResponseBody struct {
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Stacks     []*ListStacksResponseBodyStacks `json:"Stacks,omitempty" xml:"Stacks,omitempty" type:"Repeated"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListStacksResponseBody) String() string {
@@ -6467,8 +7159,8 @@ func (s ListStacksResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody {
-	s.TotalCount = &v
+func (s *ListStacksResponseBody) SetPageNumber(v int32) *ListStacksResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6482,32 +7174,32 @@ func (s *ListStacksResponseBody) SetRequestId(v string) *ListStacksResponseBody 
 	return s
 }
 
-func (s *ListStacksResponseBody) SetPageNumber(v int32) *ListStacksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
 func (s *ListStacksResponseBody) SetStacks(v []*ListStacksResponseBodyStacks) *ListStacksResponseBody {
 	s.Stacks = v
 	return s
 }
 
+func (s *ListStacksResponseBody) SetTotalCount(v int32) *ListStacksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListStacksResponseBodyStacks struct {
-	Status             *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime         *string                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	DriftDetectionTime *string                             `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	StatusReason       *string                             `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	CreateTime         *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DisableRollback    *bool                               `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	Tags               []*ListStacksResponseBodyStacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	StackName          *string                             `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	TimeoutInMinutes   *int32                              `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	RegionId           *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DriftDetectionTime *string                             `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
 	ParentStackId      *string                             `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	StackId            *string                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	StackDriftStatus   *string                             `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	StackType          *string                             `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	RegionId           *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId    *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackDriftStatus   *string                             `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
+	StackId            *string                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackName          *string                             `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackType          *string                             `json:"StackType,omitempty" xml:"StackType,omitempty"`
+	Status             *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason       *string                             `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Tags               []*ListStacksResponseBodyStacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TimeoutInMinutes   *int32                              `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	UpdateTime         *string                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListStacksResponseBodyStacks) String() string {
@@ -6516,26 +7208,6 @@ func (s ListStacksResponseBodyStacks) String() string {
 
 func (s ListStacksResponseBodyStacks) GoString() string {
 	return s.String()
-}
-
-func (s *ListStacksResponseBodyStacks) SetStatus(v string) *ListStacksResponseBodyStacks {
-	s.Status = &v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetUpdateTime(v string) *ListStacksResponseBodyStacks {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetDriftDetectionTime(v string) *ListStacksResponseBodyStacks {
-	s.DriftDetectionTime = &v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetStatusReason(v string) *ListStacksResponseBodyStacks {
-	s.StatusReason = &v
-	return s
 }
 
 func (s *ListStacksResponseBodyStacks) SetCreateTime(v string) *ListStacksResponseBodyStacks {
@@ -6548,23 +7220,8 @@ func (s *ListStacksResponseBodyStacks) SetDisableRollback(v bool) *ListStacksRes
 	return s
 }
 
-func (s *ListStacksResponseBodyStacks) SetTags(v []*ListStacksResponseBodyStacksTags) *ListStacksResponseBodyStacks {
-	s.Tags = v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetStackName(v string) *ListStacksResponseBodyStacks {
-	s.StackName = &v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetTimeoutInMinutes(v int32) *ListStacksResponseBodyStacks {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *ListStacksResponseBodyStacks) SetRegionId(v string) *ListStacksResponseBodyStacks {
-	s.RegionId = &v
+func (s *ListStacksResponseBodyStacks) SetDriftDetectionTime(v string) *ListStacksResponseBodyStacks {
+	s.DriftDetectionTime = &v
 	return s
 }
 
@@ -6573,8 +7230,13 @@ func (s *ListStacksResponseBodyStacks) SetParentStackId(v string) *ListStacksRes
 	return s
 }
 
-func (s *ListStacksResponseBodyStacks) SetStackId(v string) *ListStacksResponseBodyStacks {
-	s.StackId = &v
+func (s *ListStacksResponseBodyStacks) SetRegionId(v string) *ListStacksResponseBodyStacks {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetResourceGroupId(v string) *ListStacksResponseBodyStacks {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6583,13 +7245,43 @@ func (s *ListStacksResponseBodyStacks) SetStackDriftStatus(v string) *ListStacks
 	return s
 }
 
+func (s *ListStacksResponseBodyStacks) SetStackId(v string) *ListStacksResponseBodyStacks {
+	s.StackId = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetStackName(v string) *ListStacksResponseBodyStacks {
+	s.StackName = &v
+	return s
+}
+
 func (s *ListStacksResponseBodyStacks) SetStackType(v string) *ListStacksResponseBodyStacks {
 	s.StackType = &v
 	return s
 }
 
-func (s *ListStacksResponseBodyStacks) SetResourceGroupId(v string) *ListStacksResponseBodyStacks {
-	s.ResourceGroupId = &v
+func (s *ListStacksResponseBodyStacks) SetStatus(v string) *ListStacksResponseBodyStacks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetStatusReason(v string) *ListStacksResponseBodyStacks {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetTags(v []*ListStacksResponseBodyStacksTags) *ListStacksResponseBodyStacks {
+	s.Tags = v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetTimeoutInMinutes(v int32) *ListStacksResponseBodyStacks {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetUpdateTime(v string) *ListStacksResponseBodyStacks {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -6640,9 +7332,9 @@ func (s *ListStacksResponse) SetBody(v *ListStacksResponseBody) *ListStacksRespo
 }
 
 type ListTagKeysRequest struct {
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -6651,6 +7343,11 @@ func (s ListTagKeysRequest) String() string {
 
 func (s ListTagKeysRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagKeysRequest) SetNextToken(v string) *ListTagKeysRequest {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListTagKeysRequest) SetRegionId(v string) *ListTagKeysRequest {
@@ -6663,15 +7360,10 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 	return s
 }
 
-func (s *ListTagKeysRequest) SetNextToken(v string) *ListTagKeysRequest {
-	s.NextToken = &v
-	return s
-}
-
 type ListTagKeysResponseBody struct {
+	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -6682,6 +7374,11 @@ func (s ListTagKeysResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListTagKeysResponseBody) SetKeys(v []*string) *ListTagKeysResponseBody {
+	s.Keys = v
+	return s
+}
+
 func (s *ListTagKeysResponseBody) SetNextToken(v string) *ListTagKeysResponseBody {
 	s.NextToken = &v
 	return s
@@ -6689,11 +7386,6 @@ func (s *ListTagKeysResponseBody) SetNextToken(v string) *ListTagKeysResponseBod
 
 func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListTagKeysResponseBody) SetKeys(v []*string) *ListTagKeysResponseBody {
-	s.Keys = v
 	return s
 }
 
@@ -6721,10 +7413,10 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -6736,23 +7428,23 @@ func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
 func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
 	s.NextToken = &v
 	return s
 }
 
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
 	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6814,10 +7506,10 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -6828,8 +7520,8 @@ func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagValue = &v
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
 	return s
 }
 
@@ -6838,13 +7530,13 @@ func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *Li
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
-	s.ResourceId = &v
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
 	return s
 }
 
-func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
-	s.TagKey = &v
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
 	return s
 }
 
@@ -6872,10 +7564,10 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s ListTagValuesRequest) String() string {
@@ -6886,13 +7578,8 @@ func (s ListTagValuesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagValuesRequest) SetRegionId(v string) *ListTagValuesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
-	s.ResourceType = &v
+func (s *ListTagValuesRequest) SetKey(v string) *ListTagValuesRequest {
+	s.Key = &v
 	return s
 }
 
@@ -6901,8 +7588,13 @@ func (s *ListTagValuesRequest) SetNextToken(v string) *ListTagValuesRequest {
 	return s
 }
 
-func (s *ListTagValuesRequest) SetKey(v string) *ListTagValuesRequest {
-	s.Key = &v
+func (s *ListTagValuesRequest) SetRegionId(v string) *ListTagValuesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6958,214 +7650,9 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 	return s
 }
 
-type ListTemplatesRequest struct {
-	PageNumber      *int64                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TemplateName    *string                    `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ShareType       *string                    `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tag             []*ListTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s ListTemplatesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTemplatesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTemplatesRequest) SetPageNumber(v int64) *ListTemplatesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetPageSize(v int64) *ListTemplatesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetShareType(v string) *ListTemplatesRequest {
-	s.ShareType = &v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetTag(v []*ListTemplatesRequestTag) *ListTemplatesRequest {
-	s.Tag = v
-	return s
-}
-
-func (s *ListTemplatesRequest) SetResourceGroupId(v string) *ListTemplatesRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type ListTemplatesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListTemplatesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTemplatesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListTemplatesRequestTag) SetKey(v string) *ListTemplatesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *ListTemplatesRequestTag) SetValue(v string) *ListTemplatesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type ListTemplatesResponseBody struct {
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-}
-
-func (s ListTemplatesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTemplatesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBody) SetPageSize(v int32) *ListTemplatesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBody) SetRequestId(v string) *ListTemplatesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBody) SetPageNumber(v int32) *ListTemplatesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyTemplates) *ListTemplatesResponseBody {
-	s.Templates = v
-	return s
-}
-
-type ListTemplatesResponseBodyTemplates struct {
-	TemplateARN     *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ShareType       *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s ListTemplatesResponseBodyTemplates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTemplatesResponseBodyTemplates) GoString() string {
-	return s.String()
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateARN(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateARN = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTemplatesResponseBodyTemplates {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetDescription(v string) *ListTemplatesResponseBodyTemplates {
-	s.Description = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetCreateTime(v string) *ListTemplatesResponseBodyTemplates {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateName(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateVersion(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateVersion = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListTemplatesResponseBodyTemplates {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetOwnerId(v string) *ListTemplatesResponseBodyTemplates {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetShareType(v string) *ListTemplatesResponseBodyTemplates {
-	s.ShareType = &v
-	return s
-}
-
-func (s *ListTemplatesResponseBodyTemplates) SetResourceGroupId(v string) *ListTemplatesResponseBodyTemplates {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type ListTemplatesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTemplatesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTemplatesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTemplatesResponse) SetHeaders(v map[string]*string) *ListTemplatesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTemplatesResponse {
-	s.Body = v
-	return s
-}
-
 type ListTemplateVersionsRequest struct {
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -7177,13 +7664,13 @@ func (s ListTemplateVersionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTemplateVersionsRequest) SetNextToken(v string) *ListTemplateVersionsRequest {
-	s.NextToken = &v
+func (s *ListTemplateVersionsRequest) SetMaxResults(v int64) *ListTemplateVersionsRequest {
+	s.MaxResults = &v
 	return s
 }
 
-func (s *ListTemplateVersionsRequest) SetMaxResults(v int64) *ListTemplateVersionsRequest {
-	s.MaxResults = &v
+func (s *ListTemplateVersionsRequest) SetNextToken(v string) *ListTemplateVersionsRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -7222,12 +7709,12 @@ func (s *ListTemplateVersionsResponseBody) SetVersions(v []*ListTemplateVersions
 }
 
 type ListTemplateVersionsResponseBodyVersions struct {
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTemplateVersionsResponseBodyVersions) String() string {
@@ -7238,8 +7725,8 @@ func (s ListTemplateVersionsResponseBodyVersions) GoString() string {
 	return s.String()
 }
 
-func (s *ListTemplateVersionsResponseBodyVersions) SetUpdateTime(v string) *ListTemplateVersionsResponseBodyVersions {
-	s.UpdateTime = &v
+func (s *ListTemplateVersionsResponseBodyVersions) SetCreateTime(v string) *ListTemplateVersionsResponseBodyVersions {
+	s.CreateTime = &v
 	return s
 }
 
@@ -7248,8 +7735,8 @@ func (s *ListTemplateVersionsResponseBodyVersions) SetDescription(v string) *Lis
 	return s
 }
 
-func (s *ListTemplateVersionsResponseBodyVersions) SetCreateTime(v string) *ListTemplateVersionsResponseBodyVersions {
-	s.CreateTime = &v
+func (s *ListTemplateVersionsResponseBodyVersions) SetTemplateId(v string) *ListTemplateVersionsResponseBodyVersions {
+	s.TemplateId = &v
 	return s
 }
 
@@ -7258,13 +7745,13 @@ func (s *ListTemplateVersionsResponseBodyVersions) SetTemplateName(v string) *Li
 	return s
 }
 
-func (s *ListTemplateVersionsResponseBodyVersions) SetTemplateId(v string) *ListTemplateVersionsResponseBodyVersions {
-	s.TemplateId = &v
+func (s *ListTemplateVersionsResponseBodyVersions) SetTemplateVersion(v string) *ListTemplateVersionsResponseBodyVersions {
+	s.TemplateVersion = &v
 	return s
 }
 
-func (s *ListTemplateVersionsResponseBodyVersions) SetTemplateVersion(v string) *ListTemplateVersionsResponseBodyVersions {
-	s.TemplateVersion = &v
+func (s *ListTemplateVersionsResponseBodyVersions) SetUpdateTime(v string) *ListTemplateVersionsResponseBodyVersions {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -7291,11 +7778,216 @@ func (s *ListTemplateVersionsResponse) SetBody(v *ListTemplateVersionsResponseBo
 	return s
 }
 
+type ListTemplatesRequest struct {
+	PageNumber      *int64                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType       *string                    `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Tag             []*ListTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TemplateName    *string                    `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesRequest) SetPageNumber(v int64) *ListTemplatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetPageSize(v int64) *ListTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetResourceGroupId(v string) *ListTemplatesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetShareType(v string) *ListTemplatesRequest {
+	s.ShareType = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetTag(v []*ListTemplatesRequestTag) *ListTemplatesRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type ListTemplatesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTemplatesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesRequestTag) SetKey(v string) *ListTemplatesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTemplatesRequestTag) SetValue(v string) *ListTemplatesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTemplatesResponseBody struct {
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponseBody) SetPageNumber(v int32) *ListTemplatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetPageSize(v int32) *ListTemplatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetRequestId(v string) *ListTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyTemplates) *ListTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTemplatesResponseBodyTemplates struct {
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType       *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	TemplateARN     *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetCreateTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetDescription(v string) *ListTemplatesResponseBodyTemplates {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetOwnerId(v string) *ListTemplatesResponseBodyTemplates {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetResourceGroupId(v string) *ListTemplatesResponseBodyTemplates {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetShareType(v string) *ListTemplatesResponseBodyTemplates {
+	s.ShareType = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateARN(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateARN = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateId(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateName(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetTemplateVersion(v string) *ListTemplatesResponseBodyTemplates {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTemplatesResponseBodyTemplates {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListTemplatesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponse) SetHeaders(v map[string]*string) *ListTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type MoveResourceGroupRequest struct {
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -7306,8 +7998,13 @@ func (s MoveResourceGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
-	s.ResourceType = &v
+func (s *MoveResourceGroupRequest) SetNewResourceGroupId(v string) *MoveResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetRegionId(v string) *MoveResourceGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7316,13 +8013,8 @@ func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupReq
 	return s
 }
 
-func (s *MoveResourceGroupRequest) SetNewResourceGroupId(v string) *MoveResourceGroupRequest {
-	s.NewResourceGroupId = &v
-	return s
-}
-
-func (s *MoveResourceGroupRequest) SetRegionId(v string) *MoveResourceGroupRequest {
-	s.RegionId = &v
+func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -7368,19 +8060,19 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	DisableRollback  *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	TimeoutInMinutes *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	TemplateBody     *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	StackPolicyURL   *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	RegionId         *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackPolicyBody  *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackName        *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	ClientToken      *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	TemplateURL      *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateId       *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion  *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters       []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	DisableRollback  *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	Parallelism      *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters       []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId         *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackName        *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody  *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL   *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody     *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId       *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL      *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion  *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s PreviewStackRequest) String() string {
@@ -7391,58 +8083,18 @@ func (s PreviewStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PreviewStackRequest) SetDisableRollback(v bool) *PreviewStackRequest {
-	s.DisableRollback = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetTimeoutInMinutes(v int64) *PreviewStackRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetTemplateBody(v string) *PreviewStackRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetStackPolicyURL(v string) *PreviewStackRequest {
-	s.StackPolicyURL = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetRegionId(v string) *PreviewStackRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetStackPolicyBody(v string) *PreviewStackRequest {
-	s.StackPolicyBody = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetStackName(v string) *PreviewStackRequest {
-	s.StackName = &v
-	return s
-}
-
 func (s *PreviewStackRequest) SetClientToken(v string) *PreviewStackRequest {
 	s.ClientToken = &v
 	return s
 }
 
-func (s *PreviewStackRequest) SetTemplateURL(v string) *PreviewStackRequest {
-	s.TemplateURL = &v
+func (s *PreviewStackRequest) SetDisableRollback(v bool) *PreviewStackRequest {
+	s.DisableRollback = &v
 	return s
 }
 
-func (s *PreviewStackRequest) SetTemplateId(v string) *PreviewStackRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *PreviewStackRequest) SetTemplateVersion(v string) *PreviewStackRequest {
-	s.TemplateVersion = &v
+func (s *PreviewStackRequest) SetParallelism(v int64) *PreviewStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -7451,8 +8103,48 @@ func (s *PreviewStackRequest) SetParameters(v []*PreviewStackRequestParameters) 
 	return s
 }
 
-func (s *PreviewStackRequest) SetParallelism(v int64) *PreviewStackRequest {
-	s.Parallelism = &v
+func (s *PreviewStackRequest) SetRegionId(v string) *PreviewStackRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetStackName(v string) *PreviewStackRequest {
+	s.StackName = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetStackPolicyBody(v string) *PreviewStackRequest {
+	s.StackPolicyBody = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetStackPolicyURL(v string) *PreviewStackRequest {
+	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateBody(v string) *PreviewStackRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateId(v string) *PreviewStackRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateURL(v string) *PreviewStackRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateVersion(v string) *PreviewStackRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTimeoutInMinutes(v int64) *PreviewStackRequest {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -7503,15 +8195,15 @@ func (s *PreviewStackResponseBody) SetStack(v *PreviewStackResponseBodyStack) *P
 }
 
 type PreviewStackResponseBodyStack struct {
-	TemplateDescription *string                                    `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	Parameters          []*PreviewStackResponseBodyStackParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	Description         *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback     *bool                                      `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	StackName           *string                                    `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	TimeoutInMinutes    *int32                                     `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	StackPolicyBody     map[string]interface{}                     `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	Resources           []*PreviewStackResponseBodyStackResources  `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Parameters          []*PreviewStackResponseBodyStackParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId            *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resources           []*PreviewStackResponseBodyStackResources  `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	StackName           *string                                    `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody     map[string]interface{}                     `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	TemplateDescription *string                                    `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	TimeoutInMinutes    *int32                                     `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s PreviewStackResponseBodyStack) String() string {
@@ -7520,16 +8212,6 @@ func (s PreviewStackResponseBodyStack) String() string {
 
 func (s PreviewStackResponseBodyStack) GoString() string {
 	return s.String()
-}
-
-func (s *PreviewStackResponseBodyStack) SetTemplateDescription(v string) *PreviewStackResponseBodyStack {
-	s.TemplateDescription = &v
-	return s
-}
-
-func (s *PreviewStackResponseBodyStack) SetParameters(v []*PreviewStackResponseBodyStackParameters) *PreviewStackResponseBodyStack {
-	s.Parameters = v
-	return s
 }
 
 func (s *PreviewStackResponseBodyStack) SetDescription(v string) *PreviewStackResponseBodyStack {
@@ -7542,18 +8224,13 @@ func (s *PreviewStackResponseBodyStack) SetDisableRollback(v bool) *PreviewStack
 	return s
 }
 
-func (s *PreviewStackResponseBodyStack) SetStackName(v string) *PreviewStackResponseBodyStack {
-	s.StackName = &v
+func (s *PreviewStackResponseBodyStack) SetParameters(v []*PreviewStackResponseBodyStackParameters) *PreviewStackResponseBodyStack {
+	s.Parameters = v
 	return s
 }
 
-func (s *PreviewStackResponseBodyStack) SetTimeoutInMinutes(v int32) *PreviewStackResponseBodyStack {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *PreviewStackResponseBodyStack) SetStackPolicyBody(v map[string]interface{}) *PreviewStackResponseBodyStack {
-	s.StackPolicyBody = v
+func (s *PreviewStackResponseBodyStack) SetRegionId(v string) *PreviewStackResponseBodyStack {
+	s.RegionId = &v
 	return s
 }
 
@@ -7562,8 +8239,23 @@ func (s *PreviewStackResponseBodyStack) SetResources(v []*PreviewStackResponseBo
 	return s
 }
 
-func (s *PreviewStackResponseBodyStack) SetRegionId(v string) *PreviewStackResponseBodyStack {
-	s.RegionId = &v
+func (s *PreviewStackResponseBodyStack) SetStackName(v string) *PreviewStackResponseBodyStack {
+	s.StackName = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStack) SetStackPolicyBody(v map[string]interface{}) *PreviewStackResponseBodyStack {
+	s.StackPolicyBody = v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStack) SetTemplateDescription(v string) *PreviewStackResponseBodyStack {
+	s.TemplateDescription = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStack) SetTimeoutInMinutes(v int32) *PreviewStackResponseBodyStack {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -7591,12 +8283,12 @@ func (s *PreviewStackResponseBodyStackParameters) SetParameterValue(v string) *P
 }
 
 type PreviewStackResponseBodyStackResources struct {
-	LogicalResourceId *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	ResourceType      *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Stack             map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
-	RequiredBy        []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
+	LogicalResourceId *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	Properties        map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequiredBy        []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
+	ResourceType      *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Stack             map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
 }
 
 func (s PreviewStackResponseBodyStackResources) String() string {
@@ -7607,23 +8299,18 @@ func (s PreviewStackResponseBodyStackResources) GoString() string {
 	return s.String()
 }
 
-func (s *PreviewStackResponseBodyStackResources) SetLogicalResourceId(v string) *PreviewStackResponseBodyStackResources {
-	s.LogicalResourceId = &v
-	return s
-}
-
-func (s *PreviewStackResponseBodyStackResources) SetResourceType(v string) *PreviewStackResponseBodyStackResources {
-	s.ResourceType = &v
-	return s
-}
-
 func (s *PreviewStackResponseBodyStackResources) SetDescription(v string) *PreviewStackResponseBodyStackResources {
 	s.Description = &v
 	return s
 }
 
-func (s *PreviewStackResponseBodyStackResources) SetStack(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
-	s.Stack = v
+func (s *PreviewStackResponseBodyStackResources) SetLogicalResourceId(v string) *PreviewStackResponseBodyStackResources {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetProperties(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
+	s.Properties = v
 	return s
 }
 
@@ -7632,8 +8319,13 @@ func (s *PreviewStackResponseBodyStackResources) SetRequiredBy(v []*string) *Pre
 	return s
 }
 
-func (s *PreviewStackResponseBodyStackResources) SetProperties(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
-	s.Properties = v
+func (s *PreviewStackResponseBodyStackResources) SetResourceType(v string) *PreviewStackResponseBodyStackResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetStack(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
+	s.Stack = v
 	return s
 }
 
@@ -7661,9 +8353,9 @@ func (s *PreviewStackResponse) SetBody(v *PreviewStackResponseBody) *PreviewStac
 }
 
 type SetDeletionProtectionRequest struct {
-	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId            *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s SetDeletionProtectionRequest) String() string {
@@ -7674,11 +8366,6 @@ func (s SetDeletionProtectionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SetDeletionProtectionRequest) SetStackId(v string) *SetDeletionProtectionRequest {
-	s.StackId = &v
-	return s
-}
-
 func (s *SetDeletionProtectionRequest) SetDeletionProtection(v string) *SetDeletionProtectionRequest {
 	s.DeletionProtection = &v
 	return s
@@ -7686,6 +8373,11 @@ func (s *SetDeletionProtectionRequest) SetDeletionProtection(v string) *SetDelet
 
 func (s *SetDeletionProtectionRequest) SetRegionId(v string) *SetDeletionProtectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SetDeletionProtectionRequest) SetStackId(v string) *SetDeletionProtectionRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -7730,8 +8422,8 @@ func (s *SetDeletionProtectionResponse) SetBody(v *SetDeletionProtectionResponse
 }
 
 type SetStackPolicyRequest struct {
-	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId         *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackPolicyBody *string `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 	StackPolicyURL  *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
 }
@@ -7744,13 +8436,13 @@ func (s SetStackPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SetStackPolicyRequest) SetStackId(v string) *SetStackPolicyRequest {
-	s.StackId = &v
+func (s *SetStackPolicyRequest) SetRegionId(v string) *SetStackPolicyRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *SetStackPolicyRequest) SetRegionId(v string) *SetStackPolicyRequest {
-	s.RegionId = &v
+func (s *SetStackPolicyRequest) SetStackId(v string) *SetStackPolicyRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -7805,11 +8497,11 @@ func (s *SetStackPolicyResponse) SetBody(v *SetStackPolicyResponseBody) *SetStac
 }
 
 type SetTemplatePermissionRequest struct {
-	ShareOption     *string   `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
-	VersionOption   *string   `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
-	TemplateVersion *string   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TemplateId      *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	AccountIds      []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	ShareOption     *string   `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
+	TemplateId      *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateVersion *string   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	VersionOption   *string   `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 }
 
 func (s SetTemplatePermissionRequest) String() string {
@@ -7820,18 +8512,13 @@ func (s SetTemplatePermissionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetTemplatePermissionRequest) SetAccountIds(v []*string) *SetTemplatePermissionRequest {
+	s.AccountIds = v
+	return s
+}
+
 func (s *SetTemplatePermissionRequest) SetShareOption(v string) *SetTemplatePermissionRequest {
 	s.ShareOption = &v
-	return s
-}
-
-func (s *SetTemplatePermissionRequest) SetVersionOption(v string) *SetTemplatePermissionRequest {
-	s.VersionOption = &v
-	return s
-}
-
-func (s *SetTemplatePermissionRequest) SetTemplateVersion(v string) *SetTemplatePermissionRequest {
-	s.TemplateVersion = &v
 	return s
 }
 
@@ -7840,8 +8527,13 @@ func (s *SetTemplatePermissionRequest) SetTemplateId(v string) *SetTemplatePermi
 	return s
 }
 
-func (s *SetTemplatePermissionRequest) SetAccountIds(v []*string) *SetTemplatePermissionRequest {
-	s.AccountIds = v
+func (s *SetTemplatePermissionRequest) SetTemplateVersion(v string) *SetTemplatePermissionRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *SetTemplatePermissionRequest) SetVersionOption(v string) *SetTemplatePermissionRequest {
+	s.VersionOption = &v
 	return s
 }
 
@@ -7886,12 +8578,12 @@ func (s *SetTemplatePermissionResponse) SetBody(v *SetTemplatePermissionResponse
 }
 
 type SignalResourceRequest struct {
-	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UniqueId          *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UniqueId          *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 }
 
 func (s SignalResourceRequest) String() string {
@@ -7900,6 +8592,21 @@ func (s SignalResourceRequest) String() string {
 
 func (s SignalResourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SignalResourceRequest) SetClientToken(v string) *SignalResourceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SignalResourceRequest) SetLogicalResourceId(v string) *SignalResourceRequest {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *SignalResourceRequest) SetRegionId(v string) *SignalResourceRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *SignalResourceRequest) SetStackId(v string) *SignalResourceRequest {
@@ -7912,23 +8619,8 @@ func (s *SignalResourceRequest) SetStatus(v string) *SignalResourceRequest {
 	return s
 }
 
-func (s *SignalResourceRequest) SetRegionId(v string) *SignalResourceRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *SignalResourceRequest) SetUniqueId(v string) *SignalResourceRequest {
 	s.UniqueId = &v
-	return s
-}
-
-func (s *SignalResourceRequest) SetClientToken(v string) *SignalResourceRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *SignalResourceRequest) SetLogicalResourceId(v string) *SignalResourceRequest {
-	s.LogicalResourceId = &v
 	return s
 }
 
@@ -7973,8 +8665,8 @@ func (s *SignalResourceResponse) SetBody(v *SignalResourceResponseBody) *SignalR
 }
 
 type StopStackGroupOperationRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopStackGroupOperationRequest) String() string {
@@ -7985,13 +8677,13 @@ func (s StopStackGroupOperationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *StopStackGroupOperationRequest) SetRegionId(v string) *StopStackGroupOperationRequest {
-	s.RegionId = &v
+func (s *StopStackGroupOperationRequest) SetOperationId(v string) *StopStackGroupOperationRequest {
+	s.OperationId = &v
 	return s
 }
 
-func (s *StopStackGroupOperationRequest) SetOperationId(v string) *StopStackGroupOperationRequest {
-	s.OperationId = &v
+func (s *StopStackGroupOperationRequest) SetRegionId(v string) *StopStackGroupOperationRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8037,8 +8729,8 @@ func (s *StopStackGroupOperationResponse) SetBody(v *StopStackGroupOperationResp
 
 type TagResourcesRequest struct {
 	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -8055,13 +8747,13 @@ func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
 	return s
 }
 
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -8134,10 +8826,10 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -8149,23 +8841,23 @@ func (s UntagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
 	return s
 }
 
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
 	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -8215,25 +8907,25 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateStackRequest struct {
-	StackId                     *string                         `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	ClientToken                 *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	StackPolicyDuringUpdateBody *string                         `json:"StackPolicyDuringUpdateBody,omitempty" xml:"StackPolicyDuringUpdateBody,omitempty"`
-	TimeoutInMinutes            *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
-	TemplateBody                *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	StackPolicyURL              *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	StackPolicyDuringUpdateURL  *string                         `json:"StackPolicyDuringUpdateURL,omitempty" xml:"StackPolicyDuringUpdateURL,omitempty"`
-	StackPolicyBody             *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	UsePreviousParameters       *bool                           `json:"UsePreviousParameters,omitempty" xml:"UsePreviousParameters,omitempty"`
-	RegionId                    *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	DisableRollback             *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	TemplateURL                 *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	RamRoleName                 *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	ReplacementOption           *string                         `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
-	TemplateId                  *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion             *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Parameters                  []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	Tags                        []*UpdateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Parallelism                 *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters                  []*UpdateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName                 *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId                    *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplacementOption           *string                         `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
+	StackId                     *string                         `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackPolicyBody             *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyDuringUpdateBody *string                         `json:"StackPolicyDuringUpdateBody,omitempty" xml:"StackPolicyDuringUpdateBody,omitempty"`
+	StackPolicyDuringUpdateURL  *string                         `json:"StackPolicyDuringUpdateURL,omitempty" xml:"StackPolicyDuringUpdateURL,omitempty"`
+	StackPolicyURL              *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	Tags                        []*UpdateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody                *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId                  *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL                 *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion             *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes            *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	UsePreviousParameters       *bool                           `json:"UsePreviousParameters,omitempty" xml:"UsePreviousParameters,omitempty"`
 }
 
 func (s UpdateStackRequest) String() string {
@@ -8244,53 +8936,8 @@ func (s UpdateStackRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackRequest) SetStackId(v string) *UpdateStackRequest {
-	s.StackId = &v
-	return s
-}
-
 func (s *UpdateStackRequest) SetClientToken(v string) *UpdateStackRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetStackPolicyDuringUpdateBody(v string) *UpdateStackRequest {
-	s.StackPolicyDuringUpdateBody = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetTimeoutInMinutes(v int64) *UpdateStackRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetTemplateBody(v string) *UpdateStackRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetStackPolicyURL(v string) *UpdateStackRequest {
-	s.StackPolicyURL = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetStackPolicyDuringUpdateURL(v string) *UpdateStackRequest {
-	s.StackPolicyDuringUpdateURL = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetStackPolicyBody(v string) *UpdateStackRequest {
-	s.StackPolicyBody = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetUsePreviousParameters(v bool) *UpdateStackRequest {
-	s.UsePreviousParameters = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetRegionId(v string) *UpdateStackRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8299,28 +8946,8 @@ func (s *UpdateStackRequest) SetDisableRollback(v bool) *UpdateStackRequest {
 	return s
 }
 
-func (s *UpdateStackRequest) SetTemplateURL(v string) *UpdateStackRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetRamRoleName(v string) *UpdateStackRequest {
-	s.RamRoleName = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetReplacementOption(v string) *UpdateStackRequest {
-	s.ReplacementOption = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetTemplateId(v string) *UpdateStackRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateStackRequest) SetTemplateVersion(v string) *UpdateStackRequest {
-	s.TemplateVersion = &v
+func (s *UpdateStackRequest) SetParallelism(v int64) *UpdateStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -8329,13 +8956,78 @@ func (s *UpdateStackRequest) SetParameters(v []*UpdateStackRequestParameters) *U
 	return s
 }
 
+func (s *UpdateStackRequest) SetRamRoleName(v string) *UpdateStackRequest {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetRegionId(v string) *UpdateStackRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetReplacementOption(v string) *UpdateStackRequest {
+	s.ReplacementOption = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetStackId(v string) *UpdateStackRequest {
+	s.StackId = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetStackPolicyBody(v string) *UpdateStackRequest {
+	s.StackPolicyBody = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetStackPolicyDuringUpdateBody(v string) *UpdateStackRequest {
+	s.StackPolicyDuringUpdateBody = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetStackPolicyDuringUpdateURL(v string) *UpdateStackRequest {
+	s.StackPolicyDuringUpdateURL = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetStackPolicyURL(v string) *UpdateStackRequest {
+	s.StackPolicyURL = &v
+	return s
+}
+
 func (s *UpdateStackRequest) SetTags(v []*UpdateStackRequestTags) *UpdateStackRequest {
 	s.Tags = v
 	return s
 }
 
-func (s *UpdateStackRequest) SetParallelism(v int64) *UpdateStackRequest {
-	s.Parallelism = &v
+func (s *UpdateStackRequest) SetTemplateBody(v string) *UpdateStackRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetTemplateId(v string) *UpdateStackRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetTemplateURL(v string) *UpdateStackRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetTemplateVersion(v string) *UpdateStackRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetTimeoutInMinutes(v int64) *UpdateStackRequest {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetUsePreviousParameters(v bool) *UpdateStackRequest {
+	s.UsePreviousParameters = &v
 	return s
 }
 
@@ -8432,24 +9124,24 @@ func (s *UpdateStackResponse) SetBody(v *UpdateStackResponseBody) *UpdateStackRe
 }
 
 type UpdateStackGroupRequest struct {
-	RegionId               *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName         *string                                   `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Description            *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
 	AccountIds             []*string                                 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	RegionIds              []*string                                 `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	TemplateBody           *string                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL            *string                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	AdministrationRoleName *string                                   `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
+	AutoDeployment         *UpdateStackGroupRequestAutoDeployment    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
 	ClientToken            *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets      *UpdateStackGroupRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	Description            *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName      *string                                   `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
 	OperationDescription   *string                                   `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferences   map[string]interface{}                    `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	AdministrationRoleName *string                                   `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	ExecutionRoleName      *string                                   `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	TemplateId             *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion        *string                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters             []*UpdateStackGroupRequestParameters      `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	PermissionModel        *string                                   `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	AutoDeployment         *UpdateStackGroupRequestAutoDeployment    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty" type:"Struct"`
-	DeploymentTargets      *UpdateStackGroupRequestDeploymentTargets `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	RegionId               *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds              []*string                                 `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName         *string                                   `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody           *string                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId             *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL            *string                                   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion        *string                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s UpdateStackGroupRequest) String() string {
@@ -8460,13 +9152,28 @@ func (s UpdateStackGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackGroupRequest) SetRegionId(v string) *UpdateStackGroupRequest {
-	s.RegionId = &v
+func (s *UpdateStackGroupRequest) SetAccountIds(v []*string) *UpdateStackGroupRequest {
+	s.AccountIds = v
 	return s
 }
 
-func (s *UpdateStackGroupRequest) SetStackGroupName(v string) *UpdateStackGroupRequest {
-	s.StackGroupName = &v
+func (s *UpdateStackGroupRequest) SetAdministrationRoleName(v string) *UpdateStackGroupRequest {
+	s.AdministrationRoleName = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetAutoDeployment(v *UpdateStackGroupRequestAutoDeployment) *UpdateStackGroupRequest {
+	s.AutoDeployment = v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetClientToken(v string) *UpdateStackGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetDeploymentTargets(v *UpdateStackGroupRequestDeploymentTargets) *UpdateStackGroupRequest {
+	s.DeploymentTargets = v
 	return s
 }
 
@@ -8475,28 +9182,8 @@ func (s *UpdateStackGroupRequest) SetDescription(v string) *UpdateStackGroupRequ
 	return s
 }
 
-func (s *UpdateStackGroupRequest) SetAccountIds(v []*string) *UpdateStackGroupRequest {
-	s.AccountIds = v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetRegionIds(v []*string) *UpdateStackGroupRequest {
-	s.RegionIds = v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetTemplateBody(v string) *UpdateStackGroupRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetTemplateURL(v string) *UpdateStackGroupRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetClientToken(v string) *UpdateStackGroupRequest {
-	s.ClientToken = &v
+func (s *UpdateStackGroupRequest) SetExecutionRoleName(v string) *UpdateStackGroupRequest {
+	s.ExecutionRoleName = &v
 	return s
 }
 
@@ -8510,26 +9197,6 @@ func (s *UpdateStackGroupRequest) SetOperationPreferences(v map[string]interface
 	return s
 }
 
-func (s *UpdateStackGroupRequest) SetAdministrationRoleName(v string) *UpdateStackGroupRequest {
-	s.AdministrationRoleName = &v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetExecutionRoleName(v string) *UpdateStackGroupRequest {
-	s.ExecutionRoleName = &v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetTemplateId(v string) *UpdateStackGroupRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateStackGroupRequest) SetTemplateVersion(v string) *UpdateStackGroupRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
 func (s *UpdateStackGroupRequest) SetParameters(v []*UpdateStackGroupRequestParameters) *UpdateStackGroupRequest {
 	s.Parameters = v
 	return s
@@ -8540,36 +9207,38 @@ func (s *UpdateStackGroupRequest) SetPermissionModel(v string) *UpdateStackGroup
 	return s
 }
 
-func (s *UpdateStackGroupRequest) SetAutoDeployment(v *UpdateStackGroupRequestAutoDeployment) *UpdateStackGroupRequest {
-	s.AutoDeployment = v
+func (s *UpdateStackGroupRequest) SetRegionId(v string) *UpdateStackGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *UpdateStackGroupRequest) SetDeploymentTargets(v *UpdateStackGroupRequestDeploymentTargets) *UpdateStackGroupRequest {
-	s.DeploymentTargets = v
+func (s *UpdateStackGroupRequest) SetRegionIds(v []*string) *UpdateStackGroupRequest {
+	s.RegionIds = v
 	return s
 }
 
-type UpdateStackGroupRequestParameters struct {
-	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-}
-
-func (s UpdateStackGroupRequestParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStackGroupRequestParameters) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStackGroupRequestParameters) SetParameterKey(v string) *UpdateStackGroupRequestParameters {
-	s.ParameterKey = &v
+func (s *UpdateStackGroupRequest) SetStackGroupName(v string) *UpdateStackGroupRequest {
+	s.StackGroupName = &v
 	return s
 }
 
-func (s *UpdateStackGroupRequestParameters) SetParameterValue(v string) *UpdateStackGroupRequestParameters {
-	s.ParameterValue = &v
+func (s *UpdateStackGroupRequest) SetTemplateBody(v string) *UpdateStackGroupRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetTemplateId(v string) *UpdateStackGroupRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetTemplateURL(v string) *UpdateStackGroupRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequest) SetTemplateVersion(v string) *UpdateStackGroupRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -8597,8 +9266,8 @@ func (s *UpdateStackGroupRequestAutoDeployment) SetRetainStacksOnAccountRemoval(
 }
 
 type UpdateStackGroupRequestDeploymentTargets struct {
-	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateStackGroupRequestDeploymentTargets) String() string {
@@ -8609,35 +9278,58 @@ func (s UpdateStackGroupRequestDeploymentTargets) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackGroupRequestDeploymentTargets) SetRdFolderIds(v []*string) *UpdateStackGroupRequestDeploymentTargets {
-	s.RdFolderIds = v
-	return s
-}
-
 func (s *UpdateStackGroupRequestDeploymentTargets) SetAccountIds(v []*string) *UpdateStackGroupRequestDeploymentTargets {
 	s.AccountIds = v
 	return s
 }
 
+func (s *UpdateStackGroupRequestDeploymentTargets) SetRdFolderIds(v []*string) *UpdateStackGroupRequestDeploymentTargets {
+	s.RdFolderIds = v
+	return s
+}
+
+type UpdateStackGroupRequestParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s UpdateStackGroupRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStackGroupRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStackGroupRequestParameters) SetParameterKey(v string) *UpdateStackGroupRequestParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *UpdateStackGroupRequestParameters) SetParameterValue(v string) *UpdateStackGroupRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
 type UpdateStackGroupShrinkRequest struct {
-	RegionId                   *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName             *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
-	Description                *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	AccountIdsShrink           *string                                    `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	RegionIdsShrink            *string                                    `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	TemplateBody               *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateURL                *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	AdministrationRoleName     *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
+	AutoDeploymentShrink       *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
 	ClientToken                *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string                                    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	Description                *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionRoleName          *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
 	OperationDescription       *string                                    `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferencesShrink *string                                    `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	AdministrationRoleName     *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
-	ExecutionRoleName          *string                                    `json:"ExecutionRoleName,omitempty" xml:"ExecutionRoleName,omitempty"`
-	TemplateId                 *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateVersion            *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	Parameters                 []*UpdateStackGroupShrinkRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	PermissionModel            *string                                    `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
-	AutoDeploymentShrink       *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
-	DeploymentTargetsShrink    *string                                    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	RegionId                   *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink            *string                                    `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName             *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TemplateBody               *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId                 *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL                *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion            *string                                    `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s UpdateStackGroupShrinkRequest) String() string {
@@ -8648,13 +9340,28 @@ func (s UpdateStackGroupShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetRegionId(v string) *UpdateStackGroupShrinkRequest {
-	s.RegionId = &v
+func (s *UpdateStackGroupShrinkRequest) SetAccountIdsShrink(v string) *UpdateStackGroupShrinkRequest {
+	s.AccountIdsShrink = &v
 	return s
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetStackGroupName(v string) *UpdateStackGroupShrinkRequest {
-	s.StackGroupName = &v
+func (s *UpdateStackGroupShrinkRequest) SetAdministrationRoleName(v string) *UpdateStackGroupShrinkRequest {
+	s.AdministrationRoleName = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetAutoDeploymentShrink(v string) *UpdateStackGroupShrinkRequest {
+	s.AutoDeploymentShrink = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetClientToken(v string) *UpdateStackGroupShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetDeploymentTargetsShrink(v string) *UpdateStackGroupShrinkRequest {
+	s.DeploymentTargetsShrink = &v
 	return s
 }
 
@@ -8663,28 +9370,8 @@ func (s *UpdateStackGroupShrinkRequest) SetDescription(v string) *UpdateStackGro
 	return s
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetAccountIdsShrink(v string) *UpdateStackGroupShrinkRequest {
-	s.AccountIdsShrink = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetRegionIdsShrink(v string) *UpdateStackGroupShrinkRequest {
-	s.RegionIdsShrink = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetTemplateBody(v string) *UpdateStackGroupShrinkRequest {
-	s.TemplateBody = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetTemplateURL(v string) *UpdateStackGroupShrinkRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetClientToken(v string) *UpdateStackGroupShrinkRequest {
-	s.ClientToken = &v
+func (s *UpdateStackGroupShrinkRequest) SetExecutionRoleName(v string) *UpdateStackGroupShrinkRequest {
+	s.ExecutionRoleName = &v
 	return s
 }
 
@@ -8698,26 +9385,6 @@ func (s *UpdateStackGroupShrinkRequest) SetOperationPreferencesShrink(v string) 
 	return s
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetAdministrationRoleName(v string) *UpdateStackGroupShrinkRequest {
-	s.AdministrationRoleName = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetExecutionRoleName(v string) *UpdateStackGroupShrinkRequest {
-	s.ExecutionRoleName = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetTemplateId(v string) *UpdateStackGroupShrinkRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateStackGroupShrinkRequest) SetTemplateVersion(v string) *UpdateStackGroupShrinkRequest {
-	s.TemplateVersion = &v
-	return s
-}
-
 func (s *UpdateStackGroupShrinkRequest) SetParameters(v []*UpdateStackGroupShrinkRequestParameters) *UpdateStackGroupShrinkRequest {
 	s.Parameters = v
 	return s
@@ -8728,13 +9395,38 @@ func (s *UpdateStackGroupShrinkRequest) SetPermissionModel(v string) *UpdateStac
 	return s
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetAutoDeploymentShrink(v string) *UpdateStackGroupShrinkRequest {
-	s.AutoDeploymentShrink = &v
+func (s *UpdateStackGroupShrinkRequest) SetRegionId(v string) *UpdateStackGroupShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *UpdateStackGroupShrinkRequest) SetDeploymentTargetsShrink(v string) *UpdateStackGroupShrinkRequest {
-	s.DeploymentTargetsShrink = &v
+func (s *UpdateStackGroupShrinkRequest) SetRegionIdsShrink(v string) *UpdateStackGroupShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetStackGroupName(v string) *UpdateStackGroupShrinkRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetTemplateBody(v string) *UpdateStackGroupShrinkRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetTemplateId(v string) *UpdateStackGroupShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetTemplateURL(v string) *UpdateStackGroupShrinkRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *UpdateStackGroupShrinkRequest) SetTemplateVersion(v string) *UpdateStackGroupShrinkRequest {
+	s.TemplateVersion = &v
 	return s
 }
 
@@ -8762,8 +9454,8 @@ func (s *UpdateStackGroupShrinkRequestParameters) SetParameterValue(v string) *U
 }
 
 type UpdateStackGroupResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateStackGroupResponseBody) String() string {
@@ -8774,13 +9466,13 @@ func (s UpdateStackGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackGroupResponseBody) SetRequestId(v string) *UpdateStackGroupResponseBody {
-	s.RequestId = &v
+func (s *UpdateStackGroupResponseBody) SetOperationId(v string) *UpdateStackGroupResponseBody {
+	s.OperationId = &v
 	return s
 }
 
-func (s *UpdateStackGroupResponseBody) SetOperationId(v string) *UpdateStackGroupResponseBody {
-	s.OperationId = &v
+func (s *UpdateStackGroupResponseBody) SetRequestId(v string) *UpdateStackGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8808,16 +9500,16 @@ func (s *UpdateStackGroupResponse) SetBody(v *UpdateStackGroupResponseBody) *Upd
 }
 
 type UpdateStackInstancesRequest struct {
-	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIds           []*string                                        `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	ClientToken          *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargets    *UpdateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
 	OperationDescription *string                                          `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferences map[string]interface{}                           `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	ParameterOverrides   []*UpdateStackInstancesRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	DeploymentTargets    *UpdateStackInstancesRequestDeploymentTargets    `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty" type:"Struct"`
+	RegionId             *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIds            []*string                                        `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	StackGroupName       *string                                          `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes     *int64                                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s UpdateStackInstancesRequest) String() string {
@@ -8828,28 +9520,18 @@ func (s UpdateStackInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackInstancesRequest) SetRegionId(v string) *UpdateStackInstancesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateStackInstancesRequest) SetStackGroupName(v string) *UpdateStackInstancesRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *UpdateStackInstancesRequest) SetAccountIds(v []*string) *UpdateStackInstancesRequest {
 	s.AccountIds = v
 	return s
 }
 
-func (s *UpdateStackInstancesRequest) SetRegionIds(v []*string) *UpdateStackInstancesRequest {
-	s.RegionIds = v
+func (s *UpdateStackInstancesRequest) SetClientToken(v string) *UpdateStackInstancesRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *UpdateStackInstancesRequest) SetClientToken(v string) *UpdateStackInstancesRequest {
-	s.ClientToken = &v
+func (s *UpdateStackInstancesRequest) SetDeploymentTargets(v *UpdateStackInstancesRequestDeploymentTargets) *UpdateStackInstancesRequest {
+	s.DeploymentTargets = v
 	return s
 }
 
@@ -8863,18 +9545,51 @@ func (s *UpdateStackInstancesRequest) SetOperationPreferences(v map[string]inter
 	return s
 }
 
-func (s *UpdateStackInstancesRequest) SetTimeoutInMinutes(v int64) *UpdateStackInstancesRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
 func (s *UpdateStackInstancesRequest) SetParameterOverrides(v []*UpdateStackInstancesRequestParameterOverrides) *UpdateStackInstancesRequest {
 	s.ParameterOverrides = v
 	return s
 }
 
-func (s *UpdateStackInstancesRequest) SetDeploymentTargets(v *UpdateStackInstancesRequestDeploymentTargets) *UpdateStackInstancesRequest {
-	s.DeploymentTargets = v
+func (s *UpdateStackInstancesRequest) SetRegionId(v string) *UpdateStackInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateStackInstancesRequest) SetRegionIds(v []*string) *UpdateStackInstancesRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *UpdateStackInstancesRequest) SetStackGroupName(v string) *UpdateStackInstancesRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *UpdateStackInstancesRequest) SetTimeoutInMinutes(v int64) *UpdateStackInstancesRequest {
+	s.TimeoutInMinutes = &v
+	return s
+}
+
+type UpdateStackInstancesRequestDeploymentTargets struct {
+	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateStackInstancesRequestDeploymentTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStackInstancesRequestDeploymentTargets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStackInstancesRequestDeploymentTargets) SetAccountIds(v []*string) *UpdateStackInstancesRequestDeploymentTargets {
+	s.AccountIds = v
+	return s
+}
+
+func (s *UpdateStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*string) *UpdateStackInstancesRequestDeploymentTargets {
+	s.RdFolderIds = v
 	return s
 }
 
@@ -8901,40 +9616,17 @@ func (s *UpdateStackInstancesRequestParameterOverrides) SetParameterValue(v stri
 	return s
 }
 
-type UpdateStackInstancesRequestDeploymentTargets struct {
-	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
-	AccountIds  []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-}
-
-func (s UpdateStackInstancesRequestDeploymentTargets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStackInstancesRequestDeploymentTargets) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*string) *UpdateStackInstancesRequestDeploymentTargets {
-	s.RdFolderIds = v
-	return s
-}
-
-func (s *UpdateStackInstancesRequestDeploymentTargets) SetAccountIds(v []*string) *UpdateStackInstancesRequestDeploymentTargets {
-	s.AccountIds = v
-	return s
-}
-
 type UpdateStackInstancesShrinkRequest struct {
-	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	AccountIdsShrink           *string                                                `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	ClientToken                *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
 	OperationDescription       *string                                                `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
 	OperationPreferencesShrink *string                                                `json:"OperationPreferences,omitempty" xml:"OperationPreferences,omitempty"`
-	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	ParameterOverrides         []*UpdateStackInstancesShrinkRequestParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
-	DeploymentTargetsShrink    *string                                                `json:"DeploymentTargets,omitempty" xml:"DeploymentTargets,omitempty"`
+	RegionId                   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdsShrink            *string                                                `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	StackGroupName             *string                                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	TimeoutInMinutes           *int64                                                 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s UpdateStackInstancesShrinkRequest) String() string {
@@ -8945,28 +9637,18 @@ func (s UpdateStackInstancesShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackInstancesShrinkRequest) SetRegionId(v string) *UpdateStackInstancesShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateStackInstancesShrinkRequest) SetStackGroupName(v string) *UpdateStackInstancesShrinkRequest {
-	s.StackGroupName = &v
-	return s
-}
-
 func (s *UpdateStackInstancesShrinkRequest) SetAccountIdsShrink(v string) *UpdateStackInstancesShrinkRequest {
 	s.AccountIdsShrink = &v
 	return s
 }
 
-func (s *UpdateStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *UpdateStackInstancesShrinkRequest {
-	s.RegionIdsShrink = &v
+func (s *UpdateStackInstancesShrinkRequest) SetClientToken(v string) *UpdateStackInstancesShrinkRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *UpdateStackInstancesShrinkRequest) SetClientToken(v string) *UpdateStackInstancesShrinkRequest {
-	s.ClientToken = &v
+func (s *UpdateStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *UpdateStackInstancesShrinkRequest {
+	s.DeploymentTargetsShrink = &v
 	return s
 }
 
@@ -8980,18 +9662,28 @@ func (s *UpdateStackInstancesShrinkRequest) SetOperationPreferencesShrink(v stri
 	return s
 }
 
-func (s *UpdateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *UpdateStackInstancesShrinkRequest {
-	s.TimeoutInMinutes = &v
-	return s
-}
-
 func (s *UpdateStackInstancesShrinkRequest) SetParameterOverrides(v []*UpdateStackInstancesShrinkRequestParameterOverrides) *UpdateStackInstancesShrinkRequest {
 	s.ParameterOverrides = v
 	return s
 }
 
-func (s *UpdateStackInstancesShrinkRequest) SetDeploymentTargetsShrink(v string) *UpdateStackInstancesShrinkRequest {
-	s.DeploymentTargetsShrink = &v
+func (s *UpdateStackInstancesShrinkRequest) SetRegionId(v string) *UpdateStackInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateStackInstancesShrinkRequest) SetRegionIdsShrink(v string) *UpdateStackInstancesShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *UpdateStackInstancesShrinkRequest) SetStackGroupName(v string) *UpdateStackInstancesShrinkRequest {
+	s.StackGroupName = &v
+	return s
+}
+
+func (s *UpdateStackInstancesShrinkRequest) SetTimeoutInMinutes(v int64) *UpdateStackInstancesShrinkRequest {
+	s.TimeoutInMinutes = &v
 	return s
 }
 
@@ -9019,8 +9711,8 @@ func (s *UpdateStackInstancesShrinkRequestParameterOverrides) SetParameterValue(
 }
 
 type UpdateStackInstancesResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateStackInstancesResponseBody) String() string {
@@ -9031,13 +9723,13 @@ func (s UpdateStackInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackInstancesResponseBody) SetRequestId(v string) *UpdateStackInstancesResponseBody {
-	s.RequestId = &v
+func (s *UpdateStackInstancesResponseBody) SetOperationId(v string) *UpdateStackInstancesResponseBody {
+	s.OperationId = &v
 	return s
 }
 
-func (s *UpdateStackInstancesResponseBody) SetOperationId(v string) *UpdateStackInstancesResponseBody {
-	s.OperationId = &v
+func (s *UpdateStackInstancesResponseBody) SetRequestId(v string) *UpdateStackInstancesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9065,12 +9757,12 @@ func (s *UpdateStackInstancesResponse) SetBody(v *UpdateStackInstancesResponseBo
 }
 
 type UpdateStackTemplateByResourcesRequest struct {
-	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	DryRun            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	TemplateFormat    *string   `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
+	DryRun            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	LogicalResourceId []*string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty" type:"Repeated"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId           *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateFormat    *string   `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 }
 
 func (s UpdateStackTemplateByResourcesRequest) String() string {
@@ -9081,8 +9773,8 @@ func (s UpdateStackTemplateByResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateStackTemplateByResourcesRequest) SetStackId(v string) *UpdateStackTemplateByResourcesRequest {
-	s.StackId = &v
+func (s *UpdateStackTemplateByResourcesRequest) SetClientToken(v string) *UpdateStackTemplateByResourcesRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -9091,13 +9783,18 @@ func (s *UpdateStackTemplateByResourcesRequest) SetDryRun(v bool) *UpdateStackTe
 	return s
 }
 
+func (s *UpdateStackTemplateByResourcesRequest) SetLogicalResourceId(v []*string) *UpdateStackTemplateByResourcesRequest {
+	s.LogicalResourceId = v
+	return s
+}
+
 func (s *UpdateStackTemplateByResourcesRequest) SetRegionId(v string) *UpdateStackTemplateByResourcesRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *UpdateStackTemplateByResourcesRequest) SetClientToken(v string) *UpdateStackTemplateByResourcesRequest {
-	s.ClientToken = &v
+func (s *UpdateStackTemplateByResourcesRequest) SetStackId(v string) *UpdateStackTemplateByResourcesRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -9106,15 +9803,10 @@ func (s *UpdateStackTemplateByResourcesRequest) SetTemplateFormat(v string) *Upd
 	return s
 }
 
-func (s *UpdateStackTemplateByResourcesRequest) SetLogicalResourceId(v []*string) *UpdateStackTemplateByResourcesRequest {
-	s.LogicalResourceId = v
-	return s
-}
-
 type UpdateStackTemplateByResourcesResponseBody struct {
 	NewTemplateBody *string `json:"NewTemplateBody,omitempty" xml:"NewTemplateBody,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OldTemplateBody *string `json:"OldTemplateBody,omitempty" xml:"OldTemplateBody,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateStackTemplateByResourcesResponseBody) String() string {
@@ -9130,13 +9822,13 @@ func (s *UpdateStackTemplateByResourcesResponseBody) SetNewTemplateBody(v string
 	return s
 }
 
-func (s *UpdateStackTemplateByResourcesResponseBody) SetRequestId(v string) *UpdateStackTemplateByResourcesResponseBody {
-	s.RequestId = &v
+func (s *UpdateStackTemplateByResourcesResponseBody) SetOldTemplateBody(v string) *UpdateStackTemplateByResourcesResponseBody {
+	s.OldTemplateBody = &v
 	return s
 }
 
-func (s *UpdateStackTemplateByResourcesResponseBody) SetOldTemplateBody(v string) *UpdateStackTemplateByResourcesResponseBody {
-	s.OldTemplateBody = &v
+func (s *UpdateStackTemplateByResourcesResponseBody) SetRequestId(v string) *UpdateStackTemplateByResourcesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9164,11 +9856,11 @@ func (s *UpdateStackTemplateByResourcesResponse) SetBody(v *UpdateStackTemplateB
 }
 
 type UpdateTemplateRequest struct {
-	TemplateURL  *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateURL  *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
 func (s UpdateTemplateRequest) String() string {
@@ -9177,16 +9869,6 @@ func (s UpdateTemplateRequest) String() string {
 
 func (s UpdateTemplateRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateTemplateRequest) SetTemplateURL(v string) *UpdateTemplateRequest {
-	s.TemplateURL = &v
-	return s
-}
-
-func (s *UpdateTemplateRequest) SetTemplateName(v string) *UpdateTemplateRequest {
-	s.TemplateName = &v
-	return s
 }
 
 func (s *UpdateTemplateRequest) SetDescription(v string) *UpdateTemplateRequest {
@@ -9204,9 +9886,19 @@ func (s *UpdateTemplateRequest) SetTemplateId(v string) *UpdateTemplateRequest {
 	return s
 }
 
+func (s *UpdateTemplateRequest) SetTemplateName(v string) *UpdateTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateTemplateRequest) SetTemplateURL(v string) *UpdateTemplateRequest {
+	s.TemplateURL = &v
+	return s
+}
+
 type UpdateTemplateResponseBody struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateTemplateResponseBody) String() string {
@@ -9217,13 +9909,13 @@ func (s UpdateTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTemplateResponseBody) SetTemplateId(v string) *UpdateTemplateResponseBody {
-	s.TemplateId = &v
+func (s *UpdateTemplateResponseBody) SetRequestId(v string) *UpdateTemplateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *UpdateTemplateResponseBody) SetRequestId(v string) *UpdateTemplateResponseBody {
-	s.RequestId = &v
+func (s *UpdateTemplateResponseBody) SetTemplateId(v string) *UpdateTemplateResponseBody {
+	s.TemplateId = &v
 	return s
 }
 
@@ -9251,10 +9943,10 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type ValidateTemplateRequest struct {
-	TemplateURL      *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateBody     *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	TemplateURL      *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	ValidationOption *string `json:"ValidationOption,omitempty" xml:"ValidationOption,omitempty"`
 }
 
@@ -9266,8 +9958,8 @@ func (s ValidateTemplateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateTemplateRequest) SetTemplateURL(v string) *ValidateTemplateRequest {
-	s.TemplateURL = &v
+func (s *ValidateTemplateRequest) SetClientToken(v string) *ValidateTemplateRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -9281,8 +9973,8 @@ func (s *ValidateTemplateRequest) SetTemplateBody(v string) *ValidateTemplateReq
 	return s
 }
 
-func (s *ValidateTemplateRequest) SetClientToken(v string) *ValidateTemplateRequest {
-	s.ClientToken = &v
+func (s *ValidateTemplateRequest) SetTemplateURL(v string) *ValidateTemplateRequest {
+	s.TemplateURL = &v
 	return s
 }
 
@@ -9293,9 +9985,9 @@ func (s *ValidateTemplateRequest) SetValidationOption(v string) *ValidateTemplat
 
 type ValidateTemplateResponseBody struct {
 	Description *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Outputs     []*ValidateTemplateResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	Parameters  []map[string]interface{}               `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Outputs     []*ValidateTemplateResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 
 func (s ValidateTemplateResponseBody) String() string {
@@ -9311,6 +10003,11 @@ func (s *ValidateTemplateResponseBody) SetDescription(v string) *ValidateTemplat
 	return s
 }
 
+func (s *ValidateTemplateResponseBody) SetOutputs(v []*ValidateTemplateResponseBodyOutputs) *ValidateTemplateResponseBody {
+	s.Outputs = v
+	return s
+}
+
 func (s *ValidateTemplateResponseBody) SetParameters(v []map[string]interface{}) *ValidateTemplateResponseBody {
 	s.Parameters = v
 	return s
@@ -9321,14 +10018,9 @@ func (s *ValidateTemplateResponseBody) SetRequestId(v string) *ValidateTemplateR
 	return s
 }
 
-func (s *ValidateTemplateResponseBody) SetOutputs(v []*ValidateTemplateResponseBodyOutputs) *ValidateTemplateResponseBody {
-	s.Outputs = v
-	return s
-}
-
 type ValidateTemplateResponseBodyOutputs struct {
-	OutputKey   *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OutputKey   *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
 }
 
 func (s ValidateTemplateResponseBodyOutputs) String() string {
@@ -9339,13 +10031,13 @@ func (s ValidateTemplateResponseBodyOutputs) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateTemplateResponseBodyOutputs) SetOutputKey(v string) *ValidateTemplateResponseBodyOutputs {
-	s.OutputKey = &v
+func (s *ValidateTemplateResponseBodyOutputs) SetDescription(v string) *ValidateTemplateResponseBodyOutputs {
+	s.Description = &v
 	return s
 }
 
-func (s *ValidateTemplateResponseBodyOutputs) SetDescription(v string) *ValidateTemplateResponseBodyOutputs {
-	s.Description = &v
+func (s *ValidateTemplateResponseBodyOutputs) SetOutputKey(v string) *ValidateTemplateResponseBodyOutputs {
+	s.OutputKey = &v
 	return s
 }
 
@@ -9576,16 +10268,16 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
-		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
 		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9734,16 +10426,16 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
-		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
 		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9999,6 +10691,34 @@ func (client *Client) GetChangeSet(request *GetChangeSetRequest) (_result *GetCh
 	return _result, _err
 }
 
+func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsRequest, runtime *util.RuntimeOptions) (_result *GetFeatureDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetFeatureDetailsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetFeatureDetails"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFeatureDetails(request *GetFeatureDetailsRequest) (_result *GetFeatureDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFeatureDetailsResponse{}
+	_body, _err := client.GetFeatureDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest, runtime *util.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10048,6 +10768,34 @@ func (client *Client) GetResourceTypeTemplate(request *GetResourceTypeTemplateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceTypeTemplateResponse{}
 	_body, _err := client.GetResourceTypeTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisionsRequest, runtime *util.RuntimeOptions) (_result *GetServiceProvisionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetServiceProvisionsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetServiceProvisions"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceProvisions(request *GetServiceProvisionsRequest) (_result *GetServiceProvisionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceProvisionsResponse{}
+	_body, _err := client.GetServiceProvisionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10300,6 +11048,40 @@ func (client *Client) GetTemplateEstimateCost(request *GetTemplateEstimateCostRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateEstimateCostResponse{}
 	_body, _err := client.GetTemplateEstimateCostWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemplateParameterConstraintsRequest, runtime *util.RuntimeOptions) (_result *GetTemplateParameterConstraintsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTemplateParameterConstraintsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParametersKeyFilter)) {
+		request.ParametersKeyFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParametersKeyFilter, tea.String("ParametersKeyFilter"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetTemplateParameterConstraintsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetTemplateParameterConstraints"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemplateParameterConstraints(request *GetTemplateParameterConstraintsRequest) (_result *GetTemplateParameterConstraintsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateParameterConstraintsResponse{}
+	_body, _err := client.GetTemplateParameterConstraintsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10721,34 +11503,6 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTemplates"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.ListTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersionsRequest, runtime *util.RuntimeOptions) (_result *ListTemplateVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10770,6 +11524,34 @@ func (client *Client) ListTemplateVersions(request *ListTemplateVersionsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplateVersionsResponse{}
 	_body, _err := client.ListTemplateVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListTemplates"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTemplatesResponse{}
+	_body, _err := client.ListTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11068,20 +11850,20 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
-		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
-		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AutoDeployment))) {
 		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AutoDeployment), tea.String("AutoDeployment"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
 		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
+		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11118,16 +11900,16 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 		request.AccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountIds, tea.String("AccountIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
-		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
+		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.OperationPreferences)) {
 		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DeploymentTargets))) {
-		request.DeploymentTargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DeploymentTargets), tea.String("DeploymentTargets"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
 	req := &openapi.OpenApiRequest{
