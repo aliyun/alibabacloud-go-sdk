@@ -18880,31 +18880,11 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ChildNick"] = request.ChildNick
-	query["ChildUserId"] = request.ChildUserId
-	query["ParentUserId"] = request.ParentUserId
-	query["PermissionCodes"] = request.PermissionCodes
-	query["RelationType"] = request.RelationType
-	query["RequestId"] = request.RequestId
-	query["RoleCodes"] = request.RoleCodes
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddAccountRelation"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &AddAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("AddAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18928,29 +18908,11 @@ func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostU
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["FromUnitId"] = request.FromUnitId
-	query["FromUnitUserId"] = request.FromUnitUserId
-	query["ResourceInstanceList"] = request.ResourceInstanceList
-	query["ToUnitId"] = request.ToUnitId
-	query["ToUnitUserId"] = request.ToUnitUserId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AllocateCostUnitResource"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &AllocateCostUnitResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("AllocateCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18974,34 +18936,11 @@ func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AddressId"] = request.AddressId
-	query["ApplyUserNick"] = request.ApplyUserNick
-	query["CustomerId"] = request.CustomerId
-	query["InvoiceAmount"] = request.InvoiceAmount
-	query["InvoiceByAmount"] = request.InvoiceByAmount
-	query["InvoicingType"] = request.InvoicingType
-	query["OwnerId"] = request.OwnerId
-	query["ProcessWay"] = request.ProcessWay
-	query["SelectedIds"] = request.SelectedIds
-	query["UserRemark"] = request.UserRemark
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ApplyInvoice"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ApplyInvoiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ApplyInvoice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19025,26 +18964,11 @@ func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelOrder"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CancelOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CancelOrder"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19068,32 +18992,11 @@ func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeRese
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AdjustType"] = request.AdjustType
-	query["Amount"] = request.Amount
-	query["BusinessType"] = request.BusinessType
-	query["Currency"] = request.Currency
-	query["ExtendMap"] = request.ExtendMap
-	query["OutBizId"] = request.OutBizId
-	query["OwnerId"] = request.OwnerId
-	query["Source"] = request.Source
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ChangeResellerConsumeAmount"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ChangeResellerConsumeAmountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ChangeResellerConsumeAmount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19117,30 +19020,11 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ChildUserId"] = request.ChildUserId
-	query["ConfirmCode"] = request.ConfirmCode
-	query["ParentUserId"] = request.ParentUserId
-	query["PermissionCodes"] = request.PermissionCodes
-	query["RelationType"] = request.RelationType
-	query["RequestId"] = request.RequestId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConfirmRelation"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ConfirmRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ConfirmRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19164,30 +19048,11 @@ func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["OwnerId"] = request.OwnerId
-	query["Period"] = request.Period
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConvertChargeType"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ConvertChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ConvertChargeType"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19211,33 +19076,11 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AccountAttr"] = request.AccountAttr
-	query["CityName"] = request.CityName
-	query["EnterpriseName"] = request.EnterpriseName
-	query["FirstName"] = request.FirstName
-	query["LastName"] = request.LastName
-	query["LoginEmail"] = request.LoginEmail
-	query["NationCode"] = request.NationCode
-	query["Postcode"] = request.Postcode
-	query["ProvinceName"] = request.ProvinceName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateAgAccount"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateAgAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateAgAccount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19261,25 +19104,11 @@ func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["UnitEntityList"] = request.UnitEntityList
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCostUnit"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19303,34 +19132,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Logistics"] = request.Logistics
-	query["OwnerId"] = request.OwnerId
-	query["Parameter"] = request.Parameter
-	query["Period"] = request.Period
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["RenewPeriod"] = request.RenewPeriod
-	query["RenewalStatus"] = request.RenewalStatus
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateInstance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19354,28 +19160,11 @@ func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateReseller
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Amount"] = request.Amount
-	query["Currency"] = request.Currency
-	query["OutBizId"] = request.OutBizId
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateResellerUserQuota"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateResellerUserQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19399,31 +19188,11 @@ func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePa
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Duration"] = request.Duration
-	query["EffectiveDate"] = request.EffectiveDate
-	query["OwnerId"] = request.OwnerId
-	query["PackageType"] = request.PackageType
-	query["PricingCycle"] = request.PricingCycle
-	query["ProductCode"] = request.ProductCode
-	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateResourcePackage"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19447,34 +19216,11 @@ func (client *Client) CreateSavingsPlansInstanceWithOptions(request *CreateSavin
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CommodityCode"] = request.CommodityCode
-	query["Duration"] = request.Duration
-	query["EffectiveDate"] = request.EffectiveDate
-	query["PayMode"] = request.PayMode
-	query["PoolValue"] = request.PoolValue
-	query["PricingCycle"] = request.PricingCycle
-	query["Region"] = request.Region
-	query["SpecType"] = request.SpecType
-	query["Specification"] = request.Specification
-	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateSavingsPlansInstance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateSavingsPlansInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateSavingsPlansInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19498,26 +19244,11 @@ func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerUid"] = request.OwnerUid
-	query["UnitId"] = request.UnitId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCostUnit"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19541,37 +19272,11 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["BillingDate"] = request.BillingDate
-	query["Granularity"] = request.Granularity
-	query["InstanceID"] = request.InstanceID
-	query["IsBillingItem"] = request.IsBillingItem
-	query["IsHideZeroCharge"] = request.IsHideZeroCharge
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstanceBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeInstanceBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19595,28 +19300,11 @@ func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingM
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePricingModule"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribePricingModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribePricingModule"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19640,31 +19328,11 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["PeriodType"] = request.PeriodType
-	query["ResourceType"] = request.ResourceType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourceCoverageDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeResourceCoverageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19688,29 +19356,11 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["PeriodType"] = request.PeriodType
-	query["ResourceType"] = request.ResourceType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourceCoverageTotal"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeResourceCoverageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19734,25 +19384,11 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourcePackageProduct"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeResourcePackageProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeResourcePackageProduct"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19776,31 +19412,11 @@ func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeRe
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["PeriodType"] = request.PeriodType
-	query["ResourceType"] = request.ResourceType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourceUsageDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeResourceUsageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19824,29 +19440,11 @@ func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeRes
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["PeriodType"] = request.PeriodType
-	query["ResourceType"] = request.ResourceType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeResourceUsageTotal"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeResourceUsageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19870,30 +19468,11 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *Des
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["MaxResults"] = request.MaxResults
-	query["PeriodType"] = request.PeriodType
-	query["StartPeriod"] = request.StartPeriod
-	query["Token"] = request.Token
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSavingsPlansCoverageDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeSavingsPlansCoverageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19917,28 +19496,11 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["PeriodType"] = request.PeriodType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSavingsPlansCoverageTotal"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeSavingsPlansCoverageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19962,30 +19524,11 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["MaxResults"] = request.MaxResults
-	query["PeriodType"] = request.PeriodType
-	query["StartPeriod"] = request.StartPeriod
-	query["Token"] = request.Token
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSavingsPlansUsageDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeSavingsPlansUsageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20009,28 +19552,11 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["EndPeriod"] = request.EndPeriod
-	query["PeriodType"] = request.PeriodType
-	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSavingsPlansUsageTotal"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeSavingsPlansUsageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20054,37 +19580,11 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["BillingDate"] = request.BillingDate
-	query["Granularity"] = request.Granularity
-	query["InstanceID"] = request.InstanceID
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SplitItemID"] = request.SplitItemID
-	query["SubscriptionType"] = request.SubscriptionType
-	query["TagFilter"] = request.TagFilter
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSplitItemBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DescribeSplitItemBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeSplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20108,26 +19608,11 @@ func (client *Client) EnableBillGenerationWithOptions(request *EnableBillGenerat
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EnableBillGeneration"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &EnableBillGenerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("EnableBillGeneration"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20151,25 +19636,11 @@ func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAcco
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetCustomerAccountInfo"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetCustomerAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetCustomerAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20190,19 +19661,8 @@ func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequ
 
 func (client *Client) GetCustomerListWithOptions(runtime *util.RuntimeOptions) (_result *GetCustomerListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("GetCustomerList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetCustomerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20226,26 +19686,11 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetOrderDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetOrderDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetOrderDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20269,30 +19714,11 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ModuleList"] = request.ModuleList
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["Region"] = request.Region
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPayAsYouGoPrice"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetPayAsYouGoPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetPayAsYouGoPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20316,33 +19742,11 @@ func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePac
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Duration"] = request.Duration
-	query["EffectiveDate"] = request.EffectiveDate
-	query["InstanceId"] = request.InstanceId
-	query["OrderType"] = request.OrderType
-	query["OwnerId"] = request.OwnerId
-	query["PackageType"] = request.PackageType
-	query["PricingCycle"] = request.PricingCycle
-	query["ProductCode"] = request.ProductCode
-	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetResourcePackagePrice"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetResourcePackagePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetResourcePackagePrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20366,35 +19770,11 @@ func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPr
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ModuleList"] = request.ModuleList
-	query["OrderType"] = request.OrderType
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["Quantity"] = request.Quantity
-	query["Region"] = request.Region
-	query["ServicePeriodQuantity"] = request.ServicePeriodQuantity
-	query["ServicePeriodUnit"] = request.ServicePeriodUnit
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSubscriptionPrice"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetSubscriptionPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetSubscriptionPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20418,32 +19798,11 @@ func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRel
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ChildNick"] = request.ChildNick
-	query["ChildUserId"] = request.ChildUserId
-	query["ParentUserId"] = request.ParentUserId
-	query["PermissionCodes"] = request.PermissionCodes
-	query["RelationOperation"] = request.RelationOperation
-	query["RelationType"] = request.RelationType
-	query["RequestId"] = request.RequestId
-	query["RoleCodes"] = request.RoleCodes
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyAccountRelation"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20467,25 +19826,11 @@ func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["UnitEntityList"] = request.UnitEntityList
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyCostUnit"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20509,32 +19854,11 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["InstanceId"] = request.InstanceId
-	query["ModifyType"] = request.ModifyType
-	query["OwnerId"] = request.OwnerId
-	query["Parameter"] = request.Parameter
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyInstance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ModifyInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20555,19 +19879,8 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 
 func (client *Client) QueryAccountBalanceWithOptions(runtime *util.RuntimeOptions) (_result *QueryAccountBalanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAccountBalance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &QueryAccountBalanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBalance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20591,33 +19904,11 @@ func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["BillingDate"] = request.BillingDate
-	query["Granularity"] = request.Granularity
-	query["IsGroupByProduct"] = request.IsGroupByProduct
-	query["OwnerID"] = request.OwnerID
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAccountBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryAccountBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20641,33 +19932,11 @@ func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAc
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeEnd"] = request.CreateTimeEnd
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RecordID"] = request.RecordID
-	query["TransactionChannel"] = request.TransactionChannel
-	query["TransactionChannelSN"] = request.TransactionChannelSN
-	query["TransactionNumber"] = request.TransactionNumber
-	query["TransactionType"] = request.TransactionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAccountTransactionDetails"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryAccountTransactionDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactionDetails"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20691,31 +19960,11 @@ func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountT
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeEnd"] = request.CreateTimeEnd
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RecordID"] = request.RecordID
-	query["TransactionChannelSN"] = request.TransactionChannelSN
-	query["TransactionNumber"] = request.TransactionNumber
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAccountTransactions"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryAccountTransactionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactions"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20739,37 +19988,11 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeEnd"] = request.CreateTimeEnd
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["EndTimeEnd"] = request.EndTimeEnd
-	query["EndTimeStart"] = request.EndTimeStart
-	query["InstanceIDs"] = request.InstanceIDs
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["Region"] = request.Region
-	query["RenewStatus"] = request.RenewStatus
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAvailableInstances"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryAvailableInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryAvailableInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20793,35 +20016,11 @@ func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
-	query["IsHideZeroCharge"] = request.IsHideZeroCharge
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
-	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20845,29 +20044,11 @@ func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryBillOverview"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryBillOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryBillOverview"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20888,19 +20069,8 @@ func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_res
 
 func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *util.RuntimeOptions) (_result *QueryBillToOSSSubscriptionResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("QueryBillToOSSSubscription"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &QueryBillToOSSSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryBillToOSSSubscription"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20924,27 +20094,11 @@ func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EffectiveOrNot"] = request.EffectiveOrNot
-	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
-	query["ExpiryTimeStart"] = request.ExpiryTimeStart
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCashCoupons"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryCashCouponsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryCashCoupons"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20968,28 +20122,11 @@ func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerUid"] = request.OwnerUid
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ParentUnitId"] = request.ParentUnitId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCostUnit"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21013,28 +20150,11 @@ func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitRes
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerUid"] = request.OwnerUid
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["UnitId"] = request.UnitId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCostUnitResource"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryCostUnitResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21058,25 +20178,11 @@ func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomer
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCustomerAddressList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryCustomerAddressListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryCustomerAddressList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21100,34 +20206,11 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CommodityCode"] = request.CommodityCode
-	query["DeductedInstanceId"] = request.DeductedInstanceId
-	query["EndTime"] = request.EndTime
-	query["IncludeShare"] = request.IncludeShare
-	query["InstanceId"] = request.InstanceId
-	query["InstanceSpec"] = request.InstanceSpec
-	query["LastToken"] = request.LastToken
-	query["Limit"] = request.Limit
-	query["ProdCode"] = request.ProdCode
-	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryDPUtilizationDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryDPUtilizationDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryDPUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21151,38 +20234,11 @@ func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillCycle"] = request.BillCycle
-	query["BizTypeList"] = request.BizTypeList
-	query["EndAmount"] = request.EndAmount
-	query["EndBizTime"] = request.EndBizTime
-	query["EndSearchTime"] = request.EndSearchTime
-	query["OutBizId"] = request.OutBizId
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["SortType"] = request.SortType
-	query["StartAmount"] = request.StartAmount
-	query["StartBizTime"] = request.StartBizTime
-	query["StartSearchTime"] = request.StartSearchTime
-	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryEvaluateList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryEvaluateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryEvaluateList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21206,25 +20262,11 @@ func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinanci
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryFinancialAccountInfo"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryFinancialAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryFinancialAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21248,36 +20290,11 @@ func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["BillingDate"] = request.BillingDate
-	query["Granularity"] = request.Granularity
-	query["IsBillingItem"] = request.IsBillingItem
-	query["IsHideZeroCharge"] = request.IsHideZeroCharge
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryInstanceBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryInstanceBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21301,27 +20318,11 @@ func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryInstanceByTag"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryInstanceByTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceByTag"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21345,30 +20346,11 @@ func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaa
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillingCycle"] = request.BillingCycle
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryInstanceGaapCost"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryInstanceGaapCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceGaapCost"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21392,25 +20374,11 @@ func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoic
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryInvoicingCustomerList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryInvoicingCustomerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryInvoicingCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21434,25 +20402,11 @@ func (client *Client) QueryMonthlyBillWithOptions(request *QueryMonthlyBillReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillingCycle"] = request.BillingCycle
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryMonthlyBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryMonthlyBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21476,31 +20430,11 @@ func (client *Client) QueryMonthlyInstanceConsumptionWithOptions(request *QueryM
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillingCycle"] = request.BillingCycle
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryMonthlyInstanceConsumption"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryMonthlyInstanceConsumptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyInstanceConsumption"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21524,34 +20458,11 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeEnd"] = request.CreateTimeEnd
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["OrderType"] = request.OrderType
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["PaymentStatus"] = request.PaymentStatus
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryOrders"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryOrders"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21575,25 +20486,11 @@ func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionLis
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["RelationId"] = request.RelationId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryPermissionList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryPermissionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryPermissionList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21617,27 +20514,11 @@ func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EffectiveOrNot"] = request.EffectiveOrNot
-	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
-	query["ExpiryTimeStart"] = request.ExpiryTimeStart
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryPrepaidCards"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryPrepaidCardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryPrepaidCards"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21661,27 +20542,11 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["QueryTotalCount"] = request.QueryTotalCount
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryProductList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryProductListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryProductList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21705,32 +20570,11 @@ func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtiliz
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DeductedInstanceId"] = request.DeductedInstanceId
-	query["EndTime"] = request.EndTime
-	query["InstanceSpec"] = request.InstanceSpec
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RICommodityCode"] = request.RICommodityCode
-	query["RIInstanceId"] = request.RIInstanceId
-	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryRIUtilizationDetail"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryRIUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21756,21 +20600,10 @@ func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryRedeem"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Query: query,
 	}
 	_result = &QueryRedeemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryRedeem"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21794,28 +20627,11 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["StatusList"] = request.StatusList
-	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryRelationList"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryRelationListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryRelationList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21839,26 +20655,11 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ItemCodes"] = request.ItemCodes
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryResellerAvailableQuota"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryResellerAvailableQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryResellerAvailableQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21882,31 +20683,11 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
-	query["ExpiryTimeStart"] = request.ExpiryTimeStart
-	query["IncludePartner"] = request.IncludePartner
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryResourcePackageInstances"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryResourcePackageInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryResourcePackageInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21930,31 +20711,11 @@ func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySaving
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["InstanceType"] = request.InstanceType
-	query["Locale"] = request.Locale
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QuerySavingsPlansDeductLog"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QuerySavingsPlansDeductLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansDeductLog"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21978,31 +20739,11 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["Locale"] = request.Locale
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QuerySavingsPlansInstance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QuerySavingsPlansInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22026,36 +20767,11 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
-	query["IsHideZeroCharge"] = request.IsHideZeroCharge
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["RecordID"] = request.RecordID
-	query["SubscriptionType"] = request.SubscriptionType
-	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QuerySettleBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QuerySettleBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QuerySettleBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22079,35 +20795,11 @@ func (client *Client) QuerySettlementBillWithOptions(request *QuerySettlementBil
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillingCycle"] = request.BillingCycle
-	query["EndTime"] = request.EndTime
-	query["IsHideZeroCharge"] = request.IsHideZeroCharge
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["StartTime"] = request.StartTime
-	query["SubscriptionType"] = request.SubscriptionType
-	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QuerySettlementBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QuerySettlementBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QuerySettlementBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22131,32 +20823,11 @@ func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BillOwnerId"] = request.BillOwnerId
-	query["BillingCycle"] = request.BillingCycle
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QuerySplitItemBill"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QuerySplitItemBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QuerySplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22180,31 +20851,11 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DataType"] = request.DataType
-	query["EndTime"] = request.EndTime
-	query["Marker"] = request.Marker
-	query["OwnerId"] = request.OwnerId
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["Table"] = request.Table
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryUserOmsData"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &QueryUserOmsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("QueryUserOmsData"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22228,28 +20879,11 @@ func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ChildUserId"] = request.ChildUserId
-	query["ParentUserId"] = request.ParentUserId
-	query["RelationType"] = request.RelationType
-	query["RequestId"] = request.RequestId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RelieveAccountRelation"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RelieveAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RelieveAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22273,30 +20907,11 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["InstanceId"] = request.InstanceId
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["RenewPeriod"] = request.RenewPeriod
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RenewInstance"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RenewInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22320,29 +20935,11 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Duration"] = request.Duration
-	query["EffectiveDate"] = request.EffectiveDate
-	query["InstanceId"] = request.InstanceId
-	query["OwnerId"] = request.OwnerId
-	query["PricingCycle"] = request.PricingCycle
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RenewResourcePackage"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RenewResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RenewResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22366,32 +20963,11 @@ func (client *Client) SaveUserCreditWithOptions(request *SaveUserCreditRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AvoidExpiration"] = request.AvoidExpiration
-	query["AvoidNotification"] = request.AvoidNotification
-	query["AvoidPrepaidExpiration"] = request.AvoidPrepaidExpiration
-	query["AvoidPrepaidNotification"] = request.AvoidPrepaidNotification
-	query["CreditType"] = request.CreditType
-	query["CreditValue"] = request.CreditValue
-	query["Description"] = request.Description
-	query["Operator"] = request.Operator
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SaveUserCredit"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SaveUserCreditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SaveUserCredit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22415,26 +20991,11 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["UnifyExpireDay"] = request.UnifyExpireDay
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetAllExpirationDay"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetAllExpirationDayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetAllExpirationDay"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22458,41 +21019,11 @@ func (client *Client) SetCreditLabelActionWithOptions(request *SetCreditLabelAct
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ActionType"] = request.ActionType
-	query["ClearCycle"] = request.ClearCycle
-	query["CreditAmount"] = request.CreditAmount
-	query["CurrencyCode"] = request.CurrencyCode
-	query["DailyCycle"] = request.DailyCycle
-	query["Description"] = request.Description
-	query["IsNeedAddSettleLabel"] = request.IsNeedAddSettleLabel
-	query["IsNeedAdjustCreditAccount"] = request.IsNeedAdjustCreditAccount
-	query["IsNeedSaveNotifyRule"] = request.IsNeedSaveNotifyRule
-	query["IsNeedSetCreditAmount"] = request.IsNeedSetCreditAmount
-	query["NeedNotice"] = request.NeedNotice
-	query["NewCreateMode"] = request.NewCreateMode
-	query["Operator"] = request.Operator
-	query["RequestId"] = request.RequestId
-	query["SiteCode"] = request.SiteCode
-	query["Source"] = request.Source
-	query["Uid"] = request.Uid
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetCreditLabelAction"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetCreditLabelActionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetCreditLabelAction"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22516,32 +21047,11 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["InstanceIDs"] = request.InstanceIDs
-	query["OwnerId"] = request.OwnerId
-	query["ProductCode"] = request.ProductCode
-	query["ProductType"] = request.ProductType
-	query["RenewalPeriod"] = request.RenewalPeriod
-	query["RenewalPeriodUnit"] = request.RenewalPeriodUnit
-	query["RenewalStatus"] = request.RenewalStatus
-	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetRenewal"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetRenewalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetRenewal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22565,27 +21075,11 @@ func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResel
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AlarmThresholds"] = request.AlarmThresholds
-	query["AlarmType"] = request.AlarmType
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetResellerUserAlarmThreshold"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetResellerUserAlarmThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserAlarmThreshold"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22609,28 +21103,11 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Amount"] = request.Amount
-	query["Currency"] = request.Currency
-	query["OutBizId"] = request.OutBizId
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetResellerUserQuota"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetResellerUserQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22654,27 +21131,11 @@ func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserS
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BusinessType"] = request.BusinessType
-	query["OwnerId"] = request.OwnerId
-	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetResellerUserStatus"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SetResellerUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserStatus"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22698,29 +21159,11 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["BeginBillingCycle"] = request.BeginBillingCycle
-	query["BucketOwnerId"] = request.BucketOwnerId
-	query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
-	query["SubscribeBucket"] = request.SubscribeBucket
-	query["SubscribeType"] = request.SubscribeType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubscribeBillToOSS"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &SubscribeBillToOSSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("SubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22744,27 +21187,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResources"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22788,26 +21215,11 @@ func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillTo
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
-	query["SubscribeType"] = request.SubscribeType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UnsubscribeBillToOSS"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UnsubscribeBillToOSSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UnsubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22831,28 +21243,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResources"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22876,28 +21271,11 @@ func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResource
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EffectiveDate"] = request.EffectiveDate
-	query["InstanceId"] = request.InstanceId
-	query["OwnerId"] = request.OwnerId
-	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpgradeResourcePackage"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UpgradeResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpgradeResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
