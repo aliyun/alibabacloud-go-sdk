@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cloudapi-20160714
+module github.com/alibabacloud-go/cloudapi-20160714/v2
 
 go 1.15
 
