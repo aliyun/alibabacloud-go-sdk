@@ -1,3 +1,6 @@
+2021-11-23 Version: v2.0.1
+- Add Create Savingplan Instance API.
+
 2021-08-12 Version: v1.0.8
 - Generated golang 2017-12-14 for BssOpenApi.
 

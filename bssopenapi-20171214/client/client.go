@@ -13,12 +13,12 @@ import (
 )
 
 type AddAccountRelationRequest struct {
-	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	ChildNick       *string   `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
 	ChildUserId     *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleCodes       []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
 }
 
@@ -28,16 +28,6 @@ func (s AddAccountRelationRequest) String() string {
 
 func (s AddAccountRelationRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddAccountRelationRequest) SetRelationType(v string) *AddAccountRelationRequest {
-	s.RelationType = &v
-	return s
-}
-
-func (s *AddAccountRelationRequest) SetParentUserId(v int64) *AddAccountRelationRequest {
-	s.ParentUserId = &v
-	return s
 }
 
 func (s *AddAccountRelationRequest) SetChildNick(v string) *AddAccountRelationRequest {
@@ -50,13 +40,23 @@ func (s *AddAccountRelationRequest) SetChildUserId(v int64) *AddAccountRelationR
 	return s
 }
 
-func (s *AddAccountRelationRequest) SetRequestId(v string) *AddAccountRelationRequest {
-	s.RequestId = &v
+func (s *AddAccountRelationRequest) SetParentUserId(v int64) *AddAccountRelationRequest {
+	s.ParentUserId = &v
 	return s
 }
 
 func (s *AddAccountRelationRequest) SetPermissionCodes(v []*string) *AddAccountRelationRequest {
 	s.PermissionCodes = v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetRelationType(v string) *AddAccountRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *AddAccountRelationRequest) SetRequestId(v string) *AddAccountRelationRequest {
+	s.RequestId = &v
 	return s
 }
 
@@ -67,10 +67,10 @@ func (s *AddAccountRelationRequest) SetRoleCodes(v []*string) *AddAccountRelatio
 
 type AddAccountRelationResponseBody struct {
 	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *AddAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *AddAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s AddAccountRelationResponseBody) String() string {
@@ -86,6 +86,11 @@ func (s *AddAccountRelationResponseBody) SetCode(v string) *AddAccountRelationRe
 	return s
 }
 
+func (s *AddAccountRelationResponseBody) SetData(v *AddAccountRelationResponseBodyData) *AddAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *AddAccountRelationResponseBody) SetMessage(v string) *AddAccountRelationResponseBody {
 	s.Message = &v
 	return s
@@ -98,11 +103,6 @@ func (s *AddAccountRelationResponseBody) SetRequestId(v string) *AddAccountRelat
 
 func (s *AddAccountRelationResponseBody) SetSuccess(v bool) *AddAccountRelationResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *AddAccountRelationResponseBody) SetData(v *AddAccountRelationResponseBodyData) *AddAccountRelationResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -147,11 +147,11 @@ func (s *AddAccountRelationResponse) SetBody(v *AddAccountRelationResponseBody) 
 }
 
 type AllocateCostUnitResourceRequest struct {
-	FromUnitUserId       *int64                                                 `json:"FromUnitUserId,omitempty" xml:"FromUnitUserId,omitempty"`
 	FromUnitId           *int64                                                 `json:"FromUnitId,omitempty" xml:"FromUnitId,omitempty"`
-	ToUnitUserId         *int64                                                 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
-	ToUnitId             *int64                                                 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
+	FromUnitUserId       *int64                                                 `json:"FromUnitUserId,omitempty" xml:"FromUnitUserId,omitempty"`
 	ResourceInstanceList []*AllocateCostUnitResourceRequestResourceInstanceList `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty" type:"Repeated"`
+	ToUnitId             *int64                                                 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
+	ToUnitUserId         *int64                                                 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
 }
 
 func (s AllocateCostUnitResourceRequest) String() string {
@@ -162,23 +162,13 @@ func (s AllocateCostUnitResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AllocateCostUnitResourceRequest) SetFromUnitUserId(v int64) *AllocateCostUnitResourceRequest {
-	s.FromUnitUserId = &v
-	return s
-}
-
 func (s *AllocateCostUnitResourceRequest) SetFromUnitId(v int64) *AllocateCostUnitResourceRequest {
 	s.FromUnitId = &v
 	return s
 }
 
-func (s *AllocateCostUnitResourceRequest) SetToUnitUserId(v int64) *AllocateCostUnitResourceRequest {
-	s.ToUnitUserId = &v
-	return s
-}
-
-func (s *AllocateCostUnitResourceRequest) SetToUnitId(v int64) *AllocateCostUnitResourceRequest {
-	s.ToUnitId = &v
+func (s *AllocateCostUnitResourceRequest) SetFromUnitUserId(v int64) *AllocateCostUnitResourceRequest {
+	s.FromUnitUserId = &v
 	return s
 }
 
@@ -187,11 +177,21 @@ func (s *AllocateCostUnitResourceRequest) SetResourceInstanceList(v []*AllocateC
 	return s
 }
 
+func (s *AllocateCostUnitResourceRequest) SetToUnitId(v int64) *AllocateCostUnitResourceRequest {
+	s.ToUnitId = &v
+	return s
+}
+
+func (s *AllocateCostUnitResourceRequest) SetToUnitUserId(v int64) *AllocateCostUnitResourceRequest {
+	s.ToUnitUserId = &v
+	return s
+}
+
 type AllocateCostUnitResourceRequestResourceInstanceList struct {
 	ApportionCode  *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
 	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ResourceUserId *int64  `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
 	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceUserId *int64  `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
 }
 
 func (s AllocateCostUnitResourceRequestResourceInstanceList) String() string {
@@ -212,22 +212,22 @@ func (s *AllocateCostUnitResourceRequestResourceInstanceList) SetCommodityCode(v
 	return s
 }
 
-func (s *AllocateCostUnitResourceRequestResourceInstanceList) SetResourceUserId(v int64) *AllocateCostUnitResourceRequestResourceInstanceList {
-	s.ResourceUserId = &v
-	return s
-}
-
 func (s *AllocateCostUnitResourceRequestResourceInstanceList) SetResourceId(v string) *AllocateCostUnitResourceRequestResourceInstanceList {
 	s.ResourceId = &v
 	return s
 }
 
+func (s *AllocateCostUnitResourceRequestResourceInstanceList) SetResourceUserId(v int64) *AllocateCostUnitResourceRequestResourceInstanceList {
+	s.ResourceUserId = &v
+	return s
+}
+
 type AllocateCostUnitResourceResponseBody struct {
 	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *AllocateCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *AllocateCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s AllocateCostUnitResourceResponseBody) String() string {
@@ -240,6 +240,11 @@ func (s AllocateCostUnitResourceResponseBody) GoString() string {
 
 func (s *AllocateCostUnitResourceResponseBody) SetCode(v string) *AllocateCostUnitResourceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *AllocateCostUnitResourceResponseBody) SetData(v *AllocateCostUnitResourceResponseBodyData) *AllocateCostUnitResourceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -258,15 +263,10 @@ func (s *AllocateCostUnitResourceResponseBody) SetSuccess(v bool) *AllocateCostU
 	return s
 }
 
-func (s *AllocateCostUnitResourceResponseBody) SetData(v *AllocateCostUnitResourceResponseBodyData) *AllocateCostUnitResourceResponseBody {
-	s.Data = v
-	return s
-}
-
 type AllocateCostUnitResourceResponseBodyData struct {
-	ToUnitUserId *int64 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
 	IsSuccess    *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	ToUnitId     *int64 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
+	ToUnitUserId *int64 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
 }
 
 func (s AllocateCostUnitResourceResponseBodyData) String() string {
@@ -277,11 +277,6 @@ func (s AllocateCostUnitResourceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *AllocateCostUnitResourceResponseBodyData) SetToUnitUserId(v int64) *AllocateCostUnitResourceResponseBodyData {
-	s.ToUnitUserId = &v
-	return s
-}
-
 func (s *AllocateCostUnitResourceResponseBodyData) SetIsSuccess(v bool) *AllocateCostUnitResourceResponseBodyData {
 	s.IsSuccess = &v
 	return s
@@ -289,6 +284,11 @@ func (s *AllocateCostUnitResourceResponseBodyData) SetIsSuccess(v bool) *Allocat
 
 func (s *AllocateCostUnitResourceResponseBodyData) SetToUnitId(v int64) *AllocateCostUnitResourceResponseBodyData {
 	s.ToUnitId = &v
+	return s
+}
+
+func (s *AllocateCostUnitResourceResponseBodyData) SetToUnitUserId(v int64) *AllocateCostUnitResourceResponseBodyData {
+	s.ToUnitUserId = &v
 	return s
 }
 
@@ -316,16 +316,16 @@ func (s *AllocateCostUnitResourceResponse) SetBody(v *AllocateCostUnitResourceRe
 }
 
 type ApplyInvoiceRequest struct {
-	InvoiceAmount   *int64  `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	CustomerId      *int64  `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	AddressId       *int64  `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	InvoicingType   *int32  `json:"InvoicingType,omitempty" xml:"InvoicingType,omitempty"`
-	ProcessWay      *int32  `json:"ProcessWay,omitempty" xml:"ProcessWay,omitempty"`
-	ApplyUserNick   *string `json:"ApplyUserNick,omitempty" xml:"ApplyUserNick,omitempty"`
-	InvoiceByAmount *bool   `json:"InvoiceByAmount,omitempty" xml:"InvoiceByAmount,omitempty"`
-	UserRemark      *string `json:"UserRemark,omitempty" xml:"UserRemark,omitempty"`
-	SelectedIds     []*int  `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`
+	AddressId       *int64   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	ApplyUserNick   *string  `json:"ApplyUserNick,omitempty" xml:"ApplyUserNick,omitempty"`
+	CustomerId      *int64   `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	InvoiceAmount   *int64   `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
+	InvoiceByAmount *bool    `json:"InvoiceByAmount,omitempty" xml:"InvoiceByAmount,omitempty"`
+	InvoicingType   *int32   `json:"InvoicingType,omitempty" xml:"InvoicingType,omitempty"`
+	OwnerId         *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProcessWay      *int32   `json:"ProcessWay,omitempty" xml:"ProcessWay,omitempty"`
+	SelectedIds     []*int64 `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`
+	UserRemark      *string  `json:"UserRemark,omitempty" xml:"UserRemark,omitempty"`
 }
 
 func (s ApplyInvoiceRequest) String() string {
@@ -336,33 +336,8 @@ func (s ApplyInvoiceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyInvoiceRequest) SetInvoiceAmount(v int64) *ApplyInvoiceRequest {
-	s.InvoiceAmount = &v
-	return s
-}
-
-func (s *ApplyInvoiceRequest) SetOwnerId(v int64) *ApplyInvoiceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ApplyInvoiceRequest) SetCustomerId(v int64) *ApplyInvoiceRequest {
-	s.CustomerId = &v
-	return s
-}
-
 func (s *ApplyInvoiceRequest) SetAddressId(v int64) *ApplyInvoiceRequest {
 	s.AddressId = &v
-	return s
-}
-
-func (s *ApplyInvoiceRequest) SetInvoicingType(v int32) *ApplyInvoiceRequest {
-	s.InvoicingType = &v
-	return s
-}
-
-func (s *ApplyInvoiceRequest) SetProcessWay(v int32) *ApplyInvoiceRequest {
-	s.ProcessWay = &v
 	return s
 }
 
@@ -371,8 +346,38 @@ func (s *ApplyInvoiceRequest) SetApplyUserNick(v string) *ApplyInvoiceRequest {
 	return s
 }
 
+func (s *ApplyInvoiceRequest) SetCustomerId(v int64) *ApplyInvoiceRequest {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *ApplyInvoiceRequest) SetInvoiceAmount(v int64) *ApplyInvoiceRequest {
+	s.InvoiceAmount = &v
+	return s
+}
+
 func (s *ApplyInvoiceRequest) SetInvoiceByAmount(v bool) *ApplyInvoiceRequest {
 	s.InvoiceByAmount = &v
+	return s
+}
+
+func (s *ApplyInvoiceRequest) SetInvoicingType(v int32) *ApplyInvoiceRequest {
+	s.InvoicingType = &v
+	return s
+}
+
+func (s *ApplyInvoiceRequest) SetOwnerId(v int64) *ApplyInvoiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ApplyInvoiceRequest) SetProcessWay(v int32) *ApplyInvoiceRequest {
+	s.ProcessWay = &v
+	return s
+}
+
+func (s *ApplyInvoiceRequest) SetSelectedIds(v []*int64) *ApplyInvoiceRequest {
+	s.SelectedIds = v
 	return s
 }
 
@@ -381,17 +386,12 @@ func (s *ApplyInvoiceRequest) SetUserRemark(v string) *ApplyInvoiceRequest {
 	return s
 }
 
-func (s *ApplyInvoiceRequest) SetSelectedIds(v []*int) *ApplyInvoiceRequest {
-	s.SelectedIds = v
-	return s
-}
-
 type ApplyInvoiceResponseBody struct {
 	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ApplyInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *ApplyInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ApplyInvoiceResponseBody) String() string {
@@ -407,6 +407,11 @@ func (s *ApplyInvoiceResponseBody) SetCode(v string) *ApplyInvoiceResponseBody {
 	return s
 }
 
+func (s *ApplyInvoiceResponseBody) SetData(v *ApplyInvoiceResponseBodyData) *ApplyInvoiceResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ApplyInvoiceResponseBody) SetMessage(v string) *ApplyInvoiceResponseBody {
 	s.Message = &v
 	return s
@@ -419,11 +424,6 @@ func (s *ApplyInvoiceResponseBody) SetRequestId(v string) *ApplyInvoiceResponseB
 
 func (s *ApplyInvoiceResponseBody) SetSuccess(v bool) *ApplyInvoiceResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *ApplyInvoiceResponseBody) SetData(v *ApplyInvoiceResponseBodyData) *ApplyInvoiceResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -492,10 +492,10 @@ func (s *CancelOrderRequest) SetOwnerId(v int64) *CancelOrderRequest {
 
 type CancelOrderResponseBody struct {
 	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CancelOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *CancelOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CancelOrderResponseBody) String() string {
@@ -511,6 +511,11 @@ func (s *CancelOrderResponseBody) SetCode(v string) *CancelOrderResponseBody {
 	return s
 }
 
+func (s *CancelOrderResponseBody) SetData(v *CancelOrderResponseBodyData) *CancelOrderResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CancelOrderResponseBody) SetMessage(v string) *CancelOrderResponseBody {
 	s.Message = &v
 	return s
@@ -523,11 +528,6 @@ func (s *CancelOrderResponseBody) SetRequestId(v string) *CancelOrderResponseBod
 
 func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *CancelOrderResponseBody) SetData(v *CancelOrderResponseBodyData) *CancelOrderResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -572,14 +572,14 @@ func (s *CancelOrderResponse) SetBody(v *CancelOrderResponseBody) *CancelOrderRe
 }
 
 type ChangeResellerConsumeAmountRequest struct {
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	AdjustType   *string `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
 	Amount       *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	Currency     *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	OutBizId     *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	Currency     *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	ExtendMap    *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
+	OutBizId     *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ChangeResellerConsumeAmountRequest) String() string {
@@ -588,11 +588,6 @@ func (s ChangeResellerConsumeAmountRequest) String() string {
 
 func (s ChangeResellerConsumeAmountRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ChangeResellerConsumeAmountRequest) SetOwnerId(v int64) *ChangeResellerConsumeAmountRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *ChangeResellerConsumeAmountRequest) SetAdjustType(v string) *ChangeResellerConsumeAmountRequest {
@@ -605,23 +600,13 @@ func (s *ChangeResellerConsumeAmountRequest) SetAmount(v string) *ChangeReseller
 	return s
 }
 
-func (s *ChangeResellerConsumeAmountRequest) SetCurrency(v string) *ChangeResellerConsumeAmountRequest {
-	s.Currency = &v
-	return s
-}
-
 func (s *ChangeResellerConsumeAmountRequest) SetBusinessType(v string) *ChangeResellerConsumeAmountRequest {
 	s.BusinessType = &v
 	return s
 }
 
-func (s *ChangeResellerConsumeAmountRequest) SetSource(v string) *ChangeResellerConsumeAmountRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *ChangeResellerConsumeAmountRequest) SetOutBizId(v string) *ChangeResellerConsumeAmountRequest {
-	s.OutBizId = &v
+func (s *ChangeResellerConsumeAmountRequest) SetCurrency(v string) *ChangeResellerConsumeAmountRequest {
+	s.Currency = &v
 	return s
 }
 
@@ -630,10 +615,25 @@ func (s *ChangeResellerConsumeAmountRequest) SetExtendMap(v string) *ChangeResel
 	return s
 }
 
+func (s *ChangeResellerConsumeAmountRequest) SetOutBizId(v string) *ChangeResellerConsumeAmountRequest {
+	s.OutBizId = &v
+	return s
+}
+
+func (s *ChangeResellerConsumeAmountRequest) SetOwnerId(v int64) *ChangeResellerConsumeAmountRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChangeResellerConsumeAmountRequest) SetSource(v string) *ChangeResellerConsumeAmountRequest {
+	s.Source = &v
+	return s
+}
+
 type ChangeResellerConsumeAmountResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -651,13 +651,13 @@ func (s *ChangeResellerConsumeAmountResponseBody) SetCode(v string) *ChangeResel
 	return s
 }
 
-func (s *ChangeResellerConsumeAmountResponseBody) SetMessage(v string) *ChangeResellerConsumeAmountResponseBody {
-	s.Message = &v
+func (s *ChangeResellerConsumeAmountResponseBody) SetData(v string) *ChangeResellerConsumeAmountResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *ChangeResellerConsumeAmountResponseBody) SetData(v string) *ChangeResellerConsumeAmountResponseBody {
-	s.Data = &v
+func (s *ChangeResellerConsumeAmountResponseBody) SetMessage(v string) *ChangeResellerConsumeAmountResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -695,12 +695,12 @@ func (s *ChangeResellerConsumeAmountResponse) SetBody(v *ChangeResellerConsumeAm
 }
 
 type ConfirmRelationRequest struct {
-	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	ConfirmCode     *string   `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
 	ChildUserId     *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ConfirmCode     *string   `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
+	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConfirmRelationRequest) String() string {
@@ -711,13 +711,8 @@ func (s ConfirmRelationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ConfirmRelationRequest) SetRelationType(v string) *ConfirmRelationRequest {
-	s.RelationType = &v
-	return s
-}
-
-func (s *ConfirmRelationRequest) SetParentUserId(v int64) *ConfirmRelationRequest {
-	s.ParentUserId = &v
+func (s *ConfirmRelationRequest) SetChildUserId(v int64) *ConfirmRelationRequest {
+	s.ChildUserId = &v
 	return s
 }
 
@@ -726,13 +721,8 @@ func (s *ConfirmRelationRequest) SetConfirmCode(v string) *ConfirmRelationReques
 	return s
 }
 
-func (s *ConfirmRelationRequest) SetChildUserId(v int64) *ConfirmRelationRequest {
-	s.ChildUserId = &v
-	return s
-}
-
-func (s *ConfirmRelationRequest) SetRequestId(v string) *ConfirmRelationRequest {
-	s.RequestId = &v
+func (s *ConfirmRelationRequest) SetParentUserId(v int64) *ConfirmRelationRequest {
+	s.ParentUserId = &v
 	return s
 }
 
@@ -741,12 +731,22 @@ func (s *ConfirmRelationRequest) SetPermissionCodes(v []*string) *ConfirmRelatio
 	return s
 }
 
+func (s *ConfirmRelationRequest) SetRelationType(v string) *ConfirmRelationRequest {
+	s.RelationType = &v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetRequestId(v string) *ConfirmRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
 type ConfirmRelationResponseBody struct {
 	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ConfirmRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *ConfirmRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ConfirmRelationResponseBody) String() string {
@@ -762,6 +762,11 @@ func (s *ConfirmRelationResponseBody) SetCode(v string) *ConfirmRelationResponse
 	return s
 }
 
+func (s *ConfirmRelationResponseBody) SetData(v *ConfirmRelationResponseBodyData) *ConfirmRelationResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ConfirmRelationResponseBody) SetMessage(v string) *ConfirmRelationResponseBody {
 	s.Message = &v
 	return s
@@ -774,11 +779,6 @@ func (s *ConfirmRelationResponseBody) SetRequestId(v string) *ConfirmRelationRes
 
 func (s *ConfirmRelationResponseBody) SetSuccess(v bool) *ConfirmRelationResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *ConfirmRelationResponseBody) SetData(v *ConfirmRelationResponseBodyData) *ConfirmRelationResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -823,12 +823,12 @@ func (s *ConfirmRelationResponse) SetBody(v *ConfirmRelationResponseBody) *Confi
 }
 
 type ConvertChargeTypeRequest struct {
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s ConvertChargeTypeRequest) String() string {
@@ -839,18 +839,13 @@ func (s ConvertChargeTypeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ConvertChargeTypeRequest) SetInstanceId(v string) *ConvertChargeTypeRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ConvertChargeTypeRequest) SetOwnerId(v int64) *ConvertChargeTypeRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ConvertChargeTypeRequest) SetProductType(v string) *ConvertChargeTypeRequest {
-	s.ProductType = &v
-	return s
-}
-
-func (s *ConvertChargeTypeRequest) SetSubscriptionType(v string) *ConvertChargeTypeRequest {
-	s.SubscriptionType = &v
 	return s
 }
 
@@ -864,17 +859,22 @@ func (s *ConvertChargeTypeRequest) SetProductCode(v string) *ConvertChargeTypeRe
 	return s
 }
 
-func (s *ConvertChargeTypeRequest) SetInstanceId(v string) *ConvertChargeTypeRequest {
-	s.InstanceId = &v
+func (s *ConvertChargeTypeRequest) SetProductType(v string) *ConvertChargeTypeRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ConvertChargeTypeRequest) SetSubscriptionType(v string) *ConvertChargeTypeRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
 type ConvertChargeTypeResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ConvertChargeTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *ConvertChargeTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ConvertChargeTypeResponseBody) String() string {
@@ -890,6 +890,11 @@ func (s *ConvertChargeTypeResponseBody) SetCode(v string) *ConvertChargeTypeResp
 	return s
 }
 
+func (s *ConvertChargeTypeResponseBody) SetData(v *ConvertChargeTypeResponseBodyData) *ConvertChargeTypeResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ConvertChargeTypeResponseBody) SetMessage(v string) *ConvertChargeTypeResponseBody {
 	s.Message = &v
 	return s
@@ -902,11 +907,6 @@ func (s *ConvertChargeTypeResponseBody) SetRequestId(v string) *ConvertChargeTyp
 
 func (s *ConvertChargeTypeResponseBody) SetSuccess(v bool) *ConvertChargeTypeResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *ConvertChargeTypeResponseBody) SetData(v *ConvertChargeTypeResponseBodyData) *ConvertChargeTypeResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -951,15 +951,15 @@ func (s *ConvertChargeTypeResponse) SetBody(v *ConvertChargeTypeResponseBody) *C
 }
 
 type CreateAgAccountRequest struct {
-	LoginEmail     *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
 	AccountAttr    *string `json:"AccountAttr,omitempty" xml:"AccountAttr,omitempty"`
+	CityName       *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	EnterpriseName *string `json:"EnterpriseName,omitempty" xml:"EnterpriseName,omitempty"`
 	FirstName      *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	LastName       *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	LoginEmail     *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
 	NationCode     *string `json:"NationCode,omitempty" xml:"NationCode,omitempty"`
-	ProvinceName   *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	CityName       *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	Postcode       *string `json:"Postcode,omitempty" xml:"Postcode,omitempty"`
+	ProvinceName   *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 
 func (s CreateAgAccountRequest) String() string {
@@ -970,13 +970,13 @@ func (s CreateAgAccountRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAgAccountRequest) SetLoginEmail(v string) *CreateAgAccountRequest {
-	s.LoginEmail = &v
+func (s *CreateAgAccountRequest) SetAccountAttr(v string) *CreateAgAccountRequest {
+	s.AccountAttr = &v
 	return s
 }
 
-func (s *CreateAgAccountRequest) SetAccountAttr(v string) *CreateAgAccountRequest {
-	s.AccountAttr = &v
+func (s *CreateAgAccountRequest) SetCityName(v string) *CreateAgAccountRequest {
+	s.CityName = &v
 	return s
 }
 
@@ -995,18 +995,13 @@ func (s *CreateAgAccountRequest) SetLastName(v string) *CreateAgAccountRequest {
 	return s
 }
 
+func (s *CreateAgAccountRequest) SetLoginEmail(v string) *CreateAgAccountRequest {
+	s.LoginEmail = &v
+	return s
+}
+
 func (s *CreateAgAccountRequest) SetNationCode(v string) *CreateAgAccountRequest {
 	s.NationCode = &v
-	return s
-}
-
-func (s *CreateAgAccountRequest) SetProvinceName(v string) *CreateAgAccountRequest {
-	s.ProvinceName = &v
-	return s
-}
-
-func (s *CreateAgAccountRequest) SetCityName(v string) *CreateAgAccountRequest {
-	s.CityName = &v
 	return s
 }
 
@@ -1015,12 +1010,17 @@ func (s *CreateAgAccountRequest) SetPostcode(v string) *CreateAgAccountRequest {
 	return s
 }
 
+func (s *CreateAgAccountRequest) SetProvinceName(v string) *CreateAgAccountRequest {
+	s.ProvinceName = &v
+	return s
+}
+
 type CreateAgAccountResponseBody struct {
+	AgRelationDto *CreateAgAccountResponseBodyAgRelationDto `json:"AgRelationDto,omitempty" xml:"AgRelationDto,omitempty" type:"Struct"`
 	Code          *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message       *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId     *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success       *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	AgRelationDto *CreateAgAccountResponseBodyAgRelationDto `json:"AgRelationDto,omitempty" xml:"AgRelationDto,omitempty" type:"Struct"`
 }
 
 func (s CreateAgAccountResponseBody) String() string {
@@ -1029,6 +1029,11 @@ func (s CreateAgAccountResponseBody) String() string {
 
 func (s CreateAgAccountResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAgAccountResponseBody) SetAgRelationDto(v *CreateAgAccountResponseBodyAgRelationDto) *CreateAgAccountResponseBody {
+	s.AgRelationDto = v
+	return s
 }
 
 func (s *CreateAgAccountResponseBody) SetCode(v string) *CreateAgAccountResponseBody {
@@ -1051,16 +1056,11 @@ func (s *CreateAgAccountResponseBody) SetSuccess(v bool) *CreateAgAccountRespons
 	return s
 }
 
-func (s *CreateAgAccountResponseBody) SetAgRelationDto(v *CreateAgAccountResponseBodyAgRelationDto) *CreateAgAccountResponseBody {
-	s.AgRelationDto = v
-	return s
-}
-
 type CreateAgAccountResponseBodyAgRelationDto struct {
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Mpk              *string `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
 	Pk               *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
 	RamAdminRoleName *string `json:"RamAdminRoleName,omitempty" xml:"RamAdminRoleName,omitempty"`
-	Mpk              *string `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateAgAccountResponseBodyAgRelationDto) String() string {
@@ -1071,8 +1071,8 @@ func (s CreateAgAccountResponseBodyAgRelationDto) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAgAccountResponseBodyAgRelationDto) SetType(v string) *CreateAgAccountResponseBodyAgRelationDto {
-	s.Type = &v
+func (s *CreateAgAccountResponseBodyAgRelationDto) SetMpk(v string) *CreateAgAccountResponseBodyAgRelationDto {
+	s.Mpk = &v
 	return s
 }
 
@@ -1086,8 +1086,8 @@ func (s *CreateAgAccountResponseBodyAgRelationDto) SetRamAdminRoleName(v string)
 	return s
 }
 
-func (s *CreateAgAccountResponseBodyAgRelationDto) SetMpk(v string) *CreateAgAccountResponseBodyAgRelationDto {
-	s.Mpk = &v
+func (s *CreateAgAccountResponseBodyAgRelationDto) SetType(v string) *CreateAgAccountResponseBodyAgRelationDto {
+	s.Type = &v
 	return s
 }
 
@@ -1132,8 +1132,8 @@ func (s *CreateCostUnitRequest) SetUnitEntityList(v []*CreateCostUnitRequestUnit
 }
 
 type CreateCostUnitRequestUnitEntityList struct {
-	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	OwnerUid     *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
@@ -1145,13 +1145,13 @@ func (s CreateCostUnitRequestUnitEntityList) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCostUnitRequestUnitEntityList) SetParentUnitId(v int64) *CreateCostUnitRequestUnitEntityList {
-	s.ParentUnitId = &v
+func (s *CreateCostUnitRequestUnitEntityList) SetOwnerUid(v int64) *CreateCostUnitRequestUnitEntityList {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *CreateCostUnitRequestUnitEntityList) SetOwnerUid(v int64) *CreateCostUnitRequestUnitEntityList {
-	s.OwnerUid = &v
+func (s *CreateCostUnitRequestUnitEntityList) SetParentUnitId(v int64) *CreateCostUnitRequestUnitEntityList {
+	s.ParentUnitId = &v
 	return s
 }
 
@@ -1162,10 +1162,10 @@ func (s *CreateCostUnitRequestUnitEntityList) SetUnitName(v string) *CreateCostU
 
 type CreateCostUnitResponseBody struct {
 	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *CreateCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateCostUnitResponseBody) String() string {
@@ -1181,6 +1181,11 @@ func (s *CreateCostUnitResponseBody) SetCode(v string) *CreateCostUnitResponseBo
 	return s
 }
 
+func (s *CreateCostUnitResponseBody) SetData(v *CreateCostUnitResponseBodyData) *CreateCostUnitResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CreateCostUnitResponseBody) SetMessage(v string) *CreateCostUnitResponseBody {
 	s.Message = &v
 	return s
@@ -1193,11 +1198,6 @@ func (s *CreateCostUnitResponseBody) SetRequestId(v string) *CreateCostUnitRespo
 
 func (s *CreateCostUnitResponseBody) SetSuccess(v bool) *CreateCostUnitResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *CreateCostUnitResponseBody) SetData(v *CreateCostUnitResponseBodyData) *CreateCostUnitResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -1219,10 +1219,10 @@ func (s *CreateCostUnitResponseBodyData) SetCostUnitDtoList(v []*CreateCostUnitR
 }
 
 type CreateCostUnitResponseBodyDataCostUnitDtoList struct {
-	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
-	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	OwnerUid     *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
+	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
 func (s CreateCostUnitResponseBodyDataCostUnitDtoList) String() string {
@@ -1233,13 +1233,13 @@ func (s CreateCostUnitResponseBodyDataCostUnitDtoList) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetParentUnitId(v int64) *CreateCostUnitResponseBodyDataCostUnitDtoList {
-	s.ParentUnitId = &v
+func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetOwnerUid(v int64) *CreateCostUnitResponseBodyDataCostUnitDtoList {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetUnitName(v string) *CreateCostUnitResponseBodyDataCostUnitDtoList {
-	s.UnitName = &v
+func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetParentUnitId(v int64) *CreateCostUnitResponseBodyDataCostUnitDtoList {
+	s.ParentUnitId = &v
 	return s
 }
 
@@ -1248,8 +1248,8 @@ func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetUnitId(v int64) *Crea
 	return s
 }
 
-func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetOwnerUid(v int64) *CreateCostUnitResponseBodyDataCostUnitDtoList {
-	s.OwnerUid = &v
+func (s *CreateCostUnitResponseBodyDataCostUnitDtoList) SetUnitName(v string) *CreateCostUnitResponseBodyDataCostUnitDtoList {
+	s.UnitName = &v
 	return s
 }
 
@@ -1277,16 +1277,16 @@ func (s *CreateCostUnitResponse) SetBody(v *CreateCostUnitResponseBody) *CreateC
 }
 
 type CreateInstanceRequest struct {
-	ProductCode      *string                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	OwnerId          *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductType      *string                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string                           `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Period           *int32                            `json:"Period,omitempty" xml:"Period,omitempty"`
-	RenewalStatus    *string                           `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	RenewPeriod      *int32                            `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 	ClientToken      *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Logistics        *string                           `json:"Logistics,omitempty" xml:"Logistics,omitempty"`
+	OwnerId          *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Parameter        []*CreateInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
+	Period           *int32                            `json:"Period,omitempty" xml:"Period,omitempty"`
+	ProductCode      *string                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType      *string                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RenewPeriod      *int32                            `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
+	RenewalStatus    *string                           `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	SubscriptionType *string                           `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -1295,41 +1295,6 @@ func (s CreateInstanceRequest) String() string {
 
 func (s CreateInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateInstanceRequest) SetProductCode(v string) *CreateInstanceRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetOwnerId(v int64) *CreateInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetProductType(v string) *CreateInstanceRequest {
-	s.ProductType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetSubscriptionType(v string) *CreateInstanceRequest {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetRenewalStatus(v string) *CreateInstanceRequest {
-	s.RenewalStatus = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetRenewPeriod(v int32) *CreateInstanceRequest {
-	s.RenewPeriod = &v
-	return s
 }
 
 func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
@@ -1342,14 +1307,49 @@ func (s *CreateInstanceRequest) SetLogistics(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetOwnerId(v int64) *CreateInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetParameter(v []*CreateInstanceRequestParameter) *CreateInstanceRequest {
 	s.Parameter = v
 	return s
 }
 
+func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetProductCode(v string) *CreateInstanceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetProductType(v string) *CreateInstanceRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRenewPeriod(v int32) *CreateInstanceRequest {
+	s.RenewPeriod = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRenewalStatus(v string) *CreateInstanceRequest {
+	s.RenewalStatus = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSubscriptionType(v string) *CreateInstanceRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
 type CreateInstanceRequestParameter struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateInstanceRequestParameter) String() string {
@@ -1360,22 +1360,22 @@ func (s CreateInstanceRequestParameter) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceRequestParameter) SetValue(v string) *CreateInstanceRequestParameter {
-	s.Value = &v
-	return s
-}
-
 func (s *CreateInstanceRequestParameter) SetCode(v string) *CreateInstanceRequestParameter {
 	s.Code = &v
 	return s
 }
 
+func (s *CreateInstanceRequestParameter) SetValue(v string) *CreateInstanceRequestParameter {
+	s.Value = &v
+	return s
+}
+
 type CreateInstanceResponseBody struct {
 	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -1388,6 +1388,11 @@ func (s CreateInstanceResponseBody) GoString() string {
 
 func (s *CreateInstanceResponseBody) SetCode(v string) *CreateInstanceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetData(v *CreateInstanceResponseBodyData) *CreateInstanceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1406,14 +1411,9 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 	return s
 }
 
-func (s *CreateInstanceResponseBody) SetData(v *CreateInstanceResponseBodyData) *CreateInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
 type CreateInstanceResponseBodyData struct {
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyData) String() string {
@@ -1424,13 +1424,13 @@ func (s CreateInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceResponseBodyData) SetOrderId(v string) *CreateInstanceResponseBodyData {
-	s.OrderId = &v
+func (s *CreateInstanceResponseBodyData) SetInstanceId(v string) *CreateInstanceResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *CreateInstanceResponseBodyData) SetInstanceId(v string) *CreateInstanceResponseBodyData {
-	s.InstanceId = &v
+func (s *CreateInstanceResponseBodyData) SetOrderId(v string) *CreateInstanceResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -1458,10 +1458,10 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateResellerUserQuotaRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Amount   *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s CreateResellerUserQuotaRequest) String() string {
@@ -1470,11 +1470,6 @@ func (s CreateResellerUserQuotaRequest) String() string {
 
 func (s CreateResellerUserQuotaRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateResellerUserQuotaRequest) SetOwnerId(v int64) *CreateResellerUserQuotaRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *CreateResellerUserQuotaRequest) SetAmount(v string) *CreateResellerUserQuotaRequest {
@@ -1492,10 +1487,15 @@ func (s *CreateResellerUserQuotaRequest) SetOutBizId(v string) *CreateResellerUs
 	return s
 }
 
+func (s *CreateResellerUserQuotaRequest) SetOwnerId(v int64) *CreateResellerUserQuotaRequest {
+	s.OwnerId = &v
+	return s
+}
+
 type CreateResellerUserQuotaResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -1513,13 +1513,13 @@ func (s *CreateResellerUserQuotaResponseBody) SetCode(v string) *CreateResellerU
 	return s
 }
 
-func (s *CreateResellerUserQuotaResponseBody) SetMessage(v string) *CreateResellerUserQuotaResponseBody {
-	s.Message = &v
+func (s *CreateResellerUserQuotaResponseBody) SetData(v bool) *CreateResellerUserQuotaResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateResellerUserQuotaResponseBody) SetData(v bool) *CreateResellerUserQuotaResponseBody {
-	s.Data = &v
+func (s *CreateResellerUserQuotaResponseBody) SetMessage(v string) *CreateResellerUserQuotaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1557,13 +1557,13 @@ func (s *CreateResellerUserQuotaResponse) SetBody(v *CreateResellerUserQuotaResp
 }
 
 type CreateResourcePackageRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	PackageType   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PackageType   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
 func (s CreateResourcePackageRequest) String() string {
@@ -1574,18 +1574,8 @@ func (s CreateResourcePackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourcePackageRequest) SetOwnerId(v int64) *CreateResourcePackageRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateResourcePackageRequest) SetProductCode(v string) *CreateResourcePackageRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *CreateResourcePackageRequest) SetPackageType(v string) *CreateResourcePackageRequest {
-	s.PackageType = &v
+func (s *CreateResourcePackageRequest) SetDuration(v int32) *CreateResourcePackageRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -1594,13 +1584,13 @@ func (s *CreateResourcePackageRequest) SetEffectiveDate(v string) *CreateResourc
 	return s
 }
 
-func (s *CreateResourcePackageRequest) SetSpecification(v string) *CreateResourcePackageRequest {
-	s.Specification = &v
+func (s *CreateResourcePackageRequest) SetOwnerId(v int64) *CreateResourcePackageRequest {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *CreateResourcePackageRequest) SetDuration(v int32) *CreateResourcePackageRequest {
-	s.Duration = &v
+func (s *CreateResourcePackageRequest) SetPackageType(v string) *CreateResourcePackageRequest {
+	s.PackageType = &v
 	return s
 }
 
@@ -1609,13 +1599,23 @@ func (s *CreateResourcePackageRequest) SetPricingCycle(v string) *CreateResource
 	return s
 }
 
+func (s *CreateResourcePackageRequest) SetProductCode(v string) *CreateResourcePackageRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *CreateResourcePackageRequest) SetSpecification(v string) *CreateResourcePackageRequest {
+	s.Specification = &v
+	return s
+}
+
 type CreateResourcePackageResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	OrderId   *int64                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Data      *CreateResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s CreateResourcePackageResponseBody) String() string {
@@ -1631,8 +1631,18 @@ func (s *CreateResourcePackageResponseBody) SetCode(v string) *CreateResourcePac
 	return s
 }
 
+func (s *CreateResourcePackageResponseBody) SetData(v *CreateResourcePackageResponseBodyData) *CreateResourcePackageResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CreateResourcePackageResponseBody) SetMessage(v string) *CreateResourcePackageResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CreateResourcePackageResponseBody) SetOrderId(v int64) *CreateResourcePackageResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -1646,19 +1656,9 @@ func (s *CreateResourcePackageResponseBody) SetSuccess(v bool) *CreateResourcePa
 	return s
 }
 
-func (s *CreateResourcePackageResponseBody) SetOrderId(v int64) *CreateResourcePackageResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CreateResourcePackageResponseBody) SetData(v *CreateResourcePackageResponseBodyData) *CreateResourcePackageResponseBody {
-	s.Data = v
-	return s
-}
-
 type CreateResourcePackageResponseBodyData struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateResourcePackageResponseBodyData) String() string {
@@ -1669,13 +1669,13 @@ func (s CreateResourcePackageResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourcePackageResponseBodyData) SetOrderId(v int64) *CreateResourcePackageResponseBodyData {
-	s.OrderId = &v
+func (s *CreateResourcePackageResponseBodyData) SetInstanceId(v string) *CreateResourcePackageResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *CreateResourcePackageResponseBodyData) SetInstanceId(v string) *CreateResourcePackageResponseBodyData {
-	s.InstanceId = &v
+func (s *CreateResourcePackageResponseBodyData) SetOrderId(v int64) *CreateResourcePackageResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -1698,6 +1698,174 @@ func (s *CreateResourcePackageResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateResourcePackageResponse) SetBody(v *CreateResourcePackageResponseBody) *CreateResourcePackageResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSavingsPlansInstanceRequest struct {
+	// commodityCode
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// duration
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// effectiveDate
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	// payMode
+	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	// poolValue
+	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	// pricingCycle
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// region
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// specType
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// specification
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateSavingsPlansInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavingsPlansInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetCommodityCode(v string) *CreateSavingsPlansInstanceRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetDuration(v string) *CreateSavingsPlansInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetEffectiveDate(v string) *CreateSavingsPlansInstanceRequest {
+	s.EffectiveDate = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetPayMode(v string) *CreateSavingsPlansInstanceRequest {
+	s.PayMode = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetPoolValue(v string) *CreateSavingsPlansInstanceRequest {
+	s.PoolValue = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetPricingCycle(v string) *CreateSavingsPlansInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetRegion(v string) *CreateSavingsPlansInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetSpecType(v string) *CreateSavingsPlansInstanceRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetSpecification(v string) *CreateSavingsPlansInstanceRequest {
+	s.Specification = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceRequest) SetType(v string) *CreateSavingsPlansInstanceRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateSavingsPlansInstanceResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSavingsPlansInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavingsPlansInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavingsPlansInstanceResponseBody) SetCode(v string) *CreateSavingsPlansInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceResponseBody) SetData(v *CreateSavingsPlansInstanceResponseBodyData) *CreateSavingsPlansInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceResponseBody) SetMessage(v string) *CreateSavingsPlansInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceResponseBody) SetRequestId(v string) *CreateSavingsPlansInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceResponseBody) SetSuccess(v bool) *CreateSavingsPlansInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSavingsPlansInstanceResponseBodyData struct {
+	// orderId
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreateSavingsPlansInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavingsPlansInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavingsPlansInstanceResponseBodyData) SetOrderId(v int64) *CreateSavingsPlansInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type CreateSavingsPlansInstanceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSavingsPlansInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSavingsPlansInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavingsPlansInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavingsPlansInstanceResponse) SetHeaders(v map[string]*string) *CreateSavingsPlansInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSavingsPlansInstanceResponse) SetBody(v *CreateSavingsPlansInstanceResponseBody) *CreateSavingsPlansInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -1727,10 +1895,10 @@ func (s *DeleteCostUnitRequest) SetUnitId(v int64) *DeleteCostUnitRequest {
 
 type DeleteCostUnitResponseBody struct {
 	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DeleteCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DeleteCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DeleteCostUnitResponseBody) String() string {
@@ -1743,6 +1911,11 @@ func (s DeleteCostUnitResponseBody) GoString() string {
 
 func (s *DeleteCostUnitResponseBody) SetCode(v string) *DeleteCostUnitResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DeleteCostUnitResponseBody) SetData(v *DeleteCostUnitResponseBodyData) *DeleteCostUnitResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1761,15 +1934,10 @@ func (s *DeleteCostUnitResponseBody) SetSuccess(v bool) *DeleteCostUnitResponseB
 	return s
 }
 
-func (s *DeleteCostUnitResponseBody) SetData(v *DeleteCostUnitResponseBodyData) *DeleteCostUnitResponseBody {
-	s.Data = v
-	return s
-}
-
 type DeleteCostUnitResponseBodyData struct {
 	IsSuccess *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	UnitId    *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	OwnerUid  *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	UnitId    *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
 func (s DeleteCostUnitResponseBodyData) String() string {
@@ -1785,13 +1953,13 @@ func (s *DeleteCostUnitResponseBodyData) SetIsSuccess(v bool) *DeleteCostUnitRes
 	return s
 }
 
-func (s *DeleteCostUnitResponseBodyData) SetUnitId(v int64) *DeleteCostUnitResponseBodyData {
-	s.UnitId = &v
+func (s *DeleteCostUnitResponseBodyData) SetOwnerUid(v int64) *DeleteCostUnitResponseBodyData {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *DeleteCostUnitResponseBodyData) SetOwnerUid(v int64) *DeleteCostUnitResponseBodyData {
-	s.OwnerUid = &v
+func (s *DeleteCostUnitResponseBodyData) SetUnitId(v int64) *DeleteCostUnitResponseBodyData {
+	s.UnitId = &v
 	return s
 }
 
@@ -1819,19 +1987,19 @@ func (s *DeleteCostUnitResponse) SetBody(v *DeleteCostUnitResponseBody) *DeleteC
 }
 
 type DescribeInstanceBillRequest struct {
+	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	InstanceID       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	IsBillingItem    *bool   `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
+	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	IsBillingItem    *bool   `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	InstanceID       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 }
 
 func (s DescribeInstanceBillRequest) String() string {
@@ -1842,8 +2010,53 @@ func (s DescribeInstanceBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceBillRequest) SetBillOwnerId(v int64) *DescribeInstanceBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *DescribeInstanceBillRequest) SetBillingCycle(v string) *DescribeInstanceBillRequest {
 	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetBillingDate(v string) *DescribeInstanceBillRequest {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetGranularity(v string) *DescribeInstanceBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetInstanceID(v string) *DescribeInstanceBillRequest {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetIsBillingItem(v bool) *DescribeInstanceBillRequest {
+	s.IsBillingItem = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetIsHideZeroCharge(v bool) *DescribeInstanceBillRequest {
+	s.IsHideZeroCharge = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetMaxResults(v int32) *DescribeInstanceBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetNextToken(v string) *DescribeInstanceBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetOwnerId(v int64) *DescribeInstanceBillRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -1862,57 +2075,12 @@ func (s *DescribeInstanceBillRequest) SetSubscriptionType(v string) *DescribeIns
 	return s
 }
 
-func (s *DescribeInstanceBillRequest) SetOwnerId(v int64) *DescribeInstanceBillRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetIsBillingItem(v bool) *DescribeInstanceBillRequest {
-	s.IsBillingItem = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetNextToken(v string) *DescribeInstanceBillRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetMaxResults(v int32) *DescribeInstanceBillRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetIsHideZeroCharge(v bool) *DescribeInstanceBillRequest {
-	s.IsHideZeroCharge = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetBillingDate(v string) *DescribeInstanceBillRequest {
-	s.BillingDate = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetGranularity(v string) *DescribeInstanceBillRequest {
-	s.Granularity = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetBillOwnerId(v int64) *DescribeInstanceBillRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
-func (s *DescribeInstanceBillRequest) SetInstanceID(v string) *DescribeInstanceBillRequest {
-	s.InstanceID = &v
-	return s
-}
-
 type DescribeInstanceBillResponseBody struct {
 	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceBillResponseBody) String() string {
@@ -1925,6 +2093,11 @@ func (s DescribeInstanceBillResponseBody) GoString() string {
 
 func (s *DescribeInstanceBillResponseBody) SetCode(v string) *DescribeInstanceBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBody) SetData(v *DescribeInstanceBillResponseBodyData) *DescribeInstanceBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1943,19 +2116,14 @@ func (s *DescribeInstanceBillResponseBody) SetSuccess(v bool) *DescribeInstanceB
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBody) SetData(v *DescribeInstanceBillResponseBodyData) *DescribeInstanceBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeInstanceBillResponseBodyData struct {
-	NextToken    *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	BillingCycle *string                                      `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	MaxResults   *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	AccountID    *string                                      `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AccountName  *string                                      `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                      `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        []*DescribeInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MaxResults   *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceBillResponseBodyData) String() string {
@@ -1966,28 +2134,8 @@ func (s DescribeInstanceBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceBillResponseBodyData) SetNextToken(v string) *DescribeInstanceBillResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyData) SetBillingCycle(v string) *DescribeInstanceBillResponseBodyData {
-	s.BillingCycle = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyData) SetMaxResults(v int32) *DescribeInstanceBillResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
 func (s *DescribeInstanceBillResponseBodyData) SetAccountID(v string) *DescribeInstanceBillResponseBodyData {
 	s.AccountID = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyData) SetTotalCount(v int32) *DescribeInstanceBillResponseBodyData {
-	s.TotalCount = &v
 	return s
 }
 
@@ -1996,54 +2144,76 @@ func (s *DescribeInstanceBillResponseBodyData) SetAccountName(v string) *Describ
 	return s
 }
 
+func (s *DescribeInstanceBillResponseBodyData) SetBillingCycle(v string) *DescribeInstanceBillResponseBodyData {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *DescribeInstanceBillResponseBodyData) SetItems(v []*DescribeInstanceBillResponseBodyDataItems) *DescribeInstanceBillResponseBodyData {
 	s.Items = v
 	return s
 }
 
+func (s *DescribeInstanceBillResponseBodyData) SetMaxResults(v int32) *DescribeInstanceBillResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyData) SetNextToken(v string) *DescribeInstanceBillResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyData) SetTotalCount(v int32) *DescribeInstanceBillResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
 type DescribeInstanceBillResponseBodyDataItems struct {
-	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	BillAccountID             *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeInstanceBillResponseBodyDataItems) String() string {
@@ -2054,158 +2224,8 @@ func (s DescribeInstanceBillResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingDate(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.BillingDate = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.InstanceConfig = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetInternetIP(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.InternetIP = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetItem(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Item = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetTag(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceID(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.InstanceID = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetCurrency(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.BillAccountName = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.DeductedByCashCoupons = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetBizType(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceSpec(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCoupons(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingItem(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.BillingItem = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetRegion(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetOutstandingAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.OutstandingAmount = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetCostUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.CostUnit = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ListPriceUnit = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetPipCode(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.PipCode = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ServicePeriodUnit = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetProductName(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ProductName = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetNickName(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.NickName = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetProductDetail(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetUsage(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Usage = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetIntranetIP(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.IntranetIP = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetOwnerID(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByPrepaidCard(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.DeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *DescribeInstanceBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.UsageUnit = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetAdjustAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.AdjustAmount = &v
 	return s
 }
 
@@ -2214,13 +2234,63 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetBillAccountID(v string) *
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.PaymentAmount = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillAccountName = &v
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeInstanceBillResponseBodyDataItems {
-	s.InvoiceDiscount = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingDate(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingItem(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillingItem = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingType(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillingType = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBizType(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetCashAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetCostUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.CostUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetCurrency(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCashCoupons(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.DeductedByCashCoupons = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByCoupons(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByPrepaidCard(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.DeductedByPrepaidCard = &v
 	return s
 }
 
@@ -2229,23 +2299,78 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetDeductedByResourcePackage
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetProductType(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ProductType = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.InstanceConfig = &v
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetServicePeriod(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.ServicePeriod = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceID(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.InstanceID = &v
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetZone(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.Zone = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetInstanceSpec(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetInternetIP(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetIntranetIP(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.IntranetIP = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetItem(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Item = &v
 	return s
 }
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetListPrice(v string) *DescribeInstanceBillResponseBodyDataItems {
 	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetNickName(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.NickName = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetOutstandingAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetOwnerID(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetPipCode(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.PipCode = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeInstanceBillResponseBodyDataItems {
+	s.PretaxAmount = &v
 	return s
 }
 
@@ -2259,8 +2384,63 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetProductCode(v string) *De
 	return s
 }
 
-func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingType(v string) *DescribeInstanceBillResponseBodyDataItems {
-	s.BillingType = &v
+func (s *DescribeInstanceBillResponseBodyDataItems) SetProductDetail(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetProductName(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetProductType(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetRegion(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetServicePeriod(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ServicePeriod = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetTag(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetUsage(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Usage = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.UsageUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetZone(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.Zone = &v
 	return s
 }
 
@@ -2324,10 +2504,10 @@ func (s *DescribePricingModuleRequest) SetSubscriptionType(v string) *DescribePr
 
 type DescribePricingModuleResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribePricingModuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribePricingModuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribePricingModuleResponseBody) String() string {
@@ -2340,6 +2520,11 @@ func (s DescribePricingModuleResponseBody) GoString() string {
 
 func (s *DescribePricingModuleResponseBody) SetCode(v string) *DescribePricingModuleResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBody) SetData(v *DescribePricingModuleResponseBodyData) *DescribePricingModuleResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2358,14 +2543,9 @@ func (s *DescribePricingModuleResponseBody) SetSuccess(v bool) *DescribePricingM
 	return s
 }
 
-func (s *DescribePricingModuleResponseBody) SetData(v *DescribePricingModuleResponseBodyData) *DescribePricingModuleResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribePricingModuleResponseBodyData struct {
-	ModuleList    *DescribePricingModuleResponseBodyDataModuleList    `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Struct"`
 	AttributeList *DescribePricingModuleResponseBodyDataAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Struct"`
+	ModuleList    *DescribePricingModuleResponseBodyDataModuleList    `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Struct"`
 }
 
 func (s DescribePricingModuleResponseBodyData) String() string {
@@ -2376,88 +2556,13 @@ func (s DescribePricingModuleResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribePricingModuleResponseBodyData) SetModuleList(v *DescribePricingModuleResponseBodyDataModuleList) *DescribePricingModuleResponseBodyData {
-	s.ModuleList = v
-	return s
-}
-
 func (s *DescribePricingModuleResponseBodyData) SetAttributeList(v *DescribePricingModuleResponseBodyDataAttributeList) *DescribePricingModuleResponseBodyData {
 	s.AttributeList = v
 	return s
 }
 
-type DescribePricingModuleResponseBodyDataModuleList struct {
-	Module []*DescribePricingModuleResponseBodyDataModuleListModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleList) SetModule(v []*DescribePricingModuleResponseBodyDataModuleListModule) *DescribePricingModuleResponseBodyDataModuleList {
-	s.Module = v
-	return s
-}
-
-type DescribePricingModuleResponseBodyDataModuleListModule struct {
-	ModuleName *string                                                          `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	PriceType  *string                                                          `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	Currency   *string                                                          `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	ModuleCode *string                                                          `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	ConfigList *DescribePricingModuleResponseBodyDataModuleListModuleConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Struct"`
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleListModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleListModule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetModuleName(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
-	s.ModuleName = &v
-	return s
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetPriceType(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
-	s.PriceType = &v
-	return s
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetCurrency(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetModuleCode(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
-	s.ModuleCode = &v
-	return s
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetConfigList(v *DescribePricingModuleResponseBodyDataModuleListModuleConfigList) *DescribePricingModuleResponseBodyDataModuleListModule {
-	s.ConfigList = v
-	return s
-}
-
-type DescribePricingModuleResponseBodyDataModuleListModuleConfigList struct {
-	ConfigList []*string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleListModuleConfigList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePricingModuleResponseBodyDataModuleListModuleConfigList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePricingModuleResponseBodyDataModuleListModuleConfigList) SetConfigList(v []*string) *DescribePricingModuleResponseBodyDataModuleListModuleConfigList {
-	s.ConfigList = v
+func (s *DescribePricingModuleResponseBodyData) SetModuleList(v *DescribePricingModuleResponseBodyDataModuleList) *DescribePricingModuleResponseBodyData {
+	s.ModuleList = v
 	return s
 }
 
@@ -2531,10 +2636,10 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValues) SetA
 }
 
 type DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) String() string {
@@ -2543,6 +2648,16 @@ func (s DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttribu
 
 func (s DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) SetName(v string) *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) SetRemark(v string) *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue {
+	s.Remark = &v
+	return s
 }
 
 func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) SetType(v string) *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue {
@@ -2555,13 +2670,78 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttrib
 	return s
 }
 
-func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) SetRemark(v string) *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue {
-	s.Remark = &v
+type DescribePricingModuleResponseBodyDataModuleList struct {
+	Module []*DescribePricingModuleResponseBodyDataModuleListModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleList) SetModule(v []*DescribePricingModuleResponseBodyDataModuleListModule) *DescribePricingModuleResponseBodyDataModuleList {
+	s.Module = v
 	return s
 }
 
-func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue) SetName(v string) *DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue {
-	s.Name = &v
+type DescribePricingModuleResponseBodyDataModuleListModule struct {
+	ConfigList *DescribePricingModuleResponseBodyDataModuleListModuleConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Struct"`
+	Currency   *string                                                          `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ModuleCode *string                                                          `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string                                                          `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	PriceType  *string                                                          `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleListModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleListModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetConfigList(v *DescribePricingModuleResponseBodyDataModuleListModuleConfigList) *DescribePricingModuleResponseBodyDataModuleListModule {
+	s.ConfigList = v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetCurrency(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetModuleCode(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetModuleName(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModule) SetPriceType(v string) *DescribePricingModuleResponseBodyDataModuleListModule {
+	s.PriceType = &v
+	return s
+}
+
+type DescribePricingModuleResponseBodyDataModuleListModuleConfigList struct {
+	ConfigList []*string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleListModuleConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePricingModuleResponseBodyDataModuleListModuleConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePricingModuleResponseBodyDataModuleListModuleConfigList) SetConfigList(v []*string) *DescribePricingModuleResponseBodyDataModuleListModuleConfigList {
+	s.ConfigList = v
 	return s
 }
 
@@ -2589,13 +2769,13 @@ func (s *DescribePricingModuleResponse) SetBody(v *DescribePricingModuleResponse
 }
 
 type DescribeResourceCoverageDetailRequest struct {
-	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeResourceCoverageDetailRequest) String() string {
@@ -2606,8 +2786,8 @@ func (s DescribeResourceCoverageDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeResourceCoverageDetailRequest) SetStartPeriod(v string) *DescribeResourceCoverageDetailRequest {
-	s.StartPeriod = &v
+func (s *DescribeResourceCoverageDetailRequest) SetBillOwnerId(v int64) *DescribeResourceCoverageDetailRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -2616,8 +2796,8 @@ func (s *DescribeResourceCoverageDetailRequest) SetEndPeriod(v string) *Describe
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailRequest) SetPeriodType(v string) *DescribeResourceCoverageDetailRequest {
-	s.PeriodType = &v
+func (s *DescribeResourceCoverageDetailRequest) SetMaxResults(v int32) *DescribeResourceCoverageDetailRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -2626,13 +2806,8 @@ func (s *DescribeResourceCoverageDetailRequest) SetNextToken(v string) *Describe
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailRequest) SetMaxResults(v int32) *DescribeResourceCoverageDetailRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailRequest) SetBillOwnerId(v int64) *DescribeResourceCoverageDetailRequest {
-	s.BillOwnerId = &v
+func (s *DescribeResourceCoverageDetailRequest) SetPeriodType(v string) *DescribeResourceCoverageDetailRequest {
+	s.PeriodType = &v
 	return s
 }
 
@@ -2641,12 +2816,17 @@ func (s *DescribeResourceCoverageDetailRequest) SetResourceType(v string) *Descr
 	return s
 }
 
+func (s *DescribeResourceCoverageDetailRequest) SetStartPeriod(v string) *DescribeResourceCoverageDetailRequest {
+	s.StartPeriod = &v
+	return s
+}
+
 type DescribeResourceCoverageDetailResponseBody struct {
 	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeResourceCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeResourceCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourceCoverageDetailResponseBody) String() string {
@@ -2659,6 +2839,11 @@ func (s DescribeResourceCoverageDetailResponseBody) GoString() string {
 
 func (s *DescribeResourceCoverageDetailResponseBody) SetCode(v string) *DescribeResourceCoverageDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBody) SetData(v *DescribeResourceCoverageDetailResponseBodyData) *DescribeResourceCoverageDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -2677,16 +2862,11 @@ func (s *DescribeResourceCoverageDetailResponseBody) SetSuccess(v bool) *Describ
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBody) SetData(v *DescribeResourceCoverageDetailResponseBodyData) *DescribeResourceCoverageDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeResourceCoverageDetailResponseBodyData struct {
+	Items      []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MaxResults *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TotalCount *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	MaxResults *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Items      []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceCoverageDetailResponseBodyData) String() string {
@@ -2695,6 +2875,16 @@ func (s DescribeResourceCoverageDetailResponseBodyData) String() string {
 
 func (s DescribeResourceCoverageDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyData) SetItems(v []*DescribeResourceCoverageDetailResponseBodyDataItems) *DescribeResourceCoverageDetailResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyData) SetMaxResults(v int32) *DescribeResourceCoverageDetailResponseBodyData {
+	s.MaxResults = &v
+	return s
 }
 
 func (s *DescribeResourceCoverageDetailResponseBodyData) SetNextToken(v string) *DescribeResourceCoverageDetailResponseBodyData {
@@ -2707,37 +2897,27 @@ func (s *DescribeResourceCoverageDetailResponseBodyData) SetTotalCount(v int32) 
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyData) SetMaxResults(v int32) *DescribeResourceCoverageDetailResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyData) SetItems(v []*DescribeResourceCoverageDetailResponseBodyDataItems) *DescribeResourceCoverageDetailResponseBodyData {
-	s.Items = v
-	return s
-}
-
 type DescribeResourceCoverageDetailResponseBodyDataItems struct {
-	CommodityCode      *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName        *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	RegionNo           *string  `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	CommodityName      *string  `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	CapacityUnit       *string  `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Currency           *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	ZoneName           *string  `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	InstanceSpec       *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	EndTime            *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime          *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	PaymentAmount      *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	CommodityCode      *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityName      *string  `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	Currency           *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductQuantity     *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	UserName           *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	EndTime            *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec       *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	PaymentAmount      *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	ProductCode        *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName        *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionNo           *string  `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	StartTime          *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
+	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName           *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	ZoneName           *string  `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeResourceCoverageDetailResponseBodyDataItems) String() string {
@@ -2748,28 +2928,13 @@ func (s DescribeResourceCoverageDetailResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCapacityUnit(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.CapacityUnit = &v
+	return s
+}
+
 func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCommodityCode(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
 	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetProductName(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.ProductName = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetTotalQuantity(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.TotalQuantity = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetRegionNo(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.RegionNo = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetUserId(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.UserId = &v
 	return s
 }
 
@@ -2778,13 +2943,8 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCommodityName(v
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCapacityUnit(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.CapacityUnit = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.InstanceId = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCoveragePercentage(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.CoveragePercentage = &v
 	return s
 }
 
@@ -2793,13 +2953,8 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCurrency(v stri
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetZoneName(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.ZoneName = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetInstanceSpec(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.InstanceSpec = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetDeductQuantity(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.DeductQuantity = &v
 	return s
 }
 
@@ -2808,8 +2963,13 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetEndTime(v strin
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetStartTime(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.StartTime = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetInstanceSpec(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.InstanceSpec = &v
 	return s
 }
 
@@ -2818,8 +2978,13 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetPaymentAmount(v
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetCoveragePercentage(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.CoveragePercentage = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetProductCode(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetProductName(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.ProductName = &v
 	return s
 }
 
@@ -2828,13 +2993,23 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetRegion(v string
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetDeductQuantity(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.DeductQuantity = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetRegionNo(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.RegionNo = &v
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetZone(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.Zone = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetStartTime(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetTotalQuantity(v float32) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.TotalQuantity = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetUserId(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.UserId = &v
 	return s
 }
 
@@ -2843,8 +3018,13 @@ func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetUserName(v stri
 	return s
 }
 
-func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetProductCode(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
-	s.ProductCode = &v
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetZone(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.Zone = &v
+	return s
+}
+
+func (s *DescribeResourceCoverageDetailResponseBodyDataItems) SetZoneName(v string) *DescribeResourceCoverageDetailResponseBodyDataItems {
+	s.ZoneName = &v
 	return s
 }
 
@@ -2872,11 +3052,11 @@ func (s *DescribeResourceCoverageDetailResponse) SetBody(v *DescribeResourceCove
 }
 
 type DescribeResourceCoverageTotalRequest struct {
-	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeResourceCoverageTotalRequest) String() string {
@@ -2887,8 +3067,8 @@ func (s DescribeResourceCoverageTotalRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeResourceCoverageTotalRequest) SetStartPeriod(v string) *DescribeResourceCoverageTotalRequest {
-	s.StartPeriod = &v
+func (s *DescribeResourceCoverageTotalRequest) SetBillOwnerId(v int64) *DescribeResourceCoverageTotalRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -2902,22 +3082,22 @@ func (s *DescribeResourceCoverageTotalRequest) SetPeriodType(v string) *Describe
 	return s
 }
 
-func (s *DescribeResourceCoverageTotalRequest) SetBillOwnerId(v int64) *DescribeResourceCoverageTotalRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 func (s *DescribeResourceCoverageTotalRequest) SetResourceType(v string) *DescribeResourceCoverageTotalRequest {
 	s.ResourceType = &v
 	return s
 }
 
+func (s *DescribeResourceCoverageTotalRequest) SetStartPeriod(v string) *DescribeResourceCoverageTotalRequest {
+	s.StartPeriod = &v
+	return s
+}
+
 type DescribeResourceCoverageTotalResponseBody struct {
 	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeResourceCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeResourceCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourceCoverageTotalResponseBody) String() string {
@@ -2933,6 +3113,11 @@ func (s *DescribeResourceCoverageTotalResponseBody) SetCode(v string) *DescribeR
 	return s
 }
 
+func (s *DescribeResourceCoverageTotalResponseBody) SetData(v *DescribeResourceCoverageTotalResponseBodyData) *DescribeResourceCoverageTotalResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DescribeResourceCoverageTotalResponseBody) SetMessage(v string) *DescribeResourceCoverageTotalResponseBody {
 	s.Message = &v
 	return s
@@ -2945,11 +3130,6 @@ func (s *DescribeResourceCoverageTotalResponseBody) SetRequestId(v string) *Desc
 
 func (s *DescribeResourceCoverageTotalResponseBody) SetSuccess(v bool) *DescribeResourceCoverageTotalResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DescribeResourceCoverageTotalResponseBody) SetData(v *DescribeResourceCoverageTotalResponseBodyData) *DescribeResourceCoverageTotalResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -3001,8 +3181,8 @@ func (s *DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage) SetPeriod(
 
 type DescribeResourceCoverageTotalResponseBodyDataTotalCoverage struct {
 	CapacityUnit       *string  `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	DeductQuantity     *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
+	DeductQuantity     *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
 }
 
@@ -3019,13 +3199,13 @@ func (s *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) SetCapacity
 	return s
 }
 
-func (s *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) SetDeductQuantity(v float32) *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage {
-	s.DeductQuantity = &v
+func (s *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) SetCoveragePercentage(v float32) *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage {
+	s.CoveragePercentage = &v
 	return s
 }
 
-func (s *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) SetCoveragePercentage(v float32) *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage {
-	s.CoveragePercentage = &v
+func (s *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage) SetDeductQuantity(v float32) *DescribeResourceCoverageTotalResponseBodyDataTotalCoverage {
+	s.DeductQuantity = &v
 	return s
 }
 
@@ -3076,11 +3256,11 @@ func (s *DescribeResourcePackageProductRequest) SetProductCode(v string) *Descri
 
 type DescribeResourcePackageProductResponseBody struct {
 	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeResourcePackageProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64                                          `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	OrderId   *int64                                          `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Data      *DescribeResourcePackageProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourcePackageProductResponseBody) String() string {
@@ -3096,8 +3276,18 @@ func (s *DescribeResourcePackageProductResponseBody) SetCode(v string) *Describe
 	return s
 }
 
+func (s *DescribeResourcePackageProductResponseBody) SetData(v *DescribeResourcePackageProductResponseBodyData) *DescribeResourcePackageProductResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DescribeResourcePackageProductResponseBody) SetMessage(v string) *DescribeResourcePackageProductResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *DescribeResourcePackageProductResponseBody) SetOrderId(v int64) *DescribeResourcePackageProductResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -3108,16 +3298,6 @@ func (s *DescribeResourcePackageProductResponseBody) SetRequestId(v string) *Des
 
 func (s *DescribeResourcePackageProductResponseBody) SetSuccess(v bool) *DescribeResourcePackageProductResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DescribeResourcePackageProductResponseBody) SetOrderId(v int64) *DescribeResourcePackageProductResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *DescribeResourcePackageProductResponseBody) SetData(v *DescribeResourcePackageProductResponseBodyData) *DescribeResourcePackageProductResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -3156,10 +3336,10 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) SetReso
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage struct {
-	ProductType  *string                                                                                    `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Name         *string                                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductCode  *string                                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	PackageTypes *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes `json:"PackageTypes,omitempty" xml:"PackageTypes,omitempty" type:"Struct"`
+	ProductCode  *string                                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType  *string                                                                                    `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) String() string {
@@ -3170,13 +3350,13 @@ func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePa
 	return s.String()
 }
 
-func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetProductType(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
-	s.ProductType = &v
+func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetName(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetName(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
-	s.Name = &v
+func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetPackageTypes(v *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
+	s.PackageTypes = v
 	return s
 }
 
@@ -3185,8 +3365,8 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 	return s
 }
 
-func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetPackageTypes(v *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
-	s.PackageTypes = v
+func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage) SetProductType(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage {
+	s.ProductType = &v
 	return s
 }
 
@@ -3300,9 +3480,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification struct {
+	AvailableDurations *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations `json:"AvailableDurations,omitempty" xml:"AvailableDurations,omitempty" type:"Struct"`
 	Name               *string                                                                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value              *string                                                                                                                                            `json:"Value,omitempty" xml:"Value,omitempty"`
-	AvailableDurations *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations `json:"AvailableDurations,omitempty" xml:"AvailableDurations,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) String() string {
@@ -3313,6 +3493,11 @@ func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePa
 	return s.String()
 }
 
+func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) SetAvailableDurations(v *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification {
+	s.AvailableDurations = v
+	return s
+}
+
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) SetName(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification {
 	s.Name = &v
 	return s
@@ -3320,11 +3505,6 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) SetValue(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification {
 	s.Value = &v
-	return s
-}
-
-func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification) SetAvailableDurations(v *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecification {
-	s.AvailableDurations = v
 	return s
 }
 
@@ -3346,9 +3526,9 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 }
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration struct {
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) String() string {
@@ -3359,11 +3539,6 @@ func (s DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePa
 	return s.String()
 }
 
-func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) SetValue(v int32) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration {
-	s.Value = &v
-	return s
-}
-
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) SetName(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration {
 	s.Name = &v
 	return s
@@ -3371,6 +3546,11 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 
 func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) SetUnit(v string) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration {
 	s.Unit = &v
+	return s
+}
+
+func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration) SetValue(v int32) *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration {
+	s.Value = &v
 	return s
 }
 
@@ -3398,13 +3578,13 @@ func (s *DescribeResourcePackageProductResponse) SetBody(v *DescribeResourcePack
 }
 
 type DescribeResourceUsageDetailRequest struct {
-	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeResourceUsageDetailRequest) String() string {
@@ -3415,8 +3595,8 @@ func (s DescribeResourceUsageDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeResourceUsageDetailRequest) SetStartPeriod(v string) *DescribeResourceUsageDetailRequest {
-	s.StartPeriod = &v
+func (s *DescribeResourceUsageDetailRequest) SetBillOwnerId(v int64) *DescribeResourceUsageDetailRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -3425,8 +3605,8 @@ func (s *DescribeResourceUsageDetailRequest) SetEndPeriod(v string) *DescribeRes
 	return s
 }
 
-func (s *DescribeResourceUsageDetailRequest) SetPeriodType(v string) *DescribeResourceUsageDetailRequest {
-	s.PeriodType = &v
+func (s *DescribeResourceUsageDetailRequest) SetMaxResults(v int32) *DescribeResourceUsageDetailRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -3435,13 +3615,8 @@ func (s *DescribeResourceUsageDetailRequest) SetNextToken(v string) *DescribeRes
 	return s
 }
 
-func (s *DescribeResourceUsageDetailRequest) SetMaxResults(v int32) *DescribeResourceUsageDetailRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailRequest) SetBillOwnerId(v int64) *DescribeResourceUsageDetailRequest {
-	s.BillOwnerId = &v
+func (s *DescribeResourceUsageDetailRequest) SetPeriodType(v string) *DescribeResourceUsageDetailRequest {
+	s.PeriodType = &v
 	return s
 }
 
@@ -3450,12 +3625,17 @@ func (s *DescribeResourceUsageDetailRequest) SetResourceType(v string) *Describe
 	return s
 }
 
+func (s *DescribeResourceUsageDetailRequest) SetStartPeriod(v string) *DescribeResourceUsageDetailRequest {
+	s.StartPeriod = &v
+	return s
+}
+
 type DescribeResourceUsageDetailResponseBody struct {
 	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeResourceUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeResourceUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourceUsageDetailResponseBody) String() string {
@@ -3468,6 +3648,11 @@ func (s DescribeResourceUsageDetailResponseBody) GoString() string {
 
 func (s *DescribeResourceUsageDetailResponseBody) SetCode(v string) *DescribeResourceUsageDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBody) SetData(v *DescribeResourceUsageDetailResponseBodyData) *DescribeResourceUsageDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -3486,16 +3671,11 @@ func (s *DescribeResourceUsageDetailResponseBody) SetSuccess(v bool) *DescribeRe
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBody) SetData(v *DescribeResourceUsageDetailResponseBodyData) *DescribeResourceUsageDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeResourceUsageDetailResponseBodyData struct {
+	Items      []*DescribeResourceUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MaxResults *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	MaxResults *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Items      []*DescribeResourceUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceUsageDetailResponseBodyData) String() string {
@@ -3504,6 +3684,16 @@ func (s DescribeResourceUsageDetailResponseBodyData) String() string {
 
 func (s DescribeResourceUsageDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyData) SetItems(v []*DescribeResourceUsageDetailResponseBodyDataItems) *DescribeResourceUsageDetailResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyData) SetMaxResults(v int32) *DescribeResourceUsageDetailResponseBodyData {
+	s.MaxResults = &v
+	return s
 }
 
 func (s *DescribeResourceUsageDetailResponseBodyData) SetNextToken(v string) *DescribeResourceUsageDetailResponseBodyData {
@@ -3516,40 +3706,30 @@ func (s *DescribeResourceUsageDetailResponseBodyData) SetTotalCount(v int32) *De
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyData) SetMaxResults(v int32) *DescribeResourceUsageDetailResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyData) SetItems(v []*DescribeResourceUsageDetailResponseBodyDataItems) *DescribeResourceUsageDetailResponseBodyData {
-	s.Items = v
-	return s
-}
-
 type DescribeResourceUsageDetailResponseBodyDataItems struct {
-	Status             *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UsagePercentage    *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
-	ResourceInstanceId *string  `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
-	ReservationCost    *string  `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
-	RegionNo           *string  `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	StatusName         *string  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	CapacityUnit       *string  `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	PotentialSavedCost *string  `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
 	Currency           *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	ZoneName           *string  `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	InstanceSpec       *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	EndTime            *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PostpaidCost       *string  `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	ImageType          *string  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	StartTime          *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
 	DeductQuantity     *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	SavedCost          *string  `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	UserName           *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	EndTime            *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ImageType          *string  `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	InstanceSpec       *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	PostpaidCost       *string  `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	PotentialSavedCost *string  `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
 	Quantity           *int64   `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionNo           *string  `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	ReservationCost    *string  `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
+	ResourceInstanceId *string  `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	SavedCost          *string  `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	StartTime          *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName         *string  `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	TotalQuantity      *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
+	UsagePercentage    *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
+	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName           *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	ZoneName           *string  `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeResourceUsageDetailResponseBodyDataItems) String() string {
@@ -3560,53 +3740,8 @@ func (s DescribeResourceUsageDetailResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStatus(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetUsagePercentage(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.UsagePercentage = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetResourceInstanceId(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.ResourceInstanceId = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetTotalQuantity(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.TotalQuantity = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetReservationCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.ReservationCost = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetRegionNo(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.RegionNo = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetUserId(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStatusName(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.StatusName = &v
-	return s
-}
-
 func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetCapacityUnit(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
 	s.CapacityUnit = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetPotentialSavedCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.PotentialSavedCost = &v
 	return s
 }
 
@@ -3615,13 +3750,8 @@ func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetCurrency(v string)
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetZoneName(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.ZoneName = &v
-	return s
-}
-
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetInstanceSpec(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.InstanceSpec = &v
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetDeductQuantity(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.DeductQuantity = &v
 	return s
 }
 
@@ -3630,18 +3760,28 @@ func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetEndTime(v string) 
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetPostpaidCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.PostpaidCost = &v
-	return s
-}
-
 func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetImageType(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
 	s.ImageType = &v
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStartTime(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.StartTime = &v
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetInstanceSpec(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetPostpaidCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.PostpaidCost = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetPotentialSavedCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.PotentialSavedCost = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetQuantity(v int64) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.Quantity = &v
 	return s
 }
 
@@ -3650,8 +3790,18 @@ func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetRegion(v string) *
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetDeductQuantity(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.DeductQuantity = &v
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetRegionNo(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetReservationCost(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.ReservationCost = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetResourceInstanceId(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.ResourceInstanceId = &v
 	return s
 }
 
@@ -3660,8 +3810,33 @@ func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetSavedCost(v string
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetZone(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.Zone = &v
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStartTime(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStatus(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetStatusName(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.StatusName = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetTotalQuantity(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.TotalQuantity = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetUsagePercentage(v float32) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.UsagePercentage = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetUserId(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.UserId = &v
 	return s
 }
 
@@ -3670,8 +3845,13 @@ func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetUserName(v string)
 	return s
 }
 
-func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetQuantity(v int64) *DescribeResourceUsageDetailResponseBodyDataItems {
-	s.Quantity = &v
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetZone(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.Zone = &v
+	return s
+}
+
+func (s *DescribeResourceUsageDetailResponseBodyDataItems) SetZoneName(v string) *DescribeResourceUsageDetailResponseBodyDataItems {
+	s.ZoneName = &v
 	return s
 }
 
@@ -3699,11 +3879,11 @@ func (s *DescribeResourceUsageDetailResponse) SetBody(v *DescribeResourceUsageDe
 }
 
 type DescribeResourceUsageTotalRequest struct {
-	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	EndPeriod    *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	PeriodType   *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartPeriod  *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeResourceUsageTotalRequest) String() string {
@@ -3714,8 +3894,8 @@ func (s DescribeResourceUsageTotalRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeResourceUsageTotalRequest) SetStartPeriod(v string) *DescribeResourceUsageTotalRequest {
-	s.StartPeriod = &v
+func (s *DescribeResourceUsageTotalRequest) SetBillOwnerId(v int64) *DescribeResourceUsageTotalRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -3729,22 +3909,22 @@ func (s *DescribeResourceUsageTotalRequest) SetPeriodType(v string) *DescribeRes
 	return s
 }
 
-func (s *DescribeResourceUsageTotalRequest) SetBillOwnerId(v int64) *DescribeResourceUsageTotalRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 func (s *DescribeResourceUsageTotalRequest) SetResourceType(v string) *DescribeResourceUsageTotalRequest {
 	s.ResourceType = &v
 	return s
 }
 
+func (s *DescribeResourceUsageTotalRequest) SetStartPeriod(v string) *DescribeResourceUsageTotalRequest {
+	s.StartPeriod = &v
+	return s
+}
+
 type DescribeResourceUsageTotalResponseBody struct {
 	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeResourceUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeResourceUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeResourceUsageTotalResponseBody) String() string {
@@ -3760,6 +3940,11 @@ func (s *DescribeResourceUsageTotalResponseBody) SetCode(v string) *DescribeReso
 	return s
 }
 
+func (s *DescribeResourceUsageTotalResponseBody) SetData(v *DescribeResourceUsageTotalResponseBodyData) *DescribeResourceUsageTotalResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DescribeResourceUsageTotalResponseBody) SetMessage(v string) *DescribeResourceUsageTotalResponseBody {
 	s.Message = &v
 	return s
@@ -3772,11 +3957,6 @@ func (s *DescribeResourceUsageTotalResponseBody) SetRequestId(v string) *Describ
 
 func (s *DescribeResourceUsageTotalResponseBody) SetSuccess(v bool) *DescribeResourceUsageTotalResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DescribeResourceUsageTotalResponseBody) SetData(v *DescribeResourceUsageTotalResponseBodyData) *DescribeResourceUsageTotalResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -3804,8 +3984,8 @@ func (s *DescribeResourceUsageTotalResponseBodyData) SetTotalUsage(v *DescribeRe
 }
 
 type DescribeResourceUsageTotalResponseBodyDataPeriodCoverage struct {
-	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 	Period          *string  `json:"Period,omitempty" xml:"Period,omitempty"`
+	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
 func (s DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) String() string {
@@ -3816,22 +3996,22 @@ func (s DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) GoString() str
 	return s.String()
 }
 
-func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) SetUsagePercentage(v float32) *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage {
-	s.UsagePercentage = &v
-	return s
-}
-
 func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) SetPeriod(v string) *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage {
 	s.Period = &v
 	return s
 }
 
+func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) SetUsagePercentage(v float32) *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage {
+	s.UsagePercentage = &v
+	return s
+}
+
 type DescribeResourceUsageTotalResponseBodyDataTotalUsage struct {
 	PostpaidCost       *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	SavedCost          *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	UsagePercentage    *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 	PotentialSavedCost *float32 `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
 	ReservationCost    *float32 `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
+	SavedCost          *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	UsagePercentage    *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
 func (s DescribeResourceUsageTotalResponseBodyDataTotalUsage) String() string {
@@ -3847,16 +4027,6 @@ func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetPostpaidCost(v
 	return s
 }
 
-func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetSavedCost(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
-	s.SavedCost = &v
-	return s
-}
-
-func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetUsagePercentage(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
-	s.UsagePercentage = &v
-	return s
-}
-
 func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetPotentialSavedCost(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
 	s.PotentialSavedCost = &v
 	return s
@@ -3864,6 +4034,16 @@ func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetPotentialSaved
 
 func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetReservationCost(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
 	s.ReservationCost = &v
+	return s
+}
+
+func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetSavedCost(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
+	s.SavedCost = &v
+	return s
+}
+
+func (s *DescribeResourceUsageTotalResponseBodyDataTotalUsage) SetUsagePercentage(v float32) *DescribeResourceUsageTotalResponseBodyDataTotalUsage {
+	s.UsagePercentage = &v
 	return s
 }
 
@@ -3891,12 +4071,12 @@ func (s *DescribeResourceUsageTotalResponse) SetBody(v *DescribeResourceUsageTot
 }
 
 type DescribeSavingsPlansCoverageDetailRequest struct {
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeSavingsPlansCoverageDetailRequest) String() string {
@@ -3907,8 +4087,8 @@ func (s DescribeSavingsPlansCoverageDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansCoverageDetailRequest) SetStartPeriod(v string) *DescribeSavingsPlansCoverageDetailRequest {
-	s.StartPeriod = &v
+func (s *DescribeSavingsPlansCoverageDetailRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansCoverageDetailRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -3917,8 +4097,18 @@ func (s *DescribeSavingsPlansCoverageDetailRequest) SetEndPeriod(v string) *Desc
 	return s
 }
 
+func (s *DescribeSavingsPlansCoverageDetailRequest) SetMaxResults(v int32) *DescribeSavingsPlansCoverageDetailRequest {
+	s.MaxResults = &v
+	return s
+}
+
 func (s *DescribeSavingsPlansCoverageDetailRequest) SetPeriodType(v string) *DescribeSavingsPlansCoverageDetailRequest {
 	s.PeriodType = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailRequest) SetStartPeriod(v string) *DescribeSavingsPlansCoverageDetailRequest {
+	s.StartPeriod = &v
 	return s
 }
 
@@ -3927,22 +4117,12 @@ func (s *DescribeSavingsPlansCoverageDetailRequest) SetToken(v string) *Describe
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailRequest) SetMaxResults(v int32) *DescribeSavingsPlansCoverageDetailRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansCoverageDetailRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansCoverageDetailRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 type DescribeSavingsPlansCoverageDetailResponseBody struct {
 	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeSavingsPlansCoverageDetailResponseBody) String() string {
@@ -3955,6 +4135,11 @@ func (s DescribeSavingsPlansCoverageDetailResponseBody) GoString() string {
 
 func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetCode(v string) *DescribeSavingsPlansCoverageDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetData(v *DescribeSavingsPlansCoverageDetailResponseBodyData) *DescribeSavingsPlansCoverageDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -3973,15 +4158,10 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetSuccess(v bool) *Des
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBody) SetData(v *DescribeSavingsPlansCoverageDetailResponseBodyData) *DescribeSavingsPlansCoverageDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
-	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken  *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Items      []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	NextToken  *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSavingsPlansCoverageDetailResponseBodyData) String() string {
@@ -3992,8 +4172,8 @@ func (s DescribeSavingsPlansCoverageDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetTotalCount(v int32) *DescribeSavingsPlansCoverageDetailResponseBodyData {
-	s.TotalCount = &v
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetItems(v []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems) *DescribeSavingsPlansCoverageDetailResponseBodyData {
+	s.Items = v
 	return s
 }
 
@@ -4002,24 +4182,24 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetNextToken(v stri
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetItems(v []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems) *DescribeSavingsPlansCoverageDetailResponseBodyData {
-	s.Items = v
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetTotalCount(v int32) *DescribeSavingsPlansCoverageDetailResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
-	UserId             *int64   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	Currency           *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductAmount       *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
+	EndPeriod          *string  `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSpec       *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	PostpaidCost       *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	DeductAmount       *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	StartPeriod        *string  `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	TotalAmount        *float32 `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	UserId             *int64   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName           *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	EndPeriod          *string  `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 }
 
 func (s DescribeSavingsPlansCoverageDetailResponseBodyDataItems) String() string {
@@ -4030,18 +4210,28 @@ func (s DescribeSavingsPlansCoverageDetailResponseBodyDataItems) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetUserId(v int64) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.InstanceId = &v
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetCoveragePercentage(v float32) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.CoveragePercentage = &v
 	return s
 }
 
 func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetCurrency(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
 	s.Currency = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetDeductAmount(v float32) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.DeductAmount = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetEndPeriod(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.EndPeriod = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.InstanceId = &v
 	return s
 }
 
@@ -4055,18 +4245,8 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetPostpaidCos
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetCoveragePercentage(v float32) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.CoveragePercentage = &v
-	return s
-}
-
 func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetRegion(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
 	s.Region = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetDeductAmount(v float32) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.DeductAmount = &v
 	return s
 }
 
@@ -4080,13 +4260,13 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetTotalAmount
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetUserName(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.UserName = &v
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetUserId(v int64) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.UserId = &v
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetEndPeriod(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
-	s.EndPeriod = &v
+func (s *DescribeSavingsPlansCoverageDetailResponseBodyDataItems) SetUserName(v string) *DescribeSavingsPlansCoverageDetailResponseBodyDataItems {
+	s.UserName = &v
 	return s
 }
 
@@ -4114,10 +4294,10 @@ func (s *DescribeSavingsPlansCoverageDetailResponse) SetBody(v *DescribeSavingsP
 }
 
 type DescribeSavingsPlansCoverageTotalRequest struct {
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeSavingsPlansCoverageTotalRequest) String() string {
@@ -4128,8 +4308,8 @@ func (s DescribeSavingsPlansCoverageTotalRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansCoverageTotalRequest) SetStartPeriod(v string) *DescribeSavingsPlansCoverageTotalRequest {
-	s.StartPeriod = &v
+func (s *DescribeSavingsPlansCoverageTotalRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansCoverageTotalRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -4143,17 +4323,17 @@ func (s *DescribeSavingsPlansCoverageTotalRequest) SetPeriodType(v string) *Desc
 	return s
 }
 
-func (s *DescribeSavingsPlansCoverageTotalRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansCoverageTotalRequest {
-	s.BillOwnerId = &v
+func (s *DescribeSavingsPlansCoverageTotalRequest) SetStartPeriod(v string) *DescribeSavingsPlansCoverageTotalRequest {
+	s.StartPeriod = &v
 	return s
 }
 
 type DescribeSavingsPlansCoverageTotalResponseBody struct {
 	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeSavingsPlansCoverageTotalResponseBody) String() string {
@@ -4169,6 +4349,11 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetCode(v string) *Descr
 	return s
 }
 
+func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetData(v *DescribeSavingsPlansCoverageTotalResponseBodyData) *DescribeSavingsPlansCoverageTotalResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetMessage(v string) *DescribeSavingsPlansCoverageTotalResponseBody {
 	s.Message = &v
 	return s
@@ -4181,11 +4366,6 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetRequestId(v string) *
 
 func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetSuccess(v bool) *DescribeSavingsPlansCoverageTotalResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansCoverageTotalResponseBody) SetData(v *DescribeSavingsPlansCoverageTotalResponseBodyData) *DescribeSavingsPlansCoverageTotalResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -4282,12 +4462,12 @@ func (s *DescribeSavingsPlansCoverageTotalResponse) SetBody(v *DescribeSavingsPl
 }
 
 type DescribeSavingsPlansUsageDetailRequest struct {
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
-	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageDetailRequest) String() string {
@@ -4298,8 +4478,8 @@ func (s DescribeSavingsPlansUsageDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansUsageDetailRequest) SetStartPeriod(v string) *DescribeSavingsPlansUsageDetailRequest {
-	s.StartPeriod = &v
+func (s *DescribeSavingsPlansUsageDetailRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansUsageDetailRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -4308,8 +4488,18 @@ func (s *DescribeSavingsPlansUsageDetailRequest) SetEndPeriod(v string) *Describ
 	return s
 }
 
+func (s *DescribeSavingsPlansUsageDetailRequest) SetMaxResults(v int32) *DescribeSavingsPlansUsageDetailRequest {
+	s.MaxResults = &v
+	return s
+}
+
 func (s *DescribeSavingsPlansUsageDetailRequest) SetPeriodType(v string) *DescribeSavingsPlansUsageDetailRequest {
 	s.PeriodType = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailRequest) SetStartPeriod(v string) *DescribeSavingsPlansUsageDetailRequest {
+	s.StartPeriod = &v
 	return s
 }
 
@@ -4318,22 +4508,12 @@ func (s *DescribeSavingsPlansUsageDetailRequest) SetToken(v string) *DescribeSav
 	return s
 }
 
-func (s *DescribeSavingsPlansUsageDetailRequest) SetMaxResults(v int32) *DescribeSavingsPlansUsageDetailRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansUsageDetailRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 type DescribeSavingsPlansUsageDetailResponseBody struct {
 	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSavingsPlansUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeSavingsPlansUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeSavingsPlansUsageDetailResponseBody) String() string {
@@ -4346,6 +4526,11 @@ func (s DescribeSavingsPlansUsageDetailResponseBody) GoString() string {
 
 func (s *DescribeSavingsPlansUsageDetailResponseBody) SetCode(v string) *DescribeSavingsPlansUsageDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBody) SetData(v *DescribeSavingsPlansUsageDetailResponseBodyData) *DescribeSavingsPlansUsageDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4364,15 +4549,10 @@ func (s *DescribeSavingsPlansUsageDetailResponseBody) SetSuccess(v bool) *Descri
 	return s
 }
 
-func (s *DescribeSavingsPlansUsageDetailResponseBody) SetData(v *DescribeSavingsPlansUsageDetailResponseBodyData) *DescribeSavingsPlansUsageDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeSavingsPlansUsageDetailResponseBodyData struct {
-	TotalCount *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Items      []*DescribeSavingsPlansUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageDetailResponseBodyData) String() string {
@@ -4383,8 +4563,8 @@ func (s DescribeSavingsPlansUsageDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetTotalCount(v int32) *DescribeSavingsPlansUsageDetailResponseBodyData {
-	s.TotalCount = &v
+func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetItems(v []*DescribeSavingsPlansUsageDetailResponseBodyDataItems) *DescribeSavingsPlansUsageDetailResponseBodyData {
+	s.Items = v
 	return s
 }
 
@@ -4393,25 +4573,25 @@ func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetNextToken(v string)
 	return s
 }
 
-func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetItems(v []*DescribeSavingsPlansUsageDetailResponseBodyDataItems) *DescribeSavingsPlansUsageDetailResponseBodyData {
-	s.Items = v
+func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetTotalCount(v int32) *DescribeSavingsPlansUsageDetailResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
+	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductValue     *float32 `json:"DeductValue,omitempty" xml:"DeductValue,omitempty"`
+	EndPeriod       *string  `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PoolValue       *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	PostpaidCost    *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
+	SavedCost       *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
+	StartPeriod     *string  `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type            *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 	UserId          *int64   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	PostpaidCost    *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	DeductValue     *float32 `json:"DeductValue,omitempty" xml:"DeductValue,omitempty"`
-	StartPeriod     *string  `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	SavedCost       *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	PoolValue       *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	UserName        *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	EndPeriod       *string  `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageDetailResponseBodyDataItems) String() string {
@@ -4420,6 +4600,46 @@ func (s DescribeSavingsPlansUsageDetailResponseBodyDataItems) String() string {
 
 func (s DescribeSavingsPlansUsageDetailResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetCurrency(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetDeductValue(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.DeductValue = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetEndPeriod(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.EndPeriod = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetPoolValue(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.PoolValue = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetPostpaidCost(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.PostpaidCost = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetSavedCost(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.SavedCost = &v
+	return s
+}
+
+func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetStartPeriod(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
+	s.StartPeriod = &v
+	return s
 }
 
 func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetStatus(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
@@ -4442,48 +4662,8 @@ func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetUserId(v int64
 	return s
 }
 
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetInstanceId(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetCurrency(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetPostpaidCost(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.PostpaidCost = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetDeductValue(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.DeductValue = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetStartPeriod(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.StartPeriod = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetSavedCost(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.SavedCost = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetPoolValue(v float32) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.PoolValue = &v
-	return s
-}
-
 func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetUserName(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
 	s.UserName = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageDetailResponseBodyDataItems) SetEndPeriod(v string) *DescribeSavingsPlansUsageDetailResponseBodyDataItems {
-	s.EndPeriod = &v
 	return s
 }
 
@@ -4511,10 +4691,10 @@ func (s *DescribeSavingsPlansUsageDetailResponse) SetBody(v *DescribeSavingsPlan
 }
 
 type DescribeSavingsPlansUsageTotalRequest struct {
-	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
+	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	EndPeriod   *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	PeriodType  *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	BillOwnerId *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageTotalRequest) String() string {
@@ -4525,8 +4705,8 @@ func (s DescribeSavingsPlansUsageTotalRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSavingsPlansUsageTotalRequest) SetStartPeriod(v string) *DescribeSavingsPlansUsageTotalRequest {
-	s.StartPeriod = &v
+func (s *DescribeSavingsPlansUsageTotalRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansUsageTotalRequest {
+	s.BillOwnerId = &v
 	return s
 }
 
@@ -4540,17 +4720,17 @@ func (s *DescribeSavingsPlansUsageTotalRequest) SetPeriodType(v string) *Describ
 	return s
 }
 
-func (s *DescribeSavingsPlansUsageTotalRequest) SetBillOwnerId(v int64) *DescribeSavingsPlansUsageTotalRequest {
-	s.BillOwnerId = &v
+func (s *DescribeSavingsPlansUsageTotalRequest) SetStartPeriod(v string) *DescribeSavingsPlansUsageTotalRequest {
+	s.StartPeriod = &v
 	return s
 }
 
 type DescribeSavingsPlansUsageTotalResponseBody struct {
 	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeSavingsPlansUsageTotalResponseBody) String() string {
@@ -4566,6 +4746,11 @@ func (s *DescribeSavingsPlansUsageTotalResponseBody) SetCode(v string) *Describe
 	return s
 }
 
+func (s *DescribeSavingsPlansUsageTotalResponseBody) SetData(v *DescribeSavingsPlansUsageTotalResponseBodyData) *DescribeSavingsPlansUsageTotalResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DescribeSavingsPlansUsageTotalResponseBody) SetMessage(v string) *DescribeSavingsPlansUsageTotalResponseBody {
 	s.Message = &v
 	return s
@@ -4578,11 +4763,6 @@ func (s *DescribeSavingsPlansUsageTotalResponseBody) SetRequestId(v string) *Des
 
 func (s *DescribeSavingsPlansUsageTotalResponseBody) SetSuccess(v bool) *DescribeSavingsPlansUsageTotalResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageTotalResponseBody) SetData(v *DescribeSavingsPlansUsageTotalResponseBodyData) *DescribeSavingsPlansUsageTotalResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -4633,10 +4813,10 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage) SetPeriod
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage struct {
+	PoolValue       *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	PostpaidCost    *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	SavedCost       *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
-	PoolValue       *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 }
 
 func (s DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) String() string {
@@ -4645,6 +4825,11 @@ func (s DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) String() strin
 
 func (s DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) SetPoolValue(v float32) *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage {
+	s.PoolValue = &v
+	return s
 }
 
 func (s *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) SetPostpaidCost(v float32) *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage {
@@ -4659,11 +4844,6 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) SetSavedCost(
 
 func (s *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) SetUsagePercentage(v float32) *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage {
 	s.UsagePercentage = &v
-	return s
-}
-
-func (s *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage) SetPoolValue(v float32) *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage {
-	s.PoolValue = &v
 	return s
 }
 
@@ -4691,18 +4871,18 @@ func (s *DescribeSavingsPlansUsageTotalResponse) SetBody(v *DescribeSavingsPlans
 }
 
 type DescribeSplitItemBillRequest struct {
+	BillOwnerId      *int64                                   `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	BillingDate      *string                                  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	Granularity      *string                                  `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	InstanceID       *string                                  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	MaxResults       *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId          *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode      *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	OwnerId          *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	NextToken        *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults       *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	BillOwnerId      *int64                                   `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	InstanceID       *string                                  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	SplitItemID      *string                                  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	Granularity      *string                                  `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	BillingDate      *string                                  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	SubscriptionType *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	TagFilter        []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -4714,8 +4894,43 @@ func (s DescribeSplitItemBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSplitItemBillRequest) SetBillOwnerId(v int64) *DescribeSplitItemBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *DescribeSplitItemBillRequest) SetBillingCycle(v string) *DescribeSplitItemBillRequest {
 	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetBillingDate(v string) *DescribeSplitItemBillRequest {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetGranularity(v string) *DescribeSplitItemBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetInstanceID(v string) *DescribeSplitItemBillRequest {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetMaxResults(v int32) *DescribeSplitItemBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetNextToken(v string) *DescribeSplitItemBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetOwnerId(v int64) *DescribeSplitItemBillRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -4729,48 +4944,13 @@ func (s *DescribeSplitItemBillRequest) SetProductType(v string) *DescribeSplitIt
 	return s
 }
 
-func (s *DescribeSplitItemBillRequest) SetSubscriptionType(v string) *DescribeSplitItemBillRequest {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetOwnerId(v int64) *DescribeSplitItemBillRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetNextToken(v string) *DescribeSplitItemBillRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetMaxResults(v int32) *DescribeSplitItemBillRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetBillOwnerId(v int64) *DescribeSplitItemBillRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetInstanceID(v string) *DescribeSplitItemBillRequest {
-	s.InstanceID = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillRequest) SetSplitItemID(v string) *DescribeSplitItemBillRequest {
 	s.SplitItemID = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillRequest) SetGranularity(v string) *DescribeSplitItemBillRequest {
-	s.Granularity = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillRequest) SetBillingDate(v string) *DescribeSplitItemBillRequest {
-	s.BillingDate = &v
+func (s *DescribeSplitItemBillRequest) SetSubscriptionType(v string) *DescribeSplitItemBillRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
@@ -4780,8 +4960,8 @@ func (s *DescribeSplitItemBillRequest) SetTagFilter(v []*DescribeSplitItemBillRe
 }
 
 type DescribeSplitItemBillRequestTagFilter struct {
-	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 	TagKey    *string   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSplitItemBillRequestTagFilter) String() string {
@@ -4792,22 +4972,22 @@ func (s DescribeSplitItemBillRequestTagFilter) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSplitItemBillRequestTagFilter) SetTagValues(v []*string) *DescribeSplitItemBillRequestTagFilter {
-	s.TagValues = v
-	return s
-}
-
 func (s *DescribeSplitItemBillRequestTagFilter) SetTagKey(v string) *DescribeSplitItemBillRequestTagFilter {
 	s.TagKey = &v
 	return s
 }
 
+func (s *DescribeSplitItemBillRequestTagFilter) SetTagValues(v []*string) *DescribeSplitItemBillRequestTagFilter {
+	s.TagValues = v
+	return s
+}
+
 type DescribeSplitItemBillResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s DescribeSplitItemBillResponseBody) String() string {
@@ -4820,6 +5000,11 @@ func (s DescribeSplitItemBillResponseBody) GoString() string {
 
 func (s *DescribeSplitItemBillResponseBody) SetCode(v string) *DescribeSplitItemBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBody) SetData(v *DescribeSplitItemBillResponseBodyData) *DescribeSplitItemBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4838,19 +5023,14 @@ func (s *DescribeSplitItemBillResponseBody) SetSuccess(v bool) *DescribeSplitIte
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBody) SetData(v *DescribeSplitItemBillResponseBodyData) *DescribeSplitItemBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type DescribeSplitItemBillResponseBodyData struct {
-	NextToken    *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	BillingCycle *string                                       `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	MaxResults   *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	AccountID    *string                                       `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AccountName  *string                                       `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                       `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        []*DescribeSplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MaxResults   *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBodyData) String() string {
@@ -4861,28 +5041,8 @@ func (s DescribeSplitItemBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSplitItemBillResponseBodyData) SetNextToken(v string) *DescribeSplitItemBillResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyData) SetBillingCycle(v string) *DescribeSplitItemBillResponseBodyData {
-	s.BillingCycle = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyData) SetMaxResults(v int32) *DescribeSplitItemBillResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
 func (s *DescribeSplitItemBillResponseBodyData) SetAccountID(v string) *DescribeSplitItemBillResponseBodyData {
 	s.AccountID = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyData) SetTotalCount(v int32) *DescribeSplitItemBillResponseBodyData {
-	s.TotalCount = &v
 	return s
 }
 
@@ -4891,62 +5051,84 @@ func (s *DescribeSplitItemBillResponseBodyData) SetAccountName(v string) *Descri
 	return s
 }
 
+func (s *DescribeSplitItemBillResponseBodyData) SetBillingCycle(v string) *DescribeSplitItemBillResponseBodyData {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *DescribeSplitItemBillResponseBodyData) SetItems(v []*DescribeSplitItemBillResponseBodyDataItems) *DescribeSplitItemBillResponseBodyData {
 	s.Items = v
 	return s
 }
 
+func (s *DescribeSplitItemBillResponseBodyData) SetMaxResults(v int32) *DescribeSplitItemBillResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetNextToken(v string) *DescribeSplitItemBillResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyData) SetTotalCount(v int32) *DescribeSplitItemBillResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
 type DescribeSplitItemBillResponseBodyDataItems struct {
-	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
-	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	BillAccountID             *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
-	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	SplitBillingDate          *string  `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
+	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	SplitBillingDate          *string  `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
+	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeSplitItemBillResponseBodyDataItems) String() string {
@@ -4957,78 +5139,8 @@ func (s DescribeSplitItemBillResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitAccountID = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillAccountName = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceSpec(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetRegion(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetOutstandingAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.OutstandingAmount = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPipCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PipCode = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetNickName(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.NickName = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsage(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Usage = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetIntranetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.IntranetIP = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.UsageUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitCommodityCode = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetAdjustAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.AdjustAmount = &v
 	return s
 }
 
@@ -5037,53 +5149,8 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillAccountID(v string) 
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductType = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByResourcePackage(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.DeductedByResourcePackage = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PaymentAmount = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingCycle(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitBillingCycle = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriod(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ServicePeriod = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemName(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitItemName = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPrice(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ListPrice = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetZone(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Zone = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxGrossAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PretaxGrossAmount = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InstanceConfig = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillAccountName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillAccountName = &v
 	return s
 }
 
@@ -5092,28 +5159,33 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingDate(v string) *D
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInternetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InternetIP = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingItem = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Item = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingType = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitItemID = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBizType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BizType = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.InstanceID = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCashAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CashAmount = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetTag(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.Tag = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetCostUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.CostUnit = &v
 	return s
 }
 
@@ -5127,58 +5199,8 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCashCoupons(v 
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBizType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BizType = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillingItem = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetCostUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.CostUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ListPriceUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ServicePeriodUnit = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitBillingDate = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductName(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductName = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.SplitProductDetail = &v
-	return s
-}
-
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetOwnerID(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.OwnerID = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByCoupons(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByCoupons = &v
 	return s
 }
 
@@ -5187,8 +5209,133 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByPrepaidCard(v 
 	return s
 }
 
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetDeductedByResourcePackage(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.DeductedByResourcePackage = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceConfig(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInstanceSpec(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetInternetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetIntranetIP(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.IntranetIP = &v
+	return s
+}
+
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetInvoiceDiscount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
 	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPrice(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetListPriceUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetNickName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.NickName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetOutstandingAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetOwnerID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPaymentAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPipCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PipCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetPretaxGrossAmount(v float32) *DescribeSplitItemBillResponseBodyDataItems {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetRegion(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetResourceGroup(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriod(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ServicePeriod = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetServicePeriodUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitAccountID = &v
 	return s
 }
 
@@ -5197,13 +5344,58 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitAccountName(v strin
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingType(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.BillingType = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingCycle(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitBillingCycle = &v
 	return s
 }
 
-func (s *DescribeSplitItemBillResponseBodyDataItems) SetProductCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
-	s.ProductCode = &v
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitBillingDate(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitBillingDate = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitCommodityCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitCommodityCode = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemID(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitItemName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitItemName = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSplitProductDetail(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SplitProductDetail = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetSubscriptionType(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetTag(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsage(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Usage = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetUsageUnit(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.UsageUnit = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetZone(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.Zone = &v
 	return s
 }
 
@@ -5231,8 +5423,8 @@ func (s *DescribeSplitItemBillResponse) SetBody(v *DescribeSplitItemBillResponse
 }
 
 type EnableBillGenerationRequest struct {
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s EnableBillGenerationRequest) String() string {
@@ -5243,22 +5435,22 @@ func (s EnableBillGenerationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *EnableBillGenerationRequest) SetProductCode(v string) *EnableBillGenerationRequest {
-	s.ProductCode = &v
-	return s
-}
-
 func (s *EnableBillGenerationRequest) SetOwnerId(v int64) *EnableBillGenerationRequest {
 	s.OwnerId = &v
 	return s
 }
 
+func (s *EnableBillGenerationRequest) SetProductCode(v string) *EnableBillGenerationRequest {
+	s.ProductCode = &v
+	return s
+}
+
 type EnableBillGenerationResponseBody struct {
 	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *EnableBillGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *EnableBillGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s EnableBillGenerationResponseBody) String() string {
@@ -5274,6 +5466,11 @@ func (s *EnableBillGenerationResponseBody) SetCode(v string) *EnableBillGenerati
 	return s
 }
 
+func (s *EnableBillGenerationResponseBody) SetData(v *EnableBillGenerationResponseBodyData) *EnableBillGenerationResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *EnableBillGenerationResponseBody) SetMessage(v string) *EnableBillGenerationResponseBody {
 	s.Message = &v
 	return s
@@ -5286,11 +5483,6 @@ func (s *EnableBillGenerationResponseBody) SetRequestId(v string) *EnableBillGen
 
 func (s *EnableBillGenerationResponseBody) SetSuccess(v bool) *EnableBillGenerationResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *EnableBillGenerationResponseBody) SetData(v *EnableBillGenerationResponseBodyData) *EnableBillGenerationResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -5353,10 +5545,10 @@ func (s *GetCustomerAccountInfoRequest) SetOwnerId(v int64) *GetCustomerAccountI
 
 type GetCustomerAccountInfoResponseBody struct {
 	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetCustomerAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetCustomerAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetCustomerAccountInfoResponseBody) String() string {
@@ -5369,6 +5561,11 @@ func (s GetCustomerAccountInfoResponseBody) GoString() string {
 
 func (s *GetCustomerAccountInfoResponseBody) SetCode(v string) *GetCustomerAccountInfoResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetCustomerAccountInfoResponseBody) SetData(v *GetCustomerAccountInfoResponseBodyData) *GetCustomerAccountInfoResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5387,18 +5584,13 @@ func (s *GetCustomerAccountInfoResponseBody) SetSuccess(v bool) *GetCustomerAcco
 	return s
 }
 
-func (s *GetCustomerAccountInfoResponseBody) SetData(v *GetCustomerAccountInfoResponseBodyData) *GetCustomerAccountInfoResponseBody {
-	s.Data = v
-	return s
-}
-
 type GetCustomerAccountInfoResponseBodyData struct {
-	Mpk               *int64  `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
-	LoginEmail        *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
-	HostingStatus     *string `json:"HostingStatus,omitempty" xml:"HostingStatus,omitempty"`
 	AccountType       *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	CreditLimitStatus *string `json:"CreditLimitStatus,omitempty" xml:"CreditLimitStatus,omitempty"`
+	HostingStatus     *string `json:"HostingStatus,omitempty" xml:"HostingStatus,omitempty"`
 	IsCertified       *bool   `json:"IsCertified,omitempty" xml:"IsCertified,omitempty"`
+	LoginEmail        *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
+	Mpk               *int64  `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
 }
 
 func (s GetCustomerAccountInfoResponseBodyData) String() string {
@@ -5407,21 +5599,6 @@ func (s GetCustomerAccountInfoResponseBodyData) String() string {
 
 func (s GetCustomerAccountInfoResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *GetCustomerAccountInfoResponseBodyData) SetMpk(v int64) *GetCustomerAccountInfoResponseBodyData {
-	s.Mpk = &v
-	return s
-}
-
-func (s *GetCustomerAccountInfoResponseBodyData) SetLoginEmail(v string) *GetCustomerAccountInfoResponseBodyData {
-	s.LoginEmail = &v
-	return s
-}
-
-func (s *GetCustomerAccountInfoResponseBodyData) SetHostingStatus(v string) *GetCustomerAccountInfoResponseBodyData {
-	s.HostingStatus = &v
-	return s
 }
 
 func (s *GetCustomerAccountInfoResponseBodyData) SetAccountType(v string) *GetCustomerAccountInfoResponseBodyData {
@@ -5434,8 +5611,23 @@ func (s *GetCustomerAccountInfoResponseBodyData) SetCreditLimitStatus(v string) 
 	return s
 }
 
+func (s *GetCustomerAccountInfoResponseBodyData) SetHostingStatus(v string) *GetCustomerAccountInfoResponseBodyData {
+	s.HostingStatus = &v
+	return s
+}
+
 func (s *GetCustomerAccountInfoResponseBodyData) SetIsCertified(v bool) *GetCustomerAccountInfoResponseBodyData {
 	s.IsCertified = &v
+	return s
+}
+
+func (s *GetCustomerAccountInfoResponseBodyData) SetLoginEmail(v string) *GetCustomerAccountInfoResponseBodyData {
+	s.LoginEmail = &v
+	return s
+}
+
+func (s *GetCustomerAccountInfoResponseBodyData) SetMpk(v int64) *GetCustomerAccountInfoResponseBodyData {
+	s.Mpk = &v
 	return s
 }
 
@@ -5464,10 +5656,10 @@ func (s *GetCustomerAccountInfoResponse) SetBody(v *GetCustomerAccountInfoRespon
 
 type GetCustomerListResponseBody struct {
 	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetCustomerListResponseBody) String() string {
@@ -5483,6 +5675,11 @@ func (s *GetCustomerListResponseBody) SetCode(v string) *GetCustomerListResponse
 	return s
 }
 
+func (s *GetCustomerListResponseBody) SetData(v *GetCustomerListResponseBodyData) *GetCustomerListResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *GetCustomerListResponseBody) SetMessage(v string) *GetCustomerListResponseBody {
 	s.Message = &v
 	return s
@@ -5495,11 +5692,6 @@ func (s *GetCustomerListResponseBody) SetRequestId(v string) *GetCustomerListRes
 
 func (s *GetCustomerListResponseBody) SetSuccess(v bool) *GetCustomerListResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *GetCustomerListResponseBody) SetData(v *GetCustomerListResponseBodyData) *GetCustomerListResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -5568,10 +5760,10 @@ func (s *GetOrderDetailRequest) SetOwnerId(v int64) *GetOrderDetailRequest {
 
 type GetOrderDetailResponseBody struct {
 	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetOrderDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetOrderDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetOrderDetailResponseBody) String() string {
@@ -5584,6 +5776,11 @@ func (s GetOrderDetailResponseBody) GoString() string {
 
 func (s *GetOrderDetailResponseBody) SetCode(v string) *GetOrderDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBody) SetData(v *GetOrderDetailResponseBodyData) *GetOrderDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5602,17 +5799,12 @@ func (s *GetOrderDetailResponseBody) SetSuccess(v bool) *GetOrderDetailResponseB
 	return s
 }
 
-func (s *GetOrderDetailResponseBody) SetData(v *GetOrderDetailResponseBodyData) *GetOrderDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type GetOrderDetailResponseBodyData struct {
 	HostName   *string                                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	OrderList  *GetOrderDetailResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 	PageNum    *int32                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	OrderList  *GetOrderDetailResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 }
 
 func (s GetOrderDetailResponseBodyData) String() string {
@@ -5628,6 +5820,11 @@ func (s *GetOrderDetailResponseBodyData) SetHostName(v string) *GetOrderDetailRe
 	return s
 }
 
+func (s *GetOrderDetailResponseBodyData) SetOrderList(v *GetOrderDetailResponseBodyDataOrderList) *GetOrderDetailResponseBodyData {
+	s.OrderList = v
+	return s
+}
+
 func (s *GetOrderDetailResponseBodyData) SetPageNum(v int32) *GetOrderDetailResponseBodyData {
 	s.PageNum = &v
 	return s
@@ -5640,11 +5837,6 @@ func (s *GetOrderDetailResponseBodyData) SetPageSize(v int32) *GetOrderDetailRes
 
 func (s *GetOrderDetailResponseBodyData) SetTotalCount(v int32) *GetOrderDetailResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyData) SetOrderList(v *GetOrderDetailResponseBodyDataOrderList) *GetOrderDetailResponseBodyData {
-	s.OrderList = v
 	return s
 }
 
@@ -5666,33 +5858,33 @@ func (s *GetOrderDetailResponseBodyDataOrderList) SetOrder(v []*GetOrderDetailRe
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
-	OrderSubType      *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
+	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Currency          *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	UsageStartTime    *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
-	UsageEndTime      *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	SubOrderId        *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	Quantity          *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	OriginalConfig    *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
-	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
-	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	InstanceIDs       *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
-	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	OrderId           *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderSubType      *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OriginalConfig    *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
+	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quantity          *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubOrderId        *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime      *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime    *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrder) String() string {
@@ -5703,8 +5895,18 @@ func (s GetOrderDetailResponseBodyDataOrderListOrder) GoString() string {
 	return s.String()
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderSubType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.OrderSubType = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetAfterTaxAmount(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.AfterTaxAmount = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCommodityCode(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetConfig(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.Config = &v
 	return s
 }
 
@@ -5718,43 +5920,8 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCurrency(v string) *Ge
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetConfig(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.Config = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetSubscriptionType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageStartTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.UsageStartTime = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageEndTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.UsageEndTime = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetSubOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.SubOrderId = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetRegion(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.Region = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetAfterTaxAmount(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.AfterTaxAmount = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPaymentTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.PaymentTime = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetInstanceIDs(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.InstanceIDs = &v
 	return s
 }
 
@@ -5763,28 +5930,18 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOperator(v string) *Ge
 	return s
 }
 
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderSubType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.OrderSubType = &v
+	return s
+}
+
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.OrderType = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPaymentStatus(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.PaymentStatus = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetQuantity(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.Quantity = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPretaxAmountLocal(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.PretaxAmountLocal = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetTax(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.Tax = &v
 	return s
 }
 
@@ -5793,33 +5950,28 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOriginalConfig(v strin
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPretaxAmount(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCommodityCode(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetRelatedOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.RelatedOrderId = &v
-	return s
-}
-
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPaymentCurrency(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.PaymentCurrency = &v
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetProductType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.ProductType = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPaymentStatus(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.PaymentStatus = &v
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetInstanceIDs(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.InstanceIDs = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPaymentTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.PaymentTime = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPretaxAmount(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPretaxAmountLocal(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.PretaxAmountLocal = &v
 	return s
 }
 
@@ -5828,13 +5980,53 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetPretaxGrossAmount(v st
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.OrderId = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetProductCode(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.ProductCode = &v
 	return s
 }
 
-func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetProductCode(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
-	s.ProductCode = &v
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetProductType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.ProductType = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetQuantity(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetRegion(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.Region = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetRelatedOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.RelatedOrderId = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetSubOrderId(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetSubscriptionType(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetTax(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.Tax = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageEndTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.UsageEndTime = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageStartTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.UsageStartTime = &v
 	return s
 }
 
@@ -5862,12 +6054,12 @@ func (s *GetOrderDetailResponse) SetBody(v *GetOrderDetailResponseBody) *GetOrde
 }
 
 type GetPayAsYouGoPriceRequest struct {
+	ModuleList       []*GetPayAsYouGoPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
 	OwnerId          *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode      *string                                `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string                                `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	Region           *string                                `json:"Region,omitempty" xml:"Region,omitempty"`
-	ModuleList       []*GetPayAsYouGoPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
+	SubscriptionType *string                                `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceRequest) String() string {
@@ -5876,6 +6068,11 @@ func (s GetPayAsYouGoPriceRequest) String() string {
 
 func (s GetPayAsYouGoPriceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetPayAsYouGoPriceRequest) SetModuleList(v []*GetPayAsYouGoPriceRequestModuleList) *GetPayAsYouGoPriceRequest {
+	s.ModuleList = v
+	return s
 }
 
 func (s *GetPayAsYouGoPriceRequest) SetOwnerId(v int64) *GetPayAsYouGoPriceRequest {
@@ -5893,25 +6090,20 @@ func (s *GetPayAsYouGoPriceRequest) SetProductType(v string) *GetPayAsYouGoPrice
 	return s
 }
 
-func (s *GetPayAsYouGoPriceRequest) SetSubscriptionType(v string) *GetPayAsYouGoPriceRequest {
-	s.SubscriptionType = &v
-	return s
-}
-
 func (s *GetPayAsYouGoPriceRequest) SetRegion(v string) *GetPayAsYouGoPriceRequest {
 	s.Region = &v
 	return s
 }
 
-func (s *GetPayAsYouGoPriceRequest) SetModuleList(v []*GetPayAsYouGoPriceRequestModuleList) *GetPayAsYouGoPriceRequest {
-	s.ModuleList = v
+func (s *GetPayAsYouGoPriceRequest) SetSubscriptionType(v string) *GetPayAsYouGoPriceRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
 type GetPayAsYouGoPriceRequestModuleList struct {
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	PriceType  *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceRequestModuleList) String() string {
@@ -5920,6 +6112,11 @@ func (s GetPayAsYouGoPriceRequestModuleList) String() string {
 
 func (s GetPayAsYouGoPriceRequestModuleList) GoString() string {
 	return s.String()
+}
+
+func (s *GetPayAsYouGoPriceRequestModuleList) SetConfig(v string) *GetPayAsYouGoPriceRequestModuleList {
+	s.Config = &v
+	return s
 }
 
 func (s *GetPayAsYouGoPriceRequestModuleList) SetModuleCode(v string) *GetPayAsYouGoPriceRequestModuleList {
@@ -5932,17 +6129,12 @@ func (s *GetPayAsYouGoPriceRequestModuleList) SetPriceType(v string) *GetPayAsYo
 	return s
 }
 
-func (s *GetPayAsYouGoPriceRequestModuleList) SetConfig(v string) *GetPayAsYouGoPriceRequestModuleList {
-	s.Config = &v
-	return s
-}
-
 type GetPayAsYouGoPriceResponseBody struct {
 	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetPayAsYouGoPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetPayAsYouGoPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetPayAsYouGoPriceResponseBody) String() string {
@@ -5958,6 +6150,11 @@ func (s *GetPayAsYouGoPriceResponseBody) SetCode(v string) *GetPayAsYouGoPriceRe
 	return s
 }
 
+func (s *GetPayAsYouGoPriceResponseBody) SetData(v *GetPayAsYouGoPriceResponseBodyData) *GetPayAsYouGoPriceResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *GetPayAsYouGoPriceResponseBody) SetMessage(v string) *GetPayAsYouGoPriceResponseBody {
 	s.Message = &v
 	return s
@@ -5970,11 +6167,6 @@ func (s *GetPayAsYouGoPriceResponseBody) SetRequestId(v string) *GetPayAsYouGoPr
 
 func (s *GetPayAsYouGoPriceResponseBody) SetSuccess(v bool) *GetPayAsYouGoPriceResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *GetPayAsYouGoPriceResponseBody) SetData(v *GetPayAsYouGoPriceResponseBodyData) *GetPayAsYouGoPriceResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -6027,9 +6219,9 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetails) SetModuleDetail(v []*G
 type GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail struct {
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
 	InvoiceDiscount   *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
-	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
 	ModuleCode        *string  `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) String() string {
@@ -6050,8 +6242,8 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetInvoice
 	return s
 }
 
-func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetUnitPrice(v float32) *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail {
-	s.UnitPrice = &v
+func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetModuleCode(v string) *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail {
+	s.ModuleCode = &v
 	return s
 }
 
@@ -6060,8 +6252,8 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetOrigina
 	return s
 }
 
-func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetModuleCode(v string) *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail {
-	s.ModuleCode = &v
+func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail) SetUnitPrice(v float32) *GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail {
+	s.UnitPrice = &v
 	return s
 }
 
@@ -6135,15 +6327,15 @@ func (s *GetPayAsYouGoPriceResponse) SetBody(v *GetPayAsYouGoPriceResponseBody) 
 }
 
 type GetResourcePackagePriceRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	PackageType   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PackageType   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
 func (s GetResourcePackagePriceRequest) String() string {
@@ -6154,18 +6346,8 @@ func (s GetResourcePackagePriceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourcePackagePriceRequest) SetOwnerId(v int64) *GetResourcePackagePriceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetResourcePackagePriceRequest) SetProductCode(v string) *GetResourcePackagePriceRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *GetResourcePackagePriceRequest) SetPackageType(v string) *GetResourcePackagePriceRequest {
-	s.PackageType = &v
+func (s *GetResourcePackagePriceRequest) SetDuration(v int32) *GetResourcePackagePriceRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -6174,18 +6356,8 @@ func (s *GetResourcePackagePriceRequest) SetEffectiveDate(v string) *GetResource
 	return s
 }
 
-func (s *GetResourcePackagePriceRequest) SetSpecification(v string) *GetResourcePackagePriceRequest {
-	s.Specification = &v
-	return s
-}
-
-func (s *GetResourcePackagePriceRequest) SetDuration(v int32) *GetResourcePackagePriceRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetResourcePackagePriceRequest) SetPricingCycle(v string) *GetResourcePackagePriceRequest {
-	s.PricingCycle = &v
+func (s *GetResourcePackagePriceRequest) SetInstanceId(v string) *GetResourcePackagePriceRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -6194,17 +6366,37 @@ func (s *GetResourcePackagePriceRequest) SetOrderType(v string) *GetResourcePack
 	return s
 }
 
-func (s *GetResourcePackagePriceRequest) SetInstanceId(v string) *GetResourcePackagePriceRequest {
-	s.InstanceId = &v
+func (s *GetResourcePackagePriceRequest) SetOwnerId(v int64) *GetResourcePackagePriceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetResourcePackagePriceRequest) SetPackageType(v string) *GetResourcePackagePriceRequest {
+	s.PackageType = &v
+	return s
+}
+
+func (s *GetResourcePackagePriceRequest) SetPricingCycle(v string) *GetResourcePackagePriceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *GetResourcePackagePriceRequest) SetProductCode(v string) *GetResourcePackagePriceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *GetResourcePackagePriceRequest) SetSpecification(v string) *GetResourcePackagePriceRequest {
+	s.Specification = &v
 	return s
 }
 
 type GetResourcePackagePriceResponseBody struct {
 	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetResourcePackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetResourcePackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetResourcePackagePriceResponseBody) String() string {
@@ -6217,6 +6409,11 @@ func (s GetResourcePackagePriceResponseBody) GoString() string {
 
 func (s *GetResourcePackagePriceResponseBody) SetCode(v string) *GetResourcePackagePriceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetResourcePackagePriceResponseBody) SetData(v *GetResourcePackagePriceResponseBodyData) *GetResourcePackagePriceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6235,17 +6432,12 @@ func (s *GetResourcePackagePriceResponseBody) SetSuccess(v bool) *GetResourcePac
 	return s
 }
 
-func (s *GetResourcePackagePriceResponseBody) SetData(v *GetResourcePackagePriceResponseBodyData) *GetResourcePackagePriceResponseBody {
-	s.Data = v
-	return s
-}
-
 type GetResourcePackagePriceResponseBodyData struct {
-	OriginalPrice *float32                                           `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	DiscountPrice *float32                                           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	Currency      *string                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	TradePrice    *float32                                           `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	DiscountPrice *float32                                           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32                                           `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	Promotions    *GetResourcePackagePriceResponseBodyDataPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Struct"`
+	TradePrice    *float32                                           `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s GetResourcePackagePriceResponseBodyData) String() string {
@@ -6256,8 +6448,8 @@ func (s GetResourcePackagePriceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourcePackagePriceResponseBodyData) SetOriginalPrice(v float32) *GetResourcePackagePriceResponseBodyData {
-	s.OriginalPrice = &v
+func (s *GetResourcePackagePriceResponseBodyData) SetCurrency(v string) *GetResourcePackagePriceResponseBodyData {
+	s.Currency = &v
 	return s
 }
 
@@ -6266,18 +6458,18 @@ func (s *GetResourcePackagePriceResponseBodyData) SetDiscountPrice(v float32) *G
 	return s
 }
 
-func (s *GetResourcePackagePriceResponseBodyData) SetCurrency(v string) *GetResourcePackagePriceResponseBodyData {
-	s.Currency = &v
-	return s
-}
-
-func (s *GetResourcePackagePriceResponseBodyData) SetTradePrice(v float32) *GetResourcePackagePriceResponseBodyData {
-	s.TradePrice = &v
+func (s *GetResourcePackagePriceResponseBodyData) SetOriginalPrice(v float32) *GetResourcePackagePriceResponseBodyData {
+	s.OriginalPrice = &v
 	return s
 }
 
 func (s *GetResourcePackagePriceResponseBodyData) SetPromotions(v *GetResourcePackagePriceResponseBodyDataPromotions) *GetResourcePackagePriceResponseBodyData {
 	s.Promotions = v
+	return s
+}
+
+func (s *GetResourcePackagePriceResponseBodyData) SetTradePrice(v float32) *GetResourcePackagePriceResponseBodyData {
+	s.TradePrice = &v
 	return s
 }
 
@@ -6299,8 +6491,8 @@ func (s *GetResourcePackagePriceResponseBodyDataPromotions) SetPromotion(v []*Ge
 }
 
 type GetResourcePackagePriceResponseBodyDataPromotionsPromotion struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetResourcePackagePriceResponseBodyDataPromotionsPromotion) String() string {
@@ -6311,13 +6503,13 @@ func (s GetResourcePackagePriceResponseBodyDataPromotionsPromotion) GoString() s
 	return s.String()
 }
 
-func (s *GetResourcePackagePriceResponseBodyDataPromotionsPromotion) SetName(v string) *GetResourcePackagePriceResponseBodyDataPromotionsPromotion {
-	s.Name = &v
+func (s *GetResourcePackagePriceResponseBodyDataPromotionsPromotion) SetId(v int64) *GetResourcePackagePriceResponseBodyDataPromotionsPromotion {
+	s.Id = &v
 	return s
 }
 
-func (s *GetResourcePackagePriceResponseBodyDataPromotionsPromotion) SetId(v int64) *GetResourcePackagePriceResponseBodyDataPromotionsPromotion {
-	s.Id = &v
+func (s *GetResourcePackagePriceResponseBodyDataPromotionsPromotion) SetName(v string) *GetResourcePackagePriceResponseBodyDataPromotionsPromotion {
+	s.Name = &v
 	return s
 }
 
@@ -6345,17 +6537,17 @@ func (s *GetResourcePackagePriceResponse) SetBody(v *GetResourcePackagePriceResp
 }
 
 type GetSubscriptionPriceRequest struct {
-	ServicePeriodUnit     *string                                  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	SubscriptionType      *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	InstanceId            *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModuleList            []*GetSubscriptionPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
+	OrderType             *string                                  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId               *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode           *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	OrderType             *string                                  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ServicePeriodQuantity *int32                                   `json:"ServicePeriodQuantity,omitempty" xml:"ServicePeriodQuantity,omitempty"`
 	ProductType           *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Region                *string                                  `json:"Region,omitempty" xml:"Region,omitempty"`
-	InstanceId            *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Quantity              *int32                                   `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	ModuleList            []*GetSubscriptionPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
+	Region                *string                                  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServicePeriodQuantity *int32                                   `json:"ServicePeriodQuantity,omitempty" xml:"ServicePeriodQuantity,omitempty"`
+	ServicePeriodUnit     *string                                  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SubscriptionType      *string                                  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s GetSubscriptionPriceRequest) String() string {
@@ -6366,13 +6558,18 @@ func (s GetSubscriptionPriceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetSubscriptionPriceRequest) SetServicePeriodUnit(v string) *GetSubscriptionPriceRequest {
-	s.ServicePeriodUnit = &v
+func (s *GetSubscriptionPriceRequest) SetInstanceId(v string) *GetSubscriptionPriceRequest {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *GetSubscriptionPriceRequest) SetSubscriptionType(v string) *GetSubscriptionPriceRequest {
-	s.SubscriptionType = &v
+func (s *GetSubscriptionPriceRequest) SetModuleList(v []*GetSubscriptionPriceRequestModuleList) *GetSubscriptionPriceRequest {
+	s.ModuleList = v
+	return s
+}
+
+func (s *GetSubscriptionPriceRequest) SetOrderType(v string) *GetSubscriptionPriceRequest {
+	s.OrderType = &v
 	return s
 }
 
@@ -6386,28 +6583,8 @@ func (s *GetSubscriptionPriceRequest) SetProductCode(v string) *GetSubscriptionP
 	return s
 }
 
-func (s *GetSubscriptionPriceRequest) SetOrderType(v string) *GetSubscriptionPriceRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *GetSubscriptionPriceRequest) SetServicePeriodQuantity(v int32) *GetSubscriptionPriceRequest {
-	s.ServicePeriodQuantity = &v
-	return s
-}
-
 func (s *GetSubscriptionPriceRequest) SetProductType(v string) *GetSubscriptionPriceRequest {
 	s.ProductType = &v
-	return s
-}
-
-func (s *GetSubscriptionPriceRequest) SetRegion(v string) *GetSubscriptionPriceRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *GetSubscriptionPriceRequest) SetInstanceId(v string) *GetSubscriptionPriceRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -6416,16 +6593,31 @@ func (s *GetSubscriptionPriceRequest) SetQuantity(v int32) *GetSubscriptionPrice
 	return s
 }
 
-func (s *GetSubscriptionPriceRequest) SetModuleList(v []*GetSubscriptionPriceRequestModuleList) *GetSubscriptionPriceRequest {
-	s.ModuleList = v
+func (s *GetSubscriptionPriceRequest) SetRegion(v string) *GetSubscriptionPriceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceRequest) SetServicePeriodQuantity(v int32) *GetSubscriptionPriceRequest {
+	s.ServicePeriodQuantity = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceRequest) SetServicePeriodUnit(v string) *GetSubscriptionPriceRequest {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceRequest) SetSubscriptionType(v string) *GetSubscriptionPriceRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
 type GetSubscriptionPriceRequestModuleList struct {
-	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
-	ModuleCode   *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Config       *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ModuleCode   *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetSubscriptionPriceRequestModuleList) String() string {
@@ -6436,8 +6628,8 @@ func (s GetSubscriptionPriceRequestModuleList) GoString() string {
 	return s.String()
 }
 
-func (s *GetSubscriptionPriceRequestModuleList) SetModuleStatus(v int32) *GetSubscriptionPriceRequestModuleList {
-	s.ModuleStatus = &v
+func (s *GetSubscriptionPriceRequestModuleList) SetConfig(v string) *GetSubscriptionPriceRequestModuleList {
+	s.Config = &v
 	return s
 }
 
@@ -6446,22 +6638,22 @@ func (s *GetSubscriptionPriceRequestModuleList) SetModuleCode(v string) *GetSubs
 	return s
 }
 
+func (s *GetSubscriptionPriceRequestModuleList) SetModuleStatus(v int32) *GetSubscriptionPriceRequestModuleList {
+	s.ModuleStatus = &v
+	return s
+}
+
 func (s *GetSubscriptionPriceRequestModuleList) SetTag(v string) *GetSubscriptionPriceRequestModuleList {
 	s.Tag = &v
 	return s
 }
 
-func (s *GetSubscriptionPriceRequestModuleList) SetConfig(v string) *GetSubscriptionPriceRequestModuleList {
-	s.Config = &v
-	return s
-}
-
 type GetSubscriptionPriceResponseBody struct {
 	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetSubscriptionPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *GetSubscriptionPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s GetSubscriptionPriceResponseBody) String() string {
@@ -6474,6 +6666,11 @@ func (s GetSubscriptionPriceResponseBody) GoString() string {
 
 func (s *GetSubscriptionPriceResponseBody) SetCode(v string) *GetSubscriptionPriceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBody) SetData(v *GetSubscriptionPriceResponseBodyData) *GetSubscriptionPriceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6492,19 +6689,14 @@ func (s *GetSubscriptionPriceResponseBody) SetSuccess(v bool) *GetSubscriptionPr
 	return s
 }
 
-func (s *GetSubscriptionPriceResponseBody) SetData(v *GetSubscriptionPriceResponseBodyData) *GetSubscriptionPriceResponseBody {
-	s.Data = v
-	return s
-}
-
 type GetSubscriptionPriceResponseBodyData struct {
-	OriginalPrice    *float32                                              `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	DiscountPrice    *float32                                              `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	Currency         *string                                               `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice    *float32                                              `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	ModuleDetails    *GetSubscriptionPriceResponseBodyDataModuleDetails    `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
+	OriginalPrice    *float32                                              `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	PromotionDetails *GetSubscriptionPriceResponseBodyDataPromotionDetails `json:"PromotionDetails,omitempty" xml:"PromotionDetails,omitempty" type:"Struct"`
 	Quantity         *int32                                                `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	TradePrice       *float32                                              `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-	ModuleDetails    *GetSubscriptionPriceResponseBodyDataModuleDetails    `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
-	PromotionDetails *GetSubscriptionPriceResponseBodyDataPromotionDetails `json:"PromotionDetails,omitempty" xml:"PromotionDetails,omitempty" type:"Struct"`
 }
 
 func (s GetSubscriptionPriceResponseBodyData) String() string {
@@ -6515,8 +6707,8 @@ func (s GetSubscriptionPriceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetSubscriptionPriceResponseBodyData) SetOriginalPrice(v float32) *GetSubscriptionPriceResponseBodyData {
-	s.OriginalPrice = &v
+func (s *GetSubscriptionPriceResponseBodyData) SetCurrency(v string) *GetSubscriptionPriceResponseBodyData {
+	s.Currency = &v
 	return s
 }
 
@@ -6525,8 +6717,18 @@ func (s *GetSubscriptionPriceResponseBodyData) SetDiscountPrice(v float32) *GetS
 	return s
 }
 
-func (s *GetSubscriptionPriceResponseBodyData) SetCurrency(v string) *GetSubscriptionPriceResponseBodyData {
-	s.Currency = &v
+func (s *GetSubscriptionPriceResponseBodyData) SetModuleDetails(v *GetSubscriptionPriceResponseBodyDataModuleDetails) *GetSubscriptionPriceResponseBodyData {
+	s.ModuleDetails = v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyData) SetOriginalPrice(v float32) *GetSubscriptionPriceResponseBodyData {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *GetSubscriptionPriceResponseBodyData) SetPromotionDetails(v *GetSubscriptionPriceResponseBodyDataPromotionDetails) *GetSubscriptionPriceResponseBodyData {
+	s.PromotionDetails = v
 	return s
 }
 
@@ -6537,16 +6739,6 @@ func (s *GetSubscriptionPriceResponseBodyData) SetQuantity(v int32) *GetSubscrip
 
 func (s *GetSubscriptionPriceResponseBodyData) SetTradePrice(v float32) *GetSubscriptionPriceResponseBodyData {
 	s.TradePrice = &v
-	return s
-}
-
-func (s *GetSubscriptionPriceResponseBodyData) SetModuleDetails(v *GetSubscriptionPriceResponseBodyDataModuleDetails) *GetSubscriptionPriceResponseBodyData {
-	s.ModuleDetails = v
-	return s
-}
-
-func (s *GetSubscriptionPriceResponseBodyData) SetPromotionDetails(v *GetSubscriptionPriceResponseBodyDataPromotionDetails) *GetSubscriptionPriceResponseBodyData {
-	s.PromotionDetails = v
 	return s
 }
 
@@ -6570,9 +6762,9 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetails) SetModuleDetail(v []
 type GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail struct {
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
 	InvoiceDiscount   *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
-	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
 	ModuleCode        *string  `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OriginalCost      *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
+	UnitPrice         *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) String() string {
@@ -6593,8 +6785,8 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetInvoi
 	return s
 }
 
-func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetUnitPrice(v float32) *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail {
-	s.UnitPrice = &v
+func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetModuleCode(v string) *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail {
+	s.ModuleCode = &v
 	return s
 }
 
@@ -6603,8 +6795,8 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetOrigi
 	return s
 }
 
-func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetModuleCode(v string) *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail {
-	s.ModuleCode = &v
+func (s *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail) SetUnitPrice(v float32) *GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail {
+	s.UnitPrice = &v
 	return s
 }
 
@@ -6678,14 +6870,14 @@ func (s *GetSubscriptionPriceResponse) SetBody(v *GetSubscriptionPriceResponseBo
 }
 
 type ModifyAccountRelationRequest struct {
-	RelationType      *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	RelationOperation *string   `json:"RelationOperation,omitempty" xml:"RelationOperation,omitempty"`
-	ParentUserId      *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	ChildNick         *string   `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
 	ChildUserId       *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	ParentUserId      *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	PermissionCodes   []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RelationOperation *string   `json:"RelationOperation,omitempty" xml:"RelationOperation,omitempty"`
+	RelationType      *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleCodes         []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	PermissionCodes   []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
 }
 
 func (s ModifyAccountRelationRequest) String() string {
@@ -6696,13 +6888,13 @@ func (s ModifyAccountRelationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyAccountRelationRequest) SetRelationType(v string) *ModifyAccountRelationRequest {
-	s.RelationType = &v
+func (s *ModifyAccountRelationRequest) SetChildNick(v string) *ModifyAccountRelationRequest {
+	s.ChildNick = &v
 	return s
 }
 
-func (s *ModifyAccountRelationRequest) SetRelationOperation(v string) *ModifyAccountRelationRequest {
-	s.RelationOperation = &v
+func (s *ModifyAccountRelationRequest) SetChildUserId(v int64) *ModifyAccountRelationRequest {
+	s.ChildUserId = &v
 	return s
 }
 
@@ -6711,13 +6903,18 @@ func (s *ModifyAccountRelationRequest) SetParentUserId(v int64) *ModifyAccountRe
 	return s
 }
 
-func (s *ModifyAccountRelationRequest) SetChildNick(v string) *ModifyAccountRelationRequest {
-	s.ChildNick = &v
+func (s *ModifyAccountRelationRequest) SetPermissionCodes(v []*string) *ModifyAccountRelationRequest {
+	s.PermissionCodes = v
 	return s
 }
 
-func (s *ModifyAccountRelationRequest) SetChildUserId(v int64) *ModifyAccountRelationRequest {
-	s.ChildUserId = &v
+func (s *ModifyAccountRelationRequest) SetRelationOperation(v string) *ModifyAccountRelationRequest {
+	s.RelationOperation = &v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetRelationType(v string) *ModifyAccountRelationRequest {
+	s.RelationType = &v
 	return s
 }
 
@@ -6731,17 +6928,12 @@ func (s *ModifyAccountRelationRequest) SetRoleCodes(v []*string) *ModifyAccountR
 	return s
 }
 
-func (s *ModifyAccountRelationRequest) SetPermissionCodes(v []*string) *ModifyAccountRelationRequest {
-	s.PermissionCodes = v
-	return s
-}
-
 type ModifyAccountRelationResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ModifyAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *ModifyAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ModifyAccountRelationResponseBody) String() string {
@@ -6757,6 +6949,11 @@ func (s *ModifyAccountRelationResponseBody) SetCode(v string) *ModifyAccountRela
 	return s
 }
 
+func (s *ModifyAccountRelationResponseBody) SetData(v *ModifyAccountRelationResponseBodyData) *ModifyAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ModifyAccountRelationResponseBody) SetMessage(v string) *ModifyAccountRelationResponseBody {
 	s.Message = &v
 	return s
@@ -6769,11 +6966,6 @@ func (s *ModifyAccountRelationResponseBody) SetRequestId(v string) *ModifyAccoun
 
 func (s *ModifyAccountRelationResponseBody) SetSuccess(v bool) *ModifyAccountRelationResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *ModifyAccountRelationResponseBody) SetData(v *ModifyAccountRelationResponseBodyData) *ModifyAccountRelationResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -6835,9 +7027,9 @@ func (s *ModifyCostUnitRequest) SetUnitEntityList(v []*ModifyCostUnitRequestUnit
 }
 
 type ModifyCostUnitRequestUnitEntityList struct {
-	UnitId      *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	NewUnitName *string `json:"NewUnitName,omitempty" xml:"NewUnitName,omitempty"`
 	OwnerUid    *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	UnitId      *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
 func (s ModifyCostUnitRequestUnitEntityList) String() string {
@@ -6846,11 +7038,6 @@ func (s ModifyCostUnitRequestUnitEntityList) String() string {
 
 func (s ModifyCostUnitRequestUnitEntityList) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyCostUnitRequestUnitEntityList) SetUnitId(v int64) *ModifyCostUnitRequestUnitEntityList {
-	s.UnitId = &v
-	return s
 }
 
 func (s *ModifyCostUnitRequestUnitEntityList) SetNewUnitName(v string) *ModifyCostUnitRequestUnitEntityList {
@@ -6863,12 +7050,17 @@ func (s *ModifyCostUnitRequestUnitEntityList) SetOwnerUid(v int64) *ModifyCostUn
 	return s
 }
 
+func (s *ModifyCostUnitRequestUnitEntityList) SetUnitId(v int64) *ModifyCostUnitRequestUnitEntityList {
+	s.UnitId = &v
+	return s
+}
+
 type ModifyCostUnitResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ModifyCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      []*ModifyCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
 func (s ModifyCostUnitResponseBody) String() string {
@@ -6881,6 +7073,11 @@ func (s ModifyCostUnitResponseBody) GoString() string {
 
 func (s *ModifyCostUnitResponseBody) SetCode(v string) *ModifyCostUnitResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ModifyCostUnitResponseBody) SetData(v []*ModifyCostUnitResponseBodyData) *ModifyCostUnitResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -6899,15 +7096,10 @@ func (s *ModifyCostUnitResponseBody) SetSuccess(v bool) *ModifyCostUnitResponseB
 	return s
 }
 
-func (s *ModifyCostUnitResponseBody) SetData(v []*ModifyCostUnitResponseBodyData) *ModifyCostUnitResponseBody {
-	s.Data = v
-	return s
-}
-
 type ModifyCostUnitResponseBodyData struct {
 	IsSuccess *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	UnitId    *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	OwnerUid  *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	UnitId    *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
 func (s ModifyCostUnitResponseBodyData) String() string {
@@ -6923,13 +7115,13 @@ func (s *ModifyCostUnitResponseBodyData) SetIsSuccess(v bool) *ModifyCostUnitRes
 	return s
 }
 
-func (s *ModifyCostUnitResponseBodyData) SetUnitId(v int64) *ModifyCostUnitResponseBodyData {
-	s.UnitId = &v
+func (s *ModifyCostUnitResponseBodyData) SetOwnerUid(v int64) *ModifyCostUnitResponseBodyData {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *ModifyCostUnitResponseBodyData) SetOwnerUid(v int64) *ModifyCostUnitResponseBodyData {
-	s.OwnerUid = &v
+func (s *ModifyCostUnitResponseBodyData) SetUnitId(v int64) *ModifyCostUnitResponseBodyData {
+	s.UnitId = &v
 	return s
 }
 
@@ -6957,14 +7149,14 @@ func (s *ModifyCostUnitResponse) SetBody(v *ModifyCostUnitResponseBody) *ModifyC
 }
 
 type ModifyInstanceRequest struct {
-	ProductCode      *string                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ClientToken      *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceId       *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifyType       *string                           `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerId          *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameter        []*ModifyInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
+	ProductCode      *string                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string                           `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	ModifyType       *string                           `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	InstanceId       *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ClientToken      *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Parameter        []*ModifyInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
 }
 
 func (s ModifyInstanceRequest) String() string {
@@ -6975,13 +7167,33 @@ func (s ModifyInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceRequest) SetProductCode(v string) *ModifyInstanceRequest {
-	s.ProductCode = &v
+func (s *ModifyInstanceRequest) SetClientToken(v string) *ModifyInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetInstanceId(v string) *ModifyInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetModifyType(v string) *ModifyInstanceRequest {
+	s.ModifyType = &v
 	return s
 }
 
 func (s *ModifyInstanceRequest) SetOwnerId(v int64) *ModifyInstanceRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetParameter(v []*ModifyInstanceRequestParameter) *ModifyInstanceRequest {
+	s.Parameter = v
+	return s
+}
+
+func (s *ModifyInstanceRequest) SetProductCode(v string) *ModifyInstanceRequest {
+	s.ProductCode = &v
 	return s
 }
 
@@ -6995,29 +7207,9 @@ func (s *ModifyInstanceRequest) SetSubscriptionType(v string) *ModifyInstanceReq
 	return s
 }
 
-func (s *ModifyInstanceRequest) SetModifyType(v string) *ModifyInstanceRequest {
-	s.ModifyType = &v
-	return s
-}
-
-func (s *ModifyInstanceRequest) SetInstanceId(v string) *ModifyInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyInstanceRequest) SetClientToken(v string) *ModifyInstanceRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ModifyInstanceRequest) SetParameter(v []*ModifyInstanceRequestParameter) *ModifyInstanceRequest {
-	s.Parameter = v
-	return s
-}
-
 type ModifyInstanceRequestParameter struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ModifyInstanceRequestParameter) String() string {
@@ -7028,22 +7220,22 @@ func (s ModifyInstanceRequestParameter) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceRequestParameter) SetValue(v string) *ModifyInstanceRequestParameter {
-	s.Value = &v
-	return s
-}
-
 func (s *ModifyInstanceRequestParameter) SetCode(v string) *ModifyInstanceRequestParameter {
 	s.Code = &v
 	return s
 }
 
+func (s *ModifyInstanceRequestParameter) SetValue(v string) *ModifyInstanceRequestParameter {
+	s.Value = &v
+	return s
+}
+
 type ModifyInstanceResponseBody struct {
 	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ModifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *ModifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s ModifyInstanceResponseBody) String() string {
@@ -7056,6 +7248,11 @@ func (s ModifyInstanceResponseBody) GoString() string {
 
 func (s *ModifyInstanceResponseBody) SetCode(v string) *ModifyInstanceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBody) SetData(v *ModifyInstanceResponseBodyData) *ModifyInstanceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7074,14 +7271,9 @@ func (s *ModifyInstanceResponseBody) SetSuccess(v bool) *ModifyInstanceResponseB
 	return s
 }
 
-func (s *ModifyInstanceResponseBody) SetData(v *ModifyInstanceResponseBodyData) *ModifyInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
 type ModifyInstanceResponseBodyData struct {
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s ModifyInstanceResponseBodyData) String() string {
@@ -7092,13 +7284,13 @@ func (s ModifyInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceResponseBodyData) SetOrderId(v string) *ModifyInstanceResponseBodyData {
-	s.OrderId = &v
+func (s *ModifyInstanceResponseBodyData) SetHostId(v string) *ModifyInstanceResponseBodyData {
+	s.HostId = &v
 	return s
 }
 
-func (s *ModifyInstanceResponseBodyData) SetHostId(v string) *ModifyInstanceResponseBodyData {
-	s.HostId = &v
+func (s *ModifyInstanceResponseBodyData) SetOrderId(v string) *ModifyInstanceResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -7127,10 +7319,10 @@ func (s *ModifyInstanceResponse) SetBody(v *ModifyInstanceResponseBody) *ModifyI
 
 type QueryAccountBalanceResponseBody struct {
 	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAccountBalanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryAccountBalanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountBalanceResponseBody) String() string {
@@ -7143,6 +7335,11 @@ func (s QueryAccountBalanceResponseBody) GoString() string {
 
 func (s *QueryAccountBalanceResponseBody) SetCode(v string) *QueryAccountBalanceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryAccountBalanceResponseBody) SetData(v *QueryAccountBalanceResponseBodyData) *QueryAccountBalanceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7161,17 +7358,12 @@ func (s *QueryAccountBalanceResponseBody) SetSuccess(v bool) *QueryAccountBalanc
 	return s
 }
 
-func (s *QueryAccountBalanceResponseBody) SetData(v *QueryAccountBalanceResponseBodyData) *QueryAccountBalanceResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryAccountBalanceResponseBodyData struct {
 	AvailableAmount     *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	CreditAmount        *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
-	MybankCreditAmount  *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
-	Currency            *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	AvailableCashAmount *string `json:"AvailableCashAmount,omitempty" xml:"AvailableCashAmount,omitempty"`
+	CreditAmount        *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	Currency            *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	MybankCreditAmount  *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
 }
 
 func (s QueryAccountBalanceResponseBodyData) String() string {
@@ -7187,13 +7379,13 @@ func (s *QueryAccountBalanceResponseBodyData) SetAvailableAmount(v string) *Quer
 	return s
 }
 
-func (s *QueryAccountBalanceResponseBodyData) SetCreditAmount(v string) *QueryAccountBalanceResponseBodyData {
-	s.CreditAmount = &v
+func (s *QueryAccountBalanceResponseBodyData) SetAvailableCashAmount(v string) *QueryAccountBalanceResponseBodyData {
+	s.AvailableCashAmount = &v
 	return s
 }
 
-func (s *QueryAccountBalanceResponseBodyData) SetMybankCreditAmount(v string) *QueryAccountBalanceResponseBodyData {
-	s.MybankCreditAmount = &v
+func (s *QueryAccountBalanceResponseBodyData) SetCreditAmount(v string) *QueryAccountBalanceResponseBodyData {
+	s.CreditAmount = &v
 	return s
 }
 
@@ -7202,8 +7394,8 @@ func (s *QueryAccountBalanceResponseBodyData) SetCurrency(v string) *QueryAccoun
 	return s
 }
 
-func (s *QueryAccountBalanceResponseBodyData) SetAvailableCashAmount(v string) *QueryAccountBalanceResponseBodyData {
-	s.AvailableCashAmount = &v
+func (s *QueryAccountBalanceResponseBodyData) SetMybankCreditAmount(v string) *QueryAccountBalanceResponseBodyData {
+	s.MybankCreditAmount = &v
 	return s
 }
 
@@ -7231,15 +7423,15 @@ func (s *QueryAccountBalanceResponse) SetBody(v *QueryAccountBalanceResponseBody
 }
 
 type QueryAccountBillRequest struct {
+	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	IsGroupByProduct *bool   `json:"IsGroupByProduct,omitempty" xml:"IsGroupByProduct,omitempty"`
+	OwnerID          *int64  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	OwnerID          *int64  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	IsGroupByProduct *bool   `json:"IsGroupByProduct,omitempty" xml:"IsGroupByProduct,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 }
 
 func (s QueryAccountBillRequest) String() string {
@@ -7250,8 +7442,33 @@ func (s QueryAccountBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryAccountBillRequest) SetBillOwnerId(v int64) *QueryAccountBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *QueryAccountBillRequest) SetBillingCycle(v string) *QueryAccountBillRequest {
 	s.BillingCycle = &v
+	return s
+}
+
+func (s *QueryAccountBillRequest) SetBillingDate(v string) *QueryAccountBillRequest {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *QueryAccountBillRequest) SetGranularity(v string) *QueryAccountBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *QueryAccountBillRequest) SetIsGroupByProduct(v bool) *QueryAccountBillRequest {
+	s.IsGroupByProduct = &v
+	return s
+}
+
+func (s *QueryAccountBillRequest) SetOwnerID(v int64) *QueryAccountBillRequest {
+	s.OwnerID = &v
 	return s
 }
 
@@ -7265,42 +7482,17 @@ func (s *QueryAccountBillRequest) SetPageSize(v int32) *QueryAccountBillRequest 
 	return s
 }
 
-func (s *QueryAccountBillRequest) SetOwnerID(v int64) *QueryAccountBillRequest {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *QueryAccountBillRequest) SetIsGroupByProduct(v bool) *QueryAccountBillRequest {
-	s.IsGroupByProduct = &v
-	return s
-}
-
 func (s *QueryAccountBillRequest) SetProductCode(v string) *QueryAccountBillRequest {
 	s.ProductCode = &v
 	return s
 }
 
-func (s *QueryAccountBillRequest) SetBillOwnerId(v int64) *QueryAccountBillRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
-func (s *QueryAccountBillRequest) SetGranularity(v string) *QueryAccountBillRequest {
-	s.Granularity = &v
-	return s
-}
-
-func (s *QueryAccountBillRequest) SetBillingDate(v string) *QueryAccountBillRequest {
-	s.BillingDate = &v
-	return s
-}
-
 type QueryAccountBillResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountBillResponseBody) String() string {
@@ -7313,6 +7505,11 @@ func (s QueryAccountBillResponseBody) GoString() string {
 
 func (s *QueryAccountBillResponseBody) SetCode(v string) *QueryAccountBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBody) SetData(v *QueryAccountBillResponseBodyData) *QueryAccountBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7331,19 +7528,14 @@ func (s *QueryAccountBillResponseBody) SetSuccess(v bool) *QueryAccountBillRespo
 	return s
 }
 
-func (s *QueryAccountBillResponseBody) SetData(v *QueryAccountBillResponseBodyData) *QueryAccountBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryAccountBillResponseBodyData struct {
-	PageNum      *int32                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	BillingCycle *string                                `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	AccountID    *string                                `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName  *string                                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	AccountName  *string                                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Items        *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountBillResponseBodyData) String() string {
@@ -7354,8 +7546,13 @@ func (s QueryAccountBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountBillResponseBodyData) SetPageNum(v int32) *QueryAccountBillResponseBodyData {
-	s.PageNum = &v
+func (s *QueryAccountBillResponseBodyData) SetAccountID(v string) *QueryAccountBillResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyData) SetAccountName(v string) *QueryAccountBillResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
@@ -7364,8 +7561,13 @@ func (s *QueryAccountBillResponseBodyData) SetBillingCycle(v string) *QueryAccou
 	return s
 }
 
-func (s *QueryAccountBillResponseBodyData) SetAccountID(v string) *QueryAccountBillResponseBodyData {
-	s.AccountID = &v
+func (s *QueryAccountBillResponseBodyData) SetItems(v *QueryAccountBillResponseBodyDataItems) *QueryAccountBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyData) SetPageNum(v int32) *QueryAccountBillResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -7376,16 +7578,6 @@ func (s *QueryAccountBillResponseBodyData) SetPageSize(v int32) *QueryAccountBil
 
 func (s *QueryAccountBillResponseBodyData) SetTotalCount(v int32) *QueryAccountBillResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyData) SetAccountName(v string) *QueryAccountBillResponseBodyData {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyData) SetItems(v *QueryAccountBillResponseBodyDataItems) *QueryAccountBillResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -7407,26 +7599,28 @@ func (s *QueryAccountBillResponseBodyDataItems) SetItem(v []*QueryAccountBillRes
 }
 
 type QueryAccountBillResponseBodyDataItemsItem struct {
-	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	BillingDate           *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	OwnerName             *string  `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BillingDate           *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CostUnit              *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	CostUnit              *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	OwnerName             *string  `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s QueryAccountBillResponseBodyDataItemsItem) String() string {
@@ -7437,68 +7631,8 @@ func (s QueryAccountBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.PipCode = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetBillingDate(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.BillingDate = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetProductName(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.ProductName = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetOwnerName(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.OwnerName = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetCurrency(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.Currency = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetBillAccountName(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.BillAccountName = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryAccountBillResponseBodyDataItemsItem {
-	s.DeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetBizType(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.BizType = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v float32) *QueryAccountBillResponseBodyDataItemsItem {
-	s.DeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryAccountBillResponseBodyDataItemsItem {
-	s.DeductedByCoupons = &v
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
 	return s
 }
 
@@ -7507,8 +7641,48 @@ func (s *QueryAccountBillResponseBodyDataItemsItem) SetBillAccountID(v string) *
 	return s
 }
 
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
-	s.PaymentAmount = &v
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetBillAccountName(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.BillAccountName = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetBillingDate(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetBizType(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetCashAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetCostUnit(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.CostUnit = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetCurrency(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.DeductedByCashCoupons = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.DeductedByPrepaidCard = &v
 	return s
 }
 
@@ -7522,8 +7696,28 @@ func (s *QueryAccountBillResponseBodyDataItemsItem) SetOutstandingAmount(v float
 	return s
 }
 
-func (s *QueryAccountBillResponseBodyDataItemsItem) SetCostUnit(v string) *QueryAccountBillResponseBodyDataItemsItem {
-	s.CostUnit = &v
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetOwnerName(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryAccountBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
 	return s
 }
 
@@ -7534,6 +7728,16 @@ func (s *QueryAccountBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float
 
 func (s *QueryAccountBillResponseBodyDataItemsItem) SetProductCode(v string) *QueryAccountBillResponseBodyDataItemsItem {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetProductName(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryAccountBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryAccountBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
 	return s
 }
 
@@ -7561,15 +7765,15 @@ func (s *QueryAccountBillResponse) SetBody(v *QueryAccountBillResponseBody) *Que
 }
 
 type QueryAccountTransactionDetailsRequest struct {
-	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	CreateTimeStart      *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	CreateTimeEnd        *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
-	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	CreateTimeStart      *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
 func (s QueryAccountTransactionDetailsRequest) String() string {
@@ -7580,18 +7784,8 @@ func (s QueryAccountTransactionDetailsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountTransactionDetailsRequest) SetTransactionNumber(v string) *QueryAccountTransactionDetailsRequest {
-	s.TransactionNumber = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsRequest) SetRecordID(v string) *QueryAccountTransactionDetailsRequest {
-	s.RecordID = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsRequest) SetTransactionChannelSN(v string) *QueryAccountTransactionDetailsRequest {
-	s.TransactionChannelSN = &v
+func (s *QueryAccountTransactionDetailsRequest) SetCreateTimeEnd(v string) *QueryAccountTransactionDetailsRequest {
+	s.CreateTimeEnd = &v
 	return s
 }
 
@@ -7600,18 +7794,8 @@ func (s *QueryAccountTransactionDetailsRequest) SetCreateTimeStart(v string) *Qu
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsRequest) SetCreateTimeEnd(v string) *QueryAccountTransactionDetailsRequest {
-	s.CreateTimeEnd = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsRequest) SetTransactionType(v string) *QueryAccountTransactionDetailsRequest {
-	s.TransactionType = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsRequest) SetTransactionChannel(v string) *QueryAccountTransactionDetailsRequest {
-	s.TransactionChannel = &v
+func (s *QueryAccountTransactionDetailsRequest) SetMaxResults(v int32) *QueryAccountTransactionDetailsRequest {
+	s.MaxResults = &v
 	return s
 }
 
@@ -7620,17 +7804,37 @@ func (s *QueryAccountTransactionDetailsRequest) SetNextToken(v string) *QueryAcc
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsRequest) SetMaxResults(v int32) *QueryAccountTransactionDetailsRequest {
-	s.MaxResults = &v
+func (s *QueryAccountTransactionDetailsRequest) SetRecordID(v string) *QueryAccountTransactionDetailsRequest {
+	s.RecordID = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsRequest) SetTransactionChannel(v string) *QueryAccountTransactionDetailsRequest {
+	s.TransactionChannel = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsRequest) SetTransactionChannelSN(v string) *QueryAccountTransactionDetailsRequest {
+	s.TransactionChannelSN = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsRequest) SetTransactionNumber(v string) *QueryAccountTransactionDetailsRequest {
+	s.TransactionNumber = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsRequest) SetTransactionType(v string) *QueryAccountTransactionDetailsRequest {
+	s.TransactionType = &v
 	return s
 }
 
 type QueryAccountTransactionDetailsResponseBody struct {
 	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountTransactionDetailsResponseBody) String() string {
@@ -7643,6 +7847,11 @@ func (s QueryAccountTransactionDetailsResponseBody) GoString() string {
 
 func (s *QueryAccountTransactionDetailsResponseBody) SetCode(v string) *QueryAccountTransactionDetailsResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsResponseBody) SetData(v *QueryAccountTransactionDetailsResponseBodyData) *QueryAccountTransactionDetailsResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7661,17 +7870,12 @@ func (s *QueryAccountTransactionDetailsResponseBody) SetSuccess(v bool) *QueryAc
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBody) SetData(v *QueryAccountTransactionDetailsResponseBodyData) *QueryAccountTransactionDetailsResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryAccountTransactionDetailsResponseBodyData struct {
-	NextToken               *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount              *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	MaxResults              *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	AccountName             *string                                                                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountTransactionsList *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
+	MaxResults              *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount              *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryAccountTransactionDetailsResponseBodyData) String() string {
@@ -7682,13 +7886,13 @@ func (s QueryAccountTransactionDetailsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyData) SetNextToken(v string) *QueryAccountTransactionDetailsResponseBodyData {
-	s.NextToken = &v
+func (s *QueryAccountTransactionDetailsResponseBodyData) SetAccountName(v string) *QueryAccountTransactionDetailsResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyData) SetTotalCount(v int32) *QueryAccountTransactionDetailsResponseBodyData {
-	s.TotalCount = &v
+func (s *QueryAccountTransactionDetailsResponseBodyData) SetAccountTransactionsList(v *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) *QueryAccountTransactionDetailsResponseBodyData {
+	s.AccountTransactionsList = v
 	return s
 }
 
@@ -7697,13 +7901,13 @@ func (s *QueryAccountTransactionDetailsResponseBodyData) SetMaxResults(v int32) 
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyData) SetAccountName(v string) *QueryAccountTransactionDetailsResponseBodyData {
-	s.AccountName = &v
+func (s *QueryAccountTransactionDetailsResponseBodyData) SetNextToken(v string) *QueryAccountTransactionDetailsResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyData) SetAccountTransactionsList(v *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) *QueryAccountTransactionDetailsResponseBodyData {
-	s.AccountTransactionsList = v
+func (s *QueryAccountTransactionDetailsResponseBodyData) SetTotalCount(v int32) *QueryAccountTransactionDetailsResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
@@ -7725,19 +7929,19 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) 
 }
 
 type QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
+	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	Remarks              *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	TransactionAccount   *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
+	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	TransactionTime      *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
 	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
-	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
-	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 }
 
 func (s QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) String() string {
@@ -7748,13 +7952,23 @@ func (s QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAcc
 	return s.String()
 }
 
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetAmount(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.Amount = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBalance(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.Balance = &v
+	return s
+}
+
 func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBillingCycle(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
 	s.BillingCycle = &v
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannel(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionChannel = &v
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetFundType(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.FundType = &v
 	return s
 }
 
@@ -7768,13 +7982,28 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAc
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetAmount(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.Amount = &v
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionAccount(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionAccount = &v
 	return s
 }
 
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionAccount(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionAccount = &v
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannel(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionChannel = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannelSN(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionChannelSN = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionFlow(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionFlow = &v
+	return s
+}
+
+func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionNumber(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionNumber = &v
 	return s
 }
 
@@ -7785,31 +8014,6 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAc
 
 func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionType(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
 	s.TransactionType = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionFlow(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionFlow = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetFundType(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.FundType = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannelSN(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionChannelSN = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionNumber(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionNumber = &v
-	return s
-}
-
-func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBalance(v string) *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.Balance = &v
 	return s
 }
 
@@ -7837,13 +8041,13 @@ func (s *QueryAccountTransactionDetailsResponse) SetBody(v *QueryAccountTransact
 }
 
 type QueryAccountTransactionsRequest struct {
-	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	CreateTimeStart      *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	CreateTimeEnd        *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart      *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	PageNum              *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 }
 
 func (s QueryAccountTransactionsRequest) String() string {
@@ -7854,28 +8058,13 @@ func (s QueryAccountTransactionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountTransactionsRequest) SetTransactionNumber(v string) *QueryAccountTransactionsRequest {
-	s.TransactionNumber = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsRequest) SetRecordID(v string) *QueryAccountTransactionsRequest {
-	s.RecordID = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsRequest) SetTransactionChannelSN(v string) *QueryAccountTransactionsRequest {
-	s.TransactionChannelSN = &v
+func (s *QueryAccountTransactionsRequest) SetCreateTimeEnd(v string) *QueryAccountTransactionsRequest {
+	s.CreateTimeEnd = &v
 	return s
 }
 
 func (s *QueryAccountTransactionsRequest) SetCreateTimeStart(v string) *QueryAccountTransactionsRequest {
 	s.CreateTimeStart = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsRequest) SetCreateTimeEnd(v string) *QueryAccountTransactionsRequest {
-	s.CreateTimeEnd = &v
 	return s
 }
 
@@ -7889,12 +8078,27 @@ func (s *QueryAccountTransactionsRequest) SetPageSize(v int32) *QueryAccountTran
 	return s
 }
 
+func (s *QueryAccountTransactionsRequest) SetRecordID(v string) *QueryAccountTransactionsRequest {
+	s.RecordID = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsRequest) SetTransactionChannelSN(v string) *QueryAccountTransactionsRequest {
+	s.TransactionChannelSN = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsRequest) SetTransactionNumber(v string) *QueryAccountTransactionsRequest {
+	s.TransactionNumber = &v
+	return s
+}
+
 type QueryAccountTransactionsResponseBody struct {
 	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAccountTransactionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryAccountTransactionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountTransactionsResponseBody) String() string {
@@ -7907,6 +8111,11 @@ func (s QueryAccountTransactionsResponseBody) GoString() string {
 
 func (s *QueryAccountTransactionsResponseBody) SetCode(v string) *QueryAccountTransactionsResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBody) SetData(v *QueryAccountTransactionsResponseBodyData) *QueryAccountTransactionsResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -7925,17 +8134,12 @@ func (s *QueryAccountTransactionsResponseBody) SetSuccess(v bool) *QueryAccountT
 	return s
 }
 
-func (s *QueryAccountTransactionsResponseBody) SetData(v *QueryAccountTransactionsResponseBodyData) *QueryAccountTransactionsResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryAccountTransactionsResponseBodyData struct {
+	AccountName             *string                                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountTransactionsList *QueryAccountTransactionsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
 	PageNum                 *int32                                                           `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize                *int32                                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount              *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	AccountName             *string                                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountTransactionsList *QueryAccountTransactionsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
 }
 
 func (s QueryAccountTransactionsResponseBodyData) String() string {
@@ -7944,6 +8148,16 @@ func (s QueryAccountTransactionsResponseBodyData) String() string {
 
 func (s QueryAccountTransactionsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAccountTransactionsResponseBodyData) SetAccountName(v string) *QueryAccountTransactionsResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBodyData) SetAccountTransactionsList(v *QueryAccountTransactionsResponseBodyDataAccountTransactionsList) *QueryAccountTransactionsResponseBodyData {
+	s.AccountTransactionsList = v
+	return s
 }
 
 func (s *QueryAccountTransactionsResponseBodyData) SetPageNum(v int32) *QueryAccountTransactionsResponseBodyData {
@@ -7958,16 +8172,6 @@ func (s *QueryAccountTransactionsResponseBodyData) SetPageSize(v int32) *QueryAc
 
 func (s *QueryAccountTransactionsResponseBodyData) SetTotalCount(v int32) *QueryAccountTransactionsResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyData) SetAccountName(v string) *QueryAccountTransactionsResponseBodyData {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyData) SetAccountTransactionsList(v *QueryAccountTransactionsResponseBodyDataAccountTransactionsList) *QueryAccountTransactionsResponseBodyData {
-	s.AccountTransactionsList = v
 	return s
 }
 
@@ -7989,19 +8193,19 @@ func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsList) SetAcc
 }
 
 type QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
+	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	Remarks              *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	Amount               *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	TransactionAccount   *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
+	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
+	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	TransactionTime      *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
 	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
-	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
-	FundType             *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	Balance              *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 }
 
 func (s QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) String() string {
@@ -8012,13 +8216,23 @@ func (s QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTr
 	return s.String()
 }
 
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetAmount(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.Amount = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBalance(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.Balance = &v
+	return s
+}
+
 func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBillingCycle(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
 	s.BillingCycle = &v
 	return s
 }
 
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannel(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionChannel = &v
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetFundType(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.FundType = &v
 	return s
 }
 
@@ -8032,13 +8246,28 @@ func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountT
 	return s
 }
 
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetAmount(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.Amount = &v
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionAccount(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionAccount = &v
 	return s
 }
 
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionAccount(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionAccount = &v
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannel(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionChannel = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannelSN(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionChannelSN = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionFlow(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionFlow = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionNumber(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
+	s.TransactionNumber = &v
 	return s
 }
 
@@ -8049,31 +8278,6 @@ func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountT
 
 func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionType(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
 	s.TransactionType = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionFlow(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionFlow = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetFundType(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.FundType = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionChannelSN(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionChannelSN = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetTransactionNumber(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.TransactionNumber = &v
-	return s
-}
-
-func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList) SetBalance(v string) *QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList {
-	s.Balance = &v
 	return s
 }
 
@@ -8101,19 +8305,19 @@ func (s *QueryAccountTransactionsResponse) SetBody(v *QueryAccountTransactionsRe
 }
 
 type QueryAvailableInstancesRequest struct {
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	CreateTimeEnd    *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart  *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	EndTimeEnd       *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	EndTimeStart     *string `json:"EndTimeStart,omitempty" xml:"EndTimeStart,omitempty"`
+	InstanceIDs      *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	InstanceIDs      *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
-	EndTimeStart     *string `json:"EndTimeStart,omitempty" xml:"EndTimeStart,omitempty"`
-	EndTimeEnd       *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	CreateTimeStart  *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	CreateTimeEnd    *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RenewStatus      *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s QueryAvailableInstancesRequest) String() string {
@@ -8124,8 +8328,28 @@ func (s QueryAvailableInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAvailableInstancesRequest) SetRegion(v string) *QueryAvailableInstancesRequest {
-	s.Region = &v
+func (s *QueryAvailableInstancesRequest) SetCreateTimeEnd(v string) *QueryAvailableInstancesRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesRequest) SetCreateTimeStart(v string) *QueryAvailableInstancesRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesRequest) SetEndTimeEnd(v string) *QueryAvailableInstancesRequest {
+	s.EndTimeEnd = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesRequest) SetEndTimeStart(v string) *QueryAvailableInstancesRequest {
+	s.EndTimeStart = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesRequest) SetInstanceIDs(v string) *QueryAvailableInstancesRequest {
+	s.InstanceIDs = &v
 	return s
 }
 
@@ -8154,33 +8378,8 @@ func (s *QueryAvailableInstancesRequest) SetProductType(v string) *QueryAvailabl
 	return s
 }
 
-func (s *QueryAvailableInstancesRequest) SetSubscriptionType(v string) *QueryAvailableInstancesRequest {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesRequest) SetInstanceIDs(v string) *QueryAvailableInstancesRequest {
-	s.InstanceIDs = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesRequest) SetEndTimeStart(v string) *QueryAvailableInstancesRequest {
-	s.EndTimeStart = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesRequest) SetEndTimeEnd(v string) *QueryAvailableInstancesRequest {
-	s.EndTimeEnd = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesRequest) SetCreateTimeStart(v string) *QueryAvailableInstancesRequest {
-	s.CreateTimeStart = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesRequest) SetCreateTimeEnd(v string) *QueryAvailableInstancesRequest {
-	s.CreateTimeEnd = &v
+func (s *QueryAvailableInstancesRequest) SetRegion(v string) *QueryAvailableInstancesRequest {
+	s.Region = &v
 	return s
 }
 
@@ -8189,12 +8388,17 @@ func (s *QueryAvailableInstancesRequest) SetRenewStatus(v string) *QueryAvailabl
 	return s
 }
 
+func (s *QueryAvailableInstancesRequest) SetSubscriptionType(v string) *QueryAvailableInstancesRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
 type QueryAvailableInstancesResponseBody struct {
 	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryAvailableInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryAvailableInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryAvailableInstancesResponseBody) String() string {
@@ -8207,6 +8411,11 @@ func (s QueryAvailableInstancesResponseBody) GoString() string {
 
 func (s *QueryAvailableInstancesResponseBody) SetCode(v string) *QueryAvailableInstancesResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBody) SetData(v *QueryAvailableInstancesResponseBodyData) *QueryAvailableInstancesResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -8225,16 +8434,11 @@ func (s *QueryAvailableInstancesResponseBody) SetSuccess(v bool) *QueryAvailable
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBody) SetData(v *QueryAvailableInstancesResponseBodyData) *QueryAvailableInstancesResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryAvailableInstancesResponseBodyData struct {
+	InstanceList []*QueryAvailableInstancesResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	PageNum      *int32                                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	InstanceList []*QueryAvailableInstancesResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 }
 
 func (s QueryAvailableInstancesResponseBodyData) String() string {
@@ -8243,6 +8447,11 @@ func (s QueryAvailableInstancesResponseBodyData) String() string {
 
 func (s QueryAvailableInstancesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAvailableInstancesResponseBodyData) SetInstanceList(v []*QueryAvailableInstancesResponseBodyDataInstanceList) *QueryAvailableInstancesResponseBodyData {
+	s.InstanceList = v
+	return s
 }
 
 func (s *QueryAvailableInstancesResponseBodyData) SetPageNum(v int32) *QueryAvailableInstancesResponseBodyData {
@@ -8260,30 +8469,25 @@ func (s *QueryAvailableInstancesResponseBodyData) SetTotalCount(v int32) *QueryA
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBodyData) SetInstanceList(v []*QueryAvailableInstancesResponseBodyDataInstanceList) *QueryAvailableInstancesResponseBodyData {
-	s.InstanceList = v
-	return s
-}
-
 type QueryAvailableInstancesResponseBodyDataInstanceList struct {
-	SubStatus           *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExpectedReleaseTime *string `json:"ExpectedReleaseTime,omitempty" xml:"ExpectedReleaseTime,omitempty"`
-	RenewStatus         *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SellerId            *int64  `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
-	InstanceID          *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	Seller              *string `json:"Seller,omitempty" xml:"Seller,omitempty"`
-	StopTime            *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
-	SubscriptionType    *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExpectedReleaseTime *string `json:"ExpectedReleaseTime,omitempty" xml:"ExpectedReleaseTime,omitempty"`
+	InstanceID          *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType         *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ReleaseTime         *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	RenewStatus         *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	RenewalDuration     *int32  `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	ProductCode         *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
+	Seller              *string `json:"Seller,omitempty" xml:"Seller,omitempty"`
+	SellerId            *int64  `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopTime            *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	SubStatus           *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	SubscriptionType    *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s QueryAvailableInstancesResponseBodyDataInstanceList) String() string {
@@ -8294,13 +8498,13 @@ func (s QueryAvailableInstancesResponseBodyDataInstanceList) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSubStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.SubStatus = &v
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetCreateTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.Status = &v
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetEndTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.EndTime = &v
 	return s
 }
 
@@ -8309,43 +8513,8 @@ func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetExpectedRelease
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetRenewStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.RenewStatus = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetCreateTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSellerId(v int64) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.SellerId = &v
-	return s
-}
-
 func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetInstanceID(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
 	s.InstanceID = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSeller(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.Seller = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetStopTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.StopTime = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetRenewalDurationUnit(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.RenewalDurationUnit = &v
-	return s
-}
-
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSubscriptionType(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.SubscriptionType = &v
 	return s
 }
 
@@ -8354,8 +8523,8 @@ func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetOwnerId(v int64
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetEndTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.EndTime = &v
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetProductCode(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.ProductCode = &v
 	return s
 }
 
@@ -8374,13 +8543,48 @@ func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetReleaseTime(v s
 	return s
 }
 
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetRenewStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.RenewStatus = &v
+	return s
+}
+
 func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetRenewalDuration(v int32) *QueryAvailableInstancesResponseBodyDataInstanceList {
 	s.RenewalDuration = &v
 	return s
 }
 
-func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetProductCode(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
-	s.ProductCode = &v
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetRenewalDurationUnit(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.RenewalDurationUnit = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSeller(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.Seller = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSellerId(v int64) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.SellerId = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetStopTime(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.StopTime = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSubStatus(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.SubStatus = &v
+	return s
+}
+
+func (s *QueryAvailableInstancesResponseBodyDataInstanceList) SetSubscriptionType(v string) *QueryAvailableInstancesResponseBodyDataInstanceList {
+	s.SubscriptionType = &v
 	return s
 }
 
@@ -8408,17 +8612,17 @@ func (s *QueryAvailableInstancesResponse) SetBody(v *QueryAvailableInstancesResp
 }
 
 type QueryBillRequest struct {
+	BillOwnerId            *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType            *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType       *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	IsHideZeroCharge       *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	IsHideZeroCharge       *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum                *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BillOwnerId            *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType            *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SubscriptionType       *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryBillRequest) String() string {
@@ -8429,38 +8633,23 @@ func (s QueryBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryBillRequest) SetBillOwnerId(v int64) *QueryBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *QueryBillRequest) SetBillingCycle(v string) *QueryBillRequest {
 	s.BillingCycle = &v
 	return s
 }
 
-func (s *QueryBillRequest) SetType(v string) *QueryBillRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryBillRequest) SetProductCode(v string) *QueryBillRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *QueryBillRequest) SetProductType(v string) *QueryBillRequest {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QueryBillRequest) SetSubscriptionType(v string) *QueryBillRequest {
-	s.SubscriptionType = &v
+func (s *QueryBillRequest) SetIsDisplayLocalCurrency(v bool) *QueryBillRequest {
+	s.IsDisplayLocalCurrency = &v
 	return s
 }
 
 func (s *QueryBillRequest) SetIsHideZeroCharge(v bool) *QueryBillRequest {
 	s.IsHideZeroCharge = &v
-	return s
-}
-
-func (s *QueryBillRequest) SetIsDisplayLocalCurrency(v bool) *QueryBillRequest {
-	s.IsDisplayLocalCurrency = &v
 	return s
 }
 
@@ -8479,17 +8668,32 @@ func (s *QueryBillRequest) SetPageSize(v int32) *QueryBillRequest {
 	return s
 }
 
-func (s *QueryBillRequest) SetBillOwnerId(v int64) *QueryBillRequest {
-	s.BillOwnerId = &v
+func (s *QueryBillRequest) SetProductCode(v string) *QueryBillRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryBillRequest) SetProductType(v string) *QueryBillRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryBillRequest) SetSubscriptionType(v string) *QueryBillRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryBillRequest) SetType(v string) *QueryBillRequest {
+	s.Type = &v
 	return s
 }
 
 type QueryBillResponseBody struct {
 	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryBillResponseBody) String() string {
@@ -8502,6 +8706,11 @@ func (s QueryBillResponseBody) GoString() string {
 
 func (s *QueryBillResponseBody) SetCode(v string) *QueryBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryBillResponseBody) SetData(v *QueryBillResponseBodyData) *QueryBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -8520,19 +8729,14 @@ func (s *QueryBillResponseBody) SetSuccess(v bool) *QueryBillResponseBody {
 	return s
 }
 
-func (s *QueryBillResponseBody) SetData(v *QueryBillResponseBodyData) *QueryBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryBillResponseBodyData struct {
-	PageNum      *int32                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	BillingCycle *string                         `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	AccountID    *string                         `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName  *string                         `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                         `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QueryBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	AccountName  *string                         `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Items        *QueryBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryBillResponseBodyData) String() string {
@@ -8543,8 +8747,13 @@ func (s QueryBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBillResponseBodyData) SetPageNum(v int32) *QueryBillResponseBodyData {
-	s.PageNum = &v
+func (s *QueryBillResponseBodyData) SetAccountID(v string) *QueryBillResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyData) SetAccountName(v string) *QueryBillResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
@@ -8553,8 +8762,13 @@ func (s *QueryBillResponseBodyData) SetBillingCycle(v string) *QueryBillResponse
 	return s
 }
 
-func (s *QueryBillResponseBodyData) SetAccountID(v string) *QueryBillResponseBodyData {
-	s.AccountID = &v
+func (s *QueryBillResponseBodyData) SetItems(v *QueryBillResponseBodyDataItems) *QueryBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QueryBillResponseBodyData) SetPageNum(v int32) *QueryBillResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -8565,16 +8779,6 @@ func (s *QueryBillResponseBodyData) SetPageSize(v int32) *QueryBillResponseBodyD
 
 func (s *QueryBillResponseBodyData) SetTotalCount(v int32) *QueryBillResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyData) SetAccountName(v string) *QueryBillResponseBodyData {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyData) SetItems(v *QueryBillResponseBodyDataItems) *QueryBillResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -8596,36 +8800,38 @@ func (s *QueryBillResponseBodyDataItems) SetItem(v []*QueryBillResponseBodyDataI
 }
 
 type QueryBillResponseBodyDataItemsItem struct {
-	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
-	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
+	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s QueryBillResponseBodyDataItemsItem) String() string {
@@ -8636,58 +8842,8 @@ func (s QueryBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetStatus(v string) *QueryBillResponseBodyDataItemsItem {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QueryBillResponseBodyDataItemsItem {
-	s.RoundDownDiscount = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetItem(v string) *QueryBillResponseBodyDataItemsItem {
-	s.Item = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetCurrency(v string) *QueryBillResponseBodyDataItemsItem {
-	s.Currency = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QueryBillResponseBodyDataItemsItem {
-	s.UsageStartTime = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.DeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QueryBillResponseBodyDataItemsItem {
-	s.UsageEndTime = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetSubOrderId(v string) *QueryBillResponseBodyDataItemsItem {
-	s.SubOrderId = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.OutstandingAmount = &v
+func (s *QueryBillResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
 	return s
 }
 
@@ -8696,33 +8852,8 @@ func (s *QueryBillResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *Query
 	return s
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QueryBillResponseBodyDataItemsItem {
-	s.PaymentTime = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.PretaxAmountLocal = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetTax(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.Tax = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryBillResponseBodyDataItemsItem {
-	s.PipCode = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetPaymentTransactionID(v string) *QueryBillResponseBodyDataItemsItem {
-	s.PaymentTransactionID = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
+func (s *QueryBillResponseBodyDataItemsItem) SetCashAmount(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.CashAmount = &v
 	return s
 }
 
@@ -8731,28 +8862,18 @@ func (s *QueryBillResponseBodyDataItemsItem) SetCommodityCode(v string) *QueryBi
 	return s
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetProductName(v string) *QueryBillResponseBodyDataItemsItem {
-	s.ProductName = &v
+func (s *QueryBillResponseBodyDataItemsItem) SetCurrency(v string) *QueryBillResponseBodyDataItemsItem {
+	s.Currency = &v
 	return s
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetRecordID(v string) *QueryBillResponseBodyDataItemsItem {
-	s.RecordID = &v
+func (s *QueryBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.DeductedByCashCoupons = &v
 	return s
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetProductDetail(v string) *QueryBillResponseBodyDataItemsItem {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryBillResponseBodyDataItemsItem {
-	s.PaymentCurrency = &v
-	return s
-}
-
-func (s *QueryBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
+func (s *QueryBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.DeductedByCoupons = &v
 	return s
 }
 
@@ -8761,18 +8882,58 @@ func (s *QueryBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v float32)
 	return s
 }
 
-func (s *QueryBillResponseBodyDataItemsItem) SetProductType(v string) *QueryBillResponseBodyDataItemsItem {
-	s.ProductType = &v
-	return s
-}
-
 func (s *QueryBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QueryBillResponseBodyDataItemsItem {
 	s.InvoiceDiscount = &v
 	return s
 }
 
+func (s *QueryBillResponseBodyDataItemsItem) SetItem(v string) *QueryBillResponseBodyDataItemsItem {
+	s.Item = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
 func (s *QueryBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryBillResponseBodyDataItemsItem {
 	s.PaymentAmount = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryBillResponseBodyDataItemsItem {
+	s.PaymentCurrency = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QueryBillResponseBodyDataItemsItem {
+	s.PaymentTime = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPaymentTransactionID(v string) *QueryBillResponseBodyDataItemsItem {
+	s.PaymentTransactionID = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryBillResponseBodyDataItemsItem {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.PretaxAmountLocal = &v
 	return s
 }
 
@@ -8783,6 +8944,61 @@ func (s *QueryBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *Qu
 
 func (s *QueryBillResponseBodyDataItemsItem) SetProductCode(v string) *QueryBillResponseBodyDataItemsItem {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetProductDetail(v string) *QueryBillResponseBodyDataItemsItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetProductName(v string) *QueryBillResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetProductType(v string) *QueryBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetRecordID(v string) *QueryBillResponseBodyDataItemsItem {
+	s.RecordID = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QueryBillResponseBodyDataItemsItem {
+	s.RoundDownDiscount = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetStatus(v string) *QueryBillResponseBodyDataItemsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetSubOrderId(v string) *QueryBillResponseBodyDataItemsItem {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetTax(v float32) *QueryBillResponseBodyDataItemsItem {
+	s.Tax = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QueryBillResponseBodyDataItemsItem {
+	s.UsageEndTime = &v
+	return s
+}
+
+func (s *QueryBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QueryBillResponseBodyDataItemsItem {
+	s.UsageStartTime = &v
 	return s
 }
 
@@ -8810,11 +9026,11 @@ func (s *QueryBillResponse) SetBody(v *QueryBillResponseBody) *QueryBillResponse
 }
 
 type QueryBillOverviewRequest struct {
+	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 }
 
 func (s QueryBillOverviewRequest) String() string {
@@ -8823,6 +9039,11 @@ func (s QueryBillOverviewRequest) String() string {
 
 func (s QueryBillOverviewRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryBillOverviewRequest) SetBillOwnerId(v int64) *QueryBillOverviewRequest {
+	s.BillOwnerId = &v
+	return s
 }
 
 func (s *QueryBillOverviewRequest) SetBillingCycle(v string) *QueryBillOverviewRequest {
@@ -8845,17 +9066,12 @@ func (s *QueryBillOverviewRequest) SetSubscriptionType(v string) *QueryBillOverv
 	return s
 }
 
-func (s *QueryBillOverviewRequest) SetBillOwnerId(v int64) *QueryBillOverviewRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 type QueryBillOverviewResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryBillOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryBillOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryBillOverviewResponseBody) String() string {
@@ -8868,6 +9084,11 @@ func (s QueryBillOverviewResponseBody) GoString() string {
 
 func (s *QueryBillOverviewResponseBody) SetCode(v string) *QueryBillOverviewResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBody) SetData(v *QueryBillOverviewResponseBodyData) *QueryBillOverviewResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -8886,15 +9107,10 @@ func (s *QueryBillOverviewResponseBody) SetSuccess(v bool) *QueryBillOverviewRes
 	return s
 }
 
-func (s *QueryBillOverviewResponseBody) SetData(v *QueryBillOverviewResponseBodyData) *QueryBillOverviewResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryBillOverviewResponseBodyData struct {
-	BillingCycle *string                                 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	AccountID    *string                                 `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	AccountName  *string                                 `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        *QueryBillOverviewResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -8906,11 +9122,6 @@ func (s QueryBillOverviewResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBillOverviewResponseBodyData) SetBillingCycle(v string) *QueryBillOverviewResponseBodyData {
-	s.BillingCycle = &v
-	return s
-}
-
 func (s *QueryBillOverviewResponseBodyData) SetAccountID(v string) *QueryBillOverviewResponseBodyData {
 	s.AccountID = &v
 	return s
@@ -8918,6 +9129,11 @@ func (s *QueryBillOverviewResponseBodyData) SetAccountID(v string) *QueryBillOve
 
 func (s *QueryBillOverviewResponseBodyData) SetAccountName(v string) *QueryBillOverviewResponseBodyData {
 	s.AccountName = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyData) SetBillingCycle(v string) *QueryBillOverviewResponseBodyData {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -8944,32 +9160,34 @@ func (s *QueryBillOverviewResponseBodyDataItems) SetItem(v []*QueryBillOverviewR
 }
 
 type QueryBillOverviewResponseBodyDataItemsItem struct {
-	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
 	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryBillOverviewResponseBodyDataItemsItem) String() string {
@@ -8980,28 +9198,18 @@ func (s QueryBillOverviewResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.RoundDownDiscount = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetItem(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.Item = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.AfterTaxAmount = &v
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetCurrency(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.Currency = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.DeductedByCashCoupons = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetBillAccountID(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.BillAccountID = &v
 	return s
 }
 
@@ -9015,8 +9223,43 @@ func (s *QueryBillOverviewResponseBodyDataItemsItem) SetBizType(v string) *Query
 	return s
 }
 
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetCashAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetCommodityCode(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetCurrency(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.DeductedByCashCoupons = &v
+	return s
+}
+
 func (s *QueryBillOverviewResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
 	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.DeductedByPrepaidCard = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetItem(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.Item = &v
 	return s
 }
 
@@ -9025,18 +9268,18 @@ func (s *QueryBillOverviewResponseBodyDataItemsItem) SetOutstandingAmount(v floa
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.AfterTaxAmount = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetOwnerID(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.OwnerID = &v
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.PretaxAmountLocal = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.PaymentAmount = &v
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetTax(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.Tax = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.PaymentCurrency = &v
 	return s
 }
 
@@ -9050,53 +9293,8 @@ func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPretaxAmount(v float32) 
 	return s
 }
 
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductName(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.ProductName = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetCommodityCode(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductDetail(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.PaymentCurrency = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetOwnerID(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.DeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductType(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.InvoiceDiscount = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.PaymentAmount = &v
-	return s
-}
-
-func (s *QueryBillOverviewResponseBodyDataItemsItem) SetBillAccountID(v string) *QueryBillOverviewResponseBodyDataItemsItem {
-	s.BillAccountID = &v
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.PretaxAmountLocal = &v
 	return s
 }
 
@@ -9107,6 +9305,36 @@ func (s *QueryBillOverviewResponseBodyDataItemsItem) SetPretaxGrossAmount(v floa
 
 func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductCode(v string) *QueryBillOverviewResponseBodyDataItemsItem {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductDetail(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductName(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetProductType(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.RoundDownDiscount = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryBillOverviewResponseBodyDataItemsItem) SetTax(v float32) *QueryBillOverviewResponseBodyDataItemsItem {
+	s.Tax = &v
 	return s
 }
 
@@ -9135,10 +9363,10 @@ func (s *QueryBillOverviewResponse) SetBody(v *QueryBillOverviewResponseBody) *Q
 
 type QueryBillToOSSSubscriptionResponseBody struct {
 	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryBillToOSSSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryBillToOSSSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryBillToOSSSubscriptionResponseBody) String() string {
@@ -9151,6 +9379,11 @@ func (s QueryBillToOSSSubscriptionResponseBody) GoString() string {
 
 func (s *QueryBillToOSSSubscriptionResponseBody) SetCode(v string) *QueryBillToOSSSubscriptionResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryBillToOSSSubscriptionResponseBody) SetData(v *QueryBillToOSSSubscriptionResponseBodyData) *QueryBillToOSSSubscriptionResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -9169,14 +9402,9 @@ func (s *QueryBillToOSSSubscriptionResponseBody) SetSuccess(v bool) *QueryBillTo
 	return s
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBody) SetData(v *QueryBillToOSSSubscriptionResponseBodyData) *QueryBillToOSSSubscriptionResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryBillToOSSSubscriptionResponseBodyData struct {
-	AccountName *string                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountID   *string                                          `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName *string                                          `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	Items       *QueryBillToOSSSubscriptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
@@ -9188,13 +9416,13 @@ func (s QueryBillToOSSSubscriptionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBodyData) SetAccountName(v string) *QueryBillToOSSSubscriptionResponseBodyData {
-	s.AccountName = &v
+func (s *QueryBillToOSSSubscriptionResponseBodyData) SetAccountID(v string) *QueryBillToOSSSubscriptionResponseBodyData {
+	s.AccountID = &v
 	return s
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBodyData) SetAccountID(v string) *QueryBillToOSSSubscriptionResponseBodyData {
-	s.AccountID = &v
+func (s *QueryBillToOSSSubscriptionResponseBodyData) SetAccountName(v string) *QueryBillToOSSSubscriptionResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
@@ -9222,10 +9450,10 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) SetItem(v []*QueryBill
 
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {
 	BucketOwnerId     *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	SubscribeType     *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 	SubscribeBucket   *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
-	SubscribeTime     *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
 	SubscribeLanguage *string `json:"SubscribeLanguage,omitempty" xml:"SubscribeLanguage,omitempty"`
+	SubscribeTime     *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
+	SubscribeType     *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s QueryBillToOSSSubscriptionResponseBodyDataItemsItem) String() string {
@@ -9241,13 +9469,13 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetBucketOwnerId(v
 	return s
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeType(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
-	s.SubscribeType = &v
+func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeBucket(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
+	s.SubscribeBucket = &v
 	return s
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeBucket(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
-	s.SubscribeBucket = &v
+func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeLanguage(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
+	s.SubscribeLanguage = &v
 	return s
 }
 
@@ -9256,8 +9484,8 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeTime(v
 	return s
 }
 
-func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeLanguage(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
-	s.SubscribeLanguage = &v
+func (s *QueryBillToOSSSubscriptionResponseBodyDataItemsItem) SetSubscribeType(v string) *QueryBillToOSSSubscriptionResponseBodyDataItemsItem {
+	s.SubscribeType = &v
 	return s
 }
 
@@ -9285,9 +9513,9 @@ func (s *QueryBillToOSSSubscriptionResponse) SetBody(v *QueryBillToOSSSubscripti
 }
 
 type QueryCashCouponsRequest struct {
+	EffectiveOrNot  *bool   `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 	ExpiryTimeEnd   *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
-	EffectiveOrNot  *bool   `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 }
 
 func (s QueryCashCouponsRequest) String() string {
@@ -9296,6 +9524,11 @@ func (s QueryCashCouponsRequest) String() string {
 
 func (s QueryCashCouponsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCashCouponsRequest) SetEffectiveOrNot(v bool) *QueryCashCouponsRequest {
+	s.EffectiveOrNot = &v
+	return s
 }
 
 func (s *QueryCashCouponsRequest) SetExpiryTimeEnd(v string) *QueryCashCouponsRequest {
@@ -9308,17 +9541,12 @@ func (s *QueryCashCouponsRequest) SetExpiryTimeStart(v string) *QueryCashCoupons
 	return s
 }
 
-func (s *QueryCashCouponsRequest) SetEffectiveOrNot(v bool) *QueryCashCouponsRequest {
-	s.EffectiveOrNot = &v
-	return s
-}
-
 type QueryCashCouponsResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCashCouponsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryCashCouponsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCashCouponsResponseBody) String() string {
@@ -9334,6 +9562,11 @@ func (s *QueryCashCouponsResponseBody) SetCode(v string) *QueryCashCouponsRespon
 	return s
 }
 
+func (s *QueryCashCouponsResponseBody) SetData(v *QueryCashCouponsResponseBodyData) *QueryCashCouponsResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryCashCouponsResponseBody) SetMessage(v string) *QueryCashCouponsResponseBody {
 	s.Message = &v
 	return s
@@ -9346,11 +9579,6 @@ func (s *QueryCashCouponsResponseBody) SetRequestId(v string) *QueryCashCouponsR
 
 func (s *QueryCashCouponsResponseBody) SetSuccess(v bool) *QueryCashCouponsResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBody) SetData(v *QueryCashCouponsResponseBodyData) *QueryCashCouponsResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -9372,16 +9600,16 @@ func (s *QueryCashCouponsResponseBodyData) SetCashCoupon(v []*QueryCashCouponsRe
 }
 
 type QueryCashCouponsResponseBodyDataCashCoupon struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
+	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	CashCouponId        *int64  `json:"CashCouponId,omitempty" xml:"CashCouponId,omitempty"`
+	CashCouponNo        *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
+	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	ExpiryTime          *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	GrantedTime         *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
 	NominalValue        *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
-	CashCouponId        *int64  `json:"CashCouponId,omitempty" xml:"CashCouponId,omitempty"`
-	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
-	CashCouponNo        *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
-	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryCashCouponsResponseBodyDataCashCoupon) String() string {
@@ -9392,8 +9620,33 @@ func (s QueryCashCouponsResponseBodyDataCashCoupon) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetStatus(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.Status = &v
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetApplicableProducts(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetApplicableScenarios(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.ApplicableScenarios = &v
+	return s
+}
+
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetBalance(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.Balance = &v
+	return s
+}
+
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetCashCouponId(v int64) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.CashCouponId = &v
+	return s
+}
+
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetCashCouponNo(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.CashCouponNo = &v
+	return s
+}
+
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetEffectiveTime(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.EffectiveTime = &v
 	return s
 }
 
@@ -9412,33 +9665,8 @@ func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetNominalValue(v string) *
 	return s
 }
 
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetEffectiveTime(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.EffectiveTime = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetApplicableScenarios(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.ApplicableScenarios = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetCashCouponId(v int64) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.CashCouponId = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetApplicableProducts(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.ApplicableProducts = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetCashCouponNo(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.CashCouponNo = &v
-	return s
-}
-
-func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetBalance(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
-	s.Balance = &v
+func (s *QueryCashCouponsResponseBodyDataCashCoupon) SetStatus(v string) *QueryCashCouponsResponseBodyDataCashCoupon {
+	s.Status = &v
 	return s
 }
 
@@ -9467,9 +9695,9 @@ func (s *QueryCashCouponsResponse) SetBody(v *QueryCashCouponsResponseBody) *Que
 
 type QueryCostUnitRequest struct {
 	OwnerUid     *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	PageNum      *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 }
 
 func (s QueryCostUnitRequest) String() string {
@@ -9485,11 +9713,6 @@ func (s *QueryCostUnitRequest) SetOwnerUid(v int64) *QueryCostUnitRequest {
 	return s
 }
 
-func (s *QueryCostUnitRequest) SetParentUnitId(v int64) *QueryCostUnitRequest {
-	s.ParentUnitId = &v
-	return s
-}
-
 func (s *QueryCostUnitRequest) SetPageNum(v int32) *QueryCostUnitRequest {
 	s.PageNum = &v
 	return s
@@ -9500,12 +9723,17 @@ func (s *QueryCostUnitRequest) SetPageSize(v int32) *QueryCostUnitRequest {
 	return s
 }
 
+func (s *QueryCostUnitRequest) SetParentUnitId(v int64) *QueryCostUnitRequest {
+	s.ParentUnitId = &v
+	return s
+}
+
 type QueryCostUnitResponseBody struct {
 	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCostUnitResponseBody) String() string {
@@ -9518,6 +9746,11 @@ func (s QueryCostUnitResponseBody) GoString() string {
 
 func (s *QueryCostUnitResponseBody) SetCode(v string) *QueryCostUnitResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryCostUnitResponseBody) SetData(v *QueryCostUnitResponseBodyData) *QueryCostUnitResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -9536,16 +9769,11 @@ func (s *QueryCostUnitResponseBody) SetSuccess(v bool) *QueryCostUnitResponseBod
 	return s
 }
 
-func (s *QueryCostUnitResponseBody) SetData(v *QueryCostUnitResponseBodyData) *QueryCostUnitResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryCostUnitResponseBodyData struct {
+	CostUnitDtoList []*QueryCostUnitResponseBodyDataCostUnitDtoList `json:"CostUnitDtoList,omitempty" xml:"CostUnitDtoList,omitempty" type:"Repeated"`
 	PageNum         *int32                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize        *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount      *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	CostUnitDtoList []*QueryCostUnitResponseBodyDataCostUnitDtoList `json:"CostUnitDtoList,omitempty" xml:"CostUnitDtoList,omitempty" type:"Repeated"`
 }
 
 func (s QueryCostUnitResponseBodyData) String() string {
@@ -9554,6 +9782,11 @@ func (s QueryCostUnitResponseBodyData) String() string {
 
 func (s QueryCostUnitResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCostUnitResponseBodyData) SetCostUnitDtoList(v []*QueryCostUnitResponseBodyDataCostUnitDtoList) *QueryCostUnitResponseBodyData {
+	s.CostUnitDtoList = v
+	return s
 }
 
 func (s *QueryCostUnitResponseBodyData) SetPageNum(v int32) *QueryCostUnitResponseBodyData {
@@ -9571,16 +9804,11 @@ func (s *QueryCostUnitResponseBodyData) SetTotalCount(v int32) *QueryCostUnitRes
 	return s
 }
 
-func (s *QueryCostUnitResponseBodyData) SetCostUnitDtoList(v []*QueryCostUnitResponseBodyDataCostUnitDtoList) *QueryCostUnitResponseBodyData {
-	s.CostUnitDtoList = v
-	return s
-}
-
 type QueryCostUnitResponseBodyDataCostUnitDtoList struct {
-	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
-	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	OwnerUid     *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
+	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
 func (s QueryCostUnitResponseBodyDataCostUnitDtoList) String() string {
@@ -9591,13 +9819,13 @@ func (s QueryCostUnitResponseBodyDataCostUnitDtoList) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetParentUnitId(v int64) *QueryCostUnitResponseBodyDataCostUnitDtoList {
-	s.ParentUnitId = &v
+func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetOwnerUid(v int64) *QueryCostUnitResponseBodyDataCostUnitDtoList {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetUnitName(v string) *QueryCostUnitResponseBodyDataCostUnitDtoList {
-	s.UnitName = &v
+func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetParentUnitId(v int64) *QueryCostUnitResponseBodyDataCostUnitDtoList {
+	s.ParentUnitId = &v
 	return s
 }
 
@@ -9606,8 +9834,8 @@ func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetUnitId(v int64) *Query
 	return s
 }
 
-func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetOwnerUid(v int64) *QueryCostUnitResponseBodyDataCostUnitDtoList {
-	s.OwnerUid = &v
+func (s *QueryCostUnitResponseBodyDataCostUnitDtoList) SetUnitName(v string) *QueryCostUnitResponseBodyDataCostUnitDtoList {
+	s.UnitName = &v
 	return s
 }
 
@@ -9636,9 +9864,9 @@ func (s *QueryCostUnitResponse) SetBody(v *QueryCostUnitResponseBody) *QueryCost
 
 type QueryCostUnitResourceRequest struct {
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	UnitId   *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	PageNum  *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UnitId   *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
 func (s QueryCostUnitResourceRequest) String() string {
@@ -9654,11 +9882,6 @@ func (s *QueryCostUnitResourceRequest) SetOwnerUid(v int64) *QueryCostUnitResour
 	return s
 }
 
-func (s *QueryCostUnitResourceRequest) SetUnitId(v int64) *QueryCostUnitResourceRequest {
-	s.UnitId = &v
-	return s
-}
-
 func (s *QueryCostUnitResourceRequest) SetPageNum(v int32) *QueryCostUnitResourceRequest {
 	s.PageNum = &v
 	return s
@@ -9669,12 +9892,17 @@ func (s *QueryCostUnitResourceRequest) SetPageSize(v int32) *QueryCostUnitResour
 	return s
 }
 
+func (s *QueryCostUnitResourceRequest) SetUnitId(v int64) *QueryCostUnitResourceRequest {
+	s.UnitId = &v
+	return s
+}
+
 type QueryCostUnitResourceResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCostUnitResourceResponseBody) String() string {
@@ -9687,6 +9915,11 @@ func (s QueryCostUnitResourceResponseBody) GoString() string {
 
 func (s *QueryCostUnitResourceResponseBody) SetCode(v string) *QueryCostUnitResourceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBody) SetData(v *QueryCostUnitResourceResponseBodyData) *QueryCostUnitResourceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -9705,18 +9938,13 @@ func (s *QueryCostUnitResourceResponseBody) SetSuccess(v bool) *QueryCostUnitRes
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBody) SetData(v *QueryCostUnitResourceResponseBodyData) *QueryCostUnitResourceResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryCostUnitResourceResponseBodyData struct {
-	PageNum                 *int32                                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize                *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount              *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	ResourceInstanceDtoList []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList `json:"ResourceInstanceDtoList,omitempty" xml:"ResourceInstanceDtoList,omitempty" type:"Repeated"`
 	CostUnit                *QueryCostUnitResourceResponseBodyDataCostUnit                  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty" type:"Struct"`
 	CostUnitStatisInfo      *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo        `json:"CostUnitStatisInfo,omitempty" xml:"CostUnitStatisInfo,omitempty" type:"Struct"`
+	PageNum                 *int32                                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize                *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceInstanceDtoList []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList `json:"ResourceInstanceDtoList,omitempty" xml:"ResourceInstanceDtoList,omitempty" type:"Repeated"`
+	TotalCount              *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryCostUnitResourceResponseBodyData) String() string {
@@ -9725,26 +9953,6 @@ func (s QueryCostUnitResourceResponseBodyData) String() string {
 
 func (s QueryCostUnitResourceResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *QueryCostUnitResourceResponseBodyData) SetPageNum(v int32) *QueryCostUnitResourceResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyData) SetPageSize(v int32) *QueryCostUnitResourceResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyData) SetTotalCount(v int32) *QueryCostUnitResourceResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyData) SetResourceInstanceDtoList(v []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) *QueryCostUnitResourceResponseBodyData {
-	s.ResourceInstanceDtoList = v
-	return s
 }
 
 func (s *QueryCostUnitResourceResponseBodyData) SetCostUnit(v *QueryCostUnitResourceResponseBodyDataCostUnit) *QueryCostUnitResourceResponseBodyData {
@@ -9757,100 +9965,31 @@ func (s *QueryCostUnitResourceResponseBodyData) SetCostUnitStatisInfo(v *QueryCo
 	return s
 }
 
-type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
-	CommodityCode    *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ResourceUserName *string `json:"ResourceUserName,omitempty" xml:"ResourceUserName,omitempty"`
-	CommodityName    *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	ResourceUserId   *int64  `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
-	ApportionName    *string `json:"ApportionName,omitempty" xml:"ApportionName,omitempty"`
-	ApportionCode    *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceNick     *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
-	ResourceTag      *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceGroup    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	RelatedResources *string `json:"RelatedResources,omitempty" xml:"RelatedResources,omitempty"`
-	ResourceStatus   *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-}
-
-func (s QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetCommodityCode(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.CommodityCode = &v
+func (s *QueryCostUnitResourceResponseBodyData) SetPageNum(v int32) *QueryCostUnitResourceResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceUserName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceUserName = &v
+func (s *QueryCostUnitResourceResponseBodyData) SetPageSize(v int32) *QueryCostUnitResourceResponseBodyData {
+	s.PageSize = &v
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetCommodityName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.CommodityName = &v
+func (s *QueryCostUnitResourceResponseBodyData) SetResourceInstanceDtoList(v []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) *QueryCostUnitResourceResponseBodyData {
+	s.ResourceInstanceDtoList = v
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceUserId(v int64) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceUserId = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetApportionName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ApportionName = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetApportionCode(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ApportionCode = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceType(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceNick(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceNick = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceTag(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceTag = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceId(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceGroup(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetRelatedResources(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.RelatedResources = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceStatus(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
-	s.ResourceStatus = &v
+func (s *QueryCostUnitResourceResponseBodyData) SetTotalCount(v int32) *QueryCostUnitResourceResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
 type QueryCostUnitResourceResponseBodyDataCostUnit struct {
-	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
-	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
-	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	OwnerUid     *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ParentUnitId *int64  `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
+	UnitId       *int64  `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
+	UnitName     *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
 func (s QueryCostUnitResourceResponseBodyDataCostUnit) String() string {
@@ -9861,13 +10000,13 @@ func (s QueryCostUnitResourceResponseBodyDataCostUnit) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetParentUnitId(v int64) *QueryCostUnitResourceResponseBodyDataCostUnit {
-	s.ParentUnitId = &v
+func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetOwnerUid(v int64) *QueryCostUnitResourceResponseBodyDataCostUnit {
+	s.OwnerUid = &v
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetUnitName(v string) *QueryCostUnitResourceResponseBodyDataCostUnit {
-	s.UnitName = &v
+func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetParentUnitId(v int64) *QueryCostUnitResourceResponseBodyDataCostUnit {
+	s.ParentUnitId = &v
 	return s
 }
 
@@ -9876,18 +10015,18 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetUnitId(v int64) *Quer
 	return s
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetOwnerUid(v int64) *QueryCostUnitResourceResponseBodyDataCostUnit {
-	s.OwnerUid = &v
+func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetUnitName(v string) *QueryCostUnitResourceResponseBodyDataCostUnit {
+	s.UnitName = &v
 	return s
 }
 
 type QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo struct {
-	TotalResourceCount      *int64 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
 	ResourceCount           *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	TotalUserCount          *int64 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
-	SubUnitCount            *int64 `json:"SubUnitCount,omitempty" xml:"SubUnitCount,omitempty"`
 	ResourceGroupCount      *int64 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	SubUnitCount            *int64 `json:"SubUnitCount,omitempty" xml:"SubUnitCount,omitempty"`
+	TotalResourceCount      *int64 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
 	TotalResourceGroupCount *int64 `json:"TotalResourceGroupCount,omitempty" xml:"TotalResourceGroupCount,omitempty"`
+	TotalUserCount          *int64 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
 	UserCount               *int64 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 }
 
@@ -9899,23 +10038,8 @@ func (s QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) GoString() stri
 	return s.String()
 }
 
-func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetTotalResourceCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
-	s.TotalResourceCount = &v
-	return s
-}
-
 func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetResourceCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
 	s.ResourceCount = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetTotalUserCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
-	s.TotalUserCount = &v
-	return s
-}
-
-func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetSubUnitCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
-	s.SubUnitCount = &v
 	return s
 }
 
@@ -9924,13 +10048,117 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetResourceGro
 	return s
 }
 
+func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetSubUnitCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
+	s.SubUnitCount = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetTotalResourceCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
+	s.TotalResourceCount = &v
+	return s
+}
+
 func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetTotalResourceGroupCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
 	s.TotalResourceGroupCount = &v
 	return s
 }
 
+func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetTotalUserCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
+	s.TotalUserCount = &v
+	return s
+}
+
 func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetUserCount(v int64) *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo {
 	s.UserCount = &v
+	return s
+}
+
+type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
+	ApportionCode    *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
+	ApportionName    *string `json:"ApportionName,omitempty" xml:"ApportionName,omitempty"`
+	CommodityCode    *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityName    *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	RelatedResources *string `json:"RelatedResources,omitempty" xml:"RelatedResources,omitempty"`
+	ResourceGroup    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceNick     *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	ResourceStatus   *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceTag      *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceUserId   *int64  `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
+	ResourceUserName *string `json:"ResourceUserName,omitempty" xml:"ResourceUserName,omitempty"`
+}
+
+func (s QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetApportionCode(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ApportionCode = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetApportionName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ApportionName = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetCommodityCode(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetCommodityName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.CommodityName = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetRelatedResources(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.RelatedResources = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceGroup(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceId(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceNick(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceNick = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceStatus(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceTag(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceTag = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceType(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceUserId(v int64) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceUserId = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceUserName(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceUserName = &v
 	return s
 }
 
@@ -9976,10 +10204,10 @@ func (s *QueryCustomerAddressListRequest) SetOwnerId(v int64) *QueryCustomerAddr
 
 type QueryCustomerAddressListResponseBody struct {
 	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCustomerAddressListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryCustomerAddressListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryCustomerAddressListResponseBody) String() string {
@@ -9995,6 +10223,11 @@ func (s *QueryCustomerAddressListResponseBody) SetCode(v string) *QueryCustomerA
 	return s
 }
 
+func (s *QueryCustomerAddressListResponseBody) SetData(v *QueryCustomerAddressListResponseBodyData) *QueryCustomerAddressListResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryCustomerAddressListResponseBody) SetMessage(v string) *QueryCustomerAddressListResponseBody {
 	s.Message = &v
 	return s
@@ -10007,11 +10240,6 @@ func (s *QueryCustomerAddressListResponseBody) SetRequestId(v string) *QueryCust
 
 func (s *QueryCustomerAddressListResponseBody) SetSuccess(v bool) *QueryCustomerAddressListResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *QueryCustomerAddressListResponseBody) SetData(v *QueryCustomerAddressListResponseBodyData) *QueryCustomerAddressListResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -10051,17 +10279,17 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList) Set
 
 type QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress struct {
 	Addressee       *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
-	PostalCode      *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	City            *string `json:"City,omitempty" xml:"City,omitempty"`
-	UserNick        *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
-	Street          *string `json:"Street,omitempty" xml:"Street,omitempty"`
-	Phone           *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	County          *string `json:"County,omitempty" xml:"County,omitempty"`
 	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	City            *string `json:"City,omitempty" xml:"City,omitempty"`
+	County          *string `json:"County,omitempty" xml:"County,omitempty"`
 	DeliveryAddress *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Phone           *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	PostalCode      *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
 	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Street          *string `json:"Street,omitempty" xml:"Street,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick        *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) String() string {
@@ -10077,13 +10305,8 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCusto
 	return s
 }
 
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetPostalCode(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.PostalCode = &v
-	return s
-}
-
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetUserId(v int64) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.UserId = &v
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetBizType(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.BizType = &v
 	return s
 }
 
@@ -10092,28 +10315,8 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCusto
 	return s
 }
 
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetUserNick(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.UserNick = &v
-	return s
-}
-
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetStreet(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.Street = &v
-	return s
-}
-
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetPhone(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.Phone = &v
-	return s
-}
-
 func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetCounty(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
 	s.County = &v
-	return s
-}
-
-func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetBizType(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
-	s.BizType = &v
 	return s
 }
 
@@ -10127,8 +10330,33 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCusto
 	return s
 }
 
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetPhone(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.Phone = &v
+	return s
+}
+
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetPostalCode(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.PostalCode = &v
+	return s
+}
+
 func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetProvince(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
 	s.Province = &v
+	return s
+}
+
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetStreet(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.Street = &v
+	return s
+}
+
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetUserId(v int64) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress) SetUserNick(v string) *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress {
+	s.UserNick = &v
 	return s
 }
 
@@ -10156,16 +10384,16 @@ func (s *QueryCustomerAddressListResponse) SetBody(v *QueryCustomerAddressListRe
 }
 
 type QueryDPUtilizationDetailRequest struct {
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IncludeShare       *bool   `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	LastToken          *string `json:"LastToken,omitempty" xml:"LastToken,omitempty"`
 	Limit              *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	IncludeShare       *bool   `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 	ProdCode           *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryDPUtilizationDetailRequest) String() string {
@@ -10174,16 +10402,6 @@ func (s QueryDPUtilizationDetailRequest) String() string {
 
 func (s QueryDPUtilizationDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *QueryDPUtilizationDetailRequest) SetInstanceId(v string) *QueryDPUtilizationDetailRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailRequest) SetInstanceSpec(v string) *QueryDPUtilizationDetailRequest {
-	s.InstanceSpec = &v
-	return s
 }
 
 func (s *QueryDPUtilizationDetailRequest) SetCommodityCode(v string) *QueryDPUtilizationDetailRequest {
@@ -10196,13 +10414,23 @@ func (s *QueryDPUtilizationDetailRequest) SetDeductedInstanceId(v string) *Query
 	return s
 }
 
-func (s *QueryDPUtilizationDetailRequest) SetStartTime(v string) *QueryDPUtilizationDetailRequest {
-	s.StartTime = &v
+func (s *QueryDPUtilizationDetailRequest) SetEndTime(v string) *QueryDPUtilizationDetailRequest {
+	s.EndTime = &v
 	return s
 }
 
-func (s *QueryDPUtilizationDetailRequest) SetEndTime(v string) *QueryDPUtilizationDetailRequest {
-	s.EndTime = &v
+func (s *QueryDPUtilizationDetailRequest) SetIncludeShare(v bool) *QueryDPUtilizationDetailRequest {
+	s.IncludeShare = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailRequest) SetInstanceId(v string) *QueryDPUtilizationDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailRequest) SetInstanceSpec(v string) *QueryDPUtilizationDetailRequest {
+	s.InstanceSpec = &v
 	return s
 }
 
@@ -10216,22 +10444,22 @@ func (s *QueryDPUtilizationDetailRequest) SetLimit(v int32) *QueryDPUtilizationD
 	return s
 }
 
-func (s *QueryDPUtilizationDetailRequest) SetIncludeShare(v bool) *QueryDPUtilizationDetailRequest {
-	s.IncludeShare = &v
-	return s
-}
-
 func (s *QueryDPUtilizationDetailRequest) SetProdCode(v string) *QueryDPUtilizationDetailRequest {
 	s.ProdCode = &v
 	return s
 }
 
+func (s *QueryDPUtilizationDetailRequest) SetStartTime(v string) *QueryDPUtilizationDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
 type QueryDPUtilizationDetailResponseBody struct {
 	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryDPUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryDPUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryDPUtilizationDetailResponseBody) String() string {
@@ -10244,6 +10472,11 @@ func (s QueryDPUtilizationDetailResponseBody) GoString() string {
 
 func (s *QueryDPUtilizationDetailResponseBody) SetCode(v string) *QueryDPUtilizationDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBody) SetData(v *QueryDPUtilizationDetailResponseBodyData) *QueryDPUtilizationDetailResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -10262,14 +10495,9 @@ func (s *QueryDPUtilizationDetailResponseBody) SetSuccess(v bool) *QueryDPUtiliz
 	return s
 }
 
-func (s *QueryDPUtilizationDetailResponseBody) SetData(v *QueryDPUtilizationDetailResponseBodyData) *QueryDPUtilizationDetailResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryDPUtilizationDetailResponseBodyData struct {
-	NextToken  *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	DetailList *QueryDPUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
+	NextToken  *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s QueryDPUtilizationDetailResponseBodyData) String() string {
@@ -10280,13 +10508,13 @@ func (s QueryDPUtilizationDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDPUtilizationDetailResponseBodyData) SetNextToken(v string) *QueryDPUtilizationDetailResponseBodyData {
-	s.NextToken = &v
+func (s *QueryDPUtilizationDetailResponseBodyData) SetDetailList(v *QueryDPUtilizationDetailResponseBodyDataDetailList) *QueryDPUtilizationDetailResponseBodyData {
+	s.DetailList = v
 	return s
 }
 
-func (s *QueryDPUtilizationDetailResponseBodyData) SetDetailList(v *QueryDPUtilizationDetailResponseBodyDataDetailList) *QueryDPUtilizationDetailResponseBodyData {
-	s.DetailList = v
+func (s *QueryDPUtilizationDetailResponseBodyData) SetNextToken(v string) *QueryDPUtilizationDetailResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
@@ -10308,19 +10536,19 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*
 }
 
 type QueryDPUtilizationDetailResponseBodyDataDetailListDetailList struct {
-	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DeductHours           *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
-	ShareUid              *int64   `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
 	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
-	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
-	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
-	DeductMeasure         *float32 `json:"DeductMeasure,omitempty" xml:"DeductMeasure,omitempty"`
-	Region                *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	DeductFactorTotal     *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
+	DeductHours           *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	DeductMeasure         *float32 `json:"DeductMeasure,omitempty" xml:"DeductMeasure,omitempty"`
+	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
+	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
+	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
+	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	Region                *string  `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResCode               *string  `json:"ResCode,omitempty" xml:"ResCode,omitempty"`
+	ShareUid              *int64   `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
 	Uid                   *int64   `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -10332,58 +10560,8 @@ func (s QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) GoString()
 	return s.String()
 }
 
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedInstanceId(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedInstanceId = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceId(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductHours = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetShareUid(v int64) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.ShareUid = &v
-	return s
-}
-
 func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductDate(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
 	s.DeductDate = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceSpec(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedCommodityCode(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedCommodityCode = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedProductDetail(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedProductDetail = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductMeasure(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductMeasure = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetRegion(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.Region = &v
-	return s
-}
-
-func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductQuantity(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductQuantity = &v
 	return s
 }
 
@@ -10392,8 +10570,58 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeduct
 	return s
 }
 
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductHours = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductMeasure(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductMeasure = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductQuantity(v float32) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductQuantity = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedCommodityCode(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedCommodityCode = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedInstanceId(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedInstanceId = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedProductDetail(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedProductDetail = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceId(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceSpec(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetRegion(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.Region = &v
+	return s
+}
+
 func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetResCode(v string) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
 	s.ResCode = &v
+	return s
+}
+
+func (s *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList) SetShareUid(v int64) *QueryDPUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.ShareUid = &v
 	return s
 }
 
@@ -10426,20 +10654,20 @@ func (s *QueryDPUtilizationDetailResponse) SetBody(v *QueryDPUtilizationDetailRe
 }
 
 type QueryEvaluateListRequest struct {
-	Type            *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+	BillCycle       *string   `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
+	BizTypeList     []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	EndAmount       *int64    `json:"EndAmount,omitempty" xml:"EndAmount,omitempty"`
+	EndBizTime      *string   `json:"EndBizTime,omitempty" xml:"EndBizTime,omitempty"`
+	EndSearchTime   *string   `json:"EndSearchTime,omitempty" xml:"EndSearchTime,omitempty"`
 	OutBizId        *string   `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
 	OwnerId         *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum         *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartAmount     *int64    `json:"StartAmount,omitempty" xml:"StartAmount,omitempty"`
-	EndAmount       *int64    `json:"EndAmount,omitempty" xml:"EndAmount,omitempty"`
-	StartBizTime    *string   `json:"StartBizTime,omitempty" xml:"StartBizTime,omitempty"`
-	EndBizTime      *string   `json:"EndBizTime,omitempty" xml:"EndBizTime,omitempty"`
 	SortType        *int32    `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	StartAmount     *int64    `json:"StartAmount,omitempty" xml:"StartAmount,omitempty"`
+	StartBizTime    *string   `json:"StartBizTime,omitempty" xml:"StartBizTime,omitempty"`
 	StartSearchTime *string   `json:"StartSearchTime,omitempty" xml:"StartSearchTime,omitempty"`
-	EndSearchTime   *string   `json:"EndSearchTime,omitempty" xml:"EndSearchTime,omitempty"`
-	BillCycle       *string   `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
-	BizTypeList     []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	Type            *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryEvaluateListRequest) String() string {
@@ -10450,8 +10678,28 @@ func (s QueryEvaluateListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryEvaluateListRequest) SetType(v int32) *QueryEvaluateListRequest {
-	s.Type = &v
+func (s *QueryEvaluateListRequest) SetBillCycle(v string) *QueryEvaluateListRequest {
+	s.BillCycle = &v
+	return s
+}
+
+func (s *QueryEvaluateListRequest) SetBizTypeList(v []*string) *QueryEvaluateListRequest {
+	s.BizTypeList = v
+	return s
+}
+
+func (s *QueryEvaluateListRequest) SetEndAmount(v int64) *QueryEvaluateListRequest {
+	s.EndAmount = &v
+	return s
+}
+
+func (s *QueryEvaluateListRequest) SetEndBizTime(v string) *QueryEvaluateListRequest {
+	s.EndBizTime = &v
+	return s
+}
+
+func (s *QueryEvaluateListRequest) SetEndSearchTime(v string) *QueryEvaluateListRequest {
+	s.EndSearchTime = &v
 	return s
 }
 
@@ -10475,13 +10723,13 @@ func (s *QueryEvaluateListRequest) SetPageSize(v int32) *QueryEvaluateListReques
 	return s
 }
 
-func (s *QueryEvaluateListRequest) SetStartAmount(v int64) *QueryEvaluateListRequest {
-	s.StartAmount = &v
+func (s *QueryEvaluateListRequest) SetSortType(v int32) *QueryEvaluateListRequest {
+	s.SortType = &v
 	return s
 }
 
-func (s *QueryEvaluateListRequest) SetEndAmount(v int64) *QueryEvaluateListRequest {
-	s.EndAmount = &v
+func (s *QueryEvaluateListRequest) SetStartAmount(v int64) *QueryEvaluateListRequest {
+	s.StartAmount = &v
 	return s
 }
 
@@ -10490,42 +10738,22 @@ func (s *QueryEvaluateListRequest) SetStartBizTime(v string) *QueryEvaluateListR
 	return s
 }
 
-func (s *QueryEvaluateListRequest) SetEndBizTime(v string) *QueryEvaluateListRequest {
-	s.EndBizTime = &v
-	return s
-}
-
-func (s *QueryEvaluateListRequest) SetSortType(v int32) *QueryEvaluateListRequest {
-	s.SortType = &v
-	return s
-}
-
 func (s *QueryEvaluateListRequest) SetStartSearchTime(v string) *QueryEvaluateListRequest {
 	s.StartSearchTime = &v
 	return s
 }
 
-func (s *QueryEvaluateListRequest) SetEndSearchTime(v string) *QueryEvaluateListRequest {
-	s.EndSearchTime = &v
-	return s
-}
-
-func (s *QueryEvaluateListRequest) SetBillCycle(v string) *QueryEvaluateListRequest {
-	s.BillCycle = &v
-	return s
-}
-
-func (s *QueryEvaluateListRequest) SetBizTypeList(v []*string) *QueryEvaluateListRequest {
-	s.BizTypeList = v
+func (s *QueryEvaluateListRequest) SetType(v int32) *QueryEvaluateListRequest {
+	s.Type = &v
 	return s
 }
 
 type QueryEvaluateListResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryEvaluateListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryEvaluateListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryEvaluateListResponseBody) String() string {
@@ -10538,6 +10766,11 @@ func (s QueryEvaluateListResponseBody) GoString() string {
 
 func (s *QueryEvaluateListResponseBody) SetCode(v string) *QueryEvaluateListResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBody) SetData(v *QueryEvaluateListResponseBodyData) *QueryEvaluateListResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -10556,19 +10789,14 @@ func (s *QueryEvaluateListResponseBody) SetSuccess(v bool) *QueryEvaluateListRes
 	return s
 }
 
-func (s *QueryEvaluateListResponseBody) SetData(v *QueryEvaluateListResponseBodyData) *QueryEvaluateListResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryEvaluateListResponseBodyData struct {
+	EvaluateList                *QueryEvaluateListResponseBodyDataEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Struct"`
+	HostId                      *string                                        `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	PageNum                     *int32                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	TotalUnAppliedInvoiceAmount *int64                                         `json:"TotalUnAppliedInvoiceAmount,omitempty" xml:"TotalUnAppliedInvoiceAmount,omitempty"`
 	PageSize                    *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount                  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TotalInvoiceAmount          *int64                                         `json:"TotalInvoiceAmount,omitempty" xml:"TotalInvoiceAmount,omitempty"`
-	HostId                      *string                                        `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	EvaluateList                *QueryEvaluateListResponseBodyDataEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Struct"`
+	TotalUnAppliedInvoiceAmount *int64                                         `json:"TotalUnAppliedInvoiceAmount,omitempty" xml:"TotalUnAppliedInvoiceAmount,omitempty"`
 }
 
 func (s QueryEvaluateListResponseBodyData) String() string {
@@ -10579,13 +10807,18 @@ func (s QueryEvaluateListResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryEvaluateListResponseBodyData) SetPageNum(v int32) *QueryEvaluateListResponseBodyData {
-	s.PageNum = &v
+func (s *QueryEvaluateListResponseBodyData) SetEvaluateList(v *QueryEvaluateListResponseBodyDataEvaluateList) *QueryEvaluateListResponseBodyData {
+	s.EvaluateList = v
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyData) SetTotalUnAppliedInvoiceAmount(v int64) *QueryEvaluateListResponseBodyData {
-	s.TotalUnAppliedInvoiceAmount = &v
+func (s *QueryEvaluateListResponseBodyData) SetHostId(v string) *QueryEvaluateListResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyData) SetPageNum(v int32) *QueryEvaluateListResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -10604,13 +10837,8 @@ func (s *QueryEvaluateListResponseBodyData) SetTotalInvoiceAmount(v int64) *Quer
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyData) SetHostId(v string) *QueryEvaluateListResponseBodyData {
-	s.HostId = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyData) SetEvaluateList(v *QueryEvaluateListResponseBodyDataEvaluateList) *QueryEvaluateListResponseBodyData {
-	s.EvaluateList = v
+func (s *QueryEvaluateListResponseBodyData) SetTotalUnAppliedInvoiceAmount(v int64) *QueryEvaluateListResponseBodyData {
+	s.TotalUnAppliedInvoiceAmount = &v
 	return s
 }
 
@@ -10632,27 +10860,27 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateList) SetEvaluate(v []*QueryEv
 }
 
 type QueryEvaluateListResponseBodyDataEvaluateListEvaluate struct {
-	Type               *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	BillId             *int64  `json:"BillId,omitempty" xml:"BillId,omitempty"`
-	UserId             *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	BillCycle          *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
-	CanInvoiceAmount   *int64  `json:"CanInvoiceAmount,omitempty" xml:"CanInvoiceAmount,omitempty"`
-	OffsetAcceptAmount *int64  `json:"OffsetAcceptAmount,omitempty" xml:"OffsetAcceptAmount,omitempty"`
-	ItemId             *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	OutBizId           *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	UserNick           *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
-	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OpId               *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
-	BizType            *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	OriginalAmount     *int64  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	InvoicedAmount     *int64  `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	PresentAmount      *int64  `json:"PresentAmount,omitempty" xml:"PresentAmount,omitempty"`
+	BillId             *int64  `json:"BillId,omitempty" xml:"BillId,omitempty"`
 	BizTime            *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OffsetCostAmount   *int64  `json:"OffsetCostAmount,omitempty" xml:"OffsetCostAmount,omitempty"`
+	BizType            *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CanInvoiceAmount   *int64  `json:"CanInvoiceAmount,omitempty" xml:"CanInvoiceAmount,omitempty"`
+	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvoicedAmount     *int64  `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
+	ItemId             *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OffsetAcceptAmount *int64  `json:"OffsetAcceptAmount,omitempty" xml:"OffsetAcceptAmount,omitempty"`
+	OffsetCostAmount   *int64  `json:"OffsetCostAmount,omitempty" xml:"OffsetCostAmount,omitempty"`
+	OpId               *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
+	OriginalAmount     *int64  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	OutBizId           *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	PresentAmount      *int64  `json:"PresentAmount,omitempty" xml:"PresentAmount,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId             *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick           *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryEvaluateListResponseBodyDataEvaluateListEvaluate) String() string {
@@ -10663,13 +10891,8 @@ func (s QueryEvaluateListResponseBodyDataEvaluateListEvaluate) GoString() string
 	return s.String()
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetType(v int32) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetStatus(v int32) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.Status = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBillCycle(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.BillCycle = &v
 	return s
 }
 
@@ -10678,48 +10901,8 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBillId(v int6
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetUserId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.UserId = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBillCycle(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.BillCycle = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetCanInvoiceAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.CanInvoiceAmount = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOffsetAcceptAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.OffsetAcceptAmount = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetItemId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.ItemId = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOutBizId(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.OutBizId = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetUserNick(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.UserNick = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetGmtModified(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOpId(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.OpId = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBizTime(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.BizTime = &v
 	return s
 }
 
@@ -10728,13 +10911,8 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBizType(v str
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOriginalAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.OriginalAmount = &v
-	return s
-}
-
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetInvoicedAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.InvoicedAmount = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetCanInvoiceAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.CanInvoiceAmount = &v
 	return s
 }
 
@@ -10743,13 +10921,23 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetGmtCreate(v s
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetPresentAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.PresentAmount = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetGmtModified(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetBizTime(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.BizTime = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetInvoicedAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.InvoicedAmount = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetItemId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.ItemId = &v
 	return s
 }
 
@@ -10758,13 +10946,53 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetName(v string
 	return s
 }
 
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOffsetAcceptAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.OffsetAcceptAmount = &v
+	return s
+}
+
 func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOffsetCostAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
 	s.OffsetCostAmount = &v
 	return s
 }
 
-func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
-	s.Id = &v
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOpId(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.OpId = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOriginalAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetOutBizId(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.OutBizId = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetPresentAmount(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.PresentAmount = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetStatus(v int32) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetType(v int32) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetUserId(v int64) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryEvaluateListResponseBodyDataEvaluateListEvaluate) SetUserNick(v string) *QueryEvaluateListResponseBodyDataEvaluateListEvaluate {
+	s.UserNick = &v
 	return s
 }
 
@@ -10810,10 +11038,10 @@ func (s *QueryFinancialAccountInfoRequest) SetUserId(v int64) *QueryFinancialAcc
 
 type QueryFinancialAccountInfoResponseBody struct {
 	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryFinancialAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryFinancialAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryFinancialAccountInfoResponseBody) String() string {
@@ -10826,6 +11054,11 @@ func (s QueryFinancialAccountInfoResponseBody) GoString() string {
 
 func (s *QueryFinancialAccountInfoResponseBody) SetCode(v string) *QueryFinancialAccountInfoResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryFinancialAccountInfoResponseBody) SetData(v *QueryFinancialAccountInfoResponseBodyData) *QueryFinancialAccountInfoResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -10844,18 +11077,13 @@ func (s *QueryFinancialAccountInfoResponseBody) SetSuccess(v bool) *QueryFinanci
 	return s
 }
 
-func (s *QueryFinancialAccountInfoResponseBody) SetData(v *QueryFinancialAccountInfoResponseBodyData) *QueryFinancialAccountInfoResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryFinancialAccountInfoResponseBodyData struct {
-	MemberNickName     *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
-	IsFinancialAccount *bool   `json:"IsFinancialAccount,omitempty" xml:"IsFinancialAccount,omitempty"`
-	MemberGroupName    *string `json:"MemberGroupName,omitempty" xml:"MemberGroupName,omitempty"`
-	UserName           *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	AccountType        *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	IsFinancialAccount *bool   `json:"IsFinancialAccount,omitempty" xml:"IsFinancialAccount,omitempty"`
 	MemberGroupId      *int64  `json:"MemberGroupId,omitempty" xml:"MemberGroupId,omitempty"`
+	MemberGroupName    *string `json:"MemberGroupName,omitempty" xml:"MemberGroupName,omitempty"`
+	MemberNickName     *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
+	UserName           *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s QueryFinancialAccountInfoResponseBodyData) String() string {
@@ -10866,8 +11094,8 @@ func (s QueryFinancialAccountInfoResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryFinancialAccountInfoResponseBodyData) SetMemberNickName(v string) *QueryFinancialAccountInfoResponseBodyData {
-	s.MemberNickName = &v
+func (s *QueryFinancialAccountInfoResponseBodyData) SetAccountType(v string) *QueryFinancialAccountInfoResponseBodyData {
+	s.AccountType = &v
 	return s
 }
 
@@ -10876,23 +11104,23 @@ func (s *QueryFinancialAccountInfoResponseBodyData) SetIsFinancialAccount(v bool
 	return s
 }
 
+func (s *QueryFinancialAccountInfoResponseBodyData) SetMemberGroupId(v int64) *QueryFinancialAccountInfoResponseBodyData {
+	s.MemberGroupId = &v
+	return s
+}
+
 func (s *QueryFinancialAccountInfoResponseBodyData) SetMemberGroupName(v string) *QueryFinancialAccountInfoResponseBodyData {
 	s.MemberGroupName = &v
 	return s
 }
 
+func (s *QueryFinancialAccountInfoResponseBodyData) SetMemberNickName(v string) *QueryFinancialAccountInfoResponseBodyData {
+	s.MemberNickName = &v
+	return s
+}
+
 func (s *QueryFinancialAccountInfoResponseBodyData) SetUserName(v string) *QueryFinancialAccountInfoResponseBodyData {
 	s.UserName = &v
-	return s
-}
-
-func (s *QueryFinancialAccountInfoResponseBodyData) SetAccountType(v string) *QueryFinancialAccountInfoResponseBodyData {
-	s.AccountType = &v
-	return s
-}
-
-func (s *QueryFinancialAccountInfoResponseBodyData) SetMemberGroupId(v int64) *QueryFinancialAccountInfoResponseBodyData {
-	s.MemberGroupId = &v
 	return s
 }
 
@@ -10920,18 +11148,18 @@ func (s *QueryFinancialAccountInfoResponse) SetBody(v *QueryFinancialAccountInfo
 }
 
 type QueryInstanceBillRequest struct {
+	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	IsBillingItem    *bool   `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
+	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	IsBillingItem    *bool   `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
-	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	BillingDate      *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	Granularity      *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 }
 
 func (s QueryInstanceBillRequest) String() string {
@@ -10942,8 +11170,48 @@ func (s QueryInstanceBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryInstanceBillRequest) SetBillOwnerId(v int64) *QueryInstanceBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *QueryInstanceBillRequest) SetBillingCycle(v string) *QueryInstanceBillRequest {
 	s.BillingCycle = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetBillingDate(v string) *QueryInstanceBillRequest {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetGranularity(v string) *QueryInstanceBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetIsBillingItem(v bool) *QueryInstanceBillRequest {
+	s.IsBillingItem = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetIsHideZeroCharge(v bool) *QueryInstanceBillRequest {
+	s.IsHideZeroCharge = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetOwnerId(v int64) *QueryInstanceBillRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetPageNum(v int32) *QueryInstanceBillRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryInstanceBillRequest) SetPageSize(v int32) *QueryInstanceBillRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -10962,52 +11230,12 @@ func (s *QueryInstanceBillRequest) SetSubscriptionType(v string) *QueryInstanceB
 	return s
 }
 
-func (s *QueryInstanceBillRequest) SetOwnerId(v int64) *QueryInstanceBillRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetIsBillingItem(v bool) *QueryInstanceBillRequest {
-	s.IsBillingItem = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetPageNum(v int32) *QueryInstanceBillRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetPageSize(v int32) *QueryInstanceBillRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetIsHideZeroCharge(v bool) *QueryInstanceBillRequest {
-	s.IsHideZeroCharge = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetBillingDate(v string) *QueryInstanceBillRequest {
-	s.BillingDate = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetGranularity(v string) *QueryInstanceBillRequest {
-	s.Granularity = &v
-	return s
-}
-
-func (s *QueryInstanceBillRequest) SetBillOwnerId(v int64) *QueryInstanceBillRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 type QueryInstanceBillResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryInstanceBillResponseBody) String() string {
@@ -11020,6 +11248,11 @@ func (s QueryInstanceBillResponseBody) GoString() string {
 
 func (s *QueryInstanceBillResponseBody) SetCode(v string) *QueryInstanceBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBody) SetData(v *QueryInstanceBillResponseBodyData) *QueryInstanceBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -11038,19 +11271,14 @@ func (s *QueryInstanceBillResponseBody) SetSuccess(v bool) *QueryInstanceBillRes
 	return s
 }
 
-func (s *QueryInstanceBillResponseBody) SetData(v *QueryInstanceBillResponseBodyData) *QueryInstanceBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryInstanceBillResponseBodyData struct {
-	PageNum      *int32                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	BillingCycle *string                                 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	AccountID    *string                                 `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName  *string                                 `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QueryInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	AccountName  *string                                 `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Items        *QueryInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryInstanceBillResponseBodyData) String() string {
@@ -11061,8 +11289,13 @@ func (s QueryInstanceBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryInstanceBillResponseBodyData) SetPageNum(v int32) *QueryInstanceBillResponseBodyData {
-	s.PageNum = &v
+func (s *QueryInstanceBillResponseBodyData) SetAccountID(v string) *QueryInstanceBillResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyData) SetAccountName(v string) *QueryInstanceBillResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
@@ -11071,8 +11304,13 @@ func (s *QueryInstanceBillResponseBodyData) SetBillingCycle(v string) *QueryInst
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyData) SetAccountID(v string) *QueryInstanceBillResponseBodyData {
-	s.AccountID = &v
+func (s *QueryInstanceBillResponseBodyData) SetItems(v *QueryInstanceBillResponseBodyDataItems) *QueryInstanceBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyData) SetPageNum(v int32) *QueryInstanceBillResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -11083,16 +11321,6 @@ func (s *QueryInstanceBillResponseBodyData) SetPageSize(v int32) *QueryInstanceB
 
 func (s *QueryInstanceBillResponseBodyData) SetTotalCount(v int32) *QueryInstanceBillResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyData) SetAccountName(v string) *QueryInstanceBillResponseBodyData {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyData) SetItems(v *QueryInstanceBillResponseBodyDataItems) *QueryInstanceBillResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -11114,45 +11342,47 @@ func (s *QueryInstanceBillResponseBodyDataItems) SetItem(v []*QueryInstanceBillR
 }
 
 type QueryInstanceBillResponseBodyDataItemsItem struct {
+	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s QueryInstanceBillResponseBodyDataItemsItem) String() string {
@@ -11163,33 +11393,38 @@ func (s QueryInstanceBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
+	return s
+}
+
 func (s *QueryInstanceBillResponseBodyDataItemsItem) SetBillingDate(v string) *QueryInstanceBillResponseBodyDataItemsItem {
 	s.BillingDate = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceConfig(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.InstanceConfig = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetBillingItem(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.BillingItem = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInternetIP(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.InternetIP = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetBillingType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.BillingType = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetItem(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.Item = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetCashAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.CashAmount = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetTag(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.Tag = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetCommodityCode(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.CommodityCode = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceID(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.InstanceID = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetCostUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.CostUnit = &v
 	return s
 }
 
@@ -11203,98 +11438,8 @@ func (s *QueryInstanceBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v 
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceSpec(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.InstanceSpec = &v
-	return s
-}
-
 func (s *QueryInstanceBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
 	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetBillingItem(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.BillingItem = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetRegion(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.Region = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.OutstandingAmount = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetCostUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.CostUnit = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetListPriceUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ListPriceUnit = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetResourceGroup(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.PipCode = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetServicePeriodUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ServicePeriodUnit = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetCommodityCode(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductName(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ProductName = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetNickName(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.NickName = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductDetail(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetUsage(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.Usage = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetIntranetIP(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.IntranetIP = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
 	return s
 }
 
@@ -11303,13 +11448,33 @@ func (s *QueryInstanceBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v 
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetUsageUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.UsageUnit = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetDeductedByResourcePackage(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.DeductedByResourcePackage = &v
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.PaymentAmount = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceConfig(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceID(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInstanceSpec(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInternetIP(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetIntranetIP(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.IntranetIP = &v
 	return s
 }
 
@@ -11318,28 +11483,48 @@ func (s *QueryInstanceBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float3
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetDeductedByResourcePackage(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.DeductedByResourcePackage = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetServicePeriod(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.ServicePeriod = &v
-	return s
-}
-
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetZone(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.Zone = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetItem(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.Item = &v
 	return s
 }
 
 func (s *QueryInstanceBillResponseBodyDataItemsItem) SetListPrice(v string) *QueryInstanceBillResponseBodyDataItemsItem {
 	s.ListPrice = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetListPriceUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetNickName(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.NickName = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetOwnerID(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPipCode(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
 	return s
 }
 
@@ -11353,8 +11538,63 @@ func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductCode(v string) *Q
 	return s
 }
 
-func (s *QueryInstanceBillResponseBodyDataItemsItem) SetBillingType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
-	s.BillingType = &v
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductDetail(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductName(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetProductType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetRegion(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetResourceGroup(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetServicePeriod(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ServicePeriod = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetServicePeriodUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetTag(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.Tag = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetUsage(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.Usage = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetUsageUnit(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.UsageUnit = &v
+	return s
+}
+
+func (s *QueryInstanceBillResponseBodyDataItemsItem) SetZone(v string) *QueryInstanceBillResponseBodyDataItemsItem {
+	s.Zone = &v
 	return s
 }
 
@@ -11382,8 +11622,8 @@ func (s *QueryInstanceBillResponse) SetBody(v *QueryInstanceBillResponseBody) *Q
 }
 
 type QueryInstanceByTagRequest struct {
-	ResourceType *string                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   []*string                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*QueryInstanceByTagRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -11395,13 +11635,13 @@ func (s QueryInstanceByTagRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryInstanceByTagRequest) SetResourceType(v string) *QueryInstanceByTagRequest {
-	s.ResourceType = &v
+func (s *QueryInstanceByTagRequest) SetResourceId(v []*string) *QueryInstanceByTagRequest {
+	s.ResourceId = v
 	return s
 }
 
-func (s *QueryInstanceByTagRequest) SetResourceId(v []*string) *QueryInstanceByTagRequest {
-	s.ResourceId = v
+func (s *QueryInstanceByTagRequest) SetResourceType(v string) *QueryInstanceByTagRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -11556,9 +11796,9 @@ func (s *QueryInstanceByTagResponse) SetBody(v *QueryInstanceByTagResponseBody) 
 }
 
 type QueryInstanceGaapCostRequest struct {
+	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
@@ -11572,6 +11812,11 @@ func (s QueryInstanceGaapCostRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryInstanceGaapCostRequest) SetBillingCycle(v string) *QueryInstanceGaapCostRequest {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *QueryInstanceGaapCostRequest) SetPageNum(v int32) *QueryInstanceGaapCostRequest {
 	s.PageNum = &v
 	return s
@@ -11579,11 +11824,6 @@ func (s *QueryInstanceGaapCostRequest) SetPageNum(v int32) *QueryInstanceGaapCos
 
 func (s *QueryInstanceGaapCostRequest) SetPageSize(v int32) *QueryInstanceGaapCostRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostRequest) SetBillingCycle(v string) *QueryInstanceGaapCostRequest {
-	s.BillingCycle = &v
 	return s
 }
 
@@ -11604,10 +11844,10 @@ func (s *QueryInstanceGaapCostRequest) SetSubscriptionType(v string) *QueryInsta
 
 type QueryInstanceGaapCostResponseBody struct {
 	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryInstanceGaapCostResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryInstanceGaapCostResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryInstanceGaapCostResponseBody) String() string {
@@ -11620,6 +11860,11 @@ func (s QueryInstanceGaapCostResponseBody) GoString() string {
 
 func (s *QueryInstanceGaapCostResponseBody) SetCode(v string) *QueryInstanceGaapCostResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBody) SetData(v *QueryInstanceGaapCostResponseBodyData) *QueryInstanceGaapCostResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -11638,17 +11883,12 @@ func (s *QueryInstanceGaapCostResponseBody) SetSuccess(v bool) *QueryInstanceGaa
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBody) SetData(v *QueryInstanceGaapCostResponseBodyData) *QueryInstanceGaapCostResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryInstanceGaapCostResponseBodyData struct {
+	HostId     *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Modules    *QueryInstanceGaapCostResponseBodyDataModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
 	PageNum    *int32                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	HostId     *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	Modules    *QueryInstanceGaapCostResponseBodyDataModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
 }
 
 func (s QueryInstanceGaapCostResponseBodyData) String() string {
@@ -11657,6 +11897,16 @@ func (s QueryInstanceGaapCostResponseBodyData) String() string {
 
 func (s QueryInstanceGaapCostResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryInstanceGaapCostResponseBodyData) SetHostId(v string) *QueryInstanceGaapCostResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyData) SetModules(v *QueryInstanceGaapCostResponseBodyDataModules) *QueryInstanceGaapCostResponseBodyData {
+	s.Modules = v
+	return s
 }
 
 func (s *QueryInstanceGaapCostResponseBodyData) SetPageNum(v int32) *QueryInstanceGaapCostResponseBodyData {
@@ -11671,16 +11921,6 @@ func (s *QueryInstanceGaapCostResponseBodyData) SetPageSize(v int32) *QueryInsta
 
 func (s *QueryInstanceGaapCostResponseBodyData) SetTotalCount(v int32) *QueryInstanceGaapCostResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyData) SetHostId(v string) *QueryInstanceGaapCostResponseBodyData {
-	s.HostId = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyData) SetModules(v *QueryInstanceGaapCostResponseBodyDataModules) *QueryInstanceGaapCostResponseBodyData {
-	s.Modules = v
 	return s
 }
 
@@ -11702,58 +11942,58 @@ func (s *QueryInstanceGaapCostResponseBodyDataModules) SetModule(v []*QueryInsta
 }
 
 type QueryInstanceGaapCostResponseBodyDataModulesModule struct {
-	GaapDeductedByCashCoupons        *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
-	SubscriptionType                 *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	MonthGaapPretaxAmount            *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
-	DeductedByCoupons                *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	SubOrderId                       *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	Region                           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	OrderType                        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	MonthGaapDeductedByPrepaidCard   *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
-	UnallocatedDeductedByCashCoupons *string `json:"UnallocatedDeductedByCashCoupons,omitempty" xml:"UnallocatedDeductedByCashCoupons,omitempty"`
-	PretaxAmountLocal                *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	BillingCycle                     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	PayerAccount                     *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
-	MonthGaapPretaxAmountLocal       *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
 	AccountingUnit                   *string `json:"AccountingUnit,omitempty" xml:"AccountingUnit,omitempty"`
-	GaapPretaxAmountLocal            *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
-	UnallocatedDeductedByPrepaidCard *string `json:"UnallocatedDeductedByPrepaidCard,omitempty" xml:"UnallocatedDeductedByPrepaidCard,omitempty"`
-	ProductType                      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PaymentAmount                    *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	MonthGaapPretaxGrossAmount       *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
 	BillType                         *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	PayTime                          *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
-	PretaxGrossAmount                *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	OrderId                          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	UnallocatedPricingDiscount       *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
-	MonthGaapDeductedByCashCoupons   *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
-	UnallocatedPretaxGrossAmount     *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
-	InstanceID                       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	Tag                              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	BillingCycle                     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Currency                         *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	GaapDeductedByCoupons            *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
 	DeductedByCashCoupons            *string `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons                *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard            *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	GaapDeductedByCashCoupons        *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
+	GaapDeductedByCoupons            *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
 	GaapDeductedByPrepaidCard        *string `json:"GaapDeductedByPrepaidCard,omitempty" xml:"GaapDeductedByPrepaidCard,omitempty"`
 	GaapPaymentAmount                *string `json:"GaapPaymentAmount,omitempty" xml:"GaapPaymentAmount,omitempty"`
-	UnallocatedPretaxAmountLocal     *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
-	MonthGaapPricingDiscount         *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
-	PricingDiscount                  *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
-	GaapPricingDiscount              *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
-	ResourceGroup                    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	UnallocatedDeductedByCoupons     *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
-	PretaxAmount                     *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	UnallocatedPretaxAmount          *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
-	GaapPretaxGrossAmount            *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
-	UnallocatedPaymentAmount         *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
-	PaymentCurrency                  *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	OwnerID                          *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	DeductedByPrepaidCard            *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	GaapPretaxAmount                 *string `json:"GaapPretaxAmount,omitempty" xml:"GaapPretaxAmount,omitempty"`
+	GaapPretaxAmountLocal            *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
+	GaapPretaxGrossAmount            *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
+	GaapPricingDiscount              *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
+	InstanceID                       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	MonthGaapDeductedByCashCoupons   *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
 	MonthGaapDeductedByCoupons       *string `json:"MonthGaapDeductedByCoupons,omitempty" xml:"MonthGaapDeductedByCoupons,omitempty"`
+	MonthGaapDeductedByPrepaidCard   *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
 	MonthGaapPaymentAmount           *string `json:"MonthGaapPaymentAmount,omitempty" xml:"MonthGaapPaymentAmount,omitempty"`
+	MonthGaapPretaxAmount            *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
+	MonthGaapPretaxAmountLocal       *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
+	MonthGaapPretaxGrossAmount       *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
+	MonthGaapPricingDiscount         *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
+	OrderId                          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderType                        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerID                          *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PayTime                          *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	PayerAccount                     *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
+	PaymentAmount                    *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency                  *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PretaxAmount                     *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal                *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount                *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	PricingDiscount                  *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
+	ProductCode                      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType                      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup                    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	SubOrderId                       *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType                 *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	UnallocatedDeductedByCashCoupons *string `json:"UnallocatedDeductedByCashCoupons,omitempty" xml:"UnallocatedDeductedByCashCoupons,omitempty"`
+	UnallocatedDeductedByCoupons     *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
+	UnallocatedDeductedByPrepaidCard *string `json:"UnallocatedDeductedByPrepaidCard,omitempty" xml:"UnallocatedDeductedByPrepaidCard,omitempty"`
+	UnallocatedPaymentAmount         *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
+	UnallocatedPretaxAmount          *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
+	UnallocatedPretaxAmountLocal     *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
+	UnallocatedPretaxGrossAmount     *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
+	UnallocatedPricingDiscount       *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
 	UsageEndDate                     *string `json:"UsageEndDate,omitempty" xml:"UsageEndDate,omitempty"`
 	UsageStartDate                   *string `json:"UsageStartDate,omitempty" xml:"UsageStartDate,omitempty"`
-	ProductCode                      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s QueryInstanceGaapCostResponseBodyDataModulesModule) String() string {
@@ -11764,98 +12004,8 @@ func (s QueryInstanceGaapCostResponseBodyDataModulesModule) GoString() string {
 	return s.String()
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.GaapDeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetSubscriptionType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapPretaxAmount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetSubOrderId(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.SubOrderId = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetRegion(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.Region = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOrderType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.OrderType = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapDeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedDeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PretaxAmountLocal = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetBillingCycle(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.BillingCycle = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPayerAccount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PayerAccount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapPretaxAmountLocal = &v
-	return s
-}
-
 func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetAccountingUnit(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
 	s.AccountingUnit = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.GaapPretaxAmountLocal = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedDeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetProductType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPaymentAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PaymentAmount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapPretaxGrossAmount = &v
 	return s
 }
 
@@ -11864,43 +12014,8 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetBillType(v strin
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPayTime(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PayTime = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PretaxGrossAmount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOrderId(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.OrderId = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedPricingDiscount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapDeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedPretaxGrossAmount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetInstanceID(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.InstanceID = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetTag(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.Tag = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetBillingCycle(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -11909,13 +12024,28 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetCurrency(v strin
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.GaapDeductedByCoupons = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.DeductedByCashCoupons = &v
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.DeductedByCashCoupons = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.DeductedByCoupons = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.DeductedByPrepaidCard = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.GaapDeductedByCashCoupons = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.GaapDeductedByCoupons = &v
 	return s
 }
 
@@ -11929,43 +12059,13 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPaymentAmoun
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedPretaxAmountLocal = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.GaapPretaxAmount = &v
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.MonthGaapPricingDiscount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PricingDiscount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.GaapPricingDiscount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetResourceGroup(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedDeductedByCoupons = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedPretaxAmount = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.GaapPretaxAmountLocal = &v
 	return s
 }
 
@@ -11974,28 +12074,18 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPretaxGrossA
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPaymentAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.UnallocatedPaymentAmount = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.GaapPricingDiscount = &v
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPaymentCurrency(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.PaymentCurrency = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetInstanceID(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.InstanceID = &v
 	return s
 }
 
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOwnerID(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.DeductedByPrepaidCard = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetGaapPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.GaapPretaxAmount = &v
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapDeductedByCashCoupons = &v
 	return s
 }
 
@@ -12004,8 +12094,163 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapDeducte
 	return s
 }
 
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapDeductedByPrepaidCard = &v
+	return s
+}
+
 func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPaymentAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
 	s.MonthGaapPaymentAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapPretaxAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapPretaxAmountLocal = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapPretaxGrossAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetMonthGaapPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.MonthGaapPricingDiscount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOrderId(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOrderType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.OrderType = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetOwnerID(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPayTime(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PayTime = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPayerAccount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PayerAccount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPaymentAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPaymentCurrency(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PaymentCurrency = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PretaxAmountLocal = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.PricingDiscount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetProductCode(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetProductType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetRegion(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetResourceGroup(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetSubOrderId(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetSubscriptionType(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetTag(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.Tag = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByCashCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedDeductedByCashCoupons = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByCoupons(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedDeductedByCoupons = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedDeductedByPrepaidCard(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedDeductedByPrepaidCard = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPaymentAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedPaymentAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedPretaxAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxAmountLocal(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedPretaxAmountLocal = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPretaxGrossAmount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedPretaxGrossAmount = &v
+	return s
+}
+
+func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUnallocatedPricingDiscount(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
+	s.UnallocatedPricingDiscount = &v
 	return s
 }
 
@@ -12016,11 +12261,6 @@ func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUsageEndDate(v s
 
 func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetUsageStartDate(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
 	s.UsageStartDate = &v
-	return s
-}
-
-func (s *QueryInstanceGaapCostResponseBodyDataModulesModule) SetProductCode(v string) *QueryInstanceGaapCostResponseBodyDataModulesModule {
-	s.ProductCode = &v
 	return s
 }
 
@@ -12066,10 +12306,10 @@ func (s *QueryInvoicingCustomerListRequest) SetOwnerId(v int64) *QueryInvoicingC
 
 type QueryInvoicingCustomerListResponseBody struct {
 	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryInvoicingCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryInvoicingCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryInvoicingCustomerListResponseBody) String() string {
@@ -12085,6 +12325,11 @@ func (s *QueryInvoicingCustomerListResponseBody) SetCode(v string) *QueryInvoici
 	return s
 }
 
+func (s *QueryInvoicingCustomerListResponseBody) SetData(v *QueryInvoicingCustomerListResponseBodyData) *QueryInvoicingCustomerListResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryInvoicingCustomerListResponseBody) SetMessage(v string) *QueryInvoicingCustomerListResponseBody {
 	s.Message = &v
 	return s
@@ -12097,11 +12342,6 @@ func (s *QueryInvoicingCustomerListResponseBody) SetRequestId(v string) *QueryIn
 
 func (s *QueryInvoicingCustomerListResponseBody) SetSuccess(v bool) *QueryInvoicingCustomerListResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBody) SetData(v *QueryInvoicingCustomerListResponseBodyData) *QueryInvoicingCustomerListResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -12140,27 +12380,27 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList) SetCusto
 }
 
 type QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice struct {
-	Type                    *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Status                  *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
 	AdjustType              *int64  `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
 	Bank                    *string `json:"Bank,omitempty" xml:"Bank,omitempty"`
-	StartCycle              *int64  `json:"StartCycle,omitempty" xml:"StartCycle,omitempty"`
-	TitleChangeInstructions *string `json:"TitleChangeInstructions,omitempty" xml:"TitleChangeInstructions,omitempty"`
-	UserId                  *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	OperatingLicenseAddress *string `json:"OperatingLicenseAddress,omitempty" xml:"OperatingLicenseAddress,omitempty"`
-	InvoiceTitle            *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
-	UserNick                *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
-	OperatingLicensePhone   *string `json:"OperatingLicensePhone,omitempty" xml:"OperatingLicensePhone,omitempty"`
-	EndCycle                *int64  `json:"EndCycle,omitempty" xml:"EndCycle,omitempty"`
-	DefaultRemark           *string `json:"DefaultRemark,omitempty" xml:"DefaultRemark,omitempty"`
-	TaxationLicense         *string `json:"TaxationLicense,omitempty" xml:"TaxationLicense,omitempty"`
-	RegisterNo              *string `json:"RegisterNo,omitempty" xml:"RegisterNo,omitempty"`
-	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	TaxpayerType            *int64  `json:"TaxpayerType,omitempty" xml:"TaxpayerType,omitempty"`
-	CustomerType            *int64  `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
-	IssueType               *int64  `json:"IssueType,omitempty" xml:"IssueType,omitempty"`
-	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	BankNo                  *string `json:"BankNo,omitempty" xml:"BankNo,omitempty"`
+	CustomerType            *int64  `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
+	DefaultRemark           *string `json:"DefaultRemark,omitempty" xml:"DefaultRemark,omitempty"`
+	EndCycle                *int64  `json:"EndCycle,omitempty" xml:"EndCycle,omitempty"`
+	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InvoiceTitle            *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
+	IssueType               *int64  `json:"IssueType,omitempty" xml:"IssueType,omitempty"`
+	OperatingLicenseAddress *string `json:"OperatingLicenseAddress,omitempty" xml:"OperatingLicenseAddress,omitempty"`
+	OperatingLicensePhone   *string `json:"OperatingLicensePhone,omitempty" xml:"OperatingLicensePhone,omitempty"`
+	RegisterNo              *string `json:"RegisterNo,omitempty" xml:"RegisterNo,omitempty"`
+	StartCycle              *int64  `json:"StartCycle,omitempty" xml:"StartCycle,omitempty"`
+	Status                  *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaxationLicense         *string `json:"TaxationLicense,omitempty" xml:"TaxationLicense,omitempty"`
+	TaxpayerType            *int64  `json:"TaxpayerType,omitempty" xml:"TaxpayerType,omitempty"`
+	TitleChangeInstructions *string `json:"TitleChangeInstructions,omitempty" xml:"TitleChangeInstructions,omitempty"`
+	Type                    *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId                  *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick                *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) String() string {
@@ -12169,16 +12409,6 @@ func (s QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInv
 
 func (s QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) GoString() string {
 	return s.String()
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.Type = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetStatus(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.Status = &v
-	return s
 }
 
 func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetAdjustType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
@@ -12191,68 +12421,8 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerIn
 	return s
 }
 
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetStartCycle(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.StartCycle = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTitleChangeInstructions(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.TitleChangeInstructions = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetUserId(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.UserId = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetOperatingLicenseAddress(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.OperatingLicenseAddress = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetInvoiceTitle(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.InvoiceTitle = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetUserNick(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.UserNick = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetOperatingLicensePhone(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.OperatingLicensePhone = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetEndCycle(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.EndCycle = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetDefaultRemark(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.DefaultRemark = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTaxationLicense(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.TaxationLicense = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetRegisterNo(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.RegisterNo = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetGmtCreate(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTaxpayerType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.TaxpayerType = &v
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetBankNo(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.BankNo = &v
 	return s
 }
 
@@ -12261,8 +12431,18 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerIn
 	return s
 }
 
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetIssueType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.IssueType = &v
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetDefaultRemark(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.DefaultRemark = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetEndCycle(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.EndCycle = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetGmtCreate(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -12271,8 +12451,68 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerIn
 	return s
 }
 
-func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetBankNo(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
-	s.BankNo = &v
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetInvoiceTitle(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetIssueType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.IssueType = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetOperatingLicenseAddress(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.OperatingLicenseAddress = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetOperatingLicensePhone(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.OperatingLicensePhone = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetRegisterNo(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.RegisterNo = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetStartCycle(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.StartCycle = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetStatus(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTaxationLicense(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.TaxationLicense = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTaxpayerType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.TaxpayerType = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetTitleChangeInstructions(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.TitleChangeInstructions = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetType(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetUserId(v int64) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice) SetUserNick(v string) *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice {
+	s.UserNick = &v
 	return s
 }
 
@@ -12318,10 +12558,10 @@ func (s *QueryMonthlyBillRequest) SetBillingCycle(v string) *QueryMonthlyBillReq
 
 type QueryMonthlyBillResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryMonthlyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryMonthlyBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryMonthlyBillResponseBody) String() string {
@@ -12334,6 +12574,11 @@ func (s QueryMonthlyBillResponseBody) GoString() string {
 
 func (s *QueryMonthlyBillResponseBody) SetCode(v string) *QueryMonthlyBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBody) SetData(v *QueryMonthlyBillResponseBodyData) *QueryMonthlyBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -12352,17 +12597,12 @@ func (s *QueryMonthlyBillResponseBody) SetSuccess(v bool) *QueryMonthlyBillRespo
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBody) SetData(v *QueryMonthlyBillResponseBodyData) *QueryMonthlyBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryMonthlyBillResponseBodyData struct {
-	OutstandingAmount      *float32                               `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	BillingCycle           *string                                `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	TotalOutstandingAmount *float32                               `json:"TotalOutstandingAmount,omitempty" xml:"TotalOutstandingAmount,omitempty"`
-	NewInvoiceAmount       *float32                               `json:"NewInvoiceAmount,omitempty" xml:"NewInvoiceAmount,omitempty"`
 	Items                  *QueryMonthlyBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	NewInvoiceAmount       *float32                               `json:"NewInvoiceAmount,omitempty" xml:"NewInvoiceAmount,omitempty"`
+	OutstandingAmount      *float32                               `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	TotalOutstandingAmount *float32                               `json:"TotalOutstandingAmount,omitempty" xml:"TotalOutstandingAmount,omitempty"`
 }
 
 func (s QueryMonthlyBillResponseBodyData) String() string {
@@ -12373,18 +12613,13 @@ func (s QueryMonthlyBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMonthlyBillResponseBodyData) SetOutstandingAmount(v float32) *QueryMonthlyBillResponseBodyData {
-	s.OutstandingAmount = &v
-	return s
-}
-
 func (s *QueryMonthlyBillResponseBodyData) SetBillingCycle(v string) *QueryMonthlyBillResponseBodyData {
 	s.BillingCycle = &v
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyData) SetTotalOutstandingAmount(v float32) *QueryMonthlyBillResponseBodyData {
-	s.TotalOutstandingAmount = &v
+func (s *QueryMonthlyBillResponseBodyData) SetItems(v *QueryMonthlyBillResponseBodyDataItems) *QueryMonthlyBillResponseBodyData {
+	s.Items = v
 	return s
 }
 
@@ -12393,8 +12628,13 @@ func (s *QueryMonthlyBillResponseBodyData) SetNewInvoiceAmount(v float32) *Query
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyData) SetItems(v *QueryMonthlyBillResponseBodyDataItems) *QueryMonthlyBillResponseBodyData {
-	s.Items = v
+func (s *QueryMonthlyBillResponseBodyData) SetOutstandingAmount(v float32) *QueryMonthlyBillResponseBodyData {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyData) SetTotalOutstandingAmount(v float32) *QueryMonthlyBillResponseBodyData {
+	s.TotalOutstandingAmount = &v
 	return s
 }
 
@@ -12416,25 +12656,25 @@ func (s *QueryMonthlyBillResponseBodyDataItems) SetItem(v []*QueryMonthlyBillRes
 }
 
 type QueryMonthlyBillResponseBodyDataItemsItem struct {
-	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	SolutionCode          *string  `json:"SolutionCode,omitempty" xml:"SolutionCode,omitempty"`
-	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	SolutionName          *string  `json:"SolutionName,omitempty" xml:"SolutionName,omitempty"`
-	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SolutionCode          *string  `json:"SolutionCode,omitempty" xml:"SolutionCode,omitempty"`
+	SolutionName          *string  `json:"SolutionName,omitempty" xml:"SolutionName,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryMonthlyBillResponseBodyDataItemsItem) String() string {
@@ -12445,18 +12685,8 @@ func (s QueryMonthlyBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSolutionCode(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.SolutionCode = &v
-	return s
-}
-
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetItem(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.Item = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.AfterTaxAmount = &v
 	return s
 }
 
@@ -12470,13 +12700,8 @@ func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v f
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.PaymentCurrency = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.DeductedByCoupons = &v
 	return s
 }
 
@@ -12485,23 +12710,13 @@ func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v f
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.PaymentAmount = &v
-	return s
-}
-
 func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
 	s.InvoiceDiscount = &v
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetProductType(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.ProductType = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetItem(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.Item = &v
 	return s
 }
 
@@ -12510,23 +12725,18 @@ func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetOutstandingAmount(v float
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.AfterTaxAmount = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.PaymentAmount = &v
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.PretaxGrossAmount = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.PaymentCurrency = &v
 	return s
 }
 
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSolutionName(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.SolutionName = &v
-	return s
-}
-
-func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetTax(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
-	s.Tax = &v
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
 	return s
 }
 
@@ -12535,8 +12745,38 @@ func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float
 	return s
 }
 
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
 func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetProductCode(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetProductType(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSolutionCode(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.SolutionCode = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSolutionName(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.SolutionName = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryMonthlyBillResponseBodyDataItemsItem) SetTax(v float32) *QueryMonthlyBillResponseBodyDataItemsItem {
+	s.Tax = &v
 	return s
 }
 
@@ -12564,11 +12804,11 @@ func (s *QueryMonthlyBillResponse) SetBody(v *QueryMonthlyBillResponseBody) *Que
 }
 
 type QueryMonthlyInstanceConsumptionRequest struct {
-	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
@@ -12581,8 +12821,8 @@ func (s QueryMonthlyInstanceConsumptionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMonthlyInstanceConsumptionRequest) SetProductCode(v string) *QueryMonthlyInstanceConsumptionRequest {
-	s.ProductCode = &v
+func (s *QueryMonthlyInstanceConsumptionRequest) SetBillingCycle(v string) *QueryMonthlyInstanceConsumptionRequest {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -12601,8 +12841,8 @@ func (s *QueryMonthlyInstanceConsumptionRequest) SetPageSize(v int32) *QueryMont
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionRequest) SetBillingCycle(v string) *QueryMonthlyInstanceConsumptionRequest {
-	s.BillingCycle = &v
+func (s *QueryMonthlyInstanceConsumptionRequest) SetProductCode(v string) *QueryMonthlyInstanceConsumptionRequest {
+	s.ProductCode = &v
 	return s
 }
 
@@ -12618,10 +12858,10 @@ func (s *QueryMonthlyInstanceConsumptionRequest) SetSubscriptionType(v string) *
 
 type QueryMonthlyInstanceConsumptionResponseBody struct {
 	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryMonthlyInstanceConsumptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryMonthlyInstanceConsumptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryMonthlyInstanceConsumptionResponseBody) String() string {
@@ -12634,6 +12874,11 @@ func (s QueryMonthlyInstanceConsumptionResponseBody) GoString() string {
 
 func (s *QueryMonthlyInstanceConsumptionResponseBody) SetCode(v string) *QueryMonthlyInstanceConsumptionResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBody) SetData(v *QueryMonthlyInstanceConsumptionResponseBodyData) *QueryMonthlyInstanceConsumptionResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -12652,17 +12897,12 @@ func (s *QueryMonthlyInstanceConsumptionResponseBody) SetSuccess(v bool) *QueryM
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBody) SetData(v *QueryMonthlyInstanceConsumptionResponseBodyData) *QueryMonthlyInstanceConsumptionResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryMonthlyInstanceConsumptionResponseBodyData struct {
-	PageNum      *int32                                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	BillingCycle *string                                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QueryMonthlyInstanceConsumptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Items        *QueryMonthlyInstanceConsumptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QueryMonthlyInstanceConsumptionResponseBodyData) String() string {
@@ -12673,13 +12913,18 @@ func (s QueryMonthlyInstanceConsumptionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetPageNum(v int32) *QueryMonthlyInstanceConsumptionResponseBodyData {
-	s.PageNum = &v
+func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetBillingCycle(v string) *QueryMonthlyInstanceConsumptionResponseBodyData {
+	s.BillingCycle = &v
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetBillingCycle(v string) *QueryMonthlyInstanceConsumptionResponseBodyData {
-	s.BillingCycle = &v
+func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetItems(v *QueryMonthlyInstanceConsumptionResponseBodyDataItems) *QueryMonthlyInstanceConsumptionResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetPageNum(v int32) *QueryMonthlyInstanceConsumptionResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -12690,11 +12935,6 @@ func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetPageSize(v int32) *
 
 func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetTotalCount(v int32) *QueryMonthlyInstanceConsumptionResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyData) SetItems(v *QueryMonthlyInstanceConsumptionResponseBodyDataItems) *QueryMonthlyInstanceConsumptionResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -12716,23 +12956,23 @@ func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItems) SetItem(v []*Quer
 }
 
 type QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem struct {
-	PretaxAmount      *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	DiscountAmount    *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	PayerAccount      *string  `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
-	Tag               *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	InstanceID        *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	AfterTaxAmount    *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	Currency          *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	SubscriptionType  *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	PaymentCurrency   *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	DiscountAmount    *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	InstanceID        *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	OwnerID           *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PayerAccount      *string  `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
+	PaymentCurrency   *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PretaxAmount      *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	ProductCode       *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType       *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Region            *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	AfterTaxAmount    *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ResourceGroup     *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	SubscriptionType  *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag               *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Tax               *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	ProductCode       *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) String() string {
@@ -12743,28 +12983,8 @@ func (s QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) GoString() str
 	return s.String()
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetDiscountAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.DiscountAmount = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPayerAccount(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.PayerAccount = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetTag(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.Tag = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetInstanceID(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.InstanceID = &v
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.AfterTaxAmount = &v
 	return s
 }
 
@@ -12773,8 +12993,23 @@ func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetCurrency(v
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetDiscountAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetInstanceID(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetOwnerID(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPayerAccount(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.PayerAccount = &v
 	return s
 }
 
@@ -12783,8 +13018,23 @@ func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPaymentCur
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetOwnerID(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.OwnerID = &v
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.PretaxAmountLocal = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetProductCode(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.ProductCode = &v
 	return s
 }
 
@@ -12798,33 +13048,23 @@ func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetRegion(v s
 	return s
 }
 
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.AfterTaxAmount = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.PretaxGrossAmount = &v
-	return s
-}
-
 func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetResourceGroup(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
 	s.ResourceGroup = &v
 	return s
 }
 
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetSubscriptionType(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetTag(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
+	s.Tag = &v
+	return s
+}
+
 func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetTax(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
 	s.Tax = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.PretaxAmountLocal = &v
-	return s
-}
-
-func (s *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem) SetProductCode(v string) *QueryMonthlyInstanceConsumptionResponseBodyDataItemsItem {
-	s.ProductCode = &v
 	return s
 }
 
@@ -12853,15 +13093,15 @@ func (s *QueryMonthlyInstanceConsumptionResponse) SetBody(v *QueryMonthlyInstanc
 
 type QueryOrdersRequest struct {
 	CreateTimeEnd    *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart  *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	OrderType        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentStatus    *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	OrderType        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PaymentStatus    *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
-	CreateTimeStart  *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s QueryOrdersRequest) String() string {
@@ -12877,6 +13117,21 @@ func (s *QueryOrdersRequest) SetCreateTimeEnd(v string) *QueryOrdersRequest {
 	return s
 }
 
+func (s *QueryOrdersRequest) SetCreateTimeStart(v string) *QueryOrdersRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *QueryOrdersRequest) SetOrderType(v string) *QueryOrdersRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *QueryOrdersRequest) SetOwnerId(v int64) *QueryOrdersRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *QueryOrdersRequest) SetPageNum(v int32) *QueryOrdersRequest {
 	s.PageNum = &v
 	return s
@@ -12884,6 +13139,11 @@ func (s *QueryOrdersRequest) SetPageNum(v int32) *QueryOrdersRequest {
 
 func (s *QueryOrdersRequest) SetPageSize(v int32) *QueryOrdersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrdersRequest) SetPaymentStatus(v string) *QueryOrdersRequest {
+	s.PaymentStatus = &v
 	return s
 }
 
@@ -12902,32 +13162,12 @@ func (s *QueryOrdersRequest) SetSubscriptionType(v string) *QueryOrdersRequest {
 	return s
 }
 
-func (s *QueryOrdersRequest) SetOrderType(v string) *QueryOrdersRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *QueryOrdersRequest) SetPaymentStatus(v string) *QueryOrdersRequest {
-	s.PaymentStatus = &v
-	return s
-}
-
-func (s *QueryOrdersRequest) SetCreateTimeStart(v string) *QueryOrdersRequest {
-	s.CreateTimeStart = &v
-	return s
-}
-
-func (s *QueryOrdersRequest) SetOwnerId(v int64) *QueryOrdersRequest {
-	s.OwnerId = &v
-	return s
-}
-
 type QueryOrdersResponseBody struct {
 	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryOrdersResponseBody) String() string {
@@ -12940,6 +13180,11 @@ func (s QueryOrdersResponseBody) GoString() string {
 
 func (s *QueryOrdersResponseBody) SetCode(v string) *QueryOrdersResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryOrdersResponseBody) SetData(v *QueryOrdersResponseBodyData) *QueryOrdersResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -12958,17 +13203,12 @@ func (s *QueryOrdersResponseBody) SetSuccess(v bool) *QueryOrdersResponseBody {
 	return s
 }
 
-func (s *QueryOrdersResponseBody) SetData(v *QueryOrdersResponseBodyData) *QueryOrdersResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryOrdersResponseBodyData struct {
 	HostName   *string                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	OrderList  *QueryOrdersResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 	PageNum    *int32                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	OrderList  *QueryOrdersResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 }
 
 func (s QueryOrdersResponseBodyData) String() string {
@@ -12984,6 +13224,11 @@ func (s *QueryOrdersResponseBodyData) SetHostName(v string) *QueryOrdersResponse
 	return s
 }
 
+func (s *QueryOrdersResponseBodyData) SetOrderList(v *QueryOrdersResponseBodyDataOrderList) *QueryOrdersResponseBodyData {
+	s.OrderList = v
+	return s
+}
+
 func (s *QueryOrdersResponseBodyData) SetPageNum(v int32) *QueryOrdersResponseBodyData {
 	s.PageNum = &v
 	return s
@@ -12996,11 +13241,6 @@ func (s *QueryOrdersResponseBodyData) SetPageSize(v int32) *QueryOrdersResponseB
 
 func (s *QueryOrdersResponseBodyData) SetTotalCount(v int32) *QueryOrdersResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyData) SetOrderList(v *QueryOrdersResponseBodyDataOrderList) *QueryOrdersResponseBodyData {
-	s.OrderList = v
 	return s
 }
 
@@ -13022,23 +13262,23 @@ func (s *QueryOrdersResponseBodyDataOrderList) SetOrder(v []*QueryOrdersResponse
 }
 
 type QueryOrdersResponseBodyDataOrderListOrder struct {
-	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Currency          *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	AfterTaxAmount    *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
 	OrderId           *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PaymentCurrency   *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentStatus     *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	PaymentTime       *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount      *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RelatedOrderId    *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
+	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax               *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryOrdersResponseBodyDataOrderListOrder) String() string {
@@ -13049,18 +13289,13 @@ func (s QueryOrdersResponseBodyDataOrderListOrder) GoString() string {
 	return s.String()
 }
 
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPretaxAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.PretaxAmount = &v
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetAfterTaxAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.AfterTaxAmount = &v
 	return s
 }
 
 func (s *QueryOrdersResponseBodyDataOrderListOrder) SetCommodityCode(v string) *QueryOrdersResponseBodyDataOrderListOrder {
 	s.CommodityCode = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetRelatedOrderId(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.RelatedOrderId = &v
 	return s
 }
 
@@ -13074,33 +13309,8 @@ func (s *QueryOrdersResponseBodyDataOrderListOrder) SetCurrency(v string) *Query
 	return s
 }
 
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetSubscriptionType(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPaymentCurrency(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.PaymentCurrency = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetProductType(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetAfterTaxAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.AfterTaxAmount = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPaymentTime(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.PaymentTime = &v
-	return s
-}
-
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPretaxGrossAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.PretaxGrossAmount = &v
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetOrderId(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.OrderId = &v
 	return s
 }
 
@@ -13109,18 +13319,23 @@ func (s *QueryOrdersResponseBodyDataOrderListOrder) SetOrderType(v string) *Quer
 	return s
 }
 
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPaymentCurrency(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.PaymentCurrency = &v
+	return s
+}
+
 func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPaymentStatus(v string) *QueryOrdersResponseBodyDataOrderListOrder {
 	s.PaymentStatus = &v
 	return s
 }
 
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetOrderId(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.OrderId = &v
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPaymentTime(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.PaymentTime = &v
 	return s
 }
 
-func (s *QueryOrdersResponseBodyDataOrderListOrder) SetTax(v string) *QueryOrdersResponseBodyDataOrderListOrder {
-	s.Tax = &v
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPretaxAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.PretaxAmount = &v
 	return s
 }
 
@@ -13129,8 +13344,33 @@ func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPretaxAmountLocal(v strin
 	return s
 }
 
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetPretaxGrossAmount(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
 func (s *QueryOrdersResponseBodyDataOrderListOrder) SetProductCode(v string) *QueryOrdersResponseBodyDataOrderListOrder {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetProductType(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetRelatedOrderId(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.RelatedOrderId = &v
+	return s
+}
+
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetSubscriptionType(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QueryOrdersResponseBodyDataOrderListOrder) SetTax(v string) *QueryOrdersResponseBodyDataOrderListOrder {
+	s.Tax = &v
 	return s
 }
 
@@ -13176,10 +13416,10 @@ func (s *QueryPermissionListRequest) SetRelationId(v int64) *QueryPermissionList
 
 type QueryPermissionListResponseBody struct {
 	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryPermissionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryPermissionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryPermissionListResponseBody) String() string {
@@ -13192,6 +13432,11 @@ func (s QueryPermissionListResponseBody) GoString() string {
 
 func (s *QueryPermissionListResponseBody) SetCode(v string) *QueryPermissionListResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryPermissionListResponseBody) SetData(v *QueryPermissionListResponseBodyData) *QueryPermissionListResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -13210,20 +13455,15 @@ func (s *QueryPermissionListResponseBody) SetSuccess(v bool) *QueryPermissionLis
 	return s
 }
 
-func (s *QueryPermissionListResponseBody) SetData(v *QueryPermissionListResponseBodyData) *QueryPermissionListResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryPermissionListResponseBodyData struct {
 	EndTime        *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RelationType   *string                                              `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	StartTime      *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State          *string                                              `json:"State,omitempty" xml:"State,omitempty"`
 	MasterId       *int64                                               `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
 	MemberId       *int64                                               `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	SetupTime      *string                                              `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
 	PermissionList []*QueryPermissionListResponseBodyDataPermissionList `json:"PermissionList,omitempty" xml:"PermissionList,omitempty" type:"Repeated"`
+	RelationType   *string                                              `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	SetupTime      *string                                              `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
+	StartTime      *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string                                              `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s QueryPermissionListResponseBodyData) String() string {
@@ -13239,8 +13479,28 @@ func (s *QueryPermissionListResponseBodyData) SetEndTime(v string) *QueryPermiss
 	return s
 }
 
+func (s *QueryPermissionListResponseBodyData) SetMasterId(v int64) *QueryPermissionListResponseBodyData {
+	s.MasterId = &v
+	return s
+}
+
+func (s *QueryPermissionListResponseBodyData) SetMemberId(v int64) *QueryPermissionListResponseBodyData {
+	s.MemberId = &v
+	return s
+}
+
+func (s *QueryPermissionListResponseBodyData) SetPermissionList(v []*QueryPermissionListResponseBodyDataPermissionList) *QueryPermissionListResponseBodyData {
+	s.PermissionList = v
+	return s
+}
+
 func (s *QueryPermissionListResponseBodyData) SetRelationType(v string) *QueryPermissionListResponseBodyData {
 	s.RelationType = &v
+	return s
+}
+
+func (s *QueryPermissionListResponseBodyData) SetSetupTime(v string) *QueryPermissionListResponseBodyData {
+	s.SetupTime = &v
 	return s
 }
 
@@ -13254,31 +13514,11 @@ func (s *QueryPermissionListResponseBodyData) SetState(v string) *QueryPermissio
 	return s
 }
 
-func (s *QueryPermissionListResponseBodyData) SetMasterId(v int64) *QueryPermissionListResponseBodyData {
-	s.MasterId = &v
-	return s
-}
-
-func (s *QueryPermissionListResponseBodyData) SetMemberId(v int64) *QueryPermissionListResponseBodyData {
-	s.MemberId = &v
-	return s
-}
-
-func (s *QueryPermissionListResponseBodyData) SetSetupTime(v string) *QueryPermissionListResponseBodyData {
-	s.SetupTime = &v
-	return s
-}
-
-func (s *QueryPermissionListResponseBodyData) SetPermissionList(v []*QueryPermissionListResponseBodyDataPermissionList) *QueryPermissionListResponseBodyData {
-	s.PermissionList = v
-	return s
-}
-
 type QueryPermissionListResponseBodyDataPermissionList struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
 	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryPermissionListResponseBodyDataPermissionList) String() string {
@@ -13294,11 +13534,6 @@ func (s *QueryPermissionListResponseBodyDataPermissionList) SetEndTime(v string)
 	return s
 }
 
-func (s *QueryPermissionListResponseBodyDataPermissionList) SetStartTime(v string) *QueryPermissionListResponseBodyDataPermissionList {
-	s.StartTime = &v
-	return s
-}
-
 func (s *QueryPermissionListResponseBodyDataPermissionList) SetPermissionCode(v string) *QueryPermissionListResponseBodyDataPermissionList {
 	s.PermissionCode = &v
 	return s
@@ -13306,6 +13541,11 @@ func (s *QueryPermissionListResponseBodyDataPermissionList) SetPermissionCode(v 
 
 func (s *QueryPermissionListResponseBodyDataPermissionList) SetPermissionName(v string) *QueryPermissionListResponseBodyDataPermissionList {
 	s.PermissionName = &v
+	return s
+}
+
+func (s *QueryPermissionListResponseBodyDataPermissionList) SetStartTime(v string) *QueryPermissionListResponseBodyDataPermissionList {
+	s.StartTime = &v
 	return s
 }
 
@@ -13333,9 +13573,9 @@ func (s *QueryPermissionListResponse) SetBody(v *QueryPermissionListResponseBody
 }
 
 type QueryPrepaidCardsRequest struct {
+	EffectiveOrNot  *bool   `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 	ExpiryTimeEnd   *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
-	EffectiveOrNot  *bool   `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 }
 
 func (s QueryPrepaidCardsRequest) String() string {
@@ -13344,6 +13584,11 @@ func (s QueryPrepaidCardsRequest) String() string {
 
 func (s QueryPrepaidCardsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPrepaidCardsRequest) SetEffectiveOrNot(v bool) *QueryPrepaidCardsRequest {
+	s.EffectiveOrNot = &v
+	return s
 }
 
 func (s *QueryPrepaidCardsRequest) SetExpiryTimeEnd(v string) *QueryPrepaidCardsRequest {
@@ -13356,17 +13601,12 @@ func (s *QueryPrepaidCardsRequest) SetExpiryTimeStart(v string) *QueryPrepaidCar
 	return s
 }
 
-func (s *QueryPrepaidCardsRequest) SetEffectiveOrNot(v bool) *QueryPrepaidCardsRequest {
-	s.EffectiveOrNot = &v
-	return s
-}
-
 type QueryPrepaidCardsResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryPrepaidCardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryPrepaidCardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryPrepaidCardsResponseBody) String() string {
@@ -13382,6 +13622,11 @@ func (s *QueryPrepaidCardsResponseBody) SetCode(v string) *QueryPrepaidCardsResp
 	return s
 }
 
+func (s *QueryPrepaidCardsResponseBody) SetData(v *QueryPrepaidCardsResponseBodyData) *QueryPrepaidCardsResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *QueryPrepaidCardsResponseBody) SetMessage(v string) *QueryPrepaidCardsResponseBody {
 	s.Message = &v
 	return s
@@ -13394,11 +13639,6 @@ func (s *QueryPrepaidCardsResponseBody) SetRequestId(v string) *QueryPrepaidCard
 
 func (s *QueryPrepaidCardsResponseBody) SetSuccess(v bool) *QueryPrepaidCardsResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *QueryPrepaidCardsResponseBody) SetData(v *QueryPrepaidCardsResponseBodyData) *QueryPrepaidCardsResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -13420,16 +13660,16 @@ func (s *QueryPrepaidCardsResponseBodyData) SetPrepaidCard(v []*QueryPrepaidCard
 }
 
 type QueryPrepaidCardsResponseBodyDataPrepaidCard struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
+	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	ExpiryTime          *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	GrantedTime         *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
 	NominalValue        *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	EffectiveTime       *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	PrepaidCardNo       *string `json:"PrepaidCardNo,omitempty" xml:"PrepaidCardNo,omitempty"`
-	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
 	PrepaidCardId       *int64  `json:"PrepaidCardId,omitempty" xml:"PrepaidCardId,omitempty"`
-	ApplicableProducts  *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
-	Balance             *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	PrepaidCardNo       *string `json:"PrepaidCardNo,omitempty" xml:"PrepaidCardNo,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryPrepaidCardsResponseBodyDataPrepaidCard) String() string {
@@ -13440,8 +13680,23 @@ func (s QueryPrepaidCardsResponseBodyDataPrepaidCard) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetStatus(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.Status = &v
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetApplicableProducts(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetApplicableScenarios(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.ApplicableScenarios = &v
+	return s
+}
+
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetBalance(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.Balance = &v
+	return s
+}
+
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetEffectiveTime(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.EffectiveTime = &v
 	return s
 }
 
@@ -13460,8 +13715,8 @@ func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetNominalValue(v string)
 	return s
 }
 
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetEffectiveTime(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.EffectiveTime = &v
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetPrepaidCardId(v int64) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.PrepaidCardId = &v
 	return s
 }
 
@@ -13470,23 +13725,8 @@ func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetPrepaidCardNo(v string
 	return s
 }
 
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetApplicableScenarios(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.ApplicableScenarios = &v
-	return s
-}
-
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetPrepaidCardId(v int64) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.PrepaidCardId = &v
-	return s
-}
-
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetApplicableProducts(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.ApplicableProducts = &v
-	return s
-}
-
-func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetBalance(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
-	s.Balance = &v
+func (s *QueryPrepaidCardsResponseBodyDataPrepaidCard) SetStatus(v string) *QueryPrepaidCardsResponseBodyDataPrepaidCard {
+	s.Status = &v
 	return s
 }
 
@@ -13514,9 +13754,9 @@ func (s *QueryPrepaidCardsResponse) SetBody(v *QueryPrepaidCardsResponseBody) *Q
 }
 
 type QueryProductListRequest struct {
-	QueryTotalCount *bool  `json:"QueryTotalCount,omitempty" xml:"QueryTotalCount,omitempty"`
 	PageNum         *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryTotalCount *bool  `json:"QueryTotalCount,omitempty" xml:"QueryTotalCount,omitempty"`
 }
 
 func (s QueryProductListRequest) String() string {
@@ -13525,11 +13765,6 @@ func (s QueryProductListRequest) String() string {
 
 func (s QueryProductListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *QueryProductListRequest) SetQueryTotalCount(v bool) *QueryProductListRequest {
-	s.QueryTotalCount = &v
-	return s
 }
 
 func (s *QueryProductListRequest) SetPageNum(v int32) *QueryProductListRequest {
@@ -13542,12 +13777,17 @@ func (s *QueryProductListRequest) SetPageSize(v int32) *QueryProductListRequest 
 	return s
 }
 
+func (s *QueryProductListRequest) SetQueryTotalCount(v bool) *QueryProductListRequest {
+	s.QueryTotalCount = &v
+	return s
+}
+
 type QueryProductListResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryProductListResponseBody) String() string {
@@ -13560,6 +13800,11 @@ func (s QueryProductListResponseBody) GoString() string {
 
 func (s *QueryProductListResponseBody) SetCode(v string) *QueryProductListResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryProductListResponseBody) SetData(v *QueryProductListResponseBodyData) *QueryProductListResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -13578,16 +13823,11 @@ func (s *QueryProductListResponseBody) SetSuccess(v bool) *QueryProductListRespo
 	return s
 }
 
-func (s *QueryProductListResponseBody) SetData(v *QueryProductListResponseBodyData) *QueryProductListResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryProductListResponseBodyData struct {
 	PageNum     *int32                                       `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ProductList *QueryProductListResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Struct"`
+	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryProductListResponseBodyData) String() string {
@@ -13608,13 +13848,13 @@ func (s *QueryProductListResponseBodyData) SetPageSize(v int32) *QueryProductLis
 	return s
 }
 
-func (s *QueryProductListResponseBodyData) SetTotalCount(v int32) *QueryProductListResponseBodyData {
-	s.TotalCount = &v
+func (s *QueryProductListResponseBodyData) SetProductList(v *QueryProductListResponseBodyDataProductList) *QueryProductListResponseBodyData {
+	s.ProductList = v
 	return s
 }
 
-func (s *QueryProductListResponseBodyData) SetProductList(v *QueryProductListResponseBodyDataProductList) *QueryProductListResponseBodyData {
-	s.ProductList = v
+func (s *QueryProductListResponseBodyData) SetTotalCount(v int32) *QueryProductListResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
@@ -13636,10 +13876,10 @@ func (s *QueryProductListResponseBodyDataProductList) SetProduct(v []*QueryProdu
 }
 
 type QueryProductListResponseBodyDataProductListProduct struct {
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductName      *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s QueryProductListResponseBodyDataProductListProduct) String() string {
@@ -13648,6 +13888,11 @@ func (s QueryProductListResponseBodyDataProductListProduct) String() string {
 
 func (s QueryProductListResponseBodyDataProductListProduct) GoString() string {
 	return s.String()
+}
+
+func (s *QueryProductListResponseBodyDataProductListProduct) SetProductCode(v string) *QueryProductListResponseBodyDataProductListProduct {
+	s.ProductCode = &v
+	return s
 }
 
 func (s *QueryProductListResponseBodyDataProductListProduct) SetProductName(v string) *QueryProductListResponseBodyDataProductListProduct {
@@ -13662,11 +13907,6 @@ func (s *QueryProductListResponseBodyDataProductListProduct) SetProductType(v st
 
 func (s *QueryProductListResponseBodyDataProductListProduct) SetSubscriptionType(v string) *QueryProductListResponseBodyDataProductListProduct {
 	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QueryProductListResponseBodyDataProductListProduct) SetProductCode(v string) *QueryProductListResponseBodyDataProductListProduct {
-	s.ProductCode = &v
 	return s
 }
 
@@ -13693,10 +13933,250 @@ func (s *QueryProductListResponse) SetBody(v *QueryProductListResponseBody) *Que
 	return s
 }
 
+type QueryRIUtilizationDetailRequest struct {
+	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RICommodityCode    *string `json:"RICommodityCode,omitempty" xml:"RICommodityCode,omitempty"`
+	RIInstanceId       *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryRIUtilizationDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetDeductedInstanceId(v string) *QueryRIUtilizationDetailRequest {
+	s.DeductedInstanceId = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetEndTime(v string) *QueryRIUtilizationDetailRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetInstanceSpec(v string) *QueryRIUtilizationDetailRequest {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetPageNum(v int32) *QueryRIUtilizationDetailRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetPageSize(v int32) *QueryRIUtilizationDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetRICommodityCode(v string) *QueryRIUtilizationDetailRequest {
+	s.RICommodityCode = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetRIInstanceId(v string) *QueryRIUtilizationDetailRequest {
+	s.RIInstanceId = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailRequest) SetStartTime(v string) *QueryRIUtilizationDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryRIUtilizationDetailResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryRIUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryRIUtilizationDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailResponseBody) SetCode(v string) *QueryRIUtilizationDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBody) SetData(v *QueryRIUtilizationDetailResponseBodyData) *QueryRIUtilizationDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBody) SetMessage(v string) *QueryRIUtilizationDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBody) SetRequestId(v string) *QueryRIUtilizationDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBody) SetSuccess(v bool) *QueryRIUtilizationDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryRIUtilizationDetailResponseBodyData struct {
+	DetailList *QueryRIUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
+	PageNum    *int64                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryRIUtilizationDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyData) SetDetailList(v *QueryRIUtilizationDetailResponseBodyDataDetailList) *QueryRIUtilizationDetailResponseBodyData {
+	s.DetailList = v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyData) SetPageNum(v int64) *QueryRIUtilizationDetailResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyData) SetPageSize(v int64) *QueryRIUtilizationDetailResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyData) SetTotalCount(v int64) *QueryRIUtilizationDetailResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryRIUtilizationDetailResponseBodyDataDetailList struct {
+	DetailList []*QueryRIUtilizationDetailResponseBodyDataDetailListDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
+}
+
+func (s QueryRIUtilizationDetailResponseBodyDataDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailResponseBodyDataDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) *QueryRIUtilizationDetailResponseBodyDataDetailList {
+	s.DetailList = v
+	return s
+}
+
+type QueryRIUtilizationDetailResponseBodyDataDetailListDetailList struct {
+	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
+	DeductFactorTotal     *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
+	DeductHours           *string  `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
+	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
+	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
+	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
+	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
+	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	RIInstanceId          *string  `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
+}
+
+func (s QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductDate(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductDate = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductFactorTotal(v float32) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductFactorTotal = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductHours = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductQuantity(v float32) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductQuantity = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedCommodityCode(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedCommodityCode = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedInstanceId(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedInstanceId = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedProductDetail(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.DeductedProductDetail = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceSpec(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetRIInstanceId(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
+	s.RIInstanceId = &v
+	return s
+}
+
+type QueryRIUtilizationDetailResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryRIUtilizationDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRIUtilizationDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRIUtilizationDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRIUtilizationDetailResponse) SetHeaders(v map[string]*string) *QueryRIUtilizationDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRIUtilizationDetailResponse) SetBody(v *QueryRIUtilizationDetailResponseBody) *QueryRIUtilizationDetailResponse {
+	s.Body = v
+	return s
+}
+
 type QueryRedeemRequest struct {
-	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
-	ExpiryTimeEnd   *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	EffectiveOrNot  *bool   `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
+	ExpiryTimeEnd   *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
+	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
@@ -13709,8 +14189,8 @@ func (s QueryRedeemRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryRedeemRequest) SetExpiryTimeStart(v string) *QueryRedeemRequest {
-	s.ExpiryTimeStart = &v
+func (s *QueryRedeemRequest) SetEffectiveOrNot(v bool) *QueryRedeemRequest {
+	s.EffectiveOrNot = &v
 	return s
 }
 
@@ -13719,8 +14199,8 @@ func (s *QueryRedeemRequest) SetExpiryTimeEnd(v string) *QueryRedeemRequest {
 	return s
 }
 
-func (s *QueryRedeemRequest) SetEffectiveOrNot(v bool) *QueryRedeemRequest {
-	s.EffectiveOrNot = &v
+func (s *QueryRedeemRequest) SetExpiryTimeStart(v string) *QueryRedeemRequest {
+	s.ExpiryTimeStart = &v
 	return s
 }
 
@@ -13736,10 +14216,10 @@ func (s *QueryRedeemRequest) SetPageSize(v int32) *QueryRedeemRequest {
 
 type QueryRedeemResponseBody struct {
 	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryRedeemResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryRedeemResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryRedeemResponseBody) String() string {
@@ -13752,6 +14232,11 @@ func (s QueryRedeemResponseBody) GoString() string {
 
 func (s *QueryRedeemResponseBody) SetCode(v string) *QueryRedeemResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryRedeemResponseBody) SetData(v *QueryRedeemResponseBodyData) *QueryRedeemResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -13770,16 +14255,11 @@ func (s *QueryRedeemResponseBody) SetSuccess(v bool) *QueryRedeemResponseBody {
 	return s
 }
 
-func (s *QueryRedeemResponseBody) SetData(v *QueryRedeemResponseBodyData) *QueryRedeemResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryRedeemResponseBodyData struct {
 	PageNum    *int64                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int64                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Redeem     *QueryRedeemResponseBodyDataRedeem `json:"Redeem,omitempty" xml:"Redeem,omitempty" type:"Struct"`
+	TotalCount *int64                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryRedeemResponseBodyData) String() string {
@@ -13800,13 +14280,13 @@ func (s *QueryRedeemResponseBodyData) SetPageSize(v int64) *QueryRedeemResponseB
 	return s
 }
 
-func (s *QueryRedeemResponseBodyData) SetTotalCount(v int64) *QueryRedeemResponseBodyData {
-	s.TotalCount = &v
+func (s *QueryRedeemResponseBodyData) SetRedeem(v *QueryRedeemResponseBodyDataRedeem) *QueryRedeemResponseBodyData {
+	s.Redeem = v
 	return s
 }
 
-func (s *QueryRedeemResponseBodyData) SetRedeem(v *QueryRedeemResponseBodyDataRedeem) *QueryRedeemResponseBodyData {
-	s.Redeem = v
+func (s *QueryRedeemResponseBodyData) SetTotalCount(v int64) *QueryRedeemResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
@@ -13828,16 +14308,16 @@ func (s *QueryRedeemResponseBodyDataRedeem) SetRedeem(v []*QueryRedeemResponseBo
 }
 
 type QueryRedeemResponseBodyDataRedeemRedeem struct {
-	ExpiryTime         *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	GrantedTime        *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Specification      *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	NominalValue       *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
-	EffectiveTime      *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	RedeemId           *string `json:"RedeemId,omitempty" xml:"RedeemId,omitempty"`
-	RedeemNo           *string `json:"RedeemNo,omitempty" xml:"RedeemNo,omitempty"`
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	Balance            *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	EffectiveTime      *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpiryTime         *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	GrantedTime        *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
+	NominalValue       *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
+	RedeemId           *string `json:"RedeemId,omitempty" xml:"RedeemId,omitempty"`
+	RedeemNo           *string `json:"RedeemNo,omitempty" xml:"RedeemNo,omitempty"`
+	Specification      *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryRedeemResponseBodyDataRedeemRedeem) String() string {
@@ -13846,6 +14326,21 @@ func (s QueryRedeemResponseBodyDataRedeemRedeem) String() string {
 
 func (s QueryRedeemResponseBodyDataRedeemRedeem) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetApplicableProducts(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetBalance(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
+	s.Balance = &v
+	return s
+}
+
+func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetEffectiveTime(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
+	s.EffectiveTime = &v
+	return s
 }
 
 func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetExpiryTime(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
@@ -13858,23 +14353,8 @@ func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetGrantedTime(v string) *Quer
 	return s
 }
 
-func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetStatus(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetSpecification(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
-	s.Specification = &v
-	return s
-}
-
 func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetNominalValue(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
 	s.NominalValue = &v
-	return s
-}
-
-func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetEffectiveTime(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
-	s.EffectiveTime = &v
 	return s
 }
 
@@ -13888,13 +14368,13 @@ func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetRedeemNo(v string) *QueryRe
 	return s
 }
 
-func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetApplicableProducts(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
-	s.ApplicableProducts = &v
+func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetSpecification(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
+	s.Specification = &v
 	return s
 }
 
-func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetBalance(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
-	s.Balance = &v
+func (s *QueryRedeemResponseBodyDataRedeemRedeem) SetStatus(v string) *QueryRedeemResponseBodyDataRedeemRedeem {
+	s.Status = &v
 	return s
 }
 
@@ -13922,10 +14402,10 @@ func (s *QueryRedeemResponse) SetBody(v *QueryRedeemResponseBody) *QueryRedeemRe
 }
 
 type QueryRelationListRequest struct {
-	UserId     *int64    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	PageNum    *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	UserId     *int64    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryRelationListRequest) String() string {
@@ -13934,11 +14414,6 @@ func (s QueryRelationListRequest) String() string {
 
 func (s QueryRelationListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *QueryRelationListRequest) SetUserId(v int64) *QueryRelationListRequest {
-	s.UserId = &v
-	return s
 }
 
 func (s *QueryRelationListRequest) SetPageNum(v int32) *QueryRelationListRequest {
@@ -13956,12 +14431,17 @@ func (s *QueryRelationListRequest) SetStatusList(v []*string) *QueryRelationList
 	return s
 }
 
+func (s *QueryRelationListRequest) SetUserId(v int64) *QueryRelationListRequest {
+	s.UserId = &v
+	return s
+}
+
 type QueryRelationListResponseBody struct {
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryRelationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryRelationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryRelationListResponseBody) String() string {
@@ -13974,6 +14454,11 @@ func (s QueryRelationListResponseBody) GoString() string {
 
 func (s *QueryRelationListResponseBody) SetCode(v string) *QueryRelationListResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryRelationListResponseBody) SetData(v *QueryRelationListResponseBodyData) *QueryRelationListResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -13992,16 +14477,11 @@ func (s *QueryRelationListResponseBody) SetSuccess(v bool) *QueryRelationListRes
 	return s
 }
 
-func (s *QueryRelationListResponseBody) SetData(v *QueryRelationListResponseBodyData) *QueryRelationListResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryRelationListResponseBodyData struct {
+	FinancialRelationInfoList []*QueryRelationListResponseBodyDataFinancialRelationInfoList `json:"FinancialRelationInfoList,omitempty" xml:"FinancialRelationInfoList,omitempty" type:"Repeated"`
 	PageNum                   *int32                                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize                  *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount                *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	FinancialRelationInfoList []*QueryRelationListResponseBodyDataFinancialRelationInfoList `json:"FinancialRelationInfoList,omitempty" xml:"FinancialRelationInfoList,omitempty" type:"Repeated"`
 }
 
 func (s QueryRelationListResponseBodyData) String() string {
@@ -14010,6 +14490,11 @@ func (s QueryRelationListResponseBodyData) String() string {
 
 func (s QueryRelationListResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRelationListResponseBodyData) SetFinancialRelationInfoList(v []*QueryRelationListResponseBodyDataFinancialRelationInfoList) *QueryRelationListResponseBodyData {
+	s.FinancialRelationInfoList = v
+	return s
 }
 
 func (s *QueryRelationListResponseBodyData) SetPageNum(v int32) *QueryRelationListResponseBodyData {
@@ -14027,22 +14512,17 @@ func (s *QueryRelationListResponseBodyData) SetTotalCount(v int32) *QueryRelatio
 	return s
 }
 
-func (s *QueryRelationListResponseBodyData) SetFinancialRelationInfoList(v []*QueryRelationListResponseBodyDataFinancialRelationInfoList) *QueryRelationListResponseBodyData {
-	s.FinancialRelationInfoList = v
-	return s
-}
-
 type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RelationType    *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	AccountId       *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountNickName *string `json:"AccountNickName,omitempty" xml:"AccountNickName,omitempty"`
+	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RelationId      *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	RelationType    *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	SetupTime       *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	State           *string `json:"State,omitempty" xml:"State,omitempty"`
-	AccountId       *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	SetupTime       *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
-	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	RelationId      *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 }
 
 func (s QueryRelationListResponseBodyDataFinancialRelationInfoList) String() string {
@@ -14053,8 +14533,33 @@ func (s QueryRelationListResponseBodyDataFinancialRelationInfoList) GoString() s
 	return s.String()
 }
 
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountId(v int64) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountName(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.AccountName = &v
+	return s
+}
+
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountNickName(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.AccountNickName = &v
+	return s
+}
+
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountType(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.AccountType = &v
+	return s
+}
+
 func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetEndTime(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
 	s.EndTime = &v
+	return s
+}
+
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetRelationId(v int64) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.RelationId = &v
 	return s
 }
 
@@ -14063,8 +14568,8 @@ func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetRelation
 	return s
 }
 
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountNickName(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.AccountNickName = &v
+func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetSetupTime(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
+	s.SetupTime = &v
 	return s
 }
 
@@ -14075,31 +14580,6 @@ func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetStartTim
 
 func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetState(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
 	s.State = &v
-	return s
-}
-
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountId(v int64) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.AccountId = &v
-	return s
-}
-
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetSetupTime(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.SetupTime = &v
-	return s
-}
-
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountType(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.AccountType = &v
-	return s
-}
-
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetAccountName(v string) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QueryRelationListResponseBodyDataFinancialRelationInfoList) SetRelationId(v int64) *QueryRelationListResponseBodyDataFinancialRelationInfoList {
-	s.RelationId = &v
 	return s
 }
 
@@ -14127,8 +14607,8 @@ func (s *QueryRelationListResponse) SetBody(v *QueryRelationListResponseBody) *Q
 }
 
 type QueryResellerAvailableQuotaRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ItemCodes *string `json:"ItemCodes,omitempty" xml:"ItemCodes,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s QueryResellerAvailableQuotaRequest) String() string {
@@ -14139,20 +14619,20 @@ func (s QueryResellerAvailableQuotaRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryResellerAvailableQuotaRequest) SetOwnerId(v int64) *QueryResellerAvailableQuotaRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *QueryResellerAvailableQuotaRequest) SetItemCodes(v string) *QueryResellerAvailableQuotaRequest {
 	s.ItemCodes = &v
 	return s
 }
 
+func (s *QueryResellerAvailableQuotaRequest) SetOwnerId(v int64) *QueryResellerAvailableQuotaRequest {
+	s.OwnerId = &v
+	return s
+}
+
 type QueryResellerAvailableQuotaResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -14170,13 +14650,13 @@ func (s *QueryResellerAvailableQuotaResponseBody) SetCode(v string) *QueryResell
 	return s
 }
 
-func (s *QueryResellerAvailableQuotaResponseBody) SetMessage(v string) *QueryResellerAvailableQuotaResponseBody {
-	s.Message = &v
+func (s *QueryResellerAvailableQuotaResponseBody) SetData(v string) *QueryResellerAvailableQuotaResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *QueryResellerAvailableQuotaResponseBody) SetData(v string) *QueryResellerAvailableQuotaResponseBody {
-	s.Data = &v
+func (s *QueryResellerAvailableQuotaResponseBody) SetMessage(v string) *QueryResellerAvailableQuotaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -14214,12 +14694,13 @@ func (s *QueryResellerAvailableQuotaResponse) SetBody(v *QueryResellerAvailableQ
 }
 
 type QueryResourcePackageInstancesRequest struct {
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 	ExpiryTimeEnd   *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
+	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
+	IncludePartner  *bool   `json:"IncludePartner,omitempty" xml:"IncludePartner,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s QueryResourcePackageInstancesRequest) String() string {
@@ -14230,13 +14711,8 @@ func (s QueryResourcePackageInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryResourcePackageInstancesRequest) SetOwnerId(v int64) *QueryResourcePackageInstancesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesRequest) SetProductCode(v string) *QueryResourcePackageInstancesRequest {
-	s.ProductCode = &v
+func (s *QueryResourcePackageInstancesRequest) SetExpiryTimeEnd(v string) *QueryResourcePackageInstancesRequest {
+	s.ExpiryTimeEnd = &v
 	return s
 }
 
@@ -14245,8 +14721,13 @@ func (s *QueryResourcePackageInstancesRequest) SetExpiryTimeStart(v string) *Que
 	return s
 }
 
-func (s *QueryResourcePackageInstancesRequest) SetExpiryTimeEnd(v string) *QueryResourcePackageInstancesRequest {
-	s.ExpiryTimeEnd = &v
+func (s *QueryResourcePackageInstancesRequest) SetIncludePartner(v bool) *QueryResourcePackageInstancesRequest {
+	s.IncludePartner = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesRequest) SetOwnerId(v int64) *QueryResourcePackageInstancesRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -14260,15 +14741,20 @@ func (s *QueryResourcePackageInstancesRequest) SetPageSize(v int32) *QueryResour
 	return s
 }
 
+func (s *QueryResourcePackageInstancesRequest) SetProductCode(v string) *QueryResourcePackageInstancesRequest {
+	s.ProductCode = &v
+	return s
+}
+
 type QueryResourcePackageInstancesResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryResourcePackageInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page      *int32                                         `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize  *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize  *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Total     *int32                                         `json:"Total,omitempty" xml:"Total,omitempty"`
-	Page      *int32                                         `json:"Page,omitempty" xml:"Page,omitempty"`
-	Data      *QueryResourcePackageInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryResourcePackageInstancesResponseBody) String() string {
@@ -14277,6 +14763,31 @@ func (s QueryResourcePackageInstancesResponseBody) String() string {
 
 func (s QueryResourcePackageInstancesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryResourcePackageInstancesResponseBody) SetCode(v string) *QueryResourcePackageInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBody) SetData(v *QueryResourcePackageInstancesResponseBodyData) *QueryResourcePackageInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBody) SetMessage(v string) *QueryResourcePackageInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBody) SetPage(v int32) *QueryResourcePackageInstancesResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBody) SetPageSize(v int32) *QueryResourcePackageInstancesResponseBody {
+	s.PageSize = &v
+	return s
 }
 
 func (s *QueryResourcePackageInstancesResponseBody) SetRequestId(v string) *QueryResourcePackageInstancesResponseBody {
@@ -14289,42 +14800,17 @@ func (s *QueryResourcePackageInstancesResponseBody) SetSuccess(v bool) *QueryRes
 	return s
 }
 
-func (s *QueryResourcePackageInstancesResponseBody) SetCode(v string) *QueryResourcePackageInstancesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBody) SetMessage(v string) *QueryResourcePackageInstancesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBody) SetPageSize(v int32) *QueryResourcePackageInstancesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *QueryResourcePackageInstancesResponseBody) SetTotal(v int32) *QueryResourcePackageInstancesResponseBody {
 	s.Total = &v
 	return s
 }
 
-func (s *QueryResourcePackageInstancesResponseBody) SetPage(v int32) *QueryResourcePackageInstancesResponseBody {
-	s.Page = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBody) SetData(v *QueryResourcePackageInstancesResponseBodyData) *QueryResourcePackageInstancesResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryResourcePackageInstancesResponseBodyData struct {
+	HostId     *string                                                 `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Instances  *QueryResourcePackageInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	PageNum    *string                                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *string                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *string                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	HostId     *string                                                 `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	Instances  *QueryResourcePackageInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 }
 
 func (s QueryResourcePackageInstancesResponseBodyData) String() string {
@@ -14333,6 +14819,16 @@ func (s QueryResourcePackageInstancesResponseBodyData) String() string {
 
 func (s QueryResourcePackageInstancesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyData) SetHostId(v string) *QueryResourcePackageInstancesResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyData) SetInstances(v *QueryResourcePackageInstancesResponseBodyDataInstances) *QueryResourcePackageInstancesResponseBodyData {
+	s.Instances = v
+	return s
 }
 
 func (s *QueryResourcePackageInstancesResponseBodyData) SetPageNum(v string) *QueryResourcePackageInstancesResponseBodyData {
@@ -14347,16 +14843,6 @@ func (s *QueryResourcePackageInstancesResponseBodyData) SetPageSize(v string) *Q
 
 func (s *QueryResourcePackageInstancesResponseBodyData) SetTotalCount(v string) *QueryResourcePackageInstancesResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyData) SetHostId(v string) *QueryResourcePackageInstancesResponseBodyData {
-	s.HostId = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyData) SetInstances(v *QueryResourcePackageInstancesResponseBodyDataInstances) *QueryResourcePackageInstancesResponseBodyData {
-	s.Instances = v
 	return s
 }
 
@@ -14378,19 +14864,19 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstances) SetInstance(v [
 }
 
 type QueryResourcePackageInstancesResponseBodyDataInstancesInstance struct {
+	ApplicableProducts  *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
+	DeductType          *string                                                                           `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
+	EffectiveTime       *string                                                                           `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	ExpiryTime          *string                                                                           `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
-	Status              *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Remark              *string                                                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RemainingAmountUnit *string                                                                           `json:"RemainingAmountUnit,omitempty" xml:"RemainingAmountUnit,omitempty"`
 	InstanceId          *string                                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PackageType         *string                                                                           `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	EffectiveTime       *string                                                                           `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	Region              *string                                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
-	TotalAmount         *string                                                                           `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	DeductType          *string                                                                           `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
-	TotalAmountUnit     *string                                                                           `json:"TotalAmountUnit,omitempty" xml:"TotalAmountUnit,omitempty"`
 	RemainingAmount     *string                                                                           `json:"RemainingAmount,omitempty" xml:"RemainingAmount,omitempty"`
-	ApplicableProducts  *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
+	RemainingAmountUnit *string                                                                           `json:"RemainingAmountUnit,omitempty" xml:"RemainingAmountUnit,omitempty"`
+	Remark              *string                                                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status              *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalAmount         *string                                                                           `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	TotalAmountUnit     *string                                                                           `json:"TotalAmountUnit,omitempty" xml:"TotalAmountUnit,omitempty"`
 }
 
 func (s QueryResourcePackageInstancesResponseBodyDataInstancesInstance) String() string {
@@ -14401,23 +14887,23 @@ func (s QueryResourcePackageInstancesResponseBodyDataInstancesInstance) GoString
 	return s.String()
 }
 
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetApplicableProducts(v *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.ApplicableProducts = v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetDeductType(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.DeductType = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetEffectiveTime(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.EffectiveTime = &v
+	return s
+}
+
 func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetExpiryTime(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
 	s.ExpiryTime = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetStatus(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRemark(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.Remark = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRemainingAmountUnit(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.RemainingAmountUnit = &v
 	return s
 }
 
@@ -14431,28 +14917,8 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetPack
 	return s
 }
 
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetEffectiveTime(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.EffectiveTime = &v
-	return s
-}
-
 func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRegion(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
 	s.Region = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetTotalAmount(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.TotalAmount = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetDeductType(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.DeductType = &v
-	return s
-}
-
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetTotalAmountUnit(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.TotalAmountUnit = &v
 	return s
 }
 
@@ -14461,8 +14927,28 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRema
 	return s
 }
 
-func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetApplicableProducts(v *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
-	s.ApplicableProducts = v
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRemainingAmountUnit(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.RemainingAmountUnit = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetRemark(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetStatus(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetTotalAmount(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.TotalAmount = &v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetTotalAmountUnit(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.TotalAmountUnit = &v
 	return s
 }
 
@@ -14506,254 +14992,14 @@ func (s *QueryResourcePackageInstancesResponse) SetBody(v *QueryResourcePackageI
 	return s
 }
 
-type QueryRIUtilizationDetailRequest struct {
-	RIInstanceId       *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
-	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	RICommodityCode    *string `json:"RICommodityCode,omitempty" xml:"RICommodityCode,omitempty"`
-	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s QueryRIUtilizationDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetRIInstanceId(v string) *QueryRIUtilizationDetailRequest {
-	s.RIInstanceId = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetInstanceSpec(v string) *QueryRIUtilizationDetailRequest {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetRICommodityCode(v string) *QueryRIUtilizationDetailRequest {
-	s.RICommodityCode = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetDeductedInstanceId(v string) *QueryRIUtilizationDetailRequest {
-	s.DeductedInstanceId = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetStartTime(v string) *QueryRIUtilizationDetailRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetEndTime(v string) *QueryRIUtilizationDetailRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetPageNum(v int32) *QueryRIUtilizationDetailRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailRequest) SetPageSize(v int32) *QueryRIUtilizationDetailRequest {
-	s.PageSize = &v
-	return s
-}
-
-type QueryRIUtilizationDetailResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryRIUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s QueryRIUtilizationDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailResponseBody) SetCode(v string) *QueryRIUtilizationDetailResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBody) SetMessage(v string) *QueryRIUtilizationDetailResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBody) SetRequestId(v string) *QueryRIUtilizationDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBody) SetSuccess(v bool) *QueryRIUtilizationDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBody) SetData(v *QueryRIUtilizationDetailResponseBodyData) *QueryRIUtilizationDetailResponseBody {
-	s.Data = v
-	return s
-}
-
-type QueryRIUtilizationDetailResponseBodyData struct {
-	PageNum    *int64                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	DetailList *QueryRIUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
-}
-
-func (s QueryRIUtilizationDetailResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyData) SetPageNum(v int64) *QueryRIUtilizationDetailResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyData) SetPageSize(v int64) *QueryRIUtilizationDetailResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyData) SetTotalCount(v int64) *QueryRIUtilizationDetailResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyData) SetDetailList(v *QueryRIUtilizationDetailResponseBodyDataDetailList) *QueryRIUtilizationDetailResponseBodyData {
-	s.DetailList = v
-	return s
-}
-
-type QueryRIUtilizationDetailResponseBodyDataDetailList struct {
-	DetailList []*QueryRIUtilizationDetailResponseBodyDataDetailListDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
-}
-
-func (s QueryRIUtilizationDetailResponseBodyDataDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailResponseBodyDataDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) *QueryRIUtilizationDetailResponseBodyDataDetailList {
-	s.DetailList = v
-	return s
-}
-
-type QueryRIUtilizationDetailResponseBodyDataDetailListDetailList struct {
-	DeductedCommodityCode *string  `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
-	DeductedProductDetail *string  `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
-	DeductedInstanceId    *string  `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	DeductFactorTotal     *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
-	DeductQuantity        *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
-	DeductHours           *string  `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
-	DeductDate            *string  `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
-	RIInstanceId          *string  `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
-	InstanceSpec          *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-}
-
-func (s QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedCommodityCode(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedCommodityCode = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedProductDetail(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedProductDetail = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductedInstanceId(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductedInstanceId = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductFactorTotal(v float32) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductFactorTotal = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductQuantity(v float32) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductQuantity = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductHours(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductHours = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetDeductDate(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.DeductDate = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetRIInstanceId(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.RIInstanceId = &v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList) SetInstanceSpec(v string) *QueryRIUtilizationDetailResponseBodyDataDetailListDetailList {
-	s.InstanceSpec = &v
-	return s
-}
-
-type QueryRIUtilizationDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryRIUtilizationDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryRIUtilizationDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRIUtilizationDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRIUtilizationDetailResponse) SetHeaders(v map[string]*string) *QueryRIUtilizationDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryRIUtilizationDetailResponse) SetBody(v *QueryRIUtilizationDetailResponseBody) *QueryRIUtilizationDetailResponse {
-	s.Body = v
-	return s
-}
-
 type QuerySavingsPlansDeductLogRequest struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Locale       *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 }
 
 func (s QuerySavingsPlansDeductLogRequest) String() string {
@@ -14764,13 +15010,18 @@ func (s QuerySavingsPlansDeductLogRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySavingsPlansDeductLogRequest) SetInstanceType(v string) *QuerySavingsPlansDeductLogRequest {
-	s.InstanceType = &v
+func (s *QuerySavingsPlansDeductLogRequest) SetEndTime(v string) *QuerySavingsPlansDeductLogRequest {
+	s.EndTime = &v
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogRequest) SetPageSize(v int32) *QuerySavingsPlansDeductLogRequest {
-	s.PageSize = &v
+func (s *QuerySavingsPlansDeductLogRequest) SetInstanceId(v string) *QuerySavingsPlansDeductLogRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogRequest) SetInstanceType(v string) *QuerySavingsPlansDeductLogRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -14784,8 +15035,8 @@ func (s *QuerySavingsPlansDeductLogRequest) SetPageNum(v int32) *QuerySavingsPla
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogRequest) SetInstanceId(v string) *QuerySavingsPlansDeductLogRequest {
-	s.InstanceId = &v
+func (s *QuerySavingsPlansDeductLogRequest) SetPageSize(v int32) *QuerySavingsPlansDeductLogRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -14794,17 +15045,12 @@ func (s *QuerySavingsPlansDeductLogRequest) SetStartTime(v string) *QuerySavings
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogRequest) SetEndTime(v string) *QuerySavingsPlansDeductLogRequest {
-	s.EndTime = &v
-	return s
-}
-
 type QuerySavingsPlansDeductLogResponseBody struct {
 	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QuerySavingsPlansDeductLogResponseBody) String() string {
@@ -14817,6 +15063,11 @@ func (s QuerySavingsPlansDeductLogResponseBody) GoString() string {
 
 func (s *QuerySavingsPlansDeductLogResponseBody) SetCode(v string) *QuerySavingsPlansDeductLogResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBody) SetData(v *QuerySavingsPlansDeductLogResponseBodyData) *QuerySavingsPlansDeductLogResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -14835,16 +15086,11 @@ func (s *QuerySavingsPlansDeductLogResponseBody) SetSuccess(v bool) *QuerySaving
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogResponseBody) SetData(v *QuerySavingsPlansDeductLogResponseBodyData) *QuerySavingsPlansDeductLogResponseBody {
-	s.Data = v
-	return s
-}
-
 type QuerySavingsPlansDeductLogResponseBodyData struct {
+	Items      []*QuerySavingsPlansDeductLogResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	PageNum    *int32                                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Items      []*QuerySavingsPlansDeductLogResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s QuerySavingsPlansDeductLogResponseBodyData) String() string {
@@ -14853,6 +15099,11 @@ func (s QuerySavingsPlansDeductLogResponseBodyData) String() string {
 
 func (s QuerySavingsPlansDeductLogResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyData) SetItems(v []*QuerySavingsPlansDeductLogResponseBodyDataItems) *QuerySavingsPlansDeductLogResponseBodyData {
+	s.Items = v
+	return s
 }
 
 func (s *QuerySavingsPlansDeductLogResponseBodyData) SetPageNum(v int32) *QuerySavingsPlansDeductLogResponseBodyData {
@@ -14870,23 +15121,18 @@ func (s *QuerySavingsPlansDeductLogResponseBodyData) SetTotalCount(v int32) *Que
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogResponseBodyData) SetItems(v []*QuerySavingsPlansDeductLogResponseBodyDataItems) *QuerySavingsPlansDeductLogResponseBodyData {
-	s.Items = v
-	return s
-}
-
 type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
-	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SavingsType      *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
-	UserId           *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	DiscountRate     *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
 	BillModule       *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
 	DeductCommodity  *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
-	DeductRate       *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
 	DeductFee        *string `json:"DeductFee,omitempty" xml:"DeductFee,omitempty"`
+	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
+	DeductRate       *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	DiscountRate     *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SavingsType      *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserId           *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QuerySavingsPlansDeductLogResponseBodyDataItems) String() string {
@@ -14897,43 +15143,8 @@ func (s QuerySavingsPlansDeductLogResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetEndTime(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.EndTime = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetStartTime(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetSavingsType(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.SavingsType = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetUserId(v int64) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.UserId = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDiscountRate(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.DiscountRate = &v
-	return s
-}
-
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetBillModule(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.BillModule = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceId(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductInstanceId(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.DeductInstanceId = &v
 	return s
 }
 
@@ -14942,13 +15153,48 @@ func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductCommodity(v s
 	return s
 }
 
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductFee(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.DeductFee = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductInstanceId(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.DeductInstanceId = &v
+	return s
+}
+
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductRate(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.DeductRate = &v
 	return s
 }
 
-func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductFee(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
-	s.DeductFee = &v
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDiscountRate(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.DiscountRate = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetEndTime(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceId(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetSavingsType(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.SavingsType = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetStartTime(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetUserId(v int64) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.UserId = &v
 	return s
 }
 
@@ -14976,12 +15222,12 @@ func (s *QuerySavingsPlansDeductLogResponse) SetBody(v *QuerySavingsPlansDeductL
 }
 
 type QuerySavingsPlansInstanceRequest struct {
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EndTime    *string                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Locale     *string                                `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	PageNum    *int32                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime  *string                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime    *string                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Tag        []*QuerySavingsPlansInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -14993,8 +15239,13 @@ func (s QuerySavingsPlansInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySavingsPlansInstanceRequest) SetPageSize(v int32) *QuerySavingsPlansInstanceRequest {
-	s.PageSize = &v
+func (s *QuerySavingsPlansInstanceRequest) SetEndTime(v string) *QuerySavingsPlansInstanceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceRequest) SetInstanceId(v string) *QuerySavingsPlansInstanceRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -15008,18 +15259,13 @@ func (s *QuerySavingsPlansInstanceRequest) SetPageNum(v int32) *QuerySavingsPlan
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceRequest) SetInstanceId(v string) *QuerySavingsPlansInstanceRequest {
-	s.InstanceId = &v
+func (s *QuerySavingsPlansInstanceRequest) SetPageSize(v int32) *QuerySavingsPlansInstanceRequest {
+	s.PageSize = &v
 	return s
 }
 
 func (s *QuerySavingsPlansInstanceRequest) SetStartTime(v string) *QuerySavingsPlansInstanceRequest {
 	s.StartTime = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceRequest) SetEndTime(v string) *QuerySavingsPlansInstanceRequest {
-	s.EndTime = &v
 	return s
 }
 
@@ -15053,10 +15299,10 @@ func (s *QuerySavingsPlansInstanceRequestTag) SetValue(v string) *QuerySavingsPl
 
 type QuerySavingsPlansInstanceResponseBody struct {
 	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QuerySavingsPlansInstanceResponseBody) String() string {
@@ -15069,6 +15315,11 @@ func (s QuerySavingsPlansInstanceResponseBody) GoString() string {
 
 func (s *QuerySavingsPlansInstanceResponseBody) SetCode(v string) *QuerySavingsPlansInstanceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBody) SetData(v *QuerySavingsPlansInstanceResponseBodyData) *QuerySavingsPlansInstanceResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -15087,16 +15338,11 @@ func (s *QuerySavingsPlansInstanceResponseBody) SetSuccess(v bool) *QuerySavings
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBody) SetData(v *QuerySavingsPlansInstanceResponseBodyData) *QuerySavingsPlansInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
 type QuerySavingsPlansInstanceResponseBodyData struct {
+	Items      []*QuerySavingsPlansInstanceResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	PageNum    *int32                                            `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Items      []*QuerySavingsPlansInstanceResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s QuerySavingsPlansInstanceResponseBodyData) String() string {
@@ -15105,6 +15351,11 @@ func (s QuerySavingsPlansInstanceResponseBodyData) String() string {
 
 func (s QuerySavingsPlansInstanceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyData) SetItems(v []*QuerySavingsPlansInstanceResponseBodyDataItems) *QuerySavingsPlansInstanceResponseBodyData {
+	s.Items = v
+	return s
 }
 
 func (s *QuerySavingsPlansInstanceResponseBodyData) SetPageNum(v int32) *QuerySavingsPlansInstanceResponseBodyData {
@@ -15122,27 +15373,27 @@ func (s *QuerySavingsPlansInstanceResponseBodyData) SetTotalCount(v int32) *Quer
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyData) SetItems(v []*QuerySavingsPlansInstanceResponseBodyDataItems) *QuerySavingsPlansInstanceResponseBodyData {
-	s.Items = v
-	return s
-}
-
 type QuerySavingsPlansInstanceResponseBodyDataItems struct {
-	Status           *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SavingsType      *string                                               `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
-	Utilization      *string                                               `json:"Utilization,omitempty" xml:"Utilization,omitempty"`
-	PrepayFee        *string                                               `json:"PrepayFee,omitempty" xml:"PrepayFee,omitempty"`
-	InstanceId       *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Currency         *string                                               `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	EndTime          *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime        *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	AllocationStatus *string                                               `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	InstanceFamily   *string                                               `json:"InstanceFamily,omitempty" xml:"InstanceFamily,omitempty"`
-	Region           *string                                               `json:"Region,omitempty" xml:"Region,omitempty"`
-	TotalSave        *string                                               `json:"TotalSave,omitempty" xml:"TotalSave,omitempty"`
-	PoolValue        *string                                               `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	PayMode          *string                                               `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	Tags             []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	AllocationStatus    *string                                               `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	Currency            *string                                               `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Cycle               *string                                               `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	EndTime             *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimestamp        *int64                                                `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	InstanceFamily      *string                                               `json:"InstanceFamily,omitempty" xml:"InstanceFamily,omitempty"`
+	InstanceId          *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LastBillTotalUsage  *string                                               `json:"LastBillTotalUsage,omitempty" xml:"LastBillTotalUsage,omitempty"`
+	LastBillUtilization *string                                               `json:"LastBillUtilization,omitempty" xml:"LastBillUtilization,omitempty"`
+	PayMode             *string                                               `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	PoolValue           *string                                               `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	PrepayFee           *string                                               `json:"PrepayFee,omitempty" xml:"PrepayFee,omitempty"`
+	Region              *string                                               `json:"Region,omitempty" xml:"Region,omitempty"`
+	SavingsType         *string                                               `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
+	StartTime           *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimestamp      *int64                                                `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Status              *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TotalSave           *string                                               `json:"TotalSave,omitempty" xml:"TotalSave,omitempty"`
+	Utilization         *string                                               `json:"Utilization,omitempty" xml:"Utilization,omitempty"`
 }
 
 func (s QuerySavingsPlansInstanceResponseBodyDataItems) String() string {
@@ -15153,28 +15404,8 @@ func (s QuerySavingsPlansInstanceResponseBodyDataItems) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetStatus(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.Status = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetSavingsType(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.SavingsType = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetUtilization(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.Utilization = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetPrepayFee(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.PrepayFee = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetInstanceId(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.InstanceId = &v
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetAllocationStatus(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.AllocationStatus = &v
 	return s
 }
 
@@ -15183,18 +15414,18 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetCurrency(v string) *
 	return s
 }
 
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetCycle(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.Cycle = &v
+	return s
+}
+
 func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetEndTime(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
 	s.EndTime = &v
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetStartTime(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetAllocationStatus(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.AllocationStatus = &v
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetEndTimestamp(v int64) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.EndTimestamp = &v
 	return s
 }
 
@@ -15203,18 +15434,18 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetInstanceFamily(v str
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetRegion(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.Region = &v
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetInstanceId(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetTotalSave(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.TotalSave = &v
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetLastBillTotalUsage(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.LastBillTotalUsage = &v
 	return s
 }
 
-func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetPoolValue(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
-	s.PoolValue = &v
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetLastBillUtilization(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.LastBillUtilization = &v
 	return s
 }
 
@@ -15223,8 +15454,53 @@ func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetPayMode(v string) *Q
 	return s
 }
 
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetPoolValue(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.PoolValue = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetPrepayFee(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.PrepayFee = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetRegion(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.Region = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetSavingsType(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.SavingsType = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetStartTime(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetStartTimestamp(v int64) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetStatus(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.Status = &v
+	return s
+}
+
 func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetTags(v []*QuerySavingsPlansInstanceResponseBodyDataItemsTags) *QuerySavingsPlansInstanceResponseBodyDataItems {
 	s.Tags = v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetTotalSave(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.TotalSave = &v
+	return s
+}
+
+func (s *QuerySavingsPlansInstanceResponseBodyDataItems) SetUtilization(v string) *QuerySavingsPlansInstanceResponseBodyDataItems {
+	s.Utilization = &v
 	return s
 }
 
@@ -15275,18 +15551,18 @@ func (s *QuerySavingsPlansInstanceResponse) SetBody(v *QuerySavingsPlansInstance
 }
 
 type QuerySettleBillRequest struct {
+	BillOwnerId            *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	IsHideZeroCharge       *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	MaxResults             *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType            *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType       *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	IsHideZeroCharge       *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults             *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	BillOwnerId            *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	RecordID               *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	SubscriptionType       *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QuerySettleBillRequest) String() string {
@@ -15297,13 +15573,38 @@ func (s QuerySettleBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QuerySettleBillRequest) SetBillOwnerId(v int64) *QuerySettleBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *QuerySettleBillRequest) SetBillingCycle(v string) *QuerySettleBillRequest {
 	s.BillingCycle = &v
 	return s
 }
 
-func (s *QuerySettleBillRequest) SetType(v string) *QuerySettleBillRequest {
-	s.Type = &v
+func (s *QuerySettleBillRequest) SetIsDisplayLocalCurrency(v bool) *QuerySettleBillRequest {
+	s.IsDisplayLocalCurrency = &v
+	return s
+}
+
+func (s *QuerySettleBillRequest) SetIsHideZeroCharge(v bool) *QuerySettleBillRequest {
+	s.IsHideZeroCharge = &v
+	return s
+}
+
+func (s *QuerySettleBillRequest) SetMaxResults(v int32) *QuerySettleBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QuerySettleBillRequest) SetNextToken(v string) *QuerySettleBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySettleBillRequest) SetOwnerId(v int64) *QuerySettleBillRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -15317,52 +15618,27 @@ func (s *QuerySettleBillRequest) SetProductType(v string) *QuerySettleBillReques
 	return s
 }
 
-func (s *QuerySettleBillRequest) SetSubscriptionType(v string) *QuerySettleBillRequest {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetIsHideZeroCharge(v bool) *QuerySettleBillRequest {
-	s.IsHideZeroCharge = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetIsDisplayLocalCurrency(v bool) *QuerySettleBillRequest {
-	s.IsDisplayLocalCurrency = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetOwnerId(v int64) *QuerySettleBillRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetNextToken(v string) *QuerySettleBillRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetMaxResults(v int32) *QuerySettleBillRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *QuerySettleBillRequest) SetBillOwnerId(v int64) *QuerySettleBillRequest {
-	s.BillOwnerId = &v
-	return s
-}
-
 func (s *QuerySettleBillRequest) SetRecordID(v string) *QuerySettleBillRequest {
 	s.RecordID = &v
 	return s
 }
 
+func (s *QuerySettleBillRequest) SetSubscriptionType(v string) *QuerySettleBillRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QuerySettleBillRequest) SetType(v string) *QuerySettleBillRequest {
+	s.Type = &v
+	return s
+}
+
 type QuerySettleBillResponseBody struct {
 	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySettleBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QuerySettleBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QuerySettleBillResponseBody) String() string {
@@ -15375,6 +15651,11 @@ func (s QuerySettleBillResponseBody) GoString() string {
 
 func (s *QuerySettleBillResponseBody) SetCode(v string) *QuerySettleBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBody) SetData(v *QuerySettleBillResponseBodyData) *QuerySettleBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -15393,19 +15674,14 @@ func (s *QuerySettleBillResponseBody) SetSuccess(v bool) *QuerySettleBillRespons
 	return s
 }
 
-func (s *QuerySettleBillResponseBody) SetData(v *QuerySettleBillResponseBodyData) *QuerySettleBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QuerySettleBillResponseBodyData struct {
-	NextToken    *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	BillingCycle *string                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	MaxResults   *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	AccountID    *string                               `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	TotalCount   *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	AccountName  *string                               `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        *QuerySettleBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	MaxResults   *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	TotalCount   *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySettleBillResponseBodyData) String() string {
@@ -15416,28 +15692,8 @@ func (s QuerySettleBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySettleBillResponseBodyData) SetNextToken(v string) *QuerySettleBillResponseBodyData {
-	s.NextToken = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyData) SetBillingCycle(v string) *QuerySettleBillResponseBodyData {
-	s.BillingCycle = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyData) SetMaxResults(v int32) *QuerySettleBillResponseBodyData {
-	s.MaxResults = &v
-	return s
-}
-
 func (s *QuerySettleBillResponseBodyData) SetAccountID(v string) *QuerySettleBillResponseBodyData {
 	s.AccountID = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyData) SetTotalCount(v int32) *QuerySettleBillResponseBodyData {
-	s.TotalCount = &v
 	return s
 }
 
@@ -15446,8 +15702,28 @@ func (s *QuerySettleBillResponseBodyData) SetAccountName(v string) *QuerySettleB
 	return s
 }
 
+func (s *QuerySettleBillResponseBodyData) SetBillingCycle(v string) *QuerySettleBillResponseBodyData {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *QuerySettleBillResponseBodyData) SetItems(v *QuerySettleBillResponseBodyDataItems) *QuerySettleBillResponseBodyData {
 	s.Items = v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyData) SetMaxResults(v int32) *QuerySettleBillResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyData) SetNextToken(v string) *QuerySettleBillResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyData) SetTotalCount(v int32) *QuerySettleBillResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
@@ -15469,39 +15745,41 @@ func (s *QuerySettleBillResponseBodyDataItems) SetItem(v []*QuerySettleBillRespo
 }
 
 type QuerySettleBillResponseBodyDataItemsItem struct {
-	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
-	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
-	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
+	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s QuerySettleBillResponseBodyDataItemsItem) String() string {
@@ -15512,63 +15790,8 @@ func (s QuerySettleBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetStatus(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.Status = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.RoundDownDiscount = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetItem(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.Item = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetCurrency(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.Currency = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetBillAccountName(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.BillAccountName = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.DeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.UsageStartTime = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetBizType(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.BizType = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.UsageEndTime = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetSubOrderId(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.SubOrderId = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
 	return s
 }
 
@@ -15577,38 +15800,23 @@ func (s *QuerySettleBillResponseBodyDataItemsItem) SetAfterTaxAmount(v float32) 
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.OutstandingAmount = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetBillAccountID(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.BillAccountID = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PaymentTime = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetBillAccountName(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.BillAccountName = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetTax(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.Tax = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetBizType(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.BizType = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PretaxAmountLocal = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPipCode(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PipCode = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentTransactionID(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PaymentTransactionID = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetCashAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.CashAmount = &v
 	return s
 }
 
@@ -15617,28 +15825,18 @@ func (s *QuerySettleBillResponseBodyDataItemsItem) SetCommodityCode(v string) *Q
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductName(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.ProductName = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetCurrency(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.Currency = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetRecordID(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.RecordID = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.DeductedByCashCoupons = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductDetail(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.PaymentCurrency = &v
-	return s
-}
-
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.DeductedByCoupons = &v
 	return s
 }
 
@@ -15647,8 +15845,23 @@ func (s *QuerySettleBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v fl
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetBillAccountID(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.BillAccountID = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetItem(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.Item = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
 	return s
 }
 
@@ -15657,13 +15870,33 @@ func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
-	s.InvoiceDiscount = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PaymentCurrency = &v
 	return s
 }
 
-func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySettleBillResponseBodyDataItemsItem {
-	s.ProductType = &v
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PaymentTime = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPaymentTransactionID(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PaymentTransactionID = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPipCode(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.PretaxAmountLocal = &v
 	return s
 }
 
@@ -15674,6 +15907,61 @@ func (s *QuerySettleBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float3
 
 func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductCode(v string) *QuerySettleBillResponseBodyDataItemsItem {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductDetail(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductName(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetRecordID(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.RecordID = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetRoundDownDiscount(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.RoundDownDiscount = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetStatus(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetSubOrderId(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetTax(v float32) *QuerySettleBillResponseBodyDataItemsItem {
+	s.Tax = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.UsageEndTime = &v
+	return s
+}
+
+func (s *QuerySettleBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QuerySettleBillResponseBodyDataItemsItem {
+	s.UsageStartTime = &v
 	return s
 }
 
@@ -15701,17 +15989,17 @@ func (s *QuerySettleBillResponse) SetBody(v *QuerySettleBillResponseBody) *Query
 }
 
 type QuerySettlementBillRequest struct {
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QuerySettlementBillRequest) String() string {
@@ -15722,8 +16010,18 @@ func (s QuerySettlementBillRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySettlementBillRequest) SetPageSize(v int32) *QuerySettlementBillRequest {
-	s.PageSize = &v
+func (s *QuerySettlementBillRequest) SetBillingCycle(v string) *QuerySettlementBillRequest {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *QuerySettlementBillRequest) SetEndTime(v string) *QuerySettlementBillRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySettlementBillRequest) SetIsHideZeroCharge(v bool) *QuerySettlementBillRequest {
+	s.IsHideZeroCharge = &v
 	return s
 }
 
@@ -15737,23 +16035,8 @@ func (s *QuerySettlementBillRequest) SetPageNum(v int32) *QuerySettlementBillReq
 	return s
 }
 
-func (s *QuerySettlementBillRequest) SetBillingCycle(v string) *QuerySettlementBillRequest {
-	s.BillingCycle = &v
-	return s
-}
-
-func (s *QuerySettlementBillRequest) SetStartTime(v string) *QuerySettlementBillRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QuerySettlementBillRequest) SetEndTime(v string) *QuerySettlementBillRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *QuerySettlementBillRequest) SetType(v string) *QuerySettlementBillRequest {
-	s.Type = &v
+func (s *QuerySettlementBillRequest) SetPageSize(v int32) *QuerySettlementBillRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -15767,22 +16050,27 @@ func (s *QuerySettlementBillRequest) SetProductType(v string) *QuerySettlementBi
 	return s
 }
 
+func (s *QuerySettlementBillRequest) SetStartTime(v string) *QuerySettlementBillRequest {
+	s.StartTime = &v
+	return s
+}
+
 func (s *QuerySettlementBillRequest) SetSubscriptionType(v string) *QuerySettlementBillRequest {
 	s.SubscriptionType = &v
 	return s
 }
 
-func (s *QuerySettlementBillRequest) SetIsHideZeroCharge(v bool) *QuerySettlementBillRequest {
-	s.IsHideZeroCharge = &v
+func (s *QuerySettlementBillRequest) SetType(v string) *QuerySettlementBillRequest {
+	s.Type = &v
 	return s
 }
 
 type QuerySettlementBillResponseBody struct {
 	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySettlementBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QuerySettlementBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QuerySettlementBillResponseBody) String() string {
@@ -15795,6 +16083,11 @@ func (s QuerySettlementBillResponseBody) GoString() string {
 
 func (s *QuerySettlementBillResponseBody) SetCode(v string) *QuerySettlementBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBody) SetData(v *QuerySettlementBillResponseBodyData) *QuerySettlementBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -15813,17 +16106,12 @@ func (s *QuerySettlementBillResponseBody) SetSuccess(v bool) *QuerySettlementBil
 	return s
 }
 
-func (s *QuerySettlementBillResponseBody) SetData(v *QuerySettlementBillResponseBodyData) *QuerySettlementBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QuerySettlementBillResponseBodyData struct {
-	PageNum      *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	BillingCycle *string                                   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QuerySettlementBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Items        *QuerySettlementBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QuerySettlementBillResponseBodyData) String() string {
@@ -15834,13 +16122,18 @@ func (s QuerySettlementBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySettlementBillResponseBodyData) SetPageNum(v int32) *QuerySettlementBillResponseBodyData {
-	s.PageNum = &v
+func (s *QuerySettlementBillResponseBodyData) SetBillingCycle(v string) *QuerySettlementBillResponseBodyData {
+	s.BillingCycle = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyData) SetBillingCycle(v string) *QuerySettlementBillResponseBodyData {
-	s.BillingCycle = &v
+func (s *QuerySettlementBillResponseBodyData) SetItems(v *QuerySettlementBillResponseBodyDataItems) *QuerySettlementBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyData) SetPageNum(v int32) *QuerySettlementBillResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -15851,11 +16144,6 @@ func (s *QuerySettlementBillResponseBodyData) SetPageSize(v int32) *QuerySettlem
 
 func (s *QuerySettlementBillResponseBodyData) SetTotalCount(v int32) *QuerySettlementBillResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyData) SetItems(v *QuerySettlementBillResponseBodyDataItems) *QuerySettlementBillResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -15877,49 +16165,49 @@ func (s *QuerySettlementBillResponseBodyDataItems) SetItem(v []*QuerySettlementB
 }
 
 type QuerySettlementBillResponseBodyDataItemsItem struct {
-	Status                      *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	InvoiceNo                   *string  `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
-	BillID                      *string  `json:"BillID,omitempty" xml:"BillID,omitempty"`
-	CreateTime                  *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Item                        *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	Seller                      *string  `json:"Seller,omitempty" xml:"Seller,omitempty"`
-	Currency                    *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	ChargeDiscount              *float32 `json:"ChargeDiscount,omitempty" xml:"ChargeDiscount,omitempty"`
-	DeductedByCashCoupons       *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	Config                      *string  `json:"Config,omitempty" xml:"Config,omitempty"`
-	SubscriptionType            *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	UsageStartTime              *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
-	UsageEndTime                *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	DeductedByCoupons           *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	Region                      *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	OutstandingAmount           *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	AfterTaxAmount              *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	PaymentTime                 *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	SolutionID                  *string  `json:"SolutionID,omitempty" xml:"SolutionID,omitempty"`
-	OrderType                   *string  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ClearedTime                 *string  `json:"ClearedTime,omitempty" xml:"ClearedTime,omitempty"`
-	Quantity                    *string  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Tax                         *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	PretaxAmountLocal           *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	PretaxAmount                *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	LinkedCustomerOrderID       *string  `json:"LinkedCustomerOrderID,omitempty" xml:"LinkedCustomerOrderID,omitempty"`
 	AccountDiscount             *float32 `json:"AccountDiscount,omitempty" xml:"AccountDiscount,omitempty"`
-	RecordID                    *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	PayerAccount                *string  `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
-	Promotion                   *string  `json:"Promotion,omitempty" xml:"Promotion,omitempty"`
-	OriginalOrderID             *string  `json:"OriginalOrderID,omitempty" xml:"OriginalOrderID,omitempty"`
-	PreviousBillingCycleBalance *float32 `json:"PreviousBillingCycleBalance,omitempty" xml:"PreviousBillingCycleBalance,omitempty"`
-	MybankPaymentAmount         *float32 `json:"MybankPaymentAmount,omitempty" xml:"MybankPaymentAmount,omitempty"`
-	PaymentCurrency             *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	OrderID                     *string  `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
-	OwnerID                     *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	AfterTaxAmount              *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillID                      *string  `json:"BillID,omitempty" xml:"BillID,omitempty"`
+	ChargeDiscount              *float32 `json:"ChargeDiscount,omitempty" xml:"ChargeDiscount,omitempty"`
+	ClearedTime                 *string  `json:"ClearedTime,omitempty" xml:"ClearedTime,omitempty"`
+	Config                      *string  `json:"Config,omitempty" xml:"Config,omitempty"`
+	CreateTime                  *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Currency                    *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DeductedByCashCoupons       *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	DeductedByCoupons           *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	DeductedByPrepaidCard       *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	InvoiceNo                   *string  `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	Item                        *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	LinkedCustomerOrderID       *string  `json:"LinkedCustomerOrderID,omitempty" xml:"LinkedCustomerOrderID,omitempty"`
+	MybankPaymentAmount         *float32 `json:"MybankPaymentAmount,omitempty" xml:"MybankPaymentAmount,omitempty"`
+	OrderID                     *string  `json:"OrderID,omitempty" xml:"OrderID,omitempty"`
+	OrderType                   *string  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OriginalOrderID             *string  `json:"OriginalOrderID,omitempty" xml:"OriginalOrderID,omitempty"`
+	OutstandingAmount           *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                     *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PayerAccount                *string  `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
 	PaymentAmount               *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	ProductType                 *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	PaymentCurrency             *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	PaymentTime                 *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	PretaxAmount                *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	PretaxAmountLocal           *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	PretaxGrossAmount           *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	SuborderID                  *string  `json:"SuborderID,omitempty" xml:"SuborderID,omitempty"`
-	SolutionName                *string  `json:"SolutionName,omitempty" xml:"SolutionName,omitempty"`
+	PreviousBillingCycleBalance *float32 `json:"PreviousBillingCycleBalance,omitempty" xml:"PreviousBillingCycleBalance,omitempty"`
 	ProductCode                 *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType                 *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Promotion                   *string  `json:"Promotion,omitempty" xml:"Promotion,omitempty"`
+	Quantity                    *string  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	RecordID                    *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	Region                      *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	Seller                      *string  `json:"Seller,omitempty" xml:"Seller,omitempty"`
+	SolutionID                  *string  `json:"SolutionID,omitempty" xml:"SolutionID,omitempty"`
+	SolutionName                *string  `json:"SolutionName,omitempty" xml:"SolutionName,omitempty"`
+	Status                      *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuborderID                  *string  `json:"SuborderID,omitempty" xml:"SuborderID,omitempty"`
+	SubscriptionType            *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tax                         *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	UsageEndTime                *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	UsageStartTime              *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s QuerySettlementBillResponseBodyDataItemsItem) String() string {
@@ -15930,83 +16218,8 @@ func (s QuerySettlementBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetStatus(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Status = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetInvoiceNo(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.InvoiceNo = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetBillID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.BillID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetCreateTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetItem(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Item = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSeller(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Seller = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetCurrency(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Currency = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetChargeDiscount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.ChargeDiscount = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.DeductedByCashCoupons = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetConfig(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Config = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.UsageStartTime = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.UsageEndTime = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetRegion(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Region = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.OutstandingAmount = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetAccountDiscount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.AccountDiscount = &v
 	return s
 }
 
@@ -16015,18 +16228,13 @@ func (s *QuerySettlementBillResponseBodyDataItemsItem) SetAfterTaxAmount(v float
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PaymentTime = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetBillID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.BillID = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSolutionID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.SolutionID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOrderType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.OrderType = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetChargeDiscount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.ChargeDiscount = &v
 	return s
 }
 
@@ -16035,78 +16243,28 @@ func (s *QuerySettlementBillResponseBodyDataItemsItem) SetClearedTime(v string) 
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetQuantity(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Quantity = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetConfig(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Config = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetTax(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Tax = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetCreateTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PretaxAmountLocal = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetCurrency(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Currency = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.DeductedByCashCoupons = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetLinkedCustomerOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.LinkedCustomerOrderID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetAccountDiscount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.AccountDiscount = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetRecordID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.RecordID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPayerAccount(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PayerAccount = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPromotion(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.Promotion = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOriginalOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.OriginalOrderID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPreviousBillingCycleBalance(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PreviousBillingCycleBalance = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetMybankPaymentAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.MybankPaymentAmount = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.PaymentCurrency = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.OrderID = &v
-	return s
-}
-
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.DeductedByCoupons = &v
 	return s
 }
 
@@ -16115,13 +16273,78 @@ func (s *QuerySettlementBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(
 	return s
 }
 
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetInvoiceNo(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.InvoiceNo = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetItem(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Item = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetLinkedCustomerOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.LinkedCustomerOrderID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetMybankPaymentAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.MybankPaymentAmount = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.OrderID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOrderType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.OrderType = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOriginalOrderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.OriginalOrderID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPayerAccount(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PayerAccount = &v
+	return s
+}
+
 func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
 	s.PaymentAmount = &v
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.ProductType = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPaymentCurrency(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PaymentCurrency = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPaymentTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PaymentTime = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPretaxAmountLocal(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PretaxAmountLocal = &v
 	return s
 }
 
@@ -16130,8 +16353,48 @@ func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v fl
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSuborderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.SuborderID = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPreviousBillingCycleBalance(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.PreviousBillingCycleBalance = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetProductCode(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetPromotion(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Promotion = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetQuantity(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetRecordID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.RecordID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetRegion(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Region = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSeller(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Seller = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSolutionID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.SolutionID = &v
 	return s
 }
 
@@ -16140,8 +16403,33 @@ func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSolutionName(v string)
 	return s
 }
 
-func (s *QuerySettlementBillResponseBodyDataItemsItem) SetProductCode(v string) *QuerySettlementBillResponseBodyDataItemsItem {
-	s.ProductCode = &v
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetStatus(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Status = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSuborderID(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.SuborderID = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetTax(v float32) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.Tax = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetUsageEndTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.UsageEndTime = &v
+	return s
+}
+
+func (s *QuerySettlementBillResponseBodyDataItemsItem) SetUsageStartTime(v string) *QuerySettlementBillResponseBodyDataItemsItem {
+	s.UsageStartTime = &v
 	return s
 }
 
@@ -16169,14 +16457,14 @@ func (s *QuerySettlementBillResponse) SetBody(v *QuerySettlementBillResponseBody
 }
 
 type QuerySplitItemBillRequest struct {
+	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BillOwnerId      *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s QuerySplitItemBillRequest) String() string {
@@ -16187,23 +16475,13 @@ func (s QuerySplitItemBillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QuerySplitItemBillRequest) SetBillOwnerId(v int64) *QuerySplitItemBillRequest {
+	s.BillOwnerId = &v
+	return s
+}
+
 func (s *QuerySplitItemBillRequest) SetBillingCycle(v string) *QuerySplitItemBillRequest {
 	s.BillingCycle = &v
-	return s
-}
-
-func (s *QuerySplitItemBillRequest) SetProductCode(v string) *QuerySplitItemBillRequest {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *QuerySplitItemBillRequest) SetProductType(v string) *QuerySplitItemBillRequest {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QuerySplitItemBillRequest) SetSubscriptionType(v string) *QuerySplitItemBillRequest {
-	s.SubscriptionType = &v
 	return s
 }
 
@@ -16222,17 +16500,27 @@ func (s *QuerySplitItemBillRequest) SetPageSize(v int32) *QuerySplitItemBillRequ
 	return s
 }
 
-func (s *QuerySplitItemBillRequest) SetBillOwnerId(v int64) *QuerySplitItemBillRequest {
-	s.BillOwnerId = &v
+func (s *QuerySplitItemBillRequest) SetProductCode(v string) *QuerySplitItemBillRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *QuerySplitItemBillRequest) SetProductType(v string) *QuerySplitItemBillRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QuerySplitItemBillRequest) SetSubscriptionType(v string) *QuerySplitItemBillRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
 type QuerySplitItemBillResponseBody struct {
 	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QuerySplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QuerySplitItemBillResponseBody) String() string {
@@ -16245,6 +16533,11 @@ func (s QuerySplitItemBillResponseBody) GoString() string {
 
 func (s *QuerySplitItemBillResponseBody) SetCode(v string) *QuerySplitItemBillResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBody) SetData(v *QuerySplitItemBillResponseBodyData) *QuerySplitItemBillResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -16263,19 +16556,14 @@ func (s *QuerySplitItemBillResponseBody) SetSuccess(v bool) *QuerySplitItemBillR
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBody) SetData(v *QuerySplitItemBillResponseBodyData) *QuerySplitItemBillResponseBody {
-	s.Data = v
-	return s
-}
-
 type QuerySplitItemBillResponseBodyData struct {
-	PageNum      *int32                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	BillingCycle *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	AccountID    *string                                  `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	AccountName  *string                                  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BillingCycle *string                                  `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	Items        *QuerySplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNum      *int32                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TotalCount   *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	AccountName  *string                                  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Items        *QuerySplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 }
 
 func (s QuerySplitItemBillResponseBodyData) String() string {
@@ -16286,8 +16574,13 @@ func (s QuerySplitItemBillResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySplitItemBillResponseBodyData) SetPageNum(v int32) *QuerySplitItemBillResponseBodyData {
-	s.PageNum = &v
+func (s *QuerySplitItemBillResponseBodyData) SetAccountID(v string) *QuerySplitItemBillResponseBodyData {
+	s.AccountID = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyData) SetAccountName(v string) *QuerySplitItemBillResponseBodyData {
+	s.AccountName = &v
 	return s
 }
 
@@ -16296,8 +16589,13 @@ func (s *QuerySplitItemBillResponseBodyData) SetBillingCycle(v string) *QuerySpl
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyData) SetAccountID(v string) *QuerySplitItemBillResponseBodyData {
-	s.AccountID = &v
+func (s *QuerySplitItemBillResponseBodyData) SetItems(v *QuerySplitItemBillResponseBodyDataItems) *QuerySplitItemBillResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyData) SetPageNum(v int32) *QuerySplitItemBillResponseBodyData {
+	s.PageNum = &v
 	return s
 }
 
@@ -16308,16 +16606,6 @@ func (s *QuerySplitItemBillResponseBodyData) SetPageSize(v int32) *QuerySplitIte
 
 func (s *QuerySplitItemBillResponseBodyData) SetTotalCount(v int32) *QuerySplitItemBillResponseBodyData {
 	s.TotalCount = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyData) SetAccountName(v string) *QuerySplitItemBillResponseBodyData {
-	s.AccountName = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyData) SetItems(v *QuerySplitItemBillResponseBodyDataItems) *QuerySplitItemBillResponseBodyData {
-	s.Items = v
 	return s
 }
 
@@ -16339,52 +16627,54 @@ func (s *QuerySplitItemBillResponseBodyDataItems) SetItem(v []*QuerySplitItemBil
 }
 
 type QuerySplitItemBillResponseBodyDataItemsItem struct {
+	AdjustAmount              *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
-	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	Currency                  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DeductedByCashCoupons     *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	DeductedByCoupons         *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
-	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	CostUnit                  *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
-	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
-	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	CommodityCode             *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
 	DeductedByPrepaidCard     *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
-	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	DeductedByResourcePackage *string  `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
-	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
-	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
-	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	InstanceConfig            *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	InstanceID                *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceSpec              *string  `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InternetIP                *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OutstandingAmount         *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	OwnerID                   *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	PaymentAmount             *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	PipCode                   *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PretaxAmount              *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	PretaxGrossAmount         *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
 	ProductCode               *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	ProductDetail             *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName               *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType               *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region                    *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup             *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ServicePeriod             *string  `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
+	ServicePeriodUnit         *string  `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
+	SplitAccountID            *string  `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
+	SplitAccountName          *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	SplitBillingCycle         *string  `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	SplitCommodityCode        *string  `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
+	SplitItemID               *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	SplitItemName             *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	SplitProductDetail        *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	SubscriptionType          *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	Tag                       *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Usage                     *string  `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	UsageUnit                 *string  `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+	Zone                      *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s QuerySplitItemBillResponseBodyDataItemsItem) String() string {
@@ -16395,43 +16685,38 @@ func (s QuerySplitItemBillResponseBodyDataItemsItem) GoString() string {
 	return s.String()
 }
 
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetAdjustAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.AdjustAmount = &v
+	return s
+}
+
 func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetBillingDate(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
 	s.BillingDate = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceConfig(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.InstanceConfig = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetBillingItem(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.BillingItem = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInternetIP(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.InternetIP = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetBillingType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.BillingType = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitItemID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitItemID = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetCashAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.CashAmount = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetItem(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.Item = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetCommodityCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.CommodityCode = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitAccountID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitAccountID = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetTag(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.Tag = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.InstanceID = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetCostUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.CostUnit = &v
 	return s
 }
 
@@ -16445,108 +16730,8 @@ func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetDeductedByCashCoupons(v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceSpec(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.InstanceSpec = &v
-	return s
-}
-
 func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetDeductedByCoupons(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
 	s.DeductedByCoupons = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetBillingItem(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.BillingItem = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetRegion(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.Region = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.OutstandingAmount = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetCostUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.CostUnit = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetListPriceUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ListPriceUnit = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetResourceGroup(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPipCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.PipCode = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetServicePeriodUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ServicePeriodUnit = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.PretaxAmount = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetCommodityCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ProductName = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitProductDetail(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitProductDetail = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetNickName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.NickName = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductDetail(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ProductDetail = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetUsage(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.Usage = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetIntranetIP(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.IntranetIP = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.OwnerID = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitCommodityCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitCommodityCode = &v
 	return s
 }
 
@@ -16555,13 +16740,33 @@ func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetDeductedByPrepaidCard(v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetUsageUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.UsageUnit = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetDeductedByResourcePackage(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.DeductedByResourcePackage = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.PaymentAmount = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceConfig(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.InstanceConfig = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInstanceSpec(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInternetIP(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.InternetIP = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetIntranetIP(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.IntranetIP = &v
 	return s
 }
 
@@ -16570,33 +16775,8 @@ func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetInvoiceDiscount(v float
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetDeductedByResourcePackage(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.DeductedByResourcePackage = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ProductType = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitBillingCycle(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitBillingCycle = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetServicePeriod(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.ServicePeriod = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitItemName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitItemName = &v
-	return s
-}
-
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetZone(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.Zone = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetItem(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.Item = &v
 	return s
 }
 
@@ -16605,13 +16785,43 @@ func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetListPrice(v string) *Qu
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.PretaxGrossAmount = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetListPriceUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ListPriceUnit = &v
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitAccountName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.SplitAccountName = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetNickName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.NickName = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetOutstandingAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.OutstandingAmount = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetOwnerID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.OwnerID = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPaymentAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.PaymentAmount = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPipCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPretaxAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetPretaxGrossAmount(v float32) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.PretaxGrossAmount = &v
 	return s
 }
 
@@ -16620,8 +16830,98 @@ func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductCode(v string) *
 	return s
 }
 
-func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetBillingType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
-	s.BillingType = &v
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductDetail(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetProductType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetRegion(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.Region = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetResourceGroup(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetServicePeriod(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ServicePeriod = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetServicePeriodUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.ServicePeriodUnit = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitAccountID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitAccountID = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitAccountName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitAccountName = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitBillingCycle(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitBillingCycle = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitCommodityCode(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitCommodityCode = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitItemID(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitItemID = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitItemName(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitItemName = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSplitProductDetail(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SplitProductDetail = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetSubscriptionType(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetTag(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.Tag = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetUsage(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.Usage = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetUsageUnit(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.UsageUnit = &v
+	return s
+}
+
+func (s *QuerySplitItemBillResponseBodyDataItemsItem) SetZone(v string) *QuerySplitItemBillResponseBodyDataItemsItem {
+	s.Zone = &v
 	return s
 }
 
@@ -16649,13 +16949,13 @@ func (s *QuerySplitItemBillResponse) SetBody(v *QuerySplitItemBillResponseBody) 
 }
 
 type QueryUserOmsDataRequest struct {
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Marker    *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s QueryUserOmsDataRequest) String() string {
@@ -16666,23 +16966,8 @@ func (s QueryUserOmsDataRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUserOmsDataRequest) SetOwnerId(v int64) *QueryUserOmsDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryUserOmsDataRequest) SetTable(v string) *QueryUserOmsDataRequest {
-	s.Table = &v
-	return s
-}
-
 func (s *QueryUserOmsDataRequest) SetDataType(v string) *QueryUserOmsDataRequest {
 	s.DataType = &v
-	return s
-}
-
-func (s *QueryUserOmsDataRequest) SetStartTime(v string) *QueryUserOmsDataRequest {
-	s.StartTime = &v
 	return s
 }
 
@@ -16696,17 +16981,32 @@ func (s *QueryUserOmsDataRequest) SetMarker(v string) *QueryUserOmsDataRequest {
 	return s
 }
 
+func (s *QueryUserOmsDataRequest) SetOwnerId(v int64) *QueryUserOmsDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *QueryUserOmsDataRequest) SetPageSize(v int32) *QueryUserOmsDataRequest {
 	s.PageSize = &v
 	return s
 }
 
+func (s *QueryUserOmsDataRequest) SetStartTime(v string) *QueryUserOmsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryUserOmsDataRequest) SetTable(v string) *QueryUserOmsDataRequest {
+	s.Table = &v
+	return s
+}
+
 type QueryUserOmsDataResponseBody struct {
 	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s QueryUserOmsDataResponseBody) String() string {
@@ -16719,6 +17019,11 @@ func (s QueryUserOmsDataResponseBody) GoString() string {
 
 func (s *QueryUserOmsDataResponseBody) SetCode(v string) *QueryUserOmsDataResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryUserOmsDataResponseBody) SetData(v *QueryUserOmsDataResponseBodyData) *QueryUserOmsDataResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -16737,14 +17042,9 @@ func (s *QueryUserOmsDataResponseBody) SetSuccess(v bool) *QueryUserOmsDataRespo
 	return s
 }
 
-func (s *QueryUserOmsDataResponseBody) SetData(v *QueryUserOmsDataResponseBodyData) *QueryUserOmsDataResponseBody {
-	s.Data = v
-	return s
-}
-
 type QueryUserOmsDataResponseBodyData struct {
-	Marker  *string                  `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	HostId  *string                  `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Marker  *string                  `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OmsData []map[string]interface{} `json:"OmsData,omitempty" xml:"OmsData,omitempty" type:"Repeated"`
 }
 
@@ -16756,13 +17056,13 @@ func (s QueryUserOmsDataResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUserOmsDataResponseBodyData) SetMarker(v string) *QueryUserOmsDataResponseBodyData {
-	s.Marker = &v
+func (s *QueryUserOmsDataResponseBodyData) SetHostId(v string) *QueryUserOmsDataResponseBodyData {
+	s.HostId = &v
 	return s
 }
 
-func (s *QueryUserOmsDataResponseBodyData) SetHostId(v string) *QueryUserOmsDataResponseBodyData {
-	s.HostId = &v
+func (s *QueryUserOmsDataResponseBodyData) SetMarker(v string) *QueryUserOmsDataResponseBodyData {
+	s.Marker = &v
 	return s
 }
 
@@ -16795,9 +17095,9 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 }
 
 type RelieveAccountRelationRequest struct {
-	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	ChildUserId  *int64  `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16809,8 +17109,8 @@ func (s RelieveAccountRelationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RelieveAccountRelationRequest) SetRelationType(v string) *RelieveAccountRelationRequest {
-	s.RelationType = &v
+func (s *RelieveAccountRelationRequest) SetChildUserId(v int64) *RelieveAccountRelationRequest {
+	s.ChildUserId = &v
 	return s
 }
 
@@ -16819,8 +17119,8 @@ func (s *RelieveAccountRelationRequest) SetParentUserId(v int64) *RelieveAccount
 	return s
 }
 
-func (s *RelieveAccountRelationRequest) SetChildUserId(v int64) *RelieveAccountRelationRequest {
-	s.ChildUserId = &v
+func (s *RelieveAccountRelationRequest) SetRelationType(v string) *RelieveAccountRelationRequest {
+	s.RelationType = &v
 	return s
 }
 
@@ -16831,10 +17131,10 @@ func (s *RelieveAccountRelationRequest) SetRequestId(v string) *RelieveAccountRe
 
 type RelieveAccountRelationResponseBody struct {
 	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RelieveAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *RelieveAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s RelieveAccountRelationResponseBody) String() string {
@@ -16850,6 +17150,11 @@ func (s *RelieveAccountRelationResponseBody) SetCode(v string) *RelieveAccountRe
 	return s
 }
 
+func (s *RelieveAccountRelationResponseBody) SetData(v *RelieveAccountRelationResponseBodyData) *RelieveAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *RelieveAccountRelationResponseBody) SetMessage(v string) *RelieveAccountRelationResponseBody {
 	s.Message = &v
 	return s
@@ -16862,11 +17167,6 @@ func (s *RelieveAccountRelationResponseBody) SetRequestId(v string) *RelieveAcco
 
 func (s *RelieveAccountRelationResponseBody) SetSuccess(v bool) *RelieveAccountRelationResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *RelieveAccountRelationResponseBody) SetData(v *RelieveAccountRelationResponseBodyData) *RelieveAccountRelationResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -16911,12 +17211,12 @@ func (s *RelieveAccountRelationResponse) SetBody(v *RelieveAccountRelationRespon
 }
 
 type RenewInstanceRequest struct {
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RenewPeriod *int32  `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RenewPeriod *int32  `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -16927,8 +17227,8 @@ func (s RenewInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenewInstanceRequest) SetProductCode(v string) *RenewInstanceRequest {
-	s.ProductCode = &v
+func (s *RenewInstanceRequest) SetClientToken(v string) *RenewInstanceRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -16937,13 +17237,13 @@ func (s *RenewInstanceRequest) SetInstanceId(v string) *RenewInstanceRequest {
 	return s
 }
 
-func (s *RenewInstanceRequest) SetRenewPeriod(v int32) *RenewInstanceRequest {
-	s.RenewPeriod = &v
+func (s *RenewInstanceRequest) SetOwnerId(v int64) *RenewInstanceRequest {
+	s.OwnerId = &v
 	return s
 }
 
-func (s *RenewInstanceRequest) SetClientToken(v string) *RenewInstanceRequest {
-	s.ClientToken = &v
+func (s *RenewInstanceRequest) SetProductCode(v string) *RenewInstanceRequest {
+	s.ProductCode = &v
 	return s
 }
 
@@ -16952,17 +17252,17 @@ func (s *RenewInstanceRequest) SetProductType(v string) *RenewInstanceRequest {
 	return s
 }
 
-func (s *RenewInstanceRequest) SetOwnerId(v int64) *RenewInstanceRequest {
-	s.OwnerId = &v
+func (s *RenewInstanceRequest) SetRenewPeriod(v int32) *RenewInstanceRequest {
+	s.RenewPeriod = &v
 	return s
 }
 
 type RenewInstanceResponseBody struct {
 	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Data      *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -16978,6 +17278,11 @@ func (s *RenewInstanceResponseBody) SetCode(v string) *RenewInstanceResponseBody
 	return s
 }
 
+func (s *RenewInstanceResponseBody) SetData(v *RenewInstanceResponseBodyData) *RenewInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *RenewInstanceResponseBody) SetMessage(v string) *RenewInstanceResponseBody {
 	s.Message = &v
 	return s
@@ -16990,11 +17295,6 @@ func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceRespons
 
 func (s *RenewInstanceResponseBody) SetSuccess(v bool) *RenewInstanceResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *RenewInstanceResponseBody) SetData(v *RenewInstanceResponseBodyData) *RenewInstanceResponseBody {
-	s.Data = v
 	return s
 }
 
@@ -17039,10 +17339,10 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type RenewResourcePackageRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
@@ -17054,13 +17354,8 @@ func (s RenewResourcePackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RenewResourcePackageRequest) SetOwnerId(v int64) *RenewResourcePackageRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *RenewResourcePackageRequest) SetInstanceId(v string) *RenewResourcePackageRequest {
-	s.InstanceId = &v
+func (s *RenewResourcePackageRequest) SetDuration(v int32) *RenewResourcePackageRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -17069,8 +17364,13 @@ func (s *RenewResourcePackageRequest) SetEffectiveDate(v string) *RenewResourceP
 	return s
 }
 
-func (s *RenewResourcePackageRequest) SetDuration(v int32) *RenewResourcePackageRequest {
-	s.Duration = &v
+func (s *RenewResourcePackageRequest) SetInstanceId(v string) *RenewResourcePackageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewResourcePackageRequest) SetOwnerId(v int64) *RenewResourcePackageRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -17081,11 +17381,11 @@ func (s *RenewResourcePackageRequest) SetPricingCycle(v string) *RenewResourcePa
 
 type RenewResourcePackageResponseBody struct {
 	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RenewResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	OrderId   *int64                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Data      *RenewResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s RenewResourcePackageResponseBody) String() string {
@@ -17101,8 +17401,18 @@ func (s *RenewResourcePackageResponseBody) SetCode(v string) *RenewResourcePacka
 	return s
 }
 
+func (s *RenewResourcePackageResponseBody) SetData(v *RenewResourcePackageResponseBodyData) *RenewResourcePackageResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *RenewResourcePackageResponseBody) SetMessage(v string) *RenewResourcePackageResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *RenewResourcePackageResponseBody) SetOrderId(v int64) *RenewResourcePackageResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -17116,19 +17426,9 @@ func (s *RenewResourcePackageResponseBody) SetSuccess(v bool) *RenewResourcePack
 	return s
 }
 
-func (s *RenewResourcePackageResponseBody) SetOrderId(v int64) *RenewResourcePackageResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *RenewResourcePackageResponseBody) SetData(v *RenewResourcePackageResponseBodyData) *RenewResourcePackageResponseBody {
-	s.Data = v
-	return s
-}
-
 type RenewResourcePackageResponseBodyData struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s RenewResourcePackageResponseBodyData) String() string {
@@ -17139,13 +17439,13 @@ func (s RenewResourcePackageResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *RenewResourcePackageResponseBodyData) SetOrderId(v int64) *RenewResourcePackageResponseBodyData {
-	s.OrderId = &v
+func (s *RenewResourcePackageResponseBodyData) SetInstanceId(v string) *RenewResourcePackageResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *RenewResourcePackageResponseBodyData) SetInstanceId(v string) *RenewResourcePackageResponseBodyData {
-	s.InstanceId = &v
+func (s *RenewResourcePackageResponseBodyData) SetOrderId(v int64) *RenewResourcePackageResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -17174,13 +17474,13 @@ func (s *RenewResourcePackageResponse) SetBody(v *RenewResourcePackageResponseBo
 
 type SaveUserCreditRequest struct {
 	AvoidExpiration          *bool   `json:"AvoidExpiration,omitempty" xml:"AvoidExpiration,omitempty"`
-	AvoidPrepaidNotification *bool   `json:"AvoidPrepaidNotification,omitempty" xml:"AvoidPrepaidNotification,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	AvoidNotification        *bool   `json:"AvoidNotification,omitempty" xml:"AvoidNotification,omitempty"`
-	CreditValue              *string `json:"CreditValue,omitempty" xml:"CreditValue,omitempty"`
 	AvoidPrepaidExpiration   *bool   `json:"AvoidPrepaidExpiration,omitempty" xml:"AvoidPrepaidExpiration,omitempty"`
-	Operator                 *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	AvoidPrepaidNotification *bool   `json:"AvoidPrepaidNotification,omitempty" xml:"AvoidPrepaidNotification,omitempty"`
 	CreditType               *string `json:"CreditType,omitempty" xml:"CreditType,omitempty"`
+	CreditValue              *string `json:"CreditValue,omitempty" xml:"CreditValue,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Operator                 *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 }
 
 func (s SaveUserCreditRequest) String() string {
@@ -17196,23 +17496,8 @@ func (s *SaveUserCreditRequest) SetAvoidExpiration(v bool) *SaveUserCreditReques
 	return s
 }
 
-func (s *SaveUserCreditRequest) SetAvoidPrepaidNotification(v bool) *SaveUserCreditRequest {
-	s.AvoidPrepaidNotification = &v
-	return s
-}
-
-func (s *SaveUserCreditRequest) SetDescription(v string) *SaveUserCreditRequest {
-	s.Description = &v
-	return s
-}
-
 func (s *SaveUserCreditRequest) SetAvoidNotification(v bool) *SaveUserCreditRequest {
 	s.AvoidNotification = &v
-	return s
-}
-
-func (s *SaveUserCreditRequest) SetCreditValue(v string) *SaveUserCreditRequest {
-	s.CreditValue = &v
 	return s
 }
 
@@ -17221,13 +17506,28 @@ func (s *SaveUserCreditRequest) SetAvoidPrepaidExpiration(v bool) *SaveUserCredi
 	return s
 }
 
-func (s *SaveUserCreditRequest) SetOperator(v string) *SaveUserCreditRequest {
-	s.Operator = &v
+func (s *SaveUserCreditRequest) SetAvoidPrepaidNotification(v bool) *SaveUserCreditRequest {
+	s.AvoidPrepaidNotification = &v
 	return s
 }
 
 func (s *SaveUserCreditRequest) SetCreditType(v string) *SaveUserCreditRequest {
 	s.CreditType = &v
+	return s
+}
+
+func (s *SaveUserCreditRequest) SetCreditValue(v string) *SaveUserCreditRequest {
+	s.CreditValue = &v
+	return s
+}
+
+func (s *SaveUserCreditRequest) SetDescription(v string) *SaveUserCreditRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SaveUserCreditRequest) SetOperator(v string) *SaveUserCreditRequest {
+	s.Operator = &v
 	return s
 }
 
@@ -17372,7 +17672,6 @@ func (s *SetAllExpirationDayResponse) SetBody(v *SetAllExpirationDayResponseBody
 
 type SetCreditLabelActionRequest struct {
 	ActionType                *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	Uid                       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	ClearCycle                *string `json:"ClearCycle,omitempty" xml:"ClearCycle,omitempty"`
 	CreditAmount              *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
 	CurrencyCode              *string `json:"CurrencyCode,omitempty" xml:"CurrencyCode,omitempty"`
@@ -17388,6 +17687,7 @@ type SetCreditLabelActionRequest struct {
 	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SiteCode                  *string `json:"SiteCode,omitempty" xml:"SiteCode,omitempty"`
 	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Uid                       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s SetCreditLabelActionRequest) String() string {
@@ -17400,11 +17700,6 @@ func (s SetCreditLabelActionRequest) GoString() string {
 
 func (s *SetCreditLabelActionRequest) SetActionType(v string) *SetCreditLabelActionRequest {
 	s.ActionType = &v
-	return s
-}
-
-func (s *SetCreditLabelActionRequest) SetUid(v string) *SetCreditLabelActionRequest {
-	s.Uid = &v
 	return s
 }
 
@@ -17483,10 +17778,15 @@ func (s *SetCreditLabelActionRequest) SetSource(v string) *SetCreditLabelActionR
 	return s
 }
 
+func (s *SetCreditLabelActionRequest) SetUid(v string) *SetCreditLabelActionRequest {
+	s.Uid = &v
+	return s
+}
+
 type SetCreditLabelActionResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -17504,13 +17804,13 @@ func (s *SetCreditLabelActionResponseBody) SetCode(v string) *SetCreditLabelActi
 	return s
 }
 
-func (s *SetCreditLabelActionResponseBody) SetMessage(v string) *SetCreditLabelActionResponseBody {
-	s.Message = &v
+func (s *SetCreditLabelActionResponseBody) SetData(v bool) *SetCreditLabelActionResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetCreditLabelActionResponseBody) SetData(v bool) *SetCreditLabelActionResponseBody {
-	s.Data = &v
+func (s *SetCreditLabelActionResponseBody) SetMessage(v string) *SetCreditLabelActionResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -17548,14 +17848,14 @@ func (s *SetCreditLabelActionResponse) SetBody(v *SetCreditLabelActionResponseBo
 }
 
 type SetRenewalRequest struct {
-	RenewalPeriod     *int32  `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
 	InstanceIDs       *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	RenewalPeriod     *int32  `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
 	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
 	RenewalStatus     *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	SubscriptionType  *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s SetRenewalRequest) String() string {
@@ -17564,11 +17864,6 @@ func (s SetRenewalRequest) String() string {
 
 func (s SetRenewalRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SetRenewalRequest) SetRenewalPeriod(v int32) *SetRenewalRequest {
-	s.RenewalPeriod = &v
-	return s
 }
 
 func (s *SetRenewalRequest) SetInstanceIDs(v string) *SetRenewalRequest {
@@ -17591,8 +17886,8 @@ func (s *SetRenewalRequest) SetProductType(v string) *SetRenewalRequest {
 	return s
 }
 
-func (s *SetRenewalRequest) SetSubscriptionType(v string) *SetRenewalRequest {
-	s.SubscriptionType = &v
+func (s *SetRenewalRequest) SetRenewalPeriod(v int32) *SetRenewalRequest {
+	s.RenewalPeriod = &v
 	return s
 }
 
@@ -17603,6 +17898,11 @@ func (s *SetRenewalRequest) SetRenewalPeriodUnit(v string) *SetRenewalRequest {
 
 func (s *SetRenewalRequest) SetRenewalStatus(v string) *SetRenewalRequest {
 	s.RenewalStatus = &v
+	return s
+}
+
+func (s *SetRenewalRequest) SetSubscriptionType(v string) *SetRenewalRequest {
+	s.SubscriptionType = &v
 	return s
 }
 
@@ -17665,9 +17965,9 @@ func (s *SetRenewalResponse) SetBody(v *SetRenewalResponseBody) *SetRenewalRespo
 }
 
 type SetResellerUserAlarmThresholdRequest struct {
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	AlarmType       *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
 	AlarmThresholds *string `json:"AlarmThresholds,omitempty" xml:"AlarmThresholds,omitempty"`
+	AlarmType       *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetResellerUserAlarmThresholdRequest) String() string {
@@ -17678,8 +17978,8 @@ func (s SetResellerUserAlarmThresholdRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SetResellerUserAlarmThresholdRequest) SetOwnerId(v int64) *SetResellerUserAlarmThresholdRequest {
-	s.OwnerId = &v
+func (s *SetResellerUserAlarmThresholdRequest) SetAlarmThresholds(v string) *SetResellerUserAlarmThresholdRequest {
+	s.AlarmThresholds = &v
 	return s
 }
 
@@ -17688,15 +17988,15 @@ func (s *SetResellerUserAlarmThresholdRequest) SetAlarmType(v string) *SetResell
 	return s
 }
 
-func (s *SetResellerUserAlarmThresholdRequest) SetAlarmThresholds(v string) *SetResellerUserAlarmThresholdRequest {
-	s.AlarmThresholds = &v
+func (s *SetResellerUserAlarmThresholdRequest) SetOwnerId(v int64) *SetResellerUserAlarmThresholdRequest {
+	s.OwnerId = &v
 	return s
 }
 
 type SetResellerUserAlarmThresholdResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -17714,13 +18014,13 @@ func (s *SetResellerUserAlarmThresholdResponseBody) SetCode(v string) *SetResell
 	return s
 }
 
-func (s *SetResellerUserAlarmThresholdResponseBody) SetMessage(v string) *SetResellerUserAlarmThresholdResponseBody {
-	s.Message = &v
+func (s *SetResellerUserAlarmThresholdResponseBody) SetData(v bool) *SetResellerUserAlarmThresholdResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetResellerUserAlarmThresholdResponseBody) SetData(v bool) *SetResellerUserAlarmThresholdResponseBody {
-	s.Data = &v
+func (s *SetResellerUserAlarmThresholdResponseBody) SetMessage(v string) *SetResellerUserAlarmThresholdResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -17758,10 +18058,10 @@ func (s *SetResellerUserAlarmThresholdResponse) SetBody(v *SetResellerUserAlarmT
 }
 
 type SetResellerUserQuotaRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Amount   *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetResellerUserQuotaRequest) String() string {
@@ -17770,11 +18070,6 @@ func (s SetResellerUserQuotaRequest) String() string {
 
 func (s SetResellerUserQuotaRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SetResellerUserQuotaRequest) SetOwnerId(v int64) *SetResellerUserQuotaRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *SetResellerUserQuotaRequest) SetAmount(v string) *SetResellerUserQuotaRequest {
@@ -17792,10 +18087,15 @@ func (s *SetResellerUserQuotaRequest) SetOutBizId(v string) *SetResellerUserQuot
 	return s
 }
 
+func (s *SetResellerUserQuotaRequest) SetOwnerId(v int64) *SetResellerUserQuotaRequest {
+	s.OwnerId = &v
+	return s
+}
+
 type SetResellerUserQuotaResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -17813,13 +18113,13 @@ func (s *SetResellerUserQuotaResponseBody) SetCode(v string) *SetResellerUserQuo
 	return s
 }
 
-func (s *SetResellerUserQuotaResponseBody) SetMessage(v string) *SetResellerUserQuotaResponseBody {
-	s.Message = &v
+func (s *SetResellerUserQuotaResponseBody) SetData(v bool) *SetResellerUserQuotaResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetResellerUserQuotaResponseBody) SetData(v bool) *SetResellerUserQuotaResponseBody {
-	s.Data = &v
+func (s *SetResellerUserQuotaResponseBody) SetMessage(v string) *SetResellerUserQuotaResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -17857,9 +18157,9 @@ func (s *SetResellerUserQuotaResponse) SetBody(v *SetResellerUserQuotaResponseBo
 }
 
 type SetResellerUserStatusRequest struct {
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 }
 
 func (s SetResellerUserStatusRequest) String() string {
@@ -17868,6 +18168,11 @@ func (s SetResellerUserStatusRequest) String() string {
 
 func (s SetResellerUserStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetResellerUserStatusRequest) SetBusinessType(v string) *SetResellerUserStatusRequest {
+	s.BusinessType = &v
+	return s
 }
 
 func (s *SetResellerUserStatusRequest) SetOwnerId(v string) *SetResellerUserStatusRequest {
@@ -17880,15 +18185,10 @@ func (s *SetResellerUserStatusRequest) SetStatus(v string) *SetResellerUserStatu
 	return s
 }
 
-func (s *SetResellerUserStatusRequest) SetBusinessType(v string) *SetResellerUserStatusRequest {
-	s.BusinessType = &v
-	return s
-}
-
 type SetResellerUserStatusResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -17906,13 +18206,13 @@ func (s *SetResellerUserStatusResponseBody) SetCode(v string) *SetResellerUserSt
 	return s
 }
 
-func (s *SetResellerUserStatusResponseBody) SetMessage(v string) *SetResellerUserStatusResponseBody {
-	s.Message = &v
+func (s *SetResellerUserStatusResponseBody) SetData(v bool) *SetResellerUserStatusResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SetResellerUserStatusResponseBody) SetData(v bool) *SetResellerUserStatusResponseBody {
-	s.Data = &v
+func (s *SetResellerUserStatusResponseBody) SetMessage(v string) *SetResellerUserStatusResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -17950,11 +18250,11 @@ func (s *SetResellerUserStatusResponse) SetBody(v *SetResellerUserStatusResponse
 }
 
 type SubscribeBillToOSSRequest struct {
+	BeginBillingCycle       *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	BucketOwnerId           *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
+	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
 	SubscribeBucket         *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
-	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
-	BucketOwnerId           *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	BeginBillingCycle       *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
 }
 
 func (s SubscribeBillToOSSRequest) String() string {
@@ -17965,18 +18265,8 @@ func (s SubscribeBillToOSSRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SubscribeBillToOSSRequest) SetSubscribeBucket(v string) *SubscribeBillToOSSRequest {
-	s.SubscribeBucket = &v
-	return s
-}
-
-func (s *SubscribeBillToOSSRequest) SetSubscribeType(v string) *SubscribeBillToOSSRequest {
-	s.SubscribeType = &v
-	return s
-}
-
-func (s *SubscribeBillToOSSRequest) SetMultAccountRelSubscribe(v string) *SubscribeBillToOSSRequest {
-	s.MultAccountRelSubscribe = &v
+func (s *SubscribeBillToOSSRequest) SetBeginBillingCycle(v string) *SubscribeBillToOSSRequest {
+	s.BeginBillingCycle = &v
 	return s
 }
 
@@ -17985,8 +18275,18 @@ func (s *SubscribeBillToOSSRequest) SetBucketOwnerId(v int64) *SubscribeBillToOS
 	return s
 }
 
-func (s *SubscribeBillToOSSRequest) SetBeginBillingCycle(v string) *SubscribeBillToOSSRequest {
-	s.BeginBillingCycle = &v
+func (s *SubscribeBillToOSSRequest) SetMultAccountRelSubscribe(v string) *SubscribeBillToOSSRequest {
+	s.MultAccountRelSubscribe = &v
+	return s
+}
+
+func (s *SubscribeBillToOSSRequest) SetSubscribeBucket(v string) *SubscribeBillToOSSRequest {
+	s.SubscribeBucket = &v
+	return s
+}
+
+func (s *SubscribeBillToOSSRequest) SetSubscribeType(v string) *SubscribeBillToOSSRequest {
+	s.SubscribeType = &v
 	return s
 }
 
@@ -18049,8 +18349,8 @@ func (s *SubscribeBillToOSSResponse) SetBody(v *SubscribeBillToOSSResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -18062,13 +18362,13 @@ func (s TagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -18102,8 +18402,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -18121,13 +18421,13 @@ func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
 	return s
 }
 
-func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
-	s.Message = &v
+func (s *TagResourcesResponseBody) SetData(v bool) *TagResourcesResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *TagResourcesResponseBody) SetData(v bool) *TagResourcesResponseBody {
-	s.Data = &v
+func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -18165,8 +18465,8 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnsubscribeBillToOSSRequest struct {
-	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
+	SubscribeType           *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
 func (s UnsubscribeBillToOSSRequest) String() string {
@@ -18177,13 +18477,13 @@ func (s UnsubscribeBillToOSSRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnsubscribeBillToOSSRequest) SetSubscribeType(v string) *UnsubscribeBillToOSSRequest {
-	s.SubscribeType = &v
+func (s *UnsubscribeBillToOSSRequest) SetMultAccountRelSubscribe(v string) *UnsubscribeBillToOSSRequest {
+	s.MultAccountRelSubscribe = &v
 	return s
 }
 
-func (s *UnsubscribeBillToOSSRequest) SetMultAccountRelSubscribe(v string) *UnsubscribeBillToOSSRequest {
-	s.MultAccountRelSubscribe = &v
+func (s *UnsubscribeBillToOSSRequest) SetSubscribeType(v string) *UnsubscribeBillToOSSRequest {
+	s.SubscribeType = &v
 	return s
 }
 
@@ -18246,9 +18546,9 @@ func (s *UnsubscribeBillToOSSResponse) SetBody(v *UnsubscribeBillToOSSResponseBo
 }
 
 type UntagResourcesRequest struct {
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
 	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -18258,11 +18558,6 @@ func (s UntagResourcesRequest) String() string {
 
 func (s UntagResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
-	return s
 }
 
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
@@ -18275,6 +18570,11 @@ func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesReques
 	return s
 }
 
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 	s.TagKey = v
 	return s
@@ -18282,8 +18582,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -18301,13 +18601,13 @@ func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBo
 	return s
 }
 
-func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
-	s.Message = &v
+func (s *UntagResourcesResponseBody) SetData(v bool) *UntagResourcesResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *UntagResourcesResponseBody) SetData(v bool) *UntagResourcesResponseBody {
-	s.Data = &v
+func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -18345,9 +18645,9 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpgradeResourcePackageRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -18359,8 +18659,8 @@ func (s UpgradeResourcePackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeResourcePackageRequest) SetOwnerId(v int64) *UpgradeResourcePackageRequest {
-	s.OwnerId = &v
+func (s *UpgradeResourcePackageRequest) SetEffectiveDate(v string) *UpgradeResourcePackageRequest {
+	s.EffectiveDate = &v
 	return s
 }
 
@@ -18369,8 +18669,8 @@ func (s *UpgradeResourcePackageRequest) SetInstanceId(v string) *UpgradeResource
 	return s
 }
 
-func (s *UpgradeResourcePackageRequest) SetEffectiveDate(v string) *UpgradeResourcePackageRequest {
-	s.EffectiveDate = &v
+func (s *UpgradeResourcePackageRequest) SetOwnerId(v int64) *UpgradeResourcePackageRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -18381,11 +18681,11 @@ func (s *UpgradeResourcePackageRequest) SetSpecification(v string) *UpgradeResou
 
 type UpgradeResourcePackageResponseBody struct {
 	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpgradeResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId   *int64                                  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	OrderId   *int64                                  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Data      *UpgradeResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 }
 
 func (s UpgradeResourcePackageResponseBody) String() string {
@@ -18401,8 +18701,18 @@ func (s *UpgradeResourcePackageResponseBody) SetCode(v string) *UpgradeResourceP
 	return s
 }
 
+func (s *UpgradeResourcePackageResponseBody) SetData(v *UpgradeResourcePackageResponseBodyData) *UpgradeResourcePackageResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *UpgradeResourcePackageResponseBody) SetMessage(v string) *UpgradeResourcePackageResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *UpgradeResourcePackageResponseBody) SetOrderId(v int64) *UpgradeResourcePackageResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -18416,19 +18726,9 @@ func (s *UpgradeResourcePackageResponseBody) SetSuccess(v bool) *UpgradeResource
 	return s
 }
 
-func (s *UpgradeResourcePackageResponseBody) SetOrderId(v int64) *UpgradeResourcePackageResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *UpgradeResourcePackageResponseBody) SetData(v *UpgradeResourcePackageResponseBodyData) *UpgradeResourcePackageResponseBody {
-	s.Data = v
-	return s
-}
-
 type UpgradeResourcePackageResponseBodyData struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s UpgradeResourcePackageResponseBodyData) String() string {
@@ -18439,13 +18739,13 @@ func (s UpgradeResourcePackageResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *UpgradeResourcePackageResponseBodyData) SetOrderId(v int64) *UpgradeResourcePackageResponseBodyData {
-	s.OrderId = &v
+func (s *UpgradeResourcePackageResponseBodyData) SetInstanceId(v string) *UpgradeResourcePackageResponseBodyData {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *UpgradeResourcePackageResponseBodyData) SetInstanceId(v string) *UpgradeResourcePackageResponseBodyData {
-	s.InstanceId = &v
+func (s *UpgradeResourcePackageResponseBodyData) SetOrderId(v int64) *UpgradeResourcePackageResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -18580,11 +18880,31 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChildNick"] = request.ChildNick
+	query["ChildUserId"] = request.ChildUserId
+	query["ParentUserId"] = request.ParentUserId
+	query["PermissionCodes"] = request.PermissionCodes
+	query["RelationType"] = request.RelationType
+	query["RequestId"] = request.RequestId
+	query["RoleCodes"] = request.RoleCodes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18608,11 +18928,29 @@ func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FromUnitId"] = request.FromUnitId
+	query["FromUnitUserId"] = request.FromUnitUserId
+	query["ResourceInstanceList"] = request.ResourceInstanceList
+	query["ToUnitId"] = request.ToUnitId
+	query["ToUnitUserId"] = request.ToUnitUserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AllocateCostUnitResource"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AllocateCostUnitResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AllocateCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18636,11 +18974,34 @@ func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AddressId"] = request.AddressId
+	query["ApplyUserNick"] = request.ApplyUserNick
+	query["CustomerId"] = request.CustomerId
+	query["InvoiceAmount"] = request.InvoiceAmount
+	query["InvoiceByAmount"] = request.InvoiceByAmount
+	query["InvoicingType"] = request.InvoicingType
+	query["OwnerId"] = request.OwnerId
+	query["ProcessWay"] = request.ProcessWay
+	query["SelectedIds"] = request.SelectedIds
+	query["UserRemark"] = request.UserRemark
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyInvoice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ApplyInvoice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18664,11 +19025,26 @@ func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OrderId"] = request.OrderId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOrder"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelOrder"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18692,11 +19068,32 @@ func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeRese
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AdjustType"] = request.AdjustType
+	query["Amount"] = request.Amount
+	query["BusinessType"] = request.BusinessType
+	query["Currency"] = request.Currency
+	query["ExtendMap"] = request.ExtendMap
+	query["OutBizId"] = request.OutBizId
+	query["OwnerId"] = request.OwnerId
+	query["Source"] = request.Source
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResellerConsumeAmount"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeResellerConsumeAmountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeResellerConsumeAmount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18720,11 +19117,30 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChildUserId"] = request.ChildUserId
+	query["ConfirmCode"] = request.ConfirmCode
+	query["ParentUserId"] = request.ParentUserId
+	query["PermissionCodes"] = request.PermissionCodes
+	query["RelationType"] = request.RelationType
+	query["RequestId"] = request.RequestId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConfirmRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConfirmRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18748,11 +19164,30 @@ func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["OwnerId"] = request.OwnerId
+	query["Period"] = request.Period
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertChargeType"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConvertChargeTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConvertChargeType"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18776,11 +19211,33 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountAttr"] = request.AccountAttr
+	query["CityName"] = request.CityName
+	query["EnterpriseName"] = request.EnterpriseName
+	query["FirstName"] = request.FirstName
+	query["LastName"] = request.LastName
+	query["LoginEmail"] = request.LoginEmail
+	query["NationCode"] = request.NationCode
+	query["Postcode"] = request.Postcode
+	query["ProvinceName"] = request.ProvinceName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAgAccount"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAgAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAgAccount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18804,11 +19261,25 @@ func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UnitEntityList"] = request.UnitEntityList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18832,11 +19303,34 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Logistics"] = request.Logistics
+	query["OwnerId"] = request.OwnerId
+	query["Parameter"] = request.Parameter
+	query["Period"] = request.Period
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["RenewPeriod"] = request.RenewPeriod
+	query["RenewalStatus"] = request.RenewalStatus
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18860,11 +19354,28 @@ func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateReseller
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Amount"] = request.Amount
+	query["Currency"] = request.Currency
+	query["OutBizId"] = request.OutBizId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResellerUserQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResellerUserQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18888,11 +19399,31 @@ func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Duration"] = request.Duration
+	query["EffectiveDate"] = request.EffectiveDate
+	query["OwnerId"] = request.OwnerId
+	query["PackageType"] = request.PackageType
+	query["PricingCycle"] = request.PricingCycle
+	query["ProductCode"] = request.ProductCode
+	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18911,16 +19442,82 @@ func (client *Client) CreateResourcePackage(request *CreateResourcePackageReques
 	return _result, _err
 }
 
+func (client *Client) CreateSavingsPlansInstanceWithOptions(request *CreateSavingsPlansInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateSavingsPlansInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["CommodityCode"] = request.CommodityCode
+	query["Duration"] = request.Duration
+	query["EffectiveDate"] = request.EffectiveDate
+	query["PayMode"] = request.PayMode
+	query["PoolValue"] = request.PoolValue
+	query["PricingCycle"] = request.PricingCycle
+	query["Region"] = request.Region
+	query["SpecType"] = request.SpecType
+	query["Specification"] = request.Specification
+	query["Type"] = request.Type
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSavingsPlansInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSavingsPlansInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSavingsPlansInstance(request *CreateSavingsPlansInstanceRequest) (_result *CreateSavingsPlansInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSavingsPlansInstanceResponse{}
+	_body, _err := client.CreateSavingsPlansInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, runtime *util.RuntimeOptions) (_result *DeleteCostUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerUid"] = request.OwnerUid
+	query["UnitId"] = request.UnitId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18944,11 +19541,37 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["BillingDate"] = request.BillingDate
+	query["Granularity"] = request.Granularity
+	query["InstanceID"] = request.InstanceID
+	query["IsBillingItem"] = request.IsBillingItem
+	query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18972,11 +19595,28 @@ func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePricingModule"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePricingModuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePricingModule"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19000,11 +19640,31 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["PeriodType"] = request.PeriodType
+	query["ResourceType"] = request.ResourceType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceCoverageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceCoverageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19028,11 +19688,29 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["PeriodType"] = request.PeriodType
+	query["ResourceType"] = request.ResourceType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceCoverageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceCoverageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19056,11 +19734,25 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourcePackageProduct"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourcePackageProductResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourcePackageProduct"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19084,11 +19776,31 @@ func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["PeriodType"] = request.PeriodType
+	query["ResourceType"] = request.ResourceType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceUsageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceUsageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19112,11 +19824,29 @@ func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["PeriodType"] = request.PeriodType
+	query["ResourceType"] = request.ResourceType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceUsageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceUsageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19140,11 +19870,30 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *Des
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["MaxResults"] = request.MaxResults
+	query["PeriodType"] = request.PeriodType
+	query["StartPeriod"] = request.StartPeriod
+	query["Token"] = request.Token
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansCoverageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19168,11 +19917,28 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["PeriodType"] = request.PeriodType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansCoverageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19196,11 +19962,30 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["MaxResults"] = request.MaxResults
+	query["PeriodType"] = request.PeriodType
+	query["StartPeriod"] = request.StartPeriod
+	query["Token"] = request.Token
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansUsageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19224,11 +20009,28 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["EndPeriod"] = request.EndPeriod
+	query["PeriodType"] = request.PeriodType
+	query["StartPeriod"] = request.StartPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansUsageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19252,11 +20054,37 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["BillingDate"] = request.BillingDate
+	query["Granularity"] = request.Granularity
+	query["InstanceID"] = request.InstanceID
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SplitItemID"] = request.SplitItemID
+	query["SubscriptionType"] = request.SubscriptionType
+	query["TagFilter"] = request.TagFilter
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSplitItemBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSplitItemBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19280,11 +20108,26 @@ func (client *Client) EnableBillGenerationWithOptions(request *EnableBillGenerat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableBillGeneration"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableBillGenerationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableBillGeneration"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19308,11 +20151,25 @@ func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAcco
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomerAccountInfo"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomerAccountInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCustomerAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19333,8 +20190,19 @@ func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequ
 
 func (client *Client) GetCustomerListWithOptions(runtime *util.RuntimeOptions) (_result *GetCustomerListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomerList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetCustomerListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19358,11 +20226,26 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OrderId"] = request.OrderId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrderDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetOrderDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetOrderDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19386,11 +20269,30 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ModuleList"] = request.ModuleList
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["Region"] = request.Region
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPayAsYouGoPrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPayAsYouGoPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPayAsYouGoPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19414,11 +20316,33 @@ func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Duration"] = request.Duration
+	query["EffectiveDate"] = request.EffectiveDate
+	query["InstanceId"] = request.InstanceId
+	query["OrderType"] = request.OrderType
+	query["OwnerId"] = request.OwnerId
+	query["PackageType"] = request.PackageType
+	query["PricingCycle"] = request.PricingCycle
+	query["ProductCode"] = request.ProductCode
+	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourcePackagePrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourcePackagePriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourcePackagePrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19442,11 +20366,35 @@ func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ModuleList"] = request.ModuleList
+	query["OrderType"] = request.OrderType
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["Quantity"] = request.Quantity
+	query["Region"] = request.Region
+	query["ServicePeriodQuantity"] = request.ServicePeriodQuantity
+	query["ServicePeriodUnit"] = request.ServicePeriodUnit
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSubscriptionPrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSubscriptionPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSubscriptionPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19470,11 +20418,32 @@ func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRel
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChildNick"] = request.ChildNick
+	query["ChildUserId"] = request.ChildUserId
+	query["ParentUserId"] = request.ParentUserId
+	query["PermissionCodes"] = request.PermissionCodes
+	query["RelationOperation"] = request.RelationOperation
+	query["RelationType"] = request.RelationType
+	query["RequestId"] = request.RequestId
+	query["RoleCodes"] = request.RoleCodes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19498,11 +20467,25 @@ func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UnitEntityList"] = request.UnitEntityList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19526,11 +20509,32 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["InstanceId"] = request.InstanceId
+	query["ModifyType"] = request.ModifyType
+	query["OwnerId"] = request.OwnerId
+	query["Parameter"] = request.Parameter
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19551,8 +20555,19 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 
 func (client *Client) QueryAccountBalanceWithOptions(runtime *util.RuntimeOptions) (_result *QueryAccountBalanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountBalance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryAccountBalanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBalance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19576,11 +20591,33 @@ func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["BillingDate"] = request.BillingDate
+	query["Granularity"] = request.Granularity
+	query["IsGroupByProduct"] = request.IsGroupByProduct
+	query["OwnerID"] = request.OwnerID
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19604,11 +20641,33 @@ func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateTimeEnd"] = request.CreateTimeEnd
+	query["CreateTimeStart"] = request.CreateTimeStart
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RecordID"] = request.RecordID
+	query["TransactionChannel"] = request.TransactionChannel
+	query["TransactionChannelSN"] = request.TransactionChannelSN
+	query["TransactionNumber"] = request.TransactionNumber
+	query["TransactionType"] = request.TransactionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountTransactionDetails"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountTransactionDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactionDetails"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19632,11 +20691,31 @@ func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateTimeEnd"] = request.CreateTimeEnd
+	query["CreateTimeStart"] = request.CreateTimeStart
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["RecordID"] = request.RecordID
+	query["TransactionChannelSN"] = request.TransactionChannelSN
+	query["TransactionNumber"] = request.TransactionNumber
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountTransactions"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountTransactionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactions"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19660,11 +20739,37 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateTimeEnd"] = request.CreateTimeEnd
+	query["CreateTimeStart"] = request.CreateTimeStart
+	query["EndTimeEnd"] = request.EndTimeEnd
+	query["EndTimeStart"] = request.EndTimeStart
+	query["InstanceIDs"] = request.InstanceIDs
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["Region"] = request.Region
+	query["RenewStatus"] = request.RenewStatus
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAvailableInstances"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAvailableInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAvailableInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19688,11 +20793,35 @@ func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
+	query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19716,11 +20845,29 @@ func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBillOverview"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryBillOverviewResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBillOverview"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19741,8 +20888,19 @@ func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_res
 
 func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *util.RuntimeOptions) (_result *QueryBillToOSSSubscriptionResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBillToOSSSubscription"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryBillToOSSSubscriptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBillToOSSSubscription"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19766,11 +20924,27 @@ func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EffectiveOrNot"] = request.EffectiveOrNot
+	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	query["ExpiryTimeStart"] = request.ExpiryTimeStart
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCashCoupons"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCashCouponsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCashCoupons"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19794,11 +20968,28 @@ func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerUid"] = request.OwnerUid
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ParentUnitId"] = request.ParentUnitId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19822,11 +21013,28 @@ func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerUid"] = request.OwnerUid
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["UnitId"] = request.UnitId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostUnitResource"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCostUnitResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19850,11 +21058,25 @@ func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomer
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCustomerAddressList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCustomerAddressListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCustomerAddressList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19878,11 +21100,34 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CommodityCode"] = request.CommodityCode
+	query["DeductedInstanceId"] = request.DeductedInstanceId
+	query["EndTime"] = request.EndTime
+	query["IncludeShare"] = request.IncludeShare
+	query["InstanceId"] = request.InstanceId
+	query["InstanceSpec"] = request.InstanceSpec
+	query["LastToken"] = request.LastToken
+	query["Limit"] = request.Limit
+	query["ProdCode"] = request.ProdCode
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDPUtilizationDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDPUtilizationDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDPUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19906,11 +21151,38 @@ func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillCycle"] = request.BillCycle
+	query["BizTypeList"] = request.BizTypeList
+	query["EndAmount"] = request.EndAmount
+	query["EndBizTime"] = request.EndBizTime
+	query["EndSearchTime"] = request.EndSearchTime
+	query["OutBizId"] = request.OutBizId
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["SortType"] = request.SortType
+	query["StartAmount"] = request.StartAmount
+	query["StartBizTime"] = request.StartBizTime
+	query["StartSearchTime"] = request.StartSearchTime
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEvaluateList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryEvaluateListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryEvaluateList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19934,11 +21206,25 @@ func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinanci
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryFinancialAccountInfo"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFinancialAccountInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryFinancialAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19962,11 +21248,36 @@ func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["BillingDate"] = request.BillingDate
+	query["Granularity"] = request.Granularity
+	query["IsBillingItem"] = request.IsBillingItem
+	query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19990,11 +21301,27 @@ func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceByTag"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceByTagResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceByTag"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20018,11 +21345,30 @@ func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillingCycle"] = request.BillingCycle
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceGaapCost"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceGaapCostResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceGaapCost"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20046,11 +21392,25 @@ func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInvoicingCustomerList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInvoicingCustomerListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInvoicingCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20074,11 +21434,25 @@ func (client *Client) QueryMonthlyBillWithOptions(request *QueryMonthlyBillReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillingCycle"] = request.BillingCycle
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMonthlyBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMonthlyBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20102,11 +21476,31 @@ func (client *Client) QueryMonthlyInstanceConsumptionWithOptions(request *QueryM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillingCycle"] = request.BillingCycle
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMonthlyInstanceConsumption"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMonthlyInstanceConsumptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyInstanceConsumption"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20130,11 +21524,34 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateTimeEnd"] = request.CreateTimeEnd
+	query["CreateTimeStart"] = request.CreateTimeStart
+	query["OrderType"] = request.OrderType
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["PaymentStatus"] = request.PaymentStatus
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrders"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryOrdersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryOrders"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20158,11 +21575,25 @@ func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionLis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RelationId"] = request.RelationId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPermissionList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPermissionListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPermissionList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20186,11 +21617,27 @@ func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EffectiveOrNot"] = request.EffectiveOrNot
+	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	query["ExpiryTimeStart"] = request.ExpiryTimeStart
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPrepaidCards"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPrepaidCardsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPrepaidCards"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20214,11 +21661,27 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["QueryTotalCount"] = request.QueryTotalCount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryProductList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryProductListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryProductList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20237,6 +21700,55 @@ func (client *Client) QueryProductList(request *QueryProductListRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtilizationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["DeductedInstanceId"] = request.DeductedInstanceId
+	query["EndTime"] = request.EndTime
+	query["InstanceSpec"] = request.InstanceSpec
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["RICommodityCode"] = request.RICommodityCode
+	query["RIInstanceId"] = request.RIInstanceId
+	query["StartTime"] = request.StartTime
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRIUtilizationDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRIUtilizationDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetailRequest) (_result *QueryRIUtilizationDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRIUtilizationDetailResponse{}
+	_body, _err := client.QueryRIUtilizationDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtime *util.RuntimeOptions) (_result *QueryRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20244,10 +21756,21 @@ func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRedeem"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRedeemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRedeem"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20271,11 +21794,28 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["StatusList"] = request.StatusList
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRelationList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRelationListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRelationList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20299,11 +21839,26 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ItemCodes"] = request.ItemCodes
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryResellerAvailableQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryResellerAvailableQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryResellerAvailableQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20327,11 +21882,31 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	query["ExpiryTimeStart"] = request.ExpiryTimeStart
+	query["IncludePartner"] = request.IncludePartner
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryResourcePackageInstances"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryResourcePackageInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryResourcePackageInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20350,44 +21925,36 @@ func (client *Client) QueryResourcePackageInstances(request *QueryResourcePackag
 	return _result, _err
 }
 
-func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtilizationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRIUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetailRequest) (_result *QueryRIUtilizationDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.QueryRIUtilizationDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySavingsPlansDeductLogRequest, runtime *util.RuntimeOptions) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["InstanceId"] = request.InstanceId
+	query["InstanceType"] = request.InstanceType
+	query["Locale"] = request.Locale
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySavingsPlansDeductLog"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySavingsPlansDeductLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansDeductLog"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20411,11 +21978,31 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["InstanceId"] = request.InstanceId
+	query["Locale"] = request.Locale
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySavingsPlansInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySavingsPlansInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20439,11 +22026,36 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
+	query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["RecordID"] = request.RecordID
+	query["SubscriptionType"] = request.SubscriptionType
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySettleBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySettleBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySettleBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20467,11 +22079,35 @@ func (client *Client) QuerySettlementBillWithOptions(request *QuerySettlementBil
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillingCycle"] = request.BillingCycle
+	query["EndTime"] = request.EndTime
+	query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["StartTime"] = request.StartTime
+	query["SubscriptionType"] = request.SubscriptionType
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySettlementBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySettlementBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySettlementBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20495,11 +22131,32 @@ func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BillOwnerId"] = request.BillOwnerId
+	query["BillingCycle"] = request.BillingCycle
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySplitItemBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySplitItemBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20523,11 +22180,31 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DataType"] = request.DataType
+	query["EndTime"] = request.EndTime
+	query["Marker"] = request.Marker
+	query["OwnerId"] = request.OwnerId
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
+	query["Table"] = request.Table
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUserOmsData"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryUserOmsDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryUserOmsData"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20551,11 +22228,28 @@ func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChildUserId"] = request.ChildUserId
+	query["ParentUserId"] = request.ParentUserId
+	query["RelationType"] = request.RelationType
+	query["RequestId"] = request.RequestId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RelieveAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RelieveAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RelieveAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20579,11 +22273,30 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["InstanceId"] = request.InstanceId
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["RenewPeriod"] = request.RenewPeriod
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20607,11 +22320,29 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Duration"] = request.Duration
+	query["EffectiveDate"] = request.EffectiveDate
+	query["InstanceId"] = request.InstanceId
+	query["OwnerId"] = request.OwnerId
+	query["PricingCycle"] = request.PricingCycle
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20635,11 +22366,32 @@ func (client *Client) SaveUserCreditWithOptions(request *SaveUserCreditRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AvoidExpiration"] = request.AvoidExpiration
+	query["AvoidNotification"] = request.AvoidNotification
+	query["AvoidPrepaidExpiration"] = request.AvoidPrepaidExpiration
+	query["AvoidPrepaidNotification"] = request.AvoidPrepaidNotification
+	query["CreditType"] = request.CreditType
+	query["CreditValue"] = request.CreditValue
+	query["Description"] = request.Description
+	query["Operator"] = request.Operator
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveUserCredit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SaveUserCreditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveUserCredit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20663,11 +22415,26 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["UnifyExpireDay"] = request.UnifyExpireDay
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAllExpirationDay"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetAllExpirationDayResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetAllExpirationDay"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20691,11 +22458,41 @@ func (client *Client) SetCreditLabelActionWithOptions(request *SetCreditLabelAct
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ActionType"] = request.ActionType
+	query["ClearCycle"] = request.ClearCycle
+	query["CreditAmount"] = request.CreditAmount
+	query["CurrencyCode"] = request.CurrencyCode
+	query["DailyCycle"] = request.DailyCycle
+	query["Description"] = request.Description
+	query["IsNeedAddSettleLabel"] = request.IsNeedAddSettleLabel
+	query["IsNeedAdjustCreditAccount"] = request.IsNeedAdjustCreditAccount
+	query["IsNeedSaveNotifyRule"] = request.IsNeedSaveNotifyRule
+	query["IsNeedSetCreditAmount"] = request.IsNeedSetCreditAmount
+	query["NeedNotice"] = request.NeedNotice
+	query["NewCreateMode"] = request.NewCreateMode
+	query["Operator"] = request.Operator
+	query["RequestId"] = request.RequestId
+	query["SiteCode"] = request.SiteCode
+	query["Source"] = request.Source
+	query["Uid"] = request.Uid
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetCreditLabelAction"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetCreditLabelActionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetCreditLabelAction"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20719,11 +22516,32 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceIDs"] = request.InstanceIDs
+	query["OwnerId"] = request.OwnerId
+	query["ProductCode"] = request.ProductCode
+	query["ProductType"] = request.ProductType
+	query["RenewalPeriod"] = request.RenewalPeriod
+	query["RenewalPeriodUnit"] = request.RenewalPeriodUnit
+	query["RenewalStatus"] = request.RenewalStatus
+	query["SubscriptionType"] = request.SubscriptionType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetRenewal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetRenewalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetRenewal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20747,11 +22565,27 @@ func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResel
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AlarmThresholds"] = request.AlarmThresholds
+	query["AlarmType"] = request.AlarmType
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserAlarmThreshold"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserAlarmThresholdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserAlarmThreshold"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20775,11 +22609,28 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Amount"] = request.Amount
+	query["Currency"] = request.Currency
+	query["OutBizId"] = request.OutBizId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20803,11 +22654,27 @@ func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessType"] = request.BusinessType
+	query["OwnerId"] = request.OwnerId
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserStatus"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserStatus"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20831,11 +22698,29 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BeginBillingCycle"] = request.BeginBillingCycle
+	query["BucketOwnerId"] = request.BucketOwnerId
+	query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
+	query["SubscribeBucket"] = request.SubscribeBucket
+	query["SubscribeType"] = request.SubscribeType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubscribeBillToOSS"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubscribeBillToOSSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20859,11 +22744,27 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20887,11 +22788,26 @@ func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillTo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
+	query["SubscribeType"] = request.SubscribeType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnsubscribeBillToOSS"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnsubscribeBillToOSSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnsubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20915,11 +22831,28 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["All"] = request.All
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20943,11 +22876,28 @@ func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResource
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EffectiveDate"] = request.EffectiveDate
+	query["InstanceId"] = request.InstanceId
+	query["OwnerId"] = request.OwnerId
+	query["Specification"] = request.Specification
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
