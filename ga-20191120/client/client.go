@@ -7,16 +7,17 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddEntriesToAclRequest struct {
-	RegionId    *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AclId       *string                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclEntries  []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	AclId       *string                             `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId    *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddEntriesToAclRequest) String() string {
@@ -27,18 +28,13 @@ func (s AddEntriesToAclRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddEntriesToAclRequest) SetRegionId(v string) *AddEntriesToAclRequest {
-	s.RegionId = &v
+func (s *AddEntriesToAclRequest) SetAclEntries(v []*AddEntriesToAclRequestAclEntries) *AddEntriesToAclRequest {
+	s.AclEntries = v
 	return s
 }
 
 func (s *AddEntriesToAclRequest) SetAclId(v string) *AddEntriesToAclRequest {
 	s.AclId = &v
-	return s
-}
-
-func (s *AddEntriesToAclRequest) SetAclEntries(v []*AddEntriesToAclRequestAclEntries) *AddEntriesToAclRequest {
-	s.AclEntries = v
 	return s
 }
 
@@ -49,6 +45,11 @@ func (s *AddEntriesToAclRequest) SetClientToken(v string) *AddEntriesToAclReques
 
 func (s *AddEntriesToAclRequest) SetDryRun(v bool) *AddEntriesToAclRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *AddEntriesToAclRequest) SetRegionId(v string) *AddEntriesToAclRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -76,9 +77,9 @@ func (s *AddEntriesToAclRequestAclEntries) SetEntryDescription(v string) *AddEnt
 }
 
 type AddEntriesToAclResponseBody struct {
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s AddEntriesToAclResponseBody) String() string {
@@ -89,13 +90,13 @@ func (s AddEntriesToAclResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddEntriesToAclResponseBody) SetRequestId(v string) *AddEntriesToAclResponseBody {
-	s.RequestId = &v
+func (s *AddEntriesToAclResponseBody) SetAclId(v string) *AddEntriesToAclResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *AddEntriesToAclResponseBody) SetAclId(v string) *AddEntriesToAclResponseBody {
-	s.AclId = &v
+func (s *AddEntriesToAclResponseBody) SetRequestId(v string) *AddEntriesToAclResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -123,12 +124,12 @@ func (s *AddEntriesToAclResponse) SetBody(v *AddEntriesToAclResponseBody) *AddEn
 }
 
 type AssociateAclsWithListenerRequest struct {
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	AclType     *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AssociateAclsWithListenerRequest) String() string {
@@ -139,18 +140,8 @@ func (s AssociateAclsWithListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssociateAclsWithListenerRequest) SetRegionId(v string) *AssociateAclsWithListenerRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *AssociateAclsWithListenerRequest) SetAclIds(v []*string) *AssociateAclsWithListenerRequest {
 	s.AclIds = v
-	return s
-}
-
-func (s *AssociateAclsWithListenerRequest) SetListenerId(v string) *AssociateAclsWithListenerRequest {
-	s.ListenerId = &v
 	return s
 }
 
@@ -169,11 +160,21 @@ func (s *AssociateAclsWithListenerRequest) SetDryRun(v bool) *AssociateAclsWithL
 	return s
 }
 
+func (s *AssociateAclsWithListenerRequest) SetListenerId(v string) *AssociateAclsWithListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerRequest) SetRegionId(v string) *AssociateAclsWithListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
 type AssociateAclsWithListenerResponseBody struct {
-	// Id of the request
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssociateAclsWithListenerResponseBody) String() string {
@@ -184,11 +185,6 @@ func (s AssociateAclsWithListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AssociateAclsWithListenerResponseBody) SetRequestId(v string) *AssociateAclsWithListenerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *AssociateAclsWithListenerResponseBody) SetAclIds(v []*string) *AssociateAclsWithListenerResponseBody {
 	s.AclIds = v
 	return s
@@ -196,6 +192,11 @@ func (s *AssociateAclsWithListenerResponseBody) SetAclIds(v []*string) *Associat
 
 func (s *AssociateAclsWithListenerResponseBody) SetListenerId(v string) *AssociateAclsWithListenerResponseBody {
 	s.ListenerId = &v
+	return s
+}
+
+func (s *AssociateAclsWithListenerResponseBody) SetRequestId(v string) *AssociateAclsWithListenerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -223,11 +224,11 @@ func (s *AssociateAclsWithListenerResponse) SetBody(v *AssociateAclsWithListener
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
-	RegionId      *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string                                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string                                                           `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId    *string                                                           `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	Certificates  []*AssociateAdditionalCertificatesWithListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientToken   *string                                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ListenerId    *string                                                           `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId      *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AssociateAdditionalCertificatesWithListenerRequest) String() string {
@@ -238,23 +239,8 @@ func (s AssociateAdditionalCertificatesWithListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssociateAdditionalCertificatesWithListenerRequest) SetRegionId(v string) *AssociateAdditionalCertificatesWithListenerRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AssociateAdditionalCertificatesWithListenerRequest) SetClientToken(v string) *AssociateAdditionalCertificatesWithListenerRequest {
-	s.ClientToken = &v
-	return s
-}
-
 func (s *AssociateAdditionalCertificatesWithListenerRequest) SetAcceleratorId(v string) *AssociateAdditionalCertificatesWithListenerRequest {
 	s.AcceleratorId = &v
-	return s
-}
-
-func (s *AssociateAdditionalCertificatesWithListenerRequest) SetListenerId(v string) *AssociateAdditionalCertificatesWithListenerRequest {
-	s.ListenerId = &v
 	return s
 }
 
@@ -263,9 +249,24 @@ func (s *AssociateAdditionalCertificatesWithListenerRequest) SetCertificates(v [
 	return s
 }
 
+func (s *AssociateAdditionalCertificatesWithListenerRequest) SetClientToken(v string) *AssociateAdditionalCertificatesWithListenerRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssociateAdditionalCertificatesWithListenerRequest) SetListenerId(v string) *AssociateAdditionalCertificatesWithListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *AssociateAdditionalCertificatesWithListenerRequest) SetRegionId(v string) *AssociateAdditionalCertificatesWithListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
 type AssociateAdditionalCertificatesWithListenerRequestCertificates struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s AssociateAdditionalCertificatesWithListenerRequestCertificates) String() string {
@@ -276,19 +277,19 @@ func (s AssociateAdditionalCertificatesWithListenerRequestCertificates) GoString
 	return s.String()
 }
 
-func (s *AssociateAdditionalCertificatesWithListenerRequestCertificates) SetId(v string) *AssociateAdditionalCertificatesWithListenerRequestCertificates {
-	s.Id = &v
-	return s
-}
-
 func (s *AssociateAdditionalCertificatesWithListenerRequestCertificates) SetDomain(v string) *AssociateAdditionalCertificatesWithListenerRequestCertificates {
 	s.Domain = &v
 	return s
 }
 
+func (s *AssociateAdditionalCertificatesWithListenerRequestCertificates) SetId(v string) *AssociateAdditionalCertificatesWithListenerRequestCertificates {
+	s.Id = &v
+	return s
+}
+
 type AssociateAdditionalCertificatesWithListenerResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssociateAdditionalCertificatesWithListenerResponseBody) String() string {
@@ -299,13 +300,13 @@ func (s AssociateAdditionalCertificatesWithListenerResponseBody) GoString() stri
 	return s.String()
 }
 
-func (s *AssociateAdditionalCertificatesWithListenerResponseBody) SetRequestId(v string) *AssociateAdditionalCertificatesWithListenerResponseBody {
-	s.RequestId = &v
+func (s *AssociateAdditionalCertificatesWithListenerResponseBody) SetListenerId(v string) *AssociateAdditionalCertificatesWithListenerResponseBody {
+	s.ListenerId = &v
 	return s
 }
 
-func (s *AssociateAdditionalCertificatesWithListenerResponseBody) SetListenerId(v string) *AssociateAdditionalCertificatesWithListenerResponseBody {
-	s.ListenerId = &v
+func (s *AssociateAdditionalCertificatesWithListenerResponseBody) SetRequestId(v string) *AssociateAdditionalCertificatesWithListenerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -369,8 +370,8 @@ func (s *AttachDdosToAcceleratorRequest) SetRegionId(v string) *AttachDdosToAcce
 
 type AttachDdosToAcceleratorResponseBody struct {
 	DdosId    *string `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	GaId      *string `json:"GaId,omitempty" xml:"GaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachDdosToAcceleratorResponseBody) String() string {
@@ -386,13 +387,13 @@ func (s *AttachDdosToAcceleratorResponseBody) SetDdosId(v string) *AttachDdosToA
 	return s
 }
 
-func (s *AttachDdosToAcceleratorResponseBody) SetRequestId(v string) *AttachDdosToAcceleratorResponseBody {
-	s.RequestId = &v
+func (s *AttachDdosToAcceleratorResponseBody) SetGaId(v string) *AttachDdosToAcceleratorResponseBody {
+	s.GaId = &v
 	return s
 }
 
-func (s *AttachDdosToAcceleratorResponseBody) SetGaId(v string) *AttachDdosToAcceleratorResponseBody {
-	s.GaId = &v
+func (s *AttachDdosToAcceleratorResponseBody) SetRequestId(v string) *AttachDdosToAcceleratorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -420,14 +421,14 @@ func (s *AttachDdosToAcceleratorResponse) SetBody(v *AttachDdosToAcceleratorResp
 }
 
 type AttachLogStoreToEndpointGroupRequest struct {
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SlsProjectName   *string   `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
-	SlsLogStoreName  *string   `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
 	AcceleratorId    *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	SlsRegionId      *string   `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
-	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
 	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SlsLogStoreName  *string   `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	SlsProjectName   *string   `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	SlsRegionId      *string   `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
 }
 
 func (s AttachLogStoreToEndpointGroupRequest) String() string {
@@ -438,33 +439,13 @@ func (s AttachLogStoreToEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AttachLogStoreToEndpointGroupRequest) SetRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AttachLogStoreToEndpointGroupRequest) SetSlsProjectName(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.SlsProjectName = &v
-	return s
-}
-
-func (s *AttachLogStoreToEndpointGroupRequest) SetSlsLogStoreName(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.SlsLogStoreName = &v
-	return s
-}
-
 func (s *AttachLogStoreToEndpointGroupRequest) SetAcceleratorId(v string) *AttachLogStoreToEndpointGroupRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
-func (s *AttachLogStoreToEndpointGroupRequest) SetListenerId(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *AttachLogStoreToEndpointGroupRequest) SetSlsRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.SlsRegionId = &v
+func (s *AttachLogStoreToEndpointGroupRequest) SetClientToken(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -473,8 +454,28 @@ func (s *AttachLogStoreToEndpointGroupRequest) SetEndpointGroupIds(v []*string) 
 	return s
 }
 
-func (s *AttachLogStoreToEndpointGroupRequest) SetClientToken(v string) *AttachLogStoreToEndpointGroupRequest {
-	s.ClientToken = &v
+func (s *AttachLogStoreToEndpointGroupRequest) SetListenerId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsLogStoreName(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsProjectName(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *AttachLogStoreToEndpointGroupRequest) SetSlsRegionId(v string) *AttachLogStoreToEndpointGroupRequest {
+	s.SlsRegionId = &v
 	return s
 }
 
@@ -520,9 +521,9 @@ func (s *AttachLogStoreToEndpointGroupResponse) SetBody(v *AttachLogStoreToEndpo
 }
 
 type BandwidthPackageAddAcceleratorRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BandwidthPackageAddAcceleratorRequest) String() string {
@@ -533,8 +534,8 @@ func (s BandwidthPackageAddAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BandwidthPackageAddAcceleratorRequest) SetRegionId(v string) *BandwidthPackageAddAcceleratorRequest {
-	s.RegionId = &v
+func (s *BandwidthPackageAddAcceleratorRequest) SetAcceleratorId(v string) *BandwidthPackageAddAcceleratorRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -543,15 +544,15 @@ func (s *BandwidthPackageAddAcceleratorRequest) SetBandwidthPackageId(v string) 
 	return s
 }
 
-func (s *BandwidthPackageAddAcceleratorRequest) SetAcceleratorId(v string) *BandwidthPackageAddAcceleratorRequest {
-	s.AcceleratorId = &v
+func (s *BandwidthPackageAddAcceleratorRequest) SetRegionId(v string) *BandwidthPackageAddAcceleratorRequest {
+	s.RegionId = &v
 	return s
 }
 
 type BandwidthPackageAddAcceleratorResponseBody struct {
-	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Accelerators       []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	BandwidthPackageId *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BandwidthPackageAddAcceleratorResponseBody) String() string {
@@ -562,11 +563,6 @@ func (s BandwidthPackageAddAcceleratorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BandwidthPackageAddAcceleratorResponseBody) SetRequestId(v string) *BandwidthPackageAddAcceleratorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *BandwidthPackageAddAcceleratorResponseBody) SetAccelerators(v []*string) *BandwidthPackageAddAcceleratorResponseBody {
 	s.Accelerators = v
 	return s
@@ -574,6 +570,11 @@ func (s *BandwidthPackageAddAcceleratorResponseBody) SetAccelerators(v []*string
 
 func (s *BandwidthPackageAddAcceleratorResponseBody) SetBandwidthPackageId(v string) *BandwidthPackageAddAcceleratorResponseBody {
 	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *BandwidthPackageAddAcceleratorResponseBody) SetRequestId(v string) *BandwidthPackageAddAcceleratorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -601,9 +602,9 @@ func (s *BandwidthPackageAddAcceleratorResponse) SetBody(v *BandwidthPackageAddA
 }
 
 type BandwidthPackageRemoveAcceleratorRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s BandwidthPackageRemoveAcceleratorRequest) String() string {
@@ -614,8 +615,8 @@ func (s BandwidthPackageRemoveAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BandwidthPackageRemoveAcceleratorRequest) SetRegionId(v string) *BandwidthPackageRemoveAcceleratorRequest {
-	s.RegionId = &v
+func (s *BandwidthPackageRemoveAcceleratorRequest) SetAcceleratorId(v string) *BandwidthPackageRemoveAcceleratorRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -624,15 +625,15 @@ func (s *BandwidthPackageRemoveAcceleratorRequest) SetBandwidthPackageId(v strin
 	return s
 }
 
-func (s *BandwidthPackageRemoveAcceleratorRequest) SetAcceleratorId(v string) *BandwidthPackageRemoveAcceleratorRequest {
-	s.AcceleratorId = &v
+func (s *BandwidthPackageRemoveAcceleratorRequest) SetRegionId(v string) *BandwidthPackageRemoveAcceleratorRequest {
+	s.RegionId = &v
 	return s
 }
 
 type BandwidthPackageRemoveAcceleratorResponseBody struct {
-	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Accelerators       []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	BandwidthPackageId *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BandwidthPackageRemoveAcceleratorResponseBody) String() string {
@@ -643,11 +644,6 @@ func (s BandwidthPackageRemoveAcceleratorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BandwidthPackageRemoveAcceleratorResponseBody) SetRequestId(v string) *BandwidthPackageRemoveAcceleratorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *BandwidthPackageRemoveAcceleratorResponseBody) SetAccelerators(v []*string) *BandwidthPackageRemoveAcceleratorResponseBody {
 	s.Accelerators = v
 	return s
@@ -655,6 +651,11 @@ func (s *BandwidthPackageRemoveAcceleratorResponseBody) SetAccelerators(v []*str
 
 func (s *BandwidthPackageRemoveAcceleratorResponseBody) SetBandwidthPackageId(v string) *BandwidthPackageRemoveAcceleratorResponseBody {
 	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *BandwidthPackageRemoveAcceleratorResponseBody) SetRequestId(v string) *BandwidthPackageRemoveAcceleratorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -682,14 +683,14 @@ func (s *BandwidthPackageRemoveAcceleratorResponse) SetBody(v *BandwidthPackageR
 }
 
 type ConfigEndpointProbeRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Enable          *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointType    *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	ProbeProtocol   *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
 	ProbePort       *string `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
-	Enable          *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ProbeProtocol   *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ConfigEndpointProbeRequest) String() string {
@@ -700,13 +701,18 @@ func (s ConfigEndpointProbeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ConfigEndpointProbeRequest) SetRegionId(v string) *ConfigEndpointProbeRequest {
-	s.RegionId = &v
+func (s *ConfigEndpointProbeRequest) SetClientToken(v string) *ConfigEndpointProbeRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *ConfigEndpointProbeRequest) SetClientToken(v string) *ConfigEndpointProbeRequest {
-	s.ClientToken = &v
+func (s *ConfigEndpointProbeRequest) SetEnable(v string) *ConfigEndpointProbeRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *ConfigEndpointProbeRequest) SetEndpoint(v string) *ConfigEndpointProbeRequest {
+	s.Endpoint = &v
 	return s
 }
 
@@ -720,8 +726,8 @@ func (s *ConfigEndpointProbeRequest) SetEndpointType(v string) *ConfigEndpointPr
 	return s
 }
 
-func (s *ConfigEndpointProbeRequest) SetEndpoint(v string) *ConfigEndpointProbeRequest {
-	s.Endpoint = &v
+func (s *ConfigEndpointProbeRequest) SetProbePort(v string) *ConfigEndpointProbeRequest {
+	s.ProbePort = &v
 	return s
 }
 
@@ -730,13 +736,8 @@ func (s *ConfigEndpointProbeRequest) SetProbeProtocol(v string) *ConfigEndpointP
 	return s
 }
 
-func (s *ConfigEndpointProbeRequest) SetProbePort(v string) *ConfigEndpointProbeRequest {
-	s.ProbePort = &v
-	return s
-}
-
-func (s *ConfigEndpointProbeRequest) SetEnable(v string) *ConfigEndpointProbeRequest {
-	s.Enable = &v
+func (s *ConfigEndpointProbeRequest) SetRegionId(v string) *ConfigEndpointProbeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -781,14 +782,16 @@ func (s *ConfigEndpointProbeResponse) SetBody(v *ConfigEndpointProbeResponseBody
 }
 
 type CreateAcceleratorRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Spec          *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoUseCoupon     *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PricingCycle      *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec              *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s CreateAcceleratorRequest) String() string {
@@ -799,38 +802,18 @@ func (s CreateAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAcceleratorRequest) SetRegionId(v string) *CreateAcceleratorRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetClientToken(v string) *CreateAcceleratorRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetName(v string) *CreateAcceleratorRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetDuration(v int32) *CreateAcceleratorRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetPricingCycle(v string) *CreateAcceleratorRequest {
-	s.PricingCycle = &v
-	return s
-}
-
-func (s *CreateAcceleratorRequest) SetSpec(v string) *CreateAcceleratorRequest {
-	s.Spec = &v
-	return s
-}
-
 func (s *CreateAcceleratorRequest) SetAutoPay(v bool) *CreateAcceleratorRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetAutoRenew(v bool) *CreateAcceleratorRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetAutoRenewDuration(v int32) *CreateAcceleratorRequest {
+	s.AutoRenewDuration = &v
 	return s
 }
 
@@ -839,10 +822,40 @@ func (s *CreateAcceleratorRequest) SetAutoUseCoupon(v string) *CreateAccelerator
 	return s
 }
 
+func (s *CreateAcceleratorRequest) SetClientToken(v string) *CreateAcceleratorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetDuration(v int32) *CreateAcceleratorRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetName(v string) *CreateAcceleratorRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetPricingCycle(v string) *CreateAcceleratorRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetRegionId(v string) *CreateAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetSpec(v string) *CreateAcceleratorRequest {
+	s.Spec = &v
+	return s
+}
+
 type CreateAcceleratorResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OrderId       *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	OrderId       *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAcceleratorResponseBody) String() string {
@@ -853,8 +866,8 @@ func (s CreateAcceleratorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAcceleratorResponseBody) SetRequestId(v string) *CreateAcceleratorResponseBody {
-	s.RequestId = &v
+func (s *CreateAcceleratorResponseBody) SetAcceleratorId(v string) *CreateAcceleratorResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -863,8 +876,8 @@ func (s *CreateAcceleratorResponseBody) SetOrderId(v string) *CreateAcceleratorR
 	return s
 }
 
-func (s *CreateAcceleratorResponseBody) SetAcceleratorId(v string) *CreateAcceleratorResponseBody {
-	s.AcceleratorId = &v
+func (s *CreateAcceleratorResponseBody) SetRequestId(v string) *CreateAcceleratorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -892,12 +905,12 @@ func (s *CreateAcceleratorResponse) SetBody(v *CreateAcceleratorResponseBody) *C
 }
 
 type CreateAclRequest struct {
-	RegionId         *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AclEntries       []*CreateAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	AclName          *string                       `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string                       `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AclEntries       []*CreateAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	ClientToken      *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun           *bool                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId         *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateAclRequest) String() string {
@@ -908,8 +921,8 @@ func (s CreateAclRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAclRequest) SetRegionId(v string) *CreateAclRequest {
-	s.RegionId = &v
+func (s *CreateAclRequest) SetAclEntries(v []*CreateAclRequestAclEntries) *CreateAclRequest {
+	s.AclEntries = v
 	return s
 }
 
@@ -923,11 +936,6 @@ func (s *CreateAclRequest) SetAddressIPVersion(v string) *CreateAclRequest {
 	return s
 }
 
-func (s *CreateAclRequest) SetAclEntries(v []*CreateAclRequestAclEntries) *CreateAclRequest {
-	s.AclEntries = v
-	return s
-}
-
 func (s *CreateAclRequest) SetClientToken(v string) *CreateAclRequest {
 	s.ClientToken = &v
 	return s
@@ -935,6 +943,11 @@ func (s *CreateAclRequest) SetClientToken(v string) *CreateAclRequest {
 
 func (s *CreateAclRequest) SetDryRun(v bool) *CreateAclRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetRegionId(v string) *CreateAclRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -962,9 +975,9 @@ func (s *CreateAclRequestAclEntries) SetEntryDescription(v string) *CreateAclReq
 }
 
 type CreateAclResponseBody struct {
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s CreateAclResponseBody) String() string {
@@ -975,13 +988,13 @@ func (s CreateAclResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAclResponseBody) SetRequestId(v string) *CreateAclResponseBody {
-	s.RequestId = &v
+func (s *CreateAclResponseBody) SetAclId(v string) *CreateAclResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *CreateAclResponseBody) SetAclId(v string) *CreateAclResponseBody {
-	s.AclId = &v
+func (s *CreateAclResponseBody) SetRequestId(v string) *CreateAclResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1009,20 +1022,20 @@ func (s *CreateAclResponse) SetBody(v *CreateAclResponseBody) *CreateAclResponse
 }
 
 type CreateBandwidthPackageRequest struct {
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Duration               *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PricingCycle           *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	AutoPay                *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	BandwidthType          *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	AutoUseCoupon          *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	Ratio                  *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthType          *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	BillingType            *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	ChargeType             *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CbnGeographicRegionIdA *string `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
 	CbnGeographicRegionIdB *string `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
+	ChargeType             *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration               *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PricingCycle           *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Ratio                  *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateBandwidthPackageRequest) String() string {
@@ -1033,43 +1046,8 @@ func (s CreateBandwidthPackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBandwidthPackageRequest) SetRegionId(v string) *CreateBandwidthPackageRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetBandwidth(v int32) *CreateBandwidthPackageRequest {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetDuration(v string) *CreateBandwidthPackageRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetPricingCycle(v string) *CreateBandwidthPackageRequest {
-	s.PricingCycle = &v
-	return s
-}
-
 func (s *CreateBandwidthPackageRequest) SetAutoPay(v bool) *CreateBandwidthPackageRequest {
 	s.AutoPay = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetClientToken(v string) *CreateBandwidthPackageRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetType(v string) *CreateBandwidthPackageRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetBandwidthType(v string) *CreateBandwidthPackageRequest {
-	s.BandwidthType = &v
 	return s
 }
 
@@ -1078,18 +1056,18 @@ func (s *CreateBandwidthPackageRequest) SetAutoUseCoupon(v string) *CreateBandwi
 	return s
 }
 
-func (s *CreateBandwidthPackageRequest) SetRatio(v int32) *CreateBandwidthPackageRequest {
-	s.Ratio = &v
+func (s *CreateBandwidthPackageRequest) SetBandwidth(v int32) *CreateBandwidthPackageRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetBandwidthType(v string) *CreateBandwidthPackageRequest {
+	s.BandwidthType = &v
 	return s
 }
 
 func (s *CreateBandwidthPackageRequest) SetBillingType(v string) *CreateBandwidthPackageRequest {
 	s.BillingType = &v
-	return s
-}
-
-func (s *CreateBandwidthPackageRequest) SetChargeType(v string) *CreateBandwidthPackageRequest {
-	s.ChargeType = &v
 	return s
 }
 
@@ -1103,10 +1081,45 @@ func (s *CreateBandwidthPackageRequest) SetCbnGeographicRegionIdB(v string) *Cre
 	return s
 }
 
+func (s *CreateBandwidthPackageRequest) SetChargeType(v string) *CreateBandwidthPackageRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetClientToken(v string) *CreateBandwidthPackageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetDuration(v string) *CreateBandwidthPackageRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetPricingCycle(v string) *CreateBandwidthPackageRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetRatio(v int32) *CreateBandwidthPackageRequest {
+	s.Ratio = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetRegionId(v string) *CreateBandwidthPackageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageRequest) SetType(v string) *CreateBandwidthPackageRequest {
+	s.Type = &v
+	return s
+}
+
 type CreateBandwidthPackageResponseBody struct {
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBandwidthPackageResponseBody) String() string {
@@ -1117,11 +1130,6 @@ func (s CreateBandwidthPackageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBandwidthPackageResponseBody) SetRequestId(v string) *CreateBandwidthPackageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateBandwidthPackageResponseBody) SetBandwidthPackageId(v string) *CreateBandwidthPackageResponseBody {
 	s.BandwidthPackageId = &v
 	return s
@@ -1129,6 +1137,11 @@ func (s *CreateBandwidthPackageResponseBody) SetBandwidthPackageId(v string) *Cr
 
 func (s *CreateBandwidthPackageResponseBody) SetOrderId(v string) *CreateBandwidthPackageResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *CreateBandwidthPackageResponseBody) SetRequestId(v string) *CreateBandwidthPackageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1155,25 +1168,335 @@ func (s *CreateBandwidthPackageResponse) SetBody(v *CreateBandwidthPackageRespon
 	return s
 }
 
+type CreateBasicAcceleratorRequest struct {
+	// 自动续费
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// 自动使用优惠券
+	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 购买时长
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 时长单位
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBasicAcceleratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicAcceleratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicAcceleratorRequest) SetAutoPay(v bool) *CreateBasicAcceleratorRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetAutoUseCoupon(v string) *CreateBasicAcceleratorRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetClientToken(v string) *CreateBasicAcceleratorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetDuration(v int32) *CreateBasicAcceleratorRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetPricingCycle(v string) *CreateBasicAcceleratorRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetRegionId(v string) *CreateBasicAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBasicAcceleratorResponseBody struct {
+	// 全球加速实例ID
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 订单Id
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBasicAcceleratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicAcceleratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicAcceleratorResponseBody) SetAcceleratorId(v string) *CreateBasicAcceleratorResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorResponseBody) SetOrderId(v string) *CreateBasicAcceleratorResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorResponseBody) SetRequestId(v string) *CreateBasicAcceleratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBasicAcceleratorResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBasicAcceleratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBasicAcceleratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicAcceleratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicAcceleratorResponse) SetHeaders(v map[string]*string) *CreateBasicAcceleratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBasicAcceleratorResponse) SetBody(v *CreateBasicAcceleratorResponseBody) *CreateBasicAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBasicEndpointGroupRequest struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 终端节点组描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 终端节点地址
+	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	// 终端节点组所在地域
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// 终端节点类型
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// 终端节点组名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Regionid
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBasicEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetAcceleratorId(v string) *CreateBasicEndpointGroupRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetClientToken(v string) *CreateBasicEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetDescription(v string) *CreateBasicEndpointGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetEndpointAddress(v string) *CreateBasicEndpointGroupRequest {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetEndpointGroupRegion(v string) *CreateBasicEndpointGroupRequest {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetEndpointType(v string) *CreateBasicEndpointGroupRequest {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetName(v string) *CreateBasicEndpointGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetRegionId(v string) *CreateBasicEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBasicEndpointGroupResponseBody struct {
+	// 终端节点组Id
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBasicEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointGroupResponseBody) SetEndpointGroupId(v string) *CreateBasicEndpointGroupResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupResponseBody) SetRequestId(v string) *CreateBasicEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBasicEndpointGroupResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBasicEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBasicEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicEndpointGroupResponse) SetHeaders(v map[string]*string) *CreateBasicEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupResponse) SetBody(v *CreateBasicEndpointGroupResponseBody) *CreateBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBasicIpSetRequest struct {
+	// 加速地域Id
+	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
+	// 基础版全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBasicIpSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicIpSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicIpSetRequest) SetAccelerateRegionId(v string) *CreateBasicIpSetRequest {
+	s.AccelerateRegionId = &v
+	return s
+}
+
+func (s *CreateBasicIpSetRequest) SetAcceleratorId(v string) *CreateBasicIpSetRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicIpSetRequest) SetClientToken(v string) *CreateBasicIpSetRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicIpSetRequest) SetRegionId(v string) *CreateBasicIpSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBasicIpSetResponseBody struct {
+	// 加速地域接入点Id
+	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBasicIpSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicIpSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicIpSetResponseBody) SetIpSetId(v string) *CreateBasicIpSetResponseBody {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *CreateBasicIpSetResponseBody) SetRequestId(v string) *CreateBasicIpSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBasicIpSetResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBasicIpSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBasicIpSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicIpSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicIpSetResponse) SetHeaders(v map[string]*string) *CreateBasicIpSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBasicIpSetResponse) SetBody(v *CreateBasicIpSetResponseBody) *CreateBasicIpSetResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEndpointGroupRequest struct {
-	RegionId                   *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken                *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId              *string                                             `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Name                       *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ClientToken                *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description                *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointConfigurations     []*CreateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	EndpointGroupRegion        *string                                             `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	ListenerId                 *string                                             `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	TrafficPercentage          *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	EndpointGroupType          *string                                             `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointRequestProtocol    *string                                             `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	HealthCheckEnabled         *bool                                               `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	HealthCheckIntervalSeconds *int32                                              `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
 	HealthCheckPath            *string                                             `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	HealthCheckPort            *int32                                              `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	HealthCheckProtocol        *string                                             `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ThresholdCount             *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	EndpointConfigurations     []*CreateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	EndpointRequestProtocol    *string                                             `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	EndpointGroupType          *string                                             `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	ListenerId                 *string                                             `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                       *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	PortOverrides              []*CreateEndpointGroupRequestPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	HealthCheckEnabled         *bool                                               `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	RegionId                   *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ThresholdCount             *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage          *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s CreateEndpointGroupRequest) String() string {
@@ -1184,8 +1507,8 @@ func (s CreateEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEndpointGroupRequest) SetRegionId(v string) *CreateEndpointGroupRequest {
-	s.RegionId = &v
+func (s *CreateEndpointGroupRequest) SetAcceleratorId(v string) *CreateEndpointGroupRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -1194,18 +1517,13 @@ func (s *CreateEndpointGroupRequest) SetClientToken(v string) *CreateEndpointGro
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetAcceleratorId(v string) *CreateEndpointGroupRequest {
-	s.AcceleratorId = &v
-	return s
-}
-
-func (s *CreateEndpointGroupRequest) SetName(v string) *CreateEndpointGroupRequest {
-	s.Name = &v
-	return s
-}
-
 func (s *CreateEndpointGroupRequest) SetDescription(v string) *CreateEndpointGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequest) SetEndpointConfigurations(v []*CreateEndpointGroupRequestEndpointConfigurations) *CreateEndpointGroupRequest {
+	s.EndpointConfigurations = v
 	return s
 }
 
@@ -1214,13 +1532,18 @@ func (s *CreateEndpointGroupRequest) SetEndpointGroupRegion(v string) *CreateEnd
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetListenerId(v string) *CreateEndpointGroupRequest {
-	s.ListenerId = &v
+func (s *CreateEndpointGroupRequest) SetEndpointGroupType(v string) *CreateEndpointGroupRequest {
+	s.EndpointGroupType = &v
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetTrafficPercentage(v int32) *CreateEndpointGroupRequest {
-	s.TrafficPercentage = &v
+func (s *CreateEndpointGroupRequest) SetEndpointRequestProtocol(v string) *CreateEndpointGroupRequest {
+	s.EndpointRequestProtocol = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequest) SetHealthCheckEnabled(v bool) *CreateEndpointGroupRequest {
+	s.HealthCheckEnabled = &v
 	return s
 }
 
@@ -1244,23 +1567,13 @@ func (s *CreateEndpointGroupRequest) SetHealthCheckProtocol(v string) *CreateEnd
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetThresholdCount(v int32) *CreateEndpointGroupRequest {
-	s.ThresholdCount = &v
+func (s *CreateEndpointGroupRequest) SetListenerId(v string) *CreateEndpointGroupRequest {
+	s.ListenerId = &v
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetEndpointConfigurations(v []*CreateEndpointGroupRequestEndpointConfigurations) *CreateEndpointGroupRequest {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *CreateEndpointGroupRequest) SetEndpointRequestProtocol(v string) *CreateEndpointGroupRequest {
-	s.EndpointRequestProtocol = &v
-	return s
-}
-
-func (s *CreateEndpointGroupRequest) SetEndpointGroupType(v string) *CreateEndpointGroupRequest {
-	s.EndpointGroupType = &v
+func (s *CreateEndpointGroupRequest) SetName(v string) *CreateEndpointGroupRequest {
+	s.Name = &v
 	return s
 }
 
@@ -1269,16 +1582,26 @@ func (s *CreateEndpointGroupRequest) SetPortOverrides(v []*CreateEndpointGroupRe
 	return s
 }
 
-func (s *CreateEndpointGroupRequest) SetHealthCheckEnabled(v bool) *CreateEndpointGroupRequest {
-	s.HealthCheckEnabled = &v
+func (s *CreateEndpointGroupRequest) SetRegionId(v string) *CreateEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequest) SetThresholdCount(v int32) *CreateEndpointGroupRequest {
+	s.ThresholdCount = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequest) SetTrafficPercentage(v int32) *CreateEndpointGroupRequest {
+	s.TrafficPercentage = &v
 	return s
 }
 
 type CreateEndpointGroupRequestEndpointConfigurations struct {
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateEndpointGroupRequestEndpointConfigurations) String() string {
@@ -1289,18 +1612,8 @@ func (s CreateEndpointGroupRequestEndpointConfigurations) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEndpointGroupRequestEndpointConfigurations) SetType(v string) *CreateEndpointGroupRequestEndpointConfigurations {
-	s.Type = &v
-	return s
-}
-
 func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableClientIPPreservation(v bool) *CreateEndpointGroupRequestEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
-	return s
-}
-
-func (s *CreateEndpointGroupRequestEndpointConfigurations) SetWeight(v int32) *CreateEndpointGroupRequestEndpointConfigurations {
-	s.Weight = &v
 	return s
 }
 
@@ -1309,9 +1622,19 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string)
 	return s
 }
 
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetType(v string) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetWeight(v int32) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.Weight = &v
+	return s
+}
+
 type CreateEndpointGroupRequestPortOverrides struct {
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s CreateEndpointGroupRequestPortOverrides) String() string {
@@ -1322,13 +1645,13 @@ func (s CreateEndpointGroupRequestPortOverrides) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEndpointGroupRequestPortOverrides) SetListenerPort(v int32) *CreateEndpointGroupRequestPortOverrides {
-	s.ListenerPort = &v
+func (s *CreateEndpointGroupRequestPortOverrides) SetEndpointPort(v int32) *CreateEndpointGroupRequestPortOverrides {
+	s.EndpointPort = &v
 	return s
 }
 
-func (s *CreateEndpointGroupRequestPortOverrides) SetEndpointPort(v int32) *CreateEndpointGroupRequestPortOverrides {
-	s.EndpointPort = &v
+func (s *CreateEndpointGroupRequestPortOverrides) SetListenerPort(v int32) *CreateEndpointGroupRequestPortOverrides {
+	s.ListenerPort = &v
 	return s
 }
 
@@ -1379,12 +1702,12 @@ func (s *CreateEndpointGroupResponse) SetBody(v *CreateEndpointGroupResponseBody
 }
 
 type CreateEndpointGroupsRequest struct {
-	RegionId                    *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId               *string                                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken                 *string                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                      *bool                                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId               *string                                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId                  *string                                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	EndpointGroupConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
+	ListenerId                  *string                                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId                    *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequest) String() string {
@@ -1395,8 +1718,8 @@ func (s CreateEndpointGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEndpointGroupsRequest) SetRegionId(v string) *CreateEndpointGroupsRequest {
-	s.RegionId = &v
+func (s *CreateEndpointGroupsRequest) SetAcceleratorId(v string) *CreateEndpointGroupsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -1410,8 +1733,8 @@ func (s *CreateEndpointGroupsRequest) SetDryRun(v bool) *CreateEndpointGroupsReq
 	return s
 }
 
-func (s *CreateEndpointGroupsRequest) SetAcceleratorId(v string) *CreateEndpointGroupsRequest {
-	s.AcceleratorId = &v
+func (s *CreateEndpointGroupsRequest) SetEndpointGroupConfigurations(v []*CreateEndpointGroupsRequestEndpointGroupConfigurations) *CreateEndpointGroupsRequest {
+	s.EndpointGroupConfigurations = v
 	return s
 }
 
@@ -1420,28 +1743,28 @@ func (s *CreateEndpointGroupsRequest) SetListenerId(v string) *CreateEndpointGro
 	return s
 }
 
-func (s *CreateEndpointGroupsRequest) SetEndpointGroupConfigurations(v []*CreateEndpointGroupsRequestEndpointGroupConfigurations) *CreateEndpointGroupsRequest {
-	s.EndpointGroupConfigurations = v
+func (s *CreateEndpointGroupsRequest) SetRegionId(v string) *CreateEndpointGroupsRequest {
+	s.RegionId = &v
 	return s
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurations struct {
-	EndpointGroupName                       *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EnableClientIPPreservationProxyProtocol *bool                                                                           `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
+	EnableClientIPPreservationToa           *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
+	EndpointConfigurations                  []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	EndpointGroupDescription                *string                                                                         `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
+	EndpointGroupName                       *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
 	EndpointGroupRegion                     *string                                                                         `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	TrafficPercentage                       *int64                                                                          `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	EndpointGroupType                       *string                                                                         `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointRequestProtocol                 *string                                                                         `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	HealthCheckEnabled                      *bool                                                                           `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	HealthCheckIntervalSeconds              *int64                                                                          `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
 	HealthCheckPath                         *string                                                                         `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	HealthCheckPort                         *int64                                                                          `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	HealthCheckProtocol                     *string                                                                         `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ThresholdCount                          *int64                                                                          `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	EndpointConfigurations                  []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	EndpointRequestProtocol                 *string                                                                         `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	EndpointGroupType                       *string                                                                         `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	PortOverrides                           []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	EnableClientIPPreservationToa           *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
-	EnableClientIPPreservationProxyProtocol *bool                                                                           `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
+	ThresholdCount                          *int64                                                                          `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage                       *int64                                                                          `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurations) String() string {
@@ -1452,8 +1775,18 @@ func (s CreateEndpointGroupsRequestEndpointGroupConfigurations) GoString() strin
 	return s.String()
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupName(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointGroupName = &v
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationProxyProtocol(v bool) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationProxyProtocol = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationToa(v bool) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationToa = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointConfigurations = v
 	return s
 }
 
@@ -1462,13 +1795,23 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGrou
 	return s
 }
 
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupName(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointGroupName = &v
+	return s
+}
+
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupRegion(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
 	s.EndpointGroupRegion = &v
 	return s
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPercentage(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.TrafficPercentage = &v
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupType(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointGroupType = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointRequestProtocol(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointRequestProtocol = &v
 	return s
 }
 
@@ -1497,45 +1840,25 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetHealthCheckP
 	return s
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetThresholdCount(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.ThresholdCount = &v
-	return s
-}
-
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointRequestProtocol(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointRequestProtocol = &v
-	return s
-}
-
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupType(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointGroupType = &v
-	return s
-}
-
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetPortOverrides(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
 	s.PortOverrides = v
 	return s
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationToa(v bool) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EnableClientIPPreservationToa = &v
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetThresholdCount(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.ThresholdCount = &v
 	return s
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationProxyProtocol(v bool) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EnableClientIPPreservationProxyProtocol = &v
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPercentage(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.TrafficPercentage = &v
 	return s
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weight   *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
@@ -1544,6 +1867,11 @@ func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Endpoint = &v
+	return s
 }
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetType(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
@@ -1556,14 +1884,9 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 	return s
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
-	s.Endpoint = &v
-	return s
-}
-
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct {
-	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) String() string {
@@ -1574,20 +1897,20 @@ func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) GoS
 	return s.String()
 }
 
-func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
-	s.ListenerPort = &v
-	return s
-}
-
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetEndpointPort(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
 	s.EndpointPort = &v
 	return s
 }
 
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
+	s.ListenerPort = &v
+	return s
+}
+
 type CreateEndpointGroupsResponseBody struct {
-	// Id of the request
-	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEndpointGroupsResponseBody) String() string {
@@ -1598,13 +1921,13 @@ func (s CreateEndpointGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEndpointGroupsResponseBody) SetRequestId(v string) *CreateEndpointGroupsResponseBody {
-	s.RequestId = &v
+func (s *CreateEndpointGroupsResponseBody) SetEndpointGroupIds(v []*string) *CreateEndpointGroupsResponseBody {
+	s.EndpointGroupIds = v
 	return s
 }
 
-func (s *CreateEndpointGroupsResponseBody) SetEndpointGroupIds(v []*string) *CreateEndpointGroupsResponseBody {
-	s.EndpointGroupIds = v
+func (s *CreateEndpointGroupsResponseBody) SetRequestId(v string) *CreateEndpointGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1632,11 +1955,11 @@ func (s *CreateEndpointGroupsResponse) SetBody(v *CreateEndpointGroupsResponseBo
 }
 
 type CreateForwardingRulesRequest struct {
-	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId   *string                                        `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId      *string                                        `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ForwardingRules []*CreateForwardingRulesRequestForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
+	ListenerId      *string                                        `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateForwardingRulesRequest) String() string {
@@ -1647,8 +1970,8 @@ func (s CreateForwardingRulesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateForwardingRulesRequest) SetRegionId(v string) *CreateForwardingRulesRequest {
-	s.RegionId = &v
+func (s *CreateForwardingRulesRequest) SetAcceleratorId(v string) *CreateForwardingRulesRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -1657,8 +1980,8 @@ func (s *CreateForwardingRulesRequest) SetClientToken(v string) *CreateForwardin
 	return s
 }
 
-func (s *CreateForwardingRulesRequest) SetAcceleratorId(v string) *CreateForwardingRulesRequest {
-	s.AcceleratorId = &v
+func (s *CreateForwardingRulesRequest) SetForwardingRules(v []*CreateForwardingRulesRequestForwardingRules) *CreateForwardingRulesRequest {
+	s.ForwardingRules = v
 	return s
 }
 
@@ -1667,16 +1990,16 @@ func (s *CreateForwardingRulesRequest) SetListenerId(v string) *CreateForwarding
 	return s
 }
 
-func (s *CreateForwardingRulesRequest) SetForwardingRules(v []*CreateForwardingRulesRequestForwardingRules) *CreateForwardingRulesRequest {
-	s.ForwardingRules = v
+func (s *CreateForwardingRulesRequest) SetRegionId(v string) *CreateForwardingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
 type CreateForwardingRulesRequestForwardingRules struct {
-	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleConditions     []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	RuleActions        []*CreateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	ForwardingRuleName *string                                                      `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
+	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions        []*CreateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	RuleConditions     []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRules) String() string {
@@ -1687,13 +2010,13 @@ func (s CreateForwardingRulesRequestForwardingRules) GoString() string {
 	return s.String()
 }
 
-func (s *CreateForwardingRulesRequestForwardingRules) SetPriority(v int32) *CreateForwardingRulesRequestForwardingRules {
-	s.Priority = &v
+func (s *CreateForwardingRulesRequestForwardingRules) SetForwardingRuleName(v string) *CreateForwardingRulesRequestForwardingRules {
+	s.ForwardingRuleName = &v
 	return s
 }
 
-func (s *CreateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*CreateForwardingRulesRequestForwardingRulesRuleConditions) *CreateForwardingRulesRequestForwardingRules {
-	s.RuleConditions = v
+func (s *CreateForwardingRulesRequestForwardingRules) SetPriority(v int32) *CreateForwardingRulesRequestForwardingRules {
+	s.Priority = &v
 	return s
 }
 
@@ -1702,78 +2025,15 @@ func (s *CreateForwardingRulesRequestForwardingRules) SetRuleActions(v []*Create
 	return s
 }
 
-func (s *CreateForwardingRulesRequestForwardingRules) SetForwardingRuleName(v string) *CreateForwardingRulesRequestForwardingRules {
-	s.ForwardingRuleName = &v
-	return s
-}
-
-type CreateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
-	PathConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	HostConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) GoString() string {
-	return s.String()
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.RuleConditionType = &v
-	return s
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfig(v *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.PathConfig = v
-	return s
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetHostConfig(v *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.HostConfig = v
-	return s
-}
-
-type CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig {
-	s.Values = v
-	return s
-}
-
-type CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig {
-	s.Values = v
+func (s *CreateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*CreateForwardingRulesRequestForwardingRulesRuleConditions) *CreateForwardingRulesRequestForwardingRules {
+	s.RuleConditions = v
 	return s
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
+	ForwardGroupConfig *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                   `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	ForwardGroupConfig *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRulesRuleActions) String() string {
@@ -1784,6 +2044,11 @@ func (s CreateForwardingRulesRequestForwardingRulesRuleActions) GoString() strin
 	return s.String()
 }
 
+func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetForwardGroupConfig(v *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig) *CreateForwardingRulesRequestForwardingRulesRuleActions {
+	s.ForwardGroupConfig = v
+	return s
+}
+
 func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int32) *CreateForwardingRulesRequestForwardingRulesRuleActions {
 	s.Order = &v
 	return s
@@ -1791,11 +2056,6 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int3
 
 func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionType(v string) *CreateForwardingRulesRequestForwardingRulesRuleActions {
 	s.RuleActionType = &v
-	return s
-}
-
-func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetForwardGroupConfig(v *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig) *CreateForwardingRulesRequestForwardingRulesRuleActions {
-	s.ForwardGroupConfig = v
 	return s
 }
 
@@ -1833,9 +2093,72 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 	return s
 }
 
+type CreateForwardingRulesRequestForwardingRulesRuleConditions struct {
+	HostConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetHostConfig(v *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.HostConfig = v
+	return s
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfig(v *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.PathConfig = v
+	return s
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.RuleConditionType = &v
+	return s
+}
+
+type CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig {
+	s.Values = v
+	return s
+}
+
+type CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig {
+	s.Values = v
+	return s
+}
+
 type CreateForwardingRulesResponseBody struct {
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ForwardingRules []*CreateForwardingRulesResponseBodyForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateForwardingRulesResponseBody) String() string {
@@ -1846,13 +2169,13 @@ func (s CreateForwardingRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateForwardingRulesResponseBody) SetRequestId(v string) *CreateForwardingRulesResponseBody {
-	s.RequestId = &v
+func (s *CreateForwardingRulesResponseBody) SetForwardingRules(v []*CreateForwardingRulesResponseBodyForwardingRules) *CreateForwardingRulesResponseBody {
+	s.ForwardingRules = v
 	return s
 }
 
-func (s *CreateForwardingRulesResponseBody) SetForwardingRules(v []*CreateForwardingRulesResponseBodyForwardingRules) *CreateForwardingRulesResponseBody {
-	s.ForwardingRules = v
+func (s *CreateForwardingRulesResponseBody) SetRequestId(v string) *CreateForwardingRulesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1897,10 +2220,10 @@ func (s *CreateForwardingRulesResponse) SetBody(v *CreateForwardingRulesResponse
 }
 
 type CreateIpSetsRequest struct {
-	RegionId         *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken      *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	AcceleratorId    *string                                `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	AccelerateRegion []*CreateIpSetsRequestAccelerateRegion `json:"AccelerateRegion,omitempty" xml:"AccelerateRegion,omitempty" type:"Repeated"`
+	AcceleratorId    *string                                `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken      *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId         *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateIpSetsRequest) String() string {
@@ -1911,13 +2234,8 @@ func (s CreateIpSetsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateIpSetsRequest) SetRegionId(v string) *CreateIpSetsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateIpSetsRequest) SetClientToken(v string) *CreateIpSetsRequest {
-	s.ClientToken = &v
+func (s *CreateIpSetsRequest) SetAccelerateRegion(v []*CreateIpSetsRequestAccelerateRegion) *CreateIpSetsRequest {
+	s.AccelerateRegion = v
 	return s
 }
 
@@ -1926,15 +2244,20 @@ func (s *CreateIpSetsRequest) SetAcceleratorId(v string) *CreateIpSetsRequest {
 	return s
 }
 
-func (s *CreateIpSetsRequest) SetAccelerateRegion(v []*CreateIpSetsRequestAccelerateRegion) *CreateIpSetsRequest {
-	s.AccelerateRegion = v
+func (s *CreateIpSetsRequest) SetClientToken(v string) *CreateIpSetsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateIpSetsRequest) SetRegionId(v string) *CreateIpSetsRequest {
+	s.RegionId = &v
 	return s
 }
 
 type CreateIpSetsRequestAccelerateRegion struct {
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s CreateIpSetsRequestAccelerateRegion) String() string {
@@ -1950,20 +2273,20 @@ func (s *CreateIpSetsRequestAccelerateRegion) SetAccelerateRegionId(v string) *C
 	return s
 }
 
-func (s *CreateIpSetsRequestAccelerateRegion) SetIpVersion(v string) *CreateIpSetsRequestAccelerateRegion {
-	s.IpVersion = &v
-	return s
-}
-
 func (s *CreateIpSetsRequestAccelerateRegion) SetBandwidth(v int32) *CreateIpSetsRequestAccelerateRegion {
 	s.Bandwidth = &v
 	return s
 }
 
+func (s *CreateIpSetsRequestAccelerateRegion) SetIpVersion(v string) *CreateIpSetsRequestAccelerateRegion {
+	s.IpVersion = &v
+	return s
+}
+
 type CreateIpSetsResponseBody struct {
-	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IpSets        []*CreateIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
 	AcceleratorId *string                           `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	IpSets        []*CreateIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
+	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateIpSetsResponseBody) String() string {
@@ -1974,8 +2297,8 @@ func (s CreateIpSetsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateIpSetsResponseBody) SetRequestId(v string) *CreateIpSetsResponseBody {
-	s.RequestId = &v
+func (s *CreateIpSetsResponseBody) SetAcceleratorId(v string) *CreateIpSetsResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -1984,8 +2307,8 @@ func (s *CreateIpSetsResponseBody) SetIpSets(v []*CreateIpSetsResponseBodyIpSets
 	return s
 }
 
-func (s *CreateIpSetsResponseBody) SetAcceleratorId(v string) *CreateIpSetsResponseBody {
-	s.AcceleratorId = &v
+func (s *CreateIpSetsResponseBody) SetRequestId(v string) *CreateIpSetsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2042,18 +2365,18 @@ func (s *CreateIpSetsResponse) SetBody(v *CreateIpSetsResponseBody) *CreateIpSet
 }
 
 type CreateListenerRequest struct {
-	RegionId            *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId       *string                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Name                *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description         *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Certificates        []*CreateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	ClientAffinity      *string                                   `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
+	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description         *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges          []*CreateListenerRequestPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	Protocol            *string                                   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	ProxyProtocol       *bool                                     `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	PortRanges          []*CreateListenerRequestPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Certificates        []*CreateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	XForwardedForConfig *CreateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
+	RegionId            *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityPolicyId    *string                                   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	XForwardedForConfig *CreateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -2064,8 +2387,18 @@ func (s CreateListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateListenerRequest) SetRegionId(v string) *CreateListenerRequest {
-	s.RegionId = &v
+func (s *CreateListenerRequest) SetAcceleratorId(v string) *CreateListenerRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateListenerRequest) SetCertificates(v []*CreateListenerRequestCertificates) *CreateListenerRequest {
+	s.Certificates = v
+	return s
+}
+
+func (s *CreateListenerRequest) SetClientAffinity(v string) *CreateListenerRequest {
+	s.ClientAffinity = &v
 	return s
 }
 
@@ -2074,8 +2407,8 @@ func (s *CreateListenerRequest) SetClientToken(v string) *CreateListenerRequest 
 	return s
 }
 
-func (s *CreateListenerRequest) SetAcceleratorId(v string) *CreateListenerRequest {
-	s.AcceleratorId = &v
+func (s *CreateListenerRequest) SetDescription(v string) *CreateListenerRequest {
+	s.Description = &v
 	return s
 }
 
@@ -2084,13 +2417,8 @@ func (s *CreateListenerRequest) SetName(v string) *CreateListenerRequest {
 	return s
 }
 
-func (s *CreateListenerRequest) SetDescription(v string) *CreateListenerRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateListenerRequest) SetClientAffinity(v string) *CreateListenerRequest {
-	s.ClientAffinity = &v
+func (s *CreateListenerRequest) SetPortRanges(v []*CreateListenerRequestPortRanges) *CreateListenerRequest {
+	s.PortRanges = v
 	return s
 }
 
@@ -2104,13 +2432,13 @@ func (s *CreateListenerRequest) SetProxyProtocol(v bool) *CreateListenerRequest 
 	return s
 }
 
-func (s *CreateListenerRequest) SetPortRanges(v []*CreateListenerRequestPortRanges) *CreateListenerRequest {
-	s.PortRanges = v
+func (s *CreateListenerRequest) SetRegionId(v string) *CreateListenerRequest {
+	s.RegionId = &v
 	return s
 }
 
-func (s *CreateListenerRequest) SetCertificates(v []*CreateListenerRequestCertificates) *CreateListenerRequest {
-	s.Certificates = v
+func (s *CreateListenerRequest) SetSecurityPolicyId(v string) *CreateListenerRequest {
+	s.SecurityPolicyId = &v
 	return s
 }
 
@@ -2119,8 +2447,20 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 	return s
 }
 
-func (s *CreateListenerRequest) SetSecurityPolicyId(v string) *CreateListenerRequest {
-	s.SecurityPolicyId = &v
+type CreateListenerRequestCertificates struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s CreateListenerRequestCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCertificates) SetId(v string) *CreateListenerRequestCertificates {
+	s.Id = &v
 	return s
 }
 
@@ -2147,28 +2487,11 @@ func (s *CreateListenerRequestPortRanges) SetToPort(v int32) *CreateListenerRequ
 	return s
 }
 
-type CreateListenerRequestCertificates struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s CreateListenerRequestCertificates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateListenerRequestCertificates) GoString() string {
-	return s.String()
-}
-
-func (s *CreateListenerRequestCertificates) SetId(v string) *CreateListenerRequestCertificates {
-	s.Id = &v
-	return s
-}
-
 type CreateListenerRequestXForwardedForConfig struct {
-	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	XForwardedForGaApEnabled  *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	XForwardedForPortEnabled  *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
+	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 }
 
@@ -2180,23 +2503,23 @@ func (s CreateListenerRequestXForwardedForConfig) GoString() string {
 	return s.String()
 }
 
-func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
-	s.XForwardedForGaIdEnabled = &v
-	return s
-}
-
 func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
 	s.XForwardedForGaApEnabled = &v
 	return s
 }
 
-func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
-	s.XForwardedForProtoEnabled = &v
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForGaIdEnabled = &v
 	return s
 }
 
 func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForPortEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
 	s.XForwardedForPortEnabled = &v
+	return s
+}
+
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForProtoEnabled = &v
 	return s
 }
 
@@ -2206,8 +2529,8 @@ func (s *CreateListenerRequestXForwardedForConfig) SetXRealIpEnabled(v bool) *Cr
 }
 
 type CreateListenerResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateListenerResponseBody) String() string {
@@ -2218,13 +2541,13 @@ func (s CreateListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateListenerResponseBody) SetRequestId(v string) *CreateListenerResponseBody {
-	s.RequestId = &v
+func (s *CreateListenerResponseBody) SetListenerId(v string) *CreateListenerResponseBody {
+	s.ListenerId = &v
 	return s
 }
 
-func (s *CreateListenerResponseBody) SetListenerId(v string) *CreateListenerResponseBody {
-	s.ListenerId = &v
+func (s *CreateListenerResponseBody) SetRequestId(v string) *CreateListenerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2252,10 +2575,10 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateSpareIpsRequest struct {
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SpareIps      []*string `json:"SpareIps,omitempty" xml:"SpareIps,omitempty" type:"Repeated"`
 }
 
@@ -2267,8 +2590,8 @@ func (s CreateSpareIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSpareIpsRequest) SetRegionId(v string) *CreateSpareIpsRequest {
-	s.RegionId = &v
+func (s *CreateSpareIpsRequest) SetAcceleratorId(v string) *CreateSpareIpsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -2282,8 +2605,8 @@ func (s *CreateSpareIpsRequest) SetDryRun(v bool) *CreateSpareIpsRequest {
 	return s
 }
 
-func (s *CreateSpareIpsRequest) SetAcceleratorId(v string) *CreateSpareIpsRequest {
-	s.AcceleratorId = &v
+func (s *CreateSpareIpsRequest) SetRegionId(v string) *CreateSpareIpsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2334,8 +2657,8 @@ func (s *CreateSpareIpsResponse) SetBody(v *CreateSpareIpsResponseBody) *CreateS
 }
 
 type DeleteAcceleratorRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteAcceleratorRequest) String() string {
@@ -2346,19 +2669,19 @@ func (s DeleteAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAcceleratorRequest) SetRegionId(v string) *DeleteAcceleratorRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DeleteAcceleratorRequest) SetAcceleratorId(v string) *DeleteAcceleratorRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
+func (s *DeleteAcceleratorRequest) SetRegionId(v string) *DeleteAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeleteAcceleratorResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAcceleratorResponseBody) String() string {
@@ -2369,13 +2692,13 @@ func (s DeleteAcceleratorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAcceleratorResponseBody) SetRequestId(v string) *DeleteAcceleratorResponseBody {
-	s.RequestId = &v
+func (s *DeleteAcceleratorResponseBody) SetAcceleratorId(v string) *DeleteAcceleratorResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DeleteAcceleratorResponseBody) SetAcceleratorId(v string) *DeleteAcceleratorResponseBody {
-	s.AcceleratorId = &v
+func (s *DeleteAcceleratorResponseBody) SetRequestId(v string) *DeleteAcceleratorResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2403,10 +2726,10 @@ func (s *DeleteAcceleratorResponse) SetBody(v *DeleteAcceleratorResponseBody) *D
 }
 
 type DeleteAclRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteAclRequest) String() string {
@@ -2415,11 +2738,6 @@ func (s DeleteAclRequest) String() string {
 
 func (s DeleteAclRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteAclRequest) SetRegionId(v string) *DeleteAclRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteAclRequest) SetAclId(v string) *DeleteAclRequest {
@@ -2437,10 +2755,15 @@ func (s *DeleteAclRequest) SetDryRun(v bool) *DeleteAclRequest {
 	return s
 }
 
+func (s *DeleteAclRequest) SetRegionId(v string) *DeleteAclRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeleteAclResponseBody struct {
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s DeleteAclResponseBody) String() string {
@@ -2451,13 +2774,13 @@ func (s DeleteAclResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAclResponseBody) SetRequestId(v string) *DeleteAclResponseBody {
-	s.RequestId = &v
+func (s *DeleteAclResponseBody) SetAclId(v string) *DeleteAclResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *DeleteAclResponseBody) SetAclId(v string) *DeleteAclResponseBody {
-	s.AclId = &v
+func (s *DeleteAclResponseBody) SetRequestId(v string) *DeleteAclResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2485,9 +2808,9 @@ func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse
 }
 
 type DeleteBandwidthPackageRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteBandwidthPackageRequest) String() string {
@@ -2496,11 +2819,6 @@ func (s DeleteBandwidthPackageRequest) String() string {
 
 func (s DeleteBandwidthPackageRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteBandwidthPackageRequest) SetRegionId(v string) *DeleteBandwidthPackageRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteBandwidthPackageRequest) SetBandwidthPackageId(v string) *DeleteBandwidthPackageRequest {
@@ -2513,9 +2831,14 @@ func (s *DeleteBandwidthPackageRequest) SetClientToken(v string) *DeleteBandwidt
 	return s
 }
 
+func (s *DeleteBandwidthPackageRequest) SetRegionId(v string) *DeleteBandwidthPackageRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DeleteBandwidthPackageResponseBody struct {
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteBandwidthPackageResponseBody) String() string {
@@ -2526,13 +2849,13 @@ func (s DeleteBandwidthPackageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteBandwidthPackageResponseBody) SetRequestId(v string) *DeleteBandwidthPackageResponseBody {
-	s.RequestId = &v
+func (s *DeleteBandwidthPackageResponseBody) SetBandwidthPackageId(v string) *DeleteBandwidthPackageResponseBody {
+	s.BandwidthPackageId = &v
 	return s
 }
 
-func (s *DeleteBandwidthPackageResponseBody) SetBandwidthPackageId(v string) *DeleteBandwidthPackageResponseBody {
-	s.BandwidthPackageId = &v
+func (s *DeleteBandwidthPackageResponseBody) SetRequestId(v string) *DeleteBandwidthPackageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2559,9 +2882,221 @@ func (s *DeleteBandwidthPackageResponse) SetBody(v *DeleteBandwidthPackageRespon
 	return s
 }
 
+type DeleteBasicAcceleratorRequest struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteBasicAcceleratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicAcceleratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicAcceleratorRequest) SetAcceleratorId(v string) *DeleteBasicAcceleratorRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DeleteBasicAcceleratorRequest) SetRegionId(v string) *DeleteBasicAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteBasicAcceleratorResponseBody struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBasicAcceleratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicAcceleratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicAcceleratorResponseBody) SetAcceleratorId(v string) *DeleteBasicAcceleratorResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DeleteBasicAcceleratorResponseBody) SetRequestId(v string) *DeleteBasicAcceleratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBasicAcceleratorResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBasicAcceleratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBasicAcceleratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicAcceleratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicAcceleratorResponse) SetHeaders(v map[string]*string) *DeleteBasicAcceleratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBasicAcceleratorResponse) SetBody(v *DeleteBasicAcceleratorResponseBody) *DeleteBasicAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBasicEndpointGroupRequest struct {
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 终端节点组Id
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+}
+
+func (s DeleteBasicEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicEndpointGroupRequest) SetClientToken(v string) *DeleteBasicEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteBasicEndpointGroupRequest) SetEndpointGroupId(v string) *DeleteBasicEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+type DeleteBasicEndpointGroupResponseBody struct {
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBasicEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicEndpointGroupResponseBody) SetRequestId(v string) *DeleteBasicEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBasicEndpointGroupResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBasicEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBasicEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicEndpointGroupResponse) SetHeaders(v map[string]*string) *DeleteBasicEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBasicEndpointGroupResponse) SetBody(v *DeleteBasicEndpointGroupResponseBody) *DeleteBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBasicIpSetRequest struct {
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 加速接入点Id
+	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteBasicIpSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicIpSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicIpSetRequest) SetClientToken(v string) *DeleteBasicIpSetRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteBasicIpSetRequest) SetIpSetId(v string) *DeleteBasicIpSetRequest {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *DeleteBasicIpSetRequest) SetRegionId(v string) *DeleteBasicIpSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteBasicIpSetResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBasicIpSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicIpSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicIpSetResponseBody) SetRequestId(v string) *DeleteBasicIpSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBasicIpSetResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBasicIpSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBasicIpSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBasicIpSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBasicIpSetResponse) SetHeaders(v map[string]*string) *DeleteBasicIpSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBasicIpSetResponse) SetBody(v *DeleteBasicIpSetResponseBody) *DeleteBasicIpSetResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEndpointGroupRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -2573,13 +3108,13 @@ func (s DeleteEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteEndpointGroupRequest) SetClientToken(v string) *DeleteEndpointGroupRequest {
-	s.ClientToken = &v
+func (s *DeleteEndpointGroupRequest) SetAcceleratorId(v string) *DeleteEndpointGroupRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DeleteEndpointGroupRequest) SetAcceleratorId(v string) *DeleteEndpointGroupRequest {
-	s.AcceleratorId = &v
+func (s *DeleteEndpointGroupRequest) SetClientToken(v string) *DeleteEndpointGroupRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2629,10 +3164,10 @@ func (s *DeleteEndpointGroupResponse) SetBody(v *DeleteEndpointGroupResponseBody
 }
 
 type DeleteEndpointGroupsRequest struct {
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun           *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteEndpointGroupsRequest) String() string {
@@ -2641,11 +3176,6 @@ func (s DeleteEndpointGroupsRequest) String() string {
 
 func (s DeleteEndpointGroupsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteEndpointGroupsRequest) SetRegionId(v string) *DeleteEndpointGroupsRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteEndpointGroupsRequest) SetClientToken(v string) *DeleteEndpointGroupsRequest {
@@ -2660,6 +3190,11 @@ func (s *DeleteEndpointGroupsRequest) SetDryRun(v bool) *DeleteEndpointGroupsReq
 
 func (s *DeleteEndpointGroupsRequest) SetEndpointGroupIds(v []*string) *DeleteEndpointGroupsRequest {
 	s.EndpointGroupIds = v
+	return s
+}
+
+func (s *DeleteEndpointGroupsRequest) SetRegionId(v string) *DeleteEndpointGroupsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2705,11 +3240,11 @@ func (s *DeleteEndpointGroupsResponse) SetBody(v *DeleteEndpointGroupsResponseBo
 }
 
 type DeleteForwardingRulesRequest struct {
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId     *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ForwardingRuleIds []*string `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
-	AcceleratorId     *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ListenerId        *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteForwardingRulesRequest) String() string {
@@ -2720,8 +3255,8 @@ func (s DeleteForwardingRulesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteForwardingRulesRequest) SetRegionId(v string) *DeleteForwardingRulesRequest {
-	s.RegionId = &v
+func (s *DeleteForwardingRulesRequest) SetAcceleratorId(v string) *DeleteForwardingRulesRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -2735,13 +3270,13 @@ func (s *DeleteForwardingRulesRequest) SetForwardingRuleIds(v []*string) *Delete
 	return s
 }
 
-func (s *DeleteForwardingRulesRequest) SetAcceleratorId(v string) *DeleteForwardingRulesRequest {
-	s.AcceleratorId = &v
+func (s *DeleteForwardingRulesRequest) SetListenerId(v string) *DeleteForwardingRulesRequest {
+	s.ListenerId = &v
 	return s
 }
 
-func (s *DeleteForwardingRulesRequest) SetListenerId(v string) *DeleteForwardingRulesRequest {
-	s.ListenerId = &v
+func (s *DeleteForwardingRulesRequest) SetRegionId(v string) *DeleteForwardingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2809,10 +3344,10 @@ func (s *DeleteForwardingRulesResponse) SetBody(v *DeleteForwardingRulesResponse
 }
 
 type DeleteIpSetRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	IpSetId       *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteIpSetRequest) String() string {
@@ -2823,8 +3358,8 @@ func (s DeleteIpSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteIpSetRequest) SetRegionId(v string) *DeleteIpSetRequest {
-	s.RegionId = &v
+func (s *DeleteIpSetRequest) SetAcceleratorId(v string) *DeleteIpSetRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -2833,13 +3368,13 @@ func (s *DeleteIpSetRequest) SetClientToken(v string) *DeleteIpSetRequest {
 	return s
 }
 
-func (s *DeleteIpSetRequest) SetAcceleratorId(v string) *DeleteIpSetRequest {
-	s.AcceleratorId = &v
+func (s *DeleteIpSetRequest) SetIpSetId(v string) *DeleteIpSetRequest {
+	s.IpSetId = &v
 	return s
 }
 
-func (s *DeleteIpSetRequest) SetIpSetId(v string) *DeleteIpSetRequest {
-	s.IpSetId = &v
+func (s *DeleteIpSetRequest) SetRegionId(v string) *DeleteIpSetRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2884,8 +3419,8 @@ func (s *DeleteIpSetResponse) SetBody(v *DeleteIpSetResponseBody) *DeleteIpSetRe
 }
 
 type DeleteIpSetsRequest struct {
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	IpSetIds []*string `json:"IpSetIds,omitempty" xml:"IpSetIds,omitempty" type:"Repeated"`
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteIpSetsRequest) String() string {
@@ -2896,13 +3431,13 @@ func (s DeleteIpSetsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteIpSetsRequest) SetRegionId(v string) *DeleteIpSetsRequest {
-	s.RegionId = &v
+func (s *DeleteIpSetsRequest) SetIpSetIds(v []*string) *DeleteIpSetsRequest {
+	s.IpSetIds = v
 	return s
 }
 
-func (s *DeleteIpSetsRequest) SetIpSetIds(v []*string) *DeleteIpSetsRequest {
-	s.IpSetIds = v
+func (s *DeleteIpSetsRequest) SetRegionId(v string) *DeleteIpSetsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2947,8 +3482,8 @@ func (s *DeleteIpSetsResponse) SetBody(v *DeleteIpSetsResponseBody) *DeleteIpSet
 }
 
 type DeleteListenerRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -2960,13 +3495,13 @@ func (s DeleteListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteListenerRequest) SetClientToken(v string) *DeleteListenerRequest {
-	s.ClientToken = &v
+func (s *DeleteListenerRequest) SetAcceleratorId(v string) *DeleteListenerRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DeleteListenerRequest) SetAcceleratorId(v string) *DeleteListenerRequest {
-	s.AcceleratorId = &v
+func (s *DeleteListenerRequest) SetClientToken(v string) *DeleteListenerRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -3016,10 +3551,10 @@ func (s *DeleteListenerResponse) SetBody(v *DeleteListenerResponseBody) *DeleteL
 }
 
 type DeleteSpareIpsRequest struct {
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SpareIps      []*string `json:"SpareIps,omitempty" xml:"SpareIps,omitempty" type:"Repeated"`
 }
 
@@ -3031,8 +3566,8 @@ func (s DeleteSpareIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSpareIpsRequest) SetRegionId(v string) *DeleteSpareIpsRequest {
-	s.RegionId = &v
+func (s *DeleteSpareIpsRequest) SetAcceleratorId(v string) *DeleteSpareIpsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -3046,8 +3581,8 @@ func (s *DeleteSpareIpsRequest) SetDryRun(v bool) *DeleteSpareIpsRequest {
 	return s
 }
 
-func (s *DeleteSpareIpsRequest) SetAcceleratorId(v string) *DeleteSpareIpsRequest {
-	s.AcceleratorId = &v
+func (s *DeleteSpareIpsRequest) SetRegionId(v string) *DeleteSpareIpsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3098,8 +3633,8 @@ func (s *DeleteSpareIpsResponse) SetBody(v *DeleteSpareIpsResponseBody) *DeleteS
 }
 
 type DescribeAcceleratorRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAcceleratorRequest) String() string {
@@ -3110,33 +3645,33 @@ func (s DescribeAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAcceleratorRequest) SetRegionId(v string) *DescribeAcceleratorRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeAcceleratorRequest) SetAcceleratorId(v string) *DescribeAcceleratorRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
+func (s *DescribeAcceleratorRequest) SetRegionId(v string) *DescribeAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeAcceleratorResponseBody struct {
-	DdosId                      *string                                                     `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	DnsName                     *string                                                     `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	Description                 *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId                   *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceChargeType          *string                                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	AcceleratorId               *string                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BasicBandwidthPackage       *DescribeAcceleratorResponseBodyBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	CenId                       *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CreateTime                  *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossDomainBandwidthPackage *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
-	SecondDnsName               *string                                                     `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
-	Name                        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	BasicBandwidthPackage       *DescribeAcceleratorResponseBodyBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	State                       *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	DdosId                      *string                                                     `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	Description                 *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	DnsName                     *string                                                     `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
 	ExpiredTime                 *int64                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	CenId                       *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	InstanceChargeType          *string                                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Name                        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId                    *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                   *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecondDnsName               *string                                                     `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
 	Spec                        *string                                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	AcceleratorId               *string                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	State                       *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeAcceleratorResponseBody) String() string {
@@ -3147,28 +3682,18 @@ func (s DescribeAcceleratorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAcceleratorResponseBody) SetDdosId(v string) *DescribeAcceleratorResponseBody {
-	s.DdosId = &v
+func (s *DescribeAcceleratorResponseBody) SetAcceleratorId(v string) *DescribeAcceleratorResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetDnsName(v string) *DescribeAcceleratorResponseBody {
-	s.DnsName = &v
+func (s *DescribeAcceleratorResponseBody) SetBasicBandwidthPackage(v *DescribeAcceleratorResponseBodyBasicBandwidthPackage) *DescribeAcceleratorResponseBody {
+	s.BasicBandwidthPackage = v
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetDescription(v string) *DescribeAcceleratorResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeAcceleratorResponseBody) SetRequestId(v string) *DescribeAcceleratorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAcceleratorResponseBody) SetInstanceChargeType(v string) *DescribeAcceleratorResponseBody {
-	s.InstanceChargeType = &v
+func (s *DescribeAcceleratorResponseBody) SetCenId(v string) *DescribeAcceleratorResponseBody {
+	s.CenId = &v
 	return s
 }
 
@@ -3182,23 +3707,18 @@ func (s *DescribeAcceleratorResponseBody) SetCrossDomainBandwidthPackage(v *Desc
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetSecondDnsName(v string) *DescribeAcceleratorResponseBody {
-	s.SecondDnsName = &v
+func (s *DescribeAcceleratorResponseBody) SetDdosId(v string) *DescribeAcceleratorResponseBody {
+	s.DdosId = &v
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetName(v string) *DescribeAcceleratorResponseBody {
-	s.Name = &v
+func (s *DescribeAcceleratorResponseBody) SetDescription(v string) *DescribeAcceleratorResponseBody {
+	s.Description = &v
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetBasicBandwidthPackage(v *DescribeAcceleratorResponseBodyBasicBandwidthPackage) *DescribeAcceleratorResponseBody {
-	s.BasicBandwidthPackage = v
-	return s
-}
-
-func (s *DescribeAcceleratorResponseBody) SetState(v string) *DescribeAcceleratorResponseBody {
-	s.State = &v
+func (s *DescribeAcceleratorResponseBody) SetDnsName(v string) *DescribeAcceleratorResponseBody {
+	s.DnsName = &v
 	return s
 }
 
@@ -3207,8 +3727,13 @@ func (s *DescribeAcceleratorResponseBody) SetExpiredTime(v int64) *DescribeAccel
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetCenId(v string) *DescribeAcceleratorResponseBody {
-	s.CenId = &v
+func (s *DescribeAcceleratorResponseBody) SetInstanceChargeType(v string) *DescribeAcceleratorResponseBody {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBody) SetName(v string) *DescribeAcceleratorResponseBody {
+	s.Name = &v
 	return s
 }
 
@@ -3217,36 +3742,23 @@ func (s *DescribeAcceleratorResponseBody) SetRegionId(v string) *DescribeAcceler
 	return s
 }
 
+func (s *DescribeAcceleratorResponseBody) SetRequestId(v string) *DescribeAcceleratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBody) SetSecondDnsName(v string) *DescribeAcceleratorResponseBody {
+	s.SecondDnsName = &v
+	return s
+}
+
 func (s *DescribeAcceleratorResponseBody) SetSpec(v string) *DescribeAcceleratorResponseBody {
 	s.Spec = &v
 	return s
 }
 
-func (s *DescribeAcceleratorResponseBody) SetAcceleratorId(v string) *DescribeAcceleratorResponseBody {
-	s.AcceleratorId = &v
-	return s
-}
-
-type DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage struct {
-	Bandwidth  *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetBandwidth(v int32) *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetInstanceId(v string) *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage {
-	s.InstanceId = &v
+func (s *DescribeAcceleratorResponseBody) SetState(v string) *DescribeAcceleratorResponseBody {
+	s.State = &v
 	return s
 }
 
@@ -3279,6 +3791,29 @@ func (s *DescribeAcceleratorResponseBodyBasicBandwidthPackage) SetInstanceId(v s
 	return s
 }
 
+type DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage struct {
+	Bandwidth  *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetBandwidth(v int32) *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetInstanceId(v string) *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage {
+	s.InstanceId = &v
+	return s
+}
+
 type DescribeAcceleratorResponse struct {
 	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *DescribeAcceleratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3303,8 +3838,8 @@ func (s *DescribeAcceleratorResponse) SetBody(v *DescribeAcceleratorResponseBody
 }
 
 type DescribeBandwidthPackageRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeBandwidthPackageRequest) String() string {
@@ -3315,34 +3850,34 @@ func (s DescribeBandwidthPackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBandwidthPackageRequest) SetRegionId(v string) *DescribeBandwidthPackageRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeBandwidthPackageRequest) SetBandwidthPackageId(v string) *DescribeBandwidthPackageRequest {
 	s.BandwidthPackageId = &v
 	return s
 }
 
+func (s *DescribeBandwidthPackageRequest) SetRegionId(v string) *DescribeBandwidthPackageRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeBandwidthPackageResponseBody struct {
-	CbnGeographicRegionIdB *string   `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
-	CbnGeographicRegionIdA *string   `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
-	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId              *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CreateTime             *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	BandwidthType          *string   `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	Type                   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	Accelerators           []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	State                  *string   `json:"State,omitempty" xml:"State,omitempty"`
-	ChargeType             *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Bandwidth              *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ExpiredTime            *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	BandwidthPackageId     *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	BandwidthType          *string   `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	BillingType            *string   `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CbnGeographicRegionIdA *string   `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
+	CbnGeographicRegionIdB *string   `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
+	ChargeType             *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime             *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime            *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Ratio                  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId              *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State                  *string   `json:"State,omitempty" xml:"State,omitempty"`
+	Type                   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeBandwidthPackageResponseBody) String() string {
@@ -3353,58 +3888,8 @@ func (s DescribeBandwidthPackageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBandwidthPackageResponseBody) SetCbnGeographicRegionIdB(v string) *DescribeBandwidthPackageResponseBody {
-	s.CbnGeographicRegionIdB = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetCbnGeographicRegionIdA(v string) *DescribeBandwidthPackageResponseBody {
-	s.CbnGeographicRegionIdA = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetDescription(v string) *DescribeBandwidthPackageResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetRequestId(v string) *DescribeBandwidthPackageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetCreateTime(v string) *DescribeBandwidthPackageResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetName(v string) *DescribeBandwidthPackageResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetBandwidthType(v string) *DescribeBandwidthPackageResponseBody {
-	s.BandwidthType = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetType(v string) *DescribeBandwidthPackageResponseBody {
-	s.Type = &v
-	return s
-}
-
 func (s *DescribeBandwidthPackageResponseBody) SetAccelerators(v []*string) *DescribeBandwidthPackageResponseBody {
 	s.Accelerators = v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetState(v string) *DescribeBandwidthPackageResponseBody {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeBandwidthPackageResponseBody) SetChargeType(v string) *DescribeBandwidthPackageResponseBody {
-	s.ChargeType = &v
 	return s
 }
 
@@ -3413,18 +3898,13 @@ func (s *DescribeBandwidthPackageResponseBody) SetBandwidth(v int32) *DescribeBa
 	return s
 }
 
-func (s *DescribeBandwidthPackageResponseBody) SetExpiredTime(v string) *DescribeBandwidthPackageResponseBody {
-	s.ExpiredTime = &v
-	return s
-}
-
 func (s *DescribeBandwidthPackageResponseBody) SetBandwidthPackageId(v string) *DescribeBandwidthPackageResponseBody {
 	s.BandwidthPackageId = &v
 	return s
 }
 
-func (s *DescribeBandwidthPackageResponseBody) SetRegionId(v string) *DescribeBandwidthPackageResponseBody {
-	s.RegionId = &v
+func (s *DescribeBandwidthPackageResponseBody) SetBandwidthType(v string) *DescribeBandwidthPackageResponseBody {
+	s.BandwidthType = &v
 	return s
 }
 
@@ -3433,8 +3913,63 @@ func (s *DescribeBandwidthPackageResponseBody) SetBillingType(v string) *Describ
 	return s
 }
 
+func (s *DescribeBandwidthPackageResponseBody) SetCbnGeographicRegionIdA(v string) *DescribeBandwidthPackageResponseBody {
+	s.CbnGeographicRegionIdA = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetCbnGeographicRegionIdB(v string) *DescribeBandwidthPackageResponseBody {
+	s.CbnGeographicRegionIdB = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetChargeType(v string) *DescribeBandwidthPackageResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetCreateTime(v string) *DescribeBandwidthPackageResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetDescription(v string) *DescribeBandwidthPackageResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetExpiredTime(v string) *DescribeBandwidthPackageResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetName(v string) *DescribeBandwidthPackageResponseBody {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeBandwidthPackageResponseBody) SetRatio(v int32) *DescribeBandwidthPackageResponseBody {
 	s.Ratio = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetRegionId(v string) *DescribeBandwidthPackageResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetRequestId(v string) *DescribeBandwidthPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetState(v string) *DescribeBandwidthPackageResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeBandwidthPackageResponseBody) SetType(v string) *DescribeBandwidthPackageResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -3462,8 +3997,8 @@ func (s *DescribeBandwidthPackageResponse) SetBody(v *DescribeBandwidthPackageRe
 }
 
 type DescribeEndpointGroupRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEndpointGroupRequest) String() string {
@@ -3474,45 +4009,45 @@ func (s DescribeEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEndpointGroupRequest) SetRegionId(v string) *DescribeEndpointGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeEndpointGroupRequest) SetEndpointGroupId(v string) *DescribeEndpointGroupRequest {
 	s.EndpointGroupId = &v
 	return s
 }
 
+func (s *DescribeEndpointGroupRequest) SetRegionId(v string) *DescribeEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeEndpointGroupResponseBody struct {
-	HealthCheckIntervalSeconds     *int32                                                     `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	TrafficPercentage              *int32                                                     `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
-	EndpointGroupId                *string                                                    `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	Description                    *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndpointGroupIpList            []*string                                                  `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	EndpointGroupUnconfirmedIpList []*string                                                  `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	RequestId                      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	HealthCheckPath                *string                                                    `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	ThresholdCount                 *int32                                                     `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	Name                           *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	EndpointGroupRegion            *string                                                    `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	TotalCount                     *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	State                          *string                                                    `json:"State,omitempty" xml:"State,omitempty"`
-	HealthCheckProtocol            *string                                                    `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	HealthCheckPort                *int32                                                     `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	EndpointConfigurations         []*DescribeEndpointGroupResponseBodyEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	PortOverrides                  []*DescribeEndpointGroupResponseBodyPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	EndpointRequestProtocol        *string                                                    `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	EndpointGroupType              *string                                                    `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	ForwardingRuleIds              []*string                                                  `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	AcceleratorId                  *string                                                    `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId                     *string                                                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	SlsRegion                      *string                                                    `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
-	SlsProjectName                 *string                                                    `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
-	SlsLogStoreName                *string                                                    `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
 	AccessLogSwitch                *string                                                    `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
+	Description                    *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnableAccessLog                *bool                                                      `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
+	EndpointConfigurations         []*DescribeEndpointGroupResponseBodyEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupId                *string                                                    `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupIpList            []*string                                                  `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
+	EndpointGroupRegion            *string                                                    `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupType              *string                                                    `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointGroupUnconfirmedIpList []*string                                                  `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	EndpointRequestProtocol        *string                                                    `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	ForwardingRuleIds              []*string                                                  `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	HealthCheckEnabled             *bool                                                      `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckIntervalSeconds     *int32                                                     `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	HealthCheckPath                *string                                                    `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckPort                *int32                                                     `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckProtocol            *string                                                    `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	ListenerId                     *string                                                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                           *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortOverrides                  []*DescribeEndpointGroupResponseBodyPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	RequestId                      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlsLogStoreName                *string                                                    `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	SlsProjectName                 *string                                                    `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	SlsRegion                      *string                                                    `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
+	State                          *string                                                    `json:"State,omitempty" xml:"State,omitempty"`
+	ThresholdCount                 *int32                                                     `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TotalCount                     *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TrafficPercentage              *int32                                                     `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s DescribeEndpointGroupResponseBody) String() string {
@@ -3523,128 +4058,8 @@ func (s DescribeEndpointGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEndpointGroupResponseBody) SetHealthCheckIntervalSeconds(v int32) *DescribeEndpointGroupResponseBody {
-	s.HealthCheckIntervalSeconds = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetTrafficPercentage(v int32) *DescribeEndpointGroupResponseBody {
-	s.TrafficPercentage = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupId(v string) *DescribeEndpointGroupResponseBody {
-	s.EndpointGroupId = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetDescription(v string) *DescribeEndpointGroupResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupIpList(v []*string) *DescribeEndpointGroupResponseBody {
-	s.EndpointGroupIpList = v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupUnconfirmedIpList(v []*string) *DescribeEndpointGroupResponseBody {
-	s.EndpointGroupUnconfirmedIpList = v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetRequestId(v string) *DescribeEndpointGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetHealthCheckPath(v string) *DescribeEndpointGroupResponseBody {
-	s.HealthCheckPath = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetThresholdCount(v int32) *DescribeEndpointGroupResponseBody {
-	s.ThresholdCount = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetName(v string) *DescribeEndpointGroupResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupRegion(v string) *DescribeEndpointGroupResponseBody {
-	s.EndpointGroupRegion = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetTotalCount(v int32) *DescribeEndpointGroupResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetState(v string) *DescribeEndpointGroupResponseBody {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetHealthCheckProtocol(v string) *DescribeEndpointGroupResponseBody {
-	s.HealthCheckProtocol = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetHealthCheckPort(v int32) *DescribeEndpointGroupResponseBody {
-	s.HealthCheckPort = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointConfigurations(v []*DescribeEndpointGroupResponseBodyEndpointConfigurations) *DescribeEndpointGroupResponseBody {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetPortOverrides(v []*DescribeEndpointGroupResponseBodyPortOverrides) *DescribeEndpointGroupResponseBody {
-	s.PortOverrides = v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointRequestProtocol(v string) *DescribeEndpointGroupResponseBody {
-	s.EndpointRequestProtocol = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupType(v string) *DescribeEndpointGroupResponseBody {
-	s.EndpointGroupType = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetForwardingRuleIds(v []*string) *DescribeEndpointGroupResponseBody {
-	s.ForwardingRuleIds = v
-	return s
-}
-
 func (s *DescribeEndpointGroupResponseBody) SetAcceleratorId(v string) *DescribeEndpointGroupResponseBody {
 	s.AcceleratorId = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetListenerId(v string) *DescribeEndpointGroupResponseBody {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetSlsRegion(v string) *DescribeEndpointGroupResponseBody {
-	s.SlsRegion = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetSlsProjectName(v string) *DescribeEndpointGroupResponseBody {
-	s.SlsProjectName = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBody) SetSlsLogStoreName(v string) *DescribeEndpointGroupResponseBody {
-	s.SlsLogStoreName = &v
 	return s
 }
 
@@ -3653,8 +4068,53 @@ func (s *DescribeEndpointGroupResponseBody) SetAccessLogSwitch(v string) *Descri
 	return s
 }
 
+func (s *DescribeEndpointGroupResponseBody) SetDescription(v string) *DescribeEndpointGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeEndpointGroupResponseBody) SetEnableAccessLog(v bool) *DescribeEndpointGroupResponseBody {
 	s.EnableAccessLog = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointConfigurations(v []*DescribeEndpointGroupResponseBodyEndpointConfigurations) *DescribeEndpointGroupResponseBody {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupId(v string) *DescribeEndpointGroupResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupIpList(v []*string) *DescribeEndpointGroupResponseBody {
+	s.EndpointGroupIpList = v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupRegion(v string) *DescribeEndpointGroupResponseBody {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupType(v string) *DescribeEndpointGroupResponseBody {
+	s.EndpointGroupType = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointGroupUnconfirmedIpList(v []*string) *DescribeEndpointGroupResponseBody {
+	s.EndpointGroupUnconfirmedIpList = v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetEndpointRequestProtocol(v string) *DescribeEndpointGroupResponseBody {
+	s.EndpointRequestProtocol = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetForwardingRuleIds(v []*string) *DescribeEndpointGroupResponseBody {
+	s.ForwardingRuleIds = v
 	return s
 }
 
@@ -3663,13 +4123,88 @@ func (s *DescribeEndpointGroupResponseBody) SetHealthCheckEnabled(v bool) *Descr
 	return s
 }
 
+func (s *DescribeEndpointGroupResponseBody) SetHealthCheckIntervalSeconds(v int32) *DescribeEndpointGroupResponseBody {
+	s.HealthCheckIntervalSeconds = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetHealthCheckPath(v string) *DescribeEndpointGroupResponseBody {
+	s.HealthCheckPath = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetHealthCheckPort(v int32) *DescribeEndpointGroupResponseBody {
+	s.HealthCheckPort = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetHealthCheckProtocol(v string) *DescribeEndpointGroupResponseBody {
+	s.HealthCheckProtocol = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetListenerId(v string) *DescribeEndpointGroupResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetName(v string) *DescribeEndpointGroupResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetPortOverrides(v []*DescribeEndpointGroupResponseBodyPortOverrides) *DescribeEndpointGroupResponseBody {
+	s.PortOverrides = v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetRequestId(v string) *DescribeEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsLogStoreName(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsProjectName(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetSlsRegion(v string) *DescribeEndpointGroupResponseBody {
+	s.SlsRegion = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetState(v string) *DescribeEndpointGroupResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetThresholdCount(v int32) *DescribeEndpointGroupResponseBody {
+	s.ThresholdCount = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetTotalCount(v int32) *DescribeEndpointGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBody) SetTrafficPercentage(v int32) *DescribeEndpointGroupResponseBody {
+	s.TrafficPercentage = &v
+	return s
+}
+
 type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
 	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	ProbePort                  *int32  `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
+	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeEndpointGroupResponseBodyEndpointConfigurations) String() string {
@@ -3680,23 +4215,8 @@ func (s DescribeEndpointGroupResponseBodyEndpointConfigurations) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetType(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
-	s.Type = &v
-	return s
-}
-
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetEnableClientIPPreservation(v bool) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetWeight(v int32) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
-	s.Weight = &v
-	return s
-}
-
-func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbeProtocol(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
-	s.ProbeProtocol = &v
 	return s
 }
 
@@ -3710,9 +4230,24 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbePort(v
 	return s
 }
 
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbeProtocol(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.ProbeProtocol = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetType(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetWeight(v int32) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.Weight = &v
+	return s
+}
+
 type DescribeEndpointGroupResponseBodyPortOverrides struct {
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s DescribeEndpointGroupResponseBodyPortOverrides) String() string {
@@ -3723,13 +4258,13 @@ func (s DescribeEndpointGroupResponseBodyPortOverrides) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetListenerPort(v int32) *DescribeEndpointGroupResponseBodyPortOverrides {
-	s.ListenerPort = &v
+func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetEndpointPort(v int32) *DescribeEndpointGroupResponseBodyPortOverrides {
+	s.EndpointPort = &v
 	return s
 }
 
-func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetEndpointPort(v int32) *DescribeEndpointGroupResponseBodyPortOverrides {
-	s.EndpointPort = &v
+func (s *DescribeEndpointGroupResponseBodyPortOverrides) SetListenerPort(v int32) *DescribeEndpointGroupResponseBodyPortOverrides {
+	s.ListenerPort = &v
 	return s
 }
 
@@ -3757,8 +4292,8 @@ func (s *DescribeEndpointGroupResponse) SetBody(v *DescribeEndpointGroupResponse
 }
 
 type DescribeIpSetRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	IpSetId  *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeIpSetRequest) String() string {
@@ -3769,25 +4304,25 @@ func (s DescribeIpSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeIpSetRequest) SetRegionId(v string) *DescribeIpSetRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeIpSetRequest) SetIpSetId(v string) *DescribeIpSetRequest {
 	s.IpSetId = &v
 	return s
 }
 
+func (s *DescribeIpSetRequest) SetRegionId(v string) *DescribeIpSetRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeIpSetResponseBody struct {
-	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
-	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
 	AccelerateRegionId *string   `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	AcceleratorId      *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
+	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeIpSetResponseBody) String() string {
@@ -3798,23 +4333,13 @@ func (s DescribeIpSetResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeIpSetResponseBody) SetIpSetId(v string) *DescribeIpSetResponseBody {
-	s.IpSetId = &v
+func (s *DescribeIpSetResponseBody) SetAccelerateRegionId(v string) *DescribeIpSetResponseBody {
+	s.AccelerateRegionId = &v
 	return s
 }
 
-func (s *DescribeIpSetResponseBody) SetRequestId(v string) *DescribeIpSetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeIpSetResponseBody) SetIpVersion(v string) *DescribeIpSetResponseBody {
-	s.IpVersion = &v
-	return s
-}
-
-func (s *DescribeIpSetResponseBody) SetState(v string) *DescribeIpSetResponseBody {
-	s.State = &v
+func (s *DescribeIpSetResponseBody) SetAcceleratorId(v string) *DescribeIpSetResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -3828,13 +4353,23 @@ func (s *DescribeIpSetResponseBody) SetIpAddressList(v []*string) *DescribeIpSet
 	return s
 }
 
-func (s *DescribeIpSetResponseBody) SetAccelerateRegionId(v string) *DescribeIpSetResponseBody {
-	s.AccelerateRegionId = &v
+func (s *DescribeIpSetResponseBody) SetIpSetId(v string) *DescribeIpSetResponseBody {
+	s.IpSetId = &v
 	return s
 }
 
-func (s *DescribeIpSetResponseBody) SetAcceleratorId(v string) *DescribeIpSetResponseBody {
-	s.AcceleratorId = &v
+func (s *DescribeIpSetResponseBody) SetIpVersion(v string) *DescribeIpSetResponseBody {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeIpSetResponseBody) SetRequestId(v string) *DescribeIpSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIpSetResponseBody) SetState(v string) *DescribeIpSetResponseBody {
+	s.State = &v
 	return s
 }
 
@@ -3862,8 +4397,8 @@ func (s *DescribeIpSetResponse) SetBody(v *DescribeIpSetResponseBody) *DescribeI
 }
 
 type DescribeListenerRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeListenerRequest) String() string {
@@ -3874,34 +4409,34 @@ func (s DescribeListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeListenerRequest) SetRegionId(v string) *DescribeListenerRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeListenerRequest) SetListenerId(v string) *DescribeListenerRequest {
 	s.ListenerId = &v
 	return s
 }
 
+func (s *DescribeListenerRequest) SetRegionId(v string) *DescribeListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeListenerResponseBody struct {
-	Description         *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State               *string                                          `json:"State,omitempty" xml:"State,omitempty"`
-	CreateTime          *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	PortRanges          []*DescribeListenerResponseBodyPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	AcceleratorId       *string                                          `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AclType             *string                                          `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	BackendPorts        []*DescribeListenerResponseBodyBackendPorts      `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	Certificates        []*DescribeListenerResponseBodyCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	Protocol            *string                                          `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ListenerId          *string                                          `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	ClientAffinity      *string                                          `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
+	CreateTime          *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description         *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerId          *string                                          `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	Name                *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	RelatedAcls         []*DescribeListenerResponseBodyRelatedAcls       `json:"RelatedAcls,omitempty" xml:"RelatedAcls,omitempty" type:"Repeated"`
-	AclType             *string                                          `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	AcceleratorId       *string                                          `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	PortRanges          []*DescribeListenerResponseBodyPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol            *string                                          `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	ProxyProtocol       *bool                                            `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	XForwardedForConfig *DescribeListenerResponseBodyXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
+	RelatedAcls         []*DescribeListenerResponseBodyRelatedAcls       `json:"RelatedAcls,omitempty" xml:"RelatedAcls,omitempty" type:"Repeated"`
+	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicyId    *string                                          `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	State               *string                                          `json:"State,omitempty" xml:"State,omitempty"`
+	XForwardedForConfig *DescribeListenerResponseBodyXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeListenerResponseBody) String() string {
@@ -3912,28 +4447,13 @@ func (s DescribeListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeListenerResponseBody) SetDescription(v string) *DescribeListenerResponseBody {
-	s.Description = &v
+func (s *DescribeListenerResponseBody) SetAcceleratorId(v string) *DescribeListenerResponseBody {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetRequestId(v string) *DescribeListenerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeListenerResponseBody) SetState(v string) *DescribeListenerResponseBody {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeListenerResponseBody) SetCreateTime(v string) *DescribeListenerResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeListenerResponseBody) SetPortRanges(v []*DescribeListenerResponseBodyPortRanges) *DescribeListenerResponseBody {
-	s.PortRanges = v
+func (s *DescribeListenerResponseBody) SetAclType(v string) *DescribeListenerResponseBody {
+	s.AclType = &v
 	return s
 }
 
@@ -3947,8 +4467,18 @@ func (s *DescribeListenerResponseBody) SetCertificates(v []*DescribeListenerResp
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetProtocol(v string) *DescribeListenerResponseBody {
-	s.Protocol = &v
+func (s *DescribeListenerResponseBody) SetClientAffinity(v string) *DescribeListenerResponseBody {
+	s.ClientAffinity = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetCreateTime(v string) *DescribeListenerResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetDescription(v string) *DescribeListenerResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -3957,28 +4487,18 @@ func (s *DescribeListenerResponseBody) SetListenerId(v string) *DescribeListener
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetClientAffinity(v string) *DescribeListenerResponseBody {
-	s.ClientAffinity = &v
-	return s
-}
-
 func (s *DescribeListenerResponseBody) SetName(v string) *DescribeListenerResponseBody {
 	s.Name = &v
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetRelatedAcls(v []*DescribeListenerResponseBodyRelatedAcls) *DescribeListenerResponseBody {
-	s.RelatedAcls = v
+func (s *DescribeListenerResponseBody) SetPortRanges(v []*DescribeListenerResponseBodyPortRanges) *DescribeListenerResponseBody {
+	s.PortRanges = v
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetAclType(v string) *DescribeListenerResponseBody {
-	s.AclType = &v
-	return s
-}
-
-func (s *DescribeListenerResponseBody) SetAcceleratorId(v string) *DescribeListenerResponseBody {
-	s.AcceleratorId = &v
+func (s *DescribeListenerResponseBody) SetProtocol(v string) *DescribeListenerResponseBody {
+	s.Protocol = &v
 	return s
 }
 
@@ -3987,8 +4507,13 @@ func (s *DescribeListenerResponseBody) SetProxyProtocol(v bool) *DescribeListene
 	return s
 }
 
-func (s *DescribeListenerResponseBody) SetXForwardedForConfig(v *DescribeListenerResponseBodyXForwardedForConfig) *DescribeListenerResponseBody {
-	s.XForwardedForConfig = v
+func (s *DescribeListenerResponseBody) SetRelatedAcls(v []*DescribeListenerResponseBodyRelatedAcls) *DescribeListenerResponseBody {
+	s.RelatedAcls = v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetRequestId(v string) *DescribeListenerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3997,26 +4522,13 @@ func (s *DescribeListenerResponseBody) SetSecurityPolicyId(v string) *DescribeLi
 	return s
 }
 
-type DescribeListenerResponseBodyPortRanges struct {
-	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
-}
-
-func (s DescribeListenerResponseBodyPortRanges) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeListenerResponseBodyPortRanges) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeListenerResponseBodyPortRanges) SetFromPort(v int32) *DescribeListenerResponseBodyPortRanges {
-	s.FromPort = &v
+func (s *DescribeListenerResponseBody) SetState(v string) *DescribeListenerResponseBody {
+	s.State = &v
 	return s
 }
 
-func (s *DescribeListenerResponseBodyPortRanges) SetToPort(v int32) *DescribeListenerResponseBodyPortRanges {
-	s.ToPort = &v
+func (s *DescribeListenerResponseBody) SetXForwardedForConfig(v *DescribeListenerResponseBodyXForwardedForConfig) *DescribeListenerResponseBody {
+	s.XForwardedForConfig = v
 	return s
 }
 
@@ -4044,8 +4556,8 @@ func (s *DescribeListenerResponseBodyBackendPorts) SetToPort(v string) *Describe
 }
 
 type DescribeListenerResponseBodyCertificates struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeListenerResponseBodyCertificates) String() string {
@@ -4056,13 +4568,36 @@ func (s DescribeListenerResponseBodyCertificates) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeListenerResponseBodyCertificates) SetId(v string) *DescribeListenerResponseBodyCertificates {
+	s.Id = &v
+	return s
+}
+
 func (s *DescribeListenerResponseBodyCertificates) SetType(v string) *DescribeListenerResponseBodyCertificates {
 	s.Type = &v
 	return s
 }
 
-func (s *DescribeListenerResponseBodyCertificates) SetId(v string) *DescribeListenerResponseBodyCertificates {
-	s.Id = &v
+type DescribeListenerResponseBodyPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s DescribeListenerResponseBodyPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeListenerResponseBodyPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeListenerResponseBodyPortRanges) SetFromPort(v int32) *DescribeListenerResponseBodyPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBodyPortRanges) SetToPort(v int32) *DescribeListenerResponseBodyPortRanges {
+	s.ToPort = &v
 	return s
 }
 
@@ -4090,10 +4625,10 @@ func (s *DescribeListenerResponseBodyRelatedAcls) SetStatus(v string) *DescribeL
 }
 
 type DescribeListenerResponseBodyXForwardedForConfig struct {
-	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	XForwardedForGaApEnabled  *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	XForwardedForPortEnabled  *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
+	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 }
 
@@ -4105,23 +4640,23 @@ func (s DescribeListenerResponseBodyXForwardedForConfig) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
-	s.XForwardedForGaIdEnabled = &v
-	return s
-}
-
 func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
 	s.XForwardedForGaApEnabled = &v
 	return s
 }
 
-func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
-	s.XForwardedForProtoEnabled = &v
+func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
+	s.XForwardedForGaIdEnabled = &v
 	return s
 }
 
 func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForPortEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
 	s.XForwardedForPortEnabled = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBodyXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *DescribeListenerResponseBodyXForwardedForConfig {
+	s.XForwardedForProtoEnabled = &v
 	return s
 }
 
@@ -4171,8 +4706,8 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -4183,13 +4718,13 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4309,11 +4844,11 @@ func (s *DetachDdosFromAcceleratorResponse) SetBody(v *DetachDdosFromAccelerator
 }
 
 type DetachLogStoreFromEndpointGroupRequest struct {
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId    *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
 	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	ListenerId       *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachLogStoreFromEndpointGroupRequest) String() string {
@@ -4324,18 +4859,13 @@ func (s DetachLogStoreFromEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetachLogStoreFromEndpointGroupRequest) SetRegionId(v string) *DetachLogStoreFromEndpointGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DetachLogStoreFromEndpointGroupRequest) SetAcceleratorId(v string) *DetachLogStoreFromEndpointGroupRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
-func (s *DetachLogStoreFromEndpointGroupRequest) SetListenerId(v string) *DetachLogStoreFromEndpointGroupRequest {
-	s.ListenerId = &v
+func (s *DetachLogStoreFromEndpointGroupRequest) SetClientToken(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -4344,8 +4874,13 @@ func (s *DetachLogStoreFromEndpointGroupRequest) SetEndpointGroupIds(v []*string
 	return s
 }
 
-func (s *DetachLogStoreFromEndpointGroupRequest) SetClientToken(v string) *DetachLogStoreFromEndpointGroupRequest {
-	s.ClientToken = &v
+func (s *DetachLogStoreFromEndpointGroupRequest) SetListenerId(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DetachLogStoreFromEndpointGroupRequest) SetRegionId(v string) *DetachLogStoreFromEndpointGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4391,11 +4926,11 @@ func (s *DetachLogStoreFromEndpointGroupResponse) SetBody(v *DetachLogStoreFromE
 }
 
 type DissociateAclsFromListenerRequest struct {
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ListenerId  *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DissociateAclsFromListenerRequest) String() string {
@@ -4406,18 +4941,8 @@ func (s DissociateAclsFromListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DissociateAclsFromListenerRequest) SetRegionId(v string) *DissociateAclsFromListenerRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DissociateAclsFromListenerRequest) SetAclIds(v []*string) *DissociateAclsFromListenerRequest {
 	s.AclIds = v
-	return s
-}
-
-func (s *DissociateAclsFromListenerRequest) SetListenerId(v string) *DissociateAclsFromListenerRequest {
-	s.ListenerId = &v
 	return s
 }
 
@@ -4431,11 +4956,21 @@ func (s *DissociateAclsFromListenerRequest) SetDryRun(v bool) *DissociateAclsFro
 	return s
 }
 
+func (s *DissociateAclsFromListenerRequest) SetListenerId(v string) *DissociateAclsFromListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerRequest) SetRegionId(v string) *DissociateAclsFromListenerRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DissociateAclsFromListenerResponseBody struct {
-	// Id of the request
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DissociateAclsFromListenerResponseBody) String() string {
@@ -4446,11 +4981,6 @@ func (s DissociateAclsFromListenerResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DissociateAclsFromListenerResponseBody) SetRequestId(v string) *DissociateAclsFromListenerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DissociateAclsFromListenerResponseBody) SetAclIds(v []*string) *DissociateAclsFromListenerResponseBody {
 	s.AclIds = v
 	return s
@@ -4458,6 +4988,11 @@ func (s *DissociateAclsFromListenerResponseBody) SetAclIds(v []*string) *Dissoci
 
 func (s *DissociateAclsFromListenerResponseBody) SetListenerId(v string) *DissociateAclsFromListenerResponseBody {
 	s.ListenerId = &v
+	return s
+}
+
+func (s *DissociateAclsFromListenerResponseBody) SetRequestId(v string) *DissociateAclsFromListenerResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4485,11 +5020,11 @@ func (s *DissociateAclsFromListenerResponse) SetBody(v *DissociateAclsFromListen
 }
 
 type DissociateAdditionalCertificatesFromListenerRequest struct {
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId    *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Domains       []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	ListenerId    *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DissociateAdditionalCertificatesFromListenerRequest) String() string {
@@ -4500,8 +5035,8 @@ func (s DissociateAdditionalCertificatesFromListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DissociateAdditionalCertificatesFromListenerRequest) SetRegionId(v string) *DissociateAdditionalCertificatesFromListenerRequest {
-	s.RegionId = &v
+func (s *DissociateAdditionalCertificatesFromListenerRequest) SetAcceleratorId(v string) *DissociateAdditionalCertificatesFromListenerRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -4510,8 +5045,8 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetClientToken(v s
 	return s
 }
 
-func (s *DissociateAdditionalCertificatesFromListenerRequest) SetAcceleratorId(v string) *DissociateAdditionalCertificatesFromListenerRequest {
-	s.AcceleratorId = &v
+func (s *DissociateAdditionalCertificatesFromListenerRequest) SetDomains(v []*string) *DissociateAdditionalCertificatesFromListenerRequest {
+	s.Domains = v
 	return s
 }
 
@@ -4520,8 +5055,8 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetListenerId(v st
 	return s
 }
 
-func (s *DissociateAdditionalCertificatesFromListenerRequest) SetDomains(v []*string) *DissociateAdditionalCertificatesFromListenerRequest {
-	s.Domains = v
+func (s *DissociateAdditionalCertificatesFromListenerRequest) SetRegionId(v string) *DissociateAdditionalCertificatesFromListenerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4567,8 +5102,8 @@ func (s *DissociateAdditionalCertificatesFromListenerResponse) SetBody(v *Dissoc
 }
 
 type GetAclRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId    *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAclRequest) String() string {
@@ -4579,25 +5114,25 @@ func (s GetAclRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetAclRequest) SetAclId(v string) *GetAclRequest {
 	s.AclId = &v
 	return s
 }
 
+func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetAclResponseBody struct {
-	// Id of the request
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId            *string                               `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	AddressIPVersion *string                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AclStatus        *string                               `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	AclEntries       []*GetAclResponseBodyAclEntries       `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
+	AclId            *string                               `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName          *string                               `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus        *string                               `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AddressIPVersion *string                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAclResponseBody) String() string {
@@ -4608,8 +5143,8 @@ func (s GetAclResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAclResponseBody) SetRequestId(v string) *GetAclResponseBody {
-	s.RequestId = &v
+func (s *GetAclResponseBody) SetAclEntries(v []*GetAclResponseBodyAclEntries) *GetAclResponseBody {
+	s.AclEntries = v
 	return s
 }
 
@@ -4618,8 +5153,8 @@ func (s *GetAclResponseBody) SetAclId(v string) *GetAclResponseBody {
 	return s
 }
 
-func (s *GetAclResponseBody) SetAddressIPVersion(v string) *GetAclResponseBody {
-	s.AddressIPVersion = &v
+func (s *GetAclResponseBody) SetAclName(v string) *GetAclResponseBody {
+	s.AclName = &v
 	return s
 }
 
@@ -4628,8 +5163,8 @@ func (s *GetAclResponseBody) SetAclStatus(v string) *GetAclResponseBody {
 	return s
 }
 
-func (s *GetAclResponseBody) SetAclEntries(v []*GetAclResponseBodyAclEntries) *GetAclResponseBody {
-	s.AclEntries = v
+func (s *GetAclResponseBody) SetAddressIPVersion(v string) *GetAclResponseBody {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -4638,8 +5173,8 @@ func (s *GetAclResponseBody) SetRelatedListeners(v []*GetAclResponseBodyRelatedL
 	return s
 }
 
-func (s *GetAclResponseBody) SetAclName(v string) *GetAclResponseBody {
-	s.AclName = &v
+func (s *GetAclResponseBody) SetRequestId(v string) *GetAclResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4667,9 +5202,9 @@ func (s *GetAclResponseBodyAclEntries) SetEntryDescription(v string) *GetAclResp
 }
 
 type GetAclResponseBodyRelatedListeners struct {
-	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
 func (s GetAclResponseBodyRelatedListeners) String() string {
@@ -4680,8 +5215,8 @@ func (s GetAclResponseBodyRelatedListeners) GoString() string {
 	return s.String()
 }
 
-func (s *GetAclResponseBodyRelatedListeners) SetListenerId(v string) *GetAclResponseBodyRelatedListeners {
-	s.ListenerId = &v
+func (s *GetAclResponseBodyRelatedListeners) SetAcceleratorId(v string) *GetAclResponseBodyRelatedListeners {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -4690,8 +5225,8 @@ func (s *GetAclResponseBodyRelatedListeners) SetAclType(v string) *GetAclRespons
 	return s
 }
 
-func (s *GetAclResponseBodyRelatedListeners) SetAcceleratorId(v string) *GetAclResponseBodyRelatedListeners {
-	s.AcceleratorId = &v
+func (s *GetAclResponseBodyRelatedListeners) SetListenerId(v string) *GetAclResponseBodyRelatedListeners {
+	s.ListenerId = &v
 	return s
 }
 
@@ -4718,12 +5253,477 @@ func (s *GetAclResponse) SetBody(v *GetAclResponseBody) *GetAclResponse {
 	return s
 }
 
+type GetBasicAcceleratorRequest struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicAcceleratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAcceleratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAcceleratorRequest) SetAcceleratorId(v string) *GetBasicAcceleratorRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorRequest) SetRegionId(v string) *GetBasicAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicAcceleratorResponseBody struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 绑定的基础带宽包
+	BasicBandwidthPackage *GetBasicAcceleratorResponseBodyBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	// 全球加速实例下车点Id
+	BasicEndpointGroupId *string `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
+	// 全球加速实例上车点Id
+	BasicIpSetId *string `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
+	// 使用的云企业网Id
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// 全球加速实例创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 绑定的跨境带宽包
+	CrossDomainBandwidthPackage *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	// 全球加速实例描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 到期时间
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 全球加速实例收费类型
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// 全球加速实例名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 实例状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetBasicAcceleratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAcceleratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetAcceleratorId(v string) *GetBasicAcceleratorResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetBasicBandwidthPackage(v *GetBasicAcceleratorResponseBodyBasicBandwidthPackage) *GetBasicAcceleratorResponseBody {
+	s.BasicBandwidthPackage = v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetBasicEndpointGroupId(v string) *GetBasicAcceleratorResponseBody {
+	s.BasicEndpointGroupId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetBasicIpSetId(v string) *GetBasicAcceleratorResponseBody {
+	s.BasicIpSetId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetCenId(v string) *GetBasicAcceleratorResponseBody {
+	s.CenId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetCreateTime(v int64) *GetBasicAcceleratorResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetCrossDomainBandwidthPackage(v *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) *GetBasicAcceleratorResponseBody {
+	s.CrossDomainBandwidthPackage = v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetDescription(v string) *GetBasicAcceleratorResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetExpiredTime(v int64) *GetBasicAcceleratorResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetInstanceChargeType(v string) *GetBasicAcceleratorResponseBody {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetName(v string) *GetBasicAcceleratorResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetRegionId(v string) *GetBasicAcceleratorResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetRequestId(v string) *GetBasicAcceleratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetState(v string) *GetBasicAcceleratorResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetBasicAcceleratorResponseBodyBasicBandwidthPackage struct {
+	// 基础带宽包带宽
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 基础带宽包类型
+	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// 基础带宽包Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetBasicAcceleratorResponseBodyBasicBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAcceleratorResponseBodyBasicBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAcceleratorResponseBodyBasicBandwidthPackage) SetBandwidth(v int32) *GetBasicAcceleratorResponseBodyBasicBandwidthPackage {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBodyBasicBandwidthPackage) SetBandwidthType(v string) *GetBasicAcceleratorResponseBodyBasicBandwidthPackage {
+	s.BandwidthType = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBodyBasicBandwidthPackage) SetInstanceId(v string) *GetBasicAcceleratorResponseBodyBasicBandwidthPackage {
+	s.InstanceId = &v
+	return s
+}
+
+type GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage struct {
+	// 跨境带宽包带宽
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 跨境带宽包Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) SetBandwidth(v int32) *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) SetInstanceId(v string) *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage {
+	s.InstanceId = &v
+	return s
+}
+
+type GetBasicAcceleratorResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBasicAcceleratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicAcceleratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicAcceleratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicAcceleratorResponse) SetHeaders(v map[string]*string) *GetBasicAcceleratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponse) SetBody(v *GetBasicAcceleratorResponseBody) *GetBasicAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type GetBasicEndpointGroupRequest struct {
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 终端节点组Id
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointGroupRequest) SetClientToken(v string) *GetBasicEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupRequest) SetEndpointGroupId(v string) *GetBasicEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupRequest) SetRegionId(v string) *GetBasicEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicEndpointGroupResponseBody struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 终端节点组描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 终端节点组地址
+	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	// 终端节点组Id
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// 终端节点组所在地域
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// 终端节点类型
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// 终端节点组名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 终端节点组状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetBasicEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetAcceleratorId(v string) *GetBasicEndpointGroupResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetDescription(v string) *GetBasicEndpointGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetEndpointAddress(v string) *GetBasicEndpointGroupResponseBody {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetEndpointGroupId(v string) *GetBasicEndpointGroupResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetEndpointGroupRegion(v string) *GetBasicEndpointGroupResponseBody {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetEndpointType(v string) *GetBasicEndpointGroupResponseBody {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetName(v string) *GetBasicEndpointGroupResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetRequestId(v string) *GetBasicEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetState(v string) *GetBasicEndpointGroupResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetBasicEndpointGroupResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBasicEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicEndpointGroupResponse) SetHeaders(v map[string]*string) *GetBasicEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponse) SetBody(v *GetBasicEndpointGroupResponseBody) *GetBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetBasicIpSetRequest struct {
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 加速接入点Id
+	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetBasicIpSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicIpSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicIpSetRequest) SetClientToken(v string) *GetBasicIpSetRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetBasicIpSetRequest) SetIpSetId(v string) *GetBasicIpSetRequest {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *GetBasicIpSetRequest) SetRegionId(v string) *GetBasicIpSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetBasicIpSetResponseBody struct {
+	// 加速地域Id
+	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 加速地域带宽
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 加速接入点IP地址
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// 加速接入点id
+	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	// 加速接入点地址类型
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 加速接入点状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetBasicIpSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicIpSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicIpSetResponseBody) SetAccelerateRegionId(v string) *GetBasicIpSetResponseBody {
+	s.AccelerateRegionId = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetAcceleratorId(v string) *GetBasicIpSetResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetBandwidth(v int32) *GetBasicIpSetResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetIpAddress(v string) *GetBasicIpSetResponseBody {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetIpSetId(v string) *GetBasicIpSetResponseBody {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetIpVersion(v string) *GetBasicIpSetResponseBody {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetRequestId(v string) *GetBasicIpSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetState(v string) *GetBasicIpSetResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetBasicIpSetResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetBasicIpSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBasicIpSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBasicIpSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBasicIpSetResponse) SetHeaders(v map[string]*string) *GetBasicIpSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBasicIpSetResponse) SetBody(v *GetBasicIpSetResponseBody) *GetBasicIpSetResponse {
+	s.Body = v
+	return s
+}
+
 type GetHealthStatusRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetHealthStatusRequest) String() string {
@@ -4734,8 +5734,8 @@ func (s GetHealthStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetHealthStatusRequest) SetRegionId(v string) *GetHealthStatusRequest {
-	s.RegionId = &v
+func (s *GetHealthStatusRequest) SetAcceleratorId(v string) *GetHealthStatusRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -4749,22 +5749,22 @@ func (s *GetHealthStatusRequest) SetDryRun(v bool) *GetHealthStatusRequest {
 	return s
 }
 
-func (s *GetHealthStatusRequest) SetAcceleratorId(v string) *GetHealthStatusRequest {
-	s.AcceleratorId = &v
-	return s
-}
-
 func (s *GetHealthStatusRequest) SetListenerId(v string) *GetHealthStatusRequest {
 	s.ListenerId = &v
 	return s
 }
 
+func (s *GetHealthStatusRequest) SetRegionId(v string) *GetHealthStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetHealthStatusResponseBody struct {
-	// Id of the request
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ListenerId     *string                                      `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	HealthStatus   *string                                      `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	EndpointGroups []*GetHealthStatusResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
+	HealthStatus   *string                                      `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	ListenerId     *string                                      `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHealthStatusResponseBody) String() string {
@@ -4775,13 +5775,8 @@ func (s GetHealthStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetHealthStatusResponseBody) SetRequestId(v string) *GetHealthStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetHealthStatusResponseBody) SetListenerId(v string) *GetHealthStatusResponseBody {
-	s.ListenerId = &v
+func (s *GetHealthStatusResponseBody) SetEndpointGroups(v []*GetHealthStatusResponseBodyEndpointGroups) *GetHealthStatusResponseBody {
+	s.EndpointGroups = v
 	return s
 }
 
@@ -4790,17 +5785,22 @@ func (s *GetHealthStatusResponseBody) SetHealthStatus(v string) *GetHealthStatus
 	return s
 }
 
-func (s *GetHealthStatusResponseBody) SetEndpointGroups(v []*GetHealthStatusResponseBodyEndpointGroups) *GetHealthStatusResponseBody {
-	s.EndpointGroups = v
+func (s *GetHealthStatusResponseBody) SetListenerId(v string) *GetHealthStatusResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *GetHealthStatusResponseBody) SetRequestId(v string) *GetHealthStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type GetHealthStatusResponseBodyEndpointGroups struct {
 	EndpointGroupId   *string                                               `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointGroupType *string                                               `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	HealthStatus      *string                                               `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	ForwardingRuleIds []*string                                             `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	Endpoints         []*GetHealthStatusResponseBodyEndpointGroupsEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	ForwardingRuleIds []*string                                             `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
+	HealthStatus      *string                                               `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 }
 
 func (s GetHealthStatusResponseBodyEndpointGroups) String() string {
@@ -4821,8 +5821,8 @@ func (s *GetHealthStatusResponseBodyEndpointGroups) SetEndpointGroupType(v strin
 	return s
 }
 
-func (s *GetHealthStatusResponseBodyEndpointGroups) SetHealthStatus(v string) *GetHealthStatusResponseBodyEndpointGroups {
-	s.HealthStatus = &v
+func (s *GetHealthStatusResponseBodyEndpointGroups) SetEndpoints(v []*GetHealthStatusResponseBodyEndpointGroupsEndpoints) *GetHealthStatusResponseBodyEndpointGroups {
+	s.Endpoints = v
 	return s
 }
 
@@ -4831,16 +5831,16 @@ func (s *GetHealthStatusResponseBodyEndpointGroups) SetForwardingRuleIds(v []*st
 	return s
 }
 
-func (s *GetHealthStatusResponseBodyEndpointGroups) SetEndpoints(v []*GetHealthStatusResponseBodyEndpointGroupsEndpoints) *GetHealthStatusResponseBodyEndpointGroups {
-	s.Endpoints = v
+func (s *GetHealthStatusResponseBodyEndpointGroups) SetHealthStatus(v string) *GetHealthStatusResponseBodyEndpointGroups {
+	s.HealthStatus = &v
 	return s
 }
 
 type GetHealthStatusResponseBodyEndpointGroupsEndpoints struct {
-	EndpointId   *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	Address      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	EndpointId   *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	HealthDetail *string `json:"HealthDetail,omitempty" xml:"HealthDetail,omitempty"`
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	Port         *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4853,23 +5853,23 @@ func (s GetHealthStatusResponseBodyEndpointGroupsEndpoints) GoString() string {
 	return s.String()
 }
 
-func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetEndpointId(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
-	s.EndpointId = &v
-	return s
-}
-
 func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetAddress(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
 	s.Address = &v
 	return s
 }
 
-func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetHealthStatus(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
-	s.HealthStatus = &v
+func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetEndpointId(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
+	s.EndpointId = &v
 	return s
 }
 
 func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetHealthDetail(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
 	s.HealthDetail = &v
+	return s
+}
+
+func (s *GetHealthStatusResponseBodyEndpointGroupsEndpoints) SetHealthStatus(v string) *GetHealthStatusResponseBodyEndpointGroupsEndpoints {
+	s.HealthStatus = &v
 	return s
 }
 
@@ -4907,10 +5907,10 @@ func (s *GetHealthStatusResponse) SetBody(v *GetHealthStatusResponseBody) *GetHe
 }
 
 type GetSpareIpRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SpareIp       *string `json:"SpareIp,omitempty" xml:"SpareIp,omitempty"`
 }
 
@@ -4922,8 +5922,8 @@ func (s GetSpareIpRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetSpareIpRequest) SetRegionId(v string) *GetSpareIpRequest {
-	s.RegionId = &v
+func (s *GetSpareIpRequest) SetAcceleratorId(v string) *GetSpareIpRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -4937,8 +5937,8 @@ func (s *GetSpareIpRequest) SetDryRun(v bool) *GetSpareIpRequest {
 	return s
 }
 
-func (s *GetSpareIpRequest) SetAcceleratorId(v string) *GetSpareIpRequest {
-	s.AcceleratorId = &v
+func (s *GetSpareIpRequest) SetRegionId(v string) *GetSpareIpRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5012,8 +6012,8 @@ func (s *ListAccelerateAreasRequest) SetRegionId(v string) *ListAccelerateAreasR
 }
 
 type ListAccelerateAreasResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Areas     []*ListAccelerateAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccelerateAreasResponseBody) String() string {
@@ -5024,19 +6024,19 @@ func (s ListAccelerateAreasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccelerateAreasResponseBody) SetRequestId(v string) *ListAccelerateAreasResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListAccelerateAreasResponseBody) SetAreas(v []*ListAccelerateAreasResponseBodyAreas) *ListAccelerateAreasResponseBody {
 	s.Areas = v
 	return s
 }
 
+func (s *ListAccelerateAreasResponseBody) SetRequestId(v string) *ListAccelerateAreasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListAccelerateAreasResponseBodyAreas struct {
-	LocalName  *string                                           `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	AreaId     *string                                           `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	LocalName  *string                                           `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionList []*ListAccelerateAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
@@ -5048,13 +6048,13 @@ func (s ListAccelerateAreasResponseBodyAreas) GoString() string {
 	return s.String()
 }
 
-func (s *ListAccelerateAreasResponseBodyAreas) SetLocalName(v string) *ListAccelerateAreasResponseBodyAreas {
-	s.LocalName = &v
+func (s *ListAccelerateAreasResponseBodyAreas) SetAreaId(v string) *ListAccelerateAreasResponseBodyAreas {
+	s.AreaId = &v
 	return s
 }
 
-func (s *ListAccelerateAreasResponseBodyAreas) SetAreaId(v string) *ListAccelerateAreasResponseBodyAreas {
-	s.AreaId = &v
+func (s *ListAccelerateAreasResponseBodyAreas) SetLocalName(v string) *ListAccelerateAreasResponseBodyAreas {
+	s.LocalName = &v
 	return s
 }
 
@@ -5110,10 +6110,10 @@ func (s *ListAccelerateAreasResponse) SetBody(v *ListAccelerateAreasResponseBody
 }
 
 type ListAcceleratorsRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	State         *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -5125,8 +6125,8 @@ func (s ListAcceleratorsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListAcceleratorsRequest) SetRegionId(v string) *ListAcceleratorsRequest {
-	s.RegionId = &v
+func (s *ListAcceleratorsRequest) SetAcceleratorId(v string) *ListAcceleratorsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -5140,8 +6140,8 @@ func (s *ListAcceleratorsRequest) SetPageSize(v int32) *ListAcceleratorsRequest 
 	return s
 }
 
-func (s *ListAcceleratorsRequest) SetAcceleratorId(v string) *ListAcceleratorsRequest {
-	s.AcceleratorId = &v
+func (s *ListAcceleratorsRequest) SetRegionId(v string) *ListAcceleratorsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5151,11 +6151,11 @@ func (s *ListAcceleratorsRequest) SetState(v string) *ListAcceleratorsRequest {
 }
 
 type ListAcceleratorsResponseBody struct {
-	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize     *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Accelerators []*ListAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	PageNumber   *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAcceleratorsResponseBody) String() string {
@@ -5166,8 +6166,13 @@ func (s ListAcceleratorsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAcceleratorsResponseBody) SetTotalCount(v int32) *ListAcceleratorsResponseBody {
-	s.TotalCount = &v
+func (s *ListAcceleratorsResponseBody) SetAccelerators(v []*ListAcceleratorsResponseBodyAccelerators) *ListAcceleratorsResponseBody {
+	s.Accelerators = v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBody) SetPageNumber(v int32) *ListAcceleratorsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5181,34 +6186,29 @@ func (s *ListAcceleratorsResponseBody) SetRequestId(v string) *ListAcceleratorsR
 	return s
 }
 
-func (s *ListAcceleratorsResponseBody) SetAccelerators(v []*ListAcceleratorsResponseBodyAccelerators) *ListAcceleratorsResponseBody {
-	s.Accelerators = v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBody) SetPageNumber(v int32) *ListAcceleratorsResponseBody {
-	s.PageNumber = &v
+func (s *ListAcceleratorsResponseBody) SetTotalCount(v int32) *ListAcceleratorsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListAcceleratorsResponseBodyAccelerators struct {
+	AcceleratorId               *string                                                              `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Bandwidth                   *int32                                                               `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BasicBandwidthPackage       *ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	CenId                       *string                                                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreateTime                  *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossDomainBandwidthPackage *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	DdosId                      *string                                                              `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
+	Description                 *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
 	DnsName                     *string                                                              `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	Type                        *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	ExpiredTime                 *int64                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType          *string                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Name                        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecondDnsName               *string                                                              `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
 	Spec                        *string                                                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	State                       *string                                                              `json:"State,omitempty" xml:"State,omitempty"`
-	CreateTime                  *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CenId                       *string                                                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	DdosId                      *string                                                              `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
-	BasicBandwidthPackage       *ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	RegionId                    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	InstanceChargeType          *string                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	AcceleratorId               *string                                                              `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Description                 *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Bandwidth                   *int32                                                               `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ExpiredTime                 *int64                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Name                        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	CrossDomainBandwidthPackage *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	Type                        *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAcceleratorsResponseBodyAccelerators) String() string {
@@ -5219,13 +6219,68 @@ func (s ListAcceleratorsResponseBodyAccelerators) GoString() string {
 	return s.String()
 }
 
+func (s *ListAcceleratorsResponseBodyAccelerators) SetAcceleratorId(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetBandwidth(v int32) *ListAcceleratorsResponseBodyAccelerators {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetBasicBandwidthPackage(v *ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) *ListAcceleratorsResponseBodyAccelerators {
+	s.BasicBandwidthPackage = v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetCenId(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetCreateTime(v int64) *ListAcceleratorsResponseBodyAccelerators {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetCrossDomainBandwidthPackage(v *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) *ListAcceleratorsResponseBodyAccelerators {
+	s.CrossDomainBandwidthPackage = v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetDdosId(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.DdosId = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetDescription(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.Description = &v
+	return s
+}
+
 func (s *ListAcceleratorsResponseBodyAccelerators) SetDnsName(v string) *ListAcceleratorsResponseBodyAccelerators {
 	s.DnsName = &v
 	return s
 }
 
-func (s *ListAcceleratorsResponseBodyAccelerators) SetType(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.Type = &v
+func (s *ListAcceleratorsResponseBodyAccelerators) SetExpiredTime(v int64) *ListAcceleratorsResponseBodyAccelerators {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetInstanceChargeType(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetName(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetRegionId(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.RegionId = &v
 	return s
 }
 
@@ -5244,63 +6299,8 @@ func (s *ListAcceleratorsResponseBodyAccelerators) SetState(v string) *ListAccel
 	return s
 }
 
-func (s *ListAcceleratorsResponseBodyAccelerators) SetCreateTime(v int64) *ListAcceleratorsResponseBodyAccelerators {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetCenId(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.CenId = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetDdosId(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.DdosId = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetBasicBandwidthPackage(v *ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) *ListAcceleratorsResponseBodyAccelerators {
-	s.BasicBandwidthPackage = v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetRegionId(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetInstanceChargeType(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetAcceleratorId(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.AcceleratorId = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetDescription(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.Description = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetBandwidth(v int32) *ListAcceleratorsResponseBodyAccelerators {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetExpiredTime(v int64) *ListAcceleratorsResponseBodyAccelerators {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetName(v string) *ListAcceleratorsResponseBodyAccelerators {
-	s.Name = &v
-	return s
-}
-
-func (s *ListAcceleratorsResponseBodyAccelerators) SetCrossDomainBandwidthPackage(v *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) *ListAcceleratorsResponseBodyAccelerators {
-	s.CrossDomainBandwidthPackage = v
+func (s *ListAcceleratorsResponseBodyAccelerators) SetType(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.Type = &v
 	return s
 }
 
@@ -5380,12 +6380,12 @@ func (s *ListAcceleratorsResponse) SetBody(v *ListAcceleratorsResponseBody) *Lis
 }
 
 type ListAclsRequest struct {
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AclIds      []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	AclName     *string   `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAclsRequest) String() string {
@@ -5394,16 +6394,6 @@ func (s ListAclsRequest) String() string {
 
 func (s ListAclsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAclsRequest) SetRegionId(v string) *ListAclsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListAclsRequest) SetClientToken(v string) *ListAclsRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *ListAclsRequest) SetAclIds(v []*string) *ListAclsRequest {
@@ -5416,8 +6406,8 @@ func (s *ListAclsRequest) SetAclName(v string) *ListAclsRequest {
 	return s
 }
 
-func (s *ListAclsRequest) SetNextToken(v string) *ListAclsRequest {
-	s.NextToken = &v
+func (s *ListAclsRequest) SetClientToken(v string) *ListAclsRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -5426,12 +6416,22 @@ func (s *ListAclsRequest) SetMaxResults(v int32) *ListAclsRequest {
 	return s
 }
 
+func (s *ListAclsRequest) SetNextToken(v string) *ListAclsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAclsRequest) SetRegionId(v string) *ListAclsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListAclsResponseBody struct {
+	Acls       []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Acls       []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
 }
 
 func (s ListAclsResponseBody) String() string {
@@ -5440,6 +6440,21 @@ func (s ListAclsResponseBody) String() string {
 
 func (s ListAclsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListAclsResponseBody) SetAcls(v []*ListAclsResponseBodyAcls) *ListAclsResponseBody {
+	s.Acls = v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetMaxResults(v int32) *ListAclsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAclsResponseBody) SetNextToken(v string) *ListAclsResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListAclsResponseBody) SetRequestId(v string) *ListAclsResponseBody {
@@ -5452,26 +6467,11 @@ func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
 	return s
 }
 
-func (s *ListAclsResponseBody) SetNextToken(v string) *ListAclsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListAclsResponseBody) SetMaxResults(v int32) *ListAclsResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListAclsResponseBody) SetAcls(v []*ListAclsResponseBodyAcls) *ListAclsResponseBody {
-	s.Acls = v
-	return s
-}
-
 type ListAclsResponseBodyAcls struct {
 	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	AclStatus        *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
 
 func (s ListAclsResponseBodyAcls) String() string {
@@ -5492,13 +6492,13 @@ func (s *ListAclsResponseBodyAcls) SetAclName(v string) *ListAclsResponseBodyAcl
 	return s
 }
 
-func (s *ListAclsResponseBodyAcls) SetAddressIPVersion(v string) *ListAclsResponseBodyAcls {
-	s.AddressIPVersion = &v
+func (s *ListAclsResponseBodyAcls) SetAclStatus(v string) *ListAclsResponseBodyAcls {
+	s.AclStatus = &v
 	return s
 }
 
-func (s *ListAclsResponseBodyAcls) SetAclStatus(v string) *ListAclsResponseBodyAcls {
-	s.AclStatus = &v
+func (s *ListAclsResponseBodyAcls) SetAddressIPVersion(v string) *ListAclsResponseBodyAcls {
+	s.AddressIPVersion = &v
 	return s
 }
 
@@ -5526,8 +6526,8 @@ func (s *ListAclsResponse) SetBody(v *ListAclsResponseBody) *ListAclsResponse {
 }
 
 type ListAvailableAccelerateAreasRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAvailableAccelerateAreasRequest) String() string {
@@ -5538,19 +6538,19 @@ func (s ListAvailableAccelerateAreasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListAvailableAccelerateAreasRequest) SetRegionId(v string) *ListAvailableAccelerateAreasRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ListAvailableAccelerateAreasRequest) SetAcceleratorId(v string) *ListAvailableAccelerateAreasRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
+func (s *ListAvailableAccelerateAreasRequest) SetRegionId(v string) *ListAvailableAccelerateAreasRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListAvailableAccelerateAreasResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Areas     []*ListAvailableAccelerateAreasResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAvailableAccelerateAreasResponseBody) String() string {
@@ -5561,19 +6561,19 @@ func (s ListAvailableAccelerateAreasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAvailableAccelerateAreasResponseBody) SetRequestId(v string) *ListAvailableAccelerateAreasResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ListAvailableAccelerateAreasResponseBody) SetAreas(v []*ListAvailableAccelerateAreasResponseBodyAreas) *ListAvailableAccelerateAreasResponseBody {
 	s.Areas = v
 	return s
 }
 
+func (s *ListAvailableAccelerateAreasResponseBody) SetRequestId(v string) *ListAvailableAccelerateAreasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ListAvailableAccelerateAreasResponseBodyAreas struct {
-	LocalName  *string                                                    `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	AreaId     *string                                                    `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	LocalName  *string                                                    `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionList []*ListAvailableAccelerateAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 }
 
@@ -5585,13 +6585,13 @@ func (s ListAvailableAccelerateAreasResponseBodyAreas) GoString() string {
 	return s.String()
 }
 
-func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetLocalName(v string) *ListAvailableAccelerateAreasResponseBodyAreas {
-	s.LocalName = &v
+func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetAreaId(v string) *ListAvailableAccelerateAreasResponseBodyAreas {
+	s.AreaId = &v
 	return s
 }
 
-func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetAreaId(v string) *ListAvailableAccelerateAreasResponseBodyAreas {
-	s.AreaId = &v
+func (s *ListAvailableAccelerateAreasResponseBodyAreas) SetLocalName(v string) *ListAvailableAccelerateAreasResponseBodyAreas {
+	s.LocalName = &v
 	return s
 }
 
@@ -5647,8 +6647,8 @@ func (s *ListAvailableAccelerateAreasResponse) SetBody(v *ListAvailableAccelerat
 }
 
 type ListAvailableBusiRegionsRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAvailableBusiRegionsRequest) String() string {
@@ -5659,19 +6659,19 @@ func (s ListAvailableBusiRegionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListAvailableBusiRegionsRequest) SetRegionId(v string) *ListAvailableBusiRegionsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ListAvailableBusiRegionsRequest) SetAcceleratorId(v string) *ListAvailableBusiRegionsRequest {
 	s.AcceleratorId = &v
 	return s
 }
 
+func (s *ListAvailableBusiRegionsRequest) SetRegionId(v string) *ListAvailableBusiRegionsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListAvailableBusiRegionsResponseBody struct {
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   []*ListAvailableBusiRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAvailableBusiRegionsResponseBody) String() string {
@@ -5682,13 +6682,13 @@ func (s ListAvailableBusiRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvailableBusiRegionsResponseBody {
-	s.RequestId = &v
+func (s *ListAvailableBusiRegionsResponseBody) SetRegions(v []*ListAvailableBusiRegionsResponseBodyRegions) *ListAvailableBusiRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *ListAvailableBusiRegionsResponseBody) SetRegions(v []*ListAvailableBusiRegionsResponseBodyRegions) *ListAvailableBusiRegionsResponseBody {
-	s.Regions = v
+func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvailableBusiRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5738,177 +6738,13 @@ func (s *ListAvailableBusiRegionsResponse) SetBody(v *ListAvailableBusiRegionsRe
 	return s
 }
 
-type ListBandwidthackagesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListBandwidthackagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBandwidthackagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListBandwidthackagesRequest) SetRegionId(v string) *ListBandwidthackagesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListBandwidthackagesRequest) SetPageNumber(v int32) *ListBandwidthackagesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListBandwidthackagesRequest) SetPageSize(v int32) *ListBandwidthackagesRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListBandwidthackagesResponseBody struct {
-	TotalCount        *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize          *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber        *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	BandwidthPackages []*ListBandwidthackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
-}
-
-func (s ListBandwidthackagesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBandwidthackagesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListBandwidthackagesResponseBody) SetTotalCount(v int32) *ListBandwidthackagesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBody) SetPageSize(v int32) *ListBandwidthackagesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBody) SetRequestId(v string) *ListBandwidthackagesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBody) SetPageNumber(v int32) *ListBandwidthackagesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBody) SetBandwidthPackages(v []*ListBandwidthackagesResponseBodyBandwidthPackages) *ListBandwidthackagesResponseBody {
-	s.BandwidthPackages = v
-	return s
-}
-
-type ListBandwidthackagesResponseBodyBandwidthPackages struct {
-	BandwidthPackageId *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime        *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
-	CreateTime         *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ChargeType         *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Accelerators       []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListBandwidthackagesResponseBodyBandwidthPackages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBandwidthackagesResponseBodyBandwidthPackages) GoString() string {
-	return s.String()
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetBandwidthPackageId(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.BandwidthPackageId = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetBandwidth(v int32) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetDescription(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.Description = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetExpiredTime(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetState(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.State = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetCreateTime(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetChargeType(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetAccelerators(v []*string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.Accelerators = v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetName(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.Name = &v
-	return s
-}
-
-func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetRegionId(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
-	s.RegionId = &v
-	return s
-}
-
-type ListBandwidthackagesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBandwidthackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListBandwidthackagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBandwidthackagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListBandwidthackagesResponse) SetHeaders(v map[string]*string) *ListBandwidthackagesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListBandwidthackagesResponse) SetBody(v *ListBandwidthackagesResponseBody) *ListBandwidthackagesResponse {
-	s.Body = v
-	return s
-}
-
 type ListBandwidthPackagesRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	State              *string `json:"State,omitempty" xml:"State,omitempty"`
 	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 }
 
 func (s ListBandwidthPackagesRequest) String() string {
@@ -5919,8 +6755,8 @@ func (s ListBandwidthPackagesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListBandwidthPackagesRequest) SetRegionId(v string) *ListBandwidthPackagesRequest {
-	s.RegionId = &v
+func (s *ListBandwidthPackagesRequest) SetBandwidthPackageId(v string) *ListBandwidthPackagesRequest {
+	s.BandwidthPackageId = &v
 	return s
 }
 
@@ -5934,6 +6770,11 @@ func (s *ListBandwidthPackagesRequest) SetPageSize(v int32) *ListBandwidthPackag
 	return s
 }
 
+func (s *ListBandwidthPackagesRequest) SetRegionId(v string) *ListBandwidthPackagesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListBandwidthPackagesRequest) SetState(v string) *ListBandwidthPackagesRequest {
 	s.State = &v
 	return s
@@ -5944,17 +6785,12 @@ func (s *ListBandwidthPackagesRequest) SetType(v string) *ListBandwidthPackagesR
 	return s
 }
 
-func (s *ListBandwidthPackagesRequest) SetBandwidthPackageId(v string) *ListBandwidthPackagesRequest {
-	s.BandwidthPackageId = &v
-	return s
-}
-
 type ListBandwidthPackagesResponseBody struct {
-	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	BandwidthPackages []*ListBandwidthPackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
+	PageNumber        *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber        *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	BandwidthPackages []*ListBandwidthPackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
+	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListBandwidthPackagesResponseBody) String() string {
@@ -5965,8 +6801,13 @@ func (s ListBandwidthPackagesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListBandwidthPackagesResponseBody) SetTotalCount(v int32) *ListBandwidthPackagesResponseBody {
-	s.TotalCount = &v
+func (s *ListBandwidthPackagesResponseBody) SetBandwidthPackages(v []*ListBandwidthPackagesResponseBodyBandwidthPackages) *ListBandwidthPackagesResponseBody {
+	s.BandwidthPackages = v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBody) SetPageNumber(v int32) *ListBandwidthPackagesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5980,33 +6821,28 @@ func (s *ListBandwidthPackagesResponseBody) SetRequestId(v string) *ListBandwidt
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBody) SetPageNumber(v int32) *ListBandwidthPackagesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBody) SetBandwidthPackages(v []*ListBandwidthPackagesResponseBodyBandwidthPackages) *ListBandwidthPackagesResponseBody {
-	s.BandwidthPackages = v
+func (s *ListBandwidthPackagesResponseBody) SetTotalCount(v int32) *ListBandwidthPackagesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListBandwidthPackagesResponseBodyBandwidthPackages struct {
-	Type                   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	BandwidthType          *string   `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	State                  *string   `json:"State,omitempty" xml:"State,omitempty"`
-	CreateTime             *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ChargeType             *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	CbnGeographicRegionIdA *string   `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
-	BandwidthPackageId     *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	Accelerators           []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
 	Bandwidth              *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageId     *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthType          *string   `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	BillingType            *string   `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	CbnGeographicRegionIdA *string   `json:"CbnGeographicRegionIdA,omitempty" xml:"CbnGeographicRegionIdA,omitempty"`
+	CbnGeographicRegionIdB *string   `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
+	ChargeType             *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime             *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpiredTime            *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Accelerators           []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	CbnGeographicRegionIdB *string   `json:"CbnGeographicRegionIdB,omitempty" xml:"CbnGeographicRegionIdB,omitempty"`
 	Name                   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	BillingType            *string   `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	Ratio                  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State                  *string   `json:"State,omitempty" xml:"State,omitempty"`
+	Type                   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListBandwidthPackagesResponseBodyBandwidthPackages) String() string {
@@ -6017,38 +6853,13 @@ func (s ListBandwidthPackagesResponseBodyBandwidthPackages) GoString() string {
 	return s.String()
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.Type = &v
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetAccelerators(v []*string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.Accelerators = v
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidthType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.BandwidthType = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetState(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.State = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCreateTime(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetChargeType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetRegionId(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCbnGeographicRegionIdA(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.CbnGeographicRegionIdA = &v
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidth(v int32) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -6057,8 +6868,33 @@ func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidthPackage
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidth(v int32) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.Bandwidth = &v
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBandwidthType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.BandwidthType = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBillingType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.BillingType = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCbnGeographicRegionIdA(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.CbnGeographicRegionIdA = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCbnGeographicRegionIdB(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.CbnGeographicRegionIdB = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetChargeType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCreateTime(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.CreateTime = &v
 	return s
 }
 
@@ -6072,28 +6908,28 @@ func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetExpiredTime(v st
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetAccelerators(v []*string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.Accelerators = v
-	return s
-}
-
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetCbnGeographicRegionIdB(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.CbnGeographicRegionIdB = &v
-	return s
-}
-
 func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetName(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
 	s.Name = &v
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetBillingType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.BillingType = &v
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetRatio(v int32) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.Ratio = &v
 	return s
 }
 
-func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetRatio(v int32) *ListBandwidthPackagesResponseBodyBandwidthPackages {
-	s.Ratio = &v
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetRegionId(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetState(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.State = &v
+	return s
+}
+
+func (s *ListBandwidthPackagesResponseBodyBandwidthPackages) SetType(v string) *ListBandwidthPackagesResponseBodyBandwidthPackages {
+	s.Type = &v
 	return s
 }
 
@@ -6120,6 +6956,444 @@ func (s *ListBandwidthPackagesResponse) SetBody(v *ListBandwidthPackagesResponse
 	return s
 }
 
+type ListBandwidthackagesRequest struct {
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBandwidthackagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBandwidthackagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBandwidthackagesRequest) SetPageNumber(v int32) *ListBandwidthackagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBandwidthackagesRequest) SetPageSize(v int32) *ListBandwidthackagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBandwidthackagesRequest) SetRegionId(v string) *ListBandwidthackagesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBandwidthackagesResponseBody struct {
+	BandwidthPackages []*ListBandwidthackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Repeated"`
+	PageNumber        *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBandwidthackagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBandwidthackagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBandwidthackagesResponseBody) SetBandwidthPackages(v []*ListBandwidthackagesResponseBodyBandwidthPackages) *ListBandwidthackagesResponseBody {
+	s.BandwidthPackages = v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBody) SetPageNumber(v int32) *ListBandwidthackagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBody) SetPageSize(v int32) *ListBandwidthackagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBody) SetRequestId(v string) *ListBandwidthackagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBody) SetTotalCount(v int32) *ListBandwidthackagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBandwidthackagesResponseBodyBandwidthPackages struct {
+	Accelerators       []*string `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
+	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageId *string   `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	ChargeType         *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime         *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime        *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBandwidthackagesResponseBodyBandwidthPackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBandwidthackagesResponseBodyBandwidthPackages) GoString() string {
+	return s.String()
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetAccelerators(v []*string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.Accelerators = v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetBandwidth(v int32) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetBandwidthPackageId(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetChargeType(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetCreateTime(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetDescription(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.Description = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetExpiredTime(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetName(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetRegionId(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListBandwidthackagesResponseBodyBandwidthPackages) SetState(v string) *ListBandwidthackagesResponseBodyBandwidthPackages {
+	s.State = &v
+	return s
+}
+
+type ListBandwidthackagesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListBandwidthackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBandwidthackagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBandwidthackagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBandwidthackagesResponse) SetHeaders(v map[string]*string) *ListBandwidthackagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBandwidthackagesResponse) SetBody(v *ListBandwidthackagesResponseBody) *ListBandwidthackagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListBasicAcceleratorsRequest struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 分页页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 全球加速实例状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListBasicAcceleratorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsRequest) SetAcceleratorId(v string) *ListBasicAcceleratorsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsRequest) SetPageNumber(v int32) *ListBasicAcceleratorsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsRequest) SetPageSize(v int32) *ListBasicAcceleratorsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsRequest) SetRegionId(v string) *ListBasicAcceleratorsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsRequest) SetState(v string) *ListBasicAcceleratorsRequest {
+	s.State = &v
+	return s
+}
+
+type ListBasicAcceleratorsResponseBody struct {
+	// 全球加速实例列表
+	Accelerators []*ListBasicAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
+	// 页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 页大小
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 全球加速实例总数
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBasicAcceleratorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsResponseBody) SetAccelerators(v []*ListBasicAcceleratorsResponseBodyAccelerators) *ListBasicAcceleratorsResponseBody {
+	s.Accelerators = v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBody) SetPageNumber(v int32) *ListBasicAcceleratorsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBody) SetPageSize(v int32) *ListBasicAcceleratorsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBody) SetRequestId(v string) *ListBasicAcceleratorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBody) SetTotalCount(v int32) *ListBasicAcceleratorsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBasicAcceleratorsResponseBodyAccelerators struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 绑定的基础带宽包
+	BasicBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	// 全球加速实例下车点Id
+	BasicEndpointGroupId *string `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
+	// 全球加速实例上车点Id
+	BasicIpSetId *string `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 绑定的跨境带宽包
+	CrossDomainBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	// 全球加速实例描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 到期时间
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 全球加速实例计费类型
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// 全球加速实例名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 全球加速实例状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 全球加速实例类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListBasicAcceleratorsResponseBodyAccelerators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsResponseBodyAccelerators) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetAcceleratorId(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetBasicBandwidthPackage(v *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.BasicBandwidthPackage = v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetBasicEndpointGroupId(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.BasicEndpointGroupId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetBasicIpSetId(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.BasicIpSetId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetCreateTime(v int64) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetCrossDomainBandwidthPackage(v *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.CrossDomainBandwidthPackage = v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetDescription(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.Description = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetExpiredTime(v int64) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetInstanceChargeType(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetName(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.Name = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetRegionId(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetState(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.State = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetType(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.Type = &v
+	return s
+}
+
+type ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage struct {
+	// 基础带宽包带宽
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 基础带宽包类型
+	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// 基础带宽包Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) SetBandwidth(v int32) *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) SetBandwidthType(v string) *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage {
+	s.BandwidthType = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) SetInstanceId(v string) *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage {
+	s.InstanceId = &v
+	return s
+}
+
+type ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage struct {
+	// 跨境带宽包带宽
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 跨境带宽包Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) SetBandwidth(v int32) *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) SetInstanceId(v string) *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage {
+	s.InstanceId = &v
+	return s
+}
+
+type ListBasicAcceleratorsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListBasicAcceleratorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBasicAcceleratorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBasicAcceleratorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBasicAcceleratorsResponse) SetHeaders(v map[string]*string) *ListBasicAcceleratorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponse) SetBody(v *ListBasicAcceleratorsResponseBody) *ListBasicAcceleratorsResponse {
+	s.Body = v
+	return s
+}
+
 type ListBusiRegionsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6138,8 +7412,8 @@ func (s *ListBusiRegionsRequest) SetRegionId(v string) *ListBusiRegionsRequest {
 }
 
 type ListBusiRegionsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   []*ListBusiRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBusiRegionsResponseBody) String() string {
@@ -6150,13 +7424,13 @@ func (s ListBusiRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListBusiRegionsResponseBody) SetRequestId(v string) *ListBusiRegionsResponseBody {
-	s.RequestId = &v
+func (s *ListBusiRegionsResponseBody) SetRegions(v []*ListBusiRegionsResponseBodyRegions) *ListBusiRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *ListBusiRegionsResponseBody) SetRegions(v []*ListBusiRegionsResponseBodyRegions) *ListBusiRegionsResponseBody {
-	s.Regions = v
+func (s *ListBusiRegionsResponseBody) SetRequestId(v string) *ListBusiRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6207,14 +7481,14 @@ func (s *ListBusiRegionsResponse) SetBody(v *ListBusiRegionsResponseBody) *ListB
 }
 
 type ListEndpointGroupsRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId        *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
 	AccessLogSwitch   *string `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
 	EndpointGroupId   *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	ListenerId        *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListEndpointGroupsRequest) String() string {
@@ -6225,33 +7499,8 @@ func (s ListEndpointGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListEndpointGroupsRequest) SetRegionId(v string) *ListEndpointGroupsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListEndpointGroupsRequest) SetPageNumber(v int32) *ListEndpointGroupsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListEndpointGroupsRequest) SetPageSize(v int32) *ListEndpointGroupsRequest {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ListEndpointGroupsRequest) SetAcceleratorId(v string) *ListEndpointGroupsRequest {
 	s.AcceleratorId = &v
-	return s
-}
-
-func (s *ListEndpointGroupsRequest) SetListenerId(v string) *ListEndpointGroupsRequest {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *ListEndpointGroupsRequest) SetEndpointGroupType(v string) *ListEndpointGroupsRequest {
-	s.EndpointGroupType = &v
 	return s
 }
 
@@ -6265,12 +7514,37 @@ func (s *ListEndpointGroupsRequest) SetEndpointGroupId(v string) *ListEndpointGr
 	return s
 }
 
+func (s *ListEndpointGroupsRequest) SetEndpointGroupType(v string) *ListEndpointGroupsRequest {
+	s.EndpointGroupType = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetListenerId(v string) *ListEndpointGroupsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetPageNumber(v int32) *ListEndpointGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetPageSize(v int32) *ListEndpointGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEndpointGroupsRequest) SetRegionId(v string) *ListEndpointGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListEndpointGroupsResponseBody struct {
-	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
+	PageNumber     *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber     *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	EndpointGroups []*ListEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBody) String() string {
@@ -6281,8 +7555,13 @@ func (s ListEndpointGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListEndpointGroupsResponseBody) SetTotalCount(v int32) *ListEndpointGroupsResponseBody {
-	s.TotalCount = &v
+func (s *ListEndpointGroupsResponseBody) SetEndpointGroups(v []*ListEndpointGroupsResponseBodyEndpointGroups) *ListEndpointGroupsResponseBody {
+	s.EndpointGroups = v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBody) SetPageNumber(v int32) *ListEndpointGroupsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6296,38 +7575,33 @@ func (s *ListEndpointGroupsResponseBody) SetRequestId(v string) *ListEndpointGro
 	return s
 }
 
-func (s *ListEndpointGroupsResponseBody) SetPageNumber(v int32) *ListEndpointGroupsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBody) SetEndpointGroups(v []*ListEndpointGroupsResponseBodyEndpointGroups) *ListEndpointGroupsResponseBody {
-	s.EndpointGroups = v
+func (s *ListEndpointGroupsResponseBody) SetTotalCount(v int32) *ListEndpointGroupsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroups struct {
+	AcceleratorId                  *string                                                               `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Description                    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointConfigurations         []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	EndpointGroupId                *string                                                               `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointGroupIpList            []*string                                                             `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
-	EndpointGroupUnconfirmedIpList []*string                                                             `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
-	State                          *string                                                               `json:"State,omitempty" xml:"State,omitempty"`
-	HealthCheckPath                *string                                                               `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	EndpointGroupRegion            *string                                                               `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	HealthCheckIntervalSeconds     *int32                                                                `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	TrafficPercentage              *int32                                                                `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
-	HealthCheckProtocol            *string                                                               `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ThresholdCount                 *int32                                                                `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	ListenerId                     *string                                                               `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	AcceleratorId                  *string                                                               `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	EndpointConfigurations         []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	PortOverrides                  []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	ForwardingRuleIds              []*string                                                             `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	EndpointGroupType              *string                                                               `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointGroupUnconfirmedIpList []*string                                                             `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
 	EndpointRequestProtocol        *string                                                               `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	Description                    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	HealthCheckPort                *int32                                                                `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	ForwardingRuleIds              []*string                                                             `json:"ForwardingRuleIds,omitempty" xml:"ForwardingRuleIds,omitempty" type:"Repeated"`
 	HealthCheckEnabled             *bool                                                                 `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckIntervalSeconds     *int32                                                                `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	HealthCheckPath                *string                                                               `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckPort                *int32                                                                `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckProtocol            *string                                                               `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	ListenerId                     *string                                                               `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortOverrides                  []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	State                          *string                                                               `json:"State,omitempty" xml:"State,omitempty"`
+	ThresholdCount                 *int32                                                                `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage              *int32                                                                `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroups) String() string {
@@ -6336,6 +7610,21 @@ func (s ListEndpointGroupsResponseBodyEndpointGroups) String() string {
 
 func (s ListEndpointGroupsResponseBodyEndpointGroups) GoString() string {
 	return s.String()
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetAcceleratorId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetDescription(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointConfigurations(v []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointConfigurations = v
+	return s
 }
 
 func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
@@ -6348,68 +7637,8 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupIpList(v 
 	return s
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupUnconfirmedIpList(v []*string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.EndpointGroupUnconfirmedIpList = v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetState(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.State = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckPath(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.HealthCheckPath = &v
-	return s
-}
-
 func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupRegion(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
 	s.EndpointGroupRegion = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckIntervalSeconds(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.HealthCheckIntervalSeconds = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetTrafficPercentage(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.TrafficPercentage = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.HealthCheckProtocol = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetThresholdCount(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.ThresholdCount = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetListenerId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetAcceleratorId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.AcceleratorId = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointConfigurations(v []*ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetPortOverrides(v []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.PortOverrides = v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetForwardingRuleIds(v []*string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.ForwardingRuleIds = v
 	return s
 }
 
@@ -6418,23 +7647,18 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupType(v st
 	return s
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupUnconfirmedIpList(v []*string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointGroupUnconfirmedIpList = v
+	return s
+}
+
 func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetEndpointRequestProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
 	s.EndpointRequestProtocol = &v
 	return s
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetDescription(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.Description = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetName(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.Name = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
-	s.HealthCheckPort = &v
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetForwardingRuleIds(v []*string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.ForwardingRuleIds = v
 	return s
 }
 
@@ -6443,14 +7667,64 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckEnabled(v b
 	return s
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckIntervalSeconds(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.HealthCheckIntervalSeconds = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckPath(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.HealthCheckPath = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.HealthCheckPort = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetHealthCheckProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.HealthCheckProtocol = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetListenerId(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetName(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetPortOverrides(v []*ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.PortOverrides = v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetState(v string) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.State = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetThresholdCount(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.ThresholdCount = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroups) SetTrafficPercentage(v int32) *ListEndpointGroupsResponseBodyEndpointGroups {
+	s.TrafficPercentage = &v
+	return s
+}
+
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
 	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	ProbePort                  *int32  `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
 	EndpointId                 *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ProbePort                  *int32  `json:"ProbePort,omitempty" xml:"ProbePort,omitempty"`
+	ProbeProtocol              *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) String() string {
@@ -6461,23 +7735,8 @@ func (s ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GoSt
 	return s.String()
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetType(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
-	s.Type = &v
-	return s
-}
-
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetEnableClientIPPreservation(v bool) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetWeight(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
-	s.Weight = &v
-	return s
-}
-
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProbeProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
-	s.ProbeProtocol = &v
 	return s
 }
 
@@ -6486,19 +7745,34 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 	return s
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProbePort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
-	s.ProbePort = &v
-	return s
-}
-
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetEndpointId(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
 	s.EndpointId = &v
 	return s
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProbePort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.ProbePort = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProbeProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.ProbeProtocol = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetType(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetWeight(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.Weight = &v
+	return s
+}
+
 type ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides struct {
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) String() string {
@@ -6509,13 +7783,13 @@ func (s ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) GoString() st
 	return s.String()
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetListenerPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides {
-	s.ListenerPort = &v
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetEndpointPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides {
+	s.EndpointPort = &v
 	return s
 }
 
-func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetEndpointPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides {
-	s.EndpointPort = &v
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides) SetListenerPort(v int32) *ListEndpointGroupsResponseBodyEndpointGroupsPortOverrides {
+	s.ListenerPort = &v
 	return s
 }
 
@@ -6543,13 +7817,13 @@ func (s *ListEndpointGroupsResponse) SetBody(v *ListEndpointGroupsResponseBody) 
 }
 
 type ListForwardingRulesRequest struct {
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ListenerId       *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	AcceleratorId    *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ListenerId       *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListForwardingRulesRequest) String() string {
@@ -6560,8 +7834,8 @@ func (s ListForwardingRulesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListForwardingRulesRequest) SetRegionId(v string) *ListForwardingRulesRequest {
-	s.RegionId = &v
+func (s *ListForwardingRulesRequest) SetAcceleratorId(v string) *ListForwardingRulesRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -6570,23 +7844,13 @@ func (s *ListForwardingRulesRequest) SetClientToken(v string) *ListForwardingRul
 	return s
 }
 
-func (s *ListForwardingRulesRequest) SetListenerId(v string) *ListForwardingRulesRequest {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *ListForwardingRulesRequest) SetAcceleratorId(v string) *ListForwardingRulesRequest {
-	s.AcceleratorId = &v
-	return s
-}
-
 func (s *ListForwardingRulesRequest) SetForwardingRuleId(v string) *ListForwardingRulesRequest {
 	s.ForwardingRuleId = &v
 	return s
 }
 
-func (s *ListForwardingRulesRequest) SetNextToken(v string) *ListForwardingRulesRequest {
-	s.NextToken = &v
+func (s *ListForwardingRulesRequest) SetListenerId(v string) *ListForwardingRulesRequest {
+	s.ListenerId = &v
 	return s
 }
 
@@ -6595,12 +7859,22 @@ func (s *ListForwardingRulesRequest) SetMaxResults(v int32) *ListForwardingRules
 	return s
 }
 
+func (s *ListForwardingRulesRequest) SetNextToken(v string) *ListForwardingRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListForwardingRulesRequest) SetRegionId(v string) *ListForwardingRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListForwardingRulesResponseBody struct {
+	ForwardingRules []*ListForwardingRulesResponseBodyForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
+	MaxResults      *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults      *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	ForwardingRules []*ListForwardingRulesResponseBodyForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
 }
 
 func (s ListForwardingRulesResponseBody) String() string {
@@ -6609,6 +7883,21 @@ func (s ListForwardingRulesResponseBody) String() string {
 
 func (s ListForwardingRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListForwardingRulesResponseBody) SetForwardingRules(v []*ListForwardingRulesResponseBodyForwardingRules) *ListForwardingRulesResponseBody {
+	s.ForwardingRules = v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBody) SetMaxResults(v int32) *ListForwardingRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBody) SetNextToken(v string) *ListForwardingRulesResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListForwardingRulesResponseBody) SetRequestId(v string) *ListForwardingRulesResponseBody {
@@ -6621,29 +7910,14 @@ func (s *ListForwardingRulesResponseBody) SetTotalCount(v int32) *ListForwarding
 	return s
 }
 
-func (s *ListForwardingRulesResponseBody) SetNextToken(v string) *ListForwardingRulesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListForwardingRulesResponseBody) SetMaxResults(v int32) *ListForwardingRulesResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListForwardingRulesResponseBody) SetForwardingRules(v []*ListForwardingRulesResponseBodyForwardingRules) *ListForwardingRulesResponseBody {
-	s.ForwardingRules = v
-	return s
-}
-
 type ListForwardingRulesResponseBodyForwardingRules struct {
-	Priority             *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ForwardingRuleId     *string                                                         `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
 	ForwardingRuleName   *string                                                         `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
 	ForwardingRuleStatus *string                                                         `json:"ForwardingRuleStatus,omitempty" xml:"ForwardingRuleStatus,omitempty"`
-	RuleConditions       []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	RuleActions          []*ListForwardingRulesResponseBodyForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	ListenerId           *string                                                         `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Priority             *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions          []*ListForwardingRulesResponseBodyForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	RuleConditions       []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRules) String() string {
@@ -6652,11 +7926,6 @@ func (s ListForwardingRulesResponseBodyForwardingRules) String() string {
 
 func (s ListForwardingRulesResponseBodyForwardingRules) GoString() string {
 	return s.String()
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRules) SetPriority(v int32) *ListForwardingRulesResponseBodyForwardingRules {
-	s.Priority = &v
-	return s
 }
 
 func (s *ListForwardingRulesResponseBodyForwardingRules) SetForwardingRuleId(v string) *ListForwardingRulesResponseBodyForwardingRules {
@@ -6674,8 +7943,13 @@ func (s *ListForwardingRulesResponseBodyForwardingRules) SetForwardingRuleStatus
 	return s
 }
 
-func (s *ListForwardingRulesResponseBodyForwardingRules) SetRuleConditions(v []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions) *ListForwardingRulesResponseBodyForwardingRules {
-	s.RuleConditions = v
+func (s *ListForwardingRulesResponseBodyForwardingRules) SetListenerId(v string) *ListForwardingRulesResponseBodyForwardingRules {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRules) SetPriority(v int32) *ListForwardingRulesResponseBodyForwardingRules {
+	s.Priority = &v
 	return s
 }
 
@@ -6684,78 +7958,15 @@ func (s *ListForwardingRulesResponseBodyForwardingRules) SetRuleActions(v []*Lis
 	return s
 }
 
-func (s *ListForwardingRulesResponseBodyForwardingRules) SetListenerId(v string) *ListForwardingRulesResponseBodyForwardingRules {
-	s.ListenerId = &v
-	return s
-}
-
-type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
-	RuleConditionType *string                                                                 `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
-	PathConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	HostConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditions) GoString() string {
-	return s.String()
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetRuleConditionType(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
-	s.RuleConditionType = &v
-	return s
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetPathConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
-	s.PathConfig = v
-	return s
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetHostConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
-	s.HostConfig = v
-	return s
-}
-
-type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig {
-	s.Values = v
-	return s
-}
-
-type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig {
-	s.Values = v
+func (s *ListForwardingRulesResponseBodyForwardingRules) SetRuleConditions(v []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions) *ListForwardingRulesResponseBodyForwardingRules {
+	s.RuleConditions = v
 	return s
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
+	ForwardGroupConfig *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                       `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                      `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	ForwardGroupConfig *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRulesRuleActions) String() string {
@@ -6766,6 +7977,11 @@ func (s ListForwardingRulesResponseBodyForwardingRulesRuleActions) GoString() st
 	return s.String()
 }
 
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetForwardGroupConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
+	s.ForwardGroupConfig = v
+	return s
+}
+
 func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetOrder(v int32) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
 	s.Order = &v
 	return s
@@ -6773,11 +7989,6 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetOrder(v i
 
 func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetRuleActionType(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
 	s.RuleActionType = &v
-	return s
-}
-
-func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetForwardGroupConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
-	s.ForwardGroupConfig = v
 	return s
 }
 
@@ -6815,6 +8026,69 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupCo
 	return s
 }
 
+type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
+	HostConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType *string                                                                 `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetHostConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
+	s.HostConfig = v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetPathConfig(v *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
+	s.PathConfig = v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetRuleConditionType(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
+	s.RuleConditionType = &v
+	return s
+}
+
+type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig {
+	s.Values = v
+	return s
+}
+
+type ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig {
+	s.Values = v
+	return s
+}
+
 type ListForwardingRulesResponse struct {
 	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *ListForwardingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -6839,10 +8113,10 @@ func (s *ListForwardingRulesResponse) SetBody(v *ListForwardingRulesResponseBody
 }
 
 type ListIpSetsRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListIpSetsRequest) String() string {
@@ -6853,8 +8127,8 @@ func (s ListIpSetsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListIpSetsRequest) SetRegionId(v string) *ListIpSetsRequest {
-	s.RegionId = &v
+func (s *ListIpSetsRequest) SetAcceleratorId(v string) *ListIpSetsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -6868,17 +8142,17 @@ func (s *ListIpSetsRequest) SetPageSize(v int32) *ListIpSetsRequest {
 	return s
 }
 
-func (s *ListIpSetsRequest) SetAcceleratorId(v string) *ListIpSetsRequest {
-	s.AcceleratorId = &v
+func (s *ListIpSetsRequest) SetRegionId(v string) *ListIpSetsRequest {
+	s.RegionId = &v
 	return s
 }
 
 type ListIpSetsResponseBody struct {
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	IpSets     []*ListIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	IpSets     []*ListIpSetsResponseBodyIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListIpSetsResponseBody) String() string {
@@ -6889,8 +8163,13 @@ func (s ListIpSetsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListIpSetsResponseBody) SetTotalCount(v int32) *ListIpSetsResponseBody {
-	s.TotalCount = &v
+func (s *ListIpSetsResponseBody) SetIpSets(v []*ListIpSetsResponseBodyIpSets) *ListIpSetsResponseBody {
+	s.IpSets = v
+	return s
+}
+
+func (s *ListIpSetsResponseBody) SetPageNumber(v int32) *ListIpSetsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -6904,23 +8183,18 @@ func (s *ListIpSetsResponseBody) SetRequestId(v string) *ListIpSetsResponseBody 
 	return s
 }
 
-func (s *ListIpSetsResponseBody) SetPageNumber(v int32) *ListIpSetsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListIpSetsResponseBody) SetIpSets(v []*ListIpSetsResponseBodyIpSets) *ListIpSetsResponseBody {
-	s.IpSets = v
+func (s *ListIpSetsResponseBody) SetTotalCount(v int32) *ListIpSetsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListIpSetsResponseBodyIpSets struct {
 	AccelerateRegionId *string   `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	Bandwidth          *int32    `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
-	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
+	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListIpSetsResponseBodyIpSets) String() string {
@@ -6936,18 +8210,13 @@ func (s *ListIpSetsResponseBodyIpSets) SetAccelerateRegionId(v string) *ListIpSe
 	return s
 }
 
-func (s *ListIpSetsResponseBodyIpSets) SetIpVersion(v string) *ListIpSetsResponseBodyIpSets {
-	s.IpVersion = &v
-	return s
-}
-
 func (s *ListIpSetsResponseBodyIpSets) SetBandwidth(v int32) *ListIpSetsResponseBodyIpSets {
 	s.Bandwidth = &v
 	return s
 }
 
-func (s *ListIpSetsResponseBodyIpSets) SetState(v string) *ListIpSetsResponseBodyIpSets {
-	s.State = &v
+func (s *ListIpSetsResponseBodyIpSets) SetIpAddressList(v []*string) *ListIpSetsResponseBodyIpSets {
+	s.IpAddressList = v
 	return s
 }
 
@@ -6956,8 +8225,13 @@ func (s *ListIpSetsResponseBodyIpSets) SetIpSetId(v string) *ListIpSetsResponseB
 	return s
 }
 
-func (s *ListIpSetsResponseBodyIpSets) SetIpAddressList(v []*string) *ListIpSetsResponseBodyIpSets {
-	s.IpAddressList = v
+func (s *ListIpSetsResponseBodyIpSets) SetIpVersion(v string) *ListIpSetsResponseBodyIpSets {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *ListIpSetsResponseBodyIpSets) SetState(v string) *ListIpSetsResponseBodyIpSets {
+	s.State = &v
 	return s
 }
 
@@ -6985,12 +8259,12 @@ func (s *ListIpSetsResponse) SetBody(v *ListIpSetsResponseBody) *ListIpSetsRespo
 }
 
 type ListListenerCertificatesRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s ListListenerCertificatesRequest) String() string {
@@ -7001,18 +8275,8 @@ func (s ListListenerCertificatesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenerCertificatesRequest) SetRegionId(v string) *ListListenerCertificatesRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ListListenerCertificatesRequest) SetAcceleratorId(v string) *ListListenerCertificatesRequest {
 	s.AcceleratorId = &v
-	return s
-}
-
-func (s *ListListenerCertificatesRequest) SetRole(v string) *ListListenerCertificatesRequest {
-	s.Role = &v
 	return s
 }
 
@@ -7021,22 +8285,32 @@ func (s *ListListenerCertificatesRequest) SetListenerId(v string) *ListListenerC
 	return s
 }
 
-func (s *ListListenerCertificatesRequest) SetNextToken(v string) *ListListenerCertificatesRequest {
-	s.NextToken = &v
-	return s
-}
-
 func (s *ListListenerCertificatesRequest) SetMaxResults(v int32) *ListListenerCertificatesRequest {
 	s.MaxResults = &v
 	return s
 }
 
+func (s *ListListenerCertificatesRequest) SetNextToken(v string) *ListListenerCertificatesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListListenerCertificatesRequest) SetRegionId(v string) *ListListenerCertificatesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListListenerCertificatesRequest) SetRole(v string) *ListListenerCertificatesRequest {
+	s.Role = &v
+	return s
+}
+
 type ListListenerCertificatesResponseBody struct {
+	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	MaxResults   *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults   *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 }
 
 func (s ListListenerCertificatesResponseBody) String() string {
@@ -7045,6 +8319,21 @@ func (s ListListenerCertificatesResponseBody) String() string {
 
 func (s ListListenerCertificatesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListListenerCertificatesResponseBody) SetCertificates(v []*ListListenerCertificatesResponseBodyCertificates) *ListListenerCertificatesResponseBody {
+	s.Certificates = v
+	return s
+}
+
+func (s *ListListenerCertificatesResponseBody) SetMaxResults(v int32) *ListListenerCertificatesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListListenerCertificatesResponseBody) SetNextToken(v string) *ListListenerCertificatesResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListListenerCertificatesResponseBody) SetRequestId(v string) *ListListenerCertificatesResponseBody {
@@ -7057,25 +8346,10 @@ func (s *ListListenerCertificatesResponseBody) SetTotalCount(v int32) *ListListe
 	return s
 }
 
-func (s *ListListenerCertificatesResponseBody) SetNextToken(v string) *ListListenerCertificatesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetMaxResults(v int32) *ListListenerCertificatesResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListListenerCertificatesResponseBody) SetCertificates(v []*ListListenerCertificatesResponseBodyCertificates) *ListListenerCertificatesResponseBody {
-	s.Certificates = v
-	return s
-}
-
 type ListListenerCertificatesResponseBodyCertificates struct {
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	IsDefault     *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	IsDefault     *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 }
 
 func (s ListListenerCertificatesResponseBodyCertificates) String() string {
@@ -7091,13 +8365,13 @@ func (s *ListListenerCertificatesResponseBodyCertificates) SetCertificateId(v st
 	return s
 }
 
-func (s *ListListenerCertificatesResponseBodyCertificates) SetIsDefault(v bool) *ListListenerCertificatesResponseBodyCertificates {
-	s.IsDefault = &v
+func (s *ListListenerCertificatesResponseBodyCertificates) SetDomain(v string) *ListListenerCertificatesResponseBodyCertificates {
+	s.Domain = &v
 	return s
 }
 
-func (s *ListListenerCertificatesResponseBodyCertificates) SetDomain(v string) *ListListenerCertificatesResponseBodyCertificates {
-	s.Domain = &v
+func (s *ListListenerCertificatesResponseBodyCertificates) SetIsDefault(v bool) *ListListenerCertificatesResponseBodyCertificates {
+	s.IsDefault = &v
 	return s
 }
 
@@ -7125,10 +8399,10 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 }
 
 type ListListenersRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListListenersRequest) String() string {
@@ -7139,8 +8413,8 @@ func (s ListListenersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenersRequest) SetRegionId(v string) *ListListenersRequest {
-	s.RegionId = &v
+func (s *ListListenersRequest) SetAcceleratorId(v string) *ListListenersRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -7154,17 +8428,17 @@ func (s *ListListenersRequest) SetPageSize(v int32) *ListListenersRequest {
 	return s
 }
 
-func (s *ListListenersRequest) SetAcceleratorId(v string) *ListListenersRequest {
-	s.AcceleratorId = &v
+func (s *ListListenersRequest) SetRegionId(v string) *ListListenersRequest {
+	s.RegionId = &v
 	return s
 }
 
 type ListListenersResponseBody struct {
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Listeners  []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenersResponseBody) String() string {
@@ -7175,13 +8449,13 @@ func (s ListListenersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersResponseBody {
-	s.TotalCount = &v
+func (s *ListListenersResponseBody) SetListeners(v []*ListListenersResponseBodyListeners) *ListListenersResponseBody {
+	s.Listeners = v
 	return s
 }
 
-func (s *ListListenersResponseBody) SetListeners(v []*ListListenersResponseBodyListeners) *ListListenersResponseBody {
-	s.Listeners = v
+func (s *ListListenersResponseBody) SetPageNumber(v int32) *ListListenersResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -7195,26 +8469,26 @@ func (s *ListListenersResponseBody) SetRequestId(v string) *ListListenersRespons
 	return s
 }
 
-func (s *ListListenersResponseBody) SetPageNumber(v int32) *ListListenersResponseBody {
-	s.PageNumber = &v
+func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type ListListenersResponseBodyListeners struct {
-	Certificates        []*ListListenersResponseBodyListenersCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	BackendPorts        []*ListListenersResponseBodyListenersBackendPorts      `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	ListenerId          *string                                                `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	Description         *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	State               *string                                                `json:"State,omitempty" xml:"State,omitempty"`
-	ClientAffinity      *string                                                `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
-	Protocol            *string                                                `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	CreateTime          *int64                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	PortRanges          []*ListListenersResponseBodyListenersPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Name                *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProxyProtocol       *bool                                                  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	AcceleratorId       *string                                                `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	XForwardedForConfig *ListListenersResponseBodyListenersXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
+	BackendPorts        []*ListListenersResponseBodyListenersBackendPorts      `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
+	Certificates        []*ListListenersResponseBodyListenersCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientAffinity      *string                                                `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
+	CreateTime          *int64                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description         *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerId          *string                                                `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges          []*ListListenersResponseBodyListenersPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol            *string                                                `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ProxyProtocol       *bool                                                  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	SecurityPolicyId    *string                                                `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	State               *string                                                `json:"State,omitempty" xml:"State,omitempty"`
+	XForwardedForConfig *ListListenersResponseBodyListenersXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -7225,8 +8499,8 @@ func (s ListListenersResponseBodyListeners) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenersResponseBodyListeners) SetCertificates(v []*ListListenersResponseBodyListenersCertificates) *ListListenersResponseBodyListeners {
-	s.Certificates = v
+func (s *ListListenersResponseBodyListeners) SetAcceleratorId(v string) *ListListenersResponseBodyListeners {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -7235,18 +8509,8 @@ func (s *ListListenersResponseBodyListeners) SetBackendPorts(v []*ListListenersR
 	return s
 }
 
-func (s *ListListenersResponseBodyListeners) SetListenerId(v string) *ListListenersResponseBodyListeners {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *ListListenersResponseBodyListeners) SetDescription(v string) *ListListenersResponseBodyListeners {
-	s.Description = &v
-	return s
-}
-
-func (s *ListListenersResponseBodyListeners) SetState(v string) *ListListenersResponseBodyListeners {
-	s.State = &v
+func (s *ListListenersResponseBodyListeners) SetCertificates(v []*ListListenersResponseBodyListenersCertificates) *ListListenersResponseBodyListeners {
+	s.Certificates = v
 	return s
 }
 
@@ -7255,18 +8519,18 @@ func (s *ListListenersResponseBodyListeners) SetClientAffinity(v string) *ListLi
 	return s
 }
 
-func (s *ListListenersResponseBodyListeners) SetProtocol(v string) *ListListenersResponseBodyListeners {
-	s.Protocol = &v
-	return s
-}
-
 func (s *ListListenersResponseBodyListeners) SetCreateTime(v int64) *ListListenersResponseBodyListeners {
 	s.CreateTime = &v
 	return s
 }
 
-func (s *ListListenersResponseBodyListeners) SetPortRanges(v []*ListListenersResponseBodyListenersPortRanges) *ListListenersResponseBodyListeners {
-	s.PortRanges = v
+func (s *ListListenersResponseBodyListeners) SetDescription(v string) *ListListenersResponseBodyListeners {
+	s.Description = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetListenerId(v string) *ListListenersResponseBodyListeners {
+	s.ListenerId = &v
 	return s
 }
 
@@ -7275,18 +8539,18 @@ func (s *ListListenersResponseBodyListeners) SetName(v string) *ListListenersRes
 	return s
 }
 
+func (s *ListListenersResponseBodyListeners) SetPortRanges(v []*ListListenersResponseBodyListenersPortRanges) *ListListenersResponseBodyListeners {
+	s.PortRanges = v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetProtocol(v string) *ListListenersResponseBodyListeners {
+	s.Protocol = &v
+	return s
+}
+
 func (s *ListListenersResponseBodyListeners) SetProxyProtocol(v bool) *ListListenersResponseBodyListeners {
 	s.ProxyProtocol = &v
-	return s
-}
-
-func (s *ListListenersResponseBodyListeners) SetAcceleratorId(v string) *ListListenersResponseBodyListeners {
-	s.AcceleratorId = &v
-	return s
-}
-
-func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListenersResponseBodyListenersXForwardedForConfig) *ListListenersResponseBodyListeners {
-	s.XForwardedForConfig = v
 	return s
 }
 
@@ -7295,26 +8559,13 @@ func (s *ListListenersResponseBodyListeners) SetSecurityPolicyId(v string) *List
 	return s
 }
 
-type ListListenersResponseBodyListenersCertificates struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s ListListenersResponseBodyListenersCertificates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListListenersResponseBodyListenersCertificates) GoString() string {
-	return s.String()
-}
-
-func (s *ListListenersResponseBodyListenersCertificates) SetType(v string) *ListListenersResponseBodyListenersCertificates {
-	s.Type = &v
+func (s *ListListenersResponseBodyListeners) SetState(v string) *ListListenersResponseBodyListeners {
+	s.State = &v
 	return s
 }
 
-func (s *ListListenersResponseBodyListenersCertificates) SetId(v string) *ListListenersResponseBodyListenersCertificates {
-	s.Id = &v
+func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListenersResponseBodyListenersXForwardedForConfig) *ListListenersResponseBodyListeners {
+	s.XForwardedForConfig = v
 	return s
 }
 
@@ -7338,6 +8589,29 @@ func (s *ListListenersResponseBodyListenersBackendPorts) SetFromPort(v string) *
 
 func (s *ListListenersResponseBodyListenersBackendPorts) SetToPort(v string) *ListListenersResponseBodyListenersBackendPorts {
 	s.ToPort = &v
+	return s
+}
+
+type ListListenersResponseBodyListenersCertificates struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListListenersResponseBodyListenersCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListListenersResponseBodyListenersCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *ListListenersResponseBodyListenersCertificates) SetId(v string) *ListListenersResponseBodyListenersCertificates {
+	s.Id = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListenersCertificates) SetType(v string) *ListListenersResponseBodyListenersCertificates {
+	s.Type = &v
 	return s
 }
 
@@ -7365,11 +8639,11 @@ func (s *ListListenersResponseBodyListenersPortRanges) SetToPort(v int32) *ListL
 }
 
 type ListListenersResponseBodyListenersXForwardedForConfig struct {
-	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
-	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 	XForwardedForGaApEnabled  *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
 	XForwardedForPortEnabled  *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
+	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersXForwardedForConfig) String() string {
@@ -7380,18 +8654,18 @@ func (s ListListenersResponseBodyListenersXForwardedForConfig) GoString() string
 	return s.String()
 }
 
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForGaApEnabled = &v
+	return s
+}
+
 func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
 	s.XForwardedForGaIdEnabled = &v
 	return s
 }
 
-func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXRealIpEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
-	s.XRealIpEnabled = &v
-	return s
-}
-
-func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
-	s.XForwardedForGaApEnabled = &v
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForPortEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForPortEnabled = &v
 	return s
 }
 
@@ -7400,8 +8674,8 @@ func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedFor
 	return s
 }
 
-func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForPortEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
-	s.XForwardedForPortEnabled = &v
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXRealIpEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XRealIpEnabled = &v
 	return s
 }
 
@@ -7429,10 +8703,10 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListSpareIpsRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListSpareIpsRequest) String() string {
@@ -7443,8 +8717,8 @@ func (s ListSpareIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListSpareIpsRequest) SetRegionId(v string) *ListSpareIpsRequest {
-	s.RegionId = &v
+func (s *ListSpareIpsRequest) SetAcceleratorId(v string) *ListSpareIpsRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -7458,8 +8732,8 @@ func (s *ListSpareIpsRequest) SetDryRun(v bool) *ListSpareIpsRequest {
 	return s
 }
 
-func (s *ListSpareIpsRequest) SetAcceleratorId(v string) *ListSpareIpsRequest {
-	s.AcceleratorId = &v
+func (s *ListSpareIpsRequest) SetRegionId(v string) *ListSpareIpsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7534,9 +8808,9 @@ func (s *ListSpareIpsResponse) SetBody(v *ListSpareIpsResponseBody) *ListSpareIp
 }
 
 type ListSystemSecurityPoliciesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListSystemSecurityPoliciesRequest) String() string {
@@ -7545,11 +8819,6 @@ func (s ListSystemSecurityPoliciesRequest) String() string {
 
 func (s ListSystemSecurityPoliciesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListSystemSecurityPoliciesRequest) SetRegionId(v string) *ListSystemSecurityPoliciesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListSystemSecurityPoliciesRequest) SetPageNumber(v int32) *ListSystemSecurityPoliciesRequest {
@@ -7562,13 +8831,18 @@ func (s *ListSystemSecurityPoliciesRequest) SetPageSize(v int32) *ListSystemSecu
 	return s
 }
 
+func (s *ListSystemSecurityPoliciesRequest) SetRegionId(v string) *ListSystemSecurityPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListSystemSecurityPoliciesResponseBody struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
 	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount       *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize         *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber       *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	SecurityPolicies []*ListSystemSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
+	TotalCount       *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSystemSecurityPoliciesResponseBody) String() string {
@@ -7579,13 +8853,8 @@ func (s ListSystemSecurityPoliciesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListSystemSecurityPoliciesResponseBody) SetRequestId(v string) *ListSystemSecurityPoliciesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSystemSecurityPoliciesResponseBody) SetTotalCount(v int32) *ListSystemSecurityPoliciesResponseBody {
-	s.TotalCount = &v
+func (s *ListSystemSecurityPoliciesResponseBody) SetPageNumber(v int32) *ListSystemSecurityPoliciesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -7594,8 +8863,8 @@ func (s *ListSystemSecurityPoliciesResponseBody) SetPageSize(v int32) *ListSyste
 	return s
 }
 
-func (s *ListSystemSecurityPoliciesResponseBody) SetPageNumber(v int32) *ListSystemSecurityPoliciesResponseBody {
-	s.PageNumber = &v
+func (s *ListSystemSecurityPoliciesResponseBody) SetRequestId(v string) *ListSystemSecurityPoliciesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7604,10 +8873,15 @@ func (s *ListSystemSecurityPoliciesResponseBody) SetSecurityPolicies(v []*ListSy
 	return s
 }
 
+func (s *ListSystemSecurityPoliciesResponseBody) SetTotalCount(v int32) *ListSystemSecurityPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListSystemSecurityPoliciesResponseBodySecurityPolicies struct {
+	Ciphers          []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	SecurityPolicyId *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	TlsVersions      []*string `json:"TlsVersions,omitempty" xml:"TlsVersions,omitempty" type:"Repeated"`
-	Ciphers          []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 }
 
 func (s ListSystemSecurityPoliciesResponseBodySecurityPolicies) String() string {
@@ -7618,6 +8892,11 @@ func (s ListSystemSecurityPoliciesResponseBodySecurityPolicies) GoString() strin
 	return s.String()
 }
 
+func (s *ListSystemSecurityPoliciesResponseBodySecurityPolicies) SetCiphers(v []*string) *ListSystemSecurityPoliciesResponseBodySecurityPolicies {
+	s.Ciphers = v
+	return s
+}
+
 func (s *ListSystemSecurityPoliciesResponseBodySecurityPolicies) SetSecurityPolicyId(v string) *ListSystemSecurityPoliciesResponseBodySecurityPolicies {
 	s.SecurityPolicyId = &v
 	return s
@@ -7625,11 +8904,6 @@ func (s *ListSystemSecurityPoliciesResponseBodySecurityPolicies) SetSecurityPoli
 
 func (s *ListSystemSecurityPoliciesResponseBodySecurityPolicies) SetTlsVersions(v []*string) *ListSystemSecurityPoliciesResponseBodySecurityPolicies {
 	s.TlsVersions = v
-	return s
-}
-
-func (s *ListSystemSecurityPoliciesResponseBodySecurityPolicies) SetCiphers(v []*string) *ListSystemSecurityPoliciesResponseBodySecurityPolicies {
-	s.Ciphers = v
 	return s
 }
 
@@ -7657,11 +8931,11 @@ func (s *ListSystemSecurityPoliciesResponse) SetBody(v *ListSystemSecurityPolici
 }
 
 type RemoveEntriesFromAclRequest struct {
-	RegionId    *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AclId       *string                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclEntries  []*RemoveEntriesFromAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
+	AclId       *string                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	ClientToken *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId    *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RemoveEntriesFromAclRequest) String() string {
@@ -7672,18 +8946,13 @@ func (s RemoveEntriesFromAclRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveEntriesFromAclRequest) SetRegionId(v string) *RemoveEntriesFromAclRequest {
-	s.RegionId = &v
+func (s *RemoveEntriesFromAclRequest) SetAclEntries(v []*RemoveEntriesFromAclRequestAclEntries) *RemoveEntriesFromAclRequest {
+	s.AclEntries = v
 	return s
 }
 
 func (s *RemoveEntriesFromAclRequest) SetAclId(v string) *RemoveEntriesFromAclRequest {
 	s.AclId = &v
-	return s
-}
-
-func (s *RemoveEntriesFromAclRequest) SetAclEntries(v []*RemoveEntriesFromAclRequestAclEntries) *RemoveEntriesFromAclRequest {
-	s.AclEntries = v
 	return s
 }
 
@@ -7694,6 +8963,11 @@ func (s *RemoveEntriesFromAclRequest) SetClientToken(v string) *RemoveEntriesFro
 
 func (s *RemoveEntriesFromAclRequest) SetDryRun(v bool) *RemoveEntriesFromAclRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *RemoveEntriesFromAclRequest) SetRegionId(v string) *RemoveEntriesFromAclRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7715,9 +8989,9 @@ func (s *RemoveEntriesFromAclRequestAclEntries) SetEntry(v string) *RemoveEntrie
 }
 
 type RemoveEntriesFromAclResponseBody struct {
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s RemoveEntriesFromAclResponseBody) String() string {
@@ -7728,13 +9002,13 @@ func (s RemoveEntriesFromAclResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RemoveEntriesFromAclResponseBody) SetRequestId(v string) *RemoveEntriesFromAclResponseBody {
-	s.RequestId = &v
+func (s *RemoveEntriesFromAclResponseBody) SetAclId(v string) *RemoveEntriesFromAclResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *RemoveEntriesFromAclResponseBody) SetAclId(v string) *RemoveEntriesFromAclResponseBody {
-	s.AclId = &v
+func (s *RemoveEntriesFromAclResponseBody) SetRequestId(v string) *RemoveEntriesFromAclResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7762,8 +9036,8 @@ func (s *RemoveEntriesFromAclResponse) SetBody(v *RemoveEntriesFromAclResponseBo
 }
 
 type ReplaceBandwidthPackageRequest struct {
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	BandwidthPackageId       *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TargetBandwidthPackageId *string `json:"TargetBandwidthPackageId,omitempty" xml:"TargetBandwidthPackageId,omitempty"`
 }
 
@@ -7775,13 +9049,13 @@ func (s ReplaceBandwidthPackageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ReplaceBandwidthPackageRequest) SetRegionId(v string) *ReplaceBandwidthPackageRequest {
-	s.RegionId = &v
+func (s *ReplaceBandwidthPackageRequest) SetBandwidthPackageId(v string) *ReplaceBandwidthPackageRequest {
+	s.BandwidthPackageId = &v
 	return s
 }
 
-func (s *ReplaceBandwidthPackageRequest) SetBandwidthPackageId(v string) *ReplaceBandwidthPackageRequest {
-	s.BandwidthPackageId = &v
+func (s *ReplaceBandwidthPackageRequest) SetRegionId(v string) *ReplaceBandwidthPackageRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7831,14 +9105,14 @@ func (s *ReplaceBandwidthPackageResponse) SetBody(v *ReplaceBandwidthPackageResp
 }
 
 type UpdateAcceleratorRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Spec          *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec          *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s UpdateAcceleratorRequest) String() string {
@@ -7849,33 +9123,8 @@ func (s UpdateAcceleratorRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAcceleratorRequest) SetRegionId(v string) *UpdateAcceleratorRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateAcceleratorRequest) SetClientToken(v string) *UpdateAcceleratorRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateAcceleratorRequest) SetName(v string) *UpdateAcceleratorRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateAcceleratorRequest) SetDescription(v string) *UpdateAcceleratorRequest {
-	s.Description = &v
-	return s
-}
-
 func (s *UpdateAcceleratorRequest) SetAcceleratorId(v string) *UpdateAcceleratorRequest {
 	s.AcceleratorId = &v
-	return s
-}
-
-func (s *UpdateAcceleratorRequest) SetSpec(v string) *UpdateAcceleratorRequest {
-	s.Spec = &v
 	return s
 }
 
@@ -7886,6 +9135,31 @@ func (s *UpdateAcceleratorRequest) SetAutoPay(v bool) *UpdateAcceleratorRequest 
 
 func (s *UpdateAcceleratorRequest) SetAutoUseCoupon(v bool) *UpdateAcceleratorRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *UpdateAcceleratorRequest) SetClientToken(v string) *UpdateAcceleratorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAcceleratorRequest) SetDescription(v string) *UpdateAcceleratorRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAcceleratorRequest) SetName(v string) *UpdateAcceleratorRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAcceleratorRequest) SetRegionId(v string) *UpdateAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAcceleratorRequest) SetSpec(v string) *UpdateAcceleratorRequest {
+	s.Spec = &v
 	return s
 }
 
@@ -7930,8 +9204,8 @@ func (s *UpdateAcceleratorResponse) SetBody(v *UpdateAcceleratorResponseBody) *U
 }
 
 type UpdateAcceleratorConfirmRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAcceleratorConfirmRequest) String() string {
@@ -7942,13 +9216,13 @@ func (s UpdateAcceleratorConfirmRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAcceleratorConfirmRequest) SetRegionId(v string) *UpdateAcceleratorConfirmRequest {
-	s.RegionId = &v
+func (s *UpdateAcceleratorConfirmRequest) SetAcceleratorId(v string) *UpdateAcceleratorConfirmRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
-func (s *UpdateAcceleratorConfirmRequest) SetAcceleratorId(v string) *UpdateAcceleratorConfirmRequest {
-	s.AcceleratorId = &v
+func (s *UpdateAcceleratorConfirmRequest) SetRegionId(v string) *UpdateAcceleratorConfirmRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7993,11 +9267,11 @@ func (s *UpdateAcceleratorConfirmResponse) SetBody(v *UpdateAcceleratorConfirmRe
 }
 
 type UpdateAclAttributeRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AclId       *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName     *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAclAttributeRequest) String() string {
@@ -8006,11 +9280,6 @@ func (s UpdateAclAttributeRequest) String() string {
 
 func (s UpdateAclAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateAclAttributeRequest) SetRegionId(v string) *UpdateAclAttributeRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UpdateAclAttributeRequest) SetAclId(v string) *UpdateAclAttributeRequest {
@@ -8033,10 +9302,15 @@ func (s *UpdateAclAttributeRequest) SetDryRun(v bool) *UpdateAclAttributeRequest
 	return s
 }
 
+func (s *UpdateAclAttributeRequest) SetRegionId(v string) *UpdateAclAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
 type UpdateAclAttributeResponseBody struct {
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 }
 
 func (s UpdateAclAttributeResponseBody) String() string {
@@ -8047,13 +9321,13 @@ func (s UpdateAclAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAclAttributeResponseBody) SetRequestId(v string) *UpdateAclAttributeResponseBody {
-	s.RequestId = &v
+func (s *UpdateAclAttributeResponseBody) SetAclId(v string) *UpdateAclAttributeResponseBody {
+	s.AclId = &v
 	return s
 }
 
-func (s *UpdateAclAttributeResponseBody) SetAclId(v string) *UpdateAclAttributeResponseBody {
-	s.AclId = &v
+func (s *UpdateAclAttributeResponseBody) SetRequestId(v string) *UpdateAclAttributeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8081,14 +9355,14 @@ func (s *UpdateAclAttributeResponse) SetBody(v *UpdateAclAttributeResponseBody) 
 }
 
 type UpdateBandwidthPackageRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BandwidthType      *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoUseCoupon      *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthType      *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateBandwidthPackageRequest) String() string {
@@ -8097,36 +9371,6 @@ func (s UpdateBandwidthPackageRequest) String() string {
 
 func (s UpdateBandwidthPackageRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateBandwidthPackageRequest) SetRegionId(v string) *UpdateBandwidthPackageRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetBandwidthPackageId(v string) *UpdateBandwidthPackageRequest {
-	s.BandwidthPackageId = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetName(v string) *UpdateBandwidthPackageRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetDescription(v string) *UpdateBandwidthPackageRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetBandwidth(v int32) *UpdateBandwidthPackageRequest {
-	s.Bandwidth = &v
-	return s
-}
-
-func (s *UpdateBandwidthPackageRequest) SetBandwidthType(v string) *UpdateBandwidthPackageRequest {
-	s.BandwidthType = &v
-	return s
 }
 
 func (s *UpdateBandwidthPackageRequest) SetAutoPay(v bool) *UpdateBandwidthPackageRequest {
@@ -8139,11 +9383,41 @@ func (s *UpdateBandwidthPackageRequest) SetAutoUseCoupon(v bool) *UpdateBandwidt
 	return s
 }
 
+func (s *UpdateBandwidthPackageRequest) SetBandwidth(v int32) *UpdateBandwidthPackageRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *UpdateBandwidthPackageRequest) SetBandwidthPackageId(v string) *UpdateBandwidthPackageRequest {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *UpdateBandwidthPackageRequest) SetBandwidthType(v string) *UpdateBandwidthPackageRequest {
+	s.BandwidthType = &v
+	return s
+}
+
+func (s *UpdateBandwidthPackageRequest) SetDescription(v string) *UpdateBandwidthPackageRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateBandwidthPackageRequest) SetName(v string) *UpdateBandwidthPackageRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBandwidthPackageRequest) SetRegionId(v string) *UpdateBandwidthPackageRequest {
+	s.RegionId = &v
+	return s
+}
+
 type UpdateBandwidthPackageResponseBody struct {
 	BandwidthPackage *string `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateBandwidthPackageResponseBody) String() string {
@@ -8164,13 +9438,13 @@ func (s *UpdateBandwidthPackageResponseBody) SetDescription(v string) *UpdateBan
 	return s
 }
 
-func (s *UpdateBandwidthPackageResponseBody) SetRequestId(v string) *UpdateBandwidthPackageResponseBody {
-	s.RequestId = &v
+func (s *UpdateBandwidthPackageResponseBody) SetName(v string) *UpdateBandwidthPackageResponseBody {
+	s.Name = &v
 	return s
 }
 
-func (s *UpdateBandwidthPackageResponseBody) SetName(v string) *UpdateBandwidthPackageResponseBody {
-	s.Name = &v
+func (s *UpdateBandwidthPackageResponseBody) SetRequestId(v string) *UpdateBandwidthPackageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8197,23 +9471,211 @@ func (s *UpdateBandwidthPackageResponse) SetBody(v *UpdateBandwidthPackageRespon
 	return s
 }
 
+type UpdateBasicAcceleratorRequest struct {
+	// 全球加速实例Id
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 全球加速实例描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 全球加速实例名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateBasicAcceleratorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicAcceleratorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicAcceleratorRequest) SetAcceleratorId(v string) *UpdateBasicAcceleratorRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *UpdateBasicAcceleratorRequest) SetClientToken(v string) *UpdateBasicAcceleratorRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateBasicAcceleratorRequest) SetDescription(v string) *UpdateBasicAcceleratorRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateBasicAcceleratorRequest) SetName(v string) *UpdateBasicAcceleratorRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBasicAcceleratorRequest) SetRegionId(v string) *UpdateBasicAcceleratorRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateBasicAcceleratorResponseBody struct {
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBasicAcceleratorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicAcceleratorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicAcceleratorResponseBody) SetRequestId(v string) *UpdateBasicAcceleratorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBasicAcceleratorResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateBasicAcceleratorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBasicAcceleratorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicAcceleratorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicAcceleratorResponse) SetHeaders(v map[string]*string) *UpdateBasicAcceleratorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBasicAcceleratorResponse) SetBody(v *UpdateBasicAcceleratorResponseBody) *UpdateBasicAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBasicEndpointGroupRequest struct {
+	// 客户端Token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 终端节点组描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 终端节点地址
+	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	// 终端节点组Id
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	// 终端节点类型
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// 终端节点组名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Regionid
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateBasicEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetClientToken(v string) *UpdateBasicEndpointGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetDescription(v string) *UpdateBasicEndpointGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetEndpointAddress(v string) *UpdateBasicEndpointGroupRequest {
+	s.EndpointAddress = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetEndpointGroupId(v string) *UpdateBasicEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetEndpointType(v string) *UpdateBasicEndpointGroupRequest {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetName(v string) *UpdateBasicEndpointGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetRegionId(v string) *UpdateBasicEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateBasicEndpointGroupResponseBody struct {
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBasicEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointGroupResponseBody) SetRequestId(v string) *UpdateBasicEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBasicEndpointGroupResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateBasicEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBasicEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicEndpointGroupResponse) SetHeaders(v map[string]*string) *UpdateBasicEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupResponse) SetBody(v *UpdateBasicEndpointGroupResponseBody) *UpdateBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateEndpointGroupRequest struct {
-	RegionId                   *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken                *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EndpointGroupId            *string                                             `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	Name                       *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	Description                *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointConfigurations     []*UpdateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupId            *string                                             `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointGroupRegion        *string                                             `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	TrafficPercentage          *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	EndpointRequestProtocol    *string                                             `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	HealthCheckEnabled         *bool                                               `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	HealthCheckIntervalSeconds *int32                                              `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
 	HealthCheckPath            *string                                             `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	HealthCheckPort            *int32                                              `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	HealthCheckProtocol        *string                                             `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ThresholdCount             *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	EndpointConfigurations     []*UpdateEndpointGroupRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	EndpointRequestProtocol    *string                                             `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	Name                       *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	PortOverrides              []*UpdateEndpointGroupRequestPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	HealthCheckEnabled         *bool                                               `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	RegionId                   *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ThresholdCount             *int32                                              `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage          *int32                                              `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s UpdateEndpointGroupRequest) String() string {
@@ -8224,23 +9686,8 @@ func (s UpdateEndpointGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupRequest) SetRegionId(v string) *UpdateEndpointGroupRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *UpdateEndpointGroupRequest) SetClientToken(v string) *UpdateEndpointGroupRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupRequest) SetEndpointGroupId(v string) *UpdateEndpointGroupRequest {
-	s.EndpointGroupId = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupRequest) SetName(v string) *UpdateEndpointGroupRequest {
-	s.Name = &v
 	return s
 }
 
@@ -8249,13 +9696,28 @@ func (s *UpdateEndpointGroupRequest) SetDescription(v string) *UpdateEndpointGro
 	return s
 }
 
+func (s *UpdateEndpointGroupRequest) SetEndpointConfigurations(v []*UpdateEndpointGroupRequestEndpointConfigurations) *UpdateEndpointGroupRequest {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequest) SetEndpointGroupId(v string) *UpdateEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
 func (s *UpdateEndpointGroupRequest) SetEndpointGroupRegion(v string) *UpdateEndpointGroupRequest {
 	s.EndpointGroupRegion = &v
 	return s
 }
 
-func (s *UpdateEndpointGroupRequest) SetTrafficPercentage(v int32) *UpdateEndpointGroupRequest {
-	s.TrafficPercentage = &v
+func (s *UpdateEndpointGroupRequest) SetEndpointRequestProtocol(v string) *UpdateEndpointGroupRequest {
+	s.EndpointRequestProtocol = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequest) SetHealthCheckEnabled(v bool) *UpdateEndpointGroupRequest {
+	s.HealthCheckEnabled = &v
 	return s
 }
 
@@ -8279,18 +9741,8 @@ func (s *UpdateEndpointGroupRequest) SetHealthCheckProtocol(v string) *UpdateEnd
 	return s
 }
 
-func (s *UpdateEndpointGroupRequest) SetThresholdCount(v int32) *UpdateEndpointGroupRequest {
-	s.ThresholdCount = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupRequest) SetEndpointConfigurations(v []*UpdateEndpointGroupRequestEndpointConfigurations) *UpdateEndpointGroupRequest {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *UpdateEndpointGroupRequest) SetEndpointRequestProtocol(v string) *UpdateEndpointGroupRequest {
-	s.EndpointRequestProtocol = &v
+func (s *UpdateEndpointGroupRequest) SetName(v string) *UpdateEndpointGroupRequest {
+	s.Name = &v
 	return s
 }
 
@@ -8299,16 +9751,26 @@ func (s *UpdateEndpointGroupRequest) SetPortOverrides(v []*UpdateEndpointGroupRe
 	return s
 }
 
-func (s *UpdateEndpointGroupRequest) SetHealthCheckEnabled(v bool) *UpdateEndpointGroupRequest {
-	s.HealthCheckEnabled = &v
+func (s *UpdateEndpointGroupRequest) SetRegionId(v string) *UpdateEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequest) SetThresholdCount(v int32) *UpdateEndpointGroupRequest {
+	s.ThresholdCount = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequest) SetTrafficPercentage(v int32) *UpdateEndpointGroupRequest {
+	s.TrafficPercentage = &v
 	return s
 }
 
 type UpdateEndpointGroupRequestEndpointConfigurations struct {
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	EnableClientIPPreservation *bool   `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	Endpoint                   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight                     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateEndpointGroupRequestEndpointConfigurations) String() string {
@@ -8319,18 +9781,8 @@ func (s UpdateEndpointGroupRequestEndpointConfigurations) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetType(v string) *UpdateEndpointGroupRequestEndpointConfigurations {
-	s.Type = &v
-	return s
-}
-
 func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetEnableClientIPPreservation(v bool) *UpdateEndpointGroupRequestEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetWeight(v int32) *UpdateEndpointGroupRequestEndpointConfigurations {
-	s.Weight = &v
 	return s
 }
 
@@ -8339,9 +9791,19 @@ func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string)
 	return s
 }
 
+func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetType(v string) *UpdateEndpointGroupRequestEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupRequestEndpointConfigurations) SetWeight(v int32) *UpdateEndpointGroupRequestEndpointConfigurations {
+	s.Weight = &v
+	return s
+}
+
 type UpdateEndpointGroupRequestPortOverrides struct {
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int32 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s UpdateEndpointGroupRequestPortOverrides) String() string {
@@ -8352,13 +9814,13 @@ func (s UpdateEndpointGroupRequestPortOverrides) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupRequestPortOverrides) SetListenerPort(v int32) *UpdateEndpointGroupRequestPortOverrides {
-	s.ListenerPort = &v
+func (s *UpdateEndpointGroupRequestPortOverrides) SetEndpointPort(v int32) *UpdateEndpointGroupRequestPortOverrides {
+	s.EndpointPort = &v
 	return s
 }
 
-func (s *UpdateEndpointGroupRequestPortOverrides) SetEndpointPort(v int32) *UpdateEndpointGroupRequestPortOverrides {
-	s.EndpointPort = &v
+func (s *UpdateEndpointGroupRequestPortOverrides) SetListenerPort(v int32) *UpdateEndpointGroupRequestPortOverrides {
+	s.ListenerPort = &v
 	return s
 }
 
@@ -8403,11 +9865,11 @@ func (s *UpdateEndpointGroupResponse) SetBody(v *UpdateEndpointGroupResponseBody
 }
 
 type UpdateEndpointGroupAttributeRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateEndpointGroupAttributeRequest) String() string {
@@ -8418,13 +9880,13 @@ func (s UpdateEndpointGroupAttributeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupAttributeRequest) SetRegionId(v string) *UpdateEndpointGroupAttributeRequest {
-	s.RegionId = &v
+func (s *UpdateEndpointGroupAttributeRequest) SetClientToken(v string) *UpdateEndpointGroupAttributeRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *UpdateEndpointGroupAttributeRequest) SetClientToken(v string) *UpdateEndpointGroupAttributeRequest {
-	s.ClientToken = &v
+func (s *UpdateEndpointGroupAttributeRequest) SetDescription(v string) *UpdateEndpointGroupAttributeRequest {
+	s.Description = &v
 	return s
 }
 
@@ -8438,8 +9900,8 @@ func (s *UpdateEndpointGroupAttributeRequest) SetName(v string) *UpdateEndpointG
 	return s
 }
 
-func (s *UpdateEndpointGroupAttributeRequest) SetDescription(v string) *UpdateEndpointGroupAttributeRequest {
-	s.Description = &v
+func (s *UpdateEndpointGroupAttributeRequest) SetRegionId(v string) *UpdateEndpointGroupAttributeRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8484,11 +9946,11 @@ func (s *UpdateEndpointGroupAttributeResponse) SetBody(v *UpdateEndpointGroupAtt
 }
 
 type UpdateEndpointGroupsRequest struct {
-	RegionId                    *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken                 *string                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                      *bool                                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EndpointGroupConfigurations []*UpdateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
 	ListenerId                  *string                                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId                    *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateEndpointGroupsRequest) String() string {
@@ -8497,11 +9959,6 @@ func (s UpdateEndpointGroupsRequest) String() string {
 
 func (s UpdateEndpointGroupsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateEndpointGroupsRequest) SetRegionId(v string) *UpdateEndpointGroupsRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UpdateEndpointGroupsRequest) SetClientToken(v string) *UpdateEndpointGroupsRequest {
@@ -8524,22 +9981,27 @@ func (s *UpdateEndpointGroupsRequest) SetListenerId(v string) *UpdateEndpointGro
 	return s
 }
 
+func (s *UpdateEndpointGroupsRequest) SetRegionId(v string) *UpdateEndpointGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
 type UpdateEndpointGroupsRequestEndpointGroupConfigurations struct {
-	EndpointGroupName                       *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EnableClientIPPreservationProxyProtocol *bool                                                                           `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
+	EnableClientIPPreservationToa           *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
+	EndpointConfigurations                  []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
 	EndpointGroupDescription                *string                                                                         `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
-	TrafficPercentage                       *int64                                                                          `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	EndpointGroupId                         *string                                                                         `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupName                       *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EndpointRequestProtocol                 *string                                                                         `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	HealthCheckEnabled                      *bool                                                                           `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	HealthCheckIntervalSeconds              *int64                                                                          `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
 	HealthCheckPath                         *string                                                                         `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	HealthCheckPort                         *int64                                                                          `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 	HealthCheckProtocol                     *string                                                                         `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	ThresholdCount                          *int64                                                                          `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	EndpointConfigurations                  []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	EndpointRequestProtocol                 *string                                                                         `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
 	PortOverrides                           []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	EnableClientIPPreservationToa           *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
-	EnableClientIPPreservationProxyProtocol *bool                                                                           `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
-	EndpointGroupId                         *string                                                                         `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	ThresholdCount                          *int64                                                                          `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage                       *int64                                                                          `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s UpdateEndpointGroupsRequestEndpointGroupConfigurations) String() string {
@@ -8550,8 +10012,18 @@ func (s UpdateEndpointGroupsRequestEndpointGroupConfigurations) GoString() strin
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupName(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointGroupName = &v
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationProxyProtocol(v bool) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationProxyProtocol = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationToa(v bool) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationToa = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointConfigurations = v
 	return s
 }
 
@@ -8560,8 +10032,18 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGrou
 	return s
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPercentage(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.TrafficPercentage = &v
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupId(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupName(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointGroupName = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointRequestProtocol(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointRequestProtocol = &v
 	return s
 }
 
@@ -8590,45 +10072,25 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetHealthCheckP
 	return s
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetThresholdCount(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.ThresholdCount = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointConfigurations = v
-	return s
-}
-
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointRequestProtocol(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointRequestProtocol = &v
-	return s
-}
-
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetPortOverrides(v []*UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
 	s.PortOverrides = v
 	return s
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationToa(v bool) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EnableClientIPPreservationToa = &v
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetThresholdCount(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.ThresholdCount = &v
 	return s
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEnableClientIPPreservationProxyProtocol(v bool) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EnableClientIPPreservationProxyProtocol = &v
-	return s
-}
-
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupId(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
-	s.EndpointGroupId = &v
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPercentage(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.TrafficPercentage = &v
 	return s
 }
 
 type UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weight   *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 }
 
 func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
@@ -8637,6 +10099,11 @@ func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 
 func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Endpoint = &v
+	return s
 }
 
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetType(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
@@ -8649,14 +10116,9 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 	return s
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
-	s.Endpoint = &v
-	return s
-}
-
 type UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct {
-	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
 func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) String() string {
@@ -8667,20 +10129,20 @@ func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) GoS
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
-	s.ListenerPort = &v
-	return s
-}
-
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetEndpointPort(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
 	s.EndpointPort = &v
 	return s
 }
 
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
+	s.ListenerPort = &v
+	return s
+}
+
 type UpdateEndpointGroupsResponseBody struct {
-	// Id of the request
-	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateEndpointGroupsResponseBody) String() string {
@@ -8691,13 +10153,13 @@ func (s UpdateEndpointGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEndpointGroupsResponseBody) SetRequestId(v string) *UpdateEndpointGroupsResponseBody {
-	s.RequestId = &v
+func (s *UpdateEndpointGroupsResponseBody) SetEndpointGroupIds(v []*string) *UpdateEndpointGroupsResponseBody {
+	s.EndpointGroupIds = v
 	return s
 }
 
-func (s *UpdateEndpointGroupsResponseBody) SetEndpointGroupIds(v []*string) *UpdateEndpointGroupsResponseBody {
-	s.EndpointGroupIds = v
+func (s *UpdateEndpointGroupsResponseBody) SetRequestId(v string) *UpdateEndpointGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8725,11 +10187,11 @@ func (s *UpdateEndpointGroupsResponse) SetBody(v *UpdateEndpointGroupsResponseBo
 }
 
 type UpdateForwardingRulesRequest struct {
-	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	AcceleratorId   *string                                        `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	ListenerId      *string                                        `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ForwardingRules []*UpdateForwardingRulesRequestForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
+	ListenerId      *string                                        `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateForwardingRulesRequest) String() string {
@@ -8740,8 +10202,8 @@ func (s UpdateForwardingRulesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateForwardingRulesRequest) SetRegionId(v string) *UpdateForwardingRulesRequest {
-	s.RegionId = &v
+func (s *UpdateForwardingRulesRequest) SetAcceleratorId(v string) *UpdateForwardingRulesRequest {
+	s.AcceleratorId = &v
 	return s
 }
 
@@ -8750,8 +10212,8 @@ func (s *UpdateForwardingRulesRequest) SetClientToken(v string) *UpdateForwardin
 	return s
 }
 
-func (s *UpdateForwardingRulesRequest) SetAcceleratorId(v string) *UpdateForwardingRulesRequest {
-	s.AcceleratorId = &v
+func (s *UpdateForwardingRulesRequest) SetForwardingRules(v []*UpdateForwardingRulesRequestForwardingRules) *UpdateForwardingRulesRequest {
+	s.ForwardingRules = v
 	return s
 }
 
@@ -8760,17 +10222,17 @@ func (s *UpdateForwardingRulesRequest) SetListenerId(v string) *UpdateForwarding
 	return s
 }
 
-func (s *UpdateForwardingRulesRequest) SetForwardingRules(v []*UpdateForwardingRulesRequestForwardingRules) *UpdateForwardingRulesRequest {
-	s.ForwardingRules = v
+func (s *UpdateForwardingRulesRequest) SetRegionId(v string) *UpdateForwardingRulesRequest {
+	s.RegionId = &v
 	return s
 }
 
 type UpdateForwardingRulesRequestForwardingRules struct {
-	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleConditions     []*UpdateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	RuleActions        []*UpdateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	ForwardingRuleId   *string                                                      `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
 	ForwardingRuleName *string                                                      `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
+	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions        []*UpdateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	RuleConditions     []*UpdateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
 func (s UpdateForwardingRulesRequestForwardingRules) String() string {
@@ -8779,21 +10241,6 @@ func (s UpdateForwardingRulesRequestForwardingRules) String() string {
 
 func (s UpdateForwardingRulesRequestForwardingRules) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRules) SetPriority(v int32) *UpdateForwardingRulesRequestForwardingRules {
-	s.Priority = &v
-	return s
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*UpdateForwardingRulesRequestForwardingRulesRuleConditions) *UpdateForwardingRulesRequestForwardingRules {
-	s.RuleConditions = v
-	return s
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleActions(v []*UpdateForwardingRulesRequestForwardingRulesRuleActions) *UpdateForwardingRulesRequestForwardingRules {
-	s.RuleActions = v
-	return s
 }
 
 func (s *UpdateForwardingRulesRequestForwardingRules) SetForwardingRuleId(v string) *UpdateForwardingRulesRequestForwardingRules {
@@ -8806,73 +10253,25 @@ func (s *UpdateForwardingRulesRequestForwardingRules) SetForwardingRuleName(v st
 	return s
 }
 
-type UpdateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
-	PathConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	HostConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditions) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.RuleConditionType = &v
+func (s *UpdateForwardingRulesRequestForwardingRules) SetPriority(v int32) *UpdateForwardingRulesRequestForwardingRules {
+	s.Priority = &v
 	return s
 }
 
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.PathConfig = v
+func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleActions(v []*UpdateForwardingRulesRequestForwardingRulesRuleActions) *UpdateForwardingRulesRequestForwardingRules {
+	s.RuleActions = v
 	return s
 }
 
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetHostConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
-	s.HostConfig = v
-	return s
-}
-
-type UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig {
-	s.Values = v
-	return s
-}
-
-type UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
-	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig {
-	s.Values = v
+func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*UpdateForwardingRulesRequestForwardingRulesRuleConditions) *UpdateForwardingRulesRequestForwardingRules {
+	s.RuleConditions = v
 	return s
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleActions struct {
+	ForwardGroupConfig *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                   `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	ForwardGroupConfig *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateForwardingRulesRequestForwardingRulesRuleActions) String() string {
@@ -8883,6 +10282,11 @@ func (s UpdateForwardingRulesRequestForwardingRulesRuleActions) GoString() strin
 	return s.String()
 }
 
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetForwardGroupConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
+	s.ForwardGroupConfig = v
+	return s
+}
+
 func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int32) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
 	s.Order = &v
 	return s
@@ -8890,11 +10294,6 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int3
 
 func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionType(v string) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
 	s.RuleActionType = &v
-	return s
-}
-
-func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetForwardGroupConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
-	s.ForwardGroupConfig = v
 	return s
 }
 
@@ -8929,6 +10328,69 @@ func (s UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig
 
 func (s *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples) SetEndpointGroupId(v string) *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples {
 	s.EndpointGroupId = &v
+	return s
+}
+
+type UpdateForwardingRulesRequestForwardingRulesRuleConditions struct {
+	HostConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetHostConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.HostConfig = v
+	return s
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfig(v *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.PathConfig = v
+	return s
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.RuleConditionType = &v
+	return s
+}
+
+type UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) SetValues(v []*string) *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig) SetValues(v []*string) *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig {
+	s.Values = v
 	return s
 }
 
@@ -8996,10 +10458,10 @@ func (s *UpdateForwardingRulesResponse) SetBody(v *UpdateForwardingRulesResponse
 }
 
 type UpdateIpSetRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	IpSetId     *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateIpSetRequest) String() string {
@@ -9010,8 +10472,8 @@ func (s UpdateIpSetRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateIpSetRequest) SetRegionId(v string) *UpdateIpSetRequest {
-	s.RegionId = &v
+func (s *UpdateIpSetRequest) SetBandwidth(v int32) *UpdateIpSetRequest {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -9025,8 +10487,8 @@ func (s *UpdateIpSetRequest) SetIpSetId(v string) *UpdateIpSetRequest {
 	return s
 }
 
-func (s *UpdateIpSetRequest) SetBandwidth(v int32) *UpdateIpSetRequest {
-	s.Bandwidth = &v
+func (s *UpdateIpSetRequest) SetRegionId(v string) *UpdateIpSetRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9071,8 +10533,8 @@ func (s *UpdateIpSetResponse) SetBody(v *UpdateIpSetResponseBody) *UpdateIpSetRe
 }
 
 type UpdateIpSetsRequest struct {
-	RegionId *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	IpSets   []*UpdateIpSetsRequestIpSets `json:"IpSets,omitempty" xml:"IpSets,omitempty" type:"Repeated"`
+	RegionId *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateIpSetsRequest) String() string {
@@ -9083,13 +10545,13 @@ func (s UpdateIpSetsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateIpSetsRequest) SetRegionId(v string) *UpdateIpSetsRequest {
-	s.RegionId = &v
+func (s *UpdateIpSetsRequest) SetIpSets(v []*UpdateIpSetsRequestIpSets) *UpdateIpSetsRequest {
+	s.IpSets = v
 	return s
 }
 
-func (s *UpdateIpSetsRequest) SetIpSets(v []*UpdateIpSetsRequestIpSets) *UpdateIpSetsRequest {
-	s.IpSets = v
+func (s *UpdateIpSetsRequest) SetRegionId(v string) *UpdateIpSetsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9157,19 +10619,19 @@ func (s *UpdateIpSetsResponse) SetBody(v *UpdateIpSetsResponseBody) *UpdateIpSet
 }
 
 type UpdateListenerRequest struct {
-	RegionId            *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name                *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description         *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ClientAffinity      *string                                   `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
-	Protocol            *string                                   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ListenerId          *string                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	ProxyProtocol       *string                                   `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	PortRanges          []*UpdateListenerRequestPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Certificates        []*UpdateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	BackendPorts        []*UpdateListenerRequestBackendPorts      `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	XForwardedForConfig *UpdateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
+	Certificates        []*UpdateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientAffinity      *string                                   `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
+	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description         *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerId          *string                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges          []*UpdateListenerRequestPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol            *string                                   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ProxyProtocol       *string                                   `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	RegionId            *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityPolicyId    *string                                   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	XForwardedForConfig *UpdateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateListenerRequest) String() string {
@@ -9180,48 +10642,8 @@ func (s UpdateListenerRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateListenerRequest) SetRegionId(v string) *UpdateListenerRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetClientToken(v string) *UpdateListenerRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetName(v string) *UpdateListenerRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetDescription(v string) *UpdateListenerRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetClientAffinity(v string) *UpdateListenerRequest {
-	s.ClientAffinity = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetProtocol(v string) *UpdateListenerRequest {
-	s.Protocol = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetListenerId(v string) *UpdateListenerRequest {
-	s.ListenerId = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetProxyProtocol(v string) *UpdateListenerRequest {
-	s.ProxyProtocol = &v
-	return s
-}
-
-func (s *UpdateListenerRequest) SetPortRanges(v []*UpdateListenerRequestPortRanges) *UpdateListenerRequest {
-	s.PortRanges = v
+func (s *UpdateListenerRequest) SetBackendPorts(v []*UpdateListenerRequestBackendPorts) *UpdateListenerRequest {
+	s.BackendPorts = v
 	return s
 }
 
@@ -9230,13 +10652,48 @@ func (s *UpdateListenerRequest) SetCertificates(v []*UpdateListenerRequestCertif
 	return s
 }
 
-func (s *UpdateListenerRequest) SetBackendPorts(v []*UpdateListenerRequestBackendPorts) *UpdateListenerRequest {
-	s.BackendPorts = v
+func (s *UpdateListenerRequest) SetClientAffinity(v string) *UpdateListenerRequest {
+	s.ClientAffinity = &v
 	return s
 }
 
-func (s *UpdateListenerRequest) SetXForwardedForConfig(v *UpdateListenerRequestXForwardedForConfig) *UpdateListenerRequest {
-	s.XForwardedForConfig = v
+func (s *UpdateListenerRequest) SetClientToken(v string) *UpdateListenerRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetDescription(v string) *UpdateListenerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetListenerId(v string) *UpdateListenerRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetName(v string) *UpdateListenerRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetPortRanges(v []*UpdateListenerRequestPortRanges) *UpdateListenerRequest {
+	s.PortRanges = v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetProtocol(v string) *UpdateListenerRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetProxyProtocol(v string) *UpdateListenerRequest {
+	s.ProxyProtocol = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetRegionId(v string) *UpdateListenerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9245,43 +10702,8 @@ func (s *UpdateListenerRequest) SetSecurityPolicyId(v string) *UpdateListenerReq
 	return s
 }
 
-type UpdateListenerRequestPortRanges struct {
-	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
-}
-
-func (s UpdateListenerRequestPortRanges) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateListenerRequestPortRanges) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateListenerRequestPortRanges) SetFromPort(v int32) *UpdateListenerRequestPortRanges {
-	s.FromPort = &v
-	return s
-}
-
-func (s *UpdateListenerRequestPortRanges) SetToPort(v int32) *UpdateListenerRequestPortRanges {
-	s.ToPort = &v
-	return s
-}
-
-type UpdateListenerRequestCertificates struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s UpdateListenerRequestCertificates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateListenerRequestCertificates) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateListenerRequestCertificates) SetId(v string) *UpdateListenerRequestCertificates {
-	s.Id = &v
+func (s *UpdateListenerRequest) SetXForwardedForConfig(v *UpdateListenerRequestXForwardedForConfig) *UpdateListenerRequest {
+	s.XForwardedForConfig = v
 	return s
 }
 
@@ -9308,12 +10730,52 @@ func (s *UpdateListenerRequestBackendPorts) SetToPort(v int32) *UpdateListenerRe
 	return s
 }
 
+type UpdateListenerRequestCertificates struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateListenerRequestCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListenerRequestCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListenerRequestCertificates) SetId(v string) *UpdateListenerRequestCertificates {
+	s.Id = &v
+	return s
+}
+
+type UpdateListenerRequestPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s UpdateListenerRequestPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateListenerRequestPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateListenerRequestPortRanges) SetFromPort(v int32) *UpdateListenerRequestPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *UpdateListenerRequestPortRanges) SetToPort(v int32) *UpdateListenerRequestPortRanges {
+	s.ToPort = &v
+	return s
+}
+
 type UpdateListenerRequestXForwardedForConfig struct {
-	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
-	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	XForwardedForPortEnabled  *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
-	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 	XForwardedForGaApEnabled  *bool `json:"XForwardedForGaApEnabled,omitempty" xml:"XForwardedForGaApEnabled,omitempty"`
+	XForwardedForGaIdEnabled  *bool `json:"XForwardedForGaIdEnabled,omitempty" xml:"XForwardedForGaIdEnabled,omitempty"`
+	XForwardedForPortEnabled  *bool `json:"XForwardedForPortEnabled,omitempty" xml:"XForwardedForPortEnabled,omitempty"`
+	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
+	XRealIpEnabled            *bool `json:"XRealIpEnabled,omitempty" xml:"XRealIpEnabled,omitempty"`
 }
 
 func (s UpdateListenerRequestXForwardedForConfig) String() string {
@@ -9324,13 +10786,13 @@ func (s UpdateListenerRequestXForwardedForConfig) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
-	s.XForwardedForGaIdEnabled = &v
+func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
+	s.XForwardedForGaApEnabled = &v
 	return s
 }
 
-func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
-	s.XForwardedForProtoEnabled = &v
+func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForGaIdEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
+	s.XForwardedForGaIdEnabled = &v
 	return s
 }
 
@@ -9339,13 +10801,13 @@ func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForPortEnabled(v
 	return s
 }
 
-func (s *UpdateListenerRequestXForwardedForConfig) SetXRealIpEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
-	s.XRealIpEnabled = &v
+func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForProtoEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
+	s.XForwardedForProtoEnabled = &v
 	return s
 }
 
-func (s *UpdateListenerRequestXForwardedForConfig) SetXForwardedForGaApEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
-	s.XForwardedForGaApEnabled = &v
+func (s *UpdateListenerRequestXForwardedForConfig) SetXRealIpEnabled(v bool) *UpdateListenerRequestXForwardedForConfig {
+	s.XRealIpEnabled = &v
 	return s
 }
 
@@ -9441,11 +10903,29 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclEntries"] = request.AclEntries
+	query["AclId"] = request.AclId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEntriesToAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddEntriesToAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddEntriesToAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9469,11 +10949,30 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclIds"] = request.AclIds
+	query["AclType"] = request.AclType
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateAclsWithListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAclsWithListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateAclsWithListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9497,11 +10996,29 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Certificates"] = request.Certificates
+	query["ClientToken"] = request.ClientToken
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateAdditionalCertificatesWithListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateAdditionalCertificatesWithListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9525,11 +11042,28 @@ func (client *Client) AttachDdosToAcceleratorWithOptions(request *AttachDdosToAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["DdosId"] = request.DdosId
+	query["DdosRegionId"] = request.DdosRegionId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDdosToAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachDdosToAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachDdosToAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9553,11 +11087,32 @@ func (client *Client) AttachLogStoreToEndpointGroupWithOptions(request *AttachLo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupIds"] = request.EndpointGroupIds
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
+	query["SlsLogStoreName"] = request.SlsLogStoreName
+	query["SlsProjectName"] = request.SlsProjectName
+	query["SlsRegionId"] = request.SlsRegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachLogStoreToEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachLogStoreToEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachLogStoreToEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9581,11 +11136,27 @@ func (client *Client) BandwidthPackageAddAcceleratorWithOptions(request *Bandwid
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BandwidthPackageAddAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BandwidthPackageAddAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BandwidthPackageAddAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9609,11 +11180,27 @@ func (client *Client) BandwidthPackageRemoveAcceleratorWithOptions(request *Band
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BandwidthPackageRemoveAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BandwidthPackageRemoveAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BandwidthPackageRemoveAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9637,11 +11224,32 @@ func (client *Client) ConfigEndpointProbeWithOptions(request *ConfigEndpointProb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Enable"] = request.Enable
+	query["Endpoint"] = request.Endpoint
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["EndpointType"] = request.EndpointType
+	query["ProbePort"] = request.ProbePort
+	query["ProbeProtocol"] = request.ProbeProtocol
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigEndpointProbe"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigEndpointProbeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConfigEndpointProbe"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9665,11 +11273,34 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AutoPay"] = request.AutoPay
+	query["AutoRenew"] = request.AutoRenew
+	query["AutoRenewDuration"] = request.AutoRenewDuration
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["ClientToken"] = request.ClientToken
+	query["Duration"] = request.Duration
+	query["Name"] = request.Name
+	query["PricingCycle"] = request.PricingCycle
+	query["RegionId"] = request.RegionId
+	query["Spec"] = request.Spec
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9693,11 +11324,30 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclEntries"] = request.AclEntries
+	query["AclName"] = request.AclName
+	query["AddressIPVersion"] = request.AddressIPVersion
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9721,11 +11371,38 @@ func (client *Client) CreateBandwidthPackageWithOptions(request *CreateBandwidth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["Bandwidth"] = request.Bandwidth
+	query["BandwidthType"] = request.BandwidthType
+	query["BillingType"] = request.BillingType
+	query["CbnGeographicRegionIdA"] = request.CbnGeographicRegionIdA
+	query["CbnGeographicRegionIdB"] = request.CbnGeographicRegionIdB
+	query["ChargeType"] = request.ChargeType
+	query["ClientToken"] = request.ClientToken
+	query["Duration"] = request.Duration
+	query["PricingCycle"] = request.PricingCycle
+	query["Ratio"] = request.Ratio
+	query["RegionId"] = request.RegionId
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9744,16 +11421,188 @@ func (client *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequ
 	return _result, _err
 }
 
+func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcceleratorRequest, runtime *util.RuntimeOptions) (_result *CreateBasicAcceleratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["ClientToken"] = request.ClientToken
+	query["Duration"] = request.Duration
+	query["PricingCycle"] = request.PricingCycle
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBasicAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBasicAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBasicAccelerator(request *CreateBasicAcceleratorRequest) (_result *CreateBasicAcceleratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBasicAcceleratorResponse{}
+	_body, _err := client.CreateBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBasicEndpointGroupWithOptions(request *CreateBasicEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *CreateBasicEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["EndpointAddress"] = request.EndpointAddress
+	query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	query["EndpointType"] = request.EndpointType
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBasicEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBasicEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBasicEndpointGroup(request *CreateBasicEndpointGroupRequest) (_result *CreateBasicEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBasicEndpointGroupResponse{}
+	_body, _err := client.CreateBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBasicIpSetWithOptions(request *CreateBasicIpSetRequest, runtime *util.RuntimeOptions) (_result *CreateBasicIpSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AccelerateRegionId"] = request.AccelerateRegionId
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBasicIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBasicIpSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBasicIpSet(request *CreateBasicIpSetRequest) (_result *CreateBasicIpSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBasicIpSetResponse{}
+	_body, _err := client.CreateBasicIpSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateEndpointGroupWithOptions(request *CreateEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *CreateEndpointGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["EndpointConfigurations"] = request.EndpointConfigurations
+	query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	query["EndpointGroupType"] = request.EndpointGroupType
+	query["EndpointRequestProtocol"] = request.EndpointRequestProtocol
+	query["HealthCheckEnabled"] = request.HealthCheckEnabled
+	query["HealthCheckIntervalSeconds"] = request.HealthCheckIntervalSeconds
+	query["HealthCheckPath"] = request.HealthCheckPath
+	query["HealthCheckPort"] = request.HealthCheckPort
+	query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	query["ListenerId"] = request.ListenerId
+	query["Name"] = request.Name
+	query["PortOverrides"] = request.PortOverrides
+	query["RegionId"] = request.RegionId
+	query["ThresholdCount"] = request.ThresholdCount
+	query["TrafficPercentage"] = request.TrafficPercentage
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9777,11 +11626,30 @@ func (client *Client) CreateEndpointGroupsWithOptions(request *CreateEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9805,11 +11673,29 @@ func (client *Client) CreateForwardingRulesWithOptions(request *CreateForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["ForwardingRules"] = request.ForwardingRules
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9833,11 +11719,28 @@ func (client *Client) CreateIpSetsWithOptions(request *CreateIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccelerateRegion"] = request.AccelerateRegion
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9861,11 +11764,36 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["Certificates"] = request.Certificates
+	query["ClientAffinity"] = request.ClientAffinity
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["Name"] = request.Name
+	query["PortRanges"] = request.PortRanges
+	query["Protocol"] = request.Protocol
+	query["ProxyProtocol"] = request.ProxyProtocol
+	query["RegionId"] = request.RegionId
+	query["SecurityPolicyId"] = request.SecurityPolicyId
+	query["XForwardedForConfig"] = request.XForwardedForConfig
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9889,11 +11817,29 @@ func (client *Client) CreateSpareIpsWithOptions(request *CreateSpareIpsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
+	query["SpareIps"] = request.SpareIps
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9917,11 +11863,26 @@ func (client *Client) DeleteAcceleratorWithOptions(request *DeleteAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9945,11 +11906,28 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclId"] = request.AclId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9973,11 +11951,27 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9996,16 +11990,162 @@ func (client *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequ
 	return _result, _err
 }
 
+func (client *Client) DeleteBasicAcceleratorWithOptions(request *DeleteBasicAcceleratorRequest, runtime *util.RuntimeOptions) (_result *DeleteBasicAcceleratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBasicAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBasicAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBasicAccelerator(request *DeleteBasicAcceleratorRequest) (_result *DeleteBasicAcceleratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBasicAcceleratorResponse{}
+	_body, _err := client.DeleteBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBasicEndpointGroupWithOptions(request *DeleteBasicEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteBasicEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBasicEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBasicEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBasicEndpointGroup(request *DeleteBasicEndpointGroupRequest) (_result *DeleteBasicEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBasicEndpointGroupResponse{}
+	_body, _err := client.DeleteBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBasicIpSetWithOptions(request *DeleteBasicIpSetRequest, runtime *util.RuntimeOptions) (_result *DeleteBasicIpSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["IpSetId"] = request.IpSetId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBasicIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBasicIpSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBasicIpSet(request *DeleteBasicIpSetRequest) (_result *DeleteBasicIpSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBasicIpSetResponse{}
+	_body, _err := client.DeleteBasicIpSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteEndpointGroupWithOptions(request *DeleteEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteEndpointGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10029,11 +12169,28 @@ func (client *Client) DeleteEndpointGroupsWithOptions(request *DeleteEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["EndpointGroupIds"] = request.EndpointGroupIds
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10057,11 +12214,29 @@ func (client *Client) DeleteForwardingRulesWithOptions(request *DeleteForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["ForwardingRuleIds"] = request.ForwardingRuleIds
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10085,11 +12260,28 @@ func (client *Client) DeleteIpSetWithOptions(request *DeleteIpSetRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["IpSetId"] = request.IpSetId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10113,11 +12305,26 @@ func (client *Client) DeleteIpSetsWithOptions(request *DeleteIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IpSetIds"] = request.IpSetIds
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10141,11 +12348,27 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10169,11 +12392,29 @@ func (client *Client) DeleteSpareIpsWithOptions(request *DeleteSpareIpsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
+	query["SpareIps"] = request.SpareIps
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10197,11 +12438,26 @@ func (client *Client) DescribeAcceleratorWithOptions(request *DescribeAccelerato
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10225,11 +12481,26 @@ func (client *Client) DescribeBandwidthPackageWithOptions(request *DescribeBandw
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10253,11 +12524,26 @@ func (client *Client) DescribeEndpointGroupWithOptions(request *DescribeEndpoint
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10281,11 +12567,26 @@ func (client *Client) DescribeIpSetWithOptions(request *DescribeIpSetRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IpSetId"] = request.IpSetId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10309,11 +12610,26 @@ func (client *Client) DescribeListenerWithOptions(request *DescribeListenerReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10337,11 +12653,25 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10365,11 +12695,26 @@ func (client *Client) DetachDdosFromAcceleratorWithOptions(request *DetachDdosFr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDdosFromAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachDdosFromAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachDdosFromAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10393,11 +12738,29 @@ func (client *Client) DetachLogStoreFromEndpointGroupWithOptions(request *Detach
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupIds"] = request.EndpointGroupIds
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachLogStoreFromEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachLogStoreFromEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachLogStoreFromEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10421,11 +12784,29 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclIds"] = request.AclIds
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateAclsFromListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAclsFromListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateAclsFromListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10449,11 +12830,29 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["Domains"] = request.Domains
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateAdditionalCertificatesFromListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAdditionalCertificatesFromListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateAdditionalCertificatesFromListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10477,11 +12876,26 @@ func (client *Client) GetAclWithOptions(request *GetAclRequest, runtime *util.Ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclId"] = request.AclId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10500,16 +12914,165 @@ func (client *Client) GetAcl(request *GetAclRequest) (_result *GetAclResponse, _
 	return _result, _err
 }
 
+func (client *Client) GetBasicAcceleratorWithOptions(request *GetBasicAcceleratorRequest, runtime *util.RuntimeOptions) (_result *GetBasicAcceleratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicAccelerator(request *GetBasicAcceleratorRequest) (_result *GetBasicAcceleratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicAcceleratorResponse{}
+	_body, _err := client.GetBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBasicEndpointGroupWithOptions(request *GetBasicEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *GetBasicEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicEndpointGroup(request *GetBasicEndpointGroupRequest) (_result *GetBasicEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicEndpointGroupResponse{}
+	_body, _err := client.GetBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBasicIpSetWithOptions(request *GetBasicIpSetRequest, runtime *util.RuntimeOptions) (_result *GetBasicIpSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["IpSetId"] = request.IpSetId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBasicIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBasicIpSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBasicIpSet(request *GetBasicIpSetRequest) (_result *GetBasicIpSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBasicIpSetResponse{}
+	_body, _err := client.GetBasicIpSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetHealthStatusWithOptions(request *GetHealthStatusRequest, runtime *util.RuntimeOptions) (_result *GetHealthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHealthStatus"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetHealthStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetHealthStatus"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,11 +13096,29 @@ func (client *Client) GetSpareIpWithOptions(request *GetSpareIpRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
+	query["SpareIp"] = request.SpareIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSpareIp"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSpareIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSpareIp"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10561,11 +13142,25 @@ func (client *Client) ListAccelerateAreasWithOptions(request *ListAccelerateArea
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccelerateAreas"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccelerateAreasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccelerateAreas"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10589,11 +13184,29 @@ func (client *Client) ListAcceleratorsWithOptions(request *ListAcceleratorsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["State"] = request.State
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccelerators"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAcceleratorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccelerators"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10617,11 +13230,30 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclIds"] = request.AclIds
+	query["AclName"] = request.AclName
+	query["ClientToken"] = request.ClientToken
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAcls"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAclsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAcls"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10645,11 +13277,26 @@ func (client *Client) ListAvailableAccelerateAreasWithOptions(request *ListAvail
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableAccelerateAreas"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAvailableAccelerateAreasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAvailableAccelerateAreas"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10673,11 +13320,26 @@ func (client *Client) ListAvailableBusiRegionsWithOptions(request *ListAvailable
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableBusiRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAvailableBusiRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAvailableBusiRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10696,44 +13358,35 @@ func (client *Client) ListAvailableBusiRegions(request *ListAvailableBusiRegions
 	return _result, _err
 }
 
-func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthackagesRequest, runtime *util.RuntimeOptions) (_result *ListBandwidthackagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListBandwidthackagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBandwidthackages"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListBandwidthackages(request *ListBandwidthackagesRequest) (_result *ListBandwidthackagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListBandwidthackagesResponse{}
-	_body, _err := client.ListBandwidthackagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListBandwidthPackagesWithOptions(request *ListBandwidthPackagesRequest, runtime *util.RuntimeOptions) (_result *ListBandwidthPackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["State"] = request.State
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBandwidthPackages"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBandwidthPackagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBandwidthPackages"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10752,16 +13405,120 @@ func (client *Client) ListBandwidthPackages(request *ListBandwidthPackagesReques
 	return _result, _err
 }
 
+func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthackagesRequest, runtime *util.RuntimeOptions) (_result *ListBandwidthackagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBandwidthackages"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBandwidthackagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBandwidthackages(request *ListBandwidthackagesRequest) (_result *ListBandwidthackagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBandwidthackagesResponse{}
+	_body, _err := client.ListBandwidthackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBasicAcceleratorsWithOptions(request *ListBasicAcceleratorsRequest, runtime *util.RuntimeOptions) (_result *ListBasicAcceleratorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["State"] = request.State
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBasicAccelerators"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBasicAcceleratorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBasicAccelerators(request *ListBasicAcceleratorsRequest) (_result *ListBasicAcceleratorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBasicAcceleratorsResponse{}
+	_body, _err := client.ListBasicAcceleratorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListBusiRegionsWithOptions(request *ListBusiRegionsRequest, runtime *util.RuntimeOptions) (_result *ListBusiRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBusiRegions"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBusiRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBusiRegions"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10785,11 +13542,32 @@ func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["AccessLogSwitch"] = request.AccessLogSwitch
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["EndpointGroupType"] = request.EndpointGroupType
+	query["ListenerId"] = request.ListenerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10813,11 +13591,31 @@ func (client *Client) ListForwardingRulesWithOptions(request *ListForwardingRule
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["ForwardingRuleId"] = request.ForwardingRuleId
+	query["ListenerId"] = request.ListenerId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10841,11 +13639,28 @@ func (client *Client) ListIpSetsWithOptions(request *ListIpSetsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10869,11 +13684,30 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ListenerId"] = request.ListenerId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["Role"] = request.Role
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListListenerCertificates"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenerCertificatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListListenerCertificates"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10897,11 +13731,28 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListListeners"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListListeners"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10925,11 +13776,28 @@ func (client *Client) ListSpareIpsWithOptions(request *ListSpareIpsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSpareIps"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSpareIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSpareIps"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10953,11 +13821,27 @@ func (client *Client) ListSystemSecurityPoliciesWithOptions(request *ListSystemS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSystemSecurityPolicies"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSystemSecurityPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSystemSecurityPolicies"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10981,11 +13865,29 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclEntries"] = request.AclEntries
+	query["AclId"] = request.AclId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveEntriesFromAcl"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveEntriesFromAclResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveEntriesFromAcl"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11009,11 +13911,27 @@ func (client *Client) ReplaceBandwidthPackageWithOptions(request *ReplaceBandwid
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["RegionId"] = request.RegionId
+	query["TargetBandwidthPackageId"] = request.TargetBandwidthPackageId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReplaceBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReplaceBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReplaceBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11037,11 +13955,32 @@ func (client *Client) UpdateAcceleratorWithOptions(request *UpdateAcceleratorReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	query["Spec"] = request.Spec
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAcceleratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccelerator"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11065,11 +14004,26 @@ func (client *Client) UpdateAcceleratorConfirmWithOptions(request *UpdateAcceler
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAcceleratorConfirm"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAcceleratorConfirmResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAcceleratorConfirm"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11093,11 +14047,29 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AclId"] = request.AclId
+	query["AclName"] = request.AclName
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAclAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAclAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAclAttribute"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11121,11 +14093,32 @@ func (client *Client) UpdateBandwidthPackageWithOptions(request *UpdateBandwidth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AutoPay"] = request.AutoPay
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["Bandwidth"] = request.Bandwidth
+	query["BandwidthPackageId"] = request.BandwidthPackageId
+	query["BandwidthType"] = request.BandwidthType
+	query["Description"] = request.Description
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBandwidthPackage"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateBandwidthPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateBandwidthPackage"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11144,16 +14137,139 @@ func (client *Client) UpdateBandwidthPackage(request *UpdateBandwidthPackageRequ
 	return _result, _err
 }
 
+func (client *Client) UpdateBasicAcceleratorWithOptions(request *UpdateBasicAcceleratorRequest, runtime *util.RuntimeOptions) (_result *UpdateBasicAcceleratorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBasicAccelerator"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBasicAcceleratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicAccelerator(request *UpdateBasicAcceleratorRequest) (_result *UpdateBasicAcceleratorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBasicAcceleratorResponse{}
+	_body, _err := client.UpdateBasicAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicEndpointGroupWithOptions(request *UpdateBasicEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateBasicEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["EndpointAddress"] = request.EndpointAddress
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["EndpointType"] = request.EndpointType
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBasicEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBasicEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicEndpointGroup(request *UpdateBasicEndpointGroupRequest) (_result *UpdateBasicEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBasicEndpointGroupResponse{}
+	_body, _err := client.UpdateBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateEndpointGroupWithOptions(request *UpdateEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateEndpointGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["EndpointConfigurations"] = request.EndpointConfigurations
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["EndpointGroupRegion"] = request.EndpointGroupRegion
+	query["EndpointRequestProtocol"] = request.EndpointRequestProtocol
+	query["HealthCheckEnabled"] = request.HealthCheckEnabled
+	query["HealthCheckIntervalSeconds"] = request.HealthCheckIntervalSeconds
+	query["HealthCheckPath"] = request.HealthCheckPath
+	query["HealthCheckPort"] = request.HealthCheckPort
+	query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	query["Name"] = request.Name
+	query["PortOverrides"] = request.PortOverrides
+	query["RegionId"] = request.RegionId
+	query["ThresholdCount"] = request.ThresholdCount
+	query["TrafficPercentage"] = request.TrafficPercentage
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroup"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11177,11 +14293,29 @@ func (client *Client) UpdateEndpointGroupAttributeWithOptions(request *UpdateEnd
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["EndpointGroupId"] = request.EndpointGroupId
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroupAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroupAttribute"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11205,11 +14339,29 @@ func (client *Client) UpdateEndpointGroupsWithOptions(request *UpdateEndpointGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEndpointGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEndpointGroups"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11233,11 +14385,29 @@ func (client *Client) UpdateForwardingRulesWithOptions(request *UpdateForwarding
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["ClientToken"] = request.ClientToken
+	query["ForwardingRules"] = request.ForwardingRules
+	query["ListenerId"] = request.ListenerId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateForwardingRules"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateForwardingRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateForwardingRules"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11261,11 +14431,28 @@ func (client *Client) UpdateIpSetWithOptions(request *UpdateIpSetRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Bandwidth"] = request.Bandwidth
+	query["ClientToken"] = request.ClientToken
+	query["IpSetId"] = request.IpSetId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIpSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIpSet"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11289,11 +14476,26 @@ func (client *Client) UpdateIpSetsWithOptions(request *UpdateIpSetsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IpSets"] = request.IpSets
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpSets"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIpSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIpSets"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11317,11 +14519,37 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackendPorts"] = request.BackendPorts
+	query["Certificates"] = request.Certificates
+	query["ClientAffinity"] = request.ClientAffinity
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["ListenerId"] = request.ListenerId
+	query["Name"] = request.Name
+	query["PortRanges"] = request.PortRanges
+	query["Protocol"] = request.Protocol
+	query["ProxyProtocol"] = request.ProxyProtocol
+	query["RegionId"] = request.RegionId
+	query["SecurityPolicyId"] = request.SecurityPolicyId
+	query["XForwardedForConfig"] = request.XForwardedForConfig
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateListener"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateListenerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateListener"), tea.String("2019-11-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
