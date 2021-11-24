@@ -1269,134 +1269,6 @@ func (s *CreateAuditResponse) SetBody(v *CreateAuditResponseBody) *CreateAuditRe
 	return s
 }
 
-type CreateDetectionTemplateRequest struct {
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s CreateDetectionTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectionTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectionTemplateRequest) SetPeriod(v string) *CreateDetectionTemplateRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateRequest) SetPlatform(v string) *CreateDetectionTemplateRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateRequest) SetTemplateName(v string) *CreateDetectionTemplateRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type CreateDetectionTemplateResponseBody struct {
-	DetectionTemplate *CreateDetectionTemplateResponseBodyDetectionTemplate `json:"DetectionTemplate,omitempty" xml:"DetectionTemplate,omitempty" type:"Struct"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateDetectionTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectionTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectionTemplateResponseBody) SetDetectionTemplate(v *CreateDetectionTemplateResponseBodyDetectionTemplate) *CreateDetectionTemplateResponseBody {
-	s.DetectionTemplate = v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBody) SetRequestId(v string) *CreateDetectionTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateDetectionTemplateResponseBodyDetectionTemplate struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s CreateDetectionTemplateResponseBodyDetectionTemplate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectionTemplateResponseBodyDetectionTemplate) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetCreateTime(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetModifyTime(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetPeriod(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetPlatform(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.Platform = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetTemplateId(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetTemplateName(v string) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponseBodyDetectionTemplate) SetUserId(v int64) *CreateDetectionTemplateResponseBodyDetectionTemplate {
-	s.UserId = &v
-	return s
-}
-
-type CreateDetectionTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDetectionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDetectionTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectionTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectionTemplateResponse) SetHeaders(v map[string]*string) *CreateDetectionTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDetectionTemplateResponse) SetBody(v *CreateDetectionTemplateResponseBody) *CreateDetectionTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type CreateUploadAttachedMediaRequest struct {
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
@@ -2194,63 +2066,6 @@ func (s *DeleteCategoryResponse) SetHeaders(v map[string]*string) *DeleteCategor
 }
 
 func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteCategoryResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDetectionTemplateRequest struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-}
-
-func (s DeleteDetectionTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDetectionTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDetectionTemplateRequest) SetTemplateId(v string) *DeleteDetectionTemplateRequest {
-	s.TemplateId = &v
-	return s
-}
-
-type DeleteDetectionTemplateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteDetectionTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDetectionTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDetectionTemplateResponseBody) SetRequestId(v string) *DeleteDetectionTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteDetectionTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDetectionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteDetectionTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDetectionTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDetectionTemplateResponse) SetHeaders(v map[string]*string) *DeleteDetectionTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDetectionTemplateResponse) SetBody(v *DeleteDetectionTemplateResponseBody) *DeleteDetectionTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -5270,6 +5085,163 @@ func (s *DescribeVodDomainRealtimeLogDeliveryResponse) SetBody(v *DescribeVodDom
 	return s
 }
 
+type DescribeVodDomainSrcBpsDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainSrcBpsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcBpsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcBpsDataRequest) SetDomainName(v string) *DescribeVodDomainSrcBpsDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataRequest) SetEndTime(v string) *DescribeVodDomainSrcBpsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataRequest) SetInterval(v string) *DescribeVodDomainSrcBpsDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataRequest) SetOwnerId(v int64) *DescribeVodDomainSrcBpsDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataRequest) SetStartTime(v string) *DescribeVodDomainSrcBpsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainSrcBpsDataResponseBody struct {
+	DataInterval          *string                                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName            *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime               *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
+	StartTime             *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetDataInterval(v string) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetDomainName(v string) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetEndTime(v string) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetRequestId(v string) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetSrcBpsDataPerInterval(v *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.SrcBpsDataPerInterval = v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBody) SetStartTime(v string) *DescribeVodDomainSrcBpsDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval struct {
+	DataModule []*DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) SetDataModule(v []*DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
+	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetHttpsValue(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
+	s.HttpsValue = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetValue(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainSrcBpsDataResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVodDomainSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVodDomainSrcBpsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcBpsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainSrcBpsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBpsDataResponseBody) *DescribeVodDomainSrcBpsDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodDomainTrafficDataRequest struct {
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -7084,134 +7056,6 @@ func (s *EnableVodRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *EnableVodRealtimeLogDeliveryResponse) SetBody(v *EnableVodRealtimeLogDeliveryResponseBody) *EnableVodRealtimeLogDeliveryResponse {
-	s.Body = v
-	return s
-}
-
-type GetAICaptionExtractionJobsRequest struct {
-	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-}
-
-func (s GetAICaptionExtractionJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAICaptionExtractionJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAICaptionExtractionJobsRequest) SetJobIds(v string) *GetAICaptionExtractionJobsRequest {
-	s.JobIds = &v
-	return s
-}
-
-type GetAICaptionExtractionJobsResponseBody struct {
-	AICaptionExtractionJobList []*GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList `json:"AICaptionExtractionJobList,omitempty" xml:"AICaptionExtractionJobList,omitempty" type:"Repeated"`
-	RequestId                  *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetAICaptionExtractionJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAICaptionExtractionJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAICaptionExtractionJobsResponseBody) SetAICaptionExtractionJobList(v []*GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) *GetAICaptionExtractionJobsResponseBody {
-	s.AICaptionExtractionJobList = v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBody) SetRequestId(v string) *GetAICaptionExtractionJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList struct {
-	AICaptionExtractionResult *string `json:"AICaptionExtractionResult,omitempty" xml:"AICaptionExtractionResult,omitempty"`
-	Code                      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreationTime              *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	JobId                     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message                   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateConfig            *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	UserData                  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VideoId                   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-}
-
-func (s GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) GoString() string {
-	return s.String()
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetAICaptionExtractionResult(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.AICaptionExtractionResult = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetCode(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.Code = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetCreationTime(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetJobId(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetMessage(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.Message = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetStatus(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.Status = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetTemplateConfig(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.TemplateConfig = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetUserData(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.UserData = &v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList) SetVideoId(v string) *GetAICaptionExtractionJobsResponseBodyAICaptionExtractionJobList {
-	s.VideoId = &v
-	return s
-}
-
-type GetAICaptionExtractionJobsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAICaptionExtractionJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAICaptionExtractionJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAICaptionExtractionJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAICaptionExtractionJobsResponse) SetHeaders(v map[string]*string) *GetAICaptionExtractionJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAICaptionExtractionJobsResponse) SetBody(v *GetAICaptionExtractionJobsResponseBody) *GetAICaptionExtractionJobsResponse {
 	s.Body = v
 	return s
 }
@@ -9433,414 +9277,6 @@ func (s *GetDefaultAITemplateResponse) SetHeaders(v map[string]*string) *GetDefa
 }
 
 func (s *GetDefaultAITemplateResponse) SetBody(v *GetDefaultAITemplateResponseBody) *GetDefaultAITemplateResponse {
-	s.Body = v
-	return s
-}
-
-type GetDetectionJobRequest struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetDetectionJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionJobRequest) SetJobId(v string) *GetDetectionJobRequest {
-	s.JobId = &v
-	return s
-}
-
-type GetDetectionJobResponseBody struct {
-	DetectionJob *GetDetectionJobResponseBodyDetectionJob `json:"DetectionJob,omitempty" xml:"DetectionJob,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDetectionJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionJobResponseBody) SetDetectionJob(v *GetDetectionJobResponseBodyDetectionJob) *GetDetectionJobResponseBody {
-	s.DetectionJob = v
-	return s
-}
-
-func (s *GetDetectionJobResponseBody) SetRequestId(v string) *GetDetectionJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDetectionJobResponseBodyDetectionJob struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	WhitelistUrls      *string `json:"WhitelistUrls,omitempty" xml:"WhitelistUrls,omitempty"`
-}
-
-func (s GetDetectionJobResponseBodyDetectionJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionJobResponseBodyDetectionJob) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetBeginTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetCopyrightBeginTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetCopyrightEndTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetCopyrightFile(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetCopyrightStatus(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetCreateTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetEndTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetJobId(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetModifyTime(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetTemplateId(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetVideoId(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.VideoId = &v
-	return s
-}
-
-func (s *GetDetectionJobResponseBodyDetectionJob) SetWhitelistUrls(v string) *GetDetectionJobResponseBodyDetectionJob {
-	s.WhitelistUrls = &v
-	return s
-}
-
-type GetDetectionJobResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDetectionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDetectionJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionJobResponse) SetHeaders(v map[string]*string) *GetDetectionJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDetectionJobResponse) SetBody(v *GetDetectionJobResponseBody) *GetDetectionJobResponse {
-	s.Body = v
-	return s
-}
-
-type GetDetectionResultRequest struct {
-	CountByPage     *int64  `json:"CountByPage,omitempty" xml:"CountByPage,omitempty"`
-	Desensitization *bool   `json:"Desensitization,omitempty" xml:"Desensitization,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Page            *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDetectionResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionResultRequest) SetCountByPage(v int64) *GetDetectionResultRequest {
-	s.CountByPage = &v
-	return s
-}
-
-func (s *GetDetectionResultRequest) SetDesensitization(v bool) *GetDetectionResultRequest {
-	s.Desensitization = &v
-	return s
-}
-
-func (s *GetDetectionResultRequest) SetJobId(v string) *GetDetectionResultRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetDetectionResultRequest) SetPage(v int64) *GetDetectionResultRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *GetDetectionResultRequest) SetStatus(v string) *GetDetectionResultRequest {
-	s.Status = &v
-	return s
-}
-
-type GetDetectionResultResponseBody struct {
-	DetectionResultList []*GetDetectionResultResponseBodyDetectionResultList `json:"DetectionResultList,omitempty" xml:"DetectionResultList,omitempty" type:"Repeated"`
-	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDetectionResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionResultResponseBody) SetDetectionResultList(v []*GetDetectionResultResponseBodyDetectionResultList) *GetDetectionResultResponseBody {
-	s.DetectionResultList = v
-	return s
-}
-
-func (s *GetDetectionResultResponseBody) SetRequestId(v string) *GetDetectionResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDetectionResultResponseBodyDetectionResultList struct {
-	CollectionTitle *string `json:"CollectionTitle,omitempty" xml:"CollectionTitle,omitempty"`
-	CollectionUrl   *string `json:"CollectionUrl,omitempty" xml:"CollectionUrl,omitempty"`
-	ContentType     *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uploader        *string `json:"Uploader,omitempty" xml:"Uploader,omitempty"`
-}
-
-func (s GetDetectionResultResponseBodyDetectionResultList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionResultResponseBodyDetectionResultList) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetCollectionTitle(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.CollectionTitle = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetCollectionUrl(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.CollectionUrl = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetContentType(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.ContentType = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetCreateTime(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetModifyTime(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetPlatform(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.Platform = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetStatus(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.Status = &v
-	return s
-}
-
-func (s *GetDetectionResultResponseBodyDetectionResultList) SetUploader(v string) *GetDetectionResultResponseBodyDetectionResultList {
-	s.Uploader = &v
-	return s
-}
-
-type GetDetectionResultResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDetectionResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDetectionResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionResultResponse) SetHeaders(v map[string]*string) *GetDetectionResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDetectionResultResponse) SetBody(v *GetDetectionResultResponseBody) *GetDetectionResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetDetectionTemplateRequest struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-}
-
-func (s GetDetectionTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionTemplateRequest) SetTemplateId(v string) *GetDetectionTemplateRequest {
-	s.TemplateId = &v
-	return s
-}
-
-type GetDetectionTemplateResponseBody struct {
-	DetectionTemplate *GetDetectionTemplateResponseBodyDetectionTemplate `json:"DetectionTemplate,omitempty" xml:"DetectionTemplate,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDetectionTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionTemplateResponseBody) SetDetectionTemplate(v *GetDetectionTemplateResponseBodyDetectionTemplate) *GetDetectionTemplateResponseBody {
-	s.DetectionTemplate = v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBody) SetRequestId(v string) *GetDetectionTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDetectionTemplateResponseBodyDetectionTemplate struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s GetDetectionTemplateResponseBodyDetectionTemplate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionTemplateResponseBodyDetectionTemplate) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetCreateTime(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetModifyTime(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetPeriod(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.Period = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetPlatform(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.Platform = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetTemplateId(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetTemplateName(v string) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *GetDetectionTemplateResponseBodyDetectionTemplate) SetUserId(v int64) *GetDetectionTemplateResponseBodyDetectionTemplate {
-	s.UserId = &v
-	return s
-}
-
-type GetDetectionTemplateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDetectionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDetectionTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDetectionTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDetectionTemplateResponse) SetHeaders(v map[string]*string) *GetDetectionTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDetectionTemplateResponse) SetBody(v *GetDetectionTemplateResponseBody) *GetDetectionTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -15843,274 +15279,6 @@ func (s *ListAuditSecurityIpResponse) SetBody(v *ListAuditSecurityIpResponseBody
 	return s
 }
 
-type ListDetectionJobRequest struct {
-	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-}
-
-func (s ListDetectionJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionJobRequest) SetVideoId(v string) *ListDetectionJobRequest {
-	s.VideoId = &v
-	return s
-}
-
-type ListDetectionJobResponseBody struct {
-	DetectionJobList []*ListDetectionJobResponseBodyDetectionJobList `json:"DetectionJobList,omitempty" xml:"DetectionJobList,omitempty" type:"Repeated"`
-	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDetectionJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionJobResponseBody) SetDetectionJobList(v []*ListDetectionJobResponseBodyDetectionJobList) *ListDetectionJobResponseBody {
-	s.DetectionJobList = v
-	return s
-}
-
-func (s *ListDetectionJobResponseBody) SetRequestId(v string) *ListDetectionJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDetectionJobResponseBodyDetectionJobList struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	WhitelistUrls      *string `json:"WhitelistUrls,omitempty" xml:"WhitelistUrls,omitempty"`
-}
-
-func (s ListDetectionJobResponseBodyDetectionJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionJobResponseBodyDetectionJobList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetBeginTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetCopyrightBeginTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetCopyrightEndTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetCopyrightFile(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetCopyrightStatus(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetCreateTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetEndTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetJobId(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetModifyTime(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetTemplateId(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetVideoId(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.VideoId = &v
-	return s
-}
-
-func (s *ListDetectionJobResponseBodyDetectionJobList) SetWhitelistUrls(v string) *ListDetectionJobResponseBodyDetectionJobList {
-	s.WhitelistUrls = &v
-	return s
-}
-
-type ListDetectionJobResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDetectionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDetectionJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionJobResponse) SetHeaders(v map[string]*string) *ListDetectionJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDetectionJobResponse) SetBody(v *ListDetectionJobResponseBody) *ListDetectionJobResponse {
-	s.Body = v
-	return s
-}
-
-type ListDetectionTemplateRequest struct {
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s ListDetectionTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionTemplateRequest) SetPeriod(v string) *ListDetectionTemplateRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *ListDetectionTemplateRequest) SetTemplateName(v string) *ListDetectionTemplateRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type ListDetectionTemplateResponseBody struct {
-	DetectionTemplateList []*ListDetectionTemplateResponseBodyDetectionTemplateList `json:"DetectionTemplateList,omitempty" xml:"DetectionTemplateList,omitempty" type:"Repeated"`
-	RequestId             *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDetectionTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionTemplateResponseBody) SetDetectionTemplateList(v []*ListDetectionTemplateResponseBodyDetectionTemplateList) *ListDetectionTemplateResponseBody {
-	s.DetectionTemplateList = v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBody) SetRequestId(v string) *ListDetectionTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDetectionTemplateResponseBodyDetectionTemplateList struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s ListDetectionTemplateResponseBodyDetectionTemplateList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionTemplateResponseBodyDetectionTemplateList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetCreateTime(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetModifyTime(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetPeriod(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.Period = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetPlatform(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.Platform = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetTemplateId(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetTemplateName(v string) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *ListDetectionTemplateResponseBodyDetectionTemplateList) SetUserId(v int64) *ListDetectionTemplateResponseBodyDetectionTemplateList {
-	s.UserId = &v
-	return s
-}
-
-type ListDetectionTemplateResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDetectionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDetectionTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDetectionTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDetectionTemplateResponse) SetHeaders(v map[string]*string) *ListDetectionTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDetectionTemplateResponse) SetBody(v *ListDetectionTemplateResponseBody) *ListDetectionTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type ListDynamicImageRequest struct {
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
@@ -16247,164 +15415,6 @@ func (s *ListDynamicImageResponse) SetHeaders(v map[string]*string) *ListDynamic
 }
 
 func (s *ListDynamicImageResponse) SetBody(v *ListDynamicImageResponseBody) *ListDynamicImageResponse {
-	s.Body = v
-	return s
-}
-
-type ListLetterSendJobRequest struct {
-	DetectionId *string `json:"DetectionId,omitempty" xml:"DetectionId,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	ToAddress   *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-}
-
-func (s ListLetterSendJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLetterSendJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLetterSendJobRequest) SetDetectionId(v string) *ListLetterSendJobRequest {
-	s.DetectionId = &v
-	return s
-}
-
-func (s *ListLetterSendJobRequest) SetTemplateId(v string) *ListLetterSendJobRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListLetterSendJobRequest) SetToAddress(v string) *ListLetterSendJobRequest {
-	s.ToAddress = &v
-	return s
-}
-
-type ListLetterSendJobResponseBody struct {
-	LetterJobList []*ListLetterSendJobResponseBodyLetterJobList `json:"LetterJobList,omitempty" xml:"LetterJobList,omitempty" type:"Repeated"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListLetterSendJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLetterSendJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLetterSendJobResponseBody) SetLetterJobList(v []*ListLetterSendJobResponseBodyLetterJobList) *ListLetterSendJobResponseBody {
-	s.LetterJobList = v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBody) SetRequestId(v string) *ListLetterSendJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListLetterSendJobResponseBodyLetterJobList struct {
-	BccAddress  *string `json:"BccAddress,omitempty" xml:"BccAddress,omitempty"`
-	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	CcAddress   *string `json:"CcAddress,omitempty" xml:"CcAddress,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DetectionId *string `json:"DetectionId,omitempty" xml:"DetectionId,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime  *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	SendTime    *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	ToAddress   *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s ListLetterSendJobResponseBodyLetterJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLetterSendJobResponseBodyLetterJobList) GoString() string {
-	return s.String()
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetBccAddress(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.BccAddress = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetBody(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.Body = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetCcAddress(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.CcAddress = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetCreateTime(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetDetectionId(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.DetectionId = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetJobId(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetModifyTime(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetSendTime(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.SendTime = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetTemplateId(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetTitle(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.Title = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetToAddress(v string) *ListLetterSendJobResponseBodyLetterJobList {
-	s.ToAddress = &v
-	return s
-}
-
-func (s *ListLetterSendJobResponseBodyLetterJobList) SetUserId(v int64) *ListLetterSendJobResponseBodyLetterJobList {
-	s.UserId = &v
-	return s
-}
-
-type ListLetterSendJobResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListLetterSendJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLetterSendJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLetterSendJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLetterSendJobResponse) SetHeaders(v map[string]*string) *ListLetterSendJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLetterSendJobResponse) SetBody(v *ListLetterSendJobResponseBody) *ListLetterSendJobResponse {
 	s.Body = v
 	return s
 }
@@ -19823,87 +18833,6 @@ func (s *SetVodDomainCertificateResponse) SetBody(v *SetVodDomainCertificateResp
 	return s
 }
 
-type SubmitAICaptionExtractionJobRequest struct {
-	AIPipelineId *string `json:"AIPipelineId,omitempty" xml:"AIPipelineId,omitempty"`
-	JobConfig    *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VideoId      *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-}
-
-func (s SubmitAICaptionExtractionJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitAICaptionExtractionJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitAICaptionExtractionJobRequest) SetAIPipelineId(v string) *SubmitAICaptionExtractionJobRequest {
-	s.AIPipelineId = &v
-	return s
-}
-
-func (s *SubmitAICaptionExtractionJobRequest) SetJobConfig(v string) *SubmitAICaptionExtractionJobRequest {
-	s.JobConfig = &v
-	return s
-}
-
-func (s *SubmitAICaptionExtractionJobRequest) SetUserData(v string) *SubmitAICaptionExtractionJobRequest {
-	s.UserData = &v
-	return s
-}
-
-func (s *SubmitAICaptionExtractionJobRequest) SetVideoId(v string) *SubmitAICaptionExtractionJobRequest {
-	s.VideoId = &v
-	return s
-}
-
-type SubmitAICaptionExtractionJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitAICaptionExtractionJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitAICaptionExtractionJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitAICaptionExtractionJobResponseBody) SetJobId(v string) *SubmitAICaptionExtractionJobResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitAICaptionExtractionJobResponseBody) SetRequestId(v string) *SubmitAICaptionExtractionJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitAICaptionExtractionJobResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitAICaptionExtractionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitAICaptionExtractionJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitAICaptionExtractionJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitAICaptionExtractionJobResponse) SetHeaders(v map[string]*string) *SubmitAICaptionExtractionJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitAICaptionExtractionJobResponse) SetBody(v *SubmitAICaptionExtractionJobResponseBody) *SubmitAICaptionExtractionJobResponse {
-	s.Body = v
-	return s
-}
-
 type SubmitAIImageAuditJobRequest struct {
 	MediaAuditConfiguration *string `json:"MediaAuditConfiguration,omitempty" xml:"MediaAuditConfiguration,omitempty"`
 	MediaId                 *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
@@ -20348,206 +19277,6 @@ func (s *SubmitAIMediaAuditJobResponse) SetHeaders(v map[string]*string) *Submit
 }
 
 func (s *SubmitAIMediaAuditJobResponse) SetBody(v *SubmitAIMediaAuditJobResponseBody) *SubmitAIMediaAuditJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDetectionJobRequest struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	Duration           *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ShortVideo         *bool   `json:"ShortVideo,omitempty" xml:"ShortVideo,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	WhiteListUrls      *string `json:"WhiteListUrls,omitempty" xml:"WhiteListUrls,omitempty"`
-}
-
-func (s SubmitDetectionJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDetectionJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDetectionJobRequest) SetBeginTime(v string) *SubmitDetectionJobRequest {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetCopyrightBeginTime(v string) *SubmitDetectionJobRequest {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetCopyrightEndTime(v string) *SubmitDetectionJobRequest {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetCopyrightFile(v string) *SubmitDetectionJobRequest {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetCopyrightStatus(v string) *SubmitDetectionJobRequest {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetDuration(v int32) *SubmitDetectionJobRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetShortVideo(v bool) *SubmitDetectionJobRequest {
-	s.ShortVideo = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetTemplateId(v string) *SubmitDetectionJobRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetVideoId(v string) *SubmitDetectionJobRequest {
-	s.VideoId = &v
-	return s
-}
-
-func (s *SubmitDetectionJobRequest) SetWhiteListUrls(v string) *SubmitDetectionJobRequest {
-	s.WhiteListUrls = &v
-	return s
-}
-
-type SubmitDetectionJobResponseBody struct {
-	DetectionJob *SubmitDetectionJobResponseBodyDetectionJob `json:"DetectionJob,omitempty" xml:"DetectionJob,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitDetectionJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDetectionJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDetectionJobResponseBody) SetDetectionJob(v *SubmitDetectionJobResponseBodyDetectionJob) *SubmitDetectionJobResponseBody {
-	s.DetectionJob = v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBody) SetRequestId(v string) *SubmitDetectionJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitDetectionJobResponseBodyDetectionJob struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	WhitelistUrls      *string `json:"WhitelistUrls,omitempty" xml:"WhitelistUrls,omitempty"`
-}
-
-func (s SubmitDetectionJobResponseBodyDetectionJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDetectionJobResponseBodyDetectionJob) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetBeginTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetCopyrightBeginTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetCopyrightEndTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetCopyrightFile(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetCopyrightStatus(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetCreateTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetEndTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.EndTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetJobId(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetModifyTime(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetTemplateId(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetVideoId(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.VideoId = &v
-	return s
-}
-
-func (s *SubmitDetectionJobResponseBodyDetectionJob) SetWhitelistUrls(v string) *SubmitDetectionJobResponseBodyDetectionJob {
-	s.WhitelistUrls = &v
-	return s
-}
-
-type SubmitDetectionJobResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitDetectionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitDetectionJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDetectionJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDetectionJobResponse) SetHeaders(v map[string]*string) *SubmitDetectionJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDetectionJobResponse) SetBody(v *SubmitDetectionJobResponseBody) *SubmitDetectionJobResponse {
 	s.Body = v
 	return s
 }
@@ -21761,334 +20490,6 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 	return s
 }
 
-type UpdateDetectionJobRequest struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	Duration           *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	WhiteListUrls      *string `json:"WhiteListUrls,omitempty" xml:"WhiteListUrls,omitempty"`
-}
-
-func (s UpdateDetectionJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionJobRequest) SetBeginTime(v string) *UpdateDetectionJobRequest {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetCopyrightBeginTime(v string) *UpdateDetectionJobRequest {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetCopyrightEndTime(v string) *UpdateDetectionJobRequest {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetCopyrightFile(v string) *UpdateDetectionJobRequest {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetCopyrightStatus(v string) *UpdateDetectionJobRequest {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetDuration(v int32) *UpdateDetectionJobRequest {
-	s.Duration = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetJobId(v string) *UpdateDetectionJobRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetTemplateId(v string) *UpdateDetectionJobRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDetectionJobRequest) SetWhiteListUrls(v string) *UpdateDetectionJobRequest {
-	s.WhiteListUrls = &v
-	return s
-}
-
-type UpdateDetectionJobResponseBody struct {
-	DetectionJob *UpdateDetectionJobResponseBodyDetectionJob `json:"DetectionJob,omitempty" xml:"DetectionJob,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateDetectionJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionJobResponseBody) SetDetectionJob(v *UpdateDetectionJobResponseBodyDetectionJob) *UpdateDetectionJobResponseBody {
-	s.DetectionJob = v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBody) SetRequestId(v string) *UpdateDetectionJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateDetectionJobResponseBodyDetectionJob struct {
-	BeginTime          *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CopyrightBeginTime *string `json:"CopyrightBeginTime,omitempty" xml:"CopyrightBeginTime,omitempty"`
-	CopyrightEndTime   *string `json:"CopyrightEndTime,omitempty" xml:"CopyrightEndTime,omitempty"`
-	CopyrightFile      *string `json:"CopyrightFile,omitempty" xml:"CopyrightFile,omitempty"`
-	CopyrightStatus    *string `json:"CopyrightStatus,omitempty" xml:"CopyrightStatus,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime         *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	TemplateId         *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VideoId            *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	WhitelistUrls      *string `json:"WhitelistUrls,omitempty" xml:"WhitelistUrls,omitempty"`
-}
-
-func (s UpdateDetectionJobResponseBodyDetectionJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionJobResponseBodyDetectionJob) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetBeginTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetCopyrightBeginTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.CopyrightBeginTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetCopyrightEndTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.CopyrightEndTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetCopyrightFile(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.CopyrightFile = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetCopyrightStatus(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.CopyrightStatus = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetCreateTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetEndTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.EndTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetJobId(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetModifyTime(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetTemplateId(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetVideoId(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.VideoId = &v
-	return s
-}
-
-func (s *UpdateDetectionJobResponseBodyDetectionJob) SetWhitelistUrls(v string) *UpdateDetectionJobResponseBodyDetectionJob {
-	s.WhitelistUrls = &v
-	return s
-}
-
-type UpdateDetectionJobResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDetectionJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDetectionJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionJobResponse) SetHeaders(v map[string]*string) *UpdateDetectionJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDetectionJobResponse) SetBody(v *UpdateDetectionJobResponseBody) *UpdateDetectionJobResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateDetectionTemplateRequest struct {
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s UpdateDetectionTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionTemplateRequest) SetPeriod(v string) *UpdateDetectionTemplateRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateRequest) SetPlatform(v string) *UpdateDetectionTemplateRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateRequest) SetTemplateId(v string) *UpdateDetectionTemplateRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateRequest) SetTemplateName(v string) *UpdateDetectionTemplateRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type UpdateDetectionTemplateResponseBody struct {
-	DetectionTemplate *UpdateDetectionTemplateResponseBodyDetectionTemplate `json:"DetectionTemplate,omitempty" xml:"DetectionTemplate,omitempty" type:"Struct"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateDetectionTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionTemplateResponseBody) SetDetectionTemplate(v *UpdateDetectionTemplateResponseBodyDetectionTemplate) *UpdateDetectionTemplateResponseBody {
-	s.DetectionTemplate = v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBody) SetRequestId(v string) *UpdateDetectionTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateDetectionTemplateResponseBodyDetectionTemplate struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Period       *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s UpdateDetectionTemplateResponseBodyDetectionTemplate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionTemplateResponseBodyDetectionTemplate) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetCreateTime(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetModifyTime(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetPeriod(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.Period = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetPlatform(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.Platform = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetTemplateId(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetTemplateName(v string) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.TemplateName = &v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponseBodyDetectionTemplate) SetUserId(v int64) *UpdateDetectionTemplateResponseBodyDetectionTemplate {
-	s.UserId = &v
-	return s
-}
-
-type UpdateDetectionTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDetectionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDetectionTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDetectionTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDetectionTemplateResponse) SetHeaders(v map[string]*string) *UpdateDetectionTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDetectionTemplateResponse) SetBody(v *UpdateDetectionTemplateResponseBody) *UpdateDetectionTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateEditingProjectRequest struct {
 	CoverURL             *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -23253,11 +21654,27 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateConfig"] = request.TemplateConfig
+	query["TemplateName"] = request.TemplateName
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23281,11 +21698,27 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateName"] = request.CateName
+	query["ParentId"] = request.ParentId
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCategory"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddCategory"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23309,11 +21742,33 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["Division"] = request.Division
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Timeline"] = request.Timeline
+	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEditingProject"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddEditingProject"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23337,11 +21792,28 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["Name"] = request.Name
+	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	query["TranscodeTemplateList"] = request.TranscodeTemplateList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23365,11 +21837,32 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CheckUrl"] = request.CheckUrl
+	query["DomainName"] = request.DomainName
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["Scope"] = request.Scope
+	query["SecurityToken"] = request.SecurityToken
+	query["Sources"] = request.Sources
+	query["TopLevelDomain"] = request.TopLevelDomain
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVodDomain"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVodDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVodDomain"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23393,11 +21886,28 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["Name"] = request.Name
+	query["TemplateConfig"] = request.TemplateConfig
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVodTemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVodTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVodTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23421,11 +21931,29 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["FileUrl"] = request.FileUrl
+	query["Name"] = request.Name
+	query["Type"] = request.Type
+	query["WatermarkConfig"] = request.WatermarkConfig
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23449,11 +21977,28 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["IdentityName"] = request.IdentityName
+	query["IdentityType"] = request.IdentityType
+	query["PolicyNames"] = request.PolicyNames
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachAppPolicyToIdentity"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachAppPolicyToIdentityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachAppPolicyToIdentity"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23477,11 +22022,29 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainNames"] = request.DomainNames
+	query["Functions"] = request.Functions
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchSetVodDomainConfigs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchSetVodDomainConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchSetVodDomainConfigs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23505,11 +22068,27 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainNames"] = request.DomainNames
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchStartVodDomain"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStartVodDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchStartVodDomain"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23533,11 +22112,27 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainNames"] = request.DomainNames
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchStopVodDomain"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStopVodDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchStopVodDomain"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23561,11 +22156,26 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["UploadUrls"] = request.UploadUrls
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelUrlUploadJobs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelUrlUploadJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelUrlUploadJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23589,11 +22199,26 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppName"] = request.AppName
+	query["Description"] = request.Description
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAppInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23617,11 +22242,25 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuditContent"] = request.AuditContent
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAudit"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAuditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAudit"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23640,44 +22279,40 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 	return _result, _err
 }
 
-func (client *Client) CreateDetectionTemplateWithOptions(request *CreateDetectionTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateDetectionTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateDetectionTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDetectionTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDetectionTemplate(request *CreateDetectionTemplateRequest) (_result *CreateDetectionTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDetectionTemplateResponse{}
-	_body, _err := client.CreateDetectionTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUploadAttachedMediaRequest, runtime *util.RuntimeOptions) (_result *CreateUploadAttachedMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["BusinessType"] = request.BusinessType
+	query["CateIds"] = request.CateIds
+	query["Description"] = request.Description
+	query["FileName"] = request.FileName
+	query["FileSize"] = request.FileSize
+	query["MediaExt"] = request.MediaExt
+	query["StorageLocation"] = request.StorageLocation
+	query["Tags"] = request.Tags
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUploadAttachedMedia"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadAttachedMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUploadAttachedMedia"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23701,11 +22336,33 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["CateId"] = request.CateId
+	query["Description"] = request.Description
+	query["ImageExt"] = request.ImageExt
+	query["ImageType"] = request.ImageType
+	query["StorageLocation"] = request.StorageLocation
+	query["Tags"] = request.Tags
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUploadImage"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUploadImage"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23729,11 +22386,36 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["CateId"] = request.CateId
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["FileName"] = request.FileName
+	query["FileSize"] = request.FileSize
+	query["StorageLocation"] = request.StorageLocation
+	query["Tags"] = request.Tags
+	query["TemplateGroupId"] = request.TemplateGroupId
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
+	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUploadVideo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUploadVideo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23759,10 +22441,21 @@ func (client *Client) CreateVodRealTimeLogDeliveryWithOptions(request *CreateVod
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVodRealTimeLogDelivery"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVodRealTimeLogDeliveryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVodRealTimeLogDelivery"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23786,11 +22479,25 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AIImageInfoIds"] = request.AIImageInfoIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAIImageInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAIImageInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAIImageInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23814,11 +22521,25 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23842,11 +22563,25 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAppInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23870,11 +22605,25 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAttachedMedia"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAttachedMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAttachedMedia"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23898,11 +22647,25 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateId"] = request.CateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCategory"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCategory"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23921,44 +22684,31 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DeleteDetectionTemplateWithOptions(request *DeleteDetectionTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteDetectionTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteDetectionTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDetectionTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteDetectionTemplate(request *DeleteDetectionTemplateRequest) (_result *DeleteDetectionTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDetectionTemplateResponse{}
-	_body, _err := client.DeleteDetectionTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteDynamicImageWithOptions(request *DeleteDynamicImageRequest, runtime *util.RuntimeOptions) (_result *DeleteDynamicImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DynamicImageIds"] = request.DynamicImageIds
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDynamicImage"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDynamicImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDynamicImage"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23982,11 +22732,29 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ProjectIds"] = request.ProjectIds
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEditingProject"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEditingProject"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24010,11 +22778,29 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DeleteImageType"] = request.DeleteImageType
+	query["ImageIds"] = request.ImageIds
+	query["ImageType"] = request.ImageType
+	query["ImageURLs"] = request.ImageURLs
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteImage"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24038,11 +22824,26 @@ func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCal
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMessageCallback"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMessageCallbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMessageCallback"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24066,11 +22867,26 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Force"] = request.Force
+	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMezzanines"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMezzaninesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMezzanines"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24094,11 +22910,27 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["MediaType"] = request.MediaType
+	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMultipartUpload"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMultipartUploadResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMultipartUpload"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24122,11 +22954,26 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStream"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStreamResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteStream"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24150,11 +22997,27 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ForceDelGroup"] = request.ForceDelGroup
+	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	query["TranscodeTemplateIds"] = request.TranscodeTemplateIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24178,11 +23041,25 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVideo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVideo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24206,11 +23083,28 @@ func (client *Client) DeleteVodDomainWithOptions(request *DeleteVodDomainRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodDomain"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVodDomain"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24236,10 +23130,21 @@ func (client *Client) DeleteVodRealtimeLogDeliveryWithOptions(request *DeleteVod
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodRealtimeLogDelivery"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVodRealtimeLogDelivery"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24263,11 +23168,28 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConfigId"] = request.ConfigId
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodSpecificConfig"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodSpecificConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVodSpecificConfig"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24291,11 +23213,25 @@ func (client *Client) DeleteVodTemplateWithOptions(request *DeleteVodTemplateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVodTemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVodTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24319,11 +23255,25 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24347,11 +23297,28 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizDate"] = request.BizDate
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePlayTopVideos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayTopVideosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePlayTopVideos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24375,11 +23342,27 @@ func (client *Client) DescribePlayUserAvgWithOptions(request *DescribePlayUserAv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePlayUserAvg"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayUserAvgResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePlayUserAvg"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24403,11 +23386,27 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePlayUserTotal"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayUserTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePlayUserTotal"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24431,11 +23430,28 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePlayVideoStatis"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayVideoStatisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePlayVideoStatis"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24459,11 +23475,29 @@ func (client *Client) DescribeVodAIDataWithOptions(request *DescribeVodAIDataReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AIType"] = request.AIType
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["Region"] = request.Region
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodAIData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodAIDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodAIData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24487,11 +23521,27 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodCertificateList"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodCertificateListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodCertificateList"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24515,11 +23565,31 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["Interval"] = request.Interval
+	query["IspNameEn"] = request.IspNameEn
+	query["LocationNameEn"] = request.LocationNameEn
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainBpsData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainBpsDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainBpsData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24543,11 +23613,26 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainCertificateInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainCertificateInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainCertificateInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24571,11 +23656,28 @@ func (client *Client) DescribeVodDomainConfigsWithOptions(request *DescribeVodDo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["FunctionNames"] = request.FunctionNames
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainConfigs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainConfigs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24599,11 +23701,27 @@ func (client *Client) DescribeVodDomainDetailWithOptions(request *DescribeVodDom
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainDetail"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainDetail"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24627,11 +23745,30 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainLog"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainLog"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24657,10 +23794,21 @@ func (client *Client) DescribeVodDomainRealtimeLogDeliveryWithOptions(request *D
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealtimeLogDelivery"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainRealtimeLogDeliveryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainRealtimeLogDelivery"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24679,16 +23827,82 @@ func (client *Client) DescribeVodDomainRealtimeLogDelivery(request *DescribeVodD
 	return _result, _err
 }
 
+func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVodDomainSrcBpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["Interval"] = request.Interval
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainSrcBpsData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainSrcBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcBpsDataRequest) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainSrcBpsDataResponse{}
+	_body, _err := client.DescribeVodDomainSrcBpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeVodDomainTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["Interval"] = request.Interval
+	query["IspNameEn"] = request.IspNameEn
+	query["LocationNameEn"] = request.LocationNameEn
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainTrafficData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainTrafficDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainTrafficData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24712,11 +23926,31 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Area"] = request.Area
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["Field"] = request.Field
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainUsageData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainUsageDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodDomainUsageData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24740,11 +23974,26 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodRefreshQuota"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodRefreshQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodRefreshQuota"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24768,11 +24017,35 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["ObjectPath"] = request.ObjectPath
+	query["ObjectType"] = request.ObjectType
+	query["OwnerId"] = request.OwnerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["SecurityToken"] = request.SecurityToken
+	query["StartTime"] = request.StartTime
+	query["Status"] = request.Status
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodRefreshTasks"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodRefreshTasksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodRefreshTasks"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24796,11 +24069,30 @@ func (client *Client) DescribeVodStorageDataWithOptions(request *DescribeVodStor
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["Region"] = request.Region
+	query["StartTime"] = request.StartTime
+	query["Storage"] = request.Storage
+	query["StorageType"] = request.StorageType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodStorageData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodStorageDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodStorageData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24824,11 +24116,28 @@ func (client *Client) DescribeVodTagResourcesWithOptions(request *DescribeVodTag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodTagResources"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodTagResources"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24852,11 +24161,31 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["Interval"] = request.Interval
+	query["OwnerId"] = request.OwnerId
+	query["Region"] = request.Region
+	query["Specification"] = request.Specification
+	query["StartTime"] = request.StartTime
+	query["Storage"] = request.Storage
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodTranscodeData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodTranscodeDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodTranscodeData"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24880,11 +24209,32 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["DomainSearchType"] = request.DomainSearchType
+	query["DomainStatus"] = request.DomainStatus
+	query["OwnerId"] = request.OwnerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["SecurityToken"] = request.SecurityToken
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodUserDomains"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodUserDomainsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodUserDomains"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24908,11 +24258,25 @@ func (client *Client) DescribeVodUserTagsWithOptions(request *DescribeVodUserTag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodUserTags"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodUserTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodUserTags"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24936,11 +24300,26 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodVerifyContent"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodVerifyContentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVodVerifyContent"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24964,11 +24343,28 @@ func (client *Client) DetachAppPolicyFromIdentityWithOptions(request *DetachAppP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["IdentityName"] = request.IdentityName
+	query["IdentityType"] = request.IdentityType
+	query["PolicyNames"] = request.PolicyNames
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachAppPolicyFromIdentity"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachAppPolicyFromIdentityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachAppPolicyFromIdentity"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24994,10 +24390,21 @@ func (client *Client) DisableVodRealtimeLogDeliveryWithOptions(request *DisableV
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableVodRealtimeLogDelivery"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableVodRealtimeLogDelivery"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25023,10 +24430,21 @@ func (client *Client) EnableVodRealtimeLogDeliveryWithOptions(request *EnableVod
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableVodRealtimeLogDelivery"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableVodRealtimeLogDelivery"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25045,44 +24463,34 @@ func (client *Client) EnableVodRealtimeLogDelivery(request *EnableVodRealtimeLog
 	return _result, _err
 }
 
-func (client *Client) GetAICaptionExtractionJobsWithOptions(request *GetAICaptionExtractionJobsRequest, runtime *util.RuntimeOptions) (_result *GetAICaptionExtractionJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetAICaptionExtractionJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAICaptionExtractionJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAICaptionExtractionJobs(request *GetAICaptionExtractionJobsRequest) (_result *GetAICaptionExtractionJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAICaptionExtractionJobsResponse{}
-	_body, _err := client.GetAICaptionExtractionJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, runtime *util.RuntimeOptions) (_result *GetAIImageJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAIImageJobs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIImageJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAIImageJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25106,11 +24514,25 @@ func (client *Client) GetAIMediaAuditJobWithOptions(request *GetAIMediaAuditJobR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAIMediaAuditJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIMediaAuditJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAIMediaAuditJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25134,11 +24556,25 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25162,11 +24598,29 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAIVideoTagResult"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIVideoTagResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAIVideoTagResult"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25190,11 +24644,25 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppIds"] = request.AppIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAppInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25218,11 +24686,27 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthTimeout"] = request.AuthTimeout
+	query["MediaIds"] = request.MediaIds
+	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAttachedMediaInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAttachedMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAttachedMediaInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25246,11 +24730,28 @@ func (client *Client) GetAuditHistoryWithOptions(request *GetAuditHistoryRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SortBy"] = request.SortBy
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuditHistory"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAuditHistoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAuditHistory"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25274,11 +24775,29 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateId"] = request.CateId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SortBy"] = request.SortBy
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCategories"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCategoriesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCategories"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25302,11 +24821,25 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDefaultAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDefaultAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDefaultAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25325,103 +24858,34 @@ func (client *Client) GetDefaultAITemplate(request *GetDefaultAITemplateRequest)
 	return _result, _err
 }
 
-func (client *Client) GetDetectionJobWithOptions(request *GetDetectionJobRequest, runtime *util.RuntimeOptions) (_result *GetDetectionJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetDetectionJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDetectionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDetectionJob(request *GetDetectionJobRequest) (_result *GetDetectionJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDetectionJobResponse{}
-	_body, _err := client.GetDetectionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDetectionResultWithOptions(request *GetDetectionResultRequest, runtime *util.RuntimeOptions) (_result *GetDetectionResultResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetDetectionResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDetectionResult"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDetectionResult(request *GetDetectionResultRequest) (_result *GetDetectionResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDetectionResultResponse{}
-	_body, _err := client.GetDetectionResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDetectionTemplateWithOptions(request *GetDetectionTemplateRequest, runtime *util.RuntimeOptions) (_result *GetDetectionTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetDetectionTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDetectionTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDetectionTemplate(request *GetDetectionTemplateRequest) (_result *GetDetectionTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDetectionTemplateResponse{}
-	_body, _err := client.GetDetectionTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectRequest, runtime *util.RuntimeOptions) (_result *GetEditingProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ProjectId"] = request.ProjectId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEditingProject"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEditingProject"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25445,11 +24909,31 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MaterialType"] = request.MaterialType
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ProjectId"] = request.ProjectId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEditingProjectMaterials"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEditingProjectMaterials"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25473,11 +24957,27 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthTimeout"] = request.AuthTimeout
+	query["ImageId"] = request.ImageId
+	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetImageInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25501,11 +25001,30 @@ func (client *Client) GetMediaAuditAudioResultDetailWithOptions(request *GetMedi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaAuditAudioResultDetail"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditAudioResultDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaAuditAudioResultDetail"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25529,11 +25048,25 @@ func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResul
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaAuditResult"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaAuditResult"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25557,11 +25090,26 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["PageNo"] = request.PageNo
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaAuditResultDetail"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaAuditResultDetail"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25585,11 +25133,25 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaAuditResultTimeline"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultTimelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaAuditResultTimeline"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25613,11 +25175,29 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaDNAResult"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaDNAResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaDNAResult"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25641,11 +25221,26 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMessageCallback"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMessageCallbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMessageCallback"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25669,11 +25264,28 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AdditionType"] = request.AdditionType
+	query["AuthTimeout"] = request.AuthTimeout
+	query["OutputType"] = request.OutputType
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMezzanineInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMezzanineInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMezzanineInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25697,11 +25309,34 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AdditionType"] = request.AdditionType
+	query["AuthTimeout"] = request.AuthTimeout
+	query["Definition"] = request.Definition
+	query["Formats"] = request.Formats
+	query["OutputType"] = request.OutputType
+	query["PlayConfig"] = request.PlayConfig
+	query["ReAuthInfo"] = request.ReAuthInfo
+	query["ResultType"] = request.ResultType
+	query["StreamType"] = request.StreamType
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPlayInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPlayInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPlayInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25725,11 +25360,25 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranscodeSummary"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTranscodeSummary"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25753,11 +25402,25 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TranscodeTaskId"] = request.TranscodeTaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranscodeTask"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTranscodeTask"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25781,11 +25444,25 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25809,11 +25486,26 @@ func (client *Client) GetURLUploadInfosWithOptions(request *GetURLUploadInfosReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["UploadURLs"] = request.UploadURLs
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetURLUploadInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetURLUploadInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetURLUploadInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25837,11 +25529,26 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaIds"] = request.MediaIds
+	query["MediaType"] = request.MediaType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUploadDetails"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUploadDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUploadDetails"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25865,11 +25572,25 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVideoInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25893,11 +25614,25 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVideoInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25921,11 +25656,32 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateId"] = request.CateId
+	query["EndTime"] = request.EndTime
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SortBy"] = request.SortBy
+	query["StartTime"] = request.StartTime
+	query["Status"] = request.Status
+	query["StorageLocation"] = request.StorageLocation
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoList"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVideoList"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25949,11 +25705,27 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ApiVersion"] = request.ApiVersion
+	query["AuthInfoTimeout"] = request.AuthInfoTimeout
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoPlayAuth"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoPlayAuthResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVideoPlayAuth"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25977,11 +25749,25 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVodTemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVodTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVodTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26005,11 +25791,25 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26033,11 +25833,25 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAIImageInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAIImageInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAIImageInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26061,11 +25875,29 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAIJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAIJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAIJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26089,11 +25921,25 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26117,11 +25963,27 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAppInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAppInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26145,11 +26007,27 @@ func (client *Client) ListAppPoliciesForIdentityWithOptions(request *ListAppPoli
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["IdentityName"] = request.IdentityName
+	query["IdentityType"] = request.IdentityType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAppPoliciesForIdentity"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppPoliciesForIdentityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAppPoliciesForIdentity"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26173,11 +26051,25 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["SecurityGroupName"] = request.SecurityGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuditSecurityIp"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuditSecurityIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAuditSecurityIp"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26196,74 +26088,30 @@ func (client *Client) ListAuditSecurityIp(request *ListAuditSecurityIpRequest) (
 	return _result, _err
 }
 
-func (client *Client) ListDetectionJobWithOptions(request *ListDetectionJobRequest, runtime *util.RuntimeOptions) (_result *ListDetectionJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListDetectionJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDetectionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDetectionJob(request *ListDetectionJobRequest) (_result *ListDetectionJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDetectionJobResponse{}
-	_body, _err := client.ListDetectionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDetectionTemplateWithOptions(request *ListDetectionTemplateRequest, runtime *util.RuntimeOptions) (_result *ListDetectionTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListDetectionTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDetectionTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDetectionTemplate(request *ListDetectionTemplateRequest) (_result *ListDetectionTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDetectionTemplateResponse{}
-	_body, _err := client.ListDetectionTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageRequest, runtime *util.RuntimeOptions) (_result *ListDynamicImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDynamicImage"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDynamicImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDynamicImage"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26282,45 +26130,37 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListLetterSendJobWithOptions(request *ListLetterSendJobRequest, runtime *util.RuntimeOptions) (_result *ListLetterSendJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &ListLetterSendJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListLetterSendJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLetterSendJob(request *ListLetterSendJobRequest) (_result *ListLetterSendJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLetterSendJobResponse{}
-	_body, _err := client.ListLetterSendJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVideoRequest, runtime *util.RuntimeOptions) (_result *ListLiveRecordVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppName"] = request.AppName
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SortBy"] = request.SortBy
+	query["StartTime"] = request.StartTime
+	query["StreamName"] = request.StreamName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveRecordVideo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListLiveRecordVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListLiveRecordVideo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26344,11 +26184,29 @@ func (client *Client) ListMediaDNADeleteJobWithOptions(request *ListMediaDNADele
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobIds"] = request.JobIds
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaDNADeleteJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaDNADeleteJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMediaDNADeleteJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26372,11 +26230,29 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthTimeout"] = request.AuthTimeout
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SnapshotType"] = request.SnapshotType
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshots"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSnapshotsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSnapshots"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26400,11 +26276,29 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTranscodeTask"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTranscodeTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTranscodeTask"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26428,11 +26322,25 @@ func (client *Client) ListTranscodeTemplateGroupWithOptions(request *ListTransco
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26458,10 +26366,21 @@ func (client *Client) ListVodRealtimeLogDeliveryDomainsWithOptions(request *List
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodRealtimeLogDeliveryDomains"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodRealtimeLogDeliveryDomainsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVodRealtimeLogDeliveryDomains"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26487,10 +26406,21 @@ func (client *Client) ListVodRealtimeLogDeliveryInfosWithOptions(request *ListVo
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodRealtimeLogDeliveryInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVodRealtimeLogDeliveryInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26514,11 +26444,26 @@ func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVodTemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVodTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26542,11 +26487,25 @@ func (client *Client) ListWatermarkWithOptions(request *ListWatermarkRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26570,11 +26529,27 @@ func (client *Client) MoveAppResourceWithOptions(request *MoveAppResourceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ResourceIds"] = request.ResourceIds
+	query["ResourceType"] = request.ResourceType
+	query["TargetAppId"] = request.TargetAppId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveAppResource"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveAppResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveAppResource"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26598,11 +26573,27 @@ func (client *Client) PreloadVodObjectCachesWithOptions(request *PreloadVodObjec
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ObjectPath"] = request.ObjectPath
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreloadVodObjectCaches"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PreloadVodObjectCachesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PreloadVodObjectCaches"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26626,11 +26617,35 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["MediaMetadata"] = request.MediaMetadata
+	query["OwnerId"] = request.OwnerId
+	query["ProduceConfig"] = request.ProduceConfig
+	query["ProjectId"] = request.ProjectId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Timeline"] = request.Timeline
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ProduceEditingProjectVideo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ProduceEditingProjectVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ProduceEditingProjectVideo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26654,11 +26669,28 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshUploadVideo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshUploadVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshUploadVideo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26682,11 +26714,28 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ObjectPath"] = request.ObjectPath
+	query["ObjectType"] = request.ObjectType
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshVodObjectCaches"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshVodObjectCachesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshVodObjectCaches"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26710,11 +26759,28 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegisterMetadatas"] = request.RegisterMetadatas
+	query["TemplateGroupId"] = request.TemplateGroupId
+	query["UserData"] = request.UserData
+	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterMedia"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterMedia"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26738,11 +26804,35 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["SortBy"] = request.SortBy
+	query["StartTime"] = request.StartTime
+	query["Status"] = request.Status
+	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchEditingProject"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchEditingProject"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26766,11 +26856,31 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Fields"] = request.Fields
+	query["Match"] = request.Match
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["ScrollToken"] = request.ScrollToken
+	query["SearchType"] = request.SearchType
+	query["SortBy"] = request.SortBy
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMedia"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchMedia"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26794,11 +26904,27 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Ips"] = request.Ips
+	query["OperateMode"] = request.OperateMode
+	query["SecurityGroupName"] = request.SecurityGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAuditSecurityIp"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetAuditSecurityIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetAuditSecurityIp"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26822,11 +26948,31 @@ func (client *Client) SetCrossdomainContentWithOptions(request *SetCrossdomainCo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Content"] = request.Content
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["ResourceRealOwnerId"] = request.ResourceRealOwnerId
+	query["StorageLocation"] = request.StorageLocation
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetCrossdomainContent"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetCrossdomainContentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetCrossdomainContent"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26850,11 +26996,25 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26878,11 +27038,25 @@ func (client *Client) SetDefaultTranscodeTemplateGroupWithOptions(request *SetDe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26906,11 +27080,25 @@ func (client *Client) SetDefaultWatermarkWithOptions(request *SetDefaultWatermar
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26934,11 +27122,30 @@ func (client *Client) SetEditingProjectMaterialsWithOptions(request *SetEditingP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MaterialIds"] = request.MaterialIds
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ProjectId"] = request.ProjectId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetEditingProjectMaterials"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetEditingProjectMaterials"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26962,11 +27169,33 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["AuthKey"] = request.AuthKey
+	query["AuthSwitch"] = request.AuthSwitch
+	query["CallbackType"] = request.CallbackType
+	query["CallbackURL"] = request.CallbackURL
+	query["EventTypeList"] = request.EventTypeList
+	query["MnsEndpoint"] = request.MnsEndpoint
+	query["MnsQueueName"] = request.MnsQueueName
+	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetMessageCallback"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetMessageCallbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetMessageCallback"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26990,11 +27219,31 @@ func (client *Client) SetVodDomainCertificateWithOptions(request *SetVodDomainCe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CertName"] = request.CertName
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["SSLPri"] = request.SSLPri
+	query["SSLProtocol"] = request.SSLProtocol
+	query["SSLPub"] = request.SSLPub
+	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetVodDomainCertificate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetVodDomainCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetVodDomainCertificate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27013,44 +27262,36 @@ func (client *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRe
 	return _result, _err
 }
 
-func (client *Client) SubmitAICaptionExtractionJobWithOptions(request *SubmitAICaptionExtractionJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAICaptionExtractionJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SubmitAICaptionExtractionJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAICaptionExtractionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitAICaptionExtractionJob(request *SubmitAICaptionExtractionJobRequest) (_result *SubmitAICaptionExtractionJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitAICaptionExtractionJobResponse{}
-	_body, _err := client.SubmitAICaptionExtractionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAuditJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAIImageAuditJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAIImageAuditJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIImageAuditJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAIImageAuditJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27074,11 +27315,32 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AIPipelineId"] = request.AIPipelineId
+	query["AITemplateId"] = request.AITemplateId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["UserData"] = request.UserData
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAIImageJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIImageJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAIImageJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27102,11 +27364,32 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Config"] = request.Config
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Types"] = request.Types
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAIJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAIJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27130,11 +27413,29 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
+	query["MediaId"] = request.MediaId
+	query["MediaType"] = request.MediaType
+	query["TemplateId"] = request.TemplateId
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAIMediaAuditJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIMediaAuditJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAIMediaAuditJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27153,44 +27454,32 @@ func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobReques
 	return _result, _err
 }
 
-func (client *Client) SubmitDetectionJobWithOptions(request *SubmitDetectionJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDetectionJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SubmitDetectionJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitDetectionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitDetectionJob(request *SubmitDetectionJobRequest) (_result *SubmitDetectionJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitDetectionJobResponse{}
-	_body, _err := client.SubmitDetectionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicImageJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDynamicImageJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DynamicImageTemplateId"] = request.DynamicImageTemplateId
+	query["OverrideParams"] = request.OverrideParams
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDynamicImageJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitDynamicImageJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitDynamicImageJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27214,11 +27503,37 @@ func (client *Client) SubmitLiveEditingWithOptions(request *SubmitLiveEditingReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppName"] = request.AppName
+	query["Clips"] = request.Clips
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["DomainName"] = request.DomainName
+	query["MediaMetadata"] = request.MediaMetadata
+	query["OwnerId"] = request.OwnerId
+	query["ProduceConfig"] = request.ProduceConfig
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["StreamName"] = request.StreamName
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitLiveEditing"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitLiveEditingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitLiveEditing"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27242,11 +27557,29 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMediaDNADeleteJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaDNADeleteJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitMediaDNADeleteJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27270,11 +27603,26 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PreprocessType"] = request.PreprocessType
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitPreprocessJobs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPreprocessJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitPreprocessJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27298,11 +27646,33 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Count"] = request.Count
+	query["Height"] = request.Height
+	query["Interval"] = request.Interval
+	query["SnapshotTemplateId"] = request.SnapshotTemplateId
+	query["SpecifiedOffsetTime"] = request.SpecifiedOffsetTime
+	query["SpriteSnapshotConfig"] = request.SpriteSnapshotConfig
+	query["UserData"] = request.UserData
+	query["VideoId"] = request.VideoId
+	query["Width"] = request.Width
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSnapshotJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSnapshotJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSnapshotJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27326,11 +27696,31 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EncryptConfig"] = request.EncryptConfig
+	query["OverrideParams"] = request.OverrideParams
+	query["PipelineId"] = request.PipelineId
+	query["Priority"] = request.Priority
+	query["TemplateGroupId"] = request.TemplateGroupId
+	query["UserData"] = request.UserData
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTranscodeJobs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitTranscodeJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitTranscodeJobs"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27354,11 +27744,26 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitWorkflowJob"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitWorkflowJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitWorkflowJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27382,11 +27787,28 @@ func (client *Client) TagVodResourcesWithOptions(request *TagVodResourcesRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagVodResources"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagVodResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagVodResources"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27410,11 +27832,29 @@ func (client *Client) UnTagVodResourcesWithOptions(request *UnTagVodResourcesReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["All"] = request.All
+	query["OwnerId"] = request.OwnerId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnTagVodResources"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnTagVodResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnTagVodResources"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27438,11 +27878,27 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateConfig"] = request.TemplateConfig
+	query["TemplateId"] = request.TemplateId
+	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAITemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAITemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAITemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27466,11 +27922,28 @@ func (client *Client) UpdateAppInfoWithOptions(request *UpdateAppInfoRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["AppName"] = request.AppName
+	query["Description"] = request.Description
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAppInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27494,11 +27967,25 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAttachedMediaInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAttachedMediaInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAttachedMediaInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27522,11 +28009,26 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateId"] = request.CateId
+	query["CateName"] = request.CateName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCategory"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCategory"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27545,72 +28047,38 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UpdateDetectionJobWithOptions(request *UpdateDetectionJobRequest, runtime *util.RuntimeOptions) (_result *UpdateDetectionJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDetectionJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDetectionJob"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDetectionJob(request *UpdateDetectionJobRequest) (_result *UpdateDetectionJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDetectionJobResponse{}
-	_body, _err := client.UpdateDetectionJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateDetectionTemplateWithOptions(request *UpdateDetectionTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateDetectionTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateDetectionTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDetectionTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDetectionTemplate(request *UpdateDetectionTemplateRequest) (_result *UpdateDetectionTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDetectionTemplateResponse{}
-	_body, _err := client.UpdateDetectionTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateEditingProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["OwnerAccount"] = request.OwnerAccount
+	query["OwnerId"] = request.OwnerId
+	query["ProjectId"] = request.ProjectId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Timeline"] = request.Timeline
+	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEditingProject"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEditingProject"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27634,11 +28102,25 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateImageInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateImageInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateImageInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27662,11 +28144,26 @@ func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobId"] = request.JobId
+	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStreamInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStreamInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateStreamInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27690,11 +28187,28 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Locked"] = request.Locked
+	query["Name"] = request.Name
+	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	query["TranscodeTemplateList"] = request.TranscodeTemplateList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTranscodeTemplateGroup"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTranscodeTemplateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTranscodeTemplateGroup"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27718,11 +28232,30 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CateId"] = request.CateId
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["Tags"] = request.Tags
+	query["Title"] = request.Title
+	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVideoInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVideoInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVideoInfo"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27746,11 +28279,25 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVideoInfos"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVideoInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVideoInfos"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27774,11 +28321,29 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["SecurityToken"] = request.SecurityToken
+	query["Sources"] = request.Sources
+	query["TopLevelDomain"] = request.TopLevelDomain
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVodDomain"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVodDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVodDomain"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27802,11 +28367,27 @@ func (client *Client) UpdateVodTemplateWithOptions(request *UpdateVodTemplateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Name"] = request.Name
+	query["TemplateConfig"] = request.TemplateConfig
+	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVodTemplate"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVodTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVodTemplate"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27830,11 +28411,27 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Name"] = request.Name
+	query["WatermarkConfig"] = request.WatermarkConfig
+	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWatermark"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWatermarkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateWatermark"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27858,11 +28455,31 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["StorageLocation"] = request.StorageLocation
+	query["TemplateGroupId"] = request.TemplateGroupId
+	query["UploadMetadatas"] = request.UploadMetadatas
+	query["UploadURLs"] = request.UploadURLs
+	query["UserData"] = request.UserData
+	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadMediaByURL"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UploadMediaByURLResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UploadMediaByURL"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27886,11 +28503,30 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Definition"] = request.Definition
+	query["FileExtension"] = request.FileExtension
+	query["HDRType"] = request.HDRType
+	query["MediaId"] = request.MediaId
+	query["StreamURL"] = request.StreamURL
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadStreamByURL"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UploadStreamByURLResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UploadStreamByURL"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27914,11 +28550,27 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["OwnerId"] = request.OwnerId
+	query["VerifyType"] = request.VerifyType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyVodDomainOwner"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyVodDomainOwnerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyVodDomainOwner"), tea.String("2017-03-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
