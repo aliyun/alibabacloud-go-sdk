@@ -5442,6 +5442,227 @@ func (s *ListAppsResponse) SetBody(v *ListAppsResponseBody) *ListAppsResponse {
 	return s
 }
 
+type ListClassesRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 查询页码，从1开始，传空默认查询第1页。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 课程状态，0-未开课 1-上课中 2-已下课，不传则返回所有课程。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListClassesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesRequest) SetAppId(v string) *ListClassesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetPageNumber(v int32) *ListClassesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetPageSize(v int32) *ListClassesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetStatus(v int32) *ListClassesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListClassesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 创建课程返回的结果。
+	Result *ListClassesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListClassesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponseBody) SetRequestId(v string) *ListClassesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClassesResponseBody) SetResult(v *ListClassesResponseBodyResult) *ListClassesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListClassesResponseBodyResult struct {
+	// 课程列表信息。
+	ClassList []*ListClassesResponseBodyResultClassList `json:"ClassList,omitempty" xml:"ClassList,omitempty" type:"Repeated"`
+	// 是否还有下一页。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 课程总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	// 课程总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListClassesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponseBodyResult) SetClassList(v []*ListClassesResponseBodyResultClassList) *ListClassesResponseBodyResult {
+	s.ClassList = v
+	return s
+}
+
+func (s *ListClassesResponseBodyResult) SetHasMore(v bool) *ListClassesResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResult) SetPageTotal(v int32) *ListClassesResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResult) SetTotalCount(v int32) *ListClassesResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type ListClassesResponseBodyResultClassList struct {
+	// 课堂唯一标识，由调用CreateClass返回。
+	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// 连麦会议唯一标识。
+	ConfId *string `json:"ConfId,omitempty" xml:"ConfId,omitempty"`
+	// 创建人昵称。
+	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
+	// 创建人ID。
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// 下课时间戳，毫秒。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 直播的唯一标识ID。
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 开始上课时间戳，毫秒。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 课堂状态，0:未开始 1:上课中 2:已下课。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 课堂标题。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 白板ID
+	WhiteboardId *string `json:"WhiteboardId,omitempty" xml:"WhiteboardId,omitempty"`
+	// 白板录制ID
+	WhiteboardRecordId *string `json:"WhiteboardRecordId,omitempty" xml:"WhiteboardRecordId,omitempty"`
+}
+
+func (s ListClassesResponseBodyResultClassList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponseBodyResultClassList) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetClassId(v string) *ListClassesResponseBodyResultClassList {
+	s.ClassId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetConfId(v string) *ListClassesResponseBodyResultClassList {
+	s.ConfId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetCreateNickname(v string) *ListClassesResponseBodyResultClassList {
+	s.CreateNickname = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetCreateUserId(v string) *ListClassesResponseBodyResultClassList {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetEndTime(v int64) *ListClassesResponseBodyResultClassList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetLiveId(v string) *ListClassesResponseBodyResultClassList {
+	s.LiveId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetRoomId(v string) *ListClassesResponseBodyResultClassList {
+	s.RoomId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetStartTime(v int64) *ListClassesResponseBodyResultClassList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetStatus(v int32) *ListClassesResponseBodyResultClassList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetTitle(v string) *ListClassesResponseBodyResultClassList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetWhiteboardId(v string) *ListClassesResponseBodyResultClassList {
+	s.WhiteboardId = &v
+	return s
+}
+
+func (s *ListClassesResponseBodyResultClassList) SetWhiteboardRecordId(v string) *ListClassesResponseBodyResultClassList {
+	s.WhiteboardRecordId = &v
+	return s
+}
+
+type ListClassesResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClassesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassesResponse) SetHeaders(v map[string]*string) *ListClassesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClassesResponse) SetBody(v *ListClassesResponseBody) *ListClassesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCommentsRequest struct {
 	// 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -8330,6 +8551,8 @@ func (s *UpdateAppTemplateConfigShrinkRequest) SetConfigListShrink(v string) *Up
 type UpdateAppTemplateConfigResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result *UpdateAppTemplateConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateAppTemplateConfigResponseBody) String() string {
@@ -8342,6 +8565,54 @@ func (s UpdateAppTemplateConfigResponseBody) GoString() string {
 
 func (s *UpdateAppTemplateConfigResponseBody) SetRequestId(v string) *UpdateAppTemplateConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigResponseBody) SetResult(v *UpdateAppTemplateConfigResponseBodyResult) *UpdateAppTemplateConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateAppTemplateConfigResponseBodyResult struct {
+	// 配置日志列表
+	ConfigLogs []*UpdateAppTemplateConfigResponseBodyResultConfigLogs `json:"ConfigLogs,omitempty" xml:"ConfigLogs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAppTemplateConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigResponseBodyResult) SetConfigLogs(v []*UpdateAppTemplateConfigResponseBodyResultConfigLogs) *UpdateAppTemplateConfigResponseBodyResult {
+	s.ConfigLogs = v
+	return s
+}
+
+type UpdateAppTemplateConfigResponseBodyResultConfigLogs struct {
+	// 日志标示
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 日志内容
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s UpdateAppTemplateConfigResponseBodyResultConfigLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppTemplateConfigResponseBodyResultConfigLogs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppTemplateConfigResponseBodyResultConfigLogs) SetCode(v string) *UpdateAppTemplateConfigResponseBodyResultConfigLogs {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigResponseBodyResultConfigLogs) SetMessage(v string) *UpdateAppTemplateConfigResponseBodyResultConfigLogs {
+	s.Message = &v
 	return s
 }
 
@@ -10230,6 +10501,34 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppsResponse{}
 	_body, _err := client.ListAppsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClassesWithOptions(request *ListClassesRequest, runtime *util.RuntimeOptions) (_result *ListClassesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListClassesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListClasses"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClasses(request *ListClassesRequest) (_result *ListClassesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClassesResponse{}
+	_body, _err := client.ListClassesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
