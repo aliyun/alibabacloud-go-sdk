@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -675,135 +676,6 @@ func (s *CreateMPULayoutResponse) SetHeaders(v map[string]*string) *CreateMPULay
 }
 
 func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *CreateMPULayoutResponse {
-	s.Body = v
-	return s
-}
-
-type CreateRecordIndexFileRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateRecordIndexFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRecordIndexFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRecordIndexFileRequest) SetAppId(v string) *CreateRecordIndexFileRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetChannelId(v string) *CreateRecordIndexFileRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetEndTime(v string) *CreateRecordIndexFileRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetOssBucket(v string) *CreateRecordIndexFileRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetOssEndpoint(v string) *CreateRecordIndexFileRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetOssObject(v string) *CreateRecordIndexFileRequest {
-	s.OssObject = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetOwnerId(v int64) *CreateRecordIndexFileRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetStartTime(v string) *CreateRecordIndexFileRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileRequest) SetTaskId(v string) *CreateRecordIndexFileRequest {
-	s.TaskId = &v
-	return s
-}
-
-type CreateRecordIndexFileResponseBody struct {
-	Duration  *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Url       *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s CreateRecordIndexFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRecordIndexFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRecordIndexFileResponseBody) SetDuration(v float32) *CreateRecordIndexFileResponseBody {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileResponseBody) SetHeight(v int32) *CreateRecordIndexFileResponseBody {
-	s.Height = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileResponseBody) SetRequestId(v string) *CreateRecordIndexFileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileResponseBody) SetUrl(v string) *CreateRecordIndexFileResponseBody {
-	s.Url = &v
-	return s
-}
-
-func (s *CreateRecordIndexFileResponseBody) SetWidth(v int32) *CreateRecordIndexFileResponseBody {
-	s.Width = &v
-	return s
-}
-
-type CreateRecordIndexFileResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRecordIndexFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRecordIndexFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRecordIndexFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRecordIndexFileResponse) SetHeaders(v map[string]*string) *CreateRecordIndexFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRecordIndexFileResponse) SetBody(v *CreateRecordIndexFileResponseBody) *CreateRecordIndexFileResponse {
 	s.Body = v
 	return s
 }
@@ -1868,217 +1740,6 @@ func (s *DescribeRecordFilesResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeRecordFilesResponse) SetBody(v *DescribeRecordFilesResponseBody) *DescribeRecordFilesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRecordTasksRequest struct {
-	AppId     *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId   *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum   *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskIds   []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRecordTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordTasksRequest) SetAppId(v string) *DescribeRecordTasksRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetChannelId(v string) *DescribeRecordTasksRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetEndTime(v string) *DescribeRecordTasksRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetOwnerId(v int64) *DescribeRecordTasksRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetPageNum(v int32) *DescribeRecordTasksRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetPageSize(v int32) *DescribeRecordTasksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetStartTime(v string) *DescribeRecordTasksRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetStatus(v string) *DescribeRecordTasksRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRecordTasksRequest) SetTaskIds(v []*string) *DescribeRecordTasksRequest {
-	s.TaskIds = v
-	return s
-}
-
-type DescribeRecordTasksResponseBody struct {
-	RecordTasks []*DescribeRecordTasksResponseBodyRecordTasks `json:"RecordTasks,omitempty" xml:"RecordTasks,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum    *int64                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage   *int64                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-}
-
-func (s DescribeRecordTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordTasksResponseBody) SetRecordTasks(v []*DescribeRecordTasksResponseBodyRecordTasks) *DescribeRecordTasksResponseBody {
-	s.RecordTasks = v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBody) SetRequestId(v string) *DescribeRecordTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBody) SetTotalNum(v int64) *DescribeRecordTasksResponseBody {
-	s.TotalNum = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBody) SetTotalPage(v int64) *DescribeRecordTasksResponseBody {
-	s.TotalPage = &v
-	return s
-}
-
-type DescribeRecordTasksResponseBodyRecordTasks struct {
-	AppId        *string                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId    *string                                                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreateTime   *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Status       *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubSpecUsers []*string                                              `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
-	TaskId       *string                                                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TemplateId   *string                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UserPanes    []*DescribeRecordTasksResponseBodyRecordTasksUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRecordTasksResponseBodyRecordTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordTasksResponseBodyRecordTasks) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetAppId(v string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetChannelId(v string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetCreateTime(v string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetStatus(v int32) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetSubSpecUsers(v []*string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.SubSpecUsers = v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetTaskId(v string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetTemplateId(v string) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasks) SetUserPanes(v []*DescribeRecordTasksResponseBodyRecordTasksUserPanes) *DescribeRecordTasksResponseBodyRecordTasks {
-	s.UserPanes = v
-	return s
-}
-
-type DescribeRecordTasksResponseBodyRecordTasksUserPanes struct {
-	PaneId *int32  `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s DescribeRecordTasksResponseBodyRecordTasksUserPanes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordTasksResponseBodyRecordTasksUserPanes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasksUserPanes) SetPaneId(v int32) *DescribeRecordTasksResponseBodyRecordTasksUserPanes {
-	s.PaneId = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasksUserPanes) SetSource(v string) *DescribeRecordTasksResponseBodyRecordTasksUserPanes {
-	s.Source = &v
-	return s
-}
-
-func (s *DescribeRecordTasksResponseBodyRecordTasksUserPanes) SetUserId(v string) *DescribeRecordTasksResponseBodyRecordTasksUserPanes {
-	s.UserId = &v
-	return s
-}
-
-type DescribeRecordTasksResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecordTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRecordTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordTasksResponse) SetHeaders(v map[string]*string) *DescribeRecordTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRecordTasksResponse) SetBody(v *DescribeRecordTasksResponseBody) *DescribeRecordTasksResponse {
 	s.Body = v
 	return s
 }
@@ -4226,7 +3887,6 @@ func (s *UpdateAutoLiveStreamRuleRequest) SetRuleName(v string) *UpdateAutoLiveS
 
 type UpdateAutoLiveStreamRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s UpdateAutoLiveStreamRuleResponseBody) String() string {
@@ -4239,11 +3899,6 @@ func (s UpdateAutoLiveStreamRuleResponseBody) GoString() string {
 
 func (s *UpdateAutoLiveStreamRuleResponseBody) SetRequestId(v string) *UpdateAutoLiveStreamRuleResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAutoLiveStreamRuleResponseBody) SetRuleId(v int64) *UpdateAutoLiveStreamRuleResponseBody {
-	s.RuleId = &v
 	return s
 }
 
@@ -5423,11 +5078,42 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["BackgroundColor"] = request.BackgroundColor
+	query["Backgrounds"] = request.Backgrounds
+	query["ClockWidgets"] = request.ClockWidgets
+	query["DelayStopTime"] = request.DelayStopTime
+	query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
+	query["FileSplitInterval"] = request.FileSplitInterval
+	query["Formats"] = request.Formats
+	query["HttpCallbackUrl"] = request.HttpCallbackUrl
+	query["LayoutIds"] = request.LayoutIds
+	query["MediaEncode"] = request.MediaEncode
+	query["MnsQueue"] = request.MnsQueue
+	query["Name"] = request.Name
+	query["OssBucket"] = request.OssBucket
+	query["OssFilePrefix"] = request.OssFilePrefix
+	query["OwnerId"] = request.OwnerId
+	query["TaskProfile"] = request.TaskProfile
+	query["Watermarks"] = request.Watermarks
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddRecordTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddRecordTemplate"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5451,11 +5137,32 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["CallBack"] = request.CallBack
+	query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
+	query["ChannelIds"] = request.ChannelIds
+	query["MediaEncode"] = request.MediaEncode
+	query["OwnerId"] = request.OwnerId
+	query["PlayDomain"] = request.PlayDomain
+	query["RuleName"] = request.RuleName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5479,11 +5186,31 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["CallbackUrl"] = request.CallbackUrl
+	query["ChannelId"] = request.ChannelId
+	query["ClientToken"] = request.ClientToken
+	query["Events"] = request.Events
+	query["OwnerId"] = request.OwnerId
+	query["Users"] = request.Users
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEventSubscribe"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEventSubscribeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEventSubscribe"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5507,11 +5234,29 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["AudioMixCount"] = request.AudioMixCount
+	query["Name"] = request.Name
+	query["OwnerId"] = request.OwnerId
+	query["Panes"] = request.Panes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMPULayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMPULayoutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateMPULayout"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5530,44 +5275,32 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateRecordIndexFileWithOptions(request *CreateRecordIndexFileRequest, runtime *util.RuntimeOptions) (_result *CreateRecordIndexFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateRecordIndexFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRecordIndexFile"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRecordIndexFile(request *CreateRecordIndexFileRequest) (_result *CreateRecordIndexFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRecordIndexFileResponse{}
-	_body, _err := client.CreateRecordIndexFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5591,11 +5324,27 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["SubscribeId"] = request.SubscribeId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEventSubscribe"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEventSubscribeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEventSubscribe"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5619,11 +5368,27 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["LayoutId"] = request.LayoutId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMPULayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMPULayoutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMPULayout"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5647,11 +5412,27 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRecordTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRecordTemplate"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5675,11 +5456,26 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5703,11 +5499,30 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["Order"] = request.Order
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannelParticipants"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeChannelParticipantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeChannelParticipants"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5731,11 +5546,27 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannelUsers"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeChannelUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeChannelUsers"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5759,11 +5590,30 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["LayoutId"] = request.LayoutId
+	query["Name"] = request.Name
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMPULayoutInfoList"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMPULayoutInfoListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeMPULayoutInfoList"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5787,11 +5637,32 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["EndTime"] = request.EndTime
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
+	query["TaskIds"] = request.TaskIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecordFiles"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecordFilesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecordFiles"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5810,44 +5681,34 @@ func (client *Client) DescribeRecordFiles(request *DescribeRecordFilesRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribeRecordTasksWithOptions(request *DescribeRecordTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeRecordTasksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecordTasks"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRecordTasks(request *DescribeRecordTasksRequest) (_result *DescribeRecordTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRecordTasksResponse{}
-	_body, _err := client.DescribeRecordTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecordTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["TemplateIds"] = request.TemplateIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecordTemplates"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecordTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecordTemplates"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5871,11 +5732,28 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["OwnerId"] = request.OwnerId
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserInfoInChannel"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserInfoInChannelResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserInfoInChannel"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5899,11 +5777,27 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5927,11 +5821,27 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5955,11 +5865,27 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMPUTaskStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMPUTaskStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMPUTaskStatus"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5983,11 +5909,30 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["AudioMixCount"] = request.AudioMixCount
+	query["LayoutId"] = request.LayoutId
+	query["Name"] = request.Name
+	query["OwnerId"] = request.OwnerId
+	query["Panes"] = request.Panes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMPULayout"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyMPULayoutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyMPULayout"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6011,11 +5956,28 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["OwnerId"] = request.OwnerId
+	query["TerminalIds"] = request.TerminalIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveTerminals"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveTerminalsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveTerminals"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6039,11 +6001,53 @@ func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["BackgroundColor"] = request.BackgroundColor
+	query["Backgrounds"] = request.Backgrounds
+	query["ChannelId"] = request.ChannelId
+	query["ClockWidgets"] = request.ClockWidgets
+	query["CropMode"] = request.CropMode
+	query["LayoutIds"] = request.LayoutIds
+	query["MediaEncode"] = request.MediaEncode
+	query["MixMode"] = request.MixMode
+	query["OwnerId"] = request.OwnerId
+	query["PayloadType"] = request.PayloadType
+	query["ReportVad"] = request.ReportVad
+	query["RtpExtInfo"] = request.RtpExtInfo
+	query["SourceType"] = request.SourceType
+	query["StreamType"] = request.StreamType
+	query["StreamURL"] = request.StreamURL
+	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	query["SubSpecUsers"] = request.SubSpecUsers
+	query["TaskId"] = request.TaskId
+	query["TaskType"] = request.TaskType
+	query["TimeStampRef"] = request.TimeStampRef
+	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	query["UserPanes"] = request.UserPanes
+	query["VadInterval"] = request.VadInterval
+	query["Watermarks"] = request.Watermarks
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartMPUTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartMPUTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartMPUTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6067,11 +6071,44 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["CropMode"] = request.CropMode
+	query["LayoutIds"] = request.LayoutIds
+	query["MediaEncode"] = request.MediaEncode
+	query["MixMode"] = request.MixMode
+	query["OwnerId"] = request.OwnerId
+	query["SourceType"] = request.SourceType
+	query["StreamType"] = request.StreamType
+	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	query["SubSpecUsers"] = request.SubSpecUsers
+	query["TaskId"] = request.TaskId
+	query["TaskProfile"] = request.TaskProfile
+	query["TemplateId"] = request.TemplateId
+	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	query["UserPanes"] = request.UserPanes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRecordTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartRecordTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartRecordTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6095,11 +6132,28 @@ func (client *Client) StopChannelUserPublishWithOptions(request *StopChannelUser
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["OwnerId"] = request.OwnerId
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopChannelUserPublish"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopChannelUserPublishResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopChannelUserPublish"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6123,11 +6177,27 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopMPUTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopMPUTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopMPUTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6151,11 +6221,27 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["OwnerId"] = request.OwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopRecordTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopRecordTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopRecordTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6179,11 +6265,33 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["CallBack"] = request.CallBack
+	query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
+	query["ChannelIds"] = request.ChannelIds
+	query["MediaEncode"] = request.MediaEncode
+	query["OwnerId"] = request.OwnerId
+	query["PlayDomain"] = request.PlayDomain
+	query["RuleId"] = request.RuleId
+	query["RuleName"] = request.RuleName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAutoLiveStreamRule"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAutoLiveStreamRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAutoLiveStreamRule"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6207,11 +6315,45 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["BackgroundColor"] = request.BackgroundColor
+	query["Backgrounds"] = request.Backgrounds
+	query["ClockWidgets"] = request.ClockWidgets
+	query["CropMode"] = request.CropMode
+	query["LayoutIds"] = request.LayoutIds
+	query["MediaEncode"] = request.MediaEncode
+	query["MixMode"] = request.MixMode
+	query["OwnerId"] = request.OwnerId
+	query["SourceType"] = request.SourceType
+	query["StreamType"] = request.StreamType
+	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	query["SubSpecUsers"] = request.SubSpecUsers
+	query["TaskId"] = request.TaskId
+	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	query["UserPanes"] = request.UserPanes
+	query["Watermarks"] = request.Watermarks
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMPUTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMPUTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateMPUTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6235,11 +6377,38 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["LayoutIds"] = request.LayoutIds
+	query["OwnerId"] = request.OwnerId
+	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	query["SubSpecUsers"] = request.SubSpecUsers
+	query["TaskId"] = request.TaskId
+	query["TemplateId"] = request.TemplateId
+	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	query["UserPanes"] = request.UserPanes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRecordTask"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRecordTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRecordTask"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6263,11 +6432,43 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["BackgroundColor"] = request.BackgroundColor
+	query["Backgrounds"] = request.Backgrounds
+	query["ClockWidgets"] = request.ClockWidgets
+	query["DelayStopTime"] = request.DelayStopTime
+	query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
+	query["FileSplitInterval"] = request.FileSplitInterval
+	query["Formats"] = request.Formats
+	query["HttpCallbackUrl"] = request.HttpCallbackUrl
+	query["LayoutIds"] = request.LayoutIds
+	query["MediaEncode"] = request.MediaEncode
+	query["MnsQueue"] = request.MnsQueue
+	query["Name"] = request.Name
+	query["OssBucket"] = request.OssBucket
+	query["OssFilePrefix"] = request.OssFilePrefix
+	query["OwnerId"] = request.OwnerId
+	query["TaskProfile"] = request.TaskProfile
+	query["TemplateId"] = request.TemplateId
+	query["Watermarks"] = request.Watermarks
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRecordTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRecordTemplate"), tea.String("2018-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
