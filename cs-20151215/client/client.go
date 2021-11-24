@@ -555,6 +555,8 @@ type CreateClusterRequest struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// 失败回滚
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
+	// 启用 RRSA 功能
+	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
 	// Secret落盘加密
 	EncryptionProviderKey *string `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
 	// 使用EIP暴露apiServer
@@ -770,6 +772,11 @@ func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterReque
 
 func (s *CreateClusterRequest) SetDisableRollback(v bool) *CreateClusterRequest {
 	s.DisableRollback = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetEnableRrsa(v bool) *CreateClusterRequest {
+	s.EnableRrsa = &v
 	return s
 }
 
@@ -2533,8 +2540,45 @@ func (s *DeleteKubernetesTriggerResponse) SetHeaders(v map[string]*string) *Dele
 	return s
 }
 
+type DeletePolicyInstanceRequest struct {
+	// 策略规则实例id
+	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
+}
+
+func (s DeletePolicyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceRequest) SetInstanceName(v string) *DeletePolicyInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+type DeletePolicyInstanceResponseBody struct {
+	// 策略实例列表
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+}
+
+func (s DeletePolicyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceResponseBody) SetInstances(v []*string) *DeletePolicyInstanceResponseBody {
+	s.Instances = v
+	return s
+}
+
 type DeletePolicyInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeletePolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeletePolicyInstanceResponse) String() string {
@@ -2547,6 +2591,11 @@ func (s DeletePolicyInstanceResponse) GoString() string {
 
 func (s *DeletePolicyInstanceResponse) SetHeaders(v map[string]*string) *DeletePolicyInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyInstanceResponse) SetBody(v *DeletePolicyInstanceResponseBody) *DeletePolicyInstanceResponse {
+	s.Body = v
 	return s
 }
 
@@ -2616,8 +2665,27 @@ func (s *DeployPolicyInstanceRequest) SetParameters(v map[string]interface{}) *D
 	return s
 }
 
+type DeployPolicyInstanceResponseBody struct {
+	// 策略实例列表
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+}
+
+func (s DeployPolicyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployPolicyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployPolicyInstanceResponseBody) SetInstances(v []*string) *DeployPolicyInstanceResponseBody {
+	s.Instances = v
+	return s
+}
+
 type DeployPolicyInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeployPolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeployPolicyInstanceResponse) String() string {
@@ -2630,6 +2698,11 @@ func (s DeployPolicyInstanceResponse) GoString() string {
 
 func (s *DeployPolicyInstanceResponse) SetHeaders(v map[string]*string) *DeployPolicyInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeployPolicyInstanceResponse) SetBody(v *DeployPolicyInstanceResponseBody) *DeployPolicyInstanceResponse {
+	s.Body = v
 	return s
 }
 
@@ -9119,6 +9192,8 @@ type ModifyClusterRequest struct {
 	ApiServerEipId *string `json:"api_server_eip_id,omitempty" xml:"api_server_eip_id,omitempty"`
 	// 集群是否开启删除保护。默认值false。
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// 启用或禁用 RRSA 功能。true: 启用，false: 禁用
+	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
 	// 域名是否重新绑定到Ingress的SLB地址。
 	IngressDomainRebinding *string `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
 	// 集群的Ingress SLB的ID。
@@ -9150,6 +9225,11 @@ func (s *ModifyClusterRequest) SetApiServerEipId(v string) *ModifyClusterRequest
 
 func (s *ModifyClusterRequest) SetDeletionProtection(v bool) *ModifyClusterRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetEnableRrsa(v bool) *ModifyClusterRequest {
+	s.EnableRrsa = &v
 	return s
 }
 
@@ -10001,8 +10081,26 @@ func (s *ModifyPolicyInstanceRequest) SetParameters(v map[string]interface{}) *M
 	return s
 }
 
+type ModifyPolicyInstanceResponseBody struct {
+	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+}
+
+func (s ModifyPolicyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyInstanceResponseBody) SetInstances(v []*string) *ModifyPolicyInstanceResponseBody {
+	s.Instances = v
+	return s
+}
+
 type ModifyPolicyInstanceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyPolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPolicyInstanceResponse) String() string {
@@ -10015,6 +10113,11 @@ func (s ModifyPolicyInstanceResponse) GoString() string {
 
 func (s *ModifyPolicyInstanceResponse) SetHeaders(v map[string]*string) *ModifyPolicyInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPolicyInstanceResponse) SetBody(v *ModifyPolicyInstanceResponseBody) *ModifyPolicyInstanceResponse {
+	s.Body = v
 	return s
 }
 
@@ -11560,8 +11663,19 @@ func (client *Client) AttachInstancesWithOptions(ClusterId *string, request *Att
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachInstances"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/attach"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AttachInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("AttachInstances"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attach"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11586,8 +11700,19 @@ func (client *Client) CancelClusterUpgradeWithOptions(ClusterId *string, headers
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelClusterUpgrade"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/upgrade/cancel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CancelClusterUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelClusterUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/cancel"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11613,8 +11738,19 @@ func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, compo
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelComponentUpgrade"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/cancel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CancelComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/"+tea.StringValue(componentId)+"/cancel"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11649,8 +11785,19 @@ func (client *Client) CancelWorkflowWithOptions(workflowName *string, request *C
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelWorkflow"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(workflowName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CancelWorkflowResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11701,8 +11848,19 @@ func (client *Client) CreateAutoscalingConfigWithOptions(ClusterId *string, requ
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAutoscalingConfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/cluster/" + tea.StringValue(ClusterId) + "/autoscale/config/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateAutoscalingConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateAutoscalingConfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/cluster/"+tea.StringValue(ClusterId)+"/autoscale/config/"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11786,6 +11944,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
 		body["disable_rollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRrsa)) {
+		body["enable_rrsa"] = request.EnableRrsa
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptionProviderKey)) {
@@ -12060,8 +12222,19 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12132,8 +12305,19 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClusterNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateClusterNodePoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12175,8 +12359,19 @@ func (client *Client) CreateEdgeMachineWithOptions(request *CreateEdgeMachineReq
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEdgeMachine"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateEdgeMachineResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateEdgeMachine"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/edge_machines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12222,8 +12417,19 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateKubernetesTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/triggers"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateKubernetesTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/triggers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12273,8 +12479,19 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTemplate"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/templates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12321,8 +12538,19 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/triggers"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/triggers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12371,8 +12599,19 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, tmpReq *Delete
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12398,8 +12637,19 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClusterNodepool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteClusterNodepoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodepool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12442,8 +12692,19 @@ func (client *Client) DeleteClusterNodesWithOptions(ClusterId *string, request *
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClusterNodes"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteClusterNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12478,8 +12739,19 @@ func (client *Client) DeleteEdgeMachineWithOptions(edgeMachineid *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEdgeMachine"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines/[edge_machineid]"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteEdgeMachineResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteEdgeMachine"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/edge_machines/[edge_machineid]"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12504,8 +12776,19 @@ func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteKubernetesTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/triggers/revoke/" + tea.StringValue(Id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteKubernetesTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/triggers/revoke/"+tea.StringValue(Id)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12513,11 +12796,11 @@ func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map
 	return _result, _err
 }
 
-func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string, instanceId *string) (_result *DeletePolicyInstanceResponse, _err error) {
+func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string, request *DeletePolicyInstanceRequest) (_result *DeletePolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeletePolicyInstanceResponse{}
-	_body, _err := client.DeletePolicyInstanceWithOptions(clusterId, policyName, instanceId, headers, runtime)
+	_body, _err := client.DeletePolicyInstanceWithOptions(clusterId, policyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12525,15 +12808,35 @@ func (client *Client) DeletePolicyInstance(clusterId *string, policyName *string
 	return _result, _err
 }
 
-func (client *Client) DeletePolicyInstanceWithOptions(clusterId *string, policyName *string, instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePolicyInstanceResponse, _err error) {
+func (client *Client) DeletePolicyInstanceWithOptions(clusterId *string, policyName *string, request *DeletePolicyInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePolicyInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	clusterId = openapiutil.GetEncodeParam(clusterId)
 	policyName = openapiutil.GetEncodeParam(policyName)
-	instanceId = openapiutil.GetEncodeParam(instanceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["instance_name"] = request.InstanceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyInstance"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePolicyInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeletePolicyInstance"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policies/"+tea.StringValue(policyName)+"/instances/"+tea.StringValue(instanceId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12558,8 +12861,19 @@ func (client *Client) DeleteTemplateWithOptions(TemplateId *string, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplate"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/templates/" + tea.StringValue(TemplateId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12585,8 +12899,19 @@ func (client *Client) DeleteTriggerWithOptions(clusterId *string, Id *string, he
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/[cluster_id]/triggers/[Id]"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/clusters/[cluster_id]/triggers/[Id]"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12630,8 +12955,19 @@ func (client *Client) DeployPolicyInstanceWithOptions(clusterId *string, policyN
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployPolicyInstance"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeployPolicyInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeployPolicyInstance"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policies/"+tea.StringValue(policyName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12656,8 +12992,19 @@ func (client *Client) DescirbeWorkflowWithOptions(workflowName *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescirbeWorkflow"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(workflowName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescirbeWorkflowResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescirbeWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12695,8 +13042,19 @@ func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddons"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/components/metadata"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAddonsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/components/metadata"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12723,8 +13081,19 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterAddonMetadata"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/metadata"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterAddonMetadataResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonMetadata"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/"+tea.StringValue(componentId)+"/metadata"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12750,8 +13119,19 @@ func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterAddonUpgradeStatus"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/{ComponentId}/upgradestatus"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterAddonUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/"+tea.StringValue(ComponentId)+"/upgradestatus"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12792,8 +13172,19 @@ func (client *Client) DescribeClusterAddonsUpgradeStatusWithOptions(ClusterId *s
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterAddonsUpgradeStatus"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/upgradestatus"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterAddonsUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/upgradestatus"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12818,8 +13209,19 @@ func (client *Client) DescribeClusterAddonsVersionWithOptions(ClusterId *string,
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterAddonsVersion"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/version"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterAddonsVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAddonsVersion"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/version"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12874,8 +13276,19 @@ func (client *Client) DescribeClusterAttachScriptsWithOptions(ClusterId *string,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterAttachScripts"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/attachscript"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
 	_result = &DescribeClusterAttachScriptsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterAttachScripts"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/attachscript"), tea.String("string"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12900,8 +13313,19 @@ func (client *Client) DescribeClusterDetailWithOptions(ClusterId *string, header
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterDetail"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12926,8 +13350,19 @@ func (client *Client) DescribeClusterLogsWithOptions(ClusterId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterLogs"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeClusterLogsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterLogs"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/logs"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12952,8 +13387,19 @@ func (client *Client) DescribeClusterNamespacesWithOptions(ClusterId *string, he
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterNamespaces"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(ClusterId) + "/namespaces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeClusterNamespacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNamespaces"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/namespaces"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12979,8 +13425,19 @@ func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterNodePoolDetail"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterNodePoolDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePoolDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13005,8 +13462,19 @@ func (client *Client) DescribeClusterNodePoolsWithOptions(ClusterId *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterNodePools"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterNodePoolsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodePools"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13057,8 +13525,19 @@ func (client *Client) DescribeClusterNodesWithOptions(ClusterId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterNodes"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13083,8 +13562,19 @@ func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterResources"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/resources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeClusterResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/resources"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13123,8 +13613,19 @@ func (client *Client) DescribeClusterUserKubeconfigWithOptions(ClusterId *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterUserKubeconfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(ClusterId) + "/user_config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterUserKubeconfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterUserKubeconfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/user_config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13159,8 +13660,19 @@ func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *stri
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterV2UserKubeconfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/k8s/" + tea.StringValue(ClusterId) + "/user_config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClusterV2UserKubeconfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusterV2UserKubeconfig"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/k8s/"+tea.StringValue(ClusterId)+"/user_config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13198,8 +13710,19 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusters"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClusters"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13253,8 +13776,19 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClustersV1"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeClustersV1Response{}
-	_body, _err := client.DoROARequest(tea.String("DescribeClustersV1"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13279,8 +13813,19 @@ func (client *Client) DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEdgeMachineActiveProcess"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines/[edge_machineid]/activeprocess"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeEdgeMachineActiveProcessResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeEdgeMachineActiveProcess"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/edge_machines/[edge_machineid]/activeprocess"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13304,8 +13849,19 @@ func (client *Client) DescribeEdgeMachineModelsWithOptions(headers map[string]*s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEdgeMachineModels"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines/models"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeEdgeMachineModelsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeEdgeMachineModels"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/edge_machines/models"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13330,8 +13886,19 @@ func (client *Client) DescribeEdgeMachineTunnelConfigDetailWithOptions(edgeMachi
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEdgeMachineTunnelConfigDetail"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines/[edge_machineid]/tunnelconfig"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeEdgeMachineTunnelConfigDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeEdgeMachineTunnelConfigDetail"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/edge_machines/[edge_machineid]/tunnelconfig"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13385,8 +13952,19 @@ func (client *Client) DescribeEdgeMachinesWithOptions(request *DescribeEdgeMachi
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEdgeMachines"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/edge_machines"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeEdgeMachinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeEdgeMachines"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/edge_machines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13432,8 +14010,19 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEvents"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/events"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeEventsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeEvents"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/events"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13468,8 +14057,19 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExternalAgent"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(ClusterId) + "/external/agent/deployment"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeExternalAgentResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeExternalAgent"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/external/agent/deployment"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13515,8 +14115,19 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKubernetesVersionMetadata"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/metadata/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeKubernetesVersionMetadataResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeKubernetesVersionMetadata"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/metadata/versions"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13540,8 +14151,19 @@ func (client *Client) DescribePoliciesWithOptions(headers map[string]*string, ru
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicies"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/policies"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePoliciesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePolicies"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/policies"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13566,8 +14188,19 @@ func (client *Client) DescribePolicyDetailsWithOptions(policyName *string, heade
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyDetails"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/policies/" + tea.StringValue(policyName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePolicyDetailsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePolicyDetails"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/policies/"+tea.StringValue(policyName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13592,8 +14225,19 @@ func (client *Client) DescribePolicyGovernanceInClusterWithOptions(clusterId *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyGovernanceInCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policygovernance"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePolicyGovernanceInClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePolicyGovernanceInCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policygovernance"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13632,8 +14276,19 @@ func (client *Client) DescribePolicyInstancesWithOptions(clusterId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyInstances"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribePolicyInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePolicyInstances"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policies"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13658,8 +14313,19 @@ func (client *Client) DescribePolicyInstancesStatusWithOptions(clusterId *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyInstancesStatus"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePolicyInstancesStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePolicyInstancesStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policies/status"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13684,8 +14350,19 @@ func (client *Client) DescribeTaskInfoWithOptions(taskId *string, headers map[st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTaskInfo"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tasks/" + tea.StringValue(taskId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeTaskInfoResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTaskInfo"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/tasks/"+tea.StringValue(taskId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13720,8 +14397,19 @@ func (client *Client) DescribeTemplateAttributeWithOptions(TemplateId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTemplateAttribute"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/templates/" + tea.StringValue(TemplateId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeTemplateAttributeResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTemplateAttribute"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13763,8 +14451,19 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTemplates"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/templates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeTemplatesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTemplates"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13811,8 +14510,19 @@ func (client *Client) DescribeTriggerWithOptions(clusterId *string, request *Des
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/[cluster_id]/triggers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/clusters/[cluster_id]/triggers"), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13837,8 +14547,19 @@ func (client *Client) DescribeUserPermissionWithOptions(uid *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserPermission"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/permissions/users/" + tea.StringValue(uid)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &DescribeUserPermissionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeUserPermission"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/permissions/users/"+tea.StringValue(uid)), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13862,8 +14583,19 @@ func (client *Client) DescribeUserQuotaWithOptions(headers map[string]*string, r
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserQuota"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/quota"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeUserQuotaResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeUserQuota"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/quota"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13887,8 +14619,19 @@ func (client *Client) DescribeWorkflowsWithOptions(headers map[string]*string, r
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWorkflows"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gs/workflows"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeWorkflowsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeWorkflows"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/gs/workflows"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13932,8 +14675,19 @@ func (client *Client) EdgeClusterAddEdgeMachineWithOptions(clusterid *string, ed
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EdgeClusterAddEdgeMachine"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/[clusterid]/attachedgemachine/[edge_machineid]"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EdgeClusterAddEdgeMachineResponse{}
-	_body, _err := client.DoROARequest(tea.String("EdgeClusterAddEdgeMachine"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/[clusterid]/attachedgemachine/[edge_machineid]"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13980,8 +14734,19 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKubernetesTrigger"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/triggers/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
 	_result = &GetKubernetesTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetKubernetesTrigger"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/triggers/"+tea.StringValue(ClusterId)), tea.String("array"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14006,8 +14771,19 @@ func (client *Client) GetUpgradeStatusWithOptions(ClusterId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUpgradeStatus"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/upgrade/status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetUpgradeStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUpgradeStatus"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/status"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14037,8 +14813,19 @@ func (client *Client) GrantPermissionsWithOptions(uid *string, request *GrantPer
 		Headers: headers,
 		Body:    util.ToArray(request.Body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantPermissions"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/permissions/users/" + tea.StringValue(uid)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GrantPermissionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GrantPermissions"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/permissions/users/"+tea.StringValue(uid)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14068,8 +14855,19 @@ func (client *Client) InstallClusterAddonsWithOptions(ClusterId *string, request
 		Headers: headers,
 		Body:    util.ToArray(request.Body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallClusterAddons"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/install"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &InstallClusterAddonsResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/install"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14129,8 +14927,19 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14155,8 +14964,19 @@ func (client *Client) MigrateClusterWithOptions(clusterId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("MigrateCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/migrate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &MigrateClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("MigrateCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/migrate"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14195,6 +15015,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["deletion_protection"] = request.DeletionProtection
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableRrsa)) {
+		body["enable_rrsa"] = request.EnableRrsa
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IngressDomainRebinding)) {
 		body["ingress_domain_rebinding"] = request.IngressDomainRebinding
 	}
@@ -14219,8 +15043,19 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14256,8 +15091,19 @@ func (client *Client) ModifyClusterAddonWithOptions(clusterId *string, component
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClusterAddon"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/config"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ModifyClusterAddonResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyClusterAddon"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/components/"+tea.StringValue(componentId)+"/config"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14292,8 +15138,19 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClusterConfiguration"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/configuration"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ModifyClusterConfigurationResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyClusterConfiguration"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/configuration"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14353,8 +15210,19 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClusterNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyClusterNodePoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14384,8 +15252,19 @@ func (client *Client) ModifyClusterTagsWithOptions(ClusterId *string, request *M
 		Headers: headers,
 		Body:    util.ToArray(request.Body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClusterTags"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/tags"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ModifyClusterTagsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyClusterTags"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/tags"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14433,8 +15312,19 @@ func (client *Client) ModifyPolicyInstanceWithOptions(clusterId *string, policyN
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPolicyInstance"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyPolicyInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyPolicyInstance"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterId)+"/policies/"+tea.StringValue(policyName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14468,8 +15358,19 @@ func (client *Client) OpenAckServiceWithOptions(request *OpenAckServiceRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenAckService"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/service/open"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &OpenAckServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("OpenAckService"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/service/open"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14494,8 +15395,19 @@ func (client *Client) PauseClusterUpgradeWithOptions(ClusterId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseClusterUpgrade"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/upgrade/pause"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &PauseClusterUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("PauseClusterUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/pause"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14521,8 +15433,19 @@ func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, compon
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseComponentUpgrade"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/{componentid}/pause"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &PauseComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("PauseComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/"+tea.StringValue(componentid)+"/pause"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14565,8 +15488,19 @@ func (client *Client) RemoveClusterNodesWithOptions(ClusterId *string, request *
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveClusterNodes"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/nodes/remove"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &RemoveClusterNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("RemoveClusterNodes"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/nodes/remove"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14591,8 +15525,19 @@ func (client *Client) RemoveWorkflowWithOptions(workflowName *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveWorkflow"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gs/workflow/" + tea.StringValue(workflowName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &RemoveWorkflowResponse{}
-	_body, _err := client.DoROARequest(tea.String("RemoveWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/gs/workflow/"+tea.StringValue(workflowName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14618,8 +15563,19 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeComponentUpgrade"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/{componentid}/resume"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ResumeComponentUpgradeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResumeComponentUpgrade"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(clusterid)+"/components/"+tea.StringValue(componentid)+"/resume"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14644,8 +15600,19 @@ func (client *Client) ResumeUpgradeClusterWithOptions(ClusterId *string, headers
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeUpgradeCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/upgrade/resume"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &ResumeUpgradeClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResumeUpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade/resume"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14752,8 +15719,19 @@ func (client *Client) ScaleClusterWithOptions(ClusterId *string, request *ScaleC
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ScaleClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ScaleCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14789,8 +15767,19 @@ func (client *Client) ScaleClusterNodePoolWithOptions(ClusterId *string, Nodepoo
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleClusterNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ScaleClusterNodePoolResponse{}
-	_body, _err := client.DoROARequest(tea.String("ScaleClusterNodePool"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/nodepools/"+tea.StringValue(NodepoolId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14905,8 +15894,19 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleOutCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ScaleOutClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("ScaleOutCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15012,8 +16012,19 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartWorkflow"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gs/workflow"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartWorkflowResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartWorkflow"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/gs/workflow"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15059,8 +16070,19 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tags"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("TagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/tags"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15090,8 +16112,19 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 		Headers: headers,
 		Body:    util.ToArray(request.Addons),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UnInstallClusterAddons"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/uninstall"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UnInstallClusterAddonsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UnInstallClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/uninstall"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15137,8 +16170,19 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tags"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("UntagResources"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/tags"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15163,8 +16207,19 @@ func (client *Client) UpdateK8sClusterUserConfigExpireWithOptions(ClusterId *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateK8sClusterUserConfigExpire"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(ClusterId) + "/user_config/expire"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateK8sClusterUserConfigExpireResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateK8sClusterUserConfigExpire"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/k8s/"+tea.StringValue(ClusterId)+"/user_config/expire"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15215,8 +16270,19 @@ func (client *Client) UpdateTemplateWithOptions(TemplateId *string, request *Upd
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTemplate"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/templates/" + tea.StringValue(TemplateId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateTemplate"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/templates/"+tea.StringValue(TemplateId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15259,8 +16325,19 @@ func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *Upgr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeCluster"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/clusters/" + tea.StringValue(ClusterId) + "/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpgradeClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpgradeCluster"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v2/clusters/"+tea.StringValue(ClusterId)+"/upgrade"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15290,8 +16367,19 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 		Headers: headers,
 		Body:    util.ToArray(request.Body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeClusterAddons"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpgradeClusterAddonsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpgradeClusterAddons"), tea.String("2015-12-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/clusters/"+tea.StringValue(ClusterId)+"/components/upgrade"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
