@@ -2878,145 +2878,6 @@ func (s *DetectImageFacesResponse) SetBody(v *DetectImageFacesResponseBody) *Det
 	return s
 }
 
-type DetectImageLogosRequest struct {
-	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-}
-
-func (s DetectImageLogosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectImageLogosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectImageLogosRequest) SetImageUri(v string) *DetectImageLogosRequest {
-	s.ImageUri = &v
-	return s
-}
-
-func (s *DetectImageLogosRequest) SetProject(v string) *DetectImageLogosRequest {
-	s.Project = &v
-	return s
-}
-
-type DetectImageLogosResponseBody struct {
-	ImageUri  *string                              `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Logos     []*DetectImageLogosResponseBodyLogos `json:"Logos,omitempty" xml:"Logos,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DetectImageLogosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectImageLogosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectImageLogosResponseBody) SetImageUri(v string) *DetectImageLogosResponseBody {
-	s.ImageUri = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBody) SetLogos(v []*DetectImageLogosResponseBodyLogos) *DetectImageLogosResponseBody {
-	s.Logos = v
-	return s
-}
-
-func (s *DetectImageLogosResponseBody) SetRequestId(v string) *DetectImageLogosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DetectImageLogosResponseBodyLogos struct {
-	LogoBoundary   *DetectImageLogosResponseBodyLogosLogoBoundary `json:"LogoBoundary,omitempty" xml:"LogoBoundary,omitempty" type:"Struct"`
-	LogoConfidence *float32                                       `json:"LogoConfidence,omitempty" xml:"LogoConfidence,omitempty"`
-	LogoName       *string                                        `json:"LogoName,omitempty" xml:"LogoName,omitempty"`
-}
-
-func (s DetectImageLogosResponseBodyLogos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectImageLogosResponseBodyLogos) GoString() string {
-	return s.String()
-}
-
-func (s *DetectImageLogosResponseBodyLogos) SetLogoBoundary(v *DetectImageLogosResponseBodyLogosLogoBoundary) *DetectImageLogosResponseBodyLogos {
-	s.LogoBoundary = v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogos) SetLogoConfidence(v float32) *DetectImageLogosResponseBodyLogos {
-	s.LogoConfidence = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogos) SetLogoName(v string) *DetectImageLogosResponseBodyLogos {
-	s.LogoName = &v
-	return s
-}
-
-type DetectImageLogosResponseBodyLogosLogoBoundary struct {
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s DetectImageLogosResponseBodyLogosLogoBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectImageLogosResponseBodyLogosLogoBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetHeight(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetLeft(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
-	s.Left = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetTop(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *DetectImageLogosResponseBodyLogosLogoBoundary) SetWidth(v int32) *DetectImageLogosResponseBodyLogosLogoBoundary {
-	s.Width = &v
-	return s
-}
-
-type DetectImageLogosResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectImageLogosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectImageLogosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectImageLogosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectImageLogosResponse) SetHeaders(v map[string]*string) *DetectImageLogosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectImageLogosResponse) SetBody(v *DetectImageLogosResponseBody) *DetectImageLogosResponse {
-	s.Body = v
-	return s
-}
-
 type DetectImageQRCodesRequest struct {
 	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
 	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
@@ -3203,6 +3064,7 @@ func (s *DetectImageTagsResponseBody) SetTags(v []*DetectImageTagsResponseBodyTa
 }
 
 type DetectImageTagsResponseBodyTags struct {
+	CentricScore    *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	ParentTagEnName *string  `json:"ParentTagEnName,omitempty" xml:"ParentTagEnName,omitempty"`
 	ParentTagName   *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
 	TagConfidence   *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
@@ -3217,6 +3079,11 @@ func (s DetectImageTagsResponseBodyTags) String() string {
 
 func (s DetectImageTagsResponseBodyTags) GoString() string {
 	return s.String()
+}
+
+func (s *DetectImageTagsResponseBodyTags) SetCentricScore(v float32) *DetectImageTagsResponseBodyTags {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *DetectImageTagsResponseBodyTags) SetParentTagEnName(v string) *DetectImageTagsResponseBodyTags {
@@ -4575,6 +4442,7 @@ func (s *FindImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *FindImag
 }
 
 type FindImagesResponseBodyImagesTags struct {
+	CentricScore  *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
 	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
 	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
@@ -4587,6 +4455,11 @@ func (s FindImagesResponseBodyImagesTags) String() string {
 
 func (s FindImagesResponseBodyImagesTags) GoString() string {
 	return s.String()
+}
+
+func (s *FindImagesResponseBodyImagesTags) SetCentricScore(v float32) *FindImagesResponseBodyImagesTags {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *FindImagesResponseBodyImagesTags) SetParentTagName(v string) *FindImagesResponseBodyImagesTags {
@@ -5919,6 +5792,7 @@ func (s *GetImageResponseBodyOCROCRBoundary) SetWidth(v int32) *GetImageResponse
 }
 
 type GetImageResponseBodyTags struct {
+	CentricScore  *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
 	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
 	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
@@ -5931,6 +5805,11 @@ func (s GetImageResponseBodyTags) String() string {
 
 func (s GetImageResponseBodyTags) GoString() string {
 	return s.String()
+}
+
+func (s *GetImageResponseBodyTags) SetCentricScore(v float32) *GetImageResponseBodyTags {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *GetImageResponseBodyTags) SetParentTagName(v string) *GetImageResponseBodyTags {
@@ -9721,6 +9600,7 @@ func (s *ListImagesResponseBodyImagesOCROCRBoundary) SetWidth(v int32) *ListImag
 }
 
 type ListImagesResponseBodyImagesTags struct {
+	CentricScore  *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
 	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
 	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
@@ -9733,6 +9613,11 @@ func (s ListImagesResponseBodyImagesTags) String() string {
 
 func (s ListImagesResponseBodyImagesTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponseBodyImagesTags) SetCentricScore(v float32) *ListImagesResponseBodyImagesTags {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *ListImagesResponseBodyImagesTags) SetParentTagName(v string) *ListImagesResponseBodyImagesTags {
@@ -12987,30 +12872,11 @@ func (client *Client) CompareImageFacesWithOptions(request *CompareImageFacesReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["FaceIdA"] = request.FaceIdA
-	query["FaceIdB"] = request.FaceIdB
-	query["ImageUriA"] = request.ImageUriA
-	query["ImageUriB"] = request.ImageUriB
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CompareImageFaces"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CompareImageFacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CompareImageFaces"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13034,44 +12900,11 @@ func (client *Client) ConvertOfficeFormatWithOptions(request *ConvertOfficeForma
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["EndPage"] = request.EndPage
-	query["FitToPagesTall"] = request.FitToPagesTall
-	query["FitToPagesWide"] = request.FitToPagesWide
-	query["Hidecomments"] = request.Hidecomments
-	query["MaxSheetCol"] = request.MaxSheetCol
-	query["MaxSheetCount"] = request.MaxSheetCount
-	query["MaxSheetRow"] = request.MaxSheetRow
-	query["ModelId"] = request.ModelId
-	query["Password"] = request.Password
-	query["PdfVector"] = request.PdfVector
-	query["Project"] = request.Project
-	query["SheetOnePage"] = request.SheetOnePage
-	query["SrcType"] = request.SrcType
-	query["SrcUri"] = request.SrcUri
-	query["StartPage"] = request.StartPage
-	query["TgtFilePages"] = request.TgtFilePages
-	query["TgtFilePrefix"] = request.TgtFilePrefix
-	query["TgtFileSuffix"] = request.TgtFileSuffix
-	query["TgtType"] = request.TgtType
-	query["TgtUri"] = request.TgtUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConvertOfficeFormat"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ConvertOfficeFormatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ConvertOfficeFormat"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13095,30 +12928,11 @@ func (client *Client) CreateGrabFrameTaskWithOptions(request *CreateGrabFrameTas
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CustomMessage"] = request.CustomMessage
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TargetList"] = request.TargetList
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateGrabFrameTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateGrabFrameTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateGrabFrameTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13142,28 +12956,11 @@ func (client *Client) CreateGroupFacesJobWithOptions(request *CreateGroupFacesJo
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateGroupFacesJob"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateGroupFacesJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateGroupFacesJob"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13187,29 +12984,11 @@ func (client *Client) CreateImageProcessTaskWithOptions(request *CreateImageProc
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TargetList"] = request.TargetList
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateImageProcessTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateImageProcessTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateImageProcessTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13233,28 +13012,11 @@ func (client *Client) CreateMediaComplexTaskWithOptions(request *CreateMediaComp
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Parameters"] = request.Parameters
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateMediaComplexTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateMediaComplexTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateMediaComplexTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13278,31 +13040,11 @@ func (client *Client) CreateMergeFaceGroupsJobWithOptions(request *CreateMergeFa
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CustomMessage"] = request.CustomMessage
-	query["GroupIdFrom"] = request.GroupIdFrom
-	query["GroupIdTo"] = request.GroupIdTo
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateMergeFaceGroupsJob"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateMergeFaceGroupsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateMergeFaceGroupsJob"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13326,49 +13068,11 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(request *CreateOffic
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DisplayDpi"] = request.DisplayDpi
-	query["EndPage"] = request.EndPage
-	query["FitToPagesTall"] = request.FitToPagesTall
-	query["FitToPagesWide"] = request.FitToPagesWide
-	query["Hidecomments"] = request.Hidecomments
-	query["IdempotentToken"] = request.IdempotentToken
-	query["MaxSheetCol"] = request.MaxSheetCol
-	query["MaxSheetCount"] = request.MaxSheetCount
-	query["MaxSheetRow"] = request.MaxSheetRow
-	query["ModelId"] = request.ModelId
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Password"] = request.Password
-	query["PdfVector"] = request.PdfVector
-	query["Project"] = request.Project
-	query["SheetOnePage"] = request.SheetOnePage
-	query["SrcType"] = request.SrcType
-	query["SrcUri"] = request.SrcUri
-	query["StartPage"] = request.StartPage
-	query["TgtFilePages"] = request.TgtFilePages
-	query["TgtFilePrefix"] = request.TgtFilePrefix
-	query["TgtFileSuffix"] = request.TgtFileSuffix
-	query["TgtType"] = request.TgtType
-	query["TgtUri"] = request.TgtUri
-	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateOfficeConversionTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateOfficeConversionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateOfficeConversionTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13392,27 +13096,11 @@ func (client *Client) CreateSetWithOptions(request *CreateSetRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
-	query["SetName"] = request.SetName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateSet"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateSet"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13436,31 +13124,11 @@ func (client *Client) CreateVideoAbstractTaskWithOptions(request *CreateVideoAbs
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AbstractLength"] = request.AbstractLength
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TargetClipsUri"] = request.TargetClipsUri
-	query["TargetVideoUri"] = request.TargetVideoUri
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVideoAbstractTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateVideoAbstractTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateVideoAbstractTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13484,29 +13152,11 @@ func (client *Client) CreateVideoAnalyseTaskWithOptions(request *CreateVideoAnal
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TgtUri"] = request.TgtUri
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVideoAnalyseTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateVideoAnalyseTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateVideoAnalyseTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13530,32 +13180,11 @@ func (client *Client) CreateVideoCompressTaskWithOptions(request *CreateVideoCom
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CustomMessage"] = request.CustomMessage
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TargetList"] = request.TargetList
-	query["TargetSegment"] = request.TargetSegment
-	query["TargetSubtitle"] = request.TargetSubtitle
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVideoCompressTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateVideoCompressTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateVideoCompressTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13579,34 +13208,11 @@ func (client *Client) CreateVideoProduceTaskWithOptions(request *CreateVideoProd
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CustomMessage"] = request.CustomMessage
-	query["Height"] = request.Height
-	query["Images"] = request.Images
-	query["Music"] = request.Music
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["TargetUri"] = request.TargetUri
-	query["TemplateName"] = request.TemplateName
-	query["Width"] = request.Width
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVideoProduceTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &CreateVideoProduceTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CreateVideoProduceTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13630,30 +13236,11 @@ func (client *Client) DecodeBlindWatermarkWithOptions(request *DecodeBlindWaterm
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageQuality"] = request.ImageQuality
-	query["ImageUri"] = request.ImageUri
-	query["Model"] = request.Model
-	query["OriginalImageUri"] = request.OriginalImageUri
-	query["Project"] = request.Project
-	query["TargetUri"] = request.TargetUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DecodeBlindWatermark"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DecodeBlindWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DecodeBlindWatermark"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13677,27 +13264,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteImage"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteImage"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13721,27 +13292,11 @@ func (client *Client) DeleteImageJobWithOptions(request *DeleteImageJobRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["JobType"] = request.JobType
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteImageJob"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteImageJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteImageJob"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13765,26 +13320,11 @@ func (client *Client) DeleteOfficeConversionTaskWithOptions(request *DeleteOffic
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteOfficeConversionTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteOfficeConversionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteOfficeConversionTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13808,25 +13348,11 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProject"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteProject"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13850,26 +13376,11 @@ func (client *Client) DeleteSetWithOptions(request *DeleteSetRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteSet"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteSet"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13893,28 +13404,11 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["Resources"] = request.Resources
-	query["SetId"] = request.SetId
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVideo"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteVideo"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13938,27 +13432,11 @@ func (client *Client) DeleteVideoTaskWithOptions(request *DeleteVideoTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["TaskId"] = request.TaskId
-	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVideoTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DeleteVideoTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DeleteVideoTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13979,19 +13457,8 @@ func (client *Client) DeleteVideoTask(request *DeleteVideoTaskRequest) (_result 
 
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRegions"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14015,26 +13482,11 @@ func (client *Client) DetectImageBodiesWithOptions(request *DetectImageBodiesReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectImageBodies"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DetectImageBodiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DetectImageBodies"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14058,26 +13510,11 @@ func (client *Client) DetectImageFacesWithOptions(request *DetectImageFacesReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectImageFaces"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DetectImageFacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DetectImageFaces"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14096,74 +13533,16 @@ func (client *Client) DetectImageFaces(request *DetectImageFacesRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DetectImageLogosWithOptions(request *DetectImageLogosRequest, runtime *util.RuntimeOptions) (_result *DetectImageLogosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectImageLogos"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DetectImageLogosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectImageLogos(request *DetectImageLogosRequest) (_result *DetectImageLogosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectImageLogosResponse{}
-	_body, _err := client.DetectImageLogosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetectImageQRCodesWithOptions(request *DetectImageQRCodesRequest, runtime *util.RuntimeOptions) (_result *DetectImageQRCodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectImageQRCodes"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DetectImageQRCodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DetectImageQRCodes"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14187,26 +13566,11 @@ func (client *Client) DetectImageTagsWithOptions(request *DetectImageTagsRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectImageTags"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DetectImageTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DetectImageTags"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14230,26 +13594,11 @@ func (client *Client) DetectQRCodesWithOptions(request *DetectQRCodesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SrcUris"] = request.SrcUris
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectQRCodes"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &DetectQRCodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("DetectQRCodes"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14273,32 +13622,11 @@ func (client *Client) EncodeBlindWatermarkWithOptions(request *EncodeBlindWaterm
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Content"] = request.Content
-	query["ImageQuality"] = request.ImageQuality
-	query["ImageUri"] = request.ImageUri
-	query["Model"] = request.Model
-	query["Project"] = request.Project
-	query["TargetImageType"] = request.TargetImageType
-	query["TargetUri"] = request.TargetUri
-	query["WatermarkUri"] = request.WatermarkUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EncodeBlindWatermark"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &EncodeBlindWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("EncodeBlindWatermark"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14322,53 +13650,11 @@ func (client *Client) FindImagesWithOptions(request *FindImagesRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AddressLineContentsMatch"] = request.AddressLineContentsMatch
-	query["AgeRange"] = request.AgeRange
-	query["CreateTimeRange"] = request.CreateTimeRange
-	query["Emotion"] = request.Emotion
-	query["ExternalId"] = request.ExternalId
-	query["FacesModifyTimeRange"] = request.FacesModifyTimeRange
-	query["Gender"] = request.Gender
-	query["GroupId"] = request.GroupId
-	query["ImageSizeRange"] = request.ImageSizeRange
-	query["ImageTimeRange"] = request.ImageTimeRange
-	query["Limit"] = request.Limit
-	query["LocationBoundary"] = request.LocationBoundary
-	query["Marker"] = request.Marker
-	query["ModifyTimeRange"] = request.ModifyTimeRange
-	query["OCRContentsMatch"] = request.OCRContentsMatch
-	query["Order"] = request.Order
-	query["OrderBy"] = request.OrderBy
-	query["Project"] = request.Project
-	query["RemarksAPrefix"] = request.RemarksAPrefix
-	query["RemarksArrayAIn"] = request.RemarksArrayAIn
-	query["RemarksArrayBIn"] = request.RemarksArrayBIn
-	query["RemarksBPrefix"] = request.RemarksBPrefix
-	query["RemarksCPrefix"] = request.RemarksCPrefix
-	query["RemarksDPrefix"] = request.RemarksDPrefix
-	query["SetId"] = request.SetId
-	query["SourceType"] = request.SourceType
-	query["SourceUriPrefix"] = request.SourceUriPrefix
-	query["TagNames"] = request.TagNames
-	query["TagsModifyTimeRange"] = request.TagsModifyTimeRange
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("FindImages"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &FindImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("FindImages"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14392,31 +13678,11 @@ func (client *Client) FindSimilarFacesWithOptions(request *FindSimilarFacesReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["FaceId"] = request.FaceId
-	query["ImageUri"] = request.ImageUri
-	query["Limit"] = request.Limit
-	query["MinSimilarity"] = request.MinSimilarity
-	query["Project"] = request.Project
-	query["ResponseFormat"] = request.ResponseFormat
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("FindSimilarFaces"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &FindSimilarFacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("FindSimilarFaces"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14440,28 +13706,11 @@ func (client *Client) GetContentKeyWithOptions(request *GetContentKeyRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DRMServerId"] = request.DRMServerId
-	query["KeyIds"] = request.KeyIds
-	query["Project"] = request.Project
-	query["VersionId"] = request.VersionId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetContentKey"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetContentKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetContentKey"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14485,27 +13734,11 @@ func (client *Client) GetDRMLicenseWithOptions(request *GetDRMLicenseRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["DRMLicense"] = request.DRMLicense
-	query["DRMType"] = request.DRMType
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDRMLicense"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetDRMLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetDRMLicense"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14529,27 +13762,11 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetImage"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetImage"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14573,27 +13790,11 @@ func (client *Client) GetImageCroppingSuggestionsWithOptions(request *GetImageCr
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AspectRatios"] = request.AspectRatios
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetImageCroppingSuggestions"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetImageCroppingSuggestionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetImageCroppingSuggestions"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14617,26 +13818,11 @@ func (client *Client) GetImageQualityWithOptions(request *GetImageQualityRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetImageQuality"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetImageQualityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetImageQuality"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14660,26 +13846,11 @@ func (client *Client) GetMediaMetaWithOptions(request *GetMediaMetaRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["MediaUri"] = request.MediaUri
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMediaMeta"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetMediaMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetMediaMeta"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14703,26 +13874,11 @@ func (client *Client) GetOfficeConversionTaskWithOptions(request *GetOfficeConve
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetOfficeConversionTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetOfficeConversionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetOfficeConversionTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14746,34 +13902,11 @@ func (client *Client) GetOfficeEditURLWithOptions(request *GetOfficeEditURLReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["FileID"] = request.FileID
-	query["FileName"] = request.FileName
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["SrcType"] = request.SrcType
-	query["SrcUri"] = request.SrcUri
-	query["TgtUri"] = request.TgtUri
-	query["UserID"] = request.UserID
-	query["UserName"] = request.UserName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetOfficeEditURL"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetOfficeEditURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetOfficeEditURL"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14797,34 +13930,11 @@ func (client *Client) GetOfficePreviewURLWithOptions(request *GetOfficePreviewUR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SrcType"] = request.SrcType
-	query["SrcUri"] = request.SrcUri
-	query["WatermarkFillStyle"] = request.WatermarkFillStyle
-	query["WatermarkFont"] = request.WatermarkFont
-	query["WatermarkHorizontal"] = request.WatermarkHorizontal
-	query["WatermarkRotate"] = request.WatermarkRotate
-	query["WatermarkType"] = request.WatermarkType
-	query["WatermarkValue"] = request.WatermarkValue
-	query["WatermarkVertical"] = request.WatermarkVertical
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetOfficePreviewURL"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetOfficePreviewURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetOfficePreviewURL"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14848,25 +13958,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProject"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetProject"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14890,26 +13986,11 @@ func (client *Client) GetSetWithOptions(request *GetSetRequest, runtime *util.Ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSet"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetSet"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14933,27 +14014,11 @@ func (client *Client) GetVideoWithOptions(request *GetVideoRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetVideo"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetVideo"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14977,27 +14042,11 @@ func (client *Client) GetVideoTaskWithOptions(request *GetVideoTaskRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["TaskId"] = request.TaskId
-	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetVideoTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetVideoTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetVideoTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15021,34 +14070,11 @@ func (client *Client) GetWebofficeURLWithOptions(request *GetWebofficeURLRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["File"] = request.File
-	query["FileID"] = request.FileID
-	query["Hidecmb"] = request.Hidecmb
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Permission"] = request.Permission
-	query["Project"] = request.Project
-	query["SrcType"] = request.SrcType
-	query["User"] = request.User
-	query["Watermark"] = request.Watermark
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetWebofficeURL"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &GetWebofficeURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GetWebofficeURL"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15072,39 +14098,11 @@ func (client *Client) IndexImageWithOptions(request *IndexImageRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ExternalId"] = request.ExternalId
-	query["ImageUri"] = request.ImageUri
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["RemarksA"] = request.RemarksA
-	query["RemarksArrayA"] = request.RemarksArrayA
-	query["RemarksArrayB"] = request.RemarksArrayB
-	query["RemarksB"] = request.RemarksB
-	query["RemarksC"] = request.RemarksC
-	query["RemarksD"] = request.RemarksD
-	query["SetId"] = request.SetId
-	query["SourcePosition"] = request.SourcePosition
-	query["SourceType"] = request.SourceType
-	query["SourceUri"] = request.SourceUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("IndexImage"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &IndexImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("IndexImage"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15128,35 +14126,11 @@ func (client *Client) IndexVideoWithOptions(request *IndexVideoRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ExternalId"] = request.ExternalId
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Project"] = request.Project
-	query["RemarksA"] = request.RemarksA
-	query["RemarksB"] = request.RemarksB
-	query["RemarksC"] = request.RemarksC
-	query["RemarksD"] = request.RemarksD
-	query["SetId"] = request.SetId
-	query["TgtUri"] = request.TgtUri
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("IndexVideo"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &IndexVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("IndexVideo"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15180,37 +14154,11 @@ func (client *Client) ListFaceGroupsWithOptions(request *ListFaceGroupsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ExternalId"] = request.ExternalId
-	query["Limit"] = request.Limit
-	query["Marker"] = request.Marker
-	query["Order"] = request.Order
-	query["OrderBy"] = request.OrderBy
-	query["Project"] = request.Project
-	query["RemarksAQuery"] = request.RemarksAQuery
-	query["RemarksArrayAQuery"] = request.RemarksArrayAQuery
-	query["RemarksArrayBQuery"] = request.RemarksArrayBQuery
-	query["RemarksBQuery"] = request.RemarksBQuery
-	query["RemarksCQuery"] = request.RemarksCQuery
-	query["RemarksDQuery"] = request.RemarksDQuery
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFaceGroups"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListFaceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListFaceGroups"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15234,29 +14182,11 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["Limit"] = request.Limit
-	query["Marker"] = request.Marker
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListImages"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListImages"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15280,27 +14210,11 @@ func (client *Client) ListOfficeConversionTaskWithOptions(request *ListOfficeCon
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["MaxKeys"] = request.MaxKeys
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListOfficeConversionTask"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListOfficeConversionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListOfficeConversionTask"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15324,25 +14238,11 @@ func (client *Client) ListProjectAPIsWithOptions(request *ListProjectAPIsRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProjectAPIs"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListProjectAPIsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListProjectAPIs"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15366,26 +14266,11 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["MaxKeys"] = request.MaxKeys
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProjects"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListProjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListProjects"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15409,26 +14294,11 @@ func (client *Client) ListSetTagsWithOptions(request *ListSetTagsRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListSetTags"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListSetTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListSetTags"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15452,26 +14322,11 @@ func (client *Client) ListSetsWithOptions(request *ListSetsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListSets"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListSets"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15495,28 +14350,11 @@ func (client *Client) ListVideoAudiosWithOptions(request *ListVideoAudiosRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideoAudios"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListVideoAudiosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListVideoAudios"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15540,28 +14378,11 @@ func (client *Client) ListVideoFramesWithOptions(request *ListVideoFramesRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
-	query["VideoUri"] = request.VideoUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideoFrames"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListVideoFramesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListVideoFrames"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15585,28 +14406,11 @@ func (client *Client) ListVideoTasksWithOptions(request *ListVideoTasksRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Marker"] = request.Marker
-	query["MaxKeys"] = request.MaxKeys
-	query["Project"] = request.Project
-	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideoTasks"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListVideoTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListVideoTasks"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15630,28 +14434,11 @@ func (client *Client) ListVideosWithOptions(request *ListVideosRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["CreateTimeStart"] = request.CreateTimeStart
-	query["Marker"] = request.Marker
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideos"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &ListVideosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ListVideos"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15675,25 +14462,11 @@ func (client *Client) OpenImmServiceWithOptions(request *OpenImmServiceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("OpenImmService"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &OpenImmServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("OpenImmService"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15717,26 +14490,11 @@ func (client *Client) PutProjectWithOptions(request *PutProjectRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["ServiceRole"] = request.ServiceRole
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PutProject"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &PutProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("PutProject"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15760,27 +14518,11 @@ func (client *Client) RefreshOfficeEditTokenWithOptions(request *RefreshOfficeEd
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AccessToken"] = request.AccessToken
-	query["Project"] = request.Project
-	query["RefreshToken"] = request.RefreshToken
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RefreshOfficeEditToken"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RefreshOfficeEditTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RefreshOfficeEditToken"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15804,27 +14546,11 @@ func (client *Client) RefreshOfficePreviewTokenWithOptions(request *RefreshOffic
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AccessToken"] = request.AccessToken
-	query["Project"] = request.Project
-	query["RefreshToken"] = request.RefreshToken
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RefreshOfficePreviewToken"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RefreshOfficePreviewTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RefreshOfficePreviewToken"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15848,27 +14574,11 @@ func (client *Client) RefreshWebofficeTokenWithOptions(request *RefreshWeboffice
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["AccessToken"] = request.AccessToken
-	query["Project"] = request.Project
-	query["RefreshToken"] = request.RefreshToken
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RefreshWebofficeToken"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &RefreshWebofficeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("RefreshWebofficeToken"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15892,37 +14602,11 @@ func (client *Client) UpdateFaceGroupWithOptions(request *UpdateFaceGroupRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["ExternalId"] = request.ExternalId
-	query["GroupCoverFaceId"] = request.GroupCoverFaceId
-	query["GroupId"] = request.GroupId
-	query["GroupName"] = request.GroupName
-	query["Project"] = request.Project
-	query["RemarksA"] = request.RemarksA
-	query["RemarksArrayA"] = request.RemarksArrayA
-	query["RemarksArrayB"] = request.RemarksArrayB
-	query["RemarksB"] = request.RemarksB
-	query["RemarksC"] = request.RemarksC
-	query["RemarksD"] = request.RemarksD
-	query["ResetItems"] = request.ResetItems
-	query["SetId"] = request.SetId
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateFaceGroup"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UpdateFaceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpdateFaceGroup"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15952,38 +14636,11 @@ func (client *Client) UpdateImageWithOptions(tmpReq *UpdateImageRequest, runtime
 		request.FacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Faces, tea.String("Faces"), tea.String("json"))
 	}
 
-	query := map[string]interface{}{}
-	query["ExternalId"] = request.ExternalId
-	query["Faces"] = request.FacesShrink
-	query["ImageUri"] = request.ImageUri
-	query["Project"] = request.Project
-	query["RemarksA"] = request.RemarksA
-	query["RemarksArrayA"] = request.RemarksArrayA
-	query["RemarksArrayB"] = request.RemarksArrayB
-	query["RemarksB"] = request.RemarksB
-	query["RemarksC"] = request.RemarksC
-	query["RemarksD"] = request.RemarksD
-	query["SetId"] = request.SetId
-	query["SourcePosition"] = request.SourcePosition
-	query["SourceType"] = request.SourceType
-	query["SourceUri"] = request.SourceUri
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateImage"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UpdateImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpdateImage"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16007,27 +14664,11 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["NewCU"] = request.NewCU
-	query["NewServiceRole"] = request.NewServiceRole
-	query["Project"] = request.Project
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateProject"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UpdateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpdateProject"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16051,27 +14692,11 @@ func (client *Client) UpdateSetWithOptions(request *UpdateSetRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	query["Project"] = request.Project
-	query["SetId"] = request.SetId
-	query["SetName"] = request.SetName
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateSet"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		Body: util.ToMap(request),
 	}
 	_result = &UpdateSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("UpdateSet"), tea.String("2017-09-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
