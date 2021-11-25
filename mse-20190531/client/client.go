@@ -8742,12 +8742,13 @@ func (s *QueryClusterDetailResponseBodyData) SetVpcId(v string) *QueryClusterDet
 }
 
 type QueryClusterDetailResponseBodyDataInstanceModels struct {
-	HealthStatus    *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PodName         *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	HealthStatus      *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodName           *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	Role              *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SingleTunnelVip   *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
 }
 
 func (s QueryClusterDetailResponseBodyDataInstanceModels) String() string {
@@ -8756,6 +8757,11 @@ func (s QueryClusterDetailResponseBodyDataInstanceModels) String() string {
 
 func (s QueryClusterDetailResponseBodyDataInstanceModels) GoString() string {
 	return s.String()
+}
+
+func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetCreationTimestamp(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
+	s.CreationTimestamp = &v
+	return s
 }
 
 func (s *QueryClusterDetailResponseBodyDataInstanceModels) SetHealthStatus(v string) *QueryClusterDetailResponseBodyDataInstanceModels {
@@ -9800,6 +9806,7 @@ func (s *QueryZnodeDetailResponse) SetBody(v *QueryZnodeDetailResponseBody) *Que
 type RestartClusterRequest struct {
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PodNameList *string `json:"PodNameList,omitempty" xml:"PodNameList,omitempty"`
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
@@ -9818,6 +9825,11 @@ func (s *RestartClusterRequest) SetClusterId(v string) *RestartClusterRequest {
 
 func (s *RestartClusterRequest) SetInstanceId(v string) *RestartClusterRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RestartClusterRequest) SetPodNameList(v string) *RestartClusterRequest {
+	s.PodNameList = &v
 	return s
 }
 
